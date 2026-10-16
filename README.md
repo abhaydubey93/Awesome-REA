@@ -317,6 +317,8 @@ New tools, projects, case studies, and collections are welcome. Suggest a resour
 
 ## About
 
+For software made with AI and resources for training or evaluating agents, browse [AI Can What?](https://aicanwhat.com/) across games, websites, and applications.
+
 This is an independent community collection. Original descriptions and code are [MIT licensed](LICENSE); linked projects retain their own licenses.
 
 [Supporting documentation](data/README.md) · [Repository scanning method](docs/source-scan.md)

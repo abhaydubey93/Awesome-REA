@@ -291,6 +291,10 @@ def build_discovery_pages(site_dir: Path, catalog: dict, source_index: dict | No
                      if zh else 'Original editorial content and code in this repository use the MIT license. Upstream projects and their descriptions retain their own licenses; license identifiers are metadata snapshots. The generated bilingual index preserves upstream text as description_original, and translations are AI-assisted.')
         facts = [('收录范围' if zh else 'What is collected', summary), ('来源与更新' if zh else 'Evidence and updates', evidence), ('范围与复核' if zh else 'Scope and review', scope), ('语言与许可' if zh else 'Languages and licenses', licensing)]
         fact_cards = ''.join(f'<section class="source-card browse-repository"><h2>{escape(heading)}</h2><p class="card-description">{escape(text)}</p></section>' for heading, text in facts)
+        companion_url = 'https://aicanwhat.com/zh/' if zh else 'https://aicanwhat.com/'
+        companion_description = ('收录 AI 参与开发的游戏、网站与应用，以及 Agent 训练和评测使用的环境、基准和数据集。每个项目保留原始来源、开发方式说明和使用限制。'
+                                 if zh else 'A directory of games, websites, and apps made with AI, plus environments, benchmarks, and datasets for training and evaluating agents. Each project retains original sources, development evidence, and practical limits.')
+        fact_cards += f'<section class="source-card browse-repository"><h2>{("相关目录" if zh else "Companion directory")}</h2><p class="card-description"><a href="{companion_url}">AI Can What?</a> — {companion_description}</p></section>'
         links = [
             (prefix + '/resources/', '精选资源' if zh else 'Curated resources'),
             (prefix + '/browse/', '完整仓库目录' if zh else 'Repository directory'),

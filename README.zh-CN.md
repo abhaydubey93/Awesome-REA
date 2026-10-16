@@ -318,6 +318,8 @@
 
 ## 关于
 
+如需查找 AI 参与开发的软件，以及 Agent 训练和评测资料，可浏览 [AI Can What?](https://aicanwhat.com/zh/) 的游戏、网站和应用目录。
+
 本项目是独立社区资源合集。原创说明和代码使用 [MIT 许可证](LICENSE)，外部项目保留各自的许可证。
 
 [补充文档](data/README.md) · [仓库扫描方法](docs/source-scan.md)
