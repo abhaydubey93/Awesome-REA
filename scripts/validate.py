@@ -241,6 +241,168 @@ def validate_benchmarks(records, errors):
                 errors.append(f'{where}.observed_at: snapshot is in the future')
 
 
+def validate_scan_discovery(meta, records, errors):
+    """Check optional discovery evidence without inventing legacy observations."""
+    methods = {'github-search', 'curated-reference', 'paper-artifact-reference', 'retained-repository-id'}
+    statuses = {'candidate', 'retained-attempt', 'name-collision', 'ineligible', 'failed'}
+    ledger = meta.get('discovered_repository_ids', [])
+    known = {value for value in ledger if isinstance(value, str)} if isinstance(ledger, list) else set()
+    seeds, resumed = {}, set()
+    observed_queries = set()
+
+    def identifier_list(values, pattern):
+        return (isinstance(values, list) and bool(values)
+                and all(isinstance(value, str) and re.fullmatch(pattern, value) for value in values)
+                and len(set(values)) == len(values))
+
+    def github_root(url):
+        if public_https_error(url):
+            return None
+        parsed = urlsplit(url)
+        parts = parsed.path.strip('/').split('/')
+        if parsed.netloc != 'github.com' or len(parts) < 2:
+            return None
+        name = '/'.join(parts[:2]).removesuffix('.git').casefold()
+        return name if re.fullmatch(r'[a-z0-9-]+/[a-z0-9_.-]+', name) else None
+
+    def artifact_references(values, reference_ids, where, expected_root=None):
+        artifacts, paper_ids = set(), set()
+        if not isinstance(values, list) or not values:
+            errors.append(f'{where}: expected nonempty paper artifact references')
+            return artifacts
+        for item in values:
+            if (not isinstance(item, dict) or set(item) != {'paper_id', 'field', 'url'}
+                    or not isinstance(item.get('paper_id'), str)
+                    or not re.fullmatch(r'paper-[a-z0-9]+(?:-[a-z0-9]+)*', item['paper_id'])
+                    or item.get('field') not in ('code_url', 'project_url')
+                    or github_root(item.get('url')) is None):
+                errors.append(f'{where}: invalid public GitHub paper artifact reference')
+                continue
+            key = (item['paper_id'], item['field'], item['url'])
+            if key in artifacts:
+                errors.append(f'{where}: duplicate paper artifact reference')
+            artifacts.add(key)
+            paper_ids.add(item['paper_id'])
+            if expected_root is not None and github_root(item['url']) != expected_root:
+                errors.append(f'{where}: paper artifact URL and seed repository disagree')
+        if not identifier_list(reference_ids, r'paper-[a-z0-9]+(?:-[a-z0-9]+)*') or paper_ids != set(reference_ids):
+            errors.append(f'{where}: paper reference IDs must match the artifact references')
+        return artifacts
+
+    for key in ('queries', 'seed_observations', 'resume_observations'):
+        observations = meta.get(key, [])
+        if not isinstance(observations, list):
+            errors.append(f'Source index {key} must be an array.')
+            continue
+        for index, entry in enumerate(observations):
+            where = f'source index {key}[{index}]'
+            if not isinstance(entry, dict):
+                errors.append(f'{where}: expected an object')
+                continue
+            if key == 'queries':
+                if entry.get('status') == 'ok' and nonempty_string(entry.get('query')):
+                    observed_queries.add(entry['query'])
+                continue
+            for field in ('observed_at', 'run_id'):
+                try:
+                    parse_iso(entry.get(field), require_time=True)
+                except (ValueError, TypeError):
+                    errors.append(f'{where}: invalid {field} timestamp')
+            allowed = {'repository_id', 'observed_at', 'run_id', 'method', 'status', 'reason', 'http_status'}
+            if key == 'seed_observations':
+                allowed |= {'full_name', 'reference_ids', 'artifact_references'}
+            if set(entry) - allowed:
+                errors.append(f'{where}: unexpected metadata fields; preserve minimal discovery evidence')
+            status = entry.get('status')
+            if not isinstance(status, str) or status not in statuses:
+                errors.append(f'{where}: invalid metadata lookup status')
+                status = None
+            identifier = entry.get('repository_id')
+            needs_id = key == 'resume_observations' or status in {'candidate', 'retained-attempt', 'name-collision'}
+            if needs_id or identifier is not None:
+                if (not isinstance(identifier, str) or not re.fullmatch(r'scan-[0-9]+', identifier)
+                        or identifier not in known):
+                    errors.append(f'{where}: repository ID must be present in the discovery ledger')
+            if key == 'resume_observations':
+                if entry.get('method') != 'retained-repository-id' or status == 'retained-attempt':
+                    errors.append(f'{where}: invalid retained repository lookup provenance')
+                if status == 'candidate' and isinstance(identifier, str):
+                    resumed.add(identifier)
+            else:
+                name = entry.get('full_name')
+                if not isinstance(name, str) or not re.fullmatch(r'[a-z0-9-]+/[a-z0-9_.-]+', name):
+                    errors.append(f'{where}: expected a lowercase GitHub seed repository name')
+                method = entry.get('method')
+                if method not in ('curated-repository-reference', 'paper-artifact-reference'):
+                    errors.append(f'{where}: invalid seed discovery method')
+                references = entry.get('reference_ids')
+                if not identifier_list(references, r'[a-z0-9]+(?:-[a-z0-9]+)*'):
+                    errors.append(f'{where}: expected unique reference IDs')
+                artifacts = set()
+                if method == 'paper-artifact-reference':
+                    artifacts = artifact_references(entry.get('artifact_references'), references, where,
+                                                    name if isinstance(name, str) else None)
+                elif 'artifact_references' in entry:
+                    errors.append(f'{where}: curated seeds cannot claim paper artifacts')
+                if status in {'failed', 'ineligible'} and identifier is not None:
+                    errors.append(f'{where}: unsuccessful seed lookups must not expose repository metadata')
+                if status == 'candidate' and isinstance(identifier, str):
+                    evidence = seeds.setdefault(identifier, {'curated': set(), 'papers': set()})
+                    if method == 'curated-repository-reference' and isinstance(references, list):
+                        evidence['curated'].update(value for value in references if isinstance(value, str))
+                    elif method == 'paper-artifact-reference':
+                        evidence['papers'].update(artifacts)
+            if status == 'failed' and not nonempty_string(entry.get('reason')):
+                errors.append(f'{where}: failed lookup must retain its reason')
+            if status == 'ineligible':
+                reason = entry.get('reason')
+                legacy_curated = key == 'seed_observations' and entry.get('method') == 'curated-repository-reference'
+                if not (reason is None and legacy_curated) and (not isinstance(reason, str)
+                        or reason not in {'private', 'public-status-unconfirmed', 'fork', 'archived', 'eligibility-unconfirmed'}):
+                    errors.append(f'{where}: ineligible lookup needs an eligibility outcome code')
+            if 'reason' in entry and (status not in {'failed', 'ineligible'}
+                    or not isinstance(entry['reason'], str) or not re.fullmatch(r'[a-z0-9]+(?:-[a-z0-9]+)*', entry['reason'])):
+                errors.append(f'{where}: reason must be a metadata outcome code')
+            if 'http_status' in entry and (status != 'failed' or entry['http_status'] is not None
+                    and (type(entry['http_status']) is not int or not 100 <= entry['http_status'] <= 599)):
+                errors.append(f'{where}: invalid HTTP outcome status')
+
+    for index, record in enumerate(records):
+        if not isinstance(record, dict):
+            continue
+        where = f'source index record {index}'
+        discovery = record.get('discovery_methods')
+        provenance_fields = {'seed_reference_ids', 'seed_paper_ids', 'seed_paper_references'}
+        if discovery is None and not provenance_fields.intersection(record):
+            continue  # Early snapshots predate per-record discovery provenance.
+        if not identifier_list(discovery, r'[a-z]+(?:-[a-z]+)*') or not set(discovery) <= methods:
+            errors.append(f'{where}: invalid discovery methods')
+            continue
+        identifier = record.get('id')
+        evidence = seeds.get(identifier, {}) if isinstance(identifier, str) else {}
+        if 'github-search' in discovery:
+            queries = record.get('matched_queries')
+            if not string_list(queries) or any(query not in observed_queries for query in queries):
+                errors.append(f'{where}: search discovery needs actually observed matched queries')
+        elif record.get('matched_queries') != []:
+            errors.append(f'{where}: matched queries require search discovery')
+        if 'retained-repository-id' in discovery and (not isinstance(identifier, str) or identifier not in resumed):
+            errors.append(f'{where}: retained discovery needs a candidate metadata observation')
+        if 'curated-reference' in discovery:
+            references = record.get('seed_reference_ids')
+            if (not identifier_list(references, r'[a-z0-9]+(?:-[a-z0-9]+)*')
+                    or not set(references) <= evidence.get('curated', set())):
+                errors.append(f'{where}: curated discovery needs matching seed observations')
+        elif 'seed_reference_ids' in record:
+            errors.append(f'{where}: curated reference IDs require curated discovery')
+        if 'paper-artifact-reference' in discovery:
+            artifacts = artifact_references(record.get('seed_paper_references'), record.get('seed_paper_ids'), where)
+            if not artifacts or not artifacts <= evidence.get('papers', set()):
+                errors.append(f'{where}: paper discovery needs matching seed observations')
+        elif {'seed_paper_ids', 'seed_paper_references'}.intersection(record):
+            errors.append(f'{where}: paper references require paper discovery')
+
+
 def validate_source_index(document, errors):
     if not isinstance(document, dict) or not isinstance(document.get('meta'), dict) or not isinstance(document.get('resources'), list):
         errors.append('Source index must contain meta and resources.')
@@ -275,8 +437,22 @@ def validate_source_index(document, errors):
         for field in ('url', 'readme_url'):
             if public_https_error(record.get(field)):
                 errors.append(f'{where}: invalid public {field}')
+        if not isinstance(record.get('full_name'), str) or not re.fullmatch(r'[A-Za-z0-9-]+/[A-Za-z0-9_.-]+', record['full_name']):
+            errors.append(f'{where}: invalid GitHub repository name')
         if record.get('url') != 'https://github.com/' + str(record.get('full_name', '')):
             errors.append(f'{where}: repository URL and full_name disagree')
+        if 'readme_api_url' in record:
+            api_url = record['readme_api_url']
+            if public_https_error(api_url):
+                errors.append(f'{where}: invalid public readme_api_url')
+            else:
+                parsed = urlsplit(api_url)
+                if (parsed.netloc != 'api.github.com'
+                        or parsed.path != '/repos/' + str(record.get('full_name', '')) + '/readme'):
+                    errors.append(f'{where}: README API URL must match the public GitHub repository')
+        if (record.get('private', False) is not False or record.get('visibility', 'public') != 'public'
+                or record.get('archived', False) is not False or record.get('fork', False) is not False):
+            errors.append(f'{where}: repository metadata must describe a public, non-fork, non-archived repository')
         if not re.fullmatch(r'[0-9a-f]{64}', str(record.get('readme_sha256', ''))):
             errors.append(f'{where}: missing README SHA-256')
         if type(record.get('readme_bytes')) is not int or record['readme_bytes'] <= 0:
@@ -302,6 +478,11 @@ def validate_source_index(document, errors):
         if identifier in ids:
             errors.append(f'source index failure {index}: source ID also has a successful scan')
         failed_ids.add(identifier)
+        name = failure.get('full_name')
+        if (not isinstance(name, str) or not re.fullmatch(r'[A-Za-z0-9-]+/[A-Za-z0-9_.-]+', name)
+                or failure.get('url') != 'https://github.com/' + name
+                or public_https_error(failure.get('url'))):
+            errors.append(f'source index failure {index}: invalid public GitHub repository URL')
 
     def nonnegative_integer(value):
         return type(value) is int and value >= 0
@@ -343,9 +524,13 @@ def validate_source_index(document, errors):
                     errors.append(f'Source index current_run {retained_key}/{new_key} must be nonnegative integers.')
                 elif retained + added != total:
                     errors.append(f'Source index current_run {retained_key} plus {new_key} does not match the snapshot total.')
-            for observations_key, offset_key, count_key in (
+            observation_counters = [
                     ('queries', 'query_start_index', 'query_count'),
-                    ('seed_observations', 'seed_observation_start_index', 'seed_observation_count')):
+                    ('seed_observations', 'seed_observation_start_index', 'seed_observation_count')]
+            if ('resume_observations' in meta or 'resume_observation_start_index' in run
+                    or 'resume_observation_count' in run):
+                observation_counters.append(('resume_observations', 'resume_observation_start_index', 'resume_observation_count'))
+            for observations_key, offset_key, count_key in observation_counters:
                 observations = meta.get(observations_key, [])
                 offset, count = run.get(offset_key), run.get(count_key)
                 if (not isinstance(observations, list) or not nonnegative_integer(offset)
@@ -353,6 +538,9 @@ def validate_source_index(document, errors):
                     errors.append(f'Source index current_run {offset_key}/{count_key} needs valid counters and an observation array.')
                 elif offset + count != len(observations):
                     errors.append(f'Source index current_run {offset_key} plus {count_key} does not match {observations_key}.')
+                elif any(not isinstance(entry, dict) or entry.get('run_id') != run.get('run_id')
+                         for entry in observations[offset:]):
+                    errors.append(f'Source index current_run {observations_key} includes observations from a different run.')
             if 'requested_new_successful_scans' in run:
                 target, retained = meta.get('requested_successful_scans'), run.get('retained_successful_readme_scans')
                 requested = run['requested_new_successful_scans']
@@ -365,6 +553,48 @@ def validate_source_index(document, errors):
                 if (not nonnegative_integer(queued) or not nonnegative_integer(successes)
                         or not nonnegative_integer(failed) or queued < successes + failed):
                     errors.append('Source index current_run README queue must cover all new attempted repositories.')
+                retained_successes, retained_failures = (run.get('retained_successful_readme_scans'),
+                                                         run.get('retained_failed_readme_scans'))
+                if (all(nonnegative_integer(value) for value in (queued, retained_successes, retained_failures, meta.get('unique_repos')))
+                        and queued > meta['unique_repos'] - retained_successes - retained_failures):
+                    errors.append('Source index current_run README queue exceeds known unretained repository IDs.')
+            for field in ('seed_curated', 'seed_papers'):
+                if field in run and not isinstance(run[field], bool):
+                    errors.append(f'Source index current_run {field} must be a boolean.')
+            if 'retained_unattempted_repository_ids' in run:
+                pending, count = run['retained_unattempted_repository_ids'], run.get('resume_observation_count')
+                if not nonnegative_integer(pending) or not nonnegative_integer(count) or count > pending:
+                    errors.append('Source index current_run resume lookups cannot exceed retained unattempted IDs.')
+                history = meta.get('resume_history')
+                if run.get('mode') == 'fresh':
+                    if pending != 0 or count != 0:
+                        errors.append('Source index fresh run cannot claim retained repository lookups.')
+                elif run.get('mode') == 'resume' and isinstance(history, list) and history and isinstance(history[-1], dict):
+                    previous = history[-1]
+                    prior_known = previous.get('known_repository_ids')
+                    prior_successes, prior_failed = previous.get('successful_readme_scans'), previous.get('failed')
+                    if (not all(nonnegative_integer(value) for value in (prior_known, prior_successes, prior_failed))
+                            or pending != prior_known - prior_successes - prior_failed
+                            or run.get('retained_successful_readme_scans') != prior_successes
+                            or run.get('retained_failed_readme_scans') != prior_failed):
+                        errors.append('Source index current_run retained counts disagree with the prior snapshot.')
+                else:
+                    errors.append('Source index retained repository lookups need a valid run mode and resume history.')
+                observations = meta.get('resume_observations', [])
+                offset = run.get('resume_observation_start_index')
+                if isinstance(observations, list) and nonnegative_integer(offset):
+                    current_ids = [entry.get('repository_id') for entry in observations[offset:]
+                                   if isinstance(entry, dict) and isinstance(entry.get('repository_id'), str)]
+                    if len(set(current_ids)) != len(current_ids):
+                        errors.append('Source index current_run repeats a retained repository metadata lookup.')
+                    retained_successes, retained_failures = (run.get('retained_successful_readme_scans'),
+                                                             run.get('retained_failed_readme_scans'))
+                    if nonnegative_integer(retained_successes) and nonnegative_integer(retained_failures):
+                        retained_ids = {entry.get('id') for entry in records[:retained_successes] + failures[:retained_failures]
+                                        if isinstance(entry, dict) and isinstance(entry.get('id'), str)}
+                        if retained_ids.intersection(current_ids):
+                            errors.append('Source index current_run metadata lookups must exclude retained README attempts.')
+    validate_scan_discovery(meta, records, errors)
     return len(records)
 
 

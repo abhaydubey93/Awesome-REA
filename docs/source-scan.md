@@ -16,7 +16,7 @@ The scan retains **2,000 repository records** as discovery evidence. A separate 
 
 Each exclusion is keyed by the stable source ID and records its decision, bilingual reason, review date, exact scanned README SHA-256, and matching README URL. The [scope helper](../scripts/source_scope.py) validates those bindings and annotates generated records with `scope_status: excluded` and `scope_review`; it does not delete scan evidence. If a source snapshot changes, its scope decision must be reviewed again before reuse.
 
-The remaining 1,979 entries have not all received individual relevance or functionality review. They are a discovery collection, separate from the **96 curated, source-reviewed resources**. Missing target tags alone do not justify exclusion: the unclassified records include game decompilations, language decompilers, and hardware protocol research. Scope decisions are also separate from licensing, safety, and REA compatibility judgments.
+The remaining 1,979 entries have not all received individual relevance or functionality review. They are a discovery collection, separate from the [curated, source-reviewed catalog](../data/README.md). Missing target tags alone do not justify exclusion: the unclassified records include game decompilations, language decompilers, and hardware protocol research. Scope decisions are also separate from licensing, safety, and REA compatibility judgments.
 
 ## What was scanned
 
@@ -50,13 +50,15 @@ The default output is `data/source-index.json`. Use `--output` to write another 
 
 ## Continue without replacing earlier evidence
 
-Use a different output path for an incremental batch. For example, continue from the current 2,000-record snapshot toward 2,400 successful reads:
+Use a different output path for an incremental batch. For example, continue from the current 2,000-record snapshot toward 2,500 successful reads:
 
 ```sh
-python3 scripts/scan_sources.py --resume data/source-index.json --output .cache/source-index-next.json --target 2400 --seed-curated --workers 32 --requests-per-second 12 --candidate-buffer 100
+python3 scripts/scan_sources.py --resume data/source-index.json --output .cache/source-index-next.json --target 2500 --seed-curated --seed-papers --workers 32 --requests-per-second 12 --candidate-buffer 200
 ```
 
-The scanner preserves earlier record objects, hashes, timestamps, failed attempts, and query observations. It skips previously attempted IDs, adds a persisted `discovered_repository_ids` ledger, and records per-run counts and provenance. Curated GitHub references can be seeded before search; they pass the same public/non-fork/non-archived eligibility gates. Seed observations are separate from search-query evidence.
+The scanner preserves earlier record objects, hashes, timestamps, failed attempts, and query observations. It skips previously attempted IDs, keeps a persisted `discovered_repository_ids` ledger, and records per-run counts and provenance. Before search, resume resolves pending numeric IDs through GitHub repository metadata; renamed repositories can be identified without inventing their previous names. These metadata lookups are recorded in `resume_observations`. Failed or ineligible lookups remain unattempted in the ledger and do not count as failed README reads. Private response names, URLs and descriptions are not retained.
+
+`--seed-curated` uses explicit GitHub references from the curated catalogs. `--seed-papers` additionally uses GitHub repository roots from the bibliography's `code_url` and `project_url` fields; it does not guess repositories from project websites. Both pass the same public/non-fork/non-archived eligibility gates. Seed observations retain their originating resource or paper IDs and artifact URLs separately from search-query evidence. A paper artifact link does not establish that runnable code or a public dataset is available.
 
 Repeat `--query 'topic:javascript topic:reverse-engineering'` to supply focused search bases instead of the defaults; the public/non-fork/non-archived gates are appended automatically. The exact ordered plan and executed queries are in `meta.current_run.query_plan` and `meta.queries`. An interrupted checkpoint can be resumed to a different output path without re-reading its completed sources.
 

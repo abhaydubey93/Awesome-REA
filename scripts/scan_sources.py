@@ -79,9 +79,20 @@ class ScanError(Exception):
         self.reason, self.status = reason, status
 
 
+def is_api_origin(url):
+    """Credentials may only follow redirects within GitHub's HTTPS API origin."""
+    try:
+        parsed = urlsplit(url)
+        return (parsed.scheme == 'https' and parsed.hostname == 'api.github.com'
+                and parsed.port in (None, 443)
+                and parsed.username is None and parsed.password is None)
+    except ValueError:
+        return False
+
+
 class APIOnlyRedirect(HTTPRedirectHandler):
     def redirect_request(self, request, fp, code, message, headers, new_url):
-        if urlsplit(new_url).scheme != 'https' or urlsplit(new_url).hostname != 'api.github.com':
+        if not is_api_origin(new_url):
             raise ScanError('refused-non-github-api-redirect', code)
         return super().redirect_request(request, fp, code, message, headers, new_url)
 
@@ -126,7 +137,7 @@ class GitHub:
 
     def get(self, path, accept='application/vnd.github+json', search=False):
         url = 'https://api.github.com' + path
-        if not path.startswith('/') or urlsplit(url).hostname != 'api.github.com':
+        if not path.startswith('/') or not is_api_origin(url):
             raise ScanError('invalid-api-endpoint')
         for attempt in range(4):
             self._throttle(search)
@@ -210,6 +221,50 @@ def curated_references():
             if len(parts) == 2 and record['category'] in primary and value['category'] is None:
                 value['category'] = primary[record['category']]
     return result
+
+
+@lru_cache(maxsize=1)
+def paper_references():
+    """Seed only explicit bibliography artifact links, without changing labels."""
+    result = {}
+    path = ROOT / 'data/papers.json'
+    if not path.exists():
+        return result
+    for paper in json.loads(path.read_text(encoding='utf-8')):
+        for field in ('code_url', 'project_url'):
+            url = paper.get(field)
+            if not isinstance(url, str):
+                continue
+            parsed = urlsplit(url)
+            parts = parsed.path.strip('/').split('/')
+            if (parsed.scheme != 'https' or parsed.hostname != 'github.com'
+                    or parsed.netloc != 'github.com' or len(parts) < 2):
+                continue
+            name = '/'.join(parts[:2]).removesuffix('.git').casefold()
+            if not re.fullmatch(r'[a-z0-9-]+/[a-z0-9_.-]+', name):
+                continue
+            reference = result.setdefault(name, {'ids': [], 'artifacts': []})
+            if paper['id'] not in reference['ids']:
+                reference['ids'].append(paper['id'])
+            reference['artifacts'].append({'paper_id': paper['id'], 'field': field, 'url': url})
+    return result
+
+
+def repository_ineligibility(repo):
+    """Do not retain names, URLs or descriptions from private API responses."""
+    if not isinstance(repo, dict):
+        raise ScanError('invalid-repository-metadata')
+    if repo.get('private') is True:
+        return 'private'
+    if repo.get('private') is not False:
+        return 'public-status-unconfirmed'
+    if repo.get('fork') is True:
+        return 'fork'
+    if repo.get('archived') is True:
+        return 'archived'
+    if repo.get('fork') is not False or repo.get('archived') is not False:
+        return 'eligibility-unconfirmed'
+    return None
 
 
 def classify(repo):
@@ -365,6 +420,9 @@ def scan_readme(api, repo):
         }
         if repo.get('_seed_reference_ids'):
             record['seed_reference_ids'] = repo['_seed_reference_ids']
+        if repo.get('_seed_paper_ids'):
+            record['seed_paper_ids'] = repo['_seed_paper_ids']
+            record['seed_paper_references'] = repo['_seed_paper_references']
         return record, None
     except ScanError as error:
         return None, {
@@ -401,6 +459,7 @@ def save(output, meta, records, failures, complete=False):
         'status': meta['status'],
         'query_count': len(meta['queries']) - run['query_start_index'],
         'seed_observation_count': len(meta.get('seed_observations', [])) - run['seed_observation_start_index'],
+        'resume_observation_count': len(meta.get('resume_observations', [])) - run['resume_observation_start_index'],
         'new_successful_readme_scans': len(records) - run['retained_successful_readme_scans'],
         'new_failed_readme_scans': len(failures) - run['retained_failed_readme_scans'],
     })
@@ -458,7 +517,7 @@ def initial_meta(args, started):
         'completed_at': None,
         'requested_successful_scans': args.target,
         'queries': [],
-        'method': 'Public, non-fork, non-archived GitHub repository discovery through search and optional curated-reference metadata lookups, followed by an actual authenticated GET of each repository README. README bytes are decoded, analyzed for document features, SHA-256 hashed and discarded.',
+        'method': 'Public, non-fork, non-archived GitHub repository discovery through search, retained unattempted repository-ID lookups on resume, and optional curated-resource or bibliography-artifact metadata lookups, followed by an actual authenticated GET of each repository README. README bytes are decoded, analyzed for document features, SHA-256 hashed and discarded.',
         'description_policy': 'Repository descriptions remain in their original upstream language. description_zh mirrors the same text and is explicitly not a translation. No LLM-written description or individual manual review is claimed.',
         'readme_heading_count_policy': 'Count of distinct heading-like lines encountered, capped at six; a count of six means at least six. Heading text is not retained.',
         'classification_policy': 'Automatic labels use repository names, URL-stripped descriptions and explicit topics, with primary-function precedence. Canonical repository matches can add curated target tags and a primary category; classification_origin and classification_reference_ids identify that cross-reference. Labels do not establish REA compatibility. Empty targets mean insufficient metadata.',
@@ -516,11 +575,18 @@ def run_scan(api, args, resumed=None, resume_sha256=None):
         'retained_failed_readme_scans': retained_failures,
         'requested_new_successful_scans': max(0, args.target - retained_successes),
         'readme_queue_candidates': 0, 'seed_curated': args.seed_curated,
+        'seed_papers': args.seed_papers,
+        'retained_unattempted_repository_ids': len(known_ids - attempted_ids),
         'query_plan': list(args.queries),
     }
     candidates, candidate_names, exhausted = {}, set(), set()
     meta.setdefault('seed_observations', [])
     meta['current_run']['seed_observation_start_index'] = len(meta['seed_observations'])
+    meta.setdefault('resume_observations', [])
+    meta['current_run']['resume_observation_start_index'] = len(meta['resume_observations'])
+    meta['resume_observation_policy'] = ('Metadata-only lookups of retained unattempted repository IDs. '
+                                         'Failed or ineligible lookups remain in the discovery ledger, '
+                                         'do not count as README attempts, and expose no private repository metadata.')
     candidate_goal = max(0, args.target - retained_successes) + args.candidate_buffer
 
     def checkpoint(complete=False):
@@ -528,10 +594,17 @@ def run_scan(api, args, resumed=None, resume_sha256=None):
         meta['current_run']['readme_queue_candidates'] = len(candidates)
         save(args.output, meta, records, failures, complete)
 
-    def add_candidate(repo, observed_at, query=None, seed_ids=None):
-        if repo.get('private') is not False or repo.get('fork') or repo.get('archived'):
+    def add_candidate(repo, observed_at, query=None, seed_ids=None, paper=None, resumed_id=None):
+        if repository_ineligibility(repo):
             return 'ineligible'
+        if (type(repo.get('id')) is not int or repo['id'] <= 0
+                or not isinstance(repo.get('full_name'), str)
+                or not re.fullmatch(r'[A-Za-z0-9-]+/[A-Za-z0-9_.-]+', repo['full_name'])
+                or repo.get('html_url') != 'https://github.com/' + repo['full_name']):
+            raise ScanError('invalid-repository-metadata')
         identifier = 'scan-' + str(repo['id'])
+        if resumed_id is not None and identifier != resumed_id:
+            raise ScanError('repository-id-mismatch')
         known_ids.add(identifier)
         if identifier in attempted_ids:
             return 'retained-attempt'
@@ -550,24 +623,63 @@ def run_scan(api, args, resumed=None, resume_sha256=None):
             if 'github-search' not in candidate['_discovery_methods']:
                 candidate['_discovery_methods'].append('github-search')
         if seed_ids is not None:
-            candidate['_seed_reference_ids'] = list(seed_ids)
+            references = candidate.setdefault('_seed_reference_ids', [])
+            references.extend(value for value in seed_ids if value not in references)
             if 'curated-reference' not in candidate['_discovery_methods']:
                 candidate['_discovery_methods'].append('curated-reference')
+        if paper is not None:
+            references = candidate.setdefault('_seed_paper_ids', [])
+            references.extend(value for value in paper['ids'] if value not in references)
+            artifacts = candidate.setdefault('_seed_paper_references', [])
+            artifacts.extend(value for value in paper['artifacts'] if value not in artifacts)
+            if 'paper-artifact-reference' not in candidate['_discovery_methods']:
+                candidate['_discovery_methods'].append('paper-artifact-reference')
+        if resumed_id is not None and 'retained-repository-id' not in candidate['_discovery_methods']:
+            candidate['_discovery_methods'].append('retained-repository-id')
         return 'candidate'
 
     print(f'START target={args.target} retained_success={retained_successes} retained_failed={retained_failures}', flush=True)
     checkpoint()
+    if resumed:
+        for identifier in sorted(known_ids - attempted_ids, key=lambda value: int(value[5:])):
+            if len(candidates) >= candidate_goal:
+                break
+            entry = {'repository_id': identifier, 'observed_at': now(), 'run_id': started,
+                     'method': 'retained-repository-id'}
+            try:
+                repo = api.json('/repositories/' + identifier[5:])
+                entry['status'] = add_candidate(repo, entry['observed_at'], resumed_id=identifier)
+                if entry['status'] == 'ineligible':
+                    entry['reason'] = repository_ineligibility(repo)
+            except ScanError as error:
+                entry.update({'status': 'failed', 'reason': error.reason, 'http_status': error.status})
+            meta['resume_observations'].append(entry)
+            if (len(meta['resume_observations']) - meta['current_run']['resume_observation_start_index']) % 25 == 0:
+                checkpoint()
+        print(f'RESUME_METADATA_COMPLETE observations={len(meta["resume_observations"]) - meta["current_run"]["resume_observation_start_index"]} new_readme_candidates={len(candidates)}', flush=True)
+        checkpoint()
+    seed_groups = []
     if args.seed_curated:
-        for name, reference in sorted(curated_references().items()):
+        seed_groups.append(('curated-repository-reference', curated_references()))
+    if args.seed_papers:
+        seed_groups.append(('paper-artifact-reference', paper_references()))
+    for method, references in seed_groups:
+        for name, reference in sorted(references.items()):
             if name in retained_names:
                 continue
             entry = {'full_name': name, 'observed_at': now(), 'run_id': started,
-                     'method': 'curated-repository-reference', 'reference_ids': list(reference['ids'])}
+                     'method': method, 'reference_ids': list(reference['ids'])}
+            paper = reference if method == 'paper-artifact-reference' else None
+            if paper is not None:
+                entry['artifact_references'] = copy.deepcopy(paper['artifacts'])
             try:
                 repo = api.json('/repos/' + quote(name, safe='/'))
-                entry['status'] = add_candidate(repo, entry['observed_at'], seed_ids=reference['ids'])
+                entry['status'] = add_candidate(repo, entry['observed_at'],
+                                                seed_ids=reference['ids'] if paper is None else None, paper=paper)
                 if entry['status'] != 'ineligible':
                     entry['repository_id'] = 'scan-' + str(repo['id'])
+                else:
+                    entry['reason'] = repository_ineligibility(repo)
             except ScanError as error:
                 entry.update({'status': 'failed', 'reason': error.reason, 'http_status': error.status})
             meta['seed_observations'].append(entry)
@@ -583,15 +695,28 @@ def run_scan(api, args, resumed=None, resume_sha256=None):
             params = urlencode({'q': query, 'per_page': 100, 'page': page, 'sort': 'stars', 'order': 'desc'})
             try:
                 result = api.json('/search/repositories?' + params, search=True)
+                if (not isinstance(result, dict) or not isinstance(result.get('items'), list)
+                        or type(result.get('total_count')) is not int or result['total_count'] < 0):
+                    raise ScanError('invalid-search-response')
                 items = result.get('items', [])
                 entry.update({'status': 'ok', 'total_count': result.get('total_count'),
                               'returned': len(items), 'incomplete_results': result.get('incomplete_results', False)})
                 skipped_attempted, skipped_names = 0, 0
+                invalid_reasons = {}
                 for repo in items:
-                    outcome = add_candidate(repo, entry['observed_at'], query=query)
+                    try:
+                        outcome = add_candidate(repo, entry['observed_at'], query=query)
+                    except ScanError as error:
+                        # A bad item does not erase the successfully observed search response
+                        # or the provenance of valid items already accepted from that response.
+                        invalid_reasons[error.reason] = invalid_reasons.get(error.reason, 0) + 1
+                        continue
                     skipped_attempted += outcome == 'retained-attempt'
                     skipped_names += outcome == 'name-collision'
                 entry.update({'retained_attempts_skipped': skipped_attempted, 'name_collisions_skipped': skipped_names})
+                if invalid_reasons:
+                    entry.update({'invalid_items_skipped': sum(invalid_reasons.values()),
+                                  'invalid_item_reasons': invalid_reasons})
                 if len(items) < 100 or page * 100 >= min(result.get('total_count', 0), 1000):
                     exhausted.add(query)
             except ScanError as error:
@@ -656,8 +781,9 @@ def main():
     parser.add_argument('--requests-per-second', type=float, default=12)
     parser.add_argument('--candidate-buffer', type=int, default=400)
     parser.add_argument('--max-pages', type=int, default=5, help='Pages per query; GitHub permits at most 10')
-    parser.add_argument('--resume', type=Path, help='Retain an existing complete snapshot or progress checkpoint')
+    parser.add_argument('--resume', type=Path, help='Retain an existing snapshot/checkpoint and resolve its unattempted repository IDs')
     parser.add_argument('--seed-curated', action='store_true', help='Discover missing curated GitHub repositories before search candidates')
+    parser.add_argument('--seed-papers', action='store_true', help='Discover GitHub roots from bibliography code_url/project_url fields before search candidates')
     parser.add_argument('--query', action='append', help='Ordered search base; repeat to replace defaults. Public/non-fork/non-archived gates are always added.')
     parser.add_argument('--output', type=Path, help='Output snapshot; defaults to .cache/source-index-next.json when resuming')
     args = parser.parse_args()
