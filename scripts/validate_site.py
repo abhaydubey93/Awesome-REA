@@ -15,6 +15,7 @@ from artifact_links import with_artifact_links
 from source_descriptions import description_fallback
 from localization import localized_records, read_localizations
 from source_scope import apply_scope, read_scope
+from source_browser import BROWSER_FILENAME, FULL_EXPORT_FILENAME, validate_source_browser
 
 ROOT = Path(__file__).resolve().parents[1]
 OUTPUT = ROOT / 'dist'
@@ -283,6 +284,19 @@ def validate_artifact_links(output, pages):
                                     for record in visible if record['category'] == category}, 'Related links must not replace repository schema descriptions'
 
 
+def validate_source_browser_output(output):
+    """Keep the interactive payload exact, bounded in scope, and freshly served."""
+    output = Path(output)
+    full_path, browser_path = output / FULL_EXPORT_FILENAME, output / BROWSER_FILENAME
+    if not full_path.exists():
+        assert not browser_path.exists(), 'Stale browser source projection without a full export'
+        return
+    assert browser_path.is_file(), 'Browser source projection is missing'
+    validate_source_browser(full_path.read_bytes(), browser_path.read_bytes())
+    headers = (output / '_headers').read_text(encoding='utf-8')
+    assert re.search(r'(?m)^/source-browser\.json\n[ \t]+Cache-Control: no-cache, must-revalidate[ \t]*$', headers), 'Browser source projection requires no-cache headers'
+
+
 def main():
     urls = [element.text for element in ET.parse(OUTPUT / 'sitemap.xml').findall('{*}url/{*}loc')]
     assert urls and len(urls) == len(set(urls)), 'Duplicate or empty sitemap'
@@ -317,6 +331,7 @@ def main():
             assert local.is_file(), f'Missing local link on {parsed.path}: {link}'
     validate_paper_outputs(OUTPUT, pages)
     validate_artifact_links(OUTPUT, pages)
+    validate_source_browser_output(OUTPUT)
     assert Page((OUTPUT / '404.html').read_text()).noindex, '404 must be noindex'
     assert (OUTPUT / 'llms.txt').read_text().startswith('# '), 'llms.txt must contain Markdown'
     assert re.fullmatch(r'[a-f0-9]{32}\n?', (OUTPUT / 'indexnow.txt').read_text()), 'Invalid public ownership proof'

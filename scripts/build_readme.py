@@ -106,7 +106,7 @@ def collection_section(record):
         return 'website'
     if record['id'] in {'renderdoc-mcp', 'rea-dxball-case', 'rea-th04-case'} or category == 'game-analysis':
         return 'game'
-    if record['id'] in {'jadx-ai-mcp', 'frida-mcp-yfe404', 'super-trouper', 'frida', 'rea-aegis-case', 'rea-notion-case'} or category in {'android', 'dotnet', 'jvm', 'javascript-electron'}:
+    if record['id'] in {'jadx-ai-mcp', 'frida-mcp-yfe404', 'super-trouper', 'frida', 'rea-aegis-case', 'rea-notion-case', 'nibkit'} or category in {'android', 'dotnet', 'jvm', 'javascript-electron'}:
         return 'app'
     if category == 'firmware' or record['id'] == 'picoprint-rea-investigation':
         return 'firmware'

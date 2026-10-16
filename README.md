@@ -45,6 +45,7 @@ Each entry appears once under its main purpose. The collection includes independ
 - [Wakaru](https://github.com/pionxzh/wakaru) — Recover readable modules from shipped JavaScript bundles by reversing recognized minifier and transpiler patterns. Supports bundle splitting and modern-syntax recovery for inspecting production frontend code. **[Tool]**
 - [Spectral](https://github.com/spectral-mcp/spectral) — Analyze captured application HTTP traffic with an LLM to generate MCP tools, OpenAPI 3.1 specifications, or GraphQL schemas. Generated tools call the observed API directly after capture and authentication setup. **[Integration · Independent agent]**
 - [jsdeob-workbench](https://github.com/Owl4444/jsdeob-workbench) — Inspect JavaScript ASTs and variable scopes while building visual chains of Babel transforms. Save analysis projects and reusable plugins to iteratively simplify obfuscated scripts. **[Tool]**
+- [Browser Reverse Engineering Toolkit](https://github.com/Dvurechensky/Browser.Reverse.Engineering.Toolkit) — Capture browser-session evidence, crawl websites in a persistent Chromium session, and generate offline architecture/API reports plus OpenAPI, SDK and mock-server drafts from saved captures. **[Tool]**
 
 <a id="game"></a>
 ### Game
@@ -65,6 +66,7 @@ Each entry appears once under its main purpose. The collection includes independ
 - [Godot RE Tools](https://github.com/GDRETools/gdsdecomp) — Recover supported Godot project files, GDScript and imported resources from exported games. Includes PCK inspection and extraction, script decompilation, and resource conversion for examining and rebuilding project structure. **[Tool]**
 - [UE4SS](https://github.com/UE4SS-RE/RE-UE4SS) — Inspect Unreal Engine games at runtime through live UObject property views, reflected C++ header dumps, property mappings and actor dumps. Lua and C++ APIs support experiments while reconstructing game structures. **[Tool]**
 - [FModel](https://github.com/4sval/FModel) — Explore Unreal Engine game archives with CUE4Parse-backed package and property inspection, asset previews and export. The 2026 summer release adds USD world export for reconstructing supported scene content. **[Tool]**
+- [PSP Web Recomp](https://github.com/snuri00/psp-web-recomp) — Translate PSP MIPS executables into C++ and WebAssembly, backed by a PSP high-level emulation runtime and WebGL2 renderer. Native tracing, frame capture and audio tools support investigating missing behavior during game porting. **[Project]**
 
 <a id="app"></a>
 ### App
@@ -86,6 +88,9 @@ Each entry appears once under its main purpose. The collection includes independ
 - [Blutter](https://github.com/worawit/blutter) — Analyze Flutter Android ARM64 AOT binaries using the matching Dart runtime. Produces annotated assembly, object-pool dumps and a target-specific Frida script template for investigating compiled Dart application logic. **[Tool · Android]**
 - [hermes-dec](https://github.com/P1sec/hermes-dec) — Parse, disassemble and partially decompile React Native Hermes bytecode bundles. Makes HBC headers and instructions inspectable and emits pseudocode for understanding compiled application logic. **[Tool]**
 - [Recaf](https://github.com/Col-E/Recaf) — Inspect and modify compiled JVM applications with integrated decompilers, bytecode assembly, reference search, mappings and deobfuscation tools. The reviewed 4.0 preview also provides basic read-only Android bytecode inspection. **[Tool · JVM]**
+- [nibkit](https://github.com/tokenbleed/nibkit) — Decode compiled iOS/macOS interface archives into object trees, Outlet/Action connections, custom classes and navigation relationships. Exports JSON or Mermaid diagrams and exposes read-only inspection commands through MCP. **[Tool]**
+- [AOTopsy](https://github.com/BroNils/aotopsy) — Statically inspect Flutter/Dart AOT libapp.so files to recover available metadata, class structures, call edges and pseudocode without embedding a Dart VM or compiling a matching SDK. Supports ARM64 and x86_64 analysis paths. **[Tool · Android]**
+- [hbctool](https://github.com/bongtrop/hbctool) — Disassemble and reassemble supported React Native Hermes bytecode bundles through HASM files, enabling bytecode inspection and editing for the explicitly supported legacy HBC versions. **[Tool · Android]**
 
 <a id="native-binary"></a>
 ### Native Binary

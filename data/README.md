@@ -30,4 +30,6 @@ Search the bibliography with `python3 scripts/catalog.py --papers --target websi
 
 The [repository locales](locales/README.md) provide derived English and Simplified Chinese descriptions for all 3,000 records. The website build combines these files with the source index and retains available upstream text as `description_original` in its generated data. New or changed source records also require locale updates. Translation helps browse the collection; it does not verify upstream claims or promote a record to `source-reviewed`.
 
+Interactive search uses a generated `source-browser.json` projection containing only browsable records and the fields needed for search, cards, details and evidence annotations. Its order and values are checked against the complete generated `/source-index.json` export, whose URL, structure and downloadable evidence remain available. The projection is not the archival dataset; its metadata names the full export and records its SHA-256.
+
 [source-scope.json](source-scope.json) records evidence-bound scope exclusions without deleting successful scans. The website and [bilingual GitHub directory](../docs/repositories/README.md) omit excluded records from browsing. The downloadable full index keeps all scan records and the exclusion reasons; the separate curated catalog contains only curated entries.

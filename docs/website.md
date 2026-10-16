@@ -10,6 +10,7 @@
 - [topics.i18n.json](../site/topics.i18n.json) supplies bilingual display labels for common repository topics. Canonical upstream topic IDs remain intact for links and exact filtering.
 - [source-index.json](../data/source-index.json) supplies the broader repository collection from successful automated README fetches. Its counts and review status stay separate from the curated records. [Repository locale files](../data/locales/README.md) provide English and Simplified Chinese descriptions; the generated data also preserves the original upstream text. See [scan methodology](source-scan.md).
 - [source-scope.json](../data/source-scope.json) removes clearly unrelated scan matches from browsing while keeping their original scan evidence in the full downloadable JSON. The footer offers separate repository-index and curated-catalog downloads.
+- [source_browser.py](../scripts/source_browser.py) generates compact `source-browser.json` for interactive search. It contains eligible records in the same order, with bilingual/original-text search, card details and evidence annotations. The full `/source-index.json` download remains complete, including excluded records, failures and discovery history. The browser payload records the full export's SHA-256 and is checked against it during the build.
 - [build_site.py](../scripts/build_site.py) combines the catalogs, derives counts, copies the site assets, and generates `catalog.json`, `robots.txt`, `sitemap.xml`, `CNAME` and `.nojekyll` in `dist/`.
 - [build_browse_pages.py](../scripts/build_browse_pages.py) emits 20 static category pages under `/browse/` and `/zh/browse/`. These include full localized repository content without JavaScript, reciprocal language links, canonical URLs, and sitemap entries. Counts and scope exclusions use the same data as search.
 - [build_discovery_pages.py](../scripts/build_discovery_pages.py) emits bilingual `/resources/` and `/about/` pages, evidence and review dates for curated entries, structured metadata, and the optional `llms.txt` navigation index. The homepage and browse pages link to these pages.
@@ -27,7 +28,7 @@ node --check site/app.js
 python3 -m http.server 8000 --bind 127.0.0.1 --directory dist
 ```
 
-Open `http://127.0.0.1:8000`. Use HTTP rather than opening `index.html` directly, because the directory loads `catalog.json` with `fetch`. Stop the preview server with Ctrl+C.
+Open `http://127.0.0.1:8000`. Use HTTP rather than opening `index.html` directly, because the directory fetches `catalog.json` and `source-browser.json`. Stop the preview server with Ctrl+C.
 
 After source, locale, or scope edits, regenerate the [GitHub browsing directory](repositories/README.md) with `python3 scripts/build_repository_index.py` before validation. It also updates the counts and directory links in both root READMEs.
 

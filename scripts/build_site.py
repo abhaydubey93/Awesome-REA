@@ -16,6 +16,7 @@ from build_discovery_pages import build_discovery_pages
 from build_paper_pages import build_paper_pages
 from build_manifest import write_build_manifest
 from artifact_links import with_artifact_links
+from source_browser import write_source_browser
 from localization import read_localizations, localized_records
 from source_scope import apply_scope, read_scope
 
@@ -196,8 +197,10 @@ def main() -> None:
                 index_meta = index_data.get("meta", {})
                 metadata["source_index"] = {"available": True, "resource_count": len(successful) - excluded_count, "scanned_count": len(successful), "excluded_count": excluded_count, "status": index_meta.get("status", ""), "completed_at": index_meta.get("completed_at"), "verification": "automated-readme-scan"}
                 source_index_output.write_text(json.dumps(index_data, ensure_ascii=False, indent=2) + "\n", encoding="utf-8")
+                write_source_browser(OUTPUT, source_index_output.read_bytes())
     if not metadata["source_index"]["available"]:
         source_index_output.unlink(missing_ok=True)
+        write_source_browser(OUTPUT, None)
     topic_labels_path = SOURCE / "topics.i18n.json"
     topic_labels = json.loads(topic_labels_path.read_text()) if topic_labels_path.exists() else {}
     metadata["paper_count"] = len(papers)
@@ -220,7 +223,7 @@ def main() -> None:
     social_revision = hashlib.sha256((OUTPUT / "social-card.png").read_bytes()).hexdigest()[:16]
     html = html.replace(f'{SITE_URL}/social-card.png"', f'{SITE_URL}/social-card.png?v={social_revision}"')
     data_digest = hashlib.sha256()
-    for filename in ("catalog.json", "source-index.json", "papers.json"):
+    for filename in ("catalog.json", "source-index.json", "source-browser.json", "papers.json"):
         path = OUTPUT / filename
         if path.is_file():
             data_digest.update(filename.encode("utf-8") + b"\0" + path.read_bytes())

@@ -653,5 +653,48 @@
   "uefitool": {
     "name": "UEFITool 固件镜像分析工具",
     "requirements": "输入须为兼容的固件镜像。A75 提供 Windows、macOS、Linux 与 FreeBSD 构建；编译 GUI 需要 C++ 编译器及 Qt5 或 Qt6。当前新引擎不支持镜像重建；编辑功能依赖已被上游明确标为过时、停止支持的 0.28 旧引擎，本条目不将当前 UEFITool 描述为受支持的镜像编辑器。A75 仍禁用 AMD 镜像解析，部分厂商更新容器不受支持或可能解析错误。项目采用 BSD-2-Clause 许可证。"
+  },
+  "browser-reverse-engineering-toolkit": {
+    "name": "Browser Reverse Engineering Toolkit 浏览器逆向工程工具集",
+    "requirements": [
+      "手动捕获需要访问目标浏览器会话。抓取需要 Node.js/npm、Playwright 及其 Chromium 浏览器；所审阅的软件包声明 Playwright ^1.44.0，但未声明 Node engines 最低版本。",
+      "Node.js 重建器离线处理已保存的捕获数据。工具集仍处于实验阶段，生成的架构、OpenAPI、SDK 和模拟服务器结果需要复核，不代表完整恢复应用或后端。",
+      "浏览器端捕获不能读取 HttpOnly Cookie 或绕过授权。请求钩子只能观察安装后的流量；源码映射引用仅作为线索，真实截图需要浏览器自动化。",
+      "含认证状态的捕获数据可能包含敏感信息。上游脱敏说明仅经过来源审阅，未经独立测试。采用 MIT 许可证。"
+    ]
+  },
+  "nibkit": {
+    "name": "nibkit 原生界面结构分析工具",
+    "requirements": [
+      "输入须为受支持的 .nib／.storyboardc 文件、.app／目录，或可自动提取的 .ipa。所审阅 README 列出 NIBArchive 编码器版本 9、10、11，以及较旧的二进制 plist／NSKeyedArchive 格式。",
+      "根据 go.mod，从源码构建需要 Go 1.22 或更高版本。README 声明实现仅使用标准库，并提供 darwin／linux 的 arm64／amd64 预编译程序，无运行时依赖；未核实 Windows 发行版。",
+      "恢复对象是已编译界面的结构与连接关系，不代表完整应用逻辑或原始 Swift／Objective-C 源码。格式文档基于逆向观察编写。采用 MIT 许可证。"
+    ]
+  },
+  "psp-web-recomp": {
+    "name": "PSP Web Recomp 浏览器游戏重编译项目",
+    "requirements": [
+      "需自行提供自有游戏的镜像及兼容的可执行文件解密工具。构建需要 Git、CMake、Ninja、C++20、Python 3、PSPRecomp 和 Emscripten。文档测试的构建主机为 Linux，macOS 未经测试。",
+      "作者演示仅覆盖两款使用同一引擎的 Ready at Dawn 游戏，其他游戏可能需要补充 HLE 调用或图形功能。目前跳过影片，尚不能加载 PSP 或 PPSSPP 的加密存档；本目录未复现兼容性或性能结论。",
+      "浏览器多线程托管需要跨源隔离响应头及 HTTP Range 支持。可选的原生运行程序还需要 EGL／OpenGL ES 开发头文件。",
+      "上游说明不附带游戏数据，并要求用户不要再分发生成的游戏 C++ 或 WebAssembly。项目代码采用 MIT；所附 ATRAC 解码器保留 LGPL-2.1-or-later 许可。"
+    ]
+  },
+  "aotopsy": {
+    "name": "AOTopsy Flutter/Dart 静态分析工具",
+    "requirements": [
+      "go.mod 要求从源码构建时使用 Go 1.25.4（README 表述为 1.25+）。需提供受支持的 libapp.so AOT 快照；所审阅 README 建模覆盖 Dart 2.10–3.13，不支持 JIT 快照。",
+      "Ghidra／IDA 集成仅支持 ARM64。发布构建会删除大部分实例字段名和局部／捕获变量名，多态分派与虚调用可达性分析仍有限制。重建的 Dart 输出不保证是原始源码或行为等价源码。",
+      "不加限制的 --all 反编译可能需要约 64 GB 内存，应使用定向或设有上限的分析。准确率和语法测量由作者报告；不可再分发的基准真值语料测试不会在公共 CI 中运行。",
+      "采用 BSD-3-Clause。AOTopsy 保留对原始 unflutter 项目及作者的署名，来自 Dart SDK 的表数据另保留对应声明。"
+    ]
+  },
+  "hbctool": {
+    "name": "hbctool Hermes 字节码汇编与反汇编工具",
+    "requirements": [
+      "所审阅的软件包元数据版本为 0.1.5，标记为 Alpha，声明依赖 Python ^3.6 和 docopt ^0.6.2。本目录未测试其与当前 Python 解释器的兼容性。",
+      "README 明确仅支持 HBC 版本 59、62、74 和 76。需提供兼容的 Hermes 字节码包，不能默认支持当前 Hermes 字节码版本。",
+      "这是字节码汇编与反汇编工具，不代表完整恢复原始 JavaScript。溢出修补仍列为后续工作。采用 MIT 许可证。"
+    ]
   }
 }

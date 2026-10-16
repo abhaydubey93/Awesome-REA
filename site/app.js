@@ -387,10 +387,31 @@ function renderSources() {
   $("#source-clear").hidden = !sourceState.q && !sourceState.topic && sourceState.target === "all" && sourceState.sort === "relevance";
   $$('[data-source-target]').forEach(button => { const active = button.dataset.sourceTarget === sourceState.target; button.classList.toggle("active",active); button.setAttribute("aria-pressed",String(active)); });
 }
+function sourceBrowserPayload(data) {
+  const meta = data?.meta; const resources = data?.resources; const scope = meta?.scope;
+  if (meta?.schema_version !== 1 || !Array.isArray(resources) || !["complete","in-progress"].includes(meta.status)
+      || meta.full_export !== "source-index.json" || typeof meta.full_export_sha256 !== "string" || !/^[a-f0-9]{64}$/.test(meta.full_export_sha256)) {
+    throw new Error("Unsupported repository browser data");
+  }
+  if (!scope || ![scope.scanned_count,scope.excluded_count,scope.browse_count].every(count => Number.isSafeInteger(count) && count >= 0)
+      || scope.scanned_count !== scope.excluded_count + scope.browse_count || resources.length !== scope.browse_count) {
+    throw new Error("Repository browser counts disagree");
+  }
+  const identifiers = new Set();
+  for (const record of resources) {
+    if (!record || typeof record.id !== "string" || !record.id || identifiers.has(record.id)
+        || typeof record.full_name !== "string" || !record.full_name
+        || record.scan_status !== "readme-scanned" || record.scope_status === "excluded") {
+      throw new Error("Invalid repository browser record");
+    }
+    identifiers.add(record.id);
+  }
+  return data;
+}
 async function loadSources() {
   if (sourceState.loading) return; sourceState.loading = true; sourceState.error = false; $("#source-results").setAttribute("aria-busy","true"); $("#source-error").hidden = true; $("#source-status").textContent = t("sourceLoading");
   try {
-    const response = await fetch(dataURL("source-index.json"), {cache: "no-cache"}); if (!response.ok) throw new Error("Source index HTTP "+response.status); const data = await response.json(); sourceState.meta = data.meta || {};
+    const response = await fetch(dataURL("source-browser.json"), {cache: "no-cache"}); if (!response.ok) throw new Error("Source index HTTP "+response.status); const data = sourceBrowserPayload(await response.json()); sourceState.meta = data.meta;
     sourceState.records = (data.resources || []).filter(r => r.scan_status === "readme-scanned" && r.scope_status !== "excluded").map((r,index) => { const topics = Array.isArray(r.topics) ? r.topics.map(String) : []; const targets = Array.isArray(r.targets) ? r.targets : []; const full_name = r.full_name || r.name || r.id; const related_entries = sourceRelatedEntries(r); return {...r,full_name,topics,targets,related_entries,order:index,search:[full_name,r.description_en || "",r.description_zh || "",r.description_original || "",r.category || "",...topics.map(topicSearch),...related_entries.flatMap(entry => [entry.title_en,entry.title_zh]),...targets.flatMap(target => [target, UI.en["target"+target[0].toUpperCase()+target.slice(1)], UI.zh["target"+target[0].toUpperCase()+target.slice(1)]])].join(" ").toLocaleLowerCase()}; });
     sourceState.loaded = true; indexSourceTopics(); syncTopicInput(); $("#mode-source-count").textContent = sourceState.records.length.toLocaleString(); renderSources();
   } catch (_) { sourceState.error = true; $("#source-status").textContent = t("sourceErrorTitle"); $("#source-results").setAttribute("aria-busy","false"); $("#source-error").hidden = false; $("#source-empty").hidden = true; $("#source-more-row").hidden = true; }

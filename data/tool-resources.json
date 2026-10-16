@@ -1667,5 +1667,143 @@
       "The current new engine does not rebuild images. Editing requires the explicitly outdated, unsupported 0.28 old engine; this entry does not present current UEFITool as a supported image editor.",
       "A75 still disables AMD image parsing. Some vendor update containers are unsupported or may parse incorrectly. The project uses the BSD-2-Clause license."
     ]
+  },
+  {
+    "id": "browser-reverse-engineering-toolkit",
+    "name": "Browser Reverse Engineering Toolkit",
+    "url": "https://github.com/Dvurechensky/Browser.Reverse.Engineering.Toolkit",
+    "category": "web-analysis",
+    "relationship": "foundation",
+    "kind": "tool",
+    "targets": [
+      "website"
+    ],
+    "description_en": "Capture browser-session evidence, crawl websites in a persistent Chromium session, and generate offline architecture/API reports plus OpenAPI, SDK and mock-server drafts from saved captures.",
+    "description_zh": "采集浏览器会话证据，在持久 Chromium 会话中抓取网站，并根据已保存的捕获数据生成离线架构／API 报告，以及 OpenAPI、SDK 和模拟服务器草稿。",
+    "evidence_url": "https://github.com/Dvurechensky/Browser.Reverse.Engineering.Toolkit/blob/ecbe61af5004f6efa493749a623fbd98ab307a37/README.md",
+    "additional_evidence_urls": [
+      "https://github.com/Dvurechensky/Browser.Reverse.Engineering.Toolkit/blob/ecbe61af5004f6efa493749a623fbd98ab307a37/SiteSnapshotter/README.md",
+      "https://github.com/Dvurechensky/Browser.Reverse.Engineering.Toolkit/blob/ecbe61af5004f6efa493749a623fbd98ab307a37/SiteCrawlerSnapshotter/README.md",
+      "https://github.com/Dvurechensky/Browser.Reverse.Engineering.Toolkit/blob/ecbe61af5004f6efa493749a623fbd98ab307a37/SiteCrawlerSnapshotter/package.json",
+      "https://github.com/Dvurechensky/Browser.Reverse.Engineering.Toolkit/blob/ecbe61af5004f6efa493749a623fbd98ab307a37/SiteReconstructor/README.md",
+      "https://github.com/Dvurechensky/Browser.Reverse.Engineering.Toolkit/blob/ecbe61af5004f6efa493749a623fbd98ab307a37/SiteReconstructor/package.json",
+      "https://github.com/Dvurechensky/Browser.Reverse.Engineering.Toolkit/blob/ecbe61af5004f6efa493749a623fbd98ab307a37/SiteSnapshotter/docs/security.md",
+      "https://github.com/Dvurechensky/Browser.Reverse.Engineering.Toolkit/blob/ecbe61af5004f6efa493749a623fbd98ab307a37/SiteReconstructor/docs/security-and-privacy.md",
+      "https://github.com/Dvurechensky/Browser.Reverse.Engineering.Toolkit/blob/ecbe61af5004f6efa493749a623fbd98ab307a37/LICENSE"
+    ],
+    "verified_at": "2026-10-16",
+    "verification": "source-reviewed",
+    "requirements": [
+      "Manual capture needs access to the target browser session. Crawling requires Node.js/npm, Playwright and its Chromium browser; the reviewed package declares Playwright ^1.44.0 but no Node engines minimum.",
+      "The Node.js reconstructor processes saved captures offline. The toolkit is experimental; generated architecture, OpenAPI, SDK and mock-server outputs need review and do not establish complete application or backend recovery.",
+      "Browser-side capture cannot read HttpOnly cookies or bypass authorization. Request hooks see traffic only after installation; source-map references are hints, and true screenshots require browser automation.",
+      "Authenticated captures may contain sensitive data. Upstream masking guidance was source-reviewed but not independently tested. MIT-licensed."
+    ]
+  },
+  {
+    "id": "nibkit",
+    "name": "nibkit",
+    "url": "https://github.com/tokenbleed/nibkit",
+    "category": "native-analysis",
+    "relationship": "foundation",
+    "kind": "tool",
+    "targets": [
+      "app"
+    ],
+    "description_en": "Decode compiled iOS/macOS interface archives into object trees, Outlet/Action connections, custom classes and navigation relationships. Exports JSON or Mermaid diagrams and exposes read-only inspection commands through MCP.",
+    "description_zh": "将已编译的 iOS/macOS 界面归档解码为对象树、Outlet／Action 连接、自定义类及导航关系，可导出 JSON 或 Mermaid 图，并通过 MCP 提供只读检查命令。",
+    "evidence_url": "https://github.com/tokenbleed/nibkit/blob/fcf4670db8ba5d5d94ab62951a971be949b7b21f/README.adoc",
+    "additional_evidence_urls": [
+      "https://github.com/tokenbleed/nibkit/blob/fcf4670db8ba5d5d94ab62951a971be949b7b21f/go.mod",
+      "https://github.com/tokenbleed/nibkit/blob/fcf4670db8ba5d5d94ab62951a971be949b7b21f/LICENSE",
+      "https://github.com/tokenbleed/nibkit/blob/fcf4670db8ba5d5d94ab62951a971be949b7b21f/docs/format.adoc"
+    ],
+    "verified_at": "2026-10-16",
+    "verification": "source-reviewed",
+    "requirements": [
+      "Supply supported .nib/.storyboardc files, an .app/directory, or an .ipa for automatic extraction. The reviewed README lists NIBArchive coder versions 9, 10 and 11 plus older binary-plist/NSKeyedArchive formats.",
+      "Source builds require Go 1.22 or later according to go.mod. The README states a standard-library-only implementation and advertises darwin/linux arm64/amd64 prebuilt binaries with no runtime dependencies; a Windows release was not verified.",
+      "Recovery concerns compiled interface structure and wiring, not complete application logic or original Swift/Objective-C source. Format documentation is based on reverse-engineered observations. MIT-licensed."
+    ]
+  },
+  {
+    "id": "psp-web-recomp",
+    "name": "PSP Web Recomp",
+    "url": "https://github.com/snuri00/psp-web-recomp",
+    "category": "game-analysis",
+    "relationship": "foundation",
+    "kind": "project",
+    "targets": [
+      "game",
+      "website"
+    ],
+    "description_en": "Translate PSP MIPS executables into C++ and WebAssembly, backed by a PSP high-level emulation runtime and WebGL2 renderer. Native tracing, frame capture and audio tools support investigating missing behavior during game porting.",
+    "description_zh": "将 PSP MIPS 可执行文件转换为 C++ 与 WebAssembly，配合 PSP 高层仿真运行时和 WebGL2 渲染器；原生跟踪、画面捕获及音频工具可辅助调查游戏移植中缺失的行为。",
+    "evidence_url": "https://github.com/snuri00/psp-web-recomp/blob/37826ab881d9a593efb842fe47adfae2e9118b5d/README.md",
+    "additional_evidence_urls": [
+      "https://github.com/snuri00/psp-web-recomp/blob/37826ab881d9a593efb842fe47adfae2e9118b5d/LICENSE",
+      "https://github.com/snuri00/psp-web-recomp/blob/37826ab881d9a593efb842fe47adfae2e9118b5d/docs/internals.md"
+    ],
+    "verified_at": "2026-10-16",
+    "verification": "source-reviewed",
+    "requirements": [
+      "Provide an image of a game you own and a compatible executable decrypter. Builds need Git, CMake, Ninja, C++20, Python 3, PSPRecomp and Emscripten. Linux is the documented tested build host; macOS is untested.",
+      "Author demonstrations cover two Ready at Dawn titles sharing an engine. Other games can require missing HLE calls or graphics features. Movies are skipped, and encrypted saves from a PSP or PPSSPP do not yet load; this catalog did not reproduce compatibility or performance claims.",
+      "Threaded browser hosting requires cross-origin isolation headers and HTTP Range support. The optional native runner also requires EGL/OpenGL ES development headers.",
+      "Upstream states that game data is not included and asks users not to redistribute generated game C++ or WebAssembly. Project code uses MIT; the bundled ATRAC decoder retains LGPL-2.1-or-later."
+    ]
+  },
+  {
+    "id": "aotopsy",
+    "name": "AOTopsy",
+    "url": "https://github.com/BroNils/aotopsy",
+    "category": "android",
+    "relationship": "foundation",
+    "kind": "tool",
+    "targets": [
+      "app",
+      "binary"
+    ],
+    "description_en": "Statically inspect Flutter/Dart AOT libapp.so files to recover available metadata, class structures, call edges and pseudocode without embedding a Dart VM or compiling a matching SDK. Supports ARM64 and x86_64 analysis paths.",
+    "description_zh": "静态检查 Flutter/Dart AOT libapp.so 文件，恢复可用元数据、类结构、调用关系及伪代码，无需嵌入 Dart VM 或编译匹配的 SDK，提供 ARM64 与 x86_64 分析路径。",
+    "evidence_url": "https://github.com/BroNils/aotopsy/blob/01011df108eaf5a0c1757cf5842115f9fb8b6303/README.md",
+    "additional_evidence_urls": [
+      "https://github.com/BroNils/aotopsy/blob/01011df108eaf5a0c1757cf5842115f9fb8b6303/go.mod",
+      "https://github.com/BroNils/aotopsy/blob/01011df108eaf5a0c1757cf5842115f9fb8b6303/LICENSE",
+      "https://github.com/BroNils/aotopsy/blob/01011df108eaf5a0c1757cf5842115f9fb8b6303/SECURITY.md"
+    ],
+    "verified_at": "2026-10-16",
+    "verification": "source-reviewed",
+    "requirements": [
+      "Source builds require Go 1.25.4 according to go.mod (README says 1.25+). Supply a supported libapp.so AOT snapshot; the reviewed README models Dart 2.10–3.13. JIT snapshots are outside scope.",
+      "Ghidra/IDA integration is ARM64-only. Most instance-field names and local/captured variable names are removed from release builds; polymorphic dispatch and virtual-call reachability remain limited. Reconstructed Dart output is not guaranteed original or behaviorally equivalent source.",
+      "Unbounded --all decompilation can need about 64 GB RAM; use targeted or capped analysis. Accuracy and syntax measurements are author-reported, and the nonredistributable ground-truth corpus tests do not run in public CI.",
+      "BSD-3-Clause. AOTopsy credits the original unflutter project and its authors; Dart SDK-derived tables retain their own notices."
+    ]
+  },
+  {
+    "id": "hbctool",
+    "name": "hbctool",
+    "url": "https://github.com/bongtrop/hbctool",
+    "category": "android",
+    "relationship": "foundation",
+    "kind": "tool",
+    "targets": [
+      "app"
+    ],
+    "description_en": "Disassemble and reassemble supported React Native Hermes bytecode bundles through HASM files, enabling bytecode inspection and editing for the explicitly supported legacy HBC versions.",
+    "description_zh": "通过 HASM 文件反汇编和重新汇编受支持的 React Native Hermes 字节码包，为明确支持的旧版 HBC 提供字节码检查与修改能力。",
+    "evidence_url": "https://github.com/bongtrop/hbctool/blob/389b351bfdd988e93da5cce1a9e3bfd860548e7a/README.md",
+    "additional_evidence_urls": [
+      "https://github.com/bongtrop/hbctool/blob/389b351bfdd988e93da5cce1a9e3bfd860548e7a/pyproject.toml",
+      "https://github.com/bongtrop/hbctool/blob/389b351bfdd988e93da5cce1a9e3bfd860548e7a/LICENSE"
+    ],
+    "verified_at": "2026-10-16",
+    "verification": "source-reviewed",
+    "requirements": [
+      "The reviewed package metadata is 0.1.5 and classified Alpha; it declares Python ^3.6 and docopt ^0.6.2. Compatibility with current Python interpreters was not tested for this catalog.",
+      "README support is limited to HBC versions 59, 62, 74 and 76. Supply a compatible Hermes bytecode bundle; do not assume support for current Hermes bytecode versions.",
+      "This is a bytecode assembler/disassembler, not complete original-JavaScript recovery. Overflow patching is listed as future work. MIT-licensed."
+    ]
   }
 ]

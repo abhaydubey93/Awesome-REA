@@ -46,6 +46,7 @@
 - [Wakaru](https://github.com/pionxzh/wakaru) — 通过还原已识别的压缩与转译模式，从发布后的 JavaScript 包中恢复可读模块，支持拆包与现代语法恢复，便于分析生产环境前端代码。 **[工具]**
 - [Spectral](https://github.com/spectral-mcp/spectral) — 用 LLM 分析捕获的应用 HTTP 流量，生成 MCP 工具、OpenAPI 3.1 规范或 GraphQL 模式；完成抓包与认证配置后，生成的工具可直接调用已观察到的 API。 **[集成 · 独立 Agent]**
 - [jsdeob-workbench](https://github.com/Owl4444/jsdeob-workbench) — 在查看 JavaScript AST 和变量作用域的同时，可视化编排 Babel 转换链；保存分析项目与可复用插件，逐步简化混淆脚本。 **[工具]**
+- [Browser Reverse Engineering Toolkit 浏览器逆向工程工具集](https://github.com/Dvurechensky/Browser.Reverse.Engineering.Toolkit) — 采集浏览器会话证据，在持久 Chromium 会话中抓取网站，并根据已保存的捕获数据生成离线架构／API 报告，以及 OpenAPI、SDK 和模拟服务器草稿。 **[工具]**
 
 <a id="game"></a>
 ### Game · 游戏
@@ -66,6 +67,7 @@
 - [Godot 逆向工程工具](https://github.com/GDRETools/gdsdecomp) — 从已导出的游戏中恢复受支持的 Godot 工程文件、GDScript 与导入资源，提供 PCK 检查与提取、脚本反编译及资源转换，便于分析和重建工程结构。 **[工具]**
 - [UE4SS（虚幻引擎脚本系统）](https://github.com/UE4SS-RE/RE-UE4SS) — 通过实时 UObject 属性视图、反射 C++ 头文件导出、属性映射和 Actor 转储分析虚幻引擎游戏；Lua 与 C++ API 可辅助实验和重建游戏结构。 **[工具]**
 - [FModel 游戏资源浏览器](https://github.com/4sval/FModel) — 基于 CUE4Parse 浏览虚幻引擎游戏归档，检查资源包和属性，预览并导出资源；2026 年夏季发行版新增 USD 世界导出，可辅助重建受支持的场景内容。 **[工具]**
+- [PSP Web Recomp 浏览器游戏重编译项目](https://github.com/snuri00/psp-web-recomp) — 将 PSP MIPS 可执行文件转换为 C++ 与 WebAssembly，配合 PSP 高层仿真运行时和 WebGL2 渲染器；原生跟踪、画面捕获及音频工具可辅助调查游戏移植中缺失的行为。 **[项目]**
 
 <a id="app"></a>
 ### App · 应用
@@ -87,6 +89,9 @@
 - [Blutter](https://github.com/worawit/blutter) — 利用匹配的 Dart 运行时分析 Flutter Android ARM64 AOT 二进制，生成带符号的汇编、对象池转储及面向目标的 Frida 脚本模板，辅助研究编译后的 Dart 应用逻辑。 **[工具 · Android]**
 - [hermes-dec](https://github.com/P1sec/hermes-dec) — 解析、反汇编并部分反编译 React Native 的 Hermes 字节码包，展示 HBC 文件头和指令，并生成伪代码以帮助理解编译后的应用逻辑。 **[工具]**
 - [Recaf 字节码分析与编辑工具](https://github.com/Col-E/Recaf) — 通过集成反编译器、字节码汇编、引用搜索、映射与去混淆工具检查和修改已编译的 JVM 应用；所审阅的 4.0 预览版还提供基础的只读 Android 字节码分析。 **[工具 · JVM]**
+- [nibkit 原生界面结构分析工具](https://github.com/tokenbleed/nibkit) — 将已编译的 iOS/macOS 界面归档解码为对象树、Outlet／Action 连接、自定义类及导航关系，可导出 JSON 或 Mermaid 图，并通过 MCP 提供只读检查命令。 **[工具]**
+- [AOTopsy Flutter/Dart 静态分析工具](https://github.com/BroNils/aotopsy) — 静态检查 Flutter/Dart AOT libapp.so 文件，恢复可用元数据、类结构、调用关系及伪代码，无需嵌入 Dart VM 或编译匹配的 SDK，提供 ARM64 与 x86_64 分析路径。 **[工具 · Android]**
+- [hbctool Hermes 字节码汇编与反汇编工具](https://github.com/bongtrop/hbctool) — 通过 HASM 文件反汇编和重新汇编受支持的 React Native Hermes 字节码包，为明确支持的旧版 HBC 提供字节码检查与修改能力。 **[工具 · Android]**
 
 <a id="native-binary"></a>
 ### Native Binary · 原生二进制
