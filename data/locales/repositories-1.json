@@ -2671,5 +2671,674 @@
   "scan-985274430": {
     "description_en": "The client of a new version of the MMORPG ROSE Online made with Unity",
     "description_zh": "使用 Unity 制作的 MMORPG《ROSE Online》新版客户端。"
+  },
+  "scan-13405986": {
+    "description_en": "UEFI firmware image viewer and editor",
+    "description_zh": "UEFI 固件镜像查看与编辑工具"
+  },
+  "scan-174013231": {
+    "description_en": "Unreal Engine Archives Explorer",
+    "description_zh": "Unreal Engine 归档文件浏览器"
+  },
+  "scan-561442199": {
+    "description_en": "Injectable LUA scripting system, SDK generator, live property editor and other dumping utilities for UE4/5 games",
+    "description_zh": "面向 UE4/5 游戏的可注入 LUA 脚本系统、SDK 生成器、实时属性编辑器及其他转储工具"
+  },
+  "scan-51781408": {
+    "description_en": "Platform for emulation and dynamic analysis of Linux-based firmware",
+    "description_zh": "用于仿真和动态分析基于 Linux 的固件的平台"
+  },
+  "scan-435649432": {
+    "description_en": "A collection of reverse engineered Apple things, as well as a machine-readable database of Apple hardware",
+    "description_zh": "Apple 相关逆向工程成果合集，以及机器可读的 Apple 硬件数据库"
+  },
+  "scan-66204703": {
+    "description_en": "Intel Engine & Graphics Firmware Analysis Tool",
+    "description_zh": "Intel Engine 与图形固件分析工具"
+  },
+  "scan-1411026273": {
+    "description_en": "Static recompilation of Link's Awakening (Switch) to native macOS, Windows and Linux",
+    "description_zh": "将 Switch 版《Link's Awakening》静态重编译为 macOS、Windows 和 Linux 原生程序"
+  },
+  "scan-447002181": {
+    "description_en": "FirmWire is a full-system baseband firmware emulation platform for fuzzing, debugging, and root-cause analysis of smartphone baseband firmwares",
+    "description_zh": "FirmWire 是一个全系统基带固件仿真平台，用于对智能手机基带固件进行模糊测试、调试和根因分析"
+  },
+  "scan-4675010": {
+    "description_en": "Netzob: Protocol Reverse Engineering, Modeling and Fuzzing",
+    "description_zh": "Netzob：协议逆向工程、建模与模糊测试"
+  },
+  "scan-104449590": {
+    "description_en": "An automated, project-wide code obfuscation tool for iOS! Supports obfuscating CocoaPods component code too, while perfectly avoiding hardcoded methods, static-library methods, and system-library methods!",
+    "description_zh": "iOS 全局自动化代码混淆工具！支持对 CocoaPods 组件代码一并混淆，完美避开硬编码方法、静态库方法和系统库方法！"
+  },
+  "scan-83142464": {
+    "description_en": "Read-only mirror of the official repo at git://sigrok.org/pulseview. Pull requests welcome. Please file bugreports at sigrok.org/bugzilla.",
+    "description_zh": "官方仓库 git://sigrok.org/pulseview 的只读镜像。欢迎提交拉取请求。请在 sigrok.org/bugzilla 提交缺陷报告。"
+  },
+  "scan-1196502414": {
+    "description_en": "App which allows you to use your health devices beyond subscriptions. Supports Workout Tracking, Nutrition Tracking, Wellness Excercise, Sleep, Recovery, Strain, and Many more.",
+    "description_zh": "让你不受订阅限制地使用健康设备的应用。支持运动追踪、营养追踪、健康锻炼、睡眠、恢复、运动负荷等多种功能。"
+  },
+  "scan-94694646": {
+    "description_en": "IDA Python Embedded Toolkit -- IDAPython scripts for automating analysis of firmware of embedded devices",
+    "description_zh": "IDA Python Embedded Toolkit：用于自动分析嵌入式设备固件的 IDAPython 脚本"
+  },
+  "scan-237125301": {
+    "description_en": "Apple Continuity Protocol Reverse Engineering and Dissector",
+    "description_zh": "Apple Continuity 协议逆向工程与协议解析器"
+  },
+  "scan-281391604": {
+    "description_en": "iblessing is an iOS security exploiting toolkit, it mainly includes application information gathering, static analysis and dynamic analysis. It can be used for reverse engineering, binary analysis and vulnerability mining.",
+    "description_zh": "iblessing 是一个 iOS 安全利用工具集，主要包括应用信息收集、静态分析和动态分析，可用于逆向工程、二进制分析和漏洞挖掘。"
+  },
+  "scan-93843247": {
+    "description_en": ":dart: Advanced debugging skills used in iOS project development, including dynamic debugging, static analysis, and decompilation of third-party libraries.",
+    "description_zh": ":dart: iOS 项目开发过程中用到的高级调试技巧，涉及第三方库的动态调试、静态分析和反编译等领域。"
+  },
+  "scan-1032822739": {
+    "description_en": "Download, re-sign, and sideload iOS, iPadOS, macOS, tvOS & visionOS apps without Xcode or Terminal — plus an authorized security-testing toolkit (ATS bypass, Frida injection, static scan, FairPlay dump).",
+    "description_zh": "无需 Xcode 或终端即可下载、重新签名并侧载 iOS、iPadOS、macOS、tvOS 和 visionOS 应用，并提供用于授权安全测试的工具集，包括 ATS 绕过、Frida 注入、静态扫描和 FairPlay 转储。"
+  },
+  "scan-533872441": {
+    "description_en": "A lightweight emulation framework for emulating cryptographic algorithms in iOS executables and libraries.",
+    "description_zh": "轻量级仿真框架，用于仿真 iOS 可执行文件和库中的加密算法。"
+  },
+  "scan-708270311": {
+    "description_en": "",
+    "description_zh": ""
+  },
+  "scan-233831241": {
+    "description_en": "Unofficial frida extension for VSCode",
+    "description_zh": "非官方的 VSCode Frida 扩展"
+  },
+  "scan-78215330": {
+    "description_en": "Reverse Engineering Furby Connect's Bluetooth Protocol and Update Format",
+    "description_zh": "对 Furby Connect 的蓝牙协议和更新格式进行逆向工程"
+  },
+  "scan-167967058": {
+    "description_en": "C++ library for runtime memory patching, scanning, dumping, and module (ELF / Mach-O) introspection, targeting Android and iOS.",
+    "description_zh": "面向 Android 和 iOS 的 C++ 库，用于运行时内存修补、扫描、转储，以及模块（ELF / Mach-O）内省。"
+  },
+  "scan-996796621": {
+    "description_en": "An ad-free BiliBili client implemented through iOS reverse engineering. Thanks for using it; stars are welcome.",
+    "description_zh": "一个通过 iOS 逆向分析实现的无广告版哔哩哔哩客户端，感谢使用，欢迎 Star。"
+  },
+  "scan-1211287890": {
+    "description_en": "Protocol-first reverse engineering skill for turning hostile web clients into pure-protocol Python collectors.",
+    "description_zh": "以协议为先的逆向工程技能，将具有对抗性的网页客户端转化为纯协议 Python 采集器。"
+  },
+  "scan-193618712": {
+    "description_en": "Discovering vulnerabilities in firmware through concolic analysis and function clustering.",
+    "description_zh": "通过结合具体执行与符号执行的分析，以及函数聚类，发现固件中的漏洞。"
+  },
+  "scan-97127356": {
+    "description_en": ":secret: WIP: An in-depth look at the core technologies and implementation details behind major APM vendors' iOS SDKs. Updates ongoing...",
+    "description_zh": ":secret: 开发中：深度揭秘各大 APM 厂商 iOS SDK 背后的核心技术和实现细节，持续更新中……"
+  },
+  "scan-174594172": {
+    "description_en": "Automated Payload Reverse Engineering Pipeline for the Controller Area Network (CAN) protocol",
+    "description_zh": "面向控制器局域网（CAN）协议的自动化载荷逆向工程流程"
+  },
+  "scan-215886167": {
+    "description_en": "Karonte is a static analysis tool to detect multi-binary vulnerabilities in embedded firmware",
+    "description_zh": "Karonte 是一个静态分析工具，用于检测嵌入式固件中跨多个二进制文件的漏洞"
+  },
+  "scan-73274075": {
+    "description_en": "A Theos module to develop jailed tweaks for iOS 8 and up",
+    "description_zh": "用于开发 iOS 8 及以上版本免越狱插件的 Theos 模块"
+  },
+  "scan-1364266923": {
+    "description_en": "An iPhone battery, charging and thermal instrument built on private iOS APIs — real charger watts, what actually reaches the cell, all 30 temperature sensors, and the USB-PD handshake.",
+    "description_zh": "基于 iOS 私有 API 构建的 iPhone 电池、充电与温度检测工具，可展示充电器实际功率、真正到达电芯的功率、全部 30 个温度传感器读数，以及 USB-PD 握手过程。"
+  },
+  "scan-85310456": {
+    "description_en": "iOS Backup Data Extraction",
+    "description_zh": "iOS 备份数据提取"
+  },
+  "scan-128859206": {
+    "description_en": "iOS Shadowrocket (decrypted and re-signed; for reference only; adding nodes has issues). For the source of another censorship-circumvention project, Potatso, see: https://github.com/we11cheng/WCPotatso",
+    "description_zh": "iOS Shadowrocket（砸壳重签，仅供参考，添加节点存在问题）。另一个翻墙项目 Potatso 的源码参见：https://github.com/we11cheng/WCPotatso"
+  },
+  "scan-220013975": {
+    "description_en": ":detective: Dart / Flutter VM snapshot analyzer",
+    "description_zh": ":detective: Dart / Flutter VM 快照分析器"
+  },
+  "scan-1324636939": {
+    "description_en": "r0crawl_skills is a massive reverse-engineering skill arsenal for web, Android, iOS, Frida, native binaries, protocols, malware, firmware, and anti-analysis—built for beginners, tuned for pros, and engineered for reproducible results.",
+    "description_zh": "r0crawl_skills 是一个大型逆向工程技能库，覆盖 Web、Android、iOS、Frida、原生二进制文件、协议、恶意软件、固件和反分析；为初学者构建，为专业人士调优，并注重结果的可复现性。"
+  },
+  "scan-42669860": {
+    "description_en": "😈Scripts or demo projects on iOS development or reverse engineering",
+    "description_zh": "😈 关于 iOS 开发或逆向工程的脚本与演示项目"
+  },
+  "scan-1165098044": {
+    "description_en": "Fichero D11s thermal label printer - BLE protocol reverse engineering and Python CLI tool",
+    "description_zh": "Fichero D11s 热敏标签打印机的 BLE 协议逆向工程与 Python 命令行工具"
+  },
+  "scan-127259580": {
+    "description_en": "iOS NetEase Cloud Music: download without VIP, remove ads and updates, no jailbreak required...",
+    "description_zh": "iOS 网易云音乐：无需 VIP 即可下载，去广告、去更新，无需越狱……"
+  },
+  "scan-310694531": {
+    "description_en": "iOS SSL Pinning Bypass (iOS 8 - 14)",
+    "description_zh": "iOS SSL 证书固定绕过（iOS 8–14）"
+  },
+  "scan-114001146": {
+    "description_en": "Reverse-engineering the WaveBird protocol for the betterment of mankind",
+    "description_zh": "对 WaveBird 协议进行逆向工程，造福人类"
+  },
+  "scan-72776966": {
+    "description_en": "A macOS utility to extract dynamic libraries from the dyld_shared_cache of macOS and iOS.",
+    "description_zh": "macOS 工具，用于从 macOS 和 iOS 的 dyld_shared_cache 中提取动态库。"
+  },
+  "scan-98451624": {
+    "description_en": "Nili is a Tool for Network Scan, Man in the Middle, Protocol Reverse Engineering and Fuzzing.",
+    "description_zh": "Nili 是一个用于网络扫描、中间人操作、协议逆向工程和模糊测试的工具。"
+  },
+  "scan-1384236560": {
+    "description_en": "Ablation is an autonomous reverse engineering system.",
+    "description_zh": "Ablation 是一个自主逆向工程系统。"
+  },
+  "scan-917929512": {
+    "description_en": "Infiltra Firmware is an open-source firmware for wireless security testing, network analysis, and hardware hacking. FLASH IT BELOW USING OUR WEB FLAHSER!",
+    "description_zh": "Infiltra Firmware 是用于无线安全测试、网络分析和硬件探索的开源固件。可使用下方的网页刷写器进行刷写！"
+  },
+  "scan-980827904": {
+    "description_en": "Your all-in-one toolkit for reverse engineering: Smali Grammar, DexRepair, Flutter Analysis and much more...",
+    "description_zh": "一体化逆向工程工具集：Smali 语法、DexRepair、Flutter 分析等多种功能……"
+  },
+  "scan-475822851": {
+    "description_en": "Extract Metal functions from .metallib files.",
+    "description_zh": "从 .metallib 文件中提取 Metal 函数。"
+  },
+  "scan-349099686": {
+    "description_en": "DIRTY: Augmenting Decompiler Output with Learned Variable Names and Types",
+    "description_zh": "DIRTY：使用学习得到的变量名称和类型增强反编译器输出"
+  },
+  "scan-1126033535": {
+    "description_en": "Let's reverse engineer the EvenRealities G2s! By reverse engineering the BLE protocol, developers can understand how to call G2 services, unleashing the true potential of the G2 smart glasses in a true open-source environment.",
+    "description_zh": "一起对 EvenRealities G2 进行逆向工程！通过逆向分析 BLE 协议，开发者可以了解如何调用 G2 服务，在真正开源的环境中释放 G2 智能眼镜的潜力。"
+  },
+  "scan-313682042": {
+    "description_en": "List of (automatic) protocol reverse engineering tools for network protocols",
+    "description_zh": "网络协议的（自动化）协议逆向工程工具列表"
+  },
+  "scan-1270168645": {
+    "description_en": "Modern offline-first Application Security Intelligence Platform for Android, iOS, Flutter and React Native with attack-chain analysis, explainable findings, source exploration, AI-assisted investigation and professional reporting.",
+    "description_zh": "现代化、离线优先的应用安全情报平台，面向 Android、iOS、Flutter 和 React Native，提供攻击链分析、可解释的发现、源码探索、AI 辅助调查与专业报告。"
+  },
+  "scan-648722050": {
+    "description_en": "Sniff XPC communication using Frida and Go",
+    "description_zh": "使用 Frida 和 Go 嗅探 XPC 通信"
+  },
+  "scan-522738181": {
+    "description_en": "How does BeReal work (Under the hood)",
+    "description_zh": "BeReal 的内部工作原理"
+  },
+  "scan-85558460": {
+    "description_en": "Encrypts and obfuscates plaintext in all Objective-C files within an Xcode project to make reverse engineering harder.",
+    "description_zh": "可对 Xcode 项目工程中所有 Objective-C 文件包含的明文进行加密混淆，提高逆向分析难度。"
+  },
+  "scan-1270498129": {
+    "description_en": "Open-source, local-first iOS companion for compatible WHOOP straps. Live HR and evidence-qualified personal metrics over Bluetooth—no WHOOP account, subscription, or cloud.",
+    "description_zh": "开源、本地优先的 iOS 配套应用，适用于兼容的 WHOOP 腕带。通过蓝牙提供实时心率和注明证据支持程度的个人指标，无需 WHOOP 账号、订阅或云服务。"
+  },
+  "scan-1418826062": {
+    "description_en": "SQL for Android apk and dex files",
+    "description_zh": "对 Android APK 和 DEX 文件使用 SQL"
+  },
+  "scan-500733184": {
+    "description_en": "iOS is Apple's proprietary operating system that runs on the iPhone, iPod Touch and iPad. A lot of components are specific to iOS. Here are key features of the iOS hardware and software security architecture and guide how to test your applications.",
+    "description_zh": "iOS 是 Apple 的专有操作系统，运行于 iPhone、iPod Touch 和 iPad。许多组件为 iOS 特有。这里介绍 iOS 硬件和软件安全架构的关键特性，并提供应用测试指南。"
+  },
+  "scan-334809136": {
+    "description_en": "A Universal MCU Firmware Emulator for Dynamic Analysis without Any Hardware Dependence.",
+    "description_zh": "不依赖任何硬件、用于动态分析的通用 MCU 固件仿真器。"
+  },
+  "scan-820114900": {
+    "description_en": "For our CCS24 paper 🏆 \"ReSym: Harnessing LLMs to Recover Variable and Data Structure Symbols from Stripped Binaries\" by Danning Xie, Zhuo Zhang, Nan Jiang, Xiangzhe Xu, Lin Tan, and Xiangyu Zhang.  🏆 ACM SIGSAC Distinguished Paper Award Winner",
+    "description_zh": "对应我们的 CCS 2024 论文 🏆《ReSym：利用 LLM 从去符号二进制文件中恢复变量与数据结构符号》，作者为 Danning Xie、Zhuo Zhang、Nan Jiang、Xiangzhe Xu、Lin Tan 和 Xiangyu Zhang。🏆 获 ACM SIGSAC 杰出论文奖。"
+  },
+  "scan-568780694": {
+    "description_en": "Jailbreak detection was changed through the years. This is a history overview and analysis of modern applications like Snapchat and Pokemon GO.",
+    "description_zh": "越狱检测技术多年来不断变化。本项目回顾其历史，并分析 Snapchat 和 Pokemon GO 等现代应用。"
+  },
+  "scan-293345380": {
+    "description_en": "Reverse engineering the Volvo VIDA protocol and CAN network to gather diagnostic information not available via OBD2 on Volvo cars.",
+    "description_zh": "对 Volvo VIDA 协议和 CAN 网络进行逆向工程，以获取 Volvo 汽车上无法通过 OBD2 取得的诊断信息。"
+  },
+  "scan-583268270": {
+    "description_en": "A Swift package for retrieving images from Sony digital cameras",
+    "description_zh": "用于从 Sony 数码相机获取图像的 Swift 软件包"
+  },
+  "scan-271393003": {
+    "description_en": "[WIP] Simple mobile applications sandbox file browser tool. Powered with [frida.re](https://www.frida.re).",
+    "description_zh": "[开发中] 简单的移动应用沙盒文件浏览工具，由 [frida.re](https://www.frida.re) 提供支持。"
+  },
+  "scan-112987531": {
+    "description_en": "Command line utility that interacts with plugged in iOS devices. Uses Apple's MobileDevice framework ",
+    "description_zh": "与已连接的 iOS 设备交互的命令行工具，使用 Apple 的 MobileDevice 框架。"
+  },
+  "scan-1315756817": {
+    "description_en": "Zygisk module that intercepts Flutter app traffic — redirects to a proxy and bypasses BoringSSL TLS pinning. Persistent, no Frida session. Installable via MMRL.",
+    "description_zh": "拦截 Flutter 应用流量的 Zygisk 模块，可将流量重定向至代理并绕过 BoringSSL TLS 证书固定。持续生效，无需 Frida 会话，可通过 MMRL 安装。"
+  },
+  "scan-1158858809": {
+    "description_en": "The Flutter Decompiler: CLI tool that decompiles Flutter Android AOT (libapp.so) into Dart-like pseudocode, supporting obfuscated builds.",
+    "description_zh": "Flutter 反编译器：将 Flutter Android AOT 产物（libapp.so）反编译为类似 Dart 的伪代码的命令行工具，支持混淆构建。"
+  },
+  "scan-200776099": {
+    "description_en": "A Sonic Runners custom server.",
+    "description_zh": "Sonic Runners 的自定义服务器。"
+  },
+  "scan-412544316": {
+    "description_en": "CaptainHook Tweak、Logos Tweak and Command-line Tool、Patch iOS Apps, Without Jailbreak.",
+    "description_zh": "CaptainHook 插件、Logos 插件与命令行工具，可在无需越狱的情况下修补 iOS 应用。"
+  },
+  "scan-20230724": {
+    "description_en": "Collaborative reverse engineering plugin for IDA Pro. Latest version, including IDA 7.0 support, is not back ward compatible with earlier versions. Substantial changes have been made to the protocol and database.",
+    "description_zh": "面向 IDA Pro 的协作式逆向工程插件。包含 IDA 7.0 支持的最新版本不向后兼容早期版本，协议和数据库均有重大变更。"
+  },
+  "scan-628983998": {
+    "description_en": "PowMr Inverter serial communication protocol reverse engineering",
+    "description_zh": "PowMr 逆变器串行通信协议逆向工程"
+  },
+  "scan-311831209": {
+    "description_en": "Sniff XPC goodies on your iOS device.",
+    "description_zh": "嗅探 iOS 设备上的 XPC 通信内容。"
+  },
+  "scan-687097664": {
+    "description_en": "An app for the Hessian school portal, developed by a group of students.",
+    "description_zh": "由一群学生开发的黑森州学校门户应用。"
+  },
+  "scan-127245050": {
+    "description_en": "iOS Baidu Cloud Drive: remove speed limits, ads, and updates, with no jailbreak required.",
+    "description_zh": "iOS 百度云盘：破解速度限制、去广告、去更新，无需越狱。"
+  },
+  "scan-26191915": {
+    "description_en": "Utilities to help with reverse engineering RF protocols.",
+    "description_zh": "辅助逆向分析射频协议的工具集。"
+  },
+  "scan-1021158878": {
+    "description_en": "An ad-free Douban client implemented through iOS reverse engineering. Thanks for using it; stars are welcome.",
+    "description_zh": "一个通过 iOS 逆向分析实现的无广告版豆瓣客户端，感谢使用，欢迎 Star。"
+  },
+  "scan-1294749921": {
+    "description_en": "Open-source emulator + analysis toolkit for Nokia DCT3 phones (3310/3410/5210/8210/8250/8850…). Boots real firmware in the browser (WASM) and a native SDL GUI. Bring-your-own firmware — none included. GPL-2.",
+    "description_zh": "面向 Nokia DCT3 手机（3310/3410/5210/8210/8250/8850 等）的开源仿真器与分析工具集，可在浏览器（WASM）和原生 SDL 图形界面中启动真实固件。需自行提供固件，项目不附带固件。采用 GPL-2 许可证。"
+  },
+  "scan-558078143": {
+    "description_en": "a set of scripts and tools for various firmware analysis tasks",
+    "description_zh": "用于各种固件分析任务的一组脚本和工具"
+  },
+  "scan-267555888": {
+    "description_en": "Reverse engineering toolkit for Apple's wireless ecosystem",
+    "description_zh": "面向 Apple 无线生态系统的逆向工程工具集"
+  },
+  "scan-1355190514": {
+    "description_en": "CVE-2026-65343 PoC — AppleKeyStore OOB read → KASLR defeat (iOS 26.6 / 23G71)",
+    "description_zh": "CVE-2026-65343 概念验证：通过 AppleKeyStore 越界读取绕过 KASLR（iOS 26.6 / 23G71）"
+  },
+  "scan-345480982": {
+    "description_en": "Reverse engineering and unofficial documentation of LinkPi ENC series (ENC1/ENC5/ENC9) and TBS 2603SE video encoders based on the F3520D platform — hardware analysis, firmware internals, streaming fixes, and hidden features.",
+    "description_zh": "基于 F3520D 平台的 LinkPi ENC 系列（ENC1/ENC5/ENC9）和 TBS 2603SE 视频编码器的逆向工程与非官方文档，涵盖硬件分析、固件内部机制、流媒体修复和隐藏功能。"
+  },
+  "scan-538600633": {
+    "description_en": "Prevent the notch/Dynamic Island from munching on 2:1 video content in YouTube",
+    "description_zh": "防止刘海或灵动岛遮挡 YouTube 中宽高比为 2:1 的视频内容"
+  },
+  "scan-14178409": {
+    "description_en": "Dynamic security analysis of embedded systems’ firmwares",
+    "description_zh": "嵌入式系统固件的动态安全分析"
+  },
+  "scan-999553171": {
+    "description_en": "ESP8266 and EPS32 firmware binaries analysis toolkit",
+    "description_zh": "ESP8266 和 EPS32 固件二进制分析工具集"
+  },
+  "scan-984434468": {
+    "description_en": "Rust library for reading, inspecting, and extracting data from encrypted iOS backups",
+    "description_zh": "用于读取、检查和提取加密 iOS 备份中数据的 Rust 库"
+  },
+  "scan-591659737": {
+    "description_en": "Mobile app memory view & edit PyQt6 program",
+    "description_zh": "使用 PyQt6 编写的移动应用内存查看与编辑程序"
+  },
+  "scan-261396357": {
+    "description_en": "NetPlier: Probabilistic Network Protocol Reverse Engineering from Message Traces",
+    "description_zh": "NetPlier：基于消息轨迹的概率式网络协议逆向工程"
+  },
+  "scan-1101742287": {
+    "description_en": "An end-to-end pipeline for firmware analysis and cryptographic function detection. Static analysis (Ghidra), dynamic tracing (Qiling), and feature extraction to produce datasets for binary analysis.",
+    "description_zh": "用于固件分析和加密函数检测的端到端流程，结合静态分析（Ghidra）、动态跟踪（Qiling）和特征提取，生成二进制分析数据集。"
+  },
+  "scan-93309145": {
+    "description_en": "Use FLEX to debug any third-party application.",
+    "description_zh": "使用 FLEX 调试任意第三方应用"
+  },
+  "scan-1290060935": {
+    "description_en": "IoT Firmware Deep Analysis: Automated reverse engineering and vulnerability discovery for IoT firmware binaries.",
+    "description_zh": "IoT Firmware Deep Analysis：面向物联网固件二进制文件的自动化逆向工程与漏洞发现。"
+  },
+  "scan-1256240320": {
+    "description_en": "An offline touchHLE port of \"摩尔庄园\" Mobile/Deluxe 5.5.0 with a built-in trainer, plus reverse-engineering research on versions 1.1.5, 2.4.3, 5.4.0, and 5.5.0. Revives this old 2D simulation-management game offline after its shutdown and delisting in 2015.",
+    "description_zh": "《摩尔庄园》移动版／豪华版 5.5.0 的离线移植（touchHLE），内置修改器，并对 1.1.5、2.4.3、5.4.0、5.5.0 四个版本开展逆向研究。让这款于 2015 年停运下架的 2D 模拟经营老游戏离线复活。",
+    "english_retains_name": true
+  },
+  "scan-201151005": {
+    "description_en": "Decompilation of Pokemon Emerald (JP)",
+    "description_zh": "《Pokemon Emerald》日版反编译项目"
+  },
+  "scan-1381272969": {
+    "description_en": "Resolve and invoke native APIs from Swift, Objective-C++, and C++ without writing mangled names or manual ABI casts.",
+    "description_zh": "从 Swift、Objective-C++ 和 C++ 中解析并调用原生 API，无需编写名称修饰后的符号或手动进行 ABI 类型转换。"
+  },
+  "scan-275714610": {
+    "description_en": "DICE: Automatic Emulation of DMA Input Channels for Dynamic Firmware Analysis",
+    "description_zh": "DICE：自动仿真 DMA 输入通道，用于固件动态分析"
+  },
+  "scan-516810275": {
+    "description_en": "Curated list of embedded security tools and resources: firmware analysis, reverse engineering, hardware hacking, IoT security, fuzzing, secure boot, side-channel analysis, and SDR.",
+    "description_zh": "精选嵌入式安全工具与资源列表，涵盖固件分析、逆向工程、硬件探索、物联网安全、模糊测试、安全启动、侧信道分析和软件无线电。"
+  },
+  "scan-99290975": {
+    "description_en": "Personal edition of WeChat",
+    "description_zh": "个人版微信"
+  },
+  "scan-60344710": {
+    "description_en": "Reverse engineering the QC 360 A1 quadcopter RC protocol",
+    "description_zh": "对 QC 360 A1 四旋翼飞行器的遥控协议进行逆向工程"
+  },
+  "scan-1298591675": {
+    "description_en": "Experimental native PC runtime for Kingdom Hearts 358/2 Days, developed alongside the matching Nintendo DS decompilation. No copyrighted game data included.",
+    "description_zh": "《Kingdom Hearts 358/2 Days》的实验性原生 PC 运行时，与对应的 Nintendo DS 反编译项目同步开发。不包含受版权保护的游戏数据。"
+  },
+  "scan-883169168": {
+    "description_en": "[ASE 2025] Benchmarking MLLM-based Interactive Webpage Code Generation from Interactive Prototyping",
+    "description_zh": "[ASE 2025] 评测基于多模态大语言模型、从交互原型生成交互式网页代码的方法"
+  },
+  "scan-657140678": {
+    "description_en": "Mario Kart DS (EU) reverse-engineering work: ASM-hacking and other tools",
+    "description_zh": "《Mario Kart DS》欧版的逆向工程工作：汇编修改及其他工具"
+  },
+  "scan-1085321120": {
+    "description_en": "HTTP Proxy Analysis for reverse engineering protocol communication",
+    "description_zh": "用于逆向分析协议通信的 HTTP 代理分析"
+  },
+  "scan-1141735175": {
+    "description_en": "Hands-on challenges for learning how to reverse engineer Flutter applications.",
+    "description_zh": "用于学习 Flutter 应用逆向工程的动手实践挑战。"
+  },
+  "scan-298375796": {
+    "description_en": "Binary View plugin for reverse engineering iBoot like binaries with Binary Ninja",
+    "description_zh": "Binary Ninja 的 Binary View 插件，用于对 iBoot 一类的二进制文件进行逆向工程"
+  },
+  "scan-882717213": {
+    "description_en": "Reverse engineering smart ring protocols",
+    "description_zh": "智能戒指协议逆向工程"
+  },
+  "scan-28009436": {
+    "description_en": "Firmware format analysis for TP-Link firmwares with the version 3 header (0x03000000)",
+    "description_zh": "针对采用版本 3 文件头（0x03000000）的 TP-Link 固件进行格式分析"
+  },
+  "scan-362057616": {
+    "description_en": "A collection of iOS tools designed for security purposes.",
+    "description_zh": "为安全用途设计的 iOS 工具合集。"
+  },
+  "scan-403195678": {
+    "description_en": "Enabled Web Inspector for all iOS apps",
+    "description_zh": "为所有 iOS 应用启用 Web Inspector"
+  },
+  "scan-983437884": {
+    "description_en": "OpenLava is an open-source implementation of the Lava media format, originally created by Airbnb",
+    "description_zh": "OpenLava 是 Lava 媒体格式的开源实现，该格式最初由 Airbnb 创建"
+  },
+  "scan-91528010": {
+    "description_en": "“Protocol Informatics” is a project to design for automatically network protocol reverse engineering based on frame or packet analysis. \"PI\" is short for “Protocol Informatics”, which introduces local and global sequence alignment algorithms. The PI project is famous in network protocol reverse engineering based on network trace. I am not the author of PI project. However, the previous website storing PI project disappeared. That makes me to open a github issue to keep the codes of PI poject.",
+    "description_zh": "Protocol Informatics 项目旨在基于帧或数据包分析自动进行网络协议逆向工程。项目简称 PI，引入了局部和全局序列比对算法，在基于网络轨迹的协议逆向工程领域颇有名气。我不是 PI 项目的作者，但此前保存该项目的网站已经消失，因此我在 GitHub 上开设一个议题，以保存 PI 项目的代码。"
+  },
+  "scan-1356218279": {
+    "description_en": "The reverse-engineering expert agent: plans its own analysis path, derives every fact from raw evidence, and converges under mechanical verification gates — firmware, protocols, web/JS, risk-control, binaries.",
+    "description_zh": "逆向工程专家智能体：自行规划分析路径，从原始证据推导每项事实，并在机械化验证关卡下逐步收敛；覆盖固件、协议、Web/JS、风控和二进制文件。"
+  },
+  "scan-625248343": {
+    "description_en": "Description of data exchange protocol for GREE air conditioners via UART based on reverse engineering",
+    "description_zh": "基于逆向工程整理的 GREE 空调 UART 数据交换协议说明"
+  },
+  "scan-1340455874": {
+    "description_en": "Fortinet Firmware decryption and analysis tools",
+    "description_zh": "Fortinet 固件解密与分析工具"
+  },
+  "scan-345399823": {
+    "description_en": "A reverse engineering project for the TP-Link Tether Management Protocol (TMP), which allows authenticated configuration of TP-Link routers as well as other use cases.",
+    "description_zh": "TP-Link Tether 管理协议（TMP）的逆向工程项目；该协议可用于经过身份验证的 TP-Link 路由器配置及其他场景。"
+  },
+  "scan-735427609": {
+    "description_en": "Reverse engineering the protocol for the VIVE wireless dongle and the 6DoF Ultimate tracker",
+    "description_zh": "对 VIVE 无线适配器和六自由度 Ultimate 追踪器的协议进行逆向工程"
+  },
+  "scan-816447525": {
+    "description_en": "Reverse engineering the bluetooth protocol used by the QiYi Smart Cube",
+    "description_zh": "对 QiYi Smart Cube 使用的蓝牙协议进行逆向工程"
+  },
+  "scan-332554231": {
+    "description_en": "Disassembly/Decompilation of Harvest Moon: Friends of Mineral Town",
+    "description_zh": "《Harvest Moon: Friends of Mineral Town》的反汇编／反编译项目"
+  },
+  "scan-652707760": {
+    "description_en": "A macOS command-line tool to dump the contents of dyld shared cache files.",
+    "description_zh": "用于转储 dyld 共享缓存文件内容的 macOS 命令行工具。"
+  },
+  "scan-115005502": {
+    "description_en": "A project providing usefull classes for reverse engineering iOS Private APIs on-device",
+    "description_zh": "提供实用类的项目，用于在设备上对 iOS 私有 API 进行逆向工程"
+  },
+  "scan-1311978133": {
+    "description_en": "iPod RetailOS firmware research — decryption, analysis, and wInd3x Classic support patch",
+    "description_zh": "iPod RetailOS 固件研究，涵盖解密、分析，以及为 wInd3x 添加 Classic 支持的补丁"
+  },
+  "scan-459725665": {
+    "description_en": "WIP: Decompilation of Megaman Zero 3(Japan)",
+    "description_zh": "开发中：《Megaman Zero 3》日版反编译项目"
+  },
+  "scan-211559889": {
+    "description_en": "Neural Variable Renaming for Decompiled Binaries",
+    "description_zh": "使用神经网络为反编译二进制文件中的变量重命名"
+  },
+  "scan-996771172": {
+    "description_en": "An ad-free BiliBili jailbreak tweak. Thanks for using it; stars are welcome.",
+    "description_zh": "哔哩哔哩无广告越狱插件，感谢使用，欢迎 Star。"
+  },
+  "scan-375171447": {
+    "description_en": "reverse engineering of the windows nt kernel debugger protocol & reimplementation.",
+    "description_zh": "Windows NT 内核调试器协议的逆向工程与重新实现。"
+  },
+  "scan-137062282": {
+    "description_en": "Reverse engineering of the oBike protocol communication (BLE and HTTP)",
+    "description_zh": "对 oBike 协议通信（BLE 和 HTTP）进行逆向工程"
+  },
+  "scan-693140290": {
+    "description_en": "ikuai firmware collection for analysis",
+    "description_zh": "用于分析的 iKuai 固件合集"
+  },
+  "scan-91109788": {
+    "description_en": "TikTok Reverse Engineered Private API (Previously Musically App)",
+    "description_zh": "通过逆向工程获得的 TikTok 私有 API（原为 Musically 应用）"
+  },
+  "scan-16446386": {
+    "description_en": "Firmware analysis gone wild.",
+    "description_zh": "放飞自我的固件分析。"
+  },
+  "scan-1116366772": {
+    "description_en": "Local BLE Reverse Engineering & Cloud-Free Integration  This project documents the reverse engineering of the Spider Farmer GGS Controller Bluetooth Low Energy (BLE) protocol and provides a fully local, cloud-independent foundation to bridge the controller into MQTT-based smart home systems.",
+    "description_zh": "本地 BLE 逆向工程与无云集成。本项目记录 Spider Farmer GGS Controller 的低功耗蓝牙（BLE）协议逆向工程，并提供完全本地、不依赖云端的基础，用于将该控制器桥接到基于 MQTT 的智能家居系统。"
+  },
+  "scan-235463230": {
+    "description_en": "Daikin BLE controller, protocol reverse engineering",
+    "description_zh": "Daikin BLE 控制器的协议逆向工程"
+  },
+  "scan-35840284": {
+    "description_en": "Reverse engineering the client/server communication protocol of Agar.io.",
+    "description_zh": "对 Agar.io 的客户端／服务器通信协议进行逆向工程。"
+  },
+  "scan-1305885927": {
+    "description_en": "Boot real iPhone OS 3 — Apple's actual kernel, launchd & SpringBoard — inside an app on a modern iPhone. A from-scratch, full-system S5L8900/ARMv6 emulator in portable C.",
+    "description_zh": "在现代 iPhone 的应用中启动真正的 iPhone OS 3，包括 Apple 原版内核、launchd 和 SpringBoard。使用可移植 C 语言从零构建的全系统 S5L8900/ARMv6 仿真器。"
+  },
+  "scan-1333724367": {
+    "description_en": "Ultimate Mortal Kombat 3 (iOS, EA Mobile 2011), fully decompiled: all 2,572 game functions are readable C, checked against a static ARM-to-C recompiler. Native port in progress: menus, sound and saves run; fight data tables extracted from your copy and verified; not playable yet. No game assets - bring your own copy.",
+    "description_zh": "《Ultimate Mortal Kombat 3》（iOS 版，EA Mobile，2011 年）已完全反编译：全部 2,572 个游戏函数均为可读的 C 代码，并与静态 ARM 到 C 重编译器进行核对。原生移植仍在进行中：菜单、声音和存档已可运行，战斗数据表从用户自有副本中提取并验证，但目前尚不可游玩。不含游戏素材，需自行提供游戏副本。"
+  },
+  "scan-298600331": {
+    "description_en": "The MAS Crackmes aka. UnCrackable Apps, a collection of mobile reverse engineering challenges part of the OWASP MAS project.",
+    "description_zh": "MAS Crackmes，又称 UnCrackable Apps，是 OWASP MAS 项目中的一组移动应用逆向工程挑战。"
+  },
+  "scan-909483200": {
+    "description_en": "Reverse engineering of Vevor heater communication protocol",
+    "description_zh": "对 Vevor 加热器通信协议进行逆向工程"
+  },
+  "scan-1340012459": {
+    "description_en": "Hardware-level firmware extraction and malware analysis of a $25 Android TV box",
+    "description_zh": "对一款 25 美元的 Android 电视盒进行硬件层面的固件提取和恶意软件分析"
+  },
+  "scan-341134243": {
+    "description_en": "FirmwareDroid is an analysis framework for Android firmware and Apps. ",
+    "description_zh": "FirmwareDroid 是用于分析 Android 固件和应用的框架。"
+  },
+  "scan-978028865": {
+    "description_en": "A decompilation of Geometry Dash version 1.710",
+    "description_zh": "《Geometry Dash》1.710 版的反编译项目"
+  },
+  "scan-87340497": {
+    "description_en": "Reverse engineering of the iconsole+ bike computer serial protocol. Broadcasts the power and speed on the ANT network.",
+    "description_zh": "对 iconsole+ 自行车码表的串行协议进行逆向工程，并在 ANT 网络上广播功率和速度。"
+  },
+  "scan-1380205662": {
+    "description_en": "How Tencent ACE (anogs) anti-cheat is built on iOS, and why naive attacks fail. Analysis, not a bypass",
+    "description_zh": "分析腾讯 ACE（anogs）反作弊系统在 iOS 上的构建方式，以及简单攻击为何失败。提供分析，不提供绕过方案。"
+  },
+  "scan-934885343": {
+    "description_en": "LLMs for autonomous reasoning and analysis of firmware",
+    "description_zh": "使用大语言模型对固件进行自主推理与分析"
+  },
+  "scan-61454877": {
+    "description_en": "A project dedicated to reverse-engineering diep.io's client/server protocol.",
+    "description_zh": "专门对 diep.io 客户端／服务器协议进行逆向工程的项目。"
+  },
+  "scan-120718834": {
+    "description_en": "Prevents DingTalk message recall and automatically claims red packets.",
+    "description_zh": "钉钉消息防撤回、自动抢红包功能"
+  },
+  "scan-81037872": {
+    "description_en": "iOS Reverse Engineering Presentation",
+    "description_zh": "iOS 逆向工程演示文稿"
+  },
+  "scan-1203421920": {
+    "description_en": "ILSpy MCP Server (Model Context Protocol) for AI-assisted reverse-engineering of .NET binaries for autonomous Malware Analysis and Reverse Engineering.",
+    "description_zh": "用于 AI 辅助 .NET 二进制文件逆向工程的 ILSpy MCP 服务器（模型上下文协议），面向自主恶意软件分析和逆向工程。"
+  },
+  "scan-1319963944": {
+    "description_en": "Reverse engineering of the Insta360 Link webcam firmware: UVC extension-unit control protocol, gesture pipeline, gimbal/PTZ command path, and firmware container format",
+    "description_zh": "Insta360 Link 网络摄像头固件逆向工程：UVC 扩展单元控制协议、手势处理流程、云台／PTZ 命令路径和固件容器格式"
+  },
+  "scan-63503338": {
+    "description_en": ":gear: An application which showcases the use of Apple's private frameworks.",
+    "description_zh": ":gear: 展示 Apple 私有框架用法的应用。"
+  },
+  "scan-735417491": {
+    "description_en": "Redirect spawned iOS application stdout and stderr to pty",
+    "description_zh": "将启动的 iOS 应用的标准输出（stdout）和标准错误（stderr）重定向至伪终端（pty）"
+  },
+  "scan-975330385": {
+    "description_en": "Reverse engineering notes, firmware analysis, and extracted content from the Marstek Venus E plug-in home battery",
+    "description_zh": "针对 Marstek Venus E 插电式家用电池的逆向工程笔记、固件分析及提取内容"
+  },
+  "scan-313195824": {
+    "description_en": "Reverse Engineering of LINE. This article is from my 2018 analysis. Be aware of that some of the protocol has been changed in 2020.",
+    "description_zh": "LINE 逆向工程。本文来自我在 2018 年进行的分析，请注意，部分协议在 2020 年已发生变化。"
+  },
+  "scan-1293777899": {
+    "description_en": "God of War II HD static recompilation — curated work artifacts (lift boundaries, SPU lift sources, scripts, findings). Game data & build artifacts excluded.",
+    "description_zh": "《God of War II HD》静态重编译：整理的工作产物，包括代码提升边界、SPU 代码提升源码、脚本和研究发现。不包含游戏数据与构建产物。"
+  },
+  "scan-243735750": {
+    "description_en": "Reverse engineering the ComfoFan ventilation RF-protocol",
+    "description_zh": "对 ComfoFan 通风系统的射频协议进行逆向工程"
+  },
+  "scan-281991083": {
+    "description_en": "Reverse engineering garmin's bluetooth protocol",
+    "description_zh": "对 Garmin 蓝牙协议进行逆向工程"
+  },
+  "scan-1194209556": {
+    "description_en": "Reverse engineering the R-Net CAN bus protocol for power wheelchair accessibility. DEFCON24 research (2016), open-sourced 2026.",
+    "description_zh": "对 R-Net CAN 总线协议进行逆向工程，以提升电动轮椅的无障碍使用能力。DEFCON 24（2016 年）研究，于 2026 年开源。"
+  },
+  "scan-252373067": {
+    "description_en": "An iOS SpringBoard tweak,double click to start the debug server.",
+    "description_zh": "iOS SpringBoard 插件，双击即可启动调试服务器。"
+  },
+  "scan-838735426": {
+    "description_en": "reverse engineering of the BLE protocol for LEGO Technic Move Hub 88019 (released in LEGO 42176)",
+    "description_zh": "对 LEGO Technic Move Hub 88019 的 BLE 协议进行逆向工程（该设备随 LEGO 42176 套装发布）"
+  },
+  "scan-243523180": {
+    "description_en": "MDB-USB-adapter: An open-source hardware and software solution for converting Multi-Drop Bus (MDB) protocol to USB. Designed for vending machine integration, device emulation, and data analysis. Includes schematics, firmware, and documentation. Licensed under CERN Open Hardware License.",
+    "description_zh": "MDB-USB-adapter：将 Multi-Drop Bus（MDB）协议转换为 USB 的开源硬件与软件方案，面向自动售货机集成、设备仿真和数据分析，包含原理图、固件和文档，采用 CERN 开放硬件许可证。"
+  },
+  "scan-1006242871": {
+    "description_en": "Decompilation of DS Protect",
+    "description_zh": "DS Protect 反编译项目"
+  },
+  "scan-1418867394": {
+    "description_en": "Run your own copy of Cyberpunk 2077 for Mac natively on iPhone and iPad (no game files included)",
+    "description_zh": "在 iPhone 和 iPad 上原生运行你自有的 Mac 版《Cyberpunk 2077》副本（不附带游戏文件）"
+  },
+  "scan-22221970": {
+    "description_en": "Blind Reverse Engineering a Wireless Protocol - or - Amateur Signals Intelligence",
+    "description_zh": "无线协议的盲逆向工程，或称业余信号情报分析"
+  },
+  "scan-1242299244": {
+    "description_en": "Injected iOS dylib companion for VansonMod, bringing a floating memory editor panel into target processes with value scanning, hex browsing, RVA patches, signatures, scripts, and watch overlays.",
+    "description_zh": "VansonMod 的注入式 iOS 动态库配套组件，可在目标进程中加入悬浮内存编辑面板，提供数值扫描、十六进制浏览、RVA 补丁、特征签名、脚本和监视悬浮层。"
+  },
+  "scan-481879437": {
+    "description_en": "Notes and utilities for reverse engineering the Magic Control Technology (MCT) \"Trigger\" USB display adapter protocol.",
+    "description_zh": "用于逆向分析 Magic Control Technology（MCT）“Trigger” USB 显示适配器协议的笔记和工具。"
+  },
+  "scan-942511448": {
+    "description_en": "",
+    "description_zh": ""
+  },
+  "scan-7372408": {
+    "description_en": "Reverse-engineering chirp.io's protocol using the WebAudio API",
+    "description_zh": "使用 WebAudio API 对 chirp.io 的协议进行逆向工程"
+  },
+  "scan-1205056611": {
+    "description_en": "MovieBox Pro app Protocol & Architecture Analysis — reverse engineering research documenting API structure, authentication flow, streaming delivery, and regional content systems discovered via APK decompilation and  traffic analysis.",
+    "description_zh": "MovieBox Pro 应用协议与架构分析：通过 APK 反编译和流量分析开展逆向研究，记录所发现的 API 结构、身份验证流程、流媒体传输和区域内容系统。"
+  },
+  "scan-441478881": {
+    "description_en": "IoT firmware vulnerability analysis tool based on binary code similarity analysis (BCSA)",
+    "description_zh": "基于二进制代码相似性分析（BCSA）的物联网固件漏洞分析工具"
+  },
+  "scan-317959121": {
+    "description_en": "Vent-Axia wired remote protocol analysis & reverse engineering",
+    "description_zh": "Vent-Axia 有线遥控器协议分析与逆向工程"
+  },
+  "scan-1228766880": {
+    "description_en": "Thermal pocket printer - BLE protocol reverse engineering, Python CLI, and web GUI",
+    "description_zh": "便携式热敏打印机的 BLE 协议逆向工程、Python 命令行工具和 Web 图形界面"
+  },
+  "scan-85933651": {
+    "description_en": "Conveniently view and edit the Keychain database on a jailbroken phone.",
+    "description_zh": "方便查看、修改越狱手机上的 Keychain 数据库"
+  },
+  "scan-469257034": {
+    "description_en": "WIP Decompilation of Tactics Ogre: The Knight of Lodis (USA)",
+    "description_zh": "开发中：《Tactics Ogre: The Knight of Lodis》美版反编译项目"
+  },
+  "scan-86676316": {
+    "description_en": "Bbuzz: a bit-aware network protocol fuzzing and reverse engineering framework",
+    "description_zh": "Bbuzz：支持位级处理的网络协议模糊测试与逆向工程框架"
   }
 }

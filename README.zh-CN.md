@@ -109,6 +109,8 @@
 - [Detect It Easy](https://github.com/horsicq/Detect-It-Easy) — 结合格式解析器、签名和可编程启发式规则进行文件识别与静态检查。 **[工具]**
 - [objection](https://github.com/sensepost/objection) — 通过基于 Frida 的命令界面探索运行中的 Android 与 iOS 应用，检查应用存储、内存、运行时对象和插桩后的行为。 **[工具]**
 - [r2frida](https://github.com/nowsecure/r2frida) — 结合 radare2 命令与 Frida 插桩，检查桌面和移动目标中本地或远程进程的内存、符号、类及运行时调用。 **[工具]**
+- [Kaitai Struct 二进制格式描述与解析工具](https://github.com/kaitai-io/kaitai_struct) — 将已描述的二进制布局转换为可复用的文件与网络报文解析器；同一份 .ksy 规范可通过可视化工具检查，并编译为多种语言，便于把逆向获得的格式知识落实为可互操作的实现。 **[工具 · 程序库]**
+- [Wireshark 协议分析工具](https://gitlab.com/wireshark/wireshark) — 将捕获的应用与设备流量解析为协议字段，支持过滤，并由 GUI 与 TShark 共用解析逻辑；自定义解析器可将新识别的报文格式固化下来，辅助比较协议实现。 **[工具]**
 
 <a id="firmware"></a>
 ### Firmware · 固件与硬件
@@ -121,6 +123,8 @@
 - [固件分析与比较工具（FACT）](https://github.com/fkie-cad/FACT_core) — 通过可扩展平台解包和分析固件，使用 Web 界面与 HTTP API 搜索组件内容和分析结果，并比较不同样本。 **[工具]**
 - [OFRAK](https://github.com/redballoonsecurity/ofrak) — 通过资源树图形界面与 Python API，递归识别、解包、分析、修改和重新打包固件及二进制格式，并可接入可选反汇编后端。 **[工具]**
 - [FirmAE](https://github.com/pr0v3rbs/FirmAE) — 仿真路由器与 IP 摄像机固件，检查网络服务和运行时行为，提供自动仿真检查，以及独立的分析、运行和调试模式。 **[工具]**
+- [PulseView 信号与协议分析工具](https://github.com/sigrokproject/pulseview) — 通过 sigrok 的图形前端检查逻辑与模拟波形；协议解码器及分层解码可展示总线消息和更高层的设备操作，便于利用硬件通信记录开展固件与互操作性分析。 **[工具]**
+- [UEFITool 固件镜像分析工具](https://github.com/LongSoft/UEFITool) — 将 UEFI 固件镜像解析为可检查的树状结构，并检查其结构；配套的 UEFIExtract 与 UEFIFind 可提取解析后的内容、查找模式，辅助分析固件组件与厂商格式。 **[工具]**
 
 <a id="agents-and-mcp"></a>
 ### Agents & MCP · Agent 与集成
@@ -305,7 +309,7 @@
 ## 完整仓库索引
 
 <!-- BEGIN REPOSITORY INDEX SUMMARY -->
-已读取 **2,000** 个仓库的 README，当前提供 **1,979** 个浏览条目，明确超出范围的 21 个条目保留在扫描数据中。自动发现的项目与上方精选资源分别维护，未逐项执行测试。
+已读取 **2,500** 个仓库的 README，当前提供 **2,471** 个浏览条目，明确超出范围的 29 个条目保留在扫描数据中。自动发现的项目与上方精选资源分别维护，未逐项执行测试。
 
 [按分类在 GitHub 浏览](docs/repositories/README.zh-CN.md) · [网站搜索](https://awesomerea.org/?view=source-index&lang=zh) · [完整双语索引 JSON](https://awesomerea.org/source-index.json) · [精选目录 JSON](https://awesomerea.org/catalog.json)
 <!-- END REPOSITORY INDEX SUMMARY -->

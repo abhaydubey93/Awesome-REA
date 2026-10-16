@@ -2662,5 +2662,674 @@
   "scan-1006064105": {
     "description_en": "Unpacked Telegram web app for research.",
     "description_zh": "用于研究的已拆包 Telegram Web 应用。"
+  },
+  "scan-1325588165": {
+    "description_en": "TenkenMe Codex — reverse engineering, protocol analysis, runtime debugging, Skills and MCP workflows.",
+    "description_zh": "TenkenMe Codex：逆向工程、协议分析、运行时调试，以及技能与 MCP 工作流。"
+  },
+  "scan-946333640": {
+    "description_en": "iOS SSL Bypass & Real-Time Traffic Monitor – A Frida-based script for bypassing SSL pinning and monitoring network traffic on iOS apps in real-time. Designed for security researchers and ethical testing. 📡🔓",
+    "description_zh": "iOS SSL 绕过与实时流量监控：基于 Frida 的脚本，可绕过 SSL 证书固定并实时监控 iOS 应用的网络流量。面向安全研究人员与合乎伦理的测试。📡🔓"
+  },
+  "scan-755101307": {
+    "description_en": "Python Module for Parsing & Reverse Engineering Mach-O Executables.",
+    "description_zh": "用于解析与逆向分析 Mach-O 可执行文件的 Python 模块。"
+  },
+  "scan-1319368722": {
+    "description_en": "Emulation framework for Android & iOS native libraries",
+    "description_zh": "用于 Android 与 iOS 原生库的仿真框架。"
+  },
+  "scan-1381429219": {
+    "description_en": "Minimal read-only skeleton overlay for UE4 on iOS: Metal + ImGui, Theos tweak",
+    "description_zh": "用于 iOS 上 UE4 的精简只读骨骼叠加显示：Metal + ImGui，采用 Theos 插件。"
+  },
+  "scan-1099738150": {
+    "description_en": "",
+    "description_zh": ""
+  },
+  "scan-1297360000": {
+    "description_en": "AetherVM - Lift. Instrument. Emulate. Recover.",
+    "description_zh": "AetherVM：提升为中间表示、插桩、仿真、恢复。"
+  },
+  "scan-669501527": {
+    "description_en": "A \"reverse engineering\" of the BYD CAN protocol when used with Victron/Venus OS",
+    "description_zh": "对与 Victron/Venus OS 配合使用的比亚迪 CAN 协议进行“逆向工程”。"
+  },
+  "scan-564202399": {
+    "description_en": "This is an industrial dataset contains eight different types of ICS protocols, mainly collected for the evaluation of protocol reverse engineering tools. We hope it can be supplemented in the future.",
+    "description_zh": "包含八种 ICS 协议的工业数据集，主要为评估协议逆向工程工具而收集。希望今后能继续补充。"
+  },
+  "scan-1371811662": {
+    "description_en": "Pokémon Platinum and SoulSilver running natively on the PSP. Bring your own ROM.",
+    "description_zh": "在 PSP 上原生运行《宝可梦 白金》与《宝可梦 魂银》。需自行提供 ROM。"
+  },
+  "scan-1329579078": {
+    "description_en": "iOS kernel exploit toolkit | DarkSword R/W | SSV Bypass | XPF offset verification",
+    "description_zh": "iOS 内核漏洞利用工具集 | DarkSword 读写 | SSV 绕过 | XPF 偏移验证"
+  },
+  "scan-217003884": {
+    "description_en": "Protocol Reverse Engineering Workbench",
+    "description_zh": "协议逆向工程工作台。"
+  },
+  "scan-1336388296": {
+    "description_en": "Firmware reverse engineering of the Elgato Cam Link 4K (USB 0fd9:0066): vendor HID protocol, SPI flash layout, FX3 and ECP5 firmware formats, update path, security analysis, and an independent flashing tool.",
+    "description_zh": "Elgato Cam Link 4K（USB 0fd9:0066）的固件逆向工程：厂商 HID 协议、SPI 闪存布局、FX3 与 ECP5 固件格式、更新路径、安全分析及独立刷写工具。"
+  },
+  "scan-639017923": {
+    "description_en": "Protocol Reverse Engineering Resources",
+    "description_zh": "协议逆向工程资源。"
+  },
+  "scan-1393669082": {
+    "description_en": "Reversing NetEase's Messiah engine on iOS: ECS, Python gameplay layer, telemetry anti-cheat",
+    "description_zh": "逆向分析 iOS 上的网易 Messiah 引擎：ECS、Python 游戏逻辑层及遥测反作弊机制。"
+  },
+  "scan-619154757": {
+    "description_en": "Apple runtime introspection tools",
+    "description_zh": "Apple 平台运行时内省工具。"
+  },
+  "scan-872464181": {
+    "description_en": "Reverse engineering of the Remeha R-Bus protocol",
+    "description_zh": "Remeha R-Bus 协议的逆向工程。"
+  },
+  "scan-1325348097": {
+    "description_en": "USB reverse engineering of the DualSense <-> PS5 protocol (topology, report map, auth handshake) plus a working local accessibility controller middleware.",
+    "description_zh": "DualSense 与 PS5 之间 USB 协议的逆向工程（拓扑、报告映射、认证握手），以及可用的本地无障碍控制器中间件。"
+  },
+  "scan-111709379": {
+    "description_en": "A  reverse engineering of Flash Forge Finder WIFI protocol",
+    "description_zh": "Flash Forge Finder Wi-Fi 协议的逆向工程。"
+  },
+  "scan-1099197905": {
+    "description_en": "macOS port of opainject - ROP-based dylib injection to arm64(e) processes.",
+    "description_zh": "opainject 的 macOS 移植版：基于 ROP 向 arm64(e) 进程注入 dylib。"
+  },
+  "scan-15700953": {
+    "description_en": "Samples of Avatar firmware analysis (including NDSS'14 cases)",
+    "description_zh": "Avatar 固件分析样例，包括 NDSS 2014 的案例。"
+  },
+  "scan-1133146351": {
+    "description_en": "A modern cross-platform tool for reverse engineering frame based protocols like CAN bus, MODBUS and serial.",
+    "description_zh": "用于逆向分析 CAN 总线、MODBUS 和串口等基于帧的协议的现代跨平台工具。"
+  },
+  "scan-1168921509": {
+    "description_en": "Research, firmware analysis, full firmware dump, and root method for the Magcubic HY300 Pro+ (Allwinner H713, Android 11).",
+    "description_zh": "针对 Magcubic HY300 Pro+（Allwinner H713、Android 11）的研究、固件分析、完整固件转储与 root 方法。"
+  },
+  "scan-268371594": {
+    "description_en": "Reverse engineering of the masterbus protocol used by mastervolt products. ",
+    "description_zh": "Mastervolt 产品所用 MasterBus 协议的逆向工程。"
+  },
+  "scan-1341703793": {
+    "description_en": "Reverse-engineering & re-implementation of OpenAI Computer Use macOS plugin for DeepSeek Harness: 10 MCP tools, JSON-RPC wire protocol, native Swift AX/screenshot/input daemon.",
+    "description_zh": "为 DeepSeek Harness 逆向分析并重新实现 OpenAI Computer Use 的 macOS 插件：10 个 MCP 工具、JSON-RPC 通信协议，以及使用 Swift 原生实现的 AX／截图／输入守护进程。"
+  },
+  "scan-1190189556": {
+    "description_en": "Enable AI-driven automated Android dynamic analysis by controlling Frida through the Model Context Protocol for streamlined reverse engineering.",
+    "description_zh": "通过模型上下文协议控制 Frida，实现由 AI 驱动的自动化 Android 动态分析，简化逆向工程流程。"
+  },
+  "scan-502192859": {
+    "description_en": "WIP Decompilation of Summon Night: Craft Sword Monogatari Hajimari no Ishi",
+    "description_zh": "Summon Night: Craft Sword Monogatari Hajimari no Ishi（サモンナイト クラフトソード物語 はじまりの石）的反编译项目，仍在进行中。"
+  },
+  "scan-1208177779": {
+    "description_en": "RadioMaster AX12 hardware reverse engineering — UMBUS protocol spec, native library analysis, device tree, tools, and developer setup guide",
+    "description_zh": "RadioMaster AX12 硬件逆向工程：UMBUS 协议规范、原生库分析、设备树、工具及开发环境配置指南。"
+  },
+  "scan-970016978": {
+    "description_en": "A Python-based tool for analyzing IoT firmware, supporting both filesystem-based and RTOS-based (e.g. FreeRTOS, Zephyr) images. Features include binary header parsing, interrupt vector analysis, string extraction, entropy scanning, and more.",
+    "description_zh": "基于 Python 的物联网固件分析工具，支持基于文件系统和基于 RTOS（如 FreeRTOS、Zephyr）的镜像。功能包括二进制文件头解析、中断向量分析、字符串提取、熵扫描等。"
+  },
+  "scan-1075511577": {
+    "description_en": "A lightweight FLEX loader for iOS apps, built for jailed tweak injection and LiveContainer-style environments, with support for rootless jailbroken devices.",
+    "description_zh": "面向 iOS 应用的轻量级 FLEX 加载器，为未越狱环境中的插件注入及 LiveContainer 类环境而构建，也支持无根越狱设备。"
+  },
+  "scan-487991740": {
+    "description_en": "Re-implementation of the protocol reverse engineering approach FieldHunter",
+    "description_zh": "协议逆向工程方法 FieldHunter 的重新实现。"
+  },
+  "scan-1208003649": {
+    "description_en": "Independent IoT security research, vulnerability disclosures, and PoCs focusing on firmware analysis, hardware interfaces, and cryptographic flaws.",
+    "description_zh": "独立的物联网安全研究、漏洞披露与概念验证，重点涉及固件分析、硬件接口及密码学缺陷。"
+  },
+  "scan-1258106719": {
+    "description_en": "A Claude Code skill for comprehensive UEFI/BIOS firmware security vulnerability analysis. Distills years of BIOS security research expertise into reusable AI capabilities, covering firmware image parsing, deep decompression, microcode extraction, certificate auditing, and final report generation.",
+    "description_zh": "为 Claude Code 定制的 UEFI/BIOS 固件安全漏洞分析技能，将资深 BIOS 安全研究经验整理为可复用的 AI 能力，覆盖固件镜像解析、深度解压、微码提取、证书审计到最终报告输出的完整流程。"
+  },
+  "scan-752091396": {
+    "description_en": "Source code of the paper \"FirmRCA: Towards Post-Fuzzing Analysis on ARM Embedded Firmware with Efficient Event-based Fault Localization\"",
+    "description_zh": "论文《FirmRCA：利用高效的事件驱动故障定位，对 ARM 嵌入式固件进行模糊测试后分析》的源代码。"
+  },
+  "scan-1199562275": {
+    "description_en": "",
+    "description_zh": ""
+  },
+  "scan-1125600": {
+    "description_en": "Firmware analysis console for Magic Lantern",
+    "description_zh": "用于 Magic Lantern 的固件分析控制台。"
+  },
+  "scan-1074985230": {
+    "description_en": "  *Features:*  *Real-time WiFi threat detection* *4 targeted counter-attack methods* (Karma poisoning, Evil twin disruption, etc.) -  *Threat monitoring* - packet analysis -  *Coreymillia & GitHub Copilot Created* - *Based on:* Bruce firmware by @pr3y & team - *Inspiration:* Evil-Cardputer by @7h30th3r0n3 - Feel free to use, modify, and distribute",
+    "description_zh": "功能：实时 Wi-Fi 威胁检测；4 种定向反击方法（Karma 投毒、干扰 Evil Twin 等）；威胁监控；数据包分析。由 Coreymillia 与 GitHub Copilot 创建。基于 @pr3y 及其团队的 Bruce 固件，灵感来自 @7h30th3r0n3 的 Evil-Cardputer。可自由使用、修改和分发。"
+  },
+  "scan-1139035972": {
+    "description_en": "A lightweight controller offering complete control over all 24 RGB zones of Lenovo Legion LOQ series keyboards through Windows Dynamic Lighting, achieving high-frequency LED refresh rates up to 60 Hz.  Built by reverse-engineering the keyboard’s USB protocol using Wireshark packet captures.",
+    "description_zh": "轻量级控制器，通过 Windows 动态照明全面控制联想 Legion LOQ 系列键盘的全部 24 个 RGB 分区，LED 刷新率最高可达 60 Hz。通过 Wireshark 抓包逆向分析键盘 USB 协议而构建。"
+  },
+  "scan-248966780": {
+    "description_en": "A protocol reverse engineering tool for industrial binary protocol based on pin tool",
+    "description_zh": "基于 Pin 工具的工业二进制协议逆向工程工具。"
+  },
+  "scan-937594493": {
+    "description_en": "Reverse engineering of the BLE protocol for the Merkury Innovations Multicolor Matrix LED Display",
+    "description_zh": "Merkury Innovations 多色矩阵 LED 显示屏 BLE 协议的逆向工程。"
+  },
+  "scan-1132033704": {
+    "description_en": "A Ghidra MCP Server for Claude Code - Binary Analysis Made Adorable. Keywords: ghidra, mcp, ghidra-mcp, model-context-protocol, binary-analysis, reverse-engineering, decompiler",
+    "description_zh": "面向 Claude Code 的 Ghidra MCP 服务，让二进制分析也能很可爱。关键词：ghidra、mcp、ghidra-mcp、模型上下文协议、二进制分析、逆向工程、反编译器。"
+  },
+  "scan-1115438469": {
+    "description_en": "Unofficial LOOI Robot BLE toolkit: keyboard control, sensor decoding, telemetry experiments, logs, and a Flutter companion-app roadmap.",
+    "description_zh": "非官方 LOOI Robot BLE 工具集：键盘控制、传感器解码、遥测实验、日志，以及 Flutter 配套应用的开发路线图。"
+  },
+  "scan-1320192131": {
+    "description_en": "Complete Frida script that bypasses 19 layers of Android security including Talsec, freeRASP, PairIP, SSL pinning, root detection, emulator detection, and custom Frida detection mechanisms",
+    "description_zh": "完整的 Frida 脚本，可绕过 Android 的 19 层安全机制，包括 Talsec、freeRASP、PairIP、SSL 证书固定、root 检测、模拟器检测及自定义 Frida 检测机制。"
+  },
+  "scan-1380176491": {
+    "description_en": "Research report on Destiny 2 build 86657: reverse engineering, native systems, protocols, mission reconstruction, methods, evidence, and security engineering.",
+    "description_zh": "关于《命运 2》构建 86657 的研究报告：逆向工程、原生系统、协议、任务重建、方法、证据及安全工程。"
+  },
+  "scan-173511823": {
+    "description_en": "Reverse engineering of proprietary Bluetooth protocol used by Microsoft Band.",
+    "description_zh": "Microsoft Band 所用专有蓝牙协议的逆向工程。"
+  },
+  "scan-1044484574": {
+    "description_en": "The most in depth and advanced arras.io reverse engineering work that is valid post-2022 (after WASM additions to arras.io), including full packet hooking, decoding, access to protocol, multiple parsers for sending and receiving packets, & more.",
+    "description_zh": "面向 2022 年之后版本（即 arras.io 加入 WASM 之后）、最深入且先进的 arras.io 逆向工程工作，包括完整的数据包钩取与解码、协议访问、多种收发数据包解析器等。"
+  },
+  "scan-1009280103": {
+    "description_en": "Advanced Python tool for extracting Protocol Buffer schemas from iOS IPA files. Perfect for reverse engineering, security research, and API analysis. Supports automatic .proto reconstruction, binary analysis, and comprehensive protobuf extraction from any iOS application.",
+    "description_zh": "用于从 iOS IPA 文件提取 Protocol Buffer 模式定义的高级 Python 工具，适用于逆向工程、安全研究和 API 分析。支持自动重建 .proto、二进制分析，以及从任意 iOS 应用全面提取 protobuf。"
+  },
+  "scan-1207678346": {
+    "description_en": "Unlocking the Aula L99 touchscreen as a Stream Deck — reverse engineering the USB protocol to enable custom widgets, app launcher & dynamic displays.",
+    "description_zh": "将 Aula L99 触摸屏解锁为 Stream Deck：通过逆向分析 USB 协议，实现自定义组件、应用启动器及动态显示。"
+  },
+  "scan-882851874": {
+    "description_en": "This tool provides detailed analysis of changes between iOS firmware versions and their potential impact on device functionality.",
+    "description_zh": "详细分析 iOS 固件版本间的变化及其对设备功能潜在影响的工具。"
+  },
+  "scan-1389992310": {
+    "description_en": "App-integrated Blutter: on-device Flutter/Dart AOT reverse engineering for Android (Dart 2.14~3.13, 70 versions)",
+    "description_zh": "集成到应用中的 Blutter：在 Android 设备上进行 Flutter/Dart AOT 逆向工程，覆盖 Dart 2.14～3.13 共 70 个版本。"
+  },
+  "scan-1176806198": {
+    "description_en": "An open-source AI assisted firmware analysis tool",
+    "description_zh": "开源的 AI 辅助固件分析工具。"
+  },
+  "scan-486067488": {
+    "description_en": "Notes and utilities for reverse engineering Agilent PCIe Protocol Analyzers and their host software.",
+    "description_zh": "用于逆向分析 Agilent PCIe 协议分析仪及其主机软件的笔记与实用工具。"
+  },
+  "scan-218334677": {
+    "description_en": "Mimojas Firmware Toolkit for unpacking and analysis firmware images",
+    "description_zh": "Mimoja 的固件工具集，用于解包与分析固件镜像。"
+  },
+  "scan-1187894921": {
+    "description_en": "Traditionally, interacting with VidLink APIs required complex WASM bridges or resource-heavy browser automation. This project changes the game by achieving **100% native Python compatibility**. By reverse-engineering the production encryption keys and implementing the `XSalsa20-Poly1305` protocol in pure Python",
+    "description_zh": "以往，与 VidLink API 交互需要复杂的 WASM 桥接或耗费大量资源的浏览器自动化。本项目通过逆向分析生产环境的加密密钥，并以纯 Python 实现 XSalsa20-Poly1305 协议，实现了 100% 的原生 Python 兼容性。"
+  },
+  "scan-622424020": {
+    "description_en": "A prototype of taint-style vulnerablity discovery method in embedded firmware (SinkTaint), a precise a novel taint-style vulnerability discovery method by employsing backtracking and constraint analysis to achieve high precision.",
+    "description_zh": "嵌入式固件污点式漏洞发现方法 SinkTaint 的原型。这一新方法通过回溯与约束分析实现高精度的漏洞发现。"
+  },
+  "scan-1263322059": {
+    "description_en": "Community reverse-engineering notes for the Ulanzi D100H Dial Creative Controller: HID protocol, Ulanzi Studio internals, and plugin SDK gotchas.",
+    "description_zh": "Ulanzi D100H Dial Creative Controller 的社区逆向工程笔记：HID 协议、Ulanzi Studio 内部机制及插件 SDK 注意事项。"
+  },
+  "scan-724918681": {
+    "description_en": "Reverse analysis and documentation of VEX Robotics internal firmware and APIs.",
+    "description_zh": "VEX Robotics 内部固件与 API 的逆向分析及文档。"
+  },
+  "scan-1275806041": {
+    "description_en": "A hexagonal, adapter-headed reverse-engineering platform — durable RE domain core + disposable protocol heads (MCP first). Sibling to GayHydra (Ghidra fork.)",
+    "description_zh": "采用六边形架构、以适配器作为接口的逆向工程平台：持久的逆向工程领域核心，加上可替换的协议接口（优先支持 MCP）。它是 GayHydra（Ghidra 分支）的姊妹项目。"
+  },
+  "scan-105703547": {
+    "description_en": "Analysis of a Hanover Displays flip-dot display firmware",
+    "description_zh": "Hanover Displays 翻点显示屏固件的分析。"
+  },
+  "scan-187481927": {
+    "description_en": "Reverse engineering of WEB-PDC001 protocol",
+    "description_zh": "WEB-PDC001 协议的逆向工程。"
+  },
+  "scan-73622005": {
+    "description_en": "ASUS ZenBook TouchPads I2C HID Protocol Reverse Engineering",
+    "description_zh": "华硕 ZenBook 触摸板 I2C HID 协议的逆向工程。"
+  },
+  "scan-1195865045": {
+    "description_en": "League of Legends private server emulator for modern client (patch 16.6) - Protocol reverse engineering in progress",
+    "description_zh": "面向现代客户端（补丁 16.6）的《英雄联盟》私服模拟器，协议逆向工程仍在进行中。"
+  },
+  "scan-1416877883": {
+    "description_en": "ReaCut — REA × CapCut: an independent, open-source video editor rebuilt from REA-assisted, authorized local behavior and format research. No copied CapCut proprietary code or assets. Offline desktop app + Codex plugin.",
+    "description_zh": "ReaCut — REA × CapCut：通过 REA 辅助、经授权的本地行为与格式研究，独立重建的开源视频编辑器。未复制 CapCut 的专有代码或素材。包含离线桌面应用与 Codex 插件。"
+  },
+  "scan-503534767": {
+    "description_en": "Seventy5 is a college management application that allows students of MEC (Model Engineering College) to check their attendance, timetable and get personalized suggestions for bunking classes.",
+    "description_zh": "Seventy5 是一款校园管理应用，供 MEC（Model Engineering College）的学生查看出勤记录、课程表，并获得个性化的翘课建议。"
+  },
+  "scan-956208374": {
+    "description_en": "A tool for unpacking and modding GameMaker games such as Undertale or Deltarune.",
+    "description_zh": "用于解包和修改 Undertale、Deltarune 等 GameMaker 游戏的工具。"
+  },
+  "scan-419763819": {
+    "description_en": "Use the Web Bluetooth API to trigger the (no-longer-supported) TrackR Pixel by reverse-engineering its BLE protocol",
+    "description_zh": "通过逆向分析已停止支持的 TrackR Pixel 的 BLE 协议，使用 Web Bluetooth API 触发设备。"
+  },
+  "scan-1051505994": {
+    "description_en": "AOL Protocol Wiretap Tool - Packet capture and analysis for AOL protocol reverse engineering",
+    "description_zh": "AOL 协议 Wiretap 工具：用于 AOL 协议逆向工程的数据包捕获与分析。"
+  },
+  "scan-926324028": {
+    "description_en": "BAP Reverse Engineering (Control and Display Protocol) Bedien-und Anzeigeprotokoll ",
+    "description_zh": "BAP（Bedien-und Anzeigeprotokoll，控制与显示协议）的逆向工程。"
+  },
+  "scan-430808146": {
+    "description_en": "Code for experimentation of \"Protocol Reverse Engineering Using Neural Networks\"",
+    "description_zh": "论文《利用神经网络进行协议逆向工程》的实验代码。"
+  },
+  "scan-1122659436": {
+    "description_en": "A powerful MCP (Model Context Protocol) server for browser debugging and reverse engineering. Provides AI coding assistants with comprehensive browser automation, JavaScript debugging, and network analysis capabilities.",
+    "description_zh": "用于浏览器调试与逆向工程的强大 MCP（模型上下文协议）服务，为 AI 编程助手提供全面的浏览器自动化、JavaScript 调试及网络分析能力。"
+  },
+  "scan-1339751761": {
+    "description_en": "Reverse engineering Lenovo IdeaPad Gaming 3 15ARH05 firmware: BIOS extraction, AMD PSP analysis, QEMU tracing, IFR recovery, and hidden Advanced menu research.",
+    "description_zh": "联想 IdeaPad Gaming 3 15ARH05 固件的逆向工程：BIOS 提取、AMD PSP 分析、QEMU 跟踪、IFR 恢复及隐藏高级菜单研究。"
+  },
+  "scan-662594654": {
+    "description_en": "Reverse engineering the Fanimation FanSync protocol / cloud configuration",
+    "description_zh": "Fanimation FanSync 协议与云端配置的逆向工程。"
+  },
+  "scan-1317285561": {
+    "description_en": "Use AI to automate reverse engineering and protocol analysis as much as possible, and to assist with reviewing large-scale obfuscated codebases. Clone or mirror the repository promptly if needed, in case of a DMCA takedown.",
+    "description_zh": "尽可能使用 AI 自动完成逆向工程与协议分析，并辅助审查大规模混淆代码库。如有需要，请及时克隆或镜像仓库，以防遭到 DMCA 下架。"
+  },
+  "scan-1165011374": {
+    "description_en": "Reverse engineering of Edgecore AS5610-52X (BCM56846/Trident+) ASIC: register maps, table formats, SerDes init, L2/L3 write paths, and S-channel protocol",
+    "description_zh": "Edgecore AS5610-52X（BCM56846/Trident+）ASIC 的逆向工程：寄存器映射、表格式、SerDes 初始化、L2/L3 写入路径及 S-channel 协议。"
+  },
+  "scan-307388577": {
+    "description_en": "Protocol reverse engineering and simple communication tool for GECO G-422 range of solar pump controllers, used also (but not only) in the Hewalex ZPS-18e ",
+    "description_zh": "针对 GECO G-422 系列太阳能水泵控制器的协议逆向工程与简单通信工具；Hewalex ZPS-18e 等产品也使用这些控制器。"
+  },
+  "scan-1147193845": {
+    "description_en": "Multi-tool RF analysis firmware for M5Stack Cardputer - WiFi scanner, BLE scanner, ultrasonic detector, signal   mapper, and tracker detector",
+    "description_zh": "适用于 M5Stack Cardputer 的多功能射频分析固件：Wi-Fi 扫描器、BLE 扫描器、超声波检测器、信号测绘工具及追踪器检测器。"
+  },
+  "scan-640417065": {
+    "description_en": "Notes and documentation on reverse engineering the SteelSeries Arctis Nova Pro Wireless USB Protocol",
+    "description_zh": "SteelSeries Arctis Nova Pro Wireless USB 协议逆向工程的笔记与文档。"
+  },
+  "scan-41506630": {
+    "description_en": "FWRF is a open source tool for firmware web-side analysis.",
+    "description_zh": "FWRF 是用于固件 Web 端分析的开源工具。"
+  },
+  "scan-284018099": {
+    "description_en": "Reverse engineering a 1.8.9 Minecraft server, to mimic it's network protocol",
+    "description_zh": "逆向分析 Minecraft 1.8.9 服务端，以模拟其网络协议。"
+  },
+  "scan-980764419": {
+    "description_en": "Reverse engineering the USB protocol of the Zuoya GMK87 keyboard",
+    "description_zh": "Zuoya GMK87 键盘 USB 协议的逆向工程。"
+  },
+  "scan-68024833": {
+    "description_en": "Reverse engineering of splix.io protocol",
+    "description_zh": "splix.io 协议的逆向工程。"
+  },
+  "scan-113997748": {
+    "description_en": "Analysis and firmware suggestion for cheap chinese USB2CAN adapter based on STM32F103",
+    "description_zh": "针对基于 STM32F103 的低价国产 USB2CAN 适配器的分析与固件建议。"
+  },
+  "scan-1335575731": {
+    "description_en": "Reverse engineering the Shure MV7: vendor HID console, PSoC 4 firmware, ADAU1761 SigmaDSP, and the firmware update protocol",
+    "description_zh": "Shure MV7 的逆向工程：厂商 HID 控制台、PSoC 4 固件、ADAU1761 SigmaDSP 及固件更新协议。"
+  },
+  "scan-878938102": {
+    "description_en": "A curated list of awesome camera hacking projects: Hardware and Protocol Analysis, Firmware Reverse Engineering, and more...",
+    "description_zh": "精选的摄像头破解与改造项目列表，涵盖硬件与协议分析、固件逆向工程等。"
+  },
+  "scan-1260183372": {
+    "description_en": "Notes and Python tools for the Steam Controller 2 (Triton): HID reports, the firmware-update protocol, and firmware-blob analysis.",
+    "description_zh": "Steam Controller 2（Triton）的笔记与 Python 工具：HID 报告、固件更新协议及固件二进制文件分析。"
+  },
+  "scan-1414467356": {
+    "description_en": "DIRK is open-source Red/Blue Team firmware for the M5Stack Cardputer ADV, featuring dual-band Wi-Fi with LAB5 MonsterC5, Bluetooth analysis, LoRa and IR tools, GPS wardriving via the official M5Stack LoRa/GPS Cap, and authorized security-testing labs.",
+    "description_zh": "DIRK 是面向 M5Stack Cardputer ADV 的开源红蓝队固件，提供基于 LAB5 MonsterC5 的双频 Wi-Fi、蓝牙分析、LoRa 与红外工具、通过官方 M5Stack LoRa/GPS Cap 进行 GPS 无线网络巡测，以及经授权的安全测试实验环境。"
+  },
+  "scan-1383558651": {
+    "description_en": "Matching decompilation of Kingdom Hearts Re:coded (US/EU). EU: 89.58% C code and 100.00% DATA, byte-exact.",
+    "description_zh": "《王国之心 Re:coded》（美版／欧版）的匹配反编译项目。欧版 C 代码完成 89.58%，数据完成 100.00%，达到逐字节一致。"
+  },
+  "scan-1019680989": {
+    "description_en": "Firmware analysis and modification tools. Bypass security restrictions, install custom launchers, and safely modify locked-down Chinese projector devices with comprehensive backup and recovery scripts.",
+    "description_zh": "固件分析与修改工具。通过完整的备份与恢复脚本，绕过安全限制、安装自定义启动器，并安全修改受到锁定限制的中国投影设备。"
+  },
+  "scan-1026398033": {
+    "description_en": "MAC-577IF2-E Analysis Tools - A collection of tools for analyzing and extracting firmware from Mitsubishi MAC-577IF2-E WiFi adapters",
+    "description_zh": "MAC-577IF2-E 分析工具：用于分析与提取三菱 MAC-577IF2-E Wi-Fi 适配器固件的一组工具。"
+  },
+  "scan-1224910934": {
+    "description_en": "“Full SAAB/GM diagnostic suite with Python engine, CAN tools, GDS2/Tech2Win integrations, SPS workflows, firmware packages, drivers, VM environments, documentation, and automation scripts. Includes UI/TUI modules, J2534 support, data analysis tools, and complete diagnostic/tuning workflows.”",
+    "description_zh": "完整的 SAAB/GM 诊断套件，包含 Python 引擎、CAN 工具、GDS2/Tech2Win 集成、SPS 工作流、固件包、驱动程序、虚拟机环境、文档与自动化脚本。还包括 UI/TUI 模块、J2534 支持、数据分析工具，以及完整的诊断与调校工作流。"
+  },
+  "scan-1276628938": {
+    "description_en": "Automated Static, Hardware-Rooted & Dynamic HIL Security Analysis for Bare-Metal ESP32 (Xtensa & RISC-V) Firmware",
+    "description_zh": "针对裸机 ESP32（Xtensa 与 RISC-V）固件的自动化静态安全分析、以硬件为基础的安全分析及动态硬件在环（HIL）安全分析。"
+  },
+  "scan-1022651895": {
+    "description_en": "A desktop tool that allows injecting DLLs, hooking WinAPI functions like CreateFileW, and modifying process behavior at runtime — designed for developers, testers, and reverse engineers.",
+    "description_zh": "桌面工具，可注入 DLL、钩取 CreateFileW 等 WinAPI 函数，并在运行时修改进程行为，面向开发人员、测试人员与逆向工程师。"
+  },
+  "scan-1389607400": {
+    "description_en": "Work-in-progress matching decompilation of Kingdom Hearts Re:coded (Nintendo DS)",
+    "description_zh": "《王国之心 Re:coded》（Nintendo DS）的匹配反编译项目，仍在进行中。"
+  },
+  "scan-1412203943": {
+    "description_en": "OnePlus Watch 3 (OPWWE251) Firmware Analysis, DTS Dump & Kernel Symbols",
+    "description_zh": "OnePlus Watch 3（OPWWE251）的固件分析、DTS 转储与内核符号。"
+  },
+  "scan-1245963631": {
+    "description_en": "Scriptable toolkit for backing up, extracting, and analyzing Android ROM images. Supports forensic analysis, device recovery, and firmware flashing operations with Python automation.",
+    "description_zh": "可编写脚本的 Android ROM 镜像备份、提取与分析工具集，通过 Python 自动化支持取证分析、设备恢复和固件刷写操作。"
+  },
+  "scan-195548660": {
+    "description_en": "A firmware analysis tool for lightweight IoT firmware",
+    "description_zh": "面向轻量级物联网固件的固件分析工具。"
+  },
+  "scan-562835739": {
+    "description_en": "Static analysis and reverse engineering tool for iOS/macOS firmware files built for my final-year University project",
+    "description_zh": "为大学毕业设计构建的 iOS/macOS 固件文件静态分析与逆向工程工具。"
+  },
+  "scan-1187749300": {
+    "description_en": "AI-assisted embedded and IoT development platform for hardware design, firmware generation, and local project analysis.",
+    "description_zh": "面向嵌入式与物联网开发的 AI 辅助平台，用于硬件设计、固件生成和本地工程分析。"
+  },
+  "scan-1183868772": {
+    "description_en": "Navee ST3 Pro reverse-engineering archive: BLE/UART protocol, Android controller app, firmware analysis, post-mortem (software speed unlock not feasible)",
+    "description_zh": "Navee ST3 Pro 逆向工程档案：BLE/UART 协议、Android 控制应用、固件分析及事后总结（无法通过软件解除速度限制）。"
+  },
+  "scan-932880264": {
+    "description_en": "Explore embedded & IoT security: secure firmware, device hardening, encryption, and vulnerability analysis. Practical examples for secure IoT development.",
+    "description_zh": "探索嵌入式与物联网安全：安全固件、设备加固、加密及漏洞分析，并提供安全物联网开发的实用示例。"
+  },
+  "scan-550579727": {
+    "description_en": "Accelerating Command Injection Vulnerability Discovery in Embedded Firmware with Static Backtracking Analysis",
+    "description_zh": "通过静态回溯分析加速发现嵌入式固件中的命令注入漏洞。"
+  },
+  "scan-893254460": {
+    "description_en": " Platform: Windows/Mac/Linux. Scripting: Various, no restrictions; customized as needed. Tasks: Desktop checks, software cracking, AV evasion, privilege execution, firmware read/write, password checks, Wi-Fi scans, cloud security, log analysis, NLP, and data analysis in humanities/social sciences. ",
+    "description_zh": "平台：Windows/Mac/Linux。脚本语言多样、无限制，可按需定制。任务包括桌面检查、软件破解、杀毒软件规避、特权执行、固件读写、密码检查、Wi-Fi 扫描、云安全、日志分析、自然语言处理，以及人文社科数据分析。"
+  },
+  "scan-254921829": {
+    "description_en": "Analysis of the update of TPM firmware",
+    "description_zh": "TPM 固件更新的分析。"
+  },
+  "scan-368066173": {
+    "description_en": "A list of script tools, informational resources, and analysis reports for LG KDZ firmware files.",
+    "description_zh": "用于 LG KDZ 固件文件的脚本工具、信息资源与分析报告列表。"
+  },
+  "scan-1095949116": {
+    "description_en": "Binary Ninja plugin adding C166/ST10 architecture support for embedded firmware. Enables accurate disassembly and decompilation of C166/ST10 binaries for security analysis and reverse engineering.",
+    "description_zh": "为嵌入式固件添加 C166/ST10 架构支持的 Binary Ninja 插件，可准确反汇编与反编译 C166/ST10 二进制，用于安全分析和逆向工程。"
+  },
+  "scan-1178913237": {
+    "description_en": "Curated collection of 1000 commercial IoT device firmwares with verified download links for security research, penetration testing, and firmware analysis.",
+    "description_zh": "精选的 1000 份商用物联网设备固件合集，附经核验的下载链接，供安全研究、渗透测试与固件分析使用。"
+  },
+  "scan-434342315": {
+    "description_en": "A decompiler for Sexy Hiking",
+    "description_zh": "Sexy Hiking 的反编译器。"
+  },
+  "scan-1245925053": {
+    "description_en": "Purple is a dual-mode Cardputer ADV firmware for Red Team and Blue Team field workflows, combining wireless recon, RF visibility, GPS tools, IR/NFC utilities, and on-device analysis in a compact handheld platform.",
+    "description_zh": "Purple 是用于红蓝队现场工作流的双模式 Cardputer ADV 固件，将无线侦察、射频观测、GPS 工具、红外／NFC 实用工具及设备端分析集成在紧凑的手持平台中。"
+  },
+  "scan-1415810215": {
+    "description_en": "Qi-NX — reverse-engineering agents for DeepSeek Harness A reverse-engineering toolkit for DSH: three selectable Agent presets, an MCP server exposing the analysis tools, and a dependency-light Python toolkit for binaries and firmware.",
+    "description_zh": "Qi-NX：面向 DeepSeek Harness 的逆向工程智能体。该 DSH 逆向工程工具集包含三个可选智能体预设、提供分析工具的 MCP 服务，以及用于二进制和固件的轻依赖 Python 工具集。"
+  },
+  "scan-943188435": {
+    "description_en": "A semi-powerful mod tool/decompiler for YYC games.",
+    "description_zh": "面向 YYC 游戏、功能尚可的模组工具／反编译器。"
+  },
+  "scan-1359118632": {
+    "description_en": "Firmware extraction toolkit - unpacks and enumerates embedded images for IoT security analysis.",
+    "description_zh": "固件提取工具集，可解包并枚举嵌入式镜像，用于物联网安全分析。"
+  },
+  "scan-13010571": {
+    "description_en": "Localization system for ZigBee networks. Based on the analysis of RSSI, estimates the positions of the mobile nodes. Firmware in C for the ZigBee modules. Java service produces results in a accessible webservlet, the user can manage the WSN network.",
+    "description_zh": "ZigBee 网络定位系统，根据 RSSI 分析估算移动节点的位置。ZigBee 模块的固件使用 C 编写；Java 服务通过可访问的 Web Servlet 提供结果，用户可管理无线传感器网络（WSN）。"
+  },
+  "scan-989451348": {
+    "description_en": "A work-in-progress decompilation of Shin'en Multimedia's GAX Sound Engine",
+    "description_zh": "Shin'en Multimedia 的 GAX 声音引擎反编译项目，仍在进行中。"
+  },
+  "scan-549446279": {
+    "description_en": "(Undergraduate Capstone Project) Yasat -  Yet Another Static Analysis Tool to detect cryptographic API misuses in firmware",
+    "description_zh": "本科毕业设计 Yasat（Yet Another Static Analysis Tool）：用于检测固件中密码学 API 误用的静态分析工具。"
+  },
+  "scan-1260097842": {
+    "description_en": "A free (as in freedom) AI assisted firmware analysis tool",
+    "description_zh": "自由软件意义上的 AI 辅助固件分析工具。"
+  },
+  "scan-177866298": {
+    "description_en": "Automatic Firmware Analysis of Embedded Linux Devices as Preparation for Security Testing / Fuzzing",
+    "description_zh": "自动分析嵌入式 Linux 设备固件，为安全测试与模糊测试作准备。"
+  },
+  "scan-8760554": {
+    "description_en": "This projects is about the analysis and modiﬁcation of the ﬁrmware of the Analog Devices AD6900 (LeMans) Baseband processor used in the Inmarsat IsatPhone Pro satellite terminal.",
+    "description_zh": "分析并修改 Inmarsat IsatPhone Pro 卫星终端所用 Analog Devices AD6900（LeMans）基带处理器的固件。"
+  },
+  "scan-45563573": {
+    "description_en": "Most recent PS4 symbols by firmware for analysis and convenience",
+    "description_zh": "按固件版本整理的最新 PS4 符号，便于分析与使用。"
+  },
+  "scan-984478591": {
+    "description_en": "Official implementation of **WebUIBench: A Comprehensive Benchmark for Evaluating Multimodal Large Language Models in WebUI-to-Code (ACL 2025)**",
+    "description_zh": "WebUIBench（ACL 2025）官方实现：用于评估多模态大语言模型将网页界面转换为代码能力的综合基准。"
+  },
+  "scan-483096219": {
+    "description_en": " The firmware for the Wyze Cam V3 is hosted on the website of its manufacturer for anyone to download. We plan to download the firmware and perform a variety of analysis techniques on it until we have a solid understanding of the device and/or have identified potentially exploitable vulnerabilitie",
+    "description_zh": "Wyze Cam V3 的固件托管在制造商网站上，供任何人下载。计划下载固件并运用多种分析技术，直至充分理解设备，或识别出可能被利用的漏洞。"
+  },
+  "scan-138530901": {
+    "description_en": "A Flutter frontend for MANIAC.",
+    "description_zh": "MANIAC 的 Flutter 前端。"
+  },
+  "scan-1367896393": {
+    "description_en": "Homebrew tap for moria (firmware identification/extraction) and mithril (firmware content analysis)",
+    "description_zh": "用于 moria（固件识别／提取）和 mithril（固件内容分析）的 Homebrew 软件源。"
+  },
+  "scan-66455036": {
+    "description_en": "It is a simple ecos ROMFS unpacker for forensics and firmware analysis needs",
+    "description_zh": "简单的 eCos ROMFS 解包工具，满足取证与固件分析需求。"
+  },
+  "scan-1192904668": {
+    "description_en": " Purpose-built reverse engineering platform for Nintendo Switch firmware analysis. Parses NSO binaries, decodes AArch64 instructions, maps syscalls, and diffs firmware versions — designed to find what Ghidra can't. ",
+    "description_zh": "专为 Nintendo Switch 固件分析构建的逆向工程平台，可解析 NSO 二进制、解码 AArch64 指令、映射系统调用并比较固件版本，旨在发现 Ghidra 找不到的内容。"
+  },
+  "scan-1327007844": {
+    "description_en": "A structured reverse-engineering field notebook for binary analysis, exploitation, mobile, firmware, wireless, and defensive research.",
+    "description_zh": "结构化的逆向工程实践笔记，涵盖二进制分析、漏洞利用、移动端、固件、无线及防御研究。"
+  },
+  "scan-1273539675": {
+    "description_en": "Monitor mode & 802.11 packet injection on a stock Android 13 GKI kernel — no reflash. Cross-built cfg80211/mac80211/rtl8xxxu loadable modules (Clang 14, LTO/CFI) + RTL8188FU OTG adapter, driven by a Flutter app. Includes an RTL8188F backport and analysis of Qualcomm WiFi injection limits.",
+    "description_zh": "在原厂 Android 13 GKI 内核上实现监听模式与 802.11 数据包注入，无需重新刷机。交叉编译的 cfg80211/mac80211/rtl8xxxu 可加载模块（Clang 14、LTO/CFI）配合 RTL8188FU OTG 适配器，由 Flutter 应用控制。包含 RTL8188F 向旧版本的移植，以及对高通 Wi-Fi 注入限制的分析。"
+  },
+  "scan-1282617667": {
+    "description_en": "An open-source decompilation and native PC port project for The Sims 3 (Nintendo DS).",
+    "description_zh": "《模拟人生 3》（Nintendo DS）的开源反编译与原生 PC 移植项目。"
+  },
+  "scan-600004127": {
+    "description_en": "Decompilation of Pokémon Emerald",
+    "description_zh": "《宝可梦 绿宝石》的反编译项目。"
+  },
+  "scan-439068303": {
+    "description_en": "fire red with randomly generated pokémon",
+    "description_zh": "具有随机生成宝可梦的《宝可梦 火红》。"
+  },
+  "scan-1309137840": {
+    "description_en": "Local web IDE for Pokemon GBA ROM hacking. Scans a decomp project into one manifest, edits maps, trainers, species and scripts visually or by AI agent, then compiles a playable .gba.",
+    "description_zh": "用于宝可梦 GBA ROM 修改的本地 Web IDE。将反编译工程扫描为统一清单，以可视化方式或通过 AI 智能体编辑地图、训练家、种类和脚本，然后编译为可玩的 .gba 文件。"
+  },
+  "scan-1332461750": {
+    "description_en": "A heavily AI-assisted decomp experiment",
+    "description_zh": "大量借助 AI 的反编译实验。"
+  },
+  "scan-1212379718": {
+    "description_en": "Decompilation of Pokémon Ranger: Shadows of Almia",
+    "description_zh": "Pokémon Ranger: Shadows of Almia 的反编译项目。"
+  },
+  "scan-1300588133": {
+    "description_en": "Generate layered Frida TLS testing agents from Flutter engine binaries.",
+    "description_zh": "从 Flutter 引擎二进制生成分层的 Frida TLS 测试代理。"
+  },
+  "scan-1416804208": {
+    "description_en": "Matching decompilation of Animal Crossing: Wild World (Korea, NDS) ARM9 game code",
+    "description_zh": "《动物森友会：野生世界》（韩版，NDS）ARM9 游戏代码的匹配反编译项目。"
+  },
+  "scan-1361907170": {
+    "description_en": "Free, open, offline viewer for the HND-NE3 / NATFIRE NE3 wireless ear camera (Android, macOS, Windows, Linux)",
+    "description_zh": "HND-NE3／NATFIRE NE3 无线耳道摄像头的免费、开放、离线查看器，支持 Android、macOS、Windows 与 Linux。"
+  },
+  "scan-1413602263": {
+    "description_en": "A work-in-progress matching decompilation of Mario & Luigi: Bowser's Inside Story (Nintendo DS)",
+    "description_zh": "《马力欧与路易吉 RPG：库巴体内大冒险》（Nintendo DS）的匹配反编译项目，仍在进行中。"
+  },
+  "scan-1413448591": {
+    "description_en": "Matching decompilation of Rayman Raving Rabbids (Nintendo DS, USA)",
+    "description_zh": "《雷曼 疯狂兔子》（Nintendo DS 美版）的匹配反编译项目。"
+  },
+  "scan-1208744047": {
+    "description_en": "",
+    "description_zh": ""
+  },
+  "scan-1421473933": {
+    "description_en": "Awesome Reverse Engineering Anything: tools, projects, case studies and research papers for websites, games, apps, binaries and firmware.",
+    "description_zh": "Awesome Reverse Engineering Anything：面向网站、游戏、应用、二进制与固件的工具、项目、案例研究及研究论文。"
+  },
+  "scan-1299241668": {
+    "description_en": "Qinlin (亲邻开门) remote network door-open client + Docker gateway (authorized use only)",
+    "description_zh": "亲邻开门（Qinlin）远程网络开门客户端与 Docker 网关，仅限授权使用。",
+    "english_retains_name": true
+  },
+  "scan-435215912": {
+    "description_en": "Reverse engineered SchoolSoft API used by the SchoolSoft mobile app.",
+    "description_zh": "通过逆向工程获得的 SchoolSoft 移动应用所用 API。"
+  },
+  "scan-854059790": {
+    "description_en": "👾 Forked from https://github.com/rh-hideout/pokeemerald-expansion — Decompilation of Pokémon Emerald — https://github.com/EIGHTFINITE/pokeemerald-expansion/tree/master | https://github.com/EIGHTFINITE/pokeemerald-expansion/blob/master/INSTALL.md | https://github.com/EIGHTFINITE/pokeemerald-expansion/blob/master/CHANGELOG.md",
+    "description_zh": "👾 派生自 https://github.com/rh-hideout/pokeemerald-expansion 的《宝可梦 绿宝石》反编译项目 — https://github.com/EIGHTFINITE/pokeemerald-expansion/tree/master | https://github.com/EIGHTFINITE/pokeemerald-expansion/blob/master/INSTALL.md | https://github.com/EIGHTFINITE/pokeemerald-expansion/blob/master/CHANGELOG.md"
+  },
+  "scan-1319438150": {
+    "description_en": "Save editor for DragonSword Awakening (2026): decrypts the SQLCipher save, edits currency, items, cooking recipes, costumes, mounts and titles in a local browser UI. Pure Go, no CGO, single static binary for Linux & Windows.",
+    "description_zh": "DragonSword Awakening（2026）的存档编辑器：解密 SQLCipher 存档，并在本地浏览器界面编辑货币、物品、烹饪配方、服装、坐骑与称号。使用纯 Go，无需 CGO，为 Linux 与 Windows 提供单个静态二进制文件。"
+  },
+  "scan-494508622": {
+    "description_en": "List of Dart SDK snapshot hashes, Engine commits and Flutter versions",
+    "description_zh": "Dart SDK 快照哈希、引擎提交与 Flutter 版本列表。"
+  },
+  "scan-886214131": {
+    "description_en": "A Python-based predictor using z3 to reverse-engineer and predict random values generated by Math.random in V8 with 100% accuracy. This script leverages a series of Math.random() values (min 5) to deduce future states.",
+    "description_zh": "基于 Python 的预测器，使用 Z3 逆向分析并以 100% 准确率预测 V8 中 Math.random 生成的随机值。脚本使用一组 Math.random() 值（至少 5 个）推导后续状态。"
+  },
+  "scan-485301935": {
+    "description_en": "Solver for the MKD version of Wordle",
+    "description_zh": "马其顿语版 Wordle 的求解器。"
+  },
+  "scan-1368398651": {
+    "description_en": "Reflection extraction and analysis for Unreal Engine, Unity IL2CPP and Unity Mono. No engine-version table: every offset is derived at runtime, and Unity metadata is solved by constraint rather than parsed with a per-version struct table.",
+    "description_zh": "面向 Unreal Engine、Unity IL2CPP 与 Unity Mono 的反射信息提取和分析工具。不使用引擎版本表：每个偏移均在运行时推导，Unity 元数据通过约束求解，而非使用各版本的结构体表解析。"
+  },
+  "scan-1416097004": {
+    "description_en": "Dragon Quest IX (EU) research: Nintendo DS decompilation tooling, ARM/Thumb static recompilation, and experimental SDL2/Godot native runtime. No game data.",
+    "description_zh": "《勇者斗恶龙 IX》（欧版）研究：Nintendo DS 反编译工具、ARM/Thumb 静态重编译及实验性的 SDL2/Godot 原生运行时。不含游戏数据。"
+  },
+  "scan-1119125423": {
+    "description_en": "Browser-based x86-64 assembly visualizer: instruction breakdown, stack frame behavior, and control flow in AT&T syntax. Built as a learning companion for Harvard CS61.",
+    "description_zh": "基于浏览器的 x86-64 汇编可视化工具，使用 AT&T 语法展示指令拆解、栈帧行为及控制流，为哈佛 CS61 课程的辅助学习而构建。"
+  },
+  "scan-288796511": {
+    "description_en": "",
+    "description_zh": ""
+  },
+  "scan-1415251170": {
+    "description_en": "Reverse-engineered anatomy of the Grok Bot avatar animation engine: an interactive explainer and animation editor using procedural SVG, Bezier clipping, springs, and spherical eyes, with zero dependencies and no build step.",
+    "description_zh": "Grok Bot 头像动画引擎的逆向解剖：可交互讲解页与动画编辑器，采用程序化 SVG、贝塞尔裁剪、弹簧及球面眼睛，零依赖、无需构建。"
+  },
+  "scan-1303466171": {
+    "description_en": "Inspect, analyze, and debug JavaScript bundles from webpack, rspack, rollup, esbuild, and Vite.",
+    "description_zh": "检查、分析和调试由 webpack、rspack、rollup、esbuild 与 Vite 生成的 JavaScript 包。"
+  },
+  "scan-1419988825": {
+    "description_en": "A browser port of SimTower with recovered Win3.x simulation logic and original assets",
+    "description_zh": "SimTower 的浏览器移植版，使用恢复的 Win3.x 模拟逻辑与原始素材。"
+  },
+  "scan-1230519832": {
+    "description_en": "Reverse engineering framework for feature management",
+    "description_zh": "用于功能管理的逆向工程框架。"
+  },
+  "scan-1304827279": {
+    "description_en": "Recover the encryption password of Unity Easy Save 3 (.es3) save files - extracts password candidates from dnlib/DLL/.assets files and brute-forces AES, with a bilingual (EN/ZH) Tkinter GUI.",
+    "description_zh": "恢复 Unity Easy Save 3（.es3）存档文件的加密密码：从 dnlib／DLL／.assets 文件提取候选密码并对 AES 进行暴力尝试，提供中英双语 Tkinter 图形界面。"
+  },
+  "scan-1161826000": {
+    "description_en": "Interactive cybersecurity learning platform & reference manual — 9 core modules, 171 atomic lessons, 28 CTF challenges, 6 security tools, bilingual EN/ZH & AI tutor.",
+    "description_zh": "交互式网络安全学习平台与参考手册：9 个核心模块、171 节独立课程、28 个 CTF 挑战、6 个安全工具，支持中英双语及 AI 导师。"
+  },
+  "scan-1126392619": {
+    "description_en": "🎨 AI Image Analyzer - Reverse engineer any AI artwork to discover prompts, models & settings. Built with Gemini Vision ",
+    "description_zh": "🎨 AI 图像分析器：逆向分析任意 AI 画作，发现提示词、模型及设置。使用 Gemini Vision 构建。"
+  },
+  "scan-1115280544": {
+    "description_en": "A decompilation project of Spyro: Shadow Legacy for the Nintendo DS.",
+    "description_zh": "Nintendo DS 游戏 Spyro: Shadow Legacy 的反编译项目。"
+  },
+  "scan-1380691335": {
+    "description_en": "See what a mobile game's next update added — before it goes live.",
+    "description_zh": "在手游下一次更新上线前，查看其中新增的内容。"
+  },
+  "scan-1411406852": {
+    "description_en": "Alley Cat (1984): byte-exact disassembly, static JavaScript translation, and HD graphics with a live CGA comparison slider.",
+    "description_zh": "Alley Cat（1984）：逐字节精确的反汇编、静态 JavaScript 转译，以及可通过实时滑块与 CGA 画面对比的高清图形。"
+  },
+  "scan-286267753": {
+    "description_en": "📶 A reverse-engineered administration API for Livebox routers, for querying or modifying data such as Wi-Fi, NAT, softphone, DNS, and firewall configuration.",
+    "description_zh": "📶 通过逆向工程实现的 Livebox 路由器管理 API，可查询或修改 Wi-Fi、NAT、软电话、DNS、防火墙等配置数据。"
+  },
+  "scan-1293409257": {
+    "description_en": "One-click Android TLS interception & traffic-capture framework for Flutter and native apps — auto frida, universal SSL unpinning, anti-detection, self-recovery, in-tool HTTP+WebSocket MITM capture.",
+    "description_zh": "面向 Flutter 与原生应用的一键式 Android TLS 拦截与流量捕获框架：自动使用 Frida、通用 SSL 证书固定绕过、反检测、自恢复，以及工具内置的 HTTP 与 WebSocket 中间人流量捕获。"
+  },
+  "scan-1335177907": {
+    "description_en": "A reverse-engineered downloader for the QQ Music web player (VMP signatures and ag-1 encryption extraction).",
+    "description_zh": "QQ 音乐网页版逆向下载工具（VMP 签名与 ag-1 加密提取）。"
+  },
+  "scan-1268976503": {
+    "description_en": "Browser re-creation of SimJesse!, a 1993 classic Mac speech toy, with recovered sounds, artwork, and 68k speech logic",
+    "description_zh": "1993 年经典 Mac 语音玩具 SimJesse! 的浏览器重制版，使用恢复的声音、图形和 68k 语音逻辑。"
+  },
+  "scan-1396542040": {
+    "description_en": "Full-stack C decompilation (ARM9/ARM7/overlays, 7,140 functions), asset extraction pipelines and hardware research for Dragon Quest Monsters: Joker (NDS). Contact: fanta@dqmj1.wiki",
+    "description_zh": "《勇者斗恶龙怪兽篇 Joker》（NDS）的全栈 C 反编译（ARM9／ARM7／覆盖模块，7,140 个函数）、素材提取流程及硬件研究。联系方式：fanta@dqmj1.wiki"
+  },
+  "scan-1124608314": {
+    "description_en": "Recovers the original source code from a Dart VM snapshot (kernel_blob.bin), generated on apps built in DEBUG mode",
+    "description_zh": "从以 DEBUG 模式构建的应用所生成的 Dart VM 快照（kernel_blob.bin）恢复原始源代码。"
+  },
+  "scan-1374316928": {
+    "description_en": "Spicetify extension that removes Spotify desktop ads at the source: ad delivery, engine state and orchestration — not volume muting. Includes verification tooling.",
+    "description_zh": "Spicetify 扩展，通过广告投放、引擎状态与编排等源头机制移除 Spotify 桌面端广告，而非将音量静音。包含验证工具。"
   }
 }

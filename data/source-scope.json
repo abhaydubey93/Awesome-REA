@@ -187,5 +187,77 @@
     "readme_sha256": "2eb49a741e469e2558b166dfe22694167b025d6c2d3b3b3c5d7c92295aef0433",
     "evidence_url": "https://github.com/ribbonfernbutcherbird693/htmx-vscode-toolkit/blob/main/README.md",
     "reviewed_at": "2026-10-16"
+  },
+  "scan-687097664": {
+    "decision": "exclude",
+    "reason_code": "general-school-application",
+    "reason_en": "Ordinary client for the Hessian school portal. The verified README documents app distribution, contributions, and Flutter development, without a documented reverse-engineering, analysis, or reconstruction purpose.",
+    "reason_zh": "面向黑森州学校门户的普通客户端。已核验的 README 介绍应用分发、参与贡献及 Flutter 开发，未呈现逆向工程、分析或重建用途。",
+    "readme_sha256": "fc5ed02f7fe54b866e5a359b366e8a1c1c77baeef6a538894753acc2fb0dbdf3",
+    "evidence_url": "https://github.com/lanis-mobile/lanis/blob/main/README.md",
+    "reviewed_at": "2026-10-16T10:57:20.920351Z"
+  },
+  "scan-503534767": {
+    "decision": "exclude",
+    "reason_code": "general-attendance-application",
+    "reason_en": "Ordinary college attendance and timetable app. The verified README describes fetching Ezygo data, attendance calculations, and badges, without documented protocol reverse engineering or software reconstruction.",
+    "reason_zh": "普通的高校出勤与课表应用。已核验的 README 介绍获取 Ezygo 数据、出勤计算和徽章功能，未记录协议逆向工程或软件重建工作。",
+    "readme_sha256": "c95d296265525e975364a491c381f746bf1882f27a5277c4dacf2f832cf91174",
+    "evidence_url": "https://github.com/adamsyy/Seventy5/blob/main/README.md",
+    "reviewed_at": "2026-10-16T10:57:21.517476Z"
+  },
+  "scan-13010571": {
+    "decision": "exclude",
+    "reason_code": "location-measurement-system",
+    "reason_en": "The exact README describes RSSI-based position estimation for mobile ZigBee sensor nodes and a Java/MySQL service for managing that sensor network. Its analysis concerns physical location measurements; no reverse-engineering workflow is documented.",
+    "reason_zh": "经精确哈希核验的 README 描述的是基于 RSSI 的移动 ZigBee 传感器节点定位，以及用于管理传感器网络的 Java/MySQL 服务；分析对象是物理定位测量值，未记录逆向工程工作流。",
+    "readme_sha256": "d353a96c85815c56bcc56e777faf7d778c820427c75142c40751b987f5716e7e",
+    "evidence_url": "https://github.com/alus-it/ZigBeeLocalizer/blob/master/README",
+    "reviewed_at": "2026-10-16T10:57:42.290451Z"
+  },
+  "scan-485301935": {
+    "decision": "exclude",
+    "reason_code": "word-puzzle-solver",
+    "reason_en": "The complete README identifies the project as a solver for the Macedonian Wordle variant Zborle and links the game. It documents no reverse-engineering, protocol or software-analysis purpose.",
+    "reason_zh": "完整 README 将项目明确描述为马其顿语 Wordle 变体 Zborle 的求解器，并提供游戏链接；未记录逆向工程、协议或软件分析用途。",
+    "readme_sha256": "c4a366c8ff594f75140e344678369539a9e75434f122b9926ed4ca30876bf0f7",
+    "evidence_url": "https://github.com/TheGoodCook155/zborleMKSolver/blob/main/README.md",
+    "reviewed_at": "2026-10-16T10:57:42.758530Z"
+  },
+  "scan-1126392619": {
+    "decision": "exclude",
+    "reason_code": "image-prompt-inference",
+    "reason_en": "The complete README describes an AI-art image analyzer that infers image-generation prompts, model names and settings, with image comparison and prompt templates. Its reverse-engineering claim concerns artwork generation rather than software or system behavior.",
+    "reason_zh": "完整 README 描述的是 AI 画作图像分析器，用于推测图像生成提示词、模型与参数，并提供图像比较及提示词模板；其逆向主张针对画作生成，而非软件或系统行为。",
+    "readme_sha256": "a317afd4d7392c07fd3ffbf07e7e2df84c42b553832ab7102ce22c65b83380a9",
+    "evidence_url": "https://github.com/CodingWithDodamani/PromptVision/blob/main/README.md",
+    "reviewed_at": "2026-10-16T10:57:43.260893Z"
+  },
+  "scan-1366958068": {
+    "decision": "exclude",
+    "reason_code": "personal-profile",
+    "reason_en": "The README is a personal skills and project-promotion profile, rather than a repository providing a reverse-engineering tool, case study or learning resource.",
+    "reason_zh": "README 是个人技能与项目宣传主页，并非提供逆向工程工具、案例研究或学习资料的仓库。",
+    "readme_sha256": "ba03c9d18016666cefb18f015a26b1ec2750d5a2d1fd0edea5832e18bfb55142",
+    "evidence_url": "https://github.com/UmarFarooqueJi/Umarfarooqueji/blob/main/README.md",
+    "reviewed_at": "2026-10-16T10:58:14.997434Z"
+  },
+  "scan-168154742": {
+    "decision": "exclude",
+    "reason_code": "general-color-utility",
+    "reason_en": "The complete README describes matching color-package operations between a base and target color; it identifies a general color utility, with no software or hardware reverse-engineering resource.",
+    "reason_zh": "完整 README 描述了从基础颜色到目标颜色的颜色包操作匹配，属于通用颜色工具，未提供软件或硬件逆向工程资源。",
+    "readme_sha256": "f86b87fa98648cd2b2fb98c331f04a4a8ebc1fb41e5ef35cac248bb04b74e526",
+    "evidence_url": "https://github.com/sielay/color-guess/blob/master/README.md",
+    "reviewed_at": "2026-10-16T10:57:41.115602Z"
+  },
+  "scan-400373122": {
+    "decision": "exclude",
+    "reason_code": "general-programming-tutorial",
+    "reason_en": "The README is an introductory C/C++ programming tutorial covering syntax, compilation, pointers, exceptions, digital systems, microcontrollers, Qt and testing. Its low-level content explains ordinary compilation; no reverse-engineering study or tool is identified.",
+    "reason_zh": "README 是介绍语法、编译、指针、异常、数字系统、微控制器、Qt 与测试的 C/C++ 入门教程。其中的底层内容讲解常规编译过程，未发现逆向工程研究或工具。",
+    "readme_sha256": "5bc3e6b90f2a2d9a97305ac9c67c1bfa3a8b2be7f0d433f2167ddc6e20f31290",
+    "evidence_url": "https://github.com/IsaacAlves7/cpp/blob/master/README.md",
+    "reviewed_at": "2026-10-16T10:58:14.401806Z"
   }
 }

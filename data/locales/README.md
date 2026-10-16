@@ -1,6 +1,6 @@
 # Repository description localization
 
-These files provide English and Simplified Chinese descriptions for the collection's 2,000 scanned repositories. They are AI-assisted translations of upstream repository descriptions, not repository reviews or compatibility tests.
+These files provide English and Simplified Chinese descriptions for the collection's 2,500 scanned repositories. They are AI-assisted translations of upstream repository descriptions, not repository reviews or compatibility tests.
 
 ## Source and output
 

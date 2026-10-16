@@ -2,7 +2,7 @@
 
 [全部分类](README.zh-CN.md) · [English](managed-code.md)
 
-**84 个仓库** · 2026-10-16 UTC
+**98 个仓库** · 2026-10-16 UTC
 
 这些是自动发现的项目，不是逐项精选或运行测试后的推荐。分类来自元数据；简介由上游描述翻译而来。星标为采集时快照，不是实时排名。
 
@@ -59,12 +59,14 @@
 - [tbg10101/dotnet-burst-comparison](https://github.com/tbg10101/dotnet-burst-comparison) — 用于比较 .NET 与 Unity Burst 编译器的基准测试。 **[45 星标]**
 - [zezba9000/CSharpTranspiler](https://github.com/zezba9000/CSharpTranspiler) — CS2X：基于 Roslyn 的 C# 转译器实验 **[39 星标]**
 - [dawwinci/agile-net-devirtualizer](https://github.com/dawwinci/agile-net-devirtualizer) — 适用于 Agile.NET（SecureTeam/CodeVeil）虚拟机方法保护的通用去虚拟化工具：通过对运行时 DLL 的结构进行逆向分析来重建 CIL，无需为各个构建版本硬编码操作码表。 **[37 星标]**
+- [cervonwong/ILSpy-MCP](https://github.com/cervonwong/ILSpy-MCP) — 用于 AI 辅助 .NET 二进制文件逆向工程的 ILSpy MCP 服务器（模型上下文协议），面向自主恶意软件分析和逆向工程。 **[33 星标]**
 - [Vint-TX/Vint](https://github.com/Vint-TX/Vint) — TX 服务器。 **[30 星标]**
 - [MeikoMei16/AssetRipper-CLI](https://github.com/MeikoMei16/AssetRipper-CLI) — 基于 AssetRipper 的 Unity 游戏素材命令行提取工具，可按需、按配置导出 CG、音频、立绘和背景。 **[29 星标]**
 - [codingo/cracknet](https://github.com/codingo/cracknet) — 为 SecTalks Brisbane 2017 CTF 活动制作的 .NET Crackme 挑战，包含题解和解答。 **[23 星标]**
 - [GooDDarK/UTranslator](https://github.com/GooDDarK/UTranslator) — 适用于多款游戏俄语本地化补丁的启动器。 **[20 星标]**
 - [maddievision/Celestial](https://github.com/maddievision/Celestial) — 一些《Celeste》逆向工程代码。 **[16 星标]**
 - [mynamescrax/il2csharp](https://github.com/mynamescrax/il2csharp) — IL2CPP 到 C# 的反编译器：输入 global-metadata.dat 与 GameAssembly.dll，输出真正的源代码目录树，每个方法体均从原生 x64 代码提升还原。 **[14 星标]**
+- [Louisdelez/LeagueOfLegendsV2](https://github.com/Louisdelez/LeagueOfLegendsV2) — 面向现代客户端（补丁 16.6）的《英雄联盟》私服模拟器，协议逆向工程仍在进行中。 **[13 星标]**
 - [t-wy/web-global-metadata-parser](https://github.com/t-wy/web-global-metadata-parser) — global-metadata.dat 读取器，无需二进制文件即可在本地转储其内容，因此不包含地址或完整类型信息。可用于检查序列化涉及的数据结构，基于 Prefare 的 Il2CppDumper。 **[11 星标]**
 - [KaniArchive/ILRecover](https://github.com/KaniArchive/ILRecover) — 将 .NET 程序集反编译回 C# 源码 **[5 星标]**
 - [maximilianfeix/hexvero](https://github.com/maximilianfeix/hexvero) — 用于初步检查二进制文件或应用包的工具，提供有证据支持、无需执行目标的静态分析，包括 CLI、含 15 个工具的 MCP 服务器和本地 Web 界面，仅依赖 Node.js。 **[5 星标]**
@@ -80,15 +82,27 @@
 - [Segually/HADecompiled](https://github.com/Segually/HADecompiled) — Hybrid Animals 手机游戏反编译项目 **[2 星标]**
 - [andrew867/CoinLine](https://github.com/andrew867/CoinLine) — 部署在服务器上的 Millennium 公用电话群管理平台，提供配置下发、表分发、通话计费、卡片管理、维护、固件编排、DLOG/NCC 诊断和审计。基于 .NET 9、React 和 PostgreSQL。 **[1 星标]**
 - [chahakshahcs5/retrofit-sdk-gen](https://github.com/chahakshahcs5/retrofit-sdk-gen) — ⚡ 将 Android APK 和 Retrofit 接口转换为 8 种语言的类型化 SDK、OpenAPI 3.0 规范、Postman 集合和 API 试验环境。 **[1 星标]**
+- [hdyrawan/frider](https://github.com/hdyrawan/frider) — Android 应用框架检测器：根据 APK 条目名称识别 Flutter / Dart、React Native（区分 Hermes 与 JavaScriptCore）、.NET MAUI、Xamarin、Apache Cordova、Capacitor、Ionic、Kony、NativeScript、Qt、Titanium、Unity 或原生 Java/Kotlin。无运行时依赖。 **[1 星标]**
 - [IVAINX18/Shadow-Net-Defender-Hybrid-Malware-Detection](https://github.com/IVAINX18/Shadow-Net-Defender-Hybrid-Malware-Detection) — 用于恶意软件检测的多层混合架构：结合 YARA、静态机器学习（EMBER-2381 + OVERLAY-6、ONNX），以及覆盖区、.NET 和 IL 分析，提供可操作的判定和取证解释。采用 FastAPI API 与 React/Electron 前端。 **[1 星标]**
 - [manytokens/unity-msgpack-schema-exporter](https://github.com/manytokens/unity-msgpack-schema-exporter) — 从 Unity 游戏程序集（DummyDll）或任意其他 .NET 程序集提取 MessagePack 模式，并在紧凑的无键 msgpack、带命名键的 msgpack 和 JSON 之间转换的工具。 **[1 星标]**
+- [peigu666/worldbox-distillation](https://github.com/peigu666/worldbox-distillation) — WorldBox 0.51.2 模组开发与 AI 辅助排错本地知识库；含可检索 API、查询/校验工具、模板和供人类浏览的 HTML 报告。 **[1 星标]**
+- [Rynana/DLL-Muster](https://github.com/Rynana/DLL-Muster) — DLL Muster 是用于检查基于 Unity 的 .NET DLL 的 Windows 工具，可将类、方法和字段数据导出为 JSON。无需安装。 **[1 星标]**
+- [saturnlamoooooooooooooooo/GMExplorer](https://github.com/saturnlamoooooooooooooooo/GMExplorer) — 支持拖放的 GameMaker 游戏浏览器：查看资源、音频、FMOD 音频库和反编译的 GML。 **[1 星标]**
 - [sulaimwn/REA-For-Web](https://github.com/sulaimwn/REA-For-Web) — 面向 Web 的 REA：探索应用、可视化其架构，并向 AI 询问其工作原理。 **[1 星标]**
+- [tavridabless/UEBulkExport](https://github.com/tavridabless/UEBulkExport) — 将整个 Unreal Engine 容器（.utoc/.ucas/.pak）中的纹理、网格、动画、音频、关卡和属性批量导出到一个文件夹。基于 CUE4Parse 的命令行前端。 **[1 星标]**
 - [Zawtt/HowToFISH-CHEAT-Roulette](https://github.com/Zawtt/HowToFISH-CHEAT-Roulette) — 针对 How to Fish 的趣味单人轮盘作弊与逆向工程实验。 **[1 星标]**
+- [akopetsch/swe1r-assets-unity](https://github.com/akopetsch/swe1r-assets-unity) — 一个 Unity 包，可导入、修改并重新导出 Star Wars Episode I: Racer 的游戏资源。 **[0 星标]**
 - [beyborges/REA](https://github.com/beyborges/REA) — REA - Reverse Engineer Anything 6.3.0（2026 年 10 月 10 日）。面向智能体的逆向工作台，通过统一 MCP 覆盖二进制、JavaScript、Electron 和 .NET，支持 Hopper/Ghidra/IDA 后端，面向 Windows 10/11 x64。 **[0 星标]**
+- [CCB-TEAM/KismetDecompiler](https://github.com/CCB-TEAM/KismetDecompiler) — 上游未提供简介。 **[0 星标]**
 - [defuscator/defuscator-cli](https://github.com/defuscator/defuscator-cli) — 静态 JavaScript 去混淆与风险初步分析命令行工具，不执行代码即可解包 P.A.C.K.E.R.、obfuscator.io 字符串数组、转义内容和源码映射，支持 JSON 与 SARIF 输出。 **[0 星标]**
 - [edwardtay/awesome-reverse-engineering](https://github.com/edwardtay/awesome-reverse-engineering) — 精选 130 多种逆向工程工具，覆盖二进制文件、Android、.NET、固件和智能合约。每项均标注安全标记，提供每周维护数据和智能体时代的 MCP 服务器。 **[0 星标]**
 - [emoboy723/XS-DECOMPILER](https://github.com/emoboy723/XS-DECOMPILER) — Strata：适用于 Windows 的便携反编译器，结合 JADX/ILSpy/Ghidra 分析、AI 智能体、Ollama 和本地 JavaScript 去混淆，可选集成 dotPeek 和 Binary Ninja。 **[0 星标]**
 - [fuatsimsek/appray](https://github.com/fuatsimsek/appray) — 集成式 Android 安全平台：SAST、MobSF、基于模拟器的动态分析和 DAST（Nuclei），并提供 AI 辅助报告。 **[0 星标]**
+- [Metacarpalarteryostracism978/FH5-Car-Unlock-Utility](https://github.com/Metacarpalarteryostracism978/FH5-Car-Unlock-Utility) — 用于管理 Forza Horizon 5 点数、解锁车辆和增加抽奖次数的工具。 **[0 星标]**
+- [nooikko/serpents-eyes](https://github.com/nooikko/serpents-eyes) — Serpent’s Gaze 的非官方收藏浏览器：查看已解锁及尚未解锁的所有内容。 **[0 星标]**
+- [qingxinzhu/MiniMCP](https://github.com/qingxinzhu/MiniMCP) — Unity 游戏的类 MCP 运行时服务：通过 HTTP 检查和修改实时游戏状态（对象、字段和方法），并为 AI 客户端提供 MCP 桥接。Mono 游戏使用 BepInEx 5 插件（src/）；IL2CPP 游戏使用 BepInEx 6 插件（il2cpp/）。 **[0 星标]**
+- [SandersAlex/nupe](https://github.com/SandersAlex/nupe) — 用于管理 Unity 3D 项目的应用（WPF、.NET 6.0、64 位、Windows）。 **[0 星标]**
+- [Ubik42/Game-Unpack-Agent](https://github.com/Ubik42/Game-Unpack-Agent) — 离线优先的 Unity / Unreal 受控游戏解包 Agent（Windows / .NET 9） **[0 星标]**
 - [wyfirstname/rea-ui](https://github.com/wyfirstname/rea-ui) — REA 逆向工程命令行工具（morluto/rea）的图形前端，提供 Windows 便携构建及 153 个根据模式定义生成的命令。 **[0 星标]**
 
 <!-- Generated by scripts/build_repository_index.py. Edit source data, then rebuild. -->

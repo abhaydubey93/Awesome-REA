@@ -637,5 +637,21 @@
   "recaf": {
     "name": "Recaf 字节码分析与编辑工具",
     "requirements": "需要 JDK 22+ 与 JavaFX 22+；推荐启动器会下载兼容的 JavaFX 组件。应选择与操作系统及 CPU 匹配的构建。 4.0.0-alpha 在 GitHub 上虽然列为常规发行版，上游仍明确称其为预览版。该版本的 Android 支持为只读，不能将 JVM 编辑能力视为 Android 编辑能力。 采用 MIT 许可证。输入须为已编译的应用；反编译文本用于分析，不保证还原原始源码。"
+  },
+  "kaitai-struct": {
+    "name": "Kaitai Struct 二进制格式描述与解析工具",
+    "requirements": "需要提供 .ksy 规范，或改编已有格式描述；Kaitai 根据规范生成解析器，不会自动发现未知协议的语义。稳定版 0.11 通用编译器可在 Linux、macOS 和 Windows 上运行，需要 Java 8+，推荐 Java 21 LTS；生成的解析器还需要目标语言的 Kaitai 运行库。编译器与可视化工具采用 GPL-3.0-or-later，运行库分别采用 MIT、Apache-2.0 等许可证；编译器许可证不会因此强制施加于输入规范或生成结果。"
+  },
+  "wireshark": {
+    "name": "Wireshark 协议分析工具",
+    "requirements": "使用受支持的 Windows、macOS 或 Linux/Unix 构建及兼容的抓包文件；实时抓包还需要受支持的接口、抓包驱动和相应访问权限。可捕获的介质取决于操作系统与硬件。自定义格式需要适合的协议解析器；检查报文不会自动恢复通信对端的完整实现。发行软件采用 GNU GPLv2，并附有组件各自的许可声明。GitLab 为上游仓库，GitHub 是官方只读镜像。"
+  },
+  "pulseview": {
+    "name": "PulseView 信号与协议分析工具",
+    "requirements": "需要受支持的已录制波形，或兼容的逻辑分析仪、示波器及相应设备访问权限。设备覆盖范围小于整个 sigrok 套件，PulseView 并非万用表前端。协议解码需要 libsigrokdecode，且作用于逻辑信号；模拟采样需要适当转换。所审阅源码接受 Qt 5.3+ 或 Qt 6.2+、libsigrokcxx 0.5.2+ 与 libsigrokdecode 0.5.2+。软件采用 GPL-3.0-or-later，GitHub 仓库为官方镜像。开发快照与打包发行版可能不同，不能把所审阅源码当作新稳定版。"
+  },
+  "uefitool": {
+    "name": "UEFITool 固件镜像分析工具",
+    "requirements": "输入须为兼容的固件镜像。A75 提供 Windows、macOS、Linux 与 FreeBSD 构建；编译 GUI 需要 C++ 编译器及 Qt5 或 Qt6。当前新引擎不支持镜像重建；编辑功能依赖已被上游明确标为过时、停止支持的 0.28 旧引擎，本条目不将当前 UEFITool 描述为受支持的镜像编辑器。A75 仍禁用 AMD 镜像解析，部分厂商更新容器不受支持或可能解析错误。项目采用 BSD-2-Clause 许可证。"
   }
 }

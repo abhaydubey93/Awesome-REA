@@ -1762,5 +1762,329 @@
   "browser-automation": {
     "en": "Browser automation",
     "zh": "浏览器自动化"
+  },
+  "jadx": {
+    "en": "JADX",
+    "zh": "JADX"
+  },
+  "flutter": {
+    "en": "Flutter",
+    "zh": "Flutter"
+  },
+  "idapython": {
+    "en": "IDAPython",
+    "zh": "IDAPython"
+  },
+  "nintendo-ds": {
+    "en": "Nintendo DS",
+    "zh": "Nintendo DS"
+  },
+  "x86-64": {
+    "en": "x86-64",
+    "zh": "x86-64"
+  },
+  "matching-decompilation": {
+    "en": "Matching decompilation",
+    "zh": "匹配反编译"
+  },
+  "hacktoberfest": {
+    "en": "Hacktoberfest",
+    "zh": "Hacktoberfest"
+  },
+  "smali": {
+    "en": "smali",
+    "zh": "smali"
+  },
+  "lua": {
+    "en": "Lua",
+    "zh": "Lua"
+  },
+  "docker": {
+    "en": "Docker",
+    "zh": "Docker"
+  },
+  "adb": {
+    "en": "ADB",
+    "zh": "ADB"
+  },
+  "ds-decomp-studio": {
+    "en": "DS Decomp Studio",
+    "zh": "DS Decomp Studio"
+  },
+  "bluetooth-low-energy": {
+    "en": "Bluetooth Low Energy",
+    "zh": "低功耗蓝牙"
+  },
+  "mono": {
+    "en": "Mono",
+    "zh": "Mono"
+  },
+  "objective-c": {
+    "en": "Objective-C",
+    "zh": "Objective-C"
+  },
+  "gameboy-advance": {
+    "en": "Game Boy Advance",
+    "zh": "Game Boy Advance"
+  },
+  "binwalk": {
+    "en": "Binwalk",
+    "zh": "Binwalk"
+  },
+  "wireshark": {
+    "en": "Wireshark",
+    "zh": "Wireshark"
+  },
+  "go": {
+    "en": "Go",
+    "zh": "Go"
+  },
+  "pokemon": {
+    "en": "Pokémon",
+    "zh": "宝可梦"
+  },
+  "kotlin": {
+    "en": "Kotlin",
+    "zh": "Kotlin"
+  },
+  "apple": {
+    "en": "Apple",
+    "zh": "Apple"
+  },
+  "ue5": {
+    "en": "Unreal Engine 5",
+    "zh": "虚幻引擎 5"
+  },
+  "dart": {
+    "en": "Dart",
+    "zh": "Dart"
+  },
+  "jailbreak": {
+    "en": "Jailbreak",
+    "zh": "越狱"
+  },
+  "ble": {
+    "en": "Bluetooth Low Energy (BLE)",
+    "zh": "低功耗蓝牙（BLE）"
+  },
+  "swift": {
+    "en": "Swift",
+    "zh": "Swift"
+  },
+  "bluetooth": {
+    "en": "Bluetooth",
+    "zh": "蓝牙"
+  },
+  "theos": {
+    "en": "Theos",
+    "zh": "Theos"
+  },
+  "static-recompilation": {
+    "en": "Static recompilation",
+    "zh": "静态重编译"
+  },
+  "mach-o": {
+    "en": "Mach-O",
+    "zh": "Mach-O"
+  },
+  "metal": {
+    "en": "Metal",
+    "zh": "Metal"
+  },
+  "mitm": {
+    "en": "Man-in-the-middle",
+    "zh": "中间人"
+  },
+  "gamemaker": {
+    "en": "GameMaker",
+    "zh": "GameMaker"
+  },
+  "frontend": {
+    "en": "Frontend",
+    "zh": "前端"
+  },
+  "ue4": {
+    "en": "Unreal Engine 4",
+    "zh": "虚幻引擎 4"
+  },
+  "unreal-engine-5": {
+    "en": "Unreal Engine 5",
+    "zh": "虚幻引擎 5"
+  },
+  "swiftui": {
+    "en": "SwiftUI",
+    "zh": "SwiftUI"
+  },
+  "iphone": {
+    "en": "iPhone",
+    "zh": "iPhone"
+  },
+  "esp32": {
+    "en": "ESP32",
+    "zh": "ESP32"
+  },
+  "blutter": {
+    "en": "Blutter",
+    "zh": "Blutter"
+  },
+  "video-streaming": {
+    "en": "Video streaming",
+    "zh": "视频流传输"
+  },
+  "nds": {
+    "en": "Nintendo DS (NDS)",
+    "zh": "Nintendo DS（NDS）"
+  },
+  "hid": {
+    "en": "Human interface devices (HID)",
+    "zh": "人机接口设备（HID）"
+  },
+  "private-server": {
+    "en": "Private servers",
+    "zh": "私有服务器"
+  },
+  "sqlite": {
+    "en": "SQLite",
+    "zh": "SQLite"
+  },
+  "webpack": {
+    "en": "webpack",
+    "zh": "webpack"
+  },
+  "digital-preservation": {
+    "en": "Digital preservation",
+    "zh": "数字保存"
+  },
+  "html": {
+    "en": "HTML",
+    "zh": "HTML"
+  },
+  "steam": {
+    "en": "Steam",
+    "zh": "Steam"
+  },
+  "ue4ss": {
+    "en": "UE4SS",
+    "zh": "UE4SS"
+  },
+  "dom": {
+    "en": "Document Object Model (DOM)",
+    "zh": "文档对象模型（DOM）"
+  },
+  "event-replay": {
+    "en": "Event replay",
+    "zh": "事件重放"
+  },
+  "state-reconstruction": {
+    "en": "State reconstruction",
+    "zh": "状态重建"
+  },
+  "apple-silicon": {
+    "en": "Apple silicon",
+    "zh": "Apple 芯片"
+  },
+  "ios-reverse": {
+    "en": "iOS reverse engineering",
+    "zh": "iOS 逆向工程"
+  },
+  "ios-tweak": {
+    "en": "iOS tweaks",
+    "zh": "iOS 功能调整插件"
+  },
+  "can-bus": {
+    "en": "CAN bus",
+    "zh": "CAN 总线"
+  },
+  "extract": {
+    "en": "Extraction",
+    "zh": "提取"
+  },
+  "react-native": {
+    "en": "React Native",
+    "zh": "React Native"
+  },
+  "mqtt": {
+    "en": "MQTT",
+    "zh": "MQTT"
+  },
+  "flex": {
+    "en": "FLEX",
+    "zh": "FLEX"
+  },
+  "tweak": {
+    "en": "Tweaks",
+    "zh": "功能调整插件"
+  },
+  "kingdom-hearts": {
+    "en": "Kingdom Hearts",
+    "zh": "王国之心"
+  },
+  "bluetooth-le": {
+    "en": "Bluetooth LE",
+    "zh": "低功耗蓝牙"
+  },
+  "usb": {
+    "en": "USB",
+    "zh": "USB"
+  },
+  "usb-hid": {
+    "en": "USB HID",
+    "zh": "USB 人机接口设备"
+  },
+  "tkinter": {
+    "en": "Tkinter",
+    "zh": "Tkinter"
+  },
+  "game-server": {
+    "en": "Game servers",
+    "zh": "游戏服务器"
+  },
+  "codewarrior": {
+    "en": "CodeWarrior",
+    "zh": "CodeWarrior"
+  },
+  "ds-decomp": {
+    "en": "Nintendo DS decompilation",
+    "zh": "Nintendo DS 反编译"
+  },
+  "sdl2": {
+    "en": "SDL2",
+    "zh": "SDL2"
+  },
+  "ai-assisted": {
+    "en": "AI-assisted",
+    "zh": "AI 辅助"
+  },
+  "save-editor": {
+    "en": "Save editor",
+    "zh": "存档编辑器"
+  },
+  "datamining": {
+    "en": "Data mining",
+    "zh": "数据挖掘"
+  },
+  "modding-tools": {
+    "en": "Modding tools",
+    "zh": "模组制作工具"
+  },
+  "fmod": {
+    "en": "FMOD",
+    "zh": "FMOD"
+  },
+  "userscript": {
+    "en": "Userscripts",
+    "zh": "用户脚本"
+  },
+  "source-maps": {
+    "en": "Source maps",
+    "zh": "源码映射"
+  },
+  "css": {
+    "en": "CSS",
+    "zh": "CSS"
+  },
+  "web-platform": {
+    "en": "Web platform",
+    "zh": "Web 平台"
   }
 }

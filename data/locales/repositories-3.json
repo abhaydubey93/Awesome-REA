@@ -2666,5 +2666,671 @@
   "scan-1415810701": {
     "description_en": "Unofficial REA tutorials and comparisons for installing and using Reverse Engineer Anything with coding agents.",
     "description_zh": "非官方 REA 教程和比较资料，介绍如何安装 Reverse Engineer Anything 并与编码智能体配合使用。"
+  },
+  "scan-1363771745": {
+    "description_en": "Browser-based viewer for ELF file structure, focused on RISC-V.",
+    "description_zh": "在浏览器中查看 ELF 文件结构的工具，重点支持 RISC-V。"
+  },
+  "scan-1332276209": {
+    "description_en": "Android app framework detector — classifies Flutter / Dart, React Native (Hermes vs JavaScriptCore), .NET MAUI, Xamarin, Apache Cordova, Capacitor, Ionic, Kony, NativeScript, Qt, Titanium, Unity, or native Java/Kotlin from APK entry names. Zero runtime dependencies.",
+    "description_zh": "Android 应用框架检测器：根据 APK 条目名称识别 Flutter / Dart、React Native（区分 Hermes 与 JavaScriptCore）、.NET MAUI、Xamarin、Apache Cordova、Capacitor、Ionic、Kony、NativeScript、Qt、Titanium、Unity 或原生 Java/Kotlin。无运行时依赖。"
+  },
+  "scan-385704916": {
+    "description_en": "learning everything...",
+    "description_zh": "学习一切……"
+  },
+  "scan-1294702528": {
+    "description_en": "Unofficial Flutter app to control QCY earbuds over BLE (ANC, EQ, touch controls)",
+    "description_zh": "通过 BLE 控制 QCY 耳机的非官方 Flutter 应用，支持主动降噪、均衡器和触控设置。"
+  },
+  "scan-1400763898": {
+    "description_en": "Traffic interception for Rust-based mobile apps — reFlutter for rustls/reqwest cores. Unrooted, no CA install for the Rust core, pattern-DB trust patches.",
+    "description_zh": "面向 Rust 移动应用的流量拦截工具，相当于针对 rustls/reqwest 核心的 reFlutter。无需 root，Rust 核心无需安装 CA，采用基于模式数据库的信任校验补丁。"
+  },
+  "scan-1245064219": {
+    "description_en": "A set of Frida scripts to help inspect Firebase calls in Flutter apps on iOS",
+    "description_zh": "一组 Frida 脚本，用于检查 iOS 上 Flutter 应用中的 Firebase 调用。"
+  },
+  "scan-1283140257": {
+    "description_en": "a userscript to cheat on ioe.vn (use tampermonkey). I will not update it, but some features should still work.",
+    "description_zh": "用于在 ioe.vn 上作弊的用户脚本（使用 Tampermonkey）。作者不会继续更新，但部分功能应该仍可使用。"
+  },
+  "scan-1366825330": {
+    "description_en": "TeleAgent model reverse proxy -> local OpenAI-compatible endpoint (research)",
+    "description_zh": "TeleAgent 模型反向代理，提供本地兼容 OpenAI 的端点（研究用途）。"
+  },
+  "scan-1420833413": {
+    "description_en": "Matching decompilation of Cooking Mama (Nintendo DS, ACCE). No game assets included.",
+    "description_zh": "Cooking Mama（Nintendo DS，ACCE）的匹配式反编译项目。不包含游戏资源。"
+  },
+  "scan-1418652287": {
+    "description_en": "DS Decomp Studio: organize Nintendo DS matching decompilations - difficulty-rated blocks of 50 functions, a shared work queue for people and AIs, machine task runner, engine map.",
+    "description_zh": "DS Decomp Studio：组织 Nintendo DS 匹配式反编译工作，将函数按每组 50 个分块并按难度评级，提供人类与 AI 共用的工作队列、机器任务运行器和引擎图谱。"
+  },
+  "scan-1418654305": {
+    "description_en": "Matching decompilation of LEGO Star Wars II (Nintendo DS, AL7E). No game assets included.",
+    "description_zh": "LEGO Star Wars II（Nintendo DS，AL7E）的匹配式反编译项目。不包含游戏资源。"
+  },
+  "scan-1420859216": {
+    "description_en": "Matching decompilation of Resident Evil: Deadly Silence (Nintendo DS, ABHE). No game assets included.",
+    "description_zh": "Resident Evil: Deadly Silence（Nintendo DS，ABHE）的匹配式反编译项目。不包含游戏资源。"
+  },
+  "scan-1418654711": {
+    "description_en": "Matching decompilation of The Simpsons Game (Nintendo DS, YSZE). No game assets included.",
+    "description_zh": "The Simpsons Game（Nintendo DS，YSZE）的匹配式反编译项目。不包含游戏资源。"
+  },
+  "scan-1418654923": {
+    "description_en": "Matching decompilation of Spider-Man: Web of Shadows (Nintendo DS, CS5X). No game assets included.",
+    "description_zh": "Spider-Man: Web of Shadows（Nintendo DS，CS5X）的匹配式反编译项目。不包含游戏资源。"
+  },
+  "scan-1420824204": {
+    "description_en": "Matching decompilation of Spyro: Shadow Legacy (Nintendo DS, ASSE). No game assets included.",
+    "description_zh": "Spyro: Shadow Legacy（Nintendo DS，ASSE）的匹配式反编译项目。不包含游戏资源。"
+  },
+  "scan-1418689677": {
+    "description_en": "Matching decompilation of Ultimate Spider-Man (Nintendo DS, AUSF). No game assets included.",
+    "description_zh": "Ultimate Spider-Man（Nintendo DS，AUSF）的匹配式反编译项目。不包含游戏资源。"
+  },
+  "scan-1416075577": {
+    "description_en": "Non-commercial preservation of KurtzPel after end of service (3 Feb 2027): private server emulator, PvE, private lobbies, and the 2019 story mode",
+    "description_zh": "针对 KurtzPel 停服后（2027 年 2 月 3 日）的非商业保存项目：私服模拟器、PvE、私人大厅和 2019 年剧情模式。"
+  },
+  "scan-1329689582": {
+    "description_en": "Repairs DaVinci Resolve projects that crash on open — root-caused to a corrupted UI-state blob in the project database. Runs locally in your browser or on the desktop.",
+    "description_zh": "修复打开时崩溃的 DaVinci Resolve 项目，根因定位为项目数据库中损坏的 UI 状态二进制块。在浏览器或桌面端本地运行。"
+  },
+  "scan-1412963639": {
+    "description_en": "zxLeafOS 2.0 official release v3 — complete Scratch 3.0 project source code released under the MIT license, including hot-update mirrors.",
+    "description_zh": "zxLeafOS 2.0 正式版 v3 - 以 MIT 协议开源的完整 Scratch 3.0 项目源码（含热更新镜像）"
+  },
+  "scan-1377708004": {
+    "description_en": "Configure your Glorious mouse from the browser. WebHID, no driver, no install.",
+    "description_zh": "通过浏览器配置 Glorious 鼠标。使用 WebHID，无需驱动，无需安装。"
+  },
+  "scan-1283164966": {
+    "description_en": "DittoNet 🔥 is a shapeshifting mobile web debugger and hybrid MITM browser. Empowering developers with real-time HTTP interception, dynamic modification, JS injection, and SSL bypassing from a localized mobile environment.",
+    "description_zh": "DittoNet 🔥 是一款可灵活变换形态的移动网页调试器和混合式 MITM 浏览器，让开发者在本地移动环境中实时拦截 HTTP、动态修改内容、注入 JavaScript 并绕过 SSL 校验。"
+  },
+  "scan-1194813580": {
+    "description_en": "Decompiled (default?) libanort metadata encryption.",
+    "description_zh": "反编译得到的 libanort 元数据加密实现（默认实现？）。"
+  },
+  "scan-541715010": {
+    "description_en": "Build a stealthy Frida server from source, applying robust patches to evade detection and enhance security for dynamic instrumentation tasks.",
+    "description_zh": "从源码构建隐蔽的 Frida 服务端，应用稳健的补丁以规避检测，并提升动态插桩任务的安全性。"
+  },
+  "scan-1416607374": {
+    "description_en": "Reverse engineering of the JBL PartyBox 100/200/300 wireless TWS link: protocol frames, Linux pairing recipe, and a Python fake-speaker server (play/pause, volume, stereo channels).",
+    "description_zh": "JBL PartyBox 100/200/300 无线 TWS 链路的逆向工程：协议帧、Linux 配对方法，以及 Python 模拟音箱服务端（播放/暂停、音量和立体声声道）。"
+  },
+  "scan-1293258842": {
+    "description_en": "A Node recreation of the QQ Music web encryption pipeline: a VMP sandbox reconstructs the full AES-GCM encryption → SHA-1 signing → decryption chain.",
+    "description_zh": "QQ 音乐 web 版加密链路的 Node 复刻：VMP 沙箱还原 AES-GCM 加密 → SHA-1 签名 → 解密全链"
+  },
+  "scan-1341038659": {
+    "description_en": "Matching decompilation of Advance Wars: Dual Strike (Nintendo DS, Europe AWRP rev 0)",
+    "description_zh": "Advance Wars: Dual Strike（Nintendo DS，欧洲版 AWRP rev 0）的匹配式反编译项目。"
+  },
+  "scan-1389347452": {
+    "description_en": "A local knowledge base for WorldBox 0.51.2 mod development and AI-assisted debugging, including searchable APIs, query/validation tools, templates, and human-readable HTML reports.",
+    "description_zh": "WorldBox 0.51.2 模组开发与 AI 辅助排错本地知识库；含可检索 API、查询/校验工具、模板和供人类浏览的 HTML 报告。"
+  },
+  "scan-1077952106": {
+    "description_en": "Unofficial Grok API (incomplete)",
+    "description_zh": "非官方 Grok API（尚未完成）。"
+  },
+  "scan-1127668982": {
+    "description_en": "AI-assisted platform for understanding and documenting opaque legacy systems from code, logs and runtime artifacts.",
+    "description_zh": "借助 AI，从代码、日志和运行时产物中理解并记录不透明遗留系统的平台。"
+  },
+  "scan-1198972433": {
+    "description_en": "Rebuild Pokemon Yellow in TypeScript for the browser with pixel-perfect, logic-exact gameplay and ROM-driven data loading",
+    "description_zh": "使用 TypeScript 为浏览器重建 Pokemon Yellow，实现像素级一致、逻辑精确的游戏玩法，并从 ROM 加载数据。"
+  },
+  "scan-1392205851": {
+    "description_en": "PS2 look for GTA San Andreas – The Definitive Edition: skygfx-style colour filter, PS2 timecyc, radiosity, SpeedFX, grain, neo water drops, GTA fog – on top of DE's modern renderer. x64 ASI plugin with an in-game debug menu.",
+    "description_zh": "为 GTA San Andreas – The Definitive Edition 带来 PS2 风格：在 DE 的现代渲染器之上提供 skygfx 风格色彩滤镜、PS2 timecyc、辐射度效果、SpeedFX、颗粒、neo 水滴和 GTA 雾效。带游戏内调试菜单的 x64 ASI 插件。"
+  },
+  "scan-1209926798": {
+    "description_en": "Interactive x86 & x86-64 assembly simulator and reverse-engineering lab — step-through 32/64-bit engines, stack playground, register quiz, 28 tutorials, and 7 tools. Pure browser, no build, no dependencies.",
+    "description_zh": "交互式 x86 与 x86-64 汇编模拟器和逆向工程实验室：32/64 位引擎单步执行、栈实验区、寄存器测验、28 篇教程及 7 个工具。纯浏览器运行，无需构建，无依赖。"
+  },
+  "scan-1280480371": {
+    "description_en": "Reverse engineering a Facebook ad IQ scam from CSS blur tricks to backend architecture",
+    "description_zh": "对 Facebook 广告中的 IQ 测试骗局进行逆向分析，涵盖从 CSS 模糊技巧到后端架构。"
+  },
+  "scan-964569481": {
+    "description_en": "DLL Muster is a Windows tool for inspecting Unity-based .NET DLLs and exporting class, method, and field data to JSON. No installation required.",
+    "description_zh": "DLL Muster 是用于检查基于 Unity 的 .NET DLL 的 Windows 工具，可将类、方法和字段数据导出为 JSON。无需安装。"
+  },
+  "scan-1359743811": {
+    "description_en": "Drag-and-drop explorer for GameMaker games: assets, audio, FMOD banks and decompiled GML.",
+    "description_zh": "支持拖放的 GameMaker 游戏浏览器：查看资源、音频、FMOD 音频库和反编译的 GML。"
+  },
+  "scan-1253545789": {
+    "description_en": "Resolve vidup.to streams from TMDB IDs to upstream HLS .m3u8 URLs. Lists every host on a title and decodes each to a CDN manifest — matching the site client, runnable headless in Node.",
+    "description_zh": "将 TMDB ID 对应的 vidup.to 流解析为上游 HLS .m3u8 URL。列出某个作品的所有托管来源，并逐一解码为 CDN 清单；行为与网站客户端一致，可在 Node 中无界面运行。"
+  },
+  "scan-168154742": {
+    "description_en": "Guess color package operations to build closer colour from given base and target colours",
+    "description_zh": "推断 color 包应执行的操作，从给定的基础颜色生成更接近目标颜色的结果。"
+  },
+  "scan-1018732759": {
+    "description_en": "A Node.js web application for generating Lego Dimensions Toy Tag data for blank NFC213 tags. Input your tag's UID to generate unique codes for characters and vehicles. Generated codes can be written to tags using any NFC writing app (iOS/Android).",
+    "description_zh": "用于为 NFC213 空白标签生成 Lego Dimensions Toy Tag 数据的 Node.js 网页应用。输入标签 UID，即可生成角色和载具的唯一代码。可使用任意 NFC 写入应用（iOS/Android）将生成的代码写入标签。"
+  },
+  "scan-254441920": {
+    "description_en": "A pathfinding tool for Castlevania: SOTN.",
+    "description_zh": "Castlevania: SOTN 的寻路工具。"
+  },
+  "scan-1373703408": {
+    "description_en": "Bulk export of an entire Unreal Engine container (.utoc/.ucas/.pak) into one folder: textures, meshes, animations, audio, levels and properties. A command line front end over CUE4Parse.",
+    "description_zh": "将整个 Unreal Engine 容器（.utoc/.ucas/.pak）中的纹理、网格、动画、音频、关卡和属性批量导出到一个文件夹。基于 CUE4Parse 的命令行前端。"
+  },
+  "scan-1414209239": {
+    "description_en": "The web page of SCIRE",
+    "description_zh": "SCIRE 的网页。"
+  },
+  "scan-1366958068": {
+    "description_en": "Official GitHub Profile of Umar Farooque (@UmarFarooqueJi) — Cybersecurity Researcher, AI Threat Defense & Creator of SafeSignal.",
+    "description_zh": "Umar Farooque（@UmarFarooqueJi）的官方 GitHub 个人主页：网络安全研究员、AI 威胁防御工作者及 SafeSignal 创建者。"
+  },
+  "scan-1111854500": {
+    "description_en": "A lightweight in-browser Request Viewer that intercepts and displays fetch/XHR requests in real time. Includes filters, live UI, POST parsing, export to JSON, auto-copy, and a floating DevTools console panel. Just paste it into DevTools and start capturing.",
+    "description_zh": "轻量级浏览器内请求查看器，实时拦截并展示 fetch/XHR 请求。包含筛选器、实时界面、POST 解析、JSON 导出、自动复制及浮动 DevTools 控制台面板。粘贴到 DevTools 即可开始捕获。"
+  },
+  "scan-1376668760": {
+    "description_en": "Annual Tripataki Chakra with Varsha Lagna and traditional age-progressed planets, built from recovered JHora logic",
+    "description_zh": "基于恢复的 JHora 逻辑构建年度 Tripataki Chakra，包含 Varsha Lagna 以及按传统方法依据年龄推进行星的位置。"
+  },
+  "scan-1360640389": {
+    "description_en": "A Steam installation of The Murder of Sonic the Hedgehog (SEGA, 2023), measured file by file: 178 files, 468,913,725 bytes; four UnityFS bundles opened with residue 0; 996,569,296 headerless side-file bytes attributed, 433 left over; and 124 of 137 binaries carrying a hash where a date should be. No game assets here, only measurements.",
+    "description_zh": "逐文件测量 The Murder of Sonic the Hedgehog（SEGA，2023）的 Steam 安装：178 个文件，468,913,725 字节；4 个 UnityFS 包被打开且剩余未解析字节为 0；996,569,296 字节的无头旁置文件数据已归属，剩余 433 字节；137 个二进制文件中有 124 个在本应存放日期的位置含有哈希。此处没有游戏资源，只有测量结果。"
+  },
+  "scan-1386434132": {
+    "description_en": "🐚 Map a web app's JavaScript to its API — endpoints, GraphQL, routes and leaked keys from bundles and source maps, plus an OpenAPI skeleton. tree-sitter, not regex.",
+    "description_zh": "🐚 将网页应用的 JavaScript 映射到其 API：从打包文件和源码映射中提取端点、GraphQL、路由和泄露的密钥，并生成 OpenAPI 框架。使用 tree-sitter，而非正则表达式。"
+  },
+  "scan-1421784615": {
+    "description_en": "Offline-mode research for 《燕云十六声》: protocol documentation and analysis tools (no game assets).",
+    "description_zh": "《燕云十六声》离线化研究：协议文档 + 分析工具（无游戏资源）",
+    "english_retains_name": true
+  },
+  "scan-536724880": {
+    "description_en": "🔑 Supreme's Legacy \"pooky\" Encryption Key Extractor",
+    "description_zh": "🔑 Supreme 旧版 “pooky” 加密密钥提取器。"
+  },
+  "scan-1226884859": {
+    "description_en": "AI that extracts the underlying logical formula or mathematical invariant of any JavaScript function. TensorFlow.js + AST mutations.",
+    "description_zh": "提取任意 JavaScript 函数背后逻辑公式或数学不变量的 AI。使用 TensorFlow.js 和 AST 变异。"
+  },
+  "scan-1352178596": {
+    "description_en": "Convert Unreal Engine 5 BINKA audio assets (FModel .uasset + .ubulk exports) into playable WAV files. Windowed app and CLI.",
+    "description_zh": "将 Unreal Engine 5 的 BINKA 音频资源（FModel 导出的 .uasset + .ubulk 文件）转换为可播放的 WAV 文件。提供窗口应用和命令行工具。"
+  },
+  "scan-1354613233": {
+    "description_en": "Reverse-engineer apps with AI. Reforge reconstructs product, UX, UI, architecture, and design intent for coding agents.",
+    "description_zh": "借助 AI 逆向工程应用。Reforge 为编程智能体重建产品、用户体验、用户界面、架构和设计意图。"
+  },
+  "scan-1319397442": {
+    "description_en": "Static rebuild of the Littlebird.ai home page in plain HTML/CSS/JS, with a dependency-free test suite and Vercel deployment.",
+    "description_zh": "用原生 HTML/CSS/JS 静态重建 Littlebird.ai 首页，附带无依赖测试套件及 Vercel 部署。"
+  },
+  "scan-1407609153": {
+    "description_en": "Dart AOT Runtime Inspection and Tracing",
+    "description_zh": "Dart AOT 运行时检查与跟踪。"
+  },
+  "scan-806814669": {
+    "description_en": "A Unity package that allows you to import, modify and re-export assets of the game Star Wars Episode I: Racer.",
+    "description_zh": "一个 Unity 包，可导入、修改并重新导出 Star Wars Episode I: Racer 的游戏资源。"
+  },
+  "scan-1250258593": {
+    "description_en": "Containerized blutter",
+    "description_zh": "容器化的 blutter。"
+  },
+  "scan-1358108288": {
+    "description_en": "Local control and data export for the ResMed AirMini CPAP over Bluetooth Classic. A Home Assistant add-on and a Flutter app, both over libairmini.",
+    "description_zh": "通过经典蓝牙对 ResMed AirMini CPAP 设备进行本地控制和数据导出。提供 Home Assistant 插件和 Flutter 应用，两者均基于 libairmini。"
+  },
+  "scan-1400382362": {
+    "description_en": "🪝 The in-game Frida agent for Sacred Gold: hooks, game addresses, and the bundle the launcher downloads",
+    "description_zh": "🪝 Sacred Gold 的游戏内 Frida 代理：包含钩子、游戏地址以及启动器下载的打包文件。"
+  },
+  "scan-1354528219": {
+    "description_en": "The 2010 Danish school game Matematik i Måneby+, rebuilt from its Macromedia Director files to run in a browser. Play it in the link below.",
+    "description_zh": "将 2010 年丹麦校园游戏 Matematik i Måneby+ 从其 Macromedia Director 文件重建为浏览器可运行版本。可通过下方链接游玩。"
+  },
+  "scan-1227723526": {
+    "description_en": "Node.js + Termux port of reVC DOS (GTA Vice City reverse-engineered web port) with packed archive support and lightweight local hosting.",
+    "description_zh": "reVC DOS（逆向工程得到的 GTA Vice City 网页移植版）的 Node.js + Termux 移植，支持打包归档和轻量级本地托管。"
+  },
+  "scan-1408232443": {
+    "description_en": "Experimental open-source C++20 Ashes of Creation private-server / server-emulation lab: local Verra exploration, terrain collision, movement, flight and live browser tools. Very buggy; bring your own client. No combat or quests.",
+    "description_zh": "实验性的开源 C++20 Ashes of Creation 私服/服务器模拟实验室：支持本地探索 Verra、地形碰撞、移动、飞行和实时浏览器工具。缺陷很多，需自备客户端。不包含战斗或任务。"
+  },
+  "scan-1350501783": {
+    "description_en": "Master fishing games with auto-catch, instant bites, perfect reels, and resource manipulation for offline play.",
+    "description_zh": "通过自动钓获、即时咬钩、完美收线及资源修改，掌握离线钓鱼游戏。"
+  },
+  "scan-1378511835": {
+    "description_en": "HTPR e-bike controller BLE debugging console: a reverse-engineered protocol and a portrait-oriented Flutter dashboard.",
+    "description_zh": "恒泰普瑞电动自行车控制器 BLE 调试控制台：协议逆向与 Flutter 竖屏仪表。"
+  },
+  "scan-1358997360": {
+    "description_en": "",
+    "description_zh": ""
+  },
+  "scan-1393536781": {
+    "description_en": "Web app showing live arrivals, departures and security queue times for Sweden's 10 Swedavia airports. Python/FastAPI backend with caching and 43 pytest tests, vanilla JS + Bootstrap frontend.",
+    "description_zh": "展示瑞典 10 座 Swedavia 机场实时到达、出发和安检排队时间的网页应用。使用带缓存及 43 个 pytest 测试的 Python/FastAPI 后端，以及原生 JavaScript + Bootstrap 前端。"
+  },
+  "scan-1216858404": {
+    "description_en": "A Mandalorian-themed CrackMe in JavaScript — XOR-encrypted validation logic reconstructed at runtime via eval(). Speak the Creed, Foundling.",
+    "description_zh": "一个以曼达洛人为主题的 JavaScript CrackMe：通过 eval() 在运行时重建经 XOR 加密的验证逻辑。说出信条吧，Foundling。"
+  },
+  "scan-1108033723": {
+    "description_en": "A decompilation project of Hi Hi Puffy AmiYumi: Kaznapped for the GameBoy Advance.",
+    "description_zh": "GameBoy Advance 游戏 Hi Hi Puffy AmiYumi: Kaznapped 的反编译项目。"
+  },
+  "scan-1108034300": {
+    "description_en": "A decompilation project of Hi Hi Puffy AmiYumi: The Genie & the Amp for the Nintendo DS.",
+    "description_zh": "Nintendo DS 游戏 Hi Hi Puffy AmiYumi: The Genie & the Amp 的反编译项目。"
+  },
+  "scan-1114631190": {
+    "description_en": "A decompilation project of Ozzy & Drix for the GameBoy Advance.",
+    "description_zh": "GameBoy Advance 游戏 Ozzy & Drix 的反编译项目。"
+  },
+  "scan-1421885485": {
+    "description_en": "EA Sports Cricket 07 (2006) running in the browser: every function statically recompiled from x86 to C, then WebAssembly, with Direct3D 8 rebuilt on WebGPU. Bring your own copy.",
+    "description_zh": "让 EA Sports Cricket 07（2006）在浏览器中运行：将所有函数从 x86 静态重编译为 C，再编译为 WebAssembly，并在 WebGPU 上重建 Direct3D 8。需自备游戏副本。"
+  },
+  "scan-1324780082": {
+    "description_en": "Patch your Pokémon FireRed/LeafGreen ROM to unlock a full in-game editor via Viridian City's Pokémon Center.",
+    "description_zh": "为 Pokémon FireRed/LeafGreen ROM 打补丁，通过常青市的宝可梦中心解锁完整的游戏内编辑器。"
+  },
+  "scan-1335888687": {
+    "description_en": "Browser-based viewer for Thermal Master P3/P1 USB thermal cameras. Plug in, open the page, no install — driven directly over WebUSB.",
+    "description_zh": "基于浏览器的 Thermal Master P3/P1 USB 热成像相机查看器。插入设备、打开页面即可，无需安装，直接通过 WebUSB 驱动。"
+  },
+  "scan-1414778949": {
+    "description_en": "Fan-made offline single-player RTS mod for Foxhole (UE4SS/Lua): logistics-first, squads, supply chains, AI enemy. Early prototype.",
+    "description_zh": "玩家制作的 Foxhole 离线单人 RTS 模组（UE4SS/Lua）：以物流为先，包含小队、供应链和 AI 敌人。早期原型。"
+  },
+  "scan-1317044840": {
+    "description_en": "Monitor Windows process integrity and memory using a kernel telemetry driver and user-mode scanner.",
+    "description_zh": "使用内核遥测驱动和用户态扫描器监测 Windows 进程完整性与内存。"
+  },
+  "scan-1406672409": {
+    "description_en": "Unity 6 reimplementation and remastering project for Arcanum: Of Steamworks and Magick Obscura.",
+    "description_zh": "用 Unity 6 重新实现并重制 Arcanum: Of Steamworks and Magick Obscura 的项目。"
+  },
+  "scan-1321040283": {
+    "description_en": "Reverse-engineers your Deep Rock Galactic save file to track kills per enemy, overclock progress, and stats over time in a local SQLite + Streamlit dashboard. Auto-captures while you play. Rock and Stone! ⛏️",
+    "description_zh": "逆向解析 Deep Rock Galactic 存档，在本地 SQLite + Streamlit 仪表板中跟踪各类敌人的击杀数、超频进度及统计数据随时间的变化。游玩时自动采集。Rock and Stone！⛏️"
+  },
+  "scan-1350367149": {
+    "description_en": "Drive a running Unreal Engine game from outside via UE4SS, and verify that what you asked for actually happened. Negative-control verification: a check that survives its own poison is a failure, not a pass.",
+    "description_zh": "通过 UE4SS 从外部控制正在运行的 Unreal Engine 游戏，并验证所请求的行为确实发生。采用负对照验证：如果检查在其验证条件被刻意破坏后仍然通过，就应判为失败。"
+  },
+  "scan-1349172544": {
+    "description_en": "A bidirectional, reliable string channel for any shipped Unreal Engine game - no engine source, no C++, no custom RPCs. Built from two RPCs already on APlayerController.",
+    "description_zh": "适用于任意已发布 Unreal Engine 游戏的双向可靠字符串通道，无需引擎源码、C++ 或自定义 RPC。基于 APlayerController 已有的两个 RPC 构建。"
+  },
+  "scan-1355172927": {
+    "description_en": "Drive an old non-rooted Android phone as a PC-controlled app gateway: capture scrcpy PC window via Win32 PrintWindow to bypass FLAG_SECURE, then drive Flutter apps with adb taps/swipes.",
+    "description_zh": "将未 root 的旧 Android 手机用作由 PC 控制的应用网关：通过 Win32 PrintWindow 捕获 PC 上的 scrcpy 窗口以绕过 FLAG_SECURE，再通过 adb 点击和滑动操作 Flutter 应用。"
+  },
+  "scan-1416278131": {
+    "description_en": "Experimental Cuphead recovery tooling and native Apple platform helpers. MIT-licensed original code; bring your own game files.",
+    "description_zh": "实验性的 Cuphead 恢复工具及 Apple 平台原生辅助工具。原创代码采用 MIT 许可证，需自备游戏文件。"
+  },
+  "scan-1361688293": {
+    "description_en": "Unreal Engine global offset scanner as a reusable C++ static library",
+    "description_zh": "作为可复用 C++ 静态库提供的 Unreal Engine 全局偏移扫描器。"
+  },
+  "scan-1270454315": {
+    "description_en": "Console-driven UE4SS C++ toolkit of in-game reverse-engineering tools for Palworld modders",
+    "description_zh": "由控制台驱动的 UE4SS C++ 工具包，为 Palworld 模组开发者提供游戏内逆向工程工具。"
+  },
+  "scan-1332298592": {
+    "description_en": "Static recon of JS-heavy / geo-blocked SPAs: extract pricing, plans, API endpoints & models from public JS bundles. Stdlib-only, no browser.",
+    "description_zh": "对重度依赖 JavaScript 或受地域限制的单页应用进行静态分析：从公开 JS 打包文件中提取价格、套餐、API 端点和模型。仅使用标准库，无需浏览器。"
+  },
+  "scan-400373122": {
+    "description_en": "🔵 It's a repository of C/C++ programming and his content.",
+    "description_zh": "🔵 一个包含 C/C++ 编程及相关内容的仓库。"
+  },
+  "scan-304991586": {
+    "description_en": "Web reverse-engineering utility.",
+    "description_zh": "网页逆向工程工具。"
+  },
+  "scan-1359082188": {
+    "description_en": "Research-oriented conversion and validation pipeline for legacy Granny/GR2 skeletal assets targeting Unreal Engine.",
+    "description_zh": "面向研究的旧版 Granny/GR2 骨骼资源转换与验证流程，目标平台为 Unreal Engine。"
+  },
+  "scan-1288251889": {
+    "description_en": "Web Bluetooth dashboard and reverse-engineered protocol for BKmonitor-compatible voltage monitors",
+    "description_zh": "面向兼容 BKmonitor 的电压监测器的 Web Bluetooth 仪表板及逆向分析所得协议。"
+  },
+  "scan-1420761602": {
+    "description_en": "A Flutter app port based on reverse engineering the BLE advertising protocol of LampSmart Pro lights and fan lights.",
+    "description_zh": "LampSmart Pro 灯具/风扇灯 BLE 广播协议逆向迁移 App（Flutter）"
+  },
+  "scan-1282786871": {
+    "description_en": "reverse engineering Azota's encoding method and a few bypasses",
+    "description_zh": "对 Azota 编码方法的逆向分析及几种绕过方法。"
+  },
+  "scan-1410379945": {
+    "description_en": "a small framework for web application injection",
+    "description_zh": "用于网页应用注入的小型框架。"
+  },
+  "scan-1420826220": {
+    "description_en": "cheat for lms.vnedu.vn instance",
+    "description_zh": "用于 lms.vnedu.vn 实例的作弊工具。"
+  },
+  "scan-1282786688": {
+    "description_en": "my own method of bypassing the new wayground's \"anti-cheating\" feature",
+    "description_zh": "作者用于绕过 Wayground 新版“反作弊”功能的方法。"
+  },
+  "scan-1404263599": {
+    "description_en": "High-speed, multi-threaded Unreal Engine & Tencent .PAK unpacker, repacker, and patcher with auto stem-hash CRC32 signing, SM4 cipher support, and future-proof game compatibility.",
+    "description_zh": "高速多线程 Unreal Engine 与腾讯 .PAK 解包、重打包和补丁工具，支持自动 stem-hash CRC32 签名、SM4 加密，以及面向未来的游戏兼容性。"
+  },
+  "scan-1419533315": {
+    "description_en": "High-performance multi-engine game asset extractor, native container parser (Godot, Unreal, Unity, Windows PE), and AI reverse engineering orchestrator with MCP support",
+    "description_zh": "高性能多引擎游戏资源提取器、原生容器解析器（Godot、Unreal、Unity、Windows PE）及支持 MCP 的 AI 逆向工程编排工具。"
+  },
+  "scan-1160395538": {
+    "description_en": "",
+    "description_zh": ""
+  },
+  "scan-1389485757": {
+    "description_en": "A Stick Ranger 2 save editor based on reverse engineering the game’s web JavaScript code, supporting offline save decoding, editing, and re-encoding. Built with Flutter for Windows, Android, Web, and other platforms.",
+    "description_zh": "Stick Ranger 2 存档编辑器，基于 StickRanger2 网页 JavaScript 代码的逆向分析，实现离线解码、编辑和重新编码存档。采用 Flutter 实现，支持 Windows、Android、Web 等多个平台。"
+  },
+  "scan-1420930408": {
+    "description_en": "Matching decompilation of Blue Dragon: Awakened Shadow (Nintendo DS, YBUD). No game assets included.",
+    "description_zh": "Blue Dragon: Awakened Shadow（Nintendo DS，YBUD）的匹配式反编译项目。不包含游戏资源。"
+  },
+  "scan-1418653149": {
+    "description_en": "Matching decompilation of Code Lyoko (Nintendo DS, AL5E). No game assets included.",
+    "description_zh": "Code Lyoko（Nintendo DS，AL5E）的匹配式反编译项目。不包含游戏资源。"
+  },
+  "scan-1420915729": {
+    "description_en": "Matching decompilation of Dragon Ball Origins (Nintendo DS, CDZP). No game assets included.",
+    "description_zh": "Dragon Ball Origins（Nintendo DS，CDZP）的匹配式反编译项目。不包含游戏资源。"
+  },
+  "scan-1420857644": {
+    "description_en": "Matching decompilation of Eyeshield 21 (Nintendo DS, AE4J). No game assets included.",
+    "description_zh": "Eyeshield 21（Nintendo DS，AE4J）的匹配式反编译项目。不包含游戏资源。"
+  },
+  "scan-1418653410": {
+    "description_en": "Matching decompilation of Fairy Tail: Kardia (Nintendo DS, TFTJ). No game assets included.",
+    "description_zh": "Fairy Tail: Kardia（Nintendo DS，TFTJ）的匹配式反编译项目。不包含游戏资源。"
+  },
+  "scan-1418653613": {
+    "description_en": "Matching decompilation of Fairy Tail: Madoushi (Nintendo DS, BH6J). No game assets included.",
+    "description_zh": "Fairy Tail: Madoushi（Nintendo DS，BH6J）的匹配式反编译项目。不包含游戏资源。"
+  },
+  "scan-1418653826": {
+    "description_en": "Matching decompilation of Farm Frenzy (Nintendo DS, BFZE). No game assets included.",
+    "description_zh": "Farm Frenzy（Nintendo DS，BFZE）的匹配式反编译项目。不包含游戏资源。"
+  },
+  "scan-1418654066": {
+    "description_en": "Matching decompilation of Harvest Moon DS (Nintendo DS, ABCE). No game assets included.",
+    "description_zh": "Harvest Moon DS（Nintendo DS，ABCE）的匹配式反编译项目。不包含游戏资源。"
+  },
+  "scan-1420821961": {
+    "description_en": "Matching decompilation of Heroes of Mana (Nintendo DS, AHEP). No game assets included.",
+    "description_zh": "Heroes of Mana（Nintendo DS，AHEP）的匹配式反编译项目。不包含游戏资源。"
+  },
+  "scan-1420847236": {
+    "description_en": "Matching decompilation of Livly Garden (Nintendo DS, BLIJ). No game assets included.",
+    "description_zh": "Livly Garden（Nintendo DS，BLIJ）的匹配式反编译项目。不包含游戏资源。"
+  },
+  "scan-1420886490": {
+    "description_en": "Matching decompilation of MySims (Nintendo DS, AQIE). No game assets included.",
+    "description_zh": "MySims（Nintendo DS，AQIE）的匹配式反编译项目。不包含游戏资源。"
+  },
+  "scan-1418654518": {
+    "description_en": "Matching decompilation of Nintendogs Dachshund (Nintendo DS, ADGE). No game assets included.",
+    "description_zh": "Nintendogs Dachshund（Nintendo DS，ADGE）的匹配式反编译项目。不包含游戏资源。"
+  },
+  "scan-1420822798": {
+    "description_en": "Matching decompilation of Powerpuff Girls Z (Nintendo DS, YPPJ). No game assets included.",
+    "description_zh": "Powerpuff Girls Z（Nintendo DS，YPPJ）的匹配式反编译项目。不包含游戏资源。"
+  },
+  "scan-1357669094": {
+    "description_en": "Windows build & precompiled binaries for blutter - Flutter/Dart AOT snapshot reverse engineering tool (upstream: worawit/blutter)",
+    "description_zh": "blutter 的 Windows 构建和预编译二进制文件；blutter 是 Flutter/Dart AOT 快照逆向工程工具（上游：worawit/blutter）。"
+  },
+  "scan-1231373516": {
+    "description_en": "Modify the Sonolus rhythm game on Android using Frida to add custom features and gameplay adjustments.",
+    "description_zh": "使用 Frida 修改 Android 上的 Sonolus 音乐游戏，添加自定义功能并调整游戏玩法。"
+  },
+  "scan-1277420710": {
+    "description_en": "Manage Forza Horizon 5 credits, unlock cars, and add wheelspins with this tool.",
+    "description_zh": "用于管理 Forza Horizon 5 点数、解锁车辆和增加抽奖次数的工具。"
+  },
+  "scan-1415236854": {
+    "description_en": "A TypeScript tool for reverse engineering, source-code analysis, structural inspection, and understanding software projects.",
+    "description_zh": "用于逆向工程、源代码分析、结构检查和理解软件项目的 TypeScript 工具。"
+  },
+  "scan-1304538017": {
+    "description_en": "Flutter/Android reverse-engineering toolkit for the Saeco GranBaristo Avanti's Bluetooth Low Energy protocol: scan, pair (PIN), decode frames live, verify CRC-16, and send drink commands. The recon tool behind saeco-granbaristo-bridge. ☕",
+    "description_zh": "用于 Saeco GranBaristo Avanti 蓝牙低功耗协议的 Flutter/Android 逆向工程工具包：扫描、配对（PIN）、实时解码帧、验证 CRC-16 并发送饮品指令。是 saeco-granbaristo-bridge 背后的协议探查工具。☕"
+  },
+  "scan-1168400859": {
+    "description_en": "UE replication layout seed extractor, built on Dumper-7",
+    "description_zh": "基于 Dumper-7 构建的 UE 网络复制布局种子提取器。"
+  },
+  "scan-1269796022": {
+    "description_en": "A save-file (.dat) editor for the early iPad version of Mole Manor, implemented entirely as a web tool.",
+    "description_zh": "摩尔庄园早期 iPad 版存档（.dat）编辑器，纯网页工具。"
+  },
+  "scan-1419111930": {
+    "description_en": "Learn portable executable models from stateful API behavior, including hidden modes.",
+    "description_zh": "从有状态 API 行为中学习可移植、可执行的模型，涵盖隐藏模式。"
+  },
+  "scan-1287083206": {
+    "description_en": "Runtime instrumentation bridge for IL2CPP-hosted processes (Unity Linux builds). Signature-based method resolution, lazy class init recovery, LD_PRELOAD bootstrap.",
+    "description_zh": "面向 IL2CPP 托管进程（Unity Linux 构建）的运行时插桩桥接工具。支持基于签名的方法解析、延迟类初始化恢复和 LD_PRELOAD 引导。"
+  },
+  "scan-1369400978": {
+    "description_en": "How ADU students pull their own Blackboard Ultra course files through the internal API - researched endpoints, failure modes, and how to brief an AI agent to run it.",
+    "description_zh": "说明 ADU 学生如何通过内部 API 获取自己的 Blackboard Ultra 课程文件，包含已研究的端点、失败情形，以及如何向 AI 智能体说明执行方式。"
+  },
+  "scan-1414829322": {
+    "description_en": "Mod menu for Duke Nukem Forever (Steam build 244 and The Doctor Who Cloned Me DLC): ESP, aimbot, free camera, progress tracking and more.",
+    "description_zh": "Duke Nukem Forever（Steam build 244 及 The Doctor Who Cloned Me DLC）的模组菜单：ESP、自瞄、自由相机、进度跟踪等功能。"
+  },
+  "scan-1315344671": {
+    "description_en": "An unofficial collection browser for Serpent's Gaze: see everything you've unlocked, and everything you haven't.",
+    "description_zh": "Serpent’s Gaze 的非官方收藏浏览器：查看已解锁及尚未解锁的所有内容。"
+  },
+  "scan-1351566719": {
+    "description_en": "Save editor and format library for Astroneer. Byte exact round trip, tkinter GUI, CLI, and a documented save format spec.",
+    "description_zh": "Astroneer 的存档编辑器和格式库。支持字节级精确的往返转换，提供 tkinter 图形界面、命令行工具及存档格式规范文档。"
+  },
+  "scan-468857694": {
+    "description_en": "",
+    "description_zh": ""
+  },
+  "scan-1365158870": {
+    "description_en": "A patcher that removes input lag from diagonal movement (R-button direction lock) in Torneko no Daibouken: Chotto Suteki na Remaster (Steam version).",
+    "description_zh": "用于消除《トルネコの大冒険 ちょっとステキなリマスター》Steam 版斜向移动（R 键固定方向）输入延迟的补丁工具。"
+  },
+  "scan-1348948595": {
+    "description_en": "Turns an Android Unity build into a searchable research library: sprites cut from their atlases, roles from Unity's own reference graph, animations reassembled from prefabs.",
+    "description_zh": "将 Android Unity 构建转为可搜索的研究资料库：从图集中裁切精灵、根据 Unity 自身的引用图识别角色，并从预制件重组动画。"
+  },
+  "scan-1403697175": {
+    "description_en": "Far Far Away - a tools and engine for work with Unreal Engine 2 games.",
+    "description_zh": "Far Far Away：用于处理 Unreal Engine 2 游戏的工具和引擎。"
+  },
+  "scan-678659095": {
+    "description_en": "Analyze and audit UDP packets in real time with this MITM tool made in pure JavaScript!",
+    "description_zh": "使用这个纯 JavaScript 编写的 MITM 工具，实时分析和审计 UDP 数据包！"
+  },
+  "scan-1355558256": {
+    "description_en": "Runtime-only 60 FPS research and ReZygisk project for Pokémon Champions Android.",
+    "description_zh": "针对 Pokémon Champions Android 的仅运行时 60 FPS 研究及 ReZygisk 项目。"
+  },
+  "scan-1178168967": {
+    "description_en": "Automated INNOVV K7 dashcam backup to a NAS: when the motorcycle goes on charge (Victron Blue Smart, read over BLE), a Shelly Plus Uni in the garage closes a relay on the bike to wake the camera, and a Raspberry Pi pulls and verifies the footage over WiFi. openHAB runs the state machine, incl. clamp-on-bike detection.",
+    "description_zh": "将 INNOVV K7 行车记录仪自动备份到 NAS：摩托车开始充电时（通过 BLE 读取 Victron Blue Smart），车库内的 Shelly Plus Uni 闭合车上的继电器以唤醒相机，再由 Raspberry Pi 通过 WiFi 拉取并校验录像。openHAB 运行状态机，包括检测充电夹是否接在车上。"
+  },
+  "scan-1417806791": {
+    "description_en": "Frontend accessibility reconstruction benchmark for replaying CDP AX trees, DOM mutations, node identity, focus, roles, and accessible names across historical browser state.",
+    "description_zh": "前端无障碍重建基准，用于在历史浏览器状态中重放 CDP 无障碍树、DOM 变更、节点身份、焦点、角色和无障碍名称。"
+  },
+  "scan-1370001685": {
+    "description_en": "Frontend incident-reconstruction benchmark for reconciling SSR hydration, DOM events, application state, WebSocket history, scheduler timing, source maps, and computed styles.",
+    "description_zh": "前端故障重建基准，用于协调还原 SSR 水合、DOM 事件、应用状态、WebSocket 历史、调度时序、源码映射和计算样式。"
+  },
+  "scan-1400952850": {
+    "description_en": "Browser-state reconstruction benchmark for replaying scroll anchors, DOM/layout mutations, viewport history, and asynchronous frontend updates.",
+    "description_zh": "浏览器状态重建基准，用于重放滚动锚点、DOM/布局变更、视口历史和异步前端更新。"
+  },
+  "scan-1404946165": {
+    "description_en": "Frontend source-map forensics benchmark for reconstructing historical bundle revisions and mapping runtime JavaScript locations back to original source.",
+    "description_zh": "前端源码映射取证基准，用于重建历史打包文件版本，并将运行时 JavaScript 位置映射回原始源码。"
+  },
+  "scan-1391586526": {
+    "description_en": "MCP-like runtime service for Unity games: inspect & modify live game state (objects, fields, methods) over HTTP, with an MCP bridge for AI clients. Mono games -> BepInEx 5 plugin (src/). IL2CPP games -> BepInEx 6 plugin (il2cpp/).",
+    "description_zh": "Unity 游戏的类 MCP 运行时服务：通过 HTTP 检查和修改实时游戏状态（对象、字段和方法），并为 AI 客户端提供 MCP 桥接。Mono 游戏使用 BepInEx 5 插件（src/）；IL2CPP 游戏使用 BepInEx 6 插件（il2cpp/）。"
+  },
+  "scan-1010667784": {
+    "description_en": "Small JavaScript generator for use with Frida",
+    "description_zh": "供 Frida 使用的小型 JavaScript 生成器。"
+  },
+  "scan-1023230426": {
+    "description_en": "Automation for JS Abstract Syntax Tree generation using @babel.",
+    "description_zh": "使用 @babel 自动生成 JavaScript 抽象语法树。"
+  },
+  "scan-1385376461": {
+    "description_en": "Fan-made outcome reader + MelonLoader mods for Scritchy Scratchy",
+    "description_zh": "玩家制作的 Scritchy Scratchy 结果读取器及 MelonLoader 模组。"
+  },
+  "scan-659213801": {
+    "description_en": "This application is used to manage Unity 3D projects (WPF, Net 6.0, 64 bit, Win).",
+    "description_zh": "用于管理 Unity 3D 项目的应用（WPF、.NET 6.0、64 位、Windows）。"
+  },
+  "scan-1188610866": {
+    "description_en": "Patch SteamStub protection on the fly with a simple DLL, supporting games where other tools like Steamless fail to run properly.",
+    "description_zh": "通过简单的 DLL 即时修补 SteamStub 保护，支持 Steamless 等其他工具无法正常运行的游戏。"
+  },
+  "scan-1188976036": {
+    "description_en": "DVFA: A FinTech security lab mapping 10 vulnerabilities to the OWASP Mobile Top 10. Focused on AOT binary analysis, deep link hijacking, and SQL injection, featuring a Dockerized mock backend.",
+    "description_zh": "DVFA：将 10 个漏洞映射至 OWASP Mobile Top 10 的金融科技安全实验室。重点涵盖 AOT 二进制分析、深链接劫持和 SQL 注入，并提供 Docker 容器化模拟后端。"
+  },
+  "scan-1421655261": {
+    "description_en": "30 practical Web/mini-app JavaScript reverse-engineering and protocol-reconstruction cases: request signing (MD5/HMAC/RSA/Chinese SM2 and SM4 cryptography), response decryption, cookie-based anti-scraping, JSVMP, WASM, font-based anti-scraping, slider/text-click CAPTCHAs, and risk controls such as Akamai and Ruishu. For learning and discussion only.",
+    "description_zh": "30 个 Web/小程序 JavaScript 逆向与协议还原实战案例：请求签名（MD5/HMAC/RSA/国密 SM2、SM4）、响应解密、Cookie 反爬、JSVMP、WASM、字体反爬、滑块/文字点选验证码、Akamai/瑞数等风控。仅供学习交流。"
+  },
+  "scan-1309651945": {
+    "description_en": "One-byte patch to disable the Mordhau dedicated-server idle/AFK kick (reason: Inactif). For private/LAN servers.",
+    "description_zh": "通过单字节补丁禁用 Mordhau 专用服务器的空闲/挂机踢出机制（原因：Inactif）。用于私人或局域网服务器。"
+  },
+  "scan-1413732654": {
+    "description_en": "One-click Windows modkit with stable sandbox/bin paths for the current Ghidra, Unity, Unreal and reverse-engineering tools an agent should call.",
+    "description_zh": "一键式 Windows 模组工具包，为智能体应调用的现有 Ghidra、Unity、Unreal 和逆向工程工具提供稳定的 sandbox/bin 路径。"
+  },
+  "scan-1285013701": {
+    "description_en": "Resolve MixDrop file IDs to direct mxcontent.net MP4 URLs. Node.js server fetches the embed page, extracts the signed CDN link from the player script, validates the stream, and exposes a referer-aware proxy for browser playback.",
+    "description_zh": "将 MixDrop 文件 ID 解析为直接的 mxcontent.net MP4 URL。Node.js 服务端获取嵌入页面，从播放器脚本中提取带签名的 CDN 链接，验证视频流，并提供处理 Referer 的代理以供浏览器播放。"
+  },
+  "scan-1285042100": {
+    "description_en": "Streamtape file ID or URL to tapecontent.net MP4. Fetches /v/{id}, replays get_video innerHTML obfuscation, follows the gate 302, range-probes CDN for ftyp atom. Node HTTP server serves static UI, POST /api/resolve JSON API, parse-video-id input parser, resolve timers, direct HTML5 video src to CDN.",
+    "description_zh": "将 Streamtape 文件 ID 或 URL 解析为 tapecontent.net MP4。获取 /v/{id}，重放 get_video 的 innerHTML 混淆逻辑，跟随入口的 302 重定向，并用范围请求探查 CDN 中的 ftyp 原子。Node HTTP 服务端提供静态界面、POST /api/resolve JSON API、parse-video-id 输入解析器、解析计时器，以及直接指向 CDN 的 HTML5 video src。"
+  },
+  "scan-1163264108": {
+    "description_en": "I reverse-engineered and rebuilt a 400k+ user Chrome extension using YOLO mode with Gemini 3",
+    "description_zh": "作者使用 Gemini 3 的 YOLO 模式，逆向工程并重建了一款拥有超过 40 万用户的 Chrome 扩展。"
+  },
+  "scan-1349467249": {
+    "description_en": "An MCP server and Claude Code plugin for reading and building BotHelp bot flows (Telegram/VK/MAX/WhatsApp) through the builder’s private WebSocket-RPC interface. No dependencies.",
+    "description_zh": "通过 BotHelp 构建器的私有 WebSocket-RPC 读取并构建机器人流程的 MCP 服务器和 Claude Code 插件，支持 Telegram、VK、MAX 和 WhatsApp。无依赖。"
+  },
+  "scan-1114631670": {
+    "description_en": "Technical analysis of malware samples, phishing kits, and scam infrastructure. Includes IOCs, reverse engineering notes, and de-obfuscated payloads.",
+    "description_zh": "恶意软件样本、钓鱼工具包和诈骗基础设施的技术分析，包含失陷指标（IOC）、逆向工程笔记及去混淆后的载荷。"
+  },
+  "scan-1420260554": {
+    "description_en": "Work-in-progress matching decompilation of Fossil Fighters (Nintendo DS). Bring your own ROM; no game assets included.",
+    "description_zh": "正在进行的 Fossil Fighters（Nintendo DS）匹配式反编译项目。需自备 ROM，不包含游戏资源。"
+  },
+  "scan-1398928621": {
+    "description_en": "Static recompiler for GameMaker Studio 1.4 games: data.win bytecode to native C, with an ImGui dev/cheat menu",
+    "description_zh": "GameMaker Studio 1.4 游戏的静态重编译器：将 data.win 字节码转换为原生 C，并提供 ImGui 开发/作弊菜单。"
+  },
+  "scan-1404874165": {
+    "description_en": "Static recompilation of Unreal Tournament (Epic, 1999; Steam v436) to native C, headed for a modern makeover: its own presenter, widescreen, a modern render device. Built on pcrecomp.",
+    "description_zh": "将 Unreal Tournament（Epic，1999；Steam v436）静态重编译为原生 C，并计划进行现代化改造：自有呈现模块、宽屏和现代渲染设备。基于 pcrecomp 构建。"
+  },
+  "scan-1378963602": {
+    "description_en": "Flutter v2 BLE vibration controller for Ankni devices. Dual-channel PWM, 20 Hz scheduler, waveforms/playlists, background playback, auto-reconnect, and local config.",
+    "description_zh": "用于 Ankni 设备的 Flutter v2 BLE 振动控制器。支持双通道 PWM、20 Hz 调度器、波形/播放列表、后台播放、自动重连和本地配置。"
+  },
+  "scan-1161280298": {
+    "description_en": "A Node.js project for generating and writing Lego Dimensions Toy Tag data onto blank NFC213 tags. A console application that allows you to recreate character and vehicle tags for use with the Lego Dimensions game.",
+    "description_zh": "用于在 NFC213 空白标签上生成并写入 Lego Dimensions Toy Tag 数据的 Node.js 项目。这款控制台应用可重新制作供 Lego Dimensions 游戏使用的角色和载具标签。"
+  },
+  "scan-1341490231": {
+    "description_en": "Agent skill for solving 猿人学 (yuanrenxue) JS-reverse match challenges — fingerprint, route, verify.",
+    "description_zh": "用于解决猿人学（yuanrenxue）JavaScript 逆向比赛挑战的智能体技能：识别特征、选择路线、验证。",
+    "english_retains_name": true
+  },
+  "scan-1360941037": {
+    "description_en": "An offline-first agent for controlled Unity / Unreal game unpacking (Windows / .NET 9).",
+    "description_zh": "离线优先的 Unity / Unreal 受控游戏解包 Agent（Windows / .NET 9）"
+  },
+  "scan-1402043032": {
+    "description_en": "UE5 MinHook inline hook example: AOB signature scan + detour for UObject::StaticConstructObject_Internal, with the failure modes found against a real UE 5.6 target",
+    "description_zh": "UE5 MinHook 内联钩子示例：针对 UObject::StaticConstructObject_Internal 的 AOB 特征扫描和 detour，并记录了在真实 UE 5.6 目标上发现的失败情形。"
+  },
+  "scan-1351417016": {
+    "description_en": "Harry Potter and the Philosopher's Stone (PC, Electronic Arts, 2001) measured from the retail disc: ISO 9660 layout, a table hidden in the volume descriptor, the read window that hides the border of a 9,280-sector unreadable region, 249 Unreal Engine 1 packages, and 31 levels in one line.",
+    "description_zh": "从零售光盘测量 Harry Potter and the Philosopher’s Stone（PC，Electronic Arts，2001）：ISO 9660 布局、隐藏在卷描述符中的表、遮蔽一个含 9,280 个扇区的不可读区域边界的读取窗口、249 个 Unreal Engine 1 包，以及一行中的 31 个关卡。"
+  },
+  "scan-1362394351": {
+    "description_en": "One object: the Steam install of I am Setsuna (Unity 5.2, never run). 970 files, 1,471,268,535 bytes, 97.85 % somebody else's container. Six readers close all of it on the vendors' own integers -- 35 v15 SerializedFiles at residue 0, 145 UnityWeb bundles, 279 @UTF tables, CRC-16 on 381,077 audio frames, 392 Lua chunks consumed exactly.",
+    "description_zh": "研究对象为 I am Setsuna 的 Steam 安装（Unity 5.2，未曾运行）。包含 970 个文件、1,471,268,535 字节，其中 97.85% 属于第三方容器。六种读取器依据厂商自身的整数字段完整解析：35 个 v15 SerializedFile 无剩余字节、145 个 UnityWeb 包、279 个 @UTF 表、381,077 个音频帧的 CRC-16，以及恰好读完的 392 个 Lua 代码块。"
+  },
+  "scan-1374352356": {
+    "description_en": "The Wardrobe (CINIC Games, Unity 6, Steam): 1,207 clear XML in six languages keyed by Italian, 17,368 sprites at format 22, 482 FMOD Studio banks, 31 silent films - measured from the bytes, nothing published.",
+    "description_zh": "The Wardrobe（CINIC Games，Unity 6，Steam）：以意大利语为键的六种语言、1,207 个明文 XML，17,368 个格式 22 精灵，482 个 FMOD Studio 音频库，以及 31 段无声影片；均从字节中测量，未发布任何内容。"
+  },
+  "scan-1372989254": {
+    "description_en": "Security analysis for AOT-compiled Flutter apps. Recovers facts from the Dart snapshot and maps them to OWASP MASVS controls.",
+    "description_zh": "针对 AOT 编译的 Flutter 应用进行安全分析。从 Dart 快照中恢复事实，并映射到 OWASP MASVS 控制项。"
+  },
+  "scan-514821193": {
+    "description_en": "Prototype modifications enabling manipulation and snooping of XMLHttpRequests.",
+    "description_zh": "通过修改原型来操纵和侦听 XMLHttpRequest。"
+  },
+  "scan-1273195838": {
+    "description_en": "Chrome extension that decompiles any web UI component into standalone, Tailwind-compatible HTML — offline, with WebGL/3D backgrounds intact.",
+    "description_zh": "将任意网页 UI 组件反编译为独立、兼容 Tailwind 的 HTML 的 Chrome 扩展；离线工作，并保留 WebGL/3D 背景。"
+  },
+  "scan-1266874593": {
+    "description_en": "One-click social publisher (Chrome MV3): captures media from any site and publishes real Pinterest Pins — HAR-reverse-engineered, humanized DOM automation, remote selector config.",
+    "description_zh": "一键社交发布工具（Chrome MV3）：从任意网站捕获媒体并发布真实 Pinterest Pin；基于 HAR 逆向分析，采用模拟人类操作的 DOM 自动化和远程选择器配置。"
+  },
+  "scan-1157362267": {
+    "description_en": "Static analyzer for Flutter/Dart AOT snapshots",
+    "description_zh": "Flutter/Dart AOT 快照静态分析器。"
+  },
+  "scan-1416895414": {
+    "description_en": "Evidence-driven reverse engineering of Chrome T-Rex Runner using REA MCP and Codex, with AI-assisted reimplementation and regression testing. ",
+    "description_zh": "使用 REA MCP 和 Codex，对 Chrome T-Rex Runner 进行证据驱动的逆向工程，并通过 AI 辅助重新实现和回归测试。"
+  },
+  "scan-1416097198": {
+    "description_en": "Evidence-driven Gears 5 B2 extraction research and Blender map reconstruction tooling.",
+    "description_zh": "证据驱动的 Gears 5 B2 提取研究及 Blender 地图重建工具。"
+  },
+  "scan-1416130846": {
+    "description_en": "Evidence-driven Gears of War: Reloaded package research and Blender map reconstruction tooling.",
+    "description_zh": "证据驱动的 Gears of War: Reloaded 包研究及 Blender 地图重建工具。"
   }
 }

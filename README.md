@@ -108,6 +108,8 @@ Each entry appears once under its main purpose. The collection includes independ
 - [Detect It Easy](https://github.com/horsicq/Detect-It-Easy) — Format-aware file identification and static inspection using parsers, signatures and programmable heuristics. **[Tool]**
 - [objection](https://github.com/sensepost/objection) — Explore running Android and iOS apps with a Frida-backed command interface for inspecting app storage, memory, runtime objects, and instrumented behavior. **[Tool]**
 - [r2frida](https://github.com/nowsecure/r2frida) — Use radare2 commands and Frida instrumentation together to inspect local or remote process memory, symbols, classes, and runtime calls on desktop and mobile targets. **[Tool]**
+- [Kaitai Struct](https://github.com/kaitai-io/kaitai_struct) — Turn documented binary layouts into reusable parsers for files and network packets. A .ksy specification can be inspected with visualizers and compiled to multiple languages, helping preserve reverse-engineered format knowledge in interoperable implementations. **[Tool · Library]**
+- [Wireshark](https://gitlab.com/wireshark/wireshark) — Inspect captured application and device traffic as decoded protocol fields, with filtering and shared GUI/TShark dissection. Custom dissectors let an analyst encode newly understood packet formats and compare protocol implementations. **[Tool]**
 
 <a id="firmware"></a>
 ### Firmware and Hardware
@@ -120,6 +122,8 @@ Each entry appears once under its main purpose. The collection includes independ
 - [Firmware Analysis and Comparison Tool (FACT)](https://github.com/fkie-cad/FACT_core) — Unpack and analyze firmware through an extensible platform whose web interface and HTTP API make component contents and analysis results searchable and comparable across samples. **[Tool]**
 - [OFRAK](https://github.com/redballoonsecurity/ofrak) — Recursively identify, unpack, analyze, modify, and repack firmware and binary formats using a resource-tree GUI and Python API, with optional disassembler backends. **[Tool]**
 - [FirmAE](https://github.com/pr0v3rbs/FirmAE) — Emulate router and IP-camera firmware to inspect network services and runtime behavior, with automated emulation checks and separate analysis, run, and debugging modes. **[Tool]**
+- [PulseView](https://github.com/sigrokproject/pulseview) — Examine captured logic and analog waveforms with sigrok's graphical frontend. Protocol decoders and decoder stacking expose bus messages and higher-level device operations, making hardware communication traces useful for firmware and interoperability investigations. **[Tool]**
+- [UEFITool](https://github.com/LongSoft/UEFITool) — Parse UEFI firmware images into an inspectable tree and check their structure. Companion UEFIExtract and UEFIFind tools extract parsed contents and locate patterns, supporting analysis of firmware components and vendor formats. **[Tool]**
 
 <a id="agents-and-mcp"></a>
 ### Agents and MCP
@@ -304,7 +308,7 @@ A bibliography of **14 papers** on agent evaluation, decompilation, and website 
 ## Full Repository Index
 
 <!-- BEGIN REPOSITORY INDEX SUMMARY -->
-**2,000** repository READMEs scanned; **1,979** entries available to browse. The 21 clearly out-of-scope entries remain in the scan data. This automatically discovered index is separate from the curated resources above and has not been individually execution-tested.
+**2,500** repository READMEs scanned; **2,471** entries available to browse. The 29 clearly out-of-scope entries remain in the scan data. This automatically discovered index is separate from the curated resources above and has not been individually execution-tested.
 
 [Browse by category on GitHub](docs/repositories/README.md) · [Search website](https://awesomerea.org/?view=source-index&lang=en) · [Full bilingual index JSON](https://awesomerea.org/source-index.json) · [Curated catalog JSON](https://awesomerea.org/catalog.json)
 <!-- END REPOSITORY INDEX SUMMARY -->

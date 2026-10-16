@@ -1560,5 +1560,112 @@
       "The 4.0.0-alpha GitHub release is explicitly a preview despite being listed as a regular release. Its Android support is read-only; do not assume JVM editing features apply to Android.",
       "MIT-licensed. Provide compiled application inputs; recovered decompiled text is an analysis view, not guaranteed original source."
     ]
+  },
+  {
+    "id": "kaitai-struct",
+    "name": "Kaitai Struct",
+    "url": "https://github.com/kaitai-io/kaitai_struct",
+    "category": "binary-libraries",
+    "relationship": "foundation",
+    "kind": "tool",
+    "targets": [
+      "binary",
+      "firmware"
+    ],
+    "description_en": "Turn documented binary layouts into reusable parsers for files and network packets. A .ksy specification can be inspected with visualizers and compiled to multiple languages, helping preserve reverse-engineered format knowledge in interoperable implementations.",
+    "description_zh": "将已描述的二进制布局转换为可复用的文件与网络报文解析器；同一份 .ksy 规范可通过可视化工具检查，并编译为多种语言，便于把逆向获得的格式知识落实为可互操作的实现。",
+    "evidence_url": "https://github.com/kaitai-io/kaitai_struct/blob/5ca6630c7761d7f0d9c57fd8a4af1cc8adb75a6c/README.md",
+    "additional_evidence_urls": [
+      "https://github.com/kaitai-io/kaitai_struct_compiler/blob/fd2594257834241455f27121ae1adf296bcf09b9/README.md",
+      "https://kaitai.io/",
+      "https://github.com/kaitai-io/kaitai_struct_compiler/releases/tag/0.11"
+    ],
+    "verified_at": "2026-10-16",
+    "verification": "source-reviewed",
+    "requirements": [
+      "Provide a .ksy specification or adapt an existing format description; Kaitai generates parsers from that description rather than discovering unknown protocol semantics automatically.",
+      "The stable 0.11 universal compiler runs on Linux, macOS and Windows with Java 8+; Java 21 LTS is recommended. Generated parsers also need the selected language's Kaitai runtime.",
+      "Compiler and visualizer are GPL-3.0-or-later; runtimes have separate licenses, including MIT and Apache-2.0. Compiler licensing does not impose its license on input specifications or generated output."
+    ]
+  },
+  {
+    "id": "wireshark",
+    "name": "Wireshark",
+    "url": "https://gitlab.com/wireshark/wireshark",
+    "category": "dynamic-analysis",
+    "relationship": "foundation",
+    "kind": "tool",
+    "targets": [
+      "app",
+      "firmware"
+    ],
+    "description_en": "Inspect captured application and device traffic as decoded protocol fields, with filtering and shared GUI/TShark dissection. Custom dissectors let an analyst encode newly understood packet formats and compare protocol implementations.",
+    "description_zh": "将捕获的应用与设备流量解析为协议字段，支持过滤，并由 GUI 与 TShark 共用解析逻辑；自定义解析器可将新识别的报文格式固化下来，辅助比较协议实现。",
+    "evidence_url": "https://gitlab.com/wireshark/wireshark/-/blob/e1087b1870cfc7686b229836dda8838c8f45ea0f/README.md",
+    "additional_evidence_urls": [
+      "https://github.com/wireshark/wireshark/blob/e1087b1870cfc7686b229836dda8838c8f45ea0f/README.md",
+      "https://www.wireshark.org/docs/wsug_html_chunked/ChapterIntroduction.html",
+      "https://www.wireshark.org/docs/wsug_html_chunked/ChIntroPlatforms.html",
+      "https://www.wireshark.org/docs/wsdg_html_chunked/ChapterDissection.html"
+    ],
+    "verified_at": "2026-10-16",
+    "verification": "source-reviewed",
+    "requirements": [
+      "Use a supported Windows, macOS or Linux/Unix build and a compatible capture file. Live capture additionally needs a supported interface, capture driver and appropriate capture permissions.",
+      "Media support depends on the operating system and hardware. Custom formats need an appropriate dissector; packet inspection does not automatically recover a peer's full implementation.",
+      "Distributed under GNU GPLv2, with additional component notices. The GitLab repository is upstream; GitHub is its official read-only mirror."
+    ]
+  },
+  {
+    "id": "pulseview",
+    "name": "PulseView",
+    "url": "https://github.com/sigrokproject/pulseview",
+    "category": "firmware",
+    "relationship": "foundation",
+    "kind": "tool",
+    "targets": [
+      "firmware"
+    ],
+    "description_en": "Examine captured logic and analog waveforms with sigrok's graphical frontend. Protocol decoders and decoder stacking expose bus messages and higher-level device operations, making hardware communication traces useful for firmware and interoperability investigations.",
+    "description_zh": "通过 sigrok 的图形前端检查逻辑与模拟波形；协议解码器及分层解码可展示总线消息和更高层的设备操作，便于利用硬件通信记录开展固件与互操作性分析。",
+    "evidence_url": "https://github.com/sigrokproject/pulseview/blob/af02198741b4e57c9f9b796bd5e6c0f2ae9f2f2b/README",
+    "additional_evidence_urls": [
+      "https://github.com/sigrokproject/pulseview/blob/af02198741b4e57c9f9b796bd5e6c0f2ae9f2f2b/CMakeLists.txt",
+      "https://sigrok.org/wiki/PulseView",
+      "https://sigrok.org/doc/pulseview/unstable/manual.html",
+      "https://sigrok.org/wiki/Protocol_decoders"
+    ],
+    "verified_at": "2026-10-16",
+    "verification": "source-reviewed",
+    "requirements": [
+      "Supply a supported recorded trace, or use a compatible logic analyzer/oscilloscope with the needed device access. Device support is narrower than the whole sigrok suite; PulseView is not the multimeter frontend.",
+      "Protocol decoding requires libsigrokdecode and operates on logic signals; analog captures need suitable conversion. The reviewed source accepts Qt 5.3+ or Qt 6.2+, libsigrokcxx 0.5.2+ and libsigrokdecode 0.5.2+.",
+      "GPL-3.0-or-later. GitHub is the official mirror. Development snapshots and packaged releases may differ; the reviewed tree must not be presented as a new stable release."
+    ]
+  },
+  {
+    "id": "uefitool",
+    "name": "UEFITool",
+    "url": "https://github.com/LongSoft/UEFITool",
+    "category": "firmware",
+    "relationship": "foundation",
+    "kind": "tool",
+    "targets": [
+      "firmware"
+    ],
+    "description_en": "Parse UEFI firmware images into an inspectable tree and check their structure. Companion UEFIExtract and UEFIFind tools extract parsed contents and locate patterns, supporting analysis of firmware components and vendor formats.",
+    "description_zh": "将 UEFI 固件镜像解析为可检查的树状结构，并检查其结构；配套的 UEFIExtract 与 UEFIFind 可提取解析后的内容、查找模式，辅助分析固件组件与厂商格式。",
+    "evidence_url": "https://github.com/LongSoft/UEFITool/blob/dac91b26733ca21cb204e41614c1b8c81cc50860/README.md",
+    "additional_evidence_urls": [
+      "https://github.com/LongSoft/UEFITool/releases/tag/A75",
+      "https://github.com/LongSoft/UEFITool/blob/dac91b26733ca21cb204e41614c1b8c81cc50860/LICENSE.md"
+    ],
+    "verified_at": "2026-10-16",
+    "verification": "source-reviewed",
+    "requirements": [
+      "Provide a compatible firmware image. A75 has Windows, macOS, Linux and FreeBSD builds; building the GUI requires a C++ compiler and Qt5 or Qt6.",
+      "The current new engine does not rebuild images. Editing requires the explicitly outdated, unsupported 0.28 old engine; this entry does not present current UEFITool as a supported image editor.",
+      "A75 still disables AMD image parsing. Some vendor update containers are unsupported or may parse incorrectly. The project uses the BSD-2-Clause license."
+    ]
   }
 ]

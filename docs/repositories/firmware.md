@@ -2,72 +2,129 @@
 
 [All categories](README.md) · [简体中文](firmware.zh-CN.md)
 
-**99 repositories** · 2026-10-16 UTC
+**156 repositories** · 2026-10-16 UTC
 
 These are automatically discovered projects, not individually curated or tested recommendations. Categories derive from metadata and descriptions from upstream text. Stars are collection-time snapshots, not live rankings.
 
 - [ReFirmLabs/binwalk](https://github.com/ReFirmLabs/binwalk) — Firmware Analysis Tool **[14,491 stars]**
+- [LongSoft/UEFITool](https://github.com/LongSoft/UEFITool) — UEFI firmware image viewer and editor **[5,752 stars]**
 - [e-m-b-a/emba](https://github.com/e-m-b-a/emba) — EMBA - The firmware security analyzer **[3,712 stars]**
 - [onekey-sec/unblob](https://github.com/onekey-sec/unblob) — Extract files from any kind of container formats **[2,577 stars]**
+- [firmadyne/firmadyne](https://github.com/firmadyne/firmadyne) — Platform for emulation and dynamic analysis of Linux-based firmware **[2,114 stars]**
 - [redballoonsecurity/ofrak](https://github.com/redballoonsecurity/ofrak) — OFRAK: unpack, modify, and repack binaries. **[2,080 stars]**
 - [marin-m/vmlinux-to-elf](https://github.com/marin-m/vmlinux-to-elf) — A tool to recover a fully analyzable .ELF from a raw kernel, through extracting the kernel symbol table (kallsyms) **[1,832 stars]**
 - [fkie-cad/FACT_core](https://github.com/fkie-cad/FACT_core) — Firmware Analysis and Comparison Tool **[1,468 stars]**
+- [platomav/MEAnalyzer](https://github.com/platomav/MEAnalyzer) — Intel Engine &amp; Graphics Firmware Analysis Tool **[1,335 stars]**
 - [Anime4000/RTL960x](https://github.com/Anime4000/RTL960x) — Hacking &amp; Reverse Engineering RTL960x-based xPON ONTs to suit your OLT **[1,053 stars]**
 - [gcarmix/HexWalk](https://github.com/gcarmix/HexWalk) — Hex Viewer/Editor/Analyzer compatible with Linux/Windows/MacOS **[1,027 stars]**
 - [pr0v3rbs/FirmAE](https://github.com/pr0v3rbs/FirmAE) — Towards Large-Scale Emulation of IoT Firmware for Dynamic Analysis **[949 stars]**
+- [FirmWire/FirmWire](https://github.com/FirmWire/FirmWire) — FirmWire is a full-system baseband firmware emulation platform for fuzzing, debugging, and root-cause analysis of smartphone baseband firmwares **[891 stars]**
+- [sigrokproject/pulseview](https://github.com/sigrokproject/pulseview) — Read-only mirror of the official repo at git://sigrok.org/pulseview. Pull requests welcome. Please file bugreports at sigrok.org/bugzilla. **[805 stars]**
 - [al3xtjames/ghidra-firmware-utils](https://github.com/al3xtjames/ghidra-firmware-utils) — Ghidra utilities for analyzing PC firmware **[506 stars]**
 - [scriptingxss/owasp-fstm](https://github.com/scriptingxss/owasp-fstm) — The Firmware Security Testing Methodology (FSTM) is composed of nine stages tailored to enable security researchers, software developers, consultants, and Information Security professionals with conducting firmware security assessments. **[502 stars]**
+- [ChrisTheCoolHut/Firmware_Slap](https://github.com/ChrisTheCoolHut/Firmware_Slap) — Discovering vulnerabilities in firmware through concolic analysis and function clustering. **[476 stars]**
 - [nmatt0/moria](https://github.com/nmatt0/moria) — IoT firmware identification and extraction **[418 stars]**
 - [e-m-b-a/embark](https://github.com/e-m-b-a/embark) — EMBArk - The firmware security scanning environment **[395 stars]**
 - [sgayou/rbasefind](https://github.com/sgayou/rbasefind) — A firmware base address search tool. **[375 stars]**
 - [nmatt0/mithril](https://github.com/nmatt0/mithril) — IoT static scanner for secrets, SBOM, CVEs and more. **[363 stars]**
 - [binarly-io/fwhunt-scan](https://github.com/binarly-io/fwhunt-scan) — Tools for analyzing UEFI firmware and checking UEFI modules with FwHunt rules **[246 stars]**
 - [chrivers/samsung-firmware-magic](https://github.com/chrivers/samsung-firmware-magic) — Tool for decrypting the firmware files for Samsung SSDs **[238 stars]**
+- [D3CRYPT-1/Infiltra-Firmware](https://github.com/D3CRYPT-1/Infiltra-Firmware) — Infiltra Firmware is an open-source firmware for wireless security testing, network analysis, and hardware hacking. FLASH IT BELOW USING OUR WEB FLAHSER! **[205 stars]**
 - [0xricksanchez/dlink-decrypt](https://github.com/0xricksanchez/dlink-decrypt) — D-Link firmware decryption PoC **[201 stars]**
 - [quarkslab/pyrrha](https://github.com/quarkslab/pyrrha) — A tool for firmware cartography **[172 stars]**
 - [dslsdzc/rev-skills](https://github.com/dslsdzc/rev-skills) — 122 AI skills for reverse engineering: malware analysis, software reversing, firmware and embedded systems, protocol reversing, mobile apps, unpacking and deobfuscation, software cracking, vulnerability research, managed code, forensics and intelligence, and CTFs. **[162 stars]**
+- [MCUSec/uEmu](https://github.com/MCUSec/uEmu) — A Universal MCU Firmware Emulator for Dynamic Analysis without Any Hardware Dependence. **[152 stars]**
 - [SamuelTulach/PatchBoot](https://github.com/SamuelTulach/PatchBoot) — Guide for patching AMI Aptio V UEFI firmware to circumvent Secure Boot checks **[144 stars]**
 - [patois/RETracker](https://github.com/patois/RETracker) — Reverse Engineering Framework for the Polyend Tracker **[136 stars]**
 - [DavidClawson/OpenScope-2C53T](https://github.com/DavidClawson/OpenScope-2C53T) — Open-source reverse engineering and firmware development for the FNIRSI 2C53T oscilloscope/multimeter/signal generator **[119 stars]**
+- [djr-747/nokia-dct3-emulator](https://github.com/djr-747/nokia-dct3-emulator) — Open-source emulator + analysis toolkit for Nokia DCT3 phones (3310/3410/5210/8210/8250/8850…). Boots real firmware in the browser (WASM) and a native SDL GUI. Bring-your-own firmware — none included. GPL-2. **[92 stars]**
+- [nmatt0/firmwaretools](https://github.com/nmatt0/firmwaretools) — a set of scripts and tools for various firmware analysis tasks **[90 stars]**
+- [matiaspl/LinkPi-ENCx](https://github.com/matiaspl/LinkPi-ENCx) — Reverse engineering and unofficial documentation of LinkPi ENC series (ENC1/ENC5/ENC9) and TBS 2603SE video encoders based on the F3520D platform — hardware analysis, firmware internals, streaming fixes, and hidden features. **[86 stars]**
 - [onehouwong/Firmware-Analysis-Papers](https://github.com/onehouwong/Firmware-Analysis-Papers) — Recent security papers on firmware analysis **[85 stars]**
 - [Cr4sh/smram_parse](https://github.com/Cr4sh/smram_parse) — System Management RAM analysis tool **[83 stars]**
 - [fkie-cad/LuckyCAT](https://github.com/fkie-cad/LuckyCAT) — A distributed fuzzing management framework **[70 stars]**
+- [RiS3-Lab/DICE-DMA-Emulation](https://github.com/RiS3-Lab/DICE-DMA-Emulation) — DICE: Automatic Emulation of DMA Input Channels for Dynamic Firmware Analysis **[67 stars]**
 - [C00kie-/IoT-workshop-materials](https://github.com/C00kie-/IoT-workshop-materials) — Presented hardware reverse engineering workshops since 2019 **[65 stars]**
 - [jowinjohnchemban/winbinwalk](https://github.com/jowinjohnchemban/winbinwalk) — binwalk for Windows **[60 stars]**
 - [soyersoyer/basefind2](https://github.com/soyersoyer/basefind2) — A faster firmware base address scanner. **[60 stars]**
 - [8051Enthusiast/allyourbase](https://github.com/8051Enthusiast/allyourbase) — Finds the base address of a firmware by comparing string addresses with target pointer addresses **[57 stars]**
+- [xdarklight/mktplinkfw3](https://github.com/xdarklight/mktplinkfw3) — Firmware format analysis for TP-Link firmwares with the version 3 header (0x03000000) **[56 stars]**
+- [mosajjal/fortitool](https://github.com/mosajjal/fortitool) — Fortinet Firmware decryption and analysis tools **[50 stars]**
+- [giek2000/ipod-classic-firmware-research](https://github.com/giek2000/ipod-classic-firmware-research) — iPod RetailOS firmware research — decryption, analysis, and wInd3x Classic support patch **[45 stars]**
 - [tr4m0ryp/ios-26-activation-research](https://github.com/tr4m0ryp/ios-26-activation-research) — iOS 26.3 activation lock research -- 31 firmware vulnerabilities + VU#346053 BAA injection PoC **[45 stars]**
 - [xchwarze/magic-extractor](https://github.com/xchwarze/magic-extractor) — Universal Windows extraction tool that detects unknown files and routes them to the right bundled extractor. **[43 stars]**
+- [theopolis/subzero](https://github.com/theopolis/subzero) — Firmware analysis gone wild. **[41 stars]**
 - [HexLasso/FF-16-TUI](https://github.com/HexLasso/FF-16-TUI) — Interactive static pattern discovery tool to locate structures from frequent patterns **[39 stars]**
+- [zhang-xr/FirmLLM](https://github.com/zhang-xr/FirmLLM) — LLMs for autonomous reasoning and analysis of firmware **[35 stars]**
+- [schlarpc/insta360-link-firmware-re](https://github.com/schlarpc/insta360-link-firmware-re) — Reverse engineering of the Insta360 Link webcam firmware: UVC extension-unit control protocol, gesture pipeline, gimbal/PTZ command path, and firmware container format **[32 stars]**
+- [rweijnen/marstek-venus-e-firmware-notes](https://github.com/rweijnen/marstek-venus-e-firmware-notes) — Reverse engineering notes, firmware analysis, and extracted content from the Marstek Venus E plug-in home battery **[31 stars]**
 - [HelgeSverre/sony-vp-extract](https://github.com/HelgeSverre/sony-vp-extract) — Decrypt and extract voice guidance MP3 prompts from Sony WH-1000XM4 encrypted voice packs. AES key extracted via Bluetooth firmware dump of the Airoha MT2811 SoC. **[30 stars]**
 - [chris-ritsen/samsung-tv-root](https://github.com/chris-ritsen/samsung-tv-root) — Samsung QN90B and QN90F root **[28 stars]**
+- [shadowlamer/MDB-USB-adapter](https://github.com/shadowlamer/MDB-USB-adapter) — MDB-USB-adapter: An open-source hardware and software solution for converting Multi-Drop Bus (MDB) protocol to USB. Designed for vending machine integration, device emulation, and data analysis. Includes schematics, firmware, and documentation. Licensed under CERN Open Hardware License. **[28 stars]**
 - [AT0myks/reolink-fw](https://github.com/AT0myks/reolink-fw) — Extract information and files from Reolink firmwares. **[26 stars]**
+- [schlarpc/elgato-cam-link-4k-firmware-re](https://github.com/schlarpc/elgato-cam-link-4k-firmware-re) — Firmware reverse engineering of the Elgato Cam Link 4K (USB 0fd9:0066): vendor HID protocol, SPI flash layout, FX3 and ECP5 firmware formats, update path, security analysis, and an independent flashing tool. **[22 stars]**
 - [ethteck/lfgfx](https://github.com/ethteck/lfgfx) — N64 Graphics data detection and analysis **[21 stars]**
 - [sheabot/binwalk-docker](https://github.com/sheabot/binwalk-docker) — Docker container with all extra tools installed to get the most out of binwalk **[21 stars]**
+- [avatarone/avatar-samples](https://github.com/avatarone/avatar-samples) — Samples of Avatar firmware analysis (including NDSS'14 cases) **[20 stars]**
 - [c0brabaghdad1/FETB](https://github.com/c0brabaghdad1/FETB) — FETB : Take URL of File For Analysis using File + ExifTool + Binwalk Commands **[20 stars]**
 - [david-oswald/iot-fw-extraction](https://github.com/david-oswald/iot-fw-extraction) — Additional material for our paper "Breaking all the Things - A Systematic Survey of Firmware Extraction Techniques for IoT Devices" (CARDIS 2018) **[19 stars]**
 - [Crymeiriver/LS150](https://github.com/Crymeiriver/LS150) — Astell&amp;Kern iRiver LS150 SPI firmware dump + telnet access **[18 stars]**
+- [BadChemical/IoT-Vulnerability-Research-Public](https://github.com/BadChemical/IoT-Vulnerability-Research-Public) — Independent IoT security research, vulnerability disclosures, and PoCs focusing on firmware analysis, hardware interfaces, and cryptographic flaws. **[17 stars]**
+- [MikeWuPing/bios-security-analysis](https://github.com/MikeWuPing/bios-security-analysis) — A Claude Code skill for comprehensive UEFI/BIOS firmware security vulnerability analysis. Distills years of BIOS security research expertise into reusable AI capabilities, covering firmware image parsing, deep decompression, microcode extraction, certificate auditing, and final report generation. **[17 stars]**
+- [Coreymillia/Shark-Bait-add-on-Bruce-firmware-M5stackc-plus-](https://github.com/Coreymillia/Shark-Bait-add-on-Bruce-firmware-M5stackc-plus-) — *Features:* *Real-time WiFi threat detection* *4 targeted counter-attack methods* (Karma poisoning, Evil twin disruption, etc.) - *Threat monitoring* - packet analysis - *Coreymillia &amp; GitHub Copilot Created* - *Based on:* Bruce firmware by @pr3y &amp; team - *Inspiration:* Evil-Cardputer by @7h30th3r0n3 - Feel free to use, modify, and distribute **[16 stars]**
+- [TermuxHackz/Enhanced-IPSW-Firmware-Analysis-Tool](https://github.com/TermuxHackz/Enhanced-IPSW-Firmware-Analysis-Tool) — This tool provides detailed analysis of changes between iOS firmware versions and their potential impact on device functionality. **[15 stars]**
+- [ander1044/wairz](https://github.com/ander1044/wairz) — An open-source AI assisted firmware analysis tool **[14 stars]**
+- [Mimoja/MFT](https://github.com/Mimoja/MFT) — Mimojas Firmware Toolkit for unpacking and analysis firmware images **[14 stars]**
 - [numbpill3d/spi_flash_auto_unlocker](https://github.com/numbpill3d/spi_flash_auto_unlocker) — Python utility for dumping and patching SPI firmware to remove supported BIOS and UEFI passwords. **[14 stars]**
 - [osecurio/mtkview](https://github.com/osecurio/mtkview) — A BinaryNinja loader plugin for MTK Preloaders and Little Kernels **[14 stars]**
 - [OTARIS/FirmwareCheck](https://github.com/OTARIS/FirmwareCheck) — Automated dynamic security analysis by emulation of IoT firmware images in CI-pipelines. **[14 stars]**
+- [Bin2Own/SinkTaint](https://github.com/Bin2Own/SinkTaint) — A prototype of taint-style vulnerablity discovery method in embedded firmware (SinkTaint), a precise a novel taint-style vulnerability discovery method by employsing backtracking and constraint analysis to achieve high precision. **[13 stars]**
+- [cetio/VEXAPI](https://github.com/cetio/VEXAPI) — Reverse analysis and documentation of VEX Robotics internal firmware and APIs. **[13 stars]**
+- [furrtek/HanoverFlipDot](https://github.com/furrtek/HanoverFlipDot) — Analysis of a Hanover Displays flip-dot display firmware **[13 stars]**
 - [R00T-Kim/SCOUT](https://github.com/R00T-Kim/SCOUT) — Deterministic firmware-to-exploit evidence engine. Drop a firmware blob, get hash-anchored findings with SARIF + CycloneDX SBOM + verified exploit chains. **[13 stars]**
 - [ismailtsdln/firmalyzer](https://github.com/ismailtsdln/firmalyzer) — Next-Generation Firmware Analysis Toolkit. A hybrid Rust/Python toolkit for deep firmware analysis, extraction, and vulnerability discovery. **[12 stars]**
+- [root-hunter/lenovo_bios](https://github.com/root-hunter/lenovo_bios) — Reverse engineering Lenovo IdeaPad Gaming 3 15ARH05 firmware: BIOS extraction, AMD PSP analysis, QEMU tracing, IFR recovery, and hidden Advanced menu research. **[12 stars]**
+- [ByteHub-1337/SignalRF](https://github.com/ByteHub-1337/SignalRF) — Multi-tool RF analysis firmware for M5Stack Cardputer - WiFi scanner, BLE scanner, ultrasonic detector, signal mapper, and tracker detector **[11 stars]**
+- [Ganapati/Firmware_web_rce_finder](https://github.com/Ganapati/Firmware_web_rce_finder) — FWRF is a open source tool for firmware web-side analysis. **[11 stars]**
+- [NerdyProjects/usb2can_stm32f103](https://github.com/NerdyProjects/usb2can_stm32f103) — Analysis and firmware suggestion for cheap chinese USB2CAN adapter based on STM32F103 **[11 stars]**
+- [schlarpc/shure-mv7-firmware-re](https://github.com/schlarpc/shure-mv7-firmware-re) — Reverse engineering the Shure MV7: vendor HID console, PSoC 4 firmware, ADAU1761 SigmaDSP, and the firmware update protocol **[11 stars]**
 - [TheMalwareGuardian/UEFI-Firmware-Analysis](https://github.com/TheMalwareGuardian/UEFI-Firmware-Analysis) — UEFI firmware analysis &amp; research on known vulnerabilities in early boot components **[11 stars]**
+- [CouchTurtle/sc2-research](https://github.com/CouchTurtle/sc2-research) — Notes and Python tools for the Steam Controller 2 (Triton): HID reports, the firmware-update protocol, and firmware-blob analysis. **[10 stars]**
+- [dirky9687/DIRK](https://github.com/dirky9687/DIRK) — DIRK is open-source Red/Blue Team firmware for the M5Stack Cardputer ADV, featuring dual-band Wi-Fi with LAB5 MonsterC5, Bluetooth analysis, LoRa and IR tools, GPS wardriving via the official M5Stack LoRa/GPS Cap, and authorized security-testing labs. **[10 stars]**
+- [kolezka/NL5H00X](https://github.com/kolezka/NL5H00X) — Firmware analysis and modification tools. Bypass security restrictions, install custom launchers, and safely modify locked-down Chinese projector devices with comprehensive backup and recovery scripts. **[10 stars]**
 - [MilkAlien/tcrevenge](https://github.com/MilkAlien/tcrevenge) — Hacking TrendChip Firmware FG824CD (ADSL modem/router *****v4) **[10 stars]**
 - [Nester420/Firmware-Hunter-Pro](https://github.com/Nester420/Firmware-Hunter-Pro) — Advanced offline firmware triage and analysis tool for routers, IoT devices, DVRs, IP cameras, and embedded Linux firmware. **[10 stars]**
 - [chi111i/binwalk_for_windows](https://github.com/chi111i/binwalk_for_windows) — Packaged Windows version of binwalk: https://github.com/ReFirmLabs/binwalk/releases/tag/v3.1.0 **[9 stars]**
 - [DatanoiseTV/revenant](https://github.com/DatanoiseTV/revenant) — LLM-powered automated reverse-engineering engine for vendor-abandoned hardware and software **[9 stars]**
+- [K1LLLAGT/SAAB_SUITE](https://github.com/K1LLLAGT/SAAB_SUITE) — “Full SAAB/GM diagnostic suite with Python engine, CAN tools, GDS2/Tech2Win integrations, SPS workflows, firmware packages, drivers, VM environments, documentation, and automation scripts. Includes UI/TUI modules, J2534 support, data analysis tools, and complete diagnostic/tuning workflows.” **[9 stars]**
+- [zekog/oneplus-watch-3-firmware-dump](https://github.com/zekog/oneplus-watch-3-firmware-dump) — OnePlus Watch 3 (OPWWE251) Firmware Analysis, DTS Dump &amp; Kernel Symbols **[9 stars]**
+- [daumbrella/Gerbil](https://github.com/daumbrella/Gerbil) — A firmware analysis tool for lightweight IoT firmware **[8 stars]**
 - [fkie-cad/FACT_firmadyne_analysis_plugin](https://github.com/fkie-cad/FACT_firmadyne_analysis_plugin) — Integrates Firmadyne into FACT **[8 stars]**
+- [h3adshotzz/htoolv3](https://github.com/h3adshotzz/htoolv3) — Static analysis and reverse engineering tool for iOS/macOS firmware files built for my final-year University project **[8 stars]**
 - [immune-gmbh/agent](https://github.com/immune-gmbh/agent) — immune Guard agent application **[8 stars]**
+- [LEO-Ricardo20/MetaCore-Studio](https://github.com/LEO-Ricardo20/MetaCore-Studio) — AI-assisted embedded and IoT development platform for hardware design, firmware generation, and local project analysis. **[8 stars]**
 - [omarelshopky/pax-pos-app-pentest-guide](https://github.com/omarelshopky/pax-pos-app-pentest-guide) — Comprehensive pentest and reverse engineering guide for PAX Linux-based Point of Sale (PoS) merchant applications — firmware analysis, network interception, and app reversing. **[8 stars]**
 - [paulwuertz/pexplorer](https://github.com/paulwuertz/pexplorer) — Static firmware analysis - for symbol files generated by puncover and as an experiment to do it all in-browser on just an debug ELF file **[8 stars]**
 - [TheMalwareGuardian/SANS-SEC556-IoT-Penetration-Testing](https://github.com/TheMalwareGuardian/SANS-SEC556-IoT-Penetration-Testing) — Review, resources, and pre-lab exercises for the SANS SEC556 IoT Penetration Testing course, covering hardware hacking, firmware analysis, wireless protocols and SDR. **[8 stars]**
+- [aw-junaid/embedded-and-iot-security](https://github.com/aw-junaid/embedded-and-iot-security) — Explore embedded &amp; IoT security: secure firmware, device hardening, encryption, and vulnerability analysis. Practical examples for secure IoT development. **[7 stars]**
+- [Bin2Own/CINDY](https://github.com/Bin2Own/CINDY) — Accelerating Command Injection Vulnerability Discovery in Embedded Firmware with Static Backtracking Analysis **[7 stars]**
+- [Excalibra/scripts](https://github.com/Excalibra/scripts) — Platform: Windows/Mac/Linux. Scripting: Various, no restrictions; customized as needed. Tasks: Desktop checks, software cracking, AV evasion, privilege execution, firmware read/write, password checks, Wi-Fi scans, cloud security, log analysis, NLP, and data analysis in humanities/social sciences. **[7 stars]**
+- [fishilico/tpm-firmware](https://github.com/fishilico/tpm-firmware) — Analysis of the update of TPM firmware **[7 stars]**
 - [mchristou/stegtool](https://github.com/mchristou/stegtool) — Steganography tool that extracts data from images **[7 stars]**
+- [RLee203/Purple](https://github.com/RLee203/Purple) — Purple is a dual-mode Cardputer ADV firmware for Red Team and Blue Team field workflows, combining wireless recon, RF visibility, GPS tools, IR/NFC utilities, and on-device analysis in a compact handheld platform. **[7 stars]**
+- [5h4d0wn1k/i1-firmware-extract](https://github.com/5h4d0wn1k/i1-firmware-extract) — Firmware extraction toolkit - unpacks and enumerates embedded images for IoT security analysis. **[6 stars]**
+- [bluesadi/Yasat](https://github.com/bluesadi/Yasat) — (Undergraduate Capstone Project) Yasat - Yet Another Static Analysis Tool to detect cryptographic API misuses in firmware **[6 stars]**
 - [cHo0s3N/JustCTF](https://github.com/cHo0s3N/JustCTF) — writeups! #JUSTCTF **[6 stars]**
+- [CrimsonGlory/wairz](https://github.com/CrimsonGlory/wairz) — A free (as in freedom) AI assisted firmware analysis tool **[6 stars]**
+- [efi4st/efi4st](https://github.com/efi4st/efi4st) — Automatic Firmware Analysis of Embedded Linux Devices as Preparation for Security Testing / Fuzzing **[6 stars]**
+- [hitodama/libps4-symbols](https://github.com/hitodama/libps4-symbols) — Most recent PS4 symbols by firmware for analysis and convenience **[6 stars]**
 - [jeremylaratro/PhotoSec](https://github.com/jeremylaratro/PhotoSec) — A security-oriented Python script with bulk image analysis and security features such as metadata scrubbing, image file analysis, GPS data check, and file renaming. **[6 stars]**
+- [msam13/wyze-cam-firmware-analysis](https://github.com/msam13/wyze-cam-firmware-analysis) — The firmware for the Wyze Cam V3 is hosted on the website of its manufacturer for anyone to download. We plan to download the firmware and perform a variety of analysis techniques on it until we have a solid understanding of the device and/or have identified potentially exploitable vulnerabilitie **[6 stars]**
+- [nmatt0/homebrew-tap](https://github.com/nmatt0/homebrew-tap) — Homebrew tap for moria (firmware identification/extraction) and mithril (firmware content analysis) **[6 stars]**
 - [OlegBezverhii/SchEl-firmware](https://github.com/OlegBezverhii/SchEl-firmware) — Schneider Electric firmware **[6 stars]**
 - [PNWcoastie/REA-Argonaut](https://github.com/PNWcoastie/REA-Argonaut) — Zero-G Reverse Engineering Anything &amp; Verified Safe Rust Reconstruction for Gemini 4 Argon + Google Antigravity 2.0 (4-Mount Recon Kits, Whole-Subgraph Extraction, 10,000-Vector Differential Parity Referee) **[6 stars]**
 - [renaudallard/hikvision_R2_firmware](https://github.com/renaudallard/hikvision_R2_firmware) — unpack and repack hikvision R2 firmware files **[6 stars]**
+- [rotenkatz/ecos_romfs_unpacker](https://github.com/rotenkatz/ecos_romfs_unpacker) — It is a simple ecos ROMFS unpacker for forensics and firmware analysis needs **[6 stars]**
 - [deviousprophet/vscode-hex-scope](https://github.com/deviousprophet/vscode-hex-scope) — VS Code extension for Intel HEX &amp; Motorola SREC memory exploration and editing **[5 stars]**
 - [harman-f/MHI2-MHI2Q-MH2P-Firmware-Toolkit](https://github.com/harman-f/MHI2-MHI2Q-MH2P-Firmware-Toolkit) — Host-side extraction and analysis toolkit for MHI2/MHI2Q/MH2P firmware packages **[5 stars]**
 - [jakino0/mvave-blackbox-reverse-engineering](https://github.com/jakino0/mvave-blackbox-reverse-engineering) — Reverse engineering and read-only tools for the M-VAVE ANN BlackBox: firmware, USB Audio, BLE/M-EFCS, OTA, DSP routing, and runtime internals. **[5 stars]**
