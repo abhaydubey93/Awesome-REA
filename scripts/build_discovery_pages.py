@@ -7,7 +7,9 @@ from html import escape
 from html.parser import HTMLParser
 import json
 from pathlib import Path
-from urllib.parse import urlsplit
+import re
+import shutil
+from urllib.parse import unquote, urlsplit
 
 from build_readme import KIND_LABELS, TARGETS, collection_section
 
@@ -69,6 +71,31 @@ def _asset(site_dir: Path, filename: str) -> str:
     return '/' + filename + ('?v=' + revision if revision else '')
 
 
+def publication_keys(record: dict) -> set[tuple[str, str]]:
+    """Match a paper's own canonical URL/DOI, never a tool's evidence links."""
+    keys = set()
+    doi = record.get('doi')
+    if isinstance(doi, str) and doi.strip():
+        doi = re.sub(r'^https?://(?:dx\.)?doi\.org/', '', doi.strip(), flags=re.I)
+        keys.add(('doi', unquote(doi).casefold()))
+    parsed = urlsplit(record.get('url') or '')
+    host = (parsed.hostname or '').casefold()
+    path = unquote(parsed.path).rstrip('/')
+    if host in {'doi.org', 'dx.doi.org'}:
+        keys.add(('doi', path.lstrip('/').casefold()))
+    elif host in {'arxiv.org', 'www.arxiv.org'} and re.match(r'^/(?:abs|pdf)/', path):
+        identifier = re.sub(r'^/(?:abs|pdf)/', '', path).removesuffix('.pdf')
+        keys.add(('arxiv', re.sub(r'v\d+$', '', identifier).casefold()))
+    elif host:
+        keys.add(('url', host + path))
+    return keys
+
+
+def bibliography_overlap(resources: list[dict], papers: list[dict]) -> int:
+    curated_keys = set().union(*(publication_keys(record) for record in resources))
+    return sum(bool(publication_keys(paper) & curated_keys) for paper in papers)
+
+
 class _IconStylesheet(HTMLParser):
     def __init__(self):
         super().__init__()
@@ -104,7 +131,7 @@ def _resource_card(record: dict, language: str) -> str:
         for index, url in enumerate(record.get('additional_evidence_urls', []), 1)
     )
     reviewed = str(record['verified_at'])
-    return f'''<article class="resource-card browse-repository" id="{escape(record['id'], quote=True)}" data-record-id="{escape(record['id'], quote=True)}">
+    return f'''<article class="resource-card browse-repository" id="{escape(record['id'], quote=True)}" data-record-id="{escape(record['id'], quote=True)}" data-resource-id="{escape(record['id'], quote=True)}" data-resource-id="{escape(record['id'], quote=True)}">
   <div class="card-heading"><h3><a class="card-title-link" href="{_url(record['url'])}" target="_blank" rel="noopener noreferrer">{escape(name)}<span class="browse-text-arrow" aria-hidden="true">↗</span></a></h3><span class="resource-kind">{escape(kind)}</span></div>
   <p class="card-description">{escape(description)}</p>
   <div class="card-meta"><span>{escape(targets)}</span><a href="{_url(record['evidence_url'])}" target="_blank" rel="noopener noreferrer">{('原始来源 ↗' if zh else 'Primary source ↗')}</a></div>
@@ -171,7 +198,7 @@ def _document(*, site_url: str, repository_url: str, path: str, language: str,
   <section class="collection-intro browse-intro"><p class="eyebrow">{('逆向工程资源集合' if zh else 'THE REVERSE ENGINEERING COLLECTION')}</p><h1>{escape(title)}<span class="title-dot" aria-hidden="true">.</span></h1><p>{escape(description)}</p></section>
   {content}
 </main>
-<footer class="site-footer"><div class="shell footer-top"><p>{('独立的资源集合，在公开协作中持续更新。' if zh else 'An independent resource collection, updated in public.')}</p><div class="footer-links"><a href="{prefix}/curated/">{('精选资源' if zh else 'Curated resources')}</a><a href="{prefix}/browse/">{('仓库目录' if zh else 'Repository directory')}</a><a href="{prefix}/papers/">{('研究论文' if zh else 'Research papers')}</a><a href="{prefix}/about/">{('关于与来源' if zh else 'About and sources')}</a><a href="/catalog.json" download="awesomerea-curated-catalog.json">{('精选 JSON ↓' if zh else 'Curated JSON ↓')}</a><a href="/source-index.json" download="awesomerea-repository-index.json">{('仓库 JSON ↓' if zh else 'Repository JSON ↓')}</a></div></div><div class="shell footer-bottom">{footer}</div></footer>
+<footer class="site-footer"><div class="shell footer-top"><p>{('独立的资源集合，在公开协作中持续更新。' if zh else 'An independent resource collection, updated in public.')}</p><div class="footer-links"><a href="{prefix}/resources/">{('精选资源' if zh else 'Curated resources')}</a><a href="{prefix}/browse/">{('仓库目录' if zh else 'Repository directory')}</a><a href="{prefix}/papers/">{('研究论文' if zh else 'Research papers')}</a><a href="{prefix}/about/">{('关于与来源' if zh else 'About and sources')}</a><a href="/catalog.json" download="awesomerea-curated-catalog.json">{('精选 JSON ↓' if zh else 'Curated JSON ↓')}</a><a href="/source-index.json" download="awesomerea-repository-index.json">{('仓库 JSON ↓' if zh else 'Repository JSON ↓')}</a></div></div><div class="shell footer-bottom">{footer}</div></footer>
 </body>
 </html>
 '''
@@ -200,6 +227,7 @@ def build_discovery_pages(site_dir: Path, catalog: dict, source_index: dict | No
     papers = json.loads(paper_path.read_text(encoding='utf-8')) if paper_path.is_file() else []
     if not isinstance(papers, list):
         raise ValueError('papers.json must contain a separate array of paper records')
+    overlapping_papers = bibliography_overlap(resources, papers)
     scan_date = str((source_index or {}).get('meta', {}).get('completed_at') or '')[:10]
     assets = {key: _asset(site_dir, filename) for key, filename in (
         ('styles', 'styles.css'), ('browse', 'browse.css'), ('favicon', 'favicon.svg'), ('social', 'social-card.png'))}
@@ -224,7 +252,7 @@ def build_discovery_pages(site_dir: Path, catalog: dict, source_index: dict | No
         zh = language == 'zh'
         locale = 'zh-CN' if zh else 'en'
         prefix = '/zh' if zh else ''
-        path = prefix + '/curated/'
+        path = prefix + '/resources/'
         title = '精选逆向工程资源' if zh else 'Curated reverse engineering resources'
         description = (f'{len(resources):,} 项工具、项目、集成、案例与参考资源，覆盖网站、游戏、应用、原生二进制和固件。'
                        if zh else f'{len(resources):,} tools, projects, integrations, case studies, and references for websites, games, apps, native binaries, and firmware.')
@@ -251,7 +279,8 @@ def build_discovery_pages(site_dir: Path, catalog: dict, source_index: dict | No
         summary = (f'{len(resources):,} 项精选资源；{len(scanned):,} 个实际读取 README 的仓库；{browse_count:,} 个可浏览条目。{excluded} 个超出范围的条目保留在完整扫描数据中。'
                    if zh else f'{len(resources):,} curated resources; {len(scanned):,} repositories whose READMEs were fetched; {browse_count:,} browsable entries. The {excluded} out-of-scope entries remain in the complete scan data.')
         if papers:
-            summary += (f' 另有 {len(papers):,} 篇研究论文，单独收录和计数。' if zh else f' A separate directory contains {len(papers):,} research papers, counted independently.')
+            summary += (f' 研究论文目录单独整理 {len(papers):,} 篇论文，其中 {overlapping_papers:,} 篇也收录于这 {len(resources):,} 项精选资源。上述数量不能相加作为独立项目总数。'
+                        if zh else f' The paper bibliography lists {len(papers):,} papers; {overlapping_papers:,} of these also appear among the {len(resources):,} curated resources. Do not sum these counts as unique projects.')
         evidence = ('精选说明依据一手来源核对，并保留前置条件和复核日期。自动扫描记录来源、时间、README 字节数、Git blob 标识和 SHA-256；未执行上游代码，也不重新发布 README 正文。'
                     if zh else 'Curated descriptions are checked against primary sources, with requirements and review dates retained. Automated scans record sources, timestamps, README byte counts, Git blob identifiers, and SHA-256 hashes. Upstream code is not executed and README bodies are not republished.')
         if scan_date:
@@ -263,7 +292,7 @@ def build_discovery_pages(site_dir: Path, catalog: dict, source_index: dict | No
         facts = [('收录范围' if zh else 'What is collected', summary), ('来源与更新' if zh else 'Evidence and updates', evidence), ('范围与复核' if zh else 'Scope and review', scope), ('语言与许可' if zh else 'Languages and licenses', licensing)]
         fact_cards = ''.join(f'<section class="source-card browse-repository"><h2>{escape(heading)}</h2><p class="card-description">{escape(text)}</p></section>' for heading, text in facts)
         links = [
-            (prefix + '/curated/', '精选资源' if zh else 'Curated resources'),
+            (prefix + '/resources/', '精选资源' if zh else 'Curated resources'),
             (prefix + '/browse/', '完整仓库目录' if zh else 'Repository directory'),
             (prefix + '/papers/', '研究论文目录' if zh else 'Research papers'),
             ('/catalog.json', '精选资源 JSON' if zh else 'Curated catalog JSON'),
@@ -282,12 +311,17 @@ def build_discovery_pages(site_dir: Path, catalog: dict, source_index: dict | No
         rendered[path] = _document(site_url=site_url, repository_url=repository_url, path=path, language=language, title=title, description=description, content=content, schema=schema, assets=assets, icon_stylesheet=icons.href)
         paths.append(path)
 
+    # Remove only this generator's former route outputs; redirects belong to the site build.
+    for legacy in ('curated', 'zh/curated'):
+        directory = site_dir / legacy
+        if directory.is_dir():
+            shutil.rmtree(directory)
     for path, document in rendered.items():
         destination = site_dir / path.lstrip('/') / 'index.html'
         destination.parent.mkdir(parents=True, exist_ok=True)
         destination.write_text(document, encoding='utf-8')
 
-    paper_summary = f' {len(papers)} research papers are listed separately.' if papers else ''
+    paper_summary = (f' The bibliography lists {len(papers)} research papers; {overlapping_papers} also appear among the {len(resources)} curated resources.' if papers else '')
     llms = f'''# Awesome Reverse Engineering Anything
 
 > AwesomeREA.org is an independent bilingual collection of reverse-engineering tools, projects, integrations, case studies, and references for websites, games, apps, native binaries, and firmware.
@@ -298,14 +332,14 @@ Source review checks documentation, not successful execution, security, or REA c
 
 ## English navigation
 
-- [Curated resources]({site_url}/curated/): All curated entries, requirements, evidence links, and review dates.
+- [Curated resources]({site_url}/resources/): All curated entries, requirements, evidence links, and review dates.
 - [Repository directory]({site_url}/browse/): Static categories and public repository descriptions.
 - [Research papers]({site_url}/papers/): A separate research bibliography.
 - [About and provenance]({site_url}/about/): Scope, source methods, counts, translations, and licenses.
 
 ## 简体中文
 
-- [精选资源]({site_url}/zh/curated/): 精选条目、前置条件、来源链接与复核日期。
+- [精选资源]({site_url}/zh/resources/): 精选条目、前置条件、来源链接与复核日期。
 - [仓库目录]({site_url}/zh/browse/): 静态分类与公开项目简介。
 - [研究论文]({site_url}/zh/papers/): 单独维护的研究文献目录。
 - [关于与来源]({site_url}/zh/about/): 收录范围、来源方法、数量、翻译与许可。

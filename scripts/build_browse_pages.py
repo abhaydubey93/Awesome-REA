@@ -109,7 +109,7 @@ def build_browse_pages(
         language_index = 1 if zh else 0
         root_link = '/?lang=zh' if zh else '/'
         search_link = f'/?view=source-index&amp;lang={language}'
-        curated_link = '/zh/curated/' if zh else '/curated/'
+        curated_link = '/zh/resources/' if zh else '/resources/'
         scope_note = (f'共扫描 {len(scanned):,} 个仓库，提供 {len(records):,} 个浏览条目；{len(scanned)-len(records)} 个超出范围的条目仍保留在完整 JSON 中。'
                       if zh else f'{len(records):,} repositories are available to browse from {len(scanned):,} successful README scans. The {len(scanned)-len(records)} out-of-scope records remain in the full JSON.')
         provenance = ('这是自动发现的仓库索引，未逐项精选或运行测试。分类依据元数据；简介提供 AI 辅助中英翻译。星标为采集时快照。'

@@ -579,5 +579,23 @@
       "仿真能否成功取决于固件镜像；上游基准结果不保证适用于未经测试的设备或更新的主机发行版。"
     ],
     "name": "FirmAE"
+  },
+  "llm4decompile-paper": {
+    "name": "LLM4Decompile（EMNLP 2024）",
+    "requirements": [
+      "EMNLP 2024 论文。结论来自作者在特定模型与基准上的实验；本目录未独立复现。"
+    ]
+  },
+  "decompilebench-paper": {
+    "name": "DecompileBench（Findings of ACL 2025）",
+    "requirements": [
+      "Findings of ACL 2025 论文。LLM 评判与运行时正确性衡量不同属性；本目录未独立复现论文结果。"
+    ]
+  },
+  "resym-paper": {
+    "name": "ReSym（CCS 2024）",
+    "requirements": [
+      "CCS 2024 论文及作者提供的实验材料。符号与类型恢复不等于完整恢复原始程序；本次收录未运行其代码。"
+    ]
   }
 }

@@ -12,6 +12,8 @@
 - [source-scope.json](../data/source-scope.json) removes clearly unrelated scan matches from browsing while keeping their original scan evidence in the full downloadable JSON. The footer offers separate repository-index and curated-catalog downloads.
 - [build_site.py](../scripts/build_site.py) combines the catalogs, derives counts, copies the site assets, and generates `catalog.json`, `robots.txt`, `sitemap.xml`, `CNAME` and `.nojekyll` in `dist/`.
 - [build_browse_pages.py](../scripts/build_browse_pages.py) emits 20 static category pages under `/browse/` and `/zh/browse/`. These include full localized repository content without JavaScript, reciprocal language links, canonical URLs, and sitemap entries. Counts and scope exclusions use the same data as search.
+- [build_discovery_pages.py](../scripts/build_discovery_pages.py) emits bilingual `/resources/` and `/about/` pages, evidence and review dates for curated entries, structured metadata, and the optional `llms.txt` navigation index. The homepage and browse pages link to these pages.
+- [validate_discovery.py](../scripts/validate_discovery.py) checks the generated site's canonical routes, language links, static record coverage, JSON-LD and crawler permissions. The production build and CI both run it. See [search discovery](search-discovery.md) for sources, submission steps, and measurement limits.
 - `dist/` is ignored by Git. Rebuild it from source instead of editing generated files. The resource count is a count of catalog records, not distinct software projects.
 
 ## Build and preview

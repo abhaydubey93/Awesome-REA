@@ -1314,5 +1314,71 @@
     "additional_evidence_urls": [
       "https://github.com/pr0v3rbs/FirmAE/blob/653565b5d14e6d69a1dd242aa88ecfb4b090a74a/install.sh"
     ]
+  },
+  {
+    "id": "llm4decompile-paper",
+    "name": "LLM4Decompile (EMNLP 2024)",
+    "url": "https://aclanthology.org/2024.emnlp-main.203/",
+    "category": "learning",
+    "relationship": "learning",
+    "description_en": "Research on direct binary decompilation and refinement of Ghidra output with language models. Evaluates re-executability on HumanEval and ExeBench; useful for distinguishing readable output from functional recovery.",
+    "description_zh": "研究使用语言模型直接反编译二进制，以及改进 Ghidra 输出。在 HumanEval 与 ExeBench 上评估重新执行能力，可用于区分代码可读性与功能恢复。",
+    "evidence_url": "https://aclanthology.org/2024.emnlp-main.203/",
+    "additional_evidence_urls": [
+      "https://arxiv.org/abs/2403.05286"
+    ],
+    "verified_at": "2026-10-16",
+    "verification": "source-reviewed",
+    "requirements": [
+      "EMNLP 2024 paper. Results are author-reported for the evaluated models and benchmarks; this collection has not reproduced them."
+    ],
+    "targets": [
+      "binary"
+    ],
+    "kind": "research"
+  },
+  {
+    "id": "decompilebench-paper",
+    "name": "DecompileBench (Findings of ACL 2025)",
+    "url": "https://aclanthology.org/2025.findings-acl.1194/",
+    "category": "learning",
+    "relationship": "learning",
+    "description_en": "A benchmark combining functions from real programs, runtime-aware validation, and LLM-assisted assessment of decompiled-code usability. Helps separate functional correctness from perceived understandability when comparing decompilers.",
+    "description_zh": "结合真实程序函数、运行时验证与 LLM 辅助可用性评判的反编译基准，用于比较反编译器的功能正确性与代码可理解性。",
+    "evidence_url": "https://aclanthology.org/2025.findings-acl.1194/",
+    "additional_evidence_urls": [
+      "https://arxiv.org/abs/2505.11340"
+    ],
+    "verified_at": "2026-10-16",
+    "verification": "source-reviewed",
+    "requirements": [
+      "Findings of ACL 2025 paper. LLM-as-judge assessments and runtime correctness measure different properties; published results are not independent reproductions by this collection."
+    ],
+    "targets": [
+      "binary"
+    ],
+    "kind": "research"
+  },
+  {
+    "id": "resym-paper",
+    "name": "ReSym (CCS 2024)",
+    "url": "https://doi.org/10.1145/3658644.3670340",
+    "category": "learning",
+    "relationship": "learning",
+    "description_en": "Combines language models and program analysis to recover variable and user-defined data-structure symbols from stripped binaries. The authors provide training, inference, evaluation, and posterior-reasoning artifacts.",
+    "description_zh": "结合语言模型与程序分析，从去符号二进制中恢复变量和用户定义数据结构的符号信息。作者提供训练、推理、评测与后验推理材料。",
+    "evidence_url": "https://github.com/lt-asset/resym",
+    "additional_evidence_urls": [
+      "https://www.cs.purdue.edu/homes/lintan/publications/resym-ccs24.pdf"
+    ],
+    "verified_at": "2026-10-16",
+    "verification": "source-reviewed",
+    "requirements": [
+      "CCS 2024 paper with author-provided artifacts. Symbol and type recovery is a narrower task than reconstructing an entire original program; artifacts were not executed for this listing."
+    ],
+    "targets": [
+      "binary"
+    ],
+    "kind": "research"
   }
 ]

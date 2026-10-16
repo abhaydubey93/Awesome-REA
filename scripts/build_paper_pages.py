@@ -204,7 +204,7 @@ def build_paper_pages(
         locale = 'zh-CN' if zh else 'en'
         home = '/?lang=zh' if zh else '/'
         browse = '/zh/browse/' if zh else '/browse/'
-        curated = '/zh/curated/' if zh else '/curated/'
+        curated = '/zh/resources/' if zh else '/resources/'
         about = '/zh/about/' if zh else '/about/'
         title = label('Papers & benchmarks · AwesomeREA.org', '论文与评测基准 · AwesomeREA.org')
         description = label(f'{len(papers)} source-reviewed papers on binary reverse engineering, decompilation, agent evaluation, and website reconstruction, with citations and research limitations.', f'{len(papers)} 篇已核对来源的论文，涵盖二进制逆向、反编译、智能体评估与网站重建，附引文和研究边界。')

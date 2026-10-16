@@ -19,5 +19,6 @@ jobs:
           node-version: '26'
       - run: python3 scripts/validate.py
       - run: python3 scripts/build_site.py
+      - run: python3 scripts/validate_discovery.py
       - run: python3 scripts/validate_site.py
       - run: node --check site/app.js

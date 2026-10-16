@@ -186,8 +186,8 @@ def render_papers(papers, language):
     index = int(zh)
     directory = 'https://awesomerea.org/zh/papers/' if zh else 'https://awesomerea.org/papers/'
     lines = ['<a id="papers"></a>', '## 论文' if zh else '## Papers', '',
-             (f'精选 **{len(papers)} 篇论文**，涵盖智能体评测、反编译与视觉重建，单独维护，不计入资源目录或仓库扫描数量。发表状态与研究范围分别标注，中文标题为译名。'
-              if zh else f'A separate selection of **{len(papers)} papers** on agent evaluation, decompilation, and visual reconstruction. Papers are counted separately from resources and repository scans, with publication status and study scope made explicit.'), '',
+             (f'收录 **{len(papers)} 篇论文**，涵盖智能体评测、反编译与视觉重建。部分论文也出现在精选资源目录中，两者数量不可相加。发表状态与研究范围分别标注，中文标题为译名。'
+              if zh else f'A bibliography of **{len(papers)} papers** on agent evaluation, decompilation, and visual reconstruction. Some papers also appear among curated resources; counts are not additive. Publication status and study scope are made explicit.'), '',
              f"[{'浏览论文目录' if zh else 'Browse the paper directory'}]({directory}) · [{'完整书目 JSON' if zh else 'Complete bibliography JSON'}](data/papers.json)", '']
     groups = defaultdict(list)
     for paper in papers:

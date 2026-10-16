@@ -4,6 +4,10 @@
 
 **[网站](https://awesomerea.org/?lang=zh) · [完整仓库索引](https://awesomerea.org/?view=source-index&lang=zh) · [GitHub](https://github.com/reacher-z/Awesome-REA) · [English](README.md)**
 
+**[精选资源目录](https://awesomerea.org/zh/resources/) · [关于目录与核查方法](https://awesomerea.org/zh/about/)**
+
+这是独立维护的资源集合。来源核查与实际运行验证分别记录；工具能力与论文结论以各条目的原始证据为准。
+
 [![目录检查](https://github.com/reacher-z/Awesome-REA/actions/workflows/validate.yml/badge.svg)](https://github.com/reacher-z/Awesome-REA/actions/workflows/validate.yml)
 [![MIT 许可证](https://img.shields.io/badge/License-MIT-blue.svg)](LICENSE)
 
@@ -157,13 +161,16 @@
 - [pwn.college: Reverse Engineering](https://pwn.college/program-security/reverse-engineering/) — 包含托管练习的逆向工程课程，覆盖函数、数据访问、静态工具和动态工具。 **[学习资料]**
 - [Reverse Engineering for Beginners](https://beginners.re/) — Dennis Yurichev 编写的免费逆向入门书，以汇编与编译后程序理解为核心，提供多语言版本。 **[学习资料]**
 - [The Official Radare2 Book](https://book.rada.re/) — radare2 官方实践参考，覆盖分析、反汇编、脚本、调试及相关插件。 **[学习资料]**
+- [LLM4Decompile (EMNLP 2024)](https://aclanthology.org/2024.emnlp-main.203/) — 研究使用语言模型直接反编译二进制，以及改进 Ghidra 输出。在 HumanEval 与 ExeBench 上评估重新执行能力，可用于区分代码可读性与功能恢复。 **[研究]**
+- [DecompileBench (Findings of ACL 2025)](https://aclanthology.org/2025.findings-acl.1194/) — 结合真实程序函数、运行时验证与 LLM 辅助可用性评判的反编译基准，用于比较反编译器的功能正确性与代码可理解性。 **[研究]**
+- [ReSym (CCS 2024)](https://doi.org/10.1145/3658644.3670340) — 结合语言模型与程序分析，从去符号二进制中恢复变量和用户定义数据结构的符号信息。作者提供训练、推理、评测与后验推理材料。 **[研究]**
 <!-- END GENERATED CATALOG -->
 
 <!-- BEGIN GENERATED PAPERS -->
 <a id="papers"></a>
 ## 论文
 
-精选 **10 篇论文**，涵盖智能体评测、反编译与视觉重建，单独维护，不计入资源目录或仓库扫描数量。发表状态与研究范围分别标注，中文标题为译名。
+收录 **10 篇论文**，涵盖智能体评测、反编译与视觉重建。部分论文也出现在精选资源目录中，两者数量不可相加。发表状态与研究范围分别标注，中文标题为译名。
 
 [浏览论文目录](https://awesomerea.org/zh/papers/) · [完整书目 JSON](data/papers.json)
 
