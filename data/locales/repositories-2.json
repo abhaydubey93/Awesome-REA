@@ -17,7 +17,7 @@
   },
   "scan-1287433741": {
     "description_en": "Flutter SSL Pinning Bypass Tool for Android & iOS — works on any Flutter version without pattern databases",
-    "description_zh": "适用于 Android 和 iOS 的 Flutter SSL 证书固定绕过工具，无需特征数据库，支持任意 Flutter 版本"
+    "description_zh": "适用于 Android 和 iOS 的 Flutter SSL 证书固定绕过工具；无需特征数据库，支持任意 Flutter 版本。"
   },
   "scan-472866724": {
     "description_en": "A Python library to debug binary executables, your own way.",
