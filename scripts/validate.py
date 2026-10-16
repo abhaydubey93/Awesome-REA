@@ -250,7 +250,10 @@ def validate_source_index(document, errors):
     if meta.get('successful_readme_scans') != len(records) or len(records) <= 1500:
         errors.append('Source index must retain more than 1,500 successful scans and matching counts.')
     failures = document.get('failures', [])
-    if not isinstance(failures, list) or meta.get('failed') != len(failures):
+    if not isinstance(failures, list):
+        errors.append('Source index failures must be an array.')
+        failures = []
+    if meta.get('failed') != len(failures):
         errors.append('Source index failure count does not match the recorded failures.')
     if meta.get('attempted_readme_scans') != len(records) + len(failures):
         errors.append('Source index attempted count must equal successful plus failed scans.')
@@ -286,6 +289,81 @@ def validate_source_index(document, errors):
             parse_iso(record.get('observed_at'), require_time=True)
         except (ValueError, TypeError):
             errors.append(f'{where}: invalid scan timestamp')
+
+    failed_ids = set()
+    for index, failure in enumerate(failures):
+        if not isinstance(failure, dict) or not nonempty_string(failure.get('id')):
+            errors.append(f'source index failure {index}: expected an object with a source ID')
+            continue
+        identifier = failure['id'].casefold()
+        if identifier in failed_ids:
+            errors.append(f'source index failure {index}: duplicate source ID')
+        if identifier in ids:
+            errors.append(f'source index failure {index}: source ID also has a successful scan')
+        failed_ids.add(identifier)
+
+    def nonnegative_integer(value):
+        return type(value) is int and value >= 0
+
+    # Legacy snapshots retain discovery counts without an ID ledger. Do not
+    # invent identities for their historical unattempted candidates.
+    if 'discovered_repository_ids' in meta:
+        ledger = meta['discovered_repository_ids']
+        if (not isinstance(ledger, list)
+                or any(not isinstance(identifier, str) or not re.fullmatch(r'scan-[0-9]+', identifier)
+                       for identifier in ledger)):
+            errors.append('Source index discovery ledger must be an array of scan IDs.')
+        else:
+            known = set(ledger)
+            if len(known) != len(ledger):
+                errors.append('Source index discovery ledger contains duplicate IDs.')
+            attempted_ids = [entry.get('id') for entry in records + failures if isinstance(entry, dict)]
+            if any(not isinstance(identifier, str) or not re.fullmatch(r'scan-[0-9]+', identifier)
+                   for identifier in attempted_ids):
+                errors.append('Source index attempted repositories must have valid scan IDs.')
+            elif not set(attempted_ids).issubset(known):
+                errors.append('Source index attempted IDs must be present in the discovery ledger.')
+            if not nonnegative_integer(meta.get('unique_repos')) or meta['unique_repos'] != len(known):
+                errors.append('Source index unique repository count must match the discovery ledger.')
+            if (not nonnegative_integer(meta.get('unattempted_candidates'))
+                    or meta['unattempted_candidates'] != len(known) - len(records) - len(failures)):
+                errors.append('Source index unattempted count must equal known IDs minus attempted repositories.')
+
+    if 'current_run' in meta:
+        run = meta['current_run']
+        if not isinstance(run, dict):
+            errors.append('Source index current_run must be an object.')
+        else:
+            for retained_key, new_key, total in (
+                    ('retained_successful_readme_scans', 'new_successful_readme_scans', len(records)),
+                    ('retained_failed_readme_scans', 'new_failed_readme_scans', len(failures))):
+                retained, added = run.get(retained_key), run.get(new_key)
+                if not nonnegative_integer(retained) or not nonnegative_integer(added):
+                    errors.append(f'Source index current_run {retained_key}/{new_key} must be nonnegative integers.')
+                elif retained + added != total:
+                    errors.append(f'Source index current_run {retained_key} plus {new_key} does not match the snapshot total.')
+            for observations_key, offset_key, count_key in (
+                    ('queries', 'query_start_index', 'query_count'),
+                    ('seed_observations', 'seed_observation_start_index', 'seed_observation_count')):
+                observations = meta.get(observations_key, [])
+                offset, count = run.get(offset_key), run.get(count_key)
+                if (not isinstance(observations, list) or not nonnegative_integer(offset)
+                        or not nonnegative_integer(count)):
+                    errors.append(f'Source index current_run {offset_key}/{count_key} needs valid counters and an observation array.')
+                elif offset + count != len(observations):
+                    errors.append(f'Source index current_run {offset_key} plus {count_key} does not match {observations_key}.')
+            if 'requested_new_successful_scans' in run:
+                target, retained = meta.get('requested_successful_scans'), run.get('retained_successful_readme_scans')
+                requested = run['requested_new_successful_scans']
+                if (not nonnegative_integer(target) or not nonnegative_integer(retained)
+                        or not nonnegative_integer(requested) or requested != max(0, target - retained)):
+                    errors.append('Source index current_run requested new successes do not match the combined target.')
+            if 'readme_queue_candidates' in run:
+                queued = run['readme_queue_candidates']
+                successes, failed = run.get('new_successful_readme_scans'), run.get('new_failed_readme_scans')
+                if (not nonnegative_integer(queued) or not nonnegative_integer(successes)
+                        or not nonnegative_integer(failed) or queued < successes + failed):
+                    errors.append('Source index current_run README queue must cover all new attempted repositories.')
     return len(records)
 
 

@@ -97,5 +97,95 @@
     "readme_sha256": "f178aba92d3a017784fd0bf1173e849a69c2245f552f083f1eb4cb9ee1594a32",
     "evidence_url": "https://github.com/perirhinal-flit845/Bluetooth-Repair-Tool/blob/main/README.md",
     "reviewed_at": "2026-10-16T04:09:02Z"
+  },
+  "scan-1182233683": {
+    "decision": "exclude",
+    "reason_code": "ordinary-media-manager",
+    "reason_en": "The reviewed README documents anime tracking, media downloads, and library management rather than software reverse-engineering tools or findings.",
+    "reason_zh": "复核的 README 介绍追番、媒体下载与媒体库管理，未提供软件逆向分析工具或分析结果。",
+    "readme_sha256": "9a7112a0b7139470d9711676ca1973cb63278089da0dafffac4b910d488d437a",
+    "evidence_url": "https://github.com/AlcMaple/tools/blob/main/README.md",
+    "reviewed_at": "2026-10-16"
+  },
+  "scan-95806994": {
+    "decision": "exclude",
+    "reason_code": "relative-date-parser",
+    "reason_en": "Parses relative-time expressions into Date objects; reverse refers to text-to-date conversion rather than software reverse engineering.",
+    "reason_zh": "将相对时间表达式解析为日期对象；reverse 指文本到日期的转换，而非软件逆向工程。",
+    "readme_sha256": "c6b66d28953a3a19870a9d347418a4873e1d6d46c9bfff2086add8dd4896ff02",
+    "evidence_url": "https://github.com/ezpn/timeago-reverse/blob/master/README.md",
+    "reviewed_at": "2026-10-16"
+  },
+  "scan-216306502": {
+    "decision": "exclude",
+    "reason_code": "runtime-value-serializer",
+    "reason_en": "A general-purpose runtime-value-to-source serializer; its documented purpose is serialization rather than reverse-engineering analysis.",
+    "reason_zh": "通用的运行时值转源码字符串序列化库；文档用途是序列化，而非逆向分析。",
+    "readme_sha256": "b5929b7cc661bf736fae46134b0a2b665c649b17443697a3d2650619f4cbb5c6",
+    "evidence_url": "https://github.com/lopatnov/jsToString/blob/master/README.md",
+    "reviewed_at": "2026-10-16"
+  },
+  "scan-159120342": {
+    "decision": "exclude",
+    "reason_code": "original-educational-game",
+    "reason_en": "An original language-immersion game using a fan engine, with educational user testing rather than reverse-engineering findings.",
+    "reason_zh": "基于同人引擎开发的语言沉浸式教育游戏，记录的是教学用户测试，而非逆向分析结果。",
+    "readme_sha256": "9e7389257f881a030f960f2e3eb037b40d2045904358820802df3362fac065fc",
+    "evidence_url": "https://github.com/aeglon97/PokemonUnity-develop/blob/master/README.md",
+    "reviewed_at": "2026-10-16"
+  },
+  "scan-460596523": {
+    "decision": "exclude",
+    "reason_code": "original-memory-game",
+    "reason_en": "A Pokemon-themed memory-card game with a generic application README; no reverse-engineering tool or case evidence is documented.",
+    "reason_zh": "宝可梦主题的翻牌记忆游戏，README 为通用应用模板，未提供逆向工具或案例证据。",
+    "readme_sha256": "036a6cb6eb41fcb0faca7ac31d0c396d3a46a2b852a8b91549a29619571f9d76",
+    "evidence_url": "https://github.com/enes9103/015_Memory_Card_Game_Pokemon/blob/main/README.md",
+    "reviewed_at": "2026-10-16"
+  },
+  "scan-1315192190": {
+    "decision": "exclude",
+    "reason_code": "announcement-data-monitor",
+    "reason_en": "Tracks and summarizes published game balance announcements rather than analyzing game code or proprietary data formats.",
+    "reason_zh": "跟踪和整理公开的游戏平衡性公告，而非分析游戏代码或专有数据格式。",
+    "readme_sha256": "771d2fe44ae9705c3dd1c15fbc7afec46fcfe6d5e55adc48905e6fa79371b2aa",
+    "evidence_url": "https://github.com/LuckLuffy/MechabellumData/blob/master/README.md",
+    "reviewed_at": "2026-10-16"
+  },
+  "scan-1233926446": {
+    "decision": "exclude",
+    "reason_code": "ordinary-reverse-proxy",
+    "reason_en": "An ordinary reverse proxy and API gateway; reverse describes traffic routing rather than software reverse engineering.",
+    "reason_zh": "普通反向代理与 API 网关；reverse 描述流量路由，而非软件逆向工程。",
+    "readme_sha256": "82d04abcaed74f0a7bab60b0ae7b7a6469a7bfd6f59bb24a3aecd94e3c0deaae",
+    "evidence_url": "https://github.com/maheensayuru/aegis-proxy/blob/main/README.md",
+    "reviewed_at": "2026-10-16"
+  },
+  "scan-851352657": {
+    "decision": "exclude",
+    "reason_code": "game-promotion-page",
+    "reason_en": "A generic game promotion, installation, and gameplay guide without reverse-engineering tools, format analysis, or case evidence.",
+    "reason_zh": "通用的游戏推广、安装和玩法介绍，未提供逆向工具、格式分析或案例证据。",
+    "readme_sha256": "d207c4002ddcda6350e96308c0b9e35f05c1d93a705f57c0bc3098cdd00f8562",
+    "evidence_url": "https://github.com/yaznjvam537/League-Of-Legends/blob/master/README.md",
+    "reviewed_at": "2026-10-16"
+  },
+  "scan-1154239956": {
+    "decision": "exclude",
+    "reason_code": "feature-flag-platform",
+    "reason_en": "An enterprise feature-flag and dynamic-configuration platform rather than a reverse-engineering resource.",
+    "reason_zh": "企业功能开关与动态配置平台，不属于逆向工程资源。",
+    "readme_sha256": "66c59596268c79b6e74f2c63fe37c2c353e5012b12852f3ac655af9199f2ae57",
+    "evidence_url": "https://github.com/rdnrhm92/switch/blob/main/README.md",
+    "reviewed_at": "2026-10-16"
+  },
+  "scan-1201612895": {
+    "decision": "exclude",
+    "reason_code": "ordinary-editor-tooling",
+    "reason_en": "HTMX editor completion, documentation, and snippet tooling rather than software reverse-engineering analysis.",
+    "reason_zh": "HTMX 编辑器补全、文档和代码片段工具，未涉及软件逆向分析。",
+    "readme_sha256": "2eb49a741e469e2558b166dfe22694167b025d6c2d3b3b3c5d7c92295aef0433",
+    "evidence_url": "https://github.com/ribbonfernbutcherbird693/htmx-vscode-toolkit/blob/main/README.md",
+    "reviewed_at": "2026-10-16"
   }
 }

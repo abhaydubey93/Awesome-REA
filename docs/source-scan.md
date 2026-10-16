@@ -4,15 +4,19 @@ The [source index](../data/source-index.json) is a separate discovery layer from
 
 Initial completed snapshot: **1,600 distinct repository READMEs**, retrieved between 2026-10-16 01:34:02 and 01:37:38 UTC. The 29 queries discovered 2,020 unique candidates; 1,611 were attempted, 11 failed (10 HTTP 404 responses and one empty README), and 409 were not attempted after reaching the target. The successful scan read 16,525,491 bytes and produced 1,596 distinct content hashes. Different repositories can carry identical README content.
 
+Latest incremental batch: **400 new successful README scans** from 405 attempts, completed on 2026-10-16 at 07:15:17 UTC. The index now retains **2,000 successful scans** and **16 failed attempts**. All original 1,600 records and 11 failures remain unchanged. The batch added 32 previously unscanned curated repositories and used 10 focused technology/reverse-engineering search queries. The combined scan records contain 20,426,367 README bytes and 1,996 distinct content hashes.
+
+The current ID-backed discovery population contains 2,180 repositories, with 164 not attempted. The original 409 unattempted candidates had no saved identity list; they are not added to this union unless rediscovered. Their original counts are retained in `meta.resume_history`, alongside the original snapshot hash. `meta.current_run` records the new batch separately.
+
 The authoritative counts and collection window are in the index's `meta` object. `successful_readme_scans` counts distinct public GitHub repositories whose README content was actually retrieved, decoded, inspected for document features, and SHA-256 hashed. Search result totals, discovered candidates, missing READMEs, and failed requests are not included in that number.
 
 ## Collection scope
 
-The scan retains **1,600 repository records** as discovery evidence. A separate [scope review](../data/source-scope.json) excludes **11 clearly unrelated results** from collection browsing, leaving **1,589 browsable repositories**. These exclusions cover biological sequencing, financial analysis, personal profiles, language-research question classification, chart digitization, a UI animation, and ordinary Bluetooth repair. The original scan, source descriptions, and successful-scan count remain unchanged.
+The scan retains **2,000 repository records** as discovery evidence. A separate [scope review](../data/source-scope.json) excludes **21 clearly unrelated results** from collection browsing, leaving **1,979 browsable repositories**. These exclusions cover biological sequencing, financial analysis, personal profiles, language-research question classification, chart digitization, a UI animation, ordinary Bluetooth repair, general application utilities, original educational games, and unrelated development tooling. The original scan, source descriptions, and successful-scan count remain unchanged.
 
 Each exclusion is keyed by the stable source ID and records its decision, bilingual reason, review date, exact scanned README SHA-256, and matching README URL. The [scope helper](../scripts/source_scope.py) validates those bindings and annotates generated records with `scope_status: excluded` and `scope_review`; it does not delete scan evidence. If a source snapshot changes, its scope decision must be reviewed again before reuse.
 
-The remaining 1,589 entries have not all received individual relevance or functionality review. They are a discovery collection, separate from the **96 curated, source-reviewed resources**. Missing target tags alone do not justify exclusion: the unclassified records include game decompilations, language decompilers, and hardware protocol research. Scope decisions are also separate from licensing, safety, and REA compatibility judgments.
+The remaining 1,979 entries have not all received individual relevance or functionality review. They are a discovery collection, separate from the **96 curated, source-reviewed resources**. Missing target tags alone do not justify exclusion: the unclassified records include game decompilations, language decompilers, and hardware protocol research. Scope decisions are also separate from licensing, safety, and REA compatibility judgments.
 
 ## What was scanned
 
@@ -43,6 +47,20 @@ python3 scripts/scan_sources.py --target 1600 --workers 16 --requests-per-second
 ```
 
 The default output is `data/source-index.json`. Use `--output` to write another snapshot. The script keeps authentication in process memory, sends it only to `api.github.com`, and refuses redirects that would send it elsewhere. It never writes or logs the credential.
+
+## Continue without replacing earlier evidence
+
+Use a different output path for an incremental batch. For example, continue from the current 2,000-record snapshot toward 2,400 successful reads:
+
+```sh
+python3 scripts/scan_sources.py --resume data/source-index.json --output .cache/source-index-next.json --target 2400 --seed-curated --workers 32 --requests-per-second 12 --candidate-buffer 100
+```
+
+The scanner preserves earlier record objects, hashes, timestamps, failed attempts, and query observations. It skips previously attempted IDs, adds a persisted `discovered_repository_ids` ledger, and records per-run counts and provenance. Curated GitHub references can be seeded before search; they pass the same public/non-fork/non-archived eligibility gates. Seed observations are separate from search-query evidence.
+
+Repeat `--query 'topic:javascript topic:reverse-engineering'` to supply focused search bases instead of the defaults; the public/non-fork/non-archived gates are appended automatically. The exact ordered plan and executed queries are in `meta.current_run.query_plan` and `meta.queries`. An interrupted checkpoint can be resumed to a different output path without re-reading its completed sources.
+
+Before replacing the canonical snapshot, add both-language descriptions for every new ID, review clear scope mismatches, regenerate both repository directories, and run validation. An in-progress checkpoint is not publishable. The source index keeps upstream text and original evidence; translation and scope decisions remain separate.
 
 Search calls are spaced by at least 2.1 seconds; README requests share a bounded request rate and a worker limit. HTTP rate-limit responses trigger a shared wait and retry, and progress checkpoints are saved after each 100 attempted READMEs. GitHub limits each search to at most 1,000 results, so the scanner uses distinct topical queries and records its pagination limits. See [GitHub search behavior](https://docs.github.com/en/rest/search/search#about-search) and [REST API rate limits](https://docs.github.com/en/rest/using-the-rest-api/rate-limits-for-the-rest-api).
 

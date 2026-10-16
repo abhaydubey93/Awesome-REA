@@ -176,6 +176,8 @@ def main() -> None:
             if successful:
                 repository_locales = read_localizations(ROOT)
                 index_data["resources"] = apply_scope(localized_records(successful, repository_locales), read_scope(ROOT))
+                index_data["meta"]["source_description_policy"] = index_data["meta"].get("description_policy", "")
+                index_data["meta"]["description_policy"] = "English and Simplified Chinese descriptions are AI-assisted localizations of upstream repository text. description_original preserves the original description. Translation does not imply verification."
                 excluded_count = sum(record.get("scope_status") == "excluded" for record in index_data["resources"])
                 index_data["meta"]["scope"] = {"scanned_count": len(successful), "excluded_count": excluded_count, "browse_count": len(successful) - excluded_count}
                 index_data["meta"]["localization"] = {"languages": ["en", "zh-CN"], "translated_records": sum(record["id"] in repository_locales for record in successful), "method": "AI-assisted description translation; original upstream text retained."}

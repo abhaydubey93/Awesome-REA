@@ -116,6 +116,10 @@ def load_review_contents(repository, sha, token, files, changed, errors):
             else:
                 # Unchanged source, locale, and scope dependencies come from the trusted base.
                 contents[filename] = (ROOT / filename).read_text(encoding='utf-8')
+            # GitHub can omit or truncate a large file's patch. Check the already
+            # fetched, exact-allowlisted changed JSON without exposing matches.
+            if filename in changed and (SENSITIVE.search(contents[filename]) or LOCAL_PATH.search(contents[filename])):
+                errors.append(f'{filename}: full JSON content contains a credential-like value or personal absolute path; inspect locally. The value is omitted here.')
         except (OSError, UnicodeError, ValueError):
             errors.append(f'{filename}: could not safely retrieve required JSON data for this review.')
     return contents

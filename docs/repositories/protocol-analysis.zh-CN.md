@@ -2,7 +2,7 @@
 
 [全部分类](README.zh-CN.md) · [English](protocol-analysis.md)
 
-**69 个仓库** · 2026-10-16 UTC
+**72 个仓库** · 2026-10-16 UTC
 
 这些是自动发现的项目，不是逐项精选或运行测试后的推荐。分类来自元数据；简介由上游描述翻译而来。星标为采集时快照，不是实时排名。
 
@@ -11,6 +11,7 @@
 - [alphaSeclab/awesome-network-stuff](https://github.com/alphaSeclab/awesome-network-stuff) — 网络安全资源，涵盖代理/GFW/反向代理/隧道/VPN/Tor/I2P，以及中间人攻击、端口敲门、网络嗅探、网络分析等。目前收录 1700 多个开源工具，后续将补充文章。 **[926 星标]**
 - [symbolicsoft/verifpal](https://github.com/symbolicsoft/verifpal) — 对现实世界中的密码协议进行分析。 **[133 星标]**
 - [spectral-mcp/spectral](https://github.com/spectral-mcp/spectral) — 照常浏览任意应用，Spectral 会捕获流量、理解每次 API 调用的作用，并生成 AI 智能体可直接调用的 MCP 工具。 **[121 星标]**
+- [Annyfee/spider-js-reverse](https://github.com/Annyfee/spider-js-reverse) — 精选不同网站的 JavaScript 逆向实例，提供详细讲解、知识点概括、加密算法、难度对比及跳转链接，涵盖补环境、提取 JavaScript、webpack 和瑞数等难点。 **[111 星标]**
 - [HackingLZ/maps_scanner](https://github.com/HackingLZ/maps_scanner) — 用于 Microsoft Defender 研究的 MAPS 云扫描器及响应解析器。 **[96 星标]**
 - [HalilDeniz/ICMPWatch](https://github.com/HalilDeniz/ICMPWatch) — ICMPWatch：ICMP 数据包嗅探器 **[60 星标]**
 - [NotYuSheng/TracePcap](https://github.com/NotYuSheng/TracePcap) — 可自行托管的 PCAP 分析平台，提供 LLM 驱动的事件分诊、基于特征签名的威胁检测及 AI 生成的事件叙述。支持跨抓包文件监测网络变化、通过 nDPI 深度检测数据包，以及自动生成 Wireshark 过滤器。配合本地 LLM（Ollama、LM Studio）可完全离线运行。 **[51 星标]**
@@ -19,6 +20,7 @@
 - [haebibisimax/PortSmith](https://github.com/haebibisimax/PortSmith) — 跨语言抓包规范化与采集器推断引擎：用 Go 将录制的 Redis 跟踪记录解析为稳定的中间格式，再用 Rust 从中推断通信模式。 **[33 星标]**
 - [JustVugg/Wiredigg](https://github.com/JustVugg/Wiredigg) — Wiredigg 是一款具有高级安全功能的综合网络分析工具，面向网络管理员、安全专业人员和 IT 爱好者。它通过现代、易用的界面提供实时抓包、协议分析、异常检测和威胁识别功能。 **[29 星标]**
 - [symbolicsoft/noiseexplorer](https://github.com/symbolicsoft/noiseexplorer) — 用于推理 Noise Protocol Framework 的在线引擎。 **[21 星标]**
+- [SirYadav1/sonar-bypass](https://github.com/SirYadav1/sonar-bypass) — 用于 Minecraft 的 Sonar 反机器人验证绕过工具。提供可用的 Sonar 2.1.x 绕过脚本、数据包记录器和调试代理，已在 cubixmc、poormc 上测试。 **[14 星标]**
 - [mziqudhd92/honeypot-auditor](https://github.com/mziqudhd92/honeypot-auditor) — Does This Look Like An Honeypot?（DTLLAH）是一款多协议命令行工具，结合 Honeyscore、主动认证与状态探测及加权评分，判断目标 IP 的行为是否像蜜罐。 **[11 星标]**
 - [tatikoma/mitm-research](https://github.com/tatikoma/mitm-research) — 对 WhatsApp 协议的安全研究，涵盖加密握手分析、逆向工程和受控的本地中间人实验。 **[9 星标]**
 - [kendojitsu/Kendo](https://github.com/kendojitsu/Kendo) — Kendo：强大的网络抓包和协议分析软件。🚀 使用 MFC 和 WinPcap 进行实时与离线分析，提供全面的协议解析器、显示过滤器、高效的数据包管理和便捷的快捷键交互，轻松探索网络流量。 **[8 星标]**
@@ -26,6 +28,7 @@
 - [mahumadad/ubox-p4p](https://github.com/mahumadad/ubox-p4p) — 对 UBox/UBIA 智能摄像机 P4P 协议的完整逆向工程，涵盖自定义分组密码、KCP + RDT 视频、类似 ICE 的 NAT 穿透和独立 Python 客户端。该协议为 TUTK IOTC 的改名版本，提供端到端文档。 **[6 星标]**
 - [bsu-tool/bsu-tool](https://github.com/bsu-tool/bsu-tool) — 开源 AI 辅助 USB 协议分析工具和 MCP 服务器。 **[5 星标]**
 - [eogod/wireprism](https://github.com/eogod/wireprism) — 面向实时流量和 PCAP 的高吞吐网络流检查工具。使用 Rust 构建，提供流重组、协议解析、变换、模式匹配和实时 Web 界面。 **[5 星标]**
+- [gabrielzv1233/SynapseCTRL](https://github.com/gabrielzv1233/SynapseCTRL) — 想在外部控制 Razer Synapse 配置？现在可以了 **[5 星标]**
 - [profitpioneer/iphone-protocol-sniffer](https://github.com/profitpioneer/iphone-protocol-sniffer) — 无需硬件嗅探器即可逆向分析 iPhone 与设备之间的 BLE/Wi-Fi 协议。通过 libimobiledevice 和 rvictl 捕获解密后的 HCI 与 Wi-Fi 数据，并解码 PTP-IP 和 Sony 私有操作码。 **[5 星标]**
 - [AlexeyVasilev/PcapFlowLab](https://github.com/AlexeyVasilev/PcapFlowLab) — 基于流的 PCAP 分析器，提供协议感知检查、分析、统计、可复用索引和命令行界面。 **[4 星标]**
 - [digitalinnovator/pqc-iot-analyzer](https://github.com/digitalinnovator/pqc-iot-analyzer) — 用于分析 IoT 协议流量（CoAP、MQTT、RPL）的 Rust 命令行工具，并依据 NIST FIPS 203/204 评估后量子密码就绪情况。 **[4 星标]**

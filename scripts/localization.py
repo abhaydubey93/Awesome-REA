@@ -74,6 +74,7 @@ def localized_records(records, translations):
             record['description_original'] = record.get('description_en', '')
             record['description_en'] = entry.get('description_en', record['description_original'])
             record['description_zh'] = entry.get('description_zh', '')
+            record['description_language'] = 'bilingual'
             record['description_zh_status'] = 'translated'
             record['description_localization'] = 'ai-assisted-translation'
         result.append(record)

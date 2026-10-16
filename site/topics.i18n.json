@@ -1682,5 +1682,85 @@
   "uefi": {
     "en": "UEFI",
     "zh": "UEFI"
+  },
+  "nodejs": {
+    "en": "Node.js",
+    "zh": "Node.js"
+  },
+  "react": {
+    "en": "React",
+    "zh": "React"
+  },
+  "chrome-extension": {
+    "en": "Chrome extension",
+    "zh": "Chrome 扩展"
+  },
+  "unity2d": {
+    "en": "Unity 2D",
+    "zh": "Unity 2D"
+  },
+  "emscripten": {
+    "en": "Emscripten",
+    "zh": "Emscripten"
+  },
+  "anti-bot": {
+    "en": "Anti-bot",
+    "zh": "反机器人检测"
+  },
+  "threejs": {
+    "en": "three.js",
+    "zh": "three.js"
+  },
+  "devtools": {
+    "en": "Developer tools",
+    "zh": "开发者工具"
+  },
+  "cdp": {
+    "en": "CDP",
+    "zh": "CDP"
+  },
+  "asar": {
+    "en": "ASAR",
+    "zh": "ASAR"
+  },
+  "js": {
+    "en": "JavaScript",
+    "zh": "JavaScript"
+  },
+  "retro-gaming": {
+    "en": "Retro gaming",
+    "zh": "复古游戏"
+  },
+  "rea": {
+    "en": "REA",
+    "zh": "REA"
+  },
+  "webgl": {
+    "en": "WebGL",
+    "zh": "WebGL"
+  },
+  "playwright": {
+    "en": "Playwright",
+    "zh": "Playwright"
+  },
+  "playstation": {
+    "en": "PlayStation",
+    "zh": "PlayStation"
+  },
+  "manifest-v3": {
+    "en": "Manifest V3",
+    "zh": "Manifest V3"
+  },
+  "babel": {
+    "en": "Babel",
+    "zh": "Babel"
+  },
+  "chrome-devtools-protocol": {
+    "en": "Chrome DevTools Protocol",
+    "zh": "Chrome 开发者工具协议"
+  },
+  "browser-automation": {
+    "en": "Browser automation",
+    "zh": "浏览器自动化"
   }
 }

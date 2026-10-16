@@ -161,7 +161,7 @@ Each entry appears once under its main purpose. The collection includes independ
 ## Full Repository Index
 
 <!-- BEGIN REPOSITORY INDEX SUMMARY -->
-**1,600** repository READMEs scanned; **1,589** entries available to browse. The 11 clearly out-of-scope entries remain in the scan data. This automatically discovered index is separate from the curated resources above and has not been individually execution-tested.
+**2,000** repository READMEs scanned; **1,979** entries available to browse. The 21 clearly out-of-scope entries remain in the scan data. This automatically discovered index is separate from the curated resources above and has not been individually execution-tested.
 
 [Browse by category on GitHub](docs/repositories/README.md) · [Search website](https://awesomerea.org/?view=source-index&lang=en) · [Full bilingual index JSON](https://awesomerea.org/source-index.json) · [Curated catalog JSON](https://awesomerea.org/catalog.json)
 <!-- END REPOSITORY INDEX SUMMARY -->

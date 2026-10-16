@@ -2130,5 +2130,537 @@
   "scan-836091027": {
     "description_en": "A highly clock-accurate FPGA clone of the NES 2C02(7) PPU, created on the basis of reverse engineering.",
     "description_zh": "基于逆向工程创建、时钟级高度精确的 NES 2C02(7) PPU FPGA 克隆。"
+  },
+  "scan-1348000824": {
+    "description_en": "datadome captcha dd.t = fe vm solver for authorised security testing and research",
+    "description_zh": "用于授权安全测试与研究的 DataDome 验证码 dd.t = fe 虚拟机求解工具"
+  },
+  "scan-1259469878": {
+    "description_en": "hCaptcha hsj/hsw master-key extraction — byte-accurate per build",
+    "description_zh": "提取 hCaptcha hsj/hsw 主密钥，对每个构建版本实现字节级精确匹配"
+  },
+  "scan-1400105099": {
+    "description_en": "An open-source project for opening, annotating, and saving DocuWorks (.xdw / .xbd) files anywhere, with a Rust engine, a single-file browser editor, and format specifications. Not affiliated with Fujifilm.",
+    "description_zh": "可随处打开 DocuWorks（.xdw / .xbd）文件、添加批注并保存的开源项目，包含 Rust 引擎、单文件浏览器编辑器与格式规范，与富士胶片无关。"
+  },
+  "scan-1189672512": {
+    "description_en": "A toolsuite of advanced WASM static binary analysis tools designed to reverse engineer WebAssembly binaries.",
+    "description_zh": "用于逆向分析 WebAssembly 二进制文件的高级 Wasm 静态二进制分析工具套件。"
+  },
+  "scan-1139894439": {
+    "description_en": "A fully working Proof of Concept (PoC) that demonstrates how to reconstruct CyberSource Credit/Debit Card encryption as used on websites such as pokemoncenter.com.  The implementation mirrors CyberSource’s Flex Microform flow and produces a valid payment token (jti) that can be used during checkout automation.",
+    "description_zh": "可完整运行的概念验证（PoC），演示如何重建 pokemoncenter.com 等网站使用的 CyberSource 信用卡/借记卡加密。该实现复现 CyberSource 的 Flex Microform 流程，生成可用于结账自动化的有效支付令牌（jti）。"
+  },
+  "scan-1245709689": {
+    "description_en": "Complete reverse engineering of PerimeterX (HUMAN Security) anti-bot SDK · pure-algo _px3/_px2 generator (no browser, no Selenium) · iFood +   Grubhub + Bundle 10/10 verified · WASM PoW solved · 68 production gotchas · AI Skill included.",
+    "description_zh": "完整逆向分析 PerimeterX（HUMAN Security）反机器人 SDK；纯算法生成 _px3/_px2，无需浏览器或 Selenium；iFood、Grubhub 与 Bundle 均通过 10/10 验证；已解决 Wasm 工作量证明；记录 68 个生产环境问题，并附 AI 技能。"
+  },
+  "scan-629551721": {
+    "description_en": "Frida script to intercept with NodeJS API and Electron Application",
+    "description_zh": "用于拦截 Node.js API 与 Electron 应用的 Frida 脚本"
+  },
+  "scan-156775481": {
+    "description_en": "Reverse Engineering TimeSplitters games to make an assest compatable engine",
+    "description_zh": "逆向分析 TimeSplitters 系列游戏，构建兼容其资源的引擎"
+  },
+  "scan-1245886983": {
+    "description_en": "Dumps protobuf-net messages and enums from an IL2CPP Unity game into a valid .proto file using Frida and frida-il2cpp-bridge",
+    "description_zh": "使用 Frida 与 frida-il2cpp-bridge，将 IL2CPP Unity 游戏中的 protobuf-net 消息和枚举转储为有效的 .proto 文件"
+  },
+  "scan-647430943": {
+    "description_en": "Extensions for Mono.Cecil",
+    "description_zh": "Mono.Cecil 扩展"
+  },
+  "scan-1316769097": {
+    "description_en": "AGENT Pojia is an AI skill management tool that deploys 65 AI skills to Claude Code, Codex, Kimi Code, or Cursor in one click.",
+    "description_zh": "AGENT 破甲：AI 技能管理工具，一键将 65 个 AI 技能部署至 Claude Code、Codex、Kimi Code 或 Cursor"
+  },
+  "scan-1417150228": {
+    "description_en": "SpeakMore: open-source voice input for macOS. Press a hotkey to speak and paste the cleaned-up text into the current input field using your own Gemini API key. Includes reverse engineering of Typeless.",
+    "description_zh": "SpeakMore：macOS 上的开源语音输入工具，按下热键即可说话，将整理后的文字粘贴到当前输入框，使用你自己的 Gemini API 密钥，附 Typeless 逆向分析。"
+  },
+  "scan-1248390425": {
+    "description_en": "MCP server for headless AI-driven Android reverse engineering — 122 tools across 8 categories for ADB, NDK, il2cpp, hooking, crash trapping, memory analysis, Frida, and APK manipulation",
+    "description_zh": "面向 AI 驱动、无界面 Android 逆向工程的 MCP 服务器，提供 8 类共 122 个工具，覆盖 ADB、NDK、IL2CPP、Hook、崩溃捕获、内存分析、Frida 和 APK 操作"
+  },
+  "scan-1349981525": {
+    "description_en": "Export & import Claude Code sessions between machines, accounts (email) and app builds (Win32/MSIX). Reverse-engineered, unofficial, MIT.",
+    "description_zh": "在不同机器、账户（邮箱）和应用构建版本（Win32/MSIX）之间导出、导入 Claude Code 会话。通过逆向工程实现，非官方项目，采用 MIT 许可证。"
+  },
+  "scan-831605187": {
+    "description_en": "ImGui overlay for Unity Android games — three injection variants (JNI, Zygisk, Magisk), IL2CPP introspection, 100+ anti-cheat bypass patches",
+    "description_zh": "面向 Unity Android 游戏的 ImGui 叠加界面，提供 JNI、Zygisk、Magisk 三种注入方式、IL2CPP 内省，以及 100 多个反作弊绕过补丁"
+  },
+  "scan-994845802": {
+    "description_en": "This repository contains reverse engineering assets and data extracted from the game, intended for research, modding (if permitted by the game's EULA), or educational purposes.",
+    "description_zh": "本仓库收录逆向工程资源及从游戏中提取的数据，用于研究、模组制作（须游戏 EULA 允许）或教学。"
+  },
+  "scan-276546544": {
+    "description_en": "Pacman and Ms. Pacman reverse engineered in JavaScript",
+    "description_zh": "通过逆向工程使用 JavaScript 重建 Pac-Man 与 Ms. Pac-Man"
+  },
+  "scan-693391965": {
+    "description_en": "A C# library to handle UnityWebData easily.",
+    "description_zh": "用于便捷处理 UnityWebData 的 C# 库。"
+  },
+  "scan-220888157": {
+    "description_en": "Extract media from social platforms so you can save them locally.",
+    "description_zh": "从社交平台提取媒体，便于保存到本地。"
+  },
+  "scan-1239135640": {
+    "description_en": "Electron Reverse Engineering Skill — ASAR manipulation, source code deobfuscation, runtime injection, integrity bypass, and practical customization",
+    "description_zh": "Electron 逆向工程技能，涵盖 ASAR 操作、源码去混淆、运行时注入、完整性检查绕过及实用定制"
+  },
+  "scan-967835721": {
+    "description_en": "Decrypt answers for any assignment and save collaboration links in codehs.com. Made this to skip doing easy/boring assignments in my computer programming 11 class.",
+    "description_zh": "解密 codehs.com 上任意作业的答案并保存协作链接。作者制作此工具是为了跳过计算机编程 11 年级课程中简单或枯燥的作业。"
+  },
+  "scan-1183948134": {
+    "description_en": "Pokemon Yellow rewritten in TypeScript — runs in the browser, extracts all data from your own ROM",
+    "description_zh": "用 TypeScript 重写的《宝可梦：皮卡丘》，在浏览器中运行，所有数据均从你自己的 ROM 提取"
+  },
+  "scan-432191582": {
+    "description_en": "Now you can 'disassemble' Reddit!",
+    "description_zh": "现在你也可以“反汇编” Reddit！"
+  },
+  "scan-1407347217": {
+    "description_en": "Deobfuscator for javascript-obfuscator 5.x output (string arrays, control-flow flattening, self-defending, RC4/base64)",
+    "description_zh": "针对 javascript-obfuscator 5.x 输出的去混淆工具，支持字符串数组、控制流平坦化、自防护以及 RC4/base64"
+  },
+  "scan-1147351287": {
+    "description_en": "Play: https://nolanvenhola.github.io/zeliard/ — Complete C/WebAssembly port and bit-perfect MASM source-code reconstruction of Zeliard, with reverse-engineering tools and parity tests.",
+    "description_zh": "在线体验：https://nolanvenhola.github.io/zeliard/ —— Zeliard 的完整 C/WebAssembly 移植版与位级精确的 MASM 源码重建，附逆向工程工具和一致性测试。"
+  },
+  "scan-197199112": {
+    "description_en": "Analysis of Google Keep WebAssembly module -",
+    "description_zh": "Google Keep WebAssembly 模块分析"
+  },
+  "scan-1151848001": {
+    "description_en": "Go reconstruction of TransUnion iovation's snare.js device-fingerprinting pipeline: data collection, serialization and encryption of the ioBlackBox payload. Published as reverse-engineering research.",
+    "description_zh": "使用 Go 重建 TransUnion iovation 的 snare.js 设备指纹流程，涵盖 ioBlackBox 载荷的数据收集、序列化和加密，以逆向工程研究形式发布。"
+  },
+  "scan-1182233683": {
+    "description_en": "MapleTools is a cross-platform anime download aggregator and media manager for Windows and macOS. It combines searches from xifan and Girigiri with Bangumi metadata, supporting multithreaded resumable downloads, retries across sources, local media-library scanning, synchronization, and more.",
+    "description_zh": "MapleTools 是兼容 Windows 与 macOS 的跨平台动漫聚合下载和媒资管理工具，聚合 xifan、Girigiri 站点搜索并集成 Bangumi 元数据，支持多线程断点续传、切换源后重试、本地媒资库扫描与同步等功能。"
+  },
+  "scan-1137667720": {
+    "description_en": "A JavaScript script to automatically complete Discord Quests directly from the developer console",
+    "description_zh": "可直接在开发者控制台中自动完成 Discord Quests 的 JavaScript 脚本"
+  },
+  "scan-1357658950": {
+    "description_en": "Toolkit for reverse-engineering and porting Unity games, with a full Unity → Godot 4 pipeline (GUI, CLI, MCP server).",
+    "description_zh": "用于逆向分析和移植 Unity 游戏的工具包，提供完整的 Unity → Godot 4 流程，包括 GUI、CLI 和 MCP 服务器。"
+  },
+  "scan-1273132737": {
+    "description_en": "A client side JavaScript utility to automatically complete all active Discord Quests directly from your console by spoofing game play, stream, and video playback activity.",
+    "description_zh": "客户端 JavaScript 实用工具，通过模拟游戏游玩、直播和视频播放活动，直接从控制台自动完成所有进行中的 Discord Quests。"
+  },
+  "scan-163424291": {
+    "description_en": "Reverse engineering and analysis of binary data",
+    "description_zh": "二进制数据的逆向工程与分析"
+  },
+  "scan-686990027": {
+    "description_en": "download original source code from JavaScript bundle/chunk URLs",
+    "description_zh": "从 JavaScript 包或分块 URL 下载原始源码"
+  },
+  "scan-1353708528": {
+    "description_en": "Portable gameplay modifiers for Touhou 8: Hidden, Flashlight, Mirror, Double Time, Relax, and more — playable on Web and Linux.",
+    "description_zh": "面向《东方永夜抄》（Touhou 8）的可移植玩法修改器，提供 Hidden、Flashlight、Mirror、Double Time、Relax 等模式，可在 Web 与 Linux 上游玩。"
+  },
+  "scan-703839382": {
+    "description_en": "A very basic 1v1.lol cheat framework that can be used as a guide for making .dll injectables for unity games.",
+    "description_zh": "非常基础的 1v1.lol 作弊框架，可作为为 Unity 游戏制作可注入 DLL 的参考。"
+  },
+  "scan-728648525": {
+    "description_en": "Study notes for Lufei Xuecheng's advanced web-scraping development and app reverse-engineering course.",
+    "description_zh": "路飞学城爬虫开发与 APP 逆向高级课程学习笔记"
+  },
+  "scan-1407574290": {
+    "description_en": "Fast Unity AssetBundle extractor & modder for Python with UABE Avalonia parity and Android/Termux support",
+    "description_zh": "适用于 Python 的高速 Unity AssetBundle 提取与修改工具，功能对齐 UABE Avalonia，并支持 Android/Termux"
+  },
+  "scan-1201686964": {
+    "description_en": "Nostalgia Dumper. High-performance, multi-threaded offset discovery for Unreal, Unity IL2CPP, and Unity Mono, Source and Source 2, Godot, CryEngine, GameMaker, and UNIGINE.",
+    "description_zh": "Nostalgia Dumper：高性能多线程偏移量发现工具，支持 Unreal、Unity IL2CPP、Unity Mono、Source、Source 2、Godot、CryEngine、GameMaker 和 UNIGINE。"
+  },
+  "scan-1279229017": {
+    "description_en": "Inject code into IL2CPP game processes to enable live metadata dumping, memory editing, method invocation, and Lua scripting via Zygisk.",
+    "description_zh": "通过 Zygisk 向 IL2CPP 游戏进程注入代码，实现实时元数据转储、内存编辑、方法调用与 Lua 脚本执行。"
+  },
+  "scan-95806994": {
+    "description_en": "Get Date object from Timeago string",
+    "description_zh": "将 Timeago 字符串转换为 Date 对象"
+  },
+  "scan-1360906091": {
+    "description_en": "Ever want to control Razer Synapse profiles externally? Well now you can ",
+    "description_zh": "想在外部控制 Razer Synapse 配置？现在可以了"
+  },
+  "scan-1213497302": {
+    "description_en": "A modern, reverse-engineered revival of Code Mafia. Built with Next.js 16, React 19, Tailwind v4, WebSockets (PartyKit), and in-browser Python (Pyodide).",
+    "description_zh": "通过逆向工程让 Code Mafia 重获新生的现代实现，基于 Next.js 16、React 19、Tailwind v4、WebSockets（PartyKit）及浏览器内 Python（Pyodide）。"
+  },
+  "scan-1247943876": {
+    "description_en": "Decompile .NET assemblies back to C# source",
+    "description_zh": "将 .NET 程序集反编译回 C# 源码"
+  },
+  "scan-1386751001": {
+    "description_en": "An agent skill outlining methods for reviving discontinued online games offline with a self-hosted server.",
+    "description_zh": "面向已关服网游离线复活的方法论智能体技能，通过自托管服务器重新运行游戏。"
+  },
+  "scan-97390133": {
+    "description_en": "Decoder for JavaScript code which was obfuscated by JavaScript2img",
+    "description_zh": "解码经 JavaScript2img 混淆的 JavaScript 代码的工具"
+  },
+  "scan-1416129752": {
+    "description_en": "The first look at a binary or app bundle: static, execution-free analysis with evidence. CLI, 15-tool MCP server and local web UI, Node only.",
+    "description_zh": "用于初步检查二进制文件或应用包的工具，提供有证据支持、无需执行目标的静态分析，包括 CLI、含 15 个工具的 MCP 服务器和本地 Web 界面，仅依赖 Node.js。"
+  },
+  "scan-1307557875": {
+    "description_en": "An external analysis and SDK-generation tool for Unreal Engine on Android, supporting AutoFix, dependency ordering, field patching, and ProcessEvent wrappers.",
+    "description_zh": "Android Unreal Engine 外部分析与 SDK 生成工具，支持 AutoFix、依赖排序、字段修补及 ProcessEvent Wrapper。"
+  },
+  "scan-1215711541": {
+    "description_en": "C++ Unity runtime resolver and hook template for IL2CPP/Mono with automatic method/field resolution, MinHook integration, and optional Debug dumper tools.",
+    "description_zh": "面向 IL2CPP/Mono 的 C++ Unity 运行时解析器与 Hook 模板，支持自动解析方法及字段、集成 MinHook，并提供可选的调试转储工具。"
+  },
+  "scan-529969246": {
+    "description_en": "General purpose JavaScript deobfuscator using deob-transformations",
+    "description_zh": "基于 deob-transformations 的通用 JavaScript 去混淆工具"
+  },
+  "scan-1155384583": {
+    "description_en": "Automate UE reverse engineering using UAsset API and CUE4Parse",
+    "description_zh": "使用 UAsset API 和 CUE4Parse 自动进行 Unreal Engine 逆向工程"
+  },
+  "scan-240666921": {
+    "description_en": "Extract files and convert 3D models from Colony Wars: Vengeance",
+    "description_zh": "从 Colony Wars: Vengeance 提取文件并转换 3D 模型"
+  },
+  "scan-401219732": {
+    "description_en": "Some things of reversing",
+    "description_zh": "一些逆向工程相关内容"
+  },
+  "scan-545120002": {
+    "description_en": "This repository contains the dumped and deobfuscated version of GandCrabv5 JS Binary Dropper, along with the webpage files dropped on a GandCrab v5.1 infected system. The goal of this Repository is to attempt to make the files easier to work with and understand.",
+    "description_zh": "本仓库收录 GandCrab v5 JavaScript 二进制投放器的转储与去混淆版本，以及 GandCrab v5.1 感染系统上投放的网页文件，旨在让这些文件更易于处理和理解。"
+  },
+  "scan-1081324495": {
+    "description_en": "Unreal Engine plugin that recreates Burnout Paradise’s Environment Settings system for time-of-day driven post process effects and color grading using Timelines and Keyframes. General purpose and game agnostic.",
+    "description_zh": "重现 Burnout Paradise 环境设置系统的 Unreal Engine 插件，通过时间轴和关键帧实现随一天中时间变化的后处理效果与调色，通用且不依赖特定游戏。"
+  },
+  "scan-864934697": {
+    "description_en": "The server of a new version of the MMORPG ROSE Online made with Unity",
+    "description_zh": "使用 Unity 制作的新版 MMORPG《ROSE Online》的服务器"
+  },
+  "scan-1350027807": {
+    "description_en": "Windows x64 Unity IL2CPP metadata workbench for static dumping, package inspection, cross-version migration, and deterministic C++20 SDK generation with UniResolver.",
+    "description_zh": "面向 Windows x64 的 Unity IL2CPP 元数据工作台，提供静态转储、包检查、跨版本迁移，以及基于 UniResolver 的确定性 C++20 SDK 生成。"
+  },
+  "scan-1368097497": {
+    "description_en": "Offline revival kit for Assassin's Creed Identity (Android): patcher + mission builder. Boot to Animus or Firenze with working enemy AI.",
+    "description_zh": "Assassin's Creed Identity 安卓版离线复活工具包，包含补丁工具与任务构建器，可启动至 Animus 或佛罗伦萨，并具有可工作的敌人 AI。"
+  },
+  "scan-237234951": {
+    "description_en": "Web-based de-obfuscator",
+    "description_zh": "基于 Web 的去混淆工具"
+  },
+  "scan-1345484599": {
+    "description_en": "Free, open-source Windows game trainer & memory editor — Cheat Engine alternative with code-patch injection, Mono/IL2CPP support, and .CT import/export. Includes Valheim   and Elden Ring cheats.",
+    "description_zh": "免费开源的 Windows 游戏修改器与内存编辑器，是 Cheat Engine 的替代方案，支持代码补丁注入、Mono/IL2CPP 及 .CT 导入导出，附 Valheim 和 Elden Ring 作弊功能。"
+  },
+  "scan-1320425415": {
+    "description_en": "A read-only MCP server for querying Unreal Engine assets using CUE4Parse.",
+    "description_zh": "使用 CUE4Parse 查询 Unreal Engine 资源的只读 MCP 服务器。"
+  },
+  "scan-1349887677": {
+    "description_en": "A practical game-asset extraction library drawn from three real reverse-engineering projects involving Unity IL2CPP/YooAsset/XOR and Cocos2d-lua/XXTEA/Spine. It provides 29 tools, 3 standardized workflows, and exception handling across unpacking, decryption, decoding, classification, and character aggregation. New AI agents can follow the documentation independently without human explanation.",
+    "description_zh": "汇集 Unity IL2CPP/YooAsset/XOR 与 Cocos2d-lua/XXTEA/Spine 技术栈三个真实逆向项目经验的游戏资源提取实践库，提供 29 个工具、3 条标准化工作流与异常处理机制，覆盖解包、解密、解码、分类和角色聚合全流程，新 AI 可按文档独立执行，无需人工解释。"
+  },
+  "scan-1378777787": {
+    "description_en": "Static recompilation of Dreams to Reality (Cryo, 1997) for modern PCs: the Windows game lifted to C, with a GPU renderer, SDL3, a disc-image launcher, smooth motion, Cryo's restored level editor and a browser demo. Bring your own discs.",
+    "description_zh": "将 Dreams to Reality（Cryo，1997）静态重编译至现代 PC：把 Windows 游戏转换为 C，配备 GPU 渲染器、SDL3、光盘镜像启动器、平滑运动、恢复的 Cryo 关卡编辑器和浏览器演示。需自备光盘。"
+  },
+  "scan-1274312141": {
+    "description_en": "A Chrome extension that speeds up loading SushiDa (Unity WebGL).",
+    "description_zh": "加快 SushiDa（寿司打，Unity WebGL）加载速度的 Chrome 扩展"
+  },
+  "scan-1242925968": {
+    "description_en": "Linux RGB controller for the Redragon Fizz K617 — daemon + CLI + Electron GUI with 3D keyboard, 60+ presets including Minecraft day/night, interactive Pong played from the physical keyboard, animated thumbnails, and global tonality control.",
+    "description_zh": "面向 Redragon Fizz K617 的 Linux RGB 控制器，包含守护进程、CLI 和 Electron GUI，提供 3D 键盘、60 多种预设（含 Minecraft 昼夜变化）、通过实体键盘游玩的交互式 Pong、动态缩略图及全局色调控制。"
+  },
+  "scan-1356180811": {
+    "description_en": "A fast, modern .NET 9 tool to extract types, methods, fields, and symbols from Unity IL2CPP games across Windows, Android, and iOS.",
+    "description_zh": "快速现代的 .NET 9 工具，从 Windows、Android 和 iOS 上的 Unity IL2CPP 游戏中提取类型、方法、字段和符号。"
+  },
+  "scan-1307058024": {
+    "description_en": "Fixes mesh mods for FFVII Rebirth after patch V1.005, no downgrade needed",
+    "description_zh": "修复 FFVII Rebirth 在 V1.005 补丁后的网格模组，无需降级"
+  },
+  "scan-1238005957": {
+    "description_en": "In-browser JavaScript deobfuscation workbench format, deobfuscate (Webcrack / Synchrony / Wakaru), and binding-aware rename.",
+    "description_zh": "浏览器内 JavaScript 去混淆工作台，支持格式化、使用 Webcrack/Synchrony/Wakaru 去混淆，以及感知变量绑定的重命名。"
+  },
+  "scan-1416818659": {
+    "description_en": "⚡ Autonomous reverse engineering engine & Model Context Protocol (MCP) server for binaries and applications in Systems Rust",
+    "description_zh": "⚡ 使用系统级 Rust 构建的自主逆向工程引擎与模型上下文协议（MCP）服务器，面向二进制文件和应用"
+  },
+  "scan-1305001384": {
+    "description_en": "Map editor for Heroes of Might & Magic V: Tribes of the East, on Electron. Reverse-engineered .pak/map.xdb/GroundTerrain.bin, live 3D terrain rendering and editing. Contains no game content.",
+    "description_zh": "基于 Electron 的《魔法门之英雄无敌 V：东方部落》地图编辑器，逆向解析 .pak、map.xdb 和 GroundTerrain.bin，提供实时 3D 地形渲染与编辑，不含游戏内容。"
+  },
+  "scan-1238268014": {
+    "description_en": "A JavaScript reverse engineering and asset analysis pipeline for security auditing. Crawls targets, deobfuscates bundles , and extracts hidden endpoints and secrets.",
+    "description_zh": "面向安全审计的 JavaScript 逆向工程与资源分析流水线，可爬取目标、对代码包去混淆，并提取隐藏端点和密钥。"
+  },
+  "scan-1381061356": {
+    "description_en": "An unofficial source-level reconstruction of the publicly released Grok Bot 0.18.0 macOS app, producing readable TypeScript with two inference routes through Codex and OpenRouter, a local Docker sandbox, and local usage statistics. For research only.",
+    "description_zh": "基于公开发布的 Grok Bot 0.18.0 macOS 应用进行非官方源码级重建，产出可读 TypeScript，提供 Codex 与 OpenRouter 两档推理路由、本地 Docker 沙箱和本地用量统计，仅限研究用途。"
+  },
+  "scan-1201584424": {
+    "description_en": "Chrome DevTools extension for intercepting, modifying & reverse engineering HTTP requests. Real-time request log, rules engine, mock responses, replay, rate-limit bypass, WebSocket monitor — all in a dark-theme DevTools panel.",
+    "description_zh": "用于拦截、修改和逆向分析 HTTP 请求的 Chrome DevTools 扩展，在深色开发者工具面板中提供实时请求日志、规则引擎、模拟响应、重放、速率限制绕过和 WebSocket 监控。"
+  },
+  "scan-723927040": {
+    "description_en": "Extremely efficient server software for Totally Accurate Battlegrounds, rewriten from JIBSIL's servers with a focus on cleanliness and expandability.",
+    "description_zh": "高效的 Totally Accurate Battlegrounds 服务器软件，在 JIBSIL 服务器的基础上重写，侧重代码整洁与可扩展性。"
+  },
+  "scan-1328643687": {
+    "description_en": "Measuring how much Unity game code survives IL2CPP: 0.00% of method bodies decompile to compilable C#, vs 93-95% for Mono. Then rebuilding enough of MiSide by hand to run in a browser",
+    "description_zh": "测量经过 IL2CPP 转换后 Unity 游戏代码的可恢复程度：0.00% 的方法体可反编译为能编译的 C#，而 Mono 为 93–95%。随后手动重建 MiSide 的足够部分，使其能在浏览器中运行"
+  },
+  "scan-1280989780": {
+    "description_en": "Open native extractor for Danganronpa Another Episode: Ultra Despair Girls (PC) — .cpk/.bnc/.btx to posed, UV-mapped, textured .obj. Tools + docs only, no game assets.",
+    "description_zh": "面向《绝对绝望少女：弹丸论破 Another Episode》PC 版的开放原生提取器，将 .cpk/.bnc/.btx 转换为带姿态、UV 映射和纹理的 .obj。仅含工具与文档，不含游戏资源。"
+  },
+  "scan-313739484": {
+    "description_en": "❤️ Self-like detector for tweets!",
+    "description_zh": "❤️ 检测给自己推文点赞的工具！"
+  },
+  "scan-1337917046": {
+    "description_en": "Rebirth Pub Save Editor — edit gold, AP, stamina, currency, relationships and items in your save with one click.",
+    "description_zh": "Rebirth Pub 存档编辑器，可一键编辑存档中的金币、AP、体力、货币、关系和物品。"
+  },
+  "scan-1268749367": {
+    "description_en": "Automated, recursive unpacking of obfuscated malicious JavaScript and PowerShell.",
+    "description_zh": "自动递归解包经过混淆的恶意 JavaScript 与 PowerShell。"
+  },
+  "scan-1333806848": {
+    "description_en": "jd — JavaScript deobfuscator (obfuscator.io + unminify). Go port of webcrack and synchrony.",
+    "description_zh": "jd：JavaScript 去混淆工具，支持 obfuscator.io 和反压缩，是 webcrack 与 synchrony 的 Go 移植版。"
+  },
+  "scan-1344269870": {
+    "description_en": "JavaScript parser, AST and oxc-compatible code printer for Go — byte-exact output, zero dependencies.",
+    "description_zh": "面向 Go 的 JavaScript 解析器、AST 和兼容 oxc 的代码打印器，输出逐字节精确，零依赖。"
+  },
+  "scan-351900617": {
+    "description_en": "A pretty lightweight publicizer utilizing dnlib for .Net assemblies, specifically made for modding of non il2cpp built unity games",
+    "description_zh": "使用 dnlib 将 .NET 程序集成员公开的轻量工具，专为非 IL2CPP 构建的 Unity 游戏模组开发设计"
+  },
+  "scan-1353517993": {
+    "description_en": "A practical guide and custom toolkit for rebuilding Unity + Utage visual novels in Ren'Py and packaging them as Android APKs, with substantial AI-agent involvement and implementation led by the author.",
+    "description_zh": "将 Unity + Utage 引擎 Galgame 重制为 Ren'Py 并打包 Android APK 的实践手册与自研工具集，AI 智能体深度参与，由作者主导实施。"
+  },
+  "scan-735018030": {
+    "description_en": "Python script to calculate lesta POW token value ",
+    "description_zh": "计算 Lesta 工作量证明令牌值的 Python 脚本"
+  },
+  "scan-216306502": {
+    "description_en": "A TypeScript library, that converts JavaScript value to string in run-time. ",
+    "description_zh": "在运行时将 JavaScript 值转换为字符串的 TypeScript 库。"
+  },
+  "scan-718160557": {
+    "description_en": "A reverse-engineered API that restores QIWI API functionality, allowing payments and access to account-dashboard data as before.",
+    "description_zh": "通过逆向实现的 API，恢复 QIWI API 的使用能力，让你像以前一样进行支付并获取个人账户数据！"
+  },
+  "scan-1293596020": {
+    "description_en": "Fire & Forget II (Titus, 1990) — faithful decompilation/recompilation of the DOS/EGA racer to modern C11+SDL2; bit-exact vs the original (pixels + AdLib sound), runs natively and in the browser. Play: https://titustribute.com/ff2/",
+    "description_zh": "Fire & Forget II（Titus，1990）：将 DOS/EGA 赛车游戏忠实地反编译、重新编译为现代 C11+SDL2，与原版像素及 AdLib 音效逐位一致，可原生运行或在浏览器中游玩。体验：https://titustribute.com/ff2/"
+  },
+  "scan-1351843004": {
+    "description_en": "Complete offline datamine of Chiikawa Pocket (Global) v2.4.1 — all game formulas verified from native code, all 236 master-data tables decoded, guides, and a team calculator webapp",
+    "description_zh": "Chiikawa Pocket 国际版 v2.4.1 完整离线数据挖掘：所有游戏公式均通过原生代码验证，全部 236 个主数据表已解码，附指南与队伍计算器 Web 应用"
+  },
+  "scan-1414351821": {
+    "description_en": "Reverse engineering with AI agents on Windows: verifying, measuring and visualising the tools agents use, with rea and Ghidra",
+    "description_zh": "在 Windows 上使用 AI 智能体进行逆向工程，借助 rea 和 Ghidra 验证、测量及可视化智能体所用工具"
+  },
+  "scan-206625485": {
+    "description_en": "JavaScript deobfuscator",
+    "description_zh": "JavaScript 去混淆工具"
+  },
+  "scan-1201395161": {
+    "description_en": "Comprehensive reference guides for game modding: anti-cheat bypass, engine RE, kernel drivers, overlays, opsec, and tooling",
+    "description_zh": "游戏模组开发的综合参考指南，涵盖反作弊绕过、引擎逆向、内核驱动、叠加界面、操作安全及工具"
+  },
+  "scan-1330472885": {
+    "description_en": "Purpose-built Unity IL2CPP decompiler (desktop + MCP). Needs Il2CppDumper for dumps.",
+    "description_zh": "专为 Unity IL2CPP 设计的反编译器，提供桌面界面与 MCP，需要 Il2CppDumper 生成转储。"
+  },
+  "scan-814671930": {
+    "description_en": "a UE hack demo",
+    "description_zh": "一个 Unreal Engine 游戏修改演示"
+  },
+  "scan-1351256982": {
+    "description_en": "Verified tools and workflows for runtime JavaScript reverse engineering of modern defended SPAs (2024-2026 anti-bot landscape). Every entry checked against the GitHub API.",
+    "description_zh": "面向现代受保护单页应用的运行时 JavaScript 逆向工程工具与工作流，覆盖 2024–2026 年反机器人环境，所有条目均通过 GitHub API 核验。"
+  },
+  "scan-1353883723": {
+    "description_en": "JHora natal Rasi (D-1) chart reverse-engineering findings with a ready-to-run JavaScript API example.",
+    "description_zh": "JHora 出生星盘 Rasi（D-1）的逆向研究结果，附可直接运行的 JavaScript API 示例。"
+  },
+  "scan-1342118220": {
+    "description_en": "A custom function-key and microphone bridge for the RK R87 Pro AI keyboard, built with Electron and a reverse-engineered protocol for Windows/macOS, without requiring the official software.",
+    "description_zh": "RK R87 Pro AI 键盘自定义功能键与麦克风桥接工具，基于 Electron 和逆向协议，支持 Windows/macOS，无需官方软件。"
+  },
+  "scan-1371613428": {
+    "description_en": "iOS IL2CPP Dumper — on-device dump.cs for Unity games (jailbreak / TrollStore)",
+    "description_zh": "iOS IL2CPP 转储工具，在设备端为 Unity 游戏生成 dump.cs，适用于越狱或 TrollStore 环境"
+  },
+  "scan-995645968": {
+    "description_en": "Static deobfuscator for LambdaTest's JavaScript obfuscator. Just for fun :3",
+    "description_zh": "针对 LambdaTest JavaScript 混淆器的静态去混淆工具，只为好玩 :3"
+  },
+  "scan-230070268": {
+    "description_en": "A native mod for Dishonored that changes health/mana regeneration limits to allow full regeneration.",
+    "description_zh": "Dishonored 原生模组，修改生命值与法力值恢复上限，使其能够完全恢复。"
+  },
+  "scan-159120342": {
+    "description_en": "An RPG-based language immersion game using the Pokemon Unity fan engine",
+    "description_zh": "使用 Pokemon Unity 粉丝引擎开发、基于 RPG 的语言沉浸学习游戏"
+  },
+  "scan-1320848045": {
+    "description_en": "Open-source Web Bluetooth explorer for smart tape measures: decode BLE GATT packets, capture measurements, and document device protocols.",
+    "description_zh": "智能卷尺的开源 Web Bluetooth 探索工具，可解码 BLE GATT 数据包、捕获测量值并记录设备协议。"
+  },
+  "scan-1412344688": {
+    "description_en": "Unity AssetBundle Modder, Inspector & Hex Padder Telegram Bot powered by ArisuFxPy. Supports Termux, VPS & Windows.",
+    "description_zh": "基于 ArisuFxPy 的 Telegram 机器人，提供 Unity AssetBundle 修改、检查及十六进制填充功能，支持 Termux、VPS 和 Windows。"
+  },
+  "scan-832605139": {
+    "description_en": "A repository is for documenting, cataloging, and conducting analysis on the RoLinked account stealer.",
+    "description_zh": "用于记录、编目和分析 RoLinked 账户窃取程序的仓库。"
+  },
+  "scan-1192113324": {
+    "description_en": "Web-based viewer for MU Online game assets — preview textures, 3D models, audio and fonts in your browser",
+    "description_zh": "基于 Web 的 MU Online 游戏资源查看器，可在浏览器中预览纹理、3D 模型、音频和字体"
+  },
+  "scan-1301761898": {
+    "description_en": "Among Us - External Frida role reader ",
+    "description_zh": "Among Us 进程外 Frida 角色读取工具"
+  },
+  "scan-1380398288": {
+    "description_en": "Drive the cloud machine behind a Grok Bot (xAI computer-use agent) from Python: there is no API, so attach over the Chrome DevTools Protocol to the Electron app's noVNC webview, screenshot the desktop, send input, run shell commands.",
+    "description_zh": "通过 Python 控制 Grok Bot（xAI 计算机操作智能体）背后的云端机器：由于没有 API，使用 Chrome DevTools Protocol 连接 Electron 应用的 noVNC WebView，以截取桌面、发送输入及运行 Shell 命令。"
+  },
+  "scan-232097931": {
+    "description_en": "Artifact for \"Optimizing Away JavaScript Obfuscation\" paper",
+    "description_zh": "论文《Optimizing Away JavaScript Obfuscation》的配套研究产物"
+  },
+  "scan-675965752": {
+    "description_en": "The Unpacker class offers methods for detecting and unraveling obfuscated JavaScript code. It scans for a specific pattern commonly employed in obfuscation and attempts to reverse the obfuscation process.",
+    "description_zh": "Unpacker 类提供检测和还原混淆 JavaScript 代码的方法，扫描混淆中常见的特定模式，并尝试逆转混淆过程。"
+  },
+  "scan-460596523": {
+    "description_en": "Pokemon_Themed_Memory_Card_Game",
+    "description_zh": "宝可梦主题记忆卡牌游戏"
+  },
+  "scan-1202794168": {
+    "description_en": "Restore 1M context window in Claude Desktop's Cowork (macOS)",
+    "description_zh": "恢复 Claude Desktop 的 Cowork 在 macOS 上的 1M 上下文窗口"
+  },
+  "scan-1312984205": {
+    "description_en": "Hand-translating console games from disassembly into readable, modifiable JavaScript, not emulation. Every ROM routine becomes a JS function you own, verified frame-by-frame against the real ROM running in an emulator. Batman (Game Boy) complete; Gradius (NES) plays end to end; DoDonPachi DaiOuJou (arcade) in progress. No ROM included.",
+    "description_zh": "手工将主机游戏反汇编代码转换为可读、可修改的 JavaScript，而非模拟运行。每个 ROM 例程都变为可自行掌控的 JS 函数，并与模拟器中运行的真实 ROM 逐帧验证。Batman（Game Boy）已完成，Gradius（NES）可从头玩到尾，DoDonPachi DaiOuJou（街机）仍在开发中，不含 ROM。"
+  },
+  "scan-1336305062": {
+    "description_en": "A Cheat Engine for browser games — Chrome extension that scans WebAssembly memory, edits and freezes values, and controls game speed. Zero dependencies.",
+    "description_zh": "面向浏览器游戏的 Cheat Engine 式 Chrome 扩展，可扫描 WebAssembly 内存、编辑及冻结数值，并控制游戏速度，零依赖。"
+  },
+  "scan-1379770704": {
+    "description_en": "Break the run — god mode, mega damage, infinite everything. MelonLoader trainer, save unlocker and CoreModule fix for the Go Next! Demo (Unity 6 / IL2CPP).",
+    "description_zh": "突破游戏流程：无敌模式、超高伤害、一切无限。面向 Go Next! Demo（Unity 6 / IL2CPP）的 MelonLoader 修改器、存档解锁器与 CoreModule 修复工具。"
+  },
+  "scan-1228465919": {
+    "description_en": "A personal project aiming to solve real systems problems within a specific domain: a modular desktop and cloud systems platform for automated crash diagnostics (SAGE RAG), content-addressed storage (Aduana), static JVM bytecode security, and binary NBT recovery.",
+    "description_zh": "尝试解决特定领域真实系统问题的个人项目，是模块化桌面与云系统平台，支持自动崩溃诊断（SAGE RAG）、内容寻址存储（Aduana）、静态 JVM 字节码安全分析及二进制 NBT 恢复。"
+  },
+  "scan-1411934395": {
+    "description_en": "An Electron-based AI workbench for CTF reverse-engineering challenges on Windows. It combines an AI tool loop with local validation, connects to IDA, JEB, and Burp through MCP, and automatically tackles APK, PE, ELF, PYC, DEX, JAR, Mach-O, Lua, and Web-JS challenges. Includes 11 methodology skills, a 54-page structured knowledge base, and self-improvement from experience.",
+    "description_zh": "基于 Electron、面向 Windows 的 CTF 逆向 AI 解题工作台，结合 AI 工具循环与本地验证闭环，通过 MCP 接入 IDA、JEB 和 Burp，自动求解 APK、PE、ELF、PYC、DEX、JAR、Mach-O、Lua 和 Web-JS，内置 11 个方法论技能、54 页结构化知识库及经验自进化机制。"
+  },
+  "scan-1170053896": {
+    "description_en": "Open-source library and tools for controlling Lovesac StealthTech Sound + Charge systems via Bluetooth Low Energy",
+    "description_zh": "通过蓝牙低功耗控制 Lovesac StealthTech Sound + Charge 系统的开源库与工具"
+  },
+  "scan-1217582158": {
+    "description_en": "Reverse engineering toolkit for WebAssembly. Parser, IR, pseudo-C decompiler, call graph, struct recovery, forward/backward taint.",
+    "description_zh": "WebAssembly 逆向工程工具包，包含解析器、中间表示、伪 C 反编译器、调用图、结构体恢复及前向/后向污点分析。"
+  },
+  "scan-1181611275": {
+    "description_en": "YARA playground to write and run rules in the browser using WebAssembly",
+    "description_zh": "通过 WebAssembly 在浏览器中编写和运行规则的 YARA 试验场"
+  },
+  "scan-447212401": {
+    "description_en": "A web port of the Katawa Shoujo visual novel.",
+    "description_zh": "视觉小说 Katawa Shoujo 的 Web 移植版。"
+  },
+  "scan-1415754681": {
+    "description_en": "Reverse engineer anything. Port it anywhere. One CLI and MCP server that lets any coding agent take apart apps, games, binaries and websites — and port them to Godot, Unity, Unreal, three.js or any language.",
+    "description_zh": "逆向分析各种目标并移植到不同平台。提供 CLI 和 MCP 服务器，让任意编程智能体拆解应用、游戏、二进制文件及网站，并移植到 Godot、Unity、Unreal、three.js 或任意语言。"
+  },
+  "scan-1315192190": {
+    "description_en": "Unit-data monitoring for Mechabellum: automatic detection of Steam balance announcements, DeepSeek parsing, automatic data-table updates, and a local server with a frontend.",
+    "description_zh": "钢铁指挥官兵种数据监控，自动检测 Steam 平衡性公告，通过 DeepSeek 解析并更新数据表，提供本地服务器与前端。"
+  },
+  "scan-1342768165": {
+    "description_en": "Community modding framework for MISERY (Unreal Engine 5.4), built without depending on UE4SS. Currently in Phase 1: research.",
+    "description_zh": "面向 MISERY（Unreal Engine 5.4）的社区模组框架，不依赖 UE4SS，目前处于第一阶段：研究。"
+  },
+  "scan-273540423": {
+    "description_en": "JavaScript deobfuscator which can revert Array Ref obfuscation format.",
+    "description_zh": "可还原 Array Ref 混淆格式的 JavaScript 去混淆工具。"
+  },
+  "scan-1197814448": {
+    "description_en": "Decompile the web's bleeding edge. The premier Ghidra processor module for reverse-engineering Wasmtime's portable Pulley ISA.",
+    "description_zh": "反编译 Web 前沿技术：面向 Wasmtime 可移植 Pulley 指令集逆向工程的领先 Ghidra 处理器模块。"
+  },
+  "scan-762814940": {
+    "description_en": "An il2cpp offset updater made with capstone ",
+    "description_zh": "基于 Capstone 的 IL2CPP 偏移量更新工具"
+  },
+  "scan-1415281601": {
+    "description_en": "A Claude Code mod that keeps a live casebook of the Evidence rea gives the agent: Ghidra cold start, findings that must cite real evidence_id values, Markdown export.",
+    "description_zh": "Claude Code 模组，持续记录 rea 向智能体提供的证据，包括 Ghidra 冷启动、必须引用真实 evidence_id 的发现，以及 Markdown 导出。"
+  },
+  "scan-1114014046": {
+    "description_en": "Network traffic redirector scripts for Fall Guys private servers.",
+    "description_zh": "用于 Fall Guys 私服的网络流量重定向脚本。"
+  },
+  "scan-752530573": {
+    "description_en": "Learn how to develop a software application using the popular Northwind database by viewing the code in this repo and following related tutorial videos on my YouTube channel",
+    "description_zh": "查看本仓库代码并跟随作者 YouTube 频道的相关教程视频，学习如何基于常用的 Northwind 数据库开发软件应用"
+  },
+  "scan-97317078": {
+    "description_en": "Python-converted reverse-engineering on the emails protection function of Metrojobb website.",
+    "description_zh": "将 Metrojobb 网站邮箱保护函数的逆向实现转换为 Python。"
+  },
+  "scan-1412427406": {
+    "description_en": "WebAssembly analysis and decompilation support for Ghidra, developed and maintained for Ghidra 12.1.4.",
+    "description_zh": "为 Ghidra 提供 WebAssembly 分析与反编译支持，针对 Ghidra 12.1.4 开发和维护。"
+  },
+  "scan-1405412348": {
+    "description_en": "Decompilation of the Hybrid Animals mobile game",
+    "description_zh": "Hybrid Animals 手机游戏反编译项目"
+  },
+  "scan-1309697395": {
+    "description_en": "An open-source, HD, browser-native game engine compatible with MapleStory v83 content. Rust, wgpu, WebAssembly.",
+    "description_zh": "开源高清浏览器原生游戏引擎，兼容 MapleStory v83 内容，基于 Rust、wgpu 和 WebAssembly。"
+  },
+  "scan-1277939943": {
+    "description_en": "Relay is an Android workstation for Windows that combines device control, screen mirroring, ROM compatibility analysis, diagnostics, and APK inspection in a single interface.",
+    "description_zh": "面向 Windows 的 Android 工作站 Relay，将设备控制、屏幕镜像、ROM 兼容性分析、诊断与 APK 检查整合在同一界面中。"
+  },
+  "scan-1006064105": {
+    "description_en": "Unpacked Telegram web app for research.",
+    "description_zh": "用于研究的已拆包 Telegram Web 应用。"
   }
 }

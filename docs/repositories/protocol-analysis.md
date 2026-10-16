@@ -2,7 +2,7 @@
 
 [All categories](README.md) · [简体中文](protocol-analysis.zh-CN.md)
 
-**69 repositories** · 2026-10-16 UTC
+**72 repositories** · 2026-10-16 UTC
 
 These are automatically discovered projects, not individually curated or tested recommendations. Categories derive from metadata and descriptions from upstream text. Stars are collection-time snapshots, not live rankings.
 
@@ -11,6 +11,7 @@ These are automatically discovered projects, not individually curated or tested 
 - [alphaSeclab/awesome-network-stuff](https://github.com/alphaSeclab/awesome-network-stuff) — Resources about network security, including: Proxy/GFW/ReverseProxy/Tunnel/VPN/Tor/I2P, and MiTM/PortKnocking/NetworkSniff/NetworkAnalysis/etc。More than 1700 open source tools for now. Post incoming. **[926 stars]**
 - [symbolicsoft/verifpal](https://github.com/symbolicsoft/verifpal) — Cryptographic protocol analysis for real-world protocols. **[133 stars]**
 - [spectral-mcp/spectral](https://github.com/spectral-mcp/spectral) — Browse any app normally. Spectral captures the traffic, understands what each API call does, and generates MCP tools that AI agents can call directly. **[121 stars]**
+- [Annyfee/spider-js-reverse](https://github.com/Annyfee/spider-js-reverse) — Selected JavaScript reverse-engineering examples from various websites, with detailed explanations, concept summaries, cryptographic algorithms, difficulty comparisons, and links. Covers challenges including environment reconstruction, extracting JavaScript, webpack, and Ruishu. **[111 stars]**
 - [HackingLZ/maps_scanner](https://github.com/HackingLZ/maps_scanner) — MAPS cloud scanner and response parser for Microsoft Defender research. **[96 stars]**
 - [HalilDeniz/ICMPWatch](https://github.com/HalilDeniz/ICMPWatch) — ICMPWatch: ICMP Packet Sniffer **[60 stars]**
 - [NotYuSheng/TracePcap](https://github.com/NotYuSheng/TracePcap) — Self-hosted PCAP analysis platform with LLM-powered incident triage, signature-based threat detection, and AI-generated incident narratives. Features network change monitoring across captures, deep packet inspection via nDPI, and automated Wireshark filter generation. Runs fully offline with local LLMs (Ollama, LM Studio). **[51 stars]**
@@ -19,6 +20,7 @@ These are automatically discovered projects, not individually curated or tested 
 - [haebibisimax/PortSmith](https://github.com/haebibisimax/PortSmith) — Cross-language packet capture normalizer and collector-inference engine: parse recorded Redis traces into a stable intermediate format (Go) and infer communication patterns from it (Rust). **[33 stars]**
 - [JustVugg/Wiredigg](https://github.com/JustVugg/Wiredigg) — Wiredigg is a comprehensive network analysis tool with advanced security features designed for network administrators, security professionals, and IT enthusiasts. It provides real-time packet capture, protocol analysis, anomaly detection, and threat identification capabilities in a modern, user-friendly interface. **[29 stars]**
 - [symbolicsoft/noiseexplorer](https://github.com/symbolicsoft/noiseexplorer) — Online engine for reasoning about the Noise Protocol Framework. **[21 stars]**
+- [SirYadav1/sonar-bypass](https://github.com/SirYadav1/sonar-bypass) — Sonar anti-bot verification bypass for Minecraft. Working 2.1.x sonar bypass script, packet logger, debug proxy. cubixmc poormc tested. **[14 stars]**
 - [mziqudhd92/honeypot-auditor](https://github.com/mziqudhd92/honeypot-auditor) — Does This Look Like An Honeypot? (DTLLAH) Multi-protocol CLI that fingerprints whether a target IP behaves like an honeypot — using Honeyscore, active auth/state probes, and a weighted score. **[11 stars]**
 - [tatikoma/mitm-research](https://github.com/tatikoma/mitm-research) — Security research on the WhatsApp protocol, cryptographic handshake analysis, reverse engineering, and controlled local MITM experimentation. **[9 stars]**
 - [kendojitsu/Kendo](https://github.com/kendojitsu/Kendo) — Kendo - Powerful Network Packet Capture &amp; Protocol Analysis Software 🚀 Real-time &amp; offline analysis with MFC &amp; WinPcap. Comprehensive protocol parsers &amp; display filters. Efficient packet management. Shortcut keys for seamless user interaction. Explore network traffic effortlessly! **[8 stars]**
@@ -26,6 +28,7 @@ These are automatically discovered projects, not individually curated or tested 
 - [mahumadad/ubox-p4p](https://github.com/mahumadad/ubox-p4p) — Full reverse engineering of the UBox/UBIA smart-camera P4P protocol: custom block cipher, KCP+RDT video, ICE-style NAT traversal, and a standalone Python client. TUTK IOTC rebadge, documented end-to-end. **[6 stars]**
 - [bsu-tool/bsu-tool](https://github.com/bsu-tool/bsu-tool) — open-source AI-assisted USB protocol analysis tool and MCP server **[5 stars]**
 - [eogod/wireprism](https://github.com/eogod/wireprism) — High-throughput network stream inspection for live traffic and PCAPs. Built in Rust with flow reassembly, protocol parsing, transforms, pattern matching, and a real-time Web UI. **[5 stars]**
+- [gabrielzv1233/SynapseCTRL](https://github.com/gabrielzv1233/SynapseCTRL) — Ever want to control Razer Synapse profiles externally? Well now you can **[5 stars]**
 - [profitpioneer/iphone-protocol-sniffer](https://github.com/profitpioneer/iphone-protocol-sniffer) — Reverse-engineer iPhone↔device protocols (BLE/WiFi) without a hardware sniffer. Captures decrypted HCI + WiFi via libimobiledevice and rvictl, decodes PTP-IP and Sony private opcodes. **[5 stars]**
 - [AlexeyVasilev/PcapFlowLab](https://github.com/AlexeyVasilev/PcapFlowLab) — Flow-based PCAP analyzer with protocol-aware inspection, analysis, statistics, reusable indexes, and CLI. **[4 stars]**
 - [digitalinnovator/pqc-iot-analyzer](https://github.com/digitalinnovator/pqc-iot-analyzer) — Rust CLI tool for analyzing IoT protocol traffic (CoAP, MQTT, RPL) and assessing post-quantum cryptographic readiness against NIST FIPS 203/204 **[4 stars]**

@@ -2,15 +2,19 @@
 
 [全部分类](README.zh-CN.md) · [English](firmware.md)
 
-**95 个仓库** · 2026-10-16 UTC
+**99 个仓库** · 2026-10-16 UTC
 
 这些是自动发现的项目，不是逐项精选或运行测试后的推荐。分类来自元数据；简介由上游描述翻译而来。星标为采集时快照，不是实时排名。
 
+- [ReFirmLabs/binwalk](https://github.com/ReFirmLabs/binwalk) — 固件分析工具。 **[14,491 星标]**
 - [e-m-b-a/emba](https://github.com/e-m-b-a/emba) — EMBA：固件安全分析器。 **[3,712 星标]**
+- [onekey-sec/unblob](https://github.com/onekey-sec/unblob) — 从各种容器格式中提取文件。 **[2,577 星标]**
+- [redballoonsecurity/ofrak](https://github.com/redballoonsecurity/ofrak) — OFRAK：解包、修改并重新打包二进制文件。 **[2,080 星标]**
 - [marin-m/vmlinux-to-elf](https://github.com/marin-m/vmlinux-to-elf) — 通过提取内核符号表（kallsyms），从原始内核恢复可完整分析的 .ELF 文件的工具。 **[1,832 星标]**
 - [fkie-cad/FACT_core](https://github.com/fkie-cad/FACT_core) — 固件分析与比较工具。 **[1,468 星标]**
 - [Anime4000/RTL960x](https://github.com/Anime4000/RTL960x) — 破解和逆向分析基于 RTL960x 的 xPON ONT，使其适配你的 OLT。 **[1,053 星标]**
 - [gcarmix/HexWalk](https://github.com/gcarmix/HexWalk) — 兼容 Linux、Windows 和 macOS 的十六进制查看器、编辑器与分析器。 **[1,027 星标]**
+- [pr0v3rbs/FirmAE](https://github.com/pr0v3rbs/FirmAE) — 面向动态分析的物联网固件大规模模拟执行研究。 **[949 星标]**
 - [al3xtjames/ghidra-firmware-utils](https://github.com/al3xtjames/ghidra-firmware-utils) — 用于分析 PC 固件的 Ghidra 实用工具。 **[506 星标]**
 - [scriptingxss/owasp-fstm](https://github.com/scriptingxss/owasp-fstm) — 固件安全测试方法（FSTM）包含九个阶段，专为帮助安全研究人员、软件开发人员、顾问及信息安全专业人员开展固件安全评估而设计。 **[502 星标]**
 - [nmatt0/moria](https://github.com/nmatt0/moria) — 物联网固件识别与提取。 **[418 星标]**

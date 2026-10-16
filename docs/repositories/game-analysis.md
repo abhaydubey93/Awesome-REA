@@ -2,13 +2,15 @@
 
 [All categories](README.md) · [简体中文](game-analysis.zh-CN.md)
 
-**138 repositories** · 2026-10-16 UTC
+**242 repositories** · 2026-10-16 UTC
 
 These are automatically discovered projects, not individually curated or tested recommendations. Categories derive from metadata and descriptions from upstream text. Stars are collection-time snapshots, not live rankings.
 
 - [HIllya51/LunaTranslator](https://github.com/HIllya51/LunaTranslator) — Visual Novel Translator **[13,757 stars]**
+- [baldurk/renderdoc](https://github.com/baldurk/renderdoc) — RenderDoc is a stand-alone graphics debugging tool. **[11,193 stars]**
 - [Perfare/Il2CppDumper](https://github.com/Perfare/Il2CppDumper) — Unity il2cpp reverse engineer **[9,513 stars]**
 - [BepInEx/BepInEx](https://github.com/BepInEx/BepInEx) — Unity / XNA game patcher and plugin framework **[8,845 stars]**
+- [AssetRipper/AssetRipper](https://github.com/AssetRipper/AssetRipper) — GUI application to analyze game files **[8,643 stars]**
 - [rehan-remade/universal-modder](https://github.com/rehan-remade/universal-modder) — Point Claude at any game. Skills, tools and the fal MCP that let Claude Code mod almost any PC game you own: recon, reverse engineering, fal-generated art/3D/audio, in-game testing, showcase videos. **[7,939 stars]**
 - [dsasmblr/game-hacking](https://github.com/dsasmblr/game-hacking) — Tutorials, tools, and more as related to reverse engineering video games. **[5,609 stars]**
 - [HyperDbg/HyperDbg](https://github.com/HyperDbg/HyperDbg) — State-of-the-art native debugging tools **[4,133 stars]**
@@ -36,14 +38,17 @@ These are automatically discovered projects, not individually curated or tested 
 - [EliotVU/Unreal-Library](https://github.com/EliotVU/Unreal-Library) — Decompiler for Unreal package files (.upk, .u, .uasset; etc), with support for Unreal Engine 1, 2, and 3 **[490 stars]**
 - [sneakyevil/IL2CPP_Resolver](https://github.com/sneakyevil/IL2CPP_Resolver) — A run-time API resolver for IL2CPP Unity. **[475 stars]**
 - [AliveTeam/alive_reversing](https://github.com/AliveTeam/alive_reversing) — Re-implementation of Oddworld: Abe's Exoddus and Oddworld: Abe's Oddysee **[441 stars]**
+- [LazyDuchess/OpenTS2](https://github.com/LazyDuchess/OpenTS2) — Open source re-implementation of The Sims 2 in Unity **[432 stars]**
 - [alexbatalov/fallout2-re](https://github.com/alexbatalov/fallout2-re) — Reverse engineered Fallout 2 **[411 stars]**
 - [CTR-tools/ctr-native](https://github.com/CTR-tools/ctr-native) — A Crash Team Racing Decompilation Project **[405 stars]**
 - [UE-Explorer/UE-Explorer](https://github.com/UE-Explorer/UE-Explorer) — Decompiler and package explorer for Unreal Engine (.upk, .u) files. **[371 stars]**
 - [PrimeDecomp/prime](https://github.com/PrimeDecomp/prime) — A matching decompilation of Metroid Prime **[367 stars]**
+- [0xDC00/agent](https://github.com/0xDC00/agent) — Universal script based text hooker (powered by FRIDA). **[357 stars]**
 - [adonis-singh/re4](https://github.com/adonis-singh/re4) — Resident Evil 4 (GameCube, G4BE08 debug build) — complete byte-identical decompilation to C/C++ **[345 stars]**
 - [xensik/gsc-tool](https://github.com/xensik/gsc-tool) — A utility to compile &amp; decompile IW engine game scripts. **[335 stars]**
 - [g0aty/SickoMenu](https://github.com/g0aty/SickoMenu) — A powerful utility for Among Us designed to enrich your game experience with custom features! **[316 stars]**
 - [encounter/decomp-toolkit](https://github.com/encounter/decomp-toolkit) — A GameCube &amp; Wii decompilation toolkit **[311 stars]**
+- [kiraio-moe/USSR](https://github.com/kiraio-moe/USSR) — Easily remove Unity splash screen &amp; watermark. **[307 stars]**
 - [Jadis0x/il2cpp-reverse-engineering-guide](https://github.com/Jadis0x/il2cpp-reverse-engineering-guide) — This guide provides illustrative examples demonstrating the usage of Il2cppInspector C++ scaffold. **[301 stars]**
 - [TheOnlyZac/sly1](https://github.com/TheOnlyZac/sly1) — Decompilation of Sly Cooper and the Thievius Raccoonus for PS2 **[272 stars]**
 - [IIIImmmyyy/frida-il2cppDumper](https://github.com/IIIImmmyyy/frida-il2cppDumper) — An enhanced Riru Il2cppDumper that dumps source-code information directly from memory (with NetEase Yidun support). **[258 stars]**
@@ -61,42 +66,55 @@ These are automatically discovered projects, not individually curated or tested 
 - [backtrace-labs/backtrace-unity](https://github.com/backtrace-labs/backtrace-unity) — First-class error reporting for the Unity game engine. **[157 stars]**
 - [ethanedits/Apex-Legends-SDK](https://github.com/ethanedits/Apex-Legends-SDK) — Open Source Cheat for Apex Legends, designed for ease of use. Made to understand reversing of Apex Legends and respawn's modified source engine as well as their Easy Anti Cheat Implementation. **[157 stars]**
 - [Dyotson/ForzaHorizon1-ReImagined](https://github.com/Dyotson/ForzaHorizon1-ReImagined) — Forza Horizon (Xbox 360) natively on PC, rebuilt around the modern Horizon experience: shared online free roam, leaderboards and rivals, 120/144 fps, and a self-hostable online server. **[151 stars]**
+- [KobaltBlu/KotOR.js](https://github.com/KobaltBlu/KotOR.js) — A remake of the Odyssey Game Engine that powered KotOR I &amp; II written in JavaScript **[149 stars]**
 - [repnz/ReversingMinesweeper](https://github.com/repnz/ReversingMinesweeper) — Reverse Engineering Minesweeper: Reconstruct Minesweeper Source Code **[146 stars]**
 - [xmoezzz/rfvp](https://github.com/xmoezzz/rfvp) — A Non-Official Rust cross-platform implementation of the FVP engine &amp; IDE **[146 stars]**
 - [krystalgamer/spidey-decomp](https://github.com/krystalgamer/spidey-decomp) — Decompilation of Neversoft's Spider-Man game (PC PORT) **[138 stars]**
 - [2003scape/rsc-c](https://github.com/2003scape/rsc-c) — 🍫 runescape classic client ported to C **[135 stars]**
 - [opentestdriveunlimited/OpenTestDriveUnlimited](https://github.com/opentestdriveunlimited/OpenTestDriveUnlimited) — Open source port of Test Drive Unlimited (2006) **[135 stars]**
+- [IroniaTheMaster/Descrypt-global-metadata.dat](https://github.com/IroniaTheMaster/Descrypt-global-metadata.dat) — How do you decrypt global-metadata.dat from a Unity game? **[129 stars]**
 - [Fantaskink/SOTC](https://github.com/Fantaskink/SOTC) — An in-progress decompilation of the preview version of Shadow of the Colossus on the PlayStation 2 **[125 stars]**
 - [chrissotraidis/projectreach](https://github.com/chrissotraidis/projectreach) — Halo: Combat Evolved on iPhone, iPad and Mac. The Xbox edition with online matches of up to 128 players and the original campaign, plus Halo Custom Edition with its community servers. Bring your own game and build it on your Mac. **[124 stars]**
 - [spacefarergames/AloneInTheDarkReHaunted](https://github.com/spacefarergames/AloneInTheDarkReHaunted) — A heavily enhanced port and dynamic recomp of Alone In The Dark 1, with Textured Models, HD-4K background replacements, QOL improvements, controller support and so much more. **[119 stars]**
 - [djkaty/Il2CppInspectorPlugins](https://github.com/djkaty/Il2CppInspectorPlugins) — The official repository of plugins for Il2CppInspector **[116 stars]**
 - [N0zoM1z0/th08](https://github.com/N0zoM1z0/th08) — Source reconstruction of Touhou Eiyashou ~ Imperishable Night 1.00d. **[114 stars]**
 - [DeftSolutions-dev/IL2CPP-Dumper](https://github.com/DeftSolutions-dev/IL2CPP-Dumper) — Unity IL2CPP dumper (27–29). Classes, fields, methods dump to C# and LLM-friendly text. Created for Arknights: Endfield. **[112 stars]**
+- [EZFNDEV/UEDumper](https://github.com/EZFNDEV/UEDumper) — This can probably automatically dump the SDK for any Unreal Engine Game (Educational Purpose Only) **[112 stars]**
 - [Kimjio/umamusume-localify](https://github.com/Kimjio/umamusume-localify) — Localize and enhance the Umamusume Windows client. **[111 stars]**
 - [AeonLucid/frida-il2cpp](https://github.com/AeonLucid/frida-il2cpp) — An helper library for those that want to play around with Unity il2cpp games. **[109 stars]**
 - [ExtraJuiceMan/ChristWareAmongUs](https://github.com/ExtraJuiceMan/ChristWareAmongUs) — A cheat for the recently popular fad game Among Us **[105 stars]**
+- [mukaschultze/grand-theft-auto-for-unity](https://github.com/mukaschultze/grand-theft-auto-for-unity) — Grand Theft Auto map loader for Unity Engine **[105 stars]**
 - [Yharnam-Hunters/Paleblood](https://github.com/Yharnam-Hunters/Paleblood) — A decompilation of Bloodborne (CUSA03173 v1.09) with its own runtime: the game's code rewritten as readable C++, one verified function at a time. The game doesn't run on it yet; 21 functions verified. No game files included. **[104 stars]**
 - [yannicksuter/smstrikers-decomp](https://github.com/yannicksuter/smstrikers-decomp) — Decompilation of Super Mario Strikers **[102 stars]**
+- [EquiFox/MInjector](https://github.com/EquiFox/MInjector) — Mono Framework Injector (C#) using MInject Library **[95 stars]**
 - [GrahamBest/dll_hook-rs](https://github.com/GrahamBest/dll_hook-rs) — Rust code to show how hooking in rust with a dll works. **[95 stars]**
 - [Yokimitsuro/khdays-decomp](https://github.com/Yokimitsuro/khdays-decomp) — Complete matching decompilation of Kingdom Hearts 358/2 Days (Nintendo DS), byte-identical to the game. **[90 stars]**
 - [Taiga74164/UnityModTemplate](https://github.com/Taiga74164/UnityModTemplate) — Project discontinued due to cease and desist from NEXON **[89 stars]**
+- [trumank/patternsleuth](https://github.com/trumank/patternsleuth) — Unreal Engine address scanner and test suite **[89 stars]**
 - [Toxocious/Aetherim](https://github.com/Toxocious/Aetherim) — A C++ library for accessing Unity's IL2CPP classes, methods, and fields during run-time. **[88 stars]**
 - [kirklandsig/halo2-decompiled](https://github.com/kirklandsig/halo2-decompiled) — Halo 2 decompilation (decomp) for the original Xbox: a matching decompilation of the retail game into C/C++ source, rebuilt byte for byte, toward native PC, Linux and handheld ports. Contributors welcome. Source only; bring your own disc. **[73 stars]**
 - [AlembicOrg/UniResolver](https://github.com/AlembicOrg/UniResolver) — A lightweight Unity game plugin development framework designed for an excellent developer experience. **[72 stars]**
 - [kiocode/IL2CPPBaseByKio](https://github.com/kiocode/IL2CPPBaseByKio) — New Base By Kio For Il2CPP Unity Game Hacking. Lua Implementation, UNIVERSAL: ESP Snapline, ESP Box, ESP Skeleton, Chams, Aimbot **[66 stars]**
 - [jozsefsallai/il2cpp-stringliteral-patcher](https://github.com/jozsefsallai/il2cpp-stringliteral-patcher) — Extract and patch string literals from Unity's global-metadata.dat files. **[62 stars]**
+- [LostMyCode/redstone-js](https://github.com/LostMyCode/redstone-js) — RedStoneJS: a project porting the free online game RED STONE ONLINE to the web so you can play it in your browser. **[60 stars]**
 - [BlackBikerss/Elysium-Skill-Forge](https://github.com/BlackBikerss/Elysium-Skill-Forge) — Disco Elysium Trainer 2026 Enhanced Skills and Unlimited Resources Guide **[57 stars]**
 - [Mikompilation/Mikompilation](https://github.com/Mikompilation/Mikompilation) — Reimplementation project for the Fatal Frame 2: Crimson Butterfly (Project Zero 2 / Zero: Akai Chou) game engine. **[57 stars]**
+- [VOTV-MP/Multivoid](https://github.com/VOTV-MP/Multivoid) — Multiplayer co-op mod for Voices of the Void — a UE4SS mod for UE4.27 that syncs the game between a host and up to three clients, without modifying any game files. **[57 stars]**
 - [aldimirosilva/Cumrooms-PUNCH-Trainer-Suite](https://github.com/aldimirosilva/Cumrooms-PUNCH-Trainer-Suite) — Open Source Cumrooms PUNCH Trainer 2026 with ImGui IL2CPP Custom UI and Sprint Tools **[56 stars]**
+- [DaZombieKiller/TypeTreeDumper](https://github.com/DaZombieKiller/TypeTreeDumper) — Experimental tool to export type tree information from the Unity editor. **[56 stars]**
+- [malukbattah-hue/memory-forge](https://github.com/malukbattah-hue/memory-forge) — Open Source Windows Memory Editor and Game Trainer Alternative 2026 **[56 stars]**
 - [obitokirecovery-cpu/Megabonk-Companion-Suite](https://github.com/obitokirecovery-cpu/Megabonk-Companion-Suite) — Best Open-Source Megabonk Trainer &amp; Game Mods 2026 **[56 stars]**
 - [Pacool1980/disco-psychometry-probe](https://github.com/Pacool1980/disco-psychometry-probe) — Best Disco Elysium Police Build Guide 2026: Ultimate Detective Skills Tree **[56 stars]**
 - [revendaguestus-pixel/Megabonk-Companion-Suite](https://github.com/revendaguestus-pixel/Megabonk-Companion-Suite) — Best Open-Source Megabonk Trainer &amp; Game Mods 2026 **[56 stars]**
 - [aryanrajug23nsut/MonsterTide-Tactician](https://github.com/aryanrajug23nsut/MonsterTide-Tactician) — Ultimate Monsters Are Coming Trainer Guide 2026 – Top AI Cheats &amp; Hacks **[55 stars]**
 - [BADDIV/punchline-arena-enhancer](https://github.com/BADDIV/punchline-arena-enhancer) — Ultimate Trainer for Project L337 2026: Custom UI, Speed Boost &amp; XP Multipliers **[55 stars]**
 - [egalaksonoputra-commits/MegaBonk-Sparring](https://github.com/egalaksonoputra-commits/MegaBonk-Sparring) — Megabonk Max Trainer 2026: Ultimate AI-Powered DPS Optimizer **[55 stars]**
+- [udflk/Rebirth-Pub-Save-Forge](https://github.com/udflk/Rebirth-Pub-Save-Forge) — Best Rebirth Pub Save Manager 2026: Edit Gold, AP &amp; Stats **[55 stars]**
+- [Madlil007/Rebirth-Pub-Save-Forge](https://github.com/Madlil007/Rebirth-Pub-Save-Forge) — Rebirth Pub Save Companion 2026: Best Save Editor for Gold AP Stamina and Items **[53 stars]**
 - [MrCopperDev/TaskbarHero-Forge](https://github.com/MrCopperDev/TaskbarHero-Forge) — Best Taskbar Hero Automation Tools 2026: Auto-Fuse, Stage Teleport and Market Value Guide **[53 stars]**
 - [satishjadhav77485-blip/Monsters-Are-Coming-Companion](https://github.com/satishjadhav77485-blip/Monsters-Are-Coming-Companion) — Monsters Are Coming Trainer Hub 2026 Ultimate Game Mod Companion **[53 stars]**
 - [stine814-sk/Il2Cpp-Trainer-Forge](https://github.com/stine814-sk/Il2Cpp-Trainer-Forge) — Modular Unity IL2Cpp Trainer Framework 2026 **[53 stars]**
+- [korobetski/Vagrant-Story-Unity-Parser](https://github.com/korobetski/Vagrant-Story-Unity-Parser) — An editor script that reads data from the original Square game Vagrant Story to build prefabs and databases. **[51 stars]**
 - [lolo1208/unity3d-lolo](https://github.com/lolo1208/unity3d-lolo) — A Unity (Lua) game framework based on Unity and ToLua, with examples and packaging/hot-update tools. **[49 stars]**
 - [djkaty/Il2CppProtoExtractor-FallGuys](https://github.com/djkaty/Il2CppProtoExtractor-FallGuys) — IL2CPP protobuf-net reverse engineering tutorial for Fall Guys: Ultimate Knockout **[47 stars]**
 - [PicoShot/UnityInspectorStandalone](https://github.com/PicoShot/UnityInspectorStandalone) — Runtime Inspector for Unity Games Mono/Il2Cpp **[44 stars]**
@@ -104,7 +122,9 @@ These are automatically discovered projects, not individually curated or tested 
 - [lombyte-project/Lombyte](https://github.com/lombyte-project/Lombyte) — Preserving Ratchet &amp; Clank (2002) through decompilation **[42 stars]**
 - [Jadis0x/URKit](https://github.com/Jadis0x/URKit) — Native C++ SDK Generator for Unity &amp; Unreal Engine **[41 stars]**
 - [lethi9gg/Il2CppGG](https://github.com/lethi9gg/Il2CppGG) — A powerful Il2Cpp inspection and manipulation toolkit for GameGuardian, written in Lua. **[41 stars]**
+- [kokseen1/FelineSystem2](https://github.com/kokseen1/FelineSystem2) — An open source remake of the CatSystem2 visual novel engine. **[40 stars]**
 - [bhhbazinga/Dyna-IL2CppDumper](https://github.com/bhhbazinga/Dyna-IL2CppDumper) — Windows edition of IL2Cppdumper, dump data when the game is running, used to bypass protection and encryption. **[39 stars]**
+- [konovalov-aleks/reSL](https://github.com/konovalov-aleks/reSL) — The reversed source code for ShortLine v1.1 game **[39 stars]**
 - [ShrugYu/game-client-to-server-reverse](https://github.com/ShrugYu/game-client-to-server-reverse) — Infer server protocols from game clients and recreate deployable servers (Agent Skill). Unity/UE/Cocos, IL2CPP/Lua/JS… **[38 stars]**
 - [BitCrackers/Il2CppTranslator](https://github.com/BitCrackers/Il2CppTranslator) — A library to help make deobfuscation plugins for Il2CppInsector **[37 stars]**
 - [paul01784/MeatyEFTRelease](https://github.com/paul01784/MeatyEFTRelease) — Open-source DMA EFT radar and companion toolkit for Escape from Tarkov EFT, built in C++ with ImGui, focused on performance, live raid data, and configurable visual tools. **[37 stars]**
@@ -115,34 +135,118 @@ These are automatically discovered projects, not individually curated or tested 
 - [Fukashiro-Yukari/LuaLoader](https://github.com/Fukashiro-Yukari/LuaLoader) — Lua Loader using MelonLoader **[32 stars]**
 - [SnoopLawg/PyAutoRaid](https://github.com/SnoopLawg/PyAutoRaid) — Headless Raid: Shadow Legends automation. BepInEx mod (HTTP API), Python tooling, dashboard. Battle logging + sim, CB optimizer, autonomous farm/rank-up loops, gear solver, DWJ/HellHades parity, asset extraction. Mod-API only - no screen automation. **[32 stars]**
 - [johndoe31415/dosdebug](https://github.com/johndoe31415/dosdebug) — Sophisticated DOSBox debugging for reversing DOS applications and cheating in games **[27 stars]**
+- [adm244/Dishonored-MissionStats](https://github.com/adm244/Dishonored-MissionStats) — A native mod for Dishonored that adds "Statistics" button in pause menu, so it is possible to check statistics mid-mission. **[26 stars]**
+- [AniLeo/ue-version](https://github.com/AniLeo/ue-version) — A tool that analyses Unreal Engine 4 and Unreal Engine 5 based games and determines what version of the engine was used to build the game. **[25 stars]**
 - [andkorzh/FPGA-DENDY](https://github.com/andkorzh/FPGA-DENDY) — A clock-precise FPGA design for an 8-bit game console WIP **[21 stars]**
+- [FMZNkdv/ScKey](https://github.com/FMZNkdv/ScKey) — A simple guide to getting a public key for Supercell games **[21 stars]**
+- [creaffy/libil2cpp](https://github.com/creaffy/libil2cpp) — C++ Unity Il2Cpp Hacking API **[19 stars]**
 - [michal-kapala/ubi-gs](https://github.com/michal-kapala/ubi-gs) — Emulators for Ubisoft's Game Service and Ubi.com network **[19 stars]**
+- [kiraio-moe/Reverse1999-Anarchist](https://github.com/kiraio-moe/Reverse1999-Anarchist) — Reverse: 1999 Game Asset Encryptor/Decryptor **[18 stars]**
+- [clauadv/ue_aes_finder](https://github.com/clauadv/ue_aes_finder) — A lightweight tool for finding AES keys in Unreal Engine games. **[16 stars]**
+- [jaenster/libd2](https://github.com/jaenster/libd2) — Clean-room Zig reimplementation of the deterministic Diablo II 1.14d engine core (map gen, item gen, runtime sim) **[16 stars]**
+- [NeonTeam58/HSR-OWNER](https://github.com/NeonTeam58/HSR-OWNER) — Be an owner, not a slave. **[16 stars]**
+- [aldelaro5/Bug-Fables-Internal-Docs](https://github.com/aldelaro5/Bug-Fables-Internal-Docs) — A repository to aggregate documentation about the game's inner working **[14 stars]**
 - [Francesco149/openrecet](https://github.com/Francesco149/openrecet) — open drop in exe replacement for Recettear (WIP) and documentation of engine quirks **[14 stars]**
+- [jktrn/my-ctf-challenges](https://github.com/jktrn/my-ctf-challenges) — Every cybersecurity CTF challenge I've ever authored! o(^▽^)o **[13 stars]**
+- [C0mputery/AutoUnityGuidRemapper](https://github.com/C0mputery/AutoUnityGuidRemapper) — A fast Unity GUID remapper that remaps scripts, assets, and shaders across two directories, replacing incorrectly referenced files with correct ones. **[12 stars]**
 - [erupturatis/Age-of-war-unity-clone](https://github.com/erupturatis/Age-of-war-unity-clone) — Age of war clone made in unity in order to speed up the neat algorithm training process. The values are extracted from the original game. It Communicates with a python script **[11 stars]**
+- [LambdaEd1th/badpiggies-editor](https://github.com/LambdaEd1th/badpiggies-editor) — Cross-platform Bad Piggies level and save editor built with Rust, Dioxus, and wgpu for desktop and WebAssembly. **[11 stars]**
 - [PSRewired/RetroDNS](https://github.com/PSRewired/RetroDNS) — A simple DNS proxy for users who are unable to resolve custom DNS servers from their ISP **[11 stars]**
+- [soatori/uasset_read](https://github.com/soatori/uasset_read) — Python parser for Unreal Engine .uasset files — read blueprints, extract variables, decompile Kismet bytecode, generate C++ skeletons without the UE editor **[11 stars]**
 - [soksx/hytale-protocol](https://github.com/soksx/hytale-protocol) — 🚀Comprehensive documentation of Hytale's QUIC/UDP network protocol. Automatically extracts, decompiles, and documents all packets, enums, and data structures from server JAR files. Version-tracked with wiki documentation. ✅ **[11 stars]**
+- [Akrelia/RoseRevolution](https://github.com/Akrelia/RoseRevolution) — The client of a new version of the MMORPG ROSE Online made with Unity **[10 stars]**
+- [GoomiiV2/TS-ReSplit](https://github.com/GoomiiV2/TS-ReSplit) — Reverse Engineering TimeSplitters games to make an assest compatable engine **[9 stars]**
+- [repinek/frida-il2cpp-proto-dumper](https://github.com/repinek/frida-il2cpp-proto-dumper) — Dumps protobuf-net messages and enums from an IL2CPP Unity game into a valid .proto file using Frida and frida-il2cpp-bridge **[9 stars]**
+- [snaphat/MonoCecilExtensions](https://github.com/snaphat/MonoCecilExtensions) — Extensions for Mono.Cecil **[9 stars]**
+- [eikarna/deltaforce-dump](https://github.com/eikarna/deltaforce-dump) — This repository contains reverse engineering assets and data extracted from the game, intended for research, modding (if permitted by the game's EULA), or educational purposes. **[8 stars]**
+- [jrhollis/jspacman](https://github.com/jrhollis/jspacman) — Pacman and Ms. Pacman reverse engineered in JavaScript **[8 stars]**
+- [kiraio-moe/UnityWebTools.NET](https://github.com/kiraio-moe/UnityWebTools.NET) — A C# library to handle UnityWebData easily. **[8 stars]**
 - [Miou-zora/SniffSniffSquared](https://github.com/Miou-zora/SniffSniffSquared) — Passive network sniffer and protobuf decoder for the Dofus 3 game protocol, and the trading dashboard built on what it captures. Rust + libpcap, Next.js, Postgres. **[8 stars]**
+- [gididaf/pokemon-yellow-typescript](https://github.com/gididaf/pokemon-yellow-typescript) — Pokemon Yellow rewritten in TypeScript — runs in the browser, extracts all data from your own ROM **[7 stars]**
+- [nolanvenhola/zeliard](https://github.com/nolanvenhola/zeliard) — Play: https://nolanvenhola.github.io/zeliard/ — Complete C/WebAssembly port and bit-perfect MASM source-code reconstruction of Zeliard, with reverse-engineering tools and parity tests. **[7 stars]**
+- [Diphome/UnityRift](https://github.com/Diphome/UnityRift) — Toolkit for reverse-engineering and porting Unity games, with a full Unity → Godot 4 pipeline (GUI, CLI, MCP server). **[6 stars]**
+- [HexCrystal69/Discord_ORBS](https://github.com/HexCrystal69/Discord_ORBS) — A client side JavaScript utility to automatically complete all active Discord Quests directly from your console by spoofing game play, stream, and video playback activity. **[6 stars]**
+- [N0zoM1z0/th08-mods](https://github.com/N0zoM1z0/th08-mods) — Portable gameplay modifiers for Touhou 8: Hidden, Flashlight, Mirror, Double Time, Relax, and more — playable on Web and Linux. **[6 stars]**
+- [uint124/1v1.lol-Cheat-Framework](https://github.com/uint124/1v1.lol-Cheat-Framework) — A very basic 1v1.lol cheat framework that can be used as a guide for making .dll injectables for unity games. **[6 stars]**
+- [creepyloser/Nostalgia-Dumper](https://github.com/creepyloser/Nostalgia-Dumper) — Nostalgia Dumper. High-performance, multi-threaded offset discovery for Unreal, Unity IL2CPP, and Unity Mono, Source and Source 2, Godot, CryEngine, GameMaker, and UNIGINE. **[5 stars]**
+- [HoodieYlya13/codemafia](https://github.com/HoodieYlya13/codemafia) — A modern, reverse-engineered revival of Code Mafia. Built with Next.js 16, React 19, Tailwind v4, WebSockets (PartyKit), and in-browser Python (Pyodide). **[5 stars]**
+- [LunarConcerto/GameOfflinerSkill](https://github.com/LunarConcerto/GameOfflinerSkill) — An agent skill outlining methods for reviving discontinued online games offline with a self-hosted server. **[5 stars]**
 - [nuriland/a2kit](https://github.com/nuriland/a2kit) — Passive AION 2 protocol decoder and analysis toolkit **[5 stars]**
+- [OttoTre/DllStalker-public](https://github.com/OttoTre/DllStalker-public) — C++ Unity runtime resolver and hook template for IL2CPP/Mono with automatic method/field resolution, MinHook integration, and optional Debug dumper tools. **[5 stars]**
+- [ShadowNineX/MCP-UAsset-Toolkit](https://github.com/ShadowNineX/MCP-UAsset-Toolkit) — Automate UE reverse engineering using UAsset API and CUE4Parse **[5 stars]**
+- [suXinjke/VengeanceRipper](https://github.com/suXinjke/VengeanceRipper) — Extract files and convert 3D models from Colony Wars: Vengeance **[5 stars]**
+- [Adriwin06/EnvironmentSettings-Plugin](https://github.com/Adriwin06/EnvironmentSettings-Plugin) — Unreal Engine plugin that recreates Burnout Paradise’s Environment Settings system for time-of-day driven post process effects and color grading using Timelines and Keyframes. General purpose and game agnostic. **[4 stars]**
+- [Akrelia/Rose-Revolution-Server](https://github.com/Akrelia/Rose-Revolution-Server) — The server of a new version of the MMORPG ROSE Online made with Unity **[4 stars]**
+- [digital-dev/Apprentice](https://github.com/digital-dev/Apprentice) — Free, open-source Windows game trainer &amp; memory editor — Cheat Engine alternative with code-patch injection, Mono/IL2CPP support, and .CT import/export. Includes Valheim and Elden Ring cheats. **[4 stars]**
+- [f14XuanLv/CUE4Parse-MCP](https://github.com/f14XuanLv/CUE4Parse-MCP) — A read-only MCP server for querying Unreal Engine assets using CUE4Parse. **[4 stars]**
+- [huermi/game-asset-extraction](https://github.com/huermi/game-asset-extraction) — A practical game-asset extraction library drawn from three real reverse-engineering projects involving Unity IL2CPP/YooAsset/XOR and Cocos2d-lua/XXTEA/Spine. It provides 29 tools, 3 standardized workflows, and exception handling across unpacking, decryption, decoding, classification, and character aggregation. New AI agents can follow the documentation independently without human explanation. **[4 stars]**
+- [jlagedo/dreams-to-reality-re](https://github.com/jlagedo/dreams-to-reality-re) — Static recompilation of Dreams to Reality (Cryo, 1997) for modern PCs: the Windows game lifted to C, with a GPU renderer, SDL3, a disc-image launcher, smooth motion, Cryo's restored level editor and a browser demo. Bring your own discs. **[4 stars]**
 - [julescules/dsh-galgame-localization-reverse](https://github.com/julescules/dsh-galgame-localization-reverse) — Galgame Doctor: reuse translations after game updates, review conflicts in CSV, import approved text, and verify patches. **[4 stars]**
+- [kyo5uke/sushidash](https://github.com/kyo5uke/sushidash) — A Chrome extension that speeds up loading SushiDa (Unity WebGL). **[4 stars]**
+- [nikolaybutnik/FFVII-Rebirth-Mesh-Patcher](https://github.com/nikolaybutnik/FFVII-Rebirth-Mesh-Patcher) — Fixes mesh mods for FFVII Rebirth after patch V1.005, no downgrade needed **[4 stars]**
+- [senyaak/homm5-editor](https://github.com/senyaak/homm5-editor) — Map editor for Heroes of Might &amp; Magic V: Tribes of the East, on Electron. Reverse-engineered .pak/map.xdb/GroundTerrain.bin, live 3D terrain rendering and editing. Contains no game content. **[4 stars]**
 - [TheGh0stShip/BattleTanx-Global-Assault](https://github.com/TheGh0stShip/BattleTanx-Global-Assault) — 100% matching decompilation of BattleTanx: Global Assault (N64, USA Rev 0) — foundation for VitaTanxGA **[4 stars]**
+- [C0mputery/ComputerysUltimateTABGServer](https://github.com/C0mputery/ComputerysUltimateTABGServer) — Extremely efficient server software for Totally Accurate Battlegrounds, rewriten from JIBSIL's servers with a focus on cleanliness and expandability. **[3 stars]**
+- [clericall/il2cpp-wasm-teardown](https://github.com/clericall/il2cpp-wasm-teardown) — Measuring how much Unity game code survives IL2CPP: 0.00% of method bodies decompile to compilable C#, vs 93-95% for Mono. Then rebuilding enough of MiSide by hand to run in a browser **[3 stars]**
+- [ContinualDissapointment/Ultra-Despair-Extractor](https://github.com/ContinualDissapointment/Ultra-Despair-Extractor) — Open native extractor for Danganronpa Another Episode: Ultra Despair Girls (PC) — .cpk/.bnc/.btx to posed, UV-mapped, textured .obj. Tools + docs only, no game assets. **[3 stars]**
+- [dopebeanie/Rebirth-Pub-Save-Editor-Cheat](https://github.com/dopebeanie/Rebirth-Pub-Save-Editor-Cheat) — Rebirth Pub Save Editor — edit gold, AP, stamina, currency, relationships and items in your save with one click. **[3 stars]**
 - [michidk/redguard-preservation](https://github.com/michidk/redguard-preservation) — Preserving The Elder Scrolls Adventures: Redguard (1998) — reverse-engineered file format specifications, engine documentation, and a Rust CLI for parsing and converting game assets. **[3 stars]**
+- [n0isy/fire-and-forget-2-recomp](https://github.com/n0isy/fire-and-forget-2-recomp) — Fire &amp; Forget II (Titus, 1990) — faithful decompilation/recompilation of the DOS/EGA racer to modern C11+SDL2; bit-exact vs the original (pixels + AdLib sound), runs natively and in the browser. Play: https://titustribute.com/ff2/ **[3 stars]**
+- [Naguroka/chiikawa-pocket-datamine](https://github.com/Naguroka/chiikawa-pocket-datamine) — Complete offline datamine of Chiikawa Pocket (Global) v2.4.1 — all game formulas verified from native code, all 236 master-data tables decoded, guides, and a team calculator webapp **[3 stars]**
 - [ndhn27/il2cpp-re](https://github.com/ndhn27/il2cpp-re) — Frida-based tool to dump a clean (deobfuscated) IL2CPP global-metadata header from a running Unity app on iOS, for use with Il2CppDumper. Personal RE research tool — not a cheat/hack tool. **[3 stars]**
 - [qusamulab/shirayuki](https://github.com/qusamulab/shirayuki) — Runtime memory toolkit for jailbroken iOS — scan, patch, freeze, and pointer scan with in-app overlay GUI **[3 stars]**
+- [rkuhn153/il2cpp-decompiler](https://github.com/rkuhn153/il2cpp-decompiler) — Purpose-built Unity IL2CPP decompiler (desktop + MCP). Needs Il2CppDumper for dumps. **[3 stars]**
 - [SantiagoRM9/ace-tool](https://github.com/SantiagoRM9/ace-tool) — 🔍 Enhance codebase indexing and semantic search with ace-tool for efficient AI prompt optimization. **[3 stars]**
+- [shellbombs/ShooterGameCheat](https://github.com/shellbombs/ShooterGameCheat) — a UE hack demo **[3 stars]**
 - [smartfish67png/BetterCpp2IL](https://github.com/smartfish67png/BetterCpp2IL) — No upstream description supplied. **[3 stars]**
+- [ZexisRe/iOS-IL2CPP-Dumper](https://github.com/ZexisRe/iOS-IL2CPP-Dumper) — iOS IL2CPP Dumper — on-device dump.cs for Unity games (jailbreak / TrollStore) **[3 stars]**
 - [8bit-mate/Diarrhea](https://github.com/8bit-mate/Diarrhea) — Daria's Inferno Audio Resources Repacking/Hacking/Extracting Application. **[2 stars]**
+- [adm244/Dishonored-FullRegen](https://github.com/adm244/Dishonored-FullRegen) — A native mod for Dishonored that changes health/mana regeneration limits to allow full regeneration. **[2 stars]**
+- [arisugpt/ArisuFxBot](https://github.com/arisugpt/ArisuFxBot) — Unity AssetBundle Modder, Inspector &amp; Hex Padder Telegram Bot powered by ArisuFxPy. Supports Termux, VPS &amp; Windows. **[2 stars]**
+- [beater-studios/mu-file-viewer](https://github.com/beater-studios/mu-file-viewer) — Web-based viewer for MU Online game assets — preview textures, 3D models, audio and fonts in your browser **[2 stars]**
+- [Couyne/AmongUsRoleViewer](https://github.com/Couyne/AmongUsRoleViewer) — Among Us - External Frida role reader **[2 stars]**
+- [hasaneyldrm/webcheat](https://github.com/hasaneyldrm/webcheat) — A Cheat Engine for browser games — Chrome extension that scans WebAssembly memory, edits and freezes values, and controls game speed. Zero dependencies. **[2 stars]**
+- [kokseen1/katawa-shoujo-web-port](https://github.com/kokseen1/katawa-shoujo-web-port) — A web port of the Katawa Shoujo visual novel. **[2 stars]**
+- [Merlion03/misery-modding-framework](https://github.com/Merlion03/misery-modding-framework) — Community modding framework for MISERY (Unreal Engine 5.4), built without depending on UE4SS. Currently in Phase 1: research. **[2 stars]**
+- [n0thhhing/Offset-updater](https://github.com/n0thhhing/Offset-updater) — An il2cpp offset updater made with capstone **[2 stars]**
+- [repinek/fallguys-server-changer](https://github.com/repinek/fallguys-server-changer) — Network traffic redirector scripts for Fall Guys private servers. **[2 stars]**
+- [Sheilem/maplewright](https://github.com/Sheilem/maplewright) — An open-source, HD, browser-native game engine compatible with MapleStory v83 content. Rust, wgpu, WebAssembly. **[2 stars]**
+- [THEshezzee/UnityDumper](https://github.com/THEshezzee/UnityDumper) — Vibe-coded some crap. **[2 stars]**
+- [abix-/modforge](https://github.com/abix-/modforge) — Rust mod framework for UE5 (Grounded 2, Outworld Station), Unity (Wild West Miner), and DLL injection (Horsey Game) **[1 stars]**
+- [Aleksbgbg/Subnautica-Quick-Finish](https://github.com/Aleksbgbg/Subnautica-Quick-Finish) — A mod menu for Subnautica, presenting buttons to complete each objective required to complete the game. **[1 stars]**
 - [AlSch092/imcCrypt](https://github.com/AlSch092/imcCrypt) — IMC Games packet encryption methods for Granado Espada **[1 stars]**
+- [brainrom/vroid-studio-mcp](https://github.com/brainrom/vroid-studio-mcp) — MCP server for VRoid Studio. Lets AI agents create and edit characters in the editor — choose presets, tune sliders and colors, frame the camera, and save. Drives the editor's own API through a BepInEx/IL2CPP plugin: no mouse or OCR automation; works with the window minimized **[1 stars]**
+- [ChrisVilches/Handwriting-Game](https://github.com/ChrisVilches/Handwriting-Game) — Handwriting text recognition (using reverse engineered Google Translate API) made into a game with a simple SRS (spaced repetition system) algorithm. **[1 stars]**
+- [ellingtoncody81-ctrl/xiuxian-offline](https://github.com/ellingtoncody81-ctrl/xiuxian-offline) — An offline single-player adaptation layer for the mobile game “忆游十三道”: shims, launcher, and documentation (game assets not included). **[1 stars]**
 - [FindMuck/SnowRunner_Noclip](https://github.com/FindMuck/SnowRunner_Noclip) — SnowRunner (Havok Physics) reverse-engineering project with a functional Cheat Engine vehicle Noclip Lua script. **[1 stars]**
+- [kingabzpro/neon-rooftops](https://github.com/kingabzpro/neon-rooftops) — 🐱🌙 An original pixel-art endless runner. We reverse engineered the Chrome dino game and rebuilt it as a cat on neon rooftops. Web + standalone Windows app. **[1 stars]**
+- [LittleBitUA/KINGDOM-HEARTS-LOCALIZATION-TOOL](https://github.com/LittleBitUA/KINGDOM-HEARTS-LOCALIZATION-TOOL) — Localization toolkit for the Kingdom Hearts PC releases — text, fonts and textures. KH1 FM, Re:CoM, Birth by Sleep FM, Dream Drop Distance, 358/2 Days, Re:coded, Theater. Made in Ukraine by Dmytro Bidlov (Little Bit Team). **[1 stars]**
 - [LockBlock-dev/ChickenInvaders-re](https://github.com/LockBlock-dev/ChickenInvaders-re) — Chicken Invaders reverse engineering **[1 stars]**
 - [madpai/game-decomp-compendium](https://github.com/madpai/game-decomp-compendium) — Knowledge base for AI agents: ~790 game decompilation/RE projects, modding field notes, engine playbooks, and 8 skills with tested scripts for decomp, recon, hooking, formats and ports **[1 stars]**
+- [matteo-pacini/theme-hospital-enhanced](https://github.com/matteo-pacini/theme-hospital-enhanced) — Theme Hospital (1997) rebuilt in C++20 from a matching decompilation: any resolution, on Windows, macOS, Linux and in the browser. Bring your own copy of the game. **[1 stars]**
+- [mediaexplorer74/Tentacles](https://github.com/mediaexplorer74/Tentacles) — Sloooww porting Tentacles\[EnterTheMind\] game from W8.1 to W10M (UWP) **[1 stars]**
+- [PCIeTLP/combat-master-dumper](https://github.com/PCIeTLP/combat-master-dumper) — Il2CppDumper-style dump for Combat Master, which ships no usable global-metadata.dat. Injects, reads the runtime's own structures, and re-fits every struct offset on each run so game updates don't break it. **[1 stars]**
 - [shidemuri/dhinameptor](https://github.com/shidemuri/dhinameptor) — Decompilation of DHINAMEPTOR 1.00 by ニシキガツオ **[1 stars]**
 - [siMobin/superMarioRunner](https://github.com/siMobin/superMarioRunner) — A fusion of two gaming classics with Super Mario Runner! This Java-based recreation seamlessly blends the timeless charm of the Chrome Dino game with the vibrant world of Super Mario Bros. **[1 stars]**
+- [SonnyTaylor/hw-mod-manager](https://github.com/SonnyTaylor/hw-mod-manager) — Modding framework for Happy Wheels (Steam/Electron) — runtime mod injection, reversible patcher, dev CLI **[1 stars]**
 - [TheBestPlan/killingfloor-bot-client](https://github.com/TheBestPlan/killingfloor-bot-client) — L2Walker-style headless client for Killing Floor (Unreal Engine 2.5). Speaks the native UE2 network protocol over UDP — no game launch, no injection: connects as a real client, passes Steam auth and enters the game. **[1 stars]**
 - [TheGh0stShip/BattleTanx](https://github.com/TheGh0stShip/BattleTanx) — Decompilation of US BattleTanx .z64 (Required Decomp for BattleTanx Studio &amp; porting of BattleTanx assets into BattleTanx: Global Assault port) **[1 stars]**
 - [Brickpebewitch/primordial-cs2-dump-toolkit](https://github.com/Brickpebewitch/primordial-cs2-dump-toolkit) — Primordial Dump toolkit for CS2 modders — a no-cost client-side CLI that dumps match entities offline for local research and custom config work. **[0 stars]**
+- [ctkrug/peel](https://github.com/ctkrug/peel) — A daily browser puzzle: peel a real obfuscated one-liner apart one decode at a time until the plaintext shows. Fewest moves wins. **[0 stars]**
+- [gentritr1/lomn-web](https://github.com/gentritr1/lomn-web) — Fan-made web port of The Legend of Mata Nui (2001 PC game): C++17 to WebAssembly + WebGPU. Bring your own game files. Not affiliated with LEGO. **[0 stars]**
+- [gewenwu716/palworld-save-parser](https://github.com/gewenwu716/palworld-save-parser) — Zero-dependency Rust parser for Palworld .sav files. Extracts Pal species, passives, gender, and level to JSON. Compiles to WebAssembly for in-browser parsing — no server uploads. **[0 stars]**
 - [ioma8/totala-re](https://github.com/ioma8/totala-re) — Reverse engineering toolkit for Total Annihilation engine &amp; resources. **[0 stars]**
+- [JesperLive/gse-companion-disclosure](https://github.com/JesperLive/gse-companion-disclosure) — Reproducible disclosure: the GSE Companion app detects, reports and (server-gated) deletes a competing World of Warcraft addon's data, and the in-game GSE addon now locks its sequences away from other addons. Quoted code, hashes, and reproduction steps. I'm a competitor; verify it yourself. **[0 stars]**
 - [kushagra10025/GameLauncher-Core](https://github.com/kushagra10025/GameLauncher-Core) — Core Logic - CLI/DLL for Game Launcher **[0 stars]**
 - [lombyte-project/lombyte-project.github.io](https://github.com/lombyte-project/lombyte-project.github.io) — Website of Lombyte, the Ratchet &amp; Clank (2002) decompilation project **[0 stars]**
+- [metadate1/c1-browser-runtime](https://github.com/metadate1/c1-browser-runtime) — Unofficial C/WebAssembly browser runtime for Crash Bandicoot (PlayStation); users supply their own game data. **[0 stars]**
+- [metadate1/crust](https://github.com/metadate1/crust) — Unofficial Rust/WebAssembly research runtime for Crash Bandicoot (PlayStation); users supply their own game data. **[0 stars]**
 - [operationostrich/DeTAOOT](https://github.com/operationostrich/DeTAOOT) — A decompilation of Titanic: Adventure Out Of Time (1996) **[0 stars]**
+- [senyaak/pigs-of-worldwar](https://github.com/senyaak/pigs-of-worldwar) — Fan remake of Gremlin's Hogs of War (2000) in Electron + Three.js. Reads assets from a legally installed copy; none are redistributed. **[0 stars]**
+- [SteepMans/tanki-flashback](https://github.com/SteepMans/tanki-flashback) — Fan, noncommercial server and browser client for an old Flash tank game. TypeScript server, browser client on a patched Ruffle. No game resources or game client included. **[0 stars]**
+- [tehDroidX/forsaken-studio](https://github.com/tehDroidX/forsaken-studio) — Forsaken Studio - a modding studio and level editor for Forsaken (1998) and the ProjectX engine **[0 stars]**
+- [TheBestPlan/killingfloor-map-importer](https://github.com/TheBestPlan/killingfloor-map-importer) — Converts maps from other games into Killing Floor 1 levels (.rom, Unreal Engine 2.5). **[0 stars]**
+- [TheBestPlan/killingfloor-map-viewer](https://github.com/TheBestPlan/killingfloor-map-viewer) — Desktop and browser viewer for Killing Floor game maps (.rom, Unreal Engine 2.5). Draws the world BSP, static meshes, terrain and skybox with textures, and flies around — no KFEd needed. **[0 stars]**
+- [vulnix0x4/breakpoint](https://github.com/vulnix0x4/breakpoint) — Learn game hacking by doing it. A 3D game you reverse engineer in your browser: memory scanning, watchpoints, patching, C++ tools. **[0 stars]**
 
 <!-- Generated by scripts/build_repository_index.py. Edit source data, then rebuild. -->

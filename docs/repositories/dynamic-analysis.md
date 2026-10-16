@@ -2,12 +2,13 @@
 
 [All categories](README.md) · [简体中文](dynamic-analysis.zh-CN.md)
 
-**78 repositories** · 2026-10-16 UTC
+**84 repositories** · 2026-10-16 UTC
 
 These are automatically discovered projects, not individually curated or tested recommendations. Categories derive from metadata and descriptions from upstream text. Stars are collection-time snapshots, not live rankings.
 
 - [x64dbg/x64dbg](https://github.com/x64dbg/x64dbg) — An open-source user mode debugger for Windows. Optimized for reverse engineering and malware analysis. **[49,888 stars]**
 - [frida/frida](https://github.com/frida/frida) — Main repo for hosting release binaries **[22,317 stars]**
+- [rr-debugger/rr](https://github.com/rr-debugger/rr) — Record and Replay Framework **[10,707 stars]**
 - [qilingframework/qiling](https://github.com/qilingframework/qiling) — A True Instrumentable Binary Emulation Framework **[6,139 stars]**
 - [DynamoRIO/dynamorio](https://github.com/DynamoRIO/dynamorio) — Dynamic Instrumentation Tool Platform **[3,181 stars]**
 - [duty1g/x64dbg-mcp-server](https://github.com/duty1g/x64dbg-mcp-server) — x64dbg-MCP Server is a native MCP (Model Context Protocol) plugin for x64dbg that exposes the debugger's full functionality over HTTP. Connect any MCP-compatible AI assistant and control x64dbg programmatically: set breakpoints, step through code, read memory, dump registers, and more. Built with Zig — zero dependencies, single-binary output, cros **[2,514 stars]**
@@ -66,8 +67,12 @@ These are automatically discovered projects, not individually curated or tested 
 - [miyagaw61/exgdb](https://github.com/miyagaw61/exgdb) — Extension for GDB **[107 stars]**
 - [wwweeeqqu/honor-of-kings-RE-research](https://github.com/wwweeeqqu/honor-of-kings-RE-research) — Full-stack mobile game-security research (Honor of Kings / sgame): kernel-mode cross-process memory reading (KernelPatch KPM), Tencent ACE anti-cheat &amp; IL2CPP/native engine reverse engineering, and a real-time ESP overlay. Educational / research only; no proprietary binaries. **[73 stars]**
 - [imugee/xdv](https://github.com/imugee/xdv) — XDV is disassembler or debugger that works based on the extension plugin. **[56 stars]**
+- [crissyfield/super-trouper](https://github.com/crissyfield/super-trouper) — MCP server for Frida. **[54 stars]**
 - [andreafioraldi/r2angrdbg](https://github.com/andreafioraldi/r2angrdbg) — Use angr inside the radare2 debugger. Create an angr state from the current debugger state. **[34 stars]**
+- [AkashaCorporation/HikariSystem-HexCore](https://github.com/AkashaCorporation/HikariSystem-HexCore) — The Native Reverse Engineering IDE. Zero-overhead binary analysis, full CPU emulation (PE/ELF), and headless automation. Powered by Capstone, Unicorn, LLVM &amp; Remill via N-API. **[27 stars]**
+- [yfe404/frida-mcp](https://github.com/yfe404/frida-mcp) — MCP server for Frida 17 dynamic instrumentation **[24 stars]**
 - [qtmleap/revkit](https://github.com/qtmleap/revkit) — A reverse-engineering toolkit for iOS and Android applications (Frida, mitmproxy, Ghidra, Theos) **[19 stars]**
+- [2233admin/reverse-skill-evolver](https://github.com/2233admin/reverse-skill-evolver) — Reverse-engineering skills for AI coding agents, with IDA/MCP integration, APK and JavaScript workflows, bounded agent swarms, and routing evaluation. **[17 stars]**
 - [Cristallin2006/ghidra-skill-for-dsh](https://github.com/Cristallin2006/ghidra-skill-for-dsh) — Custom-built for dsh (DeepSeek Harness): a persistent Ghidra headless daemon and reverse-engineering agent skills (triage/unpack/decompile/pwn/pcap/APK), with circuit breakers against agent failure loops and skills that evolve through retrospectives. **[11 stars]**
 - [ejfkdev/dae](https://github.com/ejfkdev/dae) — Dart AOT snapshot analyzer: exports blutter-compatible symbols and structs for IDA / radare2 / Frida, and decompiles functions into dart-analyze-clean Dart. Desktop and real-device mobile (compressed pointers), Dart 2.7-3.14. No Dart SDK, never runs the target. **[9 stars]**
 - [Veridiff/Veridiff](https://github.com/Veridiff/Veridiff) — Dynamic branch-divergence finder for native code -- traces two Frida executions and finds the exact instruction where they diverge. **[8 stars]**
@@ -75,6 +80,7 @@ These are automatically discovered projects, not individually curated or tested 
 - [hackThacker/awesome-reverse-engineering](https://github.com/hackThacker/awesome-reverse-engineering) — Expert reverse engineer specializing in binary analysis, malware research, and low-level system internals. Experienced in dissecting complex software, uncovering vulnerabilities, and understanding code beyond source-level abstraction **[4 stars]**
 - [Maxamedxasa/SakoREStudio](https://github.com/Maxamedxasa/SakoREStudio) — 🛡️ Mobile-first Interactive Disassembler &amp; Decompiler Framework — IDA Pro / Ghidra-class RE on Android. APK · ELF · PE · DEX · ARM64 · x86-64 · IR decompiler · call graph · ptrace debugger · SakoScript plugins. Created by Maxamed Xasan Muse 🇸🇴 **[3 stars]**
 - [13shivam/offset-zero](https://github.com/13shivam/offset-zero) — Offset Zero: A free, open-source field guide to digital forensics, reverse engineering, and detection engineering. Start at the first byte. YEAHH, ITS MORE OF A MINDSET! **[2 stars]**
+- [ip2867/ctf-re-tool](https://github.com/ip2867/ctf-re-tool) — An Electron-based AI workbench for CTF reverse-engineering challenges on Windows. It combines an AI tool loop with local validation, connects to IDA, JEB, and Burp through MCP, and automatically tackles APK, PE, ELF, PYC, DEX, JAR, Mach-O, Lua, and Web-JS challenges. Includes 11 methodology skills, a 54-page structured knowledge base, and self-improvement from experience. **[2 stars]**
 - [PyModel/reverse-engineering-skill](https://github.com/PyModel/reverse-engineering-skill) — Deterministic binary analysis, runtime instrumentation &amp; protocol reverse-engineering skill for AI coding agents. **[2 stars]**
 - [siaginw/HexWitness](https://github.com/siaginw/HexWitness) — Give your reverse-engineering agent a memory, a map, and receipts. **[2 stars]**
 - [Acousticdevicemercouri734/androidReverse](https://github.com/Acousticdevicemercouri734/androidReverse) — Reverse engineer APKs and analyze native binaries directly on your Android device without a PC or ADB. **[1 stars]**

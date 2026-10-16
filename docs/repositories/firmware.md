@@ -2,15 +2,19 @@
 
 [All categories](README.md) · [简体中文](firmware.zh-CN.md)
 
-**95 repositories** · 2026-10-16 UTC
+**99 repositories** · 2026-10-16 UTC
 
 These are automatically discovered projects, not individually curated or tested recommendations. Categories derive from metadata and descriptions from upstream text. Stars are collection-time snapshots, not live rankings.
 
+- [ReFirmLabs/binwalk](https://github.com/ReFirmLabs/binwalk) — Firmware Analysis Tool **[14,491 stars]**
 - [e-m-b-a/emba](https://github.com/e-m-b-a/emba) — EMBA - The firmware security analyzer **[3,712 stars]**
+- [onekey-sec/unblob](https://github.com/onekey-sec/unblob) — Extract files from any kind of container formats **[2,577 stars]**
+- [redballoonsecurity/ofrak](https://github.com/redballoonsecurity/ofrak) — OFRAK: unpack, modify, and repack binaries. **[2,080 stars]**
 - [marin-m/vmlinux-to-elf](https://github.com/marin-m/vmlinux-to-elf) — A tool to recover a fully analyzable .ELF from a raw kernel, through extracting the kernel symbol table (kallsyms) **[1,832 stars]**
 - [fkie-cad/FACT_core](https://github.com/fkie-cad/FACT_core) — Firmware Analysis and Comparison Tool **[1,468 stars]**
 - [Anime4000/RTL960x](https://github.com/Anime4000/RTL960x) — Hacking &amp; Reverse Engineering RTL960x-based xPON ONTs to suit your OLT **[1,053 stars]**
 - [gcarmix/HexWalk](https://github.com/gcarmix/HexWalk) — Hex Viewer/Editor/Analyzer compatible with Linux/Windows/MacOS **[1,027 stars]**
+- [pr0v3rbs/FirmAE](https://github.com/pr0v3rbs/FirmAE) — Towards Large-Scale Emulation of IoT Firmware for Dynamic Analysis **[949 stars]**
 - [al3xtjames/ghidra-firmware-utils](https://github.com/al3xtjames/ghidra-firmware-utils) — Ghidra utilities for analyzing PC firmware **[506 stars]**
 - [scriptingxss/owasp-fstm](https://github.com/scriptingxss/owasp-fstm) — The Firmware Security Testing Methodology (FSTM) is composed of nine stages tailored to enable security researchers, software developers, consultants, and Information Security professionals with conducting firmware security assessments. **[502 stars]**
 - [nmatt0/moria](https://github.com/nmatt0/moria) — IoT firmware identification and extraction **[418 stars]**

@@ -2,12 +2,13 @@
 
 [全部分类](README.zh-CN.md) · [English](dynamic-analysis.md)
 
-**78 个仓库** · 2026-10-16 UTC
+**84 个仓库** · 2026-10-16 UTC
 
 这些是自动发现的项目，不是逐项精选或运行测试后的推荐。分类来自元数据；简介由上游描述翻译而来。星标为采集时快照，不是实时排名。
 
 - [x64dbg/x64dbg](https://github.com/x64dbg/x64dbg) — 面向 Windows 的开源用户态调试器，针对逆向工程和恶意软件分析进行了优化。 **[49,888 星标]**
 - [frida/frida](https://github.com/frida/frida) — 用于托管发布版二进制文件的主仓库。 **[22,317 星标]**
+- [rr-debugger/rr](https://github.com/rr-debugger/rr) — 录制与回放框架。 **[10,707 星标]**
 - [qilingframework/qiling](https://github.com/qilingframework/qiling) — 真正支持插桩的二进制模拟框架。 **[6,139 星标]**
 - [DynamoRIO/dynamorio](https://github.com/DynamoRIO/dynamorio) — 动态插桩工具平台。 **[3,181 星标]**
 - [duty1g/x64dbg-mcp-server](https://github.com/duty1g/x64dbg-mcp-server) — x64dbg-MCP Server 是 x64dbg 的原生 MCP（模型上下文协议）插件，通过 HTTP 提供调试器的全部功能。连接任意兼容 MCP 的 AI 助手，即可通过程序控制 x64dbg：设置断点、单步执行代码、读取内存、转储寄存器等。使用 Zig 构建，零依赖，输出单个二进制文件，cros… **[2,514 星标]**
@@ -66,8 +67,12 @@
 - [miyagaw61/exgdb](https://github.com/miyagaw61/exgdb) — GDB 扩展 **[107 星标]**
 - [wwweeeqqu/honor-of-kings-RE-research](https://github.com/wwweeeqqu/honor-of-kings-RE-research) — 全栈移动游戏安全研究，针对《王者荣耀》/sgame：内核态跨进程内存读取（KernelPatch KPM）、腾讯 ACE 反作弊及 IL2CPP/原生引擎逆向工程，以及实时 ESP 叠加显示。仅用于教学与研究，不包含专有二进制文件。 **[73 星标]**
 - [imugee/xdv](https://github.com/imugee/xdv) — XDV 是基于扩展插件工作的反汇编器或调试器。 **[56 星标]**
+- [crissyfield/super-trouper](https://github.com/crissyfield/super-trouper) — Frida 的 MCP 服务器。 **[54 星标]**
 - [andreafioraldi/r2angrdbg](https://github.com/andreafioraldi/r2angrdbg) — 在 radare2 调试器中使用 angr，并根据当前调试器状态创建 angr 状态。 **[34 星标]**
+- [AkashaCorporation/HikariSystem-HexCore](https://github.com/AkashaCorporation/HikariSystem-HexCore) — 原生逆向工程 IDE。提供零开销二进制分析、完整 CPU 模拟（PE/ELF）和无界面自动化，通过 N-API 集成 Capstone、Unicorn、LLVM 与 Remill。 **[27 星标]**
+- [yfe404/frida-mcp](https://github.com/yfe404/frida-mcp) — 用于 Frida 17 动态插桩的 MCP 服务器。 **[24 星标]**
 - [qtmleap/revkit](https://github.com/qtmleap/revkit) — iOS 和 Android 应用逆向工程工具包（Frida、mitmproxy、Ghidra、Theos）。 **[19 星标]**
+- [2233admin/reverse-skill-evolver](https://github.com/2233admin/reverse-skill-evolver) — 面向 AI 编程智能体的逆向工程技能，包含 IDA/MCP 集成、APK 和 JavaScript 工作流、受限的智能体集群及路由评估。 **[17 星标]**
 - [Cristallin2006/ghidra-skill-for-dsh](https://github.com/Cristallin2006/ghidra-skill-for-dsh) — 为 dsh（DeepSeek Harness）深度定制：持久化 Ghidra 无界面守护进程及逆向工程智能体技能，涵盖初步分析、脱壳、反编译、漏洞利用、pcap 和 APK，具有阻断智能体失败循环的熔断机制，并能从复盘中演进。 **[11 星标]**
 - [ejfkdev/dae](https://github.com/ejfkdev/dae) — Dart AOT 快照分析器：为 IDA、radare2 和 Frida 导出兼容 blutter 的符号及结构体，并将函数反编译为可通过 dart analyze 检查的 Dart 代码。支持桌面端和真实移动设备（压缩指针），涵盖 Dart 2.7–3.14。无需 Dart SDK，且不会运行目标程序。 **[9 星标]**
 - [Veridiff/Veridiff](https://github.com/Veridiff/Veridiff) — 原生代码的动态分支分歧定位工具：跟踪两次 Frida 执行，找到它们开始分歧的精确指令。 **[8 星标]**
@@ -75,6 +80,7 @@
 - [hackThacker/awesome-reverse-engineering](https://github.com/hackThacker/awesome-reverse-engineering) — 专注于二进制分析、恶意软件研究和底层系统内部机制的逆向工程专家，擅长剖析复杂软件、发现漏洞，并超越源代码抽象理解程序。 **[4 星标]**
 - [Maxamedxasa/SakoREStudio](https://github.com/Maxamedxasa/SakoREStudio) — 🛡️ 移动优先的交互式反汇编与反编译框架，在 Android 上提供 IDA Pro/Ghidra 级逆向工程能力。支持 APK、ELF、PE、DEX、ARM64、x86-64、IR 反编译器、调用图、ptrace 调试器和 SakoScript 插件，由 Maxamed Xasan Muse 创建。🇸🇴 **[3 星标]**
 - [13shivam/offset-zero](https://github.com/13shivam/offset-zero) — Offset Zero：免费开源的数字取证、逆向工程和检测工程实战指南。从第一个字节开始——这更是一种思维方式！ **[2 星标]**
+- [ip2867/ctf-re-tool](https://github.com/ip2867/ctf-re-tool) — 基于 Electron、面向 Windows 的 CTF 逆向 AI 解题工作台，结合 AI 工具循环与本地验证闭环，通过 MCP 接入 IDA、JEB 和 Burp，自动求解 APK、PE、ELF、PYC、DEX、JAR、Mach-O、Lua 和 Web-JS，内置 11 个方法论技能、54 页结构化知识库及经验自进化机制。 **[2 星标]**
 - [PyModel/reverse-engineering-skill](https://github.com/PyModel/reverse-engineering-skill) — 面向 AI 编码智能体的确定性二进制分析、运行时插桩和协议逆向工程技能。 **[2 星标]**
 - [siaginw/HexWitness](https://github.com/siaginw/HexWitness) — 为逆向工程智能体提供记忆、地图和证据记录。 **[2 星标]**
 - [Acousticdevicemercouri734/androidReverse](https://github.com/Acousticdevicemercouri734/androidReverse) — 直接在 Android 设备上逆向分析 APK 和原生二进制文件，无需 PC 或 ADB。 **[1 星标]**

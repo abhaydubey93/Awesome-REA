@@ -1,12 +1,12 @@
 # Repository description localization
 
-These files provide English and Simplified Chinese descriptions for the collection's 1,600 scanned repositories. They are AI-assisted translations of upstream repository descriptions, not repository reviews or compatibility tests.
+These files provide English and Simplified Chinese descriptions for the collection's 2,000 scanned repositories. They are AI-assisted translations of upstream repository descriptions, not repository reviews or compatibility tests.
 
 ## Source and output
 
 - [source-index.json](../source-index.json) preserves the upstream snapshot. Its historical `description_en` field contains the original text in any source language; `description_zh` mirrors that original with status `not-translated`.
 - [repositories-1.json](repositories-1.json), [repositories-2.json](repositories-2.json), and [repositories-3.json](repositories-3.json) contain derived descriptions, keyed by the exact source record `id`. Every ID belongs to exactly one file.
-- [build_site.py](../../scripts/build_site.py) merges the translations into `dist/source-index.json`. Generated records retain the upstream text in `description_original` and identify localization as `ai-assisted-translation`. Source scan evidence and review status remain unchanged.
+- [build_site.py](../../scripts/build_site.py) merges the translations into `dist/source-index.json`. Generated records retain the upstream text in `description_original`, label their description language as `bilingual`, and identify localization as `ai-assisted-translation`. Generated metadata separates the upstream description policy from the localized output policy. Source scan evidence and review status remain unchanged.
 
 Each locale entry contains `description_en` and `description_zh` strings. Preserve natural English originals; translate other source languages into English. Translate every nonempty description into Simplified Chinese, preserving project names, technical identifiers, versions, limitations, and qualifiers. Do not substitute generic descriptions or add unsupported capabilities. If the source description is empty, keep both strings empty so the interface can show its localized fallback.
 
