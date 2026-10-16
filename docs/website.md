@@ -43,7 +43,7 @@ The public source provides SVG fallback icons for the collection interface. A ma
 python3 scripts/build_site.py --fontawesome-dir ../licensed-fontawesome-pro
 ```
 
-This adds two local WOFF2 files, minimal icon CSS and a footer credit only to ignored `dist/` output. It does not copy the Pro package or its installation path into public source. A normal build without this option restores the fallback and removes those generated font assets. Keep licensed production outputs in the private artifact backup and authorized website deployment; do not commit Pro assets to the public repository. See [Font Awesome's Pro license](https://origin.fontawesome.com/license) and [official support guidance](https://fontawesome.com/support).
+This adds two local WOFF2 files and minimal icon CSS only to ignored `dist/` output. It does not copy the Pro package or its installation path into public source. A normal build without this option restores the fallback and removes those generated font assets. Keep licensed production outputs in the private artifact backup and authorized website deployment; do not commit Pro assets to the public repository. See [Font Awesome's Pro license](https://origin.fontawesome.com/license) and [official support guidance](https://fontawesome.com/support).
 
 CI can instead reference the collection's existing authorized static icon deployment without downloading or copying Pro files:
 

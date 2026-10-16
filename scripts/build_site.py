@@ -43,8 +43,6 @@ def fontawesome_markup(html: str, stylesheet_url: str) -> str:
         return f'<span class="{classes} fa-symbol fa-{key}" aria-hidden="true"></span>'
 
     html = re.sub(r'<svg\b([^>]*)>\s*<use href="#i-([a-z-]+)"\s*/>\s*</svg>', replace_icon, html)
-    credit = '<a href="https://fontawesome.com" target="_blank" rel="noopener noreferrer" data-i18n="iconsCredit">Font Awesome Pro icons ↗</a>'
-    html = html.replace('<div class="footer-links">', '<div class="footer-links">' + credit)
     return html
 
 

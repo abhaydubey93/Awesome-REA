@@ -86,7 +86,6 @@ const UI = {
     "sourceHash": "README SHA-256",
     "sourceRevision": "README Git SHA",
     "sourceReadmeSize": "README bytes",
-    "iconsCredit": "Font Awesome Pro icons ↗"
   },
   "zh": {
     "pageTitle": "逆向工程资源合集 · Awesome Reverse Engineering Anything",
@@ -173,7 +172,6 @@ const UI = {
     "sourceHash": "README SHA-256",
     "sourceRevision": "README Git SHA",
     "sourceReadmeSize": "README 字节数",
-    "iconsCredit": "图标：Font Awesome Pro ↗"
   }
 };
 

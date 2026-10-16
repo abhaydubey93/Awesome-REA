@@ -149,7 +149,6 @@ def build_browse_pages(
                            + (f'<a href="{browse_path(language)}">{("全部分类" if zh else "All categories")}</a><span aria-hidden="true">/</span><span aria-current="page">{escape(label)}</span>'
                               if category else f'<span aria-current="page">{("全部分类" if zh else "All categories")}</span>'))
             icon_css = f'<link rel="stylesheet" href="{escape(icon_stylesheet_href, quote=True)}">' if use_pro else ''
-            icon_credit = ('<a href="https://fontawesome.com" target="_blank" rel="noopener noreferrer">' + ('图标：Font Awesome Pro ↗' if zh else 'Font Awesome Pro icons ↗') + '</a>') if use_pro else ''
             document = f'''<!doctype html>
 <html lang="{locale}"{(' data-icon-set="fontawesome"' if use_pro else '')}>
 <head>
@@ -202,7 +201,7 @@ def build_browse_pages(
   <div class="browse-topline"><p>{count_text}</p><p>{date_text}</p></div>
   {content}
 </main>
-<footer class="site-footer"><div class="shell footer-top"><p>{('独立的资源集合，在公开协作中持续更新。' if zh else 'An independent resource collection, updated in public.')}</p><div class="footer-links">{icon_credit}<a href="{browse_path(language)}">{('全部分类' if zh else 'All categories')}</a><a href="{curated_link}">{('精选资源' if zh else 'Curated resources')}</a><a href="/source-index.json?v={data_revision}" download="awesomerea-repository-index.json" type="application/json">{('仓库索引 JSON ↓' if zh else 'Repository index JSON ↓')}</a><a href="/catalog.json?v={data_revision}" download="awesomerea-curated-catalog.json" type="application/json">{('精选目录 JSON ↓' if zh else 'Curated catalog JSON ↓')}</a></div></div><div class="shell footer-bottom">{('原创内容采用 MIT 许可。链接项目保留各自的许可。' if zh else 'Original content: MIT. Linked projects keep their own licenses.')}</div></footer>
+<footer class="site-footer"><div class="shell footer-top"><p>{('独立的资源集合，在公开协作中持续更新。' if zh else 'An independent resource collection, updated in public.')}</p><div class="footer-links"><a href="{browse_path(language)}">{('全部分类' if zh else 'All categories')}</a><a href="{curated_link}">{('精选资源' if zh else 'Curated resources')}</a><a href="/source-index.json?v={data_revision}" download="awesomerea-repository-index.json" type="application/json">{('仓库索引 JSON ↓' if zh else 'Repository index JSON ↓')}</a><a href="/catalog.json?v={data_revision}" download="awesomerea-curated-catalog.json" type="application/json">{('精选目录 JSON ↓' if zh else 'Curated catalog JSON ↓')}</a></div></div><div class="shell footer-bottom">{('原创内容采用 MIT 许可。链接项目保留各自的许可。' if zh else 'Original content: MIT. Linked projects keep their own licenses.')}</div></footer>
 </body>
 </html>
 '''
