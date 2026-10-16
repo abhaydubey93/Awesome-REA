@@ -3332,5 +3332,678 @@
   "scan-1416130846": {
     "description_en": "Evidence-driven Gears of War: Reloaded package research and Blender map reconstruction tooling.",
     "description_zh": "证据驱动的 Gears of War: Reloaded 包研究及 Blender 地图重建工具。"
+  },
+  "scan-623816748": {
+    "description_en": "Course resources (code snapshots & slides) for our complete Flutter & Dart course (https://acad.link/flutter).",
+    "description_zh": "完整 Flutter 与 Dart 课程的配套资源，包括代码快照和幻灯片（https://acad.link/flutter）。"
+  },
+  "scan-1346650977": {
+    "description_en": "A playable preview of Forza Horizon static recompilation",
+    "description_zh": "Forza Horizon 静态重编译项目的可玩预览版。"
+  },
+  "scan-1375755928": {
+    "description_en": "Static recompilation of a PSP game into a native executable. Vulkan and SDL3. Bring your own copy of the game.",
+    "description_zh": "将一款 PSP 游戏静态重编译为原生可执行文件，使用 Vulkan 和 SDL3。需自备游戏副本。"
+  },
+  "scan-1406150361": {
+    "description_en": "Unofficial static recompilation of the Xbox 360 version of Need for Speed: Most Wanted (2005): a native port for Steam Deck, Steam Machine, Steam Frame, Linux and Mac (iPhone/iPad: sideload the experimental IPA or build it yourself). Bring your own disc: no game files included. Not affiliated with EA or Valve.",
+    "description_zh": "Xbox 360 版 Need for Speed: Most Wanted（2005）的非官方静态重编译项目：面向 Steam Deck、Steam Machine、Steam Frame、Linux 和 Mac 的原生移植；iPhone/iPad 可侧载实验性 IPA 或自行构建。需自备光盘，不附带游戏文件。与 EA 或 Valve 无关联。"
+  },
+  "scan-1272534715": {
+    "description_en": "Play Skate 3 natively on Android. Download one APK, select your own ISO, and skate. ARM64 recompilation with Vulkan rendering.",
+    "description_zh": "在 Android 上原生游玩 Skate 3。下载一个 APK，选择自有 ISO 即可开始滑板运动。采用 ARM64 重编译和 Vulkan 渲染。"
+  },
+  "scan-952540647": {
+    "description_en": "👊 Discord, your way. Revenge is a client modification for Discord Android.",
+    "description_zh": "👊 按自己的方式使用 Discord。Revenge 是 Discord Android 客户端的修改项目。"
+  },
+  "scan-1335797829": {
+    "description_en": "Native Windows port of Dead or Alive Xtreme Beach Volleyball (Xbox), built by static recompilation with a hand-written runtime. Requires your own copy of the game.",
+    "description_zh": "Dead or Alive Xtreme Beach Volleyball（Xbox）的原生 Windows 移植，通过静态重编译和手写运行时构建。需要自有游戏副本。"
+  },
+  "scan-1339885631": {
+    "description_en": "Static recompilation of Yu-Gi-Oh! Forbidden Memories (PS1) into a native executable - with a live duel-rank meter, a fusion assistant, adjustable card drops and a cheat menu. Bring your own disc.",
+    "description_zh": "将 Yu-Gi-Oh! Forbidden Memories（PS1）静态重编译为原生可执行文件，带有实时决斗评级表、融合助手、可调卡片掉落及作弊菜单。需自备光盘。"
+  },
+  "scan-1405085225": {
+    "description_en": "Native PC port of God of War (PS2) via static recompilation with PS2Recomp",
+    "description_zh": "通过 PS2Recomp 静态重编译实现 God of War（PS2）的原生 PC 移植。"
+  },
+  "scan-1393058439": {
+    "description_en": "Unofficial native PC port of WWE SmackDown vs. Raw 2011 (Xbox 360). Bring your own disc.",
+    "description_zh": "WWE SmackDown vs. Raw 2011（Xbox 360）的非官方原生 PC 移植。需自备光盘。"
+  },
+  "scan-1103369457": {
+    "description_en": "🔓 UNLEASH ILSpy'S POWER. Reverse-engineer DOTNET code at GOD SPEED. AI-assisted debugging that THINKS with you. Decompile ANYTHING. 🚀",
+    "description_zh": "🔓 释放 ILSpy 的力量，以神速逆向工程 .NET 代码。与你一同思考的 AI 辅助调试，反编译一切。🚀"
+  },
+  "scan-1335590599": {
+    "description_en": "Native PC port of the Xbox 360 XBLA game Dead Rising 2: Case West, by static recompilation. Windows and Linux, Vulkan, keyboard/mouse and controller. You supply your own copy of the game.",
+    "description_zh": "通过静态重编译，将 Xbox 360 XBLA 游戏 Dead Rising 2: Case West 原生移植到 PC。支持 Windows 和 Linux、Vulkan、键鼠及手柄。需自行提供游戏副本。"
+  },
+  "scan-1395477927": {
+    "description_en": "Estacado: a native PC recompilation of The Darkness (Xbox 360). Unofficial fan port; bring your own copy of the game.",
+    "description_zh": "Estacado：The Darkness（Xbox 360）的原生 PC 重编译项目。非官方粉丝移植，需自备游戏副本。"
+  },
+  "scan-1391559411": {
+    "description_en": "Dragon Ball Z: Burst Limit Recompiled - native PC port via ReXGlue static recompilation",
+    "description_zh": "Dragon Ball Z: Burst Limit Recompiled：通过 ReXGlue 静态重编译实现的原生 PC 移植。"
+  },
+  "scan-1404285107": {
+    "description_en": "OpenTricky is an unofficial PC port of SSX Tricky, made by static recompilation. Bring your own disc.",
+    "description_zh": "OpenTricky 是通过静态重编译制作的 SSX Tricky 非官方 PC 移植。需自备光盘。"
+  },
+  "scan-1290507313": {
+    "description_en": "Native PC port of WCW vs. nWo World Tour (N64) via static recompilation. No game assets included — bring your own ROM.",
+    "description_zh": "通过静态重编译将 WCW vs. nWo World Tour（N64）原生移植到 PC。不包含游戏资源，需自备 ROM。"
+  },
+  "scan-1325488397": {
+    "description_en": "Static analyzer for Flutter/Dart AOT snapshots — recovers function names, class hierarchies, call graphs, and behavioral signals from libapp.so without embedding or executing the Dart VM. Supports ARM64 and x86_64, Dart 2.10–3.12.",
+    "description_zh": "Flutter/Dart AOT 快照静态分析器：无需嵌入或执行 Dart VM，即可从 libapp.so 恢复函数名、类层级、调用图和行为线索。支持 ARM64、x86_64 以及 Dart 2.10–3.12。"
+  },
+  "scan-1413781219": {
+    "description_en": "Geometry Wars: Retro Evolved 2 native PC port via static recompilation, with TRG launcher, high frame rates, local achievements and offline leaderboards",
+    "description_zh": "通过静态重编译将 Geometry Wars: Retro Evolved 2 原生移植到 PC，包含 TRG 启动器、高帧率、本地成就和离线排行榜。"
+  },
+  "scan-1359485937": {
+    "description_en": "The Binding of Isaac: Repentance+ recompiled to WebAssembly, playable in the browser.",
+    "description_zh": "将 The Binding of Isaac: Repentance+ 重编译为 WebAssembly，可在浏览器中游玩。"
+  },
+  "scan-526402543": {
+    "description_en": "android app reverse engineering pipeline",
+    "description_zh": "Android 应用逆向工程流程。"
+  },
+  "scan-1350926449": {
+    "description_en": "Wet [Xbox360] game static recompilation project based on RexGlue-SDK",
+    "description_zh": "基于 RexGlue-SDK 的 Wet [Xbox360] 游戏静态重编译项目。"
+  },
+  "scan-840508300": {
+    "description_en": "Sharp is a powerful Discord bot that runs, decompiles, and shows JIT disassembly of .NET languages. With .NET 9 support!",
+    "description_zh": "Sharp 是一个功能强大的 Discord 机器人，可运行、反编译 .NET 语言程序并展示 JIT 反汇编结果。支持 .NET 9！"
+  },
+  "scan-1320172903": {
+    "description_en": "Static recompilation of Dragon Ball Z: Buu's Fury with Adaptive Widescreen · Part of the R.A.I.D. community",
+    "description_zh": "Dragon Ball Z: Buu’s Fury 的静态重编译项目，支持自适应宽屏；属于 R.A.I.D. 社区。"
+  },
+  "scan-1318584701": {
+    "description_en": "Pokémon Stadium for iPhone and iPad via static recompilation, with native Metal rendering, touch controls, and ROM-free builds.",
+    "description_zh": "通过静态重编译让 Pokémon Stadium 登陆 iPhone 和 iPad，提供原生 Metal 渲染、触控操作，以及不含 ROM 的构建。"
+  },
+  "scan-1394144673": {
+    "description_en": "Unofficial native Halo: Combat Evolved for Apple Vision Pro. Immersive panorama, controller support, and visual mods. Experimental; requires Halo PC registration and Apple signing.",
+    "description_zh": "面向 Apple Vision Pro 的非官方原生 Halo: Combat Evolved。提供沉浸式全景、手柄支持和视觉模组。处于实验阶段，需要 Halo PC 注册和 Apple 签名。"
+  },
+  "scan-795687820": {
+    "description_en": "web viewer for 3d reconstructions",
+    "description_zh": "用于查看 3D 重建结果的网页查看器。"
+  },
+  "scan-1165462602": {
+    "description_en": "Headless CLI reflection debugger for .NET assemblies with MCP server support",
+    "description_zh": "用于 .NET 程序集的无界面命令行反射调试器，支持 MCP 服务器。"
+  },
+  "scan-1303366934": {
+    "description_en": "Native Windows hub for the AKI-engine N64 wrestling recompilations - downloads and launches the ports. No game assets included.",
+    "description_zh": "用于 AKI 引擎 N64 摔跤游戏重编译项目的原生 Windows 管理中心，可下载并启动各移植版。不包含游戏资源。"
+  },
+  "scan-1300640577": {
+    "description_en": "Static recompilation and runtime toolkit for Nintendo Wii U (based on NWiiRecomp) to make native PC ports (and not only)",
+    "description_zh": "面向 Nintendo Wii U 的静态重编译与运行时工具包，基于 NWiiRecomp，可用于制作原生 PC 移植等。"
+  },
+  "scan-1374980689": {
+    "description_en": "Recompilation of Need for Speed: Most Wanted (the 2005 PC Black Edition) built on recomp-kit: macOS, iPad, Linux, Windows and browser hosts, with Metal, Vulkan and WebGPU rendering. Bring your own game files.",
+    "description_zh": "基于 recomp-kit 重编译 Need for Speed: Most Wanted（2005 年 PC Black Edition），提供 macOS、iPad、Linux、Windows 和浏览器宿主，支持 Metal、Vulkan 和 WebGPU 渲染。需自备游戏文件。"
+  },
+  "scan-1420860979": {
+    "description_en": "Naruto Shippuden: Ultimate Ninja Storm Generations (Xbox 360) running natively on Android and PC: static recompilation, without a CPU emulator.",
+    "description_zh": "让 Naruto Shippuden: Ultimate Ninja Storm Generations（Xbox 360）在 Android 和 PC 上原生运行：采用静态重编译，无需 CPU 模拟器。"
+  },
+  "scan-1381407775": {
+    "description_en": "Hub for iOS UE4 reverse-engineering notes (arm64/arm64e) and how they fit together",
+    "description_zh": "汇集 iOS UE4 逆向工程笔记（arm64/arm64e），并说明各部分如何关联。"
+  },
+  "scan-802035530": {
+    "description_en": "Memory Engine and Scanner for iOS/MacOS using Mach API",
+    "description_zh": "使用 Mach API 的 iOS/macOS 内存引擎和扫描器。"
+  },
+  "scan-1355484986": {
+    "description_en": "Static recompilation of Jet Set Radio Future (Xbox) to native macOS — playable into chapter 2 at 60 fps via a Direct3D 8 lift. Built on sp00nznet/xboxrecomp. No game data included.",
+    "description_zh": "将 Jet Set Radio Future（Xbox）静态重编译为原生 macOS 程序，通过 Direct3D 8 提升转换以 60 fps 游玩至第 2 章。基于 sp00nznet/xboxrecomp 构建。不包含游戏数据。"
+  },
+  "scan-1417136573": {
+    "description_en": "A native Sonic Adventure 2 port by static recompilation for Linux, Windows, and Android. Experimental source preview.",
+    "description_zh": "通过静态重编译实现 Sonic Adventure 2 的 Linux、Windows 和 Android 原生移植。实验性源码预览。"
+  },
+  "scan-337860174": {
+    "description_en": "Export contacts and chat messages from iOS or macOS for easy viewing and searching",
+    "description_zh": "从 iOS 或 macOS 导出联系人和聊天消息，便于查看与搜索。"
+  },
+  "scan-1265756887": {
+    "description_en": "A Flutter/Dart AOP and compiler-extension framework with app-local frontend-server snapshots and SDK-mirror-friendly compiler integration.",
+    "description_zh": "Flutter/Dart AOP 与编译器扩展框架，提供应用本地的 frontend-server 快照，以及适配 SDK 镜像的编译器集成。"
+  },
+  "scan-1206373201": {
+    "description_en": "Substrate tweak that fixes WPA2/WPA3 transitional WiFi on iOS 3.x-12.x by stripping unsupported AKM suites from the RSN IE parser",
+    "description_zh": "通过在 RSN IE 解析器中剔除不支持的 AKM 套件，修复 iOS 3.x–12.x 上 WPA2/WPA3 过渡模式 WiFi 的 Substrate 插件。"
+  },
+  "scan-1261082541": {
+    "description_en": "Debug-only SwiftUI runtime inspector with overlays, logs, navigation tracking, and UIKit hosting support",
+    "description_zh": "仅用于调试的 SwiftUI 运行时检查器，支持覆盖层、日志、导航跟踪和 UIKit 托管。"
+  },
+  "scan-1418247764": {
+    "description_en": "Naruto: Rise of a Ninja (Xbox 360) running natively on Android ARM64 — static recompilation, Vulkan, 360p to 4K, FXAA/FSR.",
+    "description_zh": "让 Naruto: Rise of a Ninja（Xbox 360）在 Android ARM64 上原生运行：静态重编译、Vulkan、360p 至 4K，以及 FXAA/FSR。"
+  },
+  "scan-1287034531": {
+    "description_en": "Clone a mobile app into a working Expo / React Native project from screenshots. An open-source Claude Code skill.",
+    "description_zh": "从截图将移动应用克隆为可运行的 Expo / React Native 项目。一项开源 Claude Code 技能。"
+  },
+  "scan-962471539": {
+    "description_en": "[ACL 2025] Instruction-Tuning Data Synthesis from Scratch via Web Reconstruction",
+    "description_zh": "[ACL 2025] 通过网页重建从零合成指令微调数据。"
+  },
+  "scan-267427670": {
+    "description_en": "Miscellaneous research tools and notes from my work on the Wii, Starlet, IOS, boot1, boot2, etc.",
+    "description_zh": "作者研究 Wii、Starlet、IOS、boot1、boot2 等过程中积累的各类研究工具与笔记。"
+  },
+  "scan-75776165": {
+    "description_en": "A WIP IL2CPP metadata -> IDC generator",
+    "description_zh": "开发中的 IL2CPP 元数据到 IDC 生成器。"
+  },
+  "scan-1410637011": {
+    "description_en": "Unofficial native PC port of Muscle March (WiiWare) via static recompilation: macOS, Linux, Steam Deck, Windows. Requires your own copy of the game. Beta.",
+    "description_zh": "通过静态重编译将 Muscle March（WiiWare）非官方原生移植到 PC，支持 macOS、Linux、Steam Deck 和 Windows。需要自有游戏副本。测试版。"
+  },
+  "scan-1348423174": {
+    "description_en": "Build iOS Shortcuts from Python. Action definitions are pulled out of real shortcuts instead of written by hand, so the generator can't emit a parameter nobody has seen work.",
+    "description_zh": "用 Python 构建 iOS 快捷指令。动作定义从真实快捷指令中提取，避免手写，因此生成器不会输出从未有人见过能正常工作的参数。"
+  },
+  "scan-104645649": {
+    "description_en": "iOS  app defender for anti-reverse!",
+    "description_zh": "用于抵御逆向工程的 iOS 应用保护工具！"
+  },
+  "scan-1421263093": {
+    "description_en": "Prototype and Prototype 2 (Xbox 360) for Nintendo Switch: static recompilation with ReXGlue, native Vulkan renderer. Free, not for sale. No game files.",
+    "description_zh": "将 Prototype 和 Prototype 2（Xbox 360）移植到 Nintendo Switch：使用 ReXGlue 静态重编译与原生 Vulkan 渲染器。免费，不出售。不含游戏文件。"
+  },
+  "scan-1406584311": {
+    "description_en": "Native C++/SDL3 port of 大富翁4 (Richman 4) for macOS, Android and iOS — requires your own copy of the game (buy it on Steam). Unofficial; not affiliated with SOFTSTAR.",
+    "description_zh": "大富翁4（Richman 4）的原生 C++/SDL3 移植，支持 macOS、Android 和 iOS，需要自有游戏副本（可在 Steam 购买）。非官方项目，与 SOFTSTAR 无关联。",
+    "english_retains_name": true
+  },
+  "scan-1110091844": {
+    "description_en": "  iOS sysdiagnose archive reference - structure, artifacts, databases, and forensic analysis for iOS 18.1/26.1",
+    "description_zh": "iOS sysdiagnose 归档参考资料：介绍 iOS 18.1/26.1 的结构、产物、数据库与取证分析。"
+  },
+  "scan-1021153007": {
+    "description_en": "An ad-free Douban jailbreak tweak. Thanks for using it; stars are welcome.",
+    "description_zh": "豆瓣无广告越狱插件，感谢使用，欢迎 Star。"
+  },
+  "scan-86930244": {
+    "description_en": "A debloater for iOS apps",
+    "description_zh": "用于精简 iOS 应用的工具。"
+  },
+  "scan-1412608358": {
+    "description_en": "Native PC port of Final Fantasy Crystal Chronicles: Echoes of Time (DS) by static recompilation. Bring your own ROM: the game is built on your PC, nothing of the game is included. Windows and Linux. Alpha.",
+    "description_zh": "通过静态重编译将 Final Fantasy Crystal Chronicles: Echoes of Time（DS）原生移植到 PC。需自备 ROM；游戏在用户 PC 上构建，不包含任何游戏内容。支持 Windows 和 Linux。Alpha 版。"
+  },
+  "scan-1319857630": {
+    "description_en": "Static recompilation of Dragon Ball Z: The Legacy of Goku with Adaptive Widescreen · Part of the R.A.I.D. community",
+    "description_zh": "Dragon Ball Z: The Legacy of Goku 的静态重编译项目，支持自适应宽屏；属于 R.A.I.D. 社区。"
+  },
+  "scan-806148730": {
+    "description_en": "XNU Image Tools is a multi-platform image processing toolkit for fuzzing UTI file formats.",
+    "description_zh": "XNU Image Tools 是一个多平台图像处理工具包，用于对 UTI 文件格式进行模糊测试。"
+  },
+  "scan-71991415": {
+    "description_en": "Objective-C method call dynamic tracing tool",
+    "description_zh": "Objective-C 方法调用动态跟踪工具。"
+  },
+  "scan-83394146": {
+    "description_en": "WeChat without jailbreaking.",
+    "description_zh": "免越狱微信。"
+  },
+  "scan-1165145626": {
+    "description_en": "Complete static recompilation of Aerobiz Supersonic for the Sega Genesis ",
+    "description_zh": "Sega Genesis 游戏 Aerobiz Supersonic 的完整静态重编译项目。"
+  },
+  "scan-1404456123": {
+    "description_en": "Native PC port of Namco's Point Blank (PlayStation) via static recompilation (PSXRecomp). Aim with your mouse or a controller, no light gun needed. Bring your own disc.",
+    "description_zh": "通过 PSXRecomp 静态重编译将 Namco 的 Point Blank（PlayStation）原生移植到 PC。可用鼠标或手柄瞄准，无需光枪。需自备光盘。"
+  },
+  "scan-1355190281": {
+    "description_en": "CVE-2026-65330 PoC — setxattr PAC bypass via fixed #0x307a diversifier (iOS 26.6 / 23G71)",
+    "description_zh": "CVE-2026-65330 概念验证：利用固定的 #0x307a 多样化值，通过 setxattr 绕过 PAC（iOS 26.6 / 23G71）。"
+  },
+  "scan-701693534": {
+    "description_en": "Tomography reconstruction Web App that keeps non-expert users in mind",
+    "description_zh": "面向非专业用户设计的断层成像重建网页应用。"
+  },
+  "scan-1316126698": {
+    "description_en": "Inject LookinServer into authorized decrypted iOS apps for on-device inspection",
+    "description_zh": "将 LookinServer 注入已获授权且已解密的 iOS 应用，以便在设备上检查。"
+  },
+  "scan-1199486432": {
+    "description_en": "Mobile app security analysis MCP server for Android APK and iOS IPA files",
+    "description_zh": "用于分析 Android APK 和 iOS IPA 文件安全性的移动应用 MCP 服务器。"
+  },
+  "scan-1359119675": {
+    "description_en": "Frida hook generator - produces interception scripts for Android/iOS instrumentation and RE.",
+    "description_zh": "Frida 钩子生成器，为 Android/iOS 插桩和逆向工程生成拦截脚本。"
+  },
+  "scan-1355189694": {
+    "description_en": "CVE-2026-64788 PoC — IOGPUFamily Use-After-Free (iOS 26.6 / 23G71)",
+    "description_zh": "CVE-2026-64788 概念验证：IOGPUFamily 释放后使用漏洞（iOS 26.6 / 23G71）。"
+  },
+  "scan-1232557901": {
+    "description_en": "Ai skills for Frida dynamic instrumentation across Android, iOS, native hooks, agents, and troubleshooting",
+    "description_zh": "用于 Frida 动态插桩的 AI 技能，覆盖 Android、iOS、原生钩子、代理脚本与故障排查。"
+  },
+  "scan-1334437091": {
+    "description_en": "Decompiler for compiled iOS/macOS interface files (.nib, .storyboardc): object tree, wiring, custom classes, navigation graphs",
+    "description_zh": "针对已编译 iOS/macOS 界面文件（.nib、.storyboardc）的反编译器，可恢复对象树、连接关系、自定义类和导航图。"
+  },
+  "scan-687275579": {
+    "description_en": "A Reconstruction Scheme for Router Web",
+    "description_zh": "面向路由器网页的重建方案。"
+  },
+  "scan-189448361": {
+    "description_en": "Kernel Cache Manipulation Library",
+    "description_zh": "内核缓存操作库。"
+  },
+  "scan-1406389148": {
+    "description_en": "Interactive disassembler — static analysis / reverse engineering for x86/x64 PE, ELF and raw binaries",
+    "description_zh": "交互式反汇编器，用于 x86/x64 PE、ELF 和原始二进制文件的静态分析与逆向工程。"
+  },
+  "scan-894411545": {
+    "description_en": "macho_re is a lightweight lib for parsing Mach-O binaries.",
+    "description_zh": "macho_re 是一个用于解析 Mach-O 二进制文件的轻量级库。"
+  },
+  "scan-1143186966": {
+    "description_en": "Patch iOS binaries to run on macOS",
+    "description_zh": "修补 iOS 二进制文件，使其在 macOS 上运行。"
+  },
+  "scan-666258413": {
+    "description_en": "Quotes app in flutter using node js api with smooth aniamations . It has Download quotes snapshot feature, share quotes with snapshot feature, copy quotes features , add quotes feature.",
+    "description_zh": "使用 Node.js API 的 Flutter 语录应用，具有流畅动画。支持下载语录快照、分享附带快照的语录、复制语录和添加语录。"
+  },
+  "scan-1215934714": {
+    "description_en": "A comprehensive VBA macro that extracts 60 formatting, styling, and data properties from Excel workbooks. Ideal for mapping templates for web frontend reconstruction.",
+    "description_zh": "一个全面的 VBA 宏，可从 Excel 工作簿中提取 60 项格式、样式和数据属性，适合为网页前端重建映射模板。"
+  },
+  "scan-1061920932": {
+    "description_en": "🛰️ AstroYantra – A web-based app for digital reconstruction of Indian astronomical instruments like Samrat Yantra, Rama Yantra & Digamsa Yantra. It generates mathematically accurate dimensions, 2D blueprints & interactive 3D models tailored to any latitude & longitude in India.",
+    "description_zh": "🛰️ AstroYantra：用于数字化重建 Samrat Yantra、Rama Yantra 和 Digamsa Yantra 等印度天文仪器的网页应用。可为印度任意经纬度生成数学上准确的尺寸、2D 蓝图和交互式 3D 模型。"
+  },
+  "scan-1195004397": {
+    "description_en": "Customize Windows settings, manage processes, and optimize system components with a flexible, open-source tool built on .NET Core 8.0.",
+    "description_zh": "一个基于 .NET Core 8.0 构建的灵活开源工具，用于自定义 Windows 设置、管理进程和优化系统组件。"
+  },
+  "scan-405656878": {
+    "description_en": "Code injection into third-party iOS applications.",
+    "description_zh": "向 iOS 第三方应用注入代码。"
+  },
+  "scan-909147208": {
+    "description_en": "SwinVox 3D Reconstruction is a web application designed to facilitate the upload of image datasets for 3D model reconstruction and provides an interactive 3D viewer for the reconstructed models. Users can easily upload images, view the resulting 3D models with various rendering options, and manage their saved models through a gallery interface.",
+    "description_zh": "SwinVox 3D Reconstruction 是一款网页应用，便于上传图像数据集以重建 3D 模型，并提供交互式 3D 查看器。用户可轻松上传图像，使用多种渲染选项查看生成的 3D 模型，并通过图库界面管理已保存的模型。"
+  },
+  "scan-1393701505": {
+    "description_en": "StrataScan is a gray-hat hackers attack-surface reconstruction engine that transforms web history into actionable security intelligence. It combines OSINT, archive forensics, DNS/TLS analysis, subdomain discovery, secret detection, temporal diffing, live verification, evidence correlation, and automated reporting.",
+    "description_zh": "StrataScan 是一个面向灰帽黑客的攻击面重建引擎，将网页历史转化为可操作的安全情报。它结合了 OSINT、归档取证、DNS/TLS 分析、子域发现、秘密信息检测、时序差异比较、实时核验、证据关联和自动报告。"
+  },
+  "scan-436538753": {
+    "description_en": "🧲 My collection of case demonstrations, from basic web page reconstruction to JavaScript, jQuery, and Vue, including many examples I organized myself.",
+    "description_zh": "🧲 作者的案例演示合集，涵盖基础网页重构以及 JavaScript、jQuery、Vue 等自行整理的案例。"
+  },
+  "scan-1415243418": {
+    "description_en": "AlMosaly Open Source — Android APK reconstruction, prayer-times PWA, Quran, azkar, qibla, and a privacy-first Islamic web app.",
+    "description_zh": "AlMosaly 开源项目：通过 Android APK 重建，提供祷告时间 PWA、古兰经、赞词、礼拜朝向，以及隐私优先的伊斯兰网页应用。"
+  },
+  "scan-1342422036": {
+    "description_en": "Pure-Go IPA tweak injector. Inject dylibs into IPA files & sideload on iOS 17+. Byte-faithful pyzule/cyan rewrite.",
+    "description_zh": "纯 Go 编写的 IPA 插件注入器，可将 dylib 注入 IPA 文件并侧载至 iOS 17+。按字节忠实重写 pyzule/cyan。"
+  },
+  "scan-677275590": {
+    "description_en": "TraffEye SG is a 100% free, no ads, and open-source Flutter app made to get live snapshots of traffic cameras in Singapore. Available for Android and iOS.",
+    "description_zh": "TraffEye SG 是一款 100% 免费、无广告的开源 Flutter 应用，用于获取新加坡交通摄像头的实时快照。支持 Android 和 iOS。"
+  },
+  "scan-1319116467": {
+    "description_en": "Reverse engineering and runtime developer operations for the final iOS build of Real Racing 3.",
+    "description_zh": "针对 Real Racing 3 最后一个 iOS 版本的逆向工程和运行时开发操作。"
+  },
+  "scan-1286196205": {
+    "description_en": "Claude Code skill that diagnoses janky Flutter frames from DevTools snapshots and writes a code-locating analysis brief",
+    "description_zh": "一项 Claude Code 技能，可从 DevTools 快照诊断 Flutter 卡顿帧，并编写能定位到代码的分析简报。"
+  },
+  "scan-1069512009": {
+    "description_en": "A collaborative project on satellite signal processing and image reconstruction, integrating MATLAB algorithms with web-based visualization for enhanced data analysis.",
+    "description_zh": "一个卫星信号处理与图像重建协作项目，将 MATLAB 算法与网页可视化结合，以增强数据分析。"
+  },
+  "scan-1356938925": {
+    "description_en": "Run a real iOS 27 kernel (iPhone 16) on Windows via WSL2 to a root shell. No Mac, no cloud. A Windows port of jprx/darwin-vm.",
+    "description_zh": "通过 Windows 上的 WSL2 运行真实的 iOS 27 内核（iPhone 16），直至获得 root shell。无需 Mac，无需云服务。jprx/darwin-vm 的 Windows 移植版。"
+  },
+  "scan-1389360369": {
+    "description_en": "Portable Windows CLI for static analysis, PE and .NET inspection, decompilation and unpacking of Python packed programs.",
+    "description_zh": "便携式 Windows 命令行工具，用于静态分析、PE 和 .NET 检查，以及 Python 打包程序的反编译和解包。"
+  },
+  "scan-1409585598": {
+    "description_en": "Reverse-engineering MCP server for AI agents: .NET and native PE/ELF/Mach-O analysis, decompilation, cross-references and patching. IDA and Ghidra optional.",
+    "description_zh": "面向 AI 智能体的逆向工程 MCP 服务器，支持 .NET 以及原生 PE/ELF/Mach-O 分析、反编译、交叉引用和修补。IDA 与 Ghidra 为可选组件。"
+  },
+  "scan-1054453442": {
+    "description_en": "An embedded system that uses a time-of-flight sensor and a rotary mechanism to perform 360° spatial scans. It captures distance measurements within a plane, stores the data onboard, and transmits it to a PC or web app for 3D reconstruction and visualization.  #EmbeddedSystems #LiDAR #3DReconstruction",
+    "description_zh": "使用飞行时间传感器和旋转机构执行 360° 空间扫描的嵌入式系统。它在平面内采集距离测量值，存储于板载设备，并传输到 PC 或网页应用以进行 3D 重建和可视化。#EmbeddedSystems #LiDAR #3DReconstruction"
+  },
+  "scan-989498412": {
+    "description_en": "A PyTorch implementation of a Variational Autoencoder trained on the MNIST dataset. The project demonstrates digit generation from random latent vectors and reconstruction of uploaded digit images using a Gradio web interface.",
+    "description_zh": "使用 PyTorch 实现并在 MNIST 数据集上训练的变分自编码器。通过 Gradio 网页界面展示如何从随机潜在向量生成数字，以及重建用户上传的数字图像。"
+  },
+  "scan-610330175": {
+    "description_en": "A web-based 3D-Reconstruction of the Moon.",
+    "description_zh": "基于网页的月球 3D 重建项目。"
+  },
+  "scan-1071120125": {
+    "description_en": "shake out hardcoded keys, certificates and other artifacts from firmware",
+    "description_zh": "从固件中提取硬编码的密钥、证书及其他产物。"
+  },
+  "scan-1262692295": {
+    "description_en": "Diff two firmware images and surface exactly what changed: new binaries, flipped config flags, added certs, and shifted entropy regions.",
+    "description_zh": "比较两个固件镜像，并明确展示改动：新增二进制文件、变更的配置开关、新增证书，以及发生变化的熵分布区域。"
+  },
+  "scan-361197329": {
+    "description_en": "3D reconstruction project of human body based on PIFU, web development based on Django.",
+    "description_zh": "基于 PIFU 的人体 3D 重建项目，网页部分基于 Django 开发。"
+  },
+  "scan-1421333775": {
+    "description_en": "Local reverse engineering for humans and AI agents. Built-in x86/x64/ARM64 decompiler, PE/ELF/Mach-O, .NET IL and a compact 12-tool MCP server. Python · MIT.",
+    "description_zh": "面向人类和 AI 智能体的本地逆向工程工具。内置 x86/x64/ARM64 反编译器，支持 PE/ELF/Mach-O、.NET IL，并提供精简的 12 工具 MCP 服务器。Python · MIT。"
+  },
+  "scan-1327858510": {
+    "description_en": "Forensic reconstruction of what one IP address did on a web server, recovered from access logs and drawn as an activity graph. Runs offline; every finding traces back to the log line that produced it.",
+    "description_zh": "从访问日志中恢复某个 IP 地址在网页服务器上的活动，并绘制活动图以进行取证重建。离线运行，每项发现均可追溯到对应日志行。"
+  },
+  "scan-1316404085": {
+    "description_en": "Photo-in, answers-out solver for 'find the COW' word-search puzzles: OpenCV glyph classification, grid reconstruction, 8-direction search, with a phone web UI",
+    "description_zh": "针对“find the COW”寻词谜题的拍照求解器：输入照片即可得到答案，使用 OpenCV 字形分类、网格重建和 8 方向搜索，并提供手机网页界面。"
+  },
+  "scan-1018011136": {
+    "description_en": "An interactive, web-based tool for exploring Fourier Series. Draw custom waveforms, input data, or use presets to visualize signal reconstruction and frequency spectrum in real-time. All in a single HTML file.",
+    "description_zh": "用于探索傅里叶级数的交互式网页工具。绘制自定义波形、输入数据或使用预设，即可实时可视化信号重建与频谱。全部包含在一个 HTML 文件中。"
+  },
+  "scan-1388384255": {
+    "description_en": "Turns Chinese symbols and text into red-lacquer 3D .glb assets: exact line-and-arc reconstruction, rounded bevels, and a strict image-matching verifier. Detailed, light and web (meshopt) versions.",
+    "description_zh": "将中文符号与文字转换为红漆风格的 3D .glb 资源：精确重建直线与圆弧、圆润倒角，并提供严格的图像匹配校验器。包含精细、轻量和网页（meshopt）版本。"
+  },
+  "scan-1377291188": {
+    "description_en": "Reverse engineering, firmware analysis, and experimental mods for SmartBox HW501 USB CarPlay dongles sold on AliExpress.",
+    "description_zh": "针对 AliExpress 上出售的 SmartBox HW501 USB CarPlay 适配器开展逆向工程、固件分析及实验性修改。"
+  },
+  "scan-1272146224": {
+    "description_en": "",
+    "description_zh": ""
+  },
+  "scan-1157641891": {
+    "description_en": "Static analyzer for Flutter/Dart AOT snapshots",
+    "description_zh": "Flutter/Dart AOT 快照静态分析器。"
+  },
+  "scan-1130741402": {
+    "description_en": "Automated build & patch orchestration for Sasquatch (SquashFS). Supports modern GCC/Clang and Termux (Android).",
+    "description_zh": "Sasquatch（SquashFS）的自动化构建与补丁编排工具，支持现代 GCC/Clang 和 Termux（Android）。"
+  },
+  "scan-1333685730": {
+    "description_en": "TP-Link PG2400P reverse engineering",
+    "description_zh": "TP-Link PG2400P 逆向工程。"
+  },
+  "scan-1355143654": {
+    "description_en": "UAS security toolkit for Parrot OS covering SDR/RF analysis, Remote ID and DJI DroneID, MAVLink/DroneCAN, GNSS, counter-UAS awareness, firmware analysis, and flight-controller hardware workflows.",
+    "description_zh": "面向 Parrot OS 的无人航空系统安全工具包，涵盖 SDR/RF 分析、Remote ID 和 DJI DroneID、MAVLink/DroneCAN、GNSS、反无人机系统认知、固件分析及飞控硬件工作流。"
+  },
+  "scan-489252461": {
+    "description_en": "Using a reconstruction convolutional autoencoder model with Keras to detect anomalies in timeseries data from a web app developed in React and fed by a Django backend.",
+    "description_zh": "使用 Keras 重建式卷积自编码器模型，检测由 React 网页应用和 Django 后端提供的时间序列数据中的异常。"
+  },
+  "scan-1120045881": {
+    "description_en": "A Deep Learning web application for early pneumonia screening. Uses a U-Net Autoencoder to detect anomalies in chest X-rays via reconstruction error analysis. Built with TensorFlow and Streamlit.",
+    "description_zh": "用于早期肺炎筛查的深度学习网页应用。使用 U-Net 自编码器，通过重建误差分析检测胸部 X 光片中的异常。基于 TensorFlow 和 Streamlit 构建。"
+  },
+  "scan-1235211148": {
+    "description_en": "Interactive web visualizers for the central algorithms of an Algorithmic Bioinformatics course: HMM Viterbi (CpG islands), Needleman-Wunsch / Smith-Waterman alignment, Evoformer block walkthrough, protein structure-similarity scores, phylogenetic tree reconstruction (NJ/UPGMA/Fitch/Sankoff).",
+    "description_zh": "算法生物信息学课程核心算法的交互式网页可视化工具：HMM Viterbi（CpG 岛）、Needleman-Wunsch / Smith-Waterman 比对、Evoformer 模块解析、蛋白质结构相似度评分及系统发育树重建（NJ/UPGMA/Fitch/Sankoff）。"
+  },
+  "scan-1201275701": {
+    "description_en": "A PINN-based sparse reconstruction and visualization system for two-dimensional steady flow fields in microfluidic chips: parametric geometry modeling → CFD ground truth → dual-model PDE coupling → online inverse-problem solving → interactive web presentation, with the complete workflow in one repository. Graduation project.",
+    "description_zh": "基于 PINN 的微流控芯片内二维稳态流场稀疏重建与可视化系统：参数化几何建模 → CFD 真值 → 双模型 PDE 耦合 → 在线反问题求解 → Web 交互展示，在单个仓库内覆盖全流程。毕业设计项目。"
+  },
+  "scan-1388930263": {
+    "description_en": "Evidence-first Samsung Tizen TV security research: reversible debloating, firmware analysis, validated Remote PC/CIFS UID-0 injection, and hardening.",
+    "description_zh": "证据优先的 Samsung Tizen TV 安全研究，涵盖可逆的精简处理、固件分析、已验证的 Remote PC/CIFS UID-0 注入及加固。"
+  },
+  "scan-1332771269": {
+    "description_en": "This is a web app that generates new sentences from multiple sentences using the cut-up technique (word-level reconstruction based on Markov chains).",
+    "description_zh": "使用剪贴技法从多个句子生成新句子的网页应用，基于马尔可夫链进行词级重组。"
+  },
+  "scan-1383583551": {
+    "description_en": "Rust full-stack headless content platform on the rushwind framework: proto as the single API contract, build-time codegen of REST/SSE BFF fronts over an internal gRPC domain core, five zero-modification frontends synced as branded snapshots (React admin + React/Vue/Taro/Flutter apps).",
+    "description_zh": "基于 rushwind 框架的 Rust 全栈无头内容平台：以 proto 为唯一 API 契约，在构建时为内部 gRPC 领域核心生成 REST/SSE BFF 前端，并将五个无需修改的前端同步为品牌化快照（React 管理端及 React/Vue/Taro/Flutter 应用）。"
+  },
+  "scan-1050989424": {
+    "description_en": "One Click 3D Gaussian Splatting Reconstruction and Interactive Web Visualization System for Cultural Heritage",
+    "description_zh": "面向文化遗产的一键式 3D 高斯泼溅重建及交互式网页可视化系统。"
+  },
+  "scan-182619456": {
+    "description_en": "A full-stack web service wrapping the partialconv net for image reconstruction",
+    "description_zh": "封装 partialconv 网络以进行图像重建的全栈网页服务。"
+  },
+  "scan-986769654": {
+    "description_en": "A Flutter-powered Notes App with Calendar-Based Backup Viewer. Securely view historical snapshots of your notes via an interactive calendar without modifying current content. Backup & restore included!",
+    "description_zh": "使用 Flutter 构建的笔记应用，带有基于日历的备份查看器。可通过交互式日历安全查看笔记历史快照，同时保持当前内容不变。包含备份与恢复功能！"
+  },
+  "scan-1273807451": {
+    "description_en": "Command-line wrapper around ILSpy for targeted .NET decompilation, including single-method decompilation and structured JSON output.",
+    "description_zh": "ILSpy 的命令行封装，用于有针对性的 .NET 反编译，支持单个方法反编译和结构化 JSON 输出。"
+  },
+  "scan-1298425498": {
+    "description_en": "SmartLab is a web and mobile-based college computer lab management and monitoring system built with Django, Flutter, and MySQL. It enables teachers and lab assistants to monitor computer usage, remotely manage student systems, capture screenshots of student desktops, receive webcam snapshots for attendance and monitoring.",
+    "description_zh": "SmartLab 是一个基于 Django、Flutter 和 MySQL 的高校计算机实验室管理与监控系统，提供网页端和移动端。教师与实验室助理可监控计算机使用情况、远程管理学生系统、捕获学生桌面截图，并接收用于考勤和监控的摄像头快照。"
+  },
+  "scan-1366738940": {
+    "description_en": "Historical Flutter plugin wrapping Apple HealthKit and Google Fit. Fork of CACHET's health package with internal customizations from a former corporate GitLab. Archived snapshot, not actively maintained.",
+    "description_zh": "一个历史版本的 Flutter 插件，封装 Apple HealthKit 和 Google Fit。由 CACHET 的 health 包分叉而来，包含来自此前企业 GitLab 的内部定制。归档快照，未积极维护。"
+  },
+  "scan-1275141706": {
+    "description_en": "Obfuscate .NET & Mono assemblies in your browser and share crackmes — no install, powered by BitMono.",
+    "description_zh": "在浏览器中混淆 .NET 与 Mono 程序集并分享 CrackMe，无需安装，由 BitMono 提供支持。"
+  },
+  "scan-1417291747": {
+    "description_en": "Make reverse engineering useless. Agent skill + audit script that keeps the value on the server and ships client code worthless to read.",
+    "description_zh": "让逆向工程失去价值。智能体技能与审计脚本，将有价值的逻辑保留在服务器端，使发布的客户端代码不值得阅读。"
+  },
+  "scan-1207647107": {
+    "description_en": "Pinned Riverpod documentation snapshots, MCP tools, and deterministic audit helpers for Flutter repos.",
+    "description_zh": "固定版本的 Riverpod 文档快照、MCP 工具，以及用于 Flutter 仓库的确定性审计辅助工具。"
+  },
+  "scan-1151664420": {
+    "description_en": "A Memory‑Reconstruction Web App",
+    "description_zh": "一个记忆重建网页应用。"
+  },
+  "scan-1090537306": {
+    "description_en": "create static web pages to visualize paleoclimate reconstructions",
+    "description_zh": "创建静态网页以可视化古气候重建结果。"
+  },
+  "scan-1410864420": {
+    "description_en": "Learn English — code snapshot for review: Flutter app, Spring Boot backend, LLM analyzer",
+    "description_zh": "Learn English：供审查的代码快照，包含 Flutter 应用、Spring Boot 后端和 LLM 分析器。"
+  },
+  "scan-1378646887": {
+    "description_en": "Windows BIOS/UEFI backup tool and Nick Squires BIOS ROM recovery service. All Toughbook models welcome; other brands assessed. Public build has no password-hash extractor.",
+    "description_zh": "Windows BIOS/UEFI 备份工具与 Nick Squires BIOS ROM 恢复服务。欢迎所有 Toughbook 型号，其他品牌另行评估。公开构建不含密码哈希提取器。"
+  },
+  "scan-1246530914": {
+    "description_en": "Personal, ad-free Android podcast player (Flutter) — sanitized public snapshot",
+    "description_zh": "个人使用、无广告的 Android 播客播放器（Flutter），提供已清理敏感信息的公开快照。"
+  },
+  "scan-1409275888": {
+    "description_en": "Documentation of the Meta Ray-Ban Display (greatwhite) firmware: boot chain, Android Verified Boot, TrustZone and hypervisor, remote processors, peripherals and device-tree overlays. English and Chinese.",
+    "description_zh": "Meta Ray-Ban Display（greatwhite）固件文档：启动链、Android Verified Boot、TrustZone 与虚拟机监控器、远程处理器、外设及设备树覆盖层。提供英文和中文。"
+  },
+  "scan-1297161009": {
+    "description_en": "Dart & Flutter SDK for GreenFlags feature flags — snapshot cache, offline persistence, geofencing",
+    "description_zh": "GreenFlags 功能开关的 Dart 与 Flutter SDK，支持快照缓存、离线持久化和地理围栏。"
+  },
+  "scan-1344388896": {
+    "description_en": "Recover unencrypted TP-Link firmware for analysis — an independent Python reproduction of the tpbreak / WatchfulIP RSA-PSS-salt decryption technique.",
+    "description_zh": "恢复未加密的 TP-Link 固件以便分析，对 tpbreak / WatchfulIP 的 RSA-PSS 盐值解密技术进行独立 Python 复现。"
+  },
+  "scan-303231847": {
+    "description_en": "Web Infrastructure for the NeuroTech@Berkeley Visual Reconstruction Software Project",
+    "description_zh": "NeuroTech@Berkeley 视觉重建软件项目的网页基础设施。"
+  },
+  "scan-1256307178": {
+    "description_en": "A premium, cross-platform mobile application built with Flutter that automates social media \"monthly dumps\" by generating curated, aesthetic photo collages from daily raw snapshots.",
+    "description_zh": "一款使用 Flutter 构建的高端跨平台移动应用，可将日常原始照片快照生成经过挑选、具有美感的拼贴图，从而自动制作社交媒体“月度照片合集”。"
+  },
+  "scan-1184743753": {
+    "description_en": "\"Uma-Web\" is a reconstruction of \"Umamusume: Pretty Derby\" for the web",
+    "description_zh": "“Uma-Web”是在网页上重建“Umamusume: Pretty Derby”的项目。"
+  },
+  "scan-1084412792": {
+    "description_en": "Cops N Robbers Revival restores multiplayer, mod support and modern Android compatibility for the classic Android game.",
+    "description_zh": "Cops N Robbers Revival 为经典 Android 游戏恢复多人游戏、模组支持及现代 Android 兼容性。"
+  },
+  "scan-1414006396": {
+    "description_en": "Reverse-engineering ZWO ASIAIR firmware with REA - findings, notes and tooling (no vendor firmware redistributed)",
+    "description_zh": "使用 REA 逆向分析 ZWO ASIAIR 固件，包含研究发现、笔记与工具，不重新分发厂商固件。"
+  },
+  "scan-1421972961": {
+    "description_en": "122 reverse-engineering AI skills, ready for publication and cross-platform: malware analysis / software reverse engineering / firmware and embedded systems / protocol reverse engineering / mobile applications / unpacking and deobfuscation / software cracking / vulnerability research / managed code / forensics and intelligence / CTF.",
+    "description_zh": "122 个逆向工程 AI 技能，可发布、跨平台，涵盖恶意软件分析、软件逆向、固件与嵌入式、协议逆向、移动应用、脱壳与反混淆、软件破解、漏洞挖掘、托管代码、取证情报及 CTF。"
+  },
+  "scan-1416845438": {
+    "description_en": "Flutter music app for a personal library: import, background playback, mood selection and optional Python/SQLite social service. Sanitized public source snapshot.",
+    "description_zh": "面向个人音乐库的 Flutter 音乐应用，支持导入、后台播放、心情选择，以及可选的 Python/SQLite 社交服务。提供已清理敏感信息的公开源码快照。"
+  },
+  "scan-1239662635": {
+    "description_en": "Multi-Agent Collaborative Embedded Firmware Defect Prediction and Automated Repair System",
+    "description_zh": "多智能体协作的嵌入式固件缺陷预测与自动修复系统。"
+  },
+  "scan-268984354": {
+    "description_en": "dart_snapshot for bypassing Flutter private-library publication validation.",
+    "description_zh": "跳过 Flutter 私有库发布验证的 dart_snapshot。"
+  },
+  "scan-1411859606": {
+    "description_en": "Three tools for Chinese localization of older Unity games: DLL-layer text (equal-length replacement in the #US heap), resource-layer text (keys excluded from translation), and BMFont Chinese bitmap fonts.",
+    "description_zh": "Unity 老游戏汉化三件套：DLL 层文本（#US 堆等长替换）、资源层文本（禁译键）、BMFont 中文位图字体。"
+  },
+  "scan-275897752": {
+    "description_en": "web about paleoenvironmental reconstruction on lake sediments ",
+    "description_zh": "关于利用湖泊沉积物进行古环境重建的网站。"
+  },
+  "scan-282464193": {
+    "description_en": "This repository was created to demo how to create a snapshot (golden) widget test in Flutter.",
+    "description_zh": "用于演示如何在 Flutter 中创建快照（golden）组件测试的仓库。"
+  },
+  "scan-176830428": {
+    "description_en": "Demo using an emulator started with quickboot snapshot to run Flutter test on Travis",
+    "description_zh": "演示使用从 quickboot 快照启动的模拟器，在 Travis 上运行 Flutter 测试。"
+  },
+  "scan-1405312677": {
+    "description_en": "Learning demo: how mobile games fetch remote assets from CDNs and how to inspect them ethically (URL extraction, magic-byte ID, mitmproxy logger, Unity Addressables catalog parser)",
+    "description_zh": "学习演示：移动游戏如何从 CDN 获取远程资源，以及如何合乎伦理地检查这些资源，涵盖 URL 提取、文件魔数识别、mitmproxy 日志记录器及 Unity Addressables 目录解析器。"
+  },
+  "scan-1388754474": {
+    "description_en": "Local-only MCP server for RimWorld modding: search the game's Defs and C# API, decompile installed mods, build mods, and test them in an isolated game session. Works with Claude Code, Codex, and any MCP client.",
+    "description_zh": "用于 RimWorld 模组开发的仅限本地 MCP 服务器：搜索游戏 Defs 和 C# API、反编译已安装模组、构建模组，并在隔离游戏会话中测试。兼容 Claude Code、Codex 和任意 MCP 客户端。"
+  },
+  "scan-1340062802": {
+    "description_en": "Digging symbols out of TI WiLink firmware. Ghidra loader plus symbolisation: starts from the debug trace database TI forgot to strip, deduces the rest from the binary itself. 435 named functions, 358 inferred MMIO registers, 82 source modules.",
+    "description_zh": "从 TI WiLink 固件中挖掘符号。包含 Ghidra 加载器与符号化功能：从 TI 未剥离的调试跟踪数据库出发，再根据二进制本身推断其余内容。提供 435 个已命名函数、358 个推断的 MMIO 寄存器和 82 个源模块。"
+  },
+  "scan-1358147380": {
+    "description_en": "KredMe Flutter app - sanitised source snapshot for external code review. No credentials, no card catalogue, no history.",
+    "description_zh": "KredMe Flutter 应用：供外部代码审查的已清理敏感信息的源码快照。不包含凭据、卡片目录或历史记录。"
+  },
+  "scan-1402996196": {
+    "description_en": "Reproducible pipeline that turns gateway firmware images into facts about the OpenWebNet protocol — frame formats, code tables, and gateway behaviour.",
+    "description_zh": "可复现的流程，将网关固件镜像转化为关于 OpenWebNet 协议的事实，包括帧格式、代码表和网关行为。"
+  },
+  "scan-139072326": {
+    "description_en": "Metabolic network reconstruction web app",
+    "description_zh": "代谢网络重建网页应用。"
+  },
+  "scan-1355110843": {
+    "description_en": "Reconstruct a structural skeleton of a Flutter app from its AOT snapshot, and mark every hole. Plus an emulator launcher.",
+    "description_zh": "从 Flutter 应用的 AOT 快照重建结构骨架，并标记每一处缺失。另附模拟器启动器。"
+  },
+  "scan-490134989": {
+    "description_en": "Snapshot for flutter xendit by @salkuadrat",
+    "description_zh": "@salkuadrat 的 flutter xendit 快照。"
+  },
+  "scan-1390868044": {
+    "description_en": "In-game BepInEx plugin that lets local tools inspect, instrument and (with your permission) modify running Unity games. The runtime half of UnityLudometryMCP.",
+    "description_zh": "游戏内 BepInEx 插件，让本地工具检查、插桩，并在获得用户许可后修改正在运行的 Unity 游戏。它是 UnityLudometryMCP 的运行时部分。"
+  },
+  "scan-1193403508": {
+    "description_en": "acccessing the root shell of tp-link router (TL-WR850n) via UART and a bit of reverse engineering",
+    "description_zh": "通过 UART 和少量逆向工程，访问 TP-Link 路由器（TL-WR850n）的 root shell。"
+  },
+  "scan-1324464711": {
+    "description_en": "A practical walk through SWD (Serial Wire Debug) reconnaissance, memory mapping, and firmware acquisition; because debug interfaces rarely keep secrets for long :)",
+    "description_zh": "SWD（Serial Wire Debug）探查、内存映射与固件获取的实践教程；毕竟调试接口很难长久保守秘密 :)"
+  },
+  "scan-991964571": {
+    "description_en": "CamPoint: A Flutter-based mobile app that turns your smartphone into a network camera service. Provides HTTP endpoints (/rear and /front) for retrieving camera snapshots, featuring a high-visibility UI designed for service environments. Includes flashlight control and wakelock functionality. MIT License.",
+    "description_zh": "CamPoint：基于 Flutter 的移动应用，可将智能手机变成网络摄像头服务。提供 HTTP 端点（/rear 和 /front）用于获取相机快照，并采用适合服务场景的高可见度界面。包含手电筒控制和保持唤醒功能。MIT 许可证。"
+  },
+  "scan-893354207": {
+    "description_en": "Reconstruction of Density Field- Extraction of Cosmic Web components",
+    "description_zh": "密度场重建及宇宙网组成部分提取。"
+  },
+  "scan-1389232579": {
+    "description_en": "FixLens real-time mobile web prototype for spatial reconstruction",
+    "description_zh": "FixLens：用于空间重建的实时移动网页原型。"
+  },
+  "scan-600415507": {
+    "description_en": "Image reconstruction and captioning web application",
+    "description_zh": "图像重建与描述生成网页应用。"
+  },
+  "scan-1237190237": {
+    "description_en": "A reproducible firmware-security pipeline for OpenWRT 22.03 on ath79/MIPS",
+    "description_zh": "面向 ath79/MIPS 平台 OpenWRT 22.03 的可复现固件安全流程。"
+  },
+  "scan-1236303920": {
+    "description_en": "Hermes bytecode disassembler and assembler for React Native bundles",
+    "description_zh": "用于 React Native 打包文件的 Hermes 字节码反汇编器与汇编器。"
+  },
+  "scan-676264110": {
+    "description_en": "ntroducing \"SnapShotter\" – Your Ultimate Screenshot Compilation App!  SnapShotter is a dynamic Flutter application designed to simplify your screenshot-taking experience. With just a tap of a button, SnapShotter captures multiple screenshots in succession",
+    "description_zh": "介绍“SnapShotter”，你的终极截图汇集应用！这款动态 Flutter 应用旨在简化截图体验，只需轻点按钮即可连续捕获多张截图。"
+  },
+  "scan-1350964904": {
+    "description_en": "Tales of Luminaria (Android, 2021) — file formats, engine and protection, measured from the shipped package. Unity 2019.4.16f1 + IL2CPP, COLOPL, project 'natalie'; not ASKA, and nothing in common with Tales of Crestoria.",
+    "description_zh": "Tales of Luminaria（Android，2021）的文件格式、引擎和保护机制研究，均从发布包中测量得出。采用 Unity 2019.4.16f1 + IL2CPP，由 COLOPL 开发，项目名为 natalie；并非 ASKA，与 Tales of Crestoria 也没有共同之处。"
+  },
+  "scan-1352813122": {
+    "description_en": "Byte-level study of Tesla Effect (PC/Windows, 2014): 17,519,466,565 bytes in which 82.93 % is filmed video and the studio's own code is 0.0090 %. 1,035 Bink 2 headers censused, 20,014.286 s of running time, a script in five Excel workbooks, and a name-closure test that fails both ways.",
+    "description_zh": "对 Tesla Effect（PC/Windows，2014）的字节级研究：共 17,519,466,565 字节，其中 82.93% 为实拍视频，工作室自己的代码占 0.0090%。统计了 1,035 个 Bink 2 文件头、20,014.286 秒播放时长、分布于五个 Excel 工作簿中的脚本，以及双向均不通过的名称闭包测试。"
+  },
+  "scan-1211134203": {
+    "description_en": "A high-performance C++ forensic tool for deep binary analysis of Qualcomm (SD665) firmware dumps. Specialized in identifying Gatekeeper hash patterns and secure element signatures using advanced heuristic pattern matching.",
+    "description_zh": "用于深入分析 Qualcomm（SD665）固件转储的高性能 C++ 取证工具，专门通过高级启发式模式匹配识别 Gatekeeper 哈希模式和安全元件特征。"
+  },
+  "scan-1390714138": {
+    "description_en": "Frida mod menu for Tasty Travels 64.0.0 — gold and diamonds",
+    "description_zh": "Tasty Travels 64.0.0 的 Frida 模组菜单，提供金币和钻石功能。"
+  },
+  "scan-1342365009": {
+    "description_en": "A package of tools for decrypting, signature switching, decompiling, and extraction of TJC and Nextion Firmware .tft files",
+    "description_zh": "用于 TJC 和 Nextion 固件 .tft 文件解密、签名切换、反编译及提取的工具包。"
+  },
+  "scan-707279121": {
+    "description_en": "A hands-on Flutter repository demonstrating core concepts, common widgets, animations, and state management. A snapshot of my journey into Flutter development.",
+    "description_zh": "实践型 Flutter 仓库，演示核心概念、常用组件、动画和状态管理，也是作者 Flutter 开发历程的快照。"
+  },
+  "scan-1176858231": {
+    "description_en": "Reverse engineering and full security audit of a legacy Broadcom BCM96338 router. Features firmware exfiltration, SquashFS analysis, and DES hash cracking.",
+    "description_zh": "对旧款 Broadcom BCM96338 路由器进行逆向工程和完整安全审计，涵盖固件导出、SquashFS 分析及 DES 哈希破解。"
   }
 }

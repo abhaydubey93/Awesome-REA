@@ -2,7 +2,7 @@
 
 [All categories](README.md) · [简体中文](dynamic-analysis.zh-CN.md)
 
-**96 repositories** · 2026-10-16 UTC
+**101 repositories** · 2026-10-16 UTC
 
 These are automatically discovered projects, not individually curated or tested recommendations. Categories derive from metadata and descriptions from upstream text. Stars are collection-time snapshots, not live rankings.
 
@@ -80,14 +80,19 @@ These are automatically discovered projects, not individually curated or tested 
 - [yfe404/frida-mcp](https://github.com/yfe404/frida-mcp) — MCP server for Frida 17 dynamic instrumentation **[24 stars]**
 - [qtmleap/revkit](https://github.com/qtmleap/revkit) — A reverse-engineering toolkit for iOS and Android applications (Frida, mitmproxy, Ghidra, Theos) **[19 stars]**
 - [2233admin/reverse-skill-evolver](https://github.com/2233admin/reverse-skill-evolver) — Reverse-engineering skills for AI coding agents, with IDA/MCP integration, APK and JavaScript workflows, bounded agent swarms, and routing evaluation. **[17 stars]**
+- [Fi5t/iDump](https://github.com/Fi5t/iDump) — Decrypt and dump iOS app binaries to an IPA file via USB and SSH/SFTP **[17 stars]**
+- [p1tsi/wormhole](https://github.com/p1tsi/wormhole) — Frida wrapper for iOS/macOS penetration testers and reverse engineers. (WIP) **[14 stars]**
 - [Cristallin2006/ghidra-skill-for-dsh](https://github.com/Cristallin2006/ghidra-skill-for-dsh) — Custom-built for dsh (DeepSeek Harness): a persistent Ghidra headless daemon and reverse-engineering agent skills (triage/unpack/decompile/pwn/pcap/APK), with circuit breakers against agent failure loops and skills that evolve through retrospectives. **[11 stars]**
 - [ejfkdev/dae](https://github.com/ejfkdev/dae) — Dart AOT snapshot analyzer: exports blutter-compatible symbols and structs for IDA / radare2 / Frida, and decompiles functions into dart-analyze-clean Dart. Desktop and real-device mobile (compressed pointers), Dart 2.7-3.14. No Dart SDK, never runs the target. **[9 stars]**
 - [Veridiff/Veridiff](https://github.com/Veridiff/Veridiff) — Dynamic branch-divergence finder for native code -- traces two Frida executions and finds the exact instruction where they diverge. **[8 stars]**
+- [Cross2pro/FridaMemoryBrowser](https://github.com/Cross2pro/FridaMemoryBrowser) — Browse, scan, modify, custom by frida **[6 stars]**
+- [juliangrtz/iOS-re-lab](https://github.com/juliangrtz/iOS-re-lab) — A reverse engineering laboratory for iOS applications. **[6 stars]**
 - [iss4cf0ng/issac-reverse-toolbox](https://github.com/iss4cf0ng/issac-reverse-toolbox) — Personal reverse engineering toolbox with custom tools, scripts, and malware analysis notes. **[5 stars]**
 - [hackThacker/awesome-reverse-engineering](https://github.com/hackThacker/awesome-reverse-engineering) — Expert reverse engineer specializing in binary analysis, malware research, and low-level system internals. Experienced in dissecting complex software, uncovering vulnerabilities, and understanding code beyond source-level abstraction **[4 stars]**
 - [ahmedMhesham12/flutter-tls-frida-generator](https://github.com/ahmedMhesham12/flutter-tls-frida-generator) — Generate layered Frida TLS testing agents from Flutter engine binaries. **[3 stars]**
 - [Maxamedxasa/SakoREStudio](https://github.com/Maxamedxasa/SakoREStudio) — 🛡️ Mobile-first Interactive Disassembler &amp; Decompiler Framework — IDA Pro / Ghidra-class RE on Android. APK · ELF · PE · DEX · ARM64 · x86-64 · IR decompiler · call graph · ptrace debugger · SakoScript plugins. Created by Maxamed Xasan Muse 🇸🇴 **[3 stars]**
 - [13shivam/offset-zero](https://github.com/13shivam/offset-zero) — Offset Zero: A free, open-source field guide to digital forensics, reverse engineering, and detection engineering. Start at the first byte. YEAHH, ITS MORE OF A MINDSET! **[2 stars]**
+- [AlexGRDev/apple-seclab](https://github.com/AlexGRDev/apple-seclab) — Reproducible Apple security research environments for macOS, iOS and iPadOS. **[2 stars]**
 - [ip2867/ctf-re-tool](https://github.com/ip2867/ctf-re-tool) — An Electron-based AI workbench for CTF reverse-engineering challenges on Windows. It combines an AI tool loop with local validation, connects to IDA, JEB, and Burp through MCP, and automatically tackles APK, PE, ELF, PYC, DEX, JAR, Mach-O, Lua, and Web-JS challenges. Includes 11 methodology skills, a 54-page structured knowledge base, and self-improvement from experience. **[2 stars]**
 - [PyModel/reverse-engineering-skill](https://github.com/PyModel/reverse-engineering-skill) — Deterministic binary analysis, runtime instrumentation &amp; protocol reverse-engineering skill for AI coding agents. **[2 stars]**
 - [siaginw/HexWitness](https://github.com/siaginw/HexWitness) — Give your reverse-engineering agent a memory, a map, and receipts. **[2 stars]**

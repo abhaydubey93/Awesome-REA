@@ -79,6 +79,7 @@ const UI = {
     "sourceStars": "stars",
     "sourceStarsTitle": "GitHub stars at metadata collection time; not a live count.",
     "sourceNoDescription": "No description supplied by the upstream repository.",
+    "sourceOmittedDescription": "Upstream description omitted because it exceeds the collection’s length limit.",
     "sourceRelatedResearch": "Related research",
     "sourceCuratedDetails": "Curated details",
     "sourceTopicHint": "Filter by this topic",
@@ -92,7 +93,7 @@ const UI = {
     "sourceReadmeAt": "README fetched",
     "sourceMetadataAt": "Metadata observed",
     "sourceHash": "README SHA-256",
-    "sourceRevision": "README Git SHA",
+    "sourceRevision": "Advertised README Git SHA",
     "sourceReadmeSize": "README bytes",
   },
   "zh": {
@@ -173,6 +174,7 @@ const UI = {
     "sourceStars": "星标",
     "sourceStarsTitle": "元数据采集时的 GitHub 星标快照，不是实时数量。",
     "sourceNoDescription": "上游仓库未提供项目简介。",
+    "sourceOmittedDescription": "上游简介超过合集长度限制，未展示原文。",
     "sourceRelatedResearch": "相关研究",
     "sourceCuratedDetails": "精选资料",
     "sourceTopicHint": "按此主题筛选",
@@ -186,7 +188,7 @@ const UI = {
     "sourceReadmeAt": "README 读取时间",
     "sourceMetadataAt": "元数据采集时间",
     "sourceHash": "README SHA-256",
-    "sourceRevision": "README Git SHA",
+    "sourceRevision": "上游声明的 README Git SHA",
     "sourceReadmeSize": "README 字节数",
   }
 };
@@ -367,7 +369,7 @@ function sourceCard(record) {
   const article = node("article","source-card"); article.dataset.recordId=record.id; const head = node("div","source-card-head"); const title = node("h3"); const link = external(record.url,"source-title-link"); const separator = record.full_name.indexOf("/"); if (separator > 0) { link.append(node("span","source-owner",record.full_name.slice(0,separator+1)),node("span","source-project",record.full_name.slice(separator+1))); } else { link.append(node("span","source-project",record.full_name)); } link.append(icon("external",true)); title.append(link); head.append(title);
   if (Number.isFinite(record.stars)) { const stars = node("span","source-stars",record.stars.toLocaleString(state.lang === "zh" ? "zh-CN" : "en-US") + " " + t("sourceStars")); stars.title = t("sourceStarsTitle"); head.append(stars); } article.append(head);
   const description = record[state.lang === "zh" ? "description_zh" : "description_en"];
-  article.append(node("p","source-card-description" + (!description ? " source-card-empty" : ""),description || t("sourceNoDescription")));
+  article.append(node("p","source-card-description" + (!description ? " source-card-empty" : ""),description || t(record.description_omission ? "sourceOmittedDescription" : "sourceNoDescription")));
   const related = sourceRelatedLinks(record); if (related) article.append(related);
   if (record.topics.length) { const topics = node("div","source-topics"); record.topics.slice(0,4).forEach(topic => { const button = node("button","source-topic-chip",topicLabel(topic)); button.type = "button"; button.title = t("sourceTopicHint") + ": " + topic; button.addEventListener("click",() => { sourceState.topic = topic; sourceState.visible = 24; syncTopicInput(); sourceURL(); renderSources(); }); topics.append(button); }); article.append(topics); }
   const footer = node("div","source-card-footer"); footer.append(external(record.readme_url || record.url,"","README ↗")); const license = typeof record.license === "string" && record.license.trim() && record.license.toUpperCase() !== "NOASSERTION" ? record.license : t("sourceLicenseUnknown"); footer.append(node("span","source-card-license",license)); article.append(footer);

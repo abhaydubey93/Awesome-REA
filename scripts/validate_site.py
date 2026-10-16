@@ -12,6 +12,7 @@ from build_manifest import read_build_manifest
 from build_paper_pages import TARGET_LABELS, bibtex_text
 from validate_papers import read_papers
 from artifact_links import with_artifact_links
+from source_descriptions import description_fallback
 from localization import localized_records, read_localizations
 from source_scope import apply_scope, read_scope
 
@@ -278,8 +279,7 @@ def validate_artifact_links(output, pages):
             items = list(schema_entities(page.schemas, 'ItemList'))
             assert len(items) == 1, 'Browse category must retain one repository ItemList'
             descriptions = {item['url']: item['description'] for item in items[0]['itemListElement']}
-            fallback = '上游仓库未提供项目简介。' if language == 'zh' else 'No description supplied by the upstream repository.'
-            assert descriptions == {record['url']: record[f'description_{language}'] or fallback
+            assert descriptions == {record['url']: record[f'description_{language}'] or description_fallback(record, language)
                                     for record in visible if record['category'] == category}, 'Related links must not replace repository schema descriptions'
 
 

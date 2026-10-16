@@ -22,6 +22,7 @@ import time
 from urllib.error import HTTPError, URLError
 from urllib.parse import quote, urlencode, urlsplit
 from urllib.request import HTTPRedirectHandler, Request, build_opener
+from source_descriptions import SOURCE_DESCRIPTION_POLICY, capture_description
 
 
 ROOT = Path(__file__).resolve().parents[1]
@@ -380,14 +381,16 @@ def scan_readme(api, repo):
             if re.search(pattern, text):
                 signals.append(label)
         targets, category, classification_origin, classification_reference_ids = classify(repo)
-        description = repo.get('description') or ''
+        try:
+            description_fields = capture_description(repo.get('description'))
+        except ValueError:
+            raise ScanError('invalid-repository-description') from None
         record = {
             'id': 'scan-' + str(repo['id']),
             'name': repo['full_name'],
             'full_name': repo['full_name'],
             'url': repo['html_url'],
-            'description_en': description,
-            'description_zh': description,
+            **description_fields,
             'description_language': 'upstream-original',
             'description_zh_status': 'not-translated',
             'description_origin': 'github-repository-description',
@@ -402,6 +405,7 @@ def scan_readme(api, repo):
             'readme_url': metadata.get('html_url') or repo['html_url'] + '#readme',
             'readme_path': metadata.get('path'),
             'readme_git_sha': metadata.get('sha'),
+            'readme_content_git_sha': hashlib.sha1(b'blob ' + str(len(content)).encode('ascii') + b'\0' + content).hexdigest(),
             'readme_sha256': hashlib.sha256(content).hexdigest(),
             'readme_bytes': len(content),
             'readme_lines': len(text.splitlines()),
@@ -418,6 +422,7 @@ def scan_readme(api, repo):
             'matched_queries': repo['_matched_queries'],
             'discovery_methods': repo.get('_discovery_methods', ['github-search']),
         }
+        record['readme_git_sha_matches_content'] = record['readme_git_sha'] == record['readme_content_git_sha']
         if repo.get('_seed_reference_ids'):
             record['seed_reference_ids'] = repo['_seed_reference_ids']
         if repo.get('_seed_paper_ids'):
@@ -518,7 +523,7 @@ def initial_meta(args, started):
         'requested_successful_scans': args.target,
         'queries': [],
         'method': 'Public, non-fork, non-archived GitHub repository discovery through search, retained unattempted repository-ID lookups on resume, and optional curated-resource or bibliography-artifact metadata lookups, followed by an actual authenticated GET of each repository README. README bytes are decoded, analyzed for document features, SHA-256 hashed and discarded.',
-        'description_policy': 'Repository descriptions remain in their original upstream language. description_zh mirrors the same text and is explicitly not a translation. No LLM-written description or individual manual review is claimed.',
+        'description_policy': SOURCE_DESCRIPTION_POLICY,
         'readme_heading_count_policy': 'Count of distinct heading-like lines encountered, capped at six; a count of six means at least six. Heading text is not retained.',
         'classification_policy': 'Automatic labels use repository names, URL-stripped descriptions and explicit topics, with primary-function precedence. Canonical repository matches can add curated target tags and a primary category; classification_origin and classification_reference_ids identify that cross-reference. Labels do not establish REA compatibility. Empty targets mean insufficient metadata.',
         'limits': {
@@ -554,7 +559,7 @@ def run_scan(api, args, resumed=None, resume_sha256=None):
         prior = {key: copy.deepcopy(meta.get(key)) for key in (
             'started_at', 'completed_at', 'last_checkpoint_at', 'status',
             'requested_successful_scans', 'unique_repos', 'attempted_readme_scans',
-            'successful_readme_scans', 'failed', 'unattempted_candidates', 'limits', 'method',
+            'successful_readme_scans', 'failed', 'unattempted_candidates', 'limits', 'method', 'description_policy',
         )}
         prior.update({'source_sha256': resume_sha256, 'query_count': len(meta['queries']),
                       'candidate_ids_retained': 'discovered_repository_ids' in meta,
@@ -565,6 +570,7 @@ def run_scan(api, args, resumed=None, resume_sha256=None):
         meta['requested_successful_scans'] = args.target
         meta['limits'] = fresh_meta['limits']
     meta['method'] = fresh_meta['method']
+    meta['description_policy'] = fresh_meta['description_policy']
     meta['unique_repos_policy'] = ('Distinct persisted repository IDs from retained attempts and discovery observations. '
                                    'Historical count-only unattempted candidates are not added to this union unless rediscovered; '
                                    'their original counts remain in resume_history.')

@@ -2,7 +2,7 @@
 
 [全部分类](README.zh-CN.md) · [English](firmware.md)
 
-**156 个仓库** · 2026-10-16 UTC
+**211 个仓库** · 2026-10-16 UTC
 
 这些是自动发现的项目，不是逐项精选或运行测试后的推荐。分类来自元数据；简介由上游描述翻译而来。星标为采集时快照，不是实时排名。
 
@@ -154,13 +154,68 @@
 - [renaudallard/reolink_firmwares](https://github.com/renaudallard/reolink_firmwares) — Reolink 固件分析。 **[2 星标]**
 - [tony102741/CVE-2026-15469](https://github.com/tony102741/CVE-2026-15469) — CVE-2026-15469：TP-Link Deco XE75/XE5300/WE10800 中硬编码的 RSA-512 Mesh 组私钥（CWE-321）。提供安全公告、分析和概念验证方法（英语/韩语）。 **[2 星标]**
 - [varungor365/firmwareforge](https://github.com/varungor365/firmwareforge) — 固件分析与 IoT 安全研究工具包，用于授权提取、UART/JTAG 工作流和漏洞初步评估。 **[2 星标]**
+- [akkauppi/mr60bha2-internals](https://github.com/akkauppi/mr60bha2-internals) — 针对 Seeed Studio MR60BHA2／ADT6101P 60 GHz FMCW 雷达的逆向工程与实验工具，涵盖相干距离—多普勒数据流、带防护的固件修补及 ESP32-C6 Web 可视化。 **[1 星标]**
+- [AlBrmagawi/FirmLens](https://github.com/AlBrmagawi/FirmLens) — 本地固件安全研究工作台，提供隔离分析、有证据支持的发现、SBOM、发布版本比较及可选 AI 辅助。 **[1 星标]**
+- [anaselfaijah/Firmware_Diffing](https://github.com/anaselfaijah/Firmware_Diffing) — 使用 SHA256 和 ssdeep 模糊哈希比较固件的 Python 工具，可检测不同固件版本间修改、新增和删除的文件 **[1 星标]**
 - [carbon-evolution/ics-yara-scanner](https://github.com/carbon-evolution/ics-yara-scanner) — Go + YARA-X 聚合与扫描引擎：收集 18,000 多条公开 YARA 规则，扫描工程工作站（EWS）和固件转储中的 ICS/OT 恶意软件及常见恶意软件。 **[1 星标]**
+- [cas1m1r/Certshaker](https://github.com/cas1m1r/Certshaker) — 从固件中提取硬编码的密钥、证书及其他产物。 **[1 星标]**
+- [Chaz-Ortiz/EMBA-CS-4613-901](https://github.com/Chaz-Ortiz/EMBA-CS-4613-901) — EMBA 是一个固件安全分析工具。我为其创建了 p51 mustang binwalk extractor 模块，用于检查所分析的固件文件系统是否具有较大的最大深度（超过 50 层），以判断能否受益于优化的提取器；该模块利用 GPU 加速处理，并对文件操作进行并行化。 **[1 星标]**
 - [DroidKali/iot-firmware-vuln-hunting](https://github.com/DroidKali/iot-firmware-vuln-hunting) — IoT 固件漏洞挖掘技能。 **[1 星标]**
 - [ericyoc/cyber-domain-tools-ref-poc](https://github.com/ericyoc/cyber-domain-tools-ref-poc) — 用于网络安全不同领域的网络分析工具。 **[1 星标]**
 - [eth-man/ps3-cell-re-tools](https://github.com/eth-man/ps3-cell-re-tools) — “Execution Is Not Extraction”背后的 Cell/SPU 逆向工程工具，包含 SPU 模拟器、可靠的 SLEIGH 反编译器、离线 lv1 执行器和隔离测试框架，仅提供工具。 **[1 星标]**
+- [hideouts-io/StarSecurity-SURamDisk](https://github.com/hideouts-io/StarSecurity-SURamDisk) — 对 Apple 软件更新 RAMDisk（macOS Monterey 21G115 x86_64）、ramrod 恢复流程、APFS SSV 密封及固件 Option ROM 的取证与架构研究。 **[1 星标]**
+- [kacper-serewis/smartbox-re](https://github.com/kacper-serewis/smartbox-re) — 针对 AliExpress 上出售的 SmartBox HW501 USB CarPlay 适配器开展逆向工程、固件分析及实验性修改。 **[1 星标]**
 - [kevinmuoz/pybinwalk](https://github.com/kevinmuoz/pybinwalk) — 使用 PyO3 和 maturin 构建的 Binwalk v3 Python 绑定。 **[1 星标]**
+- [MikeeI/tp-link-pg2400p-reverse-engineering](https://github.com/MikeeI/tp-link-pg2400p-reverse-engineering) — TP-Link PG2400P 逆向工程。 **[1 星标]**
+- [njones920/parrot-drone-tools](https://github.com/njones920/parrot-drone-tools) — 面向 Parrot OS 的无人航空系统安全工具包，涵盖 SDR/RF 分析、Remote ID 和 DJI DroneID、MAVLink/DroneCAN、GNSS、反无人机系统认知、固件分析及飞控硬件工作流。 **[1 星标]**
+- [NurMohammadDuari/mw325r-hack-lab](https://github.com/NurMohammadDuari/mw325r-hack-lab) — 完整安全案例档案：Mercusys MW325R v2 侦察、UPnP 演示、现代化面板及固件取证，使用自有设备。 **[1 星标]**
+- [sebastianspicker/tiz0wn](https://github.com/sebastianspicker/tiz0wn) — 证据优先的 Samsung Tizen TV 安全研究，涵盖可逆的精简处理、固件分析、已验证的 Remote PC/CIFS UID-0 注入及加固。 **[1 星标]**
 - [sezgynus/g11-battery-protocol-emulation](https://github.com/sezgynus/g11-battery-protocol-emulation) — 对闭源智能电池系统进行逆向工程与协议仿真，在嵌入式层面通过硬件和固件实现复现原始认证行为。 **[1 星标]**
+- [smruthinayak2006/Firmware_Security_Assessment](https://github.com/smruthinayak2006/Firmware_Security_Assessment) — 自动化物联网固件安全评估平台，提供漏洞检测、风险评分、修复指导和安全报告。 **[1 星标]**
+- [TangerineSec/FirmwareHTMLReportWithEmux](https://github.com/TangerineSec/FirmwareHTMLReportWithEmux) — 使用 emua 固件检测软件生成的即时报告；每份报告的机器检测耗时超过 3 小时，可查看二进制中 system、strcat 等危险函数的具体位置，辅助选择后续要分析的二进制与函数溯源路径。 **[1 星标]**
+- [tony102741/firmware_project](https://github.com/tony102741/firmware_project) — 用于逆向分析以复杂编排为主的嵌入式固件、由分析人员辅助使用的工具。 **[1 星标]**
 - [Tureto/sasquatch-deb](https://github.com/Tureto/sasquatch-deb) — SquashFS 固件提取工具 sasquatch 的非官方 Ubuntu/Debian .deb 软件包。 **[1 星标]**
 - [xusheng6/tv-acr-research](https://github.com/xusheng6/tv-acr-research) — 以固件为依据，研究智能电视和流媒体设备中的自动内容识别。 **[1 星标]**
+- [arunsigood/nforceit_IoT](https://github.com/arunsigood/nforceit_IoT) — 用于从已提取的物联网设备固件中自动发现漏洞的程序。 **[0 星标]**
+- [boyatoid/tp-link-lua-decompile](https://github.com/boyatoid/tp-link-lua-decompile) — 恢复 TP-Link 重新编号的 Lua 5.1 操作码表，再转换并反编译其路由器固件中的 LuCI Lua 字节码。基于 Archer AX21（美版）V5.46、固件 1.1.2 推导并验证。 **[0 星标]**
+- [clinton-oppong/mcp-servers](https://github.com/clinton-oppong/mcp-servers) — 面向生产实践的 AI 智能体 MCP 服务，涵盖被动网站安全审计、RSS 摘要和固件侦察。核心仅使用标准库，SSRF 防护已针对完整公开绕过语料进行红队测试，附有 42 项离线测试。 **[0 星标]**
+- [Dellon-Technology-Pvt-Ltd/Trilokya](https://github.com/Dellon-Technology-Pvt-Ltd/Trilokya) — 为硬件、无线电、Web 与物联网安全评估提供支持的 Trilokya OS：面向硬件安全、射频（RF）分析、Web 应用安全和物联网渗透测试领域的渗透测试人员、安全研究人员及道德黑客的强大安全操作系统。 **[0 星标]**
+- [essquireo0o/rom-bios-public](https://github.com/essquireo0o/rom-bios-public) — Windows BIOS/UEFI 备份工具与 Nick Squires BIOS ROM 恢复服务。欢迎所有 Toughbook 型号，其他品牌另行评估。公开构建不含密码哈希提取器。 **[0 星标]**
+- [gblongiu/nw-a306-open](https://github.com/gblongiu/nw-a306-open) — 针对 Sony NW-A306 的独立研究与 Linux／Rockbox 工具。 **[0 星标]**
+- [GHSFS/firm-carver](https://github.com/GHSFS/firm-carver) — 使用纯 Rust 编写、零依赖的物联网与嵌入式固件解包器、多格式魔数文件雕刻工具和静态漏洞审计引擎。 **[0 星标]**
+- [goblinsoftwarelab/goblinflash-showcase](https://github.com/goblinsoftwarelab/goblinflash-showcase) — 仅包含文档、面向公共安全的 GoblinFlash 固件证据工作流展示。 **[0 星标]**
+- [haxorthematrix/tpbreak-cli](https://github.com/haxorthematrix/tpbreak-cli) — 恢复未加密的 TP-Link 固件以便分析，对 tpbreak / WatchfulIP 的 RSA-PSS 盐值解密技术进行独立 Python 复现。 **[0 星标]**
+- [HexLasso/FF-16-Web](https://github.com/HexLasso/FF-16-Web) — 基于 Web 的交互式静态模式发现工具，通过频繁出现的模式定位结构 **[0 星标]**
+- [heyPython2026/FirmwareQuickEdit](https://github.com/heyPython2026/FirmwareQuickEdit) — 三菱电梯 HEX 固件查看与编辑工具（Windows），支持地址跳转、字节编辑、文件比较和校验。 **[0 星标]**
+- [JackieZ123430/psdzdata-swfl-inspector](https://github.com/JackieZ123430/psdzdata-swfl-inspector) — 只读的 PSdZData XML 段提取与 KIS 元数据检查工具。 **[0 星标]**
+- [Jiang-sustech/REA-ZWO](https://github.com/Jiang-sustech/REA-ZWO) — 使用 REA 逆向分析 ZWO ASIAIR 固件，包含研究发现、笔记与工具，不重新分发厂商固件。 **[0 星标]**
+- [Jonaaaa/unshell](https://github.com/Jonaaaa/unshell) — 用于提取并记录 Nintendo Switch 2 配件通过 USB 暴露的数据的工具集，附有社区配件数据库。 **[0 星标]**
+- [JudithEngstrom89932/rev-skills](https://github.com/JudithEngstrom89932/rev-skills) — 122 个逆向工程 AI 技能，可发布、跨平台，涵盖恶意软件分析、软件逆向、固件与嵌入式、协议逆向、移动应用、脱壳与反混淆、软件破解、漏洞挖掘、托管代码、取证情报及 CTF。 **[0 星标]**
+- [Khedr0x00/Binwalk-Web-GUI](https://github.com/Khedr0x00/Binwalk-Web-GUI) — 上游仓库未提供项目简介。 **[0 星标]**
+- [lachlanchen/FujitsuQuaderno](https://github.com/lachlanchen/FujitsuQuaderno) — Fujitsu Quaderno 研究、固件笔记与挂载工具。 **[0 星标]**
+- [Lenny-AGI/firmware-defect-prediction](https://github.com/Lenny-AGI/firmware-defect-prediction) — 多智能体协作的嵌入式固件缺陷预测与自动修复系统。 **[0 星标]**
+- [likzq30-ship-it/youdao-dictpen-s6-notes](https://github.com/likzq30-ship-it/youdao-dictpen-s6-notes) — 有道词典笔 S6（YDPS6-1）固件分析笔记，涵盖 ADB 认证、OTA 安全、WebSocket 9307 及 setAdbEnable 调用链。只读研究档案，不含漏洞利用。 **[0 星标]**
+- [M-Tarantino/PFAT-Firmware-Audit-Tool](https://github.com/M-Tarantino/PFAT-Firmware-Audit-Tool) — 用于静态安全分析的专业交互式固件审计工具，可检测固件文件系统中的硬编码凭据、私钥和 Shell 后门。 **[0 星标]**
+- [MartinAydin/rev-skills](https://github.com/MartinAydin/rev-skills) — 122 个可发布、跨平台的逆向工程 AI 技能，覆盖恶意软件分析、软件逆向、固件嵌入式、协议逆向、移动应用、脱壳与反混淆、软件破解、漏洞挖掘、托管代码、取证情报及 CTF。 **[0 星标]**
+- [Matin22/tenda-cp3-security-research](https://github.com/Matin22/tenda-cp3-security-research) — 为一台 30 美元的摄像头获取 root 权限。 **[0 星标]**
+- [mkrlabs-io/espfw](https://github.com/mkrlabs-io/espfw) — ESP32 固件检查器与 Xtensa 符号匹配工具。 **[0 星标]**
+- [nayanapriyaknaik-stack/Firmware-Crash-Dump-Analyzer](https://github.com/nayanapriyaknaik-stack/Firmware-Crash-Dump-Analyzer) — 使用 C 与 Python 编写的专业固件崩溃转储分析器，提供 CRC 校验、栈跟踪、符号解析、崩溃特征生成及崩溃统计仪表板。 **[0 星标]**
+- [OpenWebNet-HA/own-firmware-oracle](https://github.com/OpenWebNet-HA/own-firmware-oracle) — 可复现的流程，将网关固件镜像转化为关于 OpenWebNet 协议的事实，包括帧格式、代码表和网关行为。 **[0 星标]**
+- [RayWilliamsII/k2plus-maintenance](https://github.com/RayWilliamsII/k2plus-maintenance) — 用于探测 K2Plus 以开展分析，并生成文件系统快照供审阅的脚本。 **[0 星标]**
+- [rudra-patell/tp-link_UART-root-shell](https://github.com/rudra-patell/tp-link_UART-root-shell) — 通过 UART 和少量逆向工程，访问 TP-Link 路由器（TL-WR850n）的 root shell。 **[0 星标]**
+- [sanisapatrikar/SWD-Recon](https://github.com/sanisapatrikar/SWD-Recon) — SWD（Serial Wire Debug）探查、内存映射与固件获取的实践教程；毕竟调试接口很难长久保守秘密 :) **[0 星标]**
+- [sanisapatrikar/UART-Recon](https://github.com/sanisapatrikar/UART-Recon) — 从 PCB 到 Root Shell 的实践之旅，因为 4 个铜焊盘原来藏着不少信息 :) **[0 星标]**
+- [santhoshgandham/FirmEx](https://github.com/santhoshgandham/FirmEx) — FirmEx 是统一的嵌入式设备安全框架，将自动固件提取与实时传感器异常检测相结合。该工作已被 IEEE Intelligent Computing and Systems at the Edge（ICEEdge）Student Forum 2025 接收。 **[0 星标]**
+- [shadow-ciper/iot-firmware-auditor](https://github.com/shadow-ciper/iot-firmware-auditor) — 审计已提取的物联网固件，检查硬编码凭据、默认账号和过时组件 **[0 星标]**
+- [superswan/rss-webs-vuln](https://github.com/superswan/rss-webs-vuln) — RSS-Webs／GoAhead 认证绕过与配置泄露漏洞研究，影响多家厂商基于 Ralink／MediaTek SDK 的路由器固件。 **[0 星标]**
+- [teriyakki-jin/firm-sentry](https://github.com/teriyakki-jin/firm-sentry) — 防御用途的物联网固件静态分析与 AFL++ 模糊测试实验室 **[0 星标]**
+- [tpt-solutions/tpt-res](https://github.com/tpt-solutions/tpt-res) — 集成工具套件，通过自动捕获、机器学习辅助固件分析及社区知识共享，加快 Linux 硬件驱动开发，使逆向工程速度提升 10 倍，并让内核专家之外的人也能参与。 **[0 星标]**
+- [varyashine/honor-magicbook-nfc](https://github.com/varyashine/honor-magicbook-nfc) — 针对 HONOR MagicBook 内置 NFC 标签（Fudan FM11NT082C／ACPI NTAG0001）的逆向工程与 Linux 工具，包括变体检测（NTCI 与 NTCZ）以及安全的 NDEF 备份和写入。 **[0 星标]**
+- [walczak74/rev-skills](https://github.com/walczak74/rev-skills) — 122 个可发布、跨平台的逆向工程 AI 技能，涵盖恶意软件分析、软件逆向、固件与嵌入式、协议逆向、移动应用、脱壳与反混淆、软件破解、漏洞挖掘、托管代码、取证情报及 CTF。 **[0 星标]**
+- [xXHenneBXx/TFTTools_V2_Decompiler](https://github.com/xXHenneBXx/TFTTools_V2_Decompiler) — 用于 TJC 和 Nextion 固件 .tft 文件解密、签名切换、反编译及提取的工具包。 **[0 星标]**
+- [youemeeare/IoT-Firmware-Security-Scanner](https://github.com/youemeeare/IoT-Firmware-Security-Scanner) — 模块化物联网固件安全扫描器，提供 CVE 和合规分析 **[0 星标]**
+- [YukiCodepth/firmware-security-workbench](https://github.com/YukiCodepth/firmware-security-workbench) — 面向命令行、Web 与桌面的新一代固件安全分析工作台，可扫描固件、检测秘密信息、生成 SBOM／CVE 候选结果、比较版本，并通过 Firmware Risk DNA 解释风险。 **[0 星标]**
+- [Zimbo88/soundtouch-preservation-research](https://github.com/Zimbo88/soundtouch-preservation-research) — 面向 Bose SoundTouch 设备、固件、本地协议、播放、多房间与互操作性的开放技术手册和可复现保存研究。 **[0 星标]**
+- [zuhtuEren/bcm96338-re](https://github.com/zuhtuEren/bcm96338-re) — 对旧款 Broadcom BCM96338 路由器进行逆向工程和完整安全审计，涵盖固件导出、SquashFS 分析及 DES 哈希破解。 **[0 星标]**
 
 <!-- Generated by scripts/build_repository_index.py. Edit source data, then rebuild. -->

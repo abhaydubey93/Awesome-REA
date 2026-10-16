@@ -68,7 +68,7 @@
 - [got3nks/amule-ec-profiler](https://github.com/got3nks/amule-ec-profiler) — 分析 aMule 的 External Connect（EC）协议：提供透传代理、实时仪表盘、按调用方归因和会话报告。 **[2 星标]**
 - [ipanalytics/Xiaomi-Scale-Unlocked-Reverse-Engineering](https://github.com/ipanalytics/Xiaomi-Scale-Unlocked-Reverse-Engineering) — 逆向分析 Xiaomi Mi 体重秤，涵盖 BLE 广播协议、字节级帧布局和离线解码器，并将每个计算指标追溯到其来源。 **[2 星标]**
 - [melrosenetworks/S1-SEE](https://github.com/melrosenetworks/S1-SEE) — S1 Signal Event Engine：面向 LTE 网络的实时 S1AP 协议分析与事件处理。 **[2 星标]**
-- [NOEMETRA/Reverse-Observer](https://github.com/NOEMETRA/Reverse-Observer) — 上游未提供简介。 **[2 星标]**
+- [NOEMETRA/Reverse-Observer](https://github.com/NOEMETRA/Reverse-Observer) — 上游仓库未提供项目简介。 **[2 星标]**
 - [xsukax/xsukax-PCAP-Network-Traffic-Analyzer](https://github.com/xsukax/xsukax-PCAP-Network-Traffic-Analyzer) — 面向系统管理员、网络安全专业人员和网络工程师的高级网络流量安全分析工具。xsukax PCAP Analyzer 在提供强有力隐私保护的同时，深入分析网络行为，并提供高级威胁检测功能。 **[2 星标]**
 - [404saint/ics-ot-homelab](https://github.com/404saint/ics-ot-homelab) — 极简 ICS/OT 安全研究实验室，包含可编程逻辑控制器（PLC）、Modbus TCP 工业协议环境和网络仿真。 **[1 星标]**
 - [Aarohipandey07/network-packet-analyzer](https://github.com/Aarohipandey07/network-packet-analyzer) — 基于 Python、具备基础威胁检测功能的数据包嗅探器。 **[1 星标]**

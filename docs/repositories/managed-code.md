@@ -2,7 +2,7 @@
 
 [All categories](README.md) · [简体中文](managed-code.zh-CN.md)
 
-**98 repositories** · 2026-10-16 UTC
+**133 repositories** · 2026-10-16 UTC
 
 These are automatically discovered projects, not individually curated or tested recommendations. Categories derive from metadata and descriptions from upstream text. Stars are collection-time snapshots, not live rankings.
 
@@ -47,6 +47,9 @@ These are automatically discovered projects, not individually curated or tested 
 - [Xpl0itR/protodec](https://github.com/Xpl0itR/protodec) — A tool to derive Protobuf schemas from protoc output formats **[81 stars]**
 - [Dump-GUY/ida-nativeaot](https://github.com/Dump-GUY/ida-nativeaot) — Recover .NET Native AOT metadata in IDA Pro — MethodTable/type hierarchy, virtual methods, and string literals from symbol-stripped binaries. IDAPython port of washi1337/ghidra-nativeaot. **[78 stars]**
 - [EquiFox/MInject](https://github.com/EquiFox/MInject) — Mono Framework Interaction / Injection Library for .NET (C++/CLI) **[74 stars]**
+- [bivex/ILSpy-Mcp](https://github.com/bivex/ILSpy-Mcp) — 🔓 UNLEASH ILSpy'S POWER. Reverse-engineer DOTNET code at GOD SPEED. AI-assisted debugging that THINKS with you. Decompile ANYTHING. 🚀 **[73 stars]**
+- [vchirikov/GoToDnSpy](https://github.com/vchirikov/GoToDnSpy) — GoTo dnSpy for Visual Studio 2022 **[72 stars]**
+- [codemerx/JustDecompileEngine](https://github.com/codemerx/JustDecompileEngine) — The decompilation engine of CodemerxDecompile **[66 stars]**
 - [getsentry/dotnet-assembly-alias](https://github.com/getsentry/dotnet-assembly-alias) — Tool to rename .NET assemblies and references **[57 stars]**
 - [Skyluker4/UnityAssetReplacer](https://github.com/Skyluker4/UnityAssetReplacer) — A tool to replace data in a Unity Asset Bundle from modified files. **[57 stars]**
 - [andreibalakin18-ai/anime-shop-sim-clerk-brain](https://github.com/andreibalakin18-ai/anime-shop-sim-clerk-brain) — Best Anime Shop Simulator Mods 2026: Smarter Staff and Cheat Menu Guide **[56 stars]**
@@ -59,49 +62,81 @@ These are automatically discovered projects, not individually curated or tested 
 - [tbg10101/dotnet-burst-comparison](https://github.com/tbg10101/dotnet-burst-comparison) — Benchmarks to compare .NET and and Unity's Burst compiler. **[45 stars]**
 - [zezba9000/CSharpTranspiler](https://github.com/zezba9000/CSharpTranspiler) — CS2X - C# Transpiler experiments (Powered by Roslyn) **[39 stars]**
 - [dawwinci/agile-net-devirtualizer](https://github.com/dawwinci/agile-net-devirtualizer) — Generic devirtualizer for Agile.NET (SecureTeam/CodeVeil) VM-based method protection — reconstructs CIL by reverse-engineering the runtime DLL structurally, no hardcoded per-build opcode tables. **[37 stars]**
+- [Fireboyd78/UnluacNET](https://github.com/Fireboyd78/UnluacNET) — A Lua 5.1 decompiler library written in C#. Based on the original Java version of "unluac" by tehtmi. **[34 stars]**
 - [cervonwong/ILSpy-MCP](https://github.com/cervonwong/ILSpy-MCP) — ILSpy MCP Server (Model Context Protocol) for AI-assisted reverse-engineering of .NET binaries for autonomous Malware Analysis and Reverse Engineering. **[33 stars]**
 - [Vint-TX/Vint](https://github.com/Vint-TX/Vint) — TX server **[30 stars]**
 - [MeikoMei16/AssetRipper-CLI](https://github.com/MeikoMei16/AssetRipper-CLI) — CLI tool for extracting Unity game assets, including CG, audio, character illustrations, and backgrounds, with on-demand, profile-based export. Built on AssetRipper. **[29 stars]**
+- [KubaZ2/Sharp](https://github.com/KubaZ2/Sharp) — Sharp is a powerful Discord bot that runs, decompiles, and shows JIT disassembly of .NET languages. With .NET 9 support! **[28 stars]**
 - [codingo/cracknet](https://github.com/codingo/cracknet) — A .net Crackme Challenge made for the SecTalks Brisbane 2017 Capture the Flag Event. Writeup/solution included. **[23 stars]**
 - [GooDDarK/UTranslator](https://github.com/GooDDarK/UTranslator) — A launcher for Russian-language localization patches for many different games. **[20 stars]**
+- [notgate/dnSpy-MCP](https://github.com/notgate/dnSpy-MCP) — Headless CLI reflection debugger for .NET assemblies with MCP server support **[20 stars]**
 - [maddievision/Celestial](https://github.com/maddievision/Celestial) — Some reverse engineering code for Celeste **[16 stars]**
 - [mynamescrax/il2csharp](https://github.com/mynamescrax/il2csharp) — IL2CPP to C# decompiler: global-metadata.dat + GameAssembly.dll in, a real source tree out, every method body lifted from native x64. **[14 stars]**
 - [Louisdelez/LeagueOfLegendsV2](https://github.com/Louisdelez/LeagueOfLegendsV2) — League of Legends private server emulator for modern client (patch 16.6) - Protocol reverse engineering in progress **[13 stars]**
+- [ygoe/CecilExplorer](https://github.com/ygoe/CecilExplorer) — Mono.Cecil object model explorer **[13 stars]**
 - [t-wy/web-global-metadata-parser](https://github.com/t-wy/web-global-metadata-parser) — A global-metadata.dat Reader that dumps contents of global-metadata.dat locally without the binary (thus without address / complete type info). May be useful when examining data structures involved in serialization. Based on Prefare's Il2CppDumper. **[11 stars]**
+- [Batchhh/Ferrite](https://github.com/Batchhh/Ferrite) — A native macOS .NET decompiler built with Rust and SwiftUI **[9 stars]**
+- [JoshuaAbidh/ValveResourceFormat](https://github.com/JoshuaAbidh/ValveResourceFormat) — Source 2 Viewer is a powerful tool that allows you to browse VPK archives, view, extract, and decompile Source 2 assets, including maps, models, materials, textures, sounds, and more. **[9 stars]**
 - [KaniArchive/ILRecover](https://github.com/KaniArchive/ILRecover) — Decompile .NET assemblies back to C# source **[5 stars]**
 - [maximilianfeix/hexvero](https://github.com/maximilianfeix/hexvero) — The first look at a binary or app bundle: static, execution-free analysis with evidence. CLI, 15-tool MCP server and local web UI, Node only. **[5 stars]**
+- [steviegt6/bfcil](https://github.com/steviegt6/bfcil) — brainfuck but .NET **[5 stars]**
 - [jason-c-daniels/Jcd.SRecord](https://github.com/jason-c-daniels/Jcd.SRecord) — A .NET Standard 2.0 library to assist with processing motorola s-record format files used for uploading and processing firmware. **[4 stars]**
 - [MyDearMoon/il2cpp-Dumper](https://github.com/MyDearMoon/il2cpp-Dumper) — A fast, modern .NET 9 tool to extract types, methods, fields, and symbols from Unity IL2CPP games across Windows, Android, and iOS. **[4 stars]**
+- [Talkdedsec/tlk-hex](https://github.com/Talkdedsec/tlk-hex) — Interactive disassembler — static analysis / reverse engineering for x86/x64 PE, ELF and raw binaries **[4 stars]**
 - [gf958457-sys/BinaryAnalyzerCLI](https://github.com/gf958457-sys/BinaryAnalyzerCLI) — BinaryAnalyzerCLI — console static analysis tool for first-pass triage of PE/ELF/raw binaries. Streaming disassembly, semantic function statistics, string/suspicious API extraction, and optional AI-assisted review. Supports interchangeable Iced/Capstone backends. Early alpha, actively developed. **[3 stars]**
+- [Hawkynt/PB-Compiler](https://github.com/Hawkynt/PB-Compiler) — From-scratch PowerBASIC / QuickBASIC / Turbo Basic / GW-BASIC family compiler in C# — real 16-bit MS-DOS EXEs (8086..586+MMX), optimizing back end (SSA, GVN, LICM, scheduling), BASIC decompiler, DOSBox-verified **[3 stars]**
 - [helightdev/UnityPublicizer](https://github.com/helightdev/UnityPublicizer) — A pretty lightweight publicizer utilizing dnlib for .Net assemblies, specifically made for modding of non il2cpp built unity games **[3 stars]**
+- [iamhavingaseizure/MakuTweaker](https://github.com/iamhavingaseizure/MakuTweaker) — Customize Windows settings, manage processes, and optimize system components with a flexible, open-source tool built on .NET Core 8.0. **[3 stars]**
+- [PereNifflard/lumina-monitor](https://github.com/PereNifflard/lumina-monitor) — Drive an iPhone from Windows over USB-C: live screen mirror, absolute pointer, keyboard and buttons. Apple's protocol reimplemented in C#, no third-party code. **[3 stars]**
+- [spouliot/cilurbo](https://github.com/spouliot/cilurbo) — A simple text-based disassembler/decompiler for .net assemblies **[3 stars]**
+- [tadis174/ILens](https://github.com/tadis174/ILens) — MCP server for inspecting compiled .NET assemblies **[3 stars]**
 - [yangying-dev/protocol-forge](https://github.com/yangying-dev/protocol-forge) — 3GPP protocol workbench: inspect, edit and replay PFCP/NGAP/GTP-U/NAS/S1AP/Diameter packets from PCAP, using tshark for dissection. .NET 8 + Avalonia. **[3 stars]**
+- [zhanhuajie/csharp-decompiler-skills](https://github.com/zhanhuajie/csharp-decompiler-skills) — A collection of agent-agnostic AI skills for C# assembly decompilation and symbol lookup. **[3 stars]**
 - [0xgf-18/unpacker-by-fahad](https://github.com/0xgf-18/unpacker-by-fahad) — Unpacker by Fahad - DPT-format Android packer analysis: RC4 code-store key recovery, dex restore/rebuild, APK signing and validation pipeline. **[2 stars]**
 - [ialakey/NEXTBREAKER](https://github.com/ialakey/NEXTBREAKER) — Break the run — god mode, mega damage, infinite everything. MelonLoader trainer, save unlocker and CoreModule fix for the Go Next! Demo (Unity 6 / IL2CPP). **[2 stars]**
 - [notgate/REPlayer](https://github.com/notgate/REPlayer) — Windows Android 14 emulator for agents, gaming and APK analysis. **[2 stars]**
 - [roozbehshad/northwind](https://github.com/roozbehshad/northwind) — Learn how to develop a software application using the popular Northwind database by viewing the code in this repo and following related tutorial videos on my YouTube channel **[2 stars]**
 - [Segually/HADecompiled](https://github.com/Segually/HADecompiled) — Decompilation of the Hybrid Animals mobile game **[2 stars]**
+- [tryAGI/nuget-docs](https://github.com/tryAGI/nuget-docs) — C# CLI tool to inspect public API documentation from any NuGet package -- decompile types with XML docs, compare API between versions, resolve dependencies **[2 stars]**
+- [31bc/TE-CMD](https://github.com/31bc/TE-CMD) — Portable Windows CLI for static analysis, PE and .NET inspection, decompilation and unpacking of Python packed programs. **[1 stars]**
+- [Albasha0x0/Corvus](https://github.com/Albasha0x0/Corvus) — Reverse-engineering MCP server for AI agents: .NET and native PE/ELF/Mach-O analysis, decompilation, cross-references and patching. IDA and Ghidra optional. **[1 stars]**
 - [andrew867/CoinLine](https://github.com/andrew867/CoinLine) — Server-hosted management plane for Millennium payphone fleets: provisioning, table distribution, call rating, cards, craft, firmware orchestration, DLOG/NCC diagnostics, and audit. .NET 9 + React + PostgreSQL. **[1 stars]**
 - [chahakshahcs5/retrofit-sdk-gen](https://github.com/chahakshahcs5/retrofit-sdk-gen) — ⚡ Turn Android APKs &amp; Retrofit interfaces into typed SDKs in 8 languages, OpenAPI 3.0 specs, Postman collections &amp; API Playgrounds. **[1 stars]**
+- [Const24/GhidraSharp](https://github.com/Const24/GhidraSharp) — A typed C# client for Ghidra over a small gRPC bridge — decompile and analyze binaries from .NET, no Python. **[1 stars]**
+- [divyanshu-iitian/antardrishti](https://github.com/divyanshu-iitian/antardrishti) — Local reverse engineering for humans and AI agents. Built-in x86/x64/ARM64 decompiler, PE/ELF/Mach-O, .NET IL and a compact 12-tool MCP server. Python · MIT. **[1 stars]**
 - [hdyrawan/frider](https://github.com/hdyrawan/frider) — Android app framework detector — classifies Flutter / Dart, React Native (Hermes vs JavaScriptCore), .NET MAUI, Xamarin, Apache Cordova, Capacitor, Ionic, Kony, NativeScript, Qt, Titanium, Unity, or native Java/Kotlin from APK entry names. Zero runtime dependencies. **[1 stars]**
 - [IVAINX18/Shadow-Net-Defender-Hybrid-Malware-Detection](https://github.com/IVAINX18/Shadow-Net-Defender-Hybrid-Malware-Detection) — A multilayer hybrid architecture for malware detection: YARA, static ML (EMBER-2381 + OVERLAY-6, ONNX), and overlay, .NET, and IL analysis, with actionable verdicts and forensic explainability. FastAPI API with a React/Electron frontend. **[1 stars]**
+- [Just-Silver/DotNetDebuggerMcp](https://github.com/Just-Silver/DotNetDebuggerMcp) — A .NET MCP server with integrated ILSpy decompilation and an ICorDebug dynamic debugging engine. Supports breakpoints, single-stepping, and variable reads, with a live Blazor debugging interface ready to use. **[1 stars]**
 - [manytokens/unity-msgpack-schema-exporter](https://github.com/manytokens/unity-msgpack-schema-exporter) — A tool for extracting MessagePack schemas from Unity game assemblies (DummyDll) or any other .NET assembly, and converting between compact (keyless) msgpack and named-key msgpack or JSON. **[1 stars]**
 - [peigu666/worldbox-distillation](https://github.com/peigu666/worldbox-distillation) — A local knowledge base for WorldBox 0.51.2 mod development and AI-assisted debugging, including searchable APIs, query/validation tools, templates, and human-readable HTML reports. **[1 stars]**
 - [Rynana/DLL-Muster](https://github.com/Rynana/DLL-Muster) — DLL Muster is a Windows tool for inspecting Unity-based .NET DLLs and exporting class, method, and field data to JSON. No installation required. **[1 stars]**
 - [saturnlamoooooooooooooooo/GMExplorer](https://github.com/saturnlamoooooooooooooooo/GMExplorer) — Drag-and-drop explorer for GameMaker games: assets, audio, FMOD banks and decompiled GML. **[1 stars]**
 - [sulaimwn/REA-For-Web](https://github.com/sulaimwn/REA-For-Web) — REA for the web - explore apps, visualize their architecture, and ask AI how they work. **[1 stars]**
 - [tavridabless/UEBulkExport](https://github.com/tavridabless/UEBulkExport) — Bulk export of an entire Unreal Engine container (.utoc/.ucas/.pak) into one folder: textures, meshes, animations, audio, levels and properties. A command line front end over CUE4Parse. **[1 stars]**
+- [YgalaxyY/Adobe-JSXBIN-Decoder](https://github.com/YgalaxyY/Adobe-JSXBIN-Decoder) — Adobe JSXBIN Decoder is a powerful tool for decoding Adobe binary scripts into readable JSX code. Recover, analyze, and study protected automation scripts for Photoshop, Illustrator, and Creative Suite. **[1 stars]**
 - [Zawtt/HowToFISH-CHEAT-Roulette](https://github.com/Zawtt/HowToFISH-CHEAT-Roulette) — A playful single-player roulette cheat and reverse-engineering experiment for How to Fish. **[1 stars]**
+- [akiselev/ilspy-cli](https://github.com/akiselev/ilspy-cli) — Command-line wrapper around ILSpy for targeted .NET decompilation, including single-method decompilation and structured JSON output. **[0 stars]**
 - [akopetsch/swe1r-assets-unity](https://github.com/akopetsch/swe1r-assets-unity) — A Unity package that allows you to import, modify and re-export assets of the game Star Wars Episode I: Racer. **[0 stars]**
 - [beyborges/REA](https://github.com/beyborges/REA) — REA - Reverse Engineer Anything 6.3.0 (October 10, 2026). Agent RE desk: one MCP across binaries, JS, Electron and .NET. Hopper / Ghidra / IDA backends. Windows 10/11 x64. **[0 stars]**
-- [CCB-TEAM/KismetDecompiler](https://github.com/CCB-TEAM/KismetDecompiler) — No upstream description supplied. **[0 stars]**
+- [bitmono-project/web](https://github.com/bitmono-project/web) — Obfuscate .NET &amp; Mono assemblies in your browser and share crackmes — no install, powered by BitMono. **[0 stars]**
+- [CCB-TEAM/KismetDecompiler](https://github.com/CCB-TEAM/KismetDecompiler) — No description supplied by the upstream repository. **[0 stars]**
+- [CyberAlp0/DnSpy](https://github.com/CyberAlp0/DnSpy) — Archive copy of the dnSpy v6.1.8 release files (.NET debugger and assembly editor) **[0 stars]**
+- [DavideFranchioni/webcil-converter](https://github.com/DavideFranchioni/webcil-converter) — Convert .NET WebCIL (Blazor 9+ .webcil / .wasm) into standard PE .dll for any IL decompiler. Single file, no NuGet dependencies. **[0 stars]**
 - [defuscator/defuscator-cli](https://github.com/defuscator/defuscator-cli) — Static JavaScript deobfuscation and risk triage CLI: unpacks P.A.C.K.E.R., obfuscator.io string arrays, escapes and source maps without ever executing the code. JSON + SARIF output. **[0 stars]**
 - [edwardtay/awesome-reverse-engineering](https://github.com/edwardtay/awesome-reverse-engineering) — A curated list of 130+ reverse engineering tools for binaries, Android, .NET, firmware and smart contracts, with a safety flag on every entry, weekly maintenance data and agent-era MCP servers. **[0 stars]**
 - [emoboy723/XS-DECOMPILER](https://github.com/emoboy723/XS-DECOMPILER) — Strata: a portable Windows decompiler combining JADX/ILSpy/Ghidra analysis, AI agents, Ollama, and local JavaScript deobfuscation. Optional dotPeek and Binary Ninja integrations. **[0 stars]**
 - [fuatsimsek/appray](https://github.com/fuatsimsek/appray) — Integrated Android security platform: SAST + MobSF + emulator-based dynamic analysis + DAST (Nuclei) with AI-assisted reporting. **[0 stars]**
+- [ixhlbxi/dotPeek_Project](https://github.com/ixhlbxi/dotPeek_Project) — Scan dotPeek-decompiled .NET projects to extract fully qualified import paths, CLR assembly references, and namespace/class mappings — outputs to JSON and CSV. **[0 stars]**
+- [jumpifequal/mcp-dotnet](https://github.com/jumpifequal/mcp-dotnet) — MCP server for .NET reverse engineering: metadata, cross-references, IL, ILSpy decompilation, security API scan and IL patching. dnlib + ILSpy, MCP SDK 2.x, .NET 10, stdio + Streamable HTTP with bearer auth. Fork of neoz/mcp-dotnet. **[0 stars]**
 - [Metacarpalarteryostracism978/FH5-Car-Unlock-Utility](https://github.com/Metacarpalarteryostracism978/FH5-Car-Unlock-Utility) — Manage Forza Horizon 5 credits, unlock cars, and add wheelspins with this tool. **[0 stars]**
+- [mushroomTW/rimworld-mod-mcp](https://github.com/mushroomTW/rimworld-mod-mcp) — Local-only MCP server for RimWorld modding: search the game's Defs and C# API, decompile installed mods, build mods, and test them in an isolated game session. Works with Claude Code, Codex, and any MCP client. **[0 stars]**
 - [nooikko/serpents-eyes](https://github.com/nooikko/serpents-eyes) — An unofficial collection browser for Serpent's Gaze: see everything you've unlocked, and everything you haven't. **[0 stars]**
+- [okiedocus/orress](https://github.com/okiedocus/orress) — A pure-Rust reverse-engineering IDE for CTF and malware analysis — disassembler, Rust-speaking decompiler, debugger, emulator, symbolic solver, malware triage, managed-format tooling (WASM/.NET/Java/DEX/pyc/JS), a CyberChef-style workbench, a built-in Academy, and an AI assistant on your own model (Claude plan/API, OpenAI or local). **[0 stars]**
+- [pedrosakuma/dotnet-assembly-mcp](https://github.com/pedrosakuma/dotnet-assembly-mcp) — MCP server for static navigation of .NET assemblies — types, methods, attributes, decompilation. Companion to dotnet-diagnostics-mcp. **[0 stars]**
 - [qingxinzhu/MiniMCP](https://github.com/qingxinzhu/MiniMCP) — MCP-like runtime service for Unity games: inspect &amp; modify live game state (objects, fields, methods) over HTTP, with an MCP bridge for AI clients. Mono games -&gt; BepInEx 5 plugin (src/). IL2CPP games -&gt; BepInEx 6 plugin (il2cpp/). **[0 stars]**
+- [rankinescalevalois9303/outlast-trials-hack-reagent-trials-toolkit](https://github.com/rankinescalevalois9303/outlast-trials-hack-reagent-trials-toolkit) — Download Outlast Trials Reagent Toolkit for ESP-style trial maps, mod-menu dashboard, build planners, and post-run analytics. **[0 stars]**
 - [SandersAlex/nupe](https://github.com/SandersAlex/nupe) — This application is used to manage Unity 3D projects (WPF, Net 6.0, 64 bit, Win). **[0 stars]**
+- [snuutti/UNetLib](https://github.com/snuutti/UNetLib) — An open source UNet reimplementation **[0 stars]**
 - [Ubik42/Game-Unpack-Agent](https://github.com/Ubik42/Game-Unpack-Agent) — An offline-first agent for controlled Unity / Unreal game unpacking (Windows / .NET 9). **[0 stars]**
 - [wyfirstname/rea-ui](https://github.com/wyfirstname/rea-ui) — Graphical front-end for the REA reverse-engineering CLI (morluto/rea). Windows portable build, 153 schema-generated commands. **[0 stars]**
 

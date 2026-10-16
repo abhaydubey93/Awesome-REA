@@ -2,7 +2,7 @@
 
 [全部分类](README.zh-CN.md) · [English](game-analysis.md)
 
-**326 个仓库** · 2026-10-16 UTC
+**399 个仓库** · 2026-10-16 UTC
 
 这些是自动发现的项目，不是逐项精选或运行测试后的推荐。分类来自元数据；简介由上游描述翻译而来。星标为采集时快照，不是实时排名。
 
@@ -39,6 +39,7 @@
 - [encounter/objdiff](https://github.com/encounter/objdiff) — 面向反编译项目的本地差异比较工具。 **[586 星标]**
 - [EliotVU/Unreal-Library](https://github.com/EliotVU/Unreal-Library) — Unreal 软件包文件（.upk、.u、.uasset 等）的反编译器，支持 Unreal Engine 1、2 和 3。 **[490 星标]**
 - [sneakyevil/IL2CPP_Resolver](https://github.com/sneakyevil/IL2CPP_Resolver) — 面向 Unity IL2CPP 的运行时 API 解析器。 **[475 星标]**
+- [TeamGDB/Yakumo](https://github.com/TeamGDB/Yakumo) — 将一款 PSP 游戏静态重编译为原生可执行文件，使用 Vulkan 和 SDL3。需自备游戏副本。 **[447 星标]**
 - [AliveTeam/alive_reversing](https://github.com/AliveTeam/alive_reversing) — 《Oddworld: Abe’s Exoddus》与《Oddworld: Abe’s Oddysee》的重新实现。 **[441 星标]**
 - [LazyDuchess/OpenTS2](https://github.com/LazyDuchess/OpenTS2) — 使用 Unity 开源重新实现《模拟人生 2》。 **[432 星标]**
 - [alexbatalov/fallout2-re](https://github.com/alexbatalov/fallout2-re) — 通过逆向工程重建的《辐射 2》。 **[411 星标]**
@@ -48,6 +49,8 @@
 - [0xDC00/agent](https://github.com/0xDC00/agent) — 基于脚本的通用文本 hook 工具，由 Frida 驱动。 **[357 星标]**
 - [adonis-singh/re4](https://github.com/adonis-singh/re4) — 《生化危机 4》（GameCube，G4BE08 调试版本）：完整反编译为 C/C++，生成与原版逐字节一致的结果。 **[345 星标]**
 - [xensik/gsc-tool](https://github.com/xensik/gsc-tool) — 用于编译和反编译 IW 引擎游戏脚本的实用工具。 **[335 星标]**
+- [snuri00/psp-web-recomp](https://github.com/snuri00/psp-web-recomp) — 在浏览器中运行 PSP 游戏：静态重编译为 WebAssembly，配备高层仿真（HLE）内核与 WebGL2 渲染器。 **[329 星标]**
+- [SpeedBreakerProject/speedbreaker](https://github.com/SpeedBreakerProject/speedbreaker) — Xbox 360 版 Need for Speed: Most Wanted（2005）的非官方静态重编译项目：面向 Steam Deck、Steam Machine、Steam Frame、Linux 和 Mac 的原生移植；iPhone/iPad 可侧载实验性 IPA 或自行构建。需自备光盘，不附带游戏文件。与 EA 或 Valve 无关联。 **[326 星标]**
 - [g0aty/SickoMenu](https://github.com/g0aty/SickoMenu) — 功能强大的 Among Us 实用工具，通过自定义功能丰富游戏体验！ **[316 星标]**
 - [encounter/decomp-toolkit](https://github.com/encounter/decomp-toolkit) — GameCube 和 Wii 反编译工具包 **[311 星标]**
 - [kiraio-moe/USSR](https://github.com/kiraio-moe/USSR) — 轻松移除 Unity 启动画面和水印。 **[307 星标]**
@@ -65,13 +68,17 @@
 - [Herringway/ebsrc](https://github.com/Herringway/ebsrc) — 游戏 EarthBound 的源码重建项目 **[183 星标]**
 - [DabDavis/perfect-dark-dabs-mod](https://github.com/DabDavis/perfect-dark-dabs-mod) — Perfect Dark PC 移植版分支：提供跳跃、战斗翻滚、近战连招、第三人称、80 个模拟对手、旁观相机、截图与录像功能。需自备 ROM。 **[178 星标]**
 - [alexbatalov/fallout1-re](https://github.com/alexbatalov/fallout1-re) — 通过逆向工程重建的 Fallout **[177 星标]**
+- [NoRain211/doaxvb-re](https://github.com/NoRain211/doaxvb-re) — Dead or Alive Xtreme Beach Volleyball（Xbox）的原生 Windows 移植，通过静态重编译和手写运行时构建。需要自有游戏副本。 **[167 星标]**
+- [LittleBitUA/DPRecomp](https://github.com/LittleBitUA/DPRecomp) — 通过静态重编译将 Xbox 360 版《Deadly Premonition》原生移植至 PC。v2.0.14：原生 DirectX 12 渲染器已可测试，内部渲染分辨率最高为 4 倍；支持 60 FPS、鼠标视角、键盘驾驶、FSR 3、ISO 安装器及 PAL 和美版。 **[162 星标]**
 - [backtrace-labs/backtrace-unity](https://github.com/backtrace-labs/backtrace-unity) — 为 Unity 游戏引擎提供一流的错误报告功能。 **[157 星标]**
 - [ethanedits/Apex-Legends-SDK](https://github.com/ethanedits/Apex-Legends-SDK) — 易于使用的 Apex Legends 开源作弊工具，用于理解 Apex Legends、Respawn 修改版 Source 引擎及其 Easy Anti-Cheat 实现的逆向分析。 **[157 星标]**
 - [Dyotson/ForzaHorizon1-ReImagined](https://github.com/Dyotson/ForzaHorizon1-ReImagined) — 将 Forza Horizon（Xbox 360）原生移植至 PC，并围绕现代 Horizon 体验重建：共享在线自由漫游、排行榜与劲敌、120/144 fps，以及可自行托管的在线服务器。 **[151 星标]**
 - [KobaltBlu/KotOR.js](https://github.com/KobaltBlu/KotOR.js) — 使用 JavaScript 重制 Odyssey 游戏引擎，该引擎曾用于《KotOR I》和《KotOR II》。 **[149 星标]**
 - [repnz/ReversingMinesweeper](https://github.com/repnz/ReversingMinesweeper) — 逆向分析扫雷：重建扫雷源码 **[146 星标]**
 - [xmoezzz/rfvp](https://github.com/xmoezzz/rfvp) — FVP 引擎及 IDE 的非官方 Rust 跨平台实现 **[146 星标]**
+- [centollOS/SwitchWakerHD](https://github.com/centollOS/SwitchWakerHD) — 将 Wind Waker HD（Wii U）静态重编译到 Nintendo Switch，采用 deko3d 渲染器。需自备游戏转储。 **[139 星标]**
 - [krystalgamer/spidey-decomp](https://github.com/krystalgamer/spidey-decomp) — Neversoft《蜘蛛侠》游戏 PC 移植版的反编译项目 **[138 星标]**
+- [Unchiga/YuGiOhForbiddenMemoriesRecomp](https://github.com/Unchiga/YuGiOhForbiddenMemoriesRecomp) — 将 Yu-Gi-Oh! Forbidden Memories（PS1）静态重编译为原生可执行文件，带有实时决斗评级表、融合助手、可调卡片掉落及作弊菜单。需自备光盘。 **[137 星标]**
 - [2003scape/rsc-c](https://github.com/2003scape/rsc-c) — 🍫 将 RuneScape Classic 客户端移植到 C **[135 星标]**
 - [opentestdriveunlimited/OpenTestDriveUnlimited](https://github.com/opentestdriveunlimited/OpenTestDriveUnlimited) — Test Drive Unlimited（2006）的开源移植版 **[135 星标]**
 - [IroniaTheMaster/Descrypt-global-metadata.dat](https://github.com/IroniaTheMaster/Descrypt-global-metadata.dat) — 如何解密 Unity 游戏中的 global-metadata.dat？ **[129 星标]**
@@ -84,6 +91,7 @@
 - [EZFNDEV/UEDumper](https://github.com/EZFNDEV/UEDumper) — 这款工具或许能自动转储任意 Unreal Engine 游戏的 SDK，仅供教学使用。 **[112 星标]**
 - [Kimjio/umamusume-localify](https://github.com/Kimjio/umamusume-localify) — 对《赛马娘》Windows 客户端进行本地化与增强 **[111 星标]**
 - [AeonLucid/frida-il2cpp](https://github.com/AeonLucid/frida-il2cpp) — 为希望探索 Unity IL2CPP 游戏的人提供的辅助库。 **[109 星标]**
+- [JackandBeans/Snap64Recomp](https://github.com/JackandBeans/Snap64Recomp) — 通过静态重编译将 N64 版《Pokémon Snap》原生移植至 Windows、Linux 和 macOS。默认保留卡带版的游玩体验，所有增强功能均需自行开启。需自备转储文件，不包含游戏数据。 **[109 星标]**
 - [ExtraJuiceMan/ChristWareAmongUs](https://github.com/ExtraJuiceMan/ChristWareAmongUs) — 针对近期热门游戏 Among Us 的作弊工具 **[105 星标]**
 - [mukaschultze/grand-theft-auto-for-unity](https://github.com/mukaschultze/grand-theft-auto-for-unity) — 适用于 Unity 引擎的 Grand Theft Auto 地图加载器。 **[105 星标]**
 - [Yharnam-Hunters/Paleblood](https://github.com/Yharnam-Hunters/Paleblood) — Bloodborne（CUSA03173 v1.09）反编译项目，带有独立运行时；逐个验证函数，将游戏代码重写为可读的 C++。游戏尚无法运行，已验证 21 个函数，不包含游戏文件。 **[104 星标]**
@@ -94,16 +102,25 @@
 - [Taiga74164/UnityModTemplate](https://github.com/Taiga74164/UnityModTemplate) — 收到 NEXON 的停止侵权通知后，项目已停止开发 **[89 星标]**
 - [trumank/patternsleuth](https://github.com/trumank/patternsleuth) — Unreal Engine 地址扫描器与测试套件。 **[89 星标]**
 - [Toxocious/Aetherim](https://github.com/Toxocious/Aetherim) — 在运行时访问 Unity IL2CPP 类、方法和字段的 C++ 库。 **[88 星标]**
+- [KIexster/god-of-war-recomp](https://github.com/KIexster/god-of-war-recomp) — 通过 PS2Recomp 静态重编译实现 God of War（PS2）的原生 PC 移植。 **[85 星标]**
+- [wivi514/Dead_Rising_2_Case_Zero_Xenon_Recomp](https://github.com/wivi514/Dead_Rising_2_Case_Zero_Xenon_Recomp) — 通过静态重编译将 Xbox 360 XBLA 游戏《Dead Rising 2: Case Zero》原生移植至 PC。支持 Windows、Linux、Vulkan、键盘鼠标和手柄，需自行提供游戏副本。 **[85 星标]**
+- [faligame/lost-odyssey-hd-remaster](https://github.com/faligame/lost-odyssey-hd-remaster) — Lost Odyssey HD Remaster：通过静态重编译得到 Xbox 360 版《Lost Odyssey》的原生 PC 版本。支持 720p 至 4K、精确还原的界面、60 fps、Direct3D 12、Vulkan 和纹理替换。不是模拟器，仍在开发中。 **[78 星标]**
 - [kirklandsig/halo2-decompiled](https://github.com/kirklandsig/halo2-decompiled) — 初代 Xbox《光环 2》的反编译项目：将零售版游戏匹配反编译为 C/C++ 源码，逐字节重建，目标是原生 PC、Linux 及掌机移植版。欢迎贡献。仅提供源码，需自备光盘。 **[73 星标]**
 - [AlembicOrg/UniResolver](https://github.com/AlembicOrg/UniResolver) — 轻量化的 Unity 游戏插件开发框架，带来出色体验 **[72 星标]**
+- [nikolaygorb/ArmyOfTwoRecomp](https://github.com/nikolaygorb/ArmyOfTwoRecomp) — 基于 RexGlue-SDK 的 Army of Two（Army of 2，2008，Xbox360）游戏静态重编译项目。 **[70 星标]**
 - [moleworld-dev/MoleWorld-5.5.0-touchHLE-offline](https://github.com/moleworld-dev/MoleWorld-5.5.0-touchHLE-offline) — 《摩尔庄园》移动版／豪华版 5.5.0 的离线移植（touchHLE），内置修改器，并对 1.1.5、2.4.3、5.4.0、5.5.0 四个版本开展逆向研究。让这款于 2015 年停运下架的 2D 模拟经营老游戏离线复活。 **[69 星标]**
+- [wivi514/Dead_Rising_2_Case_West_Xenon_Recomp](https://github.com/wivi514/Dead_Rising_2_Case_West_Xenon_Recomp) — 通过静态重编译，将 Xbox 360 XBLA 游戏 Dead Rising 2: Case West 原生移植到 PC。支持 Windows 和 Linux、Vulkan、键鼠及手柄。需自行提供游戏副本。 **[69 星标]**
 - [kiocode/IL2CPPBaseByKio](https://github.com/kiocode/IL2CPPBaseByKio) — Kio 为 IL2CPP Unity 游戏修改制作的新基础框架，采用 Lua 实现，提供通用 ESP 连线、ESP 方框、ESP 骨骼、Chams 和自动瞄准功能 **[66 星标]**
+- [Alexbeav/fm4-recomp](https://github.com/Alexbeav/fm4-recomp) — 使用 ReXGlue 对 Forza Motorsport 4 进行实验性静态重编译。不包含游戏文件。 **[65 星标]**
+- [invinceble55-wq/Estacado-The-Darkness-Recomp](https://github.com/invinceble55-wq/Estacado-The-Darkness-Recomp) — Estacado：The Darkness（Xbox 360）的原生 PC 重编译项目。非官方粉丝移植，需自备游戏副本。 **[65 星标]**
 - [Yokimitsuro/khdays-port](https://github.com/Yokimitsuro/khdays-port) — 《Kingdom Hearts 358/2 Days》的实验性原生 PC 运行时，与对应的 Nintendo DS 反编译项目同步开发。不包含受版权保护的游戏数据。 **[65 星标]**
 - [jozsefsallai/il2cpp-stringliteral-patcher](https://github.com/jozsefsallai/il2cpp-stringliteral-patcher) — 从 Unity 的 global-metadata.dat 文件提取并修改字符串字面量。 **[62 星标]**
+- [novapowers0/BloodyRoar2Recomp](https://github.com/novapowers0/BloodyRoar2Recomp) — PSX 游戏《Bloody Roar II》的重编译项目（欧版 SLES-01722／美版 SCUS-94424）。Anti-copyright：需自行提供光盘。支持双地区版本构建、从零实现的宽屏和精选模组。 **[62 星标]**
 - [LostMyCode/redstone-js](https://github.com/LostMyCode/redstone-js) — RedStoneJS：将免费网络游戏《RED STONE ONLINE》移植到网页，让你在浏览器中游玩。 **[60 星标]**
 - [BlackBikerss/Elysium-Skill-Forge](https://github.com/BlackBikerss/Elysium-Skill-Forge) — Disco Elysium Trainer 2026：增强技能与无限资源指南 **[57 星标]**
 - [Mikompilation/Mikompilation](https://github.com/Mikompilation/Mikompilation) — Fatal Frame 2: Crimson Butterfly（Project Zero 2 /《零～红蝶》）游戏引擎重新实现项目 **[57 星标]**
 - [VOTV-MP/Multivoid](https://github.com/VOTV-MP/Multivoid) — 《Voices of the Void》多人合作模组，适用于 UE4.27 的 UE4SS，可在一台主机与最多三个客户端之间同步游戏，无需修改任何游戏文件。 **[57 星标]**
+- [vyanhursky/DefJamFFNY-recomp](https://github.com/vyanhursky/DefJamFFNY-recomp) — 《Def Jam: Fight for NY》PC 移植版：将初代 Xbox 游戏静态重编译为原生 Windows 和 macOS 版本，使用 Direct3D 11／Vulkan。需自备游戏转储。 **[57 星标]**
 - [aldimirosilva/Cumrooms-PUNCH-Trainer-Suite](https://github.com/aldimirosilva/Cumrooms-PUNCH-Trainer-Suite) — 开源 Cumrooms PUNCH Trainer 2026，提供基于 ImGui IL2CPP 的自定义界面及冲刺工具 **[56 星标]**
 - [DaZombieKiller/TypeTreeDumper](https://github.com/DaZombieKiller/TypeTreeDumper) — 用于从 Unity 编辑器导出类型树信息的实验性工具。 **[56 星标]**
 - [malukbattah-hue/memory-forge](https://github.com/malukbattah-hue/memory-forge) — 2026 年开源 Windows 内存编辑器与游戏修改器替代方案。 **[56 星标]**
@@ -126,40 +143,71 @@
 - [Fl0rk/External_ESP_Free_Fire](https://github.com/Fl0rk/External_ESP_Free_Fire) — 基于 TrollSpeed UI 的进程外 ESP 逻辑项目。 **[42 星标]**
 - [lombyte-project/Lombyte](https://github.com/lombyte-project/Lombyte) — 通过反编译保存 Ratchet &amp; Clank（2002） **[42 星标]**
 - [Jadis0x/URKit](https://github.com/Jadis0x/URKit) — Unity 与 Unreal Engine 原生 C++ SDK 生成器 **[41 星标]**
+- [kazuyette/rr-decomp](https://github.com/kazuyette/rr-decomp) — 《Ridge Racer》（PlayStation、Namco、1994 年、SLPS-00001）的匹配反编译，以及可在 Linux 和 Windows 上原生启动并游玩的静态重编译。此处不包含游戏数据，需自备光盘。 **[41 星标]**
 - [lethi9gg/Il2CppGG](https://github.com/lethi9gg/Il2CppGG) — 使用 Lua 编写、面向 GameGuardian 的强大 Il2Cpp 检查与操作工具包。 **[41 星标]**
+- [whylurking/IsaacRecomp](https://github.com/whylurking/IsaacRecomp) — The Binding of Isaac（Flash）的原生 C++ 重编译版：60 fps、1080p，支持 Windows/Linux/Switch。需要 Steam 上的原版游戏。 **[41 星标]**
+- [jessetbh/WCWvsNWOWorldTourRecomp](https://github.com/jessetbh/WCWvsNWOWorldTourRecomp) — 通过静态重编译将 WCW vs. nWo World Tour（N64）原生移植到 PC。不包含游戏资源，需自备 ROM。 **[40 星标]**
 - [kokseen1/FelineSystem2](https://github.com/kokseen1/FelineSystem2) — CatSystem2 视觉小说引擎的开源重制版。 **[40 星标]**
 - [bhhbazinga/Dyna-IL2CppDumper](https://github.com/bhhbazinga/Dyna-IL2CppDumper) — Windows 版 IL2CppDumper，在游戏运行时转储数据，用于绕过保护与加密。 **[39 星标]**
 - [konovalov-aleks/reSL](https://github.com/konovalov-aleks/reSL) — 通过逆向工程恢复的《ShortLine》v1.1 游戏源代码。 **[39 星标]**
 - [ShrugYu/game-client-to-server-reverse](https://github.com/ShrugYu/game-client-to-server-reverse) — 从游戏客户端反推服务端协议，并复现可部署的服务端（Agent Skill）。支持 Unity/UE/Cocos、IL2CPP/Lua/JS 等。 **[38 星标]**
+- [theokyr/Project8Recomp](https://github.com/theokyr/Project8Recomp) — 通过静态重编译实现 Tony Hawk's Project 8（Xbox 360）的原生 PC 移植版。 **[38 星标]**
 - [BitCrackers/Il2CppTranslator](https://github.com/BitCrackers/Il2CppTranslator) — 帮助为 Il2CppInsector 开发去混淆插件的库。 **[37 星标]**
 - [paul01784/MeatyEFTRelease](https://github.com/paul01784/MeatyEFTRelease) — 面向 Escape from Tarkov（EFT）的开源 DMA 雷达和配套工具包，采用 C++ 和 ImGui 构建，注重性能、实时对局数据和可配置的可视化工具。 **[37 星标]**
+- [saulob/geometry-wars-retro-evolved-2-recompiled](https://github.com/saulob/geometry-wars-retro-evolved-2-recompiled) — 通过静态重编译将 Geometry Wars: Retro Evolved 2 原生移植到 PC，包含 TRG 启动器、高帧率、本地成就和离线排行榜。 **[36 星标]**
 - [MidTerm-CN/Il2CppDumper](https://github.com/MidTerm-CN/Il2CppDumper) — 通用注入式 Il2CppDumper，作者相信它会带来良好体验。 **[35 星标]**
+- [RussoPhone/tomodachi-ltd-recomp](https://github.com/RussoPhone/tomodachi-ltd-recomp) — 使用源自 suyu 的仿真实现进行实验性静态重编译。原生 PC 移植版仍在开发中。不包含游戏文件。 **[35 星标]**
 - [shiedless/unity-il2cpp-esp-tutorial](https://github.com/shiedless/unity-il2cpp-esp-tutorial) — 从 dump.cs 到屏幕显示，使用原生 UIKit 为 Unity IL2CPP iOS 游戏构建 Objective-C 覆盖层。 **[35 星标]**
 - [XcantloadX/PWAAT-Save-Editor](https://github.com/XcantloadX/PWAAT-Save-Editor) — 用于《逆转裁判123 成步堂精选集》的工具，支持导出和导入存档、解锁章节、修改法庭中的 HP 等。 **[35 星标]**
+- [chiikabu/the-browsing-of-isaac](https://github.com/chiikabu/the-browsing-of-isaac) — 将 The Binding of Isaac: Repentance+ 重编译为 WebAssembly，可在浏览器中游玩。 **[34 星标]**
 - [dwgx/vrchat-il2cpp-re](https://github.com/dwgx/vrchat-il2cpp-re) — VRChat IL2CPP 去混淆流程，以 Unity 6（6000.0.60f1）为基准。逆向分析 MethodInfo 枚举，涉及 6.4 万个类、57 万个方法和 18.8 万个字段，命名结果可复现。 **[33 星标]**
+- [mr-finster/vf2-recomp](https://github.com/mr-finster/vf2-recomp) — 面向 Mac、Windows 与 Steam Deck 的 Virtua Fighter 2（Sega Model 2，1994）：将街机的 i960 程序重编译为原生代码，最高 6 倍、宽屏及流畅的 120 fps。需自备 vf2.zip。 **[33 星标]**
 - [Fukashiro-Yukari/LuaLoader](https://github.com/Fukashiro-Yukari/LuaLoader) — 使用 MelonLoader 的 Lua 加载器。 **[32 星标]**
 - [SnoopLawg/PyAutoRaid](https://github.com/SnoopLawg/PyAutoRaid) — Raid: Shadow Legends 无界面自动化工具。包含 BepInEx 模组（HTTP API）、Python 工具和仪表盘，支持战斗日志与模拟、CB 优化、自主刷取和升阶循环、装备求解、DWJ/HellHades 功能对齐及资源提取。仅使用模组 API，不依赖屏幕自动化。 **[32 星标]**
+- [jessetbh/WWFNoMercyRecomp](https://github.com/jessetbh/WWFNoMercyRecomp) — 通过静态重编译实现 WWF No Mercy（N64）的原生 PC 移植版。不含游戏资源，需自备 ROM。 **[30 星标]**
+- [nikolaygorb/WetRecomp](https://github.com/nikolaygorb/WetRecomp) — 基于 RexGlue-SDK 的 Wet \[Xbox360\] 游戏静态重编译项目。 **[30 星标]**
+- [CaiusCodes/GoldenEye-007-XBLA-PC-Recomp](https://github.com/CaiusCodes/GoldenEye-007-XBLA-PC-Recomp) — 使用 ReXGlue 将未发行的《GoldenEye 007》Xbox 360／XBLA 重制版重编译为原生 Windows PC 版本。需自备副本。 **[29 星标]**
 - [Thijs2004/CyPort](https://github.com/Thijs2004/CyPort) — 在 iPhone 和 iPad 上原生运行你自有的 Mac 版《Cyberpunk 2077》副本（不附带游戏文件） **[28 星标]**
+- [elprogramadorloco-arch/fuc-recomp](https://github.com/elprogramadorloco-arch/fuc-recomp) — 混合式原生 Fate/unlimited codes 项目：以 PSP 静态重编译与游戏逻辑为基础，PS2 资源和控制方式仍在开发中。不包含游戏文件。 **[27 星标]**
 - [johndoe31415/dosdebug](https://github.com/johndoe31415/dosdebug) — 功能丰富的 DOSBox 调试工具，用于逆向分析 DOS 应用和游戏作弊。 **[27 星标]**
 - [adm244/Dishonored-MissionStats](https://github.com/adm244/Dishonored-MissionStats) — 《耻辱》的原生模组，在暂停菜单中添加“统计”按钮，让玩家能够在任务进行中查看统计数据。 **[26 星标]**
+- [gamboozino/ngbrecomp](https://github.com/gamboozino/ngbrecomp) — 将《Ninja Gaiden Black》（Xbox，2005 年）静态重编译为原生 Linux 和 Windows 版本，使用自行实现的 Vulkan 渲染器。稳定 60 fps，支持宽屏、超宽屏、键盘鼠标，并适配 Steam Deck。需自备游戏副本。 **[26 星标]**
 - [AniLeo/ue-version](https://github.com/AniLeo/ue-version) — 分析基于 Unreal Engine 4 和 Unreal Engine 5 的游戏，识别其构建所用引擎版本的工具。 **[25 星标]**
+- [chrissotraidis/annepad](https://github.com/chrissotraidis/annepad) — 通过静态重编译让 Pokémon Stadium 登陆 iPhone 和 iPad，提供原生 Metal 渲染、触控操作，以及不含 ROM 的构建。 **[25 星标]**
+- [jessetbh/WCWnWoRevengeRecomp](https://github.com/jessetbh/WCWnWoRevengeRecomp) — 通过静态重编译将 N64 版《WCW/nWo Revenge》原生移植至 PC。不包含游戏素材，需自备 ROM。 **[25 星标]**
+- [nikolaygorb/PerfectDarkZeroRecomp](https://github.com/nikolaygorb/PerfectDarkZeroRecomp) — 基于 RexGlue-SDK 的 Perfect Dark Zero（Xbox360）游戏静态重编译项目。 **[25 星标]**
+- [mitchaiet/master-chef](https://github.com/mitchaiet/master-chef) — 面向 Apple Vision Pro 的非官方原生 Halo: Combat Evolved。提供沉浸式全景、手柄支持和视觉模组。处于实验阶段，需要 Halo PC 注册和 Apple 签名。 **[24 星标]**
+- [nikolaygorb/PerfectDarkRemasterRecomp](https://github.com/nikolaygorb/PerfectDarkRemasterRecomp) — 基于 RexGlue-SDK 的《Perfect Dark Remaster 2010》Xbox 360 版静态重编译项目 **[24 星标]**
+- [saulob/hard-corps-uprising-recompiled](https://github.com/saulob/hard-corps-uprising-recompiled) — 通过静态重编译实现 Hard Corps: Uprising 的原生 PC 移植版；这是 Xbox 360 XBLA 平台上的 Contra 衍生游戏，配有 TRG 启动器。 **[24 星标]**
 - [shiedless/Reveal](https://github.com/shiedless/Reveal) — 用于 iOS 上 UE4 的精简只读骨骼叠加显示：Metal + ImGui，采用 Theos 插件。 **[23 星标]**
 - [shiedless/ios-messiah-re](https://github.com/shiedless/ios-messiah-re) — 逆向分析 iOS 上的网易 Messiah 引擎：ECS、Python 游戏逻辑层及遥测反作弊机制。 **[22 星标]**
+- [aharonahdoot/RecompCore](https://github.com/aharonahdoot/RecompCore) — 用于 Dolphin 的静态重编译 CPU 核心，以原生代码运行 GameCube 游戏，并可透明回退到解释器。 **[21 星标]**
 - [andkorzh/FPGA-DENDY](https://github.com/andkorzh/FPGA-DENDY) — 用于 8 位游戏机的时钟精确 FPGA 设计，开发中。 **[21 星标]**
 - [FMZNkdv/ScKey](https://github.com/FMZNkdv/ScKey) — 获取 Supercell 游戏公钥的简单指南。 **[21 星标]**
 - [creaffy/libil2cpp](https://github.com/creaffy/libil2cpp) — C++ Unity IL2CPP 破解 API。 **[19 星标]**
+- [jessetbh/AkiLauncher](https://github.com/jessetbh/AkiLauncher) — 用于 AKI 引擎 N64 摔跤游戏重编译项目的原生 Windows 管理中心，可下载并启动各移植版。不包含游戏资源。 **[19 星标]**
 - [michal-kapala/ubi-gs](https://github.com/michal-kapala/ubi-gs) — Ubisoft Game Service 和 Ubi.com 网络的模拟器。 **[19 星标]**
 - [kiraio-moe/Reverse1999-Anarchist](https://github.com/kiraio-moe/Reverse1999-Anarchist) — 《重返未来：1999》游戏资源加密与解密工具。 **[18 星标]**
+- [BlackLineInteractive/nWiiURecomp](https://github.com/BlackLineInteractive/nWiiURecomp) — 面向 Nintendo Wii U 的静态重编译与运行时工具包，基于 NWiiRecomp，可用于制作原生 PC 移植等。 **[17 星标]**
+- [veritr1x/nfsmw-recomp](https://github.com/veritr1x/nfsmw-recomp) — 基于 recomp-kit 重编译 Need for Speed: Most Wanted（2005 年 PC Black Edition），提供 macOS、iPad、Linux、Windows 和浏览器宿主，支持 Metal、Vulkan 和 WebGPU 渲染。需自备游戏文件。 **[17 星标]**
 - [clauadv/ue_aes_finder](https://github.com/clauadv/ue_aes_finder) — 从 Unreal Engine 游戏中查找 AES 密钥的轻量工具。 **[16 星标]**
 - [jaenster/libd2](https://github.com/jaenster/libd2) — 以净室方式用 Zig 重新实现 Diablo II 1.14d 的确定性引擎核心，包括地图生成、物品生成和运行时模拟。 **[16 星标]**
+- [mr-finster/vf1-recomp](https://github.com/mr-finster/vf1-recomp) — 将《Virtua Fighter》（Sega Model 1，1993 年）静态重编译至 Mac、Windows 和 Steam Deck：最高 6 倍、宽屏、流畅的 120 fps。需自备 vf.zip。 **[16 星标]**
 - [NeonTeam58/HSR-OWNER](https://github.com/NeonTeam58/HSR-OWNER) — 做主人，不做奴隶。 **[16 星标]**
+- [Scotho/socom-unzipped](https://github.com/Scotho/socom-unzipped) — 将 SOCOM II: U.S. Navy SEALs 静态重编译到 PC，并提供可自行托管的在线联机功能。 **[16 星标]**
 - [isinternets/d2-research](https://github.com/isinternets/d2-research) — 关于《命运 2》构建 86657 的研究报告：逆向工程、原生系统、协议、任务重建、方法、证据及安全工程。 **[15 星标]**
+- [sp00nznet/model3recomp](https://github.com/sp00nznet/model3recomp) — Sega Model 3 硬件运行时与 PowerPC 603e 静态重编译器。将重编译后的 Model 3 游戏链接到原生 C 硬件实现，不使用模拟器或解释器。 **[15 星标]**
+- [tmcleroy/vampire-savior-recomp](https://github.com/tmcleroy/vampire-savior-recomp) — Vampire Savior（CPS-2 街机）的非官方原生 PC 移植版，通过静态重编译实现，并配有训练模式；支持 macOS、Linux、Steam Deck 和 Windows。需自备游戏副本。测试版。 **[15 星标]**
 - [aldelaro5/Bug-Fables-Internal-Docs](https://github.com/aldelaro5/Bug-Fables-Internal-Docs) — 汇集游戏内部工作原理文档的仓库。 **[14 星标]**
+- [andeecollard/jsrf-recomp](https://github.com/andeecollard/jsrf-recomp) — 将 Jet Set Radio Future（Xbox）静态重编译为原生 macOS 程序，通过 Direct3D 8 提升转换以 60 fps 游玩至第 2 章。基于 sp00nznet/xboxrecomp 构建。不包含游戏数据。 **[14 星标]**
 - [Francesco149/openrecet](https://github.com/Francesco149/openrecet) — Recettear 的开源即用型 EXE 替代程序（开发中），以及引擎特殊行为文档。 **[14 星标]**
+- [jessetbh/WWFWrestleMania2000Recomp](https://github.com/jessetbh/WWFWrestleMania2000Recomp) — 通过静态重编译实现 WWF WrestleMania 2000（N64）的原生 PC 移植版。不含游戏资源，需自备 ROM。 **[14 星标]**
 - [walterwhite-69/Vidlink.pro-Decryptor](https://github.com/walterwhite-69/Vidlink.pro-Decryptor) — 以往，与 VidLink API 交互需要复杂的 WASM 桥接或耗费大量资源的浏览器自动化。本项目通过逆向分析生产环境的加密密钥，并以纯 Python 实现 XSalsa20-Poly1305 协议，实现了 100% 的原生 Python 兼容性。 **[14 星标]**
+- [zenit2893-cmyk/project-1944](https://github.com/zenit2893-cmyk/project-1944) — 通过静态重编译实现 Call of Duty 3（Xbox 360）的非官方原生 Windows PC 移植版。需自备游戏。支持英语、俄语与乌克兰语。 **[14 星标]**
 - [jktrn/my-ctf-challenges](https://github.com/jktrn/my-ctf-challenges) — 我编写过的所有网络安全 CTF 题目！o(^▽^)o **[13 星标]**
 - [BioTomateDE/LibGM](https://github.com/BioTomateDE/LibGM) — 用于解包和修改 Undertale、Deltarune 等 GameMaker 游戏的工具。 **[12 星标]**
 - [C0mputery/AutoUnityGuidRemapper](https://github.com/C0mputery/AutoUnityGuidRemapper) — 快速的 Unity GUID 重映射工具，指定两个目录即可重映射脚本、资源和着色器，将引用错误的文件替换为正确文件。 **[12 星标]**
+- [Dyotson/RecompiledHaloReach](https://github.com/Dyotson/RecompiledHaloReach) — 使用 ReXGlue 通过静态重编译将 Xbox 360 版《Halo: Reach》原生移植至 PC。不包含游戏代码或素材，需自备副本。 **[11 星标]**
 - [erupturatis/Age-of-war-unity-clone](https://github.com/erupturatis/Age-of-war-unity-clone) — 使用 Unity 制作的 Age of War 复刻，用于加速 NEAT 算法训练。数值提取自原版游戏，并与 Python 脚本通信。 **[11 星标]**
 - [LambdaEd1th/badpiggies-editor](https://github.com/LambdaEd1th/badpiggies-editor) — 使用 Rust、Dioxus 和 wgpu 构建的跨平台《捣蛋猪》关卡与存档编辑器，支持桌面和 WebAssembly。 **[11 星标]**
 - [PSRewired/RetroDNS](https://github.com/PSRewired/RetroDNS) — 简单的 DNS 代理，面向因 ISP 限制而无法使用自定义 DNS 服务器解析的用户。 **[11 星标]**
@@ -167,17 +215,31 @@
 - [soksx/hytale-protocol](https://github.com/soksx/hytale-protocol) — 🚀 Hytale QUIC/UDP 网络协议的完整文档。自动从服务端 JAR 文件提取、反编译并记录所有数据包、枚举和数据结构，提供版本跟踪及 Wiki 文档。✅ **[11 星标]**
 - [Akrelia/RoseRevolution](https://github.com/Akrelia/RoseRevolution) — 使用 Unity 制作的 MMORPG《ROSE Online》新版客户端。 **[10 星标]**
 - [kh-recoded-decomp/kh-recoded-decomp](https://github.com/kh-recoded-decomp/kh-recoded-decomp) — 《王国之心 Re:coded》（美版／欧版）的匹配反编译项目。欧版 C 代码完成 89.58%，数据完成 100.00%，达到逐字节一致。 **[10 星标]**
+- [Razzile/Unigen](https://github.com/Razzile/Unigen) — 开发中的 IL2CPP 元数据到 IDC 生成器。 **[10 星标]**
+- [tmcleroy/muscle-march-recomp](https://github.com/tmcleroy/muscle-march-recomp) — 通过静态重编译将 Muscle March（WiiWare）非官方原生移植到 PC，支持 macOS、Linux、Steam Deck 和 Windows。需要自有游戏副本。测试版。 **[10 星标]**
+- [fungalspores/prototype-switch](https://github.com/fungalspores/prototype-switch) — 将 Prototype 和 Prototype 2（Xbox 360）移植到 Nintendo Switch：使用 ReXGlue 静态重编译与原生 Vulkan 渲染器。免费，不出售。不含游戏文件。 **[9 星标]**
 - [GoomiiV2/TS-ReSplit](https://github.com/GoomiiV2/TS-ReSplit) — 逆向分析 TimeSplitters 系列游戏，构建兼容其资源的引擎 **[9 星标]**
+- [nikolaygorb/TheDarknessRecomp](https://github.com/nikolaygorb/TheDarknessRecomp) — 基于 RexGlue-SDK 的《The Darkness》Xbox 360 版静态重编译项目 **[9 星标]**
+- [NoRain211/doa3-re](https://github.com/NoRain211/doa3-re) — Dead or Alive 3（Xbox）的原生 Windows 移植版，通过静态重编译与手写运行时实现。需自备游戏副本。 **[9 星标]**
 - [repinek/frida-il2cpp-proto-dumper](https://github.com/repinek/frida-il2cpp-proto-dumper) — 使用 Frida 与 frida-il2cpp-bridge，将 IL2CPP Unity 游戏中的 protobuf-net 消息和枚举转储为有效的 .proto 文件 **[9 星标]**
 - [snaphat/MonoCecilExtensions](https://github.com/snaphat/MonoCecilExtensions) — Mono.Cecil 扩展 **[9 星标]**
+- [sp00nznet/linksawakening-portable](https://github.com/sp00nznet/linksawakening-portable) — 将《Link's Awakening DX》静态重编译为原生 C，并移植至 PlayStation 4、PlayStation 3 和 Nintendo 3DS。不包含 ROM。 **[9 星标]**
+- [TheGh0stShip/BattleTanx-Global-Assault-PC-Port](https://github.com/TheGh0stShip/BattleTanx-Global-Assault-PC-Port) — 使用 N64Recomp、N64ModernRuntime、RT64 与 SDL2 实现 BattleTanx: Global Assault 的原生 Windows 与 Linux 移植版。 **[9 星标]**
 - [Yokimitsuro/khrecoded-decomp](https://github.com/Yokimitsuro/khrecoded-decomp) — 《王国之心 Re:coded》（Nintendo DS）的匹配反编译项目，仍在进行中。 **[9 星标]**
+- [aharonahdoot/GXRuntime](https://github.com/aharonahdoot/GXRuntime) — 与具体游戏无关的 GameCube 静态重编译运行时：CPU 语义、设备及 GX 渲染器，仍在开发中。 **[8 星标]**
+- [aharonahdoot/StrikersRecomp](https://github.com/aharonahdoot/StrikersRecomp) — Super Mario Strikers（G4QE01）重编译项目，是 RecompCore 与 DolRuntime 的示范案例。不包含游戏数据。 **[8 星标]**
 - [eikarna/deltaforce-dump](https://github.com/eikarna/deltaforce-dump) — 本仓库收录逆向工程资源及从游戏中提取的数据，用于研究、模组制作（须游戏 EULA 允许）或教学。 **[8 星标]**
+- [jessetbh/VPW64Recomp](https://github.com/jessetbh/VPW64Recomp) — 通过静态重编译实现 Virtual Pro Wrestling 64（N64）的原生 PC 移植版。不含游戏资源，需自备 ROM。 **[8 星标]**
+- [JonathanDC64/FFCCEOT-Recomp](https://github.com/JonathanDC64/FFCCEOT-Recomp) — 通过静态重编译将 Final Fantasy Crystal Chronicles: Echoes of Time（DS）原生移植到 PC。需自备 ROM；游戏在用户 PC 上构建，不包含任何游戏内容。支持 Windows 和 Linux。Alpha 版。 **[8 星标]**
 - [jrhollis/jspacman](https://github.com/jrhollis/jspacman) — 通过逆向工程使用 JavaScript 重建 Pac-Man 与 Ms. Pac-Man **[8 星标]**
 - [kiraio-moe/UnityWebTools.NET](https://github.com/kiraio-moe/UnityWebTools.NET) — 用于便捷处理 UnityWebData 的 C# 库。 **[8 星标]**
 - [Miou-zora/SniffSniffSquared](https://github.com/Miou-zora/SniffSniffSquared) — 面向 Dofus 3 游戏协议的被动网络嗅探器及 Protobuf 解码器，以及基于抓取数据构建的交易仪表盘。采用 Rust + libpcap、Next.js 和 Postgres。 **[8 星标]**
+- [sp00nznet/model2recomp](https://github.com/sp00nznet/model2recomp) — 用于静态重编译游戏的 Sega Model 2 硬件运行时，涵盖几何引擎、光栅化器、瓦片地图与 TGP 协处理器。 **[8 星标]**
 - [gididaf/pokemon-yellow-typescript](https://github.com/gididaf/pokemon-yellow-typescript) — 用 TypeScript 重写的《宝可梦：皮卡丘》，在浏览器中运行，所有数据均从你自己的 ROM 提取 **[7 星标]**
 - [nolanvenhola/zeliard](https://github.com/nolanvenhola/zeliard) — 在线体验：https://nolanvenhola.github.io/zeliard/ —— Zeliard 的完整 C/WebAssembly 移植版与位级精确的 MASM 源码重建，附逆向工程工具和一致性测试。 **[7 星标]**
+- [TekRantGaming/point-blank-recompiled](https://github.com/TekRantGaming/point-blank-recompiled) — 通过 PSXRecomp 静态重编译将 Namco 的 Point Blank（PlayStation）原生移植到 PC。可用鼠标或手柄瞄准，无需光枪。需自备光盘。 **[7 星标]**
 - [Valkyrians/yyc-toolbox](https://github.com/Valkyrians/yyc-toolbox) — 面向 YYC 游戏、功能尚可的模组工具／反编译器。 **[7 星标]**
+- [yashin-sh/WiiCompiled-Switch](https://github.com/yashin-sh/WiiCompiled-Switch) — WiiCompiled 的实验性原生 Nintendo Switch 移植，提供 GX 捕获／重放和 GPU 诊断。尚未证实能够渲染出可辨认的游戏画面。 **[7 星标]**
 - [Diphome/UnityRift](https://github.com/Diphome/UnityRift) — 用于逆向分析和移植 Unity 游戏的工具包，提供完整的 Unity → Godot 4 流程，包括 GUI、CLI 和 MCP 服务器。 **[6 星标]**
 - [HexCrystal69/Discord_ORBS](https://github.com/HexCrystal69/Discord_ORBS) — 客户端 JavaScript 实用工具，通过模拟游戏游玩、直播和视频播放活动，直接从控制台自动完成所有进行中的 Discord Quests。 **[6 星标]**
 - [N0zoM1z0/th08-mods](https://github.com/N0zoM1z0/th08-mods) — 面向《东方永夜抄》（Touhou 8）的可移植玩法修改器，提供 Hidden、Flashlight、Mirror、Double Time、Relax 等模式，可在 Web 与 Linux 上游玩。 **[6 星标]**
@@ -202,6 +264,7 @@
 - [kyo5uke/sushidash](https://github.com/kyo5uke/sushidash) — 加快 SushiDa（寿司打，Unity WebGL）加载速度的 Chrome 扩展 **[4 星标]**
 - [nikolaybutnik/FFVII-Rebirth-Mesh-Patcher](https://github.com/nikolaybutnik/FFVII-Rebirth-Mesh-Patcher) — 修复 FFVII Rebirth 在 V1.005 补丁后的网格模组，无需降级 **[4 星标]**
 - [senyaak/homm5-editor](https://github.com/senyaak/homm5-editor) — 基于 Electron 的《魔法门之英雄无敌 V：东方部落》地图编辑器，逆向解析 .pak、map.xdb 和 GroundTerrain.bin，提供实时 3D 地形渲染与编辑，不含游戏内容。 **[4 星标]**
+- [Tatsh/expert-satphone](https://github.com/Tatsh/expert-satphone) — 专业卫星电话。 **[4 星标]**
 - [TheGh0stShip/BattleTanx-Global-Assault](https://github.com/TheGh0stShip/BattleTanx-Global-Assault) — 《BattleTanx: Global Assault》（N64，美版 Rev 0）的 100% 匹配反编译，为 VitaTanxGA 奠定基础。 **[4 星标]**
 - [banatic/acww-decomp](https://github.com/banatic/acww-decomp) — 《动物森友会：野生世界》（韩版，NDS）ARM9 游戏代码的匹配反编译项目。 **[3 星标]**
 - [C0mputery/ComputerysUltimateTABGServer](https://github.com/C0mputery/ComputerysUltimateTABGServer) — 高效的 Totally Accurate Battlegrounds 服务器软件，在 JIBSIL 服务器的基础上重写，侧重代码整洁与可扩展性。 **[3 星标]**
@@ -216,7 +279,8 @@
 - [rkuhn153/il2cpp-decompiler](https://github.com/rkuhn153/il2cpp-decompiler) — 专为 Unity IL2CPP 设计的反编译器，提供桌面界面与 MCP，需要 Il2CppDumper 生成转储。 **[3 星标]**
 - [SantiagoRM9/ace-tool](https://github.com/SantiagoRM9/ace-tool) — 🔍 使用 ace-tool 增强代码库索引和语义搜索，高效优化 AI 提示词。 **[3 星标]**
 - [shellbombs/ShooterGameCheat](https://github.com/shellbombs/ShooterGameCheat) — 一个 Unreal Engine 游戏修改演示 **[3 星标]**
-- [smartfish67png/BetterCpp2IL](https://github.com/smartfish67png/BetterCpp2IL) — 上游未提供简介。 **[3 星标]**
+- [smartfish67png/BetterCpp2IL](https://github.com/smartfish67png/BetterCpp2IL) — 上游仓库未提供项目简介。 **[3 星标]**
+- [Tatsh/expert-rotary-phone](https://github.com/Tatsh/expert-rotary-phone) — Expert Rotary Phone（专家转盘电话）。 **[3 星标]**
 - [ZexisRe/iOS-IL2CPP-Dumper](https://github.com/ZexisRe/iOS-IL2CPP-Dumper) — iOS IL2CPP 转储工具，在设备端为 Unity 游戏生成 dump.cs，适用于越狱或 TrollStore 环境 **[3 星标]**
 - [8bit-mate/Diarrhea](https://github.com/8bit-mate/Diarrhea) — 用于重新打包、修改和提取《Daria’s Inferno》音频资源的应用。 **[2 星标]**
 - [adm244/Dishonored-FullRegen](https://github.com/adm244/Dishonored-FullRegen) — Dishonored 原生模组，修改生命值与法力值恢复上限，使其能够完全恢复。 **[2 星标]**
@@ -224,6 +288,7 @@
 - [beater-studios/mu-file-viewer](https://github.com/beater-studios/mu-file-viewer) — 基于 Web 的 MU Online 游戏资源查看器，可在浏览器中预览纹理、3D 模型、音频和字体 **[2 星标]**
 - [Couyne/AmongUsRoleViewer](https://github.com/Couyne/AmongUsRoleViewer) — Among Us 进程外 Frida 角色读取工具 **[2 星标]**
 - [hasaneyldrm/webcheat](https://github.com/hasaneyldrm/webcheat) — 面向浏览器游戏的 Cheat Engine 式 Chrome 扩展，可扫描 WebAssembly 内存、编辑及冻结数值，并控制游戏速度，零依赖。 **[2 星标]**
+- [Indegosblade/RR3-DevOps](https://github.com/Indegosblade/RR3-DevOps) — 针对 Real Racing 3 最后一个 iOS 版本的逆向工程和运行时开发操作。 **[2 星标]**
 - [kokseen1/katawa-shoujo-web-port](https://github.com/kokseen1/katawa-shoujo-web-port) — 视觉小说 Katawa Shoujo 的 Web 移植版。 **[2 星标]**
 - [Merlion03/misery-modding-framework](https://github.com/Merlion03/misery-modding-framework) — 面向 MISERY（Unreal Engine 5.4）的社区模组框架，不依赖 UE4SS，目前处于第一阶段：研究。 **[2 星标]**
 - [n0thhhing/Offset-updater](https://github.com/n0thhhing/Offset-updater) — 基于 Capstone 的 IL2CPP 偏移量更新工具 **[2 星标]**
@@ -269,6 +334,7 @@
 - [AnthonyOGorman/ashes-server-lab](https://github.com/AnthonyOGorman/ashes-server-lab) — 实验性的开源 C++20 Ashes of Creation 私服/服务器模拟实验室：支持本地探索 Verra、地形碰撞、移动、飞行和实时浏览器工具。缺陷很多，需自备客户端。不包含战斗或任务。 **[0 星标]**
 - [ashallynart/how-to-fish-cheats](https://github.com/ashallynart/how-to-fish-cheats) — 通过自动钓获、即时咬钩、完美收线及资源修改，掌握离线钓鱼游戏。 **[0 星标]**
 - [Brickpebewitch/primordial-cs2-dump-toolkit](https://github.com/Brickpebewitch/primordial-cs2-dump-toolkit) — 面向 CS2 模组开发者的 Primordial Dump 工具包，一款免费的客户端命令行工具，可离线转储对局实体，用于本地研究和自定义配置。 **[0 星标]**
+- [ComptrollerColander/Subnautica2-Trainer-Console-Commands](https://github.com/ComptrollerColander/Subnautica2-Trainer-Console-Commands) — 🐟 面向《Subnautica 2》的开源内存 API 与开发者控制台启用工具，提供 IL2CPP 转储、物品生成、速度修改及传送，用于单人模式调试。 **[0 星标]**
 - [ctkrug/peel](https://github.com/ctkrug/peel) — 每日浏览器解谜游戏：每次解码一层真实的混淆单行代码，直到显露明文，以最少步骤取胜。 **[0 星标]**
 - [Gaok1/foxhole-rts](https://github.com/Gaok1/foxhole-rts) — 玩家制作的 Foxhole 离线单人 RTS 模组（UE4SS/Lua）：以物流为先，包含小队、供应链和 AI 敌人。早期原型。 **[0 星标]**
 - [gentritr1/lomn-web](https://github.com/gentritr1/lomn-web) — The Legend of Mata Nui（2001 年 PC 游戏）的爱好者 Web 移植版，将 C++17 转换为 WebAssembly 并使用 WebGPU。需自行提供游戏文件，与 LEGO 无关。 **[0 星标]**
@@ -277,6 +343,7 @@
 - [gilas-byte/DRG-Stats-Tracker](https://github.com/gilas-byte/DRG-Stats-Tracker) — 逆向解析 Deep Rock Galactic 存档，在本地 SQLite + Streamlit 仪表板中跟踪各类敌人的击杀数、超频进度及统计数据随时间的变化。游玩时自动采集。Rock and Stone！⛏️ **[0 星标]**
 - [Glmour/ue-live-bridge](https://github.com/Glmour/ue-live-bridge) — 通过 UE4SS 从外部控制正在运行的 Unreal Engine 游戏，并验证所请求的行为确实发生。采用负对照验证：如果检查在其验证条件被刻意破坏后仍然通过，就应判为失败。 **[0 星标]**
 - [Glmour/ue-rpc-channel](https://github.com/Glmour/ue-rpc-channel) — 适用于任意已发布 Unreal Engine 游戏的双向可靠字符串通道，无需引擎源码、C++ 或自定义 RPC。基于 APlayerController 已有的两个 RPC 构建。 **[0 星标]**
+- [ifBars/ScheduleOneBlueprintImporter](https://github.com/ifBars/ScheduleOneBlueprintImporter) — 面向 Schedule I 的双运行时模组概念验证，可将公开的编辑器蓝图导入原生属性。 **[0 星标]**
 - [IgnacioPardo/cuphead-apple-port-tools](https://github.com/IgnacioPardo/cuphead-apple-port-tools) — 实验性的 Cuphead 恢复工具及 Apple 平台原生辅助工具。原创代码采用 MIT 许可证，需自备游戏文件。 **[0 星标]**
 - [imattas/GSpots](https://github.com/imattas/GSpots) — 作为可复用 C++ 静态库提供的 Unreal Engine 全局偏移扫描器。 **[0 星标]**
 - [incognitofelix/pal-mod-toolkit](https://github.com/incognitofelix/pal-mod-toolkit) — 由控制台驱动的 UE4SS C++ 工具包，为 Palworld 模组开发者提供游戏内逆向工程工具。 **[0 星标]**
@@ -304,14 +371,17 @@
 - [metadate1/crust](https://github.com/metadate1/crust) — Crash Bandicoot（PlayStation）的非官方 Rust/WebAssembly 研究运行时，用户需自行提供游戏数据。 **[0 星标]**
 - [Mokocoder/RepSeedDumper](https://github.com/Mokocoder/RepSeedDumper) — 基于 Dumper-7 构建的 UE 网络复制布局种子提取器。 **[0 星标]**
 - [moleworld-dev/mole-data-editor](https://github.com/moleworld-dev/mole-data-editor) — 摩尔庄园早期 iPad 版存档（.dat）编辑器，纯网页工具。 **[0 星标]**
+- [morosanu1st/codementor-mobile-game-asset-inspection-demo](https://github.com/morosanu1st/codementor-mobile-game-asset-inspection-demo) — 学习演示：移动游戏如何从 CDN 获取远程资源，以及如何合乎伦理地检查这些资源，涵盖 URL 提取、文件魔数识别、mitmproxy 日志记录器及 Unity Addressables 目录解析器。 **[0 星标]**
 - [Nbv000/il2cpp-instrumentation-study](https://github.com/Nbv000/il2cpp-instrumentation-study) — 面向 IL2CPP 托管进程（Unity Linux 构建）的运行时插桩桥接工具。支持基于签名的方法解析、延迟类初始化恢复和 LD_PRELOAD 引导。 **[0 星标]**
 - [Nokama0/dukenukem-forever-menu](https://github.com/Nokama0/dukenukem-forever-menu) — Duke Nukem Forever（Steam build 244 及 The Doctor Who Cloned Me DLC）的模组菜单：ESP、自瞄、自由相机、进度跟踪等功能。 **[0 星标]**
 - [NotFabii/astroneer-save-editor](https://github.com/NotFabii/astroneer-save-editor) — Astroneer 的存档编辑器和格式库。支持字节级精确的往返转换，提供 tkinter 图形界面、命令行工具及存档格式规范文档。 **[0 星标]**
-- [nullptr-solutions/UEDumperCS](https://github.com/nullptr-solutions/UEDumperCS) — 上游未提供简介。 **[0 星标]**
+- [nullptr-solutions/UEDumperCS](https://github.com/nullptr-solutions/UEDumperCS) — 上游仓库未提供项目简介。 **[0 星标]**
 - [okuranattou/torneko1-remaster-diagonal-fix](https://github.com/okuranattou/torneko1-remaster-diagonal-fix) — 用于消除《トルネコの大冒険 ちょっとステキなリマスター》Steam 版斜向移动（R 键固定方向）输入延迟的补丁工具。 **[0 星标]**
 - [omka-1337/FFA](https://github.com/omka-1337/FFA) — Far Far Away：用于处理 Unreal Engine 2 游戏的工具和引擎。 **[0 星标]**
 - [operationostrich/DeTAOOT](https://github.com/operationostrich/DeTAOOT) — 《Titanic: Adventure Out Of Time》（1996）的反编译项目。 **[0 星标]**
 - [Ratmirage/RVA2FRIDA](https://github.com/Ratmirage/RVA2FRIDA) — 供 Frida 使用的小型 JavaScript 生成器。 **[0 星标]**
+- [RectangleEquals/UnityLudometryMCP](https://github.com/RectangleEquals/UnityLudometryMCP) — 用于理解 Unity 游戏并制作模组的本地 MCP 服务。 **[0 星标]**
+- [RectangleEquals/UnityRuntimeAnalysisAgent](https://github.com/RectangleEquals/UnityRuntimeAnalysisAgent) — 游戏内 BepInEx 插件，让本地工具检查、插桩，并在获得用户许可后修改正在运行的 Unity 游戏。它是 UnityLudometryMCP 的运行时部分。 **[0 星标]**
 - [reveler-hub/ScritchyMod](https://github.com/reveler-hub/ScritchyMod) — 玩家制作的 Scritchy Scratchy 结果读取器及 MelonLoader 模组。 **[0 星标]**
 - [scarlett1000/steam-stubbed](https://github.com/scarlett1000/steam-stubbed) — 通过简单的 DLL 即时修补 SteamStub 保护，支持 Steamless 等其他工具无法正常运行的游戏。 **[0 星标]**
 - [sebh974/mordhau-disable-idle-kick](https://github.com/sebh974/mordhau-disable-idle-kick) — 通过单字节补丁禁用 Mordhau 专用服务器的空闲/挂机踢出机制（原因：Inactif）。用于私人或局域网服务器。 **[0 星标]**
@@ -326,10 +396,13 @@
 - [TheBestPlan/killingfloor-map-importer](https://github.com/TheBestPlan/killingfloor-map-importer) — 将其他游戏的地图转换为 Killing Floor 1 关卡（.rom，Unreal Engine 2.5）。 **[0 星标]**
 - [TheBestPlan/killingfloor-map-viewer](https://github.com/TheBestPlan/killingfloor-map-viewer) — Killing Floor 游戏地图（.rom，Unreal Engine 2.5）的桌面与浏览器查看器。可带纹理绘制世界 BSP、静态网格、地形和天空盒，并自由飞行浏览，无需 KFEd。 **[0 星标]**
 - [vekolyram/ue5-minhook-example](https://github.com/vekolyram/ue5-minhook-example) — UE5 MinHook 内联钩子示例：针对 UObject::StaticConstructObject_Internal 的 AOB 特征扫描和 detour，并记录了在真实 UE 5.6 目标上发现的失败情形。 **[0 星标]**
+- [vs-sr-dev/pc-celltosingularity-doc](https://github.com/vs-sr-dev/pc-celltosingularity-doc) — 《Cell to Singularity》（Computer Lunch、Unity 6、Steam）：一款移动放置游戏的 PC 版本。一个对象中含 10,249 个词条和 19 种语言，另有三个 MS-NRBF 存档、1,157 个 Crunch 头部、45 个图集，以及出现在 Windows 上的手机 SDK 软件栈。依据字节进行测量，描述结构而非操作配方。 **[0 星标]**
 - [vs-sr-dev/pc-harrypotter1-doc](https://github.com/vs-sr-dev/pc-harrypotter1-doc) — 从零售光盘测量 Harry Potter and the Philosopher’s Stone（PC，Electronic Arts，2001）：ISO 9660 布局、隐藏在卷描述符中的表、遮蔽一个含 9,280 个扇区的不可读区域边界的读取窗口、249 个 Unreal Engine 1 包，以及一行中的 31 个关卡。 **[0 星标]**
 - [vs-sr-dev/pc-iamsetsuna-doc](https://github.com/vs-sr-dev/pc-iamsetsuna-doc) — 研究对象为 I am Setsuna 的 Steam 安装（Unity 5.2，未曾运行）。包含 970 个文件、1,471,268,535 字节，其中 97.85% 属于第三方容器。六种读取器依据厂商自身的整数字段完整解析：35 个 v15 SerializedFile 无剩余字节、145 个 UnityWeb 包、279 个 @UTF 表、381,077 个音频帧的 CRC-16，以及恰好读完的 392 个 Lua 代码块。 **[0 星标]**
+- [vs-sr-dev/pc-teslaeffect-doc](https://github.com/vs-sr-dev/pc-teslaeffect-doc) — 对 Tesla Effect（PC/Windows，2014）的字节级研究：共 17,519,466,565 字节，其中 82.93% 为实拍视频，工作室自己的代码占 0.0090%。统计了 1,035 个 Bink 2 文件头、20,014.286 秒播放时长、分布于五个 Excel 工作簿中的脚本，以及双向均不通过的名称闭包测试。 **[0 星标]**
 - [vs-sr-dev/pc-thewardrobe-doc](https://github.com/vs-sr-dev/pc-thewardrobe-doc) — The Wardrobe（CINIC Games，Unity 6，Steam）：以意大利语为键的六种语言、1,207 个明文 XML，17,368 个格式 22 精灵，482 个 FMOD Studio 音频库，以及 31 段无声影片；均从字节中测量，未发布任何内容。 **[0 星标]**
 - [vulnix0x4/breakpoint](https://github.com/vulnix0x4/breakpoint) — 通过实践学习游戏安全研究。在浏览器中逆向分析一款 3D 游戏，练习内存扫描、监视点、修补及 C++ 工具。 **[0 星标]**
+- [xipspace/save-app](https://github.com/xipspace/save-app) — 使用 Flutter 制作的游戏进度快照工具箱。 **[0 星标]**
 - [Zippingrocks/Gears-of-War-5-2019-Extraction-database](https://github.com/Zippingrocks/Gears-of-War-5-2019-Extraction-database) — 证据驱动的 Gears 5 B2 提取研究及 Blender 地图重建工具。 **[0 星标]**
 - [Zippingrocks/Gears-of-War-Reloaded-2014-Extraction-database](https://github.com/Zippingrocks/Gears-of-War-Reloaded-2014-Extraction-database) — 证据驱动的 Gears of War: Reloaded 包研究及 Blender 地图重建工具。 **[0 星标]**
 

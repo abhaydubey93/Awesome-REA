@@ -10,6 +10,7 @@ from urllib.parse import urlsplit
 
 from build_discovery_pages import collection_page_schema, jsonld_script
 from build_repository_index import CATEGORIES
+from source_descriptions import description_fallback
 
 CATEGORY_ICONS = {
     'web-analysis': 'globe', 'game-analysis': 'gamepad', 'android': 'phone',
@@ -69,7 +70,7 @@ def repository_card(record: dict, language: str, use_pro: bool) -> str:
     owner, separator, project = name.partition('/')
     title = (f'<span class="source-owner">{escape(owner)}/</span>'
              f'<span class="source-project">{escape(project)}</span>' if separator else escape(name))
-    description = record[f'description_{language}'] or ('上游仓库未提供项目简介。' if zh else 'No description supplied by the upstream repository.')
+    description = record[f'description_{language}'] or description_fallback(record, language)
     stars = record.get('stars')
     star_html = (f'<span class="source-stars" title="{("采集时的星标快照" if zh else "Stars at collection time")}">'
                  f'{stars:,} {("星标" if zh else "stars")}</span>' if isinstance(stars, int) else '')
@@ -163,7 +164,7 @@ def build_browse_pages(
                 content = '<div class="source-results browse-results">\n' + '\n'.join(repository_card(record, language, use_pro) for record in groups[category]) + '\n</div>'
                 schema_items = [
                     {'name': record.get('full_name') or record['name'], 'url': record['url'],
-                     'description': record[f'description_{language}'] or ('上游仓库未提供项目简介。' if zh else 'No description supplied by the upstream repository.')}
+                     'description': record[f'description_{language}'] or description_fallback(record, language)}
                     for record in groups[category]
                 ]
                 if not groups[category]:

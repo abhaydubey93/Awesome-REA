@@ -2086,5 +2086,29 @@
   "web-platform": {
     "en": "Web platform",
     "zh": "Web 平台"
+  },
+  "recompilation": {
+    "en": "Recompilation",
+    "zh": "重编译"
+  },
+  "pc-port": {
+    "en": "PC port",
+    "zh": "PC 移植"
+  },
+  "rexglue": {
+    "en": "ReXGlue",
+    "zh": "ReXGlue"
+  },
+  "ipa": {
+    "en": "IPA",
+    "zh": "IPA"
+  },
+  "n64": {
+    "en": "Nintendo 64",
+    "zh": "Nintendo 64"
+  },
+  "xbox360": {
+    "en": "Xbox 360",
+    "zh": "Xbox 360"
   }
 }

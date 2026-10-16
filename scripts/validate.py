@@ -16,6 +16,7 @@ from catalog import ROOT, RESOURCE_FILES
 from localization import read_localizations, validate_localizations
 from source_scope import read_scope, validate_scope
 from validate_papers import validate_papers
+from source_descriptions import validate_description_capture
 
 
 RESOURCE_FIELDS = {
@@ -434,6 +435,7 @@ def validate_source_index(document, errors):
                 seen.add(value.casefold())
         if record.get('scan_status') != 'readme-scanned' or record.get('verification') != 'automated-readme-scan':
             errors.append(f'{where}: preserve automated scan labels')
+        validate_description_capture(record, errors, where)
         for field in ('url', 'readme_url'):
             if public_https_error(record.get(field)):
                 errors.append(f'{where}: invalid public {field}')
@@ -455,6 +457,26 @@ def validate_source_index(document, errors):
             errors.append(f'{where}: repository metadata must describe a public, non-fork, non-archived repository')
         if not re.fullmatch(r'[0-9a-f]{64}', str(record.get('readme_sha256', ''))):
             errors.append(f'{where}: missing README SHA-256')
+        if 'readme_content_git_sha' in record or 'readme_git_sha_matches_content' in record:
+            content_sha = record.get('readme_content_git_sha')
+            if (not isinstance(content_sha, str) or not re.fullmatch(r'[0-9a-f]{40}', content_sha)
+                    or type(record.get('readme_git_sha_matches_content')) is not bool
+                    or record['readme_git_sha_matches_content'] != (content_sha == record.get('readme_git_sha'))):
+                errors.append(f'{where}: computed README Git hash and comparison flag disagree')
+        if 'readme_integrity_review' in record:
+            review = record['readme_integrity_review']
+            expected = {'reviewed_at', 'method', 'advertised_blob_sha256', 'advertised_blob_bytes'}
+            if (not isinstance(review, dict) or set(review) != expected
+                    or review.get('method') != 'readme-json-and-raw-match-captured-sha256'
+                    or record.get('readme_git_sha_matches_content') is not False
+                    or not re.fullmatch(r'[0-9a-f]{64}', str(review.get('advertised_blob_sha256', '')))
+                    or type(review.get('advertised_blob_bytes')) is not int or review['advertised_blob_bytes'] <= 0):
+                errors.append(f'{where}: invalid README integrity review')
+            else:
+                try:
+                    parse_iso(review['reviewed_at'], require_time=True)
+                except (ValueError, TypeError):
+                    errors.append(f'{where}: invalid README integrity-review timestamp')
         if type(record.get('readme_bytes')) is not int or record['readme_bytes'] <= 0:
             errors.append(f'{where}: missing positive README byte count')
         targets = record.get('targets')

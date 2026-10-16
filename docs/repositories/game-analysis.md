@@ -2,7 +2,7 @@
 
 [All categories](README.md) · [简体中文](game-analysis.zh-CN.md)
 
-**326 repositories** · 2026-10-16 UTC
+**399 repositories** · 2026-10-16 UTC
 
 These are automatically discovered projects, not individually curated or tested recommendations. Categories derive from metadata and descriptions from upstream text. Stars are collection-time snapshots, not live rankings.
 
@@ -39,6 +39,7 @@ These are automatically discovered projects, not individually curated or tested 
 - [encounter/objdiff](https://github.com/encounter/objdiff) — A local diffing tool for decompilation projects **[586 stars]**
 - [EliotVU/Unreal-Library](https://github.com/EliotVU/Unreal-Library) — Decompiler for Unreal package files (.upk, .u, .uasset; etc), with support for Unreal Engine 1, 2, and 3 **[490 stars]**
 - [sneakyevil/IL2CPP_Resolver](https://github.com/sneakyevil/IL2CPP_Resolver) — A run-time API resolver for IL2CPP Unity. **[475 stars]**
+- [TeamGDB/Yakumo](https://github.com/TeamGDB/Yakumo) — Static recompilation of a PSP game into a native executable. Vulkan and SDL3. Bring your own copy of the game. **[447 stars]**
 - [AliveTeam/alive_reversing](https://github.com/AliveTeam/alive_reversing) — Re-implementation of Oddworld: Abe's Exoddus and Oddworld: Abe's Oddysee **[441 stars]**
 - [LazyDuchess/OpenTS2](https://github.com/LazyDuchess/OpenTS2) — Open source re-implementation of The Sims 2 in Unity **[432 stars]**
 - [alexbatalov/fallout2-re](https://github.com/alexbatalov/fallout2-re) — Reverse engineered Fallout 2 **[411 stars]**
@@ -48,6 +49,8 @@ These are automatically discovered projects, not individually curated or tested 
 - [0xDC00/agent](https://github.com/0xDC00/agent) — Universal script based text hooker (powered by FRIDA). **[357 stars]**
 - [adonis-singh/re4](https://github.com/adonis-singh/re4) — Resident Evil 4 (GameCube, G4BE08 debug build) — complete byte-identical decompilation to C/C++ **[345 stars]**
 - [xensik/gsc-tool](https://github.com/xensik/gsc-tool) — A utility to compile &amp; decompile IW engine game scripts. **[335 stars]**
+- [snuri00/psp-web-recomp](https://github.com/snuri00/psp-web-recomp) — PSP games in the browser, static recompilation to WebAssembly, an HLE kernel and a WebGL2 renderer **[329 stars]**
+- [SpeedBreakerProject/speedbreaker](https://github.com/SpeedBreakerProject/speedbreaker) — Unofficial static recompilation of the Xbox 360 version of Need for Speed: Most Wanted (2005): a native port for Steam Deck, Steam Machine, Steam Frame, Linux and Mac (iPhone/iPad: sideload the experimental IPA or build it yourself). Bring your own disc: no game files included. Not affiliated with EA or Valve. **[326 stars]**
 - [g0aty/SickoMenu](https://github.com/g0aty/SickoMenu) — A powerful utility for Among Us designed to enrich your game experience with custom features! **[316 stars]**
 - [encounter/decomp-toolkit](https://github.com/encounter/decomp-toolkit) — A GameCube &amp; Wii decompilation toolkit **[311 stars]**
 - [kiraio-moe/USSR](https://github.com/kiraio-moe/USSR) — Easily remove Unity splash screen &amp; watermark. **[307 stars]**
@@ -65,13 +68,17 @@ These are automatically discovered projects, not individually curated or tested 
 - [Herringway/ebsrc](https://github.com/Herringway/ebsrc) — Source code recreation for the game Earthbound **[183 stars]**
 - [DabDavis/perfect-dark-dabs-mod](https://github.com/DabDavis/perfect-dark-dabs-mod) — Perfect Dark PC port fork: jump, combat roll, melee combos, third person, 80 simulants, spectator camera, screenshots and video recording. Bring your own ROM. **[178 stars]**
 - [alexbatalov/fallout1-re](https://github.com/alexbatalov/fallout1-re) — Reverse engineered Fallout **[177 stars]**
+- [NoRain211/doaxvb-re](https://github.com/NoRain211/doaxvb-re) — Native Windows port of Dead or Alive Xtreme Beach Volleyball (Xbox), built by static recompilation with a hand-written runtime. Requires your own copy of the game. **[167 stars]**
+- [LittleBitUA/DPRecomp](https://github.com/LittleBitUA/DPRecomp) — Deadly Premonition (Xbox 360) native PC port by static recompilation - v2.0.14: native DirectX 12 renderer ready for testing (up to 4x internal resolution); 60 FPS, mouse look, keyboard driving, FSR 3, ISO installer, PAL + USA **[162 stars]**
 - [backtrace-labs/backtrace-unity](https://github.com/backtrace-labs/backtrace-unity) — First-class error reporting for the Unity game engine. **[157 stars]**
 - [ethanedits/Apex-Legends-SDK](https://github.com/ethanedits/Apex-Legends-SDK) — Open Source Cheat for Apex Legends, designed for ease of use. Made to understand reversing of Apex Legends and respawn's modified source engine as well as their Easy Anti Cheat Implementation. **[157 stars]**
 - [Dyotson/ForzaHorizon1-ReImagined](https://github.com/Dyotson/ForzaHorizon1-ReImagined) — Forza Horizon (Xbox 360) natively on PC, rebuilt around the modern Horizon experience: shared online free roam, leaderboards and rivals, 120/144 fps, and a self-hostable online server. **[151 stars]**
 - [KobaltBlu/KotOR.js](https://github.com/KobaltBlu/KotOR.js) — A remake of the Odyssey Game Engine that powered KotOR I &amp; II written in JavaScript **[149 stars]**
 - [repnz/ReversingMinesweeper](https://github.com/repnz/ReversingMinesweeper) — Reverse Engineering Minesweeper: Reconstruct Minesweeper Source Code **[146 stars]**
 - [xmoezzz/rfvp](https://github.com/xmoezzz/rfvp) — A Non-Official Rust cross-platform implementation of the FVP engine &amp; IDE **[146 stars]**
+- [centollOS/SwitchWakerHD](https://github.com/centollOS/SwitchWakerHD) — Wind Waker HD (Wii U) static recompilation for Nintendo Switch, deko3d renderer. Requires your own game dump. **[139 stars]**
 - [krystalgamer/spidey-decomp](https://github.com/krystalgamer/spidey-decomp) — Decompilation of Neversoft's Spider-Man game (PC PORT) **[138 stars]**
+- [Unchiga/YuGiOhForbiddenMemoriesRecomp](https://github.com/Unchiga/YuGiOhForbiddenMemoriesRecomp) — Static recompilation of Yu-Gi-Oh! Forbidden Memories (PS1) into a native executable - with a live duel-rank meter, a fusion assistant, adjustable card drops and a cheat menu. Bring your own disc. **[137 stars]**
 - [2003scape/rsc-c](https://github.com/2003scape/rsc-c) — 🍫 runescape classic client ported to C **[135 stars]**
 - [opentestdriveunlimited/OpenTestDriveUnlimited](https://github.com/opentestdriveunlimited/OpenTestDriveUnlimited) — Open source port of Test Drive Unlimited (2006) **[135 stars]**
 - [IroniaTheMaster/Descrypt-global-metadata.dat](https://github.com/IroniaTheMaster/Descrypt-global-metadata.dat) — How do you decrypt global-metadata.dat from a Unity game? **[129 stars]**
@@ -84,6 +91,7 @@ These are automatically discovered projects, not individually curated or tested 
 - [EZFNDEV/UEDumper](https://github.com/EZFNDEV/UEDumper) — This can probably automatically dump the SDK for any Unreal Engine Game (Educational Purpose Only) **[112 stars]**
 - [Kimjio/umamusume-localify](https://github.com/Kimjio/umamusume-localify) — Localize and enhance the Umamusume Windows client. **[111 stars]**
 - [AeonLucid/frida-il2cpp](https://github.com/AeonLucid/frida-il2cpp) — An helper library for those that want to play around with Unity il2cpp games. **[109 stars]**
+- [JackandBeans/Snap64Recomp](https://github.com/JackandBeans/Snap64Recomp) — Native Windows, Linux and macOS port of Pokémon Snap (N64) by static recompilation. Plays like the cartridge by default; every enhancement is opt-in. Bring your own dump; no game data is included. **[109 stars]**
 - [ExtraJuiceMan/ChristWareAmongUs](https://github.com/ExtraJuiceMan/ChristWareAmongUs) — A cheat for the recently popular fad game Among Us **[105 stars]**
 - [mukaschultze/grand-theft-auto-for-unity](https://github.com/mukaschultze/grand-theft-auto-for-unity) — Grand Theft Auto map loader for Unity Engine **[105 stars]**
 - [Yharnam-Hunters/Paleblood](https://github.com/Yharnam-Hunters/Paleblood) — A decompilation of Bloodborne (CUSA03173 v1.09) with its own runtime: the game's code rewritten as readable C++, one verified function at a time. The game doesn't run on it yet; 21 functions verified. No game files included. **[104 stars]**
@@ -94,16 +102,25 @@ These are automatically discovered projects, not individually curated or tested 
 - [Taiga74164/UnityModTemplate](https://github.com/Taiga74164/UnityModTemplate) — Project discontinued due to cease and desist from NEXON **[89 stars]**
 - [trumank/patternsleuth](https://github.com/trumank/patternsleuth) — Unreal Engine address scanner and test suite **[89 stars]**
 - [Toxocious/Aetherim](https://github.com/Toxocious/Aetherim) — A C++ library for accessing Unity's IL2CPP classes, methods, and fields during run-time. **[88 stars]**
+- [KIexster/god-of-war-recomp](https://github.com/KIexster/god-of-war-recomp) — Native PC port of God of War (PS2) via static recompilation with PS2Recomp **[85 stars]**
+- [wivi514/Dead_Rising_2_Case_Zero_Xenon_Recomp](https://github.com/wivi514/Dead_Rising_2_Case_Zero_Xenon_Recomp) — Native PC port of the Xbox 360 XBLA game Dead Rising 2: Case Zero, by static recompilation. Windows and Linux, Vulkan, keyboard/mouse and controller. You supply your own copy of the game. **[85 stars]**
+- [faligame/lost-odyssey-hd-remaster](https://github.com/faligame/lost-odyssey-hd-remaster) — Lost Odyssey HD Remaster: a native PC build of Lost Odyssey (Xbox 360) via static recompilation. 720p to 4K with an exact interface, 60 fps, Direct3D 12 and Vulkan, texture replacement. Not an emulator. Work in progress. **[78 stars]**
 - [kirklandsig/halo2-decompiled](https://github.com/kirklandsig/halo2-decompiled) — Halo 2 decompilation (decomp) for the original Xbox: a matching decompilation of the retail game into C/C++ source, rebuilt byte for byte, toward native PC, Linux and handheld ports. Contributors welcome. Source only; bring your own disc. **[73 stars]**
 - [AlembicOrg/UniResolver](https://github.com/AlembicOrg/UniResolver) — A lightweight Unity game plugin development framework designed for an excellent developer experience. **[72 stars]**
+- [nikolaygorb/ArmyOfTwoRecomp](https://github.com/nikolaygorb/ArmyOfTwoRecomp) — Army of Two (Army of 2) 2008 \[Xbox360\] game static recompilation project based on RexGlue-SDK **[70 stars]**
 - [moleworld-dev/MoleWorld-5.5.0-touchHLE-offline](https://github.com/moleworld-dev/MoleWorld-5.5.0-touchHLE-offline) — An offline touchHLE port of "摩尔庄园" Mobile/Deluxe 5.5.0 with a built-in trainer, plus reverse-engineering research on versions 1.1.5, 2.4.3, 5.4.0, and 5.5.0. Revives this old 2D simulation-management game offline after its shutdown and delisting in 2015. **[69 stars]**
+- [wivi514/Dead_Rising_2_Case_West_Xenon_Recomp](https://github.com/wivi514/Dead_Rising_2_Case_West_Xenon_Recomp) — Native PC port of the Xbox 360 XBLA game Dead Rising 2: Case West, by static recompilation. Windows and Linux, Vulkan, keyboard/mouse and controller. You supply your own copy of the game. **[69 stars]**
 - [kiocode/IL2CPPBaseByKio](https://github.com/kiocode/IL2CPPBaseByKio) — New Base By Kio For Il2CPP Unity Game Hacking. Lua Implementation, UNIVERSAL: ESP Snapline, ESP Box, ESP Skeleton, Chams, Aimbot **[66 stars]**
+- [Alexbeav/fm4-recomp](https://github.com/Alexbeav/fm4-recomp) — Experimental static recompilation of Forza Motorsport 4 using ReXGlue. No game files included. **[65 stars]**
+- [invinceble55-wq/Estacado-The-Darkness-Recomp](https://github.com/invinceble55-wq/Estacado-The-Darkness-Recomp) — Estacado: a native PC recompilation of The Darkness (Xbox 360). Unofficial fan port; bring your own copy of the game. **[65 stars]**
 - [Yokimitsuro/khdays-port](https://github.com/Yokimitsuro/khdays-port) — Experimental native PC runtime for Kingdom Hearts 358/2 Days, developed alongside the matching Nintendo DS decompilation. No copyrighted game data included. **[65 stars]**
 - [jozsefsallai/il2cpp-stringliteral-patcher](https://github.com/jozsefsallai/il2cpp-stringliteral-patcher) — Extract and patch string literals from Unity's global-metadata.dat files. **[62 stars]**
+- [novapowers0/BloodyRoar2Recomp](https://github.com/novapowers0/BloodyRoar2Recomp) — PSX recompilation of Bloody Roar II (SLES-01722 EU / SCUS-94424 USA). Anti-copyright: bring your own disc. Dual-region builds, from-scratch widescreen + curated mods. **[62 stars]**
 - [LostMyCode/redstone-js](https://github.com/LostMyCode/redstone-js) — RedStoneJS: a project porting the free online game RED STONE ONLINE to the web so you can play it in your browser. **[60 stars]**
 - [BlackBikerss/Elysium-Skill-Forge](https://github.com/BlackBikerss/Elysium-Skill-Forge) — Disco Elysium Trainer 2026 Enhanced Skills and Unlimited Resources Guide **[57 stars]**
 - [Mikompilation/Mikompilation](https://github.com/Mikompilation/Mikompilation) — Reimplementation project for the Fatal Frame 2: Crimson Butterfly (Project Zero 2 / Zero: Akai Chou) game engine. **[57 stars]**
 - [VOTV-MP/Multivoid](https://github.com/VOTV-MP/Multivoid) — Multiplayer co-op mod for Voices of the Void — a UE4SS mod for UE4.27 that syncs the game between a host and up to three clients, without modifying any game files. **[57 stars]**
+- [vyanhursky/DefJamFFNY-recomp](https://github.com/vyanhursky/DefJamFFNY-recomp) — Def Jam: Fight for NY PC port — static recompilation of the original Xbox game for native Windows and macOS (Direct3D 11 / Vulkan). Bring your own game dump. **[57 stars]**
 - [aldimirosilva/Cumrooms-PUNCH-Trainer-Suite](https://github.com/aldimirosilva/Cumrooms-PUNCH-Trainer-Suite) — Open Source Cumrooms PUNCH Trainer 2026 with ImGui IL2CPP Custom UI and Sprint Tools **[56 stars]**
 - [DaZombieKiller/TypeTreeDumper](https://github.com/DaZombieKiller/TypeTreeDumper) — Experimental tool to export type tree information from the Unity editor. **[56 stars]**
 - [malukbattah-hue/memory-forge](https://github.com/malukbattah-hue/memory-forge) — Open Source Windows Memory Editor and Game Trainer Alternative 2026 **[56 stars]**
@@ -126,40 +143,71 @@ These are automatically discovered projects, not individually curated or tested 
 - [Fl0rk/External_ESP_Free_Fire](https://github.com/Fl0rk/External_ESP_Free_Fire) — Project external ESP logic, based on TrollSpeed UI. **[42 stars]**
 - [lombyte-project/Lombyte](https://github.com/lombyte-project/Lombyte) — Preserving Ratchet &amp; Clank (2002) through decompilation **[42 stars]**
 - [Jadis0x/URKit](https://github.com/Jadis0x/URKit) — Native C++ SDK Generator for Unity &amp; Unreal Engine **[41 stars]**
+- [kazuyette/rr-decomp](https://github.com/kazuyette/rr-decomp) — Matching decompilation of Ridge Racer (PlayStation, Namco, 1994, SLPS-00001), and a static recompilation that boots and plays natively on Linux and Windows. No game data here — bring your own disc. **[41 stars]**
 - [lethi9gg/Il2CppGG](https://github.com/lethi9gg/Il2CppGG) — A powerful Il2Cpp inspection and manipulation toolkit for GameGuardian, written in Lua. **[41 stars]**
+- [whylurking/IsaacRecomp](https://github.com/whylurking/IsaacRecomp) — Native C++ recompilation of The Binding of Isaac (Flash) — 60 fps, 1080p, Windows/Linux/Switch. Requires the original game from Steam **[41 stars]**
+- [jessetbh/WCWvsNWOWorldTourRecomp](https://github.com/jessetbh/WCWvsNWOWorldTourRecomp) — Native PC port of WCW vs. nWo World Tour (N64) via static recompilation. No game assets included — bring your own ROM. **[40 stars]**
 - [kokseen1/FelineSystem2](https://github.com/kokseen1/FelineSystem2) — An open source remake of the CatSystem2 visual novel engine. **[40 stars]**
 - [bhhbazinga/Dyna-IL2CppDumper](https://github.com/bhhbazinga/Dyna-IL2CppDumper) — Windows edition of IL2Cppdumper, dump data when the game is running, used to bypass protection and encryption. **[39 stars]**
 - [konovalov-aleks/reSL](https://github.com/konovalov-aleks/reSL) — The reversed source code for ShortLine v1.1 game **[39 stars]**
 - [ShrugYu/game-client-to-server-reverse](https://github.com/ShrugYu/game-client-to-server-reverse) — Infer server protocols from game clients and recreate deployable servers (Agent Skill). Unity/UE/Cocos, IL2CPP/Lua/JS… **[38 stars]**
+- [theokyr/Project8Recomp](https://github.com/theokyr/Project8Recomp) — Native PC port of Tony Hawk's Project 8 (Xbox 360) by static recompilation. **[38 stars]**
 - [BitCrackers/Il2CppTranslator](https://github.com/BitCrackers/Il2CppTranslator) — A library to help make deobfuscation plugins for Il2CppInsector **[37 stars]**
 - [paul01784/MeatyEFTRelease](https://github.com/paul01784/MeatyEFTRelease) — Open-source DMA EFT radar and companion toolkit for Escape from Tarkov EFT, built in C++ with ImGui, focused on performance, live raid data, and configurable visual tools. **[37 stars]**
+- [saulob/geometry-wars-retro-evolved-2-recompiled](https://github.com/saulob/geometry-wars-retro-evolved-2-recompiled) — Geometry Wars: Retro Evolved 2 native PC port via static recompilation, with TRG launcher, high frame rates, local achievements and offline leaderboards **[36 stars]**
 - [MidTerm-CN/Il2CppDumper](https://github.com/MidTerm-CN/Il2CppDumper) — Injection general Il2CppDumper, And I sure you wiil have a great experience. **[35 stars]**
+- [RussoPhone/tomodachi-ltd-recomp](https://github.com/RussoPhone/tomodachi-ltd-recomp) — Experimental static recompilation using suyu-derived emulation. Native PC port in development. NO game files included. **[35 stars]**
 - [shiedless/unity-il2cpp-esp-tutorial](https://github.com/shiedless/unity-il2cpp-esp-tutorial) — Build a native Objective-C overlay for a Unity IL2CPP iOS game, from dump.cs to screen, with plain UIKit **[35 stars]**
 - [XcantloadX/PWAAT-Save-Editor](https://github.com/XcantloadX/PWAAT-Save-Editor) — Tool to export &amp; import saves, unlock chapters, modify HP in court, etc. for Phoenix Wright: Ace Attorney Trilogy. **[35 stars]**
+- [chiikabu/the-browsing-of-isaac](https://github.com/chiikabu/the-browsing-of-isaac) — The Binding of Isaac: Repentance+ recompiled to WebAssembly, playable in the browser. **[34 stars]**
 - [dwgx/vrchat-il2cpp-re](https://github.com/dwgx/vrchat-il2cpp-re) — VRChat IL2CPP deobfuscation pipeline — Unity 6 (6000.0.60f1) baseline. Reverse MethodInfo enumeration, 64K classes / 570K methods / 188K fields, reproducible naming. **[33 stars]**
+- [mr-finster/vf2-recomp](https://github.com/mr-finster/vf2-recomp) — Virtua Fighter 2 (Sega Model 2, 1994) for Mac, Windows and Steam Deck: the arcade's i960 program recompiled to native code, up to 6x, widescreen, smooth 120 fps. Bring your own vf2.zip. **[33 stars]**
 - [Fukashiro-Yukari/LuaLoader](https://github.com/Fukashiro-Yukari/LuaLoader) — Lua Loader using MelonLoader **[32 stars]**
 - [SnoopLawg/PyAutoRaid](https://github.com/SnoopLawg/PyAutoRaid) — Headless Raid: Shadow Legends automation. BepInEx mod (HTTP API), Python tooling, dashboard. Battle logging + sim, CB optimizer, autonomous farm/rank-up loops, gear solver, DWJ/HellHades parity, asset extraction. Mod-API only - no screen automation. **[32 stars]**
+- [jessetbh/WWFNoMercyRecomp](https://github.com/jessetbh/WWFNoMercyRecomp) — Native PC port of WWF No Mercy (N64) via static recompilation. No game assets included — bring your own ROM. **[30 stars]**
+- [nikolaygorb/WetRecomp](https://github.com/nikolaygorb/WetRecomp) — Wet \[Xbox360\] game static recompilation project based on RexGlue-SDK **[30 stars]**
+- [CaiusCodes/GoldenEye-007-XBLA-PC-Recomp](https://github.com/CaiusCodes/GoldenEye-007-XBLA-PC-Recomp) — Native Windows PC recompilation of the unreleased GoldenEye 007 Xbox 360/XBLA remaster using ReXGlue. Requires your own copy. **[29 stars]**
 - [Thijs2004/CyPort](https://github.com/Thijs2004/CyPort) — Run your own copy of Cyberpunk 2077 for Mac natively on iPhone and iPad (no game files included) **[28 stars]**
+- [elprogramadorloco-arch/fuc-recomp](https://github.com/elprogramadorloco-arch/fuc-recomp) — Hybrid native Fate/unlimited codes project: PSP static-recompilation/gameplay base with PS2 assets and controls in development. No game files included. **[27 stars]**
 - [johndoe31415/dosdebug](https://github.com/johndoe31415/dosdebug) — Sophisticated DOSBox debugging for reversing DOS applications and cheating in games **[27 stars]**
 - [adm244/Dishonored-MissionStats](https://github.com/adm244/Dishonored-MissionStats) — A native mod for Dishonored that adds "Statistics" button in pause menu, so it is possible to check statistics mid-mission. **[26 stars]**
+- [gamboozino/ngbrecomp](https://github.com/gamboozino/ngbrecomp) — Ninja Gaiden Black (Xbox, 2005) statically recompiled into native Linux and Windows builds, drawn by its own Vulkan renderer. A steady 60 fps, widescreen and ultrawide, keyboard and mouse, Steam Deck ready. Bring your own copy of the game. **[26 stars]**
 - [AniLeo/ue-version](https://github.com/AniLeo/ue-version) — A tool that analyses Unreal Engine 4 and Unreal Engine 5 based games and determines what version of the engine was used to build the game. **[25 stars]**
+- [chrissotraidis/annepad](https://github.com/chrissotraidis/annepad) — Pokémon Stadium for iPhone and iPad via static recompilation, with native Metal rendering, touch controls, and ROM-free builds. **[25 stars]**
+- [jessetbh/WCWnWoRevengeRecomp](https://github.com/jessetbh/WCWnWoRevengeRecomp) — Native PC port of WCW/nWo Revenge (N64) via static recompilation. No game assets included - bring your own ROM. **[25 stars]**
+- [nikolaygorb/PerfectDarkZeroRecomp](https://github.com/nikolaygorb/PerfectDarkZeroRecomp) — Perfect Dark Zero \[Xbox360\] game static recompilation project based on RexGlue-SDK **[25 stars]**
+- [mitchaiet/master-chef](https://github.com/mitchaiet/master-chef) — Unofficial native Halo: Combat Evolved for Apple Vision Pro. Immersive panorama, controller support, and visual mods. Experimental; requires Halo PC registration and Apple signing. **[24 stars]**
+- [nikolaygorb/PerfectDarkRemasterRecomp](https://github.com/nikolaygorb/PerfectDarkRemasterRecomp) — Perfect Dark Remaster 2010 \[Xbox360\] game static recompilation project based on RexGlue-SDK **[24 stars]**
+- [saulob/hard-corps-uprising-recompiled](https://github.com/saulob/hard-corps-uprising-recompiled) — Hard Corps: Uprising native PC port via static recompilation, the Xbox 360 XBLA Contra spin-off, with TRG launcher **[24 stars]**
 - [shiedless/Reveal](https://github.com/shiedless/Reveal) — Minimal read-only skeleton overlay for UE4 on iOS: Metal + ImGui, Theos tweak **[23 stars]**
 - [shiedless/ios-messiah-re](https://github.com/shiedless/ios-messiah-re) — Reversing NetEase's Messiah engine on iOS: ECS, Python gameplay layer, telemetry anti-cheat **[22 stars]**
+- [aharonahdoot/RecompCore](https://github.com/aharonahdoot/RecompCore) — A static-recompilation CPU core for Dolphin — run GameCube games as native code, with transparent interpreter fallback **[21 stars]**
 - [andkorzh/FPGA-DENDY](https://github.com/andkorzh/FPGA-DENDY) — A clock-precise FPGA design for an 8-bit game console WIP **[21 stars]**
 - [FMZNkdv/ScKey](https://github.com/FMZNkdv/ScKey) — A simple guide to getting a public key for Supercell games **[21 stars]**
 - [creaffy/libil2cpp](https://github.com/creaffy/libil2cpp) — C++ Unity Il2Cpp Hacking API **[19 stars]**
+- [jessetbh/AkiLauncher](https://github.com/jessetbh/AkiLauncher) — Native Windows hub for the AKI-engine N64 wrestling recompilations - downloads and launches the ports. No game assets included. **[19 stars]**
 - [michal-kapala/ubi-gs](https://github.com/michal-kapala/ubi-gs) — Emulators for Ubisoft's Game Service and Ubi.com network **[19 stars]**
 - [kiraio-moe/Reverse1999-Anarchist](https://github.com/kiraio-moe/Reverse1999-Anarchist) — Reverse: 1999 Game Asset Encryptor/Decryptor **[18 stars]**
+- [BlackLineInteractive/nWiiURecomp](https://github.com/BlackLineInteractive/nWiiURecomp) — Static recompilation and runtime toolkit for Nintendo Wii U (based on NWiiRecomp) to make native PC ports (and not only) **[17 stars]**
+- [veritr1x/nfsmw-recomp](https://github.com/veritr1x/nfsmw-recomp) — Recompilation of Need for Speed: Most Wanted (the 2005 PC Black Edition) built on recomp-kit: macOS, iPad, Linux, Windows and browser hosts, with Metal, Vulkan and WebGPU rendering. Bring your own game files. **[17 stars]**
 - [clauadv/ue_aes_finder](https://github.com/clauadv/ue_aes_finder) — A lightweight tool for finding AES keys in Unreal Engine games. **[16 stars]**
 - [jaenster/libd2](https://github.com/jaenster/libd2) — Clean-room Zig reimplementation of the deterministic Diablo II 1.14d engine core (map gen, item gen, runtime sim) **[16 stars]**
+- [mr-finster/vf1-recomp](https://github.com/mr-finster/vf1-recomp) — Virtua Fighter (Sega Model 1, 1993) statically recompiled for Mac, Windows and Steam Deck: up to 6x, widescreen, smooth 120 fps. Bring your own vf.zip. **[16 stars]**
 - [NeonTeam58/HSR-OWNER](https://github.com/NeonTeam58/HSR-OWNER) — Be an owner, not a slave. **[16 stars]**
+- [Scotho/socom-unzipped](https://github.com/Scotho/socom-unzipped) — SOCOM II: U.S. Navy SEALs, statically recompiled for PC with self-hosted online play **[16 stars]**
 - [isinternets/d2-research](https://github.com/isinternets/d2-research) — Research report on Destiny 2 build 86657: reverse engineering, native systems, protocols, mission reconstruction, methods, evidence, and security engineering. **[15 stars]**
+- [sp00nznet/model3recomp](https://github.com/sp00nznet/model3recomp) — Sega Model 3 hardware runtime and PowerPC 603e static recompiler. Link a recompiled Model 3 game against native C hardware - no emulator, no interpreter. **[15 stars]**
+- [tmcleroy/vampire-savior-recomp](https://github.com/tmcleroy/vampire-savior-recomp) — Unofficial native PC port of Vampire Savior (CPS-2 arcade) via static recompilation, with a training mode: macOS, Linux, Steam Deck, Windows. Requires your own copy of the game. Beta. **[15 stars]**
 - [aldelaro5/Bug-Fables-Internal-Docs](https://github.com/aldelaro5/Bug-Fables-Internal-Docs) — A repository to aggregate documentation about the game's inner working **[14 stars]**
+- [andeecollard/jsrf-recomp](https://github.com/andeecollard/jsrf-recomp) — Static recompilation of Jet Set Radio Future (Xbox) to native macOS — playable into chapter 2 at 60 fps via a Direct3D 8 lift. Built on sp00nznet/xboxrecomp. No game data included. **[14 stars]**
 - [Francesco149/openrecet](https://github.com/Francesco149/openrecet) — open drop in exe replacement for Recettear (WIP) and documentation of engine quirks **[14 stars]**
+- [jessetbh/WWFWrestleMania2000Recomp](https://github.com/jessetbh/WWFWrestleMania2000Recomp) — Native PC port of WWF WrestleMania 2000 (N64) via static recompilation. No game assets included - bring your own ROM. **[14 stars]**
 - [walterwhite-69/Vidlink.pro-Decryptor](https://github.com/walterwhite-69/Vidlink.pro-Decryptor) — Traditionally, interacting with VidLink APIs required complex WASM bridges or resource-heavy browser automation. This project changes the game by achieving **100% native Python compatibility**. By reverse-engineering the production encryption keys and implementing the `XSalsa20-Poly1305` protocol in pure Python **[14 stars]**
+- [zenit2893-cmyk/project-1944](https://github.com/zenit2893-cmyk/project-1944) — Unofficial native Windows PC port of Call of Duty 3 (Xbox 360) via static recompilation. Bring your own game. EN · RU · UK. **[14 stars]**
 - [jktrn/my-ctf-challenges](https://github.com/jktrn/my-ctf-challenges) — Every cybersecurity CTF challenge I've ever authored! o(^▽^)o **[13 stars]**
 - [BioTomateDE/LibGM](https://github.com/BioTomateDE/LibGM) — A tool for unpacking and modding GameMaker games such as Undertale or Deltarune. **[12 stars]**
 - [C0mputery/AutoUnityGuidRemapper](https://github.com/C0mputery/AutoUnityGuidRemapper) — A fast Unity GUID remapper that remaps scripts, assets, and shaders across two directories, replacing incorrectly referenced files with correct ones. **[12 stars]**
+- [Dyotson/RecompiledHaloReach](https://github.com/Dyotson/RecompiledHaloReach) — Native PC port of Halo: Reach (Xbox 360) via static recompilation with ReXGlue. No game code or assets included - bring your own copy. **[11 stars]**
 - [erupturatis/Age-of-war-unity-clone](https://github.com/erupturatis/Age-of-war-unity-clone) — Age of war clone made in unity in order to speed up the neat algorithm training process. The values are extracted from the original game. It Communicates with a python script **[11 stars]**
 - [LambdaEd1th/badpiggies-editor](https://github.com/LambdaEd1th/badpiggies-editor) — Cross-platform Bad Piggies level and save editor built with Rust, Dioxus, and wgpu for desktop and WebAssembly. **[11 stars]**
 - [PSRewired/RetroDNS](https://github.com/PSRewired/RetroDNS) — A simple DNS proxy for users who are unable to resolve custom DNS servers from their ISP **[11 stars]**
@@ -167,17 +215,31 @@ These are automatically discovered projects, not individually curated or tested 
 - [soksx/hytale-protocol](https://github.com/soksx/hytale-protocol) — 🚀Comprehensive documentation of Hytale's QUIC/UDP network protocol. Automatically extracts, decompiles, and documents all packets, enums, and data structures from server JAR files. Version-tracked with wiki documentation. ✅ **[11 stars]**
 - [Akrelia/RoseRevolution](https://github.com/Akrelia/RoseRevolution) — The client of a new version of the MMORPG ROSE Online made with Unity **[10 stars]**
 - [kh-recoded-decomp/kh-recoded-decomp](https://github.com/kh-recoded-decomp/kh-recoded-decomp) — Matching decompilation of Kingdom Hearts Re:coded (US/EU). EU: 89.58% C code and 100.00% DATA, byte-exact. **[10 stars]**
+- [Razzile/Unigen](https://github.com/Razzile/Unigen) — A WIP IL2CPP metadata -&gt; IDC generator **[10 stars]**
+- [tmcleroy/muscle-march-recomp](https://github.com/tmcleroy/muscle-march-recomp) — Unofficial native PC port of Muscle March (WiiWare) via static recompilation: macOS, Linux, Steam Deck, Windows. Requires your own copy of the game. Beta. **[10 stars]**
+- [fungalspores/prototype-switch](https://github.com/fungalspores/prototype-switch) — Prototype and Prototype 2 (Xbox 360) for Nintendo Switch: static recompilation with ReXGlue, native Vulkan renderer. Free, not for sale. No game files. **[9 stars]**
 - [GoomiiV2/TS-ReSplit](https://github.com/GoomiiV2/TS-ReSplit) — Reverse Engineering TimeSplitters games to make an assest compatable engine **[9 stars]**
+- [nikolaygorb/TheDarknessRecomp](https://github.com/nikolaygorb/TheDarknessRecomp) — The Darkness \[Xbox360\] game static recompilation project based on RexGlue-SDK **[9 stars]**
+- [NoRain211/doa3-re](https://github.com/NoRain211/doa3-re) — Native Windows port of Dead or Alive 3 (Xbox), built by static recompilation with a hand-written runtime. Requires your own copy of the game. **[9 stars]**
 - [repinek/frida-il2cpp-proto-dumper](https://github.com/repinek/frida-il2cpp-proto-dumper) — Dumps protobuf-net messages and enums from an IL2CPP Unity game into a valid .proto file using Frida and frida-il2cpp-bridge **[9 stars]**
 - [snaphat/MonoCecilExtensions](https://github.com/snaphat/MonoCecilExtensions) — Extensions for Mono.Cecil **[9 stars]**
+- [sp00nznet/linksawakening-portable](https://github.com/sp00nznet/linksawakening-portable) — Link's Awakening DX statically recompiled to native C and ported to PlayStation 4, PlayStation 3, and Nintendo 3DS. No ROM included. **[9 stars]**
+- [TheGh0stShip/BattleTanx-Global-Assault-PC-Port](https://github.com/TheGh0stShip/BattleTanx-Global-Assault-PC-Port) — Native Windows and Linux port of BattleTanx: Global Assault using N64Recomp, N64ModernRuntime, RT64, and SDL2 **[9 stars]**
 - [Yokimitsuro/khrecoded-decomp](https://github.com/Yokimitsuro/khrecoded-decomp) — Work-in-progress matching decompilation of Kingdom Hearts Re:coded (Nintendo DS) **[9 stars]**
+- [aharonahdoot/GXRuntime](https://github.com/aharonahdoot/GXRuntime) — Game-agnostic GameCube static-recompilation runtime: CPU semantics, devices, GX renderer (work in progress) **[8 stars]**
+- [aharonahdoot/StrikersRecomp](https://github.com/aharonahdoot/StrikersRecomp) — Super Mario Strikers (G4QE01) recompilation project — the worked example for RecompCore and DolRuntime. No game data included. **[8 stars]**
 - [eikarna/deltaforce-dump](https://github.com/eikarna/deltaforce-dump) — This repository contains reverse engineering assets and data extracted from the game, intended for research, modding (if permitted by the game's EULA), or educational purposes. **[8 stars]**
+- [jessetbh/VPW64Recomp](https://github.com/jessetbh/VPW64Recomp) — Native PC port of Virtual Pro Wrestling 64 (N64) via static recompilation. No game assets included - bring your own ROM. **[8 stars]**
+- [JonathanDC64/FFCCEOT-Recomp](https://github.com/JonathanDC64/FFCCEOT-Recomp) — Native PC port of Final Fantasy Crystal Chronicles: Echoes of Time (DS) by static recompilation. Bring your own ROM: the game is built on your PC, nothing of the game is included. Windows and Linux. Alpha. **[8 stars]**
 - [jrhollis/jspacman](https://github.com/jrhollis/jspacman) — Pacman and Ms. Pacman reverse engineered in JavaScript **[8 stars]**
 - [kiraio-moe/UnityWebTools.NET](https://github.com/kiraio-moe/UnityWebTools.NET) — A C# library to handle UnityWebData easily. **[8 stars]**
 - [Miou-zora/SniffSniffSquared](https://github.com/Miou-zora/SniffSniffSquared) — Passive network sniffer and protobuf decoder for the Dofus 3 game protocol, and the trading dashboard built on what it captures. Rust + libpcap, Next.js, Postgres. **[8 stars]**
+- [sp00nznet/model2recomp](https://github.com/sp00nznet/model2recomp) — A Sega Model 2 hardware runtime for statically recompiled games: geometry engine, rasterizer, tilemaps and TGP coprocessor. **[8 stars]**
 - [gididaf/pokemon-yellow-typescript](https://github.com/gididaf/pokemon-yellow-typescript) — Pokemon Yellow rewritten in TypeScript — runs in the browser, extracts all data from your own ROM **[7 stars]**
 - [nolanvenhola/zeliard](https://github.com/nolanvenhola/zeliard) — Play: https://nolanvenhola.github.io/zeliard/ — Complete C/WebAssembly port and bit-perfect MASM source-code reconstruction of Zeliard, with reverse-engineering tools and parity tests. **[7 stars]**
+- [TekRantGaming/point-blank-recompiled](https://github.com/TekRantGaming/point-blank-recompiled) — Native PC port of Namco's Point Blank (PlayStation) via static recompilation (PSXRecomp). Aim with your mouse or a controller, no light gun needed. Bring your own disc. **[7 stars]**
 - [Valkyrians/yyc-toolbox](https://github.com/Valkyrians/yyc-toolbox) — A semi-powerful mod tool/decompiler for YYC games. **[7 stars]**
+- [yashin-sh/WiiCompiled-Switch](https://github.com/yashin-sh/WiiCompiled-Switch) — Experimental native Nintendo Switch port of WiiCompiled, with GX capture/replay and GPU diagnostics. Recognizable game rendering remains unproven. **[7 stars]**
 - [Diphome/UnityRift](https://github.com/Diphome/UnityRift) — Toolkit for reverse-engineering and porting Unity games, with a full Unity → Godot 4 pipeline (GUI, CLI, MCP server). **[6 stars]**
 - [HexCrystal69/Discord_ORBS](https://github.com/HexCrystal69/Discord_ORBS) — A client side JavaScript utility to automatically complete all active Discord Quests directly from your console by spoofing game play, stream, and video playback activity. **[6 stars]**
 - [N0zoM1z0/th08-mods](https://github.com/N0zoM1z0/th08-mods) — Portable gameplay modifiers for Touhou 8: Hidden, Flashlight, Mirror, Double Time, Relax, and more — playable on Web and Linux. **[6 stars]**
@@ -202,6 +264,7 @@ These are automatically discovered projects, not individually curated or tested 
 - [kyo5uke/sushidash](https://github.com/kyo5uke/sushidash) — A Chrome extension that speeds up loading SushiDa (Unity WebGL). **[4 stars]**
 - [nikolaybutnik/FFVII-Rebirth-Mesh-Patcher](https://github.com/nikolaybutnik/FFVII-Rebirth-Mesh-Patcher) — Fixes mesh mods for FFVII Rebirth after patch V1.005, no downgrade needed **[4 stars]**
 - [senyaak/homm5-editor](https://github.com/senyaak/homm5-editor) — Map editor for Heroes of Might &amp; Magic V: Tribes of the East, on Electron. Reverse-engineered .pak/map.xdb/GroundTerrain.bin, live 3D terrain rendering and editing. Contains no game content. **[4 stars]**
+- [Tatsh/expert-satphone](https://github.com/Tatsh/expert-satphone) — Expert satellite phone. **[4 stars]**
 - [TheGh0stShip/BattleTanx-Global-Assault](https://github.com/TheGh0stShip/BattleTanx-Global-Assault) — 100% matching decompilation of BattleTanx: Global Assault (N64, USA Rev 0) — foundation for VitaTanxGA **[4 stars]**
 - [banatic/acww-decomp](https://github.com/banatic/acww-decomp) — Matching decompilation of Animal Crossing: Wild World (Korea, NDS) ARM9 game code **[3 stars]**
 - [C0mputery/ComputerysUltimateTABGServer](https://github.com/C0mputery/ComputerysUltimateTABGServer) — Extremely efficient server software for Totally Accurate Battlegrounds, rewriten from JIBSIL's servers with a focus on cleanliness and expandability. **[3 stars]**
@@ -216,7 +279,8 @@ These are automatically discovered projects, not individually curated or tested 
 - [rkuhn153/il2cpp-decompiler](https://github.com/rkuhn153/il2cpp-decompiler) — Purpose-built Unity IL2CPP decompiler (desktop + MCP). Needs Il2CppDumper for dumps. **[3 stars]**
 - [SantiagoRM9/ace-tool](https://github.com/SantiagoRM9/ace-tool) — 🔍 Enhance codebase indexing and semantic search with ace-tool for efficient AI prompt optimization. **[3 stars]**
 - [shellbombs/ShooterGameCheat](https://github.com/shellbombs/ShooterGameCheat) — a UE hack demo **[3 stars]**
-- [smartfish67png/BetterCpp2IL](https://github.com/smartfish67png/BetterCpp2IL) — No upstream description supplied. **[3 stars]**
+- [smartfish67png/BetterCpp2IL](https://github.com/smartfish67png/BetterCpp2IL) — No description supplied by the upstream repository. **[3 stars]**
+- [Tatsh/expert-rotary-phone](https://github.com/Tatsh/expert-rotary-phone) — Expert Rotary Phone. **[3 stars]**
 - [ZexisRe/iOS-IL2CPP-Dumper](https://github.com/ZexisRe/iOS-IL2CPP-Dumper) — iOS IL2CPP Dumper — on-device dump.cs for Unity games (jailbreak / TrollStore) **[3 stars]**
 - [8bit-mate/Diarrhea](https://github.com/8bit-mate/Diarrhea) — Daria's Inferno Audio Resources Repacking/Hacking/Extracting Application. **[2 stars]**
 - [adm244/Dishonored-FullRegen](https://github.com/adm244/Dishonored-FullRegen) — A native mod for Dishonored that changes health/mana regeneration limits to allow full regeneration. **[2 stars]**
@@ -224,6 +288,7 @@ These are automatically discovered projects, not individually curated or tested 
 - [beater-studios/mu-file-viewer](https://github.com/beater-studios/mu-file-viewer) — Web-based viewer for MU Online game assets — preview textures, 3D models, audio and fonts in your browser **[2 stars]**
 - [Couyne/AmongUsRoleViewer](https://github.com/Couyne/AmongUsRoleViewer) — Among Us - External Frida role reader **[2 stars]**
 - [hasaneyldrm/webcheat](https://github.com/hasaneyldrm/webcheat) — A Cheat Engine for browser games — Chrome extension that scans WebAssembly memory, edits and freezes values, and controls game speed. Zero dependencies. **[2 stars]**
+- [Indegosblade/RR3-DevOps](https://github.com/Indegosblade/RR3-DevOps) — Reverse engineering and runtime developer operations for the final iOS build of Real Racing 3. **[2 stars]**
 - [kokseen1/katawa-shoujo-web-port](https://github.com/kokseen1/katawa-shoujo-web-port) — A web port of the Katawa Shoujo visual novel. **[2 stars]**
 - [Merlion03/misery-modding-framework](https://github.com/Merlion03/misery-modding-framework) — Community modding framework for MISERY (Unreal Engine 5.4), built without depending on UE4SS. Currently in Phase 1: research. **[2 stars]**
 - [n0thhhing/Offset-updater](https://github.com/n0thhhing/Offset-updater) — An il2cpp offset updater made with capstone **[2 stars]**
@@ -269,6 +334,7 @@ These are automatically discovered projects, not individually curated or tested 
 - [AnthonyOGorman/ashes-server-lab](https://github.com/AnthonyOGorman/ashes-server-lab) — Experimental open-source C++20 Ashes of Creation private-server / server-emulation lab: local Verra exploration, terrain collision, movement, flight and live browser tools. Very buggy; bring your own client. No combat or quests. **[0 stars]**
 - [ashallynart/how-to-fish-cheats](https://github.com/ashallynart/how-to-fish-cheats) — Master fishing games with auto-catch, instant bites, perfect reels, and resource manipulation for offline play. **[0 stars]**
 - [Brickpebewitch/primordial-cs2-dump-toolkit](https://github.com/Brickpebewitch/primordial-cs2-dump-toolkit) — Primordial Dump toolkit for CS2 modders — a no-cost client-side CLI that dumps match entities offline for local research and custom config work. **[0 stars]**
+- [ComptrollerColander/Subnautica2-Trainer-Console-Commands](https://github.com/ComptrollerColander/Subnautica2-Trainer-Console-Commands) — 🐟 Open‑source memory API &amp; developer console enabler for Subnautica 2. IL2CPP dumping, item spawner, speedhack &amp; teleport for single‑player debugging. **[0 stars]**
 - [ctkrug/peel](https://github.com/ctkrug/peel) — A daily browser puzzle: peel a real obfuscated one-liner apart one decode at a time until the plaintext shows. Fewest moves wins. **[0 stars]**
 - [Gaok1/foxhole-rts](https://github.com/Gaok1/foxhole-rts) — Fan-made offline single-player RTS mod for Foxhole (UE4SS/Lua): logistics-first, squads, supply chains, AI enemy. Early prototype. **[0 stars]**
 - [gentritr1/lomn-web](https://github.com/gentritr1/lomn-web) — Fan-made web port of The Legend of Mata Nui (2001 PC game): C++17 to WebAssembly + WebGPU. Bring your own game files. Not affiliated with LEGO. **[0 stars]**
@@ -277,6 +343,7 @@ These are automatically discovered projects, not individually curated or tested 
 - [gilas-byte/DRG-Stats-Tracker](https://github.com/gilas-byte/DRG-Stats-Tracker) — Reverse-engineers your Deep Rock Galactic save file to track kills per enemy, overclock progress, and stats over time in a local SQLite + Streamlit dashboard. Auto-captures while you play. Rock and Stone! ⛏️ **[0 stars]**
 - [Glmour/ue-live-bridge](https://github.com/Glmour/ue-live-bridge) — Drive a running Unreal Engine game from outside via UE4SS, and verify that what you asked for actually happened. Negative-control verification: a check that survives its own poison is a failure, not a pass. **[0 stars]**
 - [Glmour/ue-rpc-channel](https://github.com/Glmour/ue-rpc-channel) — A bidirectional, reliable string channel for any shipped Unreal Engine game - no engine source, no C++, no custom RPCs. Built from two RPCs already on APlayerController. **[0 stars]**
+- [ifBars/ScheduleOneBlueprintImporter](https://github.com/ifBars/ScheduleOneBlueprintImporter) — Dual-runtime Schedule I mod POC for importing public editor blueprints into native properties. **[0 stars]**
 - [IgnacioPardo/cuphead-apple-port-tools](https://github.com/IgnacioPardo/cuphead-apple-port-tools) — Experimental Cuphead recovery tooling and native Apple platform helpers. MIT-licensed original code; bring your own game files. **[0 stars]**
 - [imattas/GSpots](https://github.com/imattas/GSpots) — Unreal Engine global offset scanner as a reusable C++ static library **[0 stars]**
 - [incognitofelix/pal-mod-toolkit](https://github.com/incognitofelix/pal-mod-toolkit) — Console-driven UE4SS C++ toolkit of in-game reverse-engineering tools for Palworld modders **[0 stars]**
@@ -304,14 +371,17 @@ These are automatically discovered projects, not individually curated or tested 
 - [metadate1/crust](https://github.com/metadate1/crust) — Unofficial Rust/WebAssembly research runtime for Crash Bandicoot (PlayStation); users supply their own game data. **[0 stars]**
 - [Mokocoder/RepSeedDumper](https://github.com/Mokocoder/RepSeedDumper) — UE replication layout seed extractor, built on Dumper-7 **[0 stars]**
 - [moleworld-dev/mole-data-editor](https://github.com/moleworld-dev/mole-data-editor) — A save-file (.dat) editor for the early iPad version of Mole Manor, implemented entirely as a web tool. **[0 stars]**
+- [morosanu1st/codementor-mobile-game-asset-inspection-demo](https://github.com/morosanu1st/codementor-mobile-game-asset-inspection-demo) — Learning demo: how mobile games fetch remote assets from CDNs and how to inspect them ethically (URL extraction, magic-byte ID, mitmproxy logger, Unity Addressables catalog parser) **[0 stars]**
 - [Nbv000/il2cpp-instrumentation-study](https://github.com/Nbv000/il2cpp-instrumentation-study) — Runtime instrumentation bridge for IL2CPP-hosted processes (Unity Linux builds). Signature-based method resolution, lazy class init recovery, LD_PRELOAD bootstrap. **[0 stars]**
 - [Nokama0/dukenukem-forever-menu](https://github.com/Nokama0/dukenukem-forever-menu) — Mod menu for Duke Nukem Forever (Steam build 244 and The Doctor Who Cloned Me DLC): ESP, aimbot, free camera, progress tracking and more. **[0 stars]**
 - [NotFabii/astroneer-save-editor](https://github.com/NotFabii/astroneer-save-editor) — Save editor and format library for Astroneer. Byte exact round trip, tkinter GUI, CLI, and a documented save format spec. **[0 stars]**
-- [nullptr-solutions/UEDumperCS](https://github.com/nullptr-solutions/UEDumperCS) — No upstream description supplied. **[0 stars]**
+- [nullptr-solutions/UEDumperCS](https://github.com/nullptr-solutions/UEDumperCS) — No description supplied by the upstream repository. **[0 stars]**
 - [okuranattou/torneko1-remaster-diagonal-fix](https://github.com/okuranattou/torneko1-remaster-diagonal-fix) — A patcher that removes input lag from diagonal movement (R-button direction lock) in Torneko no Daibouken: Chotto Suteki na Remaster (Steam version). **[0 stars]**
 - [omka-1337/FFA](https://github.com/omka-1337/FFA) — Far Far Away - a tools and engine for work with Unreal Engine 2 games. **[0 stars]**
 - [operationostrich/DeTAOOT](https://github.com/operationostrich/DeTAOOT) — A decompilation of Titanic: Adventure Out Of Time (1996) **[0 stars]**
 - [Ratmirage/RVA2FRIDA](https://github.com/Ratmirage/RVA2FRIDA) — Small JavaScript generator for use with Frida **[0 stars]**
+- [RectangleEquals/UnityLudometryMCP](https://github.com/RectangleEquals/UnityLudometryMCP) — Local MCP server for understanding Unity games and building mods **[0 stars]**
+- [RectangleEquals/UnityRuntimeAnalysisAgent](https://github.com/RectangleEquals/UnityRuntimeAnalysisAgent) — In-game BepInEx plugin that lets local tools inspect, instrument and (with your permission) modify running Unity games. The runtime half of UnityLudometryMCP. **[0 stars]**
 - [reveler-hub/ScritchyMod](https://github.com/reveler-hub/ScritchyMod) — Fan-made outcome reader + MelonLoader mods for Scritchy Scratchy **[0 stars]**
 - [scarlett1000/steam-stubbed](https://github.com/scarlett1000/steam-stubbed) — Patch SteamStub protection on the fly with a simple DLL, supporting games where other tools like Steamless fail to run properly. **[0 stars]**
 - [sebh974/mordhau-disable-idle-kick](https://github.com/sebh974/mordhau-disable-idle-kick) — One-byte patch to disable the Mordhau dedicated-server idle/AFK kick (reason: Inactif). For private/LAN servers. **[0 stars]**
@@ -326,10 +396,13 @@ These are automatically discovered projects, not individually curated or tested 
 - [TheBestPlan/killingfloor-map-importer](https://github.com/TheBestPlan/killingfloor-map-importer) — Converts maps from other games into Killing Floor 1 levels (.rom, Unreal Engine 2.5). **[0 stars]**
 - [TheBestPlan/killingfloor-map-viewer](https://github.com/TheBestPlan/killingfloor-map-viewer) — Desktop and browser viewer for Killing Floor game maps (.rom, Unreal Engine 2.5). Draws the world BSP, static meshes, terrain and skybox with textures, and flies around — no KFEd needed. **[0 stars]**
 - [vekolyram/ue5-minhook-example](https://github.com/vekolyram/ue5-minhook-example) — UE5 MinHook inline hook example: AOB signature scan + detour for UObject::StaticConstructObject_Internal, with the failure modes found against a real UE 5.6 target **[0 stars]**
+- [vs-sr-dev/pc-celltosingularity-doc](https://github.com/vs-sr-dev/pc-celltosingularity-doc) — Cell to Singularity (Computer Lunch, Unity 6, Steam): a mobile idle game's PC build - 10,249 terms x 19 languages in one object, three MS-NRBF saves, 1,157 Crunch heads, 45 atlases, a phone's SDK stack on Windows - measured from the bytes, structure not recipes. **[0 stars]**
 - [vs-sr-dev/pc-harrypotter1-doc](https://github.com/vs-sr-dev/pc-harrypotter1-doc) — Harry Potter and the Philosopher's Stone (PC, Electronic Arts, 2001) measured from the retail disc: ISO 9660 layout, a table hidden in the volume descriptor, the read window that hides the border of a 9,280-sector unreadable region, 249 Unreal Engine 1 packages, and 31 levels in one line. **[0 stars]**
 - [vs-sr-dev/pc-iamsetsuna-doc](https://github.com/vs-sr-dev/pc-iamsetsuna-doc) — One object: the Steam install of I am Setsuna (Unity 5.2, never run). 970 files, 1,471,268,535 bytes, 97.85 % somebody else's container. Six readers close all of it on the vendors' own integers -- 35 v15 SerializedFiles at residue 0, 145 UnityWeb bundles, 279 @UTF tables, CRC-16 on 381,077 audio frames, 392 Lua chunks consumed exactly. **[0 stars]**
+- [vs-sr-dev/pc-teslaeffect-doc](https://github.com/vs-sr-dev/pc-teslaeffect-doc) — Byte-level study of Tesla Effect (PC/Windows, 2014): 17,519,466,565 bytes in which 82.93 % is filmed video and the studio's own code is 0.0090 %. 1,035 Bink 2 headers censused, 20,014.286 s of running time, a script in five Excel workbooks, and a name-closure test that fails both ways. **[0 stars]**
 - [vs-sr-dev/pc-thewardrobe-doc](https://github.com/vs-sr-dev/pc-thewardrobe-doc) — The Wardrobe (CINIC Games, Unity 6, Steam): 1,207 clear XML in six languages keyed by Italian, 17,368 sprites at format 22, 482 FMOD Studio banks, 31 silent films - measured from the bytes, nothing published. **[0 stars]**
 - [vulnix0x4/breakpoint](https://github.com/vulnix0x4/breakpoint) — Learn game hacking by doing it. A 3D game you reverse engineer in your browser: memory scanning, watchpoints, patching, C++ tools. **[0 stars]**
+- [xipspace/save-app](https://github.com/xipspace/save-app) — a toolbox for snapshot game progress made in flutter **[0 stars]**
 - [Zippingrocks/Gears-of-War-5-2019-Extraction-database](https://github.com/Zippingrocks/Gears-of-War-5-2019-Extraction-database) — Evidence-driven Gears 5 B2 extraction research and Blender map reconstruction tooling. **[0 stars]**
 - [Zippingrocks/Gears-of-War-Reloaded-2014-Extraction-database](https://github.com/Zippingrocks/Gears-of-War-Reloaded-2014-Extraction-database) — Evidence-driven Gears of War: Reloaded package research and Blender map reconstruction tooling. **[0 stars]**
 

@@ -8,6 +8,7 @@ from localization import localized_records, read_localizations
 from source_scope import apply_scope, read_scope
 from validate_papers import read_papers
 from build_paper_pages import STATUS_LABELS
+from source_descriptions import description_fallback
 
 ROOT = Path(__file__).resolve().parents[1]
 RESOURCE_FILES = (ROOT / 'data/rea-resources.json', ROOT / 'data/tool-resources.json')
@@ -64,7 +65,10 @@ def main():
             continue
         print(f"\n{record['name']} [{record.get('relationship', record.get('scan_status'))}]")
         print(record['url'])
-        print(record[f'description_{args.language}'])
+        description = record[f'description_{args.language}']
+        if args.source_index and not description:
+            description = description_fallback(record, args.language)
+        print(description)
         requirements = record['requirements']
         if isinstance(requirements, list):
             requirements = ' '.join(requirements)

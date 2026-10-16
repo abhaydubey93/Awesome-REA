@@ -9,6 +9,7 @@ from build_readme import plain_text
 from catalog import ROOT
 from localization import localized_records, read_localizations
 from source_scope import apply_scope, read_scope
+from source_descriptions import description_fallback
 
 OUTPUT = ROOT / 'docs/repositories'
 SUMMARY_BEGIN = '<!-- BEGIN REPOSITORY INDEX SUMMARY -->'
@@ -74,7 +75,7 @@ def rendered_files():
                        f"[{'全部分类' if zh else 'All categories'}](README{suffix}.md) · [{'English' if zh else '简体中文'}]({counterpart})", '',
                        f"**{len(rows):,} {'个仓库' if zh else 'repositories'}** · {date} UTC", '', note, '']
             for record in rows:
-                description = record[f'description_{language}'] or ('上游未提供简介。' if zh else 'No upstream description supplied.')
+                description = record[f'description_{language}'] or description_fallback(record, language)
                 stars = record.get('stars')
                 metadata = f" **[{stars:,} {'星标' if zh else 'stars'}]**" if isinstance(stars, int) else ''
                 section.append(f"- [{plain_text(record['full_name'])}]({record['url']}) — {plain_text(description)}{metadata}")
