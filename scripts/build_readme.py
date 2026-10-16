@@ -184,6 +184,8 @@ PAPER_SECTIONS = {
     'agent-evaluation': ('Reverse-engineering agent evaluation', '逆向工程智能体评测'),
     'decompilation': ('Decompilation and symbol recovery', '反编译与符号恢复'),
     'website-reconstruction': ('Website reconstruction', '网站重建'),
+    'game-reconstruction': ('Game reconstruction and reverse engineering', '游戏重建与逆向工程'),
+    'app-reconstruction': ('App reconstruction and analysis', '应用重建与分析'),
 }
 PAPER_STATUSES = {
     'conference-paper': ('Conference paper', '会议论文'),
@@ -200,13 +202,14 @@ def render_papers(papers, language):
     index = int(zh)
     directory = 'https://awesomerea.org/zh/papers/' if zh else 'https://awesomerea.org/papers/'
     lines = ['<a id="papers"></a>', '## 论文' if zh else '## Papers', '',
-             (f'收录 **{len(papers)} 篇论文**，涵盖智能体评测、反编译与网站重建。部分论文也出现在精选资源目录中，两者数量不可相加。发表状态与研究范围分别标注，中文标题为译名。'
-              if zh else f'A bibliography of **{len(papers)} papers** on agent evaluation, decompilation, and website reconstruction. Some papers also appear among curated resources; counts are not additive. Publication status and study scope are made explicit.'), '',
+             (f'收录 **{len(papers)} 篇论文**，涵盖逆向工程智能体评测、反编译，以及网站、游戏和应用重建。部分论文也出现在精选资源目录中，两者数量不可相加。发表状态与研究范围分别标注，中文标题为译名。'
+              if zh else f'A bibliography of **{len(papers)} papers** on reverse-engineering agent evaluation, decompilation, and website, game, and app reconstruction. Some papers also appear among curated resources; counts are not additive. Publication status and study scope are made explicit.'), '',
              f"[{'浏览论文目录' if zh else 'Browse the paper directory'}]({directory}) · [{'完整书目 JSON' if zh else 'Complete bibliography JSON'}](data/papers.json) · [{'推荐论文' if zh else 'Suggest a paper'}](https://github.com/reacher-z/Awesome-REA/issues/new?template=paper.yml)", '']
     groups = defaultdict(list)
     for paper in papers:
-        section = ('website-reconstruction' if 'website' in paper['targets'] else
-                   'agent-evaluation' if paper['id'] in AGENT_EVALUATION_PAPERS else 'decompilation')
+        section = ('agent-evaluation' if paper['id'] in AGENT_EVALUATION_PAPERS else
+                   {'website': 'website-reconstruction', 'game': 'game-reconstruction',
+                    'app': 'app-reconstruction'}.get(paper['targets'][0], 'decompilation'))
         groups[section].append(paper)
     for section, labels in PAPER_SECTIONS.items():
         if not groups[section]:

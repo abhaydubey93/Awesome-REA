@@ -1,6 +1,6 @@
 #!/usr/bin/env python3
 """Check generated canonical pages, structured data, local links and ownership files."""
-from collections import Counter
+from collections import Counter, defaultdict
 from html.parser import HTMLParser
 import json
 from pathlib import Path
@@ -9,7 +9,7 @@ from urllib.parse import unquote, urlsplit
 import xml.etree.ElementTree as ET
 
 from build_manifest import read_build_manifest
-from build_paper_pages import bibtex_text
+from build_paper_pages import TARGET_LABELS, bibtex_text
 from validate_papers import read_papers
 from artifact_links import with_artifact_links
 from localization import localized_records, read_localizations
@@ -29,11 +29,31 @@ class Page(HTMLParser):
         self.current_paper = None
         self.current_record, self.current_related_link = None, None
         self.record_ids, self.related_links = [], {}
+        self.paper_groups, self._section_stack = [], []
+        self._div_depth = 0
+        self._group_summary, self._group_heading = None, None
         self.feed(text)
 
     def handle_starttag(self, tag, attrs):
         values = dict(attrs)
         assert len(values) == len(attrs), f'Duplicate HTML attributes on {tag}'
+        classes = values.get('class', '').split()
+        if tag == 'section':
+            group = None
+            if 'paper-section' in classes:
+                group = {'anchor': values.get('aria-labelledby'), 'paper_ids': [],
+                         'headings': [], 'summaries': []}
+                self.paper_groups.append(group)
+            self._section_stack.append(group)
+        current_group = next((group for group in reversed(self._section_stack) if group is not None), None)
+        if tag == 'div':
+            self._div_depth += 1
+            if current_group is not None and 'paper-section-heading' in classes:
+                self._group_summary = {'depth': self._div_depth, 'text': []}
+                current_group['summaries'].append(self._group_summary)
+        if tag == 'h2' and current_group is not None and self._group_summary is not None:
+            self._group_heading = {'id': values.get('id'), 'text': []}
+            current_group['headings'].append(self._group_heading)
         if tag == 'html':
             self.lang = values.get('lang')
         if values.get('id'):
@@ -45,6 +65,8 @@ class Page(HTMLParser):
             self.paper_ids.append(identifier)
             self.paper_texts[identifier], self.paper_links[identifier] = [], []
             self.current_paper = identifier
+            if current_group is not None:
+                current_group['paper_ids'].append(identifier)
         if tag == 'article' and 'data-record-id' in values:
             identifier = values['data-record-id']
             self.record_ids.append(identifier)
@@ -73,6 +95,10 @@ class Page(HTMLParser):
             self.paper_texts[self.current_paper].append(data)
         if self.current_related_link is not None:
             self.current_related_link['text'] += data
+        if self._group_summary is not None:
+            self._group_summary['text'].append(data)
+        if self._group_heading is not None:
+            self._group_heading['text'].append(data)
 
     def handle_endtag(self, tag):
         if tag == 'script' and self.json_script is not None:
@@ -83,6 +109,14 @@ class Page(HTMLParser):
             self.current_record = None
         if tag == 'a':
             self.current_related_link = None
+        if tag == 'h2':
+            self._group_heading = None
+        if tag == 'div':
+            if self._group_summary is not None and self._group_summary['depth'] == self._div_depth:
+                self._group_summary = None
+            self._div_depth -= 1
+        if tag == 'section' and self._section_stack:
+            self._section_stack.pop()
 
 
 def structured_checks(value):
@@ -108,6 +142,27 @@ def schema_entities(value, type_name):
             yield from schema_entities(item, type_name)
 
 
+def validate_paper_groups(page, papers, language):
+    """Check visible section membership and headings against primary targets."""
+    expected = defaultdict(list)
+    for paper in papers:
+        expected[paper['targets'][0]].append(paper['id'])
+    assert set(expected) <= set(TARGET_LABELS), 'Unknown primary paper target'
+    anchors = [group['anchor'] for group in page.paper_groups]
+    assert Counter(anchors) == Counter('research-' + target for target in expected), f'Paper section coverage mismatch ({language})'
+    normalize = lambda parts: ' '.join(' '.join(parts).split())
+    for group in page.paper_groups:
+        target = group['anchor'].removeprefix('research-')
+        identifiers = expected[target]
+        assert Counter(group['paper_ids']) == Counter(identifiers), f'Paper primary-target grouping mismatch: {target} ({language})'
+        label = TARGET_LABELS[target][language == 'zh']
+        assert len(group['headings']) == 1 and group['headings'][0]['id'] == group['anchor'], f'Paper section heading anchor mismatch: {target} ({language})'
+        assert normalize(group['headings'][0]['text']) == label, f'Paper section label mismatch: {target} ({language})'
+        count = len(identifiers)
+        count_label = f'{count} ' + ('篇论文' if language == 'zh' else ('paper' if count == 1 else 'papers'))
+        assert len(group['summaries']) == 1 and normalize(group['summaries'][0]['text']) == label + ' ' + count_label, f'Paper section count mismatch: {target} ({language})'
+
+
 def validate_paper_outputs(output, pages, source_papers=None):
     """Bind both rendered bibliographies and every citation to the source JSON."""
     output = Path(output)
@@ -126,6 +181,7 @@ def validate_paper_outputs(output, pages, source_papers=None):
         assert route in pages, f'Paper route is missing from the sitemap: {route}'
         page = pages[route]
         assert len(page.paper_ids) == len(expected) and set(page.paper_ids) == set(expected), f'Paper DOM coverage mismatch: {route}'
+        validate_paper_groups(page, built, language)
         listings = list(schema_entities(page.schemas, 'ItemList'))
         assert len(listings) == 1, f'Expected one paper ItemList: {route}'
         items = listings[0]['itemListElement']

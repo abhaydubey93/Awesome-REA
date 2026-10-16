@@ -17,8 +17,8 @@ STATUS_LABELS = {
 TARGET_LABELS = {
     'binary': ('Binary reverse engineering', '二进制逆向工程'),
     'website': ('Website reconstruction', '网站重建'),
-    'app': ('Application analysis', '应用分析'),
-    'game': ('Game reverse engineering', '游戏逆向工程'),
+    'app': ('App reconstruction and analysis', '应用重建与分析'),
+    'game': ('Game reconstruction and reverse engineering', '游戏重建与逆向工程'),
     'firmware': ('Firmware analysis', '固件分析'),
 }
 MONTHS = ('January', 'February', 'March', 'April', 'May', 'June', 'July', 'August', 'September', 'October', 'November', 'December')
@@ -207,7 +207,7 @@ def build_paper_pages(
         curated = '/zh/resources/' if zh else '/resources/'
         about = '/zh/about/' if zh else '/about/'
         title = label('Papers & benchmarks · AwesomeREA.org', '论文与评测基准 · AwesomeREA.org')
-        description = label(f'{len(papers)} source-reviewed papers on binary reverse engineering, decompilation, agent evaluation, and website reconstruction, with citations and research limitations.', f'{len(papers)} 篇已核对来源的论文，涵盖二进制逆向、反编译、智能体评估与网站重建，附引文和研究边界。')
+        description = label(f'{len(papers)} source-reviewed papers on binary reverse engineering, decompilation, agent evaluation, and website, game, and app reconstruction, with citations and research limitations.', f'{len(papers)} 篇已核对来源的论文，涵盖二进制逆向、反编译、智能体评估，以及网站、游戏和应用重建，附引文和研究边界。')
         nav = []
         sections = []
         ordered = []
