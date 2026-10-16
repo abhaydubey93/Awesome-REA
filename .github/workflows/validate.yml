@@ -18,6 +18,7 @@ jobs:
         with:
           node-version: '26'
       - run: python3 scripts/validate.py
+      - run: python3 -m unittest discover -s tests -v
       - run: python3 scripts/build_site.py
       - run: python3 scripts/validate_discovery.py
       - run: python3 scripts/validate_site.py

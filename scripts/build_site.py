@@ -15,6 +15,7 @@ from build_browse_pages import build_browse_pages
 from build_discovery_pages import build_discovery_pages
 from build_paper_pages import build_paper_pages
 from build_manifest import write_build_manifest
+from artifact_links import with_artifact_links
 from localization import read_localizations, localized_records
 from source_scope import apply_scope, read_scope
 
@@ -182,6 +183,10 @@ def main() -> None:
             if successful:
                 repository_locales = read_localizations(ROOT)
                 index_data["resources"] = apply_scope(localized_records(successful, repository_locales), read_scope(ROOT))
+                link_diagnostics = []
+                index_data["resources"] = with_artifact_links(index_data["resources"], papers, resources, link_diagnostics)
+                for message in link_diagnostics:
+                    print('Related entry: ' + message)
                 index_data["meta"]["source_description_policy"] = index_data["meta"].get("description_policy", "")
                 index_data["meta"]["description_policy"] = "English and Simplified Chinese descriptions are AI-assisted localizations of upstream repository text. description_original preserves the original description. Translation does not imply verification."
                 excluded_count = sum(record.get("scope_status") == "excluded" for record in index_data["resources"])

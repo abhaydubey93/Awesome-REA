@@ -41,6 +41,28 @@ def icon(name: str, use_pro: bool) -> str:
     return ''
 
 
+def related_links(record: dict, language: str) -> str:
+    groups = []
+    for kind, labels, route in (('paper', ('Related research', '相关研究'), 'papers'),
+                                 ('curated', ('Curated details', '精选资料'), 'resources')):
+        links = []
+        for entry in record.get('related_entries', []):
+            if entry.get('kind') != kind:
+                continue
+            identifier = entry['id']
+            href = ('/zh' if language == 'zh' else '') + f'/{route}/#{identifier}'
+            if entry[f'href_{language}'] != href:
+                raise ValueError('Related entry must use its internal catalog anchor')
+            links.append(f'<li><a class="source-related-link" href="{escape(href, quote=True)}">'
+                         f'{escape(entry[f"title_{language}"])}</a></li>')
+        if links:
+            label = labels[language == 'zh']
+            groups.append(f'<div class="source-related-group"><span class="source-related-label">'
+                          f'{label}</span><ul class="source-related-links" aria-label="{label}">'
+                          + ''.join(links) + '</ul></div>')
+    return '<div class="source-related">' + ''.join(groups) + '</div>' if groups else ''
+
+
 def repository_card(record: dict, language: str, use_pro: bool) -> str:
     zh = language == 'zh'
     name = record.get('full_name') or record['name']
@@ -57,6 +79,7 @@ def repository_card(record: dict, language: str, use_pro: bool) -> str:
     return f'''<article class="source-card browse-repository" id="{escape(record['id'], quote=True)}" data-record-id="{escape(record['id'], quote=True)}">
   <div class="source-card-head"><h2><a class="source-title-link" href="{external_url(record['url'])}" target="_blank" rel="noopener noreferrer">{title}{icon('external', use_pro)}</a></h2>{star_html}</div>
   <p class="source-card-description">{escape(description)}</p>
+  {related_links(record, language)}
   <div class="source-card-footer"><a href="{external_url(record.get('readme_url') or record['url'])}" target="_blank" rel="noopener noreferrer">README ↗</a><span class="source-card-license">{escape(license_name)}</span></div>
 </article>'''
 

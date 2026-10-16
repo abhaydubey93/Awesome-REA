@@ -120,6 +120,13 @@ html[lang="zh-CN"] .collection-intro h1{letter-spacing:-.6px}
 .resource-kind,.source-stars{flex:none;color:var(--muted);font:500 12px/1.5 var(--sans);font-variant-numeric:tabular-nums;border:1px solid var(--line);border-radius:6px;padding:3px 7px;background:var(--soft);white-space:nowrap}
 .card-description,.source-card-description{margin:13px 0 16px;color:#465c73;font-size:15px;line-height:1.75;overflow-wrap:anywhere}
 .source-card-empty{font-style:italic;color:var(--muted)}
+.source-related{display:grid;gap:10px;min-width:0;margin:0 0 17px}
+.source-related-group{min-width:0}
+.source-related-label{display:block;margin-bottom:3px;color:var(--muted);font-size:12px;font-weight:600}
+.source-related-links{display:grid;gap:4px;min-width:0;margin:0;padding:0;list-style:none}
+.source-related-link{color:var(--link);font-size:13px;line-height:1.6;overflow-wrap:anywhere;text-decoration:underline;text-decoration-color:var(--strong);text-underline-offset:3px}
+.source-related-link:hover{text-decoration-color:currentColor}
+.source-related-link:focus-visible{outline-offset:3px;border-radius:2px}
 .source-topics{display:flex;flex-wrap:wrap;gap:6px;margin-bottom:17px}
 .source-topic-chip{max-width:100%;padding:4px 8px;border:1px solid #e2eaf3;border-radius:5px;background:#f5f8fc;color:var(--link);font-size:12px;line-height:1.45;overflow-wrap:anywhere}
 .source-topic-chip:hover{background:var(--tint);border-color:var(--strong)}

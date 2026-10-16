@@ -11,6 +11,9 @@ import xml.etree.ElementTree as ET
 from build_manifest import read_build_manifest
 from build_paper_pages import bibtex_text
 from validate_papers import read_papers
+from artifact_links import with_artifact_links
+from localization import localized_records, read_localizations
+from source_scope import apply_scope, read_scope
 
 ROOT = Path(__file__).resolve().parents[1]
 OUTPUT = ROOT / 'dist'
@@ -24,6 +27,8 @@ class Page(HTMLParser):
         self.noindex, self.lang, self.json_script = False, None, None
         self.paper_ids, self.paper_texts, self.paper_links = [], {}, {}
         self.current_paper = None
+        self.current_record, self.current_related_link = None, None
+        self.record_ids, self.related_links = [], {}
         self.feed(text)
 
     def handle_starttag(self, tag, attrs):
@@ -40,10 +45,18 @@ class Page(HTMLParser):
             self.paper_ids.append(identifier)
             self.paper_texts[identifier], self.paper_links[identifier] = [], []
             self.current_paper = identifier
+        if tag == 'article' and 'data-record-id' in values:
+            identifier = values['data-record-id']
+            self.record_ids.append(identifier)
+            self.related_links[identifier] = []
+            self.current_record = identifier
         if tag in ('a', 'link') and values.get('href'):
             self.links.append(values['href'])
             if self.current_paper:
                 self.paper_links[self.current_paper].append(values['href'])
+            if self.current_record and 'source-related-link' in values.get('class', '').split():
+                self.current_related_link = {'href': values['href'], 'text': '', 'target': values.get('target')}
+                self.related_links[self.current_record].append(self.current_related_link)
         if tag == 'link' and values.get('rel') == 'canonical':
             self.canonicals.append(values.get('href'))
         if tag == 'link' and values.get('rel') == 'alternate' and values.get('hreflang'):
@@ -58,6 +71,8 @@ class Page(HTMLParser):
             self.json_script += data
         elif self.current_paper:
             self.paper_texts[self.current_paper].append(data)
+        if self.current_related_link is not None:
+            self.current_related_link['text'] += data
 
     def handle_endtag(self, tag):
         if tag == 'script' and self.json_script is not None:
@@ -65,6 +80,9 @@ class Page(HTMLParser):
             self.json_script = None
         if tag == 'article':
             self.current_paper = None
+            self.current_record = None
+        if tag == 'a':
+            self.current_related_link = None
 
 
 def structured_checks(value):
@@ -163,6 +181,52 @@ def validate_paper_outputs(output, pages, source_papers=None):
     assert (output / 'papers' / 'references.bib').read_text(encoding='utf-8') == bibliography, 'Combined BibTeX differs from the source bibliography'
 
 
+def validate_artifact_links(output, pages):
+    """Bind generated links to reviewed artifacts and retain source assertions."""
+    source_path = ROOT / 'data/source-index.json'
+    if not source_path.exists():
+        return
+    original = json.loads(source_path.read_text(encoding='utf-8'))
+    records = [row for row in original.get('resources', []) if row.get('scan_status') == 'readme-scanned']
+    if not records:
+        return
+    translations = json.loads((ROOT / 'site/translations.zh-CN.json').read_text(encoding='utf-8'))
+    resources = []
+    for filename in ('rea-resources.json', 'tool-resources.json'):
+        for original_resource in json.loads((ROOT / 'data' / filename).read_text(encoding='utf-8')):
+            resource = dict(original_resource)
+            resource['name_zh'] = resource.get('name_zh') or translations.get(resource['id'], {}).get('name', resource['name'])
+            resources.append(resource)
+    projected = apply_scope(localized_records(records, read_localizations(ROOT)), read_scope(ROOT))
+    expected = with_artifact_links(projected, read_papers(ROOT), resources)
+    built = json.loads((Path(output) / 'source-index.json').read_text(encoding='utf-8'))
+    assert built['resources'] == expected, 'Generated sources differ from localized source evidence and reviewed artifact links'
+    visible = [record for record in expected if record.get('scope_status') != 'excluded']
+    normalize = lambda text: ' '.join(text.split())
+    for language in ('en', 'zh'):
+        prefix = '/zh' if language == 'zh' else ''
+        for record in visible:
+            route = f'{prefix}/browse/{record["category"]}/'
+            page = pages[route]
+            assert record['id'] in page.record_ids, f'Missing repository card: {record["id"]} ({language})'
+            expected_links = []
+            for entry in record.get('related_entries', []):
+                href = entry[f'href_{language}']
+                destination = urlsplit(href)
+                assert destination.path in pages and destination.fragment in pages[destination.path].ids, f'Missing related-entry anchor: {href}'
+                expected_links.append({'href': href, 'text': normalize(entry[f'title_{language}']), 'target': None})
+            actual = [{**link, 'text': normalize(link['text'])} for link in page.related_links.get(record['id'], [])]
+            assert actual == expected_links, f'Related-entry navigation mismatch: {record["id"]} ({language})'
+        for category in {record['category'] for record in visible}:
+            page = pages[f'{prefix}/browse/{category}/']
+            items = list(schema_entities(page.schemas, 'ItemList'))
+            assert len(items) == 1, 'Browse category must retain one repository ItemList'
+            descriptions = {item['url']: item['description'] for item in items[0]['itemListElement']}
+            fallback = '上游仓库未提供项目简介。' if language == 'zh' else 'No description supplied by the upstream repository.'
+            assert descriptions == {record['url']: record[f'description_{language}'] or fallback
+                                    for record in visible if record['category'] == category}, 'Related links must not replace repository schema descriptions'
+
+
 def main():
     urls = [element.text for element in ET.parse(OUTPUT / 'sitemap.xml').findall('{*}url/{*}loc')]
     assert urls and len(urls) == len(set(urls)), 'Duplicate or empty sitemap'
@@ -196,6 +260,7 @@ def main():
                 local /= 'index.html'
             assert local.is_file(), f'Missing local link on {parsed.path}: {link}'
     validate_paper_outputs(OUTPUT, pages)
+    validate_artifact_links(OUTPUT, pages)
     assert Page((OUTPUT / '404.html').read_text()).noindex, '404 must be noindex'
     assert (OUTPUT / 'llms.txt').read_text().startswith('# '), 'llms.txt must contain Markdown'
     assert re.fullmatch(r'[a-f0-9]{32}\n?', (OUTPUT / 'indexnow.txt').read_text()), 'Invalid public ownership proof'

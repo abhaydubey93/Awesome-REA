@@ -79,6 +79,8 @@ const UI = {
     "sourceStars": "stars",
     "sourceStarsTitle": "GitHub stars at metadata collection time; not a live count.",
     "sourceNoDescription": "No description supplied by the upstream repository.",
+    "sourceRelatedResearch": "Related research",
+    "sourceCuratedDetails": "Curated details",
     "sourceTopicHint": "Filter by this topic",
     "sourceLicenseUnknown": "License not identified",
     "sourceScanDetails": "Details",
@@ -171,6 +173,8 @@ const UI = {
     "sourceStars": "星标",
     "sourceStarsTitle": "元数据采集时的 GitHub 星标快照，不是实时数量。",
     "sourceNoDescription": "上游仓库未提供项目简介。",
+    "sourceRelatedResearch": "相关研究",
+    "sourceCuratedDetails": "精选资料",
     "sourceTopicHint": "按此主题筛选",
     "sourceLicenseUnknown": "许可证未识别",
     "sourceScanDetails": "详情",
@@ -311,6 +315,37 @@ function syncTopicInput() {
   renderTopicOptions();
 }
 function sourceTime(value) { return value ? String(value).replace("T"," ").slice(0,19) + (String(value).includes("T") ? " UTC" : "") : t("sourceNotRecorded"); }
+function sourceRelatedEntries(record) {
+  const seen = new Set();
+  return (Array.isArray(record.related_entries) ? record.related_entries : []).filter(entry => {
+    if (!entry || !["paper","curated"].includes(entry.kind) || typeof entry.id !== "string" || !/^[a-z0-9]+(?:-[a-z0-9]+)*$/.test(entry.id)) return false;
+    const directory = entry.kind === "paper" ? "papers" : "resources";
+    if (entry.href_en !== `/${directory}/#${entry.id}` || entry.href_zh !== `/zh/${directory}/#${entry.id}`) return false;
+    if (![entry.title_en,entry.title_zh].every(title => typeof title === "string" && title.trim())) return false;
+    const key = `${entry.kind}:${entry.id}`;
+    if (seen.has(key)) return false;
+    seen.add(key); return true;
+  });
+}
+function sourceRelatedLinks(record) {
+  const entries = sourceRelatedEntries(record);
+  if (!entries.length) return null;
+  const container = node("div","source-related");
+  for (const [kind,labelKey] of [["paper","sourceRelatedResearch"],["curated","sourceCuratedDetails"]]) {
+    const matches = entries.filter(entry => entry.kind === kind);
+    if (!matches.length) continue;
+    const group = node("div","source-related-group");
+    group.append(node("span","source-related-label",t(labelKey)));
+    const links = node("ul","source-related-links"); links.setAttribute("aria-label",t(labelKey));
+    matches.forEach(entry => {
+      const item = node("li"); const link = node("a","source-related-link",entry[state.lang === "zh" ? "title_zh" : "title_en"]);
+      link.href = entry[state.lang === "zh" ? "href_zh" : "href_en"];
+      item.append(link); links.append(item);
+    });
+    group.append(links); container.append(group);
+  }
+  return container;
+}
 function sourceFiltered() {
   const terms = sourceState.q.toLocaleLowerCase().trim().split(/\s+/).filter(Boolean); const topic = sourceState.topic.toLocaleLowerCase().trim();
   const result = sourceState.records.filter(r => (sourceState.target === "all" || r.targets.includes(sourceState.target)) && (!topic || r.topics.some(item => sourceState.topicIDs.has(topic) ? item === topic : topicSearch(item).includes(topic))) && terms.every(term => r.search.includes(term)));
@@ -333,6 +368,7 @@ function sourceCard(record) {
   if (Number.isFinite(record.stars)) { const stars = node("span","source-stars",record.stars.toLocaleString(state.lang === "zh" ? "zh-CN" : "en-US") + " " + t("sourceStars")); stars.title = t("sourceStarsTitle"); head.append(stars); } article.append(head);
   const description = record[state.lang === "zh" ? "description_zh" : "description_en"];
   article.append(node("p","source-card-description" + (!description ? " source-card-empty" : ""),description || t("sourceNoDescription")));
+  const related = sourceRelatedLinks(record); if (related) article.append(related);
   if (record.topics.length) { const topics = node("div","source-topics"); record.topics.slice(0,4).forEach(topic => { const button = node("button","source-topic-chip",topicLabel(topic)); button.type = "button"; button.title = t("sourceTopicHint") + ": " + topic; button.addEventListener("click",() => { sourceState.topic = topic; sourceState.visible = 24; syncTopicInput(); sourceURL(); renderSources(); }); topics.append(button); }); article.append(topics); }
   const footer = node("div","source-card-footer"); footer.append(external(record.readme_url || record.url,"","README ↗")); const license = typeof record.license === "string" && record.license.trim() && record.license.toUpperCase() !== "NOASSERTION" ? record.license : t("sourceLicenseUnknown"); footer.append(node("span","source-card-license",license)); article.append(footer);
   const details = node("details","source-record-details"); details.append(node("summary","",t("sourceScanDetails"))); const dl = node("dl");
@@ -353,7 +389,7 @@ async function loadSources() {
   if (sourceState.loading) return; sourceState.loading = true; sourceState.error = false; $("#source-results").setAttribute("aria-busy","true"); $("#source-error").hidden = true; $("#source-status").textContent = t("sourceLoading");
   try {
     const response = await fetch(dataURL("source-index.json"), {cache: "no-cache"}); if (!response.ok) throw new Error("Source index HTTP "+response.status); const data = await response.json(); sourceState.meta = data.meta || {};
-    sourceState.records = (data.resources || []).filter(r => r.scan_status === "readme-scanned" && r.scope_status !== "excluded").map((r,index) => { const topics = Array.isArray(r.topics) ? r.topics.map(String) : []; const targets = Array.isArray(r.targets) ? r.targets : []; const full_name = r.full_name || r.name || r.id; return {...r,full_name,topics,targets,order:index,search:[full_name,r.description_en || "",r.description_zh || "",r.description_original || "",r.category || "",...topics.map(topicSearch),...targets.flatMap(target => [target, UI.en["target"+target[0].toUpperCase()+target.slice(1)], UI.zh["target"+target[0].toUpperCase()+target.slice(1)]])].join(" ").toLocaleLowerCase()}; });
+    sourceState.records = (data.resources || []).filter(r => r.scan_status === "readme-scanned" && r.scope_status !== "excluded").map((r,index) => { const topics = Array.isArray(r.topics) ? r.topics.map(String) : []; const targets = Array.isArray(r.targets) ? r.targets : []; const full_name = r.full_name || r.name || r.id; const related_entries = sourceRelatedEntries(r); return {...r,full_name,topics,targets,related_entries,order:index,search:[full_name,r.description_en || "",r.description_zh || "",r.description_original || "",r.category || "",...topics.map(topicSearch),...related_entries.flatMap(entry => [entry.title_en,entry.title_zh]),...targets.flatMap(target => [target, UI.en["target"+target[0].toUpperCase()+target.slice(1)], UI.zh["target"+target[0].toUpperCase()+target.slice(1)]])].join(" ").toLocaleLowerCase()}; });
     sourceState.loaded = true; indexSourceTopics(); syncTopicInput(); $("#mode-source-count").textContent = sourceState.records.length.toLocaleString(); renderSources();
   } catch (_) { sourceState.error = true; $("#source-status").textContent = t("sourceErrorTitle"); $("#source-results").setAttribute("aria-busy","false"); $("#source-error").hidden = false; $("#source-empty").hidden = true; $("#source-more-row").hidden = true; }
   finally { sourceState.loading = false; }
