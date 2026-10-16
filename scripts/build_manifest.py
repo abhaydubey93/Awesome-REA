@@ -9,7 +9,7 @@ import re
 from urllib.parse import urlsplit
 
 MANIFEST_NAME = 'build-manifest.json'
-HTML_NORMALIZATION = 'strip-cloudflare-web-analytics-v1'
+HTML_NORMALIZATION = 'strip-cloudflare-web-analytics-v2'
 CONTROL_FILES = {'CNAME', '.nojekyll', '_headers', '_redirects'}
 FONT_SUFFIXES = {'.woff', '.woff2', '.ttf', '.otf', '.eot'}
 PRIVATE_NAMES = re.compile(r'(?i)^(?:\.env(?:\..*)?|credentials?(?:[.-].*)?|secrets?(?:[.-].*)?)$')
@@ -38,8 +38,10 @@ def normalized_html_bytes(content: bytes) -> bytes:
         parser = _ScriptAttributes()
         parser.feed(match[0])
         attrs = dict(parser.attributes)
-        allowed = {'src', 'defer', 'integrity', 'data-cf-beacon', 'crossorigin'}
+        allowed = {'src', 'defer', 'integrity', 'data-cf-beacon', 'crossorigin', 'type'}
         if len(attrs) != len(parser.attributes) or set(attrs) - allowed or 'data-cf-beacon' not in attrs:
+            return match[0]
+        if 'type' in attrs and attrs['type'] not in {'module', 'text/javascript', 'application/javascript'}:
             return match[0]
         source = urlsplit(attrs.get('src') or '')
         if (source.scheme == 'https' and source.netloc == 'static.cloudflareinsights.com'
