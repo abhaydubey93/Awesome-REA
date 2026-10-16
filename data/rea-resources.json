@@ -559,5 +559,30 @@
       "firmware"
     ],
     "kind": "collection"
+  },
+  {
+    "id": "reacut-reconstruction",
+    "name": "ReaCut: video-editor reconstruction",
+    "url": "https://github.com/Xiangyu-CAS/rea-capcut",
+    "category": "community-case-studies",
+    "relationship": "community-reported-mixed-workflow",
+    "kind": "case-study",
+    "targets": [
+      "app"
+    ],
+    "description_en": "An independent video editor whose authors document REA-assisted investigation of Jianying/CapCut behavior and project formats. The public implementation includes a local timeline, FFmpeg export and an experimental, lossy draft importer.",
+    "description_zh": "独立视频编辑器，作者公开了利用 REA 研究剪映／CapCut 行为与项目格式的过程。实现包含本地时间线、FFmpeg 导出，以及实验性的有损草稿导入。",
+    "evidence_url": "https://github.com/Xiangyu-CAS/rea-capcut/blob/da6f2f81473d90ad18d2c0d90220f21429f0c96f/README.md",
+    "additional_evidence_urls": [
+      "https://github.com/Xiangyu-CAS/rea-capcut/blob/da6f2f81473d90ad18d2c0d90220f21429f0c96f/docs/research/REA_FINDINGS.md",
+      "https://github.com/Xiangyu-CAS/rea-capcut/blob/da6f2f81473d90ad18d2c0d90220f21429f0c96f/docs/CAPCUT_INTEROP.md"
+    ],
+    "verified_at": "2026-10-16",
+    "verification": "source-reviewed",
+    "requirements": [
+      "The v0.5.0 preview reports macOS Apple Silicon testing; Windows/Linux builds still need device validation. The macOS package is ad-hoc signed and not notarized.",
+      "The experimental importer is documented against controlled Jianying 11.0.12922 drafts. Basic conversions are lossy: effects, keyframes and styles can be lost, and projects cannot be written back.",
+      "REA supports the reported research workflow but is not a runtime dependency. The project uses its own code and format; MIT source and bundled third-party components retain separate licenses."
+    ]
   }
 ]

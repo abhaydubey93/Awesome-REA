@@ -597,5 +597,45 @@
     "requirements": [
       "CCS 2024 论文及作者提供的实验材料。符号与类型恢复不等于完整恢复原始程序；本次收录未运行其代码。"
     ]
+  },
+  "reacut-reconstruction": {
+    "name": "ReaCut：视频编辑器重建案例",
+    "requirements": [
+      "v0.5.0 预览版报告了 macOS Apple Silicon 测试；Windows／Linux 构建仍待实机验证。macOS 安装包采用 ad-hoc 签名，尚未公证。",
+      "实验性导入器的文档验证范围为受控的剪映 11.0.12922 草稿。基础转换有损，效果、关键帧与样式可能丢失，不支持项目写回。",
+      "REA 用于作者报告的研究流程，并非运行依赖。项目使用自主代码与格式；MIT 源码和随包第三方组件分别保留各自许可。"
+    ]
+  },
+  "lasrecomp": {
+    "name": "LASRecomp：《织梦岛》静态重编译案例",
+    "requirements": [
+      "用户需提供合法取得的 v1.0.0 游戏文件；仓库与发行包不附带任天堂游戏代码、素材或字体。",
+      "发行版要求 Apple Silicon 上的 macOS 15+，或 x86-64 的 Windows 10+／Linux；x86-64 路径需要 AVX2 与 Vulkan 1.3。Linux ARM 仍为实验性支持，未完成实机验证。",
+      "项目处于 beta 阶段，记录了崩溃和渲染缺陷。AI 贡献比例来自作者陈述，未经独立量化；未建立 REA 集成或完整行为等价的证据。"
+    ]
+  },
+  "godot-re-tools": {
+    "name": "Godot 逆向工程工具",
+    "requirements": "支持 Godot 2.x、3.x 和 4.x 工程反编译，提供 Windows、macOS 与 Linux 发行程序。编辑恢复的工程时应使用原游戏对应的 Godot 版本。 加密输入需要对应密钥；不支持 Godot 2.x 模型转换，以及 GDNative/GDExtension 脚本恢复。 工具采用 MIT 许可证。编译当前源码还需要文档指定的 Godot 分支、rustup 和 .NET 10 SDK。"
+  },
+  "ue4ss": {
+    "name": "UE4SS（虚幻引擎脚本系统）",
+    "requirements": "面向 Win64 虚幻引擎游戏；兼容性取决于具体游戏，可能需要自定义特征码或配置。 开发分支 README 的目标范围为 UE 4.7–5.8，而最新稳定标签仍是 2024 年的 v3.0.1。应使用与所选构建对应的文档，不能假定稳定版包含全部开发功能。 采用 MIT 许可证。当前源码构建需要文档指定的 C++23、Rust 与 CMake 工具链，以及经 Epic 授权的 Unreal 子模块访问权限；Linux 交叉编译产物仍是 Windows 程序。"
+  },
+  "fmodel": {
+    "name": "FModel 游戏资源浏览器",
+    "requirements": "需要 Windows x64 与 .NET 10 或更高版本的桌面运行时，输入须为受支持的虚幻引擎游戏归档；加密归档需要对应的 AES 密钥。 所审阅的 aug-2026 版本仅支持以 USD 导出世界，插槽与附属对象可能定位不准；资源导出不等于恢复原始游戏逻辑源码。 项目采用 GPL-3.0 许可证；所附依赖另有各自的声明。"
+  },
+  "blutter": {
+    "name": "Blutter",
+    "requirements": "输入须为已提取的 Android ARM64 库，包含 libapp.so 与 Flutter 引擎；仅支持较新的 Dart 版本。直接读取 APK/IPA 及 iOS 二进制仍列为待实现功能。 需要 Python 3、支持 C++20 的工具链（如 GCC 13+ 或 Clang 16+）及文档列出的原生依赖；包装脚本可能下载并编译匹配的 Dart 源码。 上游推荐 Linux，也提供 Windows 与 macOS 配置说明。采用 MIT 许可证；混淆应用仍可能缺失函数，工具并非完整的 Dart 源码反编译器。"
+  },
+  "hermes-dec": {
+    "name": "hermes-dec",
+    "requirements": "当前包元数据要求 Python 3.10+，程序使用 Python 标准库。输入须为已提取的 Hermes HBC 包，而非纯文本压缩 JavaScript 包。 反编译输出不能直接作为 JavaScript 执行：循环和条件结构尚未完整重建。字节码兼容性取决于已支持的操作码定义。 工具采用 AGPL-3.0-or-later 许可证，与 Hermes 虚拟机本身的许可证不同。"
+  },
+  "recaf": {
+    "name": "Recaf 字节码分析与编辑工具",
+    "requirements": "需要 JDK 22+ 与 JavaFX 22+；推荐启动器会下载兼容的 JavaFX 组件。应选择与操作系统及 CPU 匹配的构建。 4.0.0-alpha 在 GitHub 上虽然列为常规发行版，上游仍明确称其为预览版。该版本的 Android 支持为只读，不能将 JVM 编辑能力视为 Android 编辑能力。 采用 MIT 许可证。输入须为已编译的应用；反编译文本用于分析，不保证还原原始源码。"
   }
 }

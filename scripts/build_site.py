@@ -14,6 +14,7 @@ from xml.sax.saxutils import escape as xml_escape
 from build_browse_pages import build_browse_pages
 from build_discovery_pages import build_discovery_pages
 from build_paper_pages import build_paper_pages
+from build_manifest import write_build_manifest
 from localization import read_localizations, localized_records
 from source_scope import apply_scope, read_scope
 
@@ -214,7 +215,7 @@ def main() -> None:
     social_revision = hashlib.sha256((OUTPUT / "social-card.png").read_bytes()).hexdigest()[:16]
     html = html.replace(f'{SITE_URL}/social-card.png"', f'{SITE_URL}/social-card.png?v={social_revision}"')
     data_digest = hashlib.sha256()
-    for filename in ("catalog.json", "source-index.json"):
+    for filename in ("catalog.json", "source-index.json", "papers.json"):
         path = OUTPUT / filename
         if path.is_file():
             data_digest.update(filename.encode("utf-8") + b"\0" + path.read_bytes())
@@ -247,6 +248,7 @@ def main() -> None:
     sitemap_urls = [SITE_URL + "/", *browse_urls, *(SITE_URL + path for path in discovery_paths), *paper_urls]
     sitemap_entries = [f'<url><loc>{xml_escape(url)}</loc></url>' for url in sitemap_urls]
     (OUTPUT / "sitemap.xml").write_text('<?xml version="1.0" encoding="UTF-8"?>\n<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">\n' + '\n'.join(sitemap_entries) + '\n</urlset>\n', encoding="utf-8")
+    write_build_manifest(OUTPUT)
     print(f"Built {len(resources)} curated resources, {len(papers)} papers and {len(sitemap_urls)} indexable pages → dist/ ({SITE_URL})")
 
 

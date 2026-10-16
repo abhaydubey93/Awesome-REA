@@ -2,6 +2,7 @@
 """Render a compact, resource-first collection into both READMEs."""
 import argparse
 import html
+import json
 import sys
 from collections import defaultdict
 
@@ -149,6 +150,7 @@ def entry_type(record, language):
 
 def render_catalog(records, language):
     index = 0 if language == 'en' else 1
+    translations = json.loads((ROOT / 'site/translations.zh-CN.json').read_text()) if language == 'zh' else {}
     groups = defaultdict(list)
     for record in records:
         if record['category'] not in CATEGORIES or record['relationship'] not in RELATIONSHIPS:
@@ -160,7 +162,7 @@ def render_catalog(records, language):
             continue
         lines.extend([f'<a id="{section}"></a>', f'### {titles[index]}', ''])
         for record in groups[section]:
-            name = plain_text(record['name'])
+            name = plain_text((record.get('name_zh') or translations.get(record['id'], {}).get('name') or record['name']) if language == 'zh' else record['name'])
             description = plain_text(record[f'description_{language}'])
             metadata = plain_text(entry_type(record, language))
             lines.append(f"- [{name}]({record['url']}) — {description} **[{metadata}]**")
@@ -181,7 +183,7 @@ def replace_catalog(content, rendered):
 PAPER_SECTIONS = {
     'agent-evaluation': ('Reverse-engineering agent evaluation', '逆向工程智能体评测'),
     'decompilation': ('Decompilation and symbol recovery', '反编译与符号恢复'),
-    'website-reconstruction': ('Visual website reconstruction', '网站视觉重建'),
+    'website-reconstruction': ('Website reconstruction', '网站重建'),
 }
 PAPER_STATUSES = {
     'conference-paper': ('Conference paper', '会议论文'),
@@ -198,9 +200,9 @@ def render_papers(papers, language):
     index = int(zh)
     directory = 'https://awesomerea.org/zh/papers/' if zh else 'https://awesomerea.org/papers/'
     lines = ['<a id="papers"></a>', '## 论文' if zh else '## Papers', '',
-             (f'收录 **{len(papers)} 篇论文**，涵盖智能体评测、反编译与视觉重建。部分论文也出现在精选资源目录中，两者数量不可相加。发表状态与研究范围分别标注，中文标题为译名。'
-              if zh else f'A bibliography of **{len(papers)} papers** on agent evaluation, decompilation, and visual reconstruction. Some papers also appear among curated resources; counts are not additive. Publication status and study scope are made explicit.'), '',
-             f"[{'浏览论文目录' if zh else 'Browse the paper directory'}]({directory}) · [{'完整书目 JSON' if zh else 'Complete bibliography JSON'}](data/papers.json)", '']
+             (f'收录 **{len(papers)} 篇论文**，涵盖智能体评测、反编译与网站重建。部分论文也出现在精选资源目录中，两者数量不可相加。发表状态与研究范围分别标注，中文标题为译名。'
+              if zh else f'A bibliography of **{len(papers)} papers** on agent evaluation, decompilation, and website reconstruction. Some papers also appear among curated resources; counts are not additive. Publication status and study scope are made explicit.'), '',
+             f"[{'浏览论文目录' if zh else 'Browse the paper directory'}]({directory}) · [{'完整书目 JSON' if zh else 'Complete bibliography JSON'}](data/papers.json) · [{'推荐论文' if zh else 'Suggest a paper'}](https://github.com/reacher-z/Awesome-REA/issues/new?template=paper.yml)", '']
     groups = defaultdict(list)
     for paper in papers:
         section = ('website-reconstruction' if 'website' in paper['targets'] else

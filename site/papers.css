@@ -19,10 +19,10 @@
 .papers-topic-nav a span{font:500 12px/1.5 var(--sans);font-variant-numeric:tabular-nums;padding:1px 6px;border-radius:4px;background:var(--tint)}
 .paper-section{padding-top:28px}
 .paper-section-heading{display:flex;align-items:baseline;justify-content:space-between;gap:16px;margin-bottom:17px}
-.paper-section-heading h2{margin:0;font-size:22px;letter-spacing:-.5px;font-weight:650;scroll-margin-top:100px}
+.paper-section-heading h2{margin:0;font-size:22px;letter-spacing:-.5px;font-weight:650}
 .paper-section-heading>span{color:var(--muted);font-size:12px;white-space:nowrap}
 .paper-grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:20px;align-items:start}
-.paper-card{min-width:0;scroll-margin-top:100px;padding:25px 25px 19px;border:1px solid var(--line);border-radius:12px;background:var(--surface);box-shadow:0 2px 5px var(--shadow)}
+.paper-card{min-width:0;padding:25px 25px 19px;border:1px solid var(--line);border-radius:12px;background:var(--surface);box-shadow:0 2px 5px var(--shadow)}
 .paper-meta{display:flex;flex-wrap:wrap;align-items:center;gap:7px 10px;margin-bottom:12px;font-size:12px;color:var(--muted)}
 .paper-year{color:var(--ink);font-weight:700;font-variant-numeric:tabular-nums}
 .paper-venue{font-weight:550}

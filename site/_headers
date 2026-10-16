@@ -10,3 +10,7 @@
   Cache-Control: no-cache, must-revalidate
 /source-index.json
   Cache-Control: no-cache, must-revalidate
+/papers.json
+  Cache-Control: no-cache, must-revalidate
+/build-manifest.json
+  Cache-Control: no-cache, must-revalidate
