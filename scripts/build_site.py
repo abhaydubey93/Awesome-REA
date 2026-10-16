@@ -12,6 +12,7 @@ from urllib.parse import urlsplit
 from xml.sax.saxutils import escape as xml_escape
 
 from build_browse_pages import build_browse_pages
+from build_discovery_pages import build_discovery_pages, jsonld, website_graph
 from localization import read_localizations, localized_records
 from source_scope import apply_scope, read_scope
 
@@ -204,6 +205,7 @@ def main() -> None:
             data_digest.update(filename.encode("utf-8") + b"\0" + path.read_bytes())
     data_revision = data_digest.hexdigest()[:16]
     html = html.replace('<html ', f'<html data-catalog-revision="{data_revision}" ', 1)
+    html = html.replace('</head>', '  ' + jsonld([website_graph(SITE_URL)]) + '\n</head>')
     (OUTPUT / "index.html").write_text(html, encoding="utf-8")
     browse_revision = hashlib.sha256((OUTPUT / "browse.css").read_bytes()).hexdigest()[:16]
     icon_stylesheet = "/fontawesome.css" if args.fontawesome_dir else (args.fontawesome_assets_url.rstrip("/") + "/fontawesome.css" if args.fontawesome_assets_url else None)
@@ -215,13 +217,20 @@ def main() -> None:
         social_image_href=f"{SITE_URL}/social-card.png?v={social_revision}",
         data_revision=data_revision, icon_stylesheet_href=icon_stylesheet,
     )
+    discovery_revision = hashlib.sha256((OUTPUT / "discovery.css").read_bytes()).hexdigest()[:16]
+    discovery_urls = build_discovery_pages(
+        OUTPUT, resources, site_url=SITE_URL, repository_url=REPOSITORY_URL,
+        styles_href=asset_hrefs["styles.css"], discovery_styles_href=f"/discovery.css?v={discovery_revision}",
+        favicon_href=asset_hrefs["favicon.svg"],
+        social_image_href=f"{SITE_URL}/social-card.png?v={social_revision}",
+    )
     (OUTPUT / ".nojekyll").write_text("", encoding="utf-8")
     (OUTPUT / "CNAME").write_text("awesomerea.org\n", encoding="utf-8")
     (OUTPUT / "robots.txt").write_text(f"User-agent: *\nAllow: /\nSitemap: {SITE_URL}/sitemap.xml\n", encoding="utf-8")
     sitemap_entries = [f'<url><loc>{SITE_URL}/</loc><lastmod>{latest_review}</lastmod></url>']
-    sitemap_entries.extend(f'<url><loc>{xml_escape(url)}</loc></url>' for url in browse_urls)
+    sitemap_entries.extend(f'<url><loc>{xml_escape(url)}</loc></url>' for url in browse_urls + discovery_urls)
     (OUTPUT / "sitemap.xml").write_text('<?xml version="1.0" encoding="UTF-8"?>\n<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">\n' + '\n'.join(sitemap_entries) + '\n</urlset>\n', encoding="utf-8")
-    print(f"Built the collection with {len(resources)} curated resources and {len(browse_urls)} static browse pages → dist/ ({SITE_URL})")
+    print(f"Built the collection with {len(resources)} curated resources, {len(browse_urls)} browse pages, and {len(discovery_urls)} resource/about pages → dist/ ({SITE_URL})")
 
 
 if __name__ == "__main__":

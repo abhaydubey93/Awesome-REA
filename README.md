@@ -4,6 +4,10 @@ A collection of **tools, projects, integrations, and references** for reverse en
 
 **[Website](https://awesomerea.org) · [Full repository index](https://awesomerea.org/?view=source-index) · [GitHub](https://github.com/reacher-z/Awesome-REA) · [简体中文](README.zh-CN.md)**
 
+**[Curated directory](https://awesomerea.org/resources/) · [About and review method](https://awesomerea.org/about/)**
+
+An independent collection. Source review is distinct from runtime verification; follow each entry’s primary evidence for tool and research claims.
+
 [![Collection checks](https://github.com/reacher-z/Awesome-REA/actions/workflows/validate.yml/badge.svg)](https://github.com/reacher-z/Awesome-REA/actions/workflows/validate.yml)
 [![License: MIT](https://img.shields.io/badge/License-MIT-blue.svg)](LICENSE)
 
@@ -155,6 +159,9 @@ Each entry appears once under its main purpose. The collection includes independ
 - [pwn.college: Reverse Engineering](https://pwn.college/program-security/reverse-engineering/) — Hands-on reverse-engineering module covering functions, data access, static tools and dynamic tools with hosted exercises. **[Learning resource]**
 - [Reverse Engineering for Beginners](https://beginners.re/) — Dennis Yurichev's free book on understanding compiled programs and assembly, available in multiple languages. **[Learning resource]**
 - [The Official Radare2 Book](https://book.rada.re/) — Official practical reference for radare2 analysis, disassembly, scripting, debugging and related plugins. **[Learning resource]**
+- [LLM4Decompile (EMNLP 2024)](https://aclanthology.org/2024.emnlp-main.203/) — Research on direct binary decompilation and refinement of Ghidra output with language models. Evaluates re-executability on HumanEval and ExeBench; useful for distinguishing readable output from functional recovery. **[Research]**
+- [DecompileBench (Findings of ACL 2025)](https://aclanthology.org/2025.findings-acl.1194/) — A benchmark combining functions from real programs, runtime-aware validation, and LLM-assisted assessment of decompiled-code usability. Helps separate functional correctness from perceived understandability when comparing decompilers. **[Research]**
+- [ReSym (CCS 2024)](https://doi.org/10.1145/3658644.3670340) — Combines language models and program analysis to recover variable and user-defined data-structure symbols from stripped binaries. The authors provide training, inference, evaluation, and posterior-reasoning artifacts. **[Research]**
 <!-- END GENERATED CATALOG -->
 
 <a id="search-the-catalog"></a>

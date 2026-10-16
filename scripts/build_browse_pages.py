@@ -9,6 +9,7 @@ import shutil
 from urllib.parse import urlsplit
 
 from build_repository_index import CATEGORIES
+from build_discovery_pages import jsonld, page_graph
 
 CATEGORY_ICONS = {
     'web-analysis': 'globe', 'game-analysis': 'gamepad', 'android': 'phone',
@@ -108,7 +109,7 @@ def build_browse_pages(
         language_index = 1 if zh else 0
         root_link = '/?lang=zh' if zh else '/'
         search_link = f'/?view=source-index&amp;lang={language}'
-        curated_link = f'/?view=curated&amp;lang={language}'
+        curated_link = '/zh/resources/' if zh else '/resources/'
         scope_note = (f'共扫描 {len(scanned):,} 个仓库，提供 {len(records):,} 个浏览条目；{len(scanned)-len(records)} 个超出范围的条目仍保留在完整 JSON 中。'
                       if zh else f'{len(records):,} repositories are available to browse from {len(scanned):,} successful README scans. The {len(scanned)-len(records)} out-of-scope records remain in the full JSON.')
         provenance = ('这是自动发现的仓库索引，未逐项精选或运行测试。分类依据元数据；简介提供 AI 辅助中英翻译。星标为采集时快照。'
@@ -149,6 +150,15 @@ def build_browse_pages(
                            + (f'<a href="{browse_path(language)}">{("全部分类" if zh else "All categories")}</a><span aria-hidden="true">/</span><span aria-current="page">{escape(label)}</span>'
                               if category else f'<span aria-current="page">{("全部分类" if zh else "All categories")}</span>'))
             icon_css = f'<link rel="stylesheet" href="{escape(icon_stylesheet_href, quote=True)}">' if use_pro else ''
+            items = ([{"name": record.get('full_name') or record['name'], "url": record['url']}
+                      for record in groups[category]] if category else
+                     [{"name": labels[language_index], "url": site_url + browse_path(language, slug)}
+                      for slug, labels in CATEGORIES.items()])
+            trail = [('首页' if zh else 'Home', site_url + '/')]
+            if category:
+                trail.append(('全部分类' if zh else 'All categories', site_url + browse_path(language)))
+            trail.append((label, canonical))
+            structured = jsonld(page_graph(site_url, canonical, title, description, locale, items=items, breadcrumbs=trail))
             document = f'''<!doctype html>
 <html lang="{locale}"{(' data-icon-set="fontawesome"' if use_pro else '')}>
 <head>
@@ -178,6 +188,7 @@ def build_browse_pages(
   <link rel="stylesheet" href="{escape(styles_href, quote=True)}">
   <link rel="stylesheet" href="{escape(browse_styles_href, quote=True)}">
   {icon_css}
+  {structured}
 </head>
 <body>
 <a class="skip-link" href="#browse-content">{('跳到仓库目录' if zh else 'Skip to the directory')}</a>
