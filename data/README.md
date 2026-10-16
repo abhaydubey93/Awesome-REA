@@ -13,6 +13,7 @@
 | `relationship` | Relationship to REA, independent integration, foundation, or learning |
 | `description_en` / `description_zh` | Original practical descriptions |
 | `evidence_url` | Primary source supporting the description |
+| `additional_evidence_urls` | Optional supporting documentation, release, or package-metadata URLs; these are validated and included in link checks |
 | `verified_at` | ISO date or timestamp of source review |
 | `verification` | `source-reviewed`; not a runtime compatibility claim |
 | `requirements` | Platform, engine, release, license, or input prerequisites |

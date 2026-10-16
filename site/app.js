@@ -10,7 +10,8 @@ const UI = {
     "mainNav": "Main navigation",
     "submitResource": "Submit resource",
     "collectionEyebrow": "AN OPEN RESOURCE COLLECTION",
-    "collectionDescription": "Tools, projects, case studies and resources for reverse engineering websites, games, apps, binaries and firmware.",
+    "pageDescription": "Tools, projects, case studies and resources for reverse engineering websites, games, apps, binaries and firmware.",
+    "collectionDescription": "A collection of reverse-engineering tools, projects, case studies and references.",
     "browseCollection": "Browse the collection",
     "indexModeLabel": "Collection",
     "sourceMode": "Repositories",
@@ -31,7 +32,7 @@ const UI = {
     "sourceSortStars": "Most stars",
     "sourceSortPushed": "Recently pushed",
     "sourceSortName": "Repository name",
-    "sourceIntro": "Automatically indexed repositories; descriptions and topics come from upstream.",
+    "sourceIntro": "Automatically indexed from upstream.",
     "aboutCollection": "About this index",
     "sourceDisclosure": "READMEs were fetched automatically. These entries have not been manually reviewed or executed; target labels are inferred and do not establish REA compatibility.",
     "sourceLanguageNote": "Repository descriptions are available in English and Chinese. Translations are AI-assisted; original descriptions remain in the downloadable data.",
@@ -60,6 +61,7 @@ const UI = {
     "footerDescription": "An independent resource collection, updated in public.",
     "contributeButton": "Contribute ↗",
     "downloadSourceData": "Repository index JSON ↓",
+    "browseDirectory": "Browse by category ↗",
     "downloadCuratedData": "Curated catalog JSON ↓",
     "viewSource": "GitHub ↗",
     "footerLicense": "Original content: MIT. Linked projects keep their own licenses.",
@@ -95,7 +97,8 @@ const UI = {
     "mainNav": "主导航",
     "submitResource": "提交资源",
     "collectionEyebrow": "开放的逆向工程资源集合",
-    "collectionDescription": "收集面向网站、游戏、应用、二进制和固件逆向工程的工具、项目、案例与资料。",
+    "pageDescription": "收集面向网站、游戏、应用、二进制和固件逆向工程的工具、项目、案例与资料。",
+    "collectionDescription": "收集逆向工程工具、项目、案例与参考资料。",
     "browseCollection": "浏览资源集合",
     "indexModeLabel": "资源集合",
     "sourceMode": "项目仓库",
@@ -116,7 +119,7 @@ const UI = {
     "sourceSortStars": "星标最多",
     "sourceSortPushed": "最近推送",
     "sourceSortName": "仓库名称",
-    "sourceIntro": "自动索引的项目仓库，简介与主题来自上游。",
+    "sourceIntro": "自动索引，简介与主题来自上游。",
     "aboutCollection": "关于此索引",
     "sourceDisclosure": "索引通过自动读取 README 建立，未逐项人工审阅或执行测试；目标标签为自动分类，不表示已验证 REA 兼容性。",
     "sourceLanguageNote": "项目简介提供中英双语，翻译由 AI 辅助完成；下载数据中保留上游原文。",
@@ -145,6 +148,7 @@ const UI = {
     "footerDescription": "独立的资源集合，在公开协作中持续更新。",
     "contributeButton": "参与贡献 ↗",
     "downloadSourceData": "仓库索引 JSON ↓",
+    "browseDirectory": "按分类浏览 ↗",
     "downloadCuratedData": "精选目录 JSON ↓",
     "viewSource": "GitHub ↗",
     "footerLicense": "原创内容采用 MIT 许可。链接项目保留各自的许可。",
@@ -180,9 +184,8 @@ const RELATION = {
   "official-core": ["REA · OFFICIAL", "REA · 官方核心"], "official-skill": ["REA · OFFICIAL SKILL", "REA · 官方技能"], "official-documentation": ["REA · DOCUMENTATION", "REA · 官方文档"], "official-guide": ["REA · GUIDE", "REA · 官方指南"], "official-case-study": ["REA · CASE STUDY", "REA · 官方案例"], "community-integration": ["REA · COMMUNITY", "REA · 社区集成"], "community-reported-mixed-workflow": ["COMMUNITY · MIXED WORKFLOW", "社区 · 混合工作流"], "community-learning-resource": ["COMMUNITY · LEARNING", "社区 · 学习资源"], "upstream-maintainer-companion-list": ["COMPANION COLLECTION", "相关资源目录"], "independent-agent-integration": ["INDEPENDENT · AGENT", "独立 · 智能体集成"], "foundation": ["FOUNDATION TOOL", "基础工具"], "learning": ["LEARNING RESOURCE", "学习资源"]
 };
 const params = new URLSearchParams(location.search);
-let storedLang = "en";
-try { storedLang = localStorage.getItem("awesomerea-language") || "en"; } catch (_) { /* storage may be disabled */ }
-const state = { lang: params.get("lang") === "zh" || (!params.has("lang") && storedLang === "zh") ? "zh" : "en", q: params.get("q") || "", group: params.get("group") || "all", category: params.get("category") || "all", kind: params.get("kind") || "all", target: params.get("target") || "all", visible: 15, topicLabels: {}, records: [], loaded: false, error: false };
+// Keep the bare homepage English; shared links explicitly select another language.
+const state = { lang: params.get("lang") === "zh" ? "zh" : "en", q: params.get("q") || "", group: params.get("group") || "all", category: params.get("category") || "all", kind: params.get("kind") || "all", target: params.get("target") || "all", visible: 15, topicLabels: {}, records: [], loaded: false, error: false };
 const $ = (selector) => document.querySelector(selector);
 const $$ = (selector) => [...document.querySelectorAll(selector)];
 const t = (key) => UI[state.lang][key] || UI.en[key] || key;
@@ -195,9 +198,10 @@ function updateURL() { const next = new URL(location.href); ["q", "group", "cate
 function applyLanguage() {
   document.documentElement.lang = state.lang === "zh" ? "zh-CN" : "en";
   document.title = t("pageTitle");
+  $("#browse-directory").href = state.lang === "zh" ? "/zh/browse/" : "/browse/";
   $('meta[property="og:image:alt"]')?.setAttribute("content", t("pageTitle"));
   $("#language-select").value = state.lang;
-  for (const selector of ['meta[name="description"]', 'meta[property="og:description"]', 'meta[name="twitter:description"]']) $(selector)?.setAttribute("content", t("collectionDescription"));
+  for (const selector of ['meta[name="description"]', 'meta[property="og:description"]', 'meta[name="twitter:description"]']) $(selector)?.setAttribute("content", t("pageDescription"));
   for (const selector of ['meta[property="og:title"]', 'meta[name="twitter:title"]']) $(selector)?.setAttribute("content", t("pageTitle"));
   $('meta[property="og:locale"]')?.setAttribute("content", state.lang === "zh" ? "zh_CN" : "en_US");
   $$('[data-i18n]').forEach(el => { el.innerHTML = t(el.dataset.i18n); });
@@ -253,7 +257,7 @@ $("#kind-select").addEventListener("change", event => { state.kind=event.target.
 $("#category-select").addEventListener("change", event => { state.category = event.target.value; state.visible = 15; updateURL(); if (state.loaded) render(); });
 $$('[data-group]').forEach(el => el.addEventListener("click", () => { state.group = el.dataset.group; state.visible = 15; updateURL(); if (state.loaded) render(); }));
 $$('[data-target]').forEach(el => el.addEventListener("click", () => { state.target = el.dataset.target; state.visible = 15; updateURL(); if (state.loaded) render(); }));
-$("#language-select").addEventListener("change", event => { state.lang = event.target.value === "zh" ? "zh" : "en"; try { localStorage.setItem("awesomerea-language",state.lang); } catch (_) { /* optional preference */ } updateURL(); applyLanguage(); });
+$("#language-select").addEventListener("change", event => { state.lang = event.target.value === "zh" ? "zh" : "en"; updateURL(); applyLanguage(); });
 $("#clear-filters").addEventListener("click",reset); $("#empty-reset").addEventListener("click", () => { reset(); $("#search-input").focus(); }); $("#retry-load").addEventListener("click",load);
 $("#load-more").addEventListener("click", () => { const previous = state.visible; state.visible += 15; render(); const next = $$(".card-title-link")[previous]; if (next) next.focus({preventScroll:true}); });
 document.addEventListener("keydown", event => { if (event.key === "/" && !event.ctrlKey && !event.metaKey && !event.altKey && !["INPUT","TEXTAREA","SELECT"].includes(document.activeElement.tagName) && !document.activeElement.isContentEditable) { event.preventDefault(); const search = sourceState.mode === "source-index" ? $("#source-search") : $("#search-input"); search.focus(); search.scrollIntoView({block:"center",behavior:"smooth"}); } });
@@ -314,7 +318,7 @@ function sourceFiltered() {
   return result;
 }
 function sourceCard(record) {
-  const article = node("article","source-card"); article.dataset.recordId=record.id; const head = node("div","source-card-head"); const title = node("h3"); const link = external(record.url,"source-title-link",record.full_name); link.append(icon("external",true)); title.append(link); head.append(title);
+  const article = node("article","source-card"); article.dataset.recordId=record.id; const head = node("div","source-card-head"); const title = node("h3"); const link = external(record.url,"source-title-link"); const separator = record.full_name.indexOf("/"); if (separator > 0) { link.append(node("span","source-owner",record.full_name.slice(0,separator+1)),node("span","source-project",record.full_name.slice(separator+1))); } else { link.append(node("span","source-project",record.full_name)); } link.append(icon("external",true)); title.append(link); head.append(title);
   if (Number.isFinite(record.stars)) { const stars = node("span","source-stars",record.stars.toLocaleString(state.lang === "zh" ? "zh-CN" : "en-US") + " " + t("sourceStars")); stars.title = t("sourceStarsTitle"); head.append(stars); } article.append(head);
   const description = record[state.lang === "zh" ? "description_zh" : "description_en"];
   article.append(node("p","source-card-description" + (!description ? " source-card-empty" : ""),description || t("sourceNoDescription")));

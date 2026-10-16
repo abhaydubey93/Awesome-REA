@@ -9,7 +9,9 @@ import re
 import shutil
 from pathlib import Path
 from urllib.parse import urlsplit
+from xml.sax.saxutils import escape as xml_escape
 
+from build_browse_pages import build_browse_pages
 from localization import read_localizations, localized_records
 from source_scope import apply_scope, read_scope
 
@@ -25,7 +27,7 @@ FONT_AWESOME_ICONS = {
     "chevron": "chevron-down", "code": "code", "chip": "microchip",
     "phone": "mobile-screen", "box": "cube", "network": "diagram-project",
     "layers": "layer-group", "document": "file-lines", "book": "book-open",
-    "terminal": "terminal", "github": "github", "globe": "globe",
+    "terminal": "terminal", "github": "github", "globe": "globe", "gamepad": "gamepad",
 }
 
 
@@ -164,6 +166,7 @@ def main() -> None:
     html = configure_fontawesome(html, args.fontawesome_dir, args.fontawesome_assets_url)
     source_index_path = ROOT / "data" / "source-index.json"
     source_index_output = OUTPUT / "source-index.json"
+    browse_document = None
     metadata["source_index"] = {"available": False, "resource_count": 0}
     if source_index_path.is_file():
         try:
@@ -178,6 +181,7 @@ def main() -> None:
                 excluded_count = sum(record.get("scope_status") == "excluded" for record in index_data["resources"])
                 index_data["meta"]["scope"] = {"scanned_count": len(successful), "excluded_count": excluded_count, "browse_count": len(successful) - excluded_count}
                 index_data["meta"]["localization"] = {"languages": ["en", "zh-CN"], "translated_records": sum(record["id"] in repository_locales for record in successful), "method": "AI-assisted description translation; original upstream text retained."}
+                browse_document = index_data
                 index_meta = index_data.get("meta", {})
                 metadata["source_index"] = {"available": True, "resource_count": len(successful) - excluded_count, "scanned_count": len(successful), "excluded_count": excluded_count, "status": index_meta.get("status", ""), "completed_at": index_meta.get("completed_at"), "verification": "automated-readme-scan"}
                 source_index_output.write_text(json.dumps(index_data, ensure_ascii=False, indent=2) + "\n", encoding="utf-8")
@@ -186,8 +190,10 @@ def main() -> None:
     topic_labels_path = SOURCE / "topics.i18n.json"
     topic_labels = json.loads(topic_labels_path.read_text()) if topic_labels_path.exists() else {}
     (OUTPUT / "catalog.json").write_text(json.dumps({"meta": metadata, "resources": resources, "topic_labels": topic_labels}, ensure_ascii=False, indent=2) + "\n", encoding="utf-8")
+    asset_hrefs = {}
     for filename, attribute in (("app.js", "src"), ("styles.css", "href"), ("favicon.svg", "href")):
         revision = hashlib.sha256((OUTPUT / filename).read_bytes()).hexdigest()[:16]
+        asset_hrefs[filename] = f'/{filename}?v={revision}'
         html = html.replace(f'{attribute}="{filename}"', f'{attribute}="{filename}?v={revision}"')
     social_revision = hashlib.sha256((OUTPUT / "social-card.png").read_bytes()).hexdigest()[:16]
     html = html.replace(f'{SITE_URL}/social-card.png"', f'{SITE_URL}/social-card.png?v={social_revision}"')
@@ -196,13 +202,26 @@ def main() -> None:
         path = OUTPUT / filename
         if path.is_file():
             data_digest.update(filename.encode("utf-8") + b"\0" + path.read_bytes())
-    html = html.replace('<html ', f'<html data-catalog-revision="{data_digest.hexdigest()[:16]}" ', 1)
+    data_revision = data_digest.hexdigest()[:16]
+    html = html.replace('<html ', f'<html data-catalog-revision="{data_revision}" ', 1)
     (OUTPUT / "index.html").write_text(html, encoding="utf-8")
+    browse_revision = hashlib.sha256((OUTPUT / "browse.css").read_bytes()).hexdigest()[:16]
+    icon_stylesheet = "/fontawesome.css" if args.fontawesome_dir else (args.fontawesome_assets_url.rstrip("/") + "/fontawesome.css" if args.fontawesome_assets_url else None)
+    browse_urls = build_browse_pages(
+        OUTPUT, browse_document, curated_count=len(resources), site_url=SITE_URL,
+        repository_url=REPOSITORY_URL, styles_href=asset_hrefs["styles.css"],
+        browse_styles_href=f"/browse.css?v={browse_revision}",
+        favicon_href=asset_hrefs["favicon.svg"],
+        social_image_href=f"{SITE_URL}/social-card.png?v={social_revision}",
+        data_revision=data_revision, icon_stylesheet_href=icon_stylesheet,
+    )
     (OUTPUT / ".nojekyll").write_text("", encoding="utf-8")
     (OUTPUT / "CNAME").write_text("awesomerea.org\n", encoding="utf-8")
     (OUTPUT / "robots.txt").write_text(f"User-agent: *\nAllow: /\nSitemap: {SITE_URL}/sitemap.xml\n", encoding="utf-8")
-    (OUTPUT / "sitemap.xml").write_text(f'<?xml version="1.0" encoding="UTF-8"?>\n<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"><url><loc>{SITE_URL}/</loc><lastmod>{latest_review}</lastmod></url></urlset>\n', encoding="utf-8")
-    print(f"Built the collection with {len(resources)} curated resources → dist/ ({SITE_URL})")
+    sitemap_entries = [f'<url><loc>{SITE_URL}/</loc><lastmod>{latest_review}</lastmod></url>']
+    sitemap_entries.extend(f'<url><loc>{xml_escape(url)}</loc></url>' for url in browse_urls)
+    (OUTPUT / "sitemap.xml").write_text('<?xml version="1.0" encoding="UTF-8"?>\n<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">\n' + '\n'.join(sitemap_entries) + '\n</urlset>\n', encoding="utf-8")
+    print(f"Built the collection with {len(resources)} curated resources and {len(browse_urls)} static browse pages → dist/ ({SITE_URL})")
 
 
 if __name__ == "__main__":

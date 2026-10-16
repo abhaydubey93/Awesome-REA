@@ -12,7 +12,7 @@ The scan retains **1,600 repository records** as discovery evidence. A separate 
 
 Each exclusion is keyed by the stable source ID and records its decision, bilingual reason, review date, exact scanned README SHA-256, and matching README URL. The [scope helper](../scripts/source_scope.py) validates those bindings and annotates generated records with `scope_status: excluded` and `scope_review`; it does not delete scan evidence. If a source snapshot changes, its scope decision must be reviewed again before reuse.
 
-The remaining 1,589 entries have not all received individual relevance or functionality review. They are a discovery collection, separate from the **81 curated, source-reviewed resources**. Missing target tags alone do not justify exclusion: the unclassified records include game decompilations, language decompilers, and hardware protocol research. Scope decisions are also separate from licensing, safety, and REA compatibility judgments.
+The remaining 1,589 entries have not all received individual relevance or functionality review. They are a discovery collection, separate from the **96 curated, source-reviewed resources**. Missing target tags alone do not justify exclusion: the unclassified records include game decompilations, language decompilers, and hardware protocol research. Scope decisions are also separate from licensing, safety, and REA compatibility judgments.
 
 ## What was scanned
 

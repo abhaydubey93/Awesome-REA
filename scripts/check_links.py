@@ -35,6 +35,8 @@ def source_urls():
     for record in load_resources():
         for field in ('url', 'evidence_url'):
             references[record[field]].append(f"resource:{record['id']}:{field}")
+        for url in record.get('additional_evidence_urls', []):
+            references[url].append(f"resource:{record['id']}:additional_evidence_urls")
     benchmarks = json.loads((ROOT / 'data/benchmarks.json').read_text(encoding='utf-8'))
     for record in benchmarks:
         for field, urls in [('url', [record['url']]), ('evidence_urls', record['evidence_urls'])]:

@@ -962,5 +962,357 @@
       "website"
     ],
     "kind": "integration"
+  },
+  {
+    "id": "wakaru",
+    "name": "Wakaru",
+    "url": "https://github.com/pionxzh/wakaru",
+    "category": "web-analysis",
+    "relationship": "foundation",
+    "kind": "tool",
+    "targets": [
+      "website"
+    ],
+    "description_en": "Recover readable modules from shipped JavaScript bundles by reversing recognized minifier and transpiler patterns. Supports bundle splitting and modern-syntax recovery for inspecting production frontend code.",
+    "description_zh": "通过还原已识别的压缩与转译模式，从发布后的 JavaScript 包中恢复可读模块，支持拆包与现代语法恢复，便于分析生产环境前端代码。",
+    "evidence_url": "https://github.com/pionxzh/wakaru/blob/d77ed638d7af07500be39f512e2f058fd8d53cd1/README.md",
+    "verified_at": "2026-10-16",
+    "verification": "source-reviewed",
+    "requirements": [
+      "The npm CLI declares Node.js >=16; standalone v1.14.0 binaries are published for macOS arm64, Linux arm64/x64, and Windows arm64/x64.",
+      "Provide supported JavaScript bundles or source maps. Original identifiers may be unrecoverable without maps; heavy control-flow or VM obfuscation requires other tooling. Package/version inventory is explicitly still in development."
+    ],
+    "additional_evidence_urls": [
+      "https://github.com/pionxzh/wakaru/blob/d77ed638d7af07500be39f512e2f058fd8d53cd1/npm/package.json",
+      "https://github.com/pionxzh/wakaru/releases/tag/v1.14.0"
+    ]
+  },
+  {
+    "id": "spectral-mcp",
+    "name": "Spectral",
+    "url": "https://github.com/spectral-mcp/spectral",
+    "category": "web-analysis",
+    "relationship": "independent-agent-integration",
+    "kind": "integration",
+    "targets": [
+      "website",
+      "app"
+    ],
+    "description_en": "Analyze captured application HTTP traffic with an LLM to generate MCP tools, OpenAPI 3.1 specifications, or GraphQL schemas. Generated tools call the observed API directly after capture and authentication setup.",
+    "description_zh": "用 LLM 分析捕获的应用 HTTP 流量，生成 MCP 工具、OpenAPI 3.1 规范或 GraphQL 模式；完成抓包与认证配置后，生成的工具可直接调用已观察到的 API。",
+    "evidence_url": "https://github.com/spectral-mcp/spectral/blob/4c0367a1e88849acfe80f3d49ba0cfc649d405c5/README.md",
+    "verified_at": "2026-10-16",
+    "verification": "source-reviewed",
+    "requirements": [
+      "Python >=3.11; capture through the Chrome extension or MITM proxy, and configure a supported LLM provider or local Ollama endpoint.",
+      "The reviewed v0.11.0 workflow depends on captured traffic and valid application authentication. Analysis and automatic repair use the configured LLM; this entry does not claim universal API coverage or verified generated-tool correctness."
+    ],
+    "additional_evidence_urls": [
+      "https://github.com/spectral-mcp/spectral/blob/4c0367a1e88849acfe80f3d49ba0cfc649d405c5/pyproject.toml",
+      "https://github.com/spectral-mcp/spectral/releases/tag/v0.11.0"
+    ]
+  },
+  {
+    "id": "jsdeob-workbench",
+    "name": "jsdeob-workbench",
+    "url": "https://github.com/Owl4444/jsdeob-workbench",
+    "category": "web-analysis",
+    "relationship": "foundation",
+    "kind": "tool",
+    "targets": [
+      "website"
+    ],
+    "description_en": "Inspect JavaScript ASTs and variable scopes while building visual chains of Babel transforms. Save analysis projects and reusable plugins to iteratively simplify obfuscated scripts.",
+    "description_zh": "在查看 JavaScript AST 和变量作用域的同时，可视化编排 Babel 转换链；保存分析项目与可复用插件，逐步简化混淆脚本。",
+    "evidence_url": "https://github.com/Owl4444/jsdeob-workbench/blob/e51a8281cb2ee11e95c5f7cafaa2090569a91abf/README.md",
+    "verified_at": "2026-10-16",
+    "verification": "source-reviewed",
+    "requirements": [
+      "Run from source with Node.js and npm; the documented default standalone build targets Windows. No GitHub release was available at review time.",
+      "Built-in transforms may need sample-specific scripts, and deeply nested input can overflow the stack. Its optional evaluation helper executes code and should be used in a local sandbox, as upstream explicitly advises."
+    ],
+    "additional_evidence_urls": [
+      "https://github.com/Owl4444/jsdeob-workbench/blob/e51a8281cb2ee11e95c5f7cafaa2090569a91abf/package.json"
+    ]
+  },
+  {
+    "id": "undertalemodtool",
+    "name": "UndertaleModTool",
+    "url": "https://github.com/UnderminersTeam/UndertaleModTool",
+    "category": "game-analysis",
+    "relationship": "foundation",
+    "kind": "tool",
+    "targets": [
+      "game"
+    ],
+    "description_en": "Browse and modify supported GameMaker data files, extract assets, and decompile or compile GML VM code. Includes room editing, scripted changes, a CLI, and the reusable UndertaleModLib library.",
+    "description_zh": "浏览和修改受支持的 GameMaker 数据文件、提取资源，以及反编译或编译 GML VM 代码；提供房间编辑、脚本化修改、CLI 和可复用的 UndertaleModLib 库。",
+    "evidence_url": "https://github.com/UnderminersTeam/UndertaleModTool/blob/f43e12c445c37d50dc6244caa12ccab232983f3f/README.md",
+    "verified_at": "2026-10-16",
+    "verification": "source-reviewed",
+    "requirements": [
+      "Supply a supported game data file such as data.win, game.ios, or game.unx. Stable 0.9.2.0 provides a 64-bit Windows GUI and CLI packages for Windows, Ubuntu, and macOS.",
+      "GML VM code editing excludes YYC, and some language features remain unsupported. Building the reviewed source requires the .NET 10 SDK or later and recursive submodules; the GUI build requires Windows."
+    ],
+    "additional_evidence_urls": [
+      "https://github.com/UnderminersTeam/UndertaleModTool/releases/tag/0.9.2.0"
+    ]
+  },
+  {
+    "id": "frida-il2cpp-bridge",
+    "name": "frida-il2cpp-bridge",
+    "url": "https://github.com/vfsfitvnm/frida-il2cpp-bridge",
+    "category": "game-analysis",
+    "relationship": "foundation",
+    "kind": "tool",
+    "targets": [
+      "game",
+      "app"
+    ],
+    "description_en": "Inspect IL2CPP classes, methods, and fields in a live process, and trace or intercept method calls without supplying global-metadata.dat. Complements static IL2CPP dumpers with runtime observation.",
+    "description_zh": "在运行中的进程里检查 IL2CPP 类、方法和字段，无需提供 global-metadata.dat 即可跟踪或拦截方法调用，为静态 IL2CPP 转储工具补充运行时观察能力。",
+    "evidence_url": "https://github.com/vfsfitvnm/frida-il2cpp-bridge/blob/af361f544de8c0016d7cc24be7a87e83b3c4029d/README.md",
+    "verified_at": "2026-10-16",
+    "verification": "source-reviewed",
+    "requirements": [
+      "Requires Frida access to a running IL2CPP application and the npm module. The current bundled CLI needs Python 3.12+ (inferred from its typing.override import) and Frida tooling.",
+      "The reviewed README states Unity 5.3.0–6000.3.x support. Android and Linux are the platforms upstream tests; Windows, iOS, and macOS are listed as supported with explicit warnings of possible breakage. Latest release at review: v0.14.0."
+    ],
+    "additional_evidence_urls": [
+      "https://github.com/vfsfitvnm/frida-il2cpp-bridge/blob/af361f544de8c0016d7cc24be7a87e83b3c4029d/package.json",
+      "https://github.com/vfsfitvnm/frida-il2cpp-bridge/blob/af361f544de8c0016d7cc24be7a87e83b3c4029d/cli/main.py",
+      "https://github.com/vfsfitvnm/frida-il2cpp-bridge/releases/tag/v0.14.0",
+      "https://github.com/vfsfitvnm/frida-il2cpp-bridge/blob/af361f544de8c0016d7cc24be7a87e83b3c4029d/cli/src/app.py"
+    ]
+  },
+  {
+    "id": "objdiff",
+    "name": "objdiff",
+    "url": "https://github.com/encounter/objdiff",
+    "category": "game-analysis",
+    "relationship": "foundation",
+    "kind": "tool",
+    "targets": [
+      "game",
+      "binary"
+    ],
+    "description_en": "Compare functions and data in reference and rebuilt object files to guide matching decompilation. Displays instruction-level differences, demangles C++ symbols, and can rebuild when source files change.",
+    "description_zh": "比较参考目标文件与重新编译目标文件中的函数和数据，辅助匹配反编译；显示指令级差异、还原 C++ 符号，并可在源码变更时自动重新构建。",
+    "evidence_url": "https://github.com/encounter/objdiff/blob/eed74b99c4e94dd154882259931201badc6fdbd1/README.md",
+    "verified_at": "2026-10-16",
+    "verification": "source-reviewed",
+    "requirements": [
+      "Provide reference and rebuilt object files. Project integration and automatic rebuilding use objdiff.json plus a working toolchain and build command; direct CLI comparisons can use file paths.",
+      "v3.8.2 provides GUI binaries for Windows/Linux x86_64 and macOS arm64/x86_64, with additional CLI targets. Building from source requires Rust. Supported architectures include ARM, ARM64, MIPS, PowerPC, SuperH, and x86/x86_64."
+    ],
+    "additional_evidence_urls": [
+      "https://github.com/encounter/objdiff/releases/tag/v3.8.2",
+      "https://github.com/encounter/objdiff/blob/eed74b99c4e94dd154882259931201badc6fdbd1/objdiff-cli/src/cmd/diff.rs#L83-L90"
+    ]
+  },
+  {
+    "id": "ue-explorer",
+    "name": "UE Explorer",
+    "url": "https://github.com/UE-Explorer/UE-Explorer",
+    "category": "game-analysis",
+    "relationship": "foundation",
+    "kind": "tool",
+    "targets": [
+      "game",
+      "binary"
+    ],
+    "description_en": "Explore Unreal packages through class, property, and dependency trees; decompile and export UnrealScript classes, inspect bytecode, and examine structured binary data.",
+    "description_zh": "通过类、属性与依赖树浏览 Unreal 包，反编译和导出 UnrealScript 类、检查字节码，并查看结构化二进制数据。",
+    "evidence_url": "https://github.com/UE-Explorer/UE-Explorer/blob/9ef6670933da6154e26a9631a9e22ce9e7d3333f/README.md",
+    "verified_at": "2026-10-16",
+    "verification": "source-reviewed",
+    "requirements": [
+      "Windows application built on .NET Framework 4.8; provide supported Unreal Engine 1, 2/2.5, or 3 packages. Latest stable release at review: 1.6.2.",
+      "UE2X and UE4/5 are not generally supported; only limited experimental parsing of loose UE4 .uasset containers is documented. Game-specific engine modifications can affect compatibility; older 1.6-and-earlier builds require decompressed packages."
+    ],
+    "additional_evidence_urls": [
+      "https://github.com/UE-Explorer/UE-Explorer/releases/tag/1.6.2"
+    ]
+  },
+  {
+    "id": "garbro",
+    "name": "GARbro",
+    "url": "https://github.com/morkt/GARbro",
+    "category": "game-analysis",
+    "relationship": "foundation",
+    "kind": "tool",
+    "targets": [
+      "game"
+    ],
+    "description_en": "Browse recognized visual-novel resource archives as folders, preview their contents, and extract images or audio with conversion to common formats.",
+    "description_zh": "像浏览文件夹一样查看已识别的视觉小说资源归档，预览内容，并在提取图像或音频时转换为常用格式。",
+    "evidence_url": "https://github.com/morkt/GARbro/blob/b09ee4570ccb1daf6ac56710ee8934dc0b8baeb0/README.md",
+    "verified_at": "2026-10-16",
+    "verification": "source-reviewed",
+    "requirements": [
+      "Requires Windows and .NET Framework 4.6 or newer; archive browsing and conversion depend on the supported game/format list. Encrypted archives may require credentials or a recognized game selection.",
+      "Latest GitHub release at review remains v1.5.44 (2019-03-31). Treat it as a legacy format tool and check format support for the specific title rather than assuming compatibility with newer games."
+    ],
+    "additional_evidence_urls": [
+      "https://github.com/morkt/GARbro/releases/tag/v1.5.44",
+      "https://morkt.github.io/GARbro/supported.html"
+    ]
+  },
+  {
+    "id": "mobsf",
+    "name": "Mobile Security Framework (MobSF)",
+    "url": "https://github.com/MobSF/Mobile-Security-Framework-MobSF",
+    "category": "android",
+    "relationship": "foundation",
+    "kind": "tool",
+    "targets": [
+      "app"
+    ],
+    "description_en": "Inspect mobile application packages with static analysis and supported-device dynamic testing, including runtime behavior and network traffic, through a web interface and APIs.",
+    "description_zh": "通过 Web 界面与 API 检查移动应用包，结合静态分析及受支持设备上的动态测试，分析运行时行为与网络流量。",
+    "evidence_url": "https://github.com/MobSF/docs/blob/d3dc0f64b0767914c5dc6e42c8427ee645532623/running_mobsf_docker.md",
+    "verified_at": "2026-10-16",
+    "verification": "source-reviewed",
+    "requirements": [
+      "The documented container setup recommends Docker 20.10+; dynamic analysis additionally needs a supported device or emulator accessible from the container.",
+      "Android dynamic analysis is documented for rooted Android 4.1–11, up to API 30; Android 12+ is not supported by that workflow.",
+      "iOS dynamic analysis uses Corellium or a jailbroken device; the physical-device route is marked beta."
+    ],
+    "additional_evidence_urls": [
+      "https://github.com/MobSF/Mobile-Security-Framework-MobSF/blob/08872c8454e59f8a6347c35b46852c9929f5eb5e/README.md"
+    ]
+  },
+  {
+    "id": "objection",
+    "name": "objection",
+    "url": "https://github.com/sensepost/objection",
+    "category": "dynamic-analysis",
+    "relationship": "foundation",
+    "kind": "tool",
+    "targets": [
+      "app"
+    ],
+    "description_en": "Explore running Android and iOS apps with a Frida-backed command interface for inspecting app storage, memory, runtime objects, and instrumented behavior.",
+    "description_zh": "通过基于 Frida 的命令界面探索运行中的 Android 与 iOS 应用，检查应用存储、内存、运行时对象和插桩后的行为。",
+    "evidence_url": "https://github.com/sensepost/objection/blob/35c4e2c9e68a0354b21db4833252e0c4acd5bd28/pyproject.toml",
+    "verified_at": "2026-10-16",
+    "verification": "source-reviewed",
+    "requirements": [
+      "Current package metadata requires Python 3.11+ and Frida 16+; this supersedes the older Python minimum still shown in the installation wiki.",
+      "The target must support the documented Frida attachment or patched-app workflow. Android patching requires Android build tools and Apktool 2.9.0+; iOS patching requires the documented Xcode and signing tools."
+    ]
+  },
+  {
+    "id": "r2frida",
+    "name": "r2frida",
+    "url": "https://github.com/nowsecure/r2frida",
+    "category": "dynamic-analysis",
+    "relationship": "foundation",
+    "kind": "tool",
+    "targets": [
+      "app",
+      "binary"
+    ],
+    "description_en": "Use radare2 commands and Frida instrumentation together to inspect local or remote process memory, symbols, classes, and runtime calls on desktop and mobile targets.",
+    "description_zh": "结合 radare2 命令与 Frida 插桩，检查桌面和移动目标中本地或远程进程的内存、符号、类及运行时调用。",
+    "evidence_url": "https://github.com/nowsecure/r2frida/blob/4f1f8d7b1096ed0ca29778688d0f164461d56f05/README.md",
+    "verified_at": "2026-10-16",
+    "verification": "source-reviewed",
+    "requirements": [
+      "Install with r2pm or use a plugin build matching the radare2 major/minor ABI; the reviewed README reports CI against radare2 6.2.2 and git master.",
+      "Mobile or remote operation needs a reachable Frida target, such as frida-server over USB or TCP. The plugin bundles the host Frida library; separate host frida-tools are not required."
+    ]
+  },
+  {
+    "id": "emba",
+    "name": "EMBA",
+    "url": "https://github.com/e-m-b-a/emba",
+    "category": "firmware",
+    "relationship": "foundation",
+    "kind": "tool",
+    "targets": [
+      "firmware"
+    ],
+    "description_en": "Extract firmware, combine static checks with emulation-based analysis, inventory software components, and generate web reports and SBOMs for further investigation.",
+    "description_zh": "提取固件，结合静态检查与仿真分析，整理软件组件清单，并生成 Web 报告和 SBOM，供进一步调查。",
+    "evidence_url": "https://github.com/e-m-b-a/emba/wiki/Installation",
+    "verified_at": "2026-10-16",
+    "verification": "source-reviewed",
+    "requirements": [
+      "Upstream recommends an x86-64 Kali Linux VM and the default Docker mode; Ubuntu 22.04/24.04 is also listed. Native ARM execution is not supported.",
+      "Documented resource guidance is at least 16 GB RAM, 8 CPU cores recommended, and 30–100 GB free disk space; larger firmware or more parallel workers need more resources.",
+      "Install the external dependencies through the project installer. Emulation can execute firmware content; upstream reserves developer mode for development, and findings still require interpretation."
+    ]
+  },
+  {
+    "id": "fact-core",
+    "name": "Firmware Analysis and Comparison Tool (FACT)",
+    "url": "https://github.com/fkie-cad/FACT_core",
+    "category": "firmware",
+    "relationship": "foundation",
+    "kind": "tool",
+    "targets": [
+      "firmware"
+    ],
+    "description_en": "Unpack and analyze firmware through an extensible platform whose web interface and HTTP API make component contents and analysis results searchable and comparable across samples.",
+    "description_zh": "通过可扩展平台解包和分析固件，使用 Web 界面与 HTTP API 搜索组件内容和分析结果，并比较不同样本。",
+    "evidence_url": "https://github.com/fkie-cad/FACT_core/blob/dc594e8f2ed120b1e04aaf3c52dda201be967dff/README.md",
+    "verified_at": "2026-10-16",
+    "verification": "source-reviewed",
+    "requirements": [
+      "The reviewed installer supports Debian 13 and Ubuntu 22.04/24.04/26.04; Kali support is experimental. The README lists Python 3.10–3.14.",
+      "Minimum documented resources are 4 CPU cores, 8 GB RAM, and about 10 GB for installation, plus storage for unpacked firmware and results.",
+      "The standalone FACT_docker distribution is marked unmaintained; use the documented local or Vagrant setup. Some analysis plugins have separate licenses."
+    ]
+  },
+  {
+    "id": "ofrak",
+    "name": "OFRAK",
+    "url": "https://github.com/redballoonsecurity/ofrak",
+    "category": "firmware",
+    "relationship": "foundation",
+    "kind": "tool",
+    "targets": [
+      "firmware",
+      "binary"
+    ],
+    "description_en": "Recursively identify, unpack, analyze, modify, and repack firmware and binary formats using a resource-tree GUI and Python API, with optional disassembler backends.",
+    "description_zh": "通过资源树图形界面与 Python API，递归识别、解包、分析、修改和重新打包固件及二进制格式，并可接入可选反汇编后端。",
+    "evidence_url": "https://github.com/redballoonsecurity/ofrak/blob/1e1ef750222c1a842248ae7bdcae576bfdedae65/README.md",
+    "verified_at": "2026-10-16",
+    "verification": "source-reviewed",
+    "requirements": [
+      "The PyPI installation guide requires Python 3.9+ and format-specific external tools; macOS also needs cmake and libmagic, avoiding the documented libmagic 5.47 regression.",
+      "Docker builds require BuildKit; Docker 23+ enables it by default. Analysis backends such as Ghidra or Binary Ninja have their own installation and licensing requirements.",
+      "OFRAK uses its own Community License for personal and educational use; commercial users should review the separate Pro or Enterprise licensing terms."
+    ],
+    "additional_evidence_urls": [
+      "https://github.com/redballoonsecurity/ofrak/blob/1e1ef750222c1a842248ae7bdcae576bfdedae65/docs/install/pypi.md",
+      "https://github.com/redballoonsecurity/ofrak/blob/1e1ef750222c1a842248ae7bdcae576bfdedae65/docs/install/docker.md"
+    ]
+  },
+  {
+    "id": "firmae",
+    "name": "FirmAE",
+    "url": "https://github.com/pr0v3rbs/FirmAE",
+    "category": "firmware",
+    "relationship": "foundation",
+    "kind": "tool",
+    "targets": [
+      "firmware"
+    ],
+    "description_en": "Emulate router and IP-camera firmware to inspect network services and runtime behavior, with automated emulation checks and separate analysis, run, and debugging modes.",
+    "description_zh": "仿真路由器与 IP 摄像机固件，检查网络服务和运行时行为，提供自动仿真检查，以及独立的分析、运行和调试模式。",
+    "evidence_url": "https://github.com/pr0v3rbs/FirmAE/blob/653565b5d14e6d69a1dd242aa88ecfb4b090a74a/README.md",
+    "verified_at": "2026-10-16",
+    "verification": "source-reviewed",
+    "requirements": [
+      "The README documents Ubuntu 20.04 as the tested host; prepare the recursive source checkout, downloaded dependencies, initialized database, and a supported firmware image.",
+      "The installer configures QEMU, PostgreSQL, extraction tools, and other host packages; documented run modes require elevated privileges. Docker orchestration is also provided.",
+      "Successful emulation depends on the firmware image; upstream benchmark results are not a guarantee for an untested device or newer host distribution."
+    ],
+    "additional_evidence_urls": [
+      "https://github.com/pr0v3rbs/FirmAE/blob/653565b5d14e6d69a1dd242aa88ecfb4b090a74a/install.sh"
+    ]
   }
 ]

@@ -6,6 +6,7 @@ import ipaddress
 import json
 from pathlib import Path
 import re
+import socket
 import subprocess
 import sys
 from urllib.parse import unquote, urlsplit
@@ -61,6 +62,16 @@ def public_https_error(value):
         if not ipaddress.ip_address(host).is_global:
             return 'must not use a non-public IP address'
     except ValueError:
+        # inet_aton recognizes legacy numeric IPv4 forms without resolving DNS.
+        # Reject them even when global so consumers cannot reinterpret the host.
+        try:
+            socket.inet_aton(host)
+        except OSError:
+            pass  # An ordinary hostname, rather than a numeric IPv4 literal.
+        except ValueError:
+            return 'has an invalid hostname'
+        else:
+            return 'must use canonical dotted-decimal IPv4 notation'
         if '.' not in host:
             return 'must use a public hostname'
     return None
@@ -121,6 +132,14 @@ def validate_resources(records, errors):
             problem = public_https_error(record[field])
             if problem:
                 errors.append(f'{where}.{field}: {problem}')
+        if 'additional_evidence_urls' in record:
+            if not string_list(record['additional_evidence_urls']):
+                errors.append(f'{where}.additional_evidence_urls: use a nonempty list of source URLs')
+            else:
+                for evidence in record['additional_evidence_urls']:
+                    problem = public_https_error(evidence)
+                    if problem:
+                        errors.append(f'{where}.additional_evidence_urls: {problem}')
         if public_https_error(record['url']) is None:
             canonical = normalized_url(record['url'])
             if canonical in urls:

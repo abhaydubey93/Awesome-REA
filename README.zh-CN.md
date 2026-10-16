@@ -38,6 +38,9 @@
 - [Chrome DevTools MCP](https://github.com/ChromeDevTools/chrome-devtools-mcp) — 连接智能体与 Chrome，检查实时页面、调试网络并记录性能轨迹。 **[集成 · 独立 MCP]**
 - [mitmproxy](https://github.com/mitmproxy/mitmproxy) — 通过交互代理、Web 界面或可脚本化命令行检查和记录 HTTP 流量。 **[工具]**
 - [Playwright MCP](https://github.com/microsoft/playwright-mcp) — 通过结构化无障碍快照驱动浏览器交互，调查可复现的网页行为。 **[集成 · 独立 MCP]**
+- [Wakaru](https://github.com/pionxzh/wakaru) — 通过还原已识别的压缩与转译模式，从发布后的 JavaScript 包中恢复可读模块，支持拆包与现代语法恢复，便于分析生产环境前端代码。 **[工具]**
+- [Spectral](https://github.com/spectral-mcp/spectral) — 用 LLM 分析捕获的应用 HTTP 流量，生成 MCP 工具、OpenAPI 3.1 规范或 GraphQL 模式；完成抓包与认证配置后，生成的工具可直接调用已观察到的 API。 **[集成 · 独立 Agent]**
+- [jsdeob-workbench](https://github.com/Owl4444/jsdeob-workbench) — 在查看 JavaScript AST 和变量作用域的同时，可视化编排 Babel 转换链；保存分析项目与可复用插件，逐步简化混淆脚本。 **[工具]**
 
 <a id="game"></a>
 ### Game · 游戏
@@ -49,6 +52,11 @@
 - [Cpp2IL](https://github.com/SamboyCoding/Cpp2IL) — 结合二进制与元数据分析，从 Unity IL2CPP 构建恢复托管表示；重建能力仍在开发中。 **[工具]**
 - [Il2CppDumper](https://github.com/Perfare/Il2CppDumper) — 恢复 IL2CPP 元数据及占位程序集，为原生分析工具生成辅助脚本；不会还原方法代码。 **[工具]**
 - [RenderDoc MCP](https://github.com/scarletfantasy/renderdoc-mcp) — 向智能体开放已有 RenderDoc 捕获文件，分步检查帧、管线、资源和着色器。 **[集成 · 独立 MCP]**
+- [UndertaleModTool](https://github.com/UnderminersTeam/UndertaleModTool) — 浏览和修改受支持的 GameMaker 数据文件、提取资源，以及反编译或编译 GML VM 代码；提供房间编辑、脚本化修改、CLI 和可复用的 UndertaleModLib 库。 **[工具]**
+- [frida-il2cpp-bridge](https://github.com/vfsfitvnm/frida-il2cpp-bridge) — 在运行中的进程里检查 IL2CPP 类、方法和字段，无需提供 global-metadata.dat 即可跟踪或拦截方法调用，为静态 IL2CPP 转储工具补充运行时观察能力。 **[工具]**
+- [objdiff](https://github.com/encounter/objdiff) — 比较参考目标文件与重新编译目标文件中的函数和数据，辅助匹配反编译；显示指令级差异、还原 C++ 符号，并可在源码变更时自动重新构建。 **[工具]**
+- [UE Explorer](https://github.com/UE-Explorer/UE-Explorer) — 通过类、属性与依赖树浏览 Unreal 包，反编译和导出 UnrealScript 类、检查字节码，并查看结构化二进制数据。 **[工具]**
+- [GARbro](https://github.com/morkt/GARbro) — 像浏览文件夹一样查看已识别的视觉小说资源归档，预览内容，并在提取图像或音频时转换为常用格式。 **[工具]**
 
 <a id="app"></a>
 ### App · 应用
@@ -65,6 +73,7 @@
 - [ILSpy](https://github.com/icsharpcode/ILSpy) — .NET 程序集浏览器与 C# 反编译器，支持完整项目导出、元数据检查和命令行处理。 **[工具 · .NET]**
 - [dnSpyEx](https://github.com/dnSpyEx/dnSpy) — dnSpy 的社区延续项目，可在没有原始源码时调试和编辑 .NET 程序集。 **[工具 · .NET]**
 - [@electron/asar](https://github.com/electron/asar) — Electron 官方归档工具，可列出和提取 ASAR 内容，便于检查打包后的 JavaScript 与应用资源。 **[工具]**
+- [Mobile Security Framework (MobSF)](https://github.com/MobSF/Mobile-Security-Framework-MobSF) — 通过 Web 界面与 API 检查移动应用包，结合静态分析及受支持设备上的动态测试，分析运行时行为与网络流量。 **[工具 · Android]**
 
 <a id="native-binary"></a>
 ### Native Binary · 原生二进制
@@ -85,6 +94,8 @@
 - [Diaphora](https://github.com/joxeankoret/diaphora) — 基于 IDA 的二进制差异分析工具，可匹配函数并迁移名称、注释与类型信息。 **[工具]**
 - [BinDiff](https://github.com/google/bindiff) — 比较反汇编后的二进制文件，定位不同版本中的对应函数与代码变化。 **[工具]**
 - [Detect It Easy](https://github.com/horsicq/Detect-It-Easy) — 结合格式解析器、签名和可编程启发式规则进行文件识别与静态检查。 **[工具]**
+- [objection](https://github.com/sensepost/objection) — 通过基于 Frida 的命令界面探索运行中的 Android 与 iOS 应用，检查应用存储、内存、运行时对象和插桩后的行为。 **[工具]**
+- [r2frida](https://github.com/nowsecure/r2frida) — 结合 radare2 命令与 Frida 插桩，检查桌面和移动目标中本地或远程进程的内存、符号、类及运行时调用。 **[工具]**
 
 <a id="firmware"></a>
 ### Firmware · 固件与硬件
@@ -93,6 +104,10 @@
 - [Binwalk](https://github.com/ReFirmLabs/binwalk) — 识别固件中的嵌入格式并按需提取内容，辅以熵分析帮助初步分诊。 **[工具]**
 - [unblob](https://github.com/onekey-sec/unblob) — 递归提取二进制数据中的归档与文件系统，同时报告数据块边界和未识别区域。 **[工具]**
 - [Ghidra Firmware Utilities](https://github.com/al3xtjames/ghidra-firmware-utils) — 面向 PCI Option ROM、UEFI 固件卷、Intel Flash Descriptor 和 coreboot 镜像的 Ghidra 加载器与辅助脚本。 **[工具]**
+- [EMBA](https://github.com/e-m-b-a/emba) — 提取固件，结合静态检查与仿真分析，整理软件组件清单，并生成 Web 报告和 SBOM，供进一步调查。 **[工具]**
+- [Firmware Analysis and Comparison Tool (FACT)](https://github.com/fkie-cad/FACT_core) — 通过可扩展平台解包和分析固件，使用 Web 界面与 HTTP API 搜索组件内容和分析结果，并比较不同样本。 **[工具]**
+- [OFRAK](https://github.com/redballoonsecurity/ofrak) — 通过资源树图形界面与 Python API，递归识别、解包、分析、修改和重新打包固件及二进制格式，并可接入可选反汇编后端。 **[工具]**
+- [FirmAE](https://github.com/pr0v3rbs/FirmAE) — 仿真路由器与 IP 摄像机固件，检查网络服务和运行时行为，提供自动仿真检查，以及独立的分析、运行和调试模式。 **[工具]**
 
 <a id="agents-and-mcp"></a>
 ### Agents & MCP · Agent 与集成
