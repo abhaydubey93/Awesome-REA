@@ -20,6 +20,7 @@ def main():
     if args.fontawesome_assets_url:
         build.extend(['--fontawesome-assets-url', args.fontawesome_assets_url])
     commands.append(build)
+    commands.append([sys.executable, 'scripts/validate_site.py'])
     for command in commands:
         result = subprocess.run(command, cwd=ROOT, check=False)
         if result.returncode:

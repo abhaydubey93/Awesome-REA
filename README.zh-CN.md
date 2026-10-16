@@ -19,6 +19,7 @@
 - [Agents & MCP · Agent 与集成](#agents-and-mcp)
 - [Related Collections · 相关合集](#related-collections)
 - [References & Learning · 文档与学习资料](#references-and-learning)
+- [论文](#papers)
 - [完整仓库索引](#完整仓库索引)
 - [参与贡献](#参与贡献)
 
@@ -157,6 +158,101 @@
 - [Reverse Engineering for Beginners](https://beginners.re/) — Dennis Yurichev 编写的免费逆向入门书，以汇编与编译后程序理解为核心，提供多语言版本。 **[学习资料]**
 - [The Official Radare2 Book](https://book.rada.re/) — radare2 官方实践参考，覆盖分析、反汇编、脚本、调试及相关插件。 **[学习资料]**
 <!-- END GENERATED CATALOG -->
+
+<!-- BEGIN GENERATED PAPERS -->
+<a id="papers"></a>
+## 论文
+
+精选 **10 篇论文**，涵盖智能体评测、反编译与视觉重建，单独维护，不计入资源目录或仓库扫描数量。发表状态与研究范围分别标注，中文标题为译名。
+
+[浏览论文目录](https://awesomerea.org/zh/papers/) · [完整书目 JSON](data/papers.json)
+
+### 逆向工程智能体评测
+
+- [人类与机器：AI 智能体在软件逆向工程中的对比研究](https://arxiv.org/abs/2610.14960) — **2026 · arXiv · 预印本**
+
+    Samuele Doria 等 · [PDF](https://arxiv.org/pdf/2610.14960)
+
+    比较人类与 LLM 智能体在相同静态逆向挑战中的理解和导航方式，并研究二进制表示如何占用上下文窗口。
+
+    **范围与限制:** 理解能力仅在两个紧凑挑战上评分；另一个包含 4,000 个二进制文件的实验测量上下文容量，并非解题准确率。接口为不含动态执行的静态 IDA/MCP，模型曾接触挑战源码的可能性仍是作者承认的有效性威胁。
+
+- [智能体网络安全的下一项挑战：真实场景且无训练数据污染的逆向工程基准](https://arxiv.org/abs/2608.11469) — **2026 · arXiv · 预印本**
+
+    Jeremy Spence 等 · [PDF](https://arxiv.org/pdf/2608.11469)
+
+    提出 SRE-Bench，使用私有编写的程序及带保护机制的二进制变体，研究智能体恢复程序语义的能力，并减少训练数据污染。
+
+    **范围与限制:** 修订版研究报告 19 个程序、262 个二进制实例和 1,572 个评分任务。二进制与任务实例未公开发布，只能通过评估服务访问。污染控制是作者的方法论主张，并非独立保证。
+
+- [CrackMeBench：面向智能体的二进制逆向工程基准](https://arxiv.org/abs/2605.10597) — **2026 · arXiv · 预印本**
+
+    Isaac David 等 · [PDF](https://arxiv.org/pdf/2605.10597)
+
+    用可执行程序判定结果的 CrackMe 任务评估智能体：从二进制推断验证逻辑，提交可被接受的输入或产物，并记录工具使用、耗时与评分尝试。
+
+    **范围与限制:** v0 研究使用 12 个生成任务和 8 个公开校准任务，限定 Linux x86-64 ELF、Shell 接口和五分钟预算。紧凑的教学任务不能证明大型应用上的表现。未确认论文直接关联的公开研究产物 URL。
+
+- [CREBench：评估大语言模型的密码二进制逆向工程能力](https://arxiv.org/abs/2604.03750) — **2026 · COLM 2026 · 已接收**
+
+    Baicheng Chen 等 · [PDF](https://arxiv.org/pdf/2604.03750) · [代码](https://github.com/wangyu-ovo/CREBench)
+
+    通过 432 个受控挑战，评估密码二进制逆向中的算法识别、密钥或 IV 提取、包装层重建及标志恢复。
+
+    **范围与限制:** 语料组合 48 种算法、三类不安全密钥使用场景和三个难度等级。它不覆盖 Tigress、O-LLVM 等专业混淆器，结果不应推广到任意重度保护的二进制文件。
+
+### 反编译与符号恢复
+
+- [DecompileBench：面向真实场景的反编译器综合评测基准](https://aclanthology.org/2025.findings-acl.1194/) — **2025 · Findings of ACL 2025 · 会议论文**
+
+    Zeyu Gao 等 · [PDF](https://aclanthology.org/2025.findings-acl.1194.pdf) · [代码](https://github.com/vul337/DecompileBench)
+
+    利用真实程序中的函数、运行时行为检查，以及 LLM 辅助的代码可理解性评估，比较传统反编译器与基于 LLM 的方法。
+
+    **范围与限制:** 评估语料包含 130 个程序中的 23,400 个函数。基于模糊测试的检查覆盖有限，可理解性评分部分依赖 LLM 评审器。研究产物说明，重新构建的 OSS-Fuzz 项目可能与论文版本不同。
+
+- [LLM4Decompile：使用大语言模型反编译二进制代码](https://aclanthology.org/2024.emnlp-main.203/) — **2024 · EMNLP 2024 · 会议论文**
+
+    Hanzhuo Tan 等 · [PDF](https://aclanthology.org/2024.emnlp-main.203.pdf) · [代码](https://github.com/albertan017/LLM4Decompile)
+
+    训练语言模型将汇编反编译为 C，并改进 Ghidra 伪代码，以恢复函数能否重新编译并正确执行为评估目标。
+
+    **范围与限制:** 论文实验限定于 x86 平台的 C 代码和函数级基准。通过抽样测试重新执行，不代表整程序等价或恢复了原始源码。仓库后续版本应与 2024 年论文区分。
+
+- [ReSym：利用大语言模型恢复去符号二进制中的变量与数据结构符号](https://doi.org/10.1145/3658644.3670340) — **2024 · ACM CCS 2024 · 会议论文**
+
+    Danning Xie 等 · [PDF](https://www.cs.purdue.edu/homes/lintan/publications/resym-ccs24.pdf) · [代码](https://github.com/lt-asset/resym)
+
+    结合两个微调语言模型与基于 Prolog 的跨函数推理，从去符号二进制的反编译结果中推断局部变量符号及用户自定义数据结构。
+
+    **范围与限制:** 该方法依赖底层反编译结果及针对 C/C++ 数据学习的预测。交叉检查可减少预测冲突，但不能证明恢复的名称或布局与缺失源码完全一致。公开研究产物包含模型、处理后的数据与评估代码。
+
+- [利用学习得到的变量名称与类型增强反编译输出](https://www.usenix.org/conference/usenixsecurity22/presentation/chen-qibin) — **2022 · USENIX Security 2022 · 会议论文**
+
+    Qibin Chen 等 · [PDF](https://arxiv.org/pdf/2108.06363) · [代码](https://github.com/CMUSTRUDEL/DIRTY)
+
+    提出 Transformer 模型 DIRTY，根据反编译代码和布局信息推荐变量名与类型，并提供用于训练和评估的 DIRT 语料。
+
+    **范围与限制:** 原始流程围绕 C 程序和 Hex-Rays 输出构建。预测名称与类型是模型推断，不保证与原始符号一致。正式论文发表于 2022 年，arXiv 预印本首次提交于 2021 年。
+
+- [DIRE：基于神经网络的反编译标识符命名方法](https://arxiv.org/abs/1909.09029) — **2019 · ASE 2019 · 会议论文**
+
+    Jeremy Lacomis 等 · [PDF](https://arxiv.org/pdf/1909.09029) · [代码](https://github.com/pcyin/dire)
+
+    结合反编译输出中的词法与结构信息预测有意义的变量名，并使用编译 C 项目构建训练和评估语料。
+
+    **范围与限制:** 该工作研究学习式标识符命名，并非完整源码重建或自主智能体。报告结果针对 x86-64 C 代码语料，并依赖反编译器输出。原作者仓库已标记弃用，并指向后续项目。
+
+### 网站视觉重建
+
+- [Design2Code：面向自动化前端工程的多模态代码生成评测](https://aclanthology.org/2025.naacl-long.199/) — **2025 · NAACL 2025 · 会议论文**
+
+    Chenglei Si 等 · [PDF](https://aclanthology.org/2025.naacl-long.199.pdf) · [代码](https://github.com/NoviScl/Design2Code)
+
+    使用真实网页参考、视觉元素和布局指标及人工评估，测试从网页截图重建前端代码的能力。
+
+    **范围与限制:** 该工作属于网站视觉重建，不涉及二进制反编译，也不恢复后端行为或交互工作流。主基准含 484 个使用占位图的网页，代码与数据分别采用各自的许可条款。
+<!-- END GENERATED PAPERS -->
 
 <a id="搜索目录"></a>
 ## 完整仓库索引

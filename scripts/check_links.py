@@ -42,6 +42,12 @@ def source_urls():
         for field, urls in [('url', [record['url']]), ('evidence_urls', record['evidence_urls'])]:
             for url in urls:
                 references[url].append(f"benchmark:{record['full_name']}:{field}")
+    for record in json.loads((ROOT / 'data/papers.json').read_text(encoding='utf-8')):
+        for field in ('url', 'pdf_url', 'code_url', 'project_url'):
+            if record.get(field):
+                references[record[field]].append(f"paper:{record['id']}:{field}")
+        for url in record['evidence_urls']:
+            references[url].append(f"paper:{record['id']}:evidence_urls")
     return references
 
 

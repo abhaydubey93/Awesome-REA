@@ -1,0 +1,282 @@
+#!/usr/bin/env python3
+"""Build static bilingual research directories and metadata-derived BibTeX."""
+from __future__ import annotations
+
+from collections import defaultdict
+from html import escape
+import json
+from pathlib import Path
+import re
+from urllib.parse import urlsplit
+
+STATUS_LABELS = {
+    'conference-paper': ('Conference paper', '会议论文'),
+    'conference-accepted': ('Conference accepted', '会议已接收'),
+    'preprint': ('Preprint', '预印本'),
+}
+TARGET_LABELS = {
+    'binary': ('Binary reverse engineering', '二进制逆向工程'),
+    'website': ('Website reconstruction', '网站重建'),
+    'app': ('Application analysis', '应用分析'),
+    'game': ('Game reverse engineering', '游戏逆向工程'),
+    'firmware': ('Firmware analysis', '固件分析'),
+}
+MONTHS = ('January', 'February', 'March', 'April', 'May', 'June', 'July', 'August', 'September', 'October', 'November', 'December')
+
+
+def web_url(value: str) -> str:
+    parsed = urlsplit(value)
+    if parsed.scheme != 'https' or not parsed.netloc or parsed.username or parsed.password:
+        raise ValueError('Paper links must be public HTTPS URLs without credentials')
+    return escape(value, quote=True)
+
+
+def icon(name: str, use_pro: bool) -> str:
+    if use_pro:
+        return f'<span class="icon fa-symbol fa-{name}" aria-hidden="true"></span>'
+    if name == 'github':
+        return '<span class="icon paper-github-fallback" aria-hidden="true">GH</span>'
+    if name == 'external':
+        return '<span class="paper-text-arrow" aria-hidden="true">↗</span>'
+    return ''
+
+
+def formatted_date(value: str | None, language: str, year: int | None = None) -> str:
+    """Display only the precision recorded in the bibliography."""
+    if not value:
+        return str(year) + (' 年（具体日期未核实）' if language == 'zh' else ' (exact date not verified)') if year else ('未核实' if language == 'zh' else 'Not verified')
+    parts = value.split('-')
+    if len(parts) == 1:
+        return parts[0] + (' 年' if language == 'zh' else '')
+    month = int(parts[1])
+    if not 1 <= month <= 12:
+        raise ValueError('Invalid bibliography month')
+    if language == 'zh':
+        return f'{parts[0]} 年 {month} 月' + (f' {int(parts[2])} 日' if len(parts) == 3 else '')
+    return f'{MONTHS[month - 1]} ' + (f'{int(parts[2])}, ' if len(parts) == 3 else '') + parts[0]
+
+
+def bibtex_text(paper: dict) -> str:
+    def literal(value):
+        replacements = {'\\': r'\textbackslash{}', '{': r'\{', '}': r'\}', '&': r'\&', '%': r'\%', '$': r'\$', '#': r'\#', '_': r'\_', '~': r'\textasciitilde{}', '^': r'\textasciicircum{}'}
+        return ''.join(replacements.get(character, character) for character in str(value))
+
+    kind = 'inproceedings' if paper['publication_status'] == 'conference-paper' else 'misc'
+    fields = [
+        ('title', '{' + literal(paper['title']) + '}'),
+        # Literal author names avoid guessing surname order or multipart surnames.
+        ('author', ' and '.join('{' + literal(name) + '}' for name in paper['authors'])),
+        ('year', str(paper['year'])),
+        ('url', paper['url']),
+    ]
+    if kind == 'inproceedings':
+        fields.append(('booktitle', literal(paper['venue'])))
+    elif paper['publication_status'] == 'conference-accepted':
+        fields.append(('note', literal('Accepted at ' + paper['venue'] + '; exact proceedings date not verified')))
+    else:
+        fields.append(('note', 'Preprint'))
+    if paper.get('doi'):
+        fields.append(('doi', paper['doi']))
+    if paper.get('arxiv_id'):
+        fields.extend((('eprint', paper['arxiv_id']), ('archivePrefix', 'arXiv')))
+    if paper.get('publication_date') and len(paper['publication_date']) >= 7:
+        fields.append(('month', paper['publication_date'][5:7]))
+    return '@' + kind + '{' + paper['id'] + ',\n' + ',\n'.join(f'  {key} = {{{value}}}' for key, value in fields) + '\n}\n'
+
+
+def scholarly_article(paper: dict, language: str) -> dict:
+    article = {
+        '@type': 'ScholarlyArticle', '@id': paper['url'], 'url': paper['url'],
+        'name': paper['title'], 'headline': paper['title'],
+        'alternateName': paper['title_zh'],
+        'author': [{'@type': 'Person', 'name': name} for name in paper['authors']],
+        'description': paper[f'description_{language}'],
+        'creativeWorkStatus': STATUS_LABELS[paper['publication_status']][0],
+        'isPartOf': {'@type': 'CreativeWork', 'name': paper['venue']},
+        'encoding': {'@type': 'MediaObject', 'encodingFormat': 'application/pdf', 'contentUrl': paper['pdf_url']},
+    }
+    # Never manufacture a month or day for year-only acceptance records.
+    if paper.get('publication_date'):
+        article['datePublished'] = paper['publication_date']
+    identifiers = []
+    if paper.get('doi'):
+        identifiers.append({'@type': 'PropertyValue', 'propertyID': 'DOI', 'value': paper['doi']})
+    if paper.get('arxiv_id'):
+        identifiers.append({'@type': 'PropertyValue', 'propertyID': 'arXiv', 'value': paper['arxiv_id']})
+    if identifiers:
+        article['identifier'] = identifiers
+    return article
+
+
+def paper_card(paper: dict, language: str, use_pro: bool) -> str:
+    zh = language == 'zh'
+    label = lambda en, cn: cn if zh else en
+    status = STATUS_LABELS[paper['publication_status']][1 if zh else 0]
+    title = paper['title_zh'] if zh else paper['title']
+    original_title = f'<p class="paper-original-title" lang="en">{escape(paper["title"])}</p>' if zh else ''
+    links = [f'<a class="paper-link paper-link-primary" href="{web_url(paper["url"])}" target="_blank" rel="noopener noreferrer">{label("Paper", "论文")}{icon("external", use_pro)}</a>',
+             f'<a class="paper-link" href="{web_url(paper["pdf_url"])}" target="_blank" rel="noopener noreferrer">PDF{icon("external", use_pro)}</a>']
+    for field, en, cn in (('code_url', 'Code', '代码'), ('project_url', 'Project', '项目')):
+        if paper.get(field):
+            links.append(f'<a class="paper-link" href="{web_url(paper[field])}" target="_blank" rel="noopener noreferrer">{label(en, cn)}{icon("external", use_pro)}</a>')
+    links.append(f'<a class="paper-link" href="/papers/citations/{paper["id"]}.bib" download="{paper["id"]}.bib" type="application/x-bibtex">BibTeX ↓</a>')
+    metadata = [(label('Publication / posting date', '出版／提交日期'), formatted_date(paper.get('publication_date'), language, paper['year'])),
+                (label('Date source', '日期依据'), paper['date_basis_zh' if zh else 'date_basis'])]
+    if paper.get('first_arxiv_date'):
+        metadata.append((label('First arXiv submission', 'arXiv 首次提交'), formatted_date(paper['first_arxiv_date'], language)))
+    if paper.get('arxiv_id'):
+        metadata.append(('arXiv', paper['arxiv_id']))
+    if paper.get('arxiv_version_reviewed'):
+        metadata.append((label('Reviewed arXiv version', '已核对的 arXiv 版本'), paper['arxiv_version_reviewed']))
+    if paper.get('doi'):
+        metadata.append(('DOI', paper['doi']))
+    metadata.append((label('Sources checked', '来源核对日期'), formatted_date(paper['verified_at'], language)))
+    details = ''.join(f'<dt>{escape(key)}</dt><dd>{escape(value)}</dd>' for key, value in metadata)
+    source_links = ''.join(f'<li><a href="{web_url(url)}" target="_blank" rel="noopener noreferrer">{escape(url)}</a></li>' for url in paper['evidence_urls'])
+    return f'''<article class="paper-card" id="{paper['id']}" data-paper-id="{paper['id']}">
+  <header><div class="paper-meta"><span class="paper-year">{paper['year']}</span><span class="paper-venue" lang="en">{escape(paper['venue'])}</span><span class="paper-status paper-status-{paper['publication_status']}">{status}</span></div><h3><a href="{web_url(paper['url'])}" target="_blank" rel="noopener noreferrer">{escape(title)}{icon('external', use_pro)}</a></h3>{original_title}<p class="paper-authors" lang="en">{escape('; '.join(paper['authors']))}</p></header>
+  <p class="paper-description">{escape(paper[f'description_{language}'])}</p>
+  <div class="paper-scope"><h4>{label('Scope & limitations', '研究范围与局限')}</h4><p>{escape(paper[f'scope_limitations_{language}'])}</p></div>
+  <nav class="paper-links" aria-label="{escape(label('Links for ' + paper['title'], title + '的相关链接'), quote=True)}">{''.join(links)}</nav>
+  <details class="paper-details"><summary>{label('Bibliographic details & sources', '引文详情与来源')}</summary><h4>{label('Why it fits this collection', '与本合集的关联')}</h4><p>{escape(paper[f'why_fits_{language}'])}</p><dl>{details}</dl><p>{escape(paper['metadata_notes_zh' if zh else 'metadata_notes'])}</p><h4>{label('Primary sources', '一手来源')}</h4><ul>{source_links}</ul><p class="paper-review-note">{label('Source review only; experiments were not rerun for this collection.', '本合集仅核对来源，未重新运行论文实验。')}</p></details>
+</article>'''
+
+
+def build_paper_pages(
+    site_dir: Path,
+    papers: list[dict],
+    *,
+    site_url: str = 'https://awesomerea.org',
+    repository_url: str = 'https://github.com/reacher-z/Awesome-REA',
+    styles_href: str = '/styles.css',
+    papers_styles_href: str = '/papers.css',
+    favicon_href: str = '/favicon.svg',
+    social_image_href: str = 'https://awesomerea.org/social-card.png',
+    icon_stylesheet_href: str | None = None,
+) -> list[str]:
+    """Write /papers/ and /zh/papers/, shared BibTeX files, and return sitemap URLs."""
+    site_dir = Path(site_dir)
+    site_url = site_url.rstrip('/')
+    identifiers = set()
+    groups = defaultdict(list)
+    for paper in papers:
+        identifier = paper['id']
+        if not re.fullmatch(r'[a-z0-9][a-z0-9-]*', identifier) or identifier in identifiers:
+            raise ValueError('Paper IDs must be unique safe path identifiers')
+        identifiers.add(identifier)
+        if paper['publication_status'] not in STATUS_LABELS:
+            raise ValueError('Unknown paper publication status')
+        if not paper['targets'] or any(target not in TARGET_LABELS for target in paper['targets']):
+            raise ValueError('Unknown paper target')
+        if paper.get('runtime_tested') is not False:
+            raise ValueError('This directory currently describes source-reviewed, unrerun research only')
+        for key in ('title', 'title_zh', 'venue', 'date_basis', 'date_basis_zh', 'metadata_notes', 'metadata_notes_zh', 'description_en', 'description_zh', 'scope_limitations_en', 'scope_limitations_zh', 'why_fits_en', 'why_fits_zh'):
+            if not isinstance(paper.get(key), str) or not paper[key].strip():
+                raise ValueError(f'{identifier}: missing bibliography or localized text')
+        for key in ('url', 'pdf_url', 'code_url', 'project_url'):
+            if paper.get(key):
+                web_url(paper[key])
+        for url in paper['evidence_urls']:
+            web_url(url)
+        groups[paper['targets'][0]].append(paper)
+
+    # Citation downloads preserve the original title and author names in both languages.
+    citation_dir = site_dir / 'papers' / 'citations'
+    citation_dir.mkdir(parents=True, exist_ok=True)
+    for stale in citation_dir.glob('*.bib'):
+        if stale.stem not in identifiers:
+            stale.unlink()
+    bibliography = '% Generated from source-reviewed metadata. Author names retain their listed order without inferred surname parsing.\n\n'
+    for paper in papers:
+        entry = bibtex_text(paper)
+        (citation_dir / f'{paper["id"]}.bib').write_text(entry, encoding='utf-8')
+        bibliography += entry + '\n'
+    (site_dir / 'papers' / 'references.bib').write_text(bibliography, encoding='utf-8')
+
+    canonical_urls = []
+    use_pro = icon_stylesheet_href is not None
+    for language in ('en', 'zh'):
+        zh = language == 'zh'
+        label = lambda en, cn: cn if zh else en
+        path = '/zh/papers/' if zh else '/papers/'
+        counterpart = '/papers/' if zh else '/zh/papers/'
+        canonical = site_url + path
+        locale = 'zh-CN' if zh else 'en'
+        home = '/?lang=zh' if zh else '/'
+        browse = '/zh/browse/' if zh else '/browse/'
+        curated = '/zh/curated/' if zh else '/curated/'
+        about = '/zh/about/' if zh else '/about/'
+        title = label('Papers & benchmarks · AwesomeREA.org', '论文与评测基准 · AwesomeREA.org')
+        description = label(f'{len(papers)} source-reviewed papers on binary reverse engineering, decompilation, agent evaluation, and website reconstruction, with citations and research limitations.', f'{len(papers)} 篇已核对来源的论文，涵盖二进制逆向、反编译、智能体评估与网站重建，附引文和研究边界。')
+        nav = []
+        sections = []
+        ordered = []
+        for target, target_labels in TARGET_LABELS.items():
+            if not groups[target]:
+                continue
+            target_label = target_labels[1 if zh else 0]
+            nav.append(f'<a href="#research-{target}">{target_label}<span>{len(groups[target])}</span></a>')
+            articles = '\n'.join(paper_card(paper, language, use_pro) for paper in groups[target])
+            count_label = f'{len(groups[target])} ' + ('篇论文' if zh else ('paper' if len(groups[target]) == 1 else 'papers'))
+            sections.append(f'<section class="paper-section" aria-labelledby="research-{target}"><div class="paper-section-heading"><h2 id="research-{target}">{target_label}</h2><span>{count_label}</span></div><div class="paper-grid">{articles}</div></section>')
+            ordered.extend(groups[target])
+        graph = {
+            '@context': 'https://schema.org',
+            '@graph': [
+                {'@type': 'CollectionPage', '@id': canonical, 'url': canonical, 'name': title, 'description': description, 'inLanguage': locale, 'mainEntity': {'@id': canonical + '#paper-list'}},
+                {'@type': 'ItemList', '@id': canonical + '#paper-list', 'numberOfItems': len(ordered), 'itemListElement': [{'@type': 'ListItem', 'position': index + 1, 'url': canonical + '#' + paper['id'], 'item': {'@id': paper['url']}} for index, paper in enumerate(ordered)]},
+                *(scholarly_article(paper, language) for paper in ordered),
+            ],
+        }
+        structured = json.dumps(graph, ensure_ascii=False, separators=(',', ':')).replace('<', '\\u003c').replace('>', '\\u003e').replace('&', '\\u0026')
+        icon_css = f'<link rel="stylesheet" href="{escape(icon_stylesheet_href, quote=True)}">' if use_pro else ''
+        document = f'''<!doctype html>
+<html lang="{locale}"{(' data-icon-set="fontawesome"' if use_pro else '')}>
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#ffffff">
+  <title>{title}</title>
+  <meta name="description" content="{escape(description, quote=True)}">
+  <link rel="canonical" href="{canonical}">
+  <link rel="alternate" hreflang="en" href="{site_url}/papers/">
+  <link rel="alternate" hreflang="zh-CN" href="{site_url}/zh/papers/">
+  <link rel="alternate" hreflang="x-default" href="{site_url}/papers/">
+  <meta property="og:type" content="website">
+  <meta property="og:site_name" content="AwesomeREA.org">
+  <meta property="og:locale" content="{('zh_CN' if zh else 'en_US')}">
+  <meta property="og:title" content="{title}">
+  <meta property="og:description" content="{escape(description, quote=True)}">
+  <meta property="og:url" content="{canonical}">
+  <meta property="og:image" content="{escape(social_image_href, quote=True)}">
+  <meta property="og:image:alt" content="{title}">
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="{title}">
+  <meta name="twitter:description" content="{escape(description, quote=True)}">
+  <meta name="twitter:image" content="{escape(social_image_href, quote=True)}">
+  <link rel="icon" href="{escape(favicon_href, quote=True)}" type="image/svg+xml">
+  <link rel="stylesheet" href="{escape(styles_href, quote=True)}">
+  <link rel="stylesheet" href="{escape(papers_styles_href, quote=True)}">
+  {icon_css}
+  <script type="application/ld+json">{structured}</script>
+</head>
+<body>
+<a class="skip-link" href="#papers-content">{label('Skip to the papers', '跳到论文目录')}</a>
+<header class="site-header"><div class="shell header-inner"><a class="wordmark" href="{home}" aria-label="{label('AwesomeREA.org home', 'AwesomeREA.org 首页')}"><span class="brand-mark" aria-hidden="true">r<span>↗</span></span><span>Awesome<span class="wordmark-rea">REA</span><span class="wordmark-domain">.org</span></span></a><nav class="header-nav" aria-label="{label('Main navigation', '主导航')}"><a class="papers-language" href="{counterpart}" lang="{label('zh-CN', 'en')}" hreflang="{label('zh-CN', 'en')}" aria-label="{label('Switch to Simplified Chinese', '切换为英文')}">{icon('globe', use_pro)}<span>{label('简体中文', 'English')}</span></a><a class="github-link" href="{web_url(repository_url)}" target="_blank" rel="noopener noreferrer" aria-label="GitHub">{icon('github', use_pro)}<span>GitHub</span></a></nav></div></header>
+<main id="papers-content" class="shell papers-main">
+  <nav class="papers-breadcrumbs" aria-label="{label('Breadcrumb', '当前位置')}"><a href="{home}">{label('Home', '首页')}</a><span aria-hidden="true">/</span><span aria-current="page">{label('Papers & benchmarks', '论文与评测基准')}</span></nav>
+  <section class="collection-intro papers-intro" aria-labelledby="papers-title"><p class="eyebrow">{label('RESEARCH & EVIDENCE', '研究与证据')}</p><h1 id="papers-title">{label('Papers & benchmarks', '论文与评测基准')}<span class="title-dot" aria-hidden="true">.</span></h1><p>{escape(description)}</p></section>
+  <div class="papers-actions"><a class="button button-outline" href="{browse}">{icon('layers', use_pro)}{label('Browse repositories', '浏览仓库')}</a><a class="papers-bibliography" href="/papers/references.bib" download="awesomerea-papers.bib" type="application/x-bibtex">{label('Download bibliography', '下载参考文献')} · BibTeX ↓</a></div>
+  <p class="papers-review-policy">{label('Conference papers, accepted papers, and preprints are labeled separately. We check primary sources; inclusion does not mean experiments were rerun or results independently reproduced.', '会议论文、已接收论文和预印本分别标注。本合集核对一手来源；收录不代表已重新运行实验或独立复现结果。')}</p>
+  <nav class="papers-topic-nav" aria-label="{label('Research areas', '研究方向')}">{''.join(nav)}</nav>
+  {''.join(sections)}
+</main>
+<footer class="site-footer"><div class="shell footer-top"><p>{label('An independent resource collection, updated in public.', '独立的资源集合，在公开协作中持续更新。')}</p><div class="footer-links"><a href="{home}">{label('Interactive collection', '交互式合集')}</a><a href="{browse}">{label('Repository directory', '仓库分类目录')}</a><a href="{curated}">{label('Curated resources', '精选资源')}</a><a href="{about}">{label('About and sources', '关于与来源')}</a><a href="/papers/references.bib" download="awesomerea-papers.bib" type="application/x-bibtex">BibTeX ↓</a><a href="{web_url(repository_url)}" target="_blank" rel="noopener noreferrer">GitHub ↗</a></div></div><div class="shell footer-bottom">{label('Paper and code links retain their own licenses. Bibliographic metadata is supplied for citation; follow the original sources for version and access details.', '论文和代码保留各自的许可。引文元数据用于引用；版本和访问详情请以原始来源为准。')}</div></footer>
+</body>
+</html>
+'''
+        destination = site_dir / path.lstrip('/') / 'index.html'
+        destination.parent.mkdir(parents=True, exist_ok=True)
+        destination.write_text(document, encoding='utf-8')
+        canonical_urls.append(canonical)
+    return canonical_urls

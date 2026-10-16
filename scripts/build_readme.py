@@ -6,10 +6,13 @@ import sys
 from collections import defaultdict
 
 from catalog import ROOT, load_resources
+from validate_papers import read_papers
 
 
 BEGIN = '<!-- BEGIN GENERATED CATALOG -->'
 END = '<!-- END GENERATED CATALOG -->'
+PAPERS_BEGIN = '<!-- BEGIN GENERATED PAPERS -->'
+PAPERS_END = '<!-- END GENERATED PAPERS -->'
 CATEGORIES = {
     'core': ('Official REA: core and setup', 'REA 官方：核心与配置'),
     'workflow-guides': ('Official REA: investigation guides', 'REA 官方：调查指南'),
@@ -163,29 +166,108 @@ def replace_catalog(content, rendered):
     return before + BEGIN + '\n' + rendered + END + after
 
 
+PAPER_SECTIONS = {
+    'agent-evaluation': ('Reverse-engineering agent evaluation', '逆向工程智能体评测'),
+    'decompilation': ('Decompilation and symbol recovery', '反编译与符号恢复'),
+    'website-reconstruction': ('Visual website reconstruction', '网站视觉重建'),
+}
+PAPER_STATUSES = {
+    'conference-paper': ('Conference paper', '会议论文'),
+    'conference-accepted': ('Accepted', '已接收'),
+    'preprint': ('Preprint', '预印本'),
+}
+AGENT_EVALUATION_PAPERS = {
+    'paper-crackmebench', 'paper-crebench', 'paper-sre-bench', 'paper-humans-machines-sre',
+}
+
+
+def render_papers(papers, language):
+    zh = language == 'zh'
+    index = int(zh)
+    directory = 'https://awesomerea.org/zh/papers/' if zh else 'https://awesomerea.org/papers/'
+    lines = ['<a id="papers"></a>', '## 论文' if zh else '## Papers', '',
+             (f'精选 **{len(papers)} 篇论文**，涵盖智能体评测、反编译与视觉重建，单独维护，不计入资源目录或仓库扫描数量。发表状态与研究范围分别标注，中文标题为译名。'
+              if zh else f'A separate selection of **{len(papers)} papers** on agent evaluation, decompilation, and visual reconstruction. Papers are counted separately from resources and repository scans, with publication status and study scope made explicit.'), '',
+             f"[{'浏览论文目录' if zh else 'Browse the paper directory'}]({directory}) · [{'完整书目 JSON' if zh else 'Complete bibliography JSON'}](data/papers.json)", '']
+    groups = defaultdict(list)
+    for paper in papers:
+        section = ('website-reconstruction' if 'website' in paper['targets'] else
+                   'agent-evaluation' if paper['id'] in AGENT_EVALUATION_PAPERS else 'decompilation')
+        groups[section].append(paper)
+    for section, labels in PAPER_SECTIONS.items():
+        if not groups[section]:
+            continue
+        lines.extend(['### ' + labels[index], ''])
+        for paper in sorted(groups[section], key=lambda item: (item['year'], item['publication_date'] or str(item['year']), item['title'].casefold()), reverse=True):
+            title = plain_text(paper['title_zh'] if zh else paper['title'])
+            status = PAPER_STATUSES[paper['publication_status']][index]
+            metadata = plain_text(f"{paper['year']} · {paper['venue']} · {status}")
+            author = plain_text(paper['authors'][0] + ((' 等' if zh else ' et al.') if len(paper['authors']) > 1 else ''))
+            links = [f"[PDF]({paper['pdf_url']})"]
+            if paper['code_url']:
+                links.append(f"[{'代码' if zh else 'Code'}]({paper['code_url']})")
+            lines.extend([
+                f"- [{title}]({paper['url']}) — **{metadata}**", '',
+                f"    {author} · " + ' · '.join(links), '',
+                '    ' + plain_text(paper[f'description_{language}']), '',
+                f"    **{'范围与限制' if zh else 'Scope and limits'}:** " + plain_text(paper[f'scope_limitations_{language}']), '',
+            ])
+    return '\n'.join(lines).rstrip() + '\n'
+
+
+def replace_papers(content, rendered, language):
+    """Install the separate paper block once, then replace only its generated content."""
+    if PAPERS_BEGIN not in content and PAPERS_END not in content:
+        if content.count(END) != 1:
+            raise ValueError('The paper section needs an existing catalog END marker')
+        block = '\n\n' + PAPERS_BEGIN + '\n' + rendered + PAPERS_END
+        content = content.replace(END, END + block, 1)
+    else:
+        if content.count(PAPERS_BEGIN) != 1 or content.count(PAPERS_END) != 1:
+            raise ValueError('Each README must contain exactly one BEGIN/END paper marker pair')
+        before, rest = content.split(PAPERS_BEGIN, 1)
+        if PAPERS_END not in rest:
+            raise ValueError('Paper END marker must follow BEGIN')
+        _, after = rest.split(PAPERS_END, 1)
+        content = before + PAPERS_BEGIN + '\n' + rendered + PAPERS_END + after
+    label = '论文' if language == 'zh' else 'Papers'
+    toc_entry = f'- [{label}](#papers)'
+    if toc_entry not in content:
+        reference_label = COLLECTION_SECTIONS['references-and-learning'][int(language == 'zh')]
+        reference_entry = f'- [{reference_label}](#references-and-learning)'
+        if content.count(reference_entry) != 1:
+            raise ValueError('Cannot locate the references entry in the README table of contents')
+        content = content.replace(reference_entry, reference_entry + '\n' + toc_entry, 1)
+    if content.count(toc_entry) != 1:
+        raise ValueError('README must contain one paper table-of-contents entry')
+    return content
+
+
 def main():
     parser = argparse.ArgumentParser(description=__doc__)
     parser.add_argument('--check', action='store_true', help='Report stale generated blocks without writing files')
     args = parser.parse_args()
     try:
         records = load_resources()
+        papers = read_papers(ROOT)
         stale = []
         for name, language in [('README.md', 'en'), ('README.zh-CN.md', 'zh')]:
             path = ROOT / name
             current = path.read_text(encoding='utf-8')
             expected = replace_catalog(current, render_catalog(records, language))
+            expected = replace_papers(expected, render_papers(papers, language), language)
             if current != expected:
                 stale.append(name)
                 if not args.check:
                     path.write_text(expected, encoding='utf-8')
         if args.check and stale:
-            print('Stale generated catalog: ' + ', '.join(stale), file=sys.stderr)
+            print('Stale generated catalog or paper section: ' + ', '.join(stale), file=sys.stderr)
             print('Run python3 scripts/build_readme.py', file=sys.stderr)
             return 1
         if args.check:
-            print(f'Both README catalogs match {len(records)} source records.')
+            print(f'Both READMEs match {len(records)} resources and {len(papers)} separate research papers.')
         else:
-            print(f"Rendered {len(records)} resources into both READMEs; updated {len(stale)} files.")
+            print(f"Rendered {len(records)} resources and {len(papers)} separate research papers into both READMEs; updated {len(stale)} files.")
         return 0
     except (OSError, ValueError, KeyError, TypeError) as error:
         print(f'Catalog generation failed: {error}', file=sys.stderr)

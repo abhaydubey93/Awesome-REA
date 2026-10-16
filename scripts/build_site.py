@@ -12,6 +12,8 @@ from urllib.parse import urlsplit
 from xml.sax.saxutils import escape as xml_escape
 
 from build_browse_pages import build_browse_pages
+from build_discovery_pages import build_discovery_pages
+from build_paper_pages import build_paper_pages
 from localization import read_localizations, localized_records
 from source_scope import apply_scope, read_scope
 
@@ -130,6 +132,7 @@ def main() -> None:
     icons.add_argument("--fontawesome-assets-url", help="Trusted HTTPS origin/path serving the authorized Font Awesome deployment; no font files are downloaded or copied.")
     args = parser.parse_args()
     translations = json.loads((SOURCE / "translations.zh-CN.json").read_text(encoding="utf-8"))
+    papers = json.loads((ROOT / "data" / "papers.json").read_text(encoding="utf-8"))
     resources = []
     for filename in ("rea-resources.json", "tool-resources.json"):
         for original in json.loads((ROOT / "data" / filename).read_text(encoding="utf-8")):
@@ -189,7 +192,18 @@ def main() -> None:
         source_index_output.unlink(missing_ok=True)
     topic_labels_path = SOURCE / "topics.i18n.json"
     topic_labels = json.loads(topic_labels_path.read_text()) if topic_labels_path.exists() else {}
-    (OUTPUT / "catalog.json").write_text(json.dumps({"meta": metadata, "resources": resources, "topic_labels": topic_labels}, ensure_ascii=False, indent=2) + "\n", encoding="utf-8")
+    metadata["paper_count"] = len(papers)
+    catalog = {"meta": metadata, "resources": resources, "topic_labels": topic_labels}
+    (OUTPUT / "catalog.json").write_text(json.dumps(catalog, ensure_ascii=False, indent=2) + "\n", encoding="utf-8")
+    (OUTPUT / "papers.json").write_text(json.dumps(papers, ensure_ascii=False, indent=2) + "\n", encoding="utf-8")
+    for key, value in {"BROWSE_COUNT": metadata["source_index"]["resource_count"], "SCANNED_COUNT": metadata["source_index"].get("scanned_count", 0), "PAPER_COUNT": len(papers)}.items():
+        html = html.replace("{{" + key + "}}", f"{value:,}")
+    navigation = [("browse", "Repository directory"), ("curated", "Curated resources"), ("papers", "Research papers"), ("about", "About the collection")]
+    structured = {"@context": "https://schema.org", "@graph": [
+        {"@type": "WebSite", "@id": SITE_URL + "/#website", "url": SITE_URL + "/", "name": "Awesome Reverse Engineering Anything", "alternateName": "Awesome REA", "inLanguage": ["en", "zh-CN"]},
+        {"@type": "CollectionPage", "@id": SITE_URL + "/#collection", "url": SITE_URL + "/", "name": "Awesome Reverse Engineering Anything", "inLanguage": "en", "isPartOf": {"@id": SITE_URL + "/#website"}, "description": "An independent collection of reverse-engineering tools, projects, case studies and research papers for websites, games, apps, binaries and firmware.", "mainEntity": {"@type": "ItemList", "numberOfItems": len(navigation), "itemListElement": [{"@type": "ListItem", "position": i, "name": name, "url": f"{SITE_URL}/{path}/"} for i, (path, name) in enumerate(navigation, 1)]}}
+    ]}
+    html = html.replace("</head>", '<script type="application/ld+json">' + json.dumps(structured, ensure_ascii=False).replace("<", "\\u003c") + '</script>\n</head>')
     asset_hrefs = {}
     for filename, attribute in (("app.js", "src"), ("styles.css", "href"), ("favicon.svg", "href")):
         revision = hashlib.sha256((OUTPUT / filename).read_bytes()).hexdigest()[:16]
@@ -215,13 +229,23 @@ def main() -> None:
         social_image_href=f"{SITE_URL}/social-card.png?v={social_revision}",
         data_revision=data_revision, icon_stylesheet_href=icon_stylesheet,
     )
+    discovery_paths = build_discovery_pages(OUTPUT, catalog, browse_document)
+    papers_revision = hashlib.sha256((OUTPUT / "papers.css").read_bytes()).hexdigest()[:16]
+    paper_urls = build_paper_pages(
+        OUTPUT, papers, site_url=SITE_URL, repository_url=REPOSITORY_URL,
+        styles_href=asset_hrefs["styles.css"], papers_styles_href=f"/papers.css?v={papers_revision}",
+        favicon_href=asset_hrefs["favicon.svg"], social_image_href=f"{SITE_URL}/social-card.png?v={social_revision}",
+        icon_stylesheet_href=icon_stylesheet,
+    )
     (OUTPUT / ".nojekyll").write_text("", encoding="utf-8")
     (OUTPUT / "CNAME").write_text("awesomerea.org\n", encoding="utf-8")
     (OUTPUT / "robots.txt").write_text(f"User-agent: *\nAllow: /\nSitemap: {SITE_URL}/sitemap.xml\n", encoding="utf-8")
-    sitemap_entries = [f'<url><loc>{SITE_URL}/</loc><lastmod>{latest_review}</lastmod></url>']
-    sitemap_entries.extend(f'<url><loc>{xml_escape(url)}</loc></url>' for url in browse_urls)
+    # Review timestamps describe sources, not every page's modification date.
+    # Omit lastmod rather than advertising a fabricated build-time freshness signal.
+    sitemap_urls = [SITE_URL + "/", *browse_urls, *(SITE_URL + path for path in discovery_paths), *paper_urls]
+    sitemap_entries = [f'<url><loc>{xml_escape(url)}</loc></url>' for url in sitemap_urls]
     (OUTPUT / "sitemap.xml").write_text('<?xml version="1.0" encoding="UTF-8"?>\n<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">\n' + '\n'.join(sitemap_entries) + '\n</urlset>\n', encoding="utf-8")
-    print(f"Built the collection with {len(resources)} curated resources and {len(browse_urls)} static browse pages → dist/ ({SITE_URL})")
+    print(f"Built {len(resources)} curated resources, {len(papers)} papers and {len(sitemap_urls)} indexable pages → dist/ ({SITE_URL})")
 
 
 if __name__ == "__main__":

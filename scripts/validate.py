@@ -15,6 +15,7 @@ from build_readme import CATEGORIES, RELATIONSHIPS, TARGETS
 from catalog import ROOT, RESOURCE_FILES
 from localization import read_localizations, validate_localizations
 from source_scope import read_scope, validate_scope
+from validate_papers import validate_papers
 
 
 RESOURCE_FIELDS = {
@@ -484,6 +485,8 @@ def main():
     errors = []
     records = [record for path in RESOURCE_FILES for record in read_array(path, errors)]
     benchmarks = read_array(ROOT / 'data/benchmarks.json', errors)
+    papers = read_array(ROOT / 'data/papers.json', errors)
+    validate_papers(papers, errors, url_check=public_https_error)
     validate_resources(records, errors)
     validate_benchmarks(benchmarks, errors)
     scanned = 0
@@ -518,7 +521,7 @@ def main():
         for error in errors:
             print(f'- {error}', file=sys.stderr)
         return 1
-    print(f'Validated {len(records)} curated resources, {scanned} scanned sources, {len(benchmarks)} benchmark snapshots, {count} Markdown files, both generated catalogs, and the bilingual repository index.')
+    print(f'Validated {len(records)} curated resources, {len(papers)} research papers, {scanned} scanned sources, {len(benchmarks)} benchmark snapshots, {count} Markdown files, both generated catalogs, and the bilingual repository index.')
     return 0
 
 

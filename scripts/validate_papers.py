@@ -1,0 +1,207 @@
+#!/usr/bin/env python3
+"""Validate the separate, source-reviewed research-paper catalog without network access."""
+import argparse
+import datetime as dt
+import json
+from pathlib import Path
+import re
+import sys
+from urllib.parse import urlsplit
+
+
+ROOT = Path(__file__).resolve().parents[1]
+STATUSES = {'conference-paper', 'conference-accepted', 'preprint'}
+TARGETS = {'website', 'game', 'app', 'binary', 'firmware'}
+TEXT_FIELDS = {
+    'id', 'title', 'title_zh', 'date_precision', 'date_basis', 'date_basis_zh',
+    'venue', 'publication_status', 'url', 'pdf_url', 'description_en',
+    'description_zh', 'scope_limitations_en', 'scope_limitations_zh',
+    'why_fits_en', 'why_fits_zh', 'metadata_notes', 'metadata_notes_zh',
+    'kind', 'verified_at', 'verification',
+}
+FIELDS = TEXT_FIELDS | {
+    'authors', 'year', 'publication_date', 'arxiv_id', 'arxiv_version_reviewed',
+    'first_arxiv_date', 'doi', 'code_url', 'project_url', 'targets',
+    'evidence_urls', 'runtime_tested',
+}
+ARXIV_ID = re.compile(r'\d{4}\.\d{4,5}')
+
+
+def read_papers(root=ROOT):
+    def unique_object(pairs):
+        result = {}
+        for key, value in pairs:
+            if key in result:
+                raise ValueError('Paper catalog contains a duplicate JSON key')
+            result[key] = value
+        return result
+
+    def invalid_constant(value):
+        raise ValueError('Paper catalog contains a non-JSON numeric constant')
+
+    return json.loads((Path(root) / 'data/papers.json').read_text(encoding='utf-8'),
+                      object_pairs_hook=unique_object, parse_constant=invalid_constant)
+
+
+def canonical_paper_url(value):
+    parsed = urlsplit(value)
+    host, path = parsed.netloc.casefold(), parsed.path.rstrip('/')
+    if host in {'doi.org', 'dx.doi.org'}:
+        host, path = 'doi.org', path.casefold()
+    elif host in {'arxiv.org', 'www.arxiv.org'}:
+        match = re.fullmatch(r'/(?:abs|pdf|html)/(\d{4}\.\d{4,5})(?:v\d+)?(?:\.pdf)?', path)
+        if match:
+            host, path = 'arxiv.org', '/abs/' + match[1]
+    elif host == 'aclanthology.org':
+        path = path.removesuffix('.pdf')
+    return parsed.scheme.casefold(), host, path
+
+
+def validate_papers(records, errors, *, url_check):
+    """Use the caller's public-HTTPS checker so importing this module cannot cycle."""
+    if not isinstance(records, list) or not records:
+        errors.append('Paper catalog must be a nonempty array.')
+        return
+    today = dt.datetime.now(dt.timezone.utc).date()
+    seen = {field: set() for field in ('id', 'url', 'arxiv_id', 'doi')}
+    for index, record in enumerate(records):
+        where = f'paper[{index}]'
+        if not isinstance(record, dict):
+            errors.append(f'{where}: must be an object')
+            continue
+        if set(record) != FIELDS:
+            errors.append(f'{where}: missing or unknown paper fields')
+        for field in TEXT_FIELDS:
+            value = record.get(field)
+            if not isinstance(value, str) or not value.strip():
+                errors.append(f'{where}.{field}: must be a nonempty string')
+        identifier = record.get('id')
+        if not isinstance(identifier, str) or not re.fullmatch(r'paper-[a-z0-9]+(?:-[a-z0-9]+)*', identifier):
+            errors.append(f'{where}.id: use a paper-prefixed lowercase slug')
+        elif identifier in seen['id']:
+            errors.append(f'{where}: duplicate paper ID')
+        else:
+            seen['id'].add(identifier)
+        authors = record.get('authors')
+        if (not isinstance(authors, list) or not authors
+                or any(not isinstance(author, str) or not author.strip() for author in authors)):
+            errors.append(f'{where}.authors: use a nonempty author-name array')
+        elif len({author.strip().casefold() for author in authors}) != len(authors):
+            errors.append(f'{where}.authors: contains duplicate names')
+        targets = record.get('targets')
+        if (not isinstance(targets, list) or not targets
+                or any(not isinstance(target, str) or target not in TARGETS for target in targets)
+                or len(set(targets)) != len(targets)):
+            errors.append(f'{where}.targets: use unique supported target labels')
+        status = record.get('publication_status')
+        if not isinstance(status, str) or status not in STATUSES:
+            errors.append(f'{where}.publication_status: unknown publication status')
+        if record.get('kind') != 'research' or record.get('verification') != 'source-reviewed':
+            errors.append(f'{where}: preserve research/source-reviewed labels')
+        if record.get('runtime_tested') is not False:
+            errors.append(f'{where}.runtime_tested: this catalog records source review, not reproduced experiments')
+        for english, chinese in (
+                ('title', 'title_zh'), ('date_basis', 'date_basis_zh'),
+                ('description_en', 'description_zh'), ('scope_limitations_en', 'scope_limitations_zh'),
+                ('why_fits_en', 'why_fits_zh'), ('metadata_notes', 'metadata_notes_zh')):
+            en, zh = record.get(english), record.get(chinese)
+            if isinstance(zh, str) and not re.search(r'[\u3400-\u9fff]', zh):
+                errors.append(f'{where}.{chinese}: needs Chinese text')
+            if isinstance(en, str) and (not re.search(r'[A-Za-z]', en) or en == zh):
+                errors.append(f'{where}.{english}: needs distinct English text')
+
+        year, precision, published = record.get('year'), record.get('date_precision'), record.get('publication_date')
+        if type(year) is not int or not 1900 <= year <= today.year:
+            errors.append(f'{where}.year: use a plausible, non-future publication year')
+        try:
+            if precision == 'year':
+                if published is not None:
+                    raise ValueError
+            else:
+                pattern = r'\d{4}-\d{2}' if precision == 'month' else r'\d{4}-\d{2}-\d{2}'
+                if not isinstance(precision, str) or precision not in {'month', 'day'} or not isinstance(published, str) or not re.fullmatch(pattern, published):
+                    raise ValueError
+                date = dt.date.fromisoformat(published + '-01' if precision == 'month' else published)
+                if date.year != year or date > today:
+                    raise ValueError
+        except ValueError:
+            errors.append(f'{where}.publication_date: must match its precision/year and not be in the future')
+        for field in ('verified_at', 'first_arxiv_date'):
+            value = record.get(field)
+            if field == 'first_arxiv_date' and value is None:
+                continue
+            try:
+                if not isinstance(value, str) or not re.fullmatch(r'\d{4}-\d{2}-\d{2}', value):
+                    raise ValueError
+                if dt.date.fromisoformat(value) > today:
+                    raise ValueError
+            except ValueError:
+                errors.append(f'{where}.{field}: use a non-future ISO calendar date')
+
+        arxiv, doi, version = record.get('arxiv_id'), record.get('doi'), record.get('arxiv_version_reviewed')
+        if arxiv is None and doi is None:
+            errors.append(f'{where}: provide a verified arXiv ID or DOI')
+        for field, value, pattern in (('arxiv_id', arxiv, ARXIV_ID), ('doi', doi, re.compile(r'10\.\d{4,9}/\S+'))):
+            if value is None:
+                continue
+            if not isinstance(value, str) or not pattern.fullmatch(value):
+                errors.append(f'{where}.{field}: invalid identifier')
+                continue
+            key = value.casefold()
+            if key in seen[field]:
+                errors.append(f'{where}: duplicate {field}')
+            seen[field].add(key)
+            if field == 'arxiv_id':
+                paper_month = (2000 + int(value[:2]), int(value[2:4]))
+                if not 1 <= paper_month[1] <= 12 or paper_month > (today.year, today.month):
+                    errors.append(f'{where}.arxiv_id: invalid or future submission month')
+        if version is not None and (not isinstance(version, str) or not re.fullmatch(r'v[1-9]\d*', version)):
+            errors.append(f'{where}.arxiv_version_reviewed: use v followed by a positive integer or null')
+        if arxiv is None and (version is not None or record.get('first_arxiv_date') is not None):
+            errors.append(f'{where}: arXiv-specific metadata requires an arXiv ID')
+
+        evidence = record.get('evidence_urls')
+        if (not isinstance(evidence, list) or not evidence
+                or any(not isinstance(url, str) or not url.strip() for url in evidence)):
+            errors.append(f'{where}.evidence_urls: use a nonempty URL array')
+            evidence = []
+        for field in ('url', 'pdf_url', 'code_url', 'project_url'):
+            value = record.get(field)
+            if field in {'code_url', 'project_url'} and value is None:
+                continue
+            problem = url_check(value)
+            if problem:
+                errors.append(f'{where}.{field}: {problem}')
+            elif field == 'url':
+                key = canonical_paper_url(value)
+                if key in seen['url']:
+                    errors.append(f'{where}: duplicate canonical paper URL')
+                seen['url'].add(key)
+        for url in evidence:
+            problem = url_check(url)
+            if problem:
+                errors.append(f'{where}.evidence_urls: {problem}')
+
+
+def main():
+    parser = argparse.ArgumentParser(description=__doc__)
+    parser.parse_args()
+    # Lazy import is only for standalone use. validate.py passes its checker.
+    from validate import public_https_error
+    errors = []
+    try:
+        records = read_papers()
+    except (OSError, ValueError):
+        print('Paper catalog could not be read as strict JSON.', file=sys.stderr)
+        return 1
+    validate_papers(records, errors, url_check=public_https_error)
+    if errors:
+        for error in errors:
+            print('- ' + error, file=sys.stderr)
+        return 1
+    print(f'Validated {len(records)} source-reviewed research papers.')
+    return 0
+
+
+if __name__ == '__main__':
+    raise SystemExit(main())

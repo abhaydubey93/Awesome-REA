@@ -1,0 +1,326 @@
+"""Build public, script-free collection, provenance, and navigation pages."""
+from __future__ import annotations
+
+from collections import defaultdict
+import hashlib
+from html import escape
+from html.parser import HTMLParser
+import json
+from pathlib import Path
+from urllib.parse import urlsplit
+
+from build_readme import KIND_LABELS, TARGETS, collection_section
+
+
+SECTIONS = {
+    'website': ('Websites', '网站'),
+    'game': ('Games', '游戏'),
+    'app': ('Apps', '应用'),
+    'native-binary': ('Native binaries', '原生二进制'),
+    'firmware': ('Firmware and hardware', '固件与硬件'),
+    'agents-and-mcp': ('Agents and MCP', '智能体与 MCP'),
+    'related-collections': ('Related collections', '相关资源合集'),
+    'references-and-learning': ('References and learning', '文档与学习资料'),
+}
+
+
+def jsonld_script(value: dict) -> str:
+    """Serialize JSON-LD without allowing upstream strings to close the script."""
+    payload = json.dumps(value, ensure_ascii=False, separators=(',', ':'))
+    for character, encoded in (('&', '\\u0026'), ('<', '\\u003c'), ('>', '\\u003e'),
+                               ('\u2028', '\\u2028'), ('\u2029', '\\u2029')):
+        payload = payload.replace(character, encoded)
+    return f'<script type="application/ld+json">{payload}</script>'
+
+
+def collection_page_schema(canonical: str, name: str, description: str,
+                           language: str, items: list[dict], site_url: str) -> dict:
+    """Describe precisely the rendered main list; positions follow DOM order."""
+    return {
+        '@context': 'https://schema.org',
+        '@type': 'CollectionPage',
+        '@id': canonical + '#collection',
+        'url': canonical,
+        'name': name,
+        'description': description,
+        'inLanguage': language,
+        'isPartOf': {'@type': 'WebSite', 'name': 'AwesomeREA.org', 'url': site_url + '/'},
+        'mainEntity': {
+            '@type': 'ItemList',
+            'numberOfItems': len(items),
+            'itemListElement': [
+                {'@type': 'ListItem', 'position': position, **item}
+                for position, item in enumerate(items, 1)
+            ],
+        },
+    }
+
+
+def _url(value: str) -> str:
+    parsed = urlsplit(value)
+    if parsed.scheme not in {'http', 'https'} or not parsed.netloc or parsed.username or parsed.password:
+        raise ValueError('Discovery pages require public web URLs without embedded credentials')
+    return escape(value, quote=True)
+
+
+def _asset(site_dir: Path, filename: str) -> str:
+    path = site_dir / filename
+    revision = hashlib.sha256(path.read_bytes()).hexdigest()[:16] if path.is_file() else ''
+    return '/' + filename + ('?v=' + revision if revision else '')
+
+
+class _IconStylesheet(HTMLParser):
+    def __init__(self):
+        super().__init__()
+        self.href = None
+
+    def handle_starttag(self, tag, attributes):
+        attrs = dict(attributes)
+        href = attrs.get('href', '')
+        if tag == 'link' and attrs.get('rel') == 'stylesheet' and urlsplit(href).path.endswith('fontawesome.css'):
+            self.href = href if urlsplit(href).scheme or href.startswith('/') else '/' + href
+
+
+def _requirements(record: dict, language: str) -> list[str]:
+    key = 'requirements_zh' if language == 'zh' else 'requirements'
+    value = record.get(key)
+    if isinstance(value, str):
+        value = [value]
+    if not isinstance(value, list) or not value or not all(isinstance(item, str) and item.strip() for item in value):
+        raise ValueError(f"{record.get('id')}: missing {key} for the static curated page")
+    return value
+
+
+def _resource_card(record: dict, language: str) -> str:
+    zh = language == 'zh'
+    name = (record.get('name_zh') or record['name']) if zh else record['name']
+    description = record[f'description_{language}']
+    kind = KIND_LABELS[record['kind']][1 if zh else 0]
+    targets = ' · '.join(TARGETS[target][1 if zh else 0] for target in record['targets'])
+    requirements = ''.join(f'<li>{escape(item)}</li>' for item in _requirements(record, language))
+    additional = ''.join(
+        f'<li><a href="{_url(url)}" target="_blank" rel="noopener noreferrer">'
+        f'{("补充来源" if zh else "Additional source")} {index} ↗</a></li>'
+        for index, url in enumerate(record.get('additional_evidence_urls', []), 1)
+    )
+    reviewed = str(record['verified_at'])
+    return f'''<article class="resource-card browse-repository" id="{escape(record['id'], quote=True)}" data-record-id="{escape(record['id'], quote=True)}">
+  <div class="card-heading"><h3><a class="card-title-link" href="{_url(record['url'])}" target="_blank" rel="noopener noreferrer">{escape(name)}<span class="browse-text-arrow" aria-hidden="true">↗</span></a></h3><span class="resource-kind">{escape(kind)}</span></div>
+  <p class="card-description">{escape(description)}</p>
+  <div class="card-meta"><span>{escape(targets)}</span><a href="{_url(record['evidence_url'])}" target="_blank" rel="noopener noreferrer">{('原始来源 ↗' if zh else 'Primary source ↗')}</a></div>
+  <details class="requirements"><summary>{('详情与使用条件' if zh else 'Details and requirements')}</summary><ul>{requirements}</ul>{('<ul>' + additional + '</ul>' if additional else '')}<div class="resource-detail-meta"><span>{('资料已复核' if zh else 'Source-reviewed')}</span><time datetime="{escape(reviewed, quote=True)}">{('复核于' if zh else 'Reviewed')} {escape(reviewed[:10])}</time></div></details>
+</article>'''
+
+
+def _document(*, site_url: str, repository_url: str, path: str, language: str,
+              title: str, description: str, content: str, schema: dict | None,
+              assets: dict, icon_stylesheet: str | None, noindex: bool = False) -> str:
+    zh = language == 'zh'
+    locale = 'zh-CN' if zh else 'en'
+    root = '/?lang=zh' if zh else '/'
+    english_path = path.removeprefix('/zh') if zh else path
+    chinese_path = '/zh' + english_path
+    counterpart = english_path if zh else chinese_path
+    canonical = site_url + path
+    metadata = '<meta name="robots" content="noindex">' if noindex else f'''<link rel="canonical" href="{_url(canonical)}">
+  <link rel="alternate" hreflang="en" href="{_url(site_url + english_path)}">
+  <link rel="alternate" hreflang="zh-CN" href="{_url(site_url + chinese_path)}">
+  <link rel="alternate" hreflang="x-default" href="{_url(site_url + english_path)}">'''
+    globe_icon = '<span class="icon fa-symbol fa-globe" aria-hidden="true"></span>' if icon_stylesheet else ''
+    github_icon = ('<span class="icon fa-symbol fa-github" aria-hidden="true"></span>' if icon_stylesheet
+                   else '<span class="icon browse-github-fallback" aria-hidden="true">GH</span>')
+    language_link = '' if noindex else f'<a class="browse-language" href="{counterpart}" lang="{("en" if zh else "zh-CN")}" hreflang="{("en" if zh else "zh-CN")}">{globe_icon}<span>{("English" if zh else "简体中文")}</span></a>'
+    prefix = '/zh' if zh else ''
+    footer = ('原创说明和代码采用 MIT 许可；上游描述与链接项目保留各自的许可。' if zh
+              else 'Original editorial content and code: MIT. Upstream descriptions and linked projects retain their own licenses.')
+    return f'''<!doctype html>
+<html lang="{locale}"{(' data-icon-set="fontawesome"' if icon_stylesheet else '')}>
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#ffffff">
+  <title>{escape(title)} · AwesomeREA.org</title>
+  <meta name="description" content="{escape(description, quote=True)}">
+  {metadata}
+  <meta property="og:type" content="website">
+  <meta property="og:site_name" content="AwesomeREA.org">
+  <meta property="og:locale" content="{('zh_CN' if zh else 'en_US')}">
+  <meta property="og:title" content="{escape(title, quote=True)} · AwesomeREA.org">
+  <meta property="og:description" content="{escape(description, quote=True)}">
+  <meta property="og:url" content="{_url(canonical)}">
+  <meta property="og:image" content="{_url(site_url + assets['social'])}">
+  <meta property="og:image:alt" content="{escape(title, quote=True)}">
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="{escape(title, quote=True)} · AwesomeREA.org">
+  <meta name="twitter:description" content="{escape(description, quote=True)}">
+  <meta name="twitter:image" content="{_url(site_url + assets['social'])}">
+  <link rel="icon" href="{assets['favicon']}" type="image/svg+xml">
+  <link rel="stylesheet" href="{assets['styles']}">
+  <link rel="stylesheet" href="{assets['browse']}">
+  {('<link rel="stylesheet" href="' + escape(icon_stylesheet, quote=True) + '">' if icon_stylesheet else '')}
+  {jsonld_script(schema) if schema else ''}
+</head>
+<body>
+<a class="skip-link" href="#discovery-content">{('跳到内容' if zh else 'Skip to content')}</a>
+<header class="site-header"><div class="shell header-inner">
+  <a class="wordmark" href="{root}" aria-label="{('AwesomeREA.org 首页' if zh else 'AwesomeREA.org home')}"><span class="brand-mark" aria-hidden="true">r<span>↗</span></span><span>Awesome<span class="wordmark-rea">REA</span><span class="wordmark-domain">.org</span></span></a>
+  <nav class="header-nav" aria-label="{('主导航' if zh else 'Main navigation')}">{language_link}<a class="github-link" href="{_url(repository_url)}" target="_blank" rel="noopener noreferrer" aria-label="GitHub">{github_icon}<span>GitHub</span></a></nav>
+</div></header>
+<main id="discovery-content" class="shell browse-main">
+  <nav class="browse-breadcrumbs" aria-label="{('当前位置' if zh else 'Breadcrumb')}"><a href="{root}">{('首页' if zh else 'Home')}</a><span aria-hidden="true">/</span><span aria-current="page">{escape(title)}</span></nav>
+  <section class="collection-intro browse-intro"><p class="eyebrow">{('逆向工程资源集合' if zh else 'THE REVERSE ENGINEERING COLLECTION')}</p><h1>{escape(title)}<span class="title-dot" aria-hidden="true">.</span></h1><p>{escape(description)}</p></section>
+  {content}
+</main>
+<footer class="site-footer"><div class="shell footer-top"><p>{('独立的资源集合，在公开协作中持续更新。' if zh else 'An independent resource collection, updated in public.')}</p><div class="footer-links"><a href="{prefix}/curated/">{('精选资源' if zh else 'Curated resources')}</a><a href="{prefix}/browse/">{('仓库目录' if zh else 'Repository directory')}</a><a href="{prefix}/papers/">{('研究论文' if zh else 'Research papers')}</a><a href="{prefix}/about/">{('关于与来源' if zh else 'About and sources')}</a><a href="/catalog.json" download="awesomerea-curated-catalog.json">{('精选 JSON ↓' if zh else 'Curated JSON ↓')}</a><a href="/source-index.json" download="awesomerea-repository-index.json">{('仓库 JSON ↓' if zh else 'Repository JSON ↓')}</a></div></div><div class="shell footer-bottom">{footer}</div></footer>
+</body>
+</html>
+'''
+
+
+def build_discovery_pages(site_dir: Path, catalog: dict, source_index: dict | None) -> list[str]:
+    """Write discovery assets and return four root-relative HTML sitemap paths.
+
+    ``catalog`` is the built catalog object with localized names and requirements.
+    ``source_index`` is the full localized/scoped scan, including excluded records.
+    Copy papers.json and the normal site assets into site_dir before this call.
+    """
+    site_dir = Path(site_dir)
+    metadata = catalog.get('meta', {})
+    site_url = metadata.get('site_url', 'https://awesomerea.org').rstrip('/')
+    repository_url = metadata.get('repository_url', 'https://github.com/reacher-z/Awesome-REA').rstrip('/')
+    _url(site_url)
+    _url(repository_url)
+    resources = catalog['resources']
+    if len({record['id'] for record in resources}) != len(resources):
+        raise ValueError('Duplicate curated IDs in discovery pages')
+    scanned = [record for record in (source_index or {}).get('resources', []) if record.get('scan_status') == 'readme-scanned']
+    excluded = sum(record.get('scope_status') == 'excluded' for record in scanned)
+    browse_count = len(scanned) - excluded
+    paper_path = site_dir / 'papers.json'
+    papers = json.loads(paper_path.read_text(encoding='utf-8')) if paper_path.is_file() else []
+    if not isinstance(papers, list):
+        raise ValueError('papers.json must contain a separate array of paper records')
+    scan_date = str((source_index or {}).get('meta', {}).get('completed_at') or '')[:10]
+    assets = {key: _asset(site_dir, filename) for key, filename in (
+        ('styles', 'styles.css'), ('browse', 'browse.css'), ('favicon', 'favicon.svg'), ('social', 'social-card.png'))}
+    icons = _IconStylesheet()
+    index = site_dir / 'index.html'
+    if index.is_file():
+        icons.feed(index.read_text(encoding='utf-8'))
+    groups = defaultdict(list)
+    for record in resources:
+        section = collection_section(record)
+        if section not in SECTIONS:
+            raise ValueError(f'Unknown curated collection section: {section}')
+        for language in ('en', 'zh'):
+            if not isinstance(record.get(f'description_{language}'), str):
+                raise ValueError(f"{record['id']}: missing localized description")
+            _requirements(record, language)
+        groups[section].append(record)
+
+    rendered = {}
+    paths = []
+    for language in ('en', 'zh'):
+        zh = language == 'zh'
+        locale = 'zh-CN' if zh else 'en'
+        prefix = '/zh' if zh else ''
+        path = prefix + '/curated/'
+        title = '精选逆向工程资源' if zh else 'Curated reverse engineering resources'
+        description = (f'{len(resources):,} 项工具、项目、集成、案例与参考资源，覆盖网站、游戏、应用、原生二进制和固件。'
+                       if zh else f'{len(resources):,} tools, projects, integrations, case studies, and references for websites, games, apps, native binaries, and firmware.')
+        note = ('“资料已复核”表示说明已依据一手文档核对，不代表已安装、执行、安全审计或验证兼容性。前置条件和审阅日期随条目保留。'
+                if zh else 'Source-reviewed means descriptions were checked against primary documentation. It does not mean installation, execution, security auditing, or compatibility testing. Each entry retains requirements and its review date.')
+        sections, items, navigation = [], [], []
+        for key, labels in SECTIONS.items():
+            if not groups[key]:
+                continue
+            label = labels[1 if zh else 0]
+            navigation.append(f'<a href="#{key}">{escape(label)}<span>{len(groups[key])}</span></a>')
+            sections.append(f'<section aria-labelledby="heading-{key}"><div class="browse-topline"><h2 id="heading-{key}"><a id="{key}"></a>{escape(label)}</h2><p>{len(groups[key])} {("项资源" if zh else "resources")}</p></div><div class="resource-grid">' + '\n'.join(_resource_card(record, language) for record in groups[key]) + '</div></section>')
+            for record in groups[key]:
+                name = (record.get('name_zh') or record['name']) if zh else record['name']
+                items.append({'name': name, 'url': record['url'], 'description': record[f'description_{language}']})
+        content = f'''<div class="browse-actions"><a class="button button-primary" href="/?view=curated&amp;lang={language}">{('搜索与筛选' if zh else 'Search and filter')}</a><a class="button button-outline" href="{prefix}/browse/">{('浏览仓库' if zh else 'Browse repositories')}</a><a class="button button-outline" href="{prefix}/papers/">{('研究论文' if zh else 'Research papers')}</a><a class="browse-download" href="/catalog.json" download="awesomerea-curated-catalog.json">{('下载精选 JSON ↓' if zh else 'Download curated JSON ↓')}</a></div>
+<p class="collection-note">{escape(note)}</p><nav class="browse-category-nav" aria-label="{('资源分类' if zh else 'Resource categories')}">{''.join(navigation)}</nav>{''.join(sections)}'''
+        rendered[path] = _document(site_url=site_url, repository_url=repository_url, path=path, language=language, title=title, description=description, content=content, schema=collection_page_schema(site_url + path, title, description, locale, items, site_url), assets=assets, icon_stylesheet=icons.href)
+        paths.append(path)
+
+        path = prefix + '/about/'
+        title = '关于合集与数据来源' if zh else 'About the collection and its sources'
+        description = ('AwesomeREA.org 是独立的逆向工程资源合集，收录工具、项目、案例和参考资料。' if zh else 'AwesomeREA.org is an independent collection of reverse-engineering tools, projects, case studies, and references.')
+        summary = (f'{len(resources):,} 项精选资源；{len(scanned):,} 个实际读取 README 的仓库；{browse_count:,} 个可浏览条目。{excluded} 个超出范围的条目保留在完整扫描数据中。'
+                   if zh else f'{len(resources):,} curated resources; {len(scanned):,} repositories whose READMEs were fetched; {browse_count:,} browsable entries. The {excluded} out-of-scope entries remain in the complete scan data.')
+        if papers:
+            summary += (f' 另有 {len(papers):,} 篇研究论文，单独收录和计数。' if zh else f' A separate directory contains {len(papers):,} research papers, counted independently.')
+        evidence = ('精选说明依据一手来源核对，并保留前置条件和复核日期。自动扫描记录来源、时间、README 字节数、Git blob 标识和 SHA-256；未执行上游代码，也不重新发布 README 正文。'
+                    if zh else 'Curated descriptions are checked against primary sources, with requirements and review dates retained. Automated scans record sources, timestamps, README byte counts, Git blob identifiers, and SHA-256 hashes. Upstream code is not executed and README bodies are not republished.')
+        if scan_date:
+            evidence += (f' 最新扫描快照：{scan_date} UTC。' if zh else f' Latest scan snapshot: {scan_date} UTC.')
+        scope = ('自动发现与精选资源分开维护。范围排除决定绑定具体 README 哈希，并保留双语原因。分类来自元数据；收录、翻译和范围判断都不等于运行验证、安全保证或 REA 集成。'
+                 if zh else 'Automatic discovery remains separate from curation. Scope exclusions are tied to recorded README hashes and include bilingual reasons. Categories derive from metadata; inclusion, translation, and scope decisions do not establish runtime verification, safety, or REA integration.')
+        licensing = ('本仓库原创说明和代码采用 MIT 许可。上游项目及其描述保留各自许可；许可证标识仅是采集时元数据。生成的双语索引保留 description_original 上游原文，翻译由 AI 辅助完成。'
+                     if zh else 'Original editorial content and code in this repository use the MIT license. Upstream projects and their descriptions retain their own licenses; license identifiers are metadata snapshots. The generated bilingual index preserves upstream text as description_original, and translations are AI-assisted.')
+        facts = [('收录范围' if zh else 'What is collected', summary), ('来源与更新' if zh else 'Evidence and updates', evidence), ('范围与复核' if zh else 'Scope and review', scope), ('语言与许可' if zh else 'Languages and licenses', licensing)]
+        fact_cards = ''.join(f'<section class="source-card browse-repository"><h2>{escape(heading)}</h2><p class="card-description">{escape(text)}</p></section>' for heading, text in facts)
+        links = [
+            (prefix + '/curated/', '精选资源' if zh else 'Curated resources'),
+            (prefix + '/browse/', '完整仓库目录' if zh else 'Repository directory'),
+            (prefix + '/papers/', '研究论文目录' if zh else 'Research papers'),
+            ('/catalog.json', '精选资源 JSON' if zh else 'Curated catalog JSON'),
+            ('/source-index.json', '完整双语扫描 JSON' if zh else 'Complete bilingual scan JSON'),
+            ('/papers.json', '论文元数据 JSON' if zh else 'Paper metadata JSON'),
+            (repository_url + '/blob/main/' + ('README.zh-CN.md' if zh else 'README.md'), 'GitHub README'),
+            (repository_url + '/blob/main/docs/source-scan.md', '扫描方法' if zh else 'Scan methodology'),
+            (repository_url + '/blob/main/data/source-scope.json', '范围排除记录' if zh else 'Scope exclusion records'),
+            (repository_url + '/blob/main/data/README.md', '数据格式与维护' if zh else 'Data format and maintenance'),
+            (repository_url + '/blob/main/LICENSE', 'MIT 许可证' if zh else 'MIT license'),
+            (repository_url + '/blob/main/CONTRIBUTING.md', '贡献指南' if zh else 'Contribution guide'),
+        ]
+        link_html = ''.join(f'<a href="{(_url(url) if url.startswith("http") else escape(url, quote=True))}">{escape(label)}</a>' for url, label in links)
+        content = f'<div class="source-results">{fact_cards}</div><section><div class="browse-topline"><h2>{("浏览、下载与来源" if zh else "Browse, download, and inspect sources")}</h2></div><nav class="browse-category-nav" aria-label="{("来源与下载" if zh else "Sources and downloads")}">{link_html}</nav></section>'
+        schema = {'@context': 'https://schema.org', '@type': 'AboutPage', 'url': site_url + path, 'name': title, 'description': description, 'inLanguage': locale, 'about': {'@type': 'WebSite', 'name': 'AwesomeREA.org', 'url': site_url + '/', 'sameAs': repository_url}}
+        rendered[path] = _document(site_url=site_url, repository_url=repository_url, path=path, language=language, title=title, description=description, content=content, schema=schema, assets=assets, icon_stylesheet=icons.href)
+        paths.append(path)
+
+    for path, document in rendered.items():
+        destination = site_dir / path.lstrip('/') / 'index.html'
+        destination.parent.mkdir(parents=True, exist_ok=True)
+        destination.write_text(document, encoding='utf-8')
+
+    paper_summary = f' {len(papers)} research papers are listed separately.' if papers else ''
+    llms = f'''# Awesome Reverse Engineering Anything
+
+> AwesomeREA.org is an independent bilingual collection of reverse-engineering tools, projects, integrations, case studies, and references for websites, games, apps, native binaries, and firmware.
+
+The collection contains {len(resources)} source-reviewed curated resources and {browse_count} browsable repositories from {len(scanned)} successful README scans. The full scan retains {excluded} scope-excluded records and their reasons.{paper_summary} These counts describe different collections and must not be combined as unique projects.
+
+Source review checks documentation, not successful execution, security, or REA compatibility. Repository descriptions have AI-assisted English and Simplified Chinese translations; description_original retains upstream text. Upstream content keeps its own license.
+
+## English navigation
+
+- [Curated resources]({site_url}/curated/): All curated entries, requirements, evidence links, and review dates.
+- [Repository directory]({site_url}/browse/): Static categories and public repository descriptions.
+- [Research papers]({site_url}/papers/): A separate research bibliography.
+- [About and provenance]({site_url}/about/): Scope, source methods, counts, translations, and licenses.
+
+## 简体中文
+
+- [精选资源]({site_url}/zh/curated/): 精选条目、前置条件、来源链接与复核日期。
+- [仓库目录]({site_url}/zh/browse/): 静态分类与公开项目简介。
+- [研究论文]({site_url}/zh/papers/): 单独维护的研究文献目录。
+- [关于与来源]({site_url}/zh/about/): 收录范围、来源方法、数量、翻译与许可。
+
+## Public data and sources
+
+- [Curated catalog JSON]({site_url}/catalog.json): Curated descriptions and source evidence.
+- [Full repository index JSON]({site_url}/source-index.json): All scan records, original descriptions, translations, hashes, and exclusions; omit scope_status=excluded when reconstructing the browse list.
+- [Paper metadata JSON]({site_url}/papers.json): The separate research bibliography.
+- [Public source repository]({repository_url}): Bilingual READMEs, contribution rules, code, and data definitions.
+- [Scan methodology]({repository_url}/blob/main/docs/source-scan.md): Collection and scope-review methods.
+
+This file is a navigation aid. Crawl policy is published in [robots.txt]({site_url}/robots.txt).
+'''
+    (site_dir / 'llms.txt').write_text(llms, encoding='utf-8')
+    content = '''<div class="empty-state"><p>This address does not match a page in the collection.</p><p lang="zh-CN">这个地址没有对应的合集页面。</p><div class="browse-actions"><a class="button button-primary" href="/">Home · 首页</a><a class="button button-outline" href="/browse/">Browse repositories</a><a class="button button-outline" href="/zh/browse/" lang="zh-CN">浏览仓库</a></div></div>'''
+    (site_dir / '404.html').write_text(_document(site_url=site_url, repository_url=repository_url, path='/404.html', language='en', title='Page not found · 页面不存在', description='This page could not be found. 这个页面不存在。', content=content, schema=None, assets=assets, icon_stylesheet=icons.href, noindex=True), encoding='utf-8')
+    return paths

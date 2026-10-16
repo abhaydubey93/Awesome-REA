@@ -9,7 +9,8 @@ import sys
 import urllib.parse
 import urllib.request
 
-from validate import validate_benchmarks, validate_resources, validate_source_index
+from validate import validate_benchmarks, validate_resources, validate_source_index, public_https_error
+from validate_papers import validate_papers
 from localization import LOCALE_FILES, validate_localizations
 from source_scope import validate_scope
 
@@ -19,7 +20,7 @@ CATALOGS = ('data/rea-resources.json', 'data/tool-resources.json')
 SOURCE_INDEX = 'data/source-index.json'
 SOURCE_SCOPE = 'data/source-scope.json'
 SOURCE_INPUTS = (SOURCE_INDEX, SOURCE_SCOPE, *LOCALE_FILES)
-REVIEW_FILES = frozenset((*CATALOGS, 'data/benchmarks.json', *SOURCE_INPUTS))
+REVIEW_FILES = frozenset((*CATALOGS, 'data/benchmarks.json', 'data/papers.json', *SOURCE_INPUTS))
 LOCALE_FIELDS = {'description_en', 'description_zh', 'english_retains_name', 'technical_only'}
 SENSITIVE = re.compile(r'gh[pousr]_[A-Za-z0-9]{20,}|github_pat_[A-Za-z0-9_]{20,}|AKIA[A-Z0-9]{16}|-----BEGIN (?:RSA |EC |OPENSSH )?PRIVATE KEY-----')
 LOCAL_PATH = re.compile(r'/Users/[^/\s]+/|/home/[^/\s]+/')
@@ -127,6 +128,10 @@ def load_review_contents(repository, sha, token, files, changed, errors):
 
 def review_data(contents, changed):
     errors, reviewed = [], []
+    if 'data/papers.json' in changed:
+        papers = parse_json(contents['data/papers.json'])
+        validate_papers(papers, errors, url_check=public_https_error)
+        reviewed.append('Research papers checked separately for bibliography, bilingual scope, dates, duplicate identifiers and public source URLs.')
     if set(CATALOGS) & changed:
         records = []
         for filename in CATALOGS:
