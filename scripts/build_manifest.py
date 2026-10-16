@@ -2,6 +2,7 @@
 from __future__ import annotations
 
 import hashlib
+from html import escape
 from html.parser import HTMLParser
 import json
 from pathlib import Path, PurePosixPath
@@ -9,33 +10,112 @@ import re
 from urllib.parse import urlsplit
 
 MANIFEST_NAME = 'build-manifest.json'
-HTML_NORMALIZATION = 'strip-cloudflare-web-analytics-v2'
+HTML_NORMALIZATION = 'cloudflare-public-html-v3'
 CONTROL_FILES = {'CNAME', '.nojekyll', '_headers', '_redirects'}
 FONT_SUFFIXES = {'.woff', '.woff2', '.ttf', '.otf', '.eot'}
 PRIVATE_NAMES = re.compile(r'(?i)^(?:\.env(?:\..*)?|credentials?(?:[.-].*)?|secrets?(?:[.-].*)?)$')
 EMPTY_SCRIPT = re.compile(r'<script\b[^>]*>\s*</script>\s*', re.I)
+EMAIL_ANCHOR = re.compile(r'<a\b[^>]*>\[email&#160;protected\]</a>')
+EMAIL_SCRIPT = re.compile(r'<script\b[^>]*>\s*</script>', re.I)
 
 
-class _ScriptAttributes(HTMLParser):
-    def __init__(self):
+class _TagAttributes(HTMLParser):
+    def __init__(self, tag):
         super().__init__()
+        self.tag = tag
         self.attributes = []
 
     def handle_starttag(self, tag, attributes):
-        if tag == 'script':
+        if tag == self.tag:
             self.attributes = attributes
 
 
+class _ElementSpans(HTMLParser):
+    """Find real element spans without rewriting comments or embedded source text."""
+    RAW_TEXT = {'script', 'style', 'textarea', 'title', 'xmp', 'iframe',
+                'noembed', 'noframes', 'plaintext', 'noscript'}
+
+    def __init__(self, source):
+        super().__init__(convert_charrefs=False)
+        self.source = source
+        self.lines = [0]
+        for match in re.finditer('\n', source):
+            self.lines.append(match.end())
+        self.blocked = None
+        self.anchor = None
+        self.spans = []
+
+    def source_offset(self):
+        line, column = self.getpos()
+        return self.lines[line - 1] + column
+
+    def handle_starttag(self, tag, attrs):
+        if self.blocked:
+            return
+        if tag in self.RAW_TEXT:
+            self.blocked = (tag, self.source_offset())
+        elif tag == 'a':
+            self.anchor = self.source_offset()
+
+    def handle_startendtag(self, tag, attrs):
+        # A trailing slash does not close non-void elements in HTML.
+        self.handle_starttag(tag, attrs)
+
+    def handle_endtag(self, tag):
+        end = self.source.find('>', self.source_offset()) + 1
+        if self.blocked:
+            if tag == self.blocked[0] and tag != 'plaintext':
+                if tag == 'script':
+                    self.spans.append(('script', self.blocked[1], end))
+                self.blocked = None
+            return
+        if tag == 'a' and self.anchor is not None:
+            self.spans.append(('a', self.anchor, end))
+            self.anchor = None
+
+
 def normalized_html_bytes(content: bytes) -> bytes:
-    """Ignore only Cloudflare's recognized empty analytics script injection.
+    """Reverse recognized Cloudflare analytics and public-email transformations.
 
     Page markup, text, structured data, asset revisions, and other scripts remain
     byte-sensitive. Unexpected attributes or inline code are never discarded.
     """
     text = content.decode('utf-8')
 
+    def restore_email(match):
+        parser = _TagAttributes('a')
+        parser.feed(match[0])
+        attrs = dict(parser.attributes)
+        if (len(attrs) != len(parser.attributes)
+                or set(attrs) != {'href', 'class', 'data-cfemail'}
+                or attrs['href'] != '/cdn-cgi/l/email-protection'
+                or attrs['class'] != '__cf_email__'):
+            return match[0]
+        encoded = attrs['data-cfemail'] or ''
+        if not re.fullmatch(r'(?:[a-fA-F0-9]{2}){4,320}', encoded):
+            return match[0]
+        data = bytes.fromhex(encoded)
+        try:
+            address = bytes(byte ^ data[0] for byte in data[1:]).decode('ascii')
+        except UnicodeDecodeError:
+            return match[0]
+        if not re.fullmatch(r"[A-Za-z0-9.!#$%&'*+/=?^_`{|}~-]+@[A-Za-z0-9.-]+\.[A-Za-z]{2,63}", address):
+            return match[0]
+        return escape(address, quote=True)
+
+    def remove_email_decoder(match):
+        parser = _TagAttributes('script')
+        parser.feed(match[0])
+        attrs = dict(parser.attributes)
+        if (len(attrs) == len(parser.attributes)
+                and set(attrs) == {'data-cfasync', 'src'}
+                and attrs['data-cfasync'] == 'false'
+                and re.fullmatch(r'/cdn-cgi/scripts/[a-f0-9]{8}/cloudflare-static/email-decode\.min\.js', attrs['src'] or '')):
+            return ''
+        return match[0]
+
     def remove_beacon(match):
-        parser = _ScriptAttributes()
+        parser = _TagAttributes('script')
         parser.feed(match[0])
         attrs = dict(parser.attributes)
         allowed = {'src', 'defer', 'integrity', 'data-cf-beacon', 'crossorigin', 'type'}
@@ -49,7 +129,30 @@ def normalized_html_bytes(content: bytes) -> bytes:
             return ''
         return match[0]
 
-    return EMPTY_SCRIPT.sub(remove_beacon, text).encode('utf-8')
+    parser = _ElementSpans(text)
+    parser.feed(text)
+    replacements = []
+    for tag, start, end in parser.spans:
+        original = text[start:end]
+        if tag == 'a':
+            match = EMAIL_ANCHOR.fullmatch(original)
+            replacement = restore_email(match) if match else original
+        else:
+            match = EMAIL_SCRIPT.fullmatch(original)
+            if not match:
+                continue
+            replacement = remove_email_decoder(match)
+            if replacement == original:
+                replacement = remove_beacon(match)
+                if replacement == '':
+                    # Match the analytics injection's trailing whitespace, as v2 did.
+                    while end < len(text) and text[end].isspace():
+                        end += 1
+        if replacement != original:
+            replacements.append((start, end, replacement))
+    for start, end, replacement in reversed(replacements):
+        text = text[:start] + replacement + text[end:]
+    return text.encode('utf-8')
 
 
 def html_digest(content: bytes) -> str:
