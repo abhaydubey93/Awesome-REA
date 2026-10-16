@@ -96,6 +96,8 @@ def configure_fontawesome(html: str, licensed_package: Path | None, assets_url: 
 
 def group_for(record: dict) -> str:
     relationship = record["relationship"]
+    if relationship == "independent-reconstruction":
+        return "cases"
     if relationship == "independent-agent-integration":
         return "agents"
     if relationship == "foundation":
@@ -112,7 +114,7 @@ def default_targets(record: dict) -> list[str]:
     if category == "core":
         return sorted(TARGETS)
     found: set[str] = set()
-    if category in {"javascript-electron", "android", "dotnet"} or any(w in text for w in ("electron", "android", "aegis", "notion", "managed-code")):
+    if category in {"javascript-electron", "android", "dotnet", "jvm"} or any(w in text for w in ("electron", "android", "aegis", "notion", "managed-code")):
         found.add("app")
     if category == "webassembly" or any(w in text for w in ("browser", "network capture", "web capture", "javascript", "webcrack")):
         found.add("website")

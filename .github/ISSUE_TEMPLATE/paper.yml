@@ -1,0 +1,42 @@
+name: Suggest a research paper
+description: Add a paper on reverse engineering, reconstruction, or relevant evaluation.
+title: "Paper: "
+body:
+  - type: input
+    id: url
+    attributes:
+      label: Canonical paper URL or DOI
+      description: Prefer the publisher, proceedings, arXiv, or the authors' public project page.
+    validations:
+      required: true
+  - type: input
+    id: title
+    attributes:
+      label: Paper title
+    validations:
+      required: true
+  - type: dropdown
+    id: status
+    attributes:
+      label: Publication status
+      options:
+        - Published conference or journal paper
+        - Accepted, proceedings not yet verified
+        - Preprint
+        - Status needs verification
+    validations:
+      required: true
+  - type: textarea
+    id: relevance
+    attributes:
+      label: Reverse-engineering task and contribution
+      description: Explain what is reconstructed or analyzed and why the paper belongs in the collection.
+    validations:
+      required: true
+  - type: textarea
+    id: evidence
+    attributes:
+      label: Evidence, artifacts, and limitations
+      description: Link author-provided code or data if available. Note evaluation scope, unavailable artifacts, and whether results were independently reproduced.
+    validations:
+      required: true

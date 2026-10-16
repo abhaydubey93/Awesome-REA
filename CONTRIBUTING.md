@@ -30,6 +30,16 @@ node --check site/app.js
 
 Use `python3 scripts/check_links.py` for live source checks. Rate limits and temporary network failures are reported separately from confirmed missing links.
 
+## Suggest a research paper
+
+Use the [paper submission form](https://github.com/reacher-z/Awesome-REA/issues/new?template=paper.yml). Include the canonical paper page or DOI, its publication status, the reverse-engineering task it studies, and links to author-provided code or data where available. An accessible paper does not imply that its benchmark or evaluation service is public.
+
+Bibliographic records live in `data/papers.json`, separately from the tool catalog and automated scan index. For a pull request, follow an existing record and preserve the original title and full author names. Supply English and Chinese titles, summaries, relevance and limitations; distinguish preprints, conference acceptance and published proceedings. Record only the verified date precision: never invent a publication day or conference date. Keep `runtime_tested` false unless the catalog schema and independent reproduction evidence are explicitly extended. Run `python3 scripts/validate_papers.py`, regenerate both READMEs, then run `python3 scripts/build_production.py`.
+
+## Reconstruction cases
+
+Cases may use REA, other agents, or independent reverse-engineering tools. Use `independent-reconstruction` for a documented reconstruction project with no established REA connection, and `reconstruction-cases` as its category. The `targets` describe the actual Website, Game, App, Binary or Firmware domain. Identify author-reported results, incomplete behavior, platform limits and required original assets. Keep a pinned public source where possible; never include proprietary target binaries or private captures.
+
 ## Review and publication
 
 Pull requests receive a [rule-based review](docs/automation.md) from trusted base-branch code. It checks catalog structure, duplicates, source fields, and common privacy mistakes without executing contributor code. Maintainers review resource relevance and factual claims. Passing automation does not automatically approve or merge a contribution.

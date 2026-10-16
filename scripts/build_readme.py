@@ -20,6 +20,7 @@ CATEGORIES = {
     'community-integrations': ('Community REA integrations', 'REA 社区集成'),
     'community-labs': ('Community REA labs', 'REA 社区练习'),
     'community-case-studies': ('Community REA investigations', 'REA 社区调查案例'),
+    'reconstruction-cases': ('Independent reconstruction cases', '独立重建案例'),
     'agent-mcp': ('Independent MCP integrations', '独立 MCP 集成'),
     'agent-workflows': ('Independent agent workflows', '独立 Agent 工作流'),
     'game-analysis': ('Game analysis tools', '游戏分析工具'),
@@ -28,6 +29,7 @@ CATEGORIES = {
     'dynamic-analysis': ('Debugging and dynamic analysis', '调试与动态分析'),
     'android': ('Android tools', 'Android 工具'),
     'dotnet': ('.NET tools', '.NET 工具'),
+    'jvm': ('JVM bytecode tools', 'JVM 字节码工具'),
     'javascript-electron': ('JavaScript and Electron tools', 'JavaScript 与 Electron 工具'),
     'webassembly': ('WebAssembly tools', 'WebAssembly 工具'),
     'firmware': ('Firmware tools', '固件工具'),
@@ -47,6 +49,7 @@ RELATIONSHIPS = {
     'community-reported-mixed-workflow': ('Author-reported mixed workflow', '作者报告的混合工具流程'),
     'upstream-maintainer-companion-list': ('REA maintainer companion list', 'REA 维护者的相关目录'),
     'independent-agent-integration': ('Independent agent integration', '独立 Agent 集成'),
+    'independent-reconstruction': ('Independent reconstruction project', '独立重建项目'),
     'foundation': ('Foundation tool', '基础工具'),
     'learning': ('Learning resource', '学习资源'),
 }
@@ -102,12 +105,17 @@ def collection_section(record):
         return 'website'
     if record['id'] in {'renderdoc-mcp', 'rea-dxball-case', 'rea-th04-case'} or category == 'game-analysis':
         return 'game'
-    if record['id'] in {'jadx-ai-mcp', 'frida-mcp-yfe404', 'super-trouper', 'frida', 'rea-aegis-case', 'rea-notion-case'} or category in {'android', 'dotnet', 'javascript-electron'}:
+    if record['id'] in {'jadx-ai-mcp', 'frida-mcp-yfe404', 'super-trouper', 'frida', 'rea-aegis-case', 'rea-notion-case'} or category in {'android', 'dotnet', 'jvm', 'javascript-electron'}:
         return 'app'
     if category == 'firmware' or record['id'] == 'picoprint-rea-investigation':
         return 'firmware'
     if category in {'core', 'agent-mcp', 'agent-workflows', 'community-integrations'}:
         return 'agents-and-mcp'
+    if kind == 'case-study':
+        # New community cases should follow their target, not silently become binaries.
+        for target in ('website', 'game', 'app', 'firmware'):
+            if target in record.get('targets', []):
+                return target
     return 'native-binary'
 
 
@@ -124,10 +132,14 @@ def entry_type(record, language):
         tags.append('REA')
     elif relation == 'community-reported-mixed-workflow':
         tags.append('Mixed workflow' if language == 'en' else '混合工具流程')
+    elif relation == 'independent-reconstruction':
+        tags.append('Independent reconstruction' if language == 'en' else '独立重建')
     elif category == 'android':
         tags.append('Android')
     elif category == 'dotnet':
         tags.append('.NET')
+    elif category == 'jvm':
+        tags.append('JVM')
     elif category == 'webassembly':
         tags.append('WebAssembly')
     elif category == 'binary-libraries':

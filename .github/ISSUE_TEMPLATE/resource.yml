@@ -1,5 +1,5 @@
 name: Suggest a resource
-description: Propose a useful REA resource, independent integration, or learning resource.
+description: Suggest a tool, project, reconstruction case, integration, or collection.
 title: "Resource: "
 body:
   - type: input
@@ -17,6 +17,32 @@ body:
     validations:
       required: true
   - type: dropdown
+    id: kind
+    attributes:
+      label: Resource type
+      options:
+        - Tool
+        - Project
+        - Case study
+        - Integration
+        - Collection
+        - Documentation or reference
+    validations:
+      required: true
+  - type: dropdown
+    id: targets
+    attributes:
+      label: Target areas
+      multiple: true
+      options:
+        - Website
+        - Game
+        - App
+        - Binary
+        - Firmware
+    validations:
+      required: true
+  - type: dropdown
     id: relation
     attributes:
       label: Relationship to REA
@@ -24,6 +50,7 @@ body:
         - Official REA resource
         - Community REA resource
         - Independent agent integration
+        - Independent reconstruction or case study
         - Foundation tool
         - Learning resource
     validations:
