@@ -22,6 +22,7 @@ class Page(HTMLParser):
 
     def handle_starttag(self, tag, attrs):
         values = dict(attrs)
+        assert len(values) == len(attrs), f'Duplicate HTML attributes on {tag}'
         if tag == 'html':
             self.lang = values.get('lang')
         if values.get('id'):

@@ -131,7 +131,7 @@ def _resource_card(record: dict, language: str) -> str:
         for index, url in enumerate(record.get('additional_evidence_urls', []), 1)
     )
     reviewed = str(record['verified_at'])
-    return f'''<article class="resource-card browse-repository" id="{escape(record['id'], quote=True)}" data-record-id="{escape(record['id'], quote=True)}" data-resource-id="{escape(record['id'], quote=True)}" data-resource-id="{escape(record['id'], quote=True)}">
+    return f'''<article class="resource-card browse-repository" id="{escape(record['id'], quote=True)}" data-record-id="{escape(record['id'], quote=True)}" data-resource-id="{escape(record['id'], quote=True)}">
   <div class="card-heading"><h3><a class="card-title-link" href="{_url(record['url'])}" target="_blank" rel="noopener noreferrer">{escape(name)}<span class="browse-text-arrow" aria-hidden="true">↗</span></a></h3><span class="resource-kind">{escape(kind)}</span></div>
   <p class="card-description">{escape(description)}</p>
   <div class="card-meta"><span>{escape(targets)}</span><a href="{_url(record['evidence_url'])}" target="_blank" rel="noopener noreferrer">{('原始来源 ↗' if zh else 'Primary source ↗')}</a></div>
