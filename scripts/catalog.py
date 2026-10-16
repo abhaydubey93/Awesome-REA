@@ -4,6 +4,9 @@ import argparse
 import json
 from pathlib import Path
 
+from localization import localized_records, read_localizations
+from source_scope import apply_scope, read_scope
+
 ROOT = Path(__file__).resolve().parents[1]
 RESOURCE_FILES = (ROOT / 'data/rea-resources.json', ROOT / 'data/tool-resources.json')
 
@@ -23,8 +26,12 @@ def main():
     parser.add_argument('--source-index', action='store_true', help='Search the separate automated README scan index')
     parser.add_argument('--list-categories', action='store_true')
     args = parser.parse_args()
-    records = (json.loads((ROOT / 'data/source-index.json').read_text())['resources']
-               if args.source_index else load_resources())
+    if args.source_index:
+        records = json.loads((ROOT / 'data/source-index.json').read_text())['resources']
+        records = apply_scope(localized_records(records, read_localizations(ROOT)), read_scope(ROOT))
+        records = [record for record in records if record.get('scope_status') != 'excluded']
+    else:
+        records = load_resources()
     if args.list_categories:
         print('\n'.join(sorted({record['category'] for record in records})))
         return
@@ -37,7 +44,7 @@ def main():
     if args.json:
         print(json.dumps(records, ensure_ascii=False, indent=2))
         return
-    print(f'{len(records)} resources')
+    print(f"{len(records)} {'项资源' if args.language == 'zh' else 'resources'}")
     for record in records:
         print(f"\n{record['name']} [{record.get('relationship', record.get('scan_status'))}]")
         print(record['url'])
@@ -45,7 +52,8 @@ def main():
         requirements = record['requirements']
         if isinstance(requirements, list):
             requirements = ' '.join(requirements)
-        print(f"Requirements: {requirements}")
+        if not args.source_index:
+            print(f"Requirements: {requirements}")
 
 
 if __name__ == '__main__':

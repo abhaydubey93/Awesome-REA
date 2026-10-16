@@ -6,6 +6,14 @@ Initial completed snapshot: **1,600 distinct repository READMEs**, retrieved bet
 
 The authoritative counts and collection window are in the index's `meta` object. `successful_readme_scans` counts distinct public GitHub repositories whose README content was actually retrieved, decoded, inspected for document features, and SHA-256 hashed. Search result totals, discovered candidates, missing READMEs, and failed requests are not included in that number.
 
+## Collection scope
+
+The scan retains **1,600 repository records** as discovery evidence. A separate [scope review](../data/source-scope.json) excludes **11 clearly unrelated results** from collection browsing, leaving **1,589 browsable repositories**. These exclusions cover biological sequencing, financial analysis, personal profiles, language-research question classification, chart digitization, a UI animation, and ordinary Bluetooth repair. The original scan, source descriptions, and successful-scan count remain unchanged.
+
+Each exclusion is keyed by the stable source ID and records its decision, bilingual reason, review date, exact scanned README SHA-256, and matching README URL. The [scope helper](../scripts/source_scope.py) validates those bindings and annotates generated records with `scope_status: excluded` and `scope_review`; it does not delete scan evidence. If a source snapshot changes, its scope decision must be reviewed again before reuse.
+
+The remaining 1,589 entries have not all received individual relevance or functionality review. They are a discovery collection, separate from the **81 curated, source-reviewed resources**. Missing target tags alone do not justify exclusion: the unclassified records include game decompilations, language decompilers, and hardware protocol research. Scope decisions are also separate from licensing, safety, and REA compatibility judgments.
+
 ## What was scanned
 
 Queries cover reverse engineering, binary analysis, Ghidra, IDA, Frida, decompilers, disassemblers, firmware analysis, Android, game reconstruction, JavaScript deobfuscation, protocol analysis and related tools. Every executed query, page, result count, timestamp and incomplete-result flag is recorded. Repositories are deduplicated by GitHub's numeric repository ID; private repositories, forks and archived repositories are excluded.

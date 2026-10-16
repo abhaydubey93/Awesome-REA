@@ -13,6 +13,7 @@ from urllib.parse import unquote, urlsplit
 from build_readme import CATEGORIES, RELATIONSHIPS, TARGETS
 from catalog import ROOT, RESOURCE_FILES
 from localization import read_localizations, validate_localizations
+from source_scope import read_scope, validate_scope
 
 
 RESOURCE_FIELDS = {
@@ -393,21 +394,34 @@ def main():
     if index_path.exists():
         try:
             index_document = json.loads(index_path.read_text())
-            scanned = validate_source_index(index_document, errors)
-            validate_localizations(index_document['resources'], read_localizations(ROOT), errors)
         except (OSError, ValueError):
             errors.append('Source index could not be read as JSON.')
+        else:
+            scanned = validate_source_index(index_document, errors)
+            source_records = index_document.get('resources') if isinstance(index_document, dict) else None
+            if (isinstance(source_records, list)
+                    and all(isinstance(record, dict) and isinstance(record.get('id'), str)
+                            for record in source_records)):
+                try:
+                    validate_localizations(source_records, read_localizations(ROOT), errors)
+                except (OSError, ValueError):
+                    errors.append('Repository localizations could not be read as valid JSON.')
+                try:
+                    validate_scope(source_records, read_scope(ROOT), errors)
+                except (OSError, ValueError):
+                    errors.append('Source-scope data could not be read as valid JSON.')
     count = validate_markdown(ROOT, errors)
-    result = subprocess.run([sys.executable, str(ROOT / 'scripts/build_readme.py'), '--check'],
-                            cwd=ROOT, text=True, capture_output=True, check=False)
-    if result.returncode:
-        errors.append((result.stderr or result.stdout).strip())
+    for script in ('build_readme.py', 'build_repository_index.py'):
+        result = subprocess.run([sys.executable, str(ROOT / 'scripts' / script), '--check'],
+                                cwd=ROOT, text=True, capture_output=True, check=False)
+        if result.returncode:
+            errors.append((result.stderr or result.stdout).strip() or f'{script}: generated content check failed.')
     if errors:
         print(f'Validation failed with {len(errors)} issue(s):', file=sys.stderr)
         for error in errors:
             print(f'- {error}', file=sys.stderr)
         return 1
-    print(f'Validated {len(records)} curated resources, {scanned} scanned sources, {len(benchmarks)} benchmark snapshots, {count} Markdown files and both generated catalogs.')
+    print(f'Validated {len(records)} curated resources, {scanned} scanned sources, {len(benchmarks)} benchmark snapshots, {count} Markdown files, both generated catalogs, and the bilingual repository index.')
     return 0
 
 

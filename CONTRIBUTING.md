@@ -22,6 +22,7 @@ Record a primary source and review date. `source-reviewed` means documentation w
 
 ```sh
 python3 scripts/build_readme.py
+python3 scripts/build_repository_index.py
 python3 scripts/validate.py
 python3 scripts/build_site.py
 node --check site/app.js
@@ -33,6 +34,6 @@ Use `python3 scripts/check_links.py` for live source checks. Rate limits and tem
 
 Pull requests receive a [rule-based review](docs/automation.md) from trusted base-branch code. It checks catalog structure, duplicates, source fields, and common privacy mistakes without executing contributor code. Maintainers review resource relevance and factual claims. Passing automation does not automatically approve or merge a contribution.
 
-After changes reach `main`, the connected Cloudflare Pages project runs the collection checks and publishes the website. See the [website maintenance guide](docs/website.md).
+The protected `main` branch requires the `validate` and `review` checks before merging, including for administrators. After changes reach `main`, the connected Cloudflare Pages project runs the collection checks and publishes the website. See the [website maintenance guide](docs/website.md).
 
 Do not include credentials, private account details, personal filesystem paths, proprietary binaries, raw private captures, or licensed Font Awesome Pro files in the public repository. Original contributions use the repository's MIT license; linked resources retain their own licenses.

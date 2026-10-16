@@ -1,0 +1,109 @@
+#!/usr/bin/env python3
+"""Generate a browsable bilingual Markdown index from the scanned repository data."""
+import argparse
+from collections import defaultdict
+import json
+import sys
+
+from build_readme import plain_text
+from catalog import ROOT
+from localization import localized_records, read_localizations
+from source_scope import apply_scope, read_scope
+
+OUTPUT = ROOT / 'docs/repositories'
+SUMMARY_BEGIN = '<!-- BEGIN REPOSITORY INDEX SUMMARY -->'
+SUMMARY_END = '<!-- END REPOSITORY INDEX SUMMARY -->'
+CATEGORIES = {
+    'web-analysis': ('Websites', '网站'),
+    'game-analysis': ('Games', '游戏'),
+    'android': ('Apps · Android', '应用 · Android'),
+    'managed-code': ('Apps · Managed code', '应用 · 托管代码'),
+    'native-analysis': ('Native binaries', '原生二进制'),
+    'dynamic-analysis': ('Runtime and debugging', '运行时与调试'),
+    'firmware': ('Firmware', '固件'),
+    'protocol-analysis': ('Protocols', '协议'),
+    'reverse-engineering': ('General tools and collections', '通用工具与资源合集'),
+}
+
+
+def rendered_files():
+    document = json.loads((ROOT / 'data/source-index.json').read_text(encoding='utf-8'))
+    scanned = document['resources']
+    localized = localized_records(scanned, read_localizations(ROOT))
+    scoped = apply_scope(localized, read_scope(ROOT))
+    records = [record for record in scoped if record.get('scope_status') != 'excluded']
+    groups = defaultdict(list)
+    for record in records:
+        if record['category'] not in CATEGORIES:
+            raise ValueError(f"Unknown source-index category: {record['category']}")
+        groups[record['category']].append(record)
+    files = {}
+    date = document['meta']['completed_at'][:10]
+    for language, suffix, index in [('en', '', 0), ('zh', '.zh-CN', 1)]:
+        zh = language == 'zh'
+        title = '仓库扫描索引' if zh else 'Scanned Repository Index'
+        intro = (f'从 **{len(scanned):,}** 个已读取 README 的仓库中提供 **{len(records):,}** 个浏览条目；**{len(scanned)-len(records)}** 个明确超出范围的条目保留在原始扫描记录中。'
+                 if zh else f'Browse **{len(records):,}** repositories from **{len(scanned):,}** successful README scans. **{len(scanned)-len(records)}** clearly out-of-scope entries remain in the underlying scan record.')
+        note = ('这些是自动发现的项目，不是逐项精选或运行测试后的推荐。分类来自元数据；简介由上游描述翻译而来。星标为采集时快照，不是实时排名。'
+                if zh else 'These are automatically discovered projects, not individually curated or tested recommendations. Categories derive from metadata and descriptions from upstream text. Stars are collection-time snapshots, not live rankings.')
+        summary = ([f'已读取 **{len(scanned):,}** 个仓库的 README，当前提供 **{len(records):,}** 个浏览条目，明确超出范围的 {len(scanned)-len(records)} 个条目保留在扫描数据中。自动发现的项目与上方精选资源分别维护，未逐项执行测试。', '',
+                    '[按分类在 GitHub 浏览](docs/repositories/README.zh-CN.md) · [网站搜索](https://awesomerea.org/?view=source-index&lang=zh) · [完整双语索引 JSON](https://awesomerea.org/source-index.json) · [精选目录 JSON](https://awesomerea.org/catalog.json)']
+                   if zh else [f'**{len(scanned):,}** repository READMEs scanned; **{len(records):,}** entries available to browse. The {len(scanned)-len(records)} clearly out-of-scope entries remain in the scan data. This automatically discovered index is separate from the curated resources above and has not been individually execution-tested.', '',
+                               '[Browse by category on GitHub](docs/repositories/README.md) · [Search website](https://awesomerea.org/?view=source-index&lang=en) · [Full bilingual index JSON](https://awesomerea.org/source-index.json) · [Curated catalog JSON](https://awesomerea.org/catalog.json)'])
+        root_name = f'README{suffix}.md'
+        root_text = (ROOT / root_name).read_text(encoding='utf-8')
+        if root_text.count(SUMMARY_BEGIN) != 1 or root_text.count(SUMMARY_END) != 1:
+            raise ValueError(f'{root_name}: repository summary markers are required exactly once')
+        before, rest = root_text.split(SUMMARY_BEGIN, 1)
+        _, after = rest.split(SUMMARY_END, 1)
+        files[f'../../{root_name}'] = before + SUMMARY_BEGIN + '\n' + '\n'.join(summary) + '\n' + SUMMARY_END + after
+        navigation = ('[精选资源](../../README.zh-CN.md) · [搜索网站](https://awesomerea.org/?lang=zh&view=source-index) · [下载双语 JSON](https://awesomerea.org/source-index.json) · [English](README.md)'
+                      if zh else '[Curated collection](../../README.md) · [Search website](https://awesomerea.org/?lang=en&view=source-index) · [Download bilingual JSON](https://awesomerea.org/source-index.json) · [简体中文](README.zh-CN.md)')
+        lines = [f'# {title}', '', navigation, '', intro, '', note, '',
+                 f"{'扫描日期' if zh else 'Scan date'}: **{date} UTC**.", '',
+                 '| 分类 | 仓库数 |' if zh else '| Category | Repositories |', '| --- | ---: |']
+        for category, labels in CATEGORIES.items():
+            lines.append(f'| [{labels[index]}]({category}{suffix}.md) | {len(groups[category]):,} |')
+        lines += ['', '[扫描方法](../source-scan.md) · [范围排除记录](../../data/source-scope.json)' if zh else '[Scan methodology](../source-scan.md) · [Scope exclusions](../../data/source-scope.json)', '',
+                  '<!-- Generated by scripts/build_repository_index.py. Edit source data, then rebuild. -->', '']
+        files[f'README{suffix}.md'] = '\n'.join(lines)
+        for category, labels in CATEGORIES.items():
+            counterpart = f'{category}.md' if zh else f'{category}.zh-CN.md'
+            rows = sorted(groups[category], key=lambda record: (-(record.get('stars') or 0), record['full_name'].casefold()))
+            section = [f'# {labels[index]}', '',
+                       f"[{'全部分类' if zh else 'All categories'}](README{suffix}.md) · [{'English' if zh else '简体中文'}]({counterpart})", '',
+                       f"**{len(rows):,} {'个仓库' if zh else 'repositories'}** · {date} UTC", '', note, '']
+            for record in rows:
+                description = record[f'description_{language}'] or ('上游未提供简介。' if zh else 'No upstream description supplied.')
+                stars = record.get('stars')
+                metadata = f" **[{stars:,} {'星标' if zh else 'stars'}]**" if isinstance(stars, int) else ''
+                section.append(f"- [{plain_text(record['full_name'])}]({record['url']}) — {plain_text(description)}{metadata}")
+            section += ['', '<!-- Generated by scripts/build_repository_index.py. Edit source data, then rebuild. -->', '']
+            files[f'{category}{suffix}.md'] = '\n'.join(section)
+    return files, len(records)
+
+
+def main():
+    parser = argparse.ArgumentParser(description=__doc__)
+    parser.add_argument('--check', action='store_true', help='Fail if generated Markdown is missing or stale')
+    args = parser.parse_args()
+    try:
+        files, count = rendered_files()
+        stale = [name for name, content in files.items()
+                 if not (OUTPUT / name).exists() or (OUTPUT / name).read_text(encoding='utf-8') != content]
+        if args.check and stale:
+            print('Repository index needs regeneration: python3 scripts/build_repository_index.py', file=sys.stderr)
+            return 1
+        if not args.check:
+            OUTPUT.mkdir(parents=True, exist_ok=True)
+            for name in stale:
+                (OUTPUT / name).write_text(files[name], encoding='utf-8')
+        print(f"{'Checked' if args.check else 'Generated'} bilingual repository index: {count} entries, {len(files)} pages.")
+        return 0
+    except (OSError, ValueError, KeyError, TypeError) as error:
+        print(f'Repository index generation failed: {error}', file=sys.stderr)
+        return 1
+
+
+if __name__ == '__main__':
+    raise SystemExit(main())

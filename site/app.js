@@ -29,7 +29,7 @@ const UI = {
     "sourceSortLabel": "Sort",
     "sourceSortRelevance": "Automatic relevance",
     "sourceSortStars": "Most stars",
-    "sourceSortUpdated": "Recently updated",
+    "sourceSortPushed": "Recently pushed",
     "sourceSortName": "Repository name",
     "sourceIntro": "Automatically indexed repositories; descriptions and topics come from upstream.",
     "aboutCollection": "About this index",
@@ -59,7 +59,8 @@ const UI = {
     "loadMore": "Show more resources",
     "footerDescription": "An independent resource collection, updated in public.",
     "contributeButton": "Contribute ↗",
-    "downloadData": "Catalog JSON ↗",
+    "downloadSourceData": "Repository index JSON ↓",
+    "downloadCuratedData": "Curated catalog JSON ↓",
     "viewSource": "GitHub ↗",
     "footerLicense": "Original content: MIT. Linked projects keep their own licenses.",
     "readSource": "Source",
@@ -77,6 +78,7 @@ const UI = {
     "sourceScanStatus": "README scanned",
     "sourceRequirementsLabel": "Requirements",
     "sourceRequirements": "Check the upstream README for prerequisites; these have not been manually reviewed.",
+    "sourcePushedAt": "Last pushed",
     "sourceReadmeAt": "README fetched",
     "sourceMetadataAt": "Metadata observed",
     "sourceHash": "README SHA-256",
@@ -112,7 +114,7 @@ const UI = {
     "sourceSortLabel": "排序",
     "sourceSortRelevance": "自动相关性",
     "sourceSortStars": "星标最多",
-    "sourceSortUpdated": "最近更新",
+    "sourceSortPushed": "最近推送",
     "sourceSortName": "仓库名称",
     "sourceIntro": "自动索引的项目仓库，简介与主题来自上游。",
     "aboutCollection": "关于此索引",
@@ -142,7 +144,8 @@ const UI = {
     "loadMore": "加载更多资源",
     "footerDescription": "独立的资源集合，在公开协作中持续更新。",
     "contributeButton": "参与贡献 ↗",
-    "downloadData": "目录 JSON ↗",
+    "downloadSourceData": "仓库索引 JSON ↓",
+    "downloadCuratedData": "精选目录 JSON ↓",
     "viewSource": "GitHub ↗",
     "footerLicense": "原创内容采用 MIT 许可。链接项目保留各自的许可。",
     "readSource": "来源",
@@ -160,6 +163,7 @@ const UI = {
     "sourceScanStatus": "已读取 README",
     "sourceRequirementsLabel": "使用条件",
     "sourceRequirements": "请阅读上游 README 中的前置条件；这些条件尚未人工复核。",
+    "sourcePushedAt": "最近推送时间",
     "sourceReadmeAt": "README 读取时间",
     "sourceMetadataAt": "元数据采集时间",
     "sourceHash": "README SHA-256",
@@ -202,7 +206,7 @@ function applyLanguage() {
 
   renderCategories(); if (state.loaded) render();
   if (state.error) $("#results-status").textContent = t("errorTitle");
-  if (sourceState.loaded) { renderTopicOptions(); renderSources(); }
+  if (sourceState.loaded) { syncTopicInput(); renderSources(); }
   if (sourceState.error) $("#source-status").textContent = t("sourceErrorTitle");
 }
 function renderCategories() {
@@ -254,10 +258,11 @@ $("#clear-filters").addEventListener("click",reset); $("#empty-reset").addEventL
 $("#load-more").addEventListener("click", () => { const previous = state.visible; state.visible += 15; render(); const next = $$(".card-title-link")[previous]; if (next) next.focus({preventScroll:true}); });
 document.addEventListener("keydown", event => { if (event.key === "/" && !event.ctrlKey && !event.metaKey && !event.altKey && !["INPUT","TEXTAREA","SELECT"].includes(document.activeElement.tagName) && !document.activeElement.isContentEditable) { event.preventDefault(); const search = sourceState.mode === "source-index" ? $("#source-search") : $("#search-input"); search.focus(); search.scrollIntoView({block:"center",behavior:"smooth"}); } });
 
-const sourceState = { available: false, loaded: false, loading: false, error: false, mode: "curated", records: [], meta: {}, q: params.get("sourceq") || "", target: params.get("source-target") || "all", topic: params.get("topic") || "", sort: params.get("sort") || "relevance", visible: 24, topicIDs: new Set() };
+const sourceState = { available: false, loaded: false, loading: false, error: false, mode: "curated", records: [], meta: {}, q: params.get("sourceq") || "", target: params.get("source-target") || "all", topic: params.get("topic") || "", sort: params.get("sort") || "relevance", visible: 24, topicIDs: new Set(), topicCounts: [] };
 function sourceURL() { const next = new URL(location.href); if (sourceState.mode === "source-index") next.searchParams.set("view", "source-index"); else next.searchParams.set("view", "curated"); for (const [key,value] of [["sourceq",sourceState.q],["source-target",sourceState.target],["topic",sourceState.topic],["sort",sourceState.sort]]) { if (value && value !== "all" && value !== "relevance") next.searchParams.set(key,value); else next.searchParams.delete(key); } history.replaceState(null,"",next); }
 function configureSourceIndex(meta) {
   const count=Number(meta?.resource_count||0);sourceState.available=count>0;$("#mode-sources").hidden=!sourceState.available;$("#mode-source-count").textContent=count?count.toLocaleString():"";$("#mode-curated-count").textContent=state.records.length;
+  $("#download-source-index").hidden = !sourceState.available;
   const query=new URLSearchParams(location.search);const requested=query.get("view");const legacyCurated=["q","group","category","kind","target"].some(key=>query.has(key));setIndexMode(sourceState.available&&(requested==="source-index"||requested==="repositories"||(!requested&&!legacyCurated))?"source-index":"curated");
 }
 function setIndexMode(mode) {
@@ -269,11 +274,26 @@ function topicLabel(topic) { return state.topicLabels[topic]?.[state.lang] || to
 function topicSearch(topic) { const entry = state.topicLabels[topic]; return [topic, entry?.en || "", entry?.zh || ""].join(" ").toLocaleLowerCase(); }
 function topicDisplay(topic) { const translated = topicLabel(topic); return translated === topic ? topic : `${translated} · ${topic}`; }
 function canonicalTopic(value) { const trimmed=value.trim().toLocaleLowerCase(); const match=Object.entries(state.topicLabels).find(([key, entry]) => [key, `${entry.en} · ${key}`, `${entry.zh} · ${key}`].some(label=>label.toLocaleLowerCase()===trimmed)); return match ? match[0] : value; }
-function renderTopicOptions() {
+function indexSourceTopics() {
   const topicCounts = new Map(); sourceState.records.forEach(r => r.topics.forEach(topic => topicCounts.set(topic,(topicCounts.get(topic)||0)+1)));
   sourceState.topicIDs = new Set(topicCounts.keys());
-  const options = document.createDocumentFragment(); [...topicCounts].sort((a,b) => b[1]-a[1] || a[0].localeCompare(b[0])).slice(0,150).forEach(([topic,count]) => { const option = node("option","",`${topic} (${count})`); option.value=topicDisplay(topic); options.append(option); });
-  $("#source-topic-options").replaceChildren(options); $("#source-topic").value=topicDisplay(sourceState.topic);
+  sourceState.topicCounts = [...topicCounts].sort((a,b) => b[1]-a[1] || a[0].localeCompare(b[0]));
+}
+function topicSuggestions(value = "") {
+  const query = canonicalTopic(value).toLocaleLowerCase().trim();
+  const matches = sourceState.topicCounts.filter(([topic]) => !query || topicSearch(topic).includes(query));
+  const exact = matches.findIndex(([topic]) => topic === query);
+  if (exact > 0) matches.unshift(...matches.splice(exact,1));
+  return matches.slice(0,150);
+}
+function renderTopicOptions(value = $("#source-topic").value) {
+  const options = document.createDocumentFragment(); topicSuggestions(value).forEach(([topic,count]) => { const option = node("option","",`${topic} (${count})`); option.value=topicDisplay(topic); options.append(option); });
+  $("#source-topic-options").replaceChildren(options);
+}
+function syncTopicInput() {
+  const input = $("#source-topic");
+  if (document.activeElement !== input) input.value = topicDisplay(sourceState.topic);
+  renderTopicOptions();
 }
 function sourceTime(value) { return value ? String(value).replace("T"," ").slice(0,19) + (String(value).includes("T") ? " UTC" : "") : t("sourceNotRecorded"); }
 function sourceFiltered() {
@@ -281,7 +301,7 @@ function sourceFiltered() {
   const result = sourceState.records.filter(r => (sourceState.target === "all" || r.targets.includes(sourceState.target)) && (!topic || r.topics.some(item => sourceState.topicIDs.has(topic) ? item === topic : topicSearch(item).includes(topic))) && terms.every(term => r.search.includes(term)));
   const score = r => terms.reduce((sum,term) => sum + (r.full_name.toLocaleLowerCase().includes(term) ? 4 : 0) + (r.topics.some(topic => topicSearch(topic).includes(term)) ? 2 : 0),0);
   if (sourceState.sort === "stars") result.sort((a,b) => (b.stars ?? -1)-(a.stars ?? -1) || a.full_name.localeCompare(b.full_name));
-  else if (sourceState.sort === "updated") result.sort((a,b) => String(b.updated_at || "").localeCompare(String(a.updated_at || "")) || a.full_name.localeCompare(b.full_name));
+  else if (sourceState.sort === "pushed") result.sort((a,b) => String(b.pushed_at || "").localeCompare(String(a.pushed_at || "")) || a.full_name.localeCompare(b.full_name));
   else if (sourceState.sort === "name") result.sort((a,b) => a.full_name.localeCompare(b.full_name));
   else if (terms.length) result.sort((a,b) => score(b)-score(a) || a.order-b.order);
   else {
@@ -298,15 +318,18 @@ function sourceCard(record) {
   if (Number.isFinite(record.stars)) { const stars = node("span","source-stars",record.stars.toLocaleString(state.lang === "zh" ? "zh-CN" : "en-US") + " " + t("sourceStars")); stars.title = t("sourceStarsTitle"); head.append(stars); } article.append(head);
   const description = record[state.lang === "zh" ? "description_zh" : "description_en"];
   article.append(node("p","source-card-description" + (!description ? " source-card-empty" : ""),description || t("sourceNoDescription")));
-  if (record.topics.length) { const topics = node("div","source-topics"); record.topics.slice(0,4).forEach(topic => { const button = node("button","source-topic-chip",topicLabel(topic)); button.type = "button"; button.title = t("sourceTopicHint") + ": " + topic; button.addEventListener("click",() => { sourceState.topic = topic; sourceState.visible = 24; $("#source-topic").value = topicDisplay(topic); sourceURL(); renderSources(); }); topics.append(button); }); article.append(topics); }
+  if (record.topics.length) { const topics = node("div","source-topics"); record.topics.slice(0,4).forEach(topic => { const button = node("button","source-topic-chip",topicLabel(topic)); button.type = "button"; button.title = t("sourceTopicHint") + ": " + topic; button.addEventListener("click",() => { sourceState.topic = topic; sourceState.visible = 24; syncTopicInput(); sourceURL(); renderSources(); }); topics.append(button); }); article.append(topics); }
   const footer = node("div","source-card-footer"); footer.append(external(record.readme_url || record.url,"","README ↗")); const license = typeof record.license === "string" && record.license.trim() && record.license.toUpperCase() !== "NOASSERTION" ? record.license : t("sourceLicenseUnknown"); footer.append(node("span","source-card-license",license)); article.append(footer);
   const details = node("details","source-record-details"); details.append(node("summary","",t("sourceScanDetails"))); const dl = node("dl");
-  [[t("indexStatusLabel"),t("sourceScanStatus")],[t("sourceRequirementsLabel"),t("sourceRequirements")],[t("sourceReadmeAt"),sourceTime(record.observed_at)],[t("sourceMetadataAt"),sourceTime(record.metadata_observed_at)],[t("sourceHash"),record.readme_sha256 || t("sourceNotRecorded")],[t("sourceRevision"),record.readme_git_sha || t("sourceNotRecorded")],[t("sourceReadmeSize"),record.readme_bytes != null ? Number(record.readme_bytes).toLocaleString() : t("sourceNotRecorded")]].forEach(([label,value]) => dl.append(node("dt","",label),node("dd","",String(value)))); details.append(dl); article.append(details); return article;
+  [[t("indexStatusLabel"),t("sourceScanStatus")],[t("sourceRequirementsLabel"),t("sourceRequirements")],[t("sourcePushedAt"),sourceTime(record.pushed_at)],[t("sourceReadmeAt"),sourceTime(record.observed_at)],[t("sourceMetadataAt"),sourceTime(record.metadata_observed_at)],[t("sourceHash"),record.readme_sha256 || t("sourceNotRecorded")],[t("sourceRevision"),record.readme_git_sha || t("sourceNotRecorded")],[t("sourceReadmeSize"),record.readme_bytes != null ? Number(record.readme_bytes).toLocaleString() : t("sourceNotRecorded")]].forEach(([label,value]) => dl.append(node("dt","",label),node("dd","",String(value)))); details.append(dl); article.append(details); return article;
 }
 function renderSources() {
   if (!sourceState.loaded) return; const expanded = new Set($$(".source-card:has(details[open])").map(el=>el.dataset.recordId)); const found = sourceFiltered(); const fragment = document.createDocumentFragment(); found.slice(0,sourceState.visible).forEach(record => fragment.append(sourceCard(record))); $("#source-results").replaceChildren(fragment); $$(".source-card").forEach(el=>{if(expanded.has(el.dataset.recordId))el.querySelector("details").open=true;}); $("#source-results").setAttribute("aria-busy","false");
   $("#source-status").textContent = state.lang === "zh" ? `${found.length.toLocaleString()} 个匹配仓库 · 共 ${sourceState.records.length.toLocaleString()} 个仓库` : (found.length === sourceState.records.length ? `${found.length.toLocaleString()} ${found.length === 1 ? "repository" : "repositories"}` : `${found.length.toLocaleString()} ${found.length === 1 ? "result" : "results"} · ${sourceState.records.length.toLocaleString()} ${sourceState.records.length === 1 ? "repository" : "repositories"}`);
-  const completed = sourceState.meta.completed_at || sourceState.meta.finished_at || ""; $("#source-snapshot").textContent = (state.lang === "zh" ? "自动目标标签仅用于发现项目。星标为采集时快照。" : "Automatic target labels aid discovery. Stars are collection-time snapshots.") + (completed ? (state.lang === "zh" ? " 扫描完成于 " : " Scan completed ") + sourceTime(completed) : "") + (sourceState.meta.status === "in-progress" ? (state.lang === "zh" ? " 扫描进行中；此处显示已读取的快照。" : " Scan in progress; this is the successfully fetched snapshot.") : "");
+  const completed = sourceState.meta.completed_at || sourceState.meta.finished_at || "";
+  const scanned = Number(sourceState.meta.scope?.scanned_count || 0), excluded = Number(sourceState.meta.scope?.excluded_count || 0);
+  const scopeNote = scanned > 0 && excluded > 0 ? (state.lang === "zh" ? ` 共扫描 ${scanned.toLocaleString("zh-CN")} 个仓库；其中 ${excluded.toLocaleString("zh-CN")} 个超出本合集范围，不在浏览列表中显示，完整 JSON 下载仍保留。` : ` Scanned ${scanned.toLocaleString("en-US")} repositories; ${excluded.toLocaleString("en-US")} outside this collection’s scope are omitted from browsing and retained in the full JSON download.`) : "";
+  $("#source-snapshot").textContent = (state.lang === "zh" ? "自动目标标签仅用于发现项目。星标为采集时快照。" : "Automatic target labels aid discovery. Stars are collection-time snapshots.") + (completed ? (state.lang === "zh" ? " 扫描完成于 " : " Scan completed ") + sourceTime(completed) + (state.lang === "zh" ? "。" : ".") : "") + (sourceState.meta.status === "in-progress" ? (state.lang === "zh" ? " 扫描进行中；此处显示已读取的快照。" : " Scan in progress; this is the successfully fetched snapshot.") : "") + scopeNote;
   $("#source-empty").hidden = found.length > 0; $("#source-error").hidden = true; $("#source-more-row").hidden = found.length <= sourceState.visible; $("#source-more-count").textContent = "+"+Math.min(24,Math.max(0,found.length-sourceState.visible)); $("#source-shown").textContent = state.lang === "zh" ? `已显示 ${Math.min(found.length,sourceState.visible)} / ${found.length} 个仓库` : `${Math.min(found.length,sourceState.visible)} of ${found.length} ${found.length === 1 ? "repository" : "repositories"} shown`;
   $("#source-clear").hidden = !sourceState.q && !sourceState.topic && sourceState.target === "all" && sourceState.sort === "relevance";
   $$('[data-source-target]').forEach(button => { const active = button.dataset.sourceTarget === sourceState.target; button.classList.toggle("active",active); button.setAttribute("aria-pressed",String(active)); });
@@ -315,18 +338,21 @@ async function loadSources() {
   if (sourceState.loading) return; sourceState.loading = true; sourceState.error = false; $("#source-results").setAttribute("aria-busy","true"); $("#source-error").hidden = true; $("#source-status").textContent = t("sourceLoading");
   try {
     const response = await fetch(dataURL("source-index.json"), {cache: "no-cache"}); if (!response.ok) throw new Error("Source index HTTP "+response.status); const data = await response.json(); sourceState.meta = data.meta || {};
-    sourceState.records = (data.resources || []).filter(r => r.scan_status === "readme-scanned").map((r,index) => { const topics = Array.isArray(r.topics) ? r.topics.map(String) : []; const targets = Array.isArray(r.targets) ? r.targets : []; const full_name = r.full_name || r.name || r.id; return {...r,full_name,topics,targets,order:index,search:[full_name,r.description_en || "",r.description_zh || "",r.description_original || "",r.category || "",...topics.map(topicSearch),...targets.flatMap(target => [target, UI.en["target"+target[0].toUpperCase()+target.slice(1)], UI.zh["target"+target[0].toUpperCase()+target.slice(1)]])].join(" ").toLocaleLowerCase()}; });
-    sourceState.loaded = true; renderTopicOptions(); $("#mode-source-count").textContent = sourceState.records.length.toLocaleString(); renderSources();
+    sourceState.records = (data.resources || []).filter(r => r.scan_status === "readme-scanned" && r.scope_status !== "excluded").map((r,index) => { const topics = Array.isArray(r.topics) ? r.topics.map(String) : []; const targets = Array.isArray(r.targets) ? r.targets : []; const full_name = r.full_name || r.name || r.id; return {...r,full_name,topics,targets,order:index,search:[full_name,r.description_en || "",r.description_zh || "",r.description_original || "",r.category || "",...topics.map(topicSearch),...targets.flatMap(target => [target, UI.en["target"+target[0].toUpperCase()+target.slice(1)], UI.zh["target"+target[0].toUpperCase()+target.slice(1)]])].join(" ").toLocaleLowerCase()}; });
+    sourceState.loaded = true; indexSourceTopics(); syncTopicInput(); $("#mode-source-count").textContent = sourceState.records.length.toLocaleString(); renderSources();
   } catch (_) { sourceState.error = true; $("#source-status").textContent = t("sourceErrorTitle"); $("#source-results").setAttribute("aria-busy","false"); $("#source-error").hidden = false; $("#source-empty").hidden = true; $("#source-more-row").hidden = true; }
   finally { sourceState.loading = false; }
 }
-function resetSources() { sourceState.q=""; sourceState.topic=""; sourceState.target="all"; sourceState.sort="relevance"; sourceState.visible=24; $("#source-search").value=""; $("#source-topic").value=""; $("#source-sort").value="relevance"; sourceURL(); renderSources(); }
+function resetSources() { sourceState.q=""; sourceState.topic=""; sourceState.target="all"; sourceState.sort="relevance"; sourceState.visible=24; $("#source-search").value=""; $("#source-topic").value=""; $("#source-sort").value="relevance"; renderTopicOptions(); sourceURL(); renderSources(); }
 $("#mode-curated").addEventListener("click",() => setIndexMode("curated")); $("#mode-sources").addEventListener("click",() => setIndexMode("source-index"));
 if (!["all","website","game","app","binary","firmware"].includes(sourceState.target)) sourceState.target="all";
-if (!["relevance","stars","updated","name"].includes(sourceState.sort)) sourceState.sort="relevance";
+if (sourceState.sort === "updated") sourceState.sort = "pushed";
+if (!["relevance","stars","pushed","name"].includes(sourceState.sort)) sourceState.sort="relevance";
 $("#source-search").value=sourceState.q; $("#source-topic").value=sourceState.topic; $("#source-sort").value=sourceState.sort;
-for (const [selector,key,event] of [["#source-search","q","input"],["#source-topic","topic","input"],["#source-sort","sort","change"]]) $(selector).addEventListener(event,e => { sourceState[key]=key === "topic" ? canonicalTopic(e.target.value) : e.target.value; sourceState.visible=24; sourceURL(); renderSources(); });
+for (const [selector,key,event] of [["#source-search","q","input"],["#source-topic","topic","input"],["#source-sort","sort","change"]]) $(selector).addEventListener(event,e => { sourceState[key]=key === "topic" ? canonicalTopic(e.target.value) : e.target.value; if (key === "topic") renderTopicOptions(e.target.value); sourceState.visible=24; sourceURL(); renderSources(); });
 $$('[data-source-target]').forEach(button => button.addEventListener("click",() => { sourceState.target=button.dataset.sourceTarget; sourceState.visible=24; sourceURL(); renderSources(); }));
 $("#source-clear").addEventListener("click",resetSources); $("#source-reset").addEventListener("click",resetSources); $("#source-retry").addEventListener("click",loadSources); $("#source-more").addEventListener("click",() => { const previous=sourceState.visible; sourceState.visible+=24; renderSources(); $$(".source-title-link")[previous]?.focus({preventScroll:true}); });
 
+$("#download-source-index").href = dataURL("source-index.json");
+$("#download-curated-catalog").href = dataURL("catalog.json");
 applyLanguage(); load();

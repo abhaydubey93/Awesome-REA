@@ -2,12 +2,12 @@
 
 收集值得关注的**工具、项目、集成与参考资料**，覆盖网站、游戏、应用、原生二进制、固件与硬件逆向。
 
-**[网站](https://awesomerea.org) · [完整仓库索引](https://awesomerea.org/?view=source-index&lang=zh) · [GitHub](https://github.com/reacher-z/Awesome-REA) · [English](README.md)**
+**[网站](https://awesomerea.org/?lang=zh) · [完整仓库索引](https://awesomerea.org/?view=source-index&lang=zh) · [GitHub](https://github.com/reacher-z/Awesome-REA) · [English](README.md)**
 
 [![目录检查](https://github.com/reacher-z/Awesome-REA/actions/workflows/validate.yml/badge.svg)](https://github.com/reacher-z/Awesome-REA/actions/workflows/validate.yml)
 [![MIT 许可证](https://img.shields.io/badge/License-MIT-blue.svg)](LICENSE)
 
-<a href="https://awesomerea.org"><img src="assets/readme-banner.svg" alt="Awesome Reverse Engineering Anything — 工具、项目、集成与资源合集" width="760"></a>
+<a href="https://awesomerea.org/?lang=zh"><img src="assets/readme-banner.svg" alt="Awesome Reverse Engineering Anything — 工具、项目、集成与资源合集" width="760"></a>
 
 ## 目录
 
@@ -146,7 +146,11 @@
 <a id="搜索目录"></a>
 ## 完整仓库索引
 
-[完整仓库索引](https://awesomerea.org/?view=source-index&lang=zh) 提供更广的项目发现入口，可按仓库、主题和目标搜索。它是独立的自动扫描数据层，其中的项目并非全部经过逐项精选或运行测试。
+<!-- BEGIN REPOSITORY INDEX SUMMARY -->
+已读取 **1,600** 个仓库的 README，当前提供 **1,589** 个浏览条目，明确超出范围的 11 个条目保留在扫描数据中。自动发现的项目与上方精选资源分别维护，未逐项执行测试。
+
+[按分类在 GitHub 浏览](docs/repositories/README.zh-CN.md) · [网站搜索](https://awesomerea.org/?view=source-index&lang=zh) · [完整双语索引 JSON](https://awesomerea.org/source-index.json) · [精选目录 JSON](https://awesomerea.org/catalog.json)
+<!-- END REPOSITORY INDEX SUMMARY -->
 
 上面的资源清单依据一手来源整理。详细前置条件、原始来源与审阅日期保存在[目录数据](data/README.md)中。
 

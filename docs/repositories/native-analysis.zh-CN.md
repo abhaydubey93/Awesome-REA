@@ -1,0 +1,521 @@
+# 原生二进制
+
+[全部分类](README.zh-CN.md) · [English](native-analysis.md)
+
+**511 个仓库** · 2026-10-16 UTC
+
+这些是自动发现的项目，不是逐项精选或运行测试后的推荐。分类来自元数据；简介由上游描述翻译而来。星标为采集时快照，不是实时排名。
+
+- [NationalSecurityAgency/ghidra](https://github.com/NationalSecurityAgency/ghidra) — Ghidra 是一个软件逆向工程（SRE）框架。 **[88,799 星标]**
+- [WerWolv/ImHex](https://github.com/WerWolv/ImHex) — 🔍 面向逆向工程师、程序员，以及凌晨 3 点工作时仍爱护视力的人士的十六进制编辑器。 **[55,252 星标]**
+- [radareorg/radare2](https://github.com/radareorg/radare2) — 类 UNIX 的逆向工程框架和命令行工具集。 **[25,054 星标]**
+- [rizinorg/cutter](https://github.com/rizinorg/cutter) — 由 rizin 驱动的自由开源逆向工程平台。 **[20,030 星标]**
+- [mytechnotalent/Reverse-Engineering](https://github.com/mytechnotalent/Reverse-Engineering) — 免费的全面逆向工程教程，涵盖 x86、x64、32 位/64 位 ARM、8 位 AVR 和 32 位 RISC-V 架构。 **[14,719 星标]**
+- [mrexodia/ida-pro-mcp](https://github.com/mrexodia/ida-pro-mcp) — 通过 MCP 将 IDA Pro 与语言模型连接起来的 AI 逆向工程助手。 **[12,922 星标]**
+- [horsicq/Detect-It-Easy](https://github.com/horsicq/Detect-It-Easy) — 用于识别文件类型的程序，支持 Windows、Linux 和 macOS。 **[11,732 星标]**
+- [pwndbg/pwndbg](https://github.com/pwndbg/pwndbg) — 让使用 GDB 和 LLDB 进行漏洞利用开发与逆向工程变得简单。 **[11,064 星标]**
+- [unicorn-engine/unicorn](https://github.com/unicorn-engine/unicorn) — Unicorn CPU 模拟器框架，支持 ARM、AArch64、M68K、Mips、Sparc、PowerPC、RiscV、S390x、TriCore 和 X86。 **[9,451 星标]**
+- [capstone-engine/capstone](https://github.com/capstone-engine/capstone) — Capstone 反汇编框架，支持 ARM、ARM64（ARMv8）、Alpha、BPF、Ethereum VM、HPPA、LoongArch、M68K、M680X、Mips、MOS65XX、PPC、RISC-V（rv32G/rv64G）、SH、Sparc、SystemZ、TMS320C64X、TriCore、WebAssembly、XCore 和 X86。 **[9,107 星标]**
+- [hugsy/gef](https://github.com/hugsy/gef) — GEF（GDB Enhanced Features）：为 Linux 上的漏洞利用开发人员和逆向工程师提供现代化 GDB 体验及高级调试功能。 **[8,399 星标]**
+- [albertan017/LLM4Decompile](https://github.com/albertan017/LLM4Decompile) — 逆向工程：利用大语言模型反编译二进制代码。 **[7,134 星标]**
+- [mandiant/capa](https://github.com/mandiant/capa) — FLARE 团队的开源工具，用于识别可执行文件的能力。 **[6,247 星标]**
+- [0xZ0F/Z0FCourse_ReverseEngineering](https://github.com/0xZ0F/Z0FCourse_ReverseEngineering) — 专注于 x64 Windows 的逆向工程。 **[5,962 星标]**
+- [bethington/ghidra-mcp](https://github.com/bethington/ghidra-mcp) — Ghidra MCP Server：提供 200 多个 MCP 工具，支持 AI 逆向工程。包含 GUI 插件与无界面服务器、工具延迟加载、约定约束、批量操作、Ghidra Server 集成和 Docker 部署。 **[5,659 星标]**
+- [lief-project/LIEF](https://github.com/lief-project/LIEF) — LIEF：用于可执行文件格式插桩的库，支持 C++、Python 和 Rust。 **[5,595 星标]**
+- [pret/pokered](https://github.com/pret/pokered) — 《宝可梦 红/蓝》的反汇编代码。 **[4,993 星标]**
+- [zrax/pycdc](https://github.com/zrax/pycdc) — 以 C++ 编写的 Python 字节码反汇编器与反编译器。 **[4,651 星标]**
+- [JonathanSalwan/ROPgadget](https://github.com/JonathanSalwan/ROPgadget) — 在二进制文件中搜索 gadget，方便进行 ROP 漏洞利用。ROPgadget 支持 x86、x64、ARM、ARM64、PowerPC、SPARC、MIPS、RISC-V 64 和 RISC-V Compressed 架构上的 ELF、PE 与 Mach-O 格式。 **[4,498 星标]**
+- [orhun/binsider](https://github.com/orhun/binsider) — 像高手一样分析 ELF 二进制文件 😼🕵️‍♂️。 **[4,481 星标]**
+- [zyantific/zydis](https://github.com/zyantific/zydis) — 快速、轻量的 x86/x86-64 反汇编与代码生成库。 **[4,393 星标]**
+- [JonathanSalwan/Triton](https://github.com/JonathanSalwan/Triton) — Triton 是动态二进制分析库。可用它构建程序分析工具、自动化逆向工程、执行软件验证或模拟代码运行。 **[4,332 星标]**
+- [cea-sec/miasm](https://github.com/cea-sec/miasm) — Python 逆向工程框架。 **[3,992 星标]**
+- [rizinorg/rizin](https://github.com/rizinorg/rizin) — 类 UNIX 的逆向工程框架和命令行工具集。 **[3,972 星标]**
+- [joernio/joern](https://github.com/joernio/joern) — 基于代码属性图的开源代码分析平台，支持 C/C++/Java/二进制文件/JavaScript/Python/Kotlin。Discord：https://discord.gg/vv4MH284Hc **[3,576 星标]**
+- [JusticeRage/Gepetto](https://github.com/JusticeRage/Gepetto) — 通过查询语言模型来加速逆向工程的 IDA 插件。 **[3,487 星标]**
+- [ljagiello/ctf-skills](https://github.com/ljagiello/ctf-skills) — 用于解决 CTF 挑战的智能体技能，涵盖 Web 漏洞利用、二进制 pwn、密码学、逆向工程、取证、OSINT 等。 **[3,459 星标]**
+- [horsicq/DIE-engine](https://github.com/horsicq/DIE-engine) — DIE 引擎。 **[3,314 星标]**
+- [google/bindiff](https://github.com/google/bindiff) — 快速找出反汇编代码中的异同。 **[3,207 星标]**
+- [plasma-disassembler/plasma](https://github.com/plasma-disassembler/plasma) — Plasma 是面向 x86/ARM/MIPS 的交互式反汇编器，可生成带缩进和语法着色的伪代码。 **[3,071 星标]**
+- [djkaty/Il2CppInspector](https://github.com/djkaty/Il2CppInspector) — 用于逆向工程 Unity IL2CPP 二进制文件的强大自动化工具。 **[3,056 星标]**
+- [BinaryAnalysisPlatform/bap](https://github.com/BinaryAnalysisPlatform/bap) — 二进制分析平台。 **[2,262 星标]**
+- [Dryxio/reagent](https://github.com/Dryxio/reagent) — 利用 AI 从已编译程序中重建并验证 C/C++ 代码。 **[2,100 星标]**
+- [KasperskyLab/hrtng](https://github.com/KasperskyLab/hrtng) — 功能丰富的 IDA Pro 插件，支持解密、去混淆、打补丁、库代码识别及各种伪代码转换。 **[1,949 星标]**
+- [yetone/native-feel-skill](https://github.com/yetone/native-feel-skill) — 用于设计具有原生体验的跨平台桌面应用的智能体技能，提炼自对 Raycast 2.0 的深入研究与 Raycast Beta.app 的逆向分析。包含八项架构原则、四层架构、WebKit/WebView2 生存指南和 75 项发布审核清单。 **[1,931 星标]**
+- [airbus-seclab/bincat](https://github.com/airbus-seclab/bincat) — 集成 IDA 的二进制代码静态分析器，可执行值分析、污点分析、类型重建、释放后使用及重复释放检测。 **[1,880 星标]**
+- [redasm-dev/redasm](https://github.com/redasm-dev/redasm) — 开源反汇编器。 **[1,822 星标]**
+- [cmu-sei/pharos](https://github.com/cmu-sei/pharos) — 面向二进制程序的自动化静态分析工具。 **[1,739 星标]**
+- [KeenSecurityLab/BinAbsInspector](https://github.com/KeenSecurityLab/BinAbsInspector) — BinAbsInspector：二进制文件漏洞扫描器。 **[1,681 星标]**
+- [illera88/Ponce](https://github.com/illera88/Ponce) — IDA 2016 插件竞赛获奖作品！一键即可使用符号执行！ **[1,635 星标]**
+- [Jon-Becker/heimdall-rs](https://github.com/Jon-Becker/heimdall-rs) — Heimdall 是高级 EVM 智能合约工具包，专注于字节码分析与从未经验证的合约中提取信息。 **[1,626 星标]**
+- [attify/firmware-analysis-toolkit](https://github.com/attify/firmware-analysis-toolkit) — 结合二进制分析、污点追踪和模拟执行的固件安全研究平台，覆盖物联网、边缘 AI、移动设备和机器人。 **[1,615 星标]**
+- [m4b/goblin](https://github.com/m4b/goblin) — 使用 Rust 编写的轻巧跨平台二进制解析 crate。 **[1,555 星标]**
+- [igogo-x86/HexRaysPyTools](https://github.com/igogo-x86/HexRaysPyTools) — IDA Pro 插件，可改善 Hex-Rays 反编译器的使用体验，并辅助重建结构体和类。 **[1,541 星标]**
+- [mandiant/flare-learning-hub](https://github.com/mandiant/flare-learning-hub) — FLARE 团队提供的免费逆向工程与恶意软件分析教学内容。 **[1,496 星标]**
+- [angusdevgo/Seep-Reverse-Lab](https://github.com/angusdevgo/Seep-Reverse-Lab) — 面向智能体原生设计的多平台逆向工程与 CWE-602 客户端授权审计工作台。 **[1,462 星标]**
+- [hteso/iaito](https://github.com/hteso/iaito) — 本项目已迁移至： **[1,461 星标]**
+- [programa-stic/barf-project](https://github.com/programa-stic/barf-project) — BARF：跨平台开源二进制分析与逆向工程框架。 **[1,455 星标]**
+- [L4ys/LazyIDA](https://github.com/L4ys/LazyIDA) — 让你的 IDA 更省事！ **[1,447 星标]**
+- [AllsafeCyberSecurity/awesome-ghidra](https://github.com/AllsafeCyberSecurity/awesome-ghidra) — 精选 Ghidra 优质资料列表。 **[1,442 星标]**
+- [WPeace-HcH/WPeGPT](https://github.com/WPeace-HcH/WPeGPT) — 由 OpenAI、DeepSeek 等 AI 模型驱动的 IDA 二进制文件分析插件。 **[1,425 星标]**
+- [fkie-cad/cwe_checker](https://github.com/fkie-cad/cwe_checker) — cwe_checker 可在二进制可执行文件中查找易受攻击的模式。 **[1,362 星标]**
+- [gdabah/distorm](https://github.com/gdabah/distorm) — 功能强大的 x86/AMD64 反汇编库。 **[1,340 星标]**
+- [Vector35/binaryninja-api](https://github.com/Vector35/binaryninja-api) — Binary Ninja 的公共 API、示例、文档与问题跟踪。 **[1,327 星标]**
+- [2akouwu/reverify](https://github.com/2akouwu/reverify) — 阻止 AI 凭空编造：由 AI 提出建议，确定性工具作出判定，每项断言均依据真实数据与证据核验。经过验证的事实和上下文可在重置后保留，以逆向工程作为验证场景。提供 MCP 服务器与命令行工具。 **[1,297 星标]**
+- [rdbo/libmem](https://github.com/rdbo/libmem) — 适用于 C、现代 C++、Rust 和 Python 的高级游戏破解库，支持 Windows/Linux/FreeBSD、进程/内存操作、Hook/Detour、跨平台、x86/x64、DLL/SO 注入、内部/外部模式及汇编/反汇编。 **[1,263 星标]**
+- [horsicq/XPEViewer](https://github.com/horsicq/XPEViewer) — 适用于 Windows、Linux 和 macOS 的 PE 文件查看器与编辑器。 **[1,241 星标]**
+- [amruth-sn/kong](https://github.com/amruth-sn/kong) — 全球首个智能体式逆向工程师。 **[1,227 星标]**
+- [google/binexport](https://github.com/google/binexport) — 将反汇编结果导出为 Protocol Buffers。 **[1,214 星标]**
+- [P1sec/hermes-dec](https://github.com/P1sec/hermes-dec) — 用于反编译和反汇编 React Native Hermes 字节码的逆向工程工具。 **[1,213 星标]**
+- [petoolse/petools](https://github.com/petoolse/petools) — PE Tools：可移植可执行文件（PE）操作工具包。 **[1,201 星标]**
+- [ghidraninja/ghidra_scripts](https://github.com/ghidraninja/ghidra_scripts) — 适用于 Ghidra 软件逆向工程套件的脚本。 **[1,177 星标]**
+- [GJDuck/e9patch](https://github.com/GJDuck/e9patch) — 功能强大的静态二进制重写工具。 **[1,156 星标]**
+- [REhints/efiXplorer](https://github.com/REhints/efiXplorer) — 用于自动化 UEFI 固件分析与逆向工程的 IDA 插件和加载器。 **[1,138 星标]**
+- [bitdefender/bddisasm](https://github.com/bitdefender/bddisasm) — bddisasm 是快速、轻量的 x86/x64 指令解码器。项目还提供快速、基础的 x86/x64 指令模拟器，专门用于检测类似 shellcode 的行为。 **[1,089 星标]**
+- [wisk/medusa](https://github.com/wisk/medusa) — 开源交互式反汇编器。 **[1,089 星标]**
+- [vivisect/vivisect](https://github.com/vivisect/vivisect) — 上游未提供简介。 **[1,003 星标]**
+- [ioncodes/idacode](https://github.com/ioncodes/idacode) — 连接 IDA 与 VS Code 的集成工具，便于执行和调试 IDAPython 脚本。 **[994 星标]**
+- [rizinorg/rz-ghidra](https://github.com/rizinorg/rz-ghidra) — 为 rizin 深度集成 Ghidra 反编译器与 Sleigh 反汇编器。 **[993 星标]**
+- [x86byte/RE-MA-Roadmap](https://github.com/x86byte/RE-MA-Roadmap) — 逆向工程与恶意软件分析学习路线图。 **[951 星标]**
+- [radareorg/radare2-book](https://github.com/radareorg/radare2-book) — Radare2 官方书籍。 **[921 星标]**
+- [CheckPointSW/Karta](https://github.com/CheckPointSW/Karta) — Karta：借助源代码进行快速二进制匹配的 IDA 插件。 **[912 星标]**
+- [NaC-L/Mergen](https://github.com/NaC-L/Mergen) — 使用 LLVM IR 并解析汇编，通过优化实现去混淆。 **[912 星标]**
+- [HackOvert/GhidraSnippets](https://github.com/HackOvert/GhidraSnippets) — 适用于 Ghidra Program 和 Decompiler API 的 Python 代码片段。 **[893 星标]**
+- [vulhunt-re/vulhunt](https://github.com/vulhunt-re/vulhunt) — Binarly 研究团队开发的漏洞检测框架。 **[893 星标]**
+- [n0mi1k/apk2url](https://github.com/n0mi1k/apk2url) — 通过反汇编与反编译，快速从 APK 中提取 IP 和 URL 端点的 OSINT 工具。 **[880 星标]**
+- [symgraph/IDAssist](https://github.com/symgraph/IDAssist) — 面向 IDA Pro 的 AI 驱动逆向工程插件。 **[880 星标]**
+- [GrammaTech/ddisasm](https://github.com/GrammaTech/ddisasm) — 快速且准确的反汇编器。 **[876 星标]**
+- [cyberkaida/reverse-engineering-assistant](https://github.com/cyberkaida/reverse-engineering-assistant) — 用于 Ghidra 逆向工程任务的 MCP 服务器 👩‍💻。 **[875 星标]**
+- [Adamkadaban/CTFs](https://github.com/Adamkadaban/CTFs) — CTF 速查表，以及我参加过的一些安全 CTF 的题解和文件。 **[869 星标]**
+- [fjh658/IDA7.0_SP](https://github.com/fjh658/IDA7.0_SP) — IDA7.0_SP 是 IDA 的错误修复补丁。 **[863 星标]**
+- [eset/ipyida](https://github.com/eset/ipyida) — 为 IDA Pro 集成 IPython 控制台。 **[857 星标]**
+- [decaf-project/DECAF](https://github.com/decaf-project/DECAF) — DECAF（Dynamic Executable Code Analysis Framework，动态可执行代码分析框架）是基于 QEMU 的二进制分析平台。这里也托管 DroidScope 动态 Android 恶意软件分析平台，DroidScope 现已成为 DECAF 的扩展。 **[841 星标]**
+- [weirdmachine64/GhidraGPT](https://github.com/weirdmachine64/GhidraGPT) — 将 LLM 模型直接集成到 Ghidra 中，以 AI 增强逆向工程。 **[826 星标]**
+- [Cisco-Talos/GhIDA](https://github.com/Cisco-Talos/GhIDA) — 上游未提供简介。 **[820 星标]**
+- [clearbluejar/ghidriff](https://github.com/clearbluejar/ghidriff) — 基于 Python 命令行的 Ghidra 二进制差异比较引擎。 **[813 星标]**
+- [mentebinaria/readpe](https://github.com/mentebinaria/readpe) — PE 文件分析工具包。 **[789 星标]**
+- [danigargu/deREferencing](https://github.com/danigargu/deREferencing) — 提供更友好寄存器和栈视图的 IDA Pro 插件。 **[775 星标]**
+- [symgraph/GhidrAssistMCP](https://github.com/symgraph/GhidrAssistMCP) — Ghidra 的原生 MCP 服务器扩展。 **[774 星标]**
+- [danigargu/heap-viewer](https://github.com/danigargu/heap-viewer) — 用于检查 glibc 堆的 IDA Pro 插件，专注于漏洞利用开发。 **[773 星标]**
+- [fay59/fcd](https://github.com/fay59/fcd) — 支持优化的反编译器。 **[773 星标]**
+- [symgraph/GhidrAssist](https://github.com/symgraph/GhidrAssist) — 为 Ghidra 提供 AI 逆向工程辅助的 LLM 扩展。 **[760 星标]**
+- [airbus-seclab/cpu_rec](https://github.com/airbus-seclab/cpu_rec) — 识别任意二进制文件中的 CPU 指令。 **[757 星标]**
+- [binsync/binsync](https://github.com/binsync/binsync) — 基于 Git 的逆向工程插件，支持跨反编译器协作。 **[752 星标]**
+- [HexHive/retrowrite](https://github.com/HexHive/retrowrite) — RetroWrite：通过二进制重写将编译器处理流程应用于现有程序。 **[751 星标]**
+- [radareorg/awesome-radare2](https://github.com/radareorg/awesome-radare2) — 精选基于 Radare2 的优质项目、文章及其他资料列表。 **[739 星标]**
+- [larkmjc/rv8](https://github.com/larkmjc/rv8) — 面向 x86-64 的 RISC-V 模拟器。 **[727 星标]**
+- [yhs0602/Android-Disassembler](https://github.com/yhs0602/Android-Disassembler) — 在 Android 上反汇编任意文件，包括 .so（NDK、JNI）、Windows PE（EXE、DLL、SYS 等）、Linux 二进制文件和库，甚至图片、音频等其他文件（仅供娱乐）。这是基于 Capstone 的 Android 反汇编应用，可用于 Android NDK 共享库、Windows 二进制文件等的逆向分析。 **[717 星标]**
+- [CharlotteCross1998/awesome-game-decompilations](https://github.com/CharlotteCross1998/awesome-game-decompilations) — 精选游戏反编译、重编译和反汇编项目列表。 **[711 星标]**
+- [0xb0bb/pwndra](https://github.com/0xb0bb/pwndra) — Ghidra 的 pwn/CTF 相关实用工具合集。 **[710 星标]**
+- [gaasedelen/lucid](https://github.com/gaasedelen/lucid) — 交互式 Hex-Rays 微代码浏览器。 **[679 星标]**
+- [lkimuk/ReArk](https://github.com/lkimuk/ReArk) — 面向 HarmonyOS NEXT（HAP/APP/ABC）、Android（APK/AAB）、iOS（IPA）以及原生 PE/ELF/Mach-O 二进制文件的智能逆向工程与 AI 辅助分析工具。 **[675 星标]**
+- [SentineLabs/AlphaGolang](https://github.com/SentineLabs/AlphaGolang) — 用于分析 Go 二进制文件的 IDAPython 脚本。 **[675 星标]**
+- [Accenture/VulFi](https://github.com/Accenture/VulFi) — 用于在二进制文件中进行查询式搜索的 IDA Pro 插件，主要服务于漏洞研究。 **[673 星标]**
+- [tmr232/Sark](https://github.com/tmr232/Sark) — 让 IDAPython 变得简单。 **[672 星标]**
+- [mohitmishra786/reversingBits](https://github.com/mohitmishra786/reversingBits) — 涵盖逆向工程、二进制分析和汇编编程工具的全面速查表合集，为安全研究人员、逆向工程师和底层程序员提供一站式参考。 **[662 星标]**
+- [matt-kempster/m2c](https://github.com/matt-kempster/m2c) — 面向 MIPS、PowerPC、ARM 和 SuperH 的反编译器。 **[658 星标]**
+- [dmendel/bindata](https://github.com/dmendel/bindata) — BinData：在 Ruby 中读写二进制数据。 **[653 星标]**
+- [McGill-DMaS/Kam1n0-Community](https://github.com/McGill-DMaS/Kam1n0-Community) — Kam1n0 汇编分析平台。 **[627 星标]**
+- [Nalen98/AngryGhidra](https://github.com/Nalen98/AngryGhidra) — 在 Ghidra 中使用 angr。 **[623 星标]**
+- [Noelo-Lab/kuna](https://github.com/Noelo-Lab/kuna) — 以智能体为核心、可由其他智能体持续改进的反编译器。Kuna 使用 Rust 编写，最初从 Ghidra 移植而来。 **[614 星标]**
+- [wargio/r2dec-js](https://github.com/wargio/r2dec-js) — r2dec-js 是基于 JavaScript 的反编译器，可将汇编代码转换为伪 C 代码。它通过可读的高层解释帮助用户理解汇编，降低底层编程门槛，并辅助在不同硬件平台上调试。 **[611 星标]**
+- [boricj/ghidra-delinker-extension](https://github.com/boricj/ghidra-delinker-extension) — 用于导出可重定位目标文件的 Ghidra 扩展。 **[608 星标]**
+- [c3rb3ru5d3d53c/binlex](https://github.com/c3rb3ru5d3d53c/binlex) — 二进制遗传特征词法分析框架。 **[604 星标]**
+- [falconre/falcon](https://github.com/falconre/falcon) — 使用 Rust 编写的二进制分析框架。 **[593 星标]**
+- [JonathanSalwan/PinTools](https://github.com/JonathanSalwan/PinTools) — 用于动态二进制分析的 Pintool 示例与概念验证。 **[593 星标]**
+- [nikolaydubina/go-binsize-treemap](https://github.com/nikolaydubina/go-binsize-treemap) — 🔍 展示 Go 二进制文件大小的 SVG 矩形树图。 **[587 星标]**
+- [quarkslab/binbloom](https://github.com/quarkslab/binbloom) — 原始二进制固件分析软件。 **[586 星标]**
+- [avatartwo/avatar2](https://github.com/avatartwo/avatar2) — avatar² 的 Python 核心。 **[579 星标]**
+- [d3v1l401/FindCrypt-Ghidra](https://github.com/d3v1l401/FindCrypt-Ghidra) — 将 IDA Pro 的 FindCrypt 移植到 Ghidra，附带更新且可自定义的特征库。 **[550 星标]**
+- [BeaEngine/beaengine](https://github.com/BeaEngine/beaengine) — BeaEngine 反汇编项目。 **[549 星标]**
+- [ex0dus-0x/fuzzable](https://github.com/ex0dus-0x/fuzzable) — 利用静态分析自动发现可模糊测试目标的框架。 **[548 星标]**
+- [Yricky/abcde](https://github.com/Yricky/abcde) — OpenHarmony 逆向工具包，初步支持反编译。 **[547 星标]**
+- [carbonblack/binee](https://github.com/carbonblack/binee) — Binee：二进制模拟环境。 **[531 星标]**
+- [ITAYC0HEN/A-journey-into-Radare2](https://github.com/ITAYC0HEN/A-journey-into-Radare2) — 来自 https://www.megabeets.net 的一系列 radare2 框架教程。 **[528 星标]**
+- [0sec-labs/0](https://github.com/0sec-labs/0) — 支持多人协作的 AI 进攻性安全操作系统：开放、可自我改进、可扩展。发现、验证并修复漏洞。 **[513 星标]**
+- [airbus-cert/Yagi](https://github.com/airbus-cert/Yagi) — 又一个面向 IDA 的 Ghidra 集成。 **[511 星标]**
+- [gfx-rs/rspirv](https://github.com/gfx-rs/rspirv) — SPIR-V 模块处理功能的 Rust 实现。 **[504 星标]**
+- [hasherezade/ida_ifl](https://github.com/hasherezade/ida_ifl) — IFL：交互式函数列表（IDA Pro 插件）。 **[502 星标]**
+- [grayhatacademy/ghidra_scripts](https://github.com/grayhatacademy/ghidra_scripts) — 将 devttyS0 的 IDA 插件移植到 Ghidra 插件框架，并提供新插件。 **[498 星标]**
+- [decomp/decomp](https://github.com/decomp/decomp) — 反编译流程的各个组件。 **[493 星标]**
+- [bontchev/pcodedmp](https://github.com/bontchev/pcodedmp) — VBA p-code 反汇编器。 **[492 星标]**
+- [Bw3ll/sharem](https://github.com/Bw3ll/sharem) — SHAREM 是 shellcode 分析框架，可模拟 45,000 多个 WinAPI 及几乎所有 Windows 系统调用。它还包含自定义反汇编器，具备多项创新功能，例如展示编码后 shellcode 去混淆后的反汇编结果，或结合模拟执行数据增强反汇编。 **[492 星标]**
+- [vmallet/ida-plugins](https://github.com/vmallet/ida-plugins) — Hex-Rays IDA Pro 插件的交互式列表。 **[491 星标]**
+- [radareorg/r2ai](https://github.com/radareorg/r2ai) — 基于 LLM 的 radare2 逆向分析。 **[490 星标]**
+- [kweatherman/sigmakerex](https://github.com/kweatherman/sigmakerex) — 增强版 IDA Pro 签名生成插件。 **[485 星标]**
+- [patois/HexraysToolbox](https://github.com/patois/HexraysToolbox) — Hexrays Toolbox：在 Hex-Rays ctree 中查找代码模式。 **[483 星标]**
+- [A200K/IDA-Pro-SigMaker](https://github.com/A200K/IDA-Pro-SigMaker) — 适用于 IDA 9.x 和 8.x 的签名生成插件。 **[481 星标]**
+- [Zfinix/eleven](https://github.com/Zfinix/eleven) — 面向智能体的 macOS、Windows 和 Linux 逆向工程工具：任意 ACP 智能体均可与你协作，读取、重命名并修补二进制文件、Android 应用和 GPU 内核。 **[478 星标]**
+- [VoidSec/DriverBuddyReloaded](https://github.com/VoidSec/DriverBuddyReloaded) — Driver Buddy Reloaded 是 IDA Pro 的 Python 插件，可自动完成部分繁琐的 Windows 内核驱动逆向工程任务。 **[472 星标]**
+- [mewmew/dissection](https://github.com/mewmew/dissection) — 剖析一个简单的“hello world” ELF 二进制文件。 **[470 星标]**
+- [radareorg/radare2-r2pipe](https://github.com/radareorg/radare2-r2pipe) — 通过管道从任意编程语言访问 radare2！ **[466 星标]**
+- [patois/dsync](https://github.com/patois/dsync) — 同步反汇编与反编译视图的 IDAPython 插件。 **[459 星标]**
+- [jaybosamiya/security-notes](https://github.com/jaybosamiya/security-notes) — :notebook: 一些安全相关笔记。 **[458 星标]**
+- [extremecoders-re/decompyle-builds](https://github.com/extremecoders-re/decompyle-builds) — 适用于 Windows 与 Linux 的预编译 Decompyle++（pycdc）二进制文件。 **[454 星标]**
+- [cristianzsh/freki](https://github.com/cristianzsh/freki) — :wolf: 恶意软件分析平台。 **[446 星标]**
+- [amimo/ollvm-breaker](https://github.com/amimo/ollvm-breaker) — 使用 Binary Ninja 去除 OLLVM 控制流平坦化混淆。 **[445 星标]**
+- [patois/HRDevHelper](https://github.com/patois/HRDevHelper) — Hex-Rays ctree 可视化插件。 **[443 星标]**
+- [echo-devim/fhex](https://github.com/echo-devim/fhex) — 兼容 Linux、Windows 和 macOS 的全功能十六进制编辑器。 **[436 星标]**
+- [PoomSmart/IDAObjcTypes](https://github.com/PoomSmart/IDAObjcTypes) — 适用于 iOS/macOS 二进制分析的类型与函数定义合集。 **[421 星标]**
+- [fjqisba/VmpHelper](https://github.com/fjqisba/VmpHelper) — 用于反编译 VMP 的 IDA 插件。 **[416 星标]**
+- [horsicq/XOpcodeCalc](https://github.com/horsicq/XOpcodeCalc) — 操作码计算器 / 汇编计算器。 **[413 星标]**
+- [pfalcon/ScratchABit](https://github.com/pfalcon/ScratchABit) — 易于适配新目标和修改扩展的交互式反汇编器，提供兼容 IDAPython 的插件 API。 **[413 星标]**
+- [BoomerangDecompiler/boomerang](https://github.com/BoomerangDecompiler/boomerang) — Boomerang 反编译器：对抗代码腐化 :)。 **[405 星标]**
+- [evyatar9/GptHidra](https://github.com/evyatar9/GptHidra) — GptHidra 是使用 OpenAI ChatGPT 解释函数的 Ghidra 插件，帮助你轻松理解代码库中函数的用途与行为。现已支持 GPT-4！ **[405 星标]**
+- [serfend/pydumpck](https://github.com/serfend/pydumpck) — 基于 pycdc 和 uncompyle6 的多线程工具，可反编译由 Python 打包的 EXE、ELF、PYZ 和 PYC 文件。 **[400 星标]**
+- [radareorg/radeco](https://github.com/radareorg/radeco) — 基于 radare2 的反编译器与符号执行器。 **[399 星标]**
+- [saferwall/pe](https://github.com/saferwall/pe) — 一个 :zap: 轻量 Go 包，用于解析、分析可移植可执行文件（PE）二进制文件并提取元数据，面向恶意软件分析任务设计，可稳健处理畸形 PE 文件。 **[397 星标]**
+- [secrary/idenLib](https://github.com/secrary/idenLib) — idenLib：库函数识别工具［本项目已停止维护］。 **[395 星标]**
+- [nevillegrech/gigahorse-toolchain](https://github.com/nevillegrech/gigahorse-toolchain) — 面向 Ethereum 智能合约的二进制提升工具与分析框架。 **[388 星标]**
+- [DMaroo/GhidRust](https://github.com/DMaroo/GhidRust) — GhidRust：Ghidra 的 Rust 反编译插件。 **[385 星标]**
+- [GrammaTech/gtirb](https://github.com/GrammaTech/gtirb) — 用于二进制分析与转换的中间表示。 **[382 星标]**
+- [bl4ckr0ss3/knife](https://github.com/bl4ckr0ss3/knife) — 以终端为核心、使用 Rust 编写的逆向工程工具包，通过 CLI、TUI 和 MCP 分析 PE/ELF/Mach-O 文件，安装后的命令名为 knife。 **[380 星标]**
+- [Colton1skees/Dna](https://github.com/Colton1skees/Dna) — 基于 LLVM 的静态二进制分析框架。 **[380 星标]**
+- [feicong/macbook](https://github.com/feicong/macbook) — 《macOS 软件安全与逆向分析》随书源码。 **[377 星标]**
+- [Adubbz/Ghidra-Switch-Loader](https://github.com/Adubbz/Ghidra-Switch-Loader) — Ghidra 的 Nintendo Switch 加载器。 **[374 星标]**
+- [mohitmishra786/underTheHoodOfExecutables](https://github.com/mohitmishra786/underTheHoodOfExecutables) — 解释程序如何从源代码转变为可执行文件的指南，深入介绍 ELF 格式、链接过程与二进制优化技术，适合系统程序员、C 开发者以及对底层编程概念感兴趣的人。 **[374 星标]**
+- [rocky/python-xdis](https://github.com/rocky/python-xdis) — 跨版本 Python 字节码库与反汇编器。 **[372 星标]**
+- [ethteck/splat](https://github.com/ethteck/splat) — 用于辅助反编译和模组制作项目的二进制拆分工具。 **[368 星标]**
+- [Ayrx/JNIAnalyzer](https://github.com/Ayrx/JNIAnalyzer) — 用于在 Ghidra 中处理 Android NDK 库的分析脚本。 **[365 星标]**
+- [justfoxing/ghidra_bridge](https://github.com/justfoxing/ghidra_bridge) — 连接 Python 3 与 Ghidra Python 脚本环境的桥接工具。 **[364 星标]**
+- [yukiarrr/Il2cppSpy](https://github.com/yukiarrr/Il2cppSpy) — Unity IL2CPP 反汇编器，适用于 APK。 **[360 星标]**
+- [trailofbits/CoBRA](https://github.com/trailofbits/CoBRA) — 基于系数的算术重建：用于去混淆的混合布尔算术（MBA）表达式化简工具。 **[355 星标]**
+- [rcx/classinformer-ida7](https://github.com/rcx/classinformer-ida7) — 为 IDA Pro 7.0 向后移植的 ClassInformer。 **[354 星标]**
+- [kweatherman/IDA_ClassInformer_PlugIn](https://github.com/kweatherman/IDA_ClassInformer_PlugIn) — IDA ClassInformer 插件。 **[350 星标]**
+- [patois/abyss](https://github.com/patois/abyss) — abyss：增强 Hex-Rays 反编译器输出。 **[349 星标]**
+- [ret42/RE-Thing](https://github.com/ret42/RE-Thing) — 逆向工程工具，包括去混淆、反编译等。 **[348 星标]**
+- [DizTools/DiztinGUIsh](https://github.com/DizTools/DiztinGUIsh) — Super NES ROM 反汇编器。 **[343 星标]**
+- [felberj/gotools](https://github.com/felberj/gotools) — 辅助逆向分析 Go 二进制文件的 Ghidra 插件。 **[343 星标]**
+- [arizvisa/ida-minsc](https://github.com/arizvisa/ida-minsc) — 基于 IDAPython 的插件，提供实用的 DWIM（按意图执行）接口。适配最新 IDA 的开发工作位于“persistence-refactor”分支，较旧但稳定的版本位于“master”分支。如需向后移植某项功能，请提交 issue；示例请查看“Wiki”或“Discussions”，喜欢的话请点击“Star”。 **[336 星标]**
+- [gaasedelen/microavx](https://github.com/gaasedelen/microavx) — Hex-Rays 反编译器的 AVX 指令提升工具。 **[331 星标]**
+- [therealdreg/DbgChild](https://github.com/therealdreg/DbgChild) — 子进程调试工具，支持自动附加。 **[328 星标]**
+- [mattcurrie/mgbdis](https://github.com/mattcurrie/mgbdis) — Game Boy ROM 反汇编器，输出兼容 RGBDS。 **[327 星标]**
+- [reetamdan/hypervisor-crack-audit](https://github.com/reetamdan/hypervisor-crack-audit) — 对用于绕过 Denuvo 的 hypervisor DRM 方法进行安全分析，使用 Ghidra 逆向分析驱动加载器与启动组件。 **[327 星标]**
+- [w00tzenheimer/d810-ng](https://github.com/w00tzenheimer/d810-ng) — D810-ng（Next Generation）是经过更新、测试、重构和优化的 IDA Pro 插件，通过修改 IDA Pro 微代码，在反编译时对代码去混淆。 **[325 星标]**
+- [mandiant/xrefer](https://github.com/mandiant/xrefer) — FLARE 团队的二进制导航工具。 **[323 星标]**
+- [Cuyler36/Ghidra-GameCube-Loader](https://github.com/Cuyler36/Ghidra-GameCube-Loader) — Ghidra 的 Nintendo GameCube 二进制加载器。 **[322 星标]**
+- [mwemuorg/mwemu](https://github.com/mwemuorg/mwemu) — x86 恶意软件模拟器 **[316 星标]**
+- [reb311ion/replica](https://github.com/reb311ion/replica) — Ghidra 分析增强工具 🐉 **[315 星标]**
+- [PAGalaxyLab/ghidra_scripts](https://github.com/PAGalaxyLab/ghidra_scripts) — Ghidra 脚本。 **[312 星标]**
+- [medigateio/ida_medigate](https://github.com/medigateio/ida_medigate) — 用于 C++ 逆向工程的 Medigate 插件及其他实用工具 **[311 星标]**
+- [Nalen98/GhidraEmu](https://github.com/Nalen98/GhidraEmu) — 原生 Pcode 模拟器 **[308 星标]**
+- [0xdea/ghidra-scripts](https://github.com/0xdea/ghidra-scripts) — 我编写的 Ghidra 脚本合集，用于辅助逆向工程与漏洞研究。 **[303 星标]**
+- [TorgoTorgo/ghidra-findcrypt](https://github.com/TorgoTorgo/ghidra-findcrypt) — 用于定位密码学常量的 Ghidra 分析插件 **[302 星标]**
+- [Karmaz95/Snake_Apple](https://github.com/Karmaz95/Snake_Apple) — 与 Apple 环境（主要为 macOS）研究相关的文章和工具。 **[300 星标]**
+- [tintinweb/ida-batch_decompile](https://github.com/tintinweb/ida-batch_decompile) — “反编译一切”：适用于 Hex-Rays IDA Pro 的 IDA 批量反编译插件及脚本，可批量反编译多个文件及其导入项，并在伪代码 .c 文件中添加交叉引用、栈变量大小等注释。 **[300 星标]**
+- [ubfx/BinDiffHelper](https://github.com/ubfx/BinDiffHelper) — 集成 BinDiff 以进行函数匹配的 Ghidra 扩展 **[297 星标]**
+- [thetacom/hexabyte](https://github.com/thetacom/hexabyte) — 现代、模块化且稳健的终端界面十六进制编辑器。 **[294 星标]**
+- [clojure-goes-fast/clj-java-decompiler](https://github.com/clojure-goes-fast/clj-java-decompiler) — 与 REPL 集成的 Clojure 到 Java 反编译器 **[285 星标]**
+- [cdong1012/ollvm-unflattener](https://github.com/cdong1012/ollvm-unflattener) — Obfuscator-LLVM 控制流平坦化去混淆工具 **[284 星标]**
+- [secrary/DrSemu](https://github.com/secrary/DrSemu) — DrSemu：基于动态行为的沙箱恶意软件检测与分类工具 **[280 星标]**
+- [mebeim/systrack](https://github.com/mebeim/systrack) — 📡🐧 Linux 内核系统调用实现追踪工具 **[275 星标]**
+- [argp/iBoot64helper](https://github.com/argp/iBoot64helper) — 辅助 AArch64 iBoot、iBEC 和 SecureROM 逆向工程的 IDAPython 加载器 **[266 星标]**
+- [danielplohmann/smda](https://github.com/danielplohmann/smda) — SMDA 是精简的递归反汇编库，专门优化了从内存转储中准确恢复控制流图（CFG）的能力。 **[264 星标]**
+- [blacktop/docker-ghidra](https://github.com/blacktop/docker-ghidra) — Ghidra 客户端/服务器 Docker 镜像 **[263 星标]**
+- [JustasMasiulis/ida_bitfields](https://github.com/JustasMasiulis/ida_bitfields) — 让位域访问更易于使用 grep 搜索的 IDA Pro 插件 **[262 星标]**
+- [mooncat-greenpy/Ghidra_GolangAnalyzerExtension](https://github.com/mooncat-greenpy/Ghidra_GolangAnalyzerExtension) — 使用 Ghidra 分析 Golang **[262 星标]**
+- [radareorg/radare2-extras](https://github.com/radareorg/radare2-extras) — radare2 的废弃源码存档与各类小工具 **[262 星标]**
+- [extremecoders-re/re-list](https://github.com/extremecoders-re/re-list) — 侧重二进制分析的开源逆向工程工具列表 **[261 星标]**
+- [StarCrossPortal/sleighcraft](https://github.com/StarCrossPortal/sleighcraft) — 打造 sleigh！ **[261 星标]**
+- [GaloisInc/macaw](https://github.com/GaloisInc/macaw) — 开源二进制分析工具。 **[258 星标]**
+- [chaoticgd/ghidra-emotionengine-reloaded](https://github.com/chaoticgd/ghidra-emotionengine-reloaded) — 为 Ghidra 添加 PlayStation 2 支持的扩展。 **[252 星标]**
+- [Imrglop/IDA-FastAnalysis](https://github.com/Imrglop/IDA-FastAnalysis) — 通过缓存技术加速二进制文件初始自动分析的 IDA Pro 插件 **[252 星标]**
+- [hyuunnn/Hyara](https://github.com/hyuunnn/Hyara) — Yara 规则制作工具，提供 IDA Pro、Binary Ninja、Cutter 和 Ghidra 插件 **[250 星标]**
+- [quarkslab/qbindiff](https://github.com/quarkslab/qbindiff) — Quarkslab 二进制差异比对工具，功能还不止于此！ **[247 星标]**
+- [akiselev/ghidra-cli](https://github.com/akiselev/ghidra-cli) — 通过命令行自动执行 Ghidra 逆向工程，为 Claude Code 等 AI 智能体提供无界面分析、反编译和结构化 JSON 输出 **[245 星标]**
+- [mentebinaria/fundamentos-engenharia-reversa](https://github.com/mentebinaria/fundamentos-engenharia-reversa) — 书籍：《逆向工程：基础与实践》 **[238 星标]**
+- [miunasu/IDA-Skill](https://github.com/miunasu/IDA-Skill) — 让 AI 智能体像安全分析师一样使用 IDA Pro 自动分析恶意样本的技能。 **[237 星标]**
+- [Nalen98/eBPF-for-Ghidra](https://github.com/Nalen98/eBPF-for-Ghidra) — Ghidra 的 eBPF 处理器模块 **[237 星标]**
+- [ReversecLabs/z3_and_angr_binary_analysis_workshop](https://github.com/ReversecLabs/z3_and_angr_binary_analysis_workshop) — z3 与 angr 工作坊的代码及练习 **[237 星标]**
+- [fkie-cad/dewolf](https://github.com/fkie-cad/dewolf) — 以 Binary Ninja 插件形式实现的研究型反编译器。 **[236 星标]**
+- [aengelke/fadec](https://github.com/aengelke/fadec) — 快速轻量的 x86 与 x86-64 解码器，以及 x86-64 编码器。 **[235 星标]**
+- [DearVa/ida_copilot](https://github.com/DearVa/ida_copilot) — 使用 ChatGPT 智能体分析 IDA 伪代码 **[234 星标]**
+- [schlafwandler/ghidra_SavePatch](https://github.com/schlafwandler/ghidra_SavePatch) — 将小型补丁保存回可执行文件的 Ghidra 脚本 **[233 星标]**
+- [Cisco-Talos/Ghidraaas](https://github.com/Cisco-Talos/Ghidraaas) — 上游未提供简介。 **[229 星标]**
+- [romainthomas/the-poor-mans-obfuscator](https://github.com/romainthomas/the-poor-mans-obfuscator) — “The Poor Man's Obfuscator”演讲相关的二进制文件与脚本 **[229 星标]**
+- [pedro-javierf/NTRGhidra](https://github.com/pedro-javierf/NTRGhidra) — Ghidra 的 Nintendo DS 二进制文件加载器 **[228 星标]**
+- [Sidenai/hyperion-disassembler](https://github.com/Sidenai/hyperion-disassembler) — 原生多架构反汇编器与反编译器，支持 PE/ELF/Mach-O、x86/x64/ARM64、Lua 脚本及 RTTI 恢复 **[228 星标]**
+- [quarkslab/quokka](https://github.com/quarkslab/quokka) — Quokka：快速准确的二进制导出工具 **[227 星标]**
+- [cesena/ghidra2dwarf](https://github.com/cesena/ghidra2dwarf) — 🐉 将 Ghidra 反编译代码导出至 ELF 二进制文件中的 DWARF 节 **[226 星标]**
+- [mahmoudimus/ida-sigmaker](https://github.com/mahmoudimus/ida-sigmaker) — sigmaker 是零依赖、跨平台的 IDA Pro 9.0+ 特征码生成插件，支持可选的 SIMD（如 AVX2、NEON、SSE2）加速，可在 macOS、Linux 和 Windows 上运行。可配置操作数通配模式与半字节，只需右键点击即可生成特征码。 **[226 星标]**
+- [tintinweb/ethereum-dasm](https://github.com/tintinweb/ethereum-dasm) — 以太坊 EVM 字节码反汇编器及静态/动态分析工具 **[223 星标]**
+- [vicnaum/bun-demincer](https://github.com/vicnaum/bun-demincer) — 针对 Bun 编译的独立 JavaScript 二进制文件的反编译、反压缩和去混淆工具 **[223 星标]**
+- [angr/pypcode](https://github.com/angr/pypcode) — Ghidra SLEIGH 库的 Python 绑定，用于反汇编及提升至 P-Code 中间表示 **[222 星标]**
+- [aboutcode-org/scancode.io](https://github.com/aboutcode-org/scancode.io) — ScanCode.io 是一个服务器，可通过流水线编写脚本并自动执行软件成分分析。项目获欧盟委员会、NLnet NGI0、Google Summer of Code、nexB 及其他慷慨赞助者支持！ **[220 星标]**
+- [Cararasu/holodec](https://github.com/Cararasu/holodec) — x86 和 x86-64 ELF 二进制文件反编译器 **[220 星标]**
+- [NWMonster/ApplySig](https://github.com/NWMonster/ApplySig) — 在 Ghidra 中应用 IDA FLIRT 签名 **[214 星标]**
+- [dod-cyber-crime-center/pyhidra](https://github.com/dod-cyber-crime-center/pyhidra) — Pyhidra 是 Python 库，通过 jpype 在原生 CPython 解释器中直接访问 Ghidra API。 **[212 星标]**
+- [fadden/6502bench](https://github.com/fadden/6502bench) — 用于开发 6502 代码的工作台。 **[212 星标]**
+- [sjkim1127/Reversecore_MCP](https://github.com/sjkim1127/Reversecore_MCP) — 以安全为先的 MCP 服务器，让 AI 智能体自动执行逆向工程、恶意软件分析、取证、漏洞研究及 SAST，基于 Radare2、YARA、LIEF、Capstone 等工具。 **[211 星标]**
+- [chenxvb/Unicorn-Trace](https://github.com/chenxvb/Unicorn-Trace) — 基于 Unicorn 引擎的轻量级 ARM64 动态追踪模拟工具，支持 IDA Pro、Tenet 日志生成、本地代码模拟、内存转储、寄存器状态追踪和指令级日志记录。 **[209 星标]**
+- [WPeace-HcH/SysNR-FuncFinder](https://github.com/WPeace-HcH/SysNR-FuncFinder) — 根据系统调用号重命名函数的 IDA 插件。 **[208 星标]**
+- [biniamf/ai-reverse-engineering](https://github.com/biniamf/ai-reverse-engineering) — 使用 AI 辅助 Ghidra 逆向工程 **[206 星标]**
+- [buggerlogger/arkose-solver](https://github.com/buggerlogger/arkose-solver) — 面向 Go、Python 和 Node 的 Arkose Labs / FunCaptcha 解题工具，生成 sup=1 免挑战令牌。每次解题均从 api.js 推导站点 RSA 密钥，无需抓取、重放或无头浏览器，并附完整虚拟机反汇编。 **[202 星标]**
+- [RevEngAI/plugin-ghidra](https://github.com/RevEngAI/plugin-ghidra) — RevEng.AI 的 Ghidra 插件 **[195 星标]**
+- [cdlewis/snowboardkids2-decomp](https://github.com/cdlewis/snowboardkids2-decomp) — Snowboard Kids 2（N64）反编译项目 **[193 星标]**
+- [lifting-bits/sleigh](https://github.com/lifting-bits/sleigh) — Ghidra C++ SLEIGH 代码的非官方 CMake 构建 **[193 星标]**
+- [MahdiSafsafi/DebugEngine](https://github.com/MahdiSafsafi/DebugEngine) — Delphi 调试框架 **[193 星标]**
+- [yoavst/ida-ios-helper](https://github.com/yoavst/ida-ios-helper) — 简化 iOS 项目逆向分析的插件 **[193 星标]**
+- [msm-code/ghidralib](https://github.com/msm-code/ghidralib) — 符合 Python 风格的 Ghidra 标准库 **[191 星标]**
+- [ax330d/hrdev](https://github.com/ax330d/hrdev) — Hex-Rays 反编译器增强视图 **[186 星标]**
+- [fugue-re/fugue-core](https://github.com/fugue-re/fugue-core) — 使用 Rust 编写的二进制分析框架。 **[186 星标]**
+- [harlamism/IdaClu](https://github.com/harlamism/IdaClu) — IdaClu 是不依赖特定 IDA Pro 版本的插件，用于对相似函数分组，可选择已有分组算法，也可自建算法。 **[186 星标]**
+- [SoftSec-KAIST/BinKit](https://github.com/SoftSec-KAIST/BinKit) — 二进制代码相似性分析（BCSA）基准 **[183 星标]**
+- [vallejocc/Reverse-Engineering-Arsenal](https://github.com/vallejocc/Reverse-Engineering-Arsenal) — 辅助逆向工程的实用脚本 **[183 星标]**
+- [Decompollaborate/rabbitizer](https://github.com/Decompollaborate/rabbitizer) — MIPS 指令解码器 **[182 星标]**
+- [romainthomas/reverse-engineering-workshop](https://github.com/romainthomas/reverse-engineering-workshop) — 逆向工程工作坊的幻灯片及实践材料 **[182 星标]**
+- [LAC-Japan/IDA_Plugin_AntiDebugSeeker](https://github.com/LAC-Japan/IDA_Plugin_AntiDebugSeeker) — 自动识别并提取恶意软件可能使用的反调试技术。 **[181 星标]**
+- [rocky/elisp-bytecode](https://github.com/rocky/elisp-bytecode) — 一起记录 Emacs Lisp 字节码（Lisp 汇编程序）指令 **[181 星标]**
+- [jovibor/Pepper](https://github.com/jovibor/Pepper) — PE32（x86）和 PE32+（x64）二进制分析工具及资源查看/提取器。 **[179 星标]**
+- [giantbranch/mipsAudit](https://github.com/giantbranch/mipsAudit) — IDA MIPS 静态扫描脚本，辅助汇编代码审计。 **[175 星标]**
+- [eset/DelphiHelper](https://github.com/eset/DelphiHelper) — DelphiHelper 是 Python 编写的 IDA Pro 插件，用于辅助分析 Delphi 编写的 x86/x86_64 二进制文件。 **[174 星标]**
+- [jovibor/libpe](https://github.com/jovibor/libpe) — 用于解析 PE32/PE32+ 二进制文件内部结构的库。 **[174 星标]**
+- [zackelia/ghidra-dark-theme](https://github.com/zackelia/ghidra-dark-theme) — 基于原版 ghidra-dark 的现代深色主题 **[174 星标]**
+- [yaz0r/Azel](https://github.com/yaz0r/Azel) — Panzer Dragoon Saga 逆向工程项目 **[173 星标]**
+- [AlexanderBagel/ProcessMemoryMap](https://github.com/AlexanderBagel/ProcessMemoryMap) — 深入分析 Windows 进程内存，帮助节省数小时调试时间的工具 **[172 星标]**
+- [Lancern/asm2vec](https://github.com/Lancern/asm2vec) — 以独立 Python 包提供的非官方 asm2vec 实现 **[172 星标]**
+- [Fausto-404/ai-mobile-reverse-skills](https://github.com/Fausto-404/ai-mobile-reverse-skills) — 面向移动安全分析的六阶段总控技能，统一调度 APK 静态侦察、流量与代码对齐、SO/JNI 深度分析、加密与漏洞综合分析、验证设计及报告交付，支持 JADX MCP、Burp/Yakit MCP、IDA/Ghidra MCP。 **[171 星标]**
+- [notemrovsky/tiktok-reverse-engineering](https://github.com/notemrovsky/tiktok-reverse-engineering) — 逆向分析 TikTok 的 JavaScript 虚拟机，已映射 77 个操作码，支持字符串去混淆、字节码反汇编及密码函数识别。面向教学的虚拟机分析工具包。 **[167 星标]**
+- [skoolkid/skoolkit](https://github.com/skoolkid/skoolkit) — 用于创建 ZX Spectrum 游戏反汇编的工具套件。 **[165 星标]**
+- [eset/stadeo](https://github.com/eset/stadeo) — 控制流平坦化与字符串去混淆工具 **[164 星标]**
+- [securityjoes/AskJOE](https://github.com/securityjoes/AskJOE) — 面向 Ghidra 的 AI 恶意软件分析与威胁情报工具，以前沿 AI 能力、全面的恶意软件检测和高级威胁情报改进静态分析工作流。 **[164 星标]**
+- [RevEngAI/plugin-ida](https://github.com/RevEngAI/plugin-ida) — RevEng.AI 的 IDA Pro 插件 **[163 星标]**
+- [zfigura/semblance](https://github.com/zfigura/semblance) — Windows 可执行文件反汇编器，支持 16 位 NE（New Executable）、MZ（DOS）和 PE（Portable Executable，即 Win32）文件。 **[163 星标]**
+- [SamuelTulach/unxorer](https://github.com/SamuelTulach/unxorer) — 又一个用于对栈字符串去混淆的 IDA Pro/Home 插件 **[162 星标]**
+- [AllsafeCyberSecurity/LazyGhidra](https://github.com/AllsafeCyberSecurity/LazyGhidra) — 让你的 Ghidra 也能“偷懒”！ **[159 星标]**
+- [cojocar/bin2llvm](https://github.com/cojocar/bin2llvm) — 将二进制代码转换为 LLVM 的工具 **[159 星标]**
+- [clearbluejar/ghidrecomp](https://github.com/clearbluejar/ghidrecomp) — 基于 Python 命令行的 Ghidra 反编译器 **[158 星标]**
+- [fuzziqersoftware/resource_dasm](https://github.com/fuzziqersoftware/resource_dasm) — 经典 Mac OS 资源分支与应用程序反汇编器，附面向特定应用的逆向工程工具 **[158 星标]**
+- [jiangzhengwenjz/katam](https://github.com/jiangzhengwenjz/katam) — 《星之卡比：镜之大迷宫》美版反编译项目，仍在开发中 **[158 星标]**
+- [evyatar9/Writeups](https://github.com/evyatar9/Writeups) — 本仓库收录我参加的各种 CTF 的解题报告，包括 Hack The Box。 **[157 星标]**
+- [SimonKagstrom/emilpro](https://github.com/SimonKagstrom/emilpro) — 支持多种架构、便于浏览的图形化反汇编器 **[157 星标]**
+- [nirizr/rematch](https://github.com/nirizr/rematch) — REmatch 是完整、免费的二进制差异比对框架，致力于开源和社区驱动。 **[156 星标]**
+- [lr-m/GhidrOllama](https://github.com/lr-m/GhidrOllama) — 通过大型语言模型（LLM）分析所选函数和指令的 Ghidra 脚本，直接在 Ghidra 中调用 Ollama API，以提高逆向工程效率。 **[155 星标]**
+- [tinylcy/ClassAnalyzer](https://github.com/tinylcy/ClassAnalyzer) — Java Class 文件反汇编器 **[155 星标]**
+- [kweatherman/ida_missinglink](https://github.com/kweatherman/ida_missinglink) — 补全间接 CALL 和 JMP 目标信息的 IDA 插件 **[153 星标]**
+- [carlosgprado/JARVIS](https://github.com/carlosgprado/JARVIS) — “又一个逆向工程套件”，或者随便你想到的其他扯淡说法 **[151 星标]**
+- [K4ryuu/IDA-VTableExplorer](https://github.com/K4ryuu/IDA-VTableExplorer) — 面向已编译 C++ 二进制文件逆向工程的自动虚表检测、继承分析和函数重写追踪工具，支持任意操作系统上的 IDA Pro 9+ **[149 星标]**
+- [cmu-sei/kaiju](https://github.com/cmu-sei/kaiju) — CERT Kaiju 是 Ghidra 软件逆向工程套件的二进制分析框架扩展。本仓库为镜像，请到 @CERTCC 的上游仓库提交工单、错误报告或拉取请求：https://github.com/certcc/kaiju **[147 星标]**
+- [liuzhengyang/hsdis](https://github.com/liuzhengyang/hsdis) — HotSpot 反汇编器 hsdis **[147 星标]**
+- [paradiseduo/dsdump](https://github.com/paradiseduo/dsdump) — 增强版 nm 与 Objective-C、Swift 类转储工具 **[146 星标]**
+- [radareorg/radare2-pm](https://github.com/radareorg/radare2-pm) — Radare2 包管理器 **[146 星标]**
+- [0x00ctrl/CyberSec-Books](https://github.com/0x00ctrl/CyberSec-Books) — 网络安全、Linux 等领域的一些实用书籍。 **[145 星标]**
+- [mcdulltii/obfDetect](https://github.com/mcdulltii/obfDetect) — 精确定位混淆代码的 IDA 插件 **[145 星标]**
+- [knight0x07/pyc2bytecode](https://github.com/knight0x07/pyc2bytecode) — Python 字节码反汇编器，通过反汇编和分析各个 Python 版本（包括 Python 3.10.*）的已编译字节码（.pyc）文件，帮助逆向工程师剖析 Python 二进制文件。 **[143 星标]**
+- [patois/xray](https://github.com/patois/xray) — 根据正则表达式为反编译输出着色并进行过滤的 Hex-Rays 插件 **[142 星标]**
+- [nccgroup/ghostrings](https://github.com/nccgroup/ghostrings) — 用于恢复 Go 二进制文件中字符串定义的 Ghidra 脚本 **[141 星标]**
+- [lr-m/Ghidra-Themes](https://github.com/lr-m/Ghidra-Themes) — 超过 200 款 Ghidra 主题合集，让长时间的逆向工程工作更加愉快！ **[140 星标]**
+- [philsajdak/decyx](https://github.com/philsajdak/decyx) — Decyx：由 AI 驱动的 Ghidra 扩展，增强逆向工程和二进制分析能力。 **[139 星标]**
+- [radareorg/r2con2019](https://github.com/radareorg/r2con2019) — r2con2019 幻灯片与资料 **[137 星标]**
+- [0xdea/rhabdomancer](https://github.com/0xdea/rhabdomancer) — 漏洞研究助手，定位二进制文件中对潜在不安全 API 函数的调用。 **[136 星标]**
+- [radareorg/radare2-bindings](https://github.com/radareorg/radare2-bindings) — 面向 Valabind 及相关工具的 r2 API 绑定 **[136 星标]**
+- [aldelaro5/ghidra-gekko-broadway-lang](https://github.com/aldelaro5/ghidra-gekko-broadway-lang) — Ghidra 语言定义，支持 Nintendo GameCube 和 Nintendo Wii 分别使用的 Gekko 与 Broadway CPU 变体 **[135 星标]**
+- [diommsantos/QtREAnalyzer](https://github.com/diommsantos/QtREAnalyzer) — QtREAnalyzer：用于逆向分析 Qt 二进制文件的 Ghidra 扩展。 **[134 星标]**
+- [0xdea/haruspex](https://github.com/0xdea/haruspex) — 从 IDA Hex-Rays 反编译器提取伪代码的漏洞研究助手。 **[133 星标]**
+- [darx0r/Stingray](https://github.com/darx0r/Stingray) — 递归查找函数字符串的 IDAPython 插件 **[133 星标]**
+- [kotcrab/ghidra-allegrex](https://github.com/kotcrab/ghidra-allegrex) — 为 Ghidra 添加 Allegrex CPU（PSP）支持的处理器模块 **[132 星标]**
+- [x86byte/LummaC2-Stealer](https://github.com/x86byte/LummaC2-Stealer) — 通过逆向提取的 LummaC2 二进制文件及 LummaC2 窃密软件分析 **[130 星标]**
+- [elliiot/ghidra_darknight](https://github.com/elliiot/ghidra_darknight) — Ghidra 的 DarkNight 主题 **[128 星标]**
+- [L4ys/LazyCross](https://github.com/L4ys/LazyCross) — 在 Hex-Rays 伪代码中展示整个二进制文件对函数或变量交叉引用的 IDA Pro 插件 **[128 星标]**
+- [UltraSina/androidReverse](https://github.com/UltraSina/androidReverse) — 完全在设备上进行 Android 逆向工程，提供 Radare2 二进制分析、8 种 Java 反编译器，以及 Flutter 和 Unity IL2CPP 支持。 **[127 星标]**
+- [wernsey/chip8](https://github.com/wernsey/chip8) — 使用 C 编写的 CHIP-8 解释器、汇编器和反汇编器 **[127 星标]**
+- [digitalw0lf/hextor](https://github.com/digitalw0lf/hextor) — Hextor：十六进制编辑器与二进制数据分析工具包 **[125 星标]**
+- [XboxDev/ghidra-xbe](https://github.com/XboxDev/ghidra-xbe) — 面向 Ghidra 软件逆向工程框架的 Xbox 可执行格式（XBE）加载器扩展 **[125 星标]**
+- [0xdea/augur](https://github.com/0xdea/augur) — 从二进制文件提取字符串和相关伪代码的逆向工程助手。 **[121 星标]**
+- [suifei/asm2hex](https://github.com/suifei/asm2hex) — ASM2HEX 是功能强大的汇编语言与十六进制机器码双向转换工具，提供直观的图形界面，可轻松转换汇编指令与机器码，对 ARM64、ARM 和 Thumb 指令集均提供准确可靠的转换结果。 **[120 星标]**
+- [ytisf/GhidraMacOS](https://github.com/ytisf/GhidraMacOS) — 面向 macOS ARM64（Apple Silicon）的 Ghidra 安装与编译工具 **[118 星标]**
+- [ant4g0nist/decompiler](https://github.com/ant4g0nist/decompiler) — LLDB 的 Ghidra 反编译插件 **[116 星标]**
+- [utkonos/lst2x64dbg](https://github.com/utkonos/lst2x64dbg) — 从 IDA、Ghidra、Binary Ninja 和 Relyze 文件中提取标签，并导出 x64dbg 数据库，同时包含 radare2 主地址。 **[116 星标]**
+- [ax330d/functions-plus](https://github.com/ax330d/functions-plus) — 以树形视图显示函数的 IDA Pro 插件 **[115 星标]**
+- [acuarica/evm](https://github.com/acuarica/evm) — 符号化以太坊虚拟机（EVM）字节码解释器、解析器和反编译器，以及多种以编程方式提取 EVM 字节码信息的实用工具。 **[114 星标]**
+- [zxgio/r2-cheatsheet](https://github.com/zxgio/r2-cheatsheet) — Radare2 速查表 **[114 星标]**
+- [giladreich/ida_migrator](https://github.com/giladreich/ida_migrator) — IDA Migrator 是 IDA Pro 插件，可将现有工作从一个数据库实例迁移至另一个，方便地迁移函数名、结构体和枚举。 **[113 星标]**
+- [doronz88/fa](https://github.com/doronz88/fa) — 自动定位二进制文件中符号与结构体的工具，主要面向 IDA **[112 星标]**
+- [guedou/jupyter-radare2](https://github.com/guedou/jupyter-radare2) — 一个简单的 radare2 Jupyter 内核 **[110 星标]**
+- [abenkhadra/spedi](https://github.com/abenkhadra/spedi) — 对已剥离符号的二进制文件进行推测式反汇编、控制流图恢复和调用图恢复。 **[109 星标]**
+- [Accenture/FirmLoader](https://github.com/Accenture/FirmLoader) — 上游未提供简介。 **[109 星标]**
+- [0xroman1/Scuffed_Low_Level_Stash](https://github.com/0xroman1/Scuffed_Low_Level_Stash) — 二进制利用与逆向工程资源库 **[108 星标]**
+- [garyttierney/intellij-ghidra](https://github.com/garyttierney/intellij-ghidra) — 用于开发 Ghidra 扩展的 IntelliJ IDEA 插件。 **[107 星标]**
+- [aerosoul94/ida_gel](https://github.com/aerosoul94/ida_gel) — 面向多种游戏主机 ELF 文件的 IDA 加载器合集，支持 PS3、PS Vita 和 Wii U **[106 星标]**
+- [jonomango/chum](https://github.com/jonomango/chum) — 64 位 PE 文件二进制重写工具。 **[106 星标]**
+- [AllsafeCyberSecurity/ghidra_scripts](https://github.com/AllsafeCyberSecurity/ghidra_scripts) — 用于恶意软件分析的 Ghidra 脚本 **[105 星标]**
+- [davep/dhv](https://github.com/davep/dhv) — 深入探索 Python 代码 **[103 星标]**
+- [guedou/r2m2](https://github.com/guedou/r2m2) — radare2 与 miasm2 的组合 = ♥ **[103 星标]**
+- [Karib0u/kernagent](https://github.com/Karib0u/kernagent) — 用于确定性逆向工程的无界面 AI 智能体。 **[103 星标]**
+- [fdrechsler/mcp-server-idapro](https://github.com/fdrechsler/mcp-server-idapro) — 模型上下文协议（MCP）服务器，让 AI 助手与 IDA Pro 交互，执行逆向工程和二进制分析任务。 **[101 星标]**
+- [radareorg/radare2-webui](https://github.com/radareorg/radare2-webui) — radare2 网页界面仓库 **[100 星标]**
+- [WPeace-HcH/ElfDumper](https://github.com/WPeace-HcH/ElfDumper) — 可轻松转储 ELF 文件的 IDA 插件。 **[100 星标]**
+- [antoniovazquezblanco/GhidraFindcrypt](https://github.com/antoniovazquezblanco/GhidraFindcrypt) — 定位密码学常量的 Ghidra 分析插件 **[99 星标]**
+- [vtil-project/VTIL-BinaryNinja](https://github.com/vtil-project/VTIL-BinaryNinja) — 用于加载 VTIL 例程并将 VTIL 指令提升为 LLIL 以供分析的 Binary Ninja 插件。 **[95 星标]**
+- [goatmilkkk/nuitka-helper](https://github.com/goatmilkkk/nuitka-helper) — Nuitka 二进制文件符号恢复工具 **[94 星标]**
+- [ntpopgetdope/ida-rpc](https://github.com/ntpopgetdope/ida-rpc) — IDA Pro 7.0 的 Discord 丰富状态插件 **[94 星标]**
+- [zer0condition/NTMemory](https://github.com/zer0condition/NTMemory) — 用户态 NT 探索工具：查询内核地址、将虚拟地址转换为物理地址、检查 PFN 数据库等。 **[93 星标]**
+- [ZX41R/awesome-reverse-engineering-and-malware-analysis](https://github.com/ZX41R/awesome-reverse-engineering-and-malware-analysis) — 经过核实的逆向工程与恶意软件分析资源图谱，涵盖反汇编器、脱壳、漏洞利用开发、模糊测试、数字取证与事件响应，以及其他列表遗漏的深入文章。 **[92 星标]**
+- [fonic/wcdatool](https://github.com/fonic/wcdatool) — Watcom 反汇编工具（wcdatool），用于辅助反汇编由 Watcom 工具链创建的 DOS 应用 **[91 星标]**
+- [JayRE114514/UserComment](https://github.com/JayRE114514/UserComment) — 在反汇编和伪代码视图中展示用户添加注释的 IDA Pro 插件。 **[91 星标]**
+- [maskelihileci/IDA_Ollvm-unflattener](https://github.com/maskelihileci/IDA_Ollvm-unflattener) — 以 IDA Pro 插件形式提供的 Obfuscator-LLVM 控制流平坦化去混淆工具。 **[91 星标]**
+- [Krietz7/IDA-DataExportPlus](https://github.com/Krietz7/IDA-DataExportPlus) — 改进数据导出的 IDA Pro 插件 **[90 星标]**
+- [kweatherman/yara4ida](https://github.com/kweatherman/yara4ida) — 非官方 YARA IDA Pro 插件，附基于 Luigi Auriemma 的 signsrch 特征签名构建、无与伦比的密码学、哈希和压缩规则集。 **[88 星标]**
+- [alexander-pick/shannon_modem_loader](https://github.com/alexander-pick/shannon_modem_loader) — 适用于 IDA Pro 8.x/9.x 的 Exynos Modem / Shannon 基带固件加载器 **[87 星标]**
+- [fjqisba/QtMetaParser](https://github.com/fjqisba/QtMetaParser) — 解析 Qt 元数据的 IDA 插件 **[87 星标]**
+- [firstfault/Trinity](https://github.com/firstfault/Trinity) — Java 软件逆向工程工具 **[86 星标]**
+- [eset/nimfilt](https://github.com/eset/nimfilt) — 辅助分析 Nim 二进制文件的模块与脚本合集 **[84 星标]**
+- [merces/showcomments](https://github.com/merces/showcomments) — 显示和搜索数据库注释的 IDA Pro 插件 **[84 星标]**
+- [sgInnora/sentinel-reverse](https://github.com/sgInnora/sentinel-reverse) — AI 驱动的自主二进制逆向工程命令行工具，是 Innora-Sentinel 的原生逆向引擎。提供本地 LLM 推理（MLX）、MPS GPU 加速、多轮迭代分析，API 成本为零。 **[84 星标]**
+- [milankovo/hexinlay](https://github.com/milankovo/hexinlay) — Hex-Rays 内嵌提示 **[83 星标]**
+- [stuxnet147/IDA-Assistant](https://github.com/stuxnet147/IDA-Assistant) — 支持自动化逆向工程的 IDA 插件 **[82 星标]**
+- [cristeigabriela/IDAFind](https://github.com/cristeigabriela/IDAFind) — 曾希望 IDA 的伪代码窗口拥有出色的 Ctrl+F 搜索支持？现在就有了！ **[81 星标]**
+- [abatchy17/Introduction-To-Manual-Backdooring](https://github.com/abatchy17/Introduction-To-Manual-Backdooring) — 编写《手动植入后门入门》时创建的可执行文件。 **[79 星标]**
+- [guedou/TS-453Be](https://github.com/guedou/TS-453Be) — 在 QNAP TS-453Be 上运行 Ubuntu **[79 星标]**
+- [TomashuTTTT7/Hidecall](https://github.com/TomashuTTTT7/Hidecall) — 隐藏函数调用以防止逆向工程 **[77 星标]**
+- [br0kej/bin2ml](https://github.com/br0kej/bin2ml) — 基于 Radare2 的命令行工具，从软件二进制文件提取可直接用于机器学习的数据 **[76 星标]**
+- [CSIT-SG/AETHER](https://github.com/CSIT-SG/AETHER) — AI 驱动的逆向工程助手，协助在 IDA Pro 中完成繁琐的恶意软件分析。 **[76 星标]**
+- [Wack0/IFPSTools.NET](https://github.com/Wack0/IFPSTools.NET) — 用于创建、修改、汇编和反汇编 RemObjects PascalScript 文件的工具。 **[76 星标]**
+- [AzzOnFire/emuit](https://github.com/AzzOnFire/emuit) — 易于使用的 IDA 代码模拟插件 **[75 星标]**
+- [radareorg/r4ghidra](https://github.com/radareorg/r4ghidra) — 与 radare2 通信的 Ghidra 插件 **[75 星标]**
+- [gabimarti/crackmes-solutions](https://github.com/gabimarti/crackmes-solutions) — 我完成的一些 crackme 练习程序的解题方案。 **[73 星标]**
+- [binarly-io/idapcode](https://github.com/binarly-io/idapcode) — 显示当前函数 P-code 的 IDA 插件 **[72 星标]**
+- [rair-project/rair](https://github.com/rair-project/rair) — RAIR：用 Rust 实现的 Radare **[72 星标]**
+- [aerosoul94/dynlib](https://github.com/aerosoul94/dynlib) — 辅助 PS4 用户态 ELF 逆向工程的 IDA Pro 插件。 **[71 星标]**
+- [anic/ida2pwntools](https://github.com/anic/ida2pwntools) — IDA 7.0 插件，辅助附加到 pwntools 创建的进程并调试 pwn **[71 星标]**
+- [teapotd/xdeobf](https://github.com/teapotd/xdeobf) — IDA 去混淆插件 **[70 星标]**
+- [tacesrever/Il2CppParser](https://github.com/tacesrever/Il2CppParser) — IDA 的 libil2cpp 符号解析器 **[69 星标]**
+- [mytechnotalent/rea](https://github.com/mytechnotalent/rea) — 无需安装、随处可运行且值得信赖的逆向工程框架。 **[68 星标]**
+- [ergrelet/triton-bn](https://github.com/ergrelet/triton-bn) — Binary Ninja 插件，可将 Triton 的无效存储消除优化应用于基本块或函数。 **[66 星标]**
+- [tmr232/BRUTAL-IDA](https://github.com/tmr232/BRUTAL-IDA) — 禁用重做与撤销，恢复旧版 IDA 体验 **[65 星标]**
+- [radareorg/r2wars](https://github.com/radareorg/r2wars) — 在 r2 内运行 Core War **[64 星标]**
+- [archercreat/ida_names](https://github.com/archercreat/ida_names) — IDA-names 自动用当前函数名重命名伪代码窗口。 **[63 星标]**
+- [rr-/ida-images](https://github.com/rr-/ida-images) — IDA 反汇编器的图像预览插件。 **[63 星标]**
+- [vmallet/ida-hex-highlighter](https://github.com/vmallet/ida-hex-highlighter) — IDA 的 Hex-Rays 代码块高亮插件，可高亮 if、for、do、switch 和 while 代码块 **[63 星标]**
+- [Accenture/Condstanta](https://github.com/Accenture/Condstanta) — 上游未提供简介。 **[62 星标]**
+- [kevinmuoz/ida-theme-explorer](https://github.com/kevinmuoz/ida-theme-explorer) — 浏览并安装 100 多款 IDA Pro 社区主题，包括 Dracula、Monokai、Solarized 等 **[62 星标]**
+- [zhuyie/bsdiff](https://github.com/zhuyie/bsdiff) — bsdiff 是用于创建和应用二进制文件补丁的库。 **[61 星标]**
+- [LuisFernando56/PrincessTrainer-Forge-macOS](https://github.com/LuisFernando56/PrincessTrainer-Forge-macOS) — Magical Princess Trainer 2026：macOS Apple Silicon M1、M2、M3、M4 ARM64 原生版 **[56 星标]**
+- [1rhino2/fnprint](https://github.com/1rhino2/fnprint) — 根据函数行为匹配二进制文件中的函数，而非比较字节形式；通过微执行生成函数行为指纹。 **[55 星标]**
+- [seifreed/r2inspect](https://github.com/seifreed/r2inspect) — r2inspect 是专业恶意软件分析框架，利用 radare2 生态系统自动深入静态检查 PE、ELF 和 Mach-O 二进制文件。结合格式解析、启发式检测与丰富报告，为逆向工程师、事件响应人员和威胁分析师提供支持。 **[55 星标]**
+- [radareorg/r2web](https://github.com/radareorg/r2web) — 随时随地访问 radare2。 **[53 星标]**
+- [seifreed/r2morph](https://github.com/seifreed/r2morph) — 基于 r2pipe 和 radare2 的变形二进制转换引擎。 **[53 星标]**
+- [radareorg/radare2-r2papi](https://github.com/radareorg/radare2-r2papi) — 基于 R2Pipe 接口的高级 API **[51 星标]**
+- [enovella/re-scripts](https://github.com/enovella/re-scripts) — IDA、Ghidra 和 Radare2 脚本，以及让工作更轻松的 Android 脚本。 **[50 星标]**
+- [gum3t/chameleon](https://github.com/gum3t/chameleon) — Chameleon 是面向 x86_64 位置无关 Shellcode 的多态引擎，为满足红队环境中规避特征签名检测的需求而创建。 **[50 星标]**
+- [monosource/radare2-explorations](https://github.com/monosource/radare2-explorations) — 一本学习 radare2 的书。 **[49 星标]**
+- [radareorg/libdemangle](https://github.com/radareorg/libdemangle) — 专注于还原各种编程语言符号修饰的简单库 **[48 星标]**
+- [membrowse/membrowse-action](https://github.com/membrowse/membrowse-action) — 跟踪并分析嵌入式固件的二进制大小与内存占用 **[47 星标]**
+- [zmrbak/ReverseAnalysis](https://github.com/zmrbak/ReverseAnalysis) — 云课堂《X86/X64 软件逆向分析入门》示例代码 **[47 星标]**
+- [radareorg/r2pipe.rs](https://github.com/radareorg/r2pipe.rs) — r2pipe 的 Rust 包 **[45 星标]**
+- [buzzer-re/ToCode](https://github.com/buzzer-re/ToCode) — 将二进制文件转换为类似源码的项目，让编程智能体能够遍历、分析，并将其作为大型二进制文件的参考依据。支持 IDA Pro、radare2、angr 和 Binary Ninja。 **[43 星标]**
+- [ltlly/MikuCffHelper](https://github.com/ltlly/MikuCffHelper) — 使用 Binary Ninja 工作流还原 OLLVM 控制流平坦化 **[42 星标]**
+- [radareorg/r2unity](https://github.com/radareorg/r2unity) — 使用 radare2 逆向分析 Unity 游戏。 **[38 星标]**
+- [sterrasec/genpatch](https://github.com/sterrasec/genpatch) — genpatch 是一款 IDA 插件，可生成用于修补二进制文件的 Python 脚本。 **[38 星标]**
+- [therealdreg/linux_kernel_debug_disassemble_ida_vmware](https://github.com/therealdreg/linux_kernel_debug_disassemble_ida_vmware) — 在 VMware + GDB stub 环境中使用 IDA Pro 反汇编或调试 Linux 内核的辅助脚本，包含一些符号辅助工具。 **[38 星标]**
+- [cxiao/ida-rust-untangler](https://github.com/cxiao/ida-rust-untangler) — 用于还原 Rust 函数名称的 IDA 插件。 **[37 星标]**
+- [E3V3A/hex2bin](https://github.com/E3V3A/hex2bin) — 一款旧的命令行工具，可将 Intel/Motorola 格式的 HEX ASCII 固件文件解析为二进制数据。 **[36 星标]**
+- [gcarmix/hexdig](https://github.com/gcarmix/hexdig) — 基于 C++ 的二进制数据分析与提取工具。 **[36 星标]**
+- [jjazzboss/colorbindiff](https://github.com/jjazzboss/colorbindiff) — 用于二进制文件的彩色可视化差异比较工具。 **[36 星标]**
+- [GeT1t/deollvm](https://github.com/GeT1t/deollvm) — 基于 Unicorn 的 ARM64 OLLVM 去混淆工具。 **[35 星标]**
+- [Colton1skees/TritonTranslator](https://github.com/Colton1skees/TritonTranslator) — Triton x86/x64 转换器的独立静态版本。 **[34 星标]**
+- [guedou/r2scapy](https://github.com/guedou/r2scapy) — 使用 Scapy 解码数据包的 radare2 插件。 **[34 星标]**
+- [monosource/radare2-explorations-binaries](https://github.com/monosource/radare2-explorations-binaries) — radare2-explorations 的补充资料。 **[34 星标]**
+- [relyze-ltd/plugins](https://github.com/relyze-ltd/plugins) — Relyze Desktop 插件示例仓库。 **[34 星标]**
+- [joshwatson/binaryninja-msp430](https://github.com/joshwatson/binaryninja-msp430) — Binary Ninja 的 MSP430 架构插件。 **[33 星标]**
+- [maosasagawa/blackbox-re-agent](https://github.com/maosasagawa/blackbox-re-agent) — 基于 pi coding agent 的对话式黑盒逆向工程智能体，可借助自行配置的工具链（radare2、Ghidra、angr、jadx）分析 apk/.o/.hex/exe。采用静态分析，兼容 Claude Code 和 Codex。 **[33 星标]**
+- [mytbk/r2dumpbin](https://github.com/mytbk/r2dumpbin) — 将原始 IA32 二进制文件转储为 NASM 源文件的 radare2 Python 脚本。 **[33 星标]**
+- [RazviOverflow/Malware_Resources](https://github.com/RazviOverflow/Malware_Resources) — 恶意软件分析、二进制漏洞利用和逆向工程相关资源合集。 **[33 星标]**
+- [rwfpl/rewolf-dirtyjoe](https://github.com/rwfpl/rewolf-dirtyjoe) — dirtyJOE 的开源版本，用于编辑编译后的 Java .class 文件。 **[32 星标]**
+- [WithSecureLabs/radare2-scripts](https://github.com/WithSecureLabs/radare2-scripts) — 实用 radare2 脚本合集！ **[32 星标]**
+- [MISP/bsimvis](https://github.com/MISP/bsimvis) — BSimVis 基于 Ghidra 分析器和 BSim（行为相似性）插件，分析一组二进制文件之间的相似性。它提供 API 和 Web 界面，可将大量反编译后的二进制文件及 BSim 特征向量上传到 Kvrocks 数据库，用于相似性分析、函数差异比较和家族聚类。 **[30 星标]**
+- [radareorg/r2yara](https://github.com/radareorg/r2yara) — YARA 与 radare2，搭配使用更出色。 **[30 星标]**
+- [guedou/flashre](https://github.com/guedou/flashre) — 用于逆向分析 Toshiba FlashAir SD 卡的工具。 **[29 星标]**
+- [sushant94/rune](https://github.com/sushant94/rune) — rune：基于 radare2 的符号仿真器。 **[27 星标]**
+- [icedream/go-bsdiff](https://github.com/icedream/go-bsdiff) — @mendsley 的 bsdiff C 库的 Go 封装。 **[26 星标]**
+- [buzzer-re/eqfunc](https://github.com/buzzer-re/eqfunc) — 运用图论发现二进制文件中结构相似的函数。 **[25 星标]**
+- [ps1337/pwntools-r2](https://github.com/ps1337/pwntools-r2) — 在 tmux 中通过 pwntools 轻松启动 radare2。 **[22 星标]**
+- [kapaw/pwnmachine](https://github.com/kapaw/pwnmachine) — 用于搭建 CTF 和漏洞利用开发环境的 Vagrant 配置。 **[21 星标]**
+- [sktelecom/bomlens](https://github.com/sktelecom/bomlens) — BomLens：本地优先的 SBOM 生成器及开源风险评估工具（CycloneDX）。可从源代码、容器、二进制文件、固件或收到的 SBOM 生成 SBOM、开源声明及安全与许可证风险报告。提供命令行和 Web 界面，无需 SaaS。 **[21 星标]**
+- [2389-research/binary-re](https://github.com/2389-research/binary-re) — 面向 ARM64、ARMv7 和 x86_64 ELF 二进制文件的智能体逆向工程，使用 radare2、Ghidra、GDB 和 QEMU 开展假设驱动的分析。 **[20 星标]**
+- [DatanoiseTV/practical-reverse-engineering](https://github.com/DatanoiseTV/practical-reverse-engineering) — 逆向工程实用手册。涵盖嵌入式固件（ARM Cortex-M、Xtensa/ESP32、RISC-V、8051、MIPS）、Linux 用户空间、内核模块和设备树，以及硬件攻击（故障注入、侧信道分析）。主要以 radare2 为工具示例，提供 PDF 和网页版。 **[20 星标]**
+- [xTeardx/diaphora-mcp](https://github.com/xTeardx/diaphora-mcp) — 用于自动比较二进制文件差异的 MCP 服务器。 **[20 星标]**
+- [ivan-sincek/file-scraper](https://github.com/ivan-sincek/file-scraper) — 扫描文件中的敏感信息并生成交互式 HTML 报告，基于 Rabin2。 **[19 星标]**
+- [safiire/radare2-dan32](https://github.com/safiire/radare2-dan32) — 面向 Dan32 架构二进制文件的 radare2 二进制格式、分析和反汇编插件。 **[18 星标]**
+- [enovella/r2con-prequals-rhme3](https://github.com/enovella/r2con-prequals-rhme3) — 使用 r2 挑战 RHme3！RHme（Riscure Hack me）是以 Arduino 板（AVR 架构）为载体的底层硬件 CTF，包含软件和硬件题目，考验侧信道分析、故障注入、逆向工程及软件漏洞利用等技能。演讲将简要回顾 RHme2，并介绍即将举行的 RHme3。本届特别制作了带 CAN 控制器的 Riscurino 目标板，带来真实的汽车安全研究体验。在 r2con 期间，参与者可用 radare2 尽可能多地解题。r2con 举办时 RHme3 报名将已结束，但我们为大会预留了 5 块 Riscurino 板，使用 radare2 解出资格题即可争取获得。 **[17 星标]**
+- [FFRI/XtaTools](https://github.com/FFRI/XtaTools) — Black Hat EU 2020 的概念验证代码和工具。 **[17 星标]**
+- [mytechnotalent/0x01-ARM-32-Hacking-Hello-World](https://github.com/mytechnotalent/0x01-ARM-32-Hacking-Hello-World) — Kali Linux 下 ARM 32 位 Raspberry Pi 安全研究的 Hello World 示例。 **[17 星标]**
+- [radareorg/radare2-skel](https://github.com/radareorg/radare2-skel) — radare2 项目模板示例。 **[17 星标]**
+- [RevEngAI/reai-r2](https://github.com/RevEngAI/reai-r2) — RevEng.AI 的 radare2 插件。 **[16 星标]**
+- [Catherine22/Assembly](https://github.com/Catherine22/Assembly) — 学习 x86 汇编编程与逆向工程。 **[15 星标]**
+- [GrecAndrei/ida-pro-mcp](https://github.com/GrecAndrei/ida-pro-mcp) — 面向 IDA Pro/Home 的本地优先、确定性 MCP 服务器：提供 109 项严格遵循模式定义的逆向工程操作、具有证据支持的发现，以及受策略控制的 IDB 编辑。 **[15 星标]**
+- [r41n60w/bdc_disasm](https://github.com/r41n60w/bdc_disasm) — 《Beyond Dark Castle》（1987，Mac）的游戏反汇编，采用 Motorola 68000 汇编语言。 **[14 星标]**
+- [v-p-b/reshare](https://github.com/v-p-b/reshare) — 逆向工程交换格式。 **[14 星标]**
+- [anatoly505/ios-reverse-skills](https://github.com/anatoly505/ios-reverse-skills) — 支持多种大语言模型的 iOS 逆向工程工具包。包含十阶段工作流，适配 Claude Opus/Code、Cursor、Qwen Coder、MiniMax、Codex/GPT-5、Aider 和 Cline。改编自 incogbyte/iOS-reverse-engineering-claude-skill（Unlicense）。 **[13 星标]**
+- [mytechnotalent/0x02-ARM-32-Hacking-Int](https://github.com/mytechnotalent/0x02-ARM-32-Hacking-Int) — Kali Linux 下 ARM 32 位 Raspberry Pi 安全研究的整数示例。 **[13 星标]**
+- [radareorg/r2hexagon](https://github.com/radareorg/r2hexagon) — 根据官方指令手册生成 Hexagon 反汇编器代码的工具。 **[13 星标]**
+- [vtorres/ntoskrnl-offsets-dumper](https://github.com/vtorres/ntoskrnl-offsets-dumper) — 使用 radare2 和 Rust 转储 ntoskrnl.exe 的重要偏移量，为构建 Windows 内核导航系统提供支持。 **[13 星标]**
+- [bilal-ctf/Windows-PE-Analyzer](https://github.com/bilal-ctf/Windows-PE-Analyzer) — 以学习为目标的 PE 分析引擎，提供模块化检测器、启发式分析和 HTML 报告。 **[12 星标]**
+- [jessehouwing/ppt-diffmerge](https://github.com/jessehouwing/ppt-diffmerge) — 以合并模式启动 PowerPoint 的小型命令行工具。 **[12 星标]**
+- [MohamadMansouri/funcDiffEval](https://github.com/MohamadMansouri/funcDiffEval) — 评估现有函数差异比较技术。 **[12 星标]**
+- [newlog/r2com](https://github.com/newlog/r2com) — 辅助逆向分析 COM 对象的 radare2 脚本。 **[12 星标]**
+- [blacktop/bindiff-rs](https://github.com/blacktop/bindiff-rs) — 用于与 BinDiff 交互的 Rust 库。 **[11 星标]**
+- [kirasys/irec](https://github.com/kirasys/irec) — 用于恢复驱动程序通信接口的跨平台框架。 **[11 星标]**
+- [lancejames221b/omp-re](https://github.com/lancejames221b/omp-re) — 面向 omp 的逆向工程套件，包含 radare2 工具、证据存储、签名审计日志、逆向工程状态栏和报告生成器。 **[11 星标]**
+- [woodruffw/libbdiff](https://github.com/woodruffw/libbdiff) — 用于创建和应用二进制差异补丁的库，基于 bsdiff。 **[11 星标]**
+- [CYB3RMX/Zepu1chr3](https://github.com/CYB3RMX/Zepu1chr3) — 基于 radare2 的 Python 模块，用于二进制分析与逆向工程。 **[10 星标]**
+- [h4ng3r/r2apktool](https://github.com/h4ng3r/r2apktool) — 基于 radare2 的 apktool 替代工具。 **[10 星标]**
+- [newlog/r2msdn](https://github.com/newlog/r2msdn) — 为导入函数调用添加 MSDN 文档 URL 和参数名的 r2 插件。 **[10 星标]**
+- [parrotmac/docker-patcher](https://github.com/parrotmac/docker-patcher) — 为 Docker 镜像构建并应用二进制补丁。 **[10 星标]**
+- [refcell/reversevm](https://github.com/refcell/reversevm) — EVM 字节码逆向工程笔记。 **[10 星标]**
+- [user1342/Just-Another-Differ](https://github.com/user1342/Just-Another-Differ) — 🔎 Function Change Differ：二进制文件差异比较工具，用于比较不同版本间被混淆和修改的函数内容。🛠️ **[10 星标]**
+- [ithinkthisiscool/even-g2-protocol](https://github.com/ithinkthisiscool/even-g2-protocol) — Even Realities G2 智能眼镜的开源 Python 实现和协议映射，可实现完整第三方互操作、原生仪表盘控制，以及通过 BlueZ 传输原始 LC3 音频流。 **[9 星标]**
+- [johnfxgalea/Dragon-Fang](https://github.com/johnfxgalea/Dragon-Fang) — Ghidra 的程序差异比较扩展。 **[9 星标]**
+- [peitaosu/Cardiff](https://github.com/peitaosu/Cardiff) — 二进制格式文件的版本控制工具。 **[9 星标]**
+- [radareorg/esil-rs](https://github.com/radareorg/esil-rs) — radare2 ESIL 的 Rust 实现。 **[9 星标]**
+- [alichtman/writeups](https://github.com/alichtman/writeups) — CTF、Hack The Box、Vulnhub、漏洞利用挑战、Pwn 题、CrackMe 等的题解、脚本和解答，内容不限。 **[8 星标]**
+- [arkup/tc_deer](https://github.com/arkup/tc_deer) — 适用于 IDA Pro 9.2+ 的 TriCore 反编译插件。 **[8 星标]**
+- [blacktop/go-bindiff](https://github.com/blacktop/go-bindiff) — 用于与 BinDiff 交互的 Go 包。 **[8 星标]**
+- [hamidrezakp/r2fas](https://github.com/hamidrezakp/r2fas) — 用于 radare2 的 FASM .fas 符号调试信息加载器。 **[8 星标]**
+- [kevinmuoz/binwalk-reversing-plugin](https://github.com/kevinmuoz/binwalk-reversing-plugin) — 用于 IDA Pro 和 Binary Ninja 的 Binwalk 插件。 **[8 星标]**
+- [mytechnotalent/pico-micropython-debug-template](https://github.com/mytechnotalent/pico-micropython-debug-template) — Raspberry Pi Pico RP2040 调试模板仓库，提供逐步说明，介绍如何将 MicroPython 文件固化到 C 固件中，并使用 OpenOCD 和 GDB 对二进制文件进行逆向分析。 **[8 星标]**
+- [strobejb/q22](https://github.com/strobejb/q22) — Catch22 十六进制编辑器。 **[8 星标]**
+- [iSayZes/BDO-PAZ-Browser](https://github.com/iSayZes/BDO-PAZ-Browser) — 浏览、提取和预览 Black Desert Online 的 .paz 归档，包含 BDO 二进制格式解析器。 **[7 星标]**
+- [kr1tzy/r2Playground](https://github.com/kr1tzy/r2Playground) — 学习和探索 radare 的资源。 **[7 星标]**
+- [devilofen/SinDiff](https://github.com/devilofen/SinDiff) — 适用于 IDA Pro 9.x 的快速、干净、简单的二进制差异比较插件，可在几秒内找到被修补的函数。没有 Diaphora 的缓慢体验，无崩溃、无冗余，由 Sin 制作。 **[6 星标]**
+- [PabloSoage/Denso-ECU-Toolkit](https://github.com/PabloSoage/Denso-ECU-Toolkit) — 面向 Denso SH705x ECU 的逆向工程工具链，包含用于提取标定表的 Ghidra 脚本和独立 PyQt6 查看器。 **[6 星标]**
+- [therealdreg/call_trick_r2pipe](https://github.com/therealdreg/call_trick_r2pipe) — 用于修正通过 call 技巧处理字符串时反汇编结果的 radare2 脚本。 **[6 星标]**
+- [therealdreg/r2-syscall-printer](https://github.com/therealdreg/r2-syscall-printer) — r2-syscall-printer 是一个 radare r2pipe 脚本，旨在支持 Linux 内核接口调用约定（x86 和 x86_64）：%rdi、%rsi、%rdx、%r10、%r8、%r9。也可作为独立应用打印系统调用表信息。 **[6 星标]**
+- [W3ndige/r2sim](https://github.com/W3ndige/r2sim) — 使用 radare2 框架展示两个样本相似性的修改版脚本。 **[6 星标]**
+- [wcampbell0x2a/cargo-decompile](https://github.com/wcampbell0x2a/cargo-decompile) — 一个 Cargo 子命令，通过 {rizin, radare2}-ghidra 项目显示 Ghidra 函数输出。 **[6 星标]**
+- [ericyoc/iot_device_firmware_analysis_poc](https://github.com/ericyoc/iot_device_firmware_analysis_poc) — 对给定二进制文件执行固件分析。 **[5 星标]**
+- [jstrieb/remote-ofrak](https://github.com/jstrieb/remote-ofrak) — 远程运行 OFRAK，从浏览器修改和重新打包二进制文件。 **[5 星标]**
+- [one2blame/the-dark-arts](https://github.com/one2blame/the-dark-arts) — 保存作者自学二进制漏洞利用和逆向工程笔记的仓库。 **[5 星标]**
+- [keithgh1/star-nx1020-re](https://github.com/keithgh1/star-nx1020-re) — 对 Star NX-1020 九针点阵打印机的逆向工程，包含提取的内置字体、带标签的固件反汇编、ROM 映射和完整文档。 **[4 星标]**
+- [CAATZ/bimmerstein-bin-analyzer](https://github.com/CAATZ/bimmerstein-bin-analyzer) — 用于 ECU 二进制分析和编辑的开源 Windows 应用，支持自动检测标定表和坐标轴、十六进制/2D/3D 视图、对受支持格式进行校验和修正，以及导出 RomRaider、TunerPro XDF、CSV 和 JSON。 **[3 星标]**
+- [eloyssync/axianware](https://github.com/eloyssync/axianware) — 原生 C++/Win32 PE 分析与二进制初步评估工具包。检查头部和熵、移除 ASLR/NX、反转分支逻辑（Jcc/RET）、扫描字节数组特征，并即时生成 .1337 补丁、Cheat Engine 脚本或跳板 DLL 钩子。 **[3 星标]**
+- [KeepALifeUS/sfs2x-py](https://github.com/KeepALifeUS/sfs2x-py) — SmartFoxServer 2X 二进制协议的 Python 实现。 **[3 星标]**
+- [patacca/differ](https://github.com/patacca/differ) — 使用 Python 编写、基于 angr 构建的简单二进制差异比较工具。 **[3 星标]**
+- [Seemafir6626/esp32-p4-decompiler-plugin](https://github.com/Seemafir6626/esp32-p4-decompiler-plugin) — 通过自定义 Sleigh 处理器定义、外设内存映射和 ROM 符号加载，为 ESP32-P4 RISC-V 微控制器提供完整 Ghidra 支持。 **[3 星标]**
+- [thyrn90/ThyrnAnalyzer](https://github.com/thyrn90/ThyrnAnalyzer) — 使用 C++17 编写的轻量级 PE/ELF 二进制分析器。 **[3 星标]**
+- [ChowChowSonic/apkhound](https://github.com/ChowChowSonic/apkhound) — 一体化二进制程序，帮助定位、提取和识别不同 APK 版本间的变化。 **[2 星标]**
+- [huku-/reveal](https://github.com/huku-/reveal) — 采用分治策略的二进制差异比较框架。 **[2 星标]**
+- [manop55555/roe](https://github.com/manop55555/roe) — 用于逆向分析二进制文件的原生 C++ 命令行工具包。 **[2 星标]**
+- [MorenoLopez/RevTool](https://github.com/MorenoLopez/RevTool) — C 编写的二进制逆向工程工具包，支持文件分析、ELF/PE 解析、熵扫描、字符串提取和可选反汇编。 **[2 星标]**
+- [NerdTIV/QDig](https://github.com/NerdTIV/QDig) — 将拆分的 Qualcomm 固件重新组合以供 Ghidra 使用，并从二进制文件中残留的调试元数据恢复源文件和行号。 **[2 星标]**
+- [sayseven7/peda-modern-gdb](https://github.com/sayseven7/peda-modern-gdb) — 针对现代 Python 和 GDB 环境修补的 PEDA。 **[2 星标]**
+- [vobst/coderec](https://github.com/vobst/coderec) — 识别二进制文件中的机器码。 **[2 星标]**
+- [waaraawa/ByteGrid](https://github.com/waaraawa/ByteGrid) — 在 Obsidian 中将二进制数据和 C 结构体内存布局可视化为交互式 SVG 图。 **[2 星标]**
+- [waterofriver/ghidriff-mcp](https://github.com/waterofriver/ghidriff-mcp) — 将 ghidriff Ghidra 二进制差异比较引擎作为工具提供给 AI 智能体的 MCP 服务器。 **[2 星标]**
+- [abd3lraouf-studios/binexport-ghidra-12](https://github.com/abd3lraouf-studios/binexport-ghidra-12) — 适用于 Ghidra 12.x（12.1.2）的 BinExport。此 google/binexport 修补版本修复了阻碍 Ghidra 12.0+ 使用 BinExport + BinDiff 的 NoSuchFieldError LabelString$LabelType.CODE_LABEL 崩溃问题（#166）。提供预编译 Ghidra 扩展和无界面导出，恢复 Ghidra → BinExport → BinDiff 流程。 **[1 星标]**
+- [danielcho02/win_minesweeper_hack](https://github.com/danielcho02/win_minesweeper_hack) — 经典扫雷 WinMine 的 IDA 静态分析与运行时内存验证。 **[1 星标]**
+- [diff3/BinaryPacketsDSL](https://github.com/diff3/BinaryPacketsDSL) — BinaryPacketsDSL 是用于描述、解析和分析二进制协议数据包的领域专用语言及工具包，注重清晰性、健壮性和可测试性，支持结构化定义、修饰符及动态字段处理。 **[1 星标]**
+- [H0llyW00dzZ/pe-sigscan](https://github.com/H0llyW00dzZ/pe-sigscan) — 快速、零依赖、支持 no_std 的 Rust crate，使用 IDA 风格模式扫描 PE 特征。 **[1 星标]**
+- [JerenzeLevi/cyberdesk](https://github.com/JerenzeLevi/cyberdesk) — 本地 Web 仪表盘，整合 OSINT、逆向工程、二进制漏洞利用、Web/目录侦察及密码学工具，用于 CTF 和授权安全研究。上传文件、点击运行，即可获取结果。 **[1 星标]**
+- [joemunene-by/ghostmobile](https://github.com/joemunene-by/ghostmobile) — 面向 Android APK 和 iOS IPA 包的静态安全分析器，仅用于授权审查和静态分析。内置二进制 AXML 解码器、Manifest 和 Info.plist 检查，支持 JSON 与 SARIF 输出。 **[1 星标]**
+- [meerkatone/binja_diff_view](https://github.com/meerkatone/binja_diff_view) — 在 Binary Ninja 中比较二进制文件，提供同步图形与线性差异视图、语料库比较和符号迁移。 **[1 星标]**
+- [mustafajaved304/VulnX](https://github.com/mustafajaved304/VulnX) — 自动化漏洞评估与风险分析平台，提供 Nmap 扫描、CVE 情报、二进制分析、YARA 威胁检测和 PDF 安全报告。 **[1 星标]**
+- [nico-perales/deltabin](https://github.com/nico-perales/deltabin) — 用于 ELF/PE 的快速开源二进制差异比较工具，报告结构变化；对于 x86-64，还能指出新增、删除或修改的函数。提供 Rust 命令行工具和库。 **[1 星标]**
+- [V3tR1l1oN/vgui2-reconstruction](https://github.com/V3tR1l1oN/vgui2-reconstruction) — 从二进制文件完整静态重建 vgui2.dll（GoldSrc）：自主代码、原始 ABI、349/349 个方法、18 项测试，采用 GPL v3。 **[1 星标]**
+- [zxkuhl/SectorForge](https://github.com/zxkuhl/SectorForge) — 面向本地 AI 模型的 Ghidra：在可视化工作台中反编译、检查和修补 GGUF/LoRA/Ollama 模型，并使用模块化“sector”适配器构建新模型，无需重新训练。 **[1 星标]**
+- [zz2007327-code/Open-Source-Everything](https://github.com/zz2007327-code/Open-Source-Everything) — 逆向分析可运行目标（网站、SPA、浏览器应用、小程序、Electron、二进制程序），生成有证据支持的机制笔记，再提炼为可直接实施的功能规格。 **[1 星标]**
+- [Information-Technology-Security/Android-Repackaging](https://github.com/Information-Technology-Security/Android-Repackaging) — 演示 Android 重打包攻击的学术安全项目：对合法 APK 进行反汇编、加入恶意 smali 代码、重新签名并部署，以执行删除联系人和位置跟踪等侵犯隐私的行为（UNIWA 信息技术安全课程）。 **[0 星标]**
+- [Kaklaber/Momus](https://github.com/Kaklaber/Momus) — 单文件离线分析器，可完全在浏览器中分析源代码、二进制文件、软件包、文档、SBOM 和安全元数据。 **[0 星标]**
+- [mahmoudimus/maml](https://github.com/mahmoudimus/maml) — 面向字节的匹配语言，用于从不断变化的二进制文件中发现含义。MAML 是 Mahmoud’s Address Matching Language 的缩写。 **[0 星标]**
+- [meerkatone/binary_diffing_and_marimo_rust](https://github.com/meerkatone/binary_diffing_and_marimo_rust) — 用于比较和搜索二进制差异比较结果的 Marimo 笔记本。 **[0 星标]**
+
+<!-- Generated by scripts/build_repository_index.py. Edit source data, then rebuild. -->

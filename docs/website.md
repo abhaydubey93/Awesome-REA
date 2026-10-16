@@ -9,6 +9,7 @@
 - [translations.zh-CN.json](../site/translations.zh-CN.json) supplies Chinese resource names and prerequisites. New records also need translations here.
 - [topics.i18n.json](../site/topics.i18n.json) supplies bilingual display labels for common repository topics. Canonical upstream topic IDs remain intact for links and exact filtering.
 - [source-index.json](../data/source-index.json) supplies the broader repository collection from successful automated README fetches. Its counts and review status stay separate from the curated records. [Repository locale files](../data/locales/README.md) provide English and Simplified Chinese descriptions; the generated data also preserves the original upstream text. See [scan methodology](source-scan.md).
+- [source-scope.json](../data/source-scope.json) removes clearly unrelated scan matches from browsing while keeping their original scan evidence in the full downloadable JSON. The footer offers separate repository-index and curated-catalog downloads.
 - [build_site.py](../scripts/build_site.py) combines the catalogs, derives counts, copies the site assets, and generates `catalog.json`, `robots.txt`, `sitemap.xml`, `CNAME` and `.nojekyll` in `dist/`.
 - `dist/` is ignored by Git. Rebuild it from source instead of editing generated files. The resource count is a count of catalog records, not distinct software projects.
 
@@ -24,6 +25,8 @@ python3 -m http.server 8000 --bind 127.0.0.1 --directory dist
 ```
 
 Open `http://127.0.0.1:8000`. Use HTTP rather than opening `index.html` directly, because the directory loads `catalog.json` with `fetch`. Stop the preview server with Ctrl+C.
+
+After source, locale, or scope edits, regenerate the [GitHub browsing directory](repositories/README.md) with `python3 scripts/build_repository_index.py` before validation. It also updates the counts and directory links in both root READMEs.
 
 Before publication, check English and Chinese at desktop and 390 px widths: search, all filter types, empty results, clearing filters, loading more, prerequisite expansion, keyboard focus and the language selector. Confirm repository descriptions change language alongside the interface, including filtered and newly loaded cards. Check translated prerequisites and empty-description fallbacks, and confirm the canonical URL, social image URLs, `CNAME`, robots and sitemap agree on `awesomerea.org`.
 

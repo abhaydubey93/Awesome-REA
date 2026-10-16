@@ -11,6 +11,7 @@ from pathlib import Path
 from urllib.parse import urlsplit
 
 from localization import read_localizations, localized_records
+from source_scope import apply_scope, read_scope
 
 ROOT = Path(__file__).resolve().parents[1]
 SOURCE = ROOT / "site"
@@ -173,10 +174,12 @@ def main() -> None:
             successful = [record for record in index_data.get("resources", []) if record.get("scan_status") == "readme-scanned"]
             if successful:
                 repository_locales = read_localizations(ROOT)
-                index_data["resources"] = localized_records(successful, repository_locales)
+                index_data["resources"] = apply_scope(localized_records(successful, repository_locales), read_scope(ROOT))
+                excluded_count = sum(record.get("scope_status") == "excluded" for record in index_data["resources"])
+                index_data["meta"]["scope"] = {"scanned_count": len(successful), "excluded_count": excluded_count, "browse_count": len(successful) - excluded_count}
                 index_data["meta"]["localization"] = {"languages": ["en", "zh-CN"], "translated_records": sum(record["id"] in repository_locales for record in successful), "method": "AI-assisted description translation; original upstream text retained."}
                 index_meta = index_data.get("meta", {})
-                metadata["source_index"] = {"available": True, "resource_count": len(successful), "status": index_meta.get("status", ""), "completed_at": index_meta.get("completed_at"), "verification": "automated-readme-scan"}
+                metadata["source_index"] = {"available": True, "resource_count": len(successful) - excluded_count, "scanned_count": len(successful), "excluded_count": excluded_count, "status": index_meta.get("status", ""), "completed_at": index_meta.get("completed_at"), "verification": "automated-readme-scan"}
                 source_index_output.write_text(json.dumps(index_data, ensure_ascii=False, indent=2) + "\n", encoding="utf-8")
     if not metadata["source_index"]["available"]:
         source_index_output.unlink(missing_ok=True)

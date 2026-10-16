@@ -1,0 +1,101 @@
+{
+  "scan-350913590": {
+    "decision": "exclude",
+    "reason_code": "outside-software-biology",
+    "reason_en": "Vaccine RNA sequencing and assembly research is outside this collection’s software and hardware reverse-engineering scope.",
+    "reason_zh": "疫苗 RNA 测序与序列组装研究不属于本合集的软件与硬件逆向工程范围。",
+    "readme_sha256": "0e4382b187ed30f8a5594555bd29b45f453a7d74da4f2a4b60130fdac9d02133",
+    "evidence_url": "https://github.com/NAalytics/Assemblies-of-putative-SARS-CoV2-spike-encoding-mRNA-sequences-for-vaccines-BNT-162b2-and-mRNA-1273/blob/main/README.md",
+    "reviewed_at": "2026-10-16T04:09:02Z"
+  },
+  "scan-249301266": {
+    "decision": "exclude",
+    "reason_code": "outside-software-biology",
+    "reason_en": "This project studies coronavirus biology using software analogies, rather than reverse engineering software or hardware.",
+    "reason_zh": "该项目借助软件类比研究冠状病毒生物学，并非对软件或硬件进行逆向工程。",
+    "readme_sha256": "8c10f9fabc8bb07cd3d4f0c2bea251999f32038d7204aadf4e0fd28a1c69c036",
+    "evidence_url": "https://github.com/geohot/corona/blob/master/README.md",
+    "reviewed_at": "2026-10-16T04:09:02Z"
+  },
+  "scan-1108308990": {
+    "decision": "exclude",
+    "reason_code": "financial-analysis",
+    "reason_en": "This is a token-economics framework using biological metaphors, not software protocol analysis or reverse engineering.",
+    "reason_zh": "该项目以生物学隐喻研究代币经济，并非软件协议分析或逆向工程。",
+    "readme_sha256": "388473e50ac7a2f671a7936bbb6ff0f3ed3797488b0ae7ef4fba0b2ca512db4c",
+    "evidence_url": "https://github.com/AmirhosseinHonardoust/Metabolic-Tokenomics/blob/main/README.md",
+    "reviewed_at": "2026-10-16T04:09:02Z"
+  },
+  "scan-1201245878": {
+    "decision": "exclude",
+    "reason_code": "financial-analysis",
+    "reason_en": "The README describes Solana token investment diligence and capital-allocation analysis, not software protocol reverse engineering.",
+    "reason_zh": "README 描述的是 Solana 代币投资尽调与资金配置分析，并非软件协议逆向工程。",
+    "readme_sha256": "867320cb3a6b8fc3f2e4b94be689359c20b99c6c898b3e259f4b0d0fdea9e4db",
+    "evidence_url": "https://github.com/LoreResearch/Lore/blob/master/README.md",
+    "reviewed_at": "2026-10-16T04:09:02Z"
+  },
+  "scan-1047477037": {
+    "decision": "exclude",
+    "reason_code": "financial-analysis",
+    "reason_en": "This project analyzes Morpho lending metrics and business-development opportunities, rather than software implementation or protocol internals.",
+    "reason_zh": "该项目分析 Morpho 借贷指标与业务增长机会，并非软件实现或协议内部机制。",
+    "readme_sha256": "b340b19cf49fdae8f4bafeb03dee9fc4092ee3ef1f4d27c6eb7778bee849a61c",
+    "evidence_url": "https://github.com/Waridah-Legal-Engineer/Morpho_Defi/blob/main/README.md",
+    "reviewed_at": "2026-10-16T04:09:02Z"
+  },
+  "scan-794938816": {
+    "decision": "exclude",
+    "reason_code": "personal-profile",
+    "reason_en": "This repository presents a developer profile and skills, rather than a specific reverse-engineering tool, case, or reference.",
+    "reason_zh": "该仓库介绍开发者个人资料与技能，并非具体的逆向工具、案例或参考资料。",
+    "readme_sha256": "02b500ee83e21b8e8f5c17c972e8afc40cec2d9968bd9dede9bf8016ab39652b",
+    "evidence_url": "https://github.com/Mr-SxR/Mr-SxR/blob/main/README.md",
+    "reviewed_at": "2026-10-16T04:09:02Z"
+  },
+  "scan-1006177183": {
+    "decision": "exclude",
+    "reason_code": "personal-profile",
+    "reason_en": "This repository presents a developer biography and portfolio overview, rather than a specific reverse-engineering resource.",
+    "reason_zh": "该仓库介绍开发者经历与作品概况，并非具体的逆向工程资源。",
+    "readme_sha256": "b4e8cf8817749e761834f93f9b7a32861f68c17ebab859be1afadfde6f527fe2",
+    "evidence_url": "https://github.com/Mr-SxR/MasudurRahmanSifat/blob/main/README.md",
+    "reviewed_at": "2026-10-16T04:09:02Z"
+  },
+  "scan-1111365511": {
+    "decision": "exclude",
+    "reason_code": "unrelated-language-research",
+    "reason_en": "Here, verbal design protocols are research transcripts used for LLM question classification, not software or network protocols.",
+    "reason_zh": "此处的“设计口述协议”是用于大语言模型问题分类的研究记录，并非软件或网络协议。",
+    "readme_sha256": "976e949399654e8bc8541d96655050edd908fef852098904b66869f1262cdf94",
+    "evidence_url": "https://github.com/ahmedshahriar/llm-eval-question-taxonomy-verbal-design-protocols/blob/main/README.md",
+    "reviewed_at": "2026-10-16T04:09:02Z"
+  },
+  "scan-526074219": {
+    "decision": "exclude",
+    "reason_code": "unrelated-ui-animation",
+    "reason_en": "The repository provides a sound-volume icon animation, with no reverse-engineering resource identified in the scanned description or README.",
+    "reason_zh": "该仓库提供音量图标动画，扫描到的简介与 README 未表明其包含逆向工程资源。",
+    "readme_sha256": "220866ccadaeaebfc466b21a79fdececc9d7304b3a6d79d6881d834ce54cf06f",
+    "evidence_url": "https://github.com/ab-g/Sound-Volume-Icon-Animation/blob/master/README.md",
+    "reviewed_at": "2026-10-16T04:09:02Z"
+  },
+  "scan-938693": {
+    "decision": "exclude",
+    "reason_code": "unrelated-chart-digitization",
+    "reason_en": "WebPlotDigitizer extracts numerical data from chart images; it is not a software or hardware reverse-engineering resource.",
+    "reason_zh": "WebPlotDigitizer 从图表图像中提取数值数据，不属于软件或硬件逆向工程资源。",
+    "readme_sha256": "2d8630f761ab39a9aa1fdc6485be259b2a8096d590d73cf03afeee1b879b865e",
+    "evidence_url": "https://github.com/automeris-io/WebPlotDigitizer/blob/master/README.md",
+    "reviewed_at": "2026-10-16T04:09:02Z"
+  },
+  "scan-1277667748": {
+    "decision": "exclude",
+    "reason_code": "ordinary-device-repair",
+    "reason_en": "The README describes routine Windows Bluetooth driver and connectivity repair, not protocol inspection or hardware reverse engineering.",
+    "reason_zh": "README 描述的是常规 Windows 蓝牙驱动与连接修复，并非协议检查或硬件逆向工程。",
+    "readme_sha256": "f178aba92d3a017784fd0bf1173e849a69c2245f552f083f1eb4cb9ee1594a32",
+    "evidence_url": "https://github.com/perirhinal-flit845/Bluetooth-Repair-Tool/blob/main/README.md",
+    "reviewed_at": "2026-10-16T04:09:02Z"
+  }
+}
