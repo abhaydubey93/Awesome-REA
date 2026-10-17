@@ -221,7 +221,8 @@ def render_catalog(records, language, paper_urls=frozenset()):
                 detail_url = f"https://awesomerea.org/{'zh/' if language == 'zh' else ''}resources/{record['id']}/"
                 detail_label = '使用条件与证据' if language == 'zh' else 'Requirements & evidence'
                 lines.extend([
-                    f"- [**{name}**]({record['url']}) · {metadata} · [{detail_label}]({detail_url})", '',
+                    f"- [**{name}**]({record['url']})<br>",
+                    f"  {metadata} · [{detail_label}]({detail_url})", '',
                     f'  {description}', '',
                 ])
     return '\n'.join(lines).rstrip() + '\n'
@@ -247,16 +248,18 @@ def render_contents(records, papers, index_count, language):
         return item(COLLECTION_SECTIONS[section][int(zh)], f'#{section}', counts[section])
 
     targets = [section_item(section) for section in TARGET_SECTIONS if counts[section]]
-    reading = [item('论文' if zh else 'Papers', '#papers', len(papers)),
-               item('全部案例' if zh else 'All cases', f"https://awesomerea.org/{'zh/' if zh else ''}cases/", cases),
-               item(INDEX_HEADINGS[int(zh)], '#完整仓库索引' if zh else '#full-repository-index', index_count)]
-    more = [section_item(section) for section in COLLECTION_SECTIONS
-            if section not in TARGET_SECTIONS and counts[section]]
+    reading = [item('论文' if zh else 'Papers', '#papers', len(papers))]
+    reading += [section_item(section) for section in ('agents-and-mcp', 'references-and-learning')
+                if counts[section]]
+    more = [item('全部案例' if zh else 'All cases',
+                 f"https://awesomerea.org/{'zh/' if zh else ''}cases/", cases)]
+    if counts['related-collections']:
+        more.append(section_item('related-collections'))
+    more.append(item(INDEX_HEADINGS[int(zh)], '#完整仓库索引' if zh else '#full-repository-index', index_count))
     lines = [f"**{'按目标找工具与案例' if zh else 'Tools and cases by target'}**", '']
     lines += ['- ' + ' · '.join(targets[start:start + 3]) for start in range(0, len(targets), 3)]
-    lines += ['', f"**{'论文与更多资源' if zh else 'Research and more'}**", '', '- ' + ' · '.join(reading)]
-    if more:
-        lines.append('- ' + ' · '.join(more))
+    lines += ['', f"**{'论文与工作流' if zh else 'Research and workflows'}**", '', '- ' + ' · '.join(reading)]
+    lines += ['', f"**{'更多浏览方式' if zh else 'More ways to browse'}**", '', '- ' + ' · '.join(more)]
     return '\n'.join(lines) + '\n'
 
 
@@ -328,7 +331,9 @@ def render_papers(papers, language):
         groups[section].append(paper)
     topics = [f'[{labels[index]}](#papers-{section}) ({len(groups[section])})'
               for section, labels in PAPER_TOPIC_LABELS.items() if groups[section]]
-    lines.extend([f"**{'按主题' if zh else 'By topic'}** · " + ' · '.join(topics), '',
+    lines.extend([f"**{'按主题' if zh else 'By topic'}**", ''])
+    lines.extend('- ' + ' · '.join(topics[start:start + 3]) for start in range(0, len(topics), 3))
+    lines.extend(['',
                   ('展开各条目的“范围与发表信息”可查看完整研究边界；以下按年份从新到旧排列。'
                    if zh else 'Open “Scope and publication details” for each study’s full limitations. Papers are ordered newest first within each topic.'), ''])
     for section, labels in PAPER_SECTIONS.items():
@@ -347,9 +352,9 @@ def render_papers(papers, language):
                 links.append(f"[{'代码' if zh else 'Code'}]({paper['code_url']})")
             links.append(f"[{'完整条目与引用' if zh else 'Full entry & citation'}]({detail_url})")
             lines.extend([
-                f"- [**{title}**]({paper['url']}) · **{paper['year']} · {status}**", '',
+                f"- [**{title}**]({paper['url']})<br>",
+                f"  {paper['year']} · {status} · " + ' · '.join(links), '',
                 '  ' + plain_text(paper[f'description_{language}']), '',
-                '  ' + ' · '.join(links), '',
                 '  <details>',
                 f"  <summary>{'范围与发表信息' if zh else 'Scope and publication details'}</summary>", '',
                 f"  **{'范围与限制' if zh else 'Scope and limits'}:** "
