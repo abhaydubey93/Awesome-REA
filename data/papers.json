@@ -2489,5 +2489,83 @@
     "verified_at": "2026-10-17",
     "verification": "source-reviewed",
     "runtime_tested": false
+  },
+  {
+    "id": "paper-web2code",
+    "title": "Web2Code: A Large-scale Webpage-to-Code Dataset and Evaluation Framework for Multimodal LLMs",
+    "title_zh": "Web2Code：面向多模态大语言模型的大规模网页转代码数据集与评估框架",
+    "authors": [
+      "Sukmin Yun",
+      "Haokun Lin",
+      "Rusiru Thushara",
+      "Mohammad Qazim Bhat",
+      "Yongxin Wang",
+      "Zutao Jiang",
+      "Mingkai Deng",
+      "Jinhong Wang",
+      "Tianhua Tao",
+      "Junbo Li",
+      "Haonan Li",
+      "Preslav Nakov",
+      "Timothy Baldwin",
+      "Zhengzhong Liu",
+      "Eric P. Xing",
+      "Xiaodan Liang",
+      "Zhiqiang Shen"
+    ],
+    "year": 2024,
+    "publication_date": null,
+    "date_precision": "year",
+    "date_basis": "The official NeurIPS proceedings and publisher-deposited Crossref metadata identify publication year 2024; Crossref provides no finer publication date. The first arXiv submission date is recorded separately.",
+    "date_basis_zh": "NeurIPS 官方论文集与出版方提交的 Crossref 元数据标明出版年份为 2024；Crossref 未提供更精确的出版日期。arXiv 首次提交日期另行记录。",
+    "venue": "NeurIPS 2024 Datasets and Benchmarks",
+    "publication_status": "conference-paper",
+    "arxiv_id": "2406.20098",
+    "arxiv_version_reviewed": "v2",
+    "first_arxiv_date": "2024-06-28",
+    "doi": "10.52202/079017-3560",
+    "url": "https://proceedings.nips.cc/paper_files/paper/2024/hash/cb66be286795d71f89367d596bf78ea7-Abstract-Datasets_and_Benchmarks_Track.html",
+    "pdf_url": "https://proceedings.neurips.cc/paper_files/paper/2024/file/cb66be286795d71f89367d596bf78ea7-Paper-Datasets_and_Benchmarks_Track.pdf",
+    "code_url": "https://github.com/MBZUAI-LLM/web2code",
+    "project_url": "https://mbzuai-llm.github.io/webpage2code/",
+    "targets": [
+      "website"
+    ],
+    "description_en": "Studies screenshot-to-HTML reconstruction through instruction tuning and two evaluation benchmarks. Web2Code combines generated webpages, refined WebSight and pix2code image/code pairs, and WebSRC-derived question answering. Models produce HTML from a webpage image and instruction; rendered output is compared visually, while a separate benchmark measures screenshot understanding.",
+    "description_zh": "通过指令微调和两个评测基准研究从截图重建 HTML。Web2Code 结合生成网页、经改进的 WebSight 与 pix2code 图像／代码对，以及来自 WebSRC 的问答。模型根据网页图像与指令生成 HTML，渲染输出接受视觉比较，另一个基准则测量截图理解能力。",
+    "scope_limitations_en": "Evaluation uses 1,198 screenshots and 5,990 yes/no questions. WCGB grades rendered images with GPT-4V; its User Interface and Interactivity category measures element appearance, not executed click paths, persistent state or backend behavior. Synthetic and refined examples do not establish coverage of arbitrary real web applications, original-source equivalence or code quality. The paper reports contact-information issues in 2.7% of a 1,000-item privacy sample, so a blanket claim that the data is free of such information is unsupported.",
+    "scope_limitations_zh": "评估使用 1,198 张截图和 5,990 个是／否问题。WCGB 用 GPT-4V 评价渲染图像；其“用户界面与交互性”类别衡量元素外观，并不执行点击路径、持久状态或后端行为。合成与改进样本不能确立对任意真实 Web 应用的覆盖、与原始源码等价或代码质量。论文报告，在 1,000 项隐私抽样中，2.7% 存在联系信息问题，因此不能笼统宣称数据完全不含此类信息。",
+    "why_fits_en": "A foundational visual reconstruction dataset and evaluation method, useful for distinguishing screenshot fidelity from the behavioral guarantees of later website-reconstruction benchmarks.",
+    "why_fits_zh": "提供基础性的视觉重建数据集与评估方法，有助于区分截图保真度与后续网站重建基准所检验的行为保证。",
+    "metadata_notes": "Published in NeurIPS volume 37, pages 112134–112157; full author names follow the proceedings PDF. The repository still cites the preprint; reviewed arXiv v2 is dated 2024-11-17. The LLaVA-based training subtree carries Apache-2.0. Dataset licensing is inconsistent: the GitHub README and dataset-card frontmatter say MIT, while the same card’s body says CC BY 4.0 with research-only/non-commercial wording. No blanket reuse permission is inferred for constituent data or model weights. The training metadata requires Python >=3.8 and pins PyTorch 2.0.1; evaluation needs browser rendering and an external vision-model API. No training, evaluation, model or dataset payload was run or downloaded.",
+    "metadata_notes_zh": "发表于 NeurIPS 第 37 卷，第 112134–112157 页；作者完整姓名以论文集 PDF 为准。仓库仍引用预印本；所审阅 arXiv v2 日期为 2024-11-17。基于 LLaVA 的训练子目录采用 Apache-2.0。数据集许可声明不一致：GitHub README 与数据卡元数据写 MIT，同一数据卡正文却写 CC BY 4.0，并附仅供研究／非商业措辞。不据此推定全部组成数据或模型权重具有统一复用许可。训练元数据要求 Python >=3.8，固定 PyTorch 2.0.1；评估需要浏览器渲染与外部视觉模型 API。本合集未运行训练或评估，也未下载模型或数据集载荷。",
+    "evidence_urls": [
+      "https://proceedings.nips.cc/paper_files/paper/2024/hash/cb66be286795d71f89367d596bf78ea7-Abstract-Datasets_and_Benchmarks_Track.html",
+      "https://proceedings.neurips.cc/paper_files/paper/2024/file/cb66be286795d71f89367d596bf78ea7-Paper-Datasets_and_Benchmarks_Track.pdf",
+      "https://arxiv.org/abs/2406.20098v2",
+      "https://arxiv.org/html/2406.20098v2",
+      "https://api.crossref.org/works/10.52202/079017-3560",
+      "https://github.com/MBZUAI-LLM/web2code/blob/48c356a97dd6199f29a9710fdd2b4b2689b5e361/README.md",
+      "https://github.com/MBZUAI-LLM/web2code/blob/48c356a97dd6199f29a9710fdd2b4b2689b5e361/web2code/README.md",
+      "https://github.com/MBZUAI-LLM/web2code/blob/48c356a97dd6199f29a9710fdd2b4b2689b5e361/web2code/pyproject.toml",
+      "https://github.com/MBZUAI-LLM/web2code/blob/48c356a97dd6199f29a9710fdd2b4b2689b5e361/web2code/LICENSE",
+      "https://github.com/MBZUAI-LLM/web2code/blob/48c356a97dd6199f29a9710fdd2b4b2689b5e361/code_generation/README.md",
+      "https://github.com/MBZUAI-LLM/web2code/blob/48c356a97dd6199f29a9710fdd2b4b2689b5e361/code_generation/gpt4_vision_evaluation.py",
+      "https://github.com/MBZUAI-LLM/web2code/blob/48c356a97dd6199f29a9710fdd2b4b2689b5e361/webpage_understanding/README.md",
+      "https://huggingface.co/datasets/MBZUAI/Web2Code/blob/21e587b4509b946e56732fe8c621b17bad631e6b/README.md"
+    ],
+    "kind": "research",
+    "verified_at": "2026-10-17",
+    "verification": "source-reviewed",
+    "runtime_tested": false,
+    "citation": {
+      "container_title": "Advances in Neural Information Processing Systems",
+      "volume": "37",
+      "pages": "112134-112157",
+      "sources": [
+        "https://proceedings.nips.cc/paper_files/paper/2024/hash/cb66be286795d71f89367d596bf78ea7-Abstract-Datasets_and_Benchmarks_Track.html",
+        "https://api.crossref.org/works/10.52202/079017-3560"
+      ]
+    }
   }
 ]

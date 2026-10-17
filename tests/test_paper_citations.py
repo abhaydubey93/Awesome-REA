@@ -96,12 +96,16 @@ class ReviewedContainerRecordTests(unittest.TestCase):
                          ('{Proceedings of the ACM on Software Engineering}', '{2}', '{FSE}', '{219--241}', '{FSE011}'))
         self.assertEqual((declarui['doi'], declarui['eprint'], declarui['archivePrefix']),
                          ('{10.1145/3715726}', '{2409.11667}', '{arXiv}'))
+        web2code = fields(bibtex_text(PAPERS['paper-web2code']))
+        self.assertEqual((web2code['booktitle'], web2code['volume'], web2code['pages'], web2code['doi']),
+                         ('{Advances in Neural Information Processing Systems}', '{37}',
+                          '{112134--112157}', '{10.52202/079017-3560}'))
 
     def test_only_reviewed_records_carry_container_metadata(self):
         expected = {'paper-dire', 'paper-resym', 'paper-redraw', 'paper-declarui', 'paper-fuzzware',
                     'paper-firmae', 'paper-vision2web', 'paper-ui2code', 'paper-worldcoder',
                     'paper-jsdeobsbench', 'paper-cascade', 'paper-dcgen', 'paper-code-world-models',
-                    'paper-stateinspector', 'paper-halucinator'}
+                    'paper-stateinspector', 'paper-halucinator', 'paper-web2code'}
         self.assertEqual({identifier for identifier, record in PAPERS.items() if 'citation' in record}, expected)
         for identifier in sorted(PAPERS.keys() - expected):
             # Records without verified container metadata keep the short venue label.
