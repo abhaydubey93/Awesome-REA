@@ -14,11 +14,11 @@ Choose a target below. Entries link to primary sources; **source review does not
 **Tools and cases by target**
 
 - [Website](#website) (15) · [Game](#game) (42) · [App](#app) (37)
-- [Native Binary](#native-binary) (20) · [Firmware and Hardware](#firmware) (12) · [Protocol](#protocol) (10)
+- [Native Binary](#native-binary) (20) · [Firmware and Hardware](#firmware) (12) · [Protocol](#protocol) (11)
 
 **Research and more**
 
-- [Papers](#papers) (46) · [All cases](https://awesomerea.org/cases/) (49) · [Full Repository Index](#full-repository-index) (2,839)
+- [Papers](#papers) (47) · [All cases](https://awesomerea.org/cases/) (50) · [Full Repository Index](#full-repository-index) (2,839)
 - [Agents and MCP](#agents-and-mcp) (18) · [Related Collections](#related-collections) (4) · [References and Learning](#references-and-learning) (20)
 <!-- END GENERATED CONTENTS -->
 
@@ -598,6 +598,10 @@ Includes independent projects and [REA](https://github.com/morluto/rea) resource
 
   Implements a USB picture-transfer driver for Thermalright Vision cooler displays, with a Rust dashboard replacing the vendor display application. The documented protocol sends a header and JPEG frames, with periodic resends to prevent the device reverting to its logo.
 
+- [**NJFE: a Soulear camera protocol bridge for desktop inspection**](https://github.com/WildweaselMS/NJFE) · Case study · Independent reconstruction · [Requirements & evidence](https://awesomerea.org/resources/njfe-ear-camera-bridge-case/)
+
+  Reuses otoscope's reverse-engineered i4season/Soulear protocol in an ESP32-C3 bridge and Python desktop viewer. The author credits Claude Code for implementation and reports streaming one Hopefox Find T to a Windows PC, with recording, orientation and LED controls.
+
 - [**hw-harness: scanner USB protocol investigation**](https://github.com/cschalle/hw-harness) · Case study · Independent reconstruction · [Requirements & evidence](https://awesomerea.org/resources/hw-harness-reference-case/)
 
   Documents an author-reported scanner investigation comparing vendor-driver USB control transfers with Linux-driver traces to infer initialization, timing and resolution parameters. The released harness organizes reference capture and comparison; it does not automatically recover a complete protocol specification.
@@ -816,11 +820,11 @@ Includes independent projects and [REA](https://github.com/morluto/rea) resource
 <a id="papers"></a>
 ## Papers
 
-A bibliography of **46 papers** on reverse-engineering agent evaluation, decompilation, protocol inference, firmware analysis, and website, game, and app reconstruction. Some papers also appear among curated resources; counts are not additive. Publication status and study scope are made explicit.
+A bibliography of **47 papers** on reverse-engineering agent evaluation, decompilation, protocol inference, firmware analysis, and website, game, and app reconstruction. Some papers also appear among curated resources; counts are not additive. Publication status and study scope are made explicit.
 
 [Browse the paper directory](https://awesomerea.org/papers/) · [Complete bibliography JSON](data/papers.json) · [Suggest a paper](https://github.com/reacher-z/Awesome-REA/issues/new?template=paper.yml)
 
-**By topic** · [Agent evaluation](#papers-agent-evaluation) (5) · [Decompilation](#papers-decompilation) (7) · [Websites](#papers-website-reconstruction) (13) · [Games](#papers-game-reconstruction) (6) · [Apps](#papers-app-reconstruction) (5) · [Firmware](#papers-firmware-analysis) (5) · [Protocols](#papers-protocol-analysis) (5)
+**By topic** · [Agent evaluation](#papers-agent-evaluation) (5) · [Decompilation](#papers-decompilation) (8) · [Websites](#papers-website-reconstruction) (13) · [Games](#papers-game-reconstruction) (6) · [Apps](#papers-app-reconstruction) (5) · [Firmware](#papers-firmware-analysis) (5) · [Protocols](#papers-protocol-analysis) (5)
 
 Open “Scope and publication details” for each study’s full limitations. Papers are ordered newest first within each topic.
 
@@ -981,6 +985,21 @@ Open “Scope and publication details” for each study’s full limitations. Pa
   **Scope and limits:** The paper limits its experiments to C on x86 and function-level benchmarks. Re-executability on sampled tests does not establish whole-program equivalence or recovery of the original source. Later repository releases are separate from the 2024 paper.
 
   **Publication:** 2024 · EMNLP 2024 · Conference paper · Hanzhuo Tan et al.
+
+  </details>
+
+- [**DeGPT: Optimizing Decompiler Output with LLM**](https://www.ndss-symposium.org/ndss-paper/degpt-optimizing-decompiler-output-with-llm/) · **2024 · Conference paper**
+
+  Refines existing C-like decompiler output through three coordinated roles that select, propose and check changes. It simplifies structures, adds comments and renames variables; Micro Snippet Semantic Calculation compares simulated symbol values and calls before accepting structural changes. The authors evaluate readability and naming on 620 functions from four codebases, with separate stripped and non-stripped variants.
+
+  [PDF](https://www.ndss-symposium.org/wp-content/uploads/2024-401-paper.pdf) · [Code](https://github.com/PeiweiHu/DeGPT) · [Full entry & citation](https://awesomerea.org/papers/paper-degpt/)
+
+  <details>
+  <summary>Scope and publication details</summary>
+
+  **Scope and limits:** The reported 24.4% reduction is a Halstead-effort proxy on non-stripped output, not a measured reduction in human effort. The 62.9% comment result is the average non-trivial share among manually judged correct comments. MSSC is an intraprocedural heuristic: calls are abstracted and loops become branches; parsing, aliasing and path growth remain limitations. Its 80-case manual audit reports 84% accuracy and 85% recall, including three harmful changes missed. This supports assisted pseudocode comprehension, not guaranteed binary equivalence, recompilable whole programs or original-source recovery.
+
+  **Publication:** 2024 · NDSS 2024 · Conference paper · Peiwei Hu et al.
 
   </details>
 

@@ -1,7 +1,7 @@
 {
   "schema_version": 1,
   "reviewed_at": "2026-10-17",
-  "catalog_revision": "d60dbe9839eed96f18b6a2f3f41a696c4ca81340",
+  "catalog_revision": "7bb84f49658749f04164cc1022558c005829c548",
   "runtime_reproduced": false,
   "project_identity_resolution": "incomplete",
   "collections": [
@@ -7959,13 +7959,27 @@
         "https://github.com/WildweaselMS/NJFE",
         "https://github.com/WildweaselMS/NJFE/commit/992866c6609f8c813f459ff79840cf04d5883f8e"
       ],
-      "state": "pending",
-      "review_level": "inventory-only",
+      "state": "already-curated",
+      "review_level": "primary-source-reviewed",
       "reviewed_at": "2026-10-17",
-      "reason_en": "A newly inventoried collection lead awaiting primary-source review; listing does not verify implementation or results.",
-      "reason_zh": "新清点的合集线索，等待一手来源核查；被列入合集不代表实现或结果已获验证。",
-      "primary_evidence_urls": [],
-      "catalog_matches": []
+      "reason_en": "Pinned maintainer documentation and source establish the named NJFE camera-protocol bridge, including explicit credit to earlier otoscope reverse engineering. The mapping covers the bounded USB-serial desktop inspection implementation; one-device results remain author-reported, with no original firmware recovery or established REA use.",
+      "reason_zh": "固定版本的维护者文档与源码确立了具名 NJFE 相机协议桥接项目，并明确归功于此前的 otoscope 逆向工作。映射覆盖有限范围的 USB 串口电脑检查实现；单台设备结果仍为作者报告，不代表恢复原固件，也未确立 REA 使用。",
+      "primary_evidence_urls": [
+        "https://github.com/WildweaselMS/NJFE/blob/992866c6609f8c813f459ff79840cf04d5883f8e/README.md",
+        "https://github.com/WildweaselMS/NJFE/blob/992866c6609f8c813f459ff79840cf04d5883f8e/NOTICE",
+        "https://github.com/WildweaselMS/NJFE/blob/992866c6609f8c813f459ff79840cf04d5883f8e/wifi_scanner/src_i4season/main.cpp",
+        "https://github.com/WildweaselMS/NJFE/blob/992866c6609f8c813f459ff79840cf04d5883f8e/wifi_scanner/tools/viewer.py",
+        "https://github.com/WildweaselMS/NJFE/blob/992866c6609f8c813f459ff79840cf04d5883f8e/SECURITY.md",
+        "https://github.com/rbeilvert/otoscope/blob/d14ac8e368854146ded4f3347614a24539e6696a/app/src/main/kotlin/dev/rubec/otoscope/stream/i4season/I4seasonProtocol.kt"
+      ],
+      "catalog_matches": [
+        {
+          "catalog": "resource",
+          "id": "njfe-ear-camera-bridge-case",
+          "kind": "case-study",
+          "scope": "full"
+        }
+      ]
     },
     {
       "id": "song:leanrea-cli-skill-benchmark",
@@ -12020,18 +12034,18 @@
     "inventory_units": 541,
     "alias_merges": 2,
     "occurrences_by_state": {
-      "already-curated": 52,
-      "insufficient-evidence": 51,
-      "pending": 440
-    },
-    "units_by_state": {
-      "already-curated": 51,
+      "already-curated": 53,
       "insufficient-evidence": 51,
       "pending": 439
     },
-    "primary_reviewed_units": 47,
-    "catalog_linked_occurrences": 58,
-    "distinct_resource_ids": 49,
+    "units_by_state": {
+      "already-curated": 52,
+      "insufficient-evidence": 51,
+      "pending": 438
+    },
+    "primary_reviewed_units": 48,
+    "catalog_linked_occurrences": 59,
+    "distinct_resource_ids": 50,
     "distinct_paper_ids": 1,
     "unique_projects": null
   }

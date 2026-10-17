@@ -101,11 +101,17 @@ class ReviewedContainerRecordTests(unittest.TestCase):
                          ('{Advances in Neural Information Processing Systems}', '{37}',
                           '{112134--112157}', '{10.52202/079017-3560}'))
 
+        degpt = fields(bibtex_text(PAPERS['paper-degpt']))
+        self.assertEqual((degpt['booktitle'], degpt['publisher'], degpt['doi']),
+                         ('{Proceedings 2024 Network and Distributed System Security Symposium}',
+                          '{Internet Society}', '{10.14722/ndss.2024.24401}'))
+        self.assertFalse({'volume', 'number', 'pages', 'eid', 'eprint'} & set(degpt))
+
     def test_only_reviewed_records_carry_container_metadata(self):
         expected = {'paper-dire', 'paper-resym', 'paper-redraw', 'paper-declarui', 'paper-fuzzware',
                     'paper-firmae', 'paper-vision2web', 'paper-ui2code', 'paper-worldcoder',
                     'paper-jsdeobsbench', 'paper-cascade', 'paper-dcgen', 'paper-code-world-models',
-                    'paper-stateinspector', 'paper-halucinator', 'paper-web2code'}
+                    'paper-stateinspector', 'paper-halucinator', 'paper-web2code', 'paper-degpt'}
         self.assertEqual({identifier for identifier, record in PAPERS.items() if 'citation' in record}, expected)
         for identifier in sorted(PAPERS.keys() - expected):
             # Records without verified container metadata keep the short venue label.

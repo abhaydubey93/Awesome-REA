@@ -2569,5 +2569,64 @@
         "https://api.crossref.org/works/10.52202/079017-3560"
       ]
     }
+  },
+  {
+    "id": "paper-degpt",
+    "title": "DeGPT: Optimizing Decompiler Output with LLM",
+    "title_zh": "DeGPT：使用大语言模型优化反编译器输出",
+    "authors": [
+      "Peiwei Hu",
+      "Ruigang Liang",
+      "Kai Chen"
+    ],
+    "year": 2024,
+    "publication_date": null,
+    "date_precision": "year",
+    "date_basis": "The official NDSS paper and the publisher’s Crossref deposit establish publication year 2024. The conference dates and DOI registration date do not establish a publication day.",
+    "date_basis_zh": "NDSS 官方论文与出版方提交的 Crossref 元数据确认出版年份为 2024；会议日期与 DOI 注册日期不能据此推定具体出版日。",
+    "venue": "NDSS 2024",
+    "publication_status": "conference-paper",
+    "arxiv_id": null,
+    "arxiv_version_reviewed": null,
+    "first_arxiv_date": null,
+    "doi": "10.14722/ndss.2024.24401",
+    "citation": {
+      "container_title": "Proceedings 2024 Network and Distributed System Security Symposium",
+      "publisher": "Internet Society",
+      "sources": [
+        "https://api.crossref.org/works/10.14722/ndss.2024.24401"
+      ]
+    },
+    "url": "https://www.ndss-symposium.org/ndss-paper/degpt-optimizing-decompiler-output-with-llm/",
+    "pdf_url": "https://www.ndss-symposium.org/wp-content/uploads/2024-401-paper.pdf",
+    "code_url": "https://github.com/PeiweiHu/DeGPT",
+    "project_url": null,
+    "targets": [
+      "binary"
+    ],
+    "description_en": "Refines existing C-like decompiler output through three coordinated roles that select, propose and check changes. It simplifies structures, adds comments and renames variables; Micro Snippet Semantic Calculation compares simulated symbol values and calls before accepting structural changes. The authors evaluate readability and naming on 620 functions from four codebases, with separate stripped and non-stripped variants.",
+    "description_zh": "通过三个协同角色选择、提出并检查修改，改进已有的类 C 反编译输出。其流程简化代码结构、添加注释并重命名变量，在接受结构修改前，使用微代码片段语义计算比较模拟的符号值与调用。作者以四个代码库中的 620 个函数评估可读性与命名效果，并分别测试保留与剥离符号的版本。",
+    "scope_limitations_en": "The reported 24.4% reduction is a Halstead-effort proxy on non-stripped output, not a measured reduction in human effort. The 62.9% comment result is the average non-trivial share among manually judged correct comments. MSSC is an intraprocedural heuristic: calls are abstracted and loops become branches; parsing, aliasing and path growth remain limitations. Its 80-case manual audit reports 84% accuracy and 85% recall, including three harmful changes missed. This supports assisted pseudocode comprehension, not guaranteed binary equivalence, recompilable whole programs or original-source recovery.",
+    "scope_limitations_zh": "报告的 24.4% 降幅来自保留符号版本输出的 Halstead 工作量代理指标，并非直接测得的人力节省。62.9% 的注释结果是人工判定正确的注释中，具有非平凡信息者的平均占比。MSSC 是过程内启发式检查：调用被抽象处理，循环转化为分支；解析、别名与路径增长仍有限制。其 80 个案例的人工审查报告准确率为 84%、召回率为 85%，其中漏过三处有害修改。这支持辅助理解伪代码，不能保证二进制等价、整程序可重新编译或恢复原始源码。",
+    "why_fits_en": "A concrete LLM-assisted reverse-engineering method combining readability edits with an explicitly evaluated semantic-change filter.",
+    "why_fits_zh": "将可读性改写与经过明确评估的语义变化过滤器结合，为大语言模型辅助逆向工程提供具体方法。",
+    "metadata_notes": "The publisher and PDF agree on the title, three-author order and DOI; no arXiv identifier or proceedings page range was verified. The September 2024 artifact snapshot is later than the paper, has no release tag, and declares no project license. Its README requires manually installed cinspector, openai==1.28.1, tiktoken==0.2.0 and python-levenshtein, without a DeGPT Python minimum. Current code reads model, API key and endpoint from config.ini, differing from the README’s chat.py setup example; it uses Unix-style SIGALRM timeouts. The separately pinned cinspector dependency declares WTFPL and tree-sitter==0.20.4; this does not license DeGPT or its third-party samples. The paper primarily used gpt-3.5-turbo at temperature 0.2 and Ghidra 10.2.3. Source and dependency inspection do not establish present service compatibility; experiments were not rerun.",
+    "metadata_notes_zh": "出版方与 PDF 的标题、三位作者顺序和 DOI 一致；未核实到 arXiv 标识符或论文集页码范围。2024 年 9 月的产物快照晚于论文，没有发布标签，也未声明项目许可证。其 README 要求手动安装 cinspector、openai==1.28.1、tiktoken==0.2.0 和 python-levenshtein，但未声明 DeGPT 所需的最低 Python 版本。当前代码从 config.ini 读取模型、API 密钥和端点，与 README 的 chat.py 配置示例不同，并采用 Unix 风格的 SIGALRM 超时机制。单独固定版本的 cinspector 依赖声明采用 WTFPL，并要求 tree-sitter==0.20.4；这不代表 DeGPT 或其中的第三方样本获得相同授权。论文主要采用温度为 0.2 的 gpt-3.5-turbo 与 Ghidra 10.2.3。源码和依赖审查不证明当前服务仍兼容，本合集未重新运行实验。",
+    "evidence_urls": [
+      "https://www.ndss-symposium.org/ndss-paper/degpt-optimizing-decompiler-output-with-llm/",
+      "https://www.ndss-symposium.org/wp-content/uploads/2024-401-paper.pdf",
+      "https://api.crossref.org/works/10.14722/ndss.2024.24401",
+      "https://github.com/PeiweiHu/DeGPT/blob/0f632cc52fabd70c7e7b3b9ad1ed7aef517a3714/README.md",
+      "https://github.com/PeiweiHu/DeGPT/blob/0f632cc52fabd70c7e7b3b9ad1ed7aef517a3714/degpt/chat.py",
+      "https://github.com/PeiweiHu/DeGPT/blob/0f632cc52fabd70c7e7b3b9ad1ed7aef517a3714/degpt/role.py",
+      "https://github.com/PeiweiHu/DeGPT/blob/0f632cc52fabd70c7e7b3b9ad1ed7aef517a3714/degpt/mssc.py",
+      "https://github.com/PeiweiHu/cinspector/blob/e827cfd9fccb1c5d7c4e0169c0da0bd2006de63b/README.md",
+      "https://github.com/PeiweiHu/cinspector/blob/e827cfd9fccb1c5d7c4e0169c0da0bd2006de63b/LICENSE",
+      "https://github.com/PeiweiHu/cinspector/blob/e827cfd9fccb1c5d7c4e0169c0da0bd2006de63b/setup.py"
+    ],
+    "kind": "research",
+    "verified_at": "2026-10-17",
+    "verification": "source-reviewed",
+    "runtime_tested": false
   }
 ]

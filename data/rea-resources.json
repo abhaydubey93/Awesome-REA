@@ -1830,5 +1830,43 @@
       "https://github.com/boyang-hu/website-rebuild-skill/blob/ac60c9d8a2ab40045a89b5403c3457f1404e92b3/selftest/run.mjs",
       "https://github.com/boyang-hu/website-rebuild-skill/blob/ac60c9d8a2ab40045a89b5403c3457f1404e92b3/LICENSE"
     ]
+  },
+  {
+    "id": "njfe-ear-camera-bridge-case",
+    "name": "NJFE: a Soulear camera protocol bridge for desktop inspection",
+    "url": "https://github.com/WildweaselMS/NJFE",
+    "category": "reconstruction-cases",
+    "relationship": "independent-reconstruction",
+    "description_en": "Reuses otoscope's reverse-engineered i4season/Soulear protocol in an ESP32-C3 bridge and Python desktop viewer. The author credits Claude Code for implementation and reports streaming one Hopefox Find T to a Windows PC, with recording, orientation and LED controls.",
+    "description_zh": "在 ESP32-C3 桥接器与 Python 电脑查看器中复用 otoscope 经逆向得到的 i4season／Soulear 协议。作者将实现归功于 Claude Code 辅助，报告把一台 Hopefox Find T 的视频传到 Windows 电脑，并提供录像、方向调整及 LED 控制。",
+    "evidence_url": "https://github.com/WildweaselMS/NJFE/blob/992866c6609f8c813f459ff79840cf04d5883f8e/README.md",
+    "verified_at": "2026-10-17",
+    "verification": "source-reviewed",
+    "requirements": [
+      "The input is the camera's Wi-Fi i4season/Soulear UDP traffic. An ESP32-C3 SuperMini with the documented 0.42-inch, 72×40 SSD1306 OLED reassembles JPEG frames and forwards them with accelerometer metadata over custom USB CDC serial to the supplied Python viewer. This is not a UVC webcam output; the camera's own USB port is described as charge-only. No vendor-camera firmware or complete companion-app source is recovered.",
+      "The documented build uses PlatformIO espressif32 6.11.0, Arduino core 2.0.17 and U8g2 ^2.35.30. The desktop tools require Python with Tkinter plus pyserial >=3.5, opencv-python >=4.8, NumPy >=1.24 and Pillow >=12.3.0. The project reports Windows testing; it does not establish support for every desktop OS or compatible-looking ear camera.",
+      "The README and NOTICE credit rbeilvert/otoscope by rubec for the packet format, commands, frame assembly and accelerometer/rotation logic. That project documents reverse engineering Soulear's libWifiCamera.so. NJFE reports Claude Code assistance across research, implementation, tools and documentation, with the human supplying hardware, decisions and device testing. This does not establish Claude as the original protocol discoverer, or any REA involvement; NJFE does not pin the exact otoscope revision it borrowed.",
+      "The author reports one Hopefox Find T with HKV41B firmware, 480×480 JPEG at about 17 fps, plus photos, MJPG AVI recording, rotation and LED control. The public --test N viewer mode receives and decodes N live frames, saves the last image and prints frame rate; it needs the hardware. The reviewed tree has no separate offline conformance-fixture suite. These reports and source-level framing checks do not establish full protocol compatibility; this collection did not run the tools or reproduce the hardware result.",
+      "The camera network remains open and unauthenticated. SECURITY.md states that the bridge accepts UDP traffic without source authentication and can receive injected images or replies; serial access is trusted and recordings are stored unencrypted. A local USB bridge does not remove these camera-network limitations. The project describes an inspection tool, not a medical device for diagnosis or treatment.",
+      "NJFE declares GPL-3.0-or-later in its README, NOTICE and REUSE metadata, and identifies protocol code and roll calculation derived from GPL otoscope. Third-party build/runtime libraries retain their own licenses. Public source review does not grant rights to vendor software or images; no proprietary app, firmware binary, image capture, device or upstream runtime was used in this review."
+    ],
+    "targets": [
+      "protocol"
+    ],
+    "kind": "case-study",
+    "additional_evidence_urls": [
+      "https://github.com/WildweaselMS/NJFE/blob/992866c6609f8c813f459ff79840cf04d5883f8e/NOTICE",
+      "https://github.com/WildweaselMS/NJFE/blob/992866c6609f8c813f459ff79840cf04d5883f8e/REUSE.toml",
+      "https://github.com/WildweaselMS/NJFE/blob/992866c6609f8c813f459ff79840cf04d5883f8e/LICENSE",
+      "https://github.com/WildweaselMS/NJFE/blob/992866c6609f8c813f459ff79840cf04d5883f8e/SECURITY.md",
+      "https://github.com/WildweaselMS/NJFE/blob/992866c6609f8c813f459ff79840cf04d5883f8e/wifi_scanner/platformio.ini",
+      "https://github.com/WildweaselMS/NJFE/blob/992866c6609f8c813f459ff79840cf04d5883f8e/wifi_scanner/tools/requirements.txt",
+      "https://github.com/WildweaselMS/NJFE/blob/992866c6609f8c813f459ff79840cf04d5883f8e/wifi_scanner/src_i4season/main.cpp",
+      "https://github.com/WildweaselMS/NJFE/blob/992866c6609f8c813f459ff79840cf04d5883f8e/wifi_scanner/tools/viewer.py",
+      "https://github.com/WildweaselMS/NJFE/blob/992866c6609f8c813f459ff79840cf04d5883f8e/wifi_scanner/tools/gui.py",
+      "https://github.com/rbeilvert/otoscope/blob/d14ac8e368854146ded4f3347614a24539e6696a/README.md",
+      "https://github.com/rbeilvert/otoscope/blob/d14ac8e368854146ded4f3347614a24539e6696a/app/src/main/kotlin/dev/rubec/otoscope/stream/i4season/I4seasonProtocol.kt",
+      "https://github.com/rbeilvert/otoscope/blob/d14ac8e368854146ded4f3347614a24539e6696a/app/src/main/kotlin/dev/rubec/otoscope/stream/i4season/FrameAssembler.kt"
+    ]
   }
 ]

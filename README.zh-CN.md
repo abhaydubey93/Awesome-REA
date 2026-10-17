@@ -14,11 +14,11 @@
 **按目标找工具与案例**
 
 - [网站](#website) (15) · [游戏](#game) (42) · [应用](#app) (37)
-- [原生二进制](#native-binary) (20) · [固件与硬件](#firmware) (12) · [协议](#protocol) (10)
+- [原生二进制](#native-binary) (20) · [固件与硬件](#firmware) (12) · [协议](#protocol) (11)
 
 **论文与更多资源**
 
-- [论文](#papers) (46) · [全部案例](https://awesomerea.org/zh/cases/) (49) · [完整仓库索引](#完整仓库索引) (2,839)
+- [论文](#papers) (47) · [全部案例](https://awesomerea.org/zh/cases/) (50) · [完整仓库索引](#完整仓库索引) (2,839)
 - [智能体与 MCP](#agents-and-mcp) (18) · [相关合集](#related-collections) (4) · [文档与学习资源](#references-and-learning) (20)
 <!-- END GENERATED CONTENTS -->
 
@@ -599,6 +599,10 @@
 
   为 Thermalright Vision 散热器显示屏实现 USB 图像传输驱动，并用 Rust 仪表盘替代厂商显示应用。文档所述协议发送报头和 JPEG 帧，通过定期重发避免设备退回品牌标志画面。
 
+- [**NJFE：用于电脑检查的 Soulear 相机协议桥接**](https://github.com/WildweaselMS/NJFE) · 案例 · 独立重建 · [使用条件与证据](https://awesomerea.org/zh/resources/njfe-ear-camera-bridge-case/)
+
+  在 ESP32-C3 桥接器与 Python 电脑查看器中复用 otoscope 经逆向得到的 i4season／Soulear 协议。作者将实现归功于 Claude Code 辅助，报告把一台 Hopefox Find T 的视频传到 Windows 电脑，并提供录像、方向调整及 LED 控制。
+
 - [**hw-harness：扫描仪 USB 协议调查**](https://github.com/cschalle/hw-harness) · 案例 · 独立重建 · [使用条件与证据](https://awesomerea.org/zh/resources/hw-harness-reference-case/)
 
   记录作者报告的扫描仪调查：比较厂商驱动的 USB 控制传输与 Linux 驱动的记录，推断初始化、时序及分辨率参数。公开工具负责组织参考采集与比较，并不自动恢复完整协议规范。
@@ -817,11 +821,11 @@
 <a id="papers"></a>
 ## 论文
 
-收录 **46 篇论文**，涵盖逆向工程智能体评测、反编译、协议推断、固件分析，以及网站、游戏和应用重建。部分论文也出现在精选资源目录中，两者数量不可相加。发表状态与研究范围分别标注，中文标题为译名。
+收录 **47 篇论文**，涵盖逆向工程智能体评测、反编译、协议推断、固件分析，以及网站、游戏和应用重建。部分论文也出现在精选资源目录中，两者数量不可相加。发表状态与研究范围分别标注，中文标题为译名。
 
 [浏览论文目录](https://awesomerea.org/zh/papers/) · [完整书目 JSON](data/papers.json) · [推荐论文](https://github.com/reacher-z/Awesome-REA/issues/new?template=paper.yml)
 
-**按主题** · [智能体评测](#papers-agent-evaluation) (5) · [反编译](#papers-decompilation) (7) · [网站](#papers-website-reconstruction) (13) · [游戏](#papers-game-reconstruction) (6) · [应用](#papers-app-reconstruction) (5) · [固件](#papers-firmware-analysis) (5) · [协议](#papers-protocol-analysis) (5)
+**按主题** · [智能体评测](#papers-agent-evaluation) (5) · [反编译](#papers-decompilation) (8) · [网站](#papers-website-reconstruction) (13) · [游戏](#papers-game-reconstruction) (6) · [应用](#papers-app-reconstruction) (5) · [固件](#papers-firmware-analysis) (5) · [协议](#papers-protocol-analysis) (5)
 
 展开各条目的“范围与发表信息”可查看完整研究边界；以下按年份从新到旧排列。
 
@@ -982,6 +986,21 @@
   **范围与限制:** 论文实验限定于 x86 平台的 C 代码和函数级基准。通过抽样测试重新执行，不代表整程序等价或恢复了原始源码。仓库后续版本应与 2024 年论文区分。
 
   **发表信息:** 2024 · EMNLP 2024 · 会议论文 · Hanzhuo Tan 等
+
+  </details>
+
+- [**DeGPT：使用大语言模型优化反编译器输出**](https://www.ndss-symposium.org/ndss-paper/degpt-optimizing-decompiler-output-with-llm/) · **2024 · 会议论文**
+
+  通过三个协同角色选择、提出并检查修改，改进已有的类 C 反编译输出。其流程简化代码结构、添加注释并重命名变量，在接受结构修改前，使用微代码片段语义计算比较模拟的符号值与调用。作者以四个代码库中的 620 个函数评估可读性与命名效果，并分别测试保留与剥离符号的版本。
+
+  [PDF](https://www.ndss-symposium.org/wp-content/uploads/2024-401-paper.pdf) · [代码](https://github.com/PeiweiHu/DeGPT) · [完整条目与引用](https://awesomerea.org/zh/papers/paper-degpt/)
+
+  <details>
+  <summary>范围与发表信息</summary>
+
+  **范围与限制:** 报告的 24.4% 降幅来自保留符号版本输出的 Halstead 工作量代理指标，并非直接测得的人力节省。62.9% 的注释结果是人工判定正确的注释中，具有非平凡信息者的平均占比。MSSC 是过程内启发式检查：调用被抽象处理，循环转化为分支；解析、别名与路径增长仍有限制。其 80 个案例的人工审查报告准确率为 84%、召回率为 85%，其中漏过三处有害修改。这支持辅助理解伪代码，不能保证二进制等价、整程序可重新编译或恢复原始源码。
+
+  **发表信息:** 2024 · NDSS 2024 · 会议论文 · Peiwei Hu 等
 
   </details>
 
