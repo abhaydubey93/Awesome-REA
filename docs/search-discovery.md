@@ -44,13 +44,7 @@ Do not place account emails, dashboard URLs with private identifiers, session co
 
 ## Measurement
 
-Keep a dated private log for a small fixed query set, including both branded and non-branded questions. Examples:
-
-- `AwesomeREA reverse engineering resources`
-- `tools for reverse engineering Electron apps`
-- `MCP tools for Ghidra and IDA`
-- `papers on LLM decompilation evaluation`
-- `逆向工程工具与论文目录`
+Keep a dated private log using the [versioned EN/ZH query set](discovery/queries.v1.json) and [empty observation template](discovery/observation.template.json). The [bilingual observation guide](discovery/README.md) defines provider/version fields, exact-query matching, bounded inspection, distinct failure and citation outcomes, and privacy review before publishing a summary. These files contain no measured results and do not run or schedule searches.
 
 For each observation, record query, language, engine, date, whether web search actually ran, visible source URLs, and whether the cited statement matches the page. Repeat with fixed paraphrases and preserve failures. Record Search Console indexing separately from impressions/clicks and from AI citations. Avoid presenting a single successful answer as durable visibility or a causal effect of these changes.
 
