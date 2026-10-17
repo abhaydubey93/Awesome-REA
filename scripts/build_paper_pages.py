@@ -30,6 +30,19 @@ MONTHS = ('January', 'February', 'March', 'April', 'May', 'June', 'July', 'Augus
 BIBTEX_MONTHS = tuple(name[:3].lower() for name in MONTHS)
 
 
+def papers_newest_first(papers: list[dict]) -> list[dict]:
+    """Use the README display order without filling in unverified date parts.
+
+    Within a year, recorded ISO date prefixes sort before year-only records;
+    their relative position is a display convention, not an inferred exact date.
+    English title and stable ID break ties identically in both languages.
+    """
+    return sorted(papers, key=lambda paper: (
+        paper['year'], paper['publication_date'] or str(paper['year']),
+        paper['title'].casefold(), paper['id'],
+    ), reverse=True)
+
+
 def web_url(value: str) -> str:
     parsed = urlsplit(value)
     if parsed.scheme != 'https' or not parsed.netloc or parsed.username or parsed.password:
@@ -203,6 +216,9 @@ def build_paper_pages(
             web_url(url)
         groups[paper['targets'][0]].append(paper)
 
+    groups = {target: papers_newest_first(groups[target]) for target in TARGET_LABELS}
+    ordered = [paper for target in TARGET_LABELS for paper in groups[target]]
+
     # Citation downloads preserve the original title and author names in both languages.
     citation_dir = site_dir / 'papers' / 'citations'
     citation_dir.mkdir(parents=True, exist_ok=True)
@@ -222,7 +238,7 @@ def build_paper_pages(
     search_fields = ('id', 'title', 'title_zh', 'description_en', 'description_zh', 'authors', 'doi', 'arxiv_id',
                      'year', 'publication_status', 'targets')
     search_data = json.dumps({'schema_version': 1, 'papers': [
-        {key: paper.get(key) for key in search_fields} for paper in papers
+        {key: paper.get(key) for key in search_fields} for paper in ordered
     ]}, ensure_ascii=False, separators=(',', ':')).replace('<', '\\u003c').replace('>', '\\u003e').replace('&', '\\u0026')
 
     canonical_urls = []
@@ -241,10 +257,9 @@ def build_paper_pages(
         title = label('Papers & benchmarks · AwesomeREA.org', '论文与评测基准 · AwesomeREA.org')
         protocol_scope = label('protocol inference, ', '协议推断、') if any('protocol' in paper['targets'] for paper in papers) else ''
         description = label(f'{len(papers)} source-reviewed papers on binary reverse engineering, decompilation, agent evaluation, {protocol_scope}firmware analysis, and website, game, and app reconstruction, with citations and research limitations.', f'{len(papers)} 篇来源已复核的论文，涵盖二进制逆向、反编译、智能体评估、{protocol_scope}固件分析，以及网站、游戏和应用重建，附引文和研究边界。')
-        intro = label(f'Explore {len(papers)} papers on reverse engineering and software reconstruction.', f'浏览 {len(papers)} 篇逆向工程与软件重建论文。')
+        intro = label(f'Explore {len(papers)} papers on reverse engineering and software reconstruction, newest year first within each section.', f'浏览 {len(papers)} 篇逆向工程与软件重建论文，各分区按年份从新到旧排列。')
         nav = []
         sections = []
-        ordered = []
         for target, target_labels in TARGET_LABELS.items():
             if not groups[target]:
                 continue
@@ -253,7 +268,6 @@ def build_paper_pages(
             articles = '\n'.join(paper_card(paper, language, use_pro) for paper in groups[target])
             count_label = f'{len(groups[target])} ' + ('篇论文' if zh else ('paper' if len(groups[target]) == 1 else 'papers'))
             sections.append(f'<section class="paper-section" aria-labelledby="research-{target}" data-paper-section="{target}"><div class="paper-section-heading"><h2 id="research-{target}">{target_label}</h2><span data-paper-section-count>{count_label}</span></div><div class="paper-grid">{articles}</div></section>')
-            ordered.extend(groups[target])
         status_options = ''.join(f'<option value="{status}">{escape(labels[int(zh)])}</option>'
                                  for status, labels in STATUS_LABELS.items()
                                  if any(paper['publication_status'] == status for paper in papers))

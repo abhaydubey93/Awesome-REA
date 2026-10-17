@@ -8,6 +8,7 @@ import sys
 from collections import Counter, defaultdict
 
 from catalog import ROOT, load_resources
+from build_paper_pages import papers_newest_first
 from source_scope import apply_scope, read_scope
 from validate_papers import read_papers
 
@@ -341,7 +342,7 @@ def render_papers(papers, language):
             continue
         back = '[↑ 论文主题](#papers) · [目录](#目录)' if zh else '[↑ Paper topics](#papers) · [Contents](#contents)'
         lines.extend([f'<a id="papers-{section}"></a>', '### ' + labels[index], '', back, ''])
-        for paper in sorted(groups[section], key=lambda item: (item['year'], item['publication_date'] or str(item['year']), item['title'].casefold()), reverse=True):
+        for paper in papers_newest_first(groups[section]):
             title = plain_text(paper['title_zh'] if zh else paper['title'])
             status = PAPER_STATUSES[paper['publication_status']][index]
             metadata = plain_text(f"{paper['year']} · {paper['venue']} · {status}")
