@@ -187,7 +187,7 @@
 <a id="papers"></a>
 ## 论文
 
-收录 **23 篇论文**，涵盖逆向工程智能体评测、反编译，以及网站、游戏和应用重建。部分论文也出现在精选资源目录中，两者数量不可相加。发表状态与研究范围分别标注，中文标题为译名。
+收录 **25 篇论文**，涵盖逆向工程智能体评测、反编译、固件分析，以及网站、游戏和应用重建。部分论文也出现在精选资源目录中，两者数量不可相加。发表状态与研究范围分别标注，中文标题为译名。
 
 [浏览论文目录](https://awesomerea.org/zh/papers/) · [完整书目 JSON](data/papers.json) · [推荐论文](https://github.com/reacher-z/Awesome-REA/issues/new?template=paper.yml)
 
@@ -384,6 +384,24 @@
     利用 OCR、计算机视觉和布局启发式规则，从截图或设计位图重建原生 Android 界面代码，并使用来自 100 多款 Android 与 iOS 应用的 488 张截图评估视觉相似性和视图层级。
 
     **范围与限制:** 输出为 Android 界面代码；iOS 截图属于输入，不代表生成原生 iOS 代码。方法不恢复原始逻辑和后端行为，多屏切换当时仍属后续工作。OCR／布局启发式规则可能误识别内容。所链接的 REMAUI v2 仓库采用较旧依赖，并非已核实的 2015 年原始产物。
+
+### 固件分析与重托管
+
+- [Fuzzware：利用精确的 MMIO 建模提升固件模糊测试效果](https://www.usenix.org/conference/usenixsecurity22/presentation/scharnowski) — **2022 · USENIX Security 2022 · 会议论文**
+
+    Tobias Scharnowski 等 · [PDF](https://www.usenix.org/system/files/sec22-scharnowski.pdf) · [代码](https://github.com/fuzzware-fuzzer/fuzzware)
+
+    重托管单体 ARM Cortex-M 固件以开展模糊测试，利用局部符号执行为内存映射 I/O 访问建模，使输入变异集中于影响固件逻辑的值。
+
+    **范围与限制:** 面向 Cortex-M3/M4 的产物需要配置内存映射，且不会自动为 DMA 建模。对硬件的抽象可能产生真实设备上不可能出现的崩溃。该工作构建分析环境，不代表恢复原始源码或忠实重建完整设备。
+
+- [FirmAE：面向动态分析的物联网固件大规模仿真](https://doi.org/10.1145/3427228.3427294) — **2020 · ACSAC 2020 · 会议论文**
+
+    Mingeun Kim 等 · [PDF](https://syssec.kaist.ac.kr/pub/2020/kim_acsac2020.pdf) · [代码](https://github.com/pr0v3rbs/FirmAE)
+
+    在 Firmadyne 基础上，针对启动、网络、NVRAM、内核行为及其他运行失败加入经验性干预，使 Linux 路由器与 IP 摄像机固件的 Web 服务能够运行并接受动态分析。
+
+    **范围与限制:** 仲裁式干预会有意改变执行过程，目标是运行 Web 界面，而非完整复现物理设备行为。评测覆盖路由器与 IP 摄像机的 ARM 小端、MIPS 小端及大端固件；启发式规则可能不适用于未见过的设备或配置。该方法复用固件二进制，并不恢复其源码。
 <!-- END GENERATED PAPERS -->
 
 <a id="搜索目录"></a>
