@@ -33,7 +33,7 @@ def render(document, resources, translations, zh=False):
     for source in document['collections']:
         name = source['repository_url'].removeprefix('https://github.com/')
         link = source['repository_url'] + '/tree/' + source['commit']
-        destination = ('/zh' if zh else '') + '/resources/#' + source['catalog_resource_id']
+        destination = ('/zh' if zh else '') + '/resources/' + source['catalog_resource_id'] + '/'
         repository_count = linked_repository_count(entry for entry in document['entries']
                                                    if entry['collection_id'] == source['id'])
         lines.append(f"| [{name} · {source['commit'][:12]}]({link}) | {source['entry_count']} | {repository_count} | [{source['catalog_resource_id']}](https://awesomerea.org{destination}) |")

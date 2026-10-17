@@ -16,6 +16,7 @@ from source_descriptions import description_fallback
 from localization import localized_records, read_localizations
 from source_scope import apply_scope, read_scope
 from source_browser import BROWSER_FILENAME, FULL_EXPORT_FILENAME, validate_source_browser
+from validate_discovery import expected_entry_routes, validate_route_inventory
 
 ROOT = Path(__file__).resolve().parents[1]
 OUTPUT = ROOT / 'dist'
@@ -30,7 +31,12 @@ class Page(HTMLParser):
         self.paper_ids, self.paper_texts, self.paper_links = [], {}, {}
         self.current_paper = None
         self.current_record, self.current_related_link = None, None
-        self.record_ids, self.related_links = [], {}
+        self.record_ids, self.related_links, self.record_links = [], {}, {}
+        self.detail_links, self.entry_markers, self.entry_contents, self.meta = [], [], [], {}
+        self.current_detail_link = None
+        self.current_entry, self.entry_heading, self.entry_time = None, None, None
+        self.entry_article_depth = 0
+        self.raw_text_tag = None
         self.paper_groups, self._section_stack = [], []
         self._div_depth = 0
         self._group_summary, self._group_heading = None, None
@@ -73,11 +79,35 @@ class Page(HTMLParser):
             identifier = values['data-record-id']
             self.record_ids.append(identifier)
             self.related_links[identifier] = []
+            self.record_links[identifier] = []
             self.current_record = identifier
+        if tag == 'article' and self.current_entry is not None:
+            self.entry_article_depth += 1
+        if tag == 'article' and ('data-entry-kind' in values or 'data-entry-id' in values):
+            assert self.current_entry is None, 'Nested marked entry articles are invalid'
+            self.entry_markers.append((values.get('data-entry-kind'), values.get('data-entry-id')))
+            self.current_entry = {'text': [], 'headings': [], 'times': [], 'links': []}
+            self.entry_contents.append(self.current_entry)
+            self.entry_article_depth = 1
+        if self.current_entry is not None and tag == 'h1':
+            self.entry_heading = []
+            self.current_entry['headings'].append(self.entry_heading)
+        if self.current_entry is not None and tag == 'time':
+            self.entry_time = {'datetime': values.get('datetime'), 'text': []}
+            self.current_entry['times'].append(self.entry_time)
+        if tag == 'a' and 'entry-detail-link' in classes:
+            self.current_detail_link = {'id': values.get('data-entry-link'), 'href': values.get('href'),
+                                        'target': values.get('target'), 'aria_label': values.get('aria-label'),
+                                        'text': [], 'container_id': self.current_paper or self.current_record}
+            self.detail_links.append(self.current_detail_link)
         if tag in ('a', 'link') and values.get('href'):
             self.links.append(values['href'])
             if self.current_paper:
                 self.paper_links[self.current_paper].append(values['href'])
+            if self.current_record:
+                self.record_links[self.current_record].append(values['href'])
+            if self.current_entry is not None:
+                self.current_entry['links'].append(values['href'])
             if self.current_record and 'source-related-link' in values.get('class', '').split():
                 self.current_related_link = {'href': values['href'], 'text': '', 'target': values.get('target')}
                 self.related_links[self.current_record].append(self.current_related_link)
@@ -87,10 +117,23 @@ class Page(HTMLParser):
             self.alternates.append((values['hreflang'], values['href']))
         if tag == 'meta' and values.get('name') == 'robots' and 'noindex' in values.get('content', ''):
             self.noindex = True
+        if tag == 'meta':
+            self.meta[values.get('name') or values.get('property')] = values.get('content')
+        if tag in ('script', 'style'):
+            self.raw_text_tag = tag
         if tag == 'script' and values.get('type') == 'application/ld+json':
             self.json_script = ''
 
     def handle_data(self, data):
+        if self.raw_text_tag is None:
+            if self.current_entry is not None:
+                self.current_entry['text'].append(data)
+            if self.entry_heading is not None:
+                self.entry_heading.append(data)
+            if self.entry_time is not None:
+                self.entry_time['text'].append(data)
+            if self.current_detail_link is not None:
+                self.current_detail_link['text'].append(data)
         if self.json_script is not None:
             self.json_script += data
         elif self.current_paper:
@@ -106,11 +149,22 @@ class Page(HTMLParser):
         if tag == 'script' and self.json_script is not None:
             self.schemas.append(json.loads(self.json_script))
             self.json_script = None
+        if tag == self.raw_text_tag:
+            self.raw_text_tag = None
         if tag == 'article':
             self.current_paper = None
             self.current_record = None
+            if self.current_entry is not None:
+                self.entry_article_depth -= 1
+                if self.entry_article_depth == 0:
+                    self.current_entry, self.entry_heading, self.entry_time = None, None, None
+        if tag == 'h1':
+            self.entry_heading = None
+        if tag == 'time':
+            self.entry_time = None
         if tag == 'a':
             self.current_related_link = None
+            self.current_detail_link = None
         if tag == 'h2':
             self._group_heading = None
         if tag == 'div':
@@ -176,6 +230,33 @@ def validate_paper_groups(page, papers, language):
         assert len(group['summaries']) == 1 and normalize(group['summaries'][0]['text']) == label + ' ' + count_label, f'Paper section count mismatch: {target} ({language})'
 
 
+def expected_paper_schema(paper, language):
+    statuses = {
+        "conference-paper": ("Conference paper", "会议论文"),
+        "conference-accepted": ("Conference accepted", "会议已接收"),
+        "journal-article": ("Journal article", "期刊论文"),
+        "preprint": ("Preprint", "预印本"),
+    }
+    article = {
+        '@type': 'ScholarlyArticle', '@id': paper['url'], 'url': paper['url'],
+        'name': paper['title'], 'headline': paper['title'], 'alternateName': paper['title_zh'],
+        'author': [{'@type': 'Person', 'name': name} for name in paper['authors']],
+        'description': paper[f'description_{language}'],
+        'creativeWorkStatus': statuses[paper['publication_status']][0],
+        'isPartOf': {'@type': 'CreativeWork', 'name': paper['venue']},
+        'encoding': {'@type': 'MediaObject', 'encodingFormat': 'application/pdf', 'contentUrl': paper['pdf_url']},
+    }
+    if paper.get('publication_date'):
+        article['datePublished'] = paper['publication_date']
+    identifiers = [
+        {'@type': 'PropertyValue', 'propertyID': label, 'value': paper[field]}
+        for field, label in (('doi', 'DOI'), ('arxiv_id', 'arXiv')) if paper.get(field)
+    ]
+    if identifiers:
+        article['identifier'] = identifiers
+    return article
+
+
 def validate_paper_outputs(output, pages, source_papers=None):
     """Bind both rendered bibliographies and every citation to the source JSON."""
     output = Path(output)
@@ -210,23 +291,7 @@ def validate_paper_outputs(output, pages, source_papers=None):
         assert len(articles) == len(by_url) == len(expected) and set(by_url) == {p['url'] for p in built}, f'ScholarlyArticle coverage mismatch: {route}'
         for identifier in page.paper_ids:
             paper = expected[identifier]
-            article = {
-                '@type': 'ScholarlyArticle', '@id': paper['url'], 'url': paper['url'],
-                'name': paper['title'], 'headline': paper['title'], 'alternateName': paper['title_zh'],
-                'author': [{'@type': 'Person', 'name': name} for name in paper['authors']],
-                'description': paper[f'description_{language}'],
-                'creativeWorkStatus': statuses[paper['publication_status']][0],
-                'isPartOf': {'@type': 'CreativeWork', 'name': paper['venue']},
-                'encoding': {'@type': 'MediaObject', 'encodingFormat': 'application/pdf', 'contentUrl': paper['pdf_url']},
-            }
-            if paper.get('publication_date'):
-                article['datePublished'] = paper['publication_date']
-            identifiers = [
-                {'@type': 'PropertyValue', 'propertyID': label, 'value': paper[field]}
-                for field, label in (('doi', 'DOI'), ('arxiv_id', 'arXiv')) if paper.get(field)
-            ]
-            if identifiers:
-                article['identifier'] = identifiers
+            article = expected_paper_schema(paper, language)
             assert by_url[paper['url']] == article, f'ScholarlyArticle fields differ from source: {identifier} ({language})'
             text = normalize(' '.join(page.paper_texts[identifier]))
             phrases = [paper['title_zh'] if language == 'zh' else paper['title'],
@@ -286,7 +351,7 @@ def validate_artifact_links(output, pages):
             for entry in record.get('related_entries', []):
                 href = entry[f'href_{language}']
                 destination = urlsplit(href)
-                assert destination.path in pages and destination.fragment in pages[destination.path].ids, f'Missing related-entry anchor: {href}'
+                assert destination.path in pages and not destination.fragment, f'Missing related-entry detail page: {href}'
                 expected_links.append({'href': href, 'text': normalize(entry[f'title_{language}']), 'target': None})
             actual = [{**link, 'text': normalize(link['text'])} for link in page.related_links.get(record['id'], [])]
             assert actual == expected_links, f'Related-entry navigation mismatch: {record["id"]} ({language})'
@@ -312,9 +377,107 @@ def validate_source_browser_output(output):
     assert re.search(r'(?m)^/source-browser\.json\n[ \t]+Cache-Control: no-cache, must-revalidate[ \t]*$', headers), 'Browser source projection requires no-cache headers'
 
 
+def validate_entry_outputs(pages, resources, papers):
+    """Bind individual pages and their ordinary listing links to reviewed records."""
+    routes = expected_entry_routes(resources, papers)
+    catalogs = {'resource': {row['id']: row for row in resources},
+                'paper': {row['id']: row for row in papers}}
+    normalize = lambda value: ' '.join(value.split())
+    for kind, directory in (('resource', 'resources'), ('paper', 'papers')):
+        for language, prefix in (('en', ''), ('zh', '/zh')):
+            listing = pages[f'{prefix}/{directory}/']
+            links = listing.detail_links
+            assert len(links) == len(catalogs[kind]), f'Detail link count mismatch: {prefix}/{directory}/'
+            assert {link['id'] for link in links} == set(catalogs[kind]), f'Detail link IDs mismatch: {prefix}/{directory}/'
+            for link in links:
+                expected = f"{prefix}/{directory}/{link['id']}/"
+                assert link['href'] == expected and link['target'] is None, f'Detail link must be an ordinary same-tab localized route: {expected}'
+                assert link['container_id'] == link['id'], f'Detail link belongs to the wrong listing entry: {expected}'
+                assert link['id'] in listing.ids, f'Legacy listing anchor missing: {expected}'
+                record = catalogs[kind][link['id']]
+                if kind == 'resource':
+                    title = (record.get('name_zh') or record['name']) if language == 'zh' else record['name']
+                else:
+                    title = record['title_zh'] if language == 'zh' else record['title']
+                label = '完整条目' if language == 'zh' else 'Full entry'
+                accessible = f'{label}：{title}' if language == 'zh' else f'{label}: {title}'
+                assert normalize(' '.join(link['text'])) == label and link['aria_label'] == accessible, f'Detail link label must identify its localized entry: {expected}'
+                upstream = {record['url'], record['evidence_url']} if kind == 'resource' else {record['url'], record['pdf_url']}
+                recorded_links = listing.record_links if kind == 'resource' else listing.paper_links
+                assert upstream <= set(recorded_links.get(link['id'], [])), f'External listing title/source links missing: {expected}'
+
+    for route, (kind, identifier, language) in routes.items():
+        assert route in pages, f'Missing detail page: {route}'
+        page, record = pages[route], catalogs[kind][identifier]
+        canonical = ORIGIN + route
+        locale = 'zh-CN' if language == 'zh' else 'en'
+        assert page.entry_markers == [(kind, identifier)], f'Detail page identity mismatch: {route}'
+        assert page.canonicals == [canonical] and page.lang == locale and not page.noindex, f'Detail canonical/language mismatch: {route}'
+        english = route.removeprefix('/zh') if language == 'zh' else route
+        expected_alternates = {'en': ORIGIN + english, 'zh-CN': ORIGIN + '/zh' + english,
+                               'x-default': ORIGIN + english}
+        assert len(page.alternates) == 3 and dict(page.alternates) == expected_alternates, f'Detail language alternatives mismatch: {route}'
+        web_pages = list(schema_entities(page.schemas, 'WebPage'))
+        assert len(web_pages) == 1, f'Detail page needs one WebPage entity: {route}'
+        web_page = web_pages[0]
+        entity_id = canonical + ('#resource' if kind == 'resource' else '#paper')
+        assert (web_page.get('@id') == canonical + '#webpage' and web_page.get('url') == canonical
+                and web_page.get('inLanguage') == locale and web_page.get('mainEntity') == {'@id': entity_id}), f'Detail WebPage metadata mismatch: {route}'
+        breadcrumbs = list(schema_entities(page.schemas, 'BreadcrumbList'))
+        assert len(breadcrumbs) == 1 and breadcrumbs[0].get('@id') == canonical + '#breadcrumb', f'Detail breadcrumbs missing: {route}'
+        items = breadcrumbs[0].get('itemListElement', [])
+        assert [item.get('position') for item in items] == [1, 2, 3], f'Detail breadcrumb positions mismatch: {route}'
+        destinations = [item.get('item', {}).get('@id') if isinstance(item.get('item'), dict) else item.get('item') for item in items]
+        prefix = '/zh' if language == 'zh' else ''
+        directory = 'resources' if kind == 'resource' else 'papers'
+        assert destinations == [ORIGIN + prefix + '/', ORIGIN + prefix + '/' + directory + '/', canonical], f'Detail breadcrumb destinations mismatch: {route}'
+        assert len(page.entry_contents) == 1, f'Detail page needs one marked article: {route}'
+        article = page.entry_contents[0]
+        text = normalize(' '.join(article['text']))
+        if kind == 'resource':
+            name = (record.get('name_zh') or record['name']) if language == 'zh' else record['name']
+            requirements = record.get('requirements_zh', record['requirements']) if language == 'zh' else record['requirements']
+            requirements = requirements if isinstance(requirements, list) else [requirements]
+            phrases = [name, record[f'description_{language}'], *requirements]
+            links = {record['url'], record['evidence_url'], *record.get('additional_evidence_urls', [])}
+            entities = list(schema_entities(page.schemas, 'CreativeWork'))
+            assert len(entities) == 1 and entities[0].get('@id') == entity_id, f'Detail resource schema identity mismatch: {route}'
+            entity = entities[0]
+            assert (entity.get('url') == record['url'] and entity.get('name') == name
+                    and entity.get('description') == record[f'description_{language}']), f'Detail resource schema content mismatch: {route}'
+            assert not {'author', 'creator', 'datePublished', 'license', 'aggregateRating', 'review'}.intersection(entity), f'Unsupported resource schema claim: {route}'
+        else:
+            name = record['title_zh'] if language == 'zh' else record['title']
+            phrases = [record['title_zh'] if language == 'zh' else record['title'],
+                       '; '.join(record['authors']), record['venue'], record[f'description_{language}'],
+                       record[f'scope_limitations_{language}'], record[f'why_fits_{language}'],
+                       record['date_basis_zh' if language == 'zh' else 'date_basis'],
+                       record['metadata_notes_zh' if language == 'zh' else 'metadata_notes']]
+            if language == 'zh':
+                phrases.append(record['title'])
+            links = {record['url'], record['pdf_url'], *record['evidence_urls'], f'/papers/citations/{identifier}.bib'}
+            links.update(record[field] for field in ('code_url', 'project_url') if record.get(field))
+            entities = list(schema_entities(page.schemas, 'ScholarlyArticle'))
+            expected = {**expected_paper_schema(record, language), '@id': entity_id}
+            assert entities == [expected], f'Detail paper schema differs from recorded publication: {route}'
+        assert (web_page.get('name') == name and web_page.get('description') == record[f'description_{language}']), f'Detail WebPage text mismatch: {route}'
+        assert (page.meta.get('description') == record[f'description_{language}']
+                and page.meta.get('og:url') == canonical
+                and page.meta.get('og:locale') == ('zh_CN' if language == 'zh' else 'en_US')), f'Detail social metadata mismatch: {route}'
+        assert len(article['headings']) == 1 and normalize(' '.join(article['headings'][0])) == normalize(name), f'Detail article needs one correctly localized H1: {route}'
+        times = article['times']
+        assert (len(times) == 1 and times[0]['datetime'] == record['verified_at']
+                and normalize(' '.join(times[0]['text'])) == record['verified_at'][:10]), f'Detail review time differs from the source record: {route}'
+        phrases.append(record['verified_at'][:10])
+        assert all(normalize(phrase) in text for phrase in phrases), f'Detail page lost localized source content: {route}'
+        assert links <= set(article['links']), f'Detail article lost upstream evidence or citation links: {route}'
+
+
 def main():
     urls = [element.text for element in ET.parse(OUTPUT / 'sitemap.xml').findall('{*}url/{*}loc')]
-    assert urls and len(urls) == len(set(urls)), 'Duplicate or empty sitemap'
+    resources = json.loads((OUTPUT / 'catalog.json').read_text())['resources']
+    papers = json.loads((OUTPUT / 'papers.json').read_text())
+    validate_route_inventory(urls, resources, papers, include_browse=(OUTPUT / 'source-index.json').is_file())
     pages = {}
     for url in urls:
         parsed = urlsplit(url)
@@ -346,6 +509,7 @@ def main():
                 local /= 'index.html'
             assert local.is_file(), f'Missing local link on {parsed.path}: {link}'
     validate_paper_outputs(OUTPUT, pages)
+    validate_entry_outputs(pages, resources, papers)
     validate_artifact_links(OUTPUT, pages)
     validate_source_browser_output(OUTPUT)
     assert Page((OUTPUT / '404.html').read_text()).noindex, '404 must be noindex'

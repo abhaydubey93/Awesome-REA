@@ -127,6 +127,9 @@ def paper_card(paper: dict, language: str, use_pro: bool) -> str:
     original_title = f'<p class="paper-original-title" lang="en">{escape(paper["title"])}</p>' if zh else ''
     links = [f'<a class="paper-link paper-link-primary" href="{web_url(paper["url"])}" target="_blank" rel="noopener noreferrer">{label("Paper", "论文")}{icon("external", use_pro)}</a>',
              f'<a class="paper-link" href="{web_url(paper["pdf_url"])}" target="_blank" rel="noopener noreferrer">PDF{icon("external", use_pro)}</a>']
+    detail_path = f"{'/zh' if zh else ''}/papers/{paper['id']}/"
+    detail_label = label('Full entry: ' + title, '完整条目：' + title)
+    links.append(f'<a class="paper-link entry-detail-link" data-entry-link="{paper["id"]}" href="{detail_path}" aria-label="{escape(detail_label, quote=True)}">{label("Full entry", "完整条目")}</a>')
     for field, en, cn in (('code_url', 'Code', '代码'), ('project_url', 'Project', '项目')):
         if paper.get(field):
             links.append(f'<a class="paper-link" href="{web_url(paper[field])}" target="_blank" rel="noopener noreferrer">{label(en, cn)}{icon("external", use_pro)}</a>')

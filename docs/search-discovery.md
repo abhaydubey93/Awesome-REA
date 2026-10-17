@@ -8,13 +8,15 @@ The canonical website is [AwesomeREA.org](https://awesomerea.org/); the public s
 
 - `/papers/` and `/zh/papers/` provide the source-reviewed bibliography with original author names, publication status, precise dates, bilingual scope limits and BibTeX downloads. The `.bib` files use standard month macros and are served as `application/x-bibtex; charset=utf-8` through [site/_headers](../site/_headers). Some papers also appear in the curated catalog; the counts are not additive.
 - `/resources/` and `/zh/resources/` contain every curated record in ordinary HTML, with its original source, review date, requirements, and a stable section link.
+- `/resources/<id>/` and `/papers/<id>/`, with matching `/zh/` routes, provide complete detail pages for curated resources and papers. Listing cards and related-entry links expose these URLs through ordinary HTML links while keeping external title/source links and previous listing anchors.
 - `/about/` and `/zh/about/` explain the collection, its relationship to REA, source review, and the separate automated repository index.
 - `/browse/` and `/zh/browse/` provide category pages for the automated index. Their provenance stays distinct from curated resources.
-- Every indexable page has a canonical URL and sitemap entry. Paired language pages have reciprocal `hreflang` links. Fragment IDs locate entries; they are not separate sitemap URLs.
+- Every indexable page has a canonical URL and sitemap entry. Paired language pages have reciprocal `hreflang` links. Detail-page inventory is derived from reviewed resource and paper IDs; automatic scan records do not produce individual pages. Existing fragment IDs still locate entries within lists and are not separate sitemap URLs.
+- Detail pages use `WebPage` and `BreadcrumbList` metadata. A resource's main entity is a `CreativeWork` linked to the original resource; a paper uses `ScholarlyArticle` with its recorded authors, publication status, identifiers and date precision. Source-review dates are not presented as publication dates, and resource pages do not invent authors, licenses or ratings.
 - WebSite, CollectionPage/AboutPage, ItemList, and BreadcrumbList metadata describe the visible content. The site does not claim ratings, official affiliation, or reproduction results it does not have.
 - `/llms.txt` is an optional navigation index for readers and tools. `/catalog.json` is the machine-readable curated catalog. Neither guarantees indexing or citation.
 
-Run `python3 scripts/build_production.py` before publication. It validates the source catalogs and generated READMEs, checks the browser script, builds the site, and validates canonical pages, language links, static resource coverage, metadata, and crawler permissions.
+Run `python3 scripts/build_production.py` before publication. It validates the source catalogs and generated READMEs, checks the browser script, builds the site, and validates canonical pages, language links, exact detail-page inventory, static resource coverage, metadata, and crawler permissions. These checks establish crawlable structure and source consistency; they do not demonstrate indexing or ranking.
 
 ## What the evidence supports
 

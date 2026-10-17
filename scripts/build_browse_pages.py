@@ -51,9 +51,9 @@ def related_links(record: dict, language: str) -> str:
             if entry.get('kind') != kind:
                 continue
             identifier = entry['id']
-            href = ('/zh' if language == 'zh' else '') + f'/{route}/#{identifier}'
+            href = ('/zh' if language == 'zh' else '') + f'/{route}/{identifier}/'
             if entry[f'href_{language}'] != href:
-                raise ValueError('Related entry must use its internal catalog anchor')
+                raise ValueError('Related entry must use its internal detail page')
             links.append(f'<li><a class="source-related-link" href="{escape(href, quote=True)}">'
                          f'{escape(entry[f"title_{language}"])}</a></li>')
         if links:

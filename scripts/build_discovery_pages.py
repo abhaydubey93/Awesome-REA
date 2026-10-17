@@ -121,7 +121,9 @@ def _requirements(record: dict, language: str) -> list[str]:
 
 def _resource_card(record: dict, language: str) -> str:
     zh = language == 'zh'
+    detail_path = f"{'/zh' if zh else ''}/resources/{record['id']}/"
     name = (record.get('name_zh') or record['name']) if zh else record['name']
+    detail_label = f'完整条目：{name}' if zh else f'Full entry: {name}'
     description = record[f'description_{language}']
     kind = KIND_LABELS[record['kind']][1 if zh else 0]
     targets = ' · '.join(TARGETS[target][1 if zh else 0] for target in record['targets'])
@@ -135,7 +137,7 @@ def _resource_card(record: dict, language: str) -> str:
     return f'''<article class="resource-card browse-repository" id="{escape(record['id'], quote=True)}" data-record-id="{escape(record['id'], quote=True)}" data-resource-id="{escape(record['id'], quote=True)}">
   <div class="card-heading"><h3><a class="card-title-link" href="{_url(record['url'])}" target="_blank" rel="noopener noreferrer">{escape(name)}<span class="browse-text-arrow" aria-hidden="true">↗</span></a></h3><span class="resource-kind">{escape(kind)}</span></div>
   <p class="card-description">{escape(description)}</p>
-  <div class="card-meta"><span>{escape(targets)}</span><a href="{_url(record['evidence_url'])}" target="_blank" rel="noopener noreferrer">{('原始来源 ↗' if zh else 'Primary source ↗')}</a></div>
+  <div class="card-meta"><span>{escape(targets)}</span><a class="entry-detail-link" data-entry-link="{escape(record['id'], quote=True)}" href="{escape(detail_path, quote=True)}" aria-label="{escape(detail_label, quote=True)}">{('完整条目' if zh else 'Full entry')}</a><a href="{_url(record['evidence_url'])}" target="_blank" rel="noopener noreferrer">{('原始来源 ↗' if zh else 'Primary source ↗')}</a></div>
   <details class="requirements"><summary>{('详情与使用条件' if zh else 'Details and requirements')}</summary><ul>{requirements}</ul>{('<ul>' + additional + '</ul>' if additional else '')}<div class="resource-detail-meta"><span>{('资料已复核' if zh else 'Source-reviewed')}</span><time datetime="{escape(reviewed, quote=True)}">{('复核于' if zh else 'Reviewed')} {escape(reviewed[:10])}</time></div></details>
 </article>'''
 
