@@ -17,6 +17,7 @@ from localization import read_localizations, validate_localizations
 from source_scope import read_scope, validate_scope
 from validate_papers import validate_papers
 from source_descriptions import validate_description_capture
+from case_coverage import read_case_coverage, validate_case_coverage
 
 
 RESOURCE_FIELDS = {
@@ -741,6 +742,11 @@ def main():
     validate_papers(papers, errors, url_check=public_https_error)
     validate_resources(records, errors)
     validate_benchmarks(benchmarks, errors)
+    try:
+        validate_case_coverage(read_case_coverage(ROOT), records, papers, errors,
+                               url_check=public_https_error)
+    except (OSError, ValueError):
+        errors.append('Case coverage could not be read as strict JSON.')
     scanned = 0
     index_path = ROOT / 'data/source-index.json'
     if index_path.exists():
@@ -763,7 +769,7 @@ def main():
                 except (OSError, ValueError):
                     errors.append('Source-scope data could not be read as valid JSON.')
     count = validate_markdown(ROOT, errors)
-    for script in ('build_readme.py', 'build_repository_index.py'):
+    for script in ('build_readme.py', 'build_repository_index.py', 'build_case_coverage.py'):
         result = subprocess.run([sys.executable, str(ROOT / 'scripts' / script), '--check'],
                                 cwd=ROOT, text=True, capture_output=True, check=False)
         if result.returncode:
