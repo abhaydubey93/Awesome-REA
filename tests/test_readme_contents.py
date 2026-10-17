@@ -39,7 +39,7 @@ class ReadmeContentsTest(unittest.TestCase):
         self.assertIn('[Website](#website) (2)', rendered)
         self.assertIn('[Game](#game) (1)', rendered)
         self.assertIn('[Papers](#papers) (1)', rendered)
-        self.assertIn('https://awesomerea.org/cases/) (1)', rendered)
+        self.assertIn('[All cases](https://awesomerea.org/cases/) (1)', rendered)
         self.assertIn('[Repository index](#full-repository-index) (2,864)', rendered)
         # A research record listed under Papers is not rendered in Learning, so it is not counted there.
         self.assertNotIn('#references-and-learning', rendered)
