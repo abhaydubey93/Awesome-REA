@@ -1,20 +1,20 @@
 /* Paper directory: the same white collection canvas, with citation-focused cards. */
 .papers-main{padding-bottom:56px}
-.papers-language{display:inline-flex;align-items:center;gap:8px;min-height:40px;padding:7px 12px;border:1px solid var(--line);border-radius:8px;font-size:13px;white-space:nowrap}
+.papers-language{display:inline-flex;align-items:center;gap:8px;min-height:40px;padding:7px 12px;border:1px solid var(--line);border-radius:8px;font-size:14px;white-space:nowrap}
 .papers-language:hover{background:var(--soft);border-color:var(--strong)}
 .papers-language>.icon{width:17px;height:17px;font-size:17px;color:var(--muted)}
 .paper-github-fallback{font:700 12px/22px var(--sans);text-align:center}
-.papers-breadcrumbs{display:flex;align-items:center;gap:8px;margin-top:25px;color:var(--muted);font-size:12px}
+.papers-breadcrumbs{display:flex;flex-wrap:wrap;align-items:center;gap:8px;margin-top:25px;color:var(--muted);font-size:14px}
 .papers-breadcrumbs a{color:var(--link)}
 .papers-breadcrumbs a:hover{text-decoration:underline;text-underline-offset:4px}
 .papers-intro{padding:24px 0 23px}
 .papers-intro h1{font-size:clamp(32px,3.2vw,44px)}
-.papers-intro>p:last-child{max-width:940px}
+.papers-main .papers-intro>p:last-child{max-width:72ch}
 .papers-actions{display:flex;align-items:center;gap:18px;flex-wrap:wrap;margin-bottom:19px}
-.papers-bibliography{font-size:13px;color:var(--link);text-decoration:underline;text-underline-offset:4px}
-.papers-review-policy{max-width:1080px;margin:0 0 20px;color:var(--muted);font-size:12px;line-height:1.8}
+.papers-bibliography{font-size:14px;color:var(--link);text-decoration:underline;text-underline-offset:4px}
+.papers-review-policy{max-width:72ch;margin:0 0 20px;color:var(--muted);font-size:14px;line-height:1.8}
 .papers-topic-nav{display:flex;flex-wrap:wrap;gap:10px;padding-bottom:22px;border-bottom:1px solid var(--line)}
-.papers-topic-nav a{display:inline-flex;align-items:center;gap:10px;border:1px solid var(--line);border-radius:8px;padding:9px 13px;color:var(--link);background:var(--surface);font-size:13px;font-weight:550}
+.papers-topic-nav a{display:inline-flex;align-items:center;gap:10px;border:1px solid var(--line);border-radius:8px;padding:9px 13px;color:var(--link);background:var(--surface);font-size:14px;font-weight:550}
 .papers-topic-nav a:hover{background:var(--tint);border-color:var(--strong)}
 .papers-topic-nav a span{font:500 12px/1.5 var(--sans);font-variant-numeric:tabular-nums;padding:1px 6px;border-radius:4px;background:var(--tint)}
 .paper-section{padding-top:28px}
@@ -23,7 +23,7 @@
 .paper-section-heading>span{color:var(--muted);font-size:12px;white-space:nowrap}
 .paper-grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:20px;align-items:start}
 .paper-card{min-width:0;padding:25px 25px 19px;border:1px solid var(--line);border-radius:12px;background:var(--surface);box-shadow:0 2px 5px var(--shadow)}
-.paper-meta{display:flex;flex-wrap:wrap;align-items:center;gap:7px 10px;margin-bottom:12px;font-size:12px;color:var(--muted)}
+.paper-meta{display:flex;flex-wrap:wrap;align-items:center;gap:7px 10px;margin-bottom:12px;font-size:14px;color:var(--muted)}
 .paper-year{color:var(--ink);font-weight:700;font-variant-numeric:tabular-nums}
 .paper-venue{font-weight:550}
 .paper-status{padding:2px 7px;border-radius:5px;font-size:11px;background:var(--tint);color:var(--link)}
@@ -33,20 +33,20 @@
 .paper-card h3 a:hover{color:var(--link);text-decoration:underline;text-underline-offset:4px;text-decoration-thickness:1px}
 .paper-card h3 .icon{width:13px;height:13px;font-size:11px;vertical-align:baseline;margin-left:6px;color:var(--steel)}
 .paper-text-arrow{display:inline-block;margin-left:5px;font-size:13px;color:var(--steel)}
-.paper-original-title{margin:9px 0 0;font-size:12px;line-height:1.65;color:var(--muted);overflow-wrap:anywhere}
-.paper-authors{margin:11px 0 0;color:var(--muted);font-size:12px;line-height:1.75}
-.paper-description{margin:17px 0;color:#465c73;font-size:15px;line-height:1.8}
+.paper-original-title{margin:9px 0 0;font-size:14px;line-height:1.65;color:var(--muted);overflow-wrap:anywhere}
+.paper-authors{margin:11px 0 0;color:var(--muted);font-size:14px;line-height:1.75}
+.paper-description{margin:17px 0;color:#465c73;font-size:16px;line-height:1.8}
 .paper-scope{padding:13px 15px;border-radius:8px;border-left:2px solid #bfd1e3;background:var(--soft)}
-.paper-scope h4,.paper-details h4{margin:0 0 6px;color:var(--ink);font-size:12px;font-weight:650}
-.paper-scope p{margin:0;color:var(--muted);font-size:13px;line-height:1.75}
+.paper-scope h4,.paper-details h4{margin:0 0 6px;color:var(--ink);font-size:14px;font-weight:650}
+.paper-scope p{margin:0;color:var(--muted);font-size:14px;line-height:1.75}
 .paper-links{display:flex;flex-wrap:wrap;align-items:center;gap:8px;margin:18px 0 16px}
-.paper-link{display:inline-flex;align-items:center;justify-content:center;gap:6px;min-height:34px;padding:5px 10px;border:1px solid var(--line);border-radius:6px;color:var(--link);background:var(--surface);font-size:12px;font-weight:550}
+.paper-link{display:inline-flex;align-items:center;justify-content:center;gap:6px;min-height:44px;padding:5px 10px;border:1px solid var(--line);border-radius:6px;color:var(--link);background:var(--surface);font-size:14px;font-weight:550}
 .paper-link:hover{border-color:var(--strong);background:var(--tint)}
 .paper-link-primary{background:var(--ink);border-color:var(--ink);color:#fff}
 .paper-link-primary:hover{background:var(--link);border-color:var(--link)}
 .paper-link>.icon{width:11px;height:11px;font-size:10px}
 .paper-link-primary .paper-text-arrow{color:#fff}
-.paper-details{padding-top:12px;border-top:1px solid var(--line);color:var(--muted);font-size:12px;line-height:1.8}
+.paper-details{padding-top:12px;border-top:1px solid var(--line);color:var(--muted);font-size:14px;line-height:1.8}
 .paper-details summary{width:fit-content;cursor:pointer;font-weight:550}
 .paper-details[open] summary{margin-bottom:14px;color:var(--ink)}
 .paper-details p{margin:0 0 14px}
@@ -63,16 +63,25 @@
   .papers-intro{padding:21px 0}
   .papers-intro h1{font-size:31px}
   .papers-actions{gap:12px}
-  .papers-review-policy{font-size:12px;margin-bottom:18px}
+  .papers-review-policy{font-size:14px;margin-bottom:18px}
   .papers-topic-nav{gap:8px;padding-bottom:18px}
-  .papers-topic-nav a{font-size:12px;padding:8px 11px;gap:8px}
+  .papers-topic-nav a{font-size:14px;padding:8px 11px;gap:8px}
   .paper-section{padding-top:23px}
   .paper-section-heading h2{font-size:20px}
   .paper-card{padding:21px 19px 16px}
   .paper-card h3{font-size:18px;line-height:1.55}
-  .paper-description{font-size:15px}
+  .paper-description{font-size:16px}
   .paper-scope{padding:12px 13px}
   .paper-links{gap:7px}
-  .paper-link{min-height:36px}
+  .paper-link{min-height:44px}
   .paper-details dl{grid-template-columns:105px minmax(0,1fr);gap:8px 10px}
 }
+@media(max-width:520px){
+  .paper-details dl{grid-template-columns:minmax(0,1fr);gap:4px}
+  .paper-details dd+dt{margin-top:8px}
+}
+/* Keep full-width tablet cards comfortable to read without hiding any text. */
+.paper-description,.paper-scope p,.paper-details p,.paper-details ul{max-width:68ch}
+html[lang="zh-CN"] .paper-description,html[lang="zh-CN"] .paper-scope p,html[lang="zh-CN"] .paper-details p,html[lang="zh-CN"] .paper-details ul{max-width:36em}
+
+.papers-topic-nav a{min-height:44px}

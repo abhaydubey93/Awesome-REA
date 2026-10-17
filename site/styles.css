@@ -25,7 +25,7 @@ button,input,select{font:inherit;color:inherit}
 button{cursor:pointer;border:0}
 button,a,input,select,summary{-webkit-tap-highlight-color:transparent}
 button:focus-visible,a:focus-visible,input:focus-visible,select:focus-visible,summary:focus-visible{outline:3px solid var(--steel);outline-offset:4px}
-input::placeholder{color:#687b8e;opacity:1}
+input::placeholder{color:var(--muted);opacity:1}
 ::selection{background:var(--cyan);color:var(--ink)}
 [hidden]{display:none!important}
 .shell{width:min(1280px,calc(100% - 80px));margin-inline:auto}
@@ -310,3 +310,40 @@ html[lang="zh-CN"] .shelf-note{font-family:var(--sans);font-style:normal}
 @media(max-width:520px){.hero-actions{gap:8px 12px}.hero-text-link{font-size:11px}.home-intro .collection-directory{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:12px}.home-intro .collection-directory a:not(.directory-about){display:flex;flex-direction:column;align-items:flex-start;gap:0}.home-intro .collection-directory .directory-about{grid-column:1/-1;width:auto}.home-intro .collection-directory a{font-size:10px}}
 
 @media(max-width:700px){.contributor-list{grid-template-columns:1fr;gap:24px}}
+
+/* Reading sizes: descriptions and source evidence should not look like fine print. */
+body{font-size:16px}
+.resource-card h3,.source-card h3{font-size:18px;line-height:1.5;letter-spacing:0}
+.resource-card .card-description,.source-card .source-card-description{font-size:16px;line-height:1.8;max-width:68ch;color:#414758}
+.resource-kind,.source-stars{font-size:13px}
+.card-meta,.source-card-footer,.source-related-label,.source-related-link,.source-card-license{font-size:14px;line-height:1.7}
+.source-topic-chip{font-size:13px;padding:5px 9px}
+.requirements summary,.source-record-details summary{font-size:14px;line-height:1.7;padding:5px 0}
+.requirements ul{font-size:15px;line-height:1.8;max-width:68ch}
+.requirements li+li{margin-top:10px}
+.resource-detail-meta,.source-record-details dl{font-size:14px;line-height:1.75}
+.source-record-details dd{min-width:0}
+.collection-note,.collection-note>a,.collection-note summary{font-size:14px}
+.results-topline p,.clear-button,.load-more-row>p{font-size:14px}
+.source-field>label{font-size:14px}
+.source-field>input,.source-field>select{min-height:44px;font-size:16px}
+.target-filter{min-height:44px;font-size:14px}
+.search-box input{font-size:17px}
+.home-intro{padding-top:36px}
+.home-intro .collection-description{font-size:17px;max-width:60ch}
+.home-intro .collection-directory{margin-top:24px;padding:18px 0}
+.home-intro .collection-directory a,.home-intro .collection-directory .directory-about{font-size:14px}
+.shelf-heading h2{font-size:13px}
+.shelf-link strong{font-size:15px;line-height:1.5}
+.shelf-link small{font-size:13px;line-height:1.65}
+.shelf-note{font-family:var(--sans);font-style:normal;font-size:12px;line-height:1.7}
+.subject-directory a{font-size:14px}
+.contributor-name{font-size:16px}
+.contributor-entry p,.contributor-work{font-size:14px;line-height:1.7}
+.footer-top p,.footer-links{font-size:14px}
+.footer-bottom{font-size:13px}
+html[lang="zh-CN"] .card-description,html[lang="zh-CN"] .source-card-description,html[lang="zh-CN"] .requirements ul{max-width:36em}
+@media(max-width:900px){.resource-grid,.source-results{grid-template-columns:1fr}.resource-card,.source-card{padding:24px}}
+@media(max-width:700px){.source-field>input,.source-field>select,.target-filter{min-height:44px}.source-field>input,.source-field>select{font-size:16px}.resource-card,.source-card{padding:22px}.collection-note,.collection-note>a,.collection-note summary,.results-topline p{font-size:14px}.home-intro .collection-description{font-size:16px}.subject-directory a{font-size:14px}.language-picker select{font-size:14px}}
+@media(max-width:520px){.source-record-details dl{grid-template-columns:minmax(0,1fr);gap:3px}.source-record-details dd{margin-bottom:12px}.home-intro .collection-directory a{font-size:12px}.home-intro .collection-directory .directory-about{font-size:13px}.hero-text-link{font-size:13px}.collection-note details[open]{padding:13px}}
+@media(max-width:420px){.source-target-filters,.group-filters{grid-template-columns:repeat(2,minmax(0,1fr))}.subject-directory{grid-template-columns:repeat(2,minmax(0,1fr))}.target-filter{font-size:14px}.search-box{padding-inline:13px}.source-field{flex-basis:100%}}
