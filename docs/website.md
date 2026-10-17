@@ -18,6 +18,7 @@
 - Static collection lists and related-entry links lead to these detail pages using ordinary links. Existing `/resources/#<id>` and `/papers/#<id>` listing anchors remain available. The automated repository index continues to use category pages and does not generate individual pages for scanned repositories.
 - [validate_discovery.py](../scripts/validate_discovery.py) checks the generated site's canonical routes, language links, static record coverage, JSON-LD and crawler permissions. The production build and CI both run it. See [search discovery](search-discovery.md) for sources, submission steps, and measurement limits.
 - `dist/` is ignored by Git. Rebuild it from source instead of editing generated files. The resource count is a count of catalog records, not distinct software projects.
+- Builds generate a fresh site in ignored `.cache/` storage before replacing `dist/`, so removed source assets do not survive a rebuild. A generation or manifest failure leaves the previous output intact. If replacement fails, the builder restores the previous directory; if restoration also fails, it reports the retained recovery directory. Treat all files inside `dist/` as generated output, not a place for unrelated files.
 
 ## Build and preview
 
