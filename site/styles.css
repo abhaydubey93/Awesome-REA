@@ -2,16 +2,16 @@
 :root {
   --paper:#fff;
   --surface:#fff;
-  --soft:#f7f9fc;
-  --tint:#eef4fb;
-  --ink:#1c3353;
-  --muted:#52657a;
-  --link:#315f91;
-  --steel:#4d7da9;
-  --cyan:#d9eaf5;
-  --accent:#e63946;
-  --line:#e0e7ef;
-  --strong:#b8c9da;
+  --soft:#f8f9fc;
+  --tint:#f1f0ff;
+  --ink:#202335;
+  --muted:#626779;
+  --link:#5149a5;
+  --steel:#7770b1;
+  --cyan:#e5e1fb;
+  --accent:#7467cc;
+  --line:#e7e7ee;
+  --strong:#c9c7d8;
   --focus:#527fa520;
   --shadow:#17375409;
   --mono:ui-monospace,SFMono-Regular,Consolas,"Liberation Mono",monospace;
@@ -246,3 +246,64 @@ html[lang="zh-CN"] .collection-intro h1{letter-spacing:-.6px}
   html{scroll-behavior:auto}
   *,*::before,*::after{animation:none!important;transition:none!important}
 }
+
+/* The homepage opens like a collection, with live text and ordinary source links. */
+.home-intro{padding:54px 0 34px}
+.hero-layout{display:grid;grid-template-columns:minmax(0,1.8fr) minmax(300px,1fr);gap:66px;align-items:center}
+.hero-copy{min-width:0}
+.home-intro .eyebrow{font-size:10px;letter-spacing:1.9px;margin-bottom:20px}
+.home-intro h1{font-size:clamp(40px,4.25vw,61px);font-weight:650;line-height:1.08;letter-spacing:-2.9px;max-width:790px}
+.home-intro h1 em{font-family:Georgia,"Times New Roman",serif;font-weight:400;color:var(--link);letter-spacing:-2.4px}
+.home-intro .collection-description{max-width:570px;font-size:16px;line-height:1.8;margin:23px 0 0;color:var(--muted)}
+.hero-actions{display:flex;align-items:center;gap:24px;flex-wrap:wrap;margin-top:26px}
+.hero-actions .button{padding:12px 19px;min-height:46px;border-radius:7px;background:var(--ink);font-size:13px}
+.hero-actions .button:hover{background:var(--link)}
+.hero-text-link{display:inline-flex;align-items:center;gap:9px;font-size:13px;font-weight:550;color:var(--muted);min-height:44px}
+.hero-text-link:hover{color:var(--link)}
+.collection-shelf{position:relative;padding:22px 23px 17px;border:1px solid var(--line);border-radius:15px;background:linear-gradient(145deg,#fcfcff,#fff 65%);box-shadow:0 14px 50px #27234c06}
+.collection-shelf::before{content:"";position:absolute;inset:7px -7px -7px 7px;border:1px solid #eeedf5;border-radius:15px;z-index:-1}
+.shelf-heading{display:flex;align-items:center;gap:8px;padding-bottom:12px;border-bottom:1px solid var(--line)}
+.shelf-dot{width:6px;height:6px;border-radius:50%;background:#8b80cf}
+.shelf-heading h2{margin:0;font-size:11px;font-weight:600;letter-spacing:.1px}
+.shelf-heading>.mono{margin-left:auto;font-size:10px;letter-spacing:1px;color:#8c8a9c}
+.shelf-link{display:grid;grid-template-columns:36px minmax(0,1fr) 12px;gap:11px;padding:16px 0;align-items:center;border-bottom:1px solid var(--line)}
+.shelf-link:last-of-type{border-bottom:0}
+.shelf-icon{display:grid;place-items:center;width:36px;height:38px;border:1px solid #e8e5f4;background:#f6f4fc;border-radius:9px;color:var(--link)}
+.shelf-icon>.icon{width:18px;height:18px;font-size:18px}
+.shelf-link strong{display:block;font-size:13px;font-weight:650;letter-spacing:-.1px}
+.shelf-link small{display:block;color:var(--muted);font-size:11px;line-height:1.6;margin-top:3px}
+.shelf-arrow{font-size:13px;color:#9390a5;transition:transform .15s ease}
+.shelf-link:hover strong{color:var(--link)}
+.shelf-link:hover .shelf-arrow{transform:translate(2px,-2px)}
+.shelf-note{font-family:Georgia,serif;font-style:italic;font-size:11px;margin:1px 0 0;color:var(--muted)}
+.home-intro .collection-directory{margin-top:35px;padding:23px 0;gap:14px 34px;border-bottom:1px solid var(--line)}
+.home-intro .collection-directory a{gap:8px;color:var(--muted);font-size:12px}
+.home-intro .collection-directory strong{font-size:22px;letter-spacing:-.6px;color:var(--ink);font-weight:650}
+.home-intro .collection-directory .directory-about{margin-left:auto;font-size:12px;color:var(--link)}
+.subject-directory{display:grid;grid-template-columns:repeat(6,minmax(0,1fr));gap:10px;margin-top:20px}
+.subject-directory a{display:flex;gap:9px;align-items:center;padding:12px 13px;border:1px solid var(--line);border-radius:8px;font-size:12px;font-weight:550;background:#fff;transition:border-color .15s ease,background .15s ease}
+.subject-directory a>.icon{color:var(--link);width:17px;height:17px;font-size:17px}
+.subject-directory .subject-arrow{margin-left:auto;color:#b0adbf;font-size:11px}
+.subject-directory a:hover{border-color:var(--strong);background:var(--soft)}
+.collection-home .catalog-section{border-top:1px solid transparent}
+.collection-home .index-mode.active{border-bottom-color:var(--link)}
+.collection-home .card-description,.collection-home .source-card-description{color:#555c70}
+.collection-home .resource-card,.collection-home .source-card{box-shadow:none;border-radius:10px}
+.collection-home .resource-card:hover,.collection-home .source-card:hover{box-shadow:0 7px 28px #2b234b07}
+.contributors-section{display:grid;grid-template-columns:1fr 2fr;gap:30px;border-top:1px solid var(--line);padding-top:30px;padding-bottom:35px;align-items:center}
+.contributors-section .eyebrow{font-size:9px;letter-spacing:1.3px;margin-bottom:8px}
+.contributors-section h2{font-size:22px;font-weight:600;letter-spacing:-.5px;margin:0}
+.contributor-entry{display:flex;gap:16px;align-items:flex-start}
+.contributor-monogram{display:grid;place-items:center;background:#f3f1fb;border:1px solid #e8e4f4;border-radius:50%;width:44px;height:44px;flex-shrink:0;font:16px Georgia,serif;color:var(--link)}
+.contributor-name{font-size:14px;font-weight:650}
+.contributor-name span{font-size:11px;color:var(--link)}
+.contributor-entry p{font-size:12px;color:var(--muted);margin:4px 0}
+.contributor-work{font-size:11px;color:var(--link);text-decoration:underline;text-underline-offset:3px}
+html[lang="zh-CN"] .home-intro h1{font-size:clamp(38px,4vw,58px);letter-spacing:-1px;line-height:1.25}
+html[lang="zh-CN"] .home-intro h1 em{font-family:var(--sans);font-style:normal;letter-spacing:-1px}
+html[lang="zh-CN"] .shelf-note{font-family:var(--sans);font-style:normal}
+@media(max-width:1100px){.hero-layout{gap:32px;grid-template-columns:minmax(0,1.5fr) minmax(280px,1fr)}.home-intro h1{font-size:48px;letter-spacing:-2.3px}.subject-directory{gap:8px}.subject-directory a{padding:11px 10px}}
+@media(max-width:850px){.hero-layout{grid-template-columns:1fr}.collection-shelf{display:none}.home-intro h1{font-size:54px;max-width:720px}.home-intro .collection-description{max-width:650px}.home-intro{padding-top:38px}.subject-directory{grid-template-columns:repeat(3,minmax(0,1fr))}.home-intro .collection-directory{gap:12px 24px}.home-intro .collection-directory .directory-about{margin-left:0}}
+@media(max-width:520px){.home-intro{padding:30px 0 24px}.home-intro h1{font-size:39px;line-height:1.12;letter-spacing:-1.9px}.home-intro h1 em{letter-spacing:-1.7px}.home-intro .eyebrow{font-size:9px;margin-bottom:17px;letter-spacing:1.4px}.home-intro .collection-description{font-size:14px;line-height:1.8;margin-top:17px}.hero-actions{gap:9px 18px;margin-top:20px}.hero-actions .button{padding:11px 14px;font-size:12px}.hero-text-link{font-size:12px}.home-intro .collection-directory{margin-top:20px;padding:16px 0;gap:12px 19px}.home-intro .collection-directory a{font-size:10px;gap:5px}.home-intro .collection-directory strong{font-size:20px}.home-intro .collection-directory .directory-about{width:100%;font-size:11px}.subject-directory{margin-top:15px;gap:7px}.subject-directory a{font-size:11px;padding:10px 9px;gap:7px}.subject-arrow{display:none}.contributors-section{grid-template-columns:1fr;gap:22px;padding-top:26px;padding-bottom:30px}html[lang="zh-CN"] .home-intro h1{font-size:37px}}
+@media(prefers-reduced-motion:reduce){.shelf-arrow,.subject-directory a{transition:none}.shelf-link:hover .shelf-arrow{transform:none}}
+@media(max-width:520px){.hero-actions{gap:8px 12px}.hero-text-link{font-size:11px}.home-intro .collection-directory{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:12px}.home-intro .collection-directory a:not(.directory-about){display:flex;flex-direction:column;align-items:flex-start;gap:0}.home-intro .collection-directory .directory-about{grid-column:1/-1;width:auto}.home-intro .collection-directory a{font-size:10px}}
