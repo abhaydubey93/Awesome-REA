@@ -1,7 +1,7 @@
 {
   "schema_version": 1,
   "reviewed_at": "2026-10-17",
-  "catalog_revision": "8d9638e8ca0395273a8c04aa976607f2cb770894",
+  "catalog_revision": "3d040ce76a5405831ad5114e89bbb0d10300c94f",
   "runtime_reproduced": false,
   "project_identity_resolution": "incomplete",
   "collections": [
@@ -4324,12 +4324,17 @@
         "https://x.com/i/status/2110624271282139204",
         "https://github.com/LilZeeCN/mi-health-exporter"
       ],
-      "state": "pending",
-      "review_level": "inventory-only",
+      "state": "insufficient-evidence",
+      "review_level": "primary-source-reviewed",
       "reviewed_at": "2026-10-17",
-      "reason_en": "A collection lead awaiting primary-source review; listing does not verify implementation or results.",
-      "reason_zh": "合集线索，等待一手来源核查；被列入合集不代表实现或结果已获验证。",
-      "primary_evidence_urls": [],
+      "reason_en": "The pinned repository implements Mi Fitness synchronization, timestamp correction and local export, with synthetic checks for those operations. Available sources do not document the original-interface investigation or reference comparisons needed to substantiate reconstruction. Retain the lead without a catalog mapping; this is not a finding that the exporter is broken or unusable, and new primary evidence can support another review.",
+      "reason_zh": "固定版本仓库实现了 Mi Fitness 同步、时间戳修正和本地导出，并提供相关合成检查。现有来源未记录足以支持重建主张的原接口调查过程或参考对照。保留此线索而不建立目录映射；这不表示导出器损坏或不可用，新的一手证据可支持再次核查。",
+      "primary_evidence_urls": [
+        "https://github.com/LilZeeCN/mi-health-exporter/blob/1dc9274a90ccc83f02cbb3706aae2a4d55c8e90a/README.md",
+        "https://github.com/LilZeeCN/mi-health-exporter/blob/1dc9274a90ccc83f02cbb3706aae2a4d55c8e90a/sync_cloud.py",
+        "https://github.com/LilZeeCN/mi-health-exporter/blob/1dc9274a90ccc83f02cbb3706aae2a4d55c8e90a/tests/test_sync_cloud.py",
+        "https://github.com/LilZeeCN/mi-health-exporter/blob/1dc9274a90ccc83f02cbb3706aae2a4d55c8e90a/LICENSE"
+      ],
       "catalog_matches": []
     },
     {
@@ -12077,15 +12082,15 @@
     "alias_merges": 2,
     "occurrences_by_state": {
       "already-curated": 55,
-      "insufficient-evidence": 51,
-      "pending": 437
+      "insufficient-evidence": 52,
+      "pending": 436
     },
     "units_by_state": {
       "already-curated": 54,
-      "insufficient-evidence": 51,
-      "pending": 436
+      "insufficient-evidence": 52,
+      "pending": 435
     },
-    "primary_reviewed_units": 51,
+    "primary_reviewed_units": 52,
     "catalog_linked_occurrences": 62,
     "distinct_resource_ids": 53,
     "distinct_paper_ids": 1,
