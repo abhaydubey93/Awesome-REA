@@ -17,7 +17,7 @@ Browse by target or topic below. **Source review does not imply runtime verifica
 <!-- BEGIN GENERATED CONTENTS -->
 **Tools and cases by target**
 
-- [Website](#website) (16) · [Game](#game) (42) · [App](#app) (37)
+- [Website](#website) (16) · [Game](#game) (42) · [App](#app) (38)
 - [Native Binary](#native-binary) (20) · [Firmware and Hardware](#firmware) (12) · [Protocol](#protocol) (11)
 
 **Research and workflows**
@@ -26,7 +26,7 @@ Browse by target or topic below. **Source review does not imply runtime verifica
 
 **More ways to browse**
 
-- [All cases](https://awesomerea.org/cases/) (51) · [Related Collections](#related-collections) (4) · [Full Repository Index](#full-repository-index) (2,836)
+- [All cases](https://awesomerea.org/cases/) (52) · [Related Collections](#related-collections) (4) · [Full Repository Index](#full-repository-index) (2,836)
 <!-- END GENERATED CONTENTS -->
 
 <a id="resource-catalog"></a>
@@ -433,6 +433,11 @@ Includes independent projects and resources for [REA (Reverse Engineer Anything)
   Case study · Mixed workflow · [Requirements & evidence](https://awesomerea.org/resources/ledger-reborn-accounting-case/)
 
   The maintainer reports using REA and Ghidra to study selected QuickBooks Desktop for Mac behavior, then independently implements a local accounting application. Its Python/SQLite engine persists double-entry journals, invoices, inventory and payments, while public synthetic fixtures test bounded accounting and rollback behavior.
+
+- [**Pocket Tasks: reconstructing task state and persistence**](https://github.com/ShadowSwaps/REA-Reconstruction-Companion/tree/main/evals/reference/reconstruction)<br>
+  Case study · Mixed workflow · [Requirements & evidence](https://awesomerea.org/resources/pocket-tasks-reconstruction-case/)
+
+  A teaching case with disclosed prior source access carries a REA-assisted investigation of a small command-line app into a separate Node implementation. It preserves observed task editing, persistence and selection behavior, then compares scoped outputs against fixed expectations and captured reference sessions.
 
 - [**LSX II Volume Fixer: reconstructing volume behavior**](https://github.com/roberdorfer/kef-lsx-volume)<br>
   Case study · Independent reconstruction · [Requirements & evidence](https://awesomerea.org/resources/kef-lsx-volume-case/)

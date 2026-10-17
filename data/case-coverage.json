@@ -1,7 +1,7 @@
 {
   "schema_version": 1,
   "reviewed_at": "2026-10-17",
-  "catalog_revision": "65f9292947ca93b7f73d2eb0bf88637658e06631",
+  "catalog_revision": "8d9638e8ca0395273a8c04aa976607f2cb770894",
   "runtime_reproduced": false,
   "project_identity_resolution": "incomplete",
   "collections": [
@@ -7912,12 +7912,25 @@
         "https://github.com/ShadowSwaps/REA-Reconstruction-Companion"
       ],
       "state": "pending",
-      "review_level": "inventory-only",
+      "review_level": "primary-source-reviewed",
       "reviewed_at": "2026-10-17",
-      "reason_en": "A newly inventoried collection lead awaiting primary-source review; listing does not verify implementation or results.",
-      "reason_zh": "新清点的合集线索，等待一手来源核查；被列入合集不代表实现或结果已获验证。",
-      "primary_evidence_urls": [],
-      "catalog_matches": []
+      "reason_en": "The Pocket Tasks mapping covers one maintainer-informed command-line reconstruction with published candidate and bounded comparison evidence. It does not cover the broader Companion workflow, other examples or model/host effectiveness. Prior source exposure, pending human review and the historical instruction-packet hash remain explicit; no independent runtime reproduction is established.",
+      "reason_zh": "Pocket Tasks 映射只覆盖一个作者已接触源码、公开候选及有限比较证据的命令行重建案例；不覆盖更广的 Companion 工作流、其他示例或模型／宿主效果。既有源码接触、人工复核待完成及历史指令包哈希均明确保留；不确立独立运行复现。",
+      "primary_evidence_urls": [
+        "https://github.com/ShadowSwaps/REA-Reconstruction-Companion/blob/590e65dd99596c7fb66598eaa5d6c051c2ec9a5f/evals/reference/reconstruction/README.md",
+        "https://github.com/ShadowSwaps/REA-Reconstruction-Companion/blob/590e65dd99596c7fb66598eaa5d6c051c2ec9a5f/evals/reference/WALKTHROUGH.md",
+        "https://github.com/ShadowSwaps/REA-Reconstruction-Companion/blob/590e65dd99596c7fb66598eaa5d6c051c2ec9a5f/evals/reference/reconstruction/validation-report.json",
+        "https://github.com/ShadowSwaps/REA-Reconstruction-Companion/blob/590e65dd99596c7fb66598eaa5d6c051c2ec9a5f/evals/reference/reviewer/scenarios.mjs",
+        "https://github.com/ShadowSwaps/REA-Reconstruction-Companion/blob/ad6dccd7760fae50f5e45fe74f1f2ef92a452239/evals/reference/TASK.md"
+      ],
+      "catalog_matches": [
+        {
+          "catalog": "resource",
+          "id": "pocket-tasks-reconstruction-case",
+          "kind": "case-study",
+          "scope": "partial"
+        }
+      ]
     },
     {
       "id": "song:opus-claude-desktop-asar-inspection",
@@ -12072,9 +12085,9 @@
       "insufficient-evidence": 51,
       "pending": 436
     },
-    "primary_reviewed_units": 50,
-    "catalog_linked_occurrences": 61,
-    "distinct_resource_ids": 52,
+    "primary_reviewed_units": 51,
+    "catalog_linked_occurrences": 62,
+    "distinct_resource_ids": 53,
     "distinct_paper_ids": 1,
     "unique_projects": null
   }
