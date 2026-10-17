@@ -20,7 +20,7 @@
 <a id="resource-catalog"></a>
 ## 资源
 
-按用途浏览，每条资源只收录一次，单行列出，末尾标注资源类型；论文只在[论文](#论文)部分列出。合集包含独立项目和 [REA](https://github.com/morluto/rea) 相关资源；收录不代表已接入 REA。
+按用途浏览，案例与工具、集成分组列出。每条资源只收录一次，末尾标注类型；研究论文可通过[论文主题](#papers)单独浏览。合集包含独立项目和 [REA](https://github.com/morluto/rea) 相关资源；收录不代表已接入 REA。
 
 <!-- BEGIN GENERATED CATALOG -->
 <a id="website"></a>
@@ -28,7 +28,12 @@
 
 [↑ 返回目录](#目录)
 
+#### 案例
+
 - [**恐龙跑酷：恢复一条加速规则**](https://github.com/morluto/rea/blob/c360cfcd6d7901514b16dd6113eba2e0b0fdf422/website/evidence/calculator-and-dino.md#dinosaur-speed) - REA 的教学案例检查 HTTP 版 t-rex-runner，并重建其速度更新规则。单独进行的受控原游戏检查与新演示对比更新次数，包含浮点递增越过名义速度阈值的一步。 <sub>案例 · REA</sub>
+
+#### 工具、项目与集成
+
 - [**webcrack**](https://github.com/j4k0xb/webcrack) - 识别支持的 JavaScript 混淆模式，并拆解 webpack/Browserify 打包文件，改善代码可读性。 <sub>工具</sub>
 - [**humanify JavaScript 标识符重命名工具**](https://github.com/jehna/humanify) - 借助 LLM 为压缩后的 JavaScript 标识符建议名称，并通过遵循作用域的 AST 改写完成重命名，程序结构保持不变。新名称是模型给出的推测，并非恢复出的原始标识符。 <sub>工具</sub>
 - [**WABT**](https://github.com/WebAssembly/wabt) - WebAssembly 二进制与文本转换、节区检查、验证、解释执行及 C 转换工具集。 <sub>工具 · WebAssembly</sub>
@@ -48,6 +53,8 @@
 
 [↑ 返回目录](#目录)
 
+#### 案例
+
 - [**DX-Ball：重建声音声像计算**](https://rea.tools/showcase/dx-ball/) - 根据指令与常量重建单个声像函数；上游报告 3,205 例与 63 字节匹配。 <sub>案例 · REA</sub>
 - [**TH04：恢复 DOS 子弹环辅助函数**](https://rea.tools/showcase/th04/) - 检查 PC-98 DOS 的 16 位弹幕角度辅助函数，并关联固定版本重建与历史编译器检查。 <sub>案例 · REA</sub>
 - [**Super Mario 64 DS：带重定位核对的匹配反编译**](https://github.com/tangosdev/sm64ds-decomp) - 将 Super Mario 64 DS 函数重建为 C/C++ 和规则允许的汇编原语，并将编译结果与用户提供的卡带转储对比。独立的重定位目标核对强化匹配检查；PC 移植中的集成进度另行统计。 <sub>案例 · 独立重建</sub>
@@ -59,6 +66,11 @@
 - [**IsaacRecomp：将 Flash 游戏字节码转换为原生 C++**](https://github.com/whylurking/IsaacRecomp) - 将 The Binding of Isaac 的 Flash AVM1 字节码转换为 C++ 函数，并提供原生渲染与输入运行时。项目从用户自己的原游戏读取图像和音频，并记录了确定性输入、无界面运行和截图回归检查。 <sub>案例 · 独立重建</sub>
 - [**Nanolathe：附研究文档的 Total Annihilation 引擎重实现**](https://github.com/nanolathe-gg/nanolathe) - 用 Go 重实现兼容 Total Annihilation 的策略游戏引擎，公开文件格式研究并提供不同玩法配置。项目区分拟复现的零售版3.1行为、社区补丁研究和有意加入的现代改动，也区分合成检查与依赖原始游戏数据的测试。 <sub>案例 · 独立重建</sub>
 - [**TH08：精确源码重建与单独验证的移植**](https://github.com/N0zoM1z0/th08) - 依据原二进制和原编译器重建日版 Touhou 8 的 1.00d 版本，再将恢复的代码适配到其他平台。项目分别记录源码存在、严格函数匹配、完整可执行文件一致性和移植可玩性里程碑。 <sub>案例 · 独立重建</sub>
+- [**LASRecomp：《织梦岛》静态重编译案例**](https://github.com/peiikai/LASRecomp) - 通过静态重编译，将 2019 年 Switch 版《塞尔达传说：织梦岛》重建为原生桌面程序。作者称大部分代码、工具与逆向工作由 Claude Code 完成，人类负责指导和复核。 <sub>案例 · 独立重建</sub>
+- [**ArkWeb：双游戏动作与碰撞桥接实验**](https://github.com/luki-1/ArkWeb) - 同时运行《漫威蜘蛛侠：重制版》与《蝙蝠侠：阿卡姆骑士》，将哥谭碰撞数据传入蜘蛛侠的物理世界，再将其渲染画面合成到阿卡姆中。这是实验性的运行时桥接，并非恢复出的独立游戏或新引擎。 <sub>案例 · 独立重建</sub>
+
+#### 工具、项目与集成
+
 - [**RenderDoc**](https://github.com/baldurk/renderdoc) - 检查自己游戏或图形应用的帧捕获、绘制调用、着色器和图形资源。 <sub>工具</sub>
 - [**AssetRipper**](https://github.com/AssetRipper/AssetRipper) - 分析 Unity 游戏文件，检查资源依赖并将支持的资源转换为 Unity 工程格式。 <sub>工具</sub>
 - [**Cpp2IL**](https://github.com/SamboyCoding/Cpp2IL) - 结合二进制与元数据分析，从 Unity IL2CPP 构建恢复托管表示；重建能力仍在开发中。 <sub>工具</sub>
@@ -69,17 +81,17 @@
 - [**objdiff**](https://github.com/encounter/objdiff) - 比较参考目标文件与重新编译目标文件中的函数和数据，辅助匹配反编译；显示指令级差异、还原 C++ 符号，并可在源码变更时自动重新构建。 <sub>工具</sub>
 - [**UE Explorer**](https://github.com/UE-Explorer/UE-Explorer) - 通过类、属性与依赖树浏览 Unreal 包，反编译和导出 UnrealScript 类、检查字节码，并查看结构化二进制数据。 <sub>工具</sub>
 - [**GARbro**](https://github.com/morkt/GARbro) - 像浏览文件夹一样查看已识别的视觉小说资源归档，预览内容，并在提取图像或音频时转换为常用格式。 <sub>工具</sub>
-- [**LASRecomp：《织梦岛》静态重编译案例**](https://github.com/peiikai/LASRecomp) - 通过静态重编译，将 2019 年 Switch 版《塞尔达传说：织梦岛》重建为原生桌面程序。作者称大部分代码、工具与逆向工作由 Claude Code 完成，人类负责指导和复核。 <sub>案例 · 独立重建</sub>
 - [**Godot 逆向工程工具**](https://github.com/GDRETools/gdsdecomp) - 从已导出的游戏中恢复受支持的 Godot 工程文件、GDScript 与导入资源，提供 PCK 检查与提取、脚本反编译及资源转换，便于分析和重建工程结构。 <sub>工具</sub>
 - [**UE4SS（虚幻引擎脚本系统）**](https://github.com/UE4SS-RE/RE-UE4SS) - 通过实时 UObject 属性视图、反射 C++ 头文件导出、属性映射和 Actor 转储分析虚幻引擎游戏；Lua 与 C++ API 可辅助实验和重建游戏结构。 <sub>工具</sub>
 - [**FModel 游戏资源浏览器**](https://github.com/4sval/FModel) - 基于 CUE4Parse 浏览虚幻引擎游戏归档，检查资源包和属性，预览并导出资源；2026 年夏季发行版新增 USD 世界导出，可辅助重建受支持的场景内容。 <sub>工具</sub>
 - [**PSP Web Recomp 浏览器游戏重编译项目**](https://github.com/snuri00/psp-web-recomp) - 将 PSP MIPS 可执行文件转换为 C++ 与 WebAssembly，配合 PSP 高层仿真运行时和 WebGL2 渲染器；原生跟踪、画面捕获及音频工具可辅助调查游戏移植中缺失的行为。 <sub>项目</sub>
-- [**ArkWeb：双游戏动作与碰撞桥接实验**](https://github.com/luki-1/ArkWeb) - 同时运行《漫威蜘蛛侠：重制版》与《蝙蝠侠：阿卡姆骑士》，将哥谭碰撞数据传入蜘蛛侠的物理世界，再将其渲染画面合成到阿卡姆中。这是实验性的运行时桥接，并非恢复出的独立游戏或新引擎。 <sub>案例 · 独立重建</sub>
 
 <a id="app"></a>
 ### App · 应用
 
 [↑ 返回目录](#目录)
+
+#### 案例
 
 - [**Aegis：追踪登录验证码计算**](https://rea.tools/showcase/aegis/) - 追踪 Aegis APK 的 TOTP 计算，官方公开目标指纹与选取的调查证据。 <sub>案例 · REA</sub>
 - [**Notion：追踪剪贴板桥接**](https://rea.tools/showcase/notion/) - 结合 REA 发现与独立源码阅读追踪剪贴板桥；动态包装器仍有明确限制。 <sub>案例 · REA</sub>
@@ -90,6 +102,10 @@
 - [**PlxNative：重建原生 webOS 媒体客户端接口**](https://github.com/GLinnik21/plx-native) - 作者用 Ghidra 和编程智能体调查 LG webOS 原生媒体接口后构建的非官方 Plex 客户端。它自行绘制 Rust/OpenGL 界面并使用电视解码器，文档区分宿主测试、模拟器测试和实体设备测试。 <sub>案例 · 独立重建</sub>
 - [**Windows Calculator：重建百分比规则**](https://github.com/morluto/rea/blob/c360cfcd6d7901514b16dd6113eba2e0b0fdf422/website/evidence/calculator-and-dino.md#windows-calculator) - REA 案例追踪已安装 Windows Calculator 的模型 DLL，解释乘除运算与其他运算中不同的百分比行为。分析人员选定函数后，对照微软公开源码解释，并通过固定输入的浏览器示例演示。 <sub>案例 · REA</sub>
 - [**飞书：作者报告的隔离第二应用实例**](https://benx.ai/blog/posts/rea-reverse-engineer-feishu-dual-instance/) - 作者报告借助 Codex 与 REA 分析，修改独立的 macOS 飞书副本，为其设置不同的应用身份、数据目录和单实例锁。文章描述本地签名与隔离检查，并称原应用保持不变。 <sub>案例 · 混合工具流程</sub>
+- [**LSX II 音量修正器：重建音量行为**](https://github.com/roberdorfer/kef-lsx-volume) - 根据实测 USB 音量行为，通过 macOS 音频代理将音量键映射到 KEF LSX II 的局域网控制。项目报告音量步进更均匀，同时转发 USB 音频；扬声器固件未修改。 <sub>案例 · 独立重建</sub>
+
+#### 工具、项目与集成
+
 - [**JADX-AI-MCP**](https://github.com/zinja-coder/jadx-ai-mcp) - 结合 JADX 插件与 Python MCP 服务，读取 Android 反编译代码、资源、交叉引用和调试上下文。 <sub>集成 · 独立 MCP</sub>
 - [**apktool-mcp-server Apktool MCP 服务**](https://github.com/zinja-coder/apktool-mcp-server) - 基于 Python 的 MCP 服务，调用本地安装的 Apktool，使智能体能够解码 APK，列出、读取、搜索和修改 smali 与资源文件，读取 AndroidManifest.xml 与 apktool.yml，并重新构建项目。 <sub>集成 · 独立 MCP</sub>
 - [**frida-mcp (yfe404)**](https://github.com/yfe404/frida-mcp) - Frida MCP 服务，提供持久插桩会话、运行时检查和 Android 静态代码与动态现场之间的导航。 <sub>集成 · 独立 MCP</sub>
@@ -109,14 +125,18 @@
 - [**nibkit 原生界面结构分析工具**](https://github.com/tokenbleed/nibkit) - 将已编译的 iOS/macOS 界面归档解码为对象树、Outlet／Action 连接、自定义类及导航关系，可导出 JSON 或 Mermaid 图，并通过 MCP 提供只读检查命令。 <sub>工具</sub>
 - [**AOTopsy Flutter/Dart 静态分析工具**](https://github.com/BroNils/aotopsy) - 静态检查 Flutter/Dart AOT libapp.so 文件，恢复可用元数据、类结构、调用关系及伪代码，无需嵌入 Dart VM 或编译匹配的 SDK，提供 ARM64 与 x86_64 分析路径。 <sub>工具 · Android</sub>
 - [**hbctool Hermes 字节码汇编与反汇编工具**](https://github.com/bongtrop/hbctool) - 通过 HASM 文件反汇编和重新汇编受支持的 React Native Hermes 字节码包，为明确支持的旧版 HBC 提供字节码检查与修改能力。 <sub>工具 · Android</sub>
-- [**LSX II 音量修正器：重建音量行为**](https://github.com/roberdorfer/kef-lsx-volume) - 根据实测 USB 音量行为，通过 macOS 音频代理将音量键映射到 KEF LSX II 的局域网控制。项目报告音量步进更均匀，同时转发 USB 音频；扬声器固件未修改。 <sub>案例 · 独立重建</sub>
 
 <a id="native-binary"></a>
 ### Native Binary · 原生二进制
 
 [↑ 返回目录](#目录)
 
+#### 案例
+
 - [**DownUnderCTF：masked-squares 校验器**](https://rea.tools/showcase/ctf/) - 官方教育 CTF 案例：从检查函数得到方程，并记录原程序验证过程。 <sub>案例 · REA</sub>
+
+#### 工具、项目与集成
+
 - [**Ghidra**](https://github.com/NationalSecurityAgency/ghidra) - 开源二进制分析套件，提供反汇编、反编译、图形分析及 Java/Python 自动化接口。 <sub>工具</sub>
 - [**radare2**](https://github.com/radareorg/radare2) - 可脚本化的命令行逆向框架，支持多架构二进制检查、反汇编、调试和修改。 <sub>工具</sub>
 - [**Cutter**](https://github.com/rizinorg/cutter) - 基于 Rizin 的图形逆向工作台，提供可扩展视图及 Ghidra 反编译器集成。 <sub>工具</sub>
@@ -142,7 +162,12 @@
 
 [↑ 返回目录](#目录)
 
+#### 案例
+
 - [**PicoPrint：LX-D02 打印机调查**](https://github.com/bigtower17/picoprint) - 作者报告以 REA 开始 Android 调查，再借助独立 Hermes 工具实现 Windows BLE 打印。 <sub>案例 · 混合工具流程</sub>
+
+#### 工具、项目与集成
+
 - [**Binwalk**](https://github.com/ReFirmLabs/binwalk) - 识别固件中的嵌入格式并按需提取内容，辅以熵分析帮助初步分诊。 <sub>工具</sub>
 - [**unblob**](https://github.com/onekey-sec/unblob) - 递归提取二进制数据中的归档与文件系统，同时报告数据块边界和未识别区域。 <sub>工具</sub>
 - [**Ghidra 固件工具集**](https://github.com/al3xtjames/ghidra-firmware-utils) - 面向 PCI Option ROM、UEFI 固件卷、Intel Flash Descriptor 和 coreboot 镜像的 Ghidra 加载器与辅助脚本。 <sub>工具</sub>
@@ -158,11 +183,16 @@
 
 [↑ 返回目录](#目录)
 
+#### 案例
+
 - [**open-appleremote：Siri Remote 协议重建**](https://github.com/a-funk/open-appleremote) - 重建第一代 Siri Remote 在 Linux 上的蓝牙报告，解析按键、触摸与 tvOS 风格手势。Python 实现和协议文档区分实测行为、历史报告与推测含义。 <sub>案例 · 独立重建</sub>
 - [**GAMEKB-K17：重建宏键盘配置协议**](https://github.com/dvdarkin/gamekb-k17) - 实现 GAMEKB-K17/HCY-K017 宏键盘的厂商 HID 配置协议，写入按键映射、固件宏和 RGB 设置后再读回核对。协议文档区分已测试命令、未确认观察和其他设备的研究结果。 <sub>案例 · 独立重建</sub>
 - [**CF632BLE：基于体脂秤协议研究的本地客户端**](https://github.com/guyru/cf632ble) - 根据对厂商 Unique Health 安卓应用的研究，重实现 CF632BLE 体脂秤的 BLE 协议和体成分计算。静态 Web Bluetooth 客户端接收测量数据、管理设备档案，并将历史记录保存在浏览器中。 <sub>案例 · 独立重建</sub>
 - [**cooler-lcd：Thermalright 显示屏协议实现**](https://github.com/kristjaningi/cooler-lcd) - 为 Thermalright Vision 散热器显示屏实现 USB 图像传输驱动，并用 Rust 仪表盘替代厂商显示应用。文档所述协议发送报头和 JPEG 帧，通过定期重发避免设备退回品牌标志画面。 <sub>案例 · 独立重建</sub>
 - [**hw-harness：扫描仪 USB 协议调查**](https://github.com/cschalle/hw-harness) - 记录作者报告的扫描仪调查：比较厂商驱动的 USB 控制传输与 Linux 驱动的记录，推断初始化、时序及分辨率参数。公开工具负责组织参考采集与比较，并不自动恢复完整协议规范。 <sub>案例 · 独立重建</sub>
+
+#### 工具、项目与集成
+
 - [**Netzob 协议建模与推断框架**](https://github.com/netzob/netzob) - 对通信协议建模并从流量记录推断报文布局，通过配置主动学习来推断协议状态机。Python API 提供报文字段、符号和自动机，用于解析、流量生成及模糊测试。 <sub>工具</sub>
 - [**Scapy 报文分析与构造工具**](https://github.com/secdev/scapy) - 使用 Python 编写报文解析、构造、请求／响应匹配及捕获文件分析流程；自定义报文字段与层绑定可将已理解的线格式编码为可操作模型，辅助研究协议行为。 <sub>工具</sub>
 
@@ -231,143 +261,509 @@
 
 [浏览论文目录](https://awesomerea.org/zh/papers/) · [完整书目 JSON](data/papers.json) · [推荐论文](https://github.com/reacher-z/Awesome-REA/issues/new?template=paper.yml)
 
+**按主题** · [智能体评测](#papers-agent-evaluation) <sub>5</sub> · [反编译](#papers-decompilation) <sub>6</sub> · [网站](#papers-website-reconstruction) <sub>7</sub> · [游戏](#papers-game-reconstruction) <sub>4</sub> · [应用](#papers-app-reconstruction) <sub>5</sub> · [固件](#papers-firmware-analysis) <sub>2</sub> · [协议](#papers-protocol-analysis) <sub>2</sub>
+
+展开各条目的“范围与发表信息”可查看完整研究边界；以下按年份从新到旧排列。
+
+<a id="papers-agent-evaluation"></a>
 ### 逆向工程智能体评测
 
-- [人类与机器：AI 智能体在软件逆向工程中的对比研究](https://arxiv.org/abs/2610.14960) - 比较人类与 LLM 智能体在相同静态逆向挑战中的理解和导航方式，并研究二进制表示如何占用上下文窗口。 <sub>**2026 · arXiv · 预印本** · Samuele Doria 等 · [PDF](https://arxiv.org/pdf/2610.14960)</sub>
+[↑ 论文主题](#papers) · [目录](#目录)
 
-  <sub>**范围与限制:** 理解能力仅在两个紧凑挑战上评分；另一个包含 4,000 个二进制文件的实验测量上下文容量，并非解题准确率。接口为不含动态执行的静态 IDA/MCP，模型曾接触挑战源码的可能性仍是作者承认的有效性威胁。</sub>
+- [**人类与机器：AI 智能体在软件逆向工程中的对比研究**](https://arxiv.org/abs/2610.14960) · **2026 · 预印本**
 
-- [智能体网络安全的下一项挑战：真实场景且无训练数据污染的逆向工程基准](https://arxiv.org/abs/2608.11469) - 提出 SRE-Bench，使用私有编写的程序及带保护机制的二进制变体，研究智能体恢复程序语义的能力，并减少训练数据污染。 <sub>**2026 · arXiv · 预印本** · Jeremy Spence 等 · [PDF](https://arxiv.org/pdf/2608.11469)</sub>
+  比较人类与 LLM 智能体在相同静态逆向挑战中的理解和导航方式，并研究二进制表示如何占用上下文窗口。
 
-  <sub>**范围与限制:** 修订版研究报告 19 个程序、262 个二进制实例和 1,572 个评分任务。二进制与任务实例未公开发布，只能通过评估服务访问。污染控制是作者的方法论主张，并非独立保证。</sub>
+  [PDF](https://arxiv.org/pdf/2610.14960)
 
-- [CrackMeBench：面向智能体的二进制逆向工程基准](https://arxiv.org/abs/2605.10597) - 用可执行程序判定结果的 CrackMe 任务评估智能体：从二进制推断验证逻辑，提交可被接受的输入或产物，并记录工具使用、耗时与评分尝试。 <sub>**2026 · arXiv · 预印本** · Isaac David 等 · [PDF](https://arxiv.org/pdf/2605.10597)</sub>
+  <details>
+  <summary>范围与发表信息</summary>
 
-  <sub>**范围与限制:** v0 研究使用 12 个生成任务和 8 个公开校准任务，限定 Linux x86-64 ELF、Shell 接口和五分钟预算。紧凑的教学任务不能证明大型应用上的表现。未确认论文直接关联的公开研究产物 URL。</sub>
+  **范围与限制:** 理解能力仅在两个紧凑挑战上评分；另一个包含 4,000 个二进制文件的实验测量上下文容量，并非解题准确率。接口为不含动态执行的静态 IDA/MCP，模型曾接触挑战源码的可能性仍是作者承认的有效性威胁。
 
-- [ProgramBench：语言模型能否从零重建程序？](https://arxiv.org/abs/2605.03546) - 通过 200 项任务评估黑盒程序重建：智能体运行可执行文件进行探测并阅读文档，再独立实现代码库，由生成的测试检查其行为。 <sub>**2026 · NeurIPS 2026 · 已接收** · John Yang 等 · [PDF](https://arxiv.org/pdf/2605.03546v1) · [代码](https://github.com/facebookresearch/ProgramBench)</sub>
+  **发表信息:** 2026 · arXiv · 预印本 · Samuele Doria 等
 
-  <sub>**范围与限制:** 推理阶段禁止检查二进制内容、反编译和访问互联网。通过有限测试不能证明完整行为等价或恢复了原始源码。实时榜单中的后续运行结果应与所审阅 arXiv 版本的结果区分。</sub>
+  </details>
 
-- [CREBench：评估大语言模型的密码二进制逆向工程能力](https://arxiv.org/abs/2604.03750) - 通过 432 个受控挑战，评估密码二进制逆向中的算法识别、密钥或 IV 提取、包装层重建及标志恢复。 <sub>**2026 · COLM 2026 · 已接收** · Baicheng Chen 等 · [PDF](https://arxiv.org/pdf/2604.03750) · [代码](https://github.com/wangyu-ovo/CREBench)</sub>
+- [**智能体网络安全的下一项挑战：真实场景且无训练数据污染的逆向工程基准**](https://arxiv.org/abs/2608.11469) · **2026 · 预印本**
 
-  <sub>**范围与限制:** 语料组合 48 种算法、三类不安全密钥使用场景和三个难度等级。它不覆盖 Tigress、O-LLVM 等专业混淆器，结果不应推广到任意重度保护的二进制文件。</sub>
+  提出 SRE-Bench，使用私有编写的程序及带保护机制的二进制变体，研究智能体恢复程序语义的能力，并减少训练数据污染。
 
+  [PDF](https://arxiv.org/pdf/2608.11469)
+
+  <details>
+  <summary>范围与发表信息</summary>
+
+  **范围与限制:** 修订版研究报告 19 个程序、262 个二进制实例和 1,572 个评分任务。二进制与任务实例未公开发布，只能通过评估服务访问。污染控制是作者的方法论主张，并非独立保证。
+
+  **发表信息:** 2026 · arXiv · 预印本 · Jeremy Spence 等
+
+  </details>
+
+- [**CrackMeBench：面向智能体的二进制逆向工程基准**](https://arxiv.org/abs/2605.10597) · **2026 · 预印本**
+
+  用可执行程序判定结果的 CrackMe 任务评估智能体：从二进制推断验证逻辑，提交可被接受的输入或产物，并记录工具使用、耗时与评分尝试。
+
+  [PDF](https://arxiv.org/pdf/2605.10597)
+
+  <details>
+  <summary>范围与发表信息</summary>
+
+  **范围与限制:** v0 研究使用 12 个生成任务和 8 个公开校准任务，限定 Linux x86-64 ELF、Shell 接口和五分钟预算。紧凑的教学任务不能证明大型应用上的表现。未确认论文直接关联的公开研究产物 URL。
+
+  **发表信息:** 2026 · arXiv · 预印本 · Isaac David 等
+
+  </details>
+
+- [**ProgramBench：语言模型能否从零重建程序？**](https://arxiv.org/abs/2605.03546) · **2026 · 已接收**
+
+  通过 200 项任务评估黑盒程序重建：智能体运行可执行文件进行探测并阅读文档，再独立实现代码库，由生成的测试检查其行为。
+
+  [PDF](https://arxiv.org/pdf/2605.03546v1) · [代码](https://github.com/facebookresearch/ProgramBench)
+
+  <details>
+  <summary>范围与发表信息</summary>
+
+  **范围与限制:** 推理阶段禁止检查二进制内容、反编译和访问互联网。通过有限测试不能证明完整行为等价或恢复了原始源码。实时榜单中的后续运行结果应与所审阅 arXiv 版本的结果区分。
+
+  **发表信息:** 2026 · NeurIPS 2026 · 已接收 · John Yang 等
+
+  </details>
+
+- [**CREBench：评估大语言模型的密码二进制逆向工程能力**](https://arxiv.org/abs/2604.03750) · **2026 · 已接收**
+
+  通过 432 个受控挑战，评估密码二进制逆向中的算法识别、密钥或 IV 提取、包装层重建及标志恢复。
+
+  [PDF](https://arxiv.org/pdf/2604.03750) · [代码](https://github.com/wangyu-ovo/CREBench)
+
+  <details>
+  <summary>范围与发表信息</summary>
+
+  **范围与限制:** 语料组合 48 种算法、三类不安全密钥使用场景和三个难度等级。它不覆盖 Tigress、O-LLVM 等专业混淆器，结果不应推广到任意重度保护的二进制文件。
+
+  **发表信息:** 2026 · COLM 2026 · 已接收 · Baicheng Chen 等
+
+  </details>
+
+<a id="papers-decompilation"></a>
 ### 反编译与符号恢复
 
-- [DecompileBench：面向真实场景的反编译器综合评测基准](https://aclanthology.org/2025.findings-acl.1194/) - 利用真实程序中的函数、运行时行为检查，以及 LLM 辅助的代码可理解性评估，比较传统反编译器与基于 LLM 的方法。 <sub>**2025 · Findings of ACL 2025 · 会议论文** · Zeyu Gao 等 · [PDF](https://aclanthology.org/2025.findings-acl.1194.pdf) · [代码](https://github.com/vul337/DecompileBench)</sub>
+[↑ 论文主题](#papers) · [目录](#目录)
 
-  <sub>**范围与限制:** 评估语料包含 130 个程序中的 23,400 个函数。基于模糊测试的检查覆盖有限，可理解性评分部分依赖 LLM 评审器。研究产物说明，重新构建的 OSS-Fuzz 项目可能与论文版本不同。</sub>
+- [**DecompileBench：面向真实场景的反编译器综合评测基准**](https://aclanthology.org/2025.findings-acl.1194/) · **2025 · 会议论文**
 
-- [Decompile-Bench：面向真实二进制反编译的百万级二进制与源码函数对](https://papers.nips.cc/paper_files/paper/2025/hash/079cf13ae174c31f148207d94d213bdc-Abstract-Datasets_and_Benchmarks_Track.html) - 通过 Compile-Trace-Filter 流程构建 200 万组 C/C++ 二进制与源码函数对，并提供涵盖转写为 C/C++ 的 HumanEval、MBPP 任务及近期 GitHub 函数的评测集。 <sub>**2025 · NeurIPS 2025 Datasets and Benchmarks · 会议论文** · Hanzhuo Tan 等 · [PDF](https://papers.nips.cc/paper_files/paper/2025/file/079cf13ae174c31f148207d94d213bdc-Paper-Datasets_and_Benchmarks_Track.pdf) · [代码](https://github.com/albertan017/LLM4Decompile)</sub>
+  利用真实程序中的函数、运行时行为检查，以及 LLM 辅助的代码可理解性评估，比较传统反编译器与基于 LLM 的方法。
 
-  <sub>**范围与限制:** 该工作研究函数级反编译。重新执行测试覆盖 HumanEval、MBPP；GitHub2025 未提供单元测试。内联可能使二进制与源码无法一一对应，微调实验仅使用 10% 的语料。这些结果不能证明整程序恢复能力。</sub>
+  [PDF](https://aclanthology.org/2025.findings-acl.1194.pdf) · [代码](https://github.com/vul337/DecompileBench)
 
-- [LLM4Decompile：使用大语言模型反编译二进制代码](https://aclanthology.org/2024.emnlp-main.203/) - 训练语言模型将汇编反编译为 C，并改进 Ghidra 伪代码，以恢复函数能否重新编译并正确执行为评估目标。 <sub>**2024 · EMNLP 2024 · 会议论文** · Hanzhuo Tan 等 · [PDF](https://aclanthology.org/2024.emnlp-main.203.pdf) · [代码](https://github.com/albertan017/LLM4Decompile)</sub>
+  <details>
+  <summary>范围与发表信息</summary>
 
-  <sub>**范围与限制:** 论文实验限定于 x86 平台的 C 代码和函数级基准。通过抽样测试重新执行，不代表整程序等价或恢复了原始源码。仓库后续版本应与 2024 年论文区分。</sub>
+  **范围与限制:** 评估语料包含 130 个程序中的 23,400 个函数。基于模糊测试的检查覆盖有限，可理解性评分部分依赖 LLM 评审器。研究产物说明，重新构建的 OSS-Fuzz 项目可能与论文版本不同。
 
-- [ReSym：利用大语言模型恢复去符号二进制中的变量与数据结构符号](https://doi.org/10.1145/3658644.3670340) - 结合两个微调语言模型与基于 Prolog 的跨函数推理，从去符号二进制的反编译结果中推断局部变量符号及用户自定义数据结构。 <sub>**2024 · ACM CCS 2024 · 会议论文** · Danning Xie 等 · [PDF](https://www.cs.purdue.edu/homes/lintan/publications/resym-ccs24.pdf) · [代码](https://github.com/lt-asset/resym)</sub>
+  **发表信息:** 2025 · Findings of ACL 2025 · 会议论文 · Zeyu Gao 等
 
-  <sub>**范围与限制:** 该方法依赖底层反编译结果及针对 C/C++ 数据学习的预测。交叉检查可减少预测冲突，但不能证明恢复的名称或布局与缺失源码完全一致。公开研究产物包含模型、处理后的数据与评估代码。</sub>
+  </details>
 
-- [利用学习得到的变量名称与类型增强反编译输出](https://www.usenix.org/conference/usenixsecurity22/presentation/chen-qibin) - 提出 Transformer 模型 DIRTY，根据反编译代码和布局信息推荐变量名与类型，并提供用于训练和评估的 DIRT 语料。 <sub>**2022 · USENIX Security 2022 · 会议论文** · Qibin Chen 等 · [PDF](https://arxiv.org/pdf/2108.06363) · [代码](https://github.com/CMUSTRUDEL/DIRTY)</sub>
+- [**Decompile-Bench：面向真实二进制反编译的百万级二进制与源码函数对**](https://papers.nips.cc/paper_files/paper/2025/hash/079cf13ae174c31f148207d94d213bdc-Abstract-Datasets_and_Benchmarks_Track.html) · **2025 · 会议论文**
 
-  <sub>**范围与限制:** 原始流程围绕 C 程序和 Hex-Rays 输出构建。预测名称与类型是模型推断，不保证与原始符号一致。正式论文发表于 2022 年，arXiv 预印本首次提交于 2021 年。</sub>
+  通过 Compile-Trace-Filter 流程构建 200 万组 C/C++ 二进制与源码函数对，并提供涵盖转写为 C/C++ 的 HumanEval、MBPP 任务及近期 GitHub 函数的评测集。
 
-- [DIRE：基于神经网络的反编译标识符命名方法](https://arxiv.org/abs/1909.09029) - 结合反编译输出中的词法与结构信息预测有意义的变量名，并使用编译 C 项目构建训练和评估语料。 <sub>**2019 · ASE 2019 · 会议论文** · Jeremy Lacomis 等 · [PDF](https://arxiv.org/pdf/1909.09029) · [代码](https://github.com/pcyin/dire)</sub>
+  [PDF](https://papers.nips.cc/paper_files/paper/2025/file/079cf13ae174c31f148207d94d213bdc-Paper-Datasets_and_Benchmarks_Track.pdf) · [代码](https://github.com/albertan017/LLM4Decompile)
 
-  <sub>**范围与限制:** 该工作研究学习式标识符命名，并非完整源码重建或自主智能体。报告结果针对 x86-64 C 代码语料，并依赖反编译器输出。原作者仓库已标记弃用，并指向后续项目。</sub>
+  <details>
+  <summary>范围与发表信息</summary>
 
+  **范围与限制:** 该工作研究函数级反编译。重新执行测试覆盖 HumanEval、MBPP；GitHub2025 未提供单元测试。内联可能使二进制与源码无法一一对应，微调实验仅使用 10% 的语料。这些结果不能证明整程序恢复能力。
+
+  **发表信息:** 2025 · NeurIPS 2025 Datasets and Benchmarks · 会议论文 · Hanzhuo Tan 等
+
+  </details>
+
+- [**LLM4Decompile：使用大语言模型反编译二进制代码**](https://aclanthology.org/2024.emnlp-main.203/) · **2024 · 会议论文**
+
+  训练语言模型将汇编反编译为 C，并改进 Ghidra 伪代码，以恢复函数能否重新编译并正确执行为评估目标。
+
+  [PDF](https://aclanthology.org/2024.emnlp-main.203.pdf) · [代码](https://github.com/albertan017/LLM4Decompile)
+
+  <details>
+  <summary>范围与发表信息</summary>
+
+  **范围与限制:** 论文实验限定于 x86 平台的 C 代码和函数级基准。通过抽样测试重新执行，不代表整程序等价或恢复了原始源码。仓库后续版本应与 2024 年论文区分。
+
+  **发表信息:** 2024 · EMNLP 2024 · 会议论文 · Hanzhuo Tan 等
+
+  </details>
+
+- [**ReSym：利用大语言模型恢复去符号二进制中的变量与数据结构符号**](https://doi.org/10.1145/3658644.3670340) · **2024 · 会议论文**
+
+  结合两个微调语言模型与基于 Prolog 的跨函数推理，从去符号二进制的反编译结果中推断局部变量符号及用户自定义数据结构。
+
+  [PDF](https://www.cs.purdue.edu/homes/lintan/publications/resym-ccs24.pdf) · [代码](https://github.com/lt-asset/resym)
+
+  <details>
+  <summary>范围与发表信息</summary>
+
+  **范围与限制:** 该方法依赖底层反编译结果及针对 C/C++ 数据学习的预测。交叉检查可减少预测冲突，但不能证明恢复的名称或布局与缺失源码完全一致。公开研究产物包含模型、处理后的数据与评估代码。
+
+  **发表信息:** 2024 · ACM CCS 2024 · 会议论文 · Danning Xie 等
+
+  </details>
+
+- [**利用学习得到的变量名称与类型增强反编译输出**](https://www.usenix.org/conference/usenixsecurity22/presentation/chen-qibin) · **2022 · 会议论文**
+
+  提出 Transformer 模型 DIRTY，根据反编译代码和布局信息推荐变量名与类型，并提供用于训练和评估的 DIRT 语料。
+
+  [PDF](https://arxiv.org/pdf/2108.06363) · [代码](https://github.com/CMUSTRUDEL/DIRTY)
+
+  <details>
+  <summary>范围与发表信息</summary>
+
+  **范围与限制:** 原始流程围绕 C 程序和 Hex-Rays 输出构建。预测名称与类型是模型推断，不保证与原始符号一致。正式论文发表于 2022 年，arXiv 预印本首次提交于 2021 年。
+
+  **发表信息:** 2022 · USENIX Security 2022 · 会议论文 · Qibin Chen 等
+
+  </details>
+
+- [**DIRE：基于神经网络的反编译标识符命名方法**](https://arxiv.org/abs/1909.09029) · **2019 · 会议论文**
+
+  结合反编译输出中的词法与结构信息预测有意义的变量名，并使用编译 C 项目构建训练和评估语料。
+
+  [PDF](https://arxiv.org/pdf/1909.09029) · [代码](https://github.com/pcyin/dire)
+
+  <details>
+  <summary>范围与发表信息</summary>
+
+  **范围与限制:** 该工作研究学习式标识符命名，并非完整源码重建或自主智能体。报告结果针对 x86-64 C 代码语料，并依赖反编译器输出。原作者仓库已标记弃用，并指向后续项目。
+
+  **发表信息:** 2019 · ASE 2019 · 会议论文 · Jeremy Lacomis 等
+
+  </details>
+
+<a id="papers-website-reconstruction"></a>
 ### 网站重建
 
-- [Vision2Web：采用智能体验证的分层视觉网站开发基准](https://proceedings.mlr.press/v306/he26n.html) - 基于视觉原型和文字需求评测网站开发，包含 100 项静态页面、66 项交互前端与 27 项全栈任务，将基于工作流的功能检查与模型进行的视觉比较结合。 <sub>**2026 · ICML 2026 · 会议论文** · Zehai He 等 · [PDF](https://raw.githubusercontent.com/mlresearch/v306/main/assets/he26n/he26n.pdf) · [代码](https://github.com/zai-org/Vision2Web)</sub>
+[↑ 论文主题](#papers) · [目录](#目录)
 
-  <sub>**范围与限制:** 全栈层级由明确规格驱动，并非仅通过探索运行中的网站进行重建。工作流测试状态管理与增删改查结果，但有限的智能体判断不能证明后端或数据库持久性的精确等价。当前公开评测器在每个工作流内保持浏览器会话，并允许检查本地业务 API；这不构成通用的持久化证明。</sub>
+- [**Vision2Web：采用智能体验证的分层视觉网站开发基准**](https://proceedings.mlr.press/v306/he26n.html) · **2026 · 会议论文**
 
-- [ProgramDistill：将交互式 Web 应用转化为可验证的参考驱动软件工程任务](https://arxiv.org/abs/2609.18805) - 评测智能体从源码不可见的运行参考中恢复 Web 应用行为的能力，提供覆盖 26 个应用的 4,063 项功能恢复任务，以及独立的 12 应用重建设置，通过重放具有依赖关系的浏览器工作流评分。 <sub>**2026 · arXiv · 预印本** · Jeonghye Kim 等 · [PDF](https://arxiv.org/pdf/2609.18805v1) · [代码](https://huggingface.co/datasets/microsoft/ProgramDistill)</sub>
+  基于视觉原型和文字需求评测网站开发，包含 100 项静态页面、66 项交互前端与 27 项全栈任务，将基于工作流的功能检查与模型进行的视觉比较结合。
 
-  <sub>**范围与限制:** 测试限于自包含应用（包括 SaaS 克隆）中由模型挖掘的有限行为。重放工作流可发现持久化失败，但通过测试不能证明全部后端或数据库不变量成立。被评测智能体接收不含截图的结构化浏览器观察，未衡量视觉保真度。公开验证器与参考解答也不构成抗污染测试集。</sub>
+  [PDF](https://raw.githubusercontent.com/mlresearch/v306/main/assets/he26n/he26n.pdf) · [代码](https://github.com/zai-org/Vision2Web)
 
-- [Dashboard2Code：评估多模态模型重建交互式仪表盘的能力](https://aclanthology.org/2026.acl-long.1750/) - 评估智能体主动探索运行中的仪表盘后，重建其外观与交互逻辑的能力。DashboardMimic 提供 180 个 Plotly+Dash 示例，并以代码语义分析和动态交互测试评估生成的实现。 <sub>**2026 · ACL 2026 · 会议论文** · Tianhao Niu 等 · [PDF](https://aclanthology.org/2026.acl-long.1750.pdf) · [代码](https://github.com/nth2000/Dashboard2Code)</sub>
+  <details>
+  <summary>范围与发表信息</summary>
 
-  <sub>**范围与限制:** 限定于 Plotly+Dash 仪表盘，包含经模型扩充的示例。部分设置提供 DOM 信息，评估使用模型评审器。它并非通用后端恢复基准。链接的数据集需要接受访问条件并共享联系信息。</sub>
+  **范围与限制:** 全栈层级由明确规格驱动，并非仅通过探索运行中的网站进行重建。工作流测试状态管理与增删改查结果，但有限的智能体判断不能证明后端或数据库持久性的精确等价。当前公开评测器在每个工作流内保持浏览器会话，并允许检查本地业务 API；这不构成通用的持久化证明。
 
-- [IWR-Bench：大型视觉语言模型能否根据用户交互视频重建可交互网页？](https://proceedings.iclr.cc/paper_files/paper/2026/hash/55bfedfd31489e5ae83c9ce8eec7b0e1-Abstract-Conference.html) - 测试模型利用用户交互视频和提供的静态资源重建可交互网页的能力。其 113 项任务通过重放标注的操作序列，评估已观察页面状态的视觉保真度与功能行为。 <sub>**2026 · ICLR 2026 · 会议论文** · Yang Chen 等 · [PDF](https://proceedings.iclr.cc/paper_files/paper/2026/file/55bfedfd31489e5ae83c9ce8eec7b0e1-Paper-Conference.pdf) · [代码](https://github.com/SIGMME/IWR-Bench)</sub>
+  **发表信息:** 2026 · ICML 2026 · 会议论文 · Zehai He 等
 
-  <sub>**范围与限制:** 要求输出单个 HTML 文件；论文明确要求用 JavaScript 静态数据模拟隐含的后端逻辑。轨迹覆盖和模型评审均不能证明完整网站或后端等价。</sub>
+  </details>
 
-- [Interaction2Code：从交互原型生成网页代码的多模态大语言模型评测基准](https://doi.org/10.1109/ASE63991.2025.00028) - 评测模型根据交互前后的截图重建可交互网页的能力。最终研究涵盖 127 个网页、374 项交互，并比较渲染外观、自动交互检查与人工可用性判断。 <sub>**2025 · ASE 2025 · 会议论文** · Jingyu Xiao 等 · [PDF](https://arxiv.org/pdf/2411.03292v3) · [代码](https://github.com/WebPAI/Interaction2Code)</sub>
+- [**ProgramDistill：将交互式 Web 应用转化为可验证的参考驱动软件工程任务**](https://arxiv.org/abs/2609.18805) · **2026 · 预印本**
 
-  <sub>**范围与限制:** 输入描述单项交互的状态变化，并非自主探索完整网站。测试不能证明长流程、服务端行为或原始源码等价；交互能够被检测到，也不代表它可用。</sub>
+  评测智能体从源码不可见的运行参考中恢复 Web 应用行为的能力，提供覆盖 26 个应用的 4,063 项功能恢复任务，以及独立的 12 应用重建设置，通过重放具有依赖关系的浏览器工作流评分。
 
-- [WebUIBench：评估多模态大语言模型从网页界面生成代码能力的综合基准](https://aclanthology.org/2025.findings-acl.815/) - 通过视觉感知、HTML 编程、图像与 HTML 对应理解，以及截图重建任务，诊断从网页界面生成代码的能力；利用来自真实网站的问答对，分别考察各项基础技能。 <sub>**2025 · Findings of ACL 2025 · 会议论文** · Zhiyu Lin 等 · [PDF](https://aclanthology.org/2025.findings-acl.815.pdf)</sub>
+  [PDF](https://arxiv.org/pdf/2609.18805v1) · [代码](https://huggingface.co/datasets/microsoft/ProgramDistill)
 
-  <sub>**范围与限制:** 主要评估视觉与 HTML 重建技能。论文虽含初步交互研究，但并非完整流程或后端等价评测。官方仓库目前提供 README 和图片，未提供说明中提及的评估脚本。</sub>
+  <details>
+  <summary>范围与发表信息</summary>
 
-- [Design2Code：面向自动化前端工程的多模态代码生成评测](https://aclanthology.org/2025.naacl-long.199/) - 使用真实网页参考、视觉元素和布局指标及人工评估，测试从网页截图重建前端代码的能力。 <sub>**2025 · NAACL 2025 · 会议论文** · Chenglei Si 等 · [PDF](https://aclanthology.org/2025.naacl-long.199.pdf) · [代码](https://github.com/NoviScl/Design2Code)</sub>
+  **范围与限制:** 测试限于自包含应用（包括 SaaS 克隆）中由模型挖掘的有限行为。重放工作流可发现持久化失败，但通过测试不能证明全部后端或数据库不变量成立。被评测智能体接收不含截图的结构化浏览器观察，未衡量视觉保真度。公开验证器与参考解答也不构成抗污染测试集。
 
-  <sub>**范围与限制:** 该工作属于网站视觉重建，不涉及二进制反编译，也不恢复后端行为或交互工作流。主基准含 484 个使用占位图的网页，代码与数据分别采用各自的许可条款。</sub>
+  **发表信息:** 2026 · arXiv · 预印本 · Jeonghye Kim 等
 
+  </details>
+
+- [**Dashboard2Code：评估多模态模型重建交互式仪表盘的能力**](https://aclanthology.org/2026.acl-long.1750/) · **2026 · 会议论文**
+
+  评估智能体主动探索运行中的仪表盘后，重建其外观与交互逻辑的能力。DashboardMimic 提供 180 个 Plotly+Dash 示例，并以代码语义分析和动态交互测试评估生成的实现。
+
+  [PDF](https://aclanthology.org/2026.acl-long.1750.pdf) · [代码](https://github.com/nth2000/Dashboard2Code)
+
+  <details>
+  <summary>范围与发表信息</summary>
+
+  **范围与限制:** 限定于 Plotly+Dash 仪表盘，包含经模型扩充的示例。部分设置提供 DOM 信息，评估使用模型评审器。它并非通用后端恢复基准。链接的数据集需要接受访问条件并共享联系信息。
+
+  **发表信息:** 2026 · ACL 2026 · 会议论文 · Tianhao Niu 等
+
+  </details>
+
+- [**IWR-Bench：大型视觉语言模型能否根据用户交互视频重建可交互网页？**](https://proceedings.iclr.cc/paper_files/paper/2026/hash/55bfedfd31489e5ae83c9ce8eec7b0e1-Abstract-Conference.html) · **2026 · 会议论文**
+
+  测试模型利用用户交互视频和提供的静态资源重建可交互网页的能力。其 113 项任务通过重放标注的操作序列，评估已观察页面状态的视觉保真度与功能行为。
+
+  [PDF](https://proceedings.iclr.cc/paper_files/paper/2026/file/55bfedfd31489e5ae83c9ce8eec7b0e1-Paper-Conference.pdf) · [代码](https://github.com/SIGMME/IWR-Bench)
+
+  <details>
+  <summary>范围与发表信息</summary>
+
+  **范围与限制:** 要求输出单个 HTML 文件；论文明确要求用 JavaScript 静态数据模拟隐含的后端逻辑。轨迹覆盖和模型评审均不能证明完整网站或后端等价。
+
+  **发表信息:** 2026 · ICLR 2026 · 会议论文 · Yang Chen 等
+
+  </details>
+
+- [**Interaction2Code：从交互原型生成网页代码的多模态大语言模型评测基准**](https://doi.org/10.1109/ASE63991.2025.00028) · **2025 · 会议论文**
+
+  评测模型根据交互前后的截图重建可交互网页的能力。最终研究涵盖 127 个网页、374 项交互，并比较渲染外观、自动交互检查与人工可用性判断。
+
+  [PDF](https://arxiv.org/pdf/2411.03292v3) · [代码](https://github.com/WebPAI/Interaction2Code)
+
+  <details>
+  <summary>范围与发表信息</summary>
+
+  **范围与限制:** 输入描述单项交互的状态变化，并非自主探索完整网站。测试不能证明长流程、服务端行为或原始源码等价；交互能够被检测到，也不代表它可用。
+
+  **发表信息:** 2025 · ASE 2025 · 会议论文 · Jingyu Xiao 等
+
+  </details>
+
+- [**WebUIBench：评估多模态大语言模型从网页界面生成代码能力的综合基准**](https://aclanthology.org/2025.findings-acl.815/) · **2025 · 会议论文**
+
+  通过视觉感知、HTML 编程、图像与 HTML 对应理解，以及截图重建任务，诊断从网页界面生成代码的能力；利用来自真实网站的问答对，分别考察各项基础技能。
+
+  [PDF](https://aclanthology.org/2025.findings-acl.815.pdf)
+
+  <details>
+  <summary>范围与发表信息</summary>
+
+  **范围与限制:** 主要评估视觉与 HTML 重建技能。论文虽含初步交互研究，但并非完整流程或后端等价评测。官方仓库目前提供 README 和图片，未提供说明中提及的评估脚本。
+
+  **发表信息:** 2025 · Findings of ACL 2025 · 会议论文 · Zhiyu Lin 等
+
+  </details>
+
+- [**Design2Code：面向自动化前端工程的多模态代码生成评测**](https://aclanthology.org/2025.naacl-long.199/) · **2025 · 会议论文**
+
+  使用真实网页参考、视觉元素和布局指标及人工评估，测试从网页截图重建前端代码的能力。
+
+  [PDF](https://aclanthology.org/2025.naacl-long.199.pdf) · [代码](https://github.com/NoviScl/Design2Code)
+
+  <details>
+  <summary>范围与发表信息</summary>
+
+  **范围与限制:** 该工作属于网站视觉重建，不涉及二进制反编译，也不恢复后端行为或交互工作流。主基准含 484 个使用占位图的网页，代码与数据分别采用各自的许可条款。
+
+  **发表信息:** 2025 · NAACL 2025 · 会议论文 · Chenglei Si 等
+
+  </details>
+
+<a id="papers-game-reconstruction"></a>
 ### 游戏重建与逆向工程
 
-- [GameReplica：视觉语言智能体的黑盒视觉游戏复刻基准](https://arxiv.org/abs/2609.22308) - 通过来自 25 款网页游戏、各设五个难度级别的 125 个任务，评估视觉语言智能体能否通过截图和主动交互推断隐藏规则，并构建可运行的单文件 HTML 游戏复刻。 <sub>**2026 · arXiv · 预印本** · Boyu Qiao 等 · [PDF](https://arxiv.org/pdf/2609.22308v1)</sub>
+[↑ 论文主题](#papers) · [目录](#目录)
 
-  <sub>**范围与限制:** 任务覆盖以规则为核心的网页解谜和棋盘游戏，不代表原生或商业游戏重建能力。规则、实现和视觉评分使用 LLM 评审，不能证明行为等价。官方网站提供演示，尚未核实基准代码仓库。</sub>
+- [**GameReplica：视觉语言智能体的黑盒视觉游戏复刻基准**](https://arxiv.org/abs/2609.22308) · **2026 · 预印本**
 
-- [Tycho：面向 ARC-AGI-3 的程序化世界模型主动抽象](https://arxiv.org/abs/2607.28287) - Tycho 根据陌生 ARC-AGI-3 游戏中的动作与观察历史，构建可编辑的 Python 模型，描述游戏状态、状态转移、渲染与结果。它将模型预测与已记录的转移进行核对，并在规划时选择使用、修复或绕过这些模型。 <sub>**2026 · arXiv · 预印本** · Jens Lehmann 等 · [PDF](https://arxiv.org/pdf/2607.28287v1) · [代码](https://github.com/NIMI-research/Tycho)</sub>
+  通过来自 25 款网页游戏、各设五个难度级别的 125 个任务，评估视觉语言智能体能否通过截图和主动交互推断隐藏规则，并构建可运行的单文件 HTML 游戏复刻。
 
-  <sub>**范围与限制:** 评估针对 25 个公开游戏、183 个关卡，每种配置仅进行一次随机运行；其中五个游戏曾用于开发智能体框架。模型可以不预测部分像素格，或接受有限的渲染变体。转移回放和游戏分数不能证明完整引擎重建、目标识别正确、未见状态保真度、未见游戏泛化或多次运行的可靠性；智能体也可以绕过建模。</sub>
+  [PDF](https://arxiv.org/pdf/2609.22308v1)
 
-- [RevengeBench：通过行为实验逆向恢复代码形式的策略](https://arxiv.org/abs/2606.26094) - 使用五种游戏环境中的 75 个合成策略，测试智能体能否通过行为轨迹和自行设计的对手探测恢复可执行决策策略，并衡量留出状态上的动作一致性及后续对抗价值。 <sub>**2026 · arXiv · 预印本** · Babak Rahmani 等 · [PDF](https://arxiv.org/pdf/2606.26094v1) · [代码](https://github.com/bethgelab/revenge-bench)</sub>
+  <details>
+  <summary>范围与发表信息</summary>
 
-  <sub>**范围与限制:** 目标是固定的合成策略，不是完整游戏或自适应对手。有限评测状态上的动作一致性不能唯一确定源码，部分环境的方差较大。公开包未包含部分仅用于论文的绘图与消融实验；复现还需要 CodeClash、容器运行时和模型访问。</sub>
+  **范围与限制:** 任务覆盖以规则为核心的网页解谜和棋盘游戏，不代表原生或商业游戏重建能力。规则、实现和视觉评分使用 LLM 评审，不能证明行为等价。官方网站提供演示，尚未核实基准代码仓库。
 
-- [SPRITE：从静态设计稿重建可用于游戏引擎的界面](https://doi.org/10.1145/3772363.3798742) - 通过层级化 YAML、视觉定位、素材提取和 Unity UXML／USS 生成，将游戏界面截图转化为可编辑的引擎资源，并在精选游戏界面基准上评估，由三位资深 UI／UX 设计师进行审阅。 <sub>**2026 · CHI EA 2026 (poster/extended abstract) · 会议论文** · Yunshu Bai 等 · [PDF](https://baiyunshu.github.io/sprite.github.io/Source/chiea26-516.pdf)</sub>
+  **发表信息:** 2026 · arXiv · 预印本 · Boyu Qiao 等
 
-  <sub>**范围与限制:** 生成的交互覆盖基本悬停、切换和点击行为，复杂时序与拖放逻辑仍不在范围内；半透明重叠元素或边界不明确的场景内界面可能处理失败。这是游戏界面原型重建，不是完整玩法重建；官方页面仍标注代码即将发布。</sub>
+  </details>
 
+- [**Tycho：面向 ARC-AGI-3 的程序化世界模型主动抽象**](https://arxiv.org/abs/2607.28287) · **2026 · 预印本**
+
+  Tycho 根据陌生 ARC-AGI-3 游戏中的动作与观察历史，构建可编辑的 Python 模型，描述游戏状态、状态转移、渲染与结果。它将模型预测与已记录的转移进行核对，并在规划时选择使用、修复或绕过这些模型。
+
+  [PDF](https://arxiv.org/pdf/2607.28287v1) · [代码](https://github.com/NIMI-research/Tycho)
+
+  <details>
+  <summary>范围与发表信息</summary>
+
+  **范围与限制:** 评估针对 25 个公开游戏、183 个关卡，每种配置仅进行一次随机运行；其中五个游戏曾用于开发智能体框架。模型可以不预测部分像素格，或接受有限的渲染变体。转移回放和游戏分数不能证明完整引擎重建、目标识别正确、未见状态保真度、未见游戏泛化或多次运行的可靠性；智能体也可以绕过建模。
+
+  **发表信息:** 2026 · arXiv · 预印本 · Jens Lehmann 等
+
+  </details>
+
+- [**RevengeBench：通过行为实验逆向恢复代码形式的策略**](https://arxiv.org/abs/2606.26094) · **2026 · 预印本**
+
+  使用五种游戏环境中的 75 个合成策略，测试智能体能否通过行为轨迹和自行设计的对手探测恢复可执行决策策略，并衡量留出状态上的动作一致性及后续对抗价值。
+
+  [PDF](https://arxiv.org/pdf/2606.26094v1) · [代码](https://github.com/bethgelab/revenge-bench)
+
+  <details>
+  <summary>范围与发表信息</summary>
+
+  **范围与限制:** 目标是固定的合成策略，不是完整游戏或自适应对手。有限评测状态上的动作一致性不能唯一确定源码，部分环境的方差较大。公开包未包含部分仅用于论文的绘图与消融实验；复现还需要 CodeClash、容器运行时和模型访问。
+
+  **发表信息:** 2026 · arXiv · 预印本 · Babak Rahmani 等
+
+  </details>
+
+- [**SPRITE：从静态设计稿重建可用于游戏引擎的界面**](https://doi.org/10.1145/3772363.3798742) · **2026 · 会议论文**
+
+  通过层级化 YAML、视觉定位、素材提取和 Unity UXML／USS 生成，将游戏界面截图转化为可编辑的引擎资源，并在精选游戏界面基准上评估，由三位资深 UI／UX 设计师进行审阅。
+
+  [PDF](https://baiyunshu.github.io/sprite.github.io/Source/chiea26-516.pdf)
+
+  <details>
+  <summary>范围与发表信息</summary>
+
+  **范围与限制:** 生成的交互覆盖基本悬停、切换和点击行为，复杂时序与拖放逻辑仍不在范围内；半透明重叠元素或边界不明确的场景内界面可能处理失败。这是游戏界面原型重建，不是完整玩法重建；官方页面仍标注代码即将发布。
+
+  **发表信息:** 2026 · CHI EA 2026 (poster/extended abstract) · 会议论文 · Yunshu Bai 等
+
+  </details>
+
+<a id="papers-app-reconstruction"></a>
 ### 应用重建与分析
 
-- [DeclarUI：以自动生成声明式界面代码连接设计与开发](https://doi.org/10.1145/3715726) - 结合视觉组件提取、多模态模型、页面跳转图与迭代检查，从设计稿或截图重建多页面移动界面代码，并在 React Native、Flutter 和 ArkUI 上评测。 <sub>**2025 · Proceedings of the ACM on Software Engineering · 期刊论文** · Ting Zhou 等 · [PDF](https://xinyi-hou.github.io/files/zhou2024bridging.pdf) · [代码](https://github.com/security-pride/DeclarUI)</sub>
+[↑ 论文主题](#papers) · [目录](#目录)
 
-  <sub>**范围与限制:** 人员需审核并修正推断出的导航图。评测覆盖 50 组各含五页的界面；页面跳转覆盖率与编译成功不代表恢复了完整业务逻辑或后端。各框架结果存在差异，视觉指标也不能完全反映人眼感知的保真度。脚本与数据已公开，但核查的提交中未发现项目级许可证。</sub>
+- [**DeclarUI：以自动生成声明式界面代码连接设计与开发**](https://doi.org/10.1145/3715726) · **2025 · 期刊论文**
 
-- [基于机器学习的移动应用图形用户界面原型生成](https://doi.org/10.1109/TSE.2018.2844788) - ReDraw 通过组件检测、CNN 控件类型分类及数据驱动的近邻层级组装，将截图或设计稿转换为原生 Android 图形界面原型。 <sub>**2020 · IEEE Transactions on Software Engineering · 期刊论文** · Kevin Moran 等 · [PDF](https://arxiv.org/pdf/1802.02312v2)</sub>
+  结合视觉组件提取、多模态模型、页面跳转图与迭代检查，从设计稿或截图重建多页面移动界面代码，并在 React Native、Flutter 和 ArkUI 上评测。
 
-  <sub>**范围与限制:** 实现覆盖 15 类 Android 组件，每次生成单个屏幕；多屏需要人工组合，层级构建受采集时屏幕尺寸约束。评估关注外观和视图层级，不代表恢复原始应用逻辑或后端。实验以截图和重新制作的设计稿代替真实设计产物；本目录未独立复现实验。</sub>
+  [PDF](https://xinyi-hou.github.io/files/zhou2024bridging.pdf) · [代码](https://github.com/security-pride/DeclarUI)
 
-- [pix2code：从图形用户界面截图生成代码](https://doi.org/10.1145/3220134.3220135) - 学习从界面截图生成领域专用语言（DSL），再编译为原生 Android XML、iOS Storyboard 或网页 HTML/CSS 界面代码。 <sub>**2018 · EICS 2018 · 会议论文** · Tony Beltramelli · [PDF](https://arxiv.org/pdf/1705.07962v2) · [代码](https://github.com/tonybeltramelli/pix2code)</sub>
+  <details>
+  <summary>范围与发表信息</summary>
 
-  <sub>**范围与限制:** 评测采用合成的截图与代码配对，每个平台含 1,500 个训练实例和 250 个测试实例。报告的准确率针对 DSL 词元，不代表完整应用或行为复现成功率。方法忽略文本标签内容，并以相同架构分别训练各平台模型；范围是布局、组件及其关系，不包括应用逻辑或后端恢复。仓库将其定位为教育用途的研究原型；本条目未对其较旧依赖进行运行测试。</sub>
+  **范围与限制:** 人员需审核并修正推断出的导航图。评测覆盖 50 组各含五页的界面；页面跳转覆盖率与编译成功不代表恢复了完整业务逻辑或后端。各框架结果存在差异，视觉指标也不能完全反映人眼感知的保真度。脚本与数据已公开，但核查的提交中未发现项目级许可证。
 
-- [从 UI 设计图到 GUI 骨架：辅助启动移动界面实现的神经机器翻译器](https://doi.org/10.1145/3180155.3180240) - UI2code 使用神经编码器—解码器，将移动 UI 图像转换为 Android 组件层级与布局骨架。论文评估了结构预测，并通过小规模开发者实验研究如何基于生成的骨架实现布局。 <sub>**2018 · ICSE 2018 · 会议论文** · Chunyang Chen 等 · [PDF](https://chunyang-chen.github.io/publication/ui2code.pdf) · [代码](https://github.com/ccywch/UI2code)</sub>
+  **发表信息:** 2025 · Proceedings of the ACM on Software Engineering · 期刊论文 · Ting Zhou 等
 
-  <sub>**范围与限制:** 输出仅覆盖单张图像中的组件类型与层级；详细样式和文本仍需开发者补充。结构标记准确率以及针对五张截图、由八名参与者开展的实验，不能证明完整视觉保真度，也不代表恢复了导航、应用逻辑或后端。主数据集按截图划分；独立评估使用了 20 个未见应用的 1,208 张图像，提供了有限的泛化证据。</sub>
+  </details>
 
-- [使用 REMAUI 逆向重建移动应用用户界面](https://ieeexplore.ieee.org/abstract/document/7372013) - 利用 OCR、计算机视觉和布局启发式规则，从截图或设计位图重建原生 Android 界面代码，并使用来自 100 多款 Android 与 iOS 应用的 488 张截图评估视觉相似性和视图层级。 <sub>**2015 · ASE 2015 · 会议论文** · Tuan Anh Nguyen 等 · [PDF](https://c.csallner.org/papers/nguyen15reverse.pdf) · [代码](https://github.com/soumikmohianuta/pixtoapp)</sub>
+- [**基于机器学习的移动应用图形用户界面原型生成**](https://doi.org/10.1109/TSE.2018.2844788) · **2020 · 期刊论文**
 
-  <sub>**范围与限制:** 输出为 Android 界面代码；iOS 截图属于输入，不代表生成原生 iOS 代码。方法不恢复原始逻辑和后端行为，多屏切换当时仍属后续工作。OCR／布局启发式规则可能误识别内容。所链接的 REMAUI v2 仓库采用较旧依赖，并非已核实的 2015 年原始产物。</sub>
+  ReDraw 通过组件检测、CNN 控件类型分类及数据驱动的近邻层级组装，将截图或设计稿转换为原生 Android 图形界面原型。
 
+  [PDF](https://arxiv.org/pdf/1802.02312v2)
+
+  <details>
+  <summary>范围与发表信息</summary>
+
+  **范围与限制:** 实现覆盖 15 类 Android 组件，每次生成单个屏幕；多屏需要人工组合，层级构建受采集时屏幕尺寸约束。评估关注外观和视图层级，不代表恢复原始应用逻辑或后端。实验以截图和重新制作的设计稿代替真实设计产物；本目录未独立复现实验。
+
+  **发表信息:** 2020 · IEEE Transactions on Software Engineering · 期刊论文 · Kevin Moran 等
+
+  </details>
+
+- [**pix2code：从图形用户界面截图生成代码**](https://doi.org/10.1145/3220134.3220135) · **2018 · 会议论文**
+
+  学习从界面截图生成领域专用语言（DSL），再编译为原生 Android XML、iOS Storyboard 或网页 HTML/CSS 界面代码。
+
+  [PDF](https://arxiv.org/pdf/1705.07962v2) · [代码](https://github.com/tonybeltramelli/pix2code)
+
+  <details>
+  <summary>范围与发表信息</summary>
+
+  **范围与限制:** 评测采用合成的截图与代码配对，每个平台含 1,500 个训练实例和 250 个测试实例。报告的准确率针对 DSL 词元，不代表完整应用或行为复现成功率。方法忽略文本标签内容，并以相同架构分别训练各平台模型；范围是布局、组件及其关系，不包括应用逻辑或后端恢复。仓库将其定位为教育用途的研究原型；本条目未对其较旧依赖进行运行测试。
+
+  **发表信息:** 2018 · EICS 2018 · 会议论文 · Tony Beltramelli
+
+  </details>
+
+- [**从 UI 设计图到 GUI 骨架：辅助启动移动界面实现的神经机器翻译器**](https://doi.org/10.1145/3180155.3180240) · **2018 · 会议论文**
+
+  UI2code 使用神经编码器—解码器，将移动 UI 图像转换为 Android 组件层级与布局骨架。论文评估了结构预测，并通过小规模开发者实验研究如何基于生成的骨架实现布局。
+
+  [PDF](https://chunyang-chen.github.io/publication/ui2code.pdf) · [代码](https://github.com/ccywch/UI2code)
+
+  <details>
+  <summary>范围与发表信息</summary>
+
+  **范围与限制:** 输出仅覆盖单张图像中的组件类型与层级；详细样式和文本仍需开发者补充。结构标记准确率以及针对五张截图、由八名参与者开展的实验，不能证明完整视觉保真度，也不代表恢复了导航、应用逻辑或后端。主数据集按截图划分；独立评估使用了 20 个未见应用的 1,208 张图像，提供了有限的泛化证据。
+
+  **发表信息:** 2018 · ICSE 2018 · 会议论文 · Chunyang Chen 等
+
+  </details>
+
+- [**使用 REMAUI 逆向重建移动应用用户界面**](https://ieeexplore.ieee.org/abstract/document/7372013) · **2015 · 会议论文**
+
+  利用 OCR、计算机视觉和布局启发式规则，从截图或设计位图重建原生 Android 界面代码，并使用来自 100 多款 Android 与 iOS 应用的 488 张截图评估视觉相似性和视图层级。
+
+  [PDF](https://c.csallner.org/papers/nguyen15reverse.pdf) · [代码](https://github.com/soumikmohianuta/pixtoapp)
+
+  <details>
+  <summary>范围与发表信息</summary>
+
+  **范围与限制:** 输出为 Android 界面代码；iOS 截图属于输入，不代表生成原生 iOS 代码。方法不恢复原始逻辑和后端行为，多屏切换当时仍属后续工作。OCR／布局启发式规则可能误识别内容。所链接的 REMAUI v2 仓库采用较旧依赖，并非已核实的 2015 年原始产物。
+
+  **发表信息:** 2015 · ASE 2015 · 会议论文 · Tuan Anh Nguyen 等
+
+  </details>
+
+<a id="papers-firmware-analysis"></a>
 ### 固件分析与重托管
 
-- [Fuzzware：利用精确的 MMIO 建模提升固件模糊测试效果](https://www.usenix.org/conference/usenixsecurity22/presentation/scharnowski) - 重托管单体 ARM Cortex-M 固件以开展模糊测试，利用局部符号执行为内存映射 I/O 访问建模，使输入变异集中于影响固件逻辑的值。 <sub>**2022 · USENIX Security 2022 · 会议论文** · Tobias Scharnowski 等 · [PDF](https://www.usenix.org/system/files/sec22-scharnowski.pdf) · [代码](https://github.com/fuzzware-fuzzer/fuzzware)</sub>
+[↑ 论文主题](#papers) · [目录](#目录)
 
-  <sub>**范围与限制:** 面向 Cortex-M3/M4 的产物需要配置内存映射，且不会自动为 DMA 建模。对硬件的抽象可能产生真实设备上不可能出现的崩溃。该工作构建分析环境，不代表恢复原始源码或忠实重建完整设备。</sub>
+- [**Fuzzware：利用精确的 MMIO 建模提升固件模糊测试效果**](https://www.usenix.org/conference/usenixsecurity22/presentation/scharnowski) · **2022 · 会议论文**
 
-- [FirmAE：面向动态分析的物联网固件大规模仿真](https://doi.org/10.1145/3427228.3427294) - 在 Firmadyne 基础上，针对启动、网络、NVRAM、内核行为及其他运行失败加入经验性干预，使 Linux 路由器与 IP 摄像机固件的 Web 服务能够运行并接受动态分析。 <sub>**2020 · ACSAC 2020 · 会议论文** · Mingeun Kim 等 · [PDF](https://syssec.kaist.ac.kr/pub/2020/kim_acsac2020.pdf) · [代码](https://github.com/pr0v3rbs/FirmAE)</sub>
+  重托管单体 ARM Cortex-M 固件以开展模糊测试，利用局部符号执行为内存映射 I/O 访问建模，使输入变异集中于影响固件逻辑的值。
 
-  <sub>**范围与限制:** 仲裁式干预会有意改变执行过程，目标是运行 Web 界面，而非完整复现物理设备行为。评测覆盖路由器与 IP 摄像机的 ARM 小端、MIPS 小端及大端固件；启发式规则可能不适用于未见过的设备或配置。该方法复用固件二进制，并不恢复其源码。</sub>
+  [PDF](https://www.usenix.org/system/files/sec22-scharnowski.pdf) · [代码](https://github.com/fuzzware-fuzzer/fuzzware)
 
+  <details>
+  <summary>范围与发表信息</summary>
+
+  **范围与限制:** 面向 Cortex-M3/M4 的产物需要配置内存映射，且不会自动为 DMA 建模。对硬件的抽象可能产生真实设备上不可能出现的崩溃。该工作构建分析环境，不代表恢复原始源码或忠实重建完整设备。
+
+  **发表信息:** 2022 · USENIX Security 2022 · 会议论文 · Tobias Scharnowski 等
+
+  </details>
+
+- [**FirmAE：面向动态分析的物联网固件大规模仿真**](https://doi.org/10.1145/3427228.3427294) · **2020 · 会议论文**
+
+  在 Firmadyne 基础上，针对启动、网络、NVRAM、内核行为及其他运行失败加入经验性干预，使 Linux 路由器与 IP 摄像机固件的 Web 服务能够运行并接受动态分析。
+
+  [PDF](https://syssec.kaist.ac.kr/pub/2020/kim_acsac2020.pdf) · [代码](https://github.com/pr0v3rbs/FirmAE)
+
+  <details>
+  <summary>范围与发表信息</summary>
+
+  **范围与限制:** 仲裁式干预会有意改变执行过程，目标是运行 Web 界面，而非完整复现物理设备行为。评测覆盖路由器与 IP 摄像机的 ARM 小端、MIPS 小端及大端固件；启发式规则可能不适用于未见过的设备或配置。该方法复用固件二进制，并不恢复其源码。
+
+  **发表信息:** 2020 · ACSAC 2020 · 会议论文 · Mingeun Kim 等
+
+  </details>
+
+<a id="papers-protocol-analysis"></a>
 ### 协议推断与分析
 
-- [NetPlier：基于报文记录的概率网络协议逆向工程](https://www.ndss-symposium.org/ndss-paper/netplier-probabilistic-network-protocol-reverse-engineering-from-message-traces/) - 通过多序列比对与概率式关键字段推断，按类型对网络报文聚类，并在十种协议上评测及开展后续格式与状态机分析。 <sub>**2021 · NDSS 2021 · 会议论文** · Yapeng Ye 等 · [PDF](https://www.ndss-symposium.org/wp-content/uploads/ndss2021_4A-5_24531_paper.pdf) · [代码](https://github.com/yapengye/NetPlier)</sub>
+[↑ 论文主题](#papers) · [目录](#目录)
 
-  <sub>**范围与限制:** 需要未加密的报文记录，无法恢复从未出现的报文类型。较大的比对、亚字节关键字段及单向流量可能降低准确性。格式／有限状态机推断属于下游评测而非主要贡献；一个案例中的状态语义由人工标注。这些模型不能证明已完整重建应用／设备。</sub>
+- [**NetPlier：基于报文记录的概率网络协议逆向工程**](https://www.ndss-symposium.org/ndss-paper/netplier-probabilistic-network-protocol-reverse-engineering-from-message-traces/) · **2021 · 会议论文**
 
-- [NEMESYS：通过分析单条报文的内在结构逆向推断网络报文语法](https://www.usenix.org/conference/woot18/presentation/kleber) - 根据单条二进制协议报文内比特一致性的变化，推断近似字段边界，并提出格式匹配分数，将推断的分段结果与已知协议解析器进行比较。 <sub>**2018 · 12th USENIX Workshop on Offensive Technologies (WOOT 18) · 会议论文** · Stephan Kleber 等 · [PDF](https://www.usenix.org/system/files/conference/woot18/woot18-paper-kleber.pdf) · [代码](https://github.com/vs-uulm/nemesys)</sub>
+  通过多序列比对与概率式关键字段推断，按类型对网络报文聚类，并在十种协议上评测及开展后续格式与状态机分析。
 
-  <sub>**范围与限制:** 需要明文载荷。评测覆盖 DNS、DHCP 和 NTP，并针对各协议调节参数。方法无法推断单字节字段；全零字段、字符序列和伪随机值可能导致误差。FMS 验证需要已知字段边界。输出是近似报文分段，不是字段语义、状态机或完整应用／设备行为。</sub>
+  [PDF](https://www.ndss-symposium.org/wp-content/uploads/ndss2021_4A-5_24531_paper.pdf) · [代码](https://github.com/yapengye/NetPlier)
+
+  <details>
+  <summary>范围与发表信息</summary>
+
+  **范围与限制:** 需要未加密的报文记录，无法恢复从未出现的报文类型。较大的比对、亚字节关键字段及单向流量可能降低准确性。格式／有限状态机推断属于下游评测而非主要贡献；一个案例中的状态语义由人工标注。这些模型不能证明已完整重建应用／设备。
+
+  **发表信息:** 2021 · NDSS 2021 · 会议论文 · Yapeng Ye 等
+
+  </details>
+
+- [**NEMESYS：通过分析单条报文的内在结构逆向推断网络报文语法**](https://www.usenix.org/conference/woot18/presentation/kleber) · **2018 · 会议论文**
+
+  根据单条二进制协议报文内比特一致性的变化，推断近似字段边界，并提出格式匹配分数，将推断的分段结果与已知协议解析器进行比较。
+
+  [PDF](https://www.usenix.org/system/files/conference/woot18/woot18-paper-kleber.pdf) · [代码](https://github.com/vs-uulm/nemesys)
+
+  <details>
+  <summary>范围与发表信息</summary>
+
+  **范围与限制:** 需要明文载荷。评测覆盖 DNS、DHCP 和 NTP，并针对各协议调节参数。方法无法推断单字节字段；全零字段、字符序列和伪随机值可能导致误差。FMS 验证需要已知字段边界。输出是近似报文分段，不是字段语义、状态机或完整应用／设备行为。
+
+  **发表信息:** 2018 · 12th USENIX Workshop on Offensive Technologies (WOOT 18) · 会议论文 · Stephan Kleber 等
+
+  </details>
 <!-- END GENERATED PAPERS -->
 
 <a id="搜索目录"></a>

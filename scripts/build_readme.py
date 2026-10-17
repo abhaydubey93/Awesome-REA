@@ -173,12 +173,23 @@ def render_catalog(records, language, paper_urls=frozenset()):
             continue
         contents = '[↑ Contents](#contents)' if language == 'en' else '[↑ 返回目录](#目录)'
         lines.extend([f'<a id="{section}"></a>', f'### {titles[index]}', '', contents, ''])
-        for record in groups[section]:
-            name = plain_text((record.get('name_zh') or translations.get(record['id'], {}).get('name') or record['name']) if language == 'zh' else record['name'])
-            description = plain_text(record[f'description_{language}'])
-            metadata = plain_text(entry_type(record, language))
-            lines.append(f"- [**{name}**]({record['url']}) - {description} <sub>{metadata}</sub>")
-        lines.append('')
+        cases = [record for record in groups[section] if record['kind'] == 'case-study']
+        tools = [record for record in groups[section] if record['kind'] != 'case-study']
+        subgroups = [(None, groups[section])]
+        if cases and tools:
+            subgroups = [
+                (('Case studies', '案例')[index], cases),
+                (('Tools, projects and integrations', '工具、项目与集成')[index], tools),
+            ]
+        for label, entries in subgroups:
+            if label:
+                lines.extend([f'#### {label}', ''])
+            for record in entries:
+                name = plain_text((record.get('name_zh') or translations.get(record['id'], {}).get('name') or record['name']) if language == 'zh' else record['name'])
+                description = plain_text(record[f'description_{language}'])
+                metadata = plain_text(entry_type(record, language))
+                lines.append(f"- [**{name}**]({record['url']}) - {description} <sub>{metadata}</sub>")
+            lines.append('')
     return '\n'.join(lines).rstrip() + '\n'
 
 
@@ -248,6 +259,15 @@ PAPER_SECTIONS = {
     'firmware-analysis': ('Firmware analysis and rehosting', '固件分析与重托管'),
     'protocol-analysis': ('Protocol inference and analysis', '协议推断与分析'),
 }
+PAPER_TOPIC_LABELS = {
+    'agent-evaluation': ('Agent evaluation', '智能体评测'),
+    'decompilation': ('Decompilation', '反编译'),
+    'website-reconstruction': ('Websites', '网站'),
+    'game-reconstruction': ('Games', '游戏'),
+    'app-reconstruction': ('Apps', '应用'),
+    'firmware-analysis': ('Firmware', '固件'),
+    'protocol-analysis': ('Protocols', '协议'),
+}
 PAPER_STATUSES = {
     'conference-paper': ('Conference paper', '会议论文'),
     'conference-accepted': ('Accepted', '已接收'),
@@ -276,10 +296,16 @@ def render_papers(papers, language):
                     'app': 'app-reconstruction', 'firmware': 'firmware-analysis',
                     'protocol': 'protocol-analysis'}.get(paper['targets'][0], 'decompilation'))
         groups[section].append(paper)
+    topics = [f'[{labels[index]}](#papers-{section}) <sub>{len(groups[section])}</sub>'
+              for section, labels in PAPER_TOPIC_LABELS.items() if groups[section]]
+    lines.extend([f"**{'按主题' if zh else 'By topic'}** · " + ' · '.join(topics), '',
+                  ('展开各条目的“范围与发表信息”可查看完整研究边界；以下按年份从新到旧排列。'
+                   if zh else 'Open “Scope and publication details” for each study’s full limitations. Papers are ordered newest first within each topic.'), ''])
     for section, labels in PAPER_SECTIONS.items():
         if not groups[section]:
             continue
-        lines.extend(['### ' + labels[index], ''])
+        back = '[↑ 论文主题](#papers) · [目录](#目录)' if zh else '[↑ Paper topics](#papers) · [Contents](#contents)'
+        lines.extend([f'<a id="papers-{section}"></a>', '### ' + labels[index], '', back, ''])
         for paper in sorted(groups[section], key=lambda item: (item['year'], item['publication_date'] or str(item['year']), item['title'].casefold()), reverse=True):
             title = plain_text(paper['title_zh'] if zh else paper['title'])
             status = PAPER_STATUSES[paper['publication_status']][index]
@@ -289,10 +315,15 @@ def render_papers(papers, language):
             if paper['code_url']:
                 links.append(f"[{'代码' if zh else 'Code'}]({paper['code_url']})")
             lines.extend([
-                f"- [{title}]({paper['url']}) - " + plain_text(paper[f'description_{language}'])
-                + f" <sub>**{metadata}** · {author} · " + ' · '.join(links) + '</sub>', '',
-                f"  <sub>**{'范围与限制' if zh else 'Scope and limits'}:** "
-                + plain_text(paper[f'scope_limitations_{language}']) + '</sub>', '',
+                f"- [**{title}**]({paper['url']}) · **{paper['year']} · {status}**", '',
+                '  ' + plain_text(paper[f'description_{language}']), '',
+                '  ' + ' · '.join(links), '',
+                '  <details>',
+                f"  <summary>{'范围与发表信息' if zh else 'Scope and publication details'}</summary>", '',
+                f"  **{'范围与限制' if zh else 'Scope and limits'}:** "
+                + plain_text(paper[f'scope_limitations_{language}']), '',
+                f"  **{'发表信息' if zh else 'Publication'}:** {metadata} · {author}", '',
+                '  </details>', '',
             ])
     return '\n'.join(lines).rstrip() + '\n'
 
