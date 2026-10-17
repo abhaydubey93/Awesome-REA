@@ -3,7 +3,7 @@
   "mode": "gfm",
   "context": null,
   "observed_at": "2026-10-17T11:42:30.688672+00:00",
-  "note": "GitHub HTML confirms visible destinations; source line numbers are asserted separately. The empty-item/four-space expectation was corrected to the observed top-level code block. Tests do not call the network.",
+  "note": "GitHub HTML confirms visible destinations; source line numbers are asserted separately. The empty-item/four-space expectation was corrected to the observed top-level code block. Tests do not call the network. The collector preserves its existing pattern-group order; rendered href inventories compare multiplicities, not order. Peer probes cover multiline code and preformatted text while retaining real HTML links.",
   "cases": [
     {
       "id": "nested-unordered",
@@ -356,6 +356,46 @@
       ],
       "html": "<p>=<br>\n<a href=\"missing-continuation.md\">Link</a></p>",
       "html_sha256": "513f8b9c073cefb44ab4e035f7a67edc74914afe60a7843c0f8605526c1d0531"
+    },
+    {
+      "id": "multiline-inline-code-in-continuation",
+      "markdown": "- Parent\n  `example\n    [Code](missing-code.md)\n  continued`\n\n  [Real](missing-real.md#x)\n",
+      "expected_links": [
+        [
+          "missing-real.md#x",
+          6
+        ]
+      ],
+      "html": "<ul>\n<li>\n<p>Parent<br>\n<code class=\"notranslate\">example [Code](missing-code.md) continued</code></p>\n<p><a href=\"missing-real.md#x\">Real</a></p>\n</li>\n</ul>",
+      "html_sha256": "2ee6158ef417c0540bb8525b95a435fe99f24d3551af2dd7b8905cb87256ca68"
+    },
+    {
+      "id": "html-pre-indented-code",
+      "markdown": "<pre>\n    [Code](missing-code.md)\n</pre>\n\n[Real](missing-real.md)\n",
+      "expected_links": [
+        [
+          "missing-real.md",
+          5
+        ]
+      ],
+      "html": "<pre class=\"notranslate\">    [Code](missing-code.md)\n</pre>\n<p><a href=\"missing-real.md\">Real</a></p>",
+      "html_sha256": "e26c6bee95e2c866fea7ab9bb10286d15ae8d97d51ed69518e1ad93aca35e0d6"
+    },
+    {
+      "id": "pre-intervening-text-and-html-link",
+      "markdown": "<pre>\nliteral text\n    [Code](missing-code.md)\n<a href=\"real.md#heading\">Real HTML link</a>\n</pre>\n\n[After](after.md)\n",
+      "expected_links": [
+        [
+          "after.md",
+          7
+        ],
+        [
+          "real.md#heading",
+          4
+        ]
+      ],
+      "html": "<pre class=\"notranslate\">literal text\n    [Code](missing-code.md)\n<a href=\"real.md#heading\">Real HTML link</a>\n</pre>\n<p><a href=\"after.md\">After</a></p>",
+      "html_sha256": "2b1560746cb4db0344a5b5a363cf9302fb3f2c0f11391ab2fed7c3588cf3743f"
     }
   ]
 }

@@ -1,4 +1,5 @@
 """Visible nested-list links are checked, while actual code and literal text stay ignored."""
+from collections import Counter
 import hashlib
 from html.parser import HTMLParser
 import json
@@ -37,7 +38,7 @@ class MarkdownListLinksTests(unittest.TestCase):
             with self.subTest(case=case['id']):
                 self.assertEqual(hashlib.sha256(case['html'].encode()).hexdigest(), case['html_sha256'])
                 expected = [tuple(link) for link in case['expected_links']]
-                self.assertEqual(RenderedLinks(case['html']).links, [link[0] for link in expected])
+                self.assertEqual(Counter(RenderedLinks(case['html']).links), Counter(link[0] for link in expected))
                 self.assertEqual(list(document_links(case['markdown'])), expected)
 
     def test_line_endings_and_original_prose_columns_are_preserved(self):
@@ -67,6 +68,28 @@ class MarkdownListLinksTests(unittest.TestCase):
                     expected = [f'README.md:{line}: missing local link target: {destination}'
                                 for destination, line in case['expected_links']]
                     self.assertEqual(errors, expected)
+
+    def test_inline_code_delimiters_cannot_hide_links_in_other_blocks(self):
+        cases = [
+            ('- Parent\n  `unmatched\n    [Real](real.md)\n', [('real.md', 3)]),
+            ('- Parent\n  `one\n    [Real](real.md)\n  ``two\n', [('real.md', 3)]),
+            ('- Parent\n  \\`literal\n    [Real](real.md)\n  \\`literal\n', [('real.md', 3)]),
+            ('- Parent\n  `unmatched\n\n  [Real](real.md) `later\n', [('real.md', 4)]),
+            ('- `unmatched\n  # [Real](real.md)\n  `later\n', [('real.md', 2)]),
+            ('- `unmatched\n- [Real](real.md) `later\n', [('real.md', 2)]),
+            ('- Parent\n  ``code\n    [Code](hidden.md)\n  `` and [Real](real.md)\n', [('real.md', 4)]),
+        ]
+        for text, expected in cases:
+            with self.subTest(text=text):
+                self.assertEqual(list(document_links(text)), expected)
+
+    def test_preformatted_html_links_survive_and_do_not_swallow_later_prose(self):
+        text = ('<pre>\nliteral text\n    [Code](hidden.md)\n'
+                '    <a href="real.md#heading">Real</a><img src="image.svg">\n'
+                '</pre>\n\n[After](after.md)\n')
+        self.assertEqual(list(document_links(text)), [('after.md', 7), ('real.md#heading', 4), ('image.svg', 4)])
+        unclosed_item = '- <pre>\n  literal text\n[After](after.md)\n'
+        self.assertEqual(list(document_links(unclosed_item)), [('after.md', 3)])
 
     def test_current_literal_source_links_and_inline_code_stay_excluded(self):
         literal = plain_text('[literal](missing-literal.md#nope) and https://example.org')
