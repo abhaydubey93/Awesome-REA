@@ -237,7 +237,7 @@
 
 - [**decomp-permuter**](https://github.com/simonlindholm/decomp-permuter) · 工具 · [条件与证据](https://awesomerea.org/zh/resources/decomp-permuter/)
 
-  随机或系统地改写单个 C 函数，逐个重新编译变体并与目标文件评分对比，以寻找与原编译输出一致的写法。可用 PERM 宏指定手动备选写法，可选的 permuter@home 模式能把运行分发给其他工作节点。
+  随机或系统地改写单个 C 函数，逐个重新编译变体并与目标文件评分对比，以寻找与原编译输出一致的写法。可用 PERM 宏指定手动备选写法，可选的 permuter<span>@</span>home 模式能把运行分发给其他工作节点。
 
 - [**asm-differ**](https://github.com/simonlindholm/asm-differ) · 工具 · [条件与证据](https://awesomerea.org/zh/resources/asm-differ/)
 
@@ -380,7 +380,7 @@
 
   dnSpy 的社区延续项目，可在没有原始源码时调试和编辑 .NET 程序集。
 
-- [**@electron/asar**](https://github.com/electron/asar) · 工具 · [条件与证据](https://awesomerea.org/zh/resources/electron-asar/)
+- [**<span>@</span>electron/asar**](https://github.com/electron/asar) · 工具 · [条件与证据](https://awesomerea.org/zh/resources/electron-asar/)
 
   Electron 官方归档工具，可列出和提取 ASAR 内容，便于检查打包后的 JavaScript 与应用资源。
 
@@ -414,7 +414,7 @@
 
 - [**AOTopsy Flutter/Dart 静态分析工具**](https://github.com/BroNils/aotopsy) · 工具 · Android · [条件与证据](https://awesomerea.org/zh/resources/aotopsy/)
 
-  静态检查 Flutter/Dart AOT libapp.so 文件，恢复可用元数据、类结构、调用关系及伪代码，无需嵌入 Dart VM 或编译匹配的 SDK，提供 ARM64 与 x86_64 分析路径。
+  静态检查 Flutter/Dart AOT libapp.so 文件，恢复可用元数据、类结构、调用关系及伪代码，无需嵌入 Dart VM 或编译匹配的 SDK，提供 ARM64 与 x86\_64 分析路径。
 
 - [**hbctool Hermes 字节码汇编与反汇编工具**](https://github.com/bongtrop/hbctool) · 工具 · Android · [条件与证据](https://awesomerea.org/zh/resources/hbctool/)
 

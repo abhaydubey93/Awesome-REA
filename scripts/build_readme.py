@@ -3,6 +3,7 @@
 import argparse
 import html
 import json
+import re
 import sys
 from collections import Counter, defaultdict
 
@@ -69,9 +70,27 @@ TARGETS = {
 
 
 def plain_text(value):
-    """Keep contributed text on one line and avoid HTML or link-label markup."""
+    """Render source text literally inside generated Markdown prose and link labels."""
     text = html.escape(' '.join(value.split()), quote=False)
-    return text.replace('\\', '\\\\').replace('[', '\\[').replace(']', '\\]')
+    # Match emoji names before Markdown escaping introduces backslashes in them.
+    text = re.sub(r':(?=[A-Za-z0-9_+\-]+:)', '<span>:</span>', text)
+    text = ''.join('\\' + character if character in r"\[]*_`~" else character
+                   for character in text)
+    # A literal source link must not look like a template link to Markdown checks.
+    text = text.replace('](', r']\(')
+    # GitHub also links bare URLs/emails after parsing; escapes alone do not stop it.
+    # Constant, visible delimiters split those tokens without changing their text/style.
+    text = text.replace('://', '<span>:</span>//')
+    text = re.sub(r'(?i)www\.', lambda match: match[0][:-1] + '<span>.</span>', text)
+    text = text.replace('@', '<span>@</span>')
+    text = text.replace('$', '<span>$</span>')
+    # Descriptions start their own paragraph and must not introduce a block.
+    text = re.sub(r'^(#{1,6})(?= |$)', lambda match: '\\' + match[0], text)
+    text = re.sub(r'^(\d{1,9})([.)])(?= |$)', lambda match: match[1] + '\\' + match[2], text)
+    text = re.sub(r'^([-+])(?= |$)', lambda match: '\\' + match[0], text)
+    if re.fullmatch(r'-{3,}|={3,}', text):
+        text = '\\' + text
+    return text
 
 
 def requirements_text(value):

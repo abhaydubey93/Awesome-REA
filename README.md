@@ -236,7 +236,7 @@ Independent projects and [REA](https://github.com/morluto/rea) resources are inc
 
 - [**decomp-permuter**](https://github.com/simonlindholm/decomp-permuter) · Tool · [Requirements & evidence](https://awesomerea.org/resources/decomp-permuter/)
 
-  Randomly or systematically permutes one C function, recompiling each variant and scoring it against a target object file to search for matching compiler output. PERM macros specify manual alternatives, and the optional permuter@home mode distributes runs to other workers.
+  Randomly or systematically permutes one C function, recompiling each variant and scoring it against a target object file to search for matching compiler output. PERM macros specify manual alternatives, and the optional permuter<span>@</span>home mode distributes runs to other workers.
 
 - [**asm-differ**](https://github.com/simonlindholm/asm-differ) · Tool · [Requirements & evidence](https://awesomerea.org/resources/asm-differ/)
 
@@ -379,7 +379,7 @@ Independent projects and [REA](https://github.com/morluto/rea) resources are inc
 
   Community continuation of dnSpy for debugging and editing .NET assemblies without the original source.
 
-- [**@electron/asar**](https://github.com/electron/asar) · Tool · [Requirements & evidence](https://awesomerea.org/resources/electron-asar/)
+- [**<span>@</span>electron/asar**](https://github.com/electron/asar) · Tool · [Requirements & evidence](https://awesomerea.org/resources/electron-asar/)
 
   Electron's archive tool lists and extracts ASAR contents so packaged JavaScript and application assets can be inspected.
 
@@ -413,7 +413,7 @@ Independent projects and [REA](https://github.com/morluto/rea) resources are inc
 
 - [**AOTopsy**](https://github.com/BroNils/aotopsy) · Tool · Android · [Requirements & evidence](https://awesomerea.org/resources/aotopsy/)
 
-  Statically inspect Flutter/Dart AOT libapp.so files to recover available metadata, class structures, call edges and pseudocode without embedding a Dart VM or compiling a matching SDK. Supports ARM64 and x86_64 analysis paths.
+  Statically inspect Flutter/Dart AOT libapp.so files to recover available metadata, class structures, call edges and pseudocode without embedding a Dart VM or compiling a matching SDK. Supports ARM64 and x86\_64 analysis paths.
 
 - [**hbctool**](https://github.com/bongtrop/hbctool) · Tool · Android · [Requirements & evidence](https://awesomerea.org/resources/hbctool/)
 
