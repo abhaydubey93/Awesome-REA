@@ -13,12 +13,12 @@
 <!-- BEGIN GENERATED CONTENTS -->
 **按目标找工具与案例**
 
-- [网站](#website) (14) · [游戏](#game) (42) · [应用](#app) (34)
+- [网站](#website) (15) · [游戏](#game) (42) · [应用](#app) (35)
 - [原生二进制](#native-binary) (20) · [固件与硬件](#firmware) (13) · [协议](#protocol) (11)
 
 **论文与更多资源**
 
-- [论文](#papers) (46) · [全部案例](https://awesomerea.org/zh/cases/) (47) · [完整仓库索引](#完整仓库索引) (2,839)
+- [论文](#papers) (46) · [全部案例](https://awesomerea.org/zh/cases/) (49) · [完整仓库索引](#完整仓库索引) (2,839)
 - [智能体与 MCP](#agents-and-mcp) (18) · [相关合集](#related-collections) (4) · [文档与学习资源](#references-and-learning) (17)
 <!-- END GENERATED CONTENTS -->
 
@@ -41,6 +41,10 @@
 - [**恐龙跑酷：恢复一条加速规则**](https://github.com/morluto/rea/blob/c360cfcd6d7901514b16dd6113eba2e0b0fdf422/website/evidence/calculator-and-dino.md#dinosaur-speed) · 案例 · REA · [使用条件与证据](https://awesomerea.org/zh/resources/rea-dinosaur-speed-case/)
 
   REA 的教学案例检查 HTTP 版 t-rex-runner，并重建其速度更新规则。单独进行的受控原游戏检查与新演示对比更新次数，包含浮点递增越过名义速度阈值的一步。
+
+- [**rauchg.com：根据捕获的 Flight 输出重建 RSC 博客**](https://github.com/boyang-hu/website-rebuild-skill/blob/ac60c9d8a2ab40045a89b5403c3457f1404e92b3/skills/website-rebuild/references/rsc-reconstruction.md) · 案例 · 独立重建 · [使用条件与证据](https://awesomerea.org/zh/resources/rauchg-rsc-reconstruction-case/)
+
+  记录 website-rebuild-skill 的一个案例：解码浏览器收到的 React 服务端组件 Flight 流，重建可构建的 Next 项目，再与捕获站点的输出比较。作者报告的 rauchg.com 重建过程采用路由树比较与模块引用映射；新服务端源码由可观察输出推断。
 
 #### 工具、项目与集成
 
@@ -331,6 +335,10 @@
 - [**DeckCraft：演示文稿流程重建与有限范围 PPTX 交换**](https://github.com/storytold/deckcraft) · 案例 · 独立重建 · [使用条件与证据](https://awesomerea.org/zh/resources/deckcraft-case/)
 
   作者将 DeckCraft 描述为以 Rust 净室重实现 PowerPoint 风格的演示文稿流程。其幻灯片模型、渲染与命令层支撑桌面／浏览器编辑及 PPTX 交换；所审阅源码测试检查构造的文稿和选定的保留包部件。
+
+- [**Ledger Reborn：基于 QuickBooks 研究的独立记账实现**](https://github.com/lxistired/ledger-reborn) · 案例 · 混合工具流程 · [使用条件与证据](https://awesomerea.org/zh/resources/ledger-reborn-accounting-case/)
+
+  维护者报告使用 REA 与 Ghidra 研究 QuickBooks Desktop for Mac 的选定行为，随后独立实现本地记账应用。Python／SQLite 引擎持久保存复式分录、发票、库存和付款；公开合成样例检查有限范围的记账与回滚行为。
 
 - [**LSX II 音量修正器：重建音量行为**](https://github.com/roberdorfer/kef-lsx-volume) · 案例 · 独立重建 · [使用条件与证据](https://awesomerea.org/zh/resources/kef-lsx-volume-case/)
 

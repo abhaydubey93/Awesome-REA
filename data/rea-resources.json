@@ -1688,5 +1688,76 @@
       "https://github.com/cschalle/mipi-fixes-x1-aura/blob/533d995b7acbd6965e5b0b85c97f8bafab9fed4e/tools/README.md",
       "https://github.com/cschalle/mipi-fixes-x1-aura/blob/533d995b7acbd6965e5b0b85c97f8bafab9fed4e/tools/raw.py"
     ]
+  },
+  {
+    "id": "ledger-reborn-accounting-case",
+    "name": "Ledger Reborn: an independent accounting app informed by QuickBooks study",
+    "url": "https://github.com/lxistired/ledger-reborn",
+    "category": "community-case-studies",
+    "relationship": "community-reported-mixed-workflow",
+    "description_en": "The maintainer reports using REA and Ghidra to study selected QuickBooks Desktop for Mac behavior, then independently implements a local accounting application. Its Python/SQLite engine persists double-entry journals, invoices, inventory and payments, while public synthetic fixtures test bounded accounting and rollback behavior.",
+    "description_zh": "维护者报告使用 REA 与 Ghidra 研究 QuickBooks Desktop for Mac 的选定行为，随后独立实现本地记账应用。Python／SQLite 引擎持久保存复式分录、发票、库存和付款；公开合成样例检查有限范围的记账与回滚行为。",
+    "evidence_url": "https://github.com/lxistired/ledger-reborn/blob/d7f6b8a1f4ad6c4ae8b10100d1c93cf15940c21d/docs/CASE_STUDY.md",
+    "verified_at": "2026-10-17",
+    "verification": "source-reviewed",
+    "requirements": [
+      "The reviewed release is 2026.10.12-preview.1. The local browser edition needs Python 3.11+; the accounting core uses the standard library and SQLite. Native desktop builds use pywebview 6.2.1, PyInstaller 6.22.3 and Pillow 12.3.0, built on the target OS; Windows additionally needs the separately installed WebView2 runtime.",
+      "The maintainer identifies QuickBooks Desktop for Mac 2024 Trial, version 23.1.13.962 R14 Trial, as the investigation target. REA 6.4.0 with Ghidra, NIB decoding and selected runtime observations informed inventory arithmetic, budget signs, reconciliation paths and layouts. The Python/SQLite engine and frontend are independently written, not recovered Intuit source.",
+      "Public synthetic fixtures contain frozen, independently specified integer-cent expectations. Reviewed tests compare reports and check atomic rollback of invalid journals, bills and inventory operations. These are implementation checks, not a complete QuickBooks conformance suite; this collection did not execute them.",
+      "The separate original-software comparison reportedly matched three official-sample reports account-by-account to the cent. The vendor sample company and exports are not public here, so that result remains author-reported. It does not establish recovered invoice lines, SKU quantities, payment links or full company-file migration.",
+      "The preview is single-user, local and USD-only. Payroll, tax filing, live bank/payment services, multicurrency and complete QuickBooks migration are outside the implementation. Its cash-basis output is a defined management cash view, not established equivalence with all original or tax rules; full visual/interaction parity also remains unverified.",
+      "MIT covers the authored application; vendor inputs and bundled runtime dependencies keep separate terms. The preview is not Developer ID-signed or notarized on macOS and lacks Windows publisher signing. Package smoke tests and selected native-window observations have separate scopes; no installer, original application, vendor company data or runtime package was downloaded or executed for this review."
+    ],
+    "targets": [
+      "app"
+    ],
+    "kind": "case-study",
+    "additional_evidence_urls": [
+      "https://github.com/lxistired/ledger-reborn/blob/d7f6b8a1f4ad6c4ae8b10100d1c93cf15940c21d/README.md",
+      "https://github.com/lxistired/ledger-reborn/blob/d7f6b8a1f4ad6c4ae8b10100d1c93cf15940c21d/ENGINE_README.md",
+      "https://github.com/lxistired/ledger-reborn/blob/d7f6b8a1f4ad6c4ae8b10100d1c93cf15940c21d/BUILDING.md",
+      "https://github.com/lxistired/ledger-reborn/blob/d7f6b8a1f4ad6c4ae8b10100d1c93cf15940c21d/requirements-desktop.txt",
+      "https://github.com/lxistired/ledger-reborn/blob/d7f6b8a1f4ad6c4ae8b10100d1c93cf15940c21d/docs/EVIDENCE.md",
+      "https://github.com/lxistired/ledger-reborn/blob/d7f6b8a1f4ad6c4ae8b10100d1c93cf15940c21d/docs/PUBLICATION_SCOPE.md",
+      "https://github.com/lxistired/ledger-reborn/blob/d7f6b8a1f4ad6c4ae8b10100d1c93cf15940c21d/docs/BRAND_AND_PROVENANCE.md",
+      "https://github.com/lxistired/ledger-reborn/blob/d7f6b8a1f4ad6c4ae8b10100d1c93cf15940c21d/ledger.py",
+      "https://github.com/lxistired/ledger-reborn/blob/d7f6b8a1f4ad6c4ae8b10100d1c93cf15940c21d/tests/test_acceptance.py",
+      "https://github.com/lxistired/ledger-reborn/blob/d7f6b8a1f4ad6c4ae8b10100d1c93cf15940c21d/fixtures/FROZEN.sha256",
+      "https://github.com/lxistired/ledger-reborn/blob/d7f6b8a1f4ad6c4ae8b10100d1c93cf15940c21d/fixtures/expected.json",
+      "https://github.com/lxistired/ledger-reborn/blob/d7f6b8a1f4ad6c4ae8b10100d1c93cf15940c21d/LICENSE"
+    ]
+  },
+  {
+    "id": "rauchg-rsc-reconstruction-case",
+    "name": "rauchg.com: rebuilding an RSC blog from captured Flight output",
+    "url": "https://github.com/boyang-hu/website-rebuild-skill/blob/ac60c9d8a2ab40045a89b5403c3457f1404e92b3/skills/website-rebuild/references/rsc-reconstruction.md",
+    "category": "reconstruction-cases",
+    "relationship": "independent-reconstruction",
+    "description_en": "Documents a website-rebuild-skill case that decodes browser-delivered React Server Component Flight streams, reconstructs a buildable Next project and compares its output with a captured site. The reported rauchg.com campaign uses route-tree comparison and module-reference mapping; the new server source is inferred from observable output.",
+    "description_zh": "记录 website-rebuild-skill 的一个案例：解码浏览器收到的 React 服务端组件 Flight 流，重建可构建的 Next 项目，再与捕获站点的输出比较。作者报告的 rauchg.com 重建过程采用路由树比较与模块引用映射；新服务端源码由可观察输出推断。",
+    "evidence_url": "https://github.com/boyang-hu/website-rebuild-skill/blob/ac60c9d8a2ab40045a89b5403c3457f1404e92b3/skills/website-rebuild/references/rsc-reconstruction.md",
+    "verified_at": "2026-10-17",
+    "verification": "source-reviewed",
+    "requirements": [
+      "The documented rauchg.com snapshot used Next 16.1.1, Turbopack and React 19 canary. The tooling requires Node.js 22+ and a local Chrome/Chromium for comparison; some stages invoke version-pinned external tools. Repeating the method needs an authorized target snapshot and a separately built reconstruction, not just the skill repository.",
+      "Flight decoding exposes delivered element trees, route state and client-module references. The reconstructed server-component source is explicitly an inference from that output; flight-to-mdx also needs site-specific shape/link adaptations. This is not extraction of undistributed server source or automatic recovery of an arbitrary Next.js application.",
+      "The author reports 18/18 routes passing a Flight semantic gate and a runtime sweep for this case. The gate compares normalized trees and enforces a global module-ID bijection. It normalizes build-hash namespaces and selected encoding differences; configured prop/class exclusions can omit registered fields or subtrees. A pass is not byte identity or full behavioral equivalence.",
+      "The gate does not check CSS, so layout, fonts and rendered pixels need separate comparisons. Public synthetic self-tests include changed-text rejection and rejection of a one-to-many module mapping. This review inspected those checks as source and did not run them or reproduce the reported website campaign.",
+      "The method explicitly leaves unobserved error responses, database/write paths, server caches, dynamic-image generator source and unlinked routes unresolved. Historical public-source comparisons and reported reconstruction percentages do not prove access to hidden backend logic; the author also notes possible model-training familiarity with a nominally blind target.",
+      "MIT applies to the skill and tooling, not to reconstructed websites, their scripts, fonts or other assets. The source documents separate authorization/publication decisions and private, noindex output defaults. No original-site assets or model payloads were downloaded, and no browser session or upstream script was run in this review."
+    ],
+    "targets": [
+      "website"
+    ],
+    "kind": "case-study",
+    "additional_evidence_urls": [
+      "https://github.com/boyang-hu/website-rebuild-skill/blob/ac60c9d8a2ab40045a89b5403c3457f1404e92b3/README.en.md",
+      "https://github.com/boyang-hu/website-rebuild-skill/blob/ac60c9d8a2ab40045a89b5403c3457f1404e92b3/skills/website-rebuild/references/case-studies/rsc-reconstruction.md",
+      "https://github.com/boyang-hu/website-rebuild-skill/blob/ac60c9d8a2ab40045a89b5403c3457f1404e92b3/skills/website-rebuild/scripts/flight-decode.mjs",
+      "https://github.com/boyang-hu/website-rebuild-skill/blob/ac60c9d8a2ab40045a89b5403c3457f1404e92b3/skills/website-rebuild/scripts/verify-flight.mjs",
+      "https://github.com/boyang-hu/website-rebuild-skill/blob/ac60c9d8a2ab40045a89b5403c3457f1404e92b3/skills/website-rebuild/tools/flight-to-mdx.mjs",
+      "https://github.com/boyang-hu/website-rebuild-skill/blob/ac60c9d8a2ab40045a89b5403c3457f1404e92b3/selftest/run.mjs",
+      "https://github.com/boyang-hu/website-rebuild-skill/blob/ac60c9d8a2ab40045a89b5403c3457f1404e92b3/LICENSE"
+    ]
   }
 ]

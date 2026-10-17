@@ -13,12 +13,12 @@ Choose a target below. Entries link to primary sources; **source review does not
 <!-- BEGIN GENERATED CONTENTS -->
 **Tools and cases by target**
 
-- [Website](#website) (14) · [Game](#game) (42) · [App](#app) (34)
+- [Website](#website) (15) · [Game](#game) (42) · [App](#app) (35)
 - [Native Binary](#native-binary) (20) · [Firmware and Hardware](#firmware) (13) · [Protocol](#protocol) (11)
 
 **Research and more**
 
-- [Papers](#papers) (46) · [All cases](https://awesomerea.org/cases/) (47) · [Full Repository Index](#full-repository-index) (2,839)
+- [Papers](#papers) (46) · [All cases](https://awesomerea.org/cases/) (49) · [Full Repository Index](#full-repository-index) (2,839)
 - [Agents and MCP](#agents-and-mcp) (18) · [Related Collections](#related-collections) (4) · [References and Learning](#references-and-learning) (17)
 <!-- END GENERATED CONTENTS -->
 
@@ -40,6 +40,10 @@ Includes independent projects and [REA](https://github.com/morluto/rea) resource
 - [**Dinosaur runner: recovering one acceleration rule**](https://github.com/morluto/rea/blob/c360cfcd6d7901514b16dd6113eba2e0b0fdf422/website/evidence/calculator-and-dino.md#dinosaur-speed) · Case study · REA · [Requirements & evidence](https://awesomerea.org/resources/rea-dinosaur-speed-case/)
 
   REA’s documented teaching case inspects the HTTP t-rex-runner edition and reconstructs its speed-update rule. A separate controlled original-game check and a new demonstration compare update counts, including the floating-point step that crosses the nominal speed threshold.
+
+- [**rauchg.com: rebuilding an RSC blog from captured Flight output**](https://github.com/boyang-hu/website-rebuild-skill/blob/ac60c9d8a2ab40045a89b5403c3457f1404e92b3/skills/website-rebuild/references/rsc-reconstruction.md) · Case study · Independent reconstruction · [Requirements & evidence](https://awesomerea.org/resources/rauchg-rsc-reconstruction-case/)
+
+  Documents a website-rebuild-skill case that decodes browser-delivered React Server Component Flight streams, reconstructs a buildable Next project and compares its output with a captured site. The reported rauchg.com campaign uses route-tree comparison and module-reference mapping; the new server source is inferred from observable output.
 
 #### Tools, projects and integrations
 
@@ -330,6 +334,10 @@ Includes independent projects and [REA](https://github.com/morluto/rea) resource
 - [**DeckCraft: presentation workflow reconstruction and bounded PPTX interchange**](https://github.com/storytold/deckcraft) · Case study · Independent reconstruction · [Requirements & evidence](https://awesomerea.org/resources/deckcraft-case/)
 
   The authors describe DeckCraft as a clean-room Rust implementation of PowerPoint-style presentation workflows. Its slide model, rendering and command layers support desktop/browser editing and PPTX interchange; reviewed source tests check constructed decks and selected preserved package parts.
+
+- [**Ledger Reborn: an independent accounting app informed by QuickBooks study**](https://github.com/lxistired/ledger-reborn) · Case study · Mixed workflow · [Requirements & evidence](https://awesomerea.org/resources/ledger-reborn-accounting-case/)
+
+  The maintainer reports using REA and Ghidra to study selected QuickBooks Desktop for Mac behavior, then independently implements a local accounting application. Its Python/SQLite engine persists double-entry journals, invoices, inventory and payments, while public synthetic fixtures test bounded accounting and rollback behavior.
 
 - [**LSX II Volume Fixer: reconstructing volume behavior**](https://github.com/roberdorfer/kef-lsx-volume) · Case study · Independent reconstruction · [Requirements & evidence](https://awesomerea.org/resources/kef-lsx-volume-case/)
 

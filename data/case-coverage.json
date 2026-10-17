@@ -1,7 +1,7 @@
 {
   "schema_version": 1,
   "reviewed_at": "2026-10-17",
-  "catalog_revision": "a8a65503b1c86fe347848bb3f0e4ad9a55a3de4d",
+  "catalog_revision": "55170d885253e30a75b0def53cb8f9dd07b590bb",
   "runtime_reproduced": false,
   "project_identity_resolution": "incomplete",
   "collections": [
@@ -3467,13 +3467,34 @@
       "reported_source_urls": [
         "https://x.com/i/status/2110262015063105757"
       ],
-      "state": "pending",
-      "review_level": "inventory-only",
+      "state": "already-curated",
+      "review_level": "primary-source-reviewed",
       "reviewed_at": "2026-10-17",
-      "reason_en": "A collection lead awaiting primary-source review; listing does not verify implementation or results.",
-      "reason_zh": "合集线索，等待一手来源核查；被列入合集不代表实现或结果已获验证。",
-      "primary_evidence_urls": [],
-      "catalog_matches": []
+      "reason_en": "A maintainer-authored case study and public implementation now substantiate the named Ledger Reborn project beyond the original third-party quote. The catalog mapping covers its bounded local accounting reconstruction, not full QuickBooks compatibility; private original-sample comparisons remain author-reported and separate from public synthetic tests.",
+      "reason_zh": "维护者自述案例与公开实现，现已为具名的 Ledger Reborn 项目提供超出原第三方转述的依据。目录映射覆盖其有限范围本地记账重建，不代表完整 QuickBooks 兼容；私有原样例比较仍为作者报告，并与公开合成测试分开。",
+      "primary_evidence_urls": [
+        "https://github.com/lxistired/ledger-reborn/blob/d7f6b8a1f4ad6c4ae8b10100d1c93cf15940c21d/docs/CASE_STUDY.md",
+        "https://github.com/lxistired/ledger-reborn/blob/d7f6b8a1f4ad6c4ae8b10100d1c93cf15940c21d/README.md",
+        "https://github.com/lxistired/ledger-reborn/blob/d7f6b8a1f4ad6c4ae8b10100d1c93cf15940c21d/ENGINE_README.md",
+        "https://github.com/lxistired/ledger-reborn/blob/d7f6b8a1f4ad6c4ae8b10100d1c93cf15940c21d/BUILDING.md",
+        "https://github.com/lxistired/ledger-reborn/blob/d7f6b8a1f4ad6c4ae8b10100d1c93cf15940c21d/requirements-desktop.txt",
+        "https://github.com/lxistired/ledger-reborn/blob/d7f6b8a1f4ad6c4ae8b10100d1c93cf15940c21d/docs/EVIDENCE.md",
+        "https://github.com/lxistired/ledger-reborn/blob/d7f6b8a1f4ad6c4ae8b10100d1c93cf15940c21d/docs/PUBLICATION_SCOPE.md",
+        "https://github.com/lxistired/ledger-reborn/blob/d7f6b8a1f4ad6c4ae8b10100d1c93cf15940c21d/docs/BRAND_AND_PROVENANCE.md",
+        "https://github.com/lxistired/ledger-reborn/blob/d7f6b8a1f4ad6c4ae8b10100d1c93cf15940c21d/ledger.py",
+        "https://github.com/lxistired/ledger-reborn/blob/d7f6b8a1f4ad6c4ae8b10100d1c93cf15940c21d/tests/test_acceptance.py",
+        "https://github.com/lxistired/ledger-reborn/blob/d7f6b8a1f4ad6c4ae8b10100d1c93cf15940c21d/fixtures/FROZEN.sha256",
+        "https://github.com/lxistired/ledger-reborn/blob/d7f6b8a1f4ad6c4ae8b10100d1c93cf15940c21d/fixtures/expected.json",
+        "https://github.com/lxistired/ledger-reborn/blob/d7f6b8a1f4ad6c4ae8b10100d1c93cf15940c21d/LICENSE"
+      ],
+      "catalog_matches": [
+        {
+          "catalog": "resource",
+          "id": "ledger-reborn-accounting-case",
+          "kind": "case-study",
+          "scope": "full"
+        }
+      ]
     },
     {
       "id": "song:rayban-meta-claude-android",
@@ -11999,18 +12020,18 @@
     "inventory_units": 541,
     "alias_merges": 2,
     "occurrences_by_state": {
-      "already-curated": 51,
-      "insufficient-evidence": 51,
-      "pending": 441
-    },
-    "units_by_state": {
-      "already-curated": 50,
+      "already-curated": 52,
       "insufficient-evidence": 51,
       "pending": 440
     },
-    "primary_reviewed_units": 46,
-    "catalog_linked_occurrences": 57,
-    "distinct_resource_ids": 48,
+    "units_by_state": {
+      "already-curated": 51,
+      "insufficient-evidence": 51,
+      "pending": 439
+    },
+    "primary_reviewed_units": 47,
+    "catalog_linked_occurrences": 58,
+    "distinct_resource_ids": 49,
     "distinct_paper_ids": 1,
     "unique_projects": null
   }
