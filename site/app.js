@@ -261,8 +261,9 @@ const RELATION = {
 // Repository documents with a Chinese counterpart; homepage_locales.py applies the same map to /zh/.
 const ZH_REPOSITORY_PATHS = {"blob/main/CONTRIBUTING.md": "blob/main/CONTRIBUTING.zh-CN.md"};
 const params = new URLSearchParams(location.search);
-// Keep the bare homepage English; shared links explicitly select another language.
-const state = { layout: params.get("layout") === "cards" ? "cards" : "compact", lang: params.has("lang") ? (params.get("lang") === "zh" ? "zh" : "en") : (location.pathname.startsWith("/zh/") ? "zh" : "en"), q: params.get("q") || "", group: params.get("group") || "all", category: params.get("category") || "all", kind: params.get("kind") || "all", target: params.get("target") || "all", visible: 15, topicLabels: {}, records: [], loaded: false, error: false };
+// The path selects the default language; valid legacy query overrides still work.
+const pathLanguage = location.pathname.startsWith("/zh/") ? "zh" : "en";
+const state = { layout: params.get("layout") === "cards" ? "cards" : "compact", lang: ["en", "zh"].includes(params.get("lang")) ? params.get("lang") : pathLanguage, q: params.get("q") || "", group: params.get("group") || "all", category: params.get("category") || "all", kind: params.get("kind") || "all", target: params.get("target") || "all", visible: 15, topicLabels: {}, records: [], loaded: false, error: false };
 const $ = (selector) => document.querySelector(selector);
 const $$ = (selector) => [...document.querySelectorAll(selector)];
 const t = (key) => UI[state.lang][key] || UI.en[key] || key;
@@ -284,7 +285,16 @@ function entryHref(kind, identifier, language = state.lang) {
   if (kind === "paper" && !identifier.startsWith("paper-")) return null;
   return `${language === "zh" ? "/zh" : ""}/${kind === "paper" ? "papers" : "resources"}/${identifier}/`;
 }
-function updateURL() { const next = new URL(location.href); ["q", "group", "category", "kind", "target", "lang"].forEach(key => { const value = state[key]; if (value && value !== "all") next.searchParams.set(key, value); else next.searchParams.delete(key); }); history.replaceState(null, "", next); }
+function curatedURL() {
+  const next = new URL(location.href);
+  for (const [key, defaultValue] of [["q", ""], ["group", "all"], ["category", "all"], ["kind", "all"], ["target", "all"], ["lang", pathLanguage], ["layout", "compact"]]) {
+    if (state[key] !== defaultValue) next.searchParams.set(key, state[key]);
+    else next.searchParams.delete(key);
+  }
+  return next;
+}
+function replaceURL(next) { if (next.href !== location.href) history.replaceState(null, "", next); }
+function updateURL() { replaceURL(curatedURL()); }
 function applyLayout() {
   document.documentElement.dataset.layout = state.layout;
   $("#layout-select").value = state.layout;
@@ -292,10 +302,7 @@ function applyLayout() {
 function changeLayout(value) {
   state.layout = value === "cards" ? "cards" : "compact";
   applyLayout();
-  const next = new URL(location.href);
-  if (state.layout === "cards") next.searchParams.set("layout", "cards");
-  else next.searchParams.delete("layout");
-  history.replaceState(null, "", next);
+  updateURL();
 }
 function applyLanguage() {
   applyLayout();
@@ -382,7 +389,17 @@ $("#load-more").addEventListener("click", () => { const previous = state.visible
 document.addEventListener("keydown", event => { if (event.key === "/" && !event.ctrlKey && !event.metaKey && !event.altKey && !["INPUT","TEXTAREA","SELECT"].includes(document.activeElement.tagName) && !document.activeElement.isContentEditable) { event.preventDefault(); const search = sourceState.mode === "source-index" ? $("#source-search") : $("#search-input"); search.focus(); search.scrollIntoView({block:"center",behavior:"smooth"}); } });
 
 const sourceState = { available: false, loaded: false, loading: false, error: false, mode: "curated", records: [], meta: {}, q: params.get("sourceq") || "", target: params.get("source-target") || "all", topic: params.get("topic") || "", sort: params.get("sort") || "relevance", visible: 24, topicIDs: new Set(), topicCounts: [] };
-function sourceURL() { const next = new URL(location.href); if (sourceState.mode === "source-index") next.searchParams.set("view", "source-index"); else next.searchParams.set("view", "curated"); for (const [key,value] of [["sourceq",sourceState.q],["source-target",sourceState.target],["topic",sourceState.topic],["sort",sourceState.sort]]) { if (value && value !== "all" && value !== "relevance") next.searchParams.set(key,value); else next.searchParams.delete(key); } history.replaceState(null,"",next); }
+function sourceURL() {
+  // Called after catalog filter validation as well as on repository interactions.
+  const next = curatedURL();
+  if (sourceState.mode === "source-index") next.searchParams.set("view", "source-index");
+  else next.searchParams.delete("view");
+  for (const [key, value, defaultValue] of [["sourceq", sourceState.q, ""], ["source-target", sourceState.target, "all"], ["topic", sourceState.topic, ""], ["sort", sourceState.sort, "relevance"]]) {
+    if (value !== defaultValue) next.searchParams.set(key, value);
+    else next.searchParams.delete(key);
+  }
+  replaceURL(next);
+}
 function configureSourceIndex(meta) {
   const count=Number(meta?.resource_count||0);sourceState.available=count>0;$("#mode-sources").hidden=!sourceState.available;$("#mode-source-count").textContent=count?count.toLocaleString():"";$("#mode-curated-count").textContent=state.records.length;
   $("#download-source-index").hidden = !sourceState.available;
