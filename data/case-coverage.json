@@ -1,7 +1,7 @@
 {
   "schema_version": 1,
   "reviewed_at": "2026-10-17",
-  "catalog_revision": "2e2edb48c28365c0dcb9a19919bb9c77cec41f76",
+  "catalog_revision": "05dd51978dc1aa3a9153e0d69498211fde3f6444",
   "runtime_reproduced": false,
   "project_identity_resolution": "incomplete",
   "collections": [
@@ -837,8 +837,8 @@
       "state": "pending",
       "review_level": "inventory-only",
       "reviewed_at": "2026-10-17",
-      "reason_en": "A collection lead awaiting primary-source review; listing does not verify implementation or results.",
-      "reason_zh": "合集线索，等待一手来源核查；被列入合集不代表实现或结果已获验证。",
+      "reason_en": "The pinned collection reports a Tuya-button firmware investigation, but its linked primary post was inaccessible during this review. No identity-bound implementation, firmware revision or reproducible result was inspected; this remains an inventory-only lead.",
+      "reason_zh": "固定合集报告了 Tuya 按钮固件调查，但本次审阅无法访问其所链接的一手帖子。未审阅到与该案例身份绑定的实现、固件版本或可复现结果；仍为仅编目的线索。",
       "primary_evidence_urls": [],
       "catalog_matches": []
     },
@@ -1256,8 +1256,8 @@
       "state": "pending",
       "review_level": "inventory-only",
       "reviewed_at": "2026-10-17",
-      "reason_en": "A collection lead awaiting primary-source review; listing does not verify implementation or results.",
-      "reason_zh": "合集线索，等待一手来源核查；被列入合集不代表实现或结果已获验证。",
+      "reason_en": "The pinned collection describes an author-reported ViGEm controller bridge without a model, source or test details. The primary post was inaccessible; no driver or protocol implementation was independently inspected.",
+      "reason_zh": "固定合集描述了作者报告的 ViGEm 手柄桥接，但没有型号、源码或测试细节。一手帖子无法访问；未独立审阅驱动或协议实现。",
       "primary_evidence_urls": [],
       "catalog_matches": []
     },
@@ -2540,8 +2540,8 @@
       "state": "pending",
       "review_level": "inventory-only",
       "reviewed_at": "2026-10-17",
-      "reason_en": "A collection lead awaiting primary-source review; listing does not verify implementation or results.",
-      "reason_zh": "合集线索，等待一手来源核查；被列入合集不代表实现或结果已获验证。",
+      "reason_en": "The pinned collection describes an ongoing camera-firmware VM-boot attempt and does not establish successful boot. The primary post was inaccessible; device identity, architecture, emulator and boot evidence remain unreviewed.",
+      "reason_zh": "固定合集描述的是仍在进行的相机固件虚拟机启动尝试，并不确立启动成功。一手帖子无法访问；设备身份、架构、仿真器及启动证据仍未获审阅。",
       "primary_evidence_urls": [],
       "catalog_matches": []
     },
@@ -2699,11 +2699,20 @@
         "https://github.com/TechLuddite/omarchy-mobile-odin2"
       ],
       "state": "pending",
-      "review_level": "inventory-only",
+      "review_level": "primary-source-reviewed",
       "reviewed_at": "2026-10-17",
-      "reason_en": "A collection lead awaiting primary-source review; listing does not verify implementation or results.",
-      "reason_zh": "合集线索，等待一手来源核查；被列入合集不代表实现或结果已获验证。",
-      "primary_evidence_urls": [],
+      "reason_en": "Public code and dated acceptance records document native Linux/Omarchy bring-up and AVB/FAT boot recovery on the Odin 2 Portal using existing kernel/device support. The inspected material supports a native integration and recovery report; reconstruction classification remains pending. Cold power-cycle and slot-B acceptance remain open.",
+      "reason_zh": "公开代码和注明日期的验收记录，说明了借助既有内核／设备支持在 Odin 2 Portal 上进行原生 Linux／Omarchy 适配及 AVB／FAT 启动恢复。所审阅资料支持原生适配与恢复报告；是否归类为重建案例仍待确认。冷启动断电循环和 slot-B 验收仍未完成。",
+      "primary_evidence_urls": [
+        "https://github.com/TechLuddite/omarchy-mobile-odin2/blob/00d11efc018971f6bab711e7952ff184cad333c2/README.md",
+        "https://github.com/TechLuddite/omarchy-mobile-odin2/blob/00d11efc018971f6bab711e7952ff184cad333c2/docs/hardware.md",
+        "https://github.com/TechLuddite/omarchy-mobile-odin2/blob/00d11efc018971f6bab711e7952ff184cad333c2/docs/backlog.md",
+        "https://github.com/TechLuddite/omarchy-mobile-odin2/blob/00d11efc018971f6bab711e7952ff184cad333c2/docs/boot-recovery.md",
+        "https://github.com/TechLuddite/omarchy-mobile-odin2/blob/00d11efc018971f6bab711e7952ff184cad333c2/native/repair-esp.py",
+        "https://github.com/TechLuddite/omarchy-mobile-odin2/blob/00d11efc018971f6bab711e7952ff184cad333c2/scripts/build-native-vbmeta.py",
+        "https://github.com/TechLuddite/omarchy-mobile-odin2/blob/00d11efc018971f6bab711e7952ff184cad333c2/native/build-rootfs.sh",
+        "https://github.com/TechLuddite/omarchy-mobile-odin2/blob/00d11efc018971f6bab711e7952ff184cad333c2/CREDITS.md"
+      ],
       "catalog_matches": []
     },
     {
@@ -5853,17 +5862,36 @@
         "https://cschalle.github.io/mipi-fixes-x1-aura/"
       ],
       "state": "pending",
-      "review_level": "catalog-mapped",
+      "review_level": "primary-source-reviewed",
       "reviewed_at": "2026-10-17",
-      "reason_en": "The scanner USB investigation is curated; the same collection entry also reports MIPI camera work that remains outside this catalog mapping.",
-      "reason_zh": "扫描仪 USB 调查已有精选条目；同一合集条目还报告 MIPI 相机工作，后者不在此次目录映射的覆盖范围内。",
+      "reason_en": "The existing scanner investigation and the separate ThinkPad IMX471 tuning/driver case cover two bounded components of this report. Their mappings remain partial: neither asserts complete scanner/camera behavior, all-device compatibility or independent runtime reproduction.",
+      "reason_zh": "既有扫描仪调查和独立的 ThinkPad IMX471 调校／驱动案例，覆盖此报告中的两个有限范围组成部分。映射仍为部分覆盖：均不确立完整扫描仪／相机行为、全设备兼容性或独立运行复现。",
       "primary_evidence_urls": [
-        "https://github.com/cschalle/hw-harness/blob/093afc5c576c200f29b771d01624a327d0ff1806/examples/plustek-film-scanner/README.md"
+        "https://github.com/cschalle/hw-harness/blob/093afc5c576c200f29b771d01624a327d0ff1806/examples/plustek-film-scanner/README.md",
+        "https://github.com/cschalle/mipi-fixes-x1-aura/blob/533d995b7acbd6965e5b0b85c97f8bafab9fed4e/README.md",
+        "https://github.com/cschalle/mipi-fixes-x1-aura/blob/533d995b7acbd6965e5b0b85c97f8bafab9fed4e/findings/WINDOWS-DRIVER.md",
+        "https://github.com/cschalle/mipi-fixes-x1-aura/blob/533d995b7acbd6965e5b0b85c97f8bafab9fed4e/findings/TESTING.md",
+        "https://github.com/cschalle/mipi-fixes-x1-aura/blob/533d995b7acbd6965e5b0b85c97f8bafab9fed4e/kernel/README.md",
+        "https://github.com/cschalle/mipi-fixes-x1-aura/blob/533d995b7acbd6965e5b0b85c97f8bafab9fed4e/libcamera/README.md",
+        "https://github.com/cschalle/mipi-fixes-x1-aura/blob/533d995b7acbd6965e5b0b85c97f8bafab9fed4e/kernel/patches/0000-cover-letter.patch",
+        "https://github.com/cschalle/mipi-fixes-x1-aura/blob/533d995b7acbd6965e5b0b85c97f8bafab9fed4e/libcamera/patches/libcamera-lsc-0.7.1.patch",
+        "https://github.com/cschalle/mipi-fixes-x1-aura/blob/533d995b7acbd6965e5b0b85c97f8bafab9fed4e/tools/aiqb.py",
+        "https://github.com/cschalle/mipi-fixes-x1-aura/blob/533d995b7acbd6965e5b0b85c97f8bafab9fed4e/tools/gen-tuning.py",
+        "https://github.com/cschalle/mipi-fixes-x1-aura/blob/533d995b7acbd6965e5b0b85c97f8bafab9fed4e/rpms/README.md",
+        "https://blogs.gnome.org/uraeus/2026/10/15/aiandreverseengineerhardware/",
+        "https://github.com/cschalle/mipi-fixes-x1-aura/blob/533d995b7acbd6965e5b0b85c97f8bafab9fed4e/tools/README.md",
+        "https://github.com/cschalle/mipi-fixes-x1-aura/blob/533d995b7acbd6965e5b0b85c97f8bafab9fed4e/tools/raw.py"
       ],
       "catalog_matches": [
         {
           "catalog": "resource",
           "id": "hw-harness-reference-case",
+          "kind": "case-study",
+          "scope": "partial"
+        },
+        {
+          "catalog": "resource",
+          "id": "thinkpad-imx471-camera-case",
           "kind": "case-study",
           "scope": "partial"
         }
@@ -6667,8 +6695,8 @@
       "state": "pending",
       "review_level": "inventory-only",
       "reviewed_at": "2026-10-17",
-      "reason_en": "A collection lead awaiting primary-source review; listing does not verify implementation or results.",
-      "reason_zh": "合集线索，等待一手来源核查；被列入合集不代表实现或结果已获验证。",
+      "reason_en": "The pinned collection reports local control and partial Claude assistance but supplies no protocol, code or tested-model list. The primary post was inaccessible; all-model support, offline operation and firmware modification remain unverified.",
+      "reason_zh": "固定合集报告了本地控制和部分 Claude 辅助，但未提供协议、代码或已测型号列表。一手帖子无法访问；全型号支持、离线运行及固件修改仍未验证。",
       "primary_evidence_urls": [],
       "catalog_matches": []
     },
@@ -11335,9 +11363,9 @@
       "insufficient-evidence": 51,
       "pending": 409
     },
-    "primary_reviewed_units": 44,
+    "primary_reviewed_units": 46,
     "catalog_linked_occurrences": 57,
-    "distinct_resource_ids": 47,
+    "distinct_resource_ids": 48,
     "distinct_paper_ids": 1,
     "unique_projects": null
   }

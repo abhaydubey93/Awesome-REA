@@ -1650,5 +1650,43 @@
       "https://github.com/diasurgical/DevilutionX/blob/94433061f847d22863e5d705c398f7c13d7bab85/Packaging/windows/README.txt",
       "https://github.com/diasurgical/DevilutionX/blob/94433061f847d22863e5d705c398f7c13d7bab85/Packaging/resources/README-SDL.txt"
     ]
+  },
+  {
+    "id": "thinkpad-imx471-camera-case",
+    "name": "ThinkPad IMX471: recovering camera tuning for Linux",
+    "url": "https://github.com/cschalle/mipi-fixes-x1-aura",
+    "category": "reconstruction-cases",
+    "relationship": "independent-reconstruction",
+    "description_en": "Recovers selected camera-tuning structures from an Intel Windows driver package and uses them to repair Linux image capture on one ThinkPad model. Public CPFF/AIQB parsers, kernel patches and libcamera changes accompany the author’s Claude-assisted investigation and bounded before/after measurements.",
+    "description_zh": "从 Intel Windows 驱动包中恢复选定的相机调校结构，用于修复一个 ThinkPad 型号在 Linux 下的图像采集。公开的 CPFF／AIQB 解析器、内核补丁及 libcamera 修改，配有作者报告的 Claude 辅助调查和有限范围的前后测量。",
+    "evidence_url": "https://github.com/cschalle/mipi-fixes-x1-aura/blob/533d995b7acbd6965e5b0b85c97f8bafab9fed4e/README.md",
+    "verified_at": "2026-10-17",
+    "verification": "source-reviewed",
+    "requirements": [
+      "The reviewed target is a Lenovo ThinkPad X1 Carbon Gen 14 (Aura Edition), with a Sony IMX471 sensor behind Intel IPU7. The author tested Fedora 44 kernel 7.2.8 and a libcamera 0.7.1 backport. The published kernel package omits BTF/debug information and is described as a test kernel, not a daily-driver recommendation.",
+      "The Python 3 analysis tools use NumPy and assume a 1928x1088 RG10 stream with a 3904-byte stride. Some scripts embed the author’s local layout and need path adaptation. Repeating the tuning analysis requires the corresponding vendor driver-package data or device captures; these are separate inputs, not original-driver source recovered by this project.",
+      "The author’s controlled low-light comparison holds 400 frames for convergence and reports frame brightness rising from 31.1 to 90.9. The test record describes crop-selection, colour-bar and analogue-gain checks on the affected device. Its 46/46 v4l2-compliance passes occurred before and after the crop fix, so that pass count alone did not detect the defect. These measurements were not reproduced by this collection.",
+      "The work adds three kernel fixes plus lens-shading and white-balance-statistics changes to an existing Linux driver and software ISP. Low-light blue remains about 17% short, an 18.8 ms exposure ceiling is not fixed here, and the second IR camera is outside scope. It does not recover the entire Windows driver, emulate the laptop or establish compatibility across camera models.",
+      "The dated investigation includes corrected and withdrawn hypotheses; its final README and test record should not be replaced by earlier intermediate claims. The patch cover letter attributes Claude assistance and hardware checking to the author. The later blog reports submission/review activity, not a verified upstream merge; REA use is not established.",
+      "No top-level project license is present at the pinned revision. Newly added libcamera implementation files in the patch declare LGPL-2.1-or-later, and the tuning-data section declares CC0-1.0; these are component notices, not a blanket license for every script or vendor-derived input. Existing kernel/libcamera code and vendor materials retain their separate terms."
+    ],
+    "targets": [
+      "firmware"
+    ],
+    "kind": "case-study",
+    "additional_evidence_urls": [
+      "https://github.com/cschalle/mipi-fixes-x1-aura/blob/533d995b7acbd6965e5b0b85c97f8bafab9fed4e/findings/WINDOWS-DRIVER.md",
+      "https://github.com/cschalle/mipi-fixes-x1-aura/blob/533d995b7acbd6965e5b0b85c97f8bafab9fed4e/findings/TESTING.md",
+      "https://github.com/cschalle/mipi-fixes-x1-aura/blob/533d995b7acbd6965e5b0b85c97f8bafab9fed4e/kernel/README.md",
+      "https://github.com/cschalle/mipi-fixes-x1-aura/blob/533d995b7acbd6965e5b0b85c97f8bafab9fed4e/libcamera/README.md",
+      "https://github.com/cschalle/mipi-fixes-x1-aura/blob/533d995b7acbd6965e5b0b85c97f8bafab9fed4e/kernel/patches/0000-cover-letter.patch",
+      "https://github.com/cschalle/mipi-fixes-x1-aura/blob/533d995b7acbd6965e5b0b85c97f8bafab9fed4e/libcamera/patches/libcamera-lsc-0.7.1.patch",
+      "https://github.com/cschalle/mipi-fixes-x1-aura/blob/533d995b7acbd6965e5b0b85c97f8bafab9fed4e/tools/aiqb.py",
+      "https://github.com/cschalle/mipi-fixes-x1-aura/blob/533d995b7acbd6965e5b0b85c97f8bafab9fed4e/tools/gen-tuning.py",
+      "https://github.com/cschalle/mipi-fixes-x1-aura/blob/533d995b7acbd6965e5b0b85c97f8bafab9fed4e/rpms/README.md",
+      "https://blogs.gnome.org/uraeus/2026/10/15/aiandreverseengineerhardware/",
+      "https://github.com/cschalle/mipi-fixes-x1-aura/blob/533d995b7acbd6965e5b0b85c97f8bafab9fed4e/tools/README.md",
+      "https://github.com/cschalle/mipi-fixes-x1-aura/blob/533d995b7acbd6965e5b0b85c97f8bafab9fed4e/tools/raw.py"
+    ]
   }
 ]

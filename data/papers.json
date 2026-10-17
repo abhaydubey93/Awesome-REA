@@ -2189,5 +2189,61 @@
     "verified_at": "2026-10-17",
     "verification": "source-reviewed",
     "runtime_tested": false
+  },
+  {
+    "id": "paper-firmwell",
+    "title": "User-Space Dependency-Aware Rehosting for Linux-Based Firmware Binaries",
+    "title_zh": "面向 Linux 固件二进制的用户空间依赖感知重托管",
+    "authors": [
+      "Chuan Qin",
+      "Cen Zhang",
+      "Yaowen Zheng",
+      "Puzhuo Liu",
+      "Jian Zhang",
+      "Yeting Li",
+      "Weidong Zhang",
+      "Yang Liu",
+      "Limin Sun"
+    ],
+    "year": 2026,
+    "publication_date": null,
+    "date_precision": "year",
+    "date_basis": "The Internet Society’s Crossref deposit and the official NDSS paper identify publication year 2026. No finer publication date is asserted from the conference event dates.",
+    "date_basis_zh": "Internet Society 提交的 Crossref 元数据与 NDSS 官方论文标明出版年份为 2026；不根据会议举办日期推定更精确的出版日期。",
+    "venue": "NDSS 2026",
+    "publication_status": "conference-paper",
+    "arxiv_id": null,
+    "arxiv_version_reviewed": null,
+    "first_arxiv_date": null,
+    "doi": "10.14722/ndss.2026.230249",
+    "url": "https://www.ndss-symposium.org/ndss-paper/user-space-dependency-aware-rehosting-for-linux-based-firmware-binaries/",
+    "pdf_url": "https://www.ndss-symposium.org/wp-content/uploads/2026-s249-paper.pdf",
+    "code_url": "https://github.com/qc9c/Firmwell",
+    "project_url": null,
+    "targets": [
+      "firmware"
+    ],
+    "description_en": "FIRMWELL reconstructs the execution environment of Linux firmware services by running their initialization processes, locating blocking dependencies and repairing missing system-level behavior. It combines containerized QEMU-user emulation with a QEMU-system fallback, using process traces and binary analysis to recover resources needed by the target service.",
+    "description_zh": "FIRMWELL 通过运行初始化进程、定位阻塞依赖并修补缺失的系统层行为，重建 Linux 固件服务的执行环境。它结合容器化 QEMU-user 仿真与 QEMU-system 回退，并利用进程轨迹和二进制分析恢复目标服务所需的资源。",
+    "scope_limitations_en": "The evaluation concerns selected network services, not complete device or hardware equivalence. HTTP acceptance uses configured response-status and error-content checks; other services need their own criteria. Coverage depends on unpacking, supported architectures, initialization heuristics and peripheral models. Symbolic path explosion, solver timeouts and complex peripheral checks remain failure modes. The paper’s recovery strategy avoids patching target binaries; successful service interaction does not establish recovery of original source code or every device function.",
+    "scope_limitations_zh": "评估针对选定网络服务，并非完整设备或硬件等价。HTTP 验收采用配置好的响应状态与错误内容检查；其他服务需要各自的判定标准。覆盖范围受解包、架构支持、初始化启发式规则和外设模型限制，符号执行路径爆炸、求解超时及复杂外设检查仍可能导致失败。论文中的修复策略避免补丁修改目标二进制；服务交互成功不能证明恢复了原始源码或全部设备功能。",
+    "why_fits_en": "A concrete method for reconstructing the dependencies around shipped firmware binaries, complementing HAL-level and full-system rehosting research.",
+    "why_fits_zh": "提供围绕已发布固件二进制重建运行依赖的具体方法，可与 HAL 层及全系统重托管研究互补。",
+    "metadata_notes": "The nine-author order follows the official paper. Crossref agrees on the DOI but repeats Jian Zhang as a tenth author row; that duplicate is not reproduced here. Its appendix lists 1 CPU core, 4 GiB RAM and 100 GiB disk per task, and describes the full firmware corpus as private. The pinned repository declares GPLv3; vendor firmware and dependencies retain separate terms. Its Docker-in-Docker workflow uses an elevated-privilege outer container, and the authors recommend VM isolation; the current inner-container privilege flag defaults off. Mutable container tags mean the source pin alone does not fix the execution environment. Experiments were not rerun for this collection.",
+    "metadata_notes_zh": "九位作者的顺序以官方论文为准。Crossref 的 DOI 相符，但将 Jian Zhang 重复列为第十个作者条目；此处不沿用该重复项。论文附录列出每个任务需 1 个 CPU 核心、4 GiB 内存和 100 GiB 磁盘，并将完整固件语料描述为私有。固定仓库声明采用 GPLv3；厂商固件与依赖仍有各自条款。其 Docker-in-Docker 流程使用具有较高权限的外层容器，作者建议以虚拟机隔离；当前内层容器权限开关默认关闭。容器标签可变，因此固定源码版本本身并未固定执行环境。本合集未重新运行实验。",
+    "evidence_urls": [
+      "https://www.ndss-symposium.org/ndss-paper/user-space-dependency-aware-rehosting-for-linux-based-firmware-binaries/",
+      "https://www.ndss-symposium.org/wp-content/uploads/2026-s249-paper.pdf",
+      "https://api.crossref.org/works/10.14722/ndss.2026.230249",
+      "https://github.com/qc9c/Firmwell/blob/d46bc7552c463a08387125a346397e9866e5889e/README.md",
+      "https://github.com/qc9c/Firmwell/blob/d46bc7552c463a08387125a346397e9866e5889e/LICENSE",
+      "https://github.com/qc9c/Firmwell/blob/d46bc7552c463a08387125a346397e9866e5889e/Dockerfile",
+      "https://github.com/qc9c/Firmwell/blob/d46bc7552c463a08387125a346397e9866e5889e/firmwell.py",
+      "https://github.com/qc9c/Firmwell/blob/d46bc7552c463a08387125a346397e9866e5889e/firmwell/plugins/http_check.py"
+    ],
+    "kind": "research",
+    "verified_at": "2026-10-17",
+    "verification": "source-reviewed",
+    "runtime_tested": false
   }
 ]
