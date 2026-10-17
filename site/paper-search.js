@@ -86,6 +86,13 @@
       for (const key of KEYS) controls[key].value = state[key];
     }
 
+    function updateLanguageLink() {
+      if (!languageLink) return;
+      const next = stateURL(browser.location.href, state);
+      next.pathname = languagePath;
+      languageLink.href = next.href;
+    }
+
     function render() {
       let visible = 0;
       for (const paper of records) {
@@ -110,11 +117,7 @@
       count.textContent = zh ? `显示 ${visible} / ${records.length} 篇论文` : `Showing ${visible} of ${records.length} papers`;
       empty.hidden = visible !== 0;
       clear.disabled = !state.q && state.target === "all" && state.status === "all" && state.year === "all";
-      if (languageLink) {
-        const next = stateURL(browser.location.href, state);
-        next.pathname = languagePath;
-        languageLink.href = next.href;
-      }
+      updateLanguageLink();
     }
 
     function update(push = false) {
@@ -146,6 +149,7 @@
     for (const key of ["target", "status", "year"]) controls[key].addEventListener("change", () => update(true));
     clear.addEventListener("click", reset);
     emptyReset.addEventListener("click", reset);
+    if (languageLink) languageLink.addEventListener("click", updateLanguageLink);
     browser.addEventListener("popstate", () => {
       composing = false;
       state = readState(new URL(browser.location.href).searchParams, allowed);

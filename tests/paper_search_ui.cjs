@@ -56,6 +56,12 @@ for (const lang of ["en", "zh"]) {
   assert.equal(app.ids.get("paper-results").textContent, lang === "zh" ? "显示 1 / 3 篇论文" : "Showing 1 of 3 papers");
   assert.equal(new URL(app.language.href).hash, "#paper-game");
   assert.equal(new URL(app.language.href).searchParams.get("target"), "website");
+  app.browser.location.hash = "#research-game";
+  app.language.emit("click", {preventDefault() { throw new Error("Language link must navigate normally"); }});
+  assert.equal(new URL(app.language.href).hash, "#research-game");
+  assert.equal(new URL(app.language.href).searchParams.get("target"), "website");
+  assert.equal(new URL(app.language.href).searchParams.get("year"), "2026");
+  assert.equal(new URL(app.language.href).pathname, lang === "zh" ? "/papers/" : "/zh/papers/");
   app.ids.get("paper-clear").emit("click"); assert.equal(app.visible().length, 3); assert(app.ids.get("paper-query").focused);
   const input = app.ids.get("paper-query"); const before = app.browser.location.href;
   input.emit("compositionstart"); input.value = "游戏"; input.emit("input", {isComposing: true});
