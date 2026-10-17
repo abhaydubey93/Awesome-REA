@@ -8,7 +8,8 @@ import unittest
 from unittest.mock import patch
 
 sys.path.insert(0, str(Path(__file__).resolve().parents[1] / 'scripts'))
-from case_coverage import read_case_coverage, validate_case_coverage
+from case_coverage import coverage_counts, read_case_coverage, validate_case_coverage
+from build_case_coverage import render
 from validate import public_https_error
 import review_pr
 
@@ -78,6 +79,45 @@ class CaseCoverageTests(unittest.TestCase):
                 elif mutation == 'inconsistent-state': document['entries'][1]['state'] = 'insufficient-evidence'
                 else: document['aliases'][0]['evidence_urls'] = ['https://example.org/unrelated']
                 self.assertTrue(self.errors(document))
+
+    def test_unit_representatives_cannot_point_into_other_groups(self):
+        document = fixture(); document['aliases'] = []
+        for entry in document['entries']:
+            entry['unit_id'] = entry['id']
+        document['counts'] = coverage_counts(document['entries'])
+        self.assertEqual(self.errors(document), [])
+        document['entries'][0]['unit_id'] = 'one:covered'
+        document['entries'][2]['unit_id'] = 'one:first'
+        document['counts'] = coverage_counts(document['entries'])
+        errors = self.errors(document)
+        self.assertEqual(sum('representative must belong to its own inventory unit' in error for error in errors), 2)
+
+    def test_summary_omits_absent_partial_cases_and_aliases(self):
+        document = fixture(); document['aliases'] = []
+        for entry in document['entries']:
+            entry['unit_id'] = entry['id']
+        document['counts'] = coverage_counts(document['entries'])
+        self.assertEqual(self.errors(document), [])
+        for zh in (False, True):
+            summary = render(document, {row['id']: row for row in RESOURCES}, {}, zh)
+            self.assertIn('当前没有别名合并。' if zh else 'No alias merges are recorded.', summary)
+            self.assertIn('当前没有部分目录映射。' if zh else 'No partial catalog mappings are recorded.', summary)
+            self.assertNotIn('Plustek', summary)
+            self.assertNotIn('decomp.wtf', summary)
+
+    def test_summary_renders_actual_partial_reason_and_alias_basis(self):
+        document = fixture()
+        document['entries'][2].update({'state': 'pending', 'reason_en': 'Only the input format is covered.',
+                                       'reason_zh': '仅覆盖输入格式。'})
+        document['entries'][2]['catalog_matches'][0]['scope'] = 'partial'
+        document['counts'] = coverage_counts(document['entries'])
+        self.assertEqual(self.errors(document), [])
+        for zh in (False, True):
+            summary = render(document, {row['id']: row for row in RESOURCES}, {}, zh)
+            self.assertIn(document['entries'][2]['reason_zh' if zh else 'reason_en'], summary)
+            self.assertIn(document['aliases'][0]['basis_zh' if zh else 'basis_en'], summary)
+            self.assertIn('`one:first`, `one:alias` → `one:first`', summary)
+            self.assertNotIn('decomp.wtf', summary)
 
     def test_partial_or_unreviewed_match_cannot_claim_full_coverage(self):
         for field, value in [('scope', 'partial'), ('scope', 'related'), ('id', 'missing'), ('kind', 'tool')]:

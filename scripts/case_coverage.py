@@ -251,8 +251,10 @@ def validate_case_coverage(document, resources, papers, errors, *, url_check):
     if set(alias_units) != set(duplicate_units):
         fail('every merged inventory unit requires one explicit alias decision')
     for unit, rows in groups.items():
-        if unit not in ids or any(row['state'] != rows[0]['state'] or row['review_level'] != rows[0]['review_level'] for row in rows):
-            fail(unit + ' representative must exist and merged state/review levels must agree')
+        if unit not in {row['id'] for row in rows}:
+            fail(unit + ' representative must belong to its own inventory unit')
+        if any(row['state'] != rows[0]['state'] or row['review_level'] != rows[0]['review_level'] for row in rows):
+            fail(unit + ' merged state/review levels must agree')
     if len(errors) == start:
         expected = coverage_counts(document['entries'])
         if document['counts'] != expected or type(document['counts']) is not dict:

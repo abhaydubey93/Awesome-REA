@@ -23,7 +23,7 @@ The ledger retains pinned file URLs, Git blob IDs, SHA-256 digests and byte coun
 | Pending (`pending`) | 295 | 294 | Primary review or complete catalog coverage remains pending; partial matches stay here. |
 | Insufficient evidence (`insufficient-evidence`) | 49 | 49 | An idea, request or unsupported reconstruction claim is retained as a lead. |
 
-29 occurrences have catalog links, including partial matches. They reference 27 distinct resource IDs and 1 paper ID. These populations overlap; do not add them as unique projects.
+29 occurrences have catalog links. They reference 27 distinct resource IDs and 1 paper ID. Match scope is recorded separately; do not add these populations as unique projects.
 
 This ledger records a new primary-source review for 15 inventory units. Other catalog-linked entries inherit the catalog’s separate source-review record; a link does not mean the entire collection report was reviewed again. No runtime experiment was independently reproduced for this ledger.
 
@@ -51,9 +51,14 @@ Repository README scan IDs and counts are deliberately absent. A successful READ
 
 ## Partial coverage and aliases
 
-The combined Plustek scanner / ThinkPad MIPI report links to the curated scanner USB investigation only. Its camera work remains outside that mapping, so the combined occurrence stays pending.
+Partial catalog mappings:
 
-The two explicit merges concern the anonymous game-decompilation retrospective and decomp.wtf. The retrospective’s primary article does not identify the game; the ledger does not adopt a secondary collection’s game-name inference. Alias evidence is retained without counting the same report as a second verified project.
+- `song:schaller-opticfilm-thinkpad-linux` — The scanner USB investigation is curated; the same collection entry also reports MIPI camera work that remains outside this catalog mapping.
+
+Alias decisions:
+
+- `song:mw2-decompilation`, `yibie:500-billion-tokens-later` → `song:mw2-decompilation` — Same Maurice Heumann decompilation retrospective; the primary article leaves the game unnamed, so a future draft must not assert the collection’s MW2 identity from that article alone.
+- `song:decompwtf-agent-game-decompilation`, `yibie:decomp-wtf` → `song:decompwtf-agent-game-decompilation` — Same named decomp.wtf project; yibie supplies an additional repository lead, not independent verification.
 
 ## Updating this ledger
 

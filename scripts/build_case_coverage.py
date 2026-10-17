@@ -39,8 +39,8 @@ def render(document, resources, translations, zh=False):
     }
     for state, values in state_labels.items():
         lines.append(f"| {values[zh]} (`{state}`) | {c['occurrences_by_state'].get(state, 0)} | {c['units_by_state'].get(state, 0)} | {values[2 + zh]} |")
-    lines += ['', label(f"{c['catalog_linked_occurrences']} occurrences have catalog links, including partial matches. They reference {c['distinct_resource_ids']} distinct resource IDs and {c['distinct_paper_ids']} paper ID. These populations overlap; do not add them as unique projects.",
-                        f"{c['catalog_linked_occurrences']} 个出现项含目录链接，其中包括部分映射；共关联 {c['distinct_resource_ids']} 个不同资源 ID 和 {c['distinct_paper_ids']} 个论文 ID。这些群体存在交叉，不能相加当作独立项目数。"), '',
+    lines += ['', label(f"{c['catalog_linked_occurrences']} occurrences have catalog links. They reference {c['distinct_resource_ids']} distinct resource IDs and {c['distinct_paper_ids']} paper ID. Match scope is recorded separately; do not add these populations as unique projects.",
+                        f"{c['catalog_linked_occurrences']} 个出现项含目录链接；共关联 {c['distinct_resource_ids']} 个不同资源 ID 和 {c['distinct_paper_ids']} 个论文 ID。映射范围单独记录，不能将这些群体相加当作独立项目数。"), '',
               label(f"This ledger records a new primary-source review for {c['primary_reviewed_units']} inventory units. Other catalog-linked entries inherit the catalog’s separate source-review record; a link does not mean the entire collection report was reviewed again. No runtime experiment was independently reproduced for this ledger.",
                     f"此记录为 {c['primary_reviewed_units']} 个清单单元记载了新的一手来源核查。其他已有目录链接的条目对应目录中独立的来源核查记录；链接本身不代表重新核查了整篇合集报告。此记录没有独立复现运行实验。"), '',
               label('Repository README scan IDs and counts are deliberately absent. A successful README fetch, an upstream list entry and a source-reviewed case are different facts.',
@@ -57,12 +57,25 @@ def render(document, resources, translations, zh=False):
         name = (translations.get(record['id'], {}).get('name', record['name']) if zh else record['name']) if record else entry['title']
         name = name.replace('|', '\\|').replace('\n', ' ')
         lines.append(f"| {name} | {state_labels[entry['state']][zh]} | [{label('Source', '来源')}]({entry['primary_evidence_urls'][0]}) |")
-    lines += ['', label('## Partial coverage and aliases', '## 部分覆盖与别名'), '',
-              label('The combined Plustek scanner / ThinkPad MIPI report links to the curated scanner USB investigation only. Its camera work remains outside that mapping, so the combined occurrence stays pending.',
-                    'Plustek 扫描仪／ThinkPad MIPI 组合报告仅对应已收录的扫描仪 USB 调查。相机工作不在该映射范围内，因此整个出现项仍为待核查。'), '',
-              label('The two explicit merges concern the anonymous game-decompilation retrospective and decomp.wtf. The retrospective’s primary article does not identify the game; the ledger does not adopt a secondary collection’s game-name inference. Alias evidence is retained without counting the same report as a second verified project.',
-                    '两次明确合并分别涉及匿名游戏反编译复盘和 decomp.wtf。复盘的一手文章没有说明游戏名称，此记录不采用二手合集推断的名称。别名证据予以保留，同一报告不会被当作第二个已核验项目。'), '',
-              label('## Updating this ledger', '## 更新此记录'), '',
+    lines += ['', label('## Partial coverage and aliases', '## 部分覆盖与别名'), '']
+    partial = [entry for entry in document['entries']
+               if any(match['scope'] == 'partial' for match in entry['catalog_matches'])]
+    if partial:
+        lines += [label('Partial catalog mappings:', '部分目录映射：'), '']
+        for entry in partial:
+            reason = entry['reason_zh' if zh else 'reason_en'].replace('\n', ' ')
+            lines.append(f"- `{entry['id']}` — {reason}")
+    else:
+        lines.append(label('No partial catalog mappings are recorded.', '当前没有部分目录映射。'))
+    lines += ['', label('Alias decisions:', '别名决定：'), '']
+    if document['aliases']:
+        for alias in document['aliases']:
+            members = ', '.join('`' + identifier + '`' for identifier in alias['occurrence_ids'])
+            basis = alias['basis_zh' if zh else 'basis_en'].replace('\n', ' ')
+            lines.append(f"- {members} → `{alias['unit_id']}` — {basis}")
+    else:
+        lines.append(label('No alias merges are recorded.', '当前没有别名合并。'))
+    lines += ['', label('## Updating this ledger', '## 更新此记录'), '',
               label('Review the pinned collection entry and its primary evidence before changing a state. Keep occurrence IDs stable, record explicit aliases, use typed full/partial/related catalog mappings, and leave unresolved project counts unknown. Collection titles are source labels, not verified capability claims.',
                     '改变状态前应核查固定版本合集条目及其一手证据。保持出现项 ID 稳定，明确记录别名，使用带类型的完整／部分／相关目录映射，并将尚未解决的项目数量保持为未知。合集标题只是来源标识，不是已经核验的能力声明。'), '',
               '```sh', 'python3 scripts/build_case_coverage.py', 'python3 scripts/validate.py', 'python3 -m unittest discover -s tests -v', '```', '',
