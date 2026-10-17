@@ -22,7 +22,7 @@
 
 **论文与工作流**
 
-- [论文](#papers) (48) · [智能体与 MCP](#agents-and-mcp) (19) · [文档与学习资源](#references-and-learning) (20)
+- [论文](#papers) (49) · [智能体与 MCP](#agents-and-mcp) (19) · [文档与学习资源](#references-and-learning) (20)
 
 **更多浏览方式**
 
@@ -1019,7 +1019,7 @@
 <a id="papers"></a>
 ## 论文
 
-收录 **48 篇论文**，涵盖逆向工程智能体评测、反编译、协议推断、固件分析，以及网站、游戏和应用重建。部分论文也出现在精选资源目录中，两者数量不可相加。发表状态与研究范围分别标注，中文标题为译名。
+收录 **49 篇论文**，涵盖逆向工程智能体评测、反编译、协议推断、固件分析，以及网站、游戏和应用重建。部分论文也出现在精选资源目录中，两者数量不可相加。发表状态与研究范围分别标注，中文标题为译名。
 
 [浏览论文目录](https://awesomerea.org/zh/papers/) · [完整书目 JSON](data/papers.json) · [推荐论文](https://github.com/reacher-z/Awesome-REA/issues/new?template=paper.yml)
 
@@ -1027,7 +1027,7 @@
 
 - [智能体评测](#papers-agent-evaluation) (5) · [反编译](#papers-decompilation) (8) · [网站](#papers-website-reconstruction) (13)
 - [游戏](#papers-game-reconstruction) (6) · [应用](#papers-app-reconstruction) (5) · [固件](#papers-firmware-analysis) (5)
-- [协议](#papers-protocol-analysis) (6)
+- [协议](#papers-protocol-analysis) (7)
 
 展开各条目的“范围与发表信息”可查看完整研究边界；以下按年份从新到旧排列。
 
@@ -1665,6 +1665,20 @@
   **范围与限制:** 研究对象是字段推断，不是恢复协议状态机或端点的完整行为。方法需要能够访问并插桩的实现及运行时的报文处理；仅有被动捕获数据并不足够。完美分割率统计被精确分割的字段占全部真实字段的比例，而非完整恢复的协议比例。检测器库覆盖五种语义类型与六种功能。字节级污点分析无法准确解析位标志，也不确立未执行行为。真实标签依据 Wireshark 解析器与协议规范构建；三种二进制分析基线由作者重新实现。报告的模糊测试改进属于下游评估，不是实现等价性的证明。
 
   **发表信息:** 2024 · ACM CCS 2024 · 会议论文 · Jiayi Jiang 等
+
+  </details>
+
+- [**BinaryInferno：面向二进制报文格式字段推断的语义驱动方法**](https://www.ndss-symposium.org/ndss-paper/binaryinferno-a-semantic-driven-approach-to-field-inference-for-binary-message-formats/)<br>
+  2023 · 会议论文 · [PDF](https://www.ndss-symposium.org/wp-content/uploads/2023/02/ndss2023_s131_paper.pdf) · [代码](https://github.com/binaryinferno/binaryinferno) · [完整条目与引用](https://awesomerea.org/zh/papers/paper-binaryinferno/)
+
+  无需对可执行程序插桩，即可从静态报文样本推断部分二进制报文格式。专用检测器识别浮点数、时间戳、长度、熵边界和序列化模式，再通过基于图的集成步骤协调各自的描述。作者对十种协议的样本开展评估，在每组 1,000 条报文且不使用分析者先验的设置下，报告顶层字段边界的精确率为 0.69、召回率为 0.73、假阳性率为 0.04。
+
+  <details>
+  <summary>范围与发表信息</summary>
+
+  **范围与限制:** 假设数据无错误、未经压缩或加密、按字节对齐，并推断起始偏移一致的共有字段或载荷区域。可选字段、联合类型字段及不支持的序列化模式仍未解决；样本多样性会影响结果。26 组封装载荷测试集依据已知真实报文类型预先分组，并非自动发现。真实标签合并了在整个样本中均保持常量的相邻字段；文中注明的平均值排除了没有推断结果的样本。BI+ 额外使用给定的字节序和捕获时间范围。这些是字段边界结果，不代表完整语义恢复、协议状态推断或行为等价。
+
+  **发表信息:** 2023 · NDSS 2023 · 会议论文 · Jared Chandler 等
 
   </details>
 

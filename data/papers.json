@@ -2695,5 +2695,65 @@
     "verified_at": "2026-10-17",
     "verification": "source-reviewed",
     "runtime_tested": false
+  },
+  {
+    "id": "paper-binaryinferno",
+    "title": "BinaryInferno: A Semantic-Driven Approach to Field Inference for Binary Message Formats",
+    "title_zh": "BinaryInferno：面向二进制报文格式字段推断的语义驱动方法",
+    "authors": [
+      "Jared Chandler",
+      "Adam Wick",
+      "Kathleen Fisher"
+    ],
+    "year": 2023,
+    "publication_date": null,
+    "date_precision": "year",
+    "date_basis": "The official NDSS paper and publisher-deposited Crossref metadata establish publication year 2023. Crossref supplies no publication month or day; the conference dates and DOI registration date are not substituted.",
+    "date_basis_zh": "NDSS 官方论文与出版方提交的 Crossref 元数据确立出版年份为 2023。Crossref 未给出出版月份或日期；本条目不以会议日期或 DOI 注册日期代替。",
+    "venue": "NDSS 2023",
+    "publication_status": "conference-paper",
+    "arxiv_id": null,
+    "arxiv_version_reviewed": null,
+    "first_arxiv_date": null,
+    "doi": "10.14722/ndss.2023.23131",
+    "citation": {
+      "container_title": "Proceedings 2023 Network and Distributed System Security Symposium",
+      "publisher": "Internet Society",
+      "sources": [
+        "https://api.crossref.org/works/10.14722/ndss.2023.23131"
+      ]
+    },
+    "url": "https://www.ndss-symposium.org/ndss-paper/binaryinferno-a-semantic-driven-approach-to-field-inference-for-binary-message-formats/",
+    "pdf_url": "https://www.ndss-symposium.org/wp-content/uploads/2023/02/ndss2023_s131_paper.pdf",
+    "code_url": "https://github.com/binaryinferno/binaryinferno",
+    "project_url": null,
+    "targets": [
+      "protocol"
+    ],
+    "description_en": "Infers partial binary-message formats from static message samples without instrumenting an executable. Specialized detectors recognize floats, timestamps, lengths, entropy boundaries and serialization patterns; a graph-based integration step reconciles their descriptions. Across samples from ten protocols, the authors report top-level field-boundary precision of 0.69, recall of 0.73 and false-positive rate of 0.04 for the 1,000-message setting without analyst priors.",
+    "description_zh": "无需对可执行程序插桩，即可从静态报文样本推断部分二进制报文格式。专用检测器识别浮点数、时间戳、长度、熵边界和序列化模式，再通过基于图的集成步骤协调各自的描述。作者对十种协议的样本开展评估，在每组 1,000 条报文且不使用分析者先验的设置下，报告顶层字段边界的精确率为 0.69、召回率为 0.73、假阳性率为 0.04。",
+    "scope_limitations_en": "Assumes error-free, uncompressed, unencrypted, byte-aligned data and infers common fields or payload regions beginning at consistent offsets. It leaves optional/union fields and unsupported serialization patterns unresolved; sample diversity matters. The 26 encapsulated-payload test sets were pre-grouped using ground-truth message types, not discovered automatically. Ground truth merges adjacent fields that are constant across the sample; empty inference results are excluded from reported averages where stated. BI+ additionally uses supplied endianness and capture-time ranges. These are field-boundary results, not complete semantic recovery, protocol-state inference or behavioral equivalence.",
+    "scope_limitations_zh": "假设数据无错误、未经压缩或加密、按字节对齐，并推断起始偏移一致的共有字段或载荷区域。可选字段、联合类型字段及不支持的序列化模式仍未解决；样本多样性会影响结果。26 组封装载荷测试集依据已知真实报文类型预先分组，并非自动发现。真实标签合并了在整个样本中均保持常量的相邻字段；文中注明的平均值排除了没有推断结果的样本。BI+ 额外使用给定的字节序和捕获时间范围。这些是字段边界结果，不代表完整语义恢复、协议状态推断或行为等价。",
+    "why_fits_en": "Provides trace-only semantic field inference that complements executable-assisted analysis and protocol-state learning, with explicit assumptions and evaluated false-positive behavior.",
+    "why_fits_zh": "提供仅依赖报文轨迹的语义字段推断，与借助可执行程序的分析及协议状态学习互补，并明确列出假设和假阳性评估。",
+    "metadata_notes": "Three-author order, title and DOI agree across the publisher, paper and Crossref. No arXiv identifier or proceedings page range was verified; the PDF has 18 pages. The paper’s project URL leads to the author’s Tufts page, which links the repository. The reviewed 2023-05-02 snapshot has GPL-3.0-or-later code headers and a GPLv3 LICENSE; third-party trace provenance and rights require separate checking. README prerequisites are Python 3, sklearn, scipy and parallel, without pinned dependency versions; the pattern-search launcher also uses timeout and hardcodes 30 parallel jobs. Input is one hexadecimal message per line; timestamp search accepts a supplied time range. The actual entry file is binaryinferno/blackboard.py, despite the README’s basic-command blackboard.by typo. A dataset directory is present, but its README remains a placeholder. Historical setup and dataset completeness were not reproduced; no captures, binaries or model payloads were downloaded and no upstream code or notebooks were run.",
+    "metadata_notes_zh": "出版方、论文和 Crossref 的三位作者顺序、标题及 DOI 一致。未核实到 arXiv 标识符或论文集页码范围；PDF 共 18 页。论文给出的项目网址跳转到作者的 Tufts 页面，该页面链接了仓库。所审阅的 2023-05-02 快照在代码头部声明 GPL-3.0-or-later，并包含 GPLv3 LICENSE；第三方轨迹的来源与权利需另行核查。README 要求 Python 3、sklearn、scipy 和 parallel，未固定依赖版本；模式搜索启动脚本还使用 timeout，并将并行任务数写定为 30。输入为每行一条十六进制报文；时间戳搜索可接受给定的时间范围。实际入口文件为 binaryinferno/blackboard.py，README 的基本命令将其误写为 blackboard.by。仓库包含数据集目录，但其 README 仍是占位说明。本次未复现历史环境或确认数据集完整性；未下载捕获数据、二进制或模型载荷，也未运行上游代码或笔记本。",
+    "evidence_urls": [
+      "https://www.ndss-symposium.org/ndss-paper/binaryinferno-a-semantic-driven-approach-to-field-inference-for-binary-message-formats/",
+      "https://www.ndss-symposium.org/wp-content/uploads/2023/02/ndss2023_s131_paper.pdf",
+      "https://api.crossref.org/works/10.14722/ndss.2023.23131",
+      "https://binaryinferno.net",
+      "https://www.eecs.tufts.edu/~chandler/binaryinferno.html",
+      "https://github.com/binaryinferno/binaryinferno/blob/cb42a63ada74737c10d01e2c22f4502ba3983976/README.md",
+      "https://github.com/binaryinferno/binaryinferno/blob/cb42a63ada74737c10d01e2c22f4502ba3983976/LICENSE",
+      "https://github.com/binaryinferno/binaryinferno/blob/cb42a63ada74737c10d01e2c22f4502ba3983976/binaryinferno/blackboard.py",
+      "https://github.com/binaryinferno/binaryinferno/blob/cb42a63ada74737c10d01e2c22f4502ba3983976/binaryinferno/deconflict.py",
+      "https://github.com/binaryinferno/binaryinferno/blob/cb42a63ada74737c10d01e2c22f4502ba3983976/binaryinferno/rep_parallel.sh",
+      "https://github.com/binaryinferno/binaryinferno/blob/cb42a63ada74737c10d01e2c22f4502ba3983976/dataset/README.md"
+    ],
+    "kind": "research",
+    "verified_at": "2026-10-17",
+    "verification": "source-reviewed",
+    "runtime_tested": false
   }
 ]
