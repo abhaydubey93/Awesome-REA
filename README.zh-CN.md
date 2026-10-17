@@ -182,6 +182,7 @@
 - [Awesome Reverse Engineering](https://github.com/morluto/awesome-reverse-engineering) — REA 维护者整理的通用逆向资源目录，适合查找基础知识与相邻工具。 **[合集]**
 - [Awesome REA Cases](https://github.com/songshikang0111/awesome-REA-cases) — 中英双语的 REA 与其他 AI 辅助逆向案例合集，附来源并区分作者报告、进行中的工作和复现状态。 **[合集]**
 - [awesome-rea（yibie）：关注验证的项目与实践报告](https://github.com/yibie/awesome-rea) — 围绕明确的验收检查整理 AI 辅助游戏反编译、原生移植、静态重编译和工具，并另设实践文章与讨论分类。适合寻找一手报告，比较不同项目如何定义正确性。 **[合集]**
+- [Awesome REA/Decompiled Games：按游戏组织的重建项目目录](https://github.com/HaozheH3/awesome-rea-games) — 按原游戏整理反编译、源码重建、重编译、原生移植和演示，通过对照表链接相关项目，并区分启动器、引擎工作、作者分享的展示与源码重建成果。 **[合集]**
 
 <a id="references-and-learning"></a>
 ### References & Learning · 文档与学习资料
