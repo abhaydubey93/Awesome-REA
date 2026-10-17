@@ -131,7 +131,8 @@ function setup(query, {curatedProtocol = true, sourceProtocol = true, pathname =
     const linked = setup(`?lang=${lang}`); await linked.api.load();
     const card = linked.elements.get('#resource-grid').children[0];
     const details = card.children.find(child => child.className === 'requirements');
-    const metadata = details.children.find(child => child.className === 'resource-detail-meta');
+    assert(!details.open); // The full entry is available without expanding requirements.
+    const metadata = card.children.find(child => child.className === 'card-meta');
     const entry = metadata.children.find(child => child.className === 'resource-entry-link');
     assert.equal(entry.href, `${lang === 'zh' ? '/zh' : ''}/resources/fixture-0/`);
     assert.equal(entry.target, undefined); // Navigation stays on the collection website.
