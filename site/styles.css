@@ -158,6 +158,9 @@ html[lang="zh-CN"] .collection-intro h1{letter-spacing:-.6px}
 .empty-state{padding:50px 24px;border:1px dashed var(--strong);border-radius:12px;background:var(--soft);text-align:center}
 .empty-state h3{margin:0 0 10px;font-size:23px;letter-spacing:-.4px}
 .empty-state p{margin:0 0 23px;font-size:15px;color:var(--muted)}
+.empty-state-actions{display:flex;justify-content:center;align-items:center;flex-wrap:wrap;gap:12px}
+.empty-state-actions .button{max-width:100%;white-space:normal;overflow-wrap:anywhere}
+.empty-state .empty-repositories-note{margin:16px 0 0;font-size:14px;line-height:1.7}
 .load-more-row{text-align:center;margin-top:32px}
 .load-more-row .button>.icon{transform:rotate(90deg)}
 .load-more-row .button>.mono{font-size:12px;color:var(--muted)}

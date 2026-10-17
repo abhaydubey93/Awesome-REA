@@ -62,7 +62,9 @@ function setup(query, {curatedProtocol = true, sourceProtocol = true, pathname =
   vm.runInContext(script.replace('applyLanguage(); load();', '') + '\nglobalThis.audit = {state,sourceState,load,loadSources,filtered,sourceFiltered,applyLanguage,reset,resetSources,setIndexMode,sourceRelatedEntries};', context);
   return {api: context.audit, context, elements, buttons, protocolLabels, repositoryLinks, requests};
 }
-(async () => {
+module.exports = {setup};
+
+if (require.main === module) (async () => {
   for (const lang of ['en', 'zh']) {
     const app = setup(`?view=curated&target=protocol&source-target=protocol&lang=${lang}`);
     await app.api.load();
