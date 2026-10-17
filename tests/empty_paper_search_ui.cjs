@@ -60,7 +60,7 @@ const tests = {
       assert.equal(Object.hasOwn(link.handlers, 'click'), false, 'native links must not mutate homepage state or steal focus');
       assert.equal(destination(app).pathname, lang === 'zh' ? '/zh/papers/' : '/papers/');
       assert.equal(destination(app).search, '?q=DeGPT');
-      assert.equal(destination(app).hash, '', 'homepage fragment and unrelated filters do not apply to papers');
+      assert.equal(destination(app).hash, '#paper-search', 'land at the paper search instead of retaining the homepage fragment');
       assert.deepEqual(targetState(app), {q: 'DeGPT', target: 'all', status: 'all', year: 'all'});
       assert(papers.filter(paper => paperSearch.matches(paper, targetState(app))).some(paper => paper.id === 'paper-degpt'));
       const before = {url: app.context.location.href, q: app.api.state.q, sourceq: app.api.sourceState.q,

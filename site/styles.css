@@ -381,13 +381,15 @@ html[data-layout="compact"] .collection-home .resource-card,html[data-layout="co
 html[data-layout="compact"] .collection-home .resource-card:hover,html[data-layout="compact"] .collection-home .source-card:hover{background:#fcfcfe;box-shadow:none}
 html[data-layout="compact"] .collection-home .card-heading,html[data-layout="compact"] .collection-home .source-card-head{grid-area:heading;display:flex;flex-wrap:wrap;justify-content:flex-start;align-items:baseline;gap:6px 12px}
 html[data-layout="compact"] .collection-home .card-heading h3,html[data-layout="compact"] .collection-home .source-card-head h3{flex:0 1 auto;font-size:18px;line-height:1.5;font-weight:700;text-wrap:pretty}
-html[data-layout="compact"] .collection-home .resource-kind,html[data-layout="compact"] .collection-home .source-stars{display:inline-block;margin:0;font-size:12px;padding:2px 7px}
-html[data-layout="compact"] .collection-home .card-description,html[data-layout="compact"] .collection-home .source-card-description{grid-area:description;margin:0;font-size:16px;line-height:1.75;max-width:80ch;text-wrap:pretty}
+html[data-layout="compact"] .collection-home .resource-kind,html[data-layout="compact"] .collection-home .source-stars{display:inline-block;margin:0;font-size:13px;padding:2px 7px}
+html[data-layout="compact"] .collection-home .card-description,html[data-layout="compact"] .collection-home .source-card-description{grid-area:description;margin:0;font-size:16px;line-height:1.75;max-width:70ch;text-wrap:pretty}
 html[data-layout="compact"] .collection-home .card-meta,html[data-layout="compact"] .collection-home .source-card-footer{grid-area:meta;display:flex;flex-direction:column;align-items:flex-start;gap:6px 16px;font-size:14px;line-height:1.65}
 html[data-layout="compact"] .collection-home .source-card-license{font-size:14px}
 html[data-layout="compact"] .collection-home .requirements,html[data-layout="compact"] .collection-home .source-record-details{grid-area:details;margin:0;padding:0;border:0}
 html[data-layout="compact"] .collection-home .requirements summary,html[data-layout="compact"] .collection-home .source-record-details summary{font-size:14px;line-height:1.65;padding:5px 0;color:var(--link)}
-html[data-layout="compact"] .collection-home .requirements[open],html[data-layout="compact"] .collection-home .source-record-details[open]{grid-area:auto;grid-column:1/-1;border-top:1px solid var(--line);padding-top:10px;margin-top:8px}
+html[data-layout="compact"] .collection-home .requirements[open],html[data-layout="compact"] .collection-home .source-record-details[open]{grid-area:auto;grid-column:1/-1;border:1px solid var(--line);border-radius:8px;background:var(--soft);padding:12px 18px;margin-top:8px}
+html[data-layout="compact"] .collection-home .requirements[open] ul{color:var(--body)}
+html[data-layout="compact"] .collection-home .source-record-details[open] dl{max-width:76ch;color:var(--body)}
 html[data-layout="compact"] .collection-home .source-card>.source-related,html[data-layout="compact"] .collection-home .source-card>.source-topics{display:none}
 html[data-layout="compact"] .source-compact-context{display:block;margin-top:14px}
 .source-compact-topics{font-size:14px;line-height:1.7;overflow-wrap:anywhere;margin:0 0 14px}
@@ -417,7 +419,7 @@ html[data-layout="compact"] .collection-home .detail-label-compact{display:inlin
 @media(min-width:701px){
   html[data-layout="compact"] .collection-home .requirements:not([open]),html[data-layout="compact"] .collection-home .source-record-details:not([open]){align-self:start}
 }
-html[lang="zh-CN"][data-layout="compact"] .collection-home .card-description,html[lang="zh-CN"][data-layout="compact"] .collection-home .source-card-description{max-width:42em;line-height:1.85}
+html[lang="zh-CN"][data-layout="compact"] .collection-home .card-description,html[lang="zh-CN"][data-layout="compact"] .collection-home .source-card-description{max-width:38em;line-height:1.85}
 
 /* Contrast themes replace backgrounds and shadows, so selected states and primary buttons use system colors.
    Selected controls opt out of the text backplate, which would otherwise hide HighlightText. */

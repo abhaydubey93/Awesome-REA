@@ -83,6 +83,17 @@ The website uses **Cloudflare Pages**. Keep this collection's source public; `Aw
 
 For automatic deployment, connect the public source repository through Pages Git integration, select the production branch, use the asset-URL build command above, and set the output directory to `dist`. The build starts at the repository root and needs Python 3.10+. Git integration can build and deploy pushed changes without storing a separate deployment token in this repository. Confirm the deployed commit and domain state after configuring the integration. [Official Git integration instructions](https://developers.cloudflare.com/pages/get-started/git-integration/).
 
+The canonical host is `awesomerea.org`. The Cloudflare Single Redirect named **Canonical www to apex** matches `(http.host eq "www.awesomerea.org")` and returns **301** with the dynamic target `concat("https://awesomerea.org", http.request.uri.path)` and **Preserve query string** enabled. Keep the existing `www` DNS record proxied so the rule runs. This hostname rule is configured at the Cloudflare edge; Pages `_redirects` does not support host matching. [Single Redirects](https://developers.cloudflare.com/rules/url-forwarding/single-redirects/), [Pages domain redirect guidance](https://developers.cloudflare.com/pages/how-to/www-redirect/).
+
+Include these checks after deployment or domain changes:
+
+```sh
+curl --head --silent 'https://www.awesomerea.org/papers/?x=1'
+curl --location --silent --output /dev/null --write-out '%{http_code} %{url_effective} %{num_redirects}\n' 'http://www.awesomerea.org/'
+```
+
+The first request should return `301` and `location: https://awesomerea.org/papers/?x=1`. The second should end at `https://awesomerea.org/` with `200` in at most two redirects. Also check a localized path and repeated or encoded query parameters, and confirm the corresponding apex page still returns `200` without a hostname redirect.
+
 [site/_headers](../site/_headers) adds site-wide security headers: a Content Security Policy, `X-Frame-Options: DENY`, a Permissions Policy that disables unused device features, and HSTS with a 30-day `max-age`. The policy allows only same-origin scripts, styles, images and JSON requests, plus the icon stylesheet and fonts from `https://awesome-rea.pages.dev`; `validate_site.py` fails the build if a page adds inline code, inline styles, frames or another asset origin. Cloudflare's same-origin email-decoding script is allowed, and so is Cloudflare Web Analytics, which the edge injects only on the production domain (its beacon from `https://static.cloudflareinsights.com` and its reports to `https://cloudflareinsights.com`); `validate_site.py` keeps both origins in the policy because built pages never show the beacon. Enabling Zaraz, JavaScript detections or any other injected script requires updating the policy first. `includeSubDomains` and `preload` need an owner decision about every subdomain before they are added.
 
 ## Direct Upload for the icon origin or a manual deployment
@@ -114,5 +125,7 @@ After deployment, verify the returned deployment URL, then confirm the custom-do
 The build writes an English homepage at `/` and a complete Chinese homepage at `/zh/`. Each has its own canonical URL, localized title and description, and reciprocal `hreflang` links. Both routes appear in the sitemap. The language control preserves query filters and the current fragment when moving between these routes; existing `?lang=zh` links remain readable.
 
 Homepage navigation and featured collection links are ordinary HTML links, available before JavaScript runs. Search uses the curated catalog by default; `?view=source-index` explicitly opens the automated repository index. Both views share the contributor credits. Font Awesome Pro continues to load through the configured authorized asset origin; no licensed font binaries are committed.
+
+When a nonblank curated query has no matches, readers can continue with the same query in the active language's paper directory or the available repository index. The paper link opens the existing bibliography search; the repository action retains its automatic-index label. Offering these actions does not fetch either collection or promise a match.
 
 The interactive catalog defaults to a compact list. The Layout control switches between compact rows and cards without rebuilding results, so expanded details and current filters stay in place. `?layout=cards` shares the card layout; omitting it uses the compact list. The choice travels with language links. Compact repository rows keep related entries and clickable topics inside Details; descriptions remain complete at the same reading size.
