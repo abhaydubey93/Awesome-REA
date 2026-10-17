@@ -20,7 +20,7 @@
 
 **论文与更多资源**
 
-- [论文](#papers) (40) · [全部案例](https://awesomerea.org/zh/?view=curated&kind=case-study) (46) · [仓库索引](#完整仓库索引) (2,846)
+- [论文](#papers) (42) · [全部案例](https://awesomerea.org/zh/?view=curated&kind=case-study) (46) · [仓库索引](#完整仓库索引) (2,846)
 - [Agent 与 MCP](#agents-and-mcp) (18) · [相关合集](#related-collections) (4) · [学习资料](#references-and-learning) (17)
 <!-- END GENERATED CONTENTS -->
 
@@ -795,11 +795,11 @@
 <a id="papers"></a>
 ## 论文
 
-收录 **40 篇论文**，涵盖逆向工程智能体评测、反编译、协议推断、固件分析，以及网站、游戏和应用重建。部分论文也出现在精选资源目录中，两者数量不可相加。发表状态与研究范围分别标注，中文标题为译名。
+收录 **42 篇论文**，涵盖逆向工程智能体评测、反编译、协议推断、固件分析，以及网站、游戏和应用重建。部分论文也出现在精选资源目录中，两者数量不可相加。发表状态与研究范围分别标注，中文标题为译名。
 
 [浏览论文目录](https://awesomerea.org/zh/papers/) · [完整书目 JSON](data/papers.json) · [推荐论文](https://github.com/reacher-z/Awesome-REA/issues/new?template=paper.yml)
 
-**按主题** · [智能体评测](#papers-agent-evaluation) (5) · [反编译](#papers-decompilation) (7) · [网站](#papers-website-reconstruction) (12) · [游戏](#papers-game-reconstruction) (6) · [应用](#papers-app-reconstruction) (5) · [固件](#papers-firmware-analysis) (2) · [协议](#papers-protocol-analysis) (3)
+**按主题** · [智能体评测](#papers-agent-evaluation) (5) · [反编译](#papers-decompilation) (7) · [网站](#papers-website-reconstruction) (12) · [游戏](#papers-game-reconstruction) (6) · [应用](#papers-app-reconstruction) (5) · [固件](#papers-firmware-analysis) (3) · [协议](#papers-protocol-analysis) (4)
 
 展开各条目的“范围与发表信息”可查看完整研究边界；以下按年份从新到旧排列。
 
@@ -1388,10 +1388,40 @@
 
   </details>
 
+- [**HALucinator：通过抽象层仿真实现固件重托管**](https://www.usenix.org/conference/usenixsecurity20/presentation/clements) · **2020 · 会议论文**
+
+  HALucinator 识别单体 ARM Cortex-M 固件中的硬件抽象库函数，并用人工编写的 Python 处理函数和外设模型替换它们，从而重托管固件。LibMatch 定位库接口；QEMU/Avatar2 实现支持交互式输入输出，与论文关联的 HAL-fuzz 变体则使用 AFL-Unicorn 进行模糊测试。
+
+  [PDF](https://www.usenix.org/system/files/sec20-clements.pdf) · [代码](https://github.com/embedded-sec/halucinator) · [完整条目与引用](https://awesomerea.org/zh/papers/paper-halucinator/)
+
+  <details>
+  <summary>范围与发表信息</summary>
+
+  **范围与限制:** LibMatch 需要可获取的硬件抽象层或库，以及足够相似的编译环境；编译器差异与内联会限制匹配效果。重托管还需要 QEMU 支持的架构、固件内存布局、拦截地址及人工编写的处理函数和模型。未建模的直接硬件访问可能在读取时返回零、在写入时被忽略；简化的时序与外设行为不能证明硬件等价。作者的重托管与模糊测试演示不代表普遍覆盖所有固件、完整重建设备或恢复原始源代码。
+
+  **发表信息:** 2020 · USENIX Security 2020 · 会议论文 · Abraham A Clements 等
+
+  </details>
+
 <a id="papers-protocol-analysis"></a>
 ### 协议推断与分析
 
 [↑ 论文主题](#papers) · [目录](#目录)
+
+- [**越仔细观察，学到的越多：用于协议状态机学习的灰盒方法**](https://doi.org/10.1145/3548606.3559365) · **2022 · 会议论文**
+
+  StateInspector 将主动消息查询与运行时内存快照结合起来，学习协议的 Mealy 状态机，无需目标实现的源代码。它识别可能决定状态的堆内存位置，并通过污点分析与混合执行合并状态；作者在 TLS 1.2 和 WPA/2 实现上进行了评估。
+
+  [PDF](https://tomchothia.gitlab.io/Papers/greyboxstatelearning_ccs2022.pdf) · [代码](https://github.com/ChrisMcMStone/state-inspector) · [完整条目与引用](https://awesomerea.org/zh/papers/paper-stateinspector/)
+
+  <details>
+  <summary>范围与发表信息</summary>
+
+  **范围与限制:** 假设协议可抽象为有限 Mealy 状态机、已知输入字母表能到达相关状态，且决定状态的内存位于堆上并可由初始化查询触及。状态合并依赖所配置的搜索深度与符号执行前瞻上限。缺失的输入或存储在其他位置的状态可能导致行为未被建模；测试驱动程序构造的错误消息、响应抽象方式和超时也可能产生误导性转移。学习出的模型与有界检查不能证明实现完全等价，也不恢复未知消息格式或重建应用源代码。
+
+  **发表信息:** 2022 · ACM CCS 2022 · 会议论文 · Chris McMahon Stone 等
+
+  </details>
 
 - [**NetPlier：基于报文记录的概率网络协议逆向工程**](https://www.ndss-symposium.org/ndss-paper/netplier-probabilistic-network-protocol-reverse-engineering-from-message-traces/) · **2021 · 会议论文**
 
