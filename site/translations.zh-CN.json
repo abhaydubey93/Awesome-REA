@@ -1039,5 +1039,55 @@
       "作者将部分架构追踪明确归于 Codex，并引用既有 feishu-clone 工作；不能把结果完全归功于 REA。",
       "原文件哈希/签名和进程/数据隔离检查属于作者报告。本案例不证明后续版本兼容性、厂商认可或补丁应用再分发权利。"
     ]
+  },
+  "zelda64recomp-case": {
+    "name": "Zelda 64: Recompiled：无需完整源码反编译的《姆吉拉的假面》原生移植",
+    "requirements": [
+      "所审阅版本接受用户自备的美版 Nintendo 64《姆吉拉的假面》ROM，不附带游戏素材。《时之笛》支持仍在计划中；它不是可运行任意 ROM 的模拟器。",
+      "运行时显卡需支持带 Shader Model 6 的 Direct3D 12.0、Vulkan 1.2 或 Metal Argument Buffers Tier 2；x86-64 需要 SSE4.1。README 列出的 Mac 条件为 macOS 13.0+，配备 Apple Silicon 或第 7 代 Intel CPU。",
+      "源码构建还需要子模块、CMake 3.20+、C++20 工具链、N64Recomp/RSPRecomp 以及指定的解压后 ROM。构建指南列出 SDL2 和平台依赖；正常游玩使用标准 ROM。",
+      "项目记录高帧率、宽屏、镜头和存档增强功能，同时列出叠加层与过场动画问题。这些是项目方描述，本合集未重新验证保真度或性能。",
+      "项目采用 GPLv3；原游戏内容和依赖保留各自条款。团队声明不使用生成式 AI，并禁止以任何方式使用生成式 AI 工具的贡献；这不是 REA 辅助案例。"
+    ]
+  },
+  "opengoal-jak-case": {
+    "name": "OpenGOAL：恢复 GOAL 代码并重建 Jak 系列游戏",
+    "requirements": [
+      "需要用户自备原版 PS2 游戏及提取出的素材。README 涵盖 PAL、NTSC、NTSC-J 零售版和 Greatest Hits 版，不涵盖后来的 PS3/PS4/PS5 版本。",
+      "固定版本 README 将 Jak 1 列为完成、Jak 2 列为仍有问题的测试版，并称 Jak 3 尚有大量工作。这些是不同里程碑，不表示整个三部曲都已完成。",
+      "受支持的运行时为 Windows、Linux 和 macOS 上的 x86-64 版本。macOS 指南要求 Apple Silicon 使用 Rosetta 2，并列出 macOS Sequoia；原生 ARM64 构建仍属实验性且不受支持。项目没有移动版计划。",
+      "开发需要 C++20、CMake、NASM 和平台库，再执行项目的素材提取与 GOAL 编译流程。文档中的 task 命令需要相应任务运行器；运行时代码编辑属于开发功能。",
+      "项目自身工作采用 ISC 许可；原游戏素材和第三方组件保留各自权利。未证实 REA 参与，本合集未构建或运行游戏。"
+    ]
+  },
+  "lego-island-decomp-case": {
+    "name": "LEGO Island：源码重建与单独记录的精确重构建",
+    "requirements": [
+      "精确核对需要用户自备匹配的英文 1.1 版 CONFIG.EXE、ISLE.EXE 和 LEGO1.DLL，以及原 Visual C++ 4.2 工具链、Python 3.11+、Git 和 ReproBit；Linux/macOS 还需要 Wine。",
+      "固定版本 README 报告从头构建后，三个零售版二进制均逐字节一致。本合集核对了这一报告描述，没有执行 ReproBit 或独立复现结果。",
+      "普通 CMake 路径用于开发，并非发行版验证路径。此仓库只面向 32 位 Windows；跨平台及 Web 支持属于 isle-portable。",
+      "运行重构建的可执行文件仍需要原安装中的游戏数据和文档指定的数据路径。README 提醒较新的 Windows 可能还需要 d3drm.dll。",
+      "仓库采用 LGPLv3；原游戏数据和工具链的权利另行保留。未证实 REA 参与，本次审阅未下载原二进制或游戏素材。"
+    ]
+  },
+  "snowball-war-rea-case": {
+    "name": "Snowball War：范围明确的 REA 辅助小游戏重建",
+    "requirements": [
+      "需要用户自备匹配的 DOS/EGA 游戏文件，并用 Python 3 提取素材。Linux 构建使用 Rust stable（作者测试版本为 1.93）、Cargo 和 SDL2 开发库；Cargo.toml 指定 SDL2 绑定版本 0.37。",
+      "报告中的分析在解开 EXEPACK 后，通过 REA CLI 使用 Ghidra 12.1.4 和 JDK 21。调用者提供的函数与代码种子属于调用者断言，并非 Ghidra 独立发现。",
+      "只重建 Snowball War，不涵盖其他比赛项目或原引擎；菜单为新写，特写动画也被有意限制在雪堡区域，没有复现原版全部出现位置。",
+      "帧率近似为 35 Hz，原伪随机算法未恢复，暂停与退出按键属于近似实现，声音播放尚未实现。游戏机制测试和静态证据不能替代文档明确缺失的原 DOS 游戏运行对照。",
+      "固定版本 LICENSE.md 与 Cargo.toml 提供 MIT OR Apache-2.0 双许可，README 的许可句仅提到 MIT。原美术与音频须另行提取；本合集未运行游戏或测试。"
+    ]
+  },
+  "space-cadet-pinball-case": {
+    "name": "SpaceCadetPinball：将反编译游戏逻辑适配到 SDL2",
+    "requirements": [
+      "需要另行提供原游戏资源。项目支持 Windows 与 Full Tilt 版本的资源数据，发行包不提供这些素材。",
+      "主项目面向桌面 Windows、Linux 和 macOS。列表中的主机、移动端和浏览器移植指向其他项目，不代表此仓库具有同样的平台支持。",
+      "源码构建需要 C++11、CMake、SDL2 和 SDL2_mixer。README 给出 Visual Studio、GCC/Clang 和 Xcode 构建路径，macOS 可选择 x86_64 或 arm64。",
+      "README 报告所有子程序均已反编译并转为 C++；这不等于独立核验过逐字节一致重构建。Full Tilt 的功能完善及其另外两张球桌的潜在支持仍是单独计划。",
+      "此仓库采用 MIT 许可；原游戏资源和依赖保留各自条款。未证实 REA 使用，本合集未运行游戏、编译器或外部移植项目。"
+    ]
   }
 }

@@ -1219,5 +1219,146 @@
       "app"
     ],
     "kind": "case-study"
+  },
+  {
+    "id": "zelda64recomp-case",
+    "name": "Zelda 64: Recompiled — a native Majora’s Mask port without a full source decompilation",
+    "url": "https://github.com/Zelda64Recomp/Zelda64Recomp",
+    "category": "reconstruction-cases",
+    "relationship": "independent-reconstruction",
+    "description_en": "Uses N64Recomp to translate Majora’s Mask into a native application and RT64 for rendering. The project separates static recompilation from source decompilation while reusing decompilation headers and selected functions for patches and enhancements.",
+    "description_zh": "通过 N64Recomp 将《姆吉拉的假面》转为原生应用，并使用 RT64 渲染。项目区分静态重编译与源码反编译，同时借用反编译项目的头文件和部分函数实现补丁与增强功能。",
+    "evidence_url": "https://github.com/Zelda64Recomp/Zelda64Recomp/blob/b65c482ed672258eb684ab94a4e8c8aa662615ee/README.md",
+    "verified_at": "2026-10-17",
+    "verification": "source-reviewed",
+    "requirements": [
+      "The reviewed build accepts the US Nintendo 64 Majora’s Mask ROM supplied by the user; game assets are not included. Ocarina of Time remains planned, and this is not an emulator for arbitrary ROMs.",
+      "Runtime graphics require Direct3D 12.0 with Shader Model 6, Vulkan 1.2, or Metal Argument Buffers Tier 2. x86-64 needs SSE4.1; the README lists macOS 13.0+ with Apple Silicon or a 7th-generation Intel CPU.",
+      "Source builds additionally require submodules, CMake 3.20+, C++20 tooling, N64Recomp/RSPRecomp and the specified decompressed ROM. The build guide lists SDL2 and platform dependencies; ordinary play uses the standard ROM.",
+      "The project documents high-frame-rate, widescreen, camera and save enhancements, plus overlay and cutscene issues. These are project claims, not independently rerun fidelity or performance checks.",
+      "GPLv3 project license; original game content and dependencies retain separate terms. The team states that it does not use generative AI and bans contributions using GenAI tooling in any capacity; this is not an REA-assisted case."
+    ],
+    "targets": [
+      "game"
+    ],
+    "kind": "case-study",
+    "additional_evidence_urls": [
+      "https://github.com/Zelda64Recomp/Zelda64Recomp/blob/b65c482ed672258eb684ab94a4e8c8aa662615ee/CMakeLists.txt",
+      "https://github.com/Zelda64Recomp/Zelda64Recomp/blob/b65c482ed672258eb684ab94a4e8c8aa662615ee/COPYING",
+      "https://github.com/Zelda64Recomp/Zelda64Recomp/blob/b65c482ed672258eb684ab94a4e8c8aa662615ee/BUILDING.md",
+      "https://github.com/Zelda64Recomp/Zelda64Recomp/blob/b65c482ed672258eb684ab94a4e8c8aa662615ee/CONTRIBUTING.md"
+    ]
+  },
+  {
+    "id": "opengoal-jak-case",
+    "name": "OpenGOAL: recovering GOAL code and rebuilding the Jak games",
+    "url": "https://github.com/open-goal/jak-project",
+    "category": "reconstruction-cases",
+    "relationship": "independent-reconstruction",
+    "description_en": "Reconstructs readable GOAL code from the original Jak binaries and compiles it with a new GOAL compiler for modern PCs. Its workflow combines a specialized decompiler, manually supplied type information, asset extraction and an interactive development runtime.",
+    "description_zh": "从 Jak 原二进制重建可读的 GOAL 代码，再用新编写的 GOAL 编译器为现代 PC 编译。流程结合专用反编译器、人工补充的类型信息、素材提取和交互式开发运行时。",
+    "evidence_url": "https://github.com/open-goal/jak-project/blob/32c3cf73970f885c0a588623208232db72a74a58/README.md",
+    "verified_at": "2026-10-17",
+    "verification": "source-reviewed",
+    "requirements": [
+      "Requires the user’s original PS2 game copy and extracted assets. The README covers retail PAL, NTSC and NTSC-J editions, including Greatest Hits, and excludes later PS3/PS4/PS5 releases.",
+      "The pinned README reports Jak 1 as complete, Jak 2 as beta with remaining issues, and substantial work still needed for Jak 3. These are distinct milestones, not a claim that the entire trilogy is finished.",
+      "The supported runtime is x86-64 on Windows, Linux and macOS. The macOS guide requires Rosetta 2 on Apple Silicon and lists macOS Sequoia; native ARM64 builds are experimental and unsupported. No mobile release is planned.",
+      "Development uses C++20, CMake, NASM and platform libraries, then the project’s asset-extraction and GOAL compilation steps. The documented task commands need the corresponding task runner; runtime code editing is a development feature.",
+      "ISC license for project work; original game assets and third-party components retain their own rights. REA involvement is not established, and this catalog did not build or run the games."
+    ],
+    "targets": [
+      "game"
+    ],
+    "kind": "case-study",
+    "additional_evidence_urls": [
+      "https://github.com/open-goal/jak-project/blob/32c3cf73970f885c0a588623208232db72a74a58/CMakeLists.txt",
+      "https://github.com/open-goal/jak-project/blob/32c3cf73970f885c0a588623208232db72a74a58/LICENSE",
+      "https://github.com/open-goal/jak-project/blob/32c3cf73970f885c0a588623208232db72a74a58/docs/setup/system/linux.md",
+      "https://github.com/open-goal/jak-project/blob/32c3cf73970f885c0a588623208232db72a74a58/docs/setup/system/macos.md"
+    ]
+  },
+  {
+    "id": "lego-island-decomp-case",
+    "name": "LEGO Island: source reconstruction with separately reported exact rebuilds",
+    "url": "https://github.com/isledecomp/isle",
+    "category": "reconstruction-cases",
+    "relationship": "independent-reconstruction",
+    "description_en": "Reconstructs the English LEGO Island 1.1 source for its original 32-bit Windows target. The project distinguishes function-comparison reports, ReproBit’s reported byte-identical retail rebuilds and ordinary developer builds; its modern portable adaptation is a separate repository.",
+    "description_zh": "针对英文版 LEGO Island 1.1 的原始 32 位 Windows 目标重建源码。项目区分函数对比报告、ReproBit 报告的零售版逐字节一致重构建，以及普通开发构建；现代跨平台适配位于另一仓库。",
+    "evidence_url": "https://github.com/isledecomp/isle/blob/8119bd013645972c72480e4de21529f1e91ce5c7/README.md",
+    "verified_at": "2026-10-17",
+    "verification": "source-reviewed",
+    "requirements": [
+      "Exact verification requires the user’s matching English 1.1 CONFIG.EXE, ISLE.EXE and LEGO1.DLL, the original Visual C++ 4.2 toolchain, Python 3.11+, Git and ReproBit; Linux/macOS also need Wine.",
+      "The pinned README reports a cold rebuild matching all three retail binaries byte for byte. This catalog reviewed that report description and did not execute ReproBit or independently reproduce the result.",
+      "The ordinary CMake path is for development and is not the release-verification path. This repository targets 32-bit Windows only; cross-platform and Web support belongs to isle-portable.",
+      "Running the rebuilt executables still requires the original installed game data and the documented data paths. The README notes that d3drm.dll may also be needed on newer Windows systems.",
+      "The repository carries the LGPLv3 license; original game data and toolchain rights remain separate. REA involvement is not established, and no original binaries or game assets were downloaded for this review."
+    ],
+    "targets": [
+      "game"
+    ],
+    "kind": "case-study",
+    "additional_evidence_urls": [
+      "https://github.com/isledecomp/isle/blob/8119bd013645972c72480e4de21529f1e91ce5c7/CMakeLists.txt",
+      "https://github.com/isledecomp/isle/blob/8119bd013645972c72480e4de21529f1e91ce5c7/LICENSE"
+    ]
+  },
+  {
+    "id": "snowball-war-rea-case",
+    "name": "Snowball War: a bounded REA-assisted minigame reconstruction",
+    "url": "https://github.com/tuunanet/rea-ski-or-die-reconstruction",
+    "category": "community-case-studies",
+    "relationship": "community-reported-mixed-workflow",
+    "description_en": "The author uses REA’s Ghidra workflow to investigate the DOS Ski or Die binary, document Snowball War rules and rebuild that one minigame in Rust with SDL2. The public notes distinguish recovered tables and mechanics from approximations and deliberate presentation changes.",
+    "description_zh": "作者通过 REA 的 Ghidra 工作流调查 DOS 版 Ski or Die 二进制，记录 Snowball War 的规则，再用 Rust 与 SDL2 重建这一小游戏。公开笔记区分恢复的数据表和机制、近似实现以及有意调整的表现效果。",
+    "evidence_url": "https://github.com/tuunanet/rea-ski-or-die-reconstruction/blob/0eac0671c90e21a16e663da7772b60710101ef7f/README.md",
+    "verified_at": "2026-10-17",
+    "verification": "source-reviewed",
+    "requirements": [
+      "Requires the user’s matching DOS/EGA game files and Python 3 for asset extraction. The Linux build uses Rust stable (author-tested with 1.93), Cargo and SDL2 development libraries; Cargo.toml specifies the SDL2 binding 0.37.",
+      "The reported analysis used Ghidra 12.1.4 and JDK 21 through the REA CLI after unpacking EXEPACK. Caller-supplied function/code seeds are assertions, not independent discoveries by Ghidra.",
+      "Only Snowball War is reconstructed. Other events and the original engine are excluded; menus are new, and the close-up animation is deliberately restricted to the fort zone rather than reproducing every original placement.",
+      "The frame rate is approximated at 35 Hz, the original PRNG was not recovered, pause/exit keys are approximations, and audio playback is missing. Gameplay tests and static evidence do not replace the explicitly absent side-by-side comparison with the running DOS original.",
+      "The pinned LICENSE.md and Cargo.toml offer MIT OR Apache-2.0, while the README’s license sentence mentions MIT only. Original art/audio must be extracted separately; no game or test was run for this catalog."
+    ],
+    "targets": [
+      "game"
+    ],
+    "kind": "case-study",
+    "additional_evidence_urls": [
+      "https://github.com/tuunanet/rea-ski-or-die-reconstruction/blob/0eac0671c90e21a16e663da7772b60710101ef7f/Cargo.toml",
+      "https://github.com/tuunanet/rea-ski-or-die-reconstruction/blob/0eac0671c90e21a16e663da7772b60710101ef7f/LICENSE.md",
+      "https://github.com/tuunanet/rea-ski-or-die-reconstruction/blob/0eac0671c90e21a16e663da7772b60710101ef7f/docs/reverse-engineering-notes.md",
+      "https://github.com/tuunanet/rea-ski-or-die-reconstruction/blob/0eac0671c90e21a16e663da7772b60710101ef7f/tests/gameplay.rs"
+    ]
+  },
+  {
+    "id": "space-cadet-pinball-case",
+    "name": "SpaceCadetPinball: decompiled game logic adapted to SDL2",
+    "url": "https://github.com/k4zmu2a/SpaceCadetPinball",
+    "category": "reconstruction-cases",
+    "relationship": "independent-reconstruction",
+    "description_en": "Converts the reverse-engineered Space Cadet pinball game into compilable C++ for desktop platforms. The README identifies the Windows XP executable and public PDB, a Full Tilt executable, and the work of recovering structures, naming variables and adapting the decompiled routines.",
+    "description_zh": "将逆向分析后的 Space Cadet 弹球游戏转为可编译的 C++，面向桌面平台。README 标明 Windows XP 可执行文件及公开 PDB、Full Tilt 可执行文件，并描述恢复结构、命名变量和适配反编译例程的工作。",
+    "evidence_url": "https://github.com/k4zmu2a/SpaceCadetPinball/blob/cb9b7b886244a27773f66b0b19fdc2998392565e/README.md",
+    "verified_at": "2026-10-17",
+    "verification": "source-reviewed",
+    "requirements": [
+      "Requires original game resources supplied separately. The project supports resource data from Windows and Full Tilt editions; its releases do not supply those assets.",
+      "The main project targets desktop Windows, Linux and macOS. Its list of console, mobile and browser ports points to separate projects and does not establish identical support in this repository.",
+      "Source builds require C++11, CMake, SDL2 and SDL2_mixer. The README gives Visual Studio, GCC/Clang and Xcode build paths, including x86_64 or arm64 selection on macOS.",
+      "The README reports that all subroutines were decompiled and converted to C++; this is not an independently checked byte-identical rebuild. Full Tilt feature work and possible support for its other two tables remain separate plans.",
+      "MIT license for this repository; original game resources and dependencies retain their own terms. REA use is not established; no game, compiler or external port was run for this catalog."
+    ],
+    "targets": [
+      "game"
+    ],
+    "kind": "case-study",
+    "additional_evidence_urls": [
+      "https://github.com/k4zmu2a/SpaceCadetPinball/blob/cb9b7b886244a27773f66b0b19fdc2998392565e/CMakeLists.txt",
+      "https://github.com/k4zmu2a/SpaceCadetPinball/blob/cb9b7b886244a27773f66b0b19fdc2998392565e/LICENSE"
+    ]
   }
 ]

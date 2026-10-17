@@ -11,9 +11,9 @@ An independent, source-reviewed collection. Review does not imply runtime verifi
 ## Contents
 
 <!-- BEGIN GENERATED CONTENTS -->
-- **Targets** · [Website](#website) <sub>14</sub> · [Game](#game) <sub>32</sub> · [App](#app) <sub>29</sub> · [Native Binary](#native-binary) <sub>20</sub> · [Firmware & Hardware](#firmware) <sub>10</sub> · [Protocol](#protocol) <sub>7</sub>
+- **Targets** · [Website](#website) <sub>14</sub> · [Game](#game) <sub>37</sub> · [App](#app) <sub>29</sub> · [Native Binary](#native-binary) <sub>20</sub> · [Firmware & Hardware](#firmware) <sub>10</sub> · [Protocol](#protocol) <sub>7</sub>
 
-- [Papers](#papers) <sub>31</sub> · [Cases](https://awesomerea.org/?view=curated&kind=case-study) <sub>32</sub> · [Agents & MCP](#agents-and-mcp) <sub>17</sub> · [Collections](#related-collections) <sub>4</sub> · [Learning](#references-and-learning) <sub>17</sub> · [Repository index](#full-repository-index) <sub>2,864</sub>
+- [Papers](#papers) <sub>33</sub> · [Cases](https://awesomerea.org/?view=curated&kind=case-study) <sub>37</sub> · [Agents & MCP](#agents-and-mcp) <sub>17</sub> · [Collections](#related-collections) <sub>4</sub> · [Learning](#references-and-learning) <sub>17</sub> · [Repository index](#full-repository-index) <sub>2,864</sub>
 <!-- END GENERATED CONTENTS -->
 
 <a id="resource-catalog"></a>
@@ -66,6 +66,11 @@ Browse by purpose, with case studies separated from tools and integrations. Each
 - [**IsaacRecomp: translating Flash game bytecode to native C++**](https://github.com/whylurking/IsaacRecomp) - Translates The Binding of Isaac’s Flash AVM1 bytecode into C++ functions and supplies a native rendering/input runtime. The project reads graphics and audio from the user’s original game and documents deterministic input, headless runs and screenshot regression checks. <sub>Case study · Independent reconstruction</sub>
 - [**Nanolathe: a documented Total Annihilation engine reimplementation**](https://github.com/nanolathe-gg/nanolathe) - Reimplements a Total Annihilation-compatible strategy-game engine in Go, with public file-format research and separate gameplay profiles. It distinguishes intended retail 3.1 behavior from community-patch research and deliberate modern changes, and separates synthetic checks from tests requiring original game data. <sub>Case study · Independent reconstruction</sub>
 - [**TH08: exact-source reconstruction and separately tested ports**](https://github.com/N0zoM1z0/th08) - Reconstructs the original Japanese Touhou 8 version 1.00d against its binary and original compiler, then adapts the recovered code for other platforms. Source presence, strict function matching, whole-executable identity and playable-port checks are recorded as different milestones. <sub>Case study · Independent reconstruction</sub>
+- [**Zelda 64: Recompiled — a native Majora’s Mask port without a full source decompilation**](https://github.com/Zelda64Recomp/Zelda64Recomp) - Uses N64Recomp to translate Majora’s Mask into a native application and RT64 for rendering. The project separates static recompilation from source decompilation while reusing decompilation headers and selected functions for patches and enhancements. <sub>Case study · Independent reconstruction</sub>
+- [**OpenGOAL: recovering GOAL code and rebuilding the Jak games**](https://github.com/open-goal/jak-project) - Reconstructs readable GOAL code from the original Jak binaries and compiles it with a new GOAL compiler for modern PCs. Its workflow combines a specialized decompiler, manually supplied type information, asset extraction and an interactive development runtime. <sub>Case study · Independent reconstruction</sub>
+- [**LEGO Island: source reconstruction with separately reported exact rebuilds**](https://github.com/isledecomp/isle) - Reconstructs the English LEGO Island 1.1 source for its original 32-bit Windows target. The project distinguishes function-comparison reports, ReproBit’s reported byte-identical retail rebuilds and ordinary developer builds; its modern portable adaptation is a separate repository. <sub>Case study · Independent reconstruction</sub>
+- [**Snowball War: a bounded REA-assisted minigame reconstruction**](https://github.com/tuunanet/rea-ski-or-die-reconstruction) - The author uses REA’s Ghidra workflow to investigate the DOS Ski or Die binary, document Snowball War rules and rebuild that one minigame in Rust with SDL2. The public notes distinguish recovered tables and mechanics from approximations and deliberate presentation changes. <sub>Case study · Mixed workflow</sub>
+- [**SpaceCadetPinball: decompiled game logic adapted to SDL2**](https://github.com/k4zmu2a/SpaceCadetPinball) - Converts the reverse-engineered Space Cadet pinball game into compilable C++ for desktop platforms. The README identifies the Windows XP executable and public PDB, a Full Tilt executable, and the work of recovering structures, naming variables and adapting the decompiled routines. <sub>Case study · Independent reconstruction</sub>
 - [**LASRecomp: Link’s Awakening static recompilation**](https://github.com/peiikai/LASRecomp) - A native desktop reconstruction of the 2019 Switch version of Link’s Awakening using static recompilation. The author attributes most code, tooling and reverse-engineering work to Claude Code with human direction and review. <sub>Case study · Independent reconstruction</sub>
 - [**ArkWeb: a two-game movement and collision experiment**](https://github.com/luki-1/ArkWeb) - Runs Spider-Man Remastered and Arkham Knight together, streaming Gotham collision into Spider-Man’s physics world and compositing his rendered frame into Arkham. This experimental runtime bridge is not a recovered standalone game or new engine. <sub>Case study · Independent reconstruction</sub>
 
@@ -261,11 +266,11 @@ Browse by purpose, with case studies separated from tools and integrations. Each
 <a id="papers"></a>
 ## Papers
 
-A bibliography of **31 papers** on reverse-engineering agent evaluation, decompilation, protocol inference, firmware analysis, and website, game, and app reconstruction. Some papers also appear among curated resources; counts are not additive. Publication status and study scope are made explicit.
+A bibliography of **33 papers** on reverse-engineering agent evaluation, decompilation, protocol inference, firmware analysis, and website, game, and app reconstruction. Some papers also appear among curated resources; counts are not additive. Publication status and study scope are made explicit.
 
 [Browse the paper directory](https://awesomerea.org/papers/) · [Complete bibliography JSON](data/papers.json) · [Suggest a paper](https://github.com/reacher-z/Awesome-REA/issues/new?template=paper.yml)
 
-**By topic** · [Agent evaluation](#papers-agent-evaluation) <sub>5</sub> · [Decompilation](#papers-decompilation) <sub>6</sub> · [Websites](#papers-website-reconstruction) <sub>7</sub> · [Games](#papers-game-reconstruction) <sub>4</sub> · [Apps](#papers-app-reconstruction) <sub>5</sub> · [Firmware](#papers-firmware-analysis) <sub>2</sub> · [Protocols](#papers-protocol-analysis) <sub>2</sub>
+**By topic** · [Agent evaluation](#papers-agent-evaluation) <sub>5</sub> · [Decompilation](#papers-decompilation) <sub>6</sub> · [Websites](#papers-website-reconstruction) <sub>8</sub> · [Games](#papers-game-reconstruction) <sub>5</sub> · [Apps](#papers-app-reconstruction) <sub>5</sub> · [Firmware](#papers-firmware-analysis) <sub>2</sub> · [Protocols](#papers-protocol-analysis) <sub>2</sub>
 
 Open “Scope and publication details” for each study’s full limitations. Papers are ordered newest first within each topic.
 
@@ -479,6 +484,21 @@ Open “Scope and publication details” for each study’s full limitations. Pa
 
   </details>
 
+- [**UI2App: Benchmarking Visual Interaction Inference in Executable Web Application Generation**](https://arxiv.org/abs/2607.06306) · **2026 · Preprint**
+
+  UI2App evaluates runnable React/TypeScript applications generated from 600 screenshots across 95 web applications. It separates build executability, visual fidelity and screenshot-implied interaction behavior, including cross-route state, using a reference interaction taxonomy and public evaluation pipeline.
+
+  [PDF](https://arxiv.org/pdf/2607.06306v2) · [Code](https://github.com/chenmancm169/UI2App)
+
+  <details>
+  <summary>Scope and publication details</summary>
+
+  **Scope and limits:** Static screenshots underdetermine behavior; the rubric accepts multiple valid implementations rather than proving equivalence to the original application or backend. Auto IIS judges generated source and screenshots without tool execution; human runtime validation covers a 45-application subset. Cross-route state is not necessarily durable persistence across reloads or sessions. Main results use one generation per application-model pair, with repeated runs on a subset.
+
+  **Publication:** 2026 · arXiv · Preprint · Grace Man Chen et al.
+
+  </details>
+
 - [**Dashboard2Code: Evaluating Multimodal Models on Reconstructing Interactive Dashboards**](https://aclanthology.org/2026.acl-long.1750/) · **2026 · Conference paper**
 
   Evaluates agents that actively explore a running dashboard and reconstruct its appearance and interaction logic. DashboardMimic provides 180 Plotly+Dash examples, with code-semantic analysis and dynamic interaction tests for the generated implementations.
@@ -616,6 +636,21 @@ Open “Scope and publication details” for each study’s full limitations. Pa
   **Scope and limits:** The generated interactions cover basic hover, toggle, and click behavior. Complex temporal and drag-and-drop logic remain outside scope, and translucent overlap or ambiguous diegetic layouts can fail. This is game-UI prototyping, not complete gameplay reconstruction; the official page still labels code as coming soon.
 
   **Publication:** 2026 · CHI EA 2026 (poster/extended abstract) · Conference paper · Yunshu Bai et al.
+
+  </details>
+
+- [**WorldCoder, a Model-Based LLM Agent: Building World Models by Writing Code and Interacting with the Environment**](https://papers.nips.cc/paper_files/paper/2024/hash/820c61a0cd419163ccbd2c33b268816e-Abstract-Conference.html) · **2024 · Conference paper**
+
+  WorldCoder learns executable Python transition and reward models from environment interactions and natural-language goals. It refines code against recorded experiences and an optimistic planning constraint, studying transfer and task solving in Sokoban, MiniGrid and ALFWorld.
+
+  [PDF](https://papers.neurips.cc/paper_files/paper/2024/file/820c61a0cd419163ccbd2c33b268816e-Paper-Conference.pdf) · [Code](https://github.com/haotang1995/WorldCoder)
+
+  <details>
+  <summary>Scope and publication details</summary>
+
+  **Scope and limits:** Assumes deterministic dynamics and symbolic, discrete states rather than recovering a game from arbitrary pixels or binaries. Consistency with observed transitions and successful planning do not establish complete engine equivalence or correctness on every unseen state. Evaluation concerns bounded environment models and planning, not original source or asset recovery.
+
+  **Publication:** 2024 · NeurIPS 2024 · Conference paper · Hao Tang et al.
 
   </details>
 

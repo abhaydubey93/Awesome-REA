@@ -11,9 +11,9 @@
 ## 目录
 
 <!-- BEGIN GENERATED CONTENTS -->
-- **目标** · [网站](#website) <sub>14</sub> · [游戏](#game) <sub>32</sub> · [应用](#app) <sub>29</sub> · [原生二进制](#native-binary) <sub>20</sub> · [固件与硬件](#firmware) <sub>10</sub> · [协议](#protocol) <sub>7</sub>
+- **目标** · [网站](#website) <sub>14</sub> · [游戏](#game) <sub>37</sub> · [应用](#app) <sub>29</sub> · [原生二进制](#native-binary) <sub>20</sub> · [固件与硬件](#firmware) <sub>10</sub> · [协议](#protocol) <sub>7</sub>
 
-- [论文](#papers) <sub>31</sub> · [案例](https://awesomerea.org/zh/?view=curated&kind=case-study) <sub>32</sub> · [Agent 与 MCP](#agents-and-mcp) <sub>17</sub> · [相关合集](#related-collections) <sub>4</sub> · [学习资料](#references-and-learning) <sub>17</sub> · [仓库索引](#完整仓库索引) <sub>2,864</sub>
+- [论文](#papers) <sub>33</sub> · [案例](https://awesomerea.org/zh/?view=curated&kind=case-study) <sub>37</sub> · [Agent 与 MCP](#agents-and-mcp) <sub>17</sub> · [相关合集](#related-collections) <sub>4</sub> · [学习资料](#references-and-learning) <sub>17</sub> · [仓库索引](#完整仓库索引) <sub>2,864</sub>
 <!-- END GENERATED CONTENTS -->
 
 <a id="资源目录"></a>
@@ -67,6 +67,11 @@
 - [**IsaacRecomp：将 Flash 游戏字节码转换为原生 C++**](https://github.com/whylurking/IsaacRecomp) - 将 The Binding of Isaac 的 Flash AVM1 字节码转换为 C++ 函数，并提供原生渲染与输入运行时。项目从用户自己的原游戏读取图像和音频，并记录了确定性输入、无界面运行和截图回归检查。 <sub>案例 · 独立重建</sub>
 - [**Nanolathe：附研究文档的 Total Annihilation 引擎重实现**](https://github.com/nanolathe-gg/nanolathe) - 用 Go 重实现兼容 Total Annihilation 的策略游戏引擎，公开文件格式研究并提供不同玩法配置。项目区分拟复现的零售版3.1行为、社区补丁研究和有意加入的现代改动，也区分合成检查与依赖原始游戏数据的测试。 <sub>案例 · 独立重建</sub>
 - [**TH08：精确源码重建与单独验证的移植**](https://github.com/N0zoM1z0/th08) - 依据原二进制和原编译器重建日版 Touhou 8 的 1.00d 版本，再将恢复的代码适配到其他平台。项目分别记录源码存在、严格函数匹配、完整可执行文件一致性和移植可玩性里程碑。 <sub>案例 · 独立重建</sub>
+- [**Zelda 64: Recompiled：无需完整源码反编译的《姆吉拉的假面》原生移植**](https://github.com/Zelda64Recomp/Zelda64Recomp) - 通过 N64Recomp 将《姆吉拉的假面》转为原生应用，并使用 RT64 渲染。项目区分静态重编译与源码反编译，同时借用反编译项目的头文件和部分函数实现补丁与增强功能。 <sub>案例 · 独立重建</sub>
+- [**OpenGOAL：恢复 GOAL 代码并重建 Jak 系列游戏**](https://github.com/open-goal/jak-project) - 从 Jak 原二进制重建可读的 GOAL 代码，再用新编写的 GOAL 编译器为现代 PC 编译。流程结合专用反编译器、人工补充的类型信息、素材提取和交互式开发运行时。 <sub>案例 · 独立重建</sub>
+- [**LEGO Island：源码重建与单独记录的精确重构建**](https://github.com/isledecomp/isle) - 针对英文版 LEGO Island 1.1 的原始 32 位 Windows 目标重建源码。项目区分函数对比报告、ReproBit 报告的零售版逐字节一致重构建，以及普通开发构建；现代跨平台适配位于另一仓库。 <sub>案例 · 独立重建</sub>
+- [**Snowball War：范围明确的 REA 辅助小游戏重建**](https://github.com/tuunanet/rea-ski-or-die-reconstruction) - 作者通过 REA 的 Ghidra 工作流调查 DOS 版 Ski or Die 二进制，记录 Snowball War 的规则，再用 Rust 与 SDL2 重建这一小游戏。公开笔记区分恢复的数据表和机制、近似实现以及有意调整的表现效果。 <sub>案例 · 混合工具流程</sub>
+- [**SpaceCadetPinball：将反编译游戏逻辑适配到 SDL2**](https://github.com/k4zmu2a/SpaceCadetPinball) - 将逆向分析后的 Space Cadet 弹球游戏转为可编译的 C++，面向桌面平台。README 标明 Windows XP 可执行文件及公开 PDB、Full Tilt 可执行文件，并描述恢复结构、命名变量和适配反编译例程的工作。 <sub>案例 · 独立重建</sub>
 - [**LASRecomp：《织梦岛》静态重编译案例**](https://github.com/peiikai/LASRecomp) - 通过静态重编译，将 2019 年 Switch 版《塞尔达传说：织梦岛》重建为原生桌面程序。作者称大部分代码、工具与逆向工作由 Claude Code 完成，人类负责指导和复核。 <sub>案例 · 独立重建</sub>
 - [**ArkWeb：双游戏动作与碰撞桥接实验**](https://github.com/luki-1/ArkWeb) - 同时运行《漫威蜘蛛侠：重制版》与《蝙蝠侠：阿卡姆骑士》，将哥谭碰撞数据传入蜘蛛侠的物理世界，再将其渲染画面合成到阿卡姆中。这是实验性的运行时桥接，并非恢复出的独立游戏或新引擎。 <sub>案例 · 独立重建</sub>
 
@@ -262,11 +267,11 @@
 <a id="papers"></a>
 ## 论文
 
-收录 **31 篇论文**，涵盖逆向工程智能体评测、反编译、协议推断、固件分析，以及网站、游戏和应用重建。部分论文也出现在精选资源目录中，两者数量不可相加。发表状态与研究范围分别标注，中文标题为译名。
+收录 **33 篇论文**，涵盖逆向工程智能体评测、反编译、协议推断、固件分析，以及网站、游戏和应用重建。部分论文也出现在精选资源目录中，两者数量不可相加。发表状态与研究范围分别标注，中文标题为译名。
 
 [浏览论文目录](https://awesomerea.org/zh/papers/) · [完整书目 JSON](data/papers.json) · [推荐论文](https://github.com/reacher-z/Awesome-REA/issues/new?template=paper.yml)
 
-**按主题** · [智能体评测](#papers-agent-evaluation) <sub>5</sub> · [反编译](#papers-decompilation) <sub>6</sub> · [网站](#papers-website-reconstruction) <sub>7</sub> · [游戏](#papers-game-reconstruction) <sub>4</sub> · [应用](#papers-app-reconstruction) <sub>5</sub> · [固件](#papers-firmware-analysis) <sub>2</sub> · [协议](#papers-protocol-analysis) <sub>2</sub>
+**按主题** · [智能体评测](#papers-agent-evaluation) <sub>5</sub> · [反编译](#papers-decompilation) <sub>6</sub> · [网站](#papers-website-reconstruction) <sub>8</sub> · [游戏](#papers-game-reconstruction) <sub>5</sub> · [应用](#papers-app-reconstruction) <sub>5</sub> · [固件](#papers-firmware-analysis) <sub>2</sub> · [协议](#papers-protocol-analysis) <sub>2</sub>
 
 展开各条目的“范围与发表信息”可查看完整研究边界；以下按年份从新到旧排列。
 
@@ -480,6 +485,21 @@
 
   </details>
 
+- [**UI2App：评测可执行 Web 应用生成中的视觉交互推断**](https://arxiv.org/abs/2607.06306) · **2026 · 预印本**
+
+  UI2App 使用来自 95 个 Web 应用的 600 张截图，评测生成的可运行 React/TypeScript 应用。它通过参考交互分类体系和公开评测流水线，分别衡量构建可执行性、视觉保真度，以及包括跨路由状态在内的截图隐含交互行为。
+
+  [PDF](https://arxiv.org/pdf/2607.06306v2) · [代码](https://github.com/chenmancm169/UI2App)
+
+  <details>
+  <summary>范围与发表信息</summary>
+
+  **范围与限制:** 静态截图无法唯一确定行为；评分规则接受多种有效实现，并不证明与原应用或后端等价。Auto IIS 在不执行工具的情况下评判生成源码和截图，人工运行验证覆盖 45 个应用的子集。跨路由状态不一定能在重新加载或会话结束后持久保存。主结果每个应用与模型组合生成一次，重复运行仅覆盖子集。
+
+  **发表信息:** 2026 · arXiv · 预印本 · Grace Man Chen 等
+
+  </details>
+
 - [**Dashboard2Code：评估多模态模型重建交互式仪表盘的能力**](https://aclanthology.org/2026.acl-long.1750/) · **2026 · 会议论文**
 
   评估智能体主动探索运行中的仪表盘后，重建其外观与交互逻辑的能力。DashboardMimic 提供 180 个 Plotly+Dash 示例，并以代码语义分析和动态交互测试评估生成的实现。
@@ -617,6 +637,21 @@
   **范围与限制:** 生成的交互覆盖基本悬停、切换和点击行为，复杂时序与拖放逻辑仍不在范围内；半透明重叠元素或边界不明确的场景内界面可能处理失败。这是游戏界面原型重建，不是完整玩法重建；官方页面仍标注代码即将发布。
 
   **发表信息:** 2026 · CHI EA 2026 (poster/extended abstract) · 会议论文 · Yunshu Bai 等
+
+  </details>
+
+- [**WorldCoder：通过编写代码并与环境交互构建世界模型的基于模型的语言智能体**](https://papers.nips.cc/paper_files/paper/2024/hash/820c61a0cd419163ccbd2c33b268816e-Abstract-Conference.html) · **2024 · 会议论文**
+
+  WorldCoder 根据环境交互和自然语言目标学习可执行的 Python 状态转移与奖励模型，利用已记录经验和乐观规划约束修正代码，并在 Sokoban、MiniGrid 与 ALFWorld 中研究迁移和任务求解。
+
+  [PDF](https://papers.neurips.cc/paper_files/paper/2024/file/820c61a0cd419163ccbd2c33b268816e-Paper-Conference.pdf) · [代码](https://github.com/haotang1995/WorldCoder)
+
+  <details>
+  <summary>范围与发表信息</summary>
+
+  **范围与限制:** 假设环境动态具有确定性，状态为符号化的离散表示，并非从任意像素或二进制恢复游戏。与已观察转移一致及规划成功，不能证明完整引擎等价或所有未见状态上的正确性。评估针对有限范围的环境模型与规划，不涉及恢复原始源码或资产。
+
+  **发表信息:** 2024 · NeurIPS 2024 · 会议论文 · Hao Tang 等
 
   </details>
 
