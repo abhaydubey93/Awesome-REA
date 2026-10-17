@@ -1,7 +1,7 @@
 {
   "schema_version": 1,
   "reviewed_at": "2026-10-17",
-  "catalog_revision": "55170d885253e30a75b0def53cb8f9dd07b590bb",
+  "catalog_revision": "d60dbe9839eed96f18b6a2f3f41a696c4ca81340",
   "runtime_reproduced": false,
   "project_identity_resolution": "incomplete",
   "collections": [
@@ -8971,7 +8971,7 @@
       "reason_en": "Identity mapped to the existing catalog at the record’s stated scope; this is not independent runtime reproduction.",
       "reason_zh": "身份已对应到现有目录条目所声明的范围；这不代表独立运行复现。",
       "primary_evidence_urls": [
-        "https://github.com/HexRaysSA/ida-mcp/blob/main/README.md"
+        "https://github.com/HexRaysSA/ida-mcp/blob/a03842843d6972eb8780f5b3d2f4e8b6d0c9589e/README.md"
       ],
       "catalog_matches": [
         {

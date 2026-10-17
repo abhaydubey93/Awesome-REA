@@ -16,7 +16,7 @@
 
 提交前请先确认合集中没有重复条目。收录不设最低 Star 数；优先收录原创、仍在维护的项目，而不是复制的 fork。关于 REA 集成的说法须有项目自身文档支持。
 
-发现中文翻译不准确时，可使用[翻译修正表单](https://github.com/reacher-z/Awesome-REA/issues/new?template=translation.yml)；链接失效或信息过时，可使用[过时条目表单](https://github.com/reacher-z/Awesome-REA/issues/new?template=broken-resource.yml)。各表单目前只有英文界面。
+发现中文翻译不准确时，可使用[翻译修正表单](https://github.com/reacher-z/Awesome-REA/issues/new?template=translation.yml)；链接失效或信息过时，可使用[过时条目表单](https://github.com/reacher-z/Awesome-REA/issues/new?template=broken-resource.yml)。资源、论文和修正表单目前为英文界面；重建案例表单提供双语提示。
 
 ## 推荐论文
 
@@ -40,6 +40,8 @@
 只有一手证据描述通信格式分析、流量解析、报文交互或协议状态推断（包括硬件总线）时，才使用 `protocol`。仅能联网、调用 API 或提供 MCP 接口都不符合条件。报文采用二进制编码，也不等于对可执行文件做 Binary 分析。
 
 ### 重建案例
+
+使用[重建案例推荐表单](https://github.com/reacher-z/Awesome-REA/issues/new?template=case-study.yml)，可用英文或简体中文填写。分别说明原始输入、重建输出与证据；部分重建或未测试的案例也可推荐。
 
 案例可以使用 REA、其他智能体或独立的逆向工具。有记录的重建项目如果与 REA 没有已确认的关联，使用 `relationship: independent-reconstruction` 和 `category: reconstruction-cases`，targets 按实际涉及的领域填写。说明中要区分作者报告的结果、尚未完成的行为、平台限制，以及需要用户自备的原始资源。尽量提供固定版本的公开来源；不要包含专有目标二进制文件或私人抓包数据。
 
