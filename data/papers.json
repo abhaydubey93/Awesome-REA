@@ -1487,5 +1487,108 @@
       "https://github.com/zai-org/Vision2Web/blob/d80a4a3d0ea7326541ad87314294269a633789e4/vision2web/evaluation/functional_tester.py",
       "https://huggingface.co/datasets/zai-org/Vision2Web/blob/8f03299d92b9bd852e93852d0c21e8a4848ab661/README.md"
     ]
+  },
+  {
+    "id": "paper-ui2code",
+    "title": "From UI Design Image to GUI Skeleton: A Neural Machine Translator to Bootstrap Mobile GUI Implementation",
+    "title_zh": "从 UI 设计图到 GUI 骨架：辅助启动移动界面实现的神经机器翻译器",
+    "authors": [
+      "Chunyang Chen",
+      "Ting Su",
+      "Guozhu Meng",
+      "Zhenchang Xing",
+      "Yang Liu"
+    ],
+    "year": 2018,
+    "publication_date": "2018-05-27",
+    "date_precision": "day",
+    "date_basis": "Publisher-deposited Crossref publication date for the ICSE proceedings article.",
+    "date_basis_zh": "出版方提交至 Crossref 的 ICSE 会议论文集文章出版日期。",
+    "venue": "ICSE 2018",
+    "publication_status": "conference-paper",
+    "arxiv_id": null,
+    "arxiv_version_reviewed": null,
+    "first_arxiv_date": null,
+    "doi": "10.1145/3180155.3180240",
+    "url": "https://doi.org/10.1145/3180155.3180240",
+    "pdf_url": "https://chunyang-chen.github.io/publication/ui2code.pdf",
+    "code_url": "https://github.com/ccywch/UI2code",
+    "project_url": null,
+    "targets": [
+      "app"
+    ],
+    "description_en": "UI2code translates a mobile UI image into an Android component hierarchy and layout skeleton using a neural encoder-decoder. The paper evaluates structural prediction and a small developer study of implementing layouts from generated skeletons.",
+    "description_zh": "UI2code 使用神经编码器—解码器，将移动 UI 图像转换为 Android 组件层级与布局骨架。论文评估了结构预测，并通过小规模开发者实验研究如何基于生成的骨架实现布局。",
+    "scope_limitations_en": "The output covers component types and hierarchy from a single image; detailed styling and text require developer work. Structural token accuracy and an eight-participant study on five screenshots do not establish complete visual fidelity, navigation, app logic or backend recovery. The main split is screenshot-based; a separate evaluation on 1,208 images from 20 unseen apps provides limited generalization evidence.",
+    "scope_limitations_zh": "输出仅覆盖单张图像中的组件类型与层级；详细样式和文本仍需开发者补充。结构标记准确率以及针对五张截图、由八名参与者开展的实验，不能证明完整视觉保真度，也不代表恢复了导航、应用逻辑或后端。主数据集按截图划分；独立评估使用了 20 个未见应用的 1,208 张图像，提供了有限的泛化证据。",
+    "why_fits_en": "A native-app reconstruction foundation that explicitly generates and evaluates GUI structure from visual observations, beyond locating interface elements.",
+    "why_fits_zh": "这是原生应用重建的基础工作，明确从视觉观察生成并评估 GUI 结构，研究范围超出了界面元素定位。",
+    "evidence_urls": [
+      "https://doi.org/10.1145/3180155.3180240",
+      "https://api.crossref.org/works/10.1145/3180155.3180240",
+      "https://chunyang-chen.github.io/publication/ui2code.pdf",
+      "https://conf.researchr.org/details/icse-2018/icse-2018-Technical-Papers/12/From-UI-Design-Image-to-GUI-Skeleton-A-Neural-Machine-Translator-to-Bootstrap-Mobile",
+      "https://github.com/ccywch/UI2code",
+      "https://raw.githubusercontent.com/ccywch/UI2code/fa2cb895dd3367340180257880a76886c9b6ee2f/README.md",
+      "https://raw.githubusercontent.com/ccywch/UI2code/fa2cb895dd3367340180257880a76886c9b6ee2f/src/train.lua"
+    ],
+    "metadata_notes": "The author-hosted PDF prints 10.1145/3180155.3180222, which identifies another paper; the DOI here follows publisher-deposited metadata for this title, pages 665–676. The artifact README lists 29,887 screenshots, while the paper reports 185,277 image/skeleton pairs; they should not be treated as the same released corpus. The pinned legacy Torch/Lua repository has no license file; external data and model downloads were not tested.",
+    "metadata_notes_zh": "作者托管 PDF 印有 10.1145/3180155.3180222，但该 DOI 对应另一篇论文；此处采用出版方为本标题提交的 DOI，页码为 665–676。代码仓库 README 列出 29,887 张截图，论文则报告 185,277 对图像与骨架，不应视为同一套已发布语料。固定版本的旧版 Torch/Lua 仓库没有许可证文件；未测试外部数据和模型下载。",
+    "kind": "research",
+    "verified_at": "2026-10-17",
+    "verification": "source-reviewed",
+    "runtime_tested": false
+  },
+  {
+    "id": "paper-tycho",
+    "title": "Tycho: Active Abstraction with Programmatic World Models for ARC-AGI-3",
+    "title_zh": "Tycho：面向 ARC-AGI-3 的程序化世界模型主动抽象",
+    "authors": [
+      "Jens Lehmann",
+      "Andrei Aioanei",
+      "Sahar Vahdati"
+    ],
+    "year": 2026,
+    "publication_date": "2026-07-30",
+    "date_precision": "day",
+    "date_basis": "First public arXiv submission date; version v1 was reviewed.",
+    "date_basis_zh": "首次公开提交至 arXiv 的日期；核查版本为 v1。",
+    "venue": "arXiv",
+    "publication_status": "preprint",
+    "arxiv_id": "2607.28287",
+    "arxiv_version_reviewed": "v1",
+    "first_arxiv_date": "2026-07-30",
+    "doi": "10.48550/arXiv.2607.28287",
+    "url": "https://arxiv.org/abs/2607.28287",
+    "pdf_url": "https://arxiv.org/pdf/2607.28287v1",
+    "code_url": "https://github.com/NIMI-research/Tycho",
+    "project_url": null,
+    "targets": [
+      "game"
+    ],
+    "description_en": "Tycho constructs editable Python models of game state, transitions, rendering and outcomes from action/observation histories in unfamiliar ARC-AGI-3 games. It checks model predictions against recorded transitions and can use, repair or bypass these models during planning.",
+    "description_zh": "Tycho 根据陌生 ARC-AGI-3 游戏中的动作与观察历史，构建可编辑的 Python 模型，描述游戏状态、状态转移、渲染与结果。它将模型预测与已记录的转移进行核对，并在规划时选择使用、修复或绕过这些模型。",
+    "scope_limitations_en": "Evaluation uses one stochastic run per configuration on 25 public games and 183 levels; five games informed harness development. Models may abstain on cells or accept bounded rendering variants. Transition replay and game scores do not establish complete engine reconstruction, correct objectives, unseen-state fidelity, unseen-game generalization or run-to-run reliability; the agent can bypass modeling.",
+    "scope_limitations_zh": "评估针对 25 个公开游戏、183 个关卡，每种配置仅进行一次随机运行；其中五个游戏曾用于开发智能体框架。模型可以不预测部分像素格，或接受有限的渲染变体。转移回放和游戏分数不能证明完整引擎重建、目标识别正确、未见状态保真度、未见游戏泛化或多次运行的可靠性；智能体也可以绕过建模。",
+    "why_fits_en": "Studies executable reconstruction of observed game dynamics and checks model fidelity separately from task success, providing a bounded behavioral reconstruction case.",
+    "why_fits_zh": "研究对已观察游戏动态的可执行重建，并将模型保真度与任务成功分开检验，提供了范围明确的行为重建案例。",
+    "evidence_urls": [
+      "https://arxiv.org/abs/2607.28287",
+      "https://arxiv.org/html/2607.28287v1",
+      "https://arxiv.org/pdf/2607.28287v1",
+      "https://api.datacite.org/dois/10.48550/arXiv.2607.28287",
+      "https://github.com/NIMI-research/Tycho",
+      "https://raw.githubusercontent.com/NIMI-research/Tycho/f68912a764372ead0a610db2e1c011d41ce5197e/README.md",
+      "https://raw.githubusercontent.com/NIMI-research/Tycho/f68912a764372ead0a610db2e1c011d41ce5197e/LICENSE",
+      "https://raw.githubusercontent.com/NIMI-research/Tycho/f68912a764372ead0a610db2e1c011d41ce5197e/pyproject.toml",
+      "https://raw.githubusercontent.com/NIMI-research/Tycho/f68912a764372ead0a610db2e1c011d41ce5197e/CITATION.cff",
+      "https://raw.githubusercontent.com/NIMI-research/Tycho/f68912a764372ead0a610db2e1c011d41ce5197e/PUBLIC_RELEASE_MANIFEST.json"
+    ],
+    "metadata_notes": "The arXiv posting date is July 30; the manuscript header and software release use July 29. DataCite confirms the arXiv DOI is registered and findable. The pinned author artifact is Apache-2.0 and includes source, prompts, paper configurations and compact evaluation evidence; ARC environment terms are separate. Python >=3.12, model/ARC access and a Docker or Finch sandbox are documented requirements; no installation or experiments were run.",
+    "metadata_notes_zh": "arXiv 发布日期为 7 月 30 日；文稿页首和软件发布采用 7 月 29 日。DataCite 确认 arXiv DOI 已注册且处于可检索状态。固定版本的作者产物采用 Apache-2.0，包含源码、提示词、论文配置和精简评估证据；ARC 环境适用独立条款。文档要求 Python >=3.12、模型与 ARC 访问权限，以及 Docker 或 Finch 沙箱；未进行安装或实验复现。",
+    "kind": "research",
+    "verified_at": "2026-10-17",
+    "verification": "source-reviewed",
+    "runtime_tested": false
   }
 ]
