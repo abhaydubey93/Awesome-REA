@@ -3,6 +3,7 @@
 from __future__ import annotations
 
 from collections import defaultdict
+import hashlib
 from html import escape
 import json
 from pathlib import Path
@@ -197,6 +198,15 @@ def build_paper_pages(
         bibliography += entry + '\n'
     (site_dir / 'papers' / 'references.bib').write_text(bibliography, encoding='utf-8')
 
+    search_script = (Path(__file__).resolve().parents[1] / 'site/paper-search.js').read_bytes()
+    (site_dir / 'paper-search.js').write_bytes(search_script)
+    search_href = '/paper-search.js?v=' + hashlib.sha256(search_script).hexdigest()[:16]
+    search_fields = ('id', 'title', 'title_zh', 'description_en', 'description_zh', 'authors', 'doi', 'arxiv_id',
+                     'year', 'publication_status', 'targets')
+    search_data = json.dumps({'schema_version': 1, 'papers': [
+        {key: paper.get(key) for key in search_fields} for paper in papers
+    ]}, ensure_ascii=False, separators=(',', ':')).replace('<', '\\u003c').replace('>', '\\u003e').replace('&', '\\u0026')
+
     canonical_urls = []
     use_pro = icon_stylesheet_href is not None
     for language in ('en', 'zh'):
@@ -220,11 +230,19 @@ def build_paper_pages(
             if not groups[target]:
                 continue
             target_label = target_labels[1 if zh else 0]
-            nav.append(f'<a href="#research-{target}">{target_label}<span>{len(groups[target])}</span></a>')
+            nav.append(f'<a href="#research-{target}" data-paper-topic="{target}">{target_label}<span>{len(groups[target])}</span></a>')
             articles = '\n'.join(paper_card(paper, language, use_pro) for paper in groups[target])
             count_label = f'{len(groups[target])} ' + ('篇论文' if zh else ('paper' if len(groups[target]) == 1 else 'papers'))
-            sections.append(f'<section class="paper-section" aria-labelledby="research-{target}"><div class="paper-section-heading"><h2 id="research-{target}">{target_label}</h2><span>{count_label}</span></div><div class="paper-grid">{articles}</div></section>')
+            sections.append(f'<section class="paper-section" aria-labelledby="research-{target}" data-paper-section="{target}"><div class="paper-section-heading"><h2 id="research-{target}">{target_label}</h2><span data-paper-section-count>{count_label}</span></div><div class="paper-grid">{articles}</div></section>')
             ordered.extend(groups[target])
+        status_options = ''.join(f'<option value="{status}">{escape(labels[int(zh)])}</option>'
+                                 for status, labels in STATUS_LABELS.items()
+                                 if any(paper['publication_status'] == status for paper in papers))
+        year_options = ''.join(f'<option value="{year}">{year}</option>'
+                               for year in sorted({paper['year'] for paper in papers}, reverse=True))
+        target_options = ''.join(f'<option value="{target}">{escape(labels[int(zh)])}</option>'
+                                 for target, labels in TARGET_LABELS.items()
+                                 if any(target in paper['targets'] for paper in papers))
         graph = {
             '@context': 'https://schema.org',
             '@graph': [
@@ -264,6 +282,7 @@ def build_paper_pages(
   <link rel="stylesheet" href="{escape(papers_styles_href, quote=True)}">
   {icon_css}
   <script type="application/ld+json">{structured}</script>
+  <script src="{search_href}" defer></script>
 </head>
 <body>
 <a class="skip-link" href="#papers-content">{label('Skip to the papers', '跳到论文目录')}</a>
@@ -273,8 +292,19 @@ def build_paper_pages(
   <section class="collection-intro papers-intro" aria-labelledby="papers-title"><p class="eyebrow">{label('RESEARCH & EVIDENCE', '研究与证据')}</p><h1 id="papers-title">{label('Papers & benchmarks', '论文与评测基准')}<span class="title-dot" aria-hidden="true">.</span></h1><p>{escape(description)}</p></section>
   <div class="papers-actions"><a class="button button-outline" href="{web_url(repository_url + "/issues/new?template=paper.yml")}" target="_blank" rel="noopener noreferrer">{icon("document", use_pro)}{label("Suggest a paper", "推荐论文")}</a><a class="button button-outline" href="{browse}">{icon('layers', use_pro)}{label('Browse repositories', '浏览仓库')}</a><a class="papers-bibliography" href="/papers/references.bib" download="awesomerea-papers.bib" type="application/x-bibtex">{label('Download bibliography', '下载参考文献')} · BibTeX ↓</a></div>
   <p class="papers-review-policy">{label('Journal articles, conference papers, accepted papers, and preprints are labeled separately. We check primary sources; inclusion does not mean experiments were rerun or results independently reproduced.', '期刊论文、会议论文、已接收论文和预印本分别标注。本合集核对一手来源；收录不代表已重新运行实验或独立复现结果。')}</p>
+  <form id="paper-search" class="paper-search" role="search" aria-label="{label('Search research papers', '搜索研究论文')}" hidden>
+    <div class="paper-search-field paper-search-query"><label for="paper-query">{label('Search papers', '搜索论文')}</label><input id="paper-query" name="q" type="search" maxlength="240" autocomplete="off" placeholder="{label('Title, author, keyword, DOI or arXiv ID', '标题、作者、关键词、DOI 或 arXiv 编号')}" aria-describedby="paper-search-help"></div>
+    <div class="paper-search-field"><label for="paper-target">{label('Target', '目标')}</label><select id="paper-target" name="target"><option value="all">{label('All targets', '全部目标')}</option>{target_options}</select></div>
+    <div class="paper-search-field"><label for="paper-status">{label('Publication status', '发表状态')}</label><select id="paper-status" name="status"><option value="all">{label('All statuses', '全部状态')}</option>{status_options}</select></div>
+    <div class="paper-search-field"><label for="paper-year">{label('Year', '年份')}</label><select id="paper-year" name="year"><option value="all">{label('All years', '全部年份')}</option>{year_options}</select></div>
+    <button id="paper-clear" class="button button-outline" type="button">{label('Clear filters', '清除筛选')}</button>
+    <p id="paper-search-help" class="paper-search-help">{label('Search titles and summaries in English or Chinese, plus authors and identifiers. Target filters include every recorded target; papers stay in their primary research section.', '可搜索中英文标题与简介，以及作者和标识符。目标筛选包含论文记录的全部目标；论文仍显示在其主要研究分区。')}</p>
+    <p id="paper-results" class="paper-search-results" role="status" aria-live="polite" aria-atomic="true"></p>
+  </form>
+  <div id="paper-empty" class="paper-search-empty" hidden><p>{label('No papers match these filters.', '没有符合这些条件的论文。')}</p><button id="paper-empty-reset" class="button button-outline" type="button">{label('Clear filters and show all papers', '清除筛选并显示全部论文')}</button></div>
   <nav class="papers-topic-nav" aria-label="{label('Research areas', '研究方向')}">{''.join(nav)}</nav>
   {''.join(sections)}
+  <script id="paper-search-data" type="application/json">{search_data}</script>
 </main>
 <footer class="site-footer"><div class="shell footer-top"><p>{label('An independent resource collection, updated in public.', '独立的资源集合，在公开协作中持续更新。')}</p><div class="footer-links"><a href="{home}">{label('Interactive collection', '交互式合集')}</a><a href="{browse}">{label('Repository directory', '仓库分类目录')}</a><a href="{curated}">{label('Curated resources', '精选资源')}</a><a href="{about}">{label('About and sources', '关于与来源')}</a><a href="/papers/references.bib" download="awesomerea-papers.bib" type="application/x-bibtex">BibTeX ↓</a><a href="{web_url(repository_url)}" target="_blank" rel="noopener noreferrer">GitHub ↗</a></div></div><div class="shell footer-bottom">{label('Paper and code links retain their own licenses. Bibliographic metadata is supplied for citation; follow the original sources for version and access details.', '论文和代码保留各自的许可。引文元数据用于引用；版本和访问详情请以原始来源为准。')}</div></footer>
 </body>

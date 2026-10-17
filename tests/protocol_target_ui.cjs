@@ -43,7 +43,7 @@ function setup(query, {curatedProtocol = true, sourceProtocol = true, pathname =
   const rows = ['protocol', 'app'].map((target, index) => ({id: 'fixture-' + index, name: 'Fixture ' + index, name_zh: '测试 ' + index,
     full_name: 'Fixture/project' + index, url: 'https://github.com/Fixture/project' + index,
     evidence_url: 'https://github.com/Fixture/project' + index, description_en: '', description_zh: '',
-    targets: [target], topics: [], category: 'dynamic-analysis', group: 'tools', kind: 'tool', relationship: 'foundation',
+    targets: [target], topics: index === 0 ? ["protocol-analysis", "fixtures"] : ["apps"], category: 'dynamic-analysis', group: 'tools', kind: 'tool', relationship: 'foundation',
     requirements: ['A fixture'], requirements_zh: ['测试条件'], verified_at: '2026-01-01', scan_status: 'readme-scanned', stars: index}));
   const browser = {meta: {schema_version: 1, status: 'complete', full_export: 'source-index.json', full_export_sha256: 'a'.repeat(64),
     scope: {scanned_count: 2, excluded_count: 0, browse_count: 2}}, resources: rows.map((row, i) => ({...row, targets: !i && !sourceProtocol ? ['app'] : row.targets}))};
@@ -127,6 +127,36 @@ function setup(query, {curatedProtocol = true, sourceProtocol = true, pathname =
   const home = setup(''); await home.api.load();
   assert.equal(home.api.state.lang, 'en');
   assert.equal(home.api.sourceState.mode, 'curated');
+  const layouts = setup('?view=curated&sourceq=fixture&target=protocol&layout=cards#catalog');
+  await layouts.api.load(); await layouts.api.loadSources(); layouts.api.setIndexMode("source-index"); layouts.api.applyLanguage();
+  assert.equal(layouts.context.document.documentElement.dataset.layout, 'cards');
+  const recordsBefore = layouts.api.state.records;
+  const sourceRowsBefore = layouts.elements.get('#source-results').children;
+  const layoutControl = layouts.elements.get('#layout-select');
+  layoutControl.value = 'compact'; layoutControl.emit('change');
+  assert.equal(layouts.context.document.documentElement.dataset.layout, 'compact');
+  assert.strictEqual(layouts.api.state.records, recordsBefore);
+  assert.strictEqual(layouts.elements.get('#source-results').children, sourceRowsBefore);
+  let shared = new URL(layouts.context.location.href);
+  assert.equal(shared.searchParams.get('sourceq'), 'fixture');
+  assert.equal(shared.searchParams.get('view'), 'source-index');
+  assert.equal(shared.searchParams.get('target'), 'protocol');
+  assert.equal(shared.hash, '#catalog');
+  assert.equal(shared.searchParams.has('layout'), false);
+  layoutControl.value = 'cards'; layoutControl.emit('change');
+  assert.equal(new URL(layouts.context.location.href).searchParams.get('layout'), 'cards');
+  const sourceCard = layouts.elements.get('#source-results').children[0];
+  const scanDetails = sourceCard.children.find(child => child.className === 'source-record-details');
+  const compactContext = scanDetails.children.find(child => child.className === 'source-compact-context');
+  const compactTopics = compactContext.children.find(child => child.className === 'source-topics');
+  assert.equal(compactTopics.children.length, 2);
+  compactTopics.children[0].emit('click');
+  assert.equal(layouts.api.sourceState.topic, 'protocol-analysis');
+  assert.equal(new URL(layouts.context.location.href).searchParams.get('topic'), 'protocol-analysis');
+  assert.equal(layouts.api.sourceFiltered().length, 1);
+  const unknownLayout = setup('?layout=invalid'); unknownLayout.api.applyLanguage();
+  assert.equal(unknownLayout.context.document.documentElement.dataset.layout, 'compact');
+  assert.equal(home.api.state.layout, 'compact');
   const invalid = setup('?view=curated&target=unrecognized&source-target=unrecognized');
   await invalid.api.load();
   assert.equal(invalid.api.state.target, 'all');

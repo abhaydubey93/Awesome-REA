@@ -359,3 +359,51 @@ html[lang="zh-CN"] .card-description,html[lang="zh-CN"] .source-card-description
   .header-nav .browse-language,.header-nav .papers-language{padding-inline:9px}
 }
 .clear-button{white-space:nowrap}
+
+/* Compact rows keep complete descriptions readable while making comparison faster. */
+.layout-control{display:flex;align-items:center;gap:8px;margin-left:auto;padding-bottom:12px;font-size:14px;color:var(--muted)}
+.layout-control select{min-height:40px;padding:7px 30px 7px 10px;border:1px solid var(--line);border-radius:7px;background:var(--surface);font-size:14px}
+.source-compact-context{display:none}
+html[data-layout="compact"] .collection-home .resource-grid,html[data-layout="compact"] .collection-home .source-results{grid-template-columns:minmax(0,1fr);gap:0;border-top:1px solid var(--line)}
+html[data-layout="compact"] .collection-home .resource-card,html[data-layout="compact"] .collection-home .source-card{display:grid;grid-template-columns:minmax(220px,.9fr) minmax(0,2fr) minmax(170px,.55fr);grid-template-areas:"heading description meta" "heading description details";gap:5px 24px;padding:14px 8px;border:0;border-bottom:1px solid var(--line);border-radius:0;box-shadow:none;align-items:start}
+html[data-layout="compact"] .collection-home .resource-card:hover,html[data-layout="compact"] .collection-home .source-card:hover{background:#fcfcfe;box-shadow:none}
+html[data-layout="compact"] .collection-home .card-heading,html[data-layout="compact"] .collection-home .source-card-head{grid-area:heading;display:block}
+html[data-layout="compact"] .collection-home .card-heading h3,html[data-layout="compact"] .collection-home .source-card-head h3{font-size:16px;line-height:1.55}
+html[data-layout="compact"] .collection-home .resource-kind,html[data-layout="compact"] .collection-home .source-stars{display:inline-block;margin-top:7px;font-size:12px}
+html[data-layout="compact"] .collection-home .card-description,html[data-layout="compact"] .collection-home .source-card-description{grid-area:description;margin:0;font-size:16px;line-height:1.7;max-width:68ch}
+html[data-layout="compact"] .collection-home .card-meta,html[data-layout="compact"] .collection-home .source-card-footer{grid-area:meta;display:flex;flex-direction:column;align-items:flex-start;gap:4px;font-size:13px;line-height:1.6}
+html[data-layout="compact"] .collection-home .source-card-license{font-size:13px}
+html[data-layout="compact"] .collection-home .requirements,html[data-layout="compact"] .collection-home .source-record-details{grid-area:details;margin:0;padding:0;border:0}
+html[data-layout="compact"] .collection-home .requirements summary,html[data-layout="compact"] .collection-home .source-record-details summary{font-size:13px;line-height:1.6;padding:4px 0}
+html[data-layout="compact"] .collection-home .requirements[open],html[data-layout="compact"] .collection-home .source-record-details[open]{grid-area:auto;grid-column:1/-1;border-top:1px solid var(--line);padding-top:10px;margin-top:8px}
+html[data-layout="compact"] .collection-home .source-card>.source-related,html[data-layout="compact"] .collection-home .source-card>.source-topics{display:none}
+html[data-layout="compact"] .source-compact-context{display:block;margin-top:14px}
+.source-compact-topics{font-size:14px;line-height:1.7;overflow-wrap:anywhere;margin:0 0 14px}
+@media(max-width:1050px){
+  html[data-layout="compact"] .collection-home .resource-card,html[data-layout="compact"] .collection-home .source-card{grid-template-columns:minmax(180px,.7fr) minmax(0,1.3fr);grid-template-areas:"heading meta" "description description" "details details";gap:10px 22px}
+  html[data-layout="compact"] .collection-home .card-meta,html[data-layout="compact"] .collection-home .source-card-footer{align-items:flex-end}
+}
+@media(max-width:700px){
+  .index-mode-switch{flex-wrap:wrap;gap:0 22px}
+  .layout-control{width:100%;justify-content:flex-end;margin-top:12px;padding-bottom:12px}
+  .layout-control select{min-height:44px;font-size:16px}
+  html[data-layout="compact"] .collection-home .resource-card,html[data-layout="compact"] .collection-home .source-card{display:block;padding:18px 2px}
+  html[data-layout="compact"] .collection-home .card-heading,html[data-layout="compact"] .collection-home .source-card-head{display:flex;flex-wrap:wrap;gap:4px 12px;align-items:baseline}
+  html[data-layout="compact"] .collection-home .card-heading h3,html[data-layout="compact"] .collection-home .source-card-head h3{flex-basis:100%;font-size:17px}
+  html[data-layout="compact"] .collection-home .resource-kind,html[data-layout="compact"] .collection-home .source-stars{margin:2px 0 8px}
+  html[data-layout="compact"] .collection-home .card-description,html[data-layout="compact"] .collection-home .source-card-description{margin:4px 0 10px}
+  html[data-layout="compact"] .collection-home .card-meta,html[data-layout="compact"] .collection-home .source-card-footer{flex-direction:row;align-items:baseline;gap:6px 16px;font-size:14px}
+  html[data-layout="compact"] .collection-home .requirements,html[data-layout="compact"] .collection-home .source-record-details{margin-top:7px}
+  html[data-layout="compact"] .collection-home .requirements summary,html[data-layout="compact"] .collection-home .source-record-details summary{font-size:14px}
+}
+
+.detail-label-compact{display:none}
+html[data-layout="compact"] .collection-home .detail-label-full{display:none}
+html[data-layout="compact"] .collection-home .detail-label-compact{display:inline}
+
+@media(min-width:1051px){
+  html[data-layout="compact"] .collection-home .card-meta,html[data-layout="compact"] .collection-home .source-card-footer{display:contents}
+  html[data-layout="compact"] .collection-home .card-category,html[data-layout="compact"] .collection-home .source-card-license{grid-column:3;grid-row:1;font-size:13px;line-height:1.6}
+  html[data-layout="compact"] .collection-home .card-meta>a,html[data-layout="compact"] .collection-home .source-card-footer>a{grid-column:3;grid-row:2;justify-self:start;align-self:center;font-size:13px;line-height:1.6}
+  html[data-layout="compact"] .collection-home .requirements:not([open]),html[data-layout="compact"] .collection-home .source-record-details:not([open]){justify-self:end;align-self:center}
+}
