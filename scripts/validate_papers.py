@@ -57,6 +57,28 @@ def canonical_paper_url(value):
     return parsed.scheme.casefold(), host, path
 
 
+def has_reviewed_publisher_identity(record, evidence):
+    """Recognize the reviewed USENIX Security proceedings URL/PDF profile.
+
+    This checks a source-review contract, not publication authenticity. Additional
+    publisher profiles require review; a software-artifact DOI is not a paper ID.
+    """
+    if record.get('publication_status') != 'conference-paper':
+        return False
+    landing, pdf = record.get('url'), record.get('pdf_url')
+    if not isinstance(landing, str) or not isinstance(pdf, str):
+        return False
+    match = re.fullmatch(
+        r'https://www\.usenix\.org/conference/usenixsecurity([0-9]{2})/'
+        r'presentation/([a-z0-9]+(?:-[a-z0-9]+)*)', landing)
+    if not match or type(record.get('year')) is not int:
+        return False
+    year, presenter = match.groups()
+    return (record['year'] == 2000 + int(year)
+            and pdf == f'https://www.usenix.org/system/files/sec{year}-{presenter}.pdf'
+            and landing in evidence and pdf in evidence)
+
+
 def validate_papers(records, errors, *, url_check):
     """Use the caller's public-HTTPS checker so importing this module cannot cycle."""
     if not isinstance(records, list) or not records:
@@ -139,8 +161,6 @@ def validate_papers(records, errors, *, url_check):
                 errors.append(f'{where}.{field}: use a non-future ISO calendar date')
 
         arxiv, doi, version = record.get('arxiv_id'), record.get('doi'), record.get('arxiv_version_reviewed')
-        if arxiv is None and doi is None:
-            errors.append(f'{where}: provide a verified arXiv ID or DOI')
         for field, value, pattern in (('arxiv_id', arxiv, ARXIV_ID), ('doi', doi, re.compile(r'10\.\d{4,9}/\S+'))):
             if value is None:
                 continue
@@ -165,6 +185,8 @@ def validate_papers(records, errors, *, url_check):
                 or any(not isinstance(url, str) or not url.strip() for url in evidence)):
             errors.append(f'{where}.evidence_urls: use a nonempty URL array')
             evidence = []
+        if arxiv is None and doi is None and not has_reviewed_publisher_identity(record, evidence):
+            errors.append(f'{where}: provide a verified arXiv ID or DOI, or a reviewed published-paper URL/PDF identity')
         for field in ('url', 'pdf_url', 'code_url', 'project_url'):
             value = record.get(field)
             if field in {'code_url', 'project_url'} and value is None:
