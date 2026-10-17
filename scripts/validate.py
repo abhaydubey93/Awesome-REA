@@ -4,6 +4,7 @@ import datetime as dt
 import html
 import ipaddress
 import json
+import os
 from pathlib import Path
 import re
 import socket
@@ -917,7 +918,7 @@ def main():
     index_path = ROOT / 'data/source-index.json'
     if index_path.exists():
         try:
-            index_document = json.loads(index_path.read_text())
+            index_document = json.loads(index_path.read_text(encoding='utf-8'))
         except (OSError, ValueError):
             errors.append('Source index could not be read as JSON.')
         else:
@@ -937,7 +938,8 @@ def main():
     count = validate_markdown(ROOT, errors)
     for script in ('build_readme.py', 'build_repository_index.py', 'build_case_coverage.py'):
         result = subprocess.run([sys.executable, str(ROOT / 'scripts' / script), '--check'],
-                                cwd=ROOT, text=True, capture_output=True, check=False)
+                                cwd=ROOT, encoding='utf-8', capture_output=True, check=False,
+                                env={**os.environ, 'PYTHONIOENCODING': 'utf-8'})
         if result.returncode:
             errors.append((result.stderr or result.stdout).strip() or f'{script}: generated content check failed.')
     if errors:
