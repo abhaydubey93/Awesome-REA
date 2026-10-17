@@ -347,3 +347,15 @@ html[lang="zh-CN"] .card-description,html[lang="zh-CN"] .source-card-description
 @media(max-width:700px){.source-field>input,.source-field>select,.target-filter{min-height:44px}.source-field>input,.source-field>select{font-size:16px}.resource-card,.source-card{padding:22px}.collection-note,.collection-note>a,.collection-note summary,.results-topline p{font-size:14px}.home-intro .collection-description{font-size:16px}.subject-directory a{font-size:14px}.language-picker select{font-size:14px}}
 @media(max-width:520px){.source-record-details dl{grid-template-columns:minmax(0,1fr);gap:3px}.source-record-details dd{margin-bottom:12px}.home-intro .collection-directory a{font-size:12px}.home-intro .collection-directory .directory-about{font-size:13px}.hero-text-link{font-size:13px}.collection-note details[open]{padding:13px}}
 @media(max-width:420px){.source-target-filters,.group-filters{grid-template-columns:repeat(2,minmax(0,1fr))}.subject-directory{grid-template-columns:repeat(2,minmax(0,1fr))}.target-filter{font-size:14px}.search-box{padding-inline:13px}.source-field{flex-basis:100%}}
+@media(max-width:420px){
+  .header-inner{gap:8px}
+  .wordmark{font-size:18px;gap:6px;letter-spacing:-.6px}
+  .brand-mark{width:28px;height:28px;font-size:24px}
+  .header-nav{gap:0}
+  .language-picker{padding-left:8px;gap:0}
+  .language-picker>.icon:not(.language-chevron){display:none}
+  .language-picker select{padding-right:24px;font-size:14px}
+  .language-picker>.language-chevron{right:8px}
+  .header-nav .browse-language,.header-nav .papers-language{padding-inline:9px}
+}
+.clear-button{white-space:nowrap}
