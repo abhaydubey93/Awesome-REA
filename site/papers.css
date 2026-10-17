@@ -85,3 +85,17 @@
 html[lang="zh-CN"] .paper-description,html[lang="zh-CN"] .paper-scope p,html[lang="zh-CN"] .paper-details p,html[lang="zh-CN"] .paper-details ul{max-width:36em}
 
 .papers-topic-nav a{min-height:44px}
+
+/* Search controls are revealed only after the static paper index is validated. */
+.paper-search{display:grid;grid-template-columns:minmax(240px,2fr) repeat(3,minmax(130px,1fr)) auto;gap:14px;align-items:end;margin:24px 0;padding:20px;border:1px solid var(--line);border-radius:10px;background:var(--soft)}
+.paper-search-field{display:flex;flex-direction:column;gap:6px;min-width:0}
+.paper-search-field label{font-size:13px;font-weight:600}
+.paper-search-field input,.paper-search-field select{width:100%;min-width:0;min-height:44px;padding:9px 11px;border:1px solid var(--strong);border-radius:6px;background:var(--surface);font-size:14px}
+.paper-search .button{min-height:44px;white-space:nowrap}
+.paper-search .button:disabled{opacity:.55;cursor:default}
+.paper-search-help,.paper-search-results{grid-column:1/-1;margin:0;font-size:13px;line-height:1.7;color:var(--muted)}
+.paper-search-results{font-weight:600;color:var(--ink)}
+.paper-search-empty{padding:24px 0;color:var(--muted)}
+.paper-search-empty p{margin:0 0 14px}
+@media(max-width:1100px){.paper-search{grid-template-columns:repeat(3,minmax(0,1fr))}.paper-search-query{grid-column:1/-1}.paper-search .button{justify-self:start}}
+@media(max-width:600px){.paper-search{grid-template-columns:1fr;padding:16px}.paper-search-query,.paper-search-help,.paper-search-results{grid-column:auto}.paper-search .button{justify-self:stretch}}
