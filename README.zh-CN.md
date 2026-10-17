@@ -1,31 +1,18 @@
 # Awesome Reverse Engineering Anything
 
-收集值得关注的**工具、项目、集成与参考资料**，覆盖网站、游戏、应用、原生二进制、固件、硬件及通信协议逆向。
+整理工具、重建案例与研究论文，帮助理解网站、游戏、应用、原生二进制、固件及通信协议。
 
-**[网站](https://awesomerea.org/?lang=zh) · [完整仓库索引](https://awesomerea.org/?view=source-index&lang=zh) · [GitHub](https://github.com/reacher-z/Awesome-REA) · [English](README.md)**
+<a href="https://awesomerea.org/?lang=zh"><img src="assets/readme-banner.svg" alt="Awesome Reverse Engineering Anything — 覆盖六类逆向目标的工具、案例与论文" width="960"></a>
 
-**[精选资源目录](https://awesomerea.org/zh/resources/) · [关于目录与核查方法](https://awesomerea.org/zh/about/)**
+**[浏览合集 ↗](https://awesomerea.org/?lang=zh) · [精选资源](https://awesomerea.org/zh/resources/) · [研究论文](https://awesomerea.org/zh/papers/) · [English](README.md)**
 
-这是独立维护的资源集合。来源核查与实际运行验证分别记录；工具能力与论文结论以各条目的原始证据为准。
-
-[![目录检查](https://github.com/reacher-z/Awesome-REA/actions/workflows/validate.yml/badge.svg)](https://github.com/reacher-z/Awesome-REA/actions/workflows/validate.yml)
-[![MIT 许可证](https://img.shields.io/badge/License-MIT-blue.svg)](LICENSE)
-
-<a href="https://awesomerea.org/?lang=zh"><img src="assets/readme-banner.svg" alt="Awesome Reverse Engineering Anything — 工具、项目、集成与资源合集" width="760"></a>
+这是依据一手来源整理的独立合集。来源核查与运行验证分别记录，各条目保留证据、使用条件和限制。[了解核查方法](https://awesomerea.org/zh/about/)。
 
 ## 目录
 
-- [Website · 网站](#website)
-- [Game · 游戏](#game)
-- [App · 应用](#app)
-- [Native Binary · 原生二进制](#native-binary)
-- [Firmware · 固件与硬件](#firmware)
-- [Agents & MCP · Agent 与集成](#agents-and-mcp)
-- [Related Collections · 相关合集](#related-collections)
-- [References & Learning · 文档与学习资料](#references-and-learning)
-- [论文](#papers)
-- [完整仓库索引](#完整仓库索引)
-- [参与贡献](#参与贡献)
+- **目标** · [网站](#website) · [游戏](#game) · [应用](#app) · [原生二进制](#native-binary) · [固件与硬件](#firmware) · [协议](#protocol)
+
+- [论文](#papers) · [案例](https://awesomerea.org/?view=curated&kind=case-study&lang=zh) · [Agent 与 MCP](#agents-and-mcp) · [相关合集](#related-collections) · [学习资料](#references-and-learning) · [仓库索引](#完整仓库索引)
 
 <a id="资源目录"></a>
 <a id="resource-catalog"></a>
@@ -492,12 +479,18 @@
 
 ## 参与贡献
 
-欢迎推荐工具、项目、案例与其他资源合集，也欢迎完善已有条目。请参考[贡献指南](CONTRIBUTING.md)，提供项目链接、一句用途说明和准确的资源类型。
+欢迎完善条目或分享有用来源。请先阅读[贡献指南](CONTRIBUTING.md)，再[推荐资源](https://github.com/reacher-z/Awesome-REA/issues/new?template=resource.yml)、[推荐论文](https://github.com/reacher-z/Awesome-REA/issues/new?template=paper.yml)、[修正翻译](https://github.com/reacher-z/Awesome-REA/issues/new?template=translation.yml)或[报告过时条目](https://github.com/reacher-z/Awesome-REA/issues/new?template=broken-resource.yml)。
+
+## 致谢
+
+[Haozhe Wang](https://haozheh3.github.io/) — 游戏重建资源集合整理与推荐：[awesome-rea-games](https://github.com/HaozheH3/awesome-rea-games)。
 
 ## 关于
 
-如需查找 AI 参与开发的软件，以及 Agent 训练和评测资料，可浏览 [AI Can What?](https://aicanwhat.com/zh/) 的游戏、网站和应用目录。
-
 本项目是独立社区资源合集。原创说明和代码使用 [MIT 许可证](LICENSE)，外部项目保留各自的许可证。
 
-[补充文档](data/README.md) · [仓库扫描方法](docs/source-scan.md)
+如需查找 AI 参与开发的软件，以及 Agent 训练和评测资料，可浏览 [AI Can What?](https://aicanwhat.com/zh/) 的游戏、网站和应用目录。
+
+---
+
+[目录格式](data/README.md) · [扫描方法](docs/source-scan.md) · [构建状态](https://github.com/reacher-z/Awesome-REA/actions/workflows/validate.yml) · [返回顶部](#awesome-reverse-engineering-anything)

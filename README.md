@@ -1,31 +1,18 @@
 # Awesome Reverse Engineering Anything
 
-A collection of **tools, projects, integrations, and references** for reverse engineering websites, games, apps, native binaries, firmware, and communication protocols.
+Tools, reconstruction cases and research for understanding websites, games, apps, native binaries, firmware and communication protocols.
 
-**[Website](https://awesomerea.org) · [Full repository index](https://awesomerea.org/?view=source-index) · [GitHub](https://github.com/reacher-z/Awesome-REA) · [简体中文](README.zh-CN.md)**
+<a href="https://awesomerea.org/"><img src="assets/readme-banner.svg" alt="Awesome Reverse Engineering Anything — tools, cases and papers across six reverse-engineering domains" width="960"></a>
 
-**[Curated directory](https://awesomerea.org/resources/) · [About and review method](https://awesomerea.org/about/)**
+**[Explore the collection ↗](https://awesomerea.org/) · [Curated directory](https://awesomerea.org/resources/) · [Research papers](https://awesomerea.org/papers/) · [简体中文](README.zh-CN.md)**
 
-An independent collection. Source review is distinct from runtime verification; follow each entry’s primary evidence for tool and research claims.
-
-[![Collection checks](https://github.com/reacher-z/Awesome-REA/actions/workflows/validate.yml/badge.svg)](https://github.com/reacher-z/Awesome-REA/actions/workflows/validate.yml)
-[![License: MIT](https://img.shields.io/badge/License-MIT-blue.svg)](LICENSE)
-
-<a href="https://awesomerea.org"><img src="assets/readme-banner.svg" alt="Awesome Reverse Engineering Anything — tools, projects, integrations, and collections" width="760"></a>
+An independent collection built from primary sources. Source review and runtime verification are distinct; each entry preserves its evidence, requirements and limits. [Read our review method](https://awesomerea.org/about/).
 
 ## Contents
 
-- [Website](#website)
-- [Game](#game)
-- [App](#app)
-- [Native Binary](#native-binary)
-- [Firmware and Hardware](#firmware)
-- [Agents and MCP](#agents-and-mcp)
-- [Related Collections](#related-collections)
-- [References and Learning](#references-and-learning)
-- [Papers](#papers)
-- [Full Repository Index](#full-repository-index)
-- [Contributing](#contributing)
+- **Targets** · [Website](#website) · [Game](#game) · [App](#app) · [Native Binary](#native-binary) · [Firmware & Hardware](#firmware) · [Protocol](#protocol)
+
+- [Papers](#papers) · [Cases](https://awesomerea.org/?view=curated&kind=case-study) · [Agents & MCP](#agents-and-mcp) · [Collections](#related-collections) · [Learning](#references-and-learning) · [Repository index](#full-repository-index)
 
 <a id="resource-catalog"></a>
 ## Resources
@@ -491,12 +478,18 @@ The resource list above is curated from primary sources. Detailed requirements, 
 
 ## Contributing
 
-New tools, projects, case studies, and collections are welcome. Suggest a resource or improve an existing entry through the [contribution guide](CONTRIBUTING.md). Use a project link, a concise description, and an accurate resource type.
+Help improve an entry or share a useful source. Start with the [contribution guide](CONTRIBUTING.md), then [suggest a resource](https://github.com/reacher-z/Awesome-REA/issues/new?template=resource.yml), [recommend a paper](https://github.com/reacher-z/Awesome-REA/issues/new?template=paper.yml), [correct a translation](https://github.com/reacher-z/Awesome-REA/issues/new?template=translation.yml) or [report an outdated entry](https://github.com/reacher-z/Awesome-REA/issues/new?template=broken-resource.yml).
+
+## Acknowledgments
+
+[Haozhe Wang](https://haozheh3.github.io/) — Game reconstruction resource collection: [awesome-rea-games](https://github.com/HaozheH3/awesome-rea-games).
 
 ## About
 
-For software made with AI and resources for training or evaluating agents, browse [AI Can What?](https://aicanwhat.com/) across games, websites, and applications.
-
 This is an independent community collection. Original descriptions and code are [MIT licensed](LICENSE); linked projects retain their own licenses.
 
-[Supporting documentation](data/README.md) · [Repository scanning method](docs/source-scan.md)
+For AI-built software and agent training or evaluation resources, explore [AI Can What?](https://aicanwhat.com/) across games, websites and applications.
+
+---
+
+[Catalog format](data/README.md) · [Scan methodology](docs/source-scan.md) · [Build status](https://github.com/reacher-z/Awesome-REA/actions/workflows/validate.yml) · [Back to top](#awesome-reverse-engineering-anything)
