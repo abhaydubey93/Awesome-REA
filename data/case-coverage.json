@@ -1,7 +1,7 @@
 {
   "schema_version": 1,
   "reviewed_at": "2026-10-17",
-  "catalog_revision": "2fa65cc693d18841489d5d173bad0ec239d23f7e",
+  "catalog_revision": "b65e229285186b3a313167bffbd85e29d73ba0ef",
   "runtime_reproduced": false,
   "project_identity_resolution": "incomplete",
   "collections": [
@@ -295,13 +295,27 @@
         "https://www.reddit.com/r/ClaudeCode/comments/1x043yp/i_used_claude_code_to_reverseengineer_an_lg_tv/",
         "https://x.com/i/status/2109658600394367126"
       ],
-      "state": "pending",
-      "review_level": "inventory-only",
+      "state": "already-curated",
+      "review_level": "primary-source-reviewed",
       "reviewed_at": "2026-10-17",
-      "reason_en": "A collection lead awaiting primary-source review; listing does not verify implementation or results.",
-      "reason_zh": "合集线索，等待一手来源核查；被列入合集不代表实现或结果已获验证。",
-      "primary_evidence_urls": [],
-      "catalog_matches": []
+      "reason_en": "The bounded case is source-reviewed and mapped to its published curated record; no runtime reproduction is implied.",
+      "reason_zh": "此有限范围案例已核查来源并对应到已发布的精选条目；不表示运行复现。",
+      "primary_evidence_urls": [
+        "https://github.com/GLinnik21/plx-native/blob/0b0b22092b204432834c75f32148dbd16ec3493b/README.md",
+        "https://github.com/GLinnik21/plx-native/blob/0b0b22092b204432834c75f32148dbd16ec3493b/docs/building.md",
+        "https://github.com/GLinnik21/plx-native/blob/0b0b22092b204432834c75f32148dbd16ec3493b/docs/install-and-verify.md",
+        "https://github.com/GLinnik21/plx-native/blob/0b0b22092b204432834c75f32148dbd16ec3493b/LICENSE",
+        "https://github.com/GLinnik21/plx-native/blob/0b0b22092b204432834c75f32148dbd16ec3493b/THIRD-PARTY-NOTICES.md",
+        "https://www.reddit.com/r/ClaudeCode/comments/1x043yp/i_used_claude_code_to_reverseengineer_an_lg_tv/"
+      ],
+      "catalog_matches": [
+        {
+          "catalog": "resource",
+          "id": "plx-native-case",
+          "kind": "case-study",
+          "scope": "full"
+        }
+      ]
     },
     {
       "id": "song:mw2-decompilation",
@@ -708,12 +722,26 @@
         "https://github.com/N0zoM1z0/th08/pull/13"
       ],
       "state": "pending",
-      "review_level": "inventory-only",
+      "review_level": "primary-source-reviewed",
       "reviewed_at": "2026-10-17",
-      "reason_en": "A collection lead awaiting primary-source review; listing does not verify implementation or results.",
-      "reason_zh": "合集线索，等待一手来源核查；被列入合集不代表实现或结果已获验证。",
-      "primary_evidence_urls": [],
-      "catalog_matches": []
+      "reason_en": "The TH08 component is curated; TH04 and TH095 components in this combined report remain outside the mapping.",
+      "reason_zh": "TH08 部分已有精选条目；组合报告中的 TH04 和 TH095 部分仍不在该映射范围内。",
+      "primary_evidence_urls": [
+        "https://github.com/N0zoM1z0/th08/blob/08c7f00f81e35db8206d917b14f47883930beef6/README.md",
+        "https://github.com/N0zoM1z0/th08/blob/08c7f00f81e35db8206d917b14f47883930beef6/docs/BUILD_MATCHING.md",
+        "https://github.com/N0zoM1z0/th08/blob/08c7f00f81e35db8206d917b14f47883930beef6/docs/REPLAY_RESULTS.md",
+        "https://github.com/N0zoM1z0/th08/blob/08c7f00f81e35db8206d917b14f47883930beef6/LICENSE",
+        "https://github.com/N0zoM1z0/th08/issues/10",
+        "https://github.com/N0zoM1z0/th08/pull/13"
+      ],
+      "catalog_matches": [
+        {
+          "catalog": "resource",
+          "id": "th08-reconstruction-case",
+          "kind": "case-study",
+          "scope": "partial"
+        }
+      ]
     },
     {
       "id": "song:dinosaur-speed",
@@ -729,13 +757,23 @@
         "https://github.com/morluto/rea/blob/main/website/evidence/calculator-and-dino.md",
         "https://x.com/0xlangeai/status/2109595393260761111"
       ],
-      "state": "pending",
-      "review_level": "inventory-only",
+      "state": "already-curated",
+      "review_level": "primary-source-reviewed",
       "reviewed_at": "2026-10-17",
-      "reason_en": "A collection lead awaiting primary-source review; listing does not verify implementation or results.",
-      "reason_zh": "合集线索，等待一手来源核查；被列入合集不代表实现或结果已获验证。",
-      "primary_evidence_urls": [],
-      "catalog_matches": []
+      "reason_en": "The bounded case is source-reviewed and mapped to its published curated record; no runtime reproduction is implied.",
+      "reason_zh": "此有限范围案例已核查来源并对应到已发布的精选条目；不表示运行复现。",
+      "primary_evidence_urls": [
+        "https://github.com/morluto/rea/blob/c360cfcd6d7901514b16dd6113eba2e0b0fdf422/website/evidence/calculator-and-dino.md",
+        "https://github.com/morluto/rea/blob/c360cfcd6d7901514b16dd6113eba2e0b0fdf422/website/public/assets/licenses/dinosaur.txt"
+      ],
+      "catalog_matches": [
+        {
+          "catalog": "resource",
+          "id": "rea-dinosaur-speed-case",
+          "kind": "case-study",
+          "scope": "full"
+        }
+      ]
     },
     {
       "id": "song:smart-toilet",
@@ -968,13 +1006,23 @@
         "https://github.com/morluto/rea/pull/1272",
         "https://github.com/morluto/rea/blob/main/website/evidence/calculator-and-dino.md"
       ],
-      "state": "pending",
-      "review_level": "inventory-only",
+      "state": "already-curated",
+      "review_level": "primary-source-reviewed",
       "reviewed_at": "2026-10-17",
-      "reason_en": "A collection lead awaiting primary-source review; listing does not verify implementation or results.",
-      "reason_zh": "合集线索，等待一手来源核查；被列入合集不代表实现或结果已获验证。",
-      "primary_evidence_urls": [],
-      "catalog_matches": []
+      "reason_en": "The bounded case is source-reviewed and mapped to its published curated record; no runtime reproduction is implied.",
+      "reason_zh": "此有限范围案例已核查来源并对应到已发布的精选条目；不表示运行复现。",
+      "primary_evidence_urls": [
+        "https://github.com/morluto/rea/blob/c360cfcd6d7901514b16dd6113eba2e0b0fdf422/website/evidence/calculator-and-dino.md",
+        "https://github.com/morluto/rea/pull/1272"
+      ],
+      "catalog_matches": [
+        {
+          "catalog": "resource",
+          "id": "rea-calculator-percent-case",
+          "kind": "case-study",
+          "scope": "full"
+        }
+      ]
     },
     {
       "id": "song:android-apidemos",
@@ -4085,13 +4133,22 @@
         "https://x.com/i/status/2110601137707729071",
         "https://benx.ai/blog/posts/rea-reverse-engineer-feishu-dual-instance/"
       ],
-      "state": "pending",
-      "review_level": "inventory-only",
+      "state": "already-curated",
+      "review_level": "primary-source-reviewed",
       "reviewed_at": "2026-10-17",
-      "reason_en": "A collection lead awaiting primary-source review; listing does not verify implementation or results.",
-      "reason_zh": "合集线索，等待一手来源核查；被列入合集不代表实现或结果已获验证。",
-      "primary_evidence_urls": [],
-      "catalog_matches": []
+      "reason_en": "The bounded case is source-reviewed and mapped to its published curated record; no runtime reproduction is implied.",
+      "reason_zh": "此有限范围案例已核查来源并对应到已发布的精选条目；不表示运行复现。",
+      "primary_evidence_urls": [
+        "https://benx.ai/blog/posts/rea-reverse-engineer-feishu-dual-instance/"
+      ],
+      "catalog_matches": [
+        {
+          "catalog": "resource",
+          "id": "feishu-dual-instance-case",
+          "kind": "case-study",
+          "scope": "full"
+        }
+      ]
     },
     {
       "id": "song:rokoinput-apple-local-voice",
@@ -8160,18 +8217,18 @@
     "inventory_units": 370,
     "alias_merges": 2,
     "occurrences_by_state": {
-      "already-curated": 28,
+      "already-curated": 32,
       "insufficient-evidence": 49,
-      "pending": 295
+      "pending": 291
     },
     "units_by_state": {
-      "already-curated": 27,
+      "already-curated": 31,
       "insufficient-evidence": 49,
-      "pending": 294
+      "pending": 290
     },
-    "primary_reviewed_units": 15,
-    "catalog_linked_occurrences": 29,
-    "distinct_resource_ids": 27,
+    "primary_reviewed_units": 20,
+    "catalog_linked_occurrences": 34,
+    "distinct_resource_ids": 32,
     "distinct_paper_ids": 1,
     "unique_projects": null
   }

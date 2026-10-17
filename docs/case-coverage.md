@@ -19,13 +19,13 @@ The ledger retains pinned file URLs, Git blob IDs, SHA-256 digests and byte coun
 
 | State | Occurrences | Inventory units | Meaning |
 | --- | ---: | ---: | --- |
-| Already curated (`already-curated`) | 28 | 27 | Full-scope identity mapping to a catalog resource or paper; not independent runtime reproduction. |
-| Pending (`pending`) | 295 | 294 | Primary review or complete catalog coverage remains pending; partial matches stay here. |
+| Already curated (`already-curated`) | 32 | 31 | Full-scope identity mapping to a catalog resource or paper; not independent runtime reproduction. |
+| Pending (`pending`) | 291 | 290 | Primary review or complete catalog coverage remains pending; partial matches stay here. |
 | Insufficient evidence (`insufficient-evidence`) | 49 | 49 | An idea, request or unsupported reconstruction claim is retained as a lead. |
 
-29 occurrences have catalog links. They reference 27 distinct resource IDs and 1 paper ID. Match scope is recorded separately; do not add these populations as unique projects.
+34 occurrences have catalog links. They reference 32 distinct resource IDs and 1 paper ID. Match scope is recorded separately; do not add these populations as unique projects.
 
-This ledger records a new primary-source review for 15 inventory units. Other catalog-linked entries inherit the catalog’s separate source-review record; a link does not mean the entire collection report was reviewed again. No runtime experiment was independently reproduced for this ledger.
+This ledger records a new primary-source review for 20 inventory units. Other catalog-linked entries inherit the catalog’s separate source-review record; a link does not mean the entire collection report was reviewed again. No runtime experiment was independently reproduced for this ledger.
 
 Repository README scan IDs and counts are deliberately absent. A successful README fetch, an upstream list entry and a source-reviewed case are different facts.
 
@@ -33,8 +33,12 @@ Repository README scan IDs and counts are deliberately absent. A successful READ
 
 | Case | State | Primary evidence |
 | --- | --- | --- |
+| PlxNative: reconstructing a native webOS media-client interface | Already curated | [Source](https://github.com/GLinnik21/plx-native/blob/0b0b22092b204432834c75f32148dbd16ec3493b/README.md) |
 | Agent decompilation: a byte-matching retrospective | Already curated | [Source](https://momo5502.com/posts/2026-10-09-game-decompilation/) |
 | open-appleremote: Siri Remote protocol reconstruction | Already curated | [Source](https://github.com/a-funk/open-appleremote/blob/1e6e190c3c29a3d2d8cad2c38c09f8953e9633e3/README.md) |
+| TH08: exact-source reconstruction and separately tested ports | Pending | [Source](https://github.com/N0zoM1z0/th08/blob/08c7f00f81e35db8206d917b14f47883930beef6/README.md) |
+| Dinosaur runner: recovering one acceleration rule | Already curated | [Source](https://github.com/morluto/rea/blob/c360cfcd6d7901514b16dd6113eba2e0b0fdf422/website/evidence/calculator-and-dino.md) |
+| Windows Calculator: reconstructing percentage rules | Already curated | [Source](https://github.com/morluto/rea/blob/c360cfcd6d7901514b16dd6113eba2e0b0fdf422/website/evidence/calculator-and-dino.md) |
 | CF632BLE: a local client from scale-protocol research | Already curated | [Source](https://github.com/guyru/cf632ble/blob/c029ef5cfefbd323ffe2a194a75db5cc47aa6d5c/README.md) |
 | zee-rp: reconstructing supported Axure RP 11 document operations | Already curated | [Source](https://github.com/LilZeeCN/zee-rp/blob/473761e6a08f051e1666944db690332ef27a6038/README.md) |
 | Nanolathe: a documented Total Annihilation engine reimplementation | Already curated | [Source](https://github.com/nanolathe-gg/nanolathe/blob/5007ba75354c06fc9752a2822d37ff1e1443b77b/README.md) |
@@ -43,6 +47,7 @@ Repository README scan IDs and counts are deliberately absent. A successful READ
 | Open Claude UI: REA-informed interface reference components | Already curated | [Source](https://github.com/Caho1/open-claude-ui/blob/ddf3aea1711db62fd6d24343bbab500a5ae69f64/README.md) |
 | GAMEKB-K17: reconstructing a macropad configuration protocol | Already curated | [Source](https://github.com/dvdarkin/gamekb-k17/blob/e61f444793857c0e10a31692674335ee4ee9c89e/README.md) |
 | IsaacRecomp: translating Flash game bytecode to native C++ | Already curated | [Source](https://github.com/whylurking/IsaacRecomp/blob/7736f3d2961051b66cd315bcf5a719e9024d889d/README.md) |
+| Feishu: an author-reported isolated second app instance | Already curated | [Source](https://benx.ai/blog/posts/rea-reverse-engineer-feishu-dual-instance/) |
 | Super Mario 64 DS: matching decompilation with relocation checks | Already curated | [Source](https://github.com/tangosdev/sm64ds-decomp/blob/af8636d638322b88738ef7ad4b4f28ed9c5be24f/README.md) |
 | GoldenEye 007: an agent-assisted native port from a decompilation | Already curated | [Source](https://github.com/jkdansereau/goldeneye-pc-port/blob/fda76b69837e6c5aae436e0d3e798989e49b06d2/README.md) |
 | BattleShip: an AI-assisted Super Smash Bros. native port | Already curated | [Source](https://github.com/vinvirile/BattleShip/blob/ed9d32504de9fe69b92ad4869643ed5d37a42256/README.md) |
@@ -53,6 +58,7 @@ Repository README scan IDs and counts are deliberately absent. A successful READ
 
 Partial catalog mappings:
 
+- `song:touhou-reconstruction` — The TH08 component is curated; TH04 and TH095 components in this combined report remain outside the mapping.
 - `song:schaller-opticfilm-thinkpad-linux` — The scanner USB investigation is curated; the same collection entry also reports MIPI camera work that remains outside this catalog mapping.
 
 Alias decisions:
