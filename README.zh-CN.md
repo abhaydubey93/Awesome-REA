@@ -22,7 +22,7 @@
 
 **论文与工作流**
 
-- [论文](#papers) (47) · [智能体与 MCP](#agents-and-mcp) (19) · [文档与学习资源](#references-and-learning) (20)
+- [论文](#papers) (48) · [智能体与 MCP](#agents-and-mcp) (19) · [文档与学习资源](#references-and-learning) (20)
 
 **更多浏览方式**
 
@@ -1019,7 +1019,7 @@
 <a id="papers"></a>
 ## 论文
 
-收录 **47 篇论文**，涵盖逆向工程智能体评测、反编译、协议推断、固件分析，以及网站、游戏和应用重建。部分论文也出现在精选资源目录中，两者数量不可相加。发表状态与研究范围分别标注，中文标题为译名。
+收录 **48 篇论文**，涵盖逆向工程智能体评测、反编译、协议推断、固件分析，以及网站、游戏和应用重建。部分论文也出现在精选资源目录中，两者数量不可相加。发表状态与研究范围分别标注，中文标题为译名。
 
 [浏览论文目录](https://awesomerea.org/zh/papers/) · [完整书目 JSON](data/papers.json) · [推荐论文](https://github.com/reacher-z/Awesome-REA/issues/new?template=paper.yml)
 
@@ -1027,7 +1027,7 @@
 
 - [智能体评测](#papers-agent-evaluation) (5) · [反编译](#papers-decompilation) (8) · [网站](#papers-website-reconstruction) (13)
 - [游戏](#papers-game-reconstruction) (6) · [应用](#papers-app-reconstruction) (5) · [固件](#papers-firmware-analysis) (5)
-- [协议](#papers-protocol-analysis) (5)
+- [协议](#papers-protocol-analysis) (6)
 
 展开各条目的“范围与发表信息”可查看完整研究边界；以下按年份从新到旧排列。
 
@@ -1653,6 +1653,20 @@
 ### 协议推断与分析
 
 [↑ 论文主题](#papers) · [目录](#目录)
+
+- [**BinPRE：增强基于二进制分析的协议逆向工程中的字段推断**](https://dl.acm.org/doi/10.1145/3658644.3690299)<br>
+  2024 · 会议论文 · [PDF](https://tingsu.github.io/files/ccs24-BinPRE.pdf) · [代码](https://github.com/ecnusse/BinPRE) · [完整条目与引用](https://awesomerea.org/zh/papers/paper-binpre/)
+
+  根据受插桩监测的服务端二进制及输入报文，推断协议报文的字段边界与语义。BinPRE 按处理字节的指令操作符进行分组，使用检测器识别字段类型和功能，再借助相似报文细化结果。作者在八种协议、每种 50 条报文上报告平均字段完美分割率为 0.73，类型／功能推断的 F1 分数为 0.74／0.81。
+
+  <details>
+  <summary>范围与发表信息</summary>
+
+  **范围与限制:** 研究对象是字段推断，不是恢复协议状态机或端点的完整行为。方法需要能够访问并插桩的实现及运行时的报文处理；仅有被动捕获数据并不足够。完美分割率统计被精确分割的字段占全部真实字段的比例，而非完整恢复的协议比例。检测器库覆盖五种语义类型与六种功能。字节级污点分析无法准确解析位标志，也不确立未执行行为。真实标签依据 Wireshark 解析器与协议规范构建；三种二进制分析基线由作者重新实现。报告的模糊测试改进属于下游评估，不是实现等价性的证明。
+
+  **发表信息:** 2024 · ACM CCS 2024 · 会议论文 · Jiayi Jiang 等
+
+  </details>
 
 - [**越仔细观察，学到的越多：用于协议状态机学习的灰盒方法**](https://doi.org/10.1145/3548606.3559365)<br>
   2022 · 会议论文 · [PDF](https://tomchothia.gitlab.io/Papers/greyboxstatelearning_ccs2022.pdf) · [代码](https://github.com/ChrisMcMStone/state-inspector) · [完整条目与引用](https://awesomerea.org/zh/papers/paper-stateinspector/)

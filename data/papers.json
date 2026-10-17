@@ -2628,5 +2628,72 @@
     "verified_at": "2026-10-17",
     "verification": "source-reviewed",
     "runtime_tested": false
+  },
+  {
+    "id": "paper-binpre",
+    "title": "BinPRE: Enhancing Field Inference in Binary Analysis Based Protocol Reverse Engineering",
+    "title_zh": "BinPRE：增强基于二进制分析的协议逆向工程中的字段推断",
+    "authors": [
+      "Jiayi Jiang",
+      "Xiyuan Zhang",
+      "Chengcheng Wan",
+      "Haoyi Chen",
+      "Haiying Sun",
+      "Ting Su"
+    ],
+    "year": 2024,
+    "publication_date": "2024-12-02",
+    "date_precision": "day",
+    "date_basis": "The publisher’s Crossref deposit records published/print publication on 2024-12-02 and a separate publisher publication-history assertion on 2024-12-09. This record uses the published/print date; the October 14–18 CCS meeting dates and the September arXiv submission are separate.",
+    "date_basis_zh": "出版方提交的 Crossref 元数据将 published／纸质出版日期记为 2024-12-02，另有一项出版方发表历史声明记为 2024-12-09。本条目采用 published／纸质出版日期；10 月 14–18 日的 CCS 会议日期及 9 月的 arXiv 提交日期另行区分。",
+    "venue": "ACM CCS 2024",
+    "publication_status": "conference-paper",
+    "arxiv_id": "2409.01994",
+    "arxiv_version_reviewed": "v1",
+    "first_arxiv_date": "2024-09-03",
+    "doi": "10.1145/3658644.3690299",
+    "citation": {
+      "container_title": "Proceedings of the 2024 on ACM SIGSAC Conference on Computer and Communications Security",
+      "publisher": "ACM",
+      "pages": "3689-3703",
+      "sources": [
+        "https://api.crossref.org/works/10.1145/3658644.3690299"
+      ]
+    },
+    "url": "https://dl.acm.org/doi/10.1145/3658644.3690299",
+    "pdf_url": "https://tingsu.github.io/files/ccs24-BinPRE.pdf",
+    "code_url": "https://github.com/ecnusse/BinPRE",
+    "project_url": null,
+    "targets": [
+      "protocol"
+    ],
+    "description_en": "Infers protocol-message field boundaries and semantics from instrumented server binaries and input messages. BinPRE groups bytes by the instruction operators that process them, applies detectors for field types and functions, then refines results across similar messages. On eight protocols with 50 messages each, the authors report average field perfection of 0.73 and type/function F1 scores of 0.74/0.81.",
+    "description_zh": "根据受插桩监测的服务端二进制及输入报文，推断协议报文的字段边界与语义。BinPRE 按处理字节的指令操作符进行分组，使用检测器识别字段类型和功能，再借助相似报文细化结果。作者在八种协议、每种 50 条报文上报告平均字段完美分割率为 0.73，类型／功能推断的 F1 分数为 0.74／0.81。",
+    "scope_limitations_en": "This is field inference, not recovery of a protocol state machine or complete endpoint behavior. It requires an accessible, instrumentable implementation and runtime message processing; passive captures alone are insufficient. Perfection counts exactly segmented fields against all true fields, not fully recovered protocols. The detector library covers five semantic types and six functions. Byte-level taint cannot accurately resolve bit flags, and unexercised behavior is not established. Ground truth uses Wireshark dissectors and specifications; three binary-analysis baselines were author reimplementations. Reported fuzzing improvements are a downstream evaluation, not proof of implementation equivalence.",
+    "scope_limitations_zh": "研究对象是字段推断，不是恢复协议状态机或端点的完整行为。方法需要能够访问并插桩的实现及运行时的报文处理；仅有被动捕获数据并不足够。完美分割率统计被精确分割的字段占全部真实字段的比例，而非完整恢复的协议比例。检测器库覆盖五种语义类型与六种功能。字节级污点分析无法准确解析位标志，也不确立未执行行为。真实标签依据 Wireshark 解析器与协议规范构建；三种二进制分析基线由作者重新实现。报告的模糊测试改进属于下游评估，不是实现等价性的证明。",
+    "why_fits_en": "Adds recent executable-assisted protocol field and semantic inference, complementing the collection’s traffic-based syntax inference and protocol-state learning research.",
+    "why_fits_zh": "补充近期借助可执行程序进行协议字段与语义推断的研究，与合集已有的流量语法推断和协议状态学习形成互补。",
+    "metadata_notes": "The author’s publication page links the CCS-formatted paper, the 17-page arXiv v1 and the artifact. Six-author order, DOI and proceedings pages match Crossref. The reviewed artifact snapshot is dated 2024-10-25 and declares no project-level license. Its README specifies Ubuntu 20.04, Python 3.8 and Intel Pin 3.28; the workflow runs a server and client and requires protocol/thread selection. The reviewed tree supplies a Modbus example, not a complete eight-protocol benchmark package; additional servers, captures and evaluation ground truth need separate setup. The README’s Docker example uses a privileged container, and the Dockerfile fetches a named branch rather than the reviewed commit. Public availability does not grant rights to bundled binaries or dependencies. No binaries, captures, containers or installers were downloaded, and no upstream code or experiments were executed.",
+    "metadata_notes_zh": "作者发表列表链接了 CCS 排版论文、17 页的 arXiv v1 及产物。六位作者顺序、DOI 和论文集页码与 Crossref 一致。所审阅产物快照日期为 2024-10-25，未声明项目级许可证。README 指定 Ubuntu 20.04、Python 3.8 与 Intel Pin 3.28；流程运行服务端和客户端，并需选择协议与线程。所审阅源码树提供 Modbus 示例，并非完整的八协议评测包；其他服务端、捕获数据及评估用真实标签需要另行配置。README 的 Docker 示例使用特权容器，Dockerfile 获取具名分支，而非所审阅的固定提交。公开可见不授予捆绑二进制或依赖的使用权。本次未下载二进制、捕获数据、容器或安装程序，也未执行上游代码或实验。",
+    "evidence_urls": [
+      "https://dl.acm.org/doi/10.1145/3658644.3690299",
+      "https://api.crossref.org/works/10.1145/3658644.3690299",
+      "https://tingsu.github.io/files/ccs24-BinPRE.pdf",
+      "https://tingsu.github.io/files/publication.html",
+      "https://arxiv.org/abs/2409.01994",
+      "https://arxiv.org/pdf/2409.01994v1",
+      "https://github.com/ecnusse/BinPRE/blob/9a32bd22b6158d285a237dec10d11403eda8ac4c/README.md",
+      "https://github.com/ecnusse/BinPRE/blob/9a32bd22b6158d285a237dec10d11403eda8ac4c/requirements.txt",
+      "https://github.com/ecnusse/BinPRE/blob/9a32bd22b6158d285a237dec10d11403eda8ac4c/Dockerfile",
+      "https://github.com/ecnusse/BinPRE/blob/9a32bd22b6158d285a237dec10d11403eda8ac4c/install_pin.sh",
+      "https://github.com/ecnusse/BinPRE/blob/9a32bd22b6158d285a237dec10d11403eda8ac4c/Artifact_Evaluation/BinPRE_scripts/run_modbus_client.sh",
+      "https://github.com/ecnusse/BinPRE/blob/9a32bd22b6158d285a237dec10d11403eda8ac4c/Artifact_Evaluation/BinPRE_scripts/run_modbus_server.sh",
+      "https://github.com/ecnusse/BinPRE/blob/9a32bd22b6158d285a237dec10d11403eda8ac4c/Analyzer/config.py",
+      "https://github.com/ecnusse/BinPRE/blob/9a32bd22b6158d285a237dec10d11403eda8ac4c/Analyzer/AAA_Evaluation/Syntax_Evaluator.py"
+    ],
+    "kind": "research",
+    "verified_at": "2026-10-17",
+    "verification": "source-reviewed",
+    "runtime_tested": false
   }
 ]
