@@ -177,6 +177,7 @@ def validate_paper_outputs(output, pages, source_papers=None):
     assert catalog['meta']['paper_count'] == len(expected), 'Catalog paper count differs from the bibliography'
     statuses = {'conference-paper': ('Conference paper', '会议论文'),
                 'conference-accepted': ('Conference accepted', '会议已接收'),
+                'journal-article': ('Journal article', '期刊论文'),
                 'preprint': ('Preprint', '预印本')}
     normalize = lambda text: ' '.join(text.split())
     for route, language in (('/papers/', 'en'), ('/zh/papers/', 'zh')):

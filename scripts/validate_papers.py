@@ -10,7 +10,7 @@ from urllib.parse import urlsplit
 
 
 ROOT = Path(__file__).resolve().parents[1]
-STATUSES = {'conference-paper', 'conference-accepted', 'preprint'}
+STATUSES = {'conference-paper', 'conference-accepted', 'journal-article', 'preprint'}
 TARGETS = {'website', 'game', 'app', 'binary', 'firmware'}
 TEXT_FIELDS = {
     'id', 'title', 'title_zh', 'date_precision', 'date_basis', 'date_basis_zh',

@@ -12,6 +12,7 @@ from urllib.parse import urlsplit
 STATUS_LABELS = {
     'conference-paper': ('Conference paper', '会议论文'),
     'conference-accepted': ('Conference accepted', '会议已接收'),
+    'journal-article': ('Journal article', '期刊论文'),
     'preprint': ('Preprint', '预印本'),
 }
 TARGET_LABELS = {
@@ -61,7 +62,7 @@ def bibtex_text(paper: dict) -> str:
         replacements = {'\\': r'\textbackslash{}', '{': r'\{', '}': r'\}', '&': r'\&', '%': r'\%', '$': r'\$', '#': r'\#', '_': r'\_', '~': r'\textasciitilde{}', '^': r'\textasciicircum{}'}
         return ''.join(replacements.get(character, character) for character in str(value))
 
-    kind = 'inproceedings' if paper['publication_status'] == 'conference-paper' else 'misc'
+    kind = {'conference-paper': 'inproceedings', 'journal-article': 'article'}.get(paper['publication_status'], 'misc')
     fields = [
         ('title', '{' + literal(paper['title']) + '}'),
         # Literal author names avoid guessing surname order or multipart surnames.
@@ -71,6 +72,8 @@ def bibtex_text(paper: dict) -> str:
     ]
     if kind == 'inproceedings':
         fields.append(('booktitle', literal(paper['venue'])))
+    elif kind == 'article':
+        fields.append(('journal', literal(paper['venue'])))
     elif paper['publication_status'] == 'conference-accepted':
         fields.append(('note', literal('Accepted at ' + paper['venue'] + '; exact proceedings date not verified')))
     else:
@@ -267,7 +270,7 @@ def build_paper_pages(
   <nav class="papers-breadcrumbs" aria-label="{label('Breadcrumb', '当前位置')}"><a href="{home}">{label('Home', '首页')}</a><span aria-hidden="true">/</span><span aria-current="page">{label('Papers & benchmarks', '论文与评测基准')}</span></nav>
   <section class="collection-intro papers-intro" aria-labelledby="papers-title"><p class="eyebrow">{label('RESEARCH & EVIDENCE', '研究与证据')}</p><h1 id="papers-title">{label('Papers & benchmarks', '论文与评测基准')}<span class="title-dot" aria-hidden="true">.</span></h1><p>{escape(description)}</p></section>
   <div class="papers-actions"><a class="button button-outline" href="{web_url(repository_url + "/issues/new?template=paper.yml")}" target="_blank" rel="noopener noreferrer">{icon("document", use_pro)}{label("Suggest a paper", "推荐论文")}</a><a class="button button-outline" href="{browse}">{icon('layers', use_pro)}{label('Browse repositories', '浏览仓库')}</a><a class="papers-bibliography" href="/papers/references.bib" download="awesomerea-papers.bib" type="application/x-bibtex">{label('Download bibliography', '下载参考文献')} · BibTeX ↓</a></div>
-  <p class="papers-review-policy">{label('Conference papers, accepted papers, and preprints are labeled separately. We check primary sources; inclusion does not mean experiments were rerun or results independently reproduced.', '会议论文、已接收论文和预印本分别标注。本合集核对一手来源；收录不代表已重新运行实验或独立复现结果。')}</p>
+  <p class="papers-review-policy">{label('Journal articles, conference papers, accepted papers, and preprints are labeled separately. We check primary sources; inclusion does not mean experiments were rerun or results independently reproduced.', '期刊论文、会议论文、已接收论文和预印本分别标注。本合集核对一手来源；收录不代表已重新运行实验或独立复现结果。')}</p>
   <nav class="papers-topic-nav" aria-label="{label('Research areas', '研究方向')}">{''.join(nav)}</nav>
   {''.join(sections)}
 </main>

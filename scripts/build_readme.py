@@ -190,6 +190,7 @@ PAPER_SECTIONS = {
 PAPER_STATUSES = {
     'conference-paper': ('Conference paper', '会议论文'),
     'conference-accepted': ('Accepted', '已接收'),
+    'journal-article': ('Journal article', '期刊论文'),
     'preprint': ('Preprint', '预印本'),
 }
 AGENT_EVALUATION_PAPERS = {
