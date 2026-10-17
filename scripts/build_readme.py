@@ -246,7 +246,7 @@ def render_contents(records, papers, index_count, language):
     targets = [item(zh_label if zh else label, f'#{section}', counts[section])
                for section, label, zh_label in CONTENTS_TARGETS if counts[section]]
     reading = [item('论文' if zh else 'Papers', '#papers', len(papers)),
-               item('全部案例' if zh else 'All cases', f"https://awesomerea.org/{'zh/' if zh else ''}?view=curated&kind=case-study", cases),
+               item('全部案例' if zh else 'All cases', f"https://awesomerea.org/{'zh/' if zh else ''}cases/", cases),
                item('仓库索引' if zh else 'Repository index', '#完整仓库索引' if zh else '#full-repository-index', index_count)]
     more = [item(zh_label if zh else label, f'#{section}', counts[section])
             for section, label, zh_label in CONTENTS_MORE if counts[section]]

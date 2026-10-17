@@ -52,7 +52,7 @@ def fixture():
 <input data-i18n-placeholder="searchPlaceholder" data-i18n-aria="searchLabel" placeholder="old" aria-label="old">
 <a data-locale-path="papers" href="/papers/?sort=year#paper-example">Papers</a>
 <a data-locale-path="resources" data-locale-fragment="game" href="/resources/">Games</a>
-<a href="/resources/#case">Case</a><a href="#catalog">Local</a>
+<a href="/cases/#case">Case directory</a><a href="/resources/#case">Case</a><a href="#catalog">Local</a>
 <a href="https://example.org/papers/#external">External</a><a href="catalog.json?v=abc" download>JSON</a>
 <img src="images/preview.png"><video poster="poster.png"></video>
 <select id="language-select"><option value="en" selected>English</option><option value="zh">简体中文</option></select>
@@ -110,6 +110,7 @@ class HomepageLocaleTests(unittest.TestCase):
         hrefs = [n['attrs'].get('href') for n in nodes(html, 'a')]
         self.assertIn('/zh/papers/?sort=year#paper-example', hrefs)
         self.assertIn('/zh/resources/#case', hrefs)
+        self.assertIn('/zh/cases/#case', hrefs)
         self.assertIn('/zh/resources/#game', hrefs)
         self.assertIn('#catalog', hrefs)
         self.assertIn('https://example.org/papers/#external', hrefs)

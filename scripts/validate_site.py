@@ -17,6 +17,7 @@ from localization import localized_records, read_localizations
 from source_scope import apply_scope, read_scope
 from source_browser import BROWSER_FILENAME, FULL_EXPORT_FILENAME, validate_source_browser
 from validate_discovery import expected_entry_routes, validate_route_inventory
+from build_readme import collection_section
 
 ROOT = Path(__file__).resolve().parents[1]
 OUTPUT = ROOT / 'dist'
@@ -36,6 +37,9 @@ class Page(HTMLParser):
         self.current_detail_link = None
         self.current_entry, self.entry_heading, self.entry_time = None, None, None
         self.entry_article_depth = 0
+        self.case_rows, self.current_case = [], None
+        self.case_heading, self.case_time = None, None
+        self._case_sections = []
         self.raw_text_tag = None
         self.paper_groups, self._section_stack = [], []
         self._div_depth = 0
@@ -47,6 +51,8 @@ class Page(HTMLParser):
         assert len(values) == len(attrs), f'Duplicate HTML attributes on {tag}'
         classes = values.get('class', '').split()
         if tag == 'section':
+            self._case_sections.append({'section': values.get('data-case-section'), 'anchor': values.get('id')}
+                                       if 'case-section' in classes else None)
             group = None
             if 'paper-section' in classes:
                 group = {'anchor': values.get('aria-labelledby'), 'paper_ids': [],
@@ -81,6 +87,21 @@ class Page(HTMLParser):
             self.related_links[identifier] = []
             self.record_links[identifier] = []
             self.current_record = identifier
+        if tag == 'article' and 'data-case-id' in values:
+            assert self.current_case is None, 'Nested case articles are invalid'
+            case_section = next((section for section in reversed(self._case_sections) if section is not None), {})
+            self.current_case = {'id': values['data-case-id'], 'anchor': values.get('id'),
+                                 'section': values.get('data-case-section'), 'text': [],
+                                 'headings': [], 'times': [], 'links': [],
+                                 'parent_section': case_section.get('section'),
+                                 'parent_anchor': case_section.get('anchor')}
+            self.case_rows.append(self.current_case)
+        if self.current_case is not None and tag == 'h3':
+            self.case_heading = []
+            self.current_case['headings'].append(self.case_heading)
+        if self.current_case is not None and tag == 'time':
+            self.case_time = {'datetime': values.get('datetime'), 'text': []}
+            self.current_case['times'].append(self.case_time)
         if tag == 'article' and self.current_entry is not None:
             self.entry_article_depth += 1
         if tag == 'article' and ('data-entry-kind' in values or 'data-entry-id' in values):
@@ -102,6 +123,8 @@ class Page(HTMLParser):
             self.detail_links.append(self.current_detail_link)
         if tag in ('a', 'link') and values.get('href'):
             self.links.append(values['href'])
+            if self.current_case is not None:
+                self.current_case['links'].append(values['href'])
             if self.current_paper:
                 self.paper_links[self.current_paper].append(values['href'])
             if self.current_record:
@@ -126,6 +149,12 @@ class Page(HTMLParser):
 
     def handle_data(self, data):
         if self.raw_text_tag is None:
+            if self.current_case is not None:
+                self.current_case['text'].append(data)
+            if self.case_heading is not None:
+                self.case_heading.append(data)
+            if self.case_time is not None:
+                self.case_time['text'].append(data)
             if self.current_entry is not None:
                 self.current_entry['text'].append(data)
             if self.entry_heading is not None:
@@ -152,6 +181,7 @@ class Page(HTMLParser):
         if tag == self.raw_text_tag:
             self.raw_text_tag = None
         if tag == 'article':
+            self.current_case, self.case_heading, self.case_time = None, None, None
             self.current_paper = None
             self.current_record = None
             if self.current_entry is not None:
@@ -162,6 +192,9 @@ class Page(HTMLParser):
             self.entry_heading = None
         if tag == 'time':
             self.entry_time = None
+            self.case_time = None
+        if tag == 'h3':
+            self.case_heading = None
         if tag == 'a':
             self.current_related_link = None
             self.current_detail_link = None
@@ -173,6 +206,8 @@ class Page(HTMLParser):
             self._div_depth -= 1
         if tag == 'section' and self._section_stack:
             self._section_stack.pop()
+        if tag == 'section' and self._case_sections:
+            self._case_sections.pop()
 
 
 def structured_checks(value):
@@ -377,6 +412,43 @@ def validate_source_browser_output(output):
     assert re.search(r'(?m)^/source-browser\.json\n[ \t]+Cache-Control: no-cache, must-revalidate[ \t]*$', headers), 'Browser source projection requires no-cache headers'
 
 
+def validate_case_outputs(pages, resources):
+    """Bind the script-free case subset, its full evidence, and its navigation."""
+    cases = {record['id']: record for record in resources if record['kind'] == 'case-study'}
+    normalize = lambda value: ' '.join(value.split())
+    for language, prefix in (('en', ''), ('zh', '/zh')):
+        route = prefix + '/cases/'
+        assert route in pages, f'Missing case directory: {route}'
+        page = pages[route]
+        ids = [row['id'] for row in page.case_rows]
+        assert len(ids) == len(cases) and set(ids) == set(cases), f'Case subset differs from curated case records: {route}'
+        collections = list(schema_entities(page.schemas, 'CollectionPage'))
+        assert len(collections) == 1, f'Case directory needs one CollectionPage: {route}'
+        collection = collections[0]
+        assert collection.get('url') == ORIGIN + route and collection.get('inLanguage') == ('zh-CN' if language == 'zh' else 'en'), f'Case schema identity mismatch: {route}'
+        items = collection.get('mainEntity', {})
+        assert items.get('@type') == 'ItemList' and items.get('numberOfItems') == len(cases), f'Case schema count mismatch: {route}'
+        expected_items = []
+        for position, row in enumerate(page.case_rows, 1):
+            record = cases[row['id']]
+            name = (record.get('name_zh') or record['name']) if language == 'zh' else record['name']
+            detail = f"{prefix}/resources/{row['id']}/"
+            expected_items.append({'@type': 'ListItem', 'position': position, 'name': name,
+                                   'url': ORIGIN + detail, 'description': record[f'description_{language}']})
+            assert row['anchor'] == row['id'] and row['section'] == collection_section(record), f'Case placement mismatch: {row["id"]}'
+            assert row['parent_section'] == row['section'] and row['parent_anchor'] == 'cases-' + row['section'], f'Case belongs to the wrong subject section: {row["id"]}'
+            assert len(row['headings']) == 1 and normalize(name) in normalize(''.join(row['headings'][0])), f'Case heading lost localized name: {row["id"]}'
+            requirements = record['requirements_zh' if language == 'zh' else 'requirements']
+            requirements = requirements if isinstance(requirements, list) else [requirements]
+            text = normalize(' '.join(row['text']))
+            assert all(normalize(phrase) in text for phrase in [name, record[f'description_{language}'], *requirements]), f'Case directory lost full localized content: {row["id"]}'
+            links = {detail, record['url'], record['evidence_url'], *record.get('additional_evidence_urls', [])}
+            assert links <= set(row['links']), f'Case directory lost entry/source links: {row["id"]}'
+            assert len(row['times']) == 1 and row['times'][0]['datetime'] == record['verified_at'], f'Case review timestamp mismatch: {row["id"]}'
+            assert record['verified_at'][:10] in normalize(''.join(row['times'][0]['text'])), f'Case review date is missing: {row["id"]}'
+        assert items.get('itemListElement') == expected_items, f'Case structured list differs from rendered entries: {route}'
+
+
 def validate_entry_outputs(pages, resources, papers):
     """Bind individual pages and their ordinary listing links to reviewed records."""
     routes = expected_entry_routes(resources, papers)
@@ -510,6 +582,7 @@ def main():
             assert local.is_file(), f'Missing local link on {parsed.path}: {link}'
     validate_paper_outputs(OUTPUT, pages)
     validate_entry_outputs(pages, resources, papers)
+    validate_case_outputs(pages, resources)
     validate_artifact_links(OUTPUT, pages)
     validate_source_browser_output(OUTPUT)
     assert Page((OUTPUT / '404.html').read_text()).noindex, '404 must be noindex'

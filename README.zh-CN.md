@@ -20,7 +20,7 @@
 
 **论文与更多资源**
 
-- [论文](#papers) (43) · [全部案例](https://awesomerea.org/zh/?view=curated&kind=case-study) (47) · [仓库索引](#完整仓库索引) (2,846)
+- [论文](#papers) (43) · [全部案例](https://awesomerea.org/zh/cases/) (47) · [仓库索引](#完整仓库索引) (2,846)
 - [Agent 与 MCP](#agents-and-mcp) (18) · [相关合集](#related-collections) (4) · [学习资料](#references-and-learning) (17)
 <!-- END GENERATED CONTENTS -->
 

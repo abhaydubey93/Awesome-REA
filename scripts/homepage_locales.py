@@ -162,7 +162,7 @@ def _locale_url(value, origin, language):
     if path.startswith('/zh/'):
         path = path[3:]
     if path == '/' or any(path == '/' + area + '/' or path.startswith('/' + area + '/')
-                          for area in ('browse', 'resources', 'papers', 'about')):
+                          for area in ('browse', 'resources', 'cases', 'papers', 'about')):
         path = ('/zh' if language == 'zh' else '') + path
     return urlunsplit((parsed.scheme, parsed.netloc, path, parsed.query, parsed.fragment))
 
@@ -217,7 +217,7 @@ def localized_homepage(html, app_source, language):
             if '@id' in result:
                 result['@id'] = home + ('#' + urlsplit(result['@id']).fragment if '#' in result['@id'] else '')
             items = result.get('mainEntity', {}).get('itemListElement', []) if isinstance(result.get('mainEntity'), dict) else []
-            labels = {'browse': 'browseDirectory', 'resources': 'curatedMode', 'papers': 'directoryPapers', 'about': 'directoryAbout'}
+            labels = {'browse': 'browseDirectory', 'resources': 'curatedMode', 'cases': 'directoryCases', 'papers': 'directoryPapers', 'about': 'directoryAbout'}
             for item in items:
                 if isinstance(item, dict) and isinstance(item.get('url'), str):
                     parsed = urlsplit(item['url'])

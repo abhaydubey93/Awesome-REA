@@ -20,7 +20,7 @@ An independent collection reviewed against primary sources. **Source review does
 
 **Research and more**
 
-- [Papers](#papers) (43) · [All cases](https://awesomerea.org/?view=curated&kind=case-study) (47) · [Repository index](#full-repository-index) (2,846)
+- [Papers](#papers) (43) · [All cases](https://awesomerea.org/cases/) (47) · [Repository index](#full-repository-index) (2,846)
 - [Agents & MCP](#agents-and-mcp) (18) · [Collections](#related-collections) (4) · [Learning](#references-and-learning) (17)
 <!-- END GENERATED CONTENTS -->
 

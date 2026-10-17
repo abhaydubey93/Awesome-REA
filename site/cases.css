@@ -2,7 +2,9 @@
 .cases-main{background:#fff}
 .cases-main .browse-intro{padding-bottom:18px}
 .cases-main .browse-actions{margin-bottom:14px}
-.cases-note{max-width:76ch;margin:10px 0;font-size:15px;line-height:1.75;color:var(--body)}
+.cases-note{margin:0;border-bottom:1px solid var(--line);font-size:15px;line-height:1.75;color:var(--body)}
+.cases-note summary{width:fit-content;min-height:44px;padding:8px 0;cursor:pointer;color:var(--link)}
+.cases-note>p{max-width:76ch;margin:0 0 16px}
 .cases-nav{padding-top:14px}
 .case-section{scroll-margin-top:24px}
 .case-section+.case-section{margin-top:20px}
@@ -30,7 +32,7 @@
 .case-review-date{margin:5px 0 0;font-size:14px;color:var(--muted)}
 .cases-empty{padding:24px 0;font-size:16px;color:var(--body)}
 .cases-main a:focus-visible,.cases-main summary:focus-visible{outline:2px solid var(--link);outline-offset:3px;border-radius:2px}
-html[lang="zh-CN"] .cases-note,html[lang="zh-CN"] .case-description,html[lang="zh-CN"] .case-evidence-body{max-width:38em;line-height:1.85}
+html[lang="zh-CN"] .cases-note>p,html[lang="zh-CN"] .case-description,html[lang="zh-CN"] .case-evidence-body{max-width:38em;line-height:1.85}
 @media(max-width:700px){
   .case-heading h3{flex-basis:100%}
   .case-row{padding-top:16px}
