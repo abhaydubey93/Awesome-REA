@@ -14,12 +14,12 @@ Choose a target below. Entries link to primary sources; **source review does not
 **Tools and cases by target**
 
 - [Website](#website) (14) · [Game](#game) (42) · [App](#app) (34)
-- [Native Binary](#native-binary) (20) · [Firmware & Hardware](#firmware) (13) · [Protocol](#protocol) (11)
+- [Native Binary](#native-binary) (20) · [Firmware and Hardware](#firmware) (13) · [Protocol](#protocol) (11)
 
 **Research and more**
 
-- [Papers](#papers) (45) · [All cases](https://awesomerea.org/cases/) (47) · [Repository index](#full-repository-index) (2,846)
-- [Agents & MCP](#agents-and-mcp) (18) · [Collections](#related-collections) (4) · [Learning](#references-and-learning) (17)
+- [Papers](#papers) (45) · [All cases](https://awesomerea.org/cases/) (47) · [Full Repository Index](#full-repository-index) (2,846)
+- [Agents and MCP](#agents-and-mcp) (18) · [Related Collections](#related-collections) (4) · [References and Learning](#references-and-learning) (17)
 <!-- END GENERATED CONTENTS -->
 
 <a id="resource-catalog"></a>
@@ -568,7 +568,7 @@ Includes independent projects and [REA](https://github.com/morluto/rea) resource
   Rehost embedded Linux firmware from an extracted root filesystem using a generated, editable configuration of emulation transformations, then refine it through a guest root shell, forwarded network services and recorded dynamic-analysis output.
 
 <a id="protocol"></a>
-### Protocols
+### Protocol
 
 [↑ Contents](#contents)
 
