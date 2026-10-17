@@ -143,7 +143,8 @@ function setup(query, {curatedProtocol = true, sourceProtocol = true, pathname =
   const accepts = row => home.api.sourceRelatedEntries({related_entries: [row]}).length;
   assert.equal(accepts(direct), 1); assert.equal(accepts(legacy), 1);
   for (const bad of [{...direct, href_en: 'https://example.com/'}, {...direct, id: '../fixture'},
-    {...direct, href_en: '/papers/wrong-id/'}, {...direct, href_zh: '/papers/paper-fixture/'}]) {
+    {...direct, href_en: '/papers/wrong-id/'}, {...direct, href_zh: '/papers/paper-fixture/'},
+    {...direct, id: 'fixture', href_en: null, href_zh: null}]) {
     assert.equal(accepts(bad), 0);
   }
   const layouts = setup('?view=curated&sourceq=fixture&target=protocol&layout=cards#catalog');

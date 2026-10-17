@@ -264,6 +264,7 @@ function icon(name, small = false) { if (document.documentElement.dataset.iconSe
 function external(href, className, text) { const link = node("a", className, text); link.href = href; link.target = "_blank"; link.rel = "noopener noreferrer"; return link; }
 function entryHref(kind, identifier, language = state.lang) {
   if (!["paper", "curated"].includes(kind) || typeof identifier !== "string" || !/^[a-z0-9]+(?:-[a-z0-9]+)*$/.test(identifier)) return null;
+  if (kind === "paper" && !identifier.startsWith("paper-")) return null;
   return `${language === "zh" ? "/zh" : ""}/${kind === "paper" ? "papers" : "resources"}/${identifier}/`;
 }
 function updateURL() { const next = new URL(location.href); ["q", "group", "category", "kind", "target", "lang"].forEach(key => { const value = state[key]; if (value && value !== "all") next.searchParams.set(key, value); else next.searchParams.delete(key); }); history.replaceState(null, "", next); }
@@ -397,7 +398,9 @@ function sourceRelatedEntries(record) {
   return (Array.isArray(record.related_entries) ? record.related_entries : []).filter(entry => {
     if (!entry || !["paper","curated"].includes(entry.kind) || typeof entry.id !== "string" || !/^[a-z0-9]+(?:-[a-z0-9]+)*$/.test(entry.id)) return false;
     const directory = entry.kind === "paper" ? "papers" : "resources";
-    const direct = entry.href_en === entryHref(entry.kind,entry.id,"en") && entry.href_zh === entryHref(entry.kind,entry.id,"zh");
+    const directEN = entryHref(entry.kind,entry.id,"en");
+    if (!directEN) return false;
+    const direct = entry.href_en === directEN && entry.href_zh === entryHref(entry.kind,entry.id,"zh");
     const legacy = entry.href_en === `/${directory}/#${entry.id}` && entry.href_zh === `/zh/${directory}/#${entry.id}`;
     if (!direct && !legacy) return false;
     if (![entry.title_en,entry.title_zh].every(title => typeof title === "string" && title.trim())) return false;
