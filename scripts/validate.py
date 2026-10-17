@@ -626,22 +626,111 @@ def validate_source_index(document, errors):
     return len(records)
 
 
+def list_item_prefix(line):
+    """Return (marker column, content column, marker) within the current container."""
+    match = re.match(r'^( {0,3})([-+*]|[0-9]{1,9}[.)])(?: +(.*)|$)', line)
+    if not match:
+        return None
+    marker_column = len(match[1])
+    marker_end = marker_column + len(match[2])
+    padding = len(line[marker_end:]) - len(line[marker_end:].lstrip(' '))
+    # Five or more spaces leave an indented code block after one padding space.
+    content_column = marker_end + (padding if 1 <= padding <= 4 else 1)
+    return marker_column, content_column, match[2]
+
+
+def fence_start(line):
+    match = re.match(r'^ {0,3}(`{3,}|~{3,})(.*)$', line)
+    if match and not (match[1][0] == '`' and '`' in match[2]):
+        return match[1][0], len(match[1])
+    return None
+
+
+def nonparagraph_block(line, paragraph=False):
+    """Block starts relevant to list laziness and indented-code interruption."""
+    return bool(re.match(r'^ {0,3}(?:#{1,6}(?: |$)|>)', line)
+                or (paragraph and re.fullmatch(r' {0,3}(?:=+|-+) *', line))
+                or any(re.fullmatch(r' {0,3}(?:' + re.escape(char) + r' *){3,}', line)
+                       for char in '*_-'))
+
+
 def prose_only(text):
-    """Remove fenced/indented code while retaining line numbers."""
-    lines, fence_char, fence_length = [], None, 0
-    for line in text.splitlines(keepends=True):
-        match = re.match(r'^ {0,3}(`{3,}|~{3,})', line)
-        if fence_char:
-            if match and match[1][0] == fence_char and len(match[1]) >= fence_length:
-                fence_char = None
-            lines.append('\n' if line.endswith('\n') else '')
-        elif match:
-            fence_char, fence_length = match[1][0], len(match[1])
-            lines.append('\n' if line.endswith('\n') else '')
-        elif line.startswith(('    ', '\t')):
-            lines.append('\n' if line.endswith('\n') else '')
+    """Mask code blocks while retaining list prose, original indentation and line numbers."""
+    # Items store marker/content columns, marker style, and whether they have content.
+    lines, containers, fence = [], [], None
+    paragraph = False
+    for raw in text.splitlines(keepends=True):
+        ending = re.search(r'(\r\n|\n|\r)$', raw)
+        masked = ending[0] if ending else ''
+        line = raw.rstrip('\r\n').expandtabs(4)
+        indent = len(line) - len(line.lstrip(' '))
+        blank = not line.strip()
+        if fence:
+            # An unclosed fence ends when its containing list item ends.
+            if blank or indent >= fence[2]:
+                closing = re.fullmatch(r' {0,3}(`{3,}|~{3,}) *', line[fence[2]:])
+                if closing and closing[1][0] == fence[0] and len(closing[1]) >= fence[1]:
+                    fence = None
+                lines.append(masked)
+                continue
+            fence = None
+        if blank:
+            # A blank line ends an item that has not contained any content yet.
+            while containers and not containers[-1][3]:
+                containers.pop()
+            paragraph = False
+            lines.append(raw)
+            continue
+
+        base = containers[-1][1] if containers else 0
+        if indent < base:
+            outer = next((item[1] for item in reversed(containers) if item[1] <= indent), 0)
+            candidate = line[outer:]
+            prefix = list_item_prefix(candidate)
+            starts_list = False
+            if prefix:
+                marker_column, content_column, marker = prefix
+                sibling = any(outer + marker_column == item[0] and marker[-1] == item[2]
+                              for item in containers)
+                can_interrupt = marker in '-+*' or int(marker[:-1]) == 1
+                starts_list = sibling or (candidate[content_column:].strip() and can_interrupt)
+            interrupts = fence_start(candidate) or nonparagraph_block(candidate, paragraph) or starts_list
+            if paragraph and not interrupts:
+                # A lazy continuation belongs to the open list paragraph despite dedenting.
+                lines.append(raw)
+                continue
+            while containers and indent < containers[-1][1]:
+                containers.pop()
+            paragraph = False
+            base = containers[-1][1] if containers else 0
+
+        body = line[base:]
+        if body.strip():
+            containers = [(*item[:3], True) for item in containers]
+        while not nonparagraph_block(body, paragraph):
+            prefix = list_item_prefix(body)
+            if not prefix:
+                break
+            marker_column, content_column, marker = prefix
+            content = body[content_column:]
+            can_interrupt = marker in '-+*' or int(marker[:-1]) == 1
+            if paragraph and (not content.strip() or not can_interrupt):
+                break
+            containers.append((base + marker_column, base + content_column, marker[-1], bool(content.strip())))
+            base += content_column
+            body = line[base:]
+            paragraph = False
+
+        opening = fence_start(body)
+        if opening:
+            fence = (*opening, base)
+            paragraph = False
+            lines.append(masked)
+        elif len(body) - len(body.lstrip(' ')) >= 4 and not paragraph:
+            lines.append(masked)
         else:
-            lines.append(line)
+            lines.append(raw)
+            paragraph = bool(body.strip()) and not nonparagraph_block(body, paragraph)
     return ''.join(lines)
 
 
