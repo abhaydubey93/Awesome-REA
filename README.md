@@ -6,22 +6,30 @@ Tools, reconstruction cases and research for understanding websites, games, apps
 
 **[Explore the collection ↗](https://awesomerea.org/) · [Curated directory](https://awesomerea.org/resources/) · [Research papers](https://awesomerea.org/papers/) · [简体中文](README.zh-CN.md)**
 
-An independent, source-reviewed collection. Review does not imply runtime verification. [Evidence, requirements and review method](https://awesomerea.org/about/).
+**Start here:** choose a target below to browse. Use the website for search and filters, or open an entry’s “Requirements & evidence” link for prerequisites and primary sources.
 
-[REA (Reverse Engineer Anything)](https://github.com/morluto/rea) is a separate upstream CLI and MCP project. This collection's name echoes it, but it is not the REA repository; “REA” in entry tags and labels such as “Official REA documentation” refers to that project.
+An independent collection reviewed against primary sources. **Source review does not imply runtime verification.** [How entries are reviewed](https://awesomerea.org/about/).
 
 ## Contents
 
 <!-- BEGIN GENERATED CONTENTS -->
-- **Targets** · [Website](#website) <sub>14</sub> · [Game](#game) <sub>41</sub> · [App](#app) <sub>32</sub> · [Native Binary](#native-binary) <sub>20</sub> · [Firmware & Hardware](#firmware) <sub>12</sub> · [Protocol](#protocol) <sub>11</sub>
+**Tools and cases by target**
 
-- [Papers](#papers) <sub>40</sub> · [Cases](https://awesomerea.org/?view=curated&kind=case-study) <sub>43</sub> · [Agents & MCP](#agents-and-mcp) <sub>18</sub> · [Collections](#related-collections) <sub>4</sub> · [Learning](#references-and-learning) <sub>17</sub> · [Repository index](#full-repository-index) <sub>2,846</sub>
+- [Website](#website) (14) · [Game](#game) (41) · [App](#app) (32)
+- [Native Binary](#native-binary) (20) · [Firmware & Hardware](#firmware) (12) · [Protocol](#protocol) (11)
+
+**Research and more**
+
+- [Papers](#papers) (40) · [All cases](https://awesomerea.org/?view=curated&kind=case-study) (43) · [Repository index](#full-repository-index) (2,846)
+- [Agents & MCP](#agents-and-mcp) (18) · [Collections](#related-collections) (4) · [Learning](#references-and-learning) (17)
 <!-- END GENERATED CONTENTS -->
 
 <a id="resource-catalog"></a>
 ## Resources
 
-Browse by purpose, with case studies separated from tools and integrations. Each resource appears once, with its type at the end; research has its own [paper topics](#papers). Independent projects and [REA](https://github.com/morluto/rea) resources are included; listing does not imply REA integration.
+Each **name links to the original source**, followed by the full description. “Requirements & evidence” opens prerequisites, limitations and review sources. Cases and tools are grouped separately; each resource appears once under its main purpose, with research in [paper topics](#papers).
+
+Independent projects and [REA](https://github.com/morluto/rea) resources are included; listing does not imply REA integration. “All cases” is a filtered view of these resources, not an additional collection to count.
 
 <!-- BEGIN GENERATED CATALOG -->
 <a id="website"></a>
@@ -31,23 +39,63 @@ Browse by purpose, with case studies separated from tools and integrations. Each
 
 #### Case studies
 
-- [**Dinosaur runner: recovering one acceleration rule**](https://github.com/morluto/rea/blob/c360cfcd6d7901514b16dd6113eba2e0b0fdf422/website/evidence/calculator-and-dino.md#dinosaur-speed) - REA’s documented teaching case inspects the HTTP t-rex-runner edition and reconstructs its speed-update rule. A separate controlled original-game check and a new demonstration compare update counts, including the floating-point step that crosses the nominal speed threshold. <sub>Case study · REA</sub>
+- [**Dinosaur runner: recovering one acceleration rule**](https://github.com/morluto/rea/blob/c360cfcd6d7901514b16dd6113eba2e0b0fdf422/website/evidence/calculator-and-dino.md#dinosaur-speed) · Case study · REA · [Requirements & evidence](https://awesomerea.org/resources/rea-dinosaur-speed-case/)
+
+  REA’s documented teaching case inspects the HTTP t-rex-runner edition and reconstructs its speed-update rule. A separate controlled original-game check and a new demonstration compare update counts, including the floating-point step that crosses the nominal speed threshold.
 
 #### Tools, projects and integrations
 
-- [**webcrack**](https://github.com/j4k0xb/webcrack) - Improves JavaScript readability by reversing supported obfuscation patterns and unpacking webpack/Browserify bundles. <sub>Tool</sub>
-- [**humanify**](https://github.com/jehna/humanify) - Rename identifiers in minified JavaScript with LLM-suggested names, applied through scope-aware AST rewriting so the program structure stays unchanged. The new names are model suggestions, not recovered original identifiers. <sub>Tool</sub>
-- [**WABT**](https://github.com/WebAssembly/wabt) - WebAssembly tools for binary-to-text conversion, section inspection, validation, interpretation and C translation. <sub>Tool · WebAssembly</sub>
-- [**wasm-tools**](https://github.com/bytecodealliance/wasm-tools) - Bytecode Alliance CLI and Rust libraries for inspecting WebAssembly modules, metadata, components and WIT interfaces. <sub>Tool · WebAssembly</sub>
-- [**Chrome DevTools MCP**](https://github.com/ChromeDevTools/chrome-devtools-mcp) - Connect an agent to Chrome for live page inspection, network debugging, and performance traces. <sub>Integration · Independent MCP</sub>
-- [**mitmproxy**](https://github.com/mitmproxy/mitmproxy) - Inspect and record HTTP traffic with an interactive proxy, web interface, or scriptable command-line tools. <sub>Tool</sub>
-- [**Playwright MCP**](https://github.com/microsoft/playwright-mcp) - Drive browser interactions through structured accessibility snapshots to investigate reproducible web behavior. <sub>Integration · Independent MCP</sub>
-- [**Burp Suite MCP Server**](https://github.com/PortSwigger/mcp-server) - PortSwigger's Burp Suite extension serves an MCP endpoint, plus a packaged stdio proxy, so agents can query proxy HTTP and WebSocket history, send HTTP/1.1 or HTTP/2 requests, and open Repeater or Intruder tabs. <sub>Integration · Independent MCP</sub>
-- [**Wakaru**](https://github.com/pionxzh/wakaru) - Recover readable modules from shipped JavaScript bundles by reversing recognized minifier and transpiler patterns. Supports bundle splitting and modern-syntax recovery for inspecting production frontend code. <sub>Tool</sub>
-- [**Spectral**](https://github.com/spectral-mcp/spectral) - Analyze captured application HTTP traffic with an LLM to generate MCP tools, OpenAPI 3.1 specifications, or GraphQL schemas. Generated tools call the observed API directly after capture and authentication setup. <sub>Integration · Independent agent</sub>
-- [**jsdeob-workbench**](https://github.com/Owl4444/jsdeob-workbench) - Inspect JavaScript ASTs and variable scopes while building visual chains of Babel transforms. Save analysis projects and reusable plugins to iteratively simplify obfuscated scripts. <sub>Tool</sub>
-- [**Browser Reverse Engineering Toolkit**](https://github.com/Dvurechensky/Browser.Reverse.Engineering.Toolkit) - Capture browser-session evidence, crawl websites in a persistent Chromium session, and generate offline architecture/API reports plus OpenAPI, SDK and mock-server drafts from saved captures. <sub>Tool</sub>
-- [**screenshot-to-code**](https://github.com/abi/screenshot-to-code) - Generate HTML/CSS, Tailwind, React, Vue, Bootstrap or Ionic front-end code from screenshots, mockups, Figma designs or screen recordings with multimodal models; an optional headless-browser preview lets the model check its rendered output. The result is a visual reconstruction of the interface, not recovered original source or backend behavior. <sub>Tool</sub>
+- [**webcrack**](https://github.com/j4k0xb/webcrack) · Tool · [Requirements & evidence](https://awesomerea.org/resources/webcrack/)
+
+  Improves JavaScript readability by reversing supported obfuscation patterns and unpacking webpack/Browserify bundles.
+
+- [**humanify**](https://github.com/jehna/humanify) · Tool · [Requirements & evidence](https://awesomerea.org/resources/humanify/)
+
+  Rename identifiers in minified JavaScript with LLM-suggested names, applied through scope-aware AST rewriting so the program structure stays unchanged. The new names are model suggestions, not recovered original identifiers.
+
+- [**WABT**](https://github.com/WebAssembly/wabt) · Tool · WebAssembly · [Requirements & evidence](https://awesomerea.org/resources/wabt/)
+
+  WebAssembly tools for binary-to-text conversion, section inspection, validation, interpretation and C translation.
+
+- [**wasm-tools**](https://github.com/bytecodealliance/wasm-tools) · Tool · WebAssembly · [Requirements & evidence](https://awesomerea.org/resources/wasm-tools/)
+
+  Bytecode Alliance CLI and Rust libraries for inspecting WebAssembly modules, metadata, components and WIT interfaces.
+
+- [**Chrome DevTools MCP**](https://github.com/ChromeDevTools/chrome-devtools-mcp) · Integration · Independent MCP · [Requirements & evidence](https://awesomerea.org/resources/chrome-devtools-mcp/)
+
+  Connect an agent to Chrome for live page inspection, network debugging, and performance traces.
+
+- [**mitmproxy**](https://github.com/mitmproxy/mitmproxy) · Tool · [Requirements & evidence](https://awesomerea.org/resources/mitmproxy/)
+
+  Inspect and record HTTP traffic with an interactive proxy, web interface, or scriptable command-line tools.
+
+- [**Playwright MCP**](https://github.com/microsoft/playwright-mcp) · Integration · Independent MCP · [Requirements & evidence](https://awesomerea.org/resources/playwright-mcp/)
+
+  Drive browser interactions through structured accessibility snapshots to investigate reproducible web behavior.
+
+- [**Burp Suite MCP Server**](https://github.com/PortSwigger/mcp-server) · Integration · Independent MCP · [Requirements & evidence](https://awesomerea.org/resources/burp-suite-mcp-server/)
+
+  PortSwigger's Burp Suite extension serves an MCP endpoint, plus a packaged stdio proxy, so agents can query proxy HTTP and WebSocket history, send HTTP/1.1 or HTTP/2 requests, and open Repeater or Intruder tabs.
+
+- [**Wakaru**](https://github.com/pionxzh/wakaru) · Tool · [Requirements & evidence](https://awesomerea.org/resources/wakaru/)
+
+  Recover readable modules from shipped JavaScript bundles by reversing recognized minifier and transpiler patterns. Supports bundle splitting and modern-syntax recovery for inspecting production frontend code.
+
+- [**Spectral**](https://github.com/spectral-mcp/spectral) · Integration · Independent agent · [Requirements & evidence](https://awesomerea.org/resources/spectral-mcp/)
+
+  Analyze captured application HTTP traffic with an LLM to generate MCP tools, OpenAPI 3.1 specifications, or GraphQL schemas. Generated tools call the observed API directly after capture and authentication setup.
+
+- [**jsdeob-workbench**](https://github.com/Owl4444/jsdeob-workbench) · Tool · [Requirements & evidence](https://awesomerea.org/resources/jsdeob-workbench/)
+
+  Inspect JavaScript ASTs and variable scopes while building visual chains of Babel transforms. Save analysis projects and reusable plugins to iteratively simplify obfuscated scripts.
+
+- [**Browser Reverse Engineering Toolkit**](https://github.com/Dvurechensky/Browser.Reverse.Engineering.Toolkit) · Tool · [Requirements & evidence](https://awesomerea.org/resources/browser-reverse-engineering-toolkit/)
+
+  Capture browser-session evidence, crawl websites in a persistent Chromium session, and generate offline architecture/API reports plus OpenAPI, SDK and mock-server drafts from saved captures.
+
+- [**screenshot-to-code**](https://github.com/abi/screenshot-to-code) · Tool · [Requirements & evidence](https://awesomerea.org/resources/screenshot-to-code/)
+
+  Generate HTML/CSS, Tailwind, React, Vue, Bootstrap or Ionic front-end code from screenshots, mockups, Figma designs or screen recordings with multimodal models; an optional headless-browser preview lets the model check its rendered output. The result is a visual reconstruction of the interface, not recovered original source or backend behavior.
 
 <a id="game"></a>
 ### Game
@@ -56,50 +104,171 @@ Browse by purpose, with case studies separated from tools and integrations. Each
 
 #### Case studies
 
-- [**DX-Ball: reconstruct sound panning**](https://rea.tools/showcase/dx-ball/) - Recover one sound-pan function from instructions and constants; upstream cites 3,205 cases and a 63-byte match. <sub>Case study · REA</sub>
-- [**TH04: recover a DOS bullet-ring helper**](https://rea.tools/showcase/th04/) - Inspect a 16-bit PC-98 DOS helper and relate its angle calculation to a pinned reconstruction and historical compiler checks. <sub>Case study · REA</sub>
-- [**Super Mario 64 DS: matching decompilation with relocation checks**](https://github.com/tangosdev/sm64ds-decomp) - Reconstructs Super Mario 64 DS functions as C/C++ and permitted assembly primitives, comparing compiled output with a user-supplied cartridge dump. Independent relocation-destination checks strengthen the matching gate; integration into the PC port is tracked separately. <sub>Case study · Independent reconstruction</sub>
-- [**GoldenEye 007: an agent-assisted native port from a decompilation**](https://github.com/jkdansereau/goldeneye-pc-port) - Builds a native PC port on the existing GoldenEye 007 decompilation, with a host platform layer and assets extracted from the user’s ROM. The project documents agent collaboration, rendering comparisons, playtest scope and unresolved platform support. <sub>Case study · Independent reconstruction</sub>
-- [**ssbu-recomp: static recompilation with explicit mode limits**](https://github.com/Denkishi/ssbu-recomp) - Translates Super Smash Bros. Ultimate 13.0.4 AArch64 code ahead of time and supplies a Windows runtime with Vulkan/OpenGL rendering. It also reconstructs selected fighter scripts as editable C++ and compares translated/source behavior through differential and deterministic tests. <sub>Case study · Independent reconstruction</sub>
-- [**KartPad: platform integration for a Mario Kart Wii recompilation**](https://github.com/chrissotraidis/kartpad) - Builds Apple and Android integration around WiiCompiled’s ahead-of-time translation of Mario Kart Wii, with native graphics, input and optional Retro Rewind support. Its status and rights documents distinguish platform acceptance, unresolved device defects and game-content requirements. <sub>Case study · Independent reconstruction</sub>
-- [**BattleShip: an AI-assisted Super Smash Bros. native port**](https://github.com/JRickey/BattleShip) - Ports the existing Super Smash Bros. N64 decompilation using libultraship and Torch. The author’s earlier README describes agent-built graphics/audio comparison tools and differential debugging against emulator behavior, rather than claiming AI recovered the game from a cartridge without prior community work. <sub>Case study · Independent reconstruction</sub>
-- [**Agent decompilation: a byte-matching retrospective**](https://momo5502.com/posts/2026-10-09-game-decompilation/) - Maurice Heumann describes replacing plausible-looking agent output with compiler-based checks of reconstructed functions, relocations, data and types. The retrospective reports 99% function presence and 83% of all functions byte-exact, while keeping the reconstruction code private. <sub>Case study · Independent reconstruction</sub>
-- [**Snowboard Kids 2: an LLM-assisted N64 matching decompilation**](https://github.com/cdlewis/snowboardkids2-decomp) - A public matching decompilation of the N64 game Snowboard Kids 2, begun in 2024 with community decompilation tools. The author’s dated posts document Claude, Codex and GLM workflows, including headless one-shot loops, similarity-based function scheduling and hook-guarded, hash-checked builds, through a reported complete function match. <sub>Case study · Independent reconstruction</sub>
-- [**IsaacRecomp: translating Flash game bytecode to native C++**](https://github.com/whylurking/IsaacRecomp) - Translates The Binding of Isaac’s Flash AVM1 bytecode into C++ functions and supplies a native rendering/input runtime. The project reads graphics and audio from the user’s original game and documents deterministic input, headless runs and screenshot regression checks. <sub>Case study · Independent reconstruction</sub>
-- [**Nanolathe: a documented Total Annihilation engine reimplementation**](https://github.com/nanolathe-gg/nanolathe) - Reimplements a Total Annihilation-compatible strategy-game engine in Go, with public file-format research and separate gameplay profiles. It distinguishes intended retail 3.1 behavior from community-patch research and deliberate modern changes, and separates synthetic checks from tests requiring original game data. <sub>Case study · Independent reconstruction</sub>
-- [**TH08: exact-source reconstruction and separately tested ports**](https://github.com/N0zoM1z0/th08) - Reconstructs the original Japanese Touhou 8 version 1.00d against its binary and original compiler, then adapts the recovered code for other platforms. Source presence, strict function matching, whole-executable identity and playable-port checks are recorded as different milestones. <sub>Case study · Independent reconstruction</sub>
-- [**Zelda 64: Recompiled — a native Majora’s Mask port without a full source decompilation**](https://github.com/Zelda64Recomp/Zelda64Recomp) - Uses N64Recomp to translate Majora’s Mask into a native application and RT64 for rendering. The project separates static recompilation from source decompilation while reusing decompilation headers and selected functions for patches and enhancements. <sub>Case study · Independent reconstruction</sub>
-- [**OpenGOAL: recovering GOAL code and rebuilding the Jak games**](https://github.com/open-goal/jak-project) - Reconstructs readable GOAL code from the original Jak binaries and compiles it with a new GOAL compiler for modern PCs. Its workflow combines a specialized decompiler, manually supplied type information, asset extraction and an interactive development runtime. <sub>Case study · Independent reconstruction</sub>
-- [**LEGO Island: source reconstruction with separately reported exact rebuilds**](https://github.com/isledecomp/isle) - Reconstructs the English LEGO Island 1.1 source for its original 32-bit Windows target. The project distinguishes function-comparison reports, ReproBit’s reported byte-identical retail rebuilds and ordinary developer builds; its modern portable adaptation is a separate repository. <sub>Case study · Independent reconstruction</sub>
-- [**Snowball War: a bounded REA-assisted minigame reconstruction**](https://github.com/tuunanet/rea-ski-or-die-reconstruction) - The author uses REA’s Ghidra workflow to investigate the DOS Ski or Die binary, document Snowball War rules and rebuild that one minigame in Rust with SDL2. The public notes distinguish recovered tables and mechanics from approximations and deliberate presentation changes. <sub>Case study · Mixed workflow</sub>
-- [**SpaceCadetPinball: decompiled game logic adapted to SDL2**](https://github.com/k4zmu2a/SpaceCadetPinball) - Converts the reverse-engineered Space Cadet pinball game into compilable C++ for desktop platforms. The README identifies the Windows XP executable and public PDB, a Full Tilt executable, and the work of recovering structures, naming variables and adapting the decompiled routines. <sub>Case study · Independent reconstruction</sub>
-- [**Super Mario 64: ROM reconstruction with explicit comparison gates**](https://github.com/n64decomp/sm64) - Reconstructs Super Mario 64 source for Japanese, North American, European, Shindou and iQue releases. Its build files distinguish original-ROM hash comparison from nonmatching or modified configurations, while source naming and documentation remain ongoing. <sub>Case study · Independent reconstruction</sub>
-- [**Unleashed Recompiled: translating Xbox 360 game code and shaders**](https://github.com/hedge-dev/UnleashedRecomp) - Builds an unofficial Sonic Unleashed PC port by statically recompiling Xbox 360 PowerPC code with XenonRecomp and Xenos shaders with XenosRecomp. The port adds modern display and modding options while documenting original-engine limits and remaining compatibility issues. <sub>Case study · Independent reconstruction</sub>
-- [**OpenMW: replacing Morrowind’s engine while reusing original content**](https://github.com/OpenMW/openmw) - Provides an independent engine for playing Morrowind and an alternative editor, OpenMW-CS. It loads original game content through its own runtime and documents script and mod compatibility differences; it is an engine replacement rather than a recovered Bethesda source tree. <sub>Case study · Independent reconstruction</sub>
-- [**REDRIVER2: reconstructing Driver 2 through a PlayStation compatibility layer**](https://github.com/OpenDriver2/REDRIVER2) - Translates reverse-engineered Driver 2 MIPS routines into C/C++ and uses Psy-X/Psy-Cross to adapt PlayStation interfaces for desktop systems. The project documents symbol-assisted Ghidra/IDA work alongside intentional bug fixes and gameplay changes. <sub>Case study · Independent reconstruction</sub>
-- [**LASRecomp: Link’s Awakening static recompilation**](https://github.com/peiikai/LASRecomp) - A native desktop reconstruction of the 2019 Switch version of Link’s Awakening using static recompilation. The author attributes most code, tooling and reverse-engineering work to Claude Code with human direction and review. <sub>Case study · Independent reconstruction</sub>
-- [**ArkWeb: a two-game movement and collision experiment**](https://github.com/luki-1/ArkWeb) - Runs Spider-Man Remastered and Arkham Knight together, streaming Gotham collision into Spider-Man’s physics world and compositing his rendered frame into Arkham. This experimental runtime bridge is not a recovered standalone game or new engine. <sub>Case study · Independent reconstruction</sub>
+- [**DX-Ball: reconstruct sound panning**](https://rea.tools/showcase/dx-ball/) · Case study · REA · [Requirements & evidence](https://awesomerea.org/resources/rea-dxball-case/)
+
+  Recover one sound-pan function from instructions and constants; upstream cites 3,205 cases and a 63-byte match.
+
+- [**TH04: recover a DOS bullet-ring helper**](https://rea.tools/showcase/th04/) · Case study · REA · [Requirements & evidence](https://awesomerea.org/resources/rea-th04-case/)
+
+  Inspect a 16-bit PC-98 DOS helper and relate its angle calculation to a pinned reconstruction and historical compiler checks.
+
+- [**Super Mario 64 DS: matching decompilation with relocation checks**](https://github.com/tangosdev/sm64ds-decomp) · Case study · Independent reconstruction · [Requirements & evidence](https://awesomerea.org/resources/sm64ds-decomp-case/)
+
+  Reconstructs Super Mario 64 DS functions as C/C++ and permitted assembly primitives, comparing compiled output with a user-supplied cartridge dump. Independent relocation-destination checks strengthen the matching gate; integration into the PC port is tracked separately.
+
+- [**GoldenEye 007: an agent-assisted native port from a decompilation**](https://github.com/jkdansereau/goldeneye-pc-port) · Case study · Independent reconstruction · [Requirements & evidence](https://awesomerea.org/resources/goldeneye-pc-port-case/)
+
+  Builds a native PC port on the existing GoldenEye 007 decompilation, with a host platform layer and assets extracted from the user’s ROM. The project documents agent collaboration, rendering comparisons, playtest scope and unresolved platform support.
+
+- [**ssbu-recomp: static recompilation with explicit mode limits**](https://github.com/Denkishi/ssbu-recomp) · Case study · Independent reconstruction · [Requirements & evidence](https://awesomerea.org/resources/ssbu-recomp-case/)
+
+  Translates Super Smash Bros. Ultimate 13.0.4 AArch64 code ahead of time and supplies a Windows runtime with Vulkan/OpenGL rendering. It also reconstructs selected fighter scripts as editable C++ and compares translated/source behavior through differential and deterministic tests.
+
+- [**KartPad: platform integration for a Mario Kart Wii recompilation**](https://github.com/chrissotraidis/kartpad) · Case study · Independent reconstruction · [Requirements & evidence](https://awesomerea.org/resources/kartpad-case/)
+
+  Builds Apple and Android integration around WiiCompiled’s ahead-of-time translation of Mario Kart Wii, with native graphics, input and optional Retro Rewind support. Its status and rights documents distinguish platform acceptance, unresolved device defects and game-content requirements.
+
+- [**BattleShip: an AI-assisted Super Smash Bros. native port**](https://github.com/JRickey/BattleShip) · Case study · Independent reconstruction · [Requirements & evidence](https://awesomerea.org/resources/battleship-port-case/)
+
+  Ports the existing Super Smash Bros. N64 decompilation using libultraship and Torch. The author’s earlier README describes agent-built graphics/audio comparison tools and differential debugging against emulator behavior, rather than claiming AI recovered the game from a cartridge without prior community work.
+
+- [**Agent decompilation: a byte-matching retrospective**](https://momo5502.com/posts/2026-10-09-game-decompilation/) · Case study · Independent reconstruction · [Requirements & evidence](https://awesomerea.org/resources/agent-decompilation-oracle-case/)
+
+  Maurice Heumann describes replacing plausible-looking agent output with compiler-based checks of reconstructed functions, relocations, data and types. The retrospective reports 99% function presence and 83% of all functions byte-exact, while keeping the reconstruction code private.
+
+- [**Snowboard Kids 2: an LLM-assisted N64 matching decompilation**](https://github.com/cdlewis/snowboardkids2-decomp) · Case study · Independent reconstruction · [Requirements & evidence](https://awesomerea.org/resources/snowboardkids2-decomp-case/)
+
+  A public matching decompilation of the N64 game Snowboard Kids 2, begun in 2024 with community decompilation tools. The author’s dated posts document Claude, Codex and GLM workflows, including headless one-shot loops, similarity-based function scheduling and hook-guarded, hash-checked builds, through a reported complete function match.
+
+- [**IsaacRecomp: translating Flash game bytecode to native C++**](https://github.com/whylurking/IsaacRecomp) · Case study · Independent reconstruction · [Requirements & evidence](https://awesomerea.org/resources/isaacrecomp-case/)
+
+  Translates The Binding of Isaac’s Flash AVM1 bytecode into C++ functions and supplies a native rendering/input runtime. The project reads graphics and audio from the user’s original game and documents deterministic input, headless runs and screenshot regression checks.
+
+- [**Nanolathe: a documented Total Annihilation engine reimplementation**](https://github.com/nanolathe-gg/nanolathe) · Case study · Independent reconstruction · [Requirements & evidence](https://awesomerea.org/resources/nanolathe-case/)
+
+  Reimplements a Total Annihilation-compatible strategy-game engine in Go, with public file-format research and separate gameplay profiles. It distinguishes intended retail 3.1 behavior from community-patch research and deliberate modern changes, and separates synthetic checks from tests requiring original game data.
+
+- [**TH08: exact-source reconstruction and separately tested ports**](https://github.com/N0zoM1z0/th08) · Case study · Independent reconstruction · [Requirements & evidence](https://awesomerea.org/resources/th08-reconstruction-case/)
+
+  Reconstructs the original Japanese Touhou 8 version 1.00d against its binary and original compiler, then adapts the recovered code for other platforms. Source presence, strict function matching, whole-executable identity and playable-port checks are recorded as different milestones.
+
+- [**Zelda 64: Recompiled — a native Majora’s Mask port without a full source decompilation**](https://github.com/Zelda64Recomp/Zelda64Recomp) · Case study · Independent reconstruction · [Requirements & evidence](https://awesomerea.org/resources/zelda64recomp-case/)
+
+  Uses N64Recomp to translate Majora’s Mask into a native application and RT64 for rendering. The project separates static recompilation from source decompilation while reusing decompilation headers and selected functions for patches and enhancements.
+
+- [**OpenGOAL: recovering GOAL code and rebuilding the Jak games**](https://github.com/open-goal/jak-project) · Case study · Independent reconstruction · [Requirements & evidence](https://awesomerea.org/resources/opengoal-jak-case/)
+
+  Reconstructs readable GOAL code from the original Jak binaries and compiles it with a new GOAL compiler for modern PCs. Its workflow combines a specialized decompiler, manually supplied type information, asset extraction and an interactive development runtime.
+
+- [**LEGO Island: source reconstruction with separately reported exact rebuilds**](https://github.com/isledecomp/isle) · Case study · Independent reconstruction · [Requirements & evidence](https://awesomerea.org/resources/lego-island-decomp-case/)
+
+  Reconstructs the English LEGO Island 1.1 source for its original 32-bit Windows target. The project distinguishes function-comparison reports, ReproBit’s reported byte-identical retail rebuilds and ordinary developer builds; its modern portable adaptation is a separate repository.
+
+- [**Snowball War: a bounded REA-assisted minigame reconstruction**](https://github.com/tuunanet/rea-ski-or-die-reconstruction) · Case study · Mixed workflow · [Requirements & evidence](https://awesomerea.org/resources/snowball-war-rea-case/)
+
+  The author uses REA’s Ghidra workflow to investigate the DOS Ski or Die binary, document Snowball War rules and rebuild that one minigame in Rust with SDL2. The public notes distinguish recovered tables and mechanics from approximations and deliberate presentation changes.
+
+- [**SpaceCadetPinball: decompiled game logic adapted to SDL2**](https://github.com/k4zmu2a/SpaceCadetPinball) · Case study · Independent reconstruction · [Requirements & evidence](https://awesomerea.org/resources/space-cadet-pinball-case/)
+
+  Converts the reverse-engineered Space Cadet pinball game into compilable C++ for desktop platforms. The README identifies the Windows XP executable and public PDB, a Full Tilt executable, and the work of recovering structures, naming variables and adapting the decompiled routines.
+
+- [**Super Mario 64: ROM reconstruction with explicit comparison gates**](https://github.com/n64decomp/sm64) · Case study · Independent reconstruction · [Requirements & evidence](https://awesomerea.org/resources/sm64-decomp-case/)
+
+  Reconstructs Super Mario 64 source for Japanese, North American, European, Shindou and iQue releases. Its build files distinguish original-ROM hash comparison from nonmatching or modified configurations, while source naming and documentation remain ongoing.
+
+- [**Unleashed Recompiled: translating Xbox 360 game code and shaders**](https://github.com/hedge-dev/UnleashedRecomp) · Case study · Independent reconstruction · [Requirements & evidence](https://awesomerea.org/resources/unleashed-recompiled-case/)
+
+  Builds an unofficial Sonic Unleashed PC port by statically recompiling Xbox 360 PowerPC code with XenonRecomp and Xenos shaders with XenosRecomp. The port adds modern display and modding options while documenting original-engine limits and remaining compatibility issues.
+
+- [**OpenMW: replacing Morrowind’s engine while reusing original content**](https://github.com/OpenMW/openmw) · Case study · Independent reconstruction · [Requirements & evidence](https://awesomerea.org/resources/openmw-engine-case/)
+
+  Provides an independent engine for playing Morrowind and an alternative editor, OpenMW-CS. It loads original game content through its own runtime and documents script and mod compatibility differences; it is an engine replacement rather than a recovered Bethesda source tree.
+
+- [**REDRIVER2: reconstructing Driver 2 through a PlayStation compatibility layer**](https://github.com/OpenDriver2/REDRIVER2) · Case study · Independent reconstruction · [Requirements & evidence](https://awesomerea.org/resources/redriver2-case/)
+
+  Translates reverse-engineered Driver 2 MIPS routines into C/C++ and uses Psy-X/Psy-Cross to adapt PlayStation interfaces for desktop systems. The project documents symbol-assisted Ghidra/IDA work alongside intentional bug fixes and gameplay changes.
+
+- [**LASRecomp: Link’s Awakening static recompilation**](https://github.com/peiikai/LASRecomp) · Case study · Independent reconstruction · [Requirements & evidence](https://awesomerea.org/resources/lasrecomp/)
+
+  A native desktop reconstruction of the 2019 Switch version of Link’s Awakening using static recompilation. The author attributes most code, tooling and reverse-engineering work to Claude Code with human direction and review.
+
+- [**ArkWeb: a two-game movement and collision experiment**](https://github.com/luki-1/ArkWeb) · Case study · Independent reconstruction · [Requirements & evidence](https://awesomerea.org/resources/arkweb-two-game-case/)
+
+  Runs Spider-Man Remastered and Arkham Knight together, streaming Gotham collision into Spider-Man’s physics world and compositing his rendered frame into Arkham. This experimental runtime bridge is not a recovered standalone game or new engine.
 
 #### Tools, projects and integrations
 
-- [**RenderDoc**](https://github.com/baldurk/renderdoc) - Inspect frame captures, draw calls, shaders, and graphics resources in your own game or graphics application. <sub>Tool</sub>
-- [**AssetRipper**](https://github.com/AssetRipper/AssetRipper) - Analyze Unity game files, inspect asset dependencies, and convert supported assets into Unity project formats. <sub>Tool</sub>
-- [**Cpp2IL**](https://github.com/SamboyCoding/Cpp2IL) - Recover managed representations from Unity IL2CPP builds using binary and metadata analysis; reconstruction remains a work in progress. <sub>Tool</sub>
-- [**Il2CppDumper**](https://github.com/Perfare/Il2CppDumper) - Recover IL2CPP metadata and dummy assemblies, and generate helper scripts for native analysis tools; method code is not restored. <sub>Tool</sub>
-- [**RenderDoc MCP**](https://github.com/scarletfantasy/renderdoc-mcp) - Expose existing RenderDoc captures to an agent for bounded frame, pipeline, resource, and shader inspection. <sub>Integration · Independent MCP</sub>
-- [**UndertaleModTool**](https://github.com/UnderminersTeam/UndertaleModTool) - Browse and modify supported GameMaker data files, extract assets, and decompile or compile GML VM code. Includes room editing, scripted changes, a CLI, and the reusable UndertaleModLib library. <sub>Tool</sub>
-- [**frida-il2cpp-bridge**](https://github.com/vfsfitvnm/frida-il2cpp-bridge) - Inspect IL2CPP classes, methods, and fields in a live process, and trace or intercept method calls without supplying global-metadata.dat. Complements static IL2CPP dumpers with runtime observation. <sub>Tool</sub>
-- [**objdiff**](https://github.com/encounter/objdiff) - Compare functions and data in reference and rebuilt object files to guide matching decompilation. Displays instruction-level differences, demangles C++ symbols, and can rebuild when source files change. <sub>Tool</sub>
-- [**decomp-permuter**](https://github.com/simonlindholm/decomp-permuter) - Randomly or systematically permutes one C function, recompiling each variant and scoring it against a target object file to search for matching compiler output. PERM macros specify manual alternatives, and the optional permuter@home mode distributes runs to other workers. <sub>Tool</sub>
-- [**asm-differ**](https://github.com/simonlindholm/asm-differ) - Diffs original and rebuilt assembly for one function or ROM address to guide matching decompilation; its watch mode can rerun make when sources change. The README describes it as decomp.me’s default diff viewer and points to objdiff as a modern alternative. <sub>Tool</sub>
-- [**UE Explorer**](https://github.com/UE-Explorer/UE-Explorer) - Explore Unreal packages through class, property, and dependency trees; decompile and export UnrealScript classes, inspect bytecode, and examine structured binary data. <sub>Tool</sub>
-- [**GARbro**](https://github.com/morkt/GARbro) - Browse recognized visual-novel resource archives as folders, preview their contents, and extract images or audio with conversion to common formats. <sub>Tool</sub>
-- [**Godot RE Tools**](https://github.com/GDRETools/gdsdecomp) - Recover supported Godot project files, GDScript and imported resources from exported games. Includes PCK inspection and extraction, script decompilation, and resource conversion for examining and rebuilding project structure. <sub>Tool</sub>
-- [**UE4SS**](https://github.com/UE4SS-RE/RE-UE4SS) - Inspect Unreal Engine games at runtime through live UObject property views, reflected C++ header dumps, property mappings and actor dumps. Lua and C++ APIs support experiments while reconstructing game structures. <sub>Tool</sub>
-- [**FModel**](https://github.com/4sval/FModel) - Explore Unreal Engine game archives with CUE4Parse-backed package and property inspection, asset previews and export. The 2026 summer release adds USD world export for reconstructing supported scene content. <sub>Tool</sub>
-- [**PSP Web Recomp**](https://github.com/snuri00/psp-web-recomp) - Translate PSP MIPS executables into C++ and WebAssembly, backed by a PSP high-level emulation runtime and WebGL2 renderer. Native tracing, frame capture and audio tools support investigating missing behavior during game porting. <sub>Project</sub>
-- [**N64: Recompiled**](https://github.com/N64Recomp/N64Recomp) - Statically recompiles N64 MIPS binaries into C functions from symbol metadata, emitting function lookups and relocation macros so a runtime can handle statically linked and relocatable overlays. The output needs a runtime such as N64ModernRuntime; the repository also includes RSP microcode and mod tooling. <sub>Tool</sub>
-- [**XenonRecomp**](https://github.com/hedge-dev/XenonRecomp) - Converts Xbox 360 PowerPC executables into C++ that can be compiled for other platforms, with the XenonAnalyse companion detecting jump tables and function boundaries. Output is a literal instruction translation rather than decompiled code and needs a runtime that the project does not supply. <sub>Tool</sub>
+- [**RenderDoc**](https://github.com/baldurk/renderdoc) · Tool · [Requirements & evidence](https://awesomerea.org/resources/renderdoc/)
+
+  Inspect frame captures, draw calls, shaders, and graphics resources in your own game or graphics application.
+
+- [**AssetRipper**](https://github.com/AssetRipper/AssetRipper) · Tool · [Requirements & evidence](https://awesomerea.org/resources/assetripper/)
+
+  Analyze Unity game files, inspect asset dependencies, and convert supported assets into Unity project formats.
+
+- [**Cpp2IL**](https://github.com/SamboyCoding/Cpp2IL) · Tool · [Requirements & evidence](https://awesomerea.org/resources/cpp2il/)
+
+  Recover managed representations from Unity IL2CPP builds using binary and metadata analysis; reconstruction remains a work in progress.
+
+- [**Il2CppDumper**](https://github.com/Perfare/Il2CppDumper) · Tool · [Requirements & evidence](https://awesomerea.org/resources/il2cppdumper/)
+
+  Recover IL2CPP metadata and dummy assemblies, and generate helper scripts for native analysis tools; method code is not restored.
+
+- [**RenderDoc MCP**](https://github.com/scarletfantasy/renderdoc-mcp) · Integration · Independent MCP · [Requirements & evidence](https://awesomerea.org/resources/renderdoc-mcp/)
+
+  Expose existing RenderDoc captures to an agent for bounded frame, pipeline, resource, and shader inspection.
+
+- [**UndertaleModTool**](https://github.com/UnderminersTeam/UndertaleModTool) · Tool · [Requirements & evidence](https://awesomerea.org/resources/undertalemodtool/)
+
+  Browse and modify supported GameMaker data files, extract assets, and decompile or compile GML VM code. Includes room editing, scripted changes, a CLI, and the reusable UndertaleModLib library.
+
+- [**frida-il2cpp-bridge**](https://github.com/vfsfitvnm/frida-il2cpp-bridge) · Tool · [Requirements & evidence](https://awesomerea.org/resources/frida-il2cpp-bridge/)
+
+  Inspect IL2CPP classes, methods, and fields in a live process, and trace or intercept method calls without supplying global-metadata.dat. Complements static IL2CPP dumpers with runtime observation.
+
+- [**objdiff**](https://github.com/encounter/objdiff) · Tool · [Requirements & evidence](https://awesomerea.org/resources/objdiff/)
+
+  Compare functions and data in reference and rebuilt object files to guide matching decompilation. Displays instruction-level differences, demangles C++ symbols, and can rebuild when source files change.
+
+- [**decomp-permuter**](https://github.com/simonlindholm/decomp-permuter) · Tool · [Requirements & evidence](https://awesomerea.org/resources/decomp-permuter/)
+
+  Randomly or systematically permutes one C function, recompiling each variant and scoring it against a target object file to search for matching compiler output. PERM macros specify manual alternatives, and the optional permuter@home mode distributes runs to other workers.
+
+- [**asm-differ**](https://github.com/simonlindholm/asm-differ) · Tool · [Requirements & evidence](https://awesomerea.org/resources/asm-differ/)
+
+  Diffs original and rebuilt assembly for one function or ROM address to guide matching decompilation; its watch mode can rerun make when sources change. The README describes it as decomp.me’s default diff viewer and points to objdiff as a modern alternative.
+
+- [**UE Explorer**](https://github.com/UE-Explorer/UE-Explorer) · Tool · [Requirements & evidence](https://awesomerea.org/resources/ue-explorer/)
+
+  Explore Unreal packages through class, property, and dependency trees; decompile and export UnrealScript classes, inspect bytecode, and examine structured binary data.
+
+- [**GARbro**](https://github.com/morkt/GARbro) · Tool · [Requirements & evidence](https://awesomerea.org/resources/garbro/)
+
+  Browse recognized visual-novel resource archives as folders, preview their contents, and extract images or audio with conversion to common formats.
+
+- [**Godot RE Tools**](https://github.com/GDRETools/gdsdecomp) · Tool · [Requirements & evidence](https://awesomerea.org/resources/godot-re-tools/)
+
+  Recover supported Godot project files, GDScript and imported resources from exported games. Includes PCK inspection and extraction, script decompilation, and resource conversion for examining and rebuilding project structure.
+
+- [**UE4SS**](https://github.com/UE4SS-RE/RE-UE4SS) · Tool · [Requirements & evidence](https://awesomerea.org/resources/ue4ss/)
+
+  Inspect Unreal Engine games at runtime through live UObject property views, reflected C++ header dumps, property mappings and actor dumps. Lua and C++ APIs support experiments while reconstructing game structures.
+
+- [**FModel**](https://github.com/4sval/FModel) · Tool · [Requirements & evidence](https://awesomerea.org/resources/fmodel/)
+
+  Explore Unreal Engine game archives with CUE4Parse-backed package and property inspection, asset previews and export. The 2026 summer release adds USD world export for reconstructing supported scene content.
+
+- [**PSP Web Recomp**](https://github.com/snuri00/psp-web-recomp) · Project · [Requirements & evidence](https://awesomerea.org/resources/psp-web-recomp/)
+
+  Translate PSP MIPS executables into C++ and WebAssembly, backed by a PSP high-level emulation runtime and WebGL2 renderer. Native tracing, frame capture and audio tools support investigating missing behavior during game porting.
+
+- [**N64: Recompiled**](https://github.com/N64Recomp/N64Recomp) · Tool · [Requirements & evidence](https://awesomerea.org/resources/n64recomp/)
+
+  Statically recompiles N64 MIPS binaries into C functions from symbol metadata, emitting function lookups and relocation macros so a runtime can handle statically linked and relocatable overlays. The output needs a runtime such as N64ModernRuntime; the repository also includes RSP microcode and mod tooling.
+
+- [**XenonRecomp**](https://github.com/hedge-dev/XenonRecomp) · Tool · [Requirements & evidence](https://awesomerea.org/resources/xenonrecomp/)
+
+  Converts Xbox 360 PowerPC executables into C++ that can be compiled for other platforms, with the XenonAnalyse companion detecting jump tables and function boundaries. Output is a literal instruction translation rather than decompiled code and needs a runtime that the project does not supply.
 
 <a id="app"></a>
 ### App
@@ -108,41 +277,135 @@ Browse by purpose, with case studies separated from tools and integrations. Each
 
 #### Case studies
 
-- [**Aegis: trace a login-code calculation**](https://rea.tools/showcase/aegis/) - An official APK investigation follows TOTP methods in Aegis and publishes artifact identities and selected Evidence. <sub>Case study · REA</sub>
-- [**Notion: trace the clipboard bridge**](https://rea.tools/showcase/notion/) - Trace a packaged Electron clipboard path using REA findings and separate source inspection; the dynamic wrapper remains a stated limit. <sub>Case study · REA</sub>
-- [**ReaCut: video-editor reconstruction**](https://github.com/Xiangyu-CAS/rea-capcut) - An independent video editor whose authors document REA-assisted investigation of Jianying/CapCut behavior and project formats. The public implementation includes a local timeline, FFmpeg export and an experimental, lossy draft importer. <sub>Case study · Mixed workflow</sub>
-- [**zee-rp: reconstructing supported Axure RP 11 document operations**](https://github.com/LilZeeCN/zee-rp) - Reads and rewrites supported native Axure RP 11 documents through a binary-record codec, reference-aware cloning and constrained interaction writers. CLI and MCP interfaces expose inspected edits while keeping offline structure checks separate from native application acceptance. <sub>Case study · Independent reconstruction</sub>
-- [**Virtual Desktop Streamer: rehosting the platform layer on Linux**](https://github.com/cudanexus/vd-streamer-linux) - An author-reported Claude Code and REA workflow replaces the macOS streamer’s capture, encoding, audio and input layer with Linux implementations while reusing vendor protocol libraries. The documented result targets desktop streaming and video playback, not Windows-only VR game streaming. <sub>Case study · Mixed workflow</sub>
-- [**Open Claude UI: REA-informed interface reference components**](https://github.com/Caho1/open-claude-ui) - Publishes React components, motion helpers and design-system notes derived from the author’s reported REA investigation of Claude Desktop. It is useful as an interface-reconstruction case, with version-specific observations rather than proof of a complete assistant application or backend clone. <sub>Case study · Mixed workflow</sub>
-- [**PlxNative: reconstructing a native webOS media-client interface**](https://github.com/GLinnik21/plx-native) - An unofficial Plex client built after the author investigated LG webOS native media interfaces with Ghidra and coding agents. It draws its own Rust/OpenGL interface and uses the television’s decoder, with documented host, simulator and real-device test tiers. <sub>Case study · Independent reconstruction</sub>
-- [**Windows Calculator: reconstructing percentage rules**](https://github.com/morluto/rea/blob/c360cfcd6d7901514b16dd6113eba2e0b0fdf422/website/evidence/calculator-and-dino.md#windows-calculator) - REA’s case traces the installed Windows Calculator model DLL to explain different percentage behavior for multiplication/division and other operations. An analyst-selected function is interpreted against public Microsoft source and demonstrated with fixed browser examples. <sub>Case study · REA</sub>
-- [**Feishu: an author-reported isolated second app instance**](https://benx.ai/blog/posts/rea-reverse-engineer-feishu-dual-instance/) - The author reports using Codex and REA analysis to adapt a separate macOS Feishu copy with its own application identity, data directory and single-instance lock. The account describes local signing and separation checks while retaining the original app unchanged. <sub>Case study · Mixed workflow</sub>
-- [**PhotoCraft: editor workflow reconstruction and PSD round-trip boundaries**](https://github.com/storytold/photocraft) - The authors describe this Rust image editor as a clean-room reimplementation of Photoshop-style workflows. Its document engine, UI and automation interfaces share editing commands, while the source distinguishes PSD editor round trips from byte preservation in the standalone file codec. <sub>Case study · Independent reconstruction</sub>
-- [**WordCraft: document workflow reconstruction and bounded DOCX compatibility**](https://github.com/storytold/wordcraft) - The authors describe WordCraft as a clean-room Rust implementation of familiar Microsoft Word workflows. It provides its own document model, layout engine and DOCX reader/writer, with desktop and browser interfaces; source tests exercise selected editing and file-preservation behavior. <sub>Case study · Independent reconstruction</sub>
-- [**LSX II Volume Fixer: reconstructing volume behavior**](https://github.com/roberdorfer/kef-lsx-volume) - Uses measured USB-volume behavior and a macOS audio proxy to map volume keys to a KEF LSX II’s LAN control. The project reports more even steps while forwarding USB audio; the speaker firmware is unchanged. <sub>Case study · Independent reconstruction</sub>
+- [**Aegis: trace a login-code calculation**](https://rea.tools/showcase/aegis/) · Case study · REA · [Requirements & evidence](https://awesomerea.org/resources/rea-aegis-case/)
+
+  An official APK investigation follows TOTP methods in Aegis and publishes artifact identities and selected Evidence.
+
+- [**Notion: trace the clipboard bridge**](https://rea.tools/showcase/notion/) · Case study · REA · [Requirements & evidence](https://awesomerea.org/resources/rea-notion-case/)
+
+  Trace a packaged Electron clipboard path using REA findings and separate source inspection; the dynamic wrapper remains a stated limit.
+
+- [**ReaCut: video-editor reconstruction**](https://github.com/Xiangyu-CAS/rea-capcut) · Case study · Mixed workflow · [Requirements & evidence](https://awesomerea.org/resources/reacut-reconstruction/)
+
+  An independent video editor whose authors document REA-assisted investigation of Jianying/CapCut behavior and project formats. The public implementation includes a local timeline, FFmpeg export and an experimental, lossy draft importer.
+
+- [**zee-rp: reconstructing supported Axure RP 11 document operations**](https://github.com/LilZeeCN/zee-rp) · Case study · Independent reconstruction · [Requirements & evidence](https://awesomerea.org/resources/zee-rp-case/)
+
+  Reads and rewrites supported native Axure RP 11 documents through a binary-record codec, reference-aware cloning and constrained interaction writers. CLI and MCP interfaces expose inspected edits while keeping offline structure checks separate from native application acceptance.
+
+- [**Virtual Desktop Streamer: rehosting the platform layer on Linux**](https://github.com/cudanexus/vd-streamer-linux) · Case study · Mixed workflow · [Requirements & evidence](https://awesomerea.org/resources/vd-streamer-linux-case/)
+
+  An author-reported Claude Code and REA workflow replaces the macOS streamer’s capture, encoding, audio and input layer with Linux implementations while reusing vendor protocol libraries. The documented result targets desktop streaming and video playback, not Windows-only VR game streaming.
+
+- [**Open Claude UI: REA-informed interface reference components**](https://github.com/Caho1/open-claude-ui) · Case study · Mixed workflow · [Requirements & evidence](https://awesomerea.org/resources/open-claude-ui-case/)
+
+  Publishes React components, motion helpers and design-system notes derived from the author’s reported REA investigation of Claude Desktop. It is useful as an interface-reconstruction case, with version-specific observations rather than proof of a complete assistant application or backend clone.
+
+- [**PlxNative: reconstructing a native webOS media-client interface**](https://github.com/GLinnik21/plx-native) · Case study · Independent reconstruction · [Requirements & evidence](https://awesomerea.org/resources/plx-native-case/)
+
+  An unofficial Plex client built after the author investigated LG webOS native media interfaces with Ghidra and coding agents. It draws its own Rust/OpenGL interface and uses the television’s decoder, with documented host, simulator and real-device test tiers.
+
+- [**Windows Calculator: reconstructing percentage rules**](https://github.com/morluto/rea/blob/c360cfcd6d7901514b16dd6113eba2e0b0fdf422/website/evidence/calculator-and-dino.md#windows-calculator) · Case study · REA · [Requirements & evidence](https://awesomerea.org/resources/rea-calculator-percent-case/)
+
+  REA’s case traces the installed Windows Calculator model DLL to explain different percentage behavior for multiplication/division and other operations. An analyst-selected function is interpreted against public Microsoft source and demonstrated with fixed browser examples.
+
+- [**Feishu: an author-reported isolated second app instance**](https://benx.ai/blog/posts/rea-reverse-engineer-feishu-dual-instance/) · Case study · Mixed workflow · [Requirements & evidence](https://awesomerea.org/resources/feishu-dual-instance-case/)
+
+  The author reports using Codex and REA analysis to adapt a separate macOS Feishu copy with its own application identity, data directory and single-instance lock. The account describes local signing and separation checks while retaining the original app unchanged.
+
+- [**PhotoCraft: editor workflow reconstruction and PSD round-trip boundaries**](https://github.com/storytold/photocraft) · Case study · Independent reconstruction · [Requirements & evidence](https://awesomerea.org/resources/photocraft-case/)
+
+  The authors describe this Rust image editor as a clean-room reimplementation of Photoshop-style workflows. Its document engine, UI and automation interfaces share editing commands, while the source distinguishes PSD editor round trips from byte preservation in the standalone file codec.
+
+- [**WordCraft: document workflow reconstruction and bounded DOCX compatibility**](https://github.com/storytold/wordcraft) · Case study · Independent reconstruction · [Requirements & evidence](https://awesomerea.org/resources/wordcraft-case/)
+
+  The authors describe WordCraft as a clean-room Rust implementation of familiar Microsoft Word workflows. It provides its own document model, layout engine and DOCX reader/writer, with desktop and browser interfaces; source tests exercise selected editing and file-preservation behavior.
+
+- [**LSX II Volume Fixer: reconstructing volume behavior**](https://github.com/roberdorfer/kef-lsx-volume) · Case study · Independent reconstruction · [Requirements & evidence](https://awesomerea.org/resources/kef-lsx-volume-case/)
+
+  Uses measured USB-volume behavior and a macOS audio proxy to map volume keys to a KEF LSX II’s LAN control. The project reports more even steps while forwarding USB audio; the speaker firmware is unchanged.
 
 #### Tools, projects and integrations
 
-- [**JADX-AI-MCP**](https://github.com/zinja-coder/jadx-ai-mcp) - JADX plugin paired with a Python MCP server to inspect decompiled Android classes, resources, cross-references and debugger context. <sub>Integration · Independent MCP</sub>
-- [**apktool-mcp-server**](https://github.com/zinja-coder/apktool-mcp-server) - Python MCP server that drives a local Apktool install so agents can decode APKs; list, read, search and edit smali and resource files; read AndroidManifest.xml and apktool.yml; and rebuild the project. <sub>Integration · Independent MCP</sub>
-- [**frida-mcp (yfe404)**](https://github.com/yfe404/frida-mcp) - Frida MCP server with persistent instrumentation sessions, runtime inspection and Android static-to-dynamic navigation. <sub>Integration · Independent MCP</sub>
-- [**Super Trouper**](https://github.com/crissyfield/super-trouper) - Single-binary Frida MCP server for discovering devices, managing process sessions and loading instrumentation scripts. <sub>Integration · Independent MCP</sub>
-- [**Frida**](https://github.com/frida/frida) - Dynamic instrumentation toolkit for observing and scripting the behavior of live native and managed processes. <sub>Tool</sub>
-- [**JADX**](https://github.com/skylot/jadx) - Dex-to-Java decompiler with CLI/GUI navigation, resource decoding and cross-reference search for Android packages. <sub>Tool · Android</sub>
-- [**Apktool**](https://github.com/iBotPeaches/Apktool) - Decodes Android resources and smali into a project-like tree and can rebuild modified packages. <sub>Tool · Android</sub>
-- [**Androguard**](https://github.com/androguard/androguard) - Python toolkit for APK/DEX metadata, bytecode and reference analysis; the v5 source branch also documents agent skills and MCP. <sub>Tool · Android</sub>
-- [**ILSpy**](https://github.com/icsharpcode/ILSpy) - .NET assembly browser and C# decompiler with whole-project export, metadata inspection and a scriptable command-line frontend. <sub>Tool · .NET</sub>
-- [**dnSpyEx**](https://github.com/dnSpyEx/dnSpy) - Community continuation of dnSpy for debugging and editing .NET assemblies without the original source. <sub>Tool · .NET</sub>
-- [**@electron/asar**](https://github.com/electron/asar) - Electron's archive tool lists and extracts ASAR contents so packaged JavaScript and application assets can be inspected. <sub>Tool</sub>
-- [**Mobile Security Framework (MobSF)**](https://github.com/MobSF/Mobile-Security-Framework-MobSF) - Inspect mobile application packages with static analysis and supported-device dynamic testing, including runtime behavior and network traffic, through a web interface and APIs. <sub>Tool · Android</sub>
-- [**objection**](https://github.com/sensepost/objection) - Explore running Android and iOS apps with a Frida-backed command interface for inspecting app storage, memory, runtime objects, and instrumented behavior. <sub>Tool · Android</sub>
-- [**Grapefruit**](https://github.com/ChiChou/grapefruit) - Inspect and hook running iOS and Android apps from a Frida-based web interface, with method and crypto-API hooks, filesystem and SQLite browsers, iOS keychain and UI-hierarchy views, and HTTP capture from common networking libraries. <sub>Tool</sub>
-- [**Blutter**](https://github.com/worawit/blutter) - Analyze Flutter Android ARM64 AOT binaries using the matching Dart runtime. Produces annotated assembly, object-pool dumps and a target-specific Frida script template for investigating compiled Dart application logic. <sub>Tool · Android</sub>
-- [**hermes-dec**](https://github.com/P1sec/hermes-dec) - Parse, disassemble and partially decompile React Native Hermes bytecode bundles. Makes HBC headers and instructions inspectable and emits pseudocode for understanding compiled application logic. <sub>Tool · Android</sub>
-- [**Recaf**](https://github.com/Col-E/Recaf) - Inspect and modify compiled JVM applications with integrated decompilers, bytecode assembly, reference search, mappings and deobfuscation tools. The reviewed 4.0 preview also provides basic read-only Android bytecode inspection. <sub>Tool · JVM</sub>
-- [**nibkit**](https://github.com/tokenbleed/nibkit) - Decode compiled iOS/macOS interface archives into object trees, Outlet/Action connections, custom classes and navigation relationships. Exports JSON or Mermaid diagrams and exposes read-only inspection commands through MCP. <sub>Tool</sub>
-- [**AOTopsy**](https://github.com/BroNils/aotopsy) - Statically inspect Flutter/Dart AOT libapp.so files to recover available metadata, class structures, call edges and pseudocode without embedding a Dart VM or compiling a matching SDK. Supports ARM64 and x86_64 analysis paths. <sub>Tool · Android</sub>
-- [**hbctool**](https://github.com/bongtrop/hbctool) - Disassemble and reassemble supported React Native Hermes bytecode bundles through HASM files, enabling bytecode inspection and editing for the explicitly supported legacy HBC versions. <sub>Tool · Android</sub>
+- [**JADX-AI-MCP**](https://github.com/zinja-coder/jadx-ai-mcp) · Integration · Independent MCP · [Requirements & evidence](https://awesomerea.org/resources/jadx-ai-mcp/)
+
+  JADX plugin paired with a Python MCP server to inspect decompiled Android classes, resources, cross-references and debugger context.
+
+- [**apktool-mcp-server**](https://github.com/zinja-coder/apktool-mcp-server) · Integration · Independent MCP · [Requirements & evidence](https://awesomerea.org/resources/apktool-mcp-server/)
+
+  Python MCP server that drives a local Apktool install so agents can decode APKs; list, read, search and edit smali and resource files; read AndroidManifest.xml and apktool.yml; and rebuild the project.
+
+- [**frida-mcp (yfe404)**](https://github.com/yfe404/frida-mcp) · Integration · Independent MCP · [Requirements & evidence](https://awesomerea.org/resources/frida-mcp-yfe404/)
+
+  Frida MCP server with persistent instrumentation sessions, runtime inspection and Android static-to-dynamic navigation.
+
+- [**Super Trouper**](https://github.com/crissyfield/super-trouper) · Integration · Independent MCP · [Requirements & evidence](https://awesomerea.org/resources/super-trouper/)
+
+  Single-binary Frida MCP server for discovering devices, managing process sessions and loading instrumentation scripts.
+
+- [**Frida**](https://github.com/frida/frida) · Tool · [Requirements & evidence](https://awesomerea.org/resources/frida/)
+
+  Dynamic instrumentation toolkit for observing and scripting the behavior of live native and managed processes.
+
+- [**JADX**](https://github.com/skylot/jadx) · Tool · Android · [Requirements & evidence](https://awesomerea.org/resources/jadx/)
+
+  Dex-to-Java decompiler with CLI/GUI navigation, resource decoding and cross-reference search for Android packages.
+
+- [**Apktool**](https://github.com/iBotPeaches/Apktool) · Tool · Android · [Requirements & evidence](https://awesomerea.org/resources/apktool/)
+
+  Decodes Android resources and smali into a project-like tree and can rebuild modified packages.
+
+- [**Androguard**](https://github.com/androguard/androguard) · Tool · Android · [Requirements & evidence](https://awesomerea.org/resources/androguard/)
+
+  Python toolkit for APK/DEX metadata, bytecode and reference analysis; the v5 source branch also documents agent skills and MCP.
+
+- [**ILSpy**](https://github.com/icsharpcode/ILSpy) · Tool · .NET · [Requirements & evidence](https://awesomerea.org/resources/ilspy/)
+
+  .NET assembly browser and C# decompiler with whole-project export, metadata inspection and a scriptable command-line frontend.
+
+- [**dnSpyEx**](https://github.com/dnSpyEx/dnSpy) · Tool · .NET · [Requirements & evidence](https://awesomerea.org/resources/dnspyex/)
+
+  Community continuation of dnSpy for debugging and editing .NET assemblies without the original source.
+
+- [**@electron/asar**](https://github.com/electron/asar) · Tool · [Requirements & evidence](https://awesomerea.org/resources/electron-asar/)
+
+  Electron's archive tool lists and extracts ASAR contents so packaged JavaScript and application assets can be inspected.
+
+- [**Mobile Security Framework (MobSF)**](https://github.com/MobSF/Mobile-Security-Framework-MobSF) · Tool · Android · [Requirements & evidence](https://awesomerea.org/resources/mobsf/)
+
+  Inspect mobile application packages with static analysis and supported-device dynamic testing, including runtime behavior and network traffic, through a web interface and APIs.
+
+- [**objection**](https://github.com/sensepost/objection) · Tool · Android · [Requirements & evidence](https://awesomerea.org/resources/objection/)
+
+  Explore running Android and iOS apps with a Frida-backed command interface for inspecting app storage, memory, runtime objects, and instrumented behavior.
+
+- [**Grapefruit**](https://github.com/ChiChou/grapefruit) · Tool · [Requirements & evidence](https://awesomerea.org/resources/grapefruit/)
+
+  Inspect and hook running iOS and Android apps from a Frida-based web interface, with method and crypto-API hooks, filesystem and SQLite browsers, iOS keychain and UI-hierarchy views, and HTTP capture from common networking libraries.
+
+- [**Blutter**](https://github.com/worawit/blutter) · Tool · Android · [Requirements & evidence](https://awesomerea.org/resources/blutter/)
+
+  Analyze Flutter Android ARM64 AOT binaries using the matching Dart runtime. Produces annotated assembly, object-pool dumps and a target-specific Frida script template for investigating compiled Dart application logic.
+
+- [**hermes-dec**](https://github.com/P1sec/hermes-dec) · Tool · Android · [Requirements & evidence](https://awesomerea.org/resources/hermes-dec/)
+
+  Parse, disassemble and partially decompile React Native Hermes bytecode bundles. Makes HBC headers and instructions inspectable and emits pseudocode for understanding compiled application logic.
+
+- [**Recaf**](https://github.com/Col-E/Recaf) · Tool · JVM · [Requirements & evidence](https://awesomerea.org/resources/recaf/)
+
+  Inspect and modify compiled JVM applications with integrated decompilers, bytecode assembly, reference search, mappings and deobfuscation tools. The reviewed 4.0 preview also provides basic read-only Android bytecode inspection.
+
+- [**nibkit**](https://github.com/tokenbleed/nibkit) · Tool · [Requirements & evidence](https://awesomerea.org/resources/nibkit/)
+
+  Decode compiled iOS/macOS interface archives into object trees, Outlet/Action connections, custom classes and navigation relationships. Exports JSON or Mermaid diagrams and exposes read-only inspection commands through MCP.
+
+- [**AOTopsy**](https://github.com/BroNils/aotopsy) · Tool · Android · [Requirements & evidence](https://awesomerea.org/resources/aotopsy/)
+
+  Statically inspect Flutter/Dart AOT libapp.so files to recover available metadata, class structures, call edges and pseudocode without embedding a Dart VM or compiling a matching SDK. Supports ARM64 and x86_64 analysis paths.
+
+- [**hbctool**](https://github.com/bongtrop/hbctool) · Tool · Android · [Requirements & evidence](https://awesomerea.org/resources/hbctool/)
+
+  Disassemble and reassemble supported React Native Hermes bytecode bundles through HASM files, enabling bytecode inspection and editing for the explicitly supported legacy HBC versions.
 
 <a id="native-binary"></a>
 ### Native Binary
@@ -151,29 +414,87 @@ Browse by purpose, with case studies separated from tools and integrations. Each
 
 #### Case studies
 
-- [**DownUnderCTF: masked-squares flag checker**](https://rea.tools/showcase/ctf/) - An official educational challenge investigation connects binary checks to equations and records an original-program validation. <sub>Case study · REA</sub>
+- [**DownUnderCTF: masked-squares flag checker**](https://rea.tools/showcase/ctf/) · Case study · REA · [Requirements & evidence](https://awesomerea.org/resources/rea-ctf-case/)
+
+  An official educational challenge investigation connects binary checks to equations and records an original-program validation.
 
 #### Tools, projects and integrations
 
-- [**Ghidra**](https://github.com/NationalSecurityAgency/ghidra) - Open-source analysis suite for disassembly, decompilation, graphs and Java/Python automation across executable formats. <sub>Tool</sub>
-- [**radare2**](https://github.com/radareorg/radare2) - Scriptable command-line framework for inspecting, disassembling, debugging and modifying binaries across many architectures. <sub>Tool</sub>
-- [**Cutter**](https://github.com/rizinorg/cutter) - Rizin-powered graphical reverse-engineering workspace with extensible views and Ghidra decompiler integration. <sub>Tool</sub>
-- [**Qiling**](https://github.com/qilingframework/qiling) - Python emulation framework that adds OS, filesystem and API behavior around CPU emulation for instrumented binary analysis. <sub>Tool</sub>
-- [**Unicorn Engine**](https://github.com/unicorn-engine/unicorn) - Multi-architecture CPU emulator for executing selected instruction ranges with register, memory and hook control. <sub>Tool · Library</sub>
-- [**angr**](https://github.com/angr/angr) - Python binary-analysis framework combining control-flow recovery, symbolic execution, data-flow analysis and decompilation. <sub>Tool · Library</sub>
-- [**LIEF**](https://github.com/lief-project/LIEF) - Library for structured parsing and modification of executable formats including ELF, PE and Mach-O. <sub>Tool · Library</sub>
-- [**Capstone**](https://github.com/capstone-engine/capstone) - Disassembly library with architecture-neutral APIs and instruction details for custom binary-analysis pipelines. <sub>Tool · Library</sub>
-- [**ImHex**](https://github.com/WerWolv/ImHex) - Hex editor with a binary-pattern language, structured data inspection and visual tools for understanding file formats. <sub>Tool</sub>
-- [**x64dbg**](https://github.com/x64dbg/x64dbg) - Windows binary debugger with disassembly, memory views and plugins for analyzing programs without source code. <sub>Tool</sub>
-- [**GDB**](https://sourceware.org/gdb/) - Native and remote debugger for controlling execution and inspecting live or crashed program state. <sub>Tool</sub>
-- [**rr**](https://github.com/rr-debugger/rr) - Records process execution and replays it under GDB, enabling repeatable inspection and reverse execution. <sub>Tool</sub>
-- [**Diaphora**](https://github.com/joxeankoret/diaphora) - IDA-based binary diffing that matches functions and transfers names, comments and types between analyzed versions. <sub>Tool</sub>
-- [**BinDiff**](https://github.com/google/bindiff) - Compares disassembled binaries to find matching functions and changed code across versions. <sub>Tool</sub>
-- [**Detect It Easy**](https://github.com/horsicq/Detect-It-Easy) - Format-aware file identification and static inspection using parsers, signatures and programmable heuristics. <sub>Tool</sub>
-- [**r2frida**](https://github.com/nowsecure/r2frida) - Use radare2 commands and Frida instrumentation together to inspect local or remote process memory, symbols, classes, and runtime calls on desktop and mobile targets. <sub>Tool</sub>
-- [**Kaitai Struct**](https://github.com/kaitai-io/kaitai_struct) - Turn documented binary layouts into reusable parsers for files and network packets. A .ksy specification can be inspected with visualizers and compiled to multiple languages, helping preserve reverse-engineered format knowledge in interoperable implementations. <sub>Tool · Library</sub>
-- [**GoReSym**](https://github.com/mandiant/GoReSym) - Recover Go build metadata, function names and address ranges, source file and line tables, embedded types and strings from Go binaries, including stripped and some malformed unpacked samples. JSON output can be imported into IDA Pro with the included IDAPython script. <sub>Tool</sub>
-- [**rev.ng**](https://github.com/revng/revng) - Open-source decompilation pipeline that lifts x86-64, AArch64, i386, ARM and MIPS code with QEMU, runs LLVM-based analyses and emits C designed to be valid and recompilable. Data layout analysis infers structures from pointer use; an editable YAML model and Python or TypeScript wrappers support automation. Its VSCode-based UI is a separate closed-beta product, with commercial plans announced. <sub>Tool</sub>
+- [**Ghidra**](https://github.com/NationalSecurityAgency/ghidra) · Tool · [Requirements & evidence](https://awesomerea.org/resources/ghidra/)
+
+  Open-source analysis suite for disassembly, decompilation, graphs and Java/Python automation across executable formats.
+
+- [**radare2**](https://github.com/radareorg/radare2) · Tool · [Requirements & evidence](https://awesomerea.org/resources/radare2/)
+
+  Scriptable command-line framework for inspecting, disassembling, debugging and modifying binaries across many architectures.
+
+- [**Cutter**](https://github.com/rizinorg/cutter) · Tool · [Requirements & evidence](https://awesomerea.org/resources/cutter/)
+
+  Rizin-powered graphical reverse-engineering workspace with extensible views and Ghidra decompiler integration.
+
+- [**Qiling**](https://github.com/qilingframework/qiling) · Tool · [Requirements & evidence](https://awesomerea.org/resources/qiling/)
+
+  Python emulation framework that adds OS, filesystem and API behavior around CPU emulation for instrumented binary analysis.
+
+- [**Unicorn Engine**](https://github.com/unicorn-engine/unicorn) · Tool · Library · [Requirements & evidence](https://awesomerea.org/resources/unicorn/)
+
+  Multi-architecture CPU emulator for executing selected instruction ranges with register, memory and hook control.
+
+- [**angr**](https://github.com/angr/angr) · Tool · Library · [Requirements & evidence](https://awesomerea.org/resources/angr/)
+
+  Python binary-analysis framework combining control-flow recovery, symbolic execution, data-flow analysis and decompilation.
+
+- [**LIEF**](https://github.com/lief-project/LIEF) · Tool · Library · [Requirements & evidence](https://awesomerea.org/resources/lief/)
+
+  Library for structured parsing and modification of executable formats including ELF, PE and Mach-O.
+
+- [**Capstone**](https://github.com/capstone-engine/capstone) · Tool · Library · [Requirements & evidence](https://awesomerea.org/resources/capstone/)
+
+  Disassembly library with architecture-neutral APIs and instruction details for custom binary-analysis pipelines.
+
+- [**ImHex**](https://github.com/WerWolv/ImHex) · Tool · [Requirements & evidence](https://awesomerea.org/resources/imhex/)
+
+  Hex editor with a binary-pattern language, structured data inspection and visual tools for understanding file formats.
+
+- [**x64dbg**](https://github.com/x64dbg/x64dbg) · Tool · [Requirements & evidence](https://awesomerea.org/resources/x64dbg/)
+
+  Windows binary debugger with disassembly, memory views and plugins for analyzing programs without source code.
+
+- [**GDB**](https://sourceware.org/gdb/) · Tool · [Requirements & evidence](https://awesomerea.org/resources/gdb/)
+
+  Native and remote debugger for controlling execution and inspecting live or crashed program state.
+
+- [**rr**](https://github.com/rr-debugger/rr) · Tool · [Requirements & evidence](https://awesomerea.org/resources/rr/)
+
+  Records process execution and replays it under GDB, enabling repeatable inspection and reverse execution.
+
+- [**Diaphora**](https://github.com/joxeankoret/diaphora) · Tool · [Requirements & evidence](https://awesomerea.org/resources/diaphora/)
+
+  IDA-based binary diffing that matches functions and transfers names, comments and types between analyzed versions.
+
+- [**BinDiff**](https://github.com/google/bindiff) · Tool · [Requirements & evidence](https://awesomerea.org/resources/bindiff/)
+
+  Compares disassembled binaries to find matching functions and changed code across versions.
+
+- [**Detect It Easy**](https://github.com/horsicq/Detect-It-Easy) · Tool · [Requirements & evidence](https://awesomerea.org/resources/detect-it-easy/)
+
+  Format-aware file identification and static inspection using parsers, signatures and programmable heuristics.
+
+- [**r2frida**](https://github.com/nowsecure/r2frida) · Tool · [Requirements & evidence](https://awesomerea.org/resources/r2frida/)
+
+  Use radare2 commands and Frida instrumentation together to inspect local or remote process memory, symbols, classes, and runtime calls on desktop and mobile targets.
+
+- [**Kaitai Struct**](https://github.com/kaitai-io/kaitai_struct) · Tool · Library · [Requirements & evidence](https://awesomerea.org/resources/kaitai-struct/)
+
+  Turn documented binary layouts into reusable parsers for files and network packets. A .ksy specification can be inspected with visualizers and compiled to multiple languages, helping preserve reverse-engineered format knowledge in interoperable implementations.
+
+- [**GoReSym**](https://github.com/mandiant/GoReSym) · Tool · [Requirements & evidence](https://awesomerea.org/resources/goresym/)
+
+  Recover Go build metadata, function names and address ranges, source file and line tables, embedded types and strings from Go binaries, including stripped and some malformed unpacked samples. JSON output can be imported into IDA Pro with the included IDAPython script.
+
+- [**rev.ng**](https://github.com/revng/revng) · Tool · [Requirements & evidence](https://awesomerea.org/resources/revng/)
+
+  Open-source decompilation pipeline that lifts x86-64, AArch64, i386, ARM and MIPS code with QEMU, runs LLVM-based analyses and emits C designed to be valid and recompilable. Data layout analysis infers structures from pointer use; an editable YAML model and Python or TypeScript wrappers support automation. Its VSCode-based UI is a separate closed-beta product, with commercial plans announced.
 
 <a id="firmware"></a>
 ### Firmware and Hardware
@@ -182,21 +503,55 @@ Browse by purpose, with case studies separated from tools and integrations. Each
 
 #### Case studies
 
-- [**PicoPrint: LX-D02 printer investigation**](https://github.com/bigtower17/picoprint) - The author describes REA-assisted Android investigation followed by separate Hermes decompilation to support a Windows BLE printer. <sub>Case study · Mixed workflow</sub>
+- [**PicoPrint: LX-D02 printer investigation**](https://github.com/bigtower17/picoprint) · Case study · Mixed workflow · [Requirements & evidence](https://awesomerea.org/resources/picoprint-rea-investigation/)
+
+  The author describes REA-assisted Android investigation followed by separate Hermes decompilation to support a Windows BLE printer.
 
 #### Tools, projects and integrations
 
-- [**Binwalk**](https://github.com/ReFirmLabs/binwalk) - Identifies embedded formats and optionally extracts their contents, with entropy analysis for firmware triage. <sub>Tool</sub>
-- [**unblob**](https://github.com/onekey-sec/unblob) - Recursively extracts archives and filesystems from binary blobs while reporting chunk boundaries and unknown regions. <sub>Tool</sub>
-- [**Ghidra Firmware Utilities**](https://github.com/al3xtjames/ghidra-firmware-utils) - Ghidra loaders and helpers for PCI option ROMs, UEFI firmware volumes, Intel flash descriptors and coreboot images. <sub>Tool</sub>
-- [**EMBA**](https://github.com/e-m-b-a/emba) - Extract firmware, combine static checks with emulation-based analysis, inventory software components, and generate web reports and SBOMs for further investigation. <sub>Tool</sub>
-- [**Firmware Analysis and Comparison Tool (FACT)**](https://github.com/fkie-cad/FACT_core) - Unpack and analyze firmware through an extensible platform whose web interface and HTTP API make component contents and analysis results searchable and comparable across samples. <sub>Tool</sub>
-- [**OFRAK**](https://github.com/redballoonsecurity/ofrak) - Recursively identify, unpack, analyze, modify, and repack firmware and binary formats using a resource-tree GUI and Python API, with optional disassembler backends. <sub>Tool</sub>
-- [**FirmAE**](https://github.com/pr0v3rbs/FirmAE) - Emulate router and IP-camera firmware to inspect network services and runtime behavior, with automated emulation checks and separate analysis, run, and debugging modes. <sub>Tool</sub>
-- [**PulseView**](https://github.com/sigrokproject/pulseview) - Examine captured logic and analog waveforms with sigrok's graphical frontend. Protocol decoders and decoder stacking expose bus messages and higher-level device operations, making hardware communication traces useful for firmware and interoperability investigations. <sub>Tool</sub>
-- [**UEFITool**](https://github.com/LongSoft/UEFITool) - Parse UEFI firmware images into an inspectable tree and check their structure. Companion UEFIExtract and UEFIFind tools extract parsed contents and locate patterns, supporting analysis of firmware components and vendor formats. <sub>Tool</sub>
-- [**Glasgow Interface Explorer**](https://github.com/GlasgowEmbedded/glasgow) - Use FPGA-based open hardware and Python applets to read and write SPI flash, I2C EEPROM and parallel memory chips, determine JTAG pinouts, debug supported processors and analyze UART, SPI and QSPI transactions on physical devices. <sub>Tool</sub>
-- [**Penguin**](https://github.com/rehosting/penguin) - Rehost embedded Linux firmware from an extracted root filesystem using a generated, editable configuration of emulation transformations, then refine it through a guest root shell, forwarded network services and recorded dynamic-analysis output. <sub>Tool</sub>
+- [**Binwalk**](https://github.com/ReFirmLabs/binwalk) · Tool · [Requirements & evidence](https://awesomerea.org/resources/binwalk/)
+
+  Identifies embedded formats and optionally extracts their contents, with entropy analysis for firmware triage.
+
+- [**unblob**](https://github.com/onekey-sec/unblob) · Tool · [Requirements & evidence](https://awesomerea.org/resources/unblob/)
+
+  Recursively extracts archives and filesystems from binary blobs while reporting chunk boundaries and unknown regions.
+
+- [**Ghidra Firmware Utilities**](https://github.com/al3xtjames/ghidra-firmware-utils) · Tool · [Requirements & evidence](https://awesomerea.org/resources/ghidra-firmware-utils/)
+
+  Ghidra loaders and helpers for PCI option ROMs, UEFI firmware volumes, Intel flash descriptors and coreboot images.
+
+- [**EMBA**](https://github.com/e-m-b-a/emba) · Tool · [Requirements & evidence](https://awesomerea.org/resources/emba/)
+
+  Extract firmware, combine static checks with emulation-based analysis, inventory software components, and generate web reports and SBOMs for further investigation.
+
+- [**Firmware Analysis and Comparison Tool (FACT)**](https://github.com/fkie-cad/FACT_core) · Tool · [Requirements & evidence](https://awesomerea.org/resources/fact-core/)
+
+  Unpack and analyze firmware through an extensible platform whose web interface and HTTP API make component contents and analysis results searchable and comparable across samples.
+
+- [**OFRAK**](https://github.com/redballoonsecurity/ofrak) · Tool · [Requirements & evidence](https://awesomerea.org/resources/ofrak/)
+
+  Recursively identify, unpack, analyze, modify, and repack firmware and binary formats using a resource-tree GUI and Python API, with optional disassembler backends.
+
+- [**FirmAE**](https://github.com/pr0v3rbs/FirmAE) · Tool · [Requirements & evidence](https://awesomerea.org/resources/firmae/)
+
+  Emulate router and IP-camera firmware to inspect network services and runtime behavior, with automated emulation checks and separate analysis, run, and debugging modes.
+
+- [**PulseView**](https://github.com/sigrokproject/pulseview) · Tool · [Requirements & evidence](https://awesomerea.org/resources/pulseview/)
+
+  Examine captured logic and analog waveforms with sigrok's graphical frontend. Protocol decoders and decoder stacking expose bus messages and higher-level device operations, making hardware communication traces useful for firmware and interoperability investigations.
+
+- [**UEFITool**](https://github.com/LongSoft/UEFITool) · Tool · [Requirements & evidence](https://awesomerea.org/resources/uefitool/)
+
+  Parse UEFI firmware images into an inspectable tree and check their structure. Companion UEFIExtract and UEFIFind tools extract parsed contents and locate patterns, supporting analysis of firmware components and vendor formats.
+
+- [**Glasgow Interface Explorer**](https://github.com/GlasgowEmbedded/glasgow) · Tool · [Requirements & evidence](https://awesomerea.org/resources/glasgow-interface-explorer/)
+
+  Use FPGA-based open hardware and Python applets to read and write SPI flash, I2C EEPROM and parallel memory chips, determine JTAG pinouts, debug supported processors and analyze UART, SPI and QSPI transactions on physical devices.
+
+- [**Penguin**](https://github.com/rehosting/penguin) · Tool · [Requirements & evidence](https://awesomerea.org/resources/penguin/)
+
+  Rehost embedded Linux firmware from an extracted root filesystem using a generated, editable configuration of emulation transformations, then refine it through a guest root shell, forwarded network services and recorded dynamic-analysis output.
 
 <a id="protocol"></a>
 ### Protocols
@@ -205,77 +560,222 @@ Browse by purpose, with case studies separated from tools and integrations. Each
 
 #### Case studies
 
-- [**open-appleremote: Siri Remote protocol reconstruction**](https://github.com/a-funk/open-appleremote) - Reconstructs first-generation Siri Remote Bluetooth reports for Linux, decoding buttons, touch and tvOS-style gestures. The Python implementation and protocol notes distinguish measured behavior, historical reports and inferred meanings. <sub>Case study · Independent reconstruction</sub>
-- [**GAMEKB-K17: reconstructing a macropad configuration protocol**](https://github.com/dvdarkin/gamekb-k17) - Implements the vendor HID configuration protocol for the GAMEKB-K17/HCY-K017 macropad. It writes key mappings, firmware macros and RGB settings, then reads them back; protocol notes separate tested commands from unconfirmed observations and other-device findings. <sub>Case study · Independent reconstruction</sub>
-- [**CF632BLE: a local client from scale-protocol research**](https://github.com/guyru/cf632ble) - Reimplements the CF632BLE scale’s BLE protocol and body-composition calculations from research on the vendor’s Unique Health Android app. A static Web Bluetooth client receives measurements, manages device profiles and keeps its history in browser storage. <sub>Case study · Independent reconstruction</sub>
-- [**cooler-lcd: a Thermalright display protocol implementation**](https://github.com/kristjaningi/cooler-lcd) - Implements a USB picture-transfer driver for Thermalright Vision cooler displays, with a Rust dashboard replacing the vendor display application. The documented protocol sends a header and JPEG frames, with periodic resends to prevent the device reverting to its logo. <sub>Case study · Independent reconstruction</sub>
-- [**hw-harness: scanner USB protocol investigation**](https://github.com/cschalle/hw-harness) - Documents an author-reported scanner investigation comparing vendor-driver USB control transfers with Linux-driver traces to infer initialization, timing and resolution parameters. The released harness organizes reference capture and comparison; it does not automatically recover a complete protocol specification. <sub>Case study · Independent reconstruction</sub>
+- [**open-appleremote: Siri Remote protocol reconstruction**](https://github.com/a-funk/open-appleremote) · Case study · Independent reconstruction · [Requirements & evidence](https://awesomerea.org/resources/open-appleremote-case/)
+
+  Reconstructs first-generation Siri Remote Bluetooth reports for Linux, decoding buttons, touch and tvOS-style gestures. The Python implementation and protocol notes distinguish measured behavior, historical reports and inferred meanings.
+
+- [**GAMEKB-K17: reconstructing a macropad configuration protocol**](https://github.com/dvdarkin/gamekb-k17) · Case study · Independent reconstruction · [Requirements & evidence](https://awesomerea.org/resources/gamekb-k17-case/)
+
+  Implements the vendor HID configuration protocol for the GAMEKB-K17/HCY-K017 macropad. It writes key mappings, firmware macros and RGB settings, then reads them back; protocol notes separate tested commands from unconfirmed observations and other-device findings.
+
+- [**CF632BLE: a local client from scale-protocol research**](https://github.com/guyru/cf632ble) · Case study · Independent reconstruction · [Requirements & evidence](https://awesomerea.org/resources/cf632ble-case/)
+
+  Reimplements the CF632BLE scale’s BLE protocol and body-composition calculations from research on the vendor’s Unique Health Android app. A static Web Bluetooth client receives measurements, manages device profiles and keeps its history in browser storage.
+
+- [**cooler-lcd: a Thermalright display protocol implementation**](https://github.com/kristjaningi/cooler-lcd) · Case study · Independent reconstruction · [Requirements & evidence](https://awesomerea.org/resources/cooler-lcd-case/)
+
+  Implements a USB picture-transfer driver for Thermalright Vision cooler displays, with a Rust dashboard replacing the vendor display application. The documented protocol sends a header and JPEG frames, with periodic resends to prevent the device reverting to its logo.
+
+- [**hw-harness: scanner USB protocol investigation**](https://github.com/cschalle/hw-harness) · Case study · Independent reconstruction · [Requirements & evidence](https://awesomerea.org/resources/hw-harness-reference-case/)
+
+  Documents an author-reported scanner investigation comparing vendor-driver USB control transfers with Linux-driver traces to infer initialization, timing and resolution parameters. The released harness organizes reference capture and comparison; it does not automatically recover a complete protocol specification.
 
 #### Tools, projects and integrations
 
-- [**Wireshark**](https://gitlab.com/wireshark/wireshark) - Inspect captured application and device traffic as decoded protocol fields, with filtering and shared GUI/TShark dissection. Custom dissectors let an analyst encode newly understood packet formats and compare protocol implementations. <sub>Tool</sub>
-- [**Netzob**](https://github.com/netzob/netzob) - Model communication protocols and infer message layouts from traces, with configured active learning for protocol state machines. Python APIs expose message fields, symbols and automata for parsing, traffic generation and fuzzing. <sub>Tool</sub>
-- [**Scapy**](https://github.com/secdev/scapy) - Script packet dissection, construction, request/reply matching and capture-file analysis in Python. Custom packet fields and layer bindings let analysts encode understood wire formats and investigate protocol behavior. <sub>Tool</sub>
-- [**Universal Radio Hacker (URH)**](https://github.com/jopohl/urh) - Demodulate and decode signals captured with software-defined radios, with automatic modulation-parameter detection and customizable decodings. Analysts assign protocol fields and message types by hand or review rule-based automatic field inference; a fuzzer targets stateless protocols and a simulator supports stateful exchanges. <sub>Tool</sub>
-- [**SavvyCAN**](https://github.com/collin80/SavvyCAN) - Capture or load CAN bus traffic and investigate frames with sniffer, graphing, file-comparison and ISO-TP/UDS decoding views; loaded or analyst-edited DBC files map raw bytes to named signals. Separate custom-sender, fuzzing and UDS-scan windows transmit frames on a live bus. <sub>Tool</sub>
-- [**AALpy**](https://github.com/DES-Lab/AALpy) - General-purpose Python automata-learning library that infers deterministic, non-deterministic, stochastic and pushdown models of black-box systems from active queries or passive traces. Its README links a separate Bluetooth Low Energy study whose repository reports learned connection and legacy-pairing state machines; message formats are not inferred. <sub>Tool</sub>
+- [**Wireshark**](https://gitlab.com/wireshark/wireshark) · Tool · [Requirements & evidence](https://awesomerea.org/resources/wireshark/)
+
+  Inspect captured application and device traffic as decoded protocol fields, with filtering and shared GUI/TShark dissection. Custom dissectors let an analyst encode newly understood packet formats and compare protocol implementations.
+
+- [**Netzob**](https://github.com/netzob/netzob) · Tool · [Requirements & evidence](https://awesomerea.org/resources/netzob/)
+
+  Model communication protocols and infer message layouts from traces, with configured active learning for protocol state machines. Python APIs expose message fields, symbols and automata for parsing, traffic generation and fuzzing.
+
+- [**Scapy**](https://github.com/secdev/scapy) · Tool · [Requirements & evidence](https://awesomerea.org/resources/scapy/)
+
+  Script packet dissection, construction, request/reply matching and capture-file analysis in Python. Custom packet fields and layer bindings let analysts encode understood wire formats and investigate protocol behavior.
+
+- [**Universal Radio Hacker (URH)**](https://github.com/jopohl/urh) · Tool · [Requirements & evidence](https://awesomerea.org/resources/universal-radio-hacker/)
+
+  Demodulate and decode signals captured with software-defined radios, with automatic modulation-parameter detection and customizable decodings. Analysts assign protocol fields and message types by hand or review rule-based automatic field inference; a fuzzer targets stateless protocols and a simulator supports stateful exchanges.
+
+- [**SavvyCAN**](https://github.com/collin80/SavvyCAN) · Tool · [Requirements & evidence](https://awesomerea.org/resources/savvycan/)
+
+  Capture or load CAN bus traffic and investigate frames with sniffer, graphing, file-comparison and ISO-TP/UDS decoding views; loaded or analyst-edited DBC files map raw bytes to named signals. Separate custom-sender, fuzzing and UDS-scan windows transmit frames on a live bus.
+
+- [**AALpy**](https://github.com/DES-Lab/AALpy) · Tool · [Requirements & evidence](https://awesomerea.org/resources/aalpy/)
+
+  General-purpose Python automata-learning library that infers deterministic, non-deterministic, stochastic and pushdown models of black-box systems from active queries or passive traces. Its README links a separate Bluetooth Low Energy study whose repository reports learned connection and legacy-pairing state machines; message formats are not inferred.
 
 <a id="agents-and-mcp"></a>
 ### Agents and MCP
 
 [↑ Contents](#contents)
 
-- [**REA — Reverse Engineer Anything**](https://github.com/morluto/rea) - The upstream CLI and MCP server for evidence-based investigations of shipped software and runtime behavior. <sub>Project · REA</sub>
-- [**Official reverse-engineer-anything skill**](https://github.com/morluto/rea/tree/main/.agents/skills/reverse-engineer-anything) - Target routing, connection recovery and evidence practices for agents using REA. <sub>Integration · REA</sub>
-- [**dsh-mcp-rea**](https://github.com/Ersith/dsh-mcp-rea) - A community MCP bridge presents a smaller selected tool surface and forwards explicit commands to the REA CLI. <sub>Integration · REA</sub>
-- [**rea-jev**](https://github.com/juan-viox/rea-jev) - A Claude Code plugin adds Jev-based routing and evidence checks around a pinned REA MCP integration. <sub>Integration · REA</sub>
-- [**rea-casebook**](https://github.com/pablodiazjorge/rea-casebook) - A Claude Code mod collects received REA Evidence, tracks unknowns and records findings that cite delivered evidence IDs. <sub>Integration · REA</sub>
-- [**Hex-Rays IDA MCP**](https://github.com/HexRaysSA/ida-mcp) - Official Hex-Rays MCP server for agent access to IDA databases, with headless operation and optional GUI integration. <sub>Integration · Independent MCP</sub>
-- [**GhidraMCP**](https://github.com/LaurieWired/GhidraMCP) - Ghidra extension and MCP bridge exposing decompilation, symbol navigation and renaming to agents, with GUI and headless modes. <sub>Integration · Independent MCP</sub>
-- [**Binary Ninja MCP (official)**](https://docs.binary.ninja/guide/mcp.html) - Binary Ninja's own MCP interface exposes functions, symbols, disassembly, intermediate languages and decompiled text to agents. <sub>Integration · Independent MCP</sub>
-- [**Binary Ninja MCP (fosdickio)**](https://github.com/fosdickio/binary_ninja_mcp) - Community Binary Ninja plugin and bridge for MCP clients, including workflows that switch among multiple open binaries. <sub>Integration · Independent MCP</sub>
-- [**IDA Pro MCP (mrexodia)**](https://github.com/mrexodia/ida-pro-mcp) - Community IDA integration useful for existing setups and migration context; its maintainer now recommends the official Hex-Rays MCP server. <sub>Integration · Independent MCP</sub>
-- [**Radare2 MCP Server**](https://github.com/radareorg/radare2-mcp) - Native radare2 MCP server offering binary-analysis tools, reusable sessions and configurable read-only access. <sub>Integration · Independent MCP</sub>
-- [**r2ai**](https://github.com/radareorg/r2ai) - AI plugins inside radare2 for function explanations, naming suggestions and model-assisted decompilation using local or remote models. <sub>Integration · Independent agent</sub>
-- [**DAILA**](https://github.com/mahaloz/DAILA) - Decompiler-independent AI assistant for function summaries and naming across IDA, Ghidra, Binary Ninja and angr-management. <sub>Integration · Independent agent</sub>
-- [**RevEng.AI Ghidra Plugin**](https://github.com/RevEngAI/plugin-ghidra) - Connects Ghidra to RevEng.AI for function similarity, recovered names, AI explanations and agent-assisted annotation. <sub>Integration · Independent agent</sub>
-- [**LLDB MCP**](https://lldb.llvm.org/use/mcp.html) - LLDB's official MCP interface gives agents debugger sessions and commands for breakpoints, memory inspection and stepping. <sub>Integration · Independent MCP</sub>
-- [**Claude Reverse Engineering Skill**](https://github.com/EncidXVII/claude-reverse-engineering-skill) - Community agent skill for triage, headless exports and evidence-based RE reports; explicitly documents workflows with REA and other MCP servers. <sub>Integration · Independent agent</sub>
-- [**SpecterOps Reverse Engineering Skills**](https://github.com/SpecterOps/skills/tree/main/plugins/reverse-engineering) - Focused Binary Ninja and Ghidra analysis skills that describe MCP tool use, analysis recipes and annotation practices. <sub>Integration · Independent agent</sub>
-- [**pyghidra-mcp**](https://github.com/clearbluejar/pyghidra-mcp) - PyGhidra-based MCP server that analyzes every binary in a Ghidra project and exposes decompilation, cross-references, call graphs, symbol and string search, indexed semantic code search, and renaming, typing and comment edits. A separate HTTP CLI client and an optional mode driving a Ghidra GUI it launches are included. <sub>Integration · Independent MCP</sub>
+- [**REA — Reverse Engineer Anything**](https://github.com/morluto/rea) · Project · REA · [Requirements & evidence](https://awesomerea.org/resources/rea-upstream/)
+
+  The upstream CLI and MCP server for evidence-based investigations of shipped software and runtime behavior.
+
+- [**Official reverse-engineer-anything skill**](https://github.com/morluto/rea/tree/main/.agents/skills/reverse-engineer-anything) · Integration · REA · [Requirements & evidence](https://awesomerea.org/resources/rea-official-skill/)
+
+  Target routing, connection recovery and evidence practices for agents using REA.
+
+- [**dsh-mcp-rea**](https://github.com/Ersith/dsh-mcp-rea) · Integration · REA · [Requirements & evidence](https://awesomerea.org/resources/dsh-mcp-rea/)
+
+  A community MCP bridge presents a smaller selected tool surface and forwards explicit commands to the REA CLI.
+
+- [**rea-jev**](https://github.com/juan-viox/rea-jev) · Integration · REA · [Requirements & evidence](https://awesomerea.org/resources/rea-jev/)
+
+  A Claude Code plugin adds Jev-based routing and evidence checks around a pinned REA MCP integration.
+
+- [**rea-casebook**](https://github.com/pablodiazjorge/rea-casebook) · Integration · REA · [Requirements & evidence](https://awesomerea.org/resources/rea-casebook/)
+
+  A Claude Code mod collects received REA Evidence, tracks unknowns and records findings that cite delivered evidence IDs.
+
+- [**Hex-Rays IDA MCP**](https://github.com/HexRaysSA/ida-mcp) · Integration · Independent MCP · [Requirements & evidence](https://awesomerea.org/resources/hex-rays-ida-mcp/)
+
+  Official Hex-Rays MCP server for agent access to IDA databases, with headless operation and optional GUI integration.
+
+- [**GhidraMCP**](https://github.com/LaurieWired/GhidraMCP) · Integration · Independent MCP · [Requirements & evidence](https://awesomerea.org/resources/ghidramcp/)
+
+  Ghidra extension and MCP bridge exposing decompilation, symbol navigation and renaming to agents, with GUI and headless modes.
+
+- [**Binary Ninja MCP (official)**](https://docs.binary.ninja/guide/mcp.html) · Integration · Independent MCP · [Requirements & evidence](https://awesomerea.org/resources/binary-ninja-official-mcp/)
+
+  Binary Ninja's own MCP interface exposes functions, symbols, disassembly, intermediate languages and decompiled text to agents.
+
+- [**Binary Ninja MCP (fosdickio)**](https://github.com/fosdickio/binary_ninja_mcp) · Integration · Independent MCP · [Requirements & evidence](https://awesomerea.org/resources/binary-ninja-community-mcp/)
+
+  Community Binary Ninja plugin and bridge for MCP clients, including workflows that switch among multiple open binaries.
+
+- [**IDA Pro MCP (mrexodia)**](https://github.com/mrexodia/ida-pro-mcp) · Integration · Independent MCP · [Requirements & evidence](https://awesomerea.org/resources/ida-pro-mcp-community/)
+
+  Community IDA integration useful for existing setups and migration context; its maintainer now recommends the official Hex-Rays MCP server.
+
+- [**Radare2 MCP Server**](https://github.com/radareorg/radare2-mcp) · Integration · Independent MCP · [Requirements & evidence](https://awesomerea.org/resources/radare2-mcp/)
+
+  Native radare2 MCP server offering binary-analysis tools, reusable sessions and configurable read-only access.
+
+- [**r2ai**](https://github.com/radareorg/r2ai) · Integration · Independent agent · [Requirements & evidence](https://awesomerea.org/resources/r2ai/)
+
+  AI plugins inside radare2 for function explanations, naming suggestions and model-assisted decompilation using local or remote models.
+
+- [**DAILA**](https://github.com/mahaloz/DAILA) · Integration · Independent agent · [Requirements & evidence](https://awesomerea.org/resources/daila/)
+
+  Decompiler-independent AI assistant for function summaries and naming across IDA, Ghidra, Binary Ninja and angr-management.
+
+- [**RevEng.AI Ghidra Plugin**](https://github.com/RevEngAI/plugin-ghidra) · Integration · Independent agent · [Requirements & evidence](https://awesomerea.org/resources/revengai-ghidra/)
+
+  Connects Ghidra to RevEng.AI for function similarity, recovered names, AI explanations and agent-assisted annotation.
+
+- [**LLDB MCP**](https://lldb.llvm.org/use/mcp.html) · Integration · Independent MCP · [Requirements & evidence](https://awesomerea.org/resources/lldb-mcp/)
+
+  LLDB's official MCP interface gives agents debugger sessions and commands for breakpoints, memory inspection and stepping.
+
+- [**Claude Reverse Engineering Skill**](https://github.com/EncidXVII/claude-reverse-engineering-skill) · Integration · Independent agent · [Requirements & evidence](https://awesomerea.org/resources/claude-reverse-engineering-skill/)
+
+  Community agent skill for triage, headless exports and evidence-based RE reports; explicitly documents workflows with REA and other MCP servers.
+
+- [**SpecterOps Reverse Engineering Skills**](https://github.com/SpecterOps/skills/tree/main/plugins/reverse-engineering) · Integration · Independent agent · [Requirements & evidence](https://awesomerea.org/resources/specterops-re-skills/)
+
+  Focused Binary Ninja and Ghidra analysis skills that describe MCP tool use, analysis recipes and annotation practices.
+
+- [**pyghidra-mcp**](https://github.com/clearbluejar/pyghidra-mcp) · Integration · Independent MCP · [Requirements & evidence](https://awesomerea.org/resources/pyghidra-mcp/)
+
+  PyGhidra-based MCP server that analyzes every binary in a Ghidra project and exposes decompilation, cross-references, call graphs, symbol and string search, indexed semantic code search, and renaming, typing and comment edits. A separate HTTP CLI client and an optional mode driving a Ghidra GUI it launches are included.
 
 <a id="related-collections"></a>
 ### Related Collections
 
 [↑ Contents](#contents)
 
-- [**Awesome Reverse Engineering**](https://github.com/morluto/awesome-reverse-engineering) - A task-oriented reverse-engineering resource list by REA's maintainer, useful for broader tools and foundations. <sub>Collection</sub>
-- [**Awesome REA Cases**](https://github.com/songshikang0111/awesome-REA-cases) - A bilingual collection of REA and other AI-assisted reverse engineering cases, with source links and explicit distinctions between reported and reproduced outcomes. <sub>Collection</sub>
-- [**awesome-rea (yibie): verification-focused projects and practice reports**](https://github.com/yibie/awesome-rea) - Organizes AI-assisted game decompilation, native ports, static recompilation and tooling around stated acceptance checks, alongside a separate track of practitioner write-ups and discussions. Useful for finding primary reports and comparing how projects define correctness. <sub>Collection</sub>
-- [**Awesome REA/Decompiled Games**](https://github.com/HaozheH3/awesome-rea-games) - Groups game decompilations, source reconstructions, recompilations, native ports and demos by original game, with comparison rows linking related projects. It distinguishes launchers, engine work and creator-shared showcases from source-reconstruction efforts. <sub>Collection</sub>
+- [**Awesome Reverse Engineering**](https://github.com/morluto/awesome-reverse-engineering) · Collection · [Requirements & evidence](https://awesomerea.org/resources/morluto-awesome-re/)
+
+  A task-oriented reverse-engineering resource list by REA's maintainer, useful for broader tools and foundations.
+
+- [**Awesome REA Cases**](https://github.com/songshikang0111/awesome-REA-cases) · Collection · [Requirements & evidence](https://awesomerea.org/resources/awesome-rea-cases/)
+
+  A bilingual collection of REA and other AI-assisted reverse engineering cases, with source links and explicit distinctions between reported and reproduced outcomes.
+
+- [**awesome-rea (yibie): verification-focused projects and practice reports**](https://github.com/yibie/awesome-rea) · Collection · [Requirements & evidence](https://awesomerea.org/resources/yibie-awesome-rea/)
+
+  Organizes AI-assisted game decompilation, native ports, static recompilation and tooling around stated acceptance checks, alongside a separate track of practitioner write-ups and discussions. Useful for finding primary reports and comparing how projects define correctness.
+
+- [**Awesome REA/Decompiled Games**](https://github.com/HaozheH3/awesome-rea-games) · Collection · [Requirements & evidence](https://awesomerea.org/resources/haozhe-awesome-rea-games/)
+
+  Groups game decompilations, source reconstructions, recompilations, native ports and demos by original game, with comparison rows linking related projects. It distinguishes launchers, engine work and creator-shared showcases from source-reconstruction efforts.
 
 <a id="references-and-learning"></a>
 ### References and Learning
 
 [↑ Contents](#contents)
 
-- [**Installation and client setup**](https://github.com/morluto/rea/blob/main/docs/installation.md) - Reviewed setup plans, client registration, provider prerequisites and scoped readiness checks. <sub>Documentation · REA</sub>
-- [**CLI and Evidence**](https://github.com/morluto/rea/blob/main/docs/cli.md) - CLI workflows for saving Evidence and projecting smaller views from completed analysis. <sub>Documentation · REA</sub>
-- [**MCP contracts and generated catalog**](https://github.com/morluto/rea/blob/main/docs/mcp-contracts.md#generated-catalog) - Canonical tool contracts, provider discovery and Evidence semantics for integration authors. <sub>Documentation · REA</sub>
-- [**Native binary investigation**](https://github.com/morluto/rea/blob/main/docs/native-investigation.md) - Locate a function, inspect instructions and pseudocode, and follow references with a selected native provider. <sub>Documentation · REA</sub>
-- [**Cross-layer JavaScript application workflows**](https://github.com/morluto/rea/blob/main/docs/javascript-application-workflows.md) - Trace features and compare authenticated JavaScript application graphs while preserving static-analysis limits. <sub>Documentation · REA</sub>
-- [**Static Android APK analysis**](https://github.com/morluto/rea/blob/main/docs/android-analysis.md) - Inspect Android package identity, classes, methods and references through REA's JADX integration. <sub>Documentation · REA</sub>
-- [**Managed-code analysis**](https://github.com/morluto/rea/blob/main/docs/managed-code-analysis.md) - Read PE/CLI metadata and CIL, compare managed members and inspect declared native boundaries without loading the assembly. <sub>Documentation · REA</sub>
-- [**Historical web network captures**](https://github.com/morluto/rea/blob/main/docs/web-network-captures.md) - Inspect saved web captures offline; recorded URLs are not fetched and no proxy is started. <sub>Documentation · REA</sub>
-- [**Firmware analysis**](https://github.com/morluto/rea/blob/main/docs/firmware-analysis.md) - Inspect firmware regions with Binwalk and explicitly extract with Unblob, retaining tool and artifact identity. <sub>Documentation · REA</sub>
-- [**Browser observation guide**](https://rea.tools/guides/browser/) - Follow a user-triggered export request in the supplied Notes browser example and connect it to the downloaded result. <sub>Documentation · REA</sub>
-- [**JavaScript and Electron: follow a CSV export**](https://rea.tools/guides/javascript/) - A source-owned Notes fixture teaches the renderer, preload, IPC and CSV path with linked analysis evidence. <sub>Documentation · REA</sub>
-- [**rea-playbook**](https://github.com/jinshi666888/rea-playbook) - An Electron practice target, Evidence extractor and MCP probe; offline fixture mode is distinguished from real REA analysis. <sub>Learning resource</sub>
-- [**rea-lab**](https://github.com/pablodiazjorge/rea-lab) - A Windows REA/Ghidra lab with seeded challenges, published studies, upstream contributions and recorded limitations. <sub>Research</sub>
-- [**OpenSecurityTraining2**](https://ost2.fyi/) - Free self-paced security courses with learning paths for reverse engineering, firmware and systems foundations. <sub>Learning resource</sub>
-- [**pwn.college: Reverse Engineering**](https://pwn.college/program-security/reverse-engineering/) - Hands-on reverse-engineering module covering functions, data access, static tools and dynamic tools with hosted exercises. <sub>Learning resource</sub>
-- [**Reverse Engineering for Beginners**](https://beginners.re/) - Dennis Yurichev's free book on understanding compiled programs and assembly, available in multiple languages. <sub>Learning resource</sub>
-- [**The Official Radare2 Book**](https://book.rada.re/) - Official practical reference for radare2 analysis, disassembly, scripting, debugging and related plugins. <sub>Learning resource</sub>
+- [**Installation and client setup**](https://github.com/morluto/rea/blob/main/docs/installation.md) · Documentation · REA · [Requirements & evidence](https://awesomerea.org/resources/rea-installation/)
+
+  Reviewed setup plans, client registration, provider prerequisites and scoped readiness checks.
+
+- [**CLI and Evidence**](https://github.com/morluto/rea/blob/main/docs/cli.md) · Documentation · REA · [Requirements & evidence](https://awesomerea.org/resources/rea-cli-evidence/)
+
+  CLI workflows for saving Evidence and projecting smaller views from completed analysis.
+
+- [**MCP contracts and generated catalog**](https://github.com/morluto/rea/blob/main/docs/mcp-contracts.md#generated-catalog) · Documentation · REA · [Requirements & evidence](https://awesomerea.org/resources/rea-mcp-contracts/)
+
+  Canonical tool contracts, provider discovery and Evidence semantics for integration authors.
+
+- [**Native binary investigation**](https://github.com/morluto/rea/blob/main/docs/native-investigation.md) · Documentation · REA · [Requirements & evidence](https://awesomerea.org/resources/rea-native-workflow/)
+
+  Locate a function, inspect instructions and pseudocode, and follow references with a selected native provider.
+
+- [**Cross-layer JavaScript application workflows**](https://github.com/morluto/rea/blob/main/docs/javascript-application-workflows.md) · Documentation · REA · [Requirements & evidence](https://awesomerea.org/resources/rea-js-workflows/)
+
+  Trace features and compare authenticated JavaScript application graphs while preserving static-analysis limits.
+
+- [**Static Android APK analysis**](https://github.com/morluto/rea/blob/main/docs/android-analysis.md) · Documentation · REA · [Requirements & evidence](https://awesomerea.org/resources/rea-android-guide/)
+
+  Inspect Android package identity, classes, methods and references through REA's JADX integration.
+
+- [**Managed-code analysis**](https://github.com/morluto/rea/blob/main/docs/managed-code-analysis.md) · Documentation · REA · [Requirements & evidence](https://awesomerea.org/resources/rea-managed-guide/)
+
+  Read PE/CLI metadata and CIL, compare managed members and inspect declared native boundaries without loading the assembly.
+
+- [**Historical web network captures**](https://github.com/morluto/rea/blob/main/docs/web-network-captures.md) · Documentation · REA · [Requirements & evidence](https://awesomerea.org/resources/rea-web-captures/)
+
+  Inspect saved web captures offline; recorded URLs are not fetched and no proxy is started.
+
+- [**Firmware analysis**](https://github.com/morluto/rea/blob/main/docs/firmware-analysis.md) · Documentation · REA · [Requirements & evidence](https://awesomerea.org/resources/rea-firmware-guide/)
+
+  Inspect firmware regions with Binwalk and explicitly extract with Unblob, retaining tool and artifact identity.
+
+- [**Browser observation guide**](https://rea.tools/guides/browser/) · Documentation · REA · [Requirements & evidence](https://awesomerea.org/resources/rea-browser-guide/)
+
+  Follow a user-triggered export request in the supplied Notes browser example and connect it to the downloaded result.
+
+- [**JavaScript and Electron: follow a CSV export**](https://rea.tools/guides/javascript/) · Documentation · REA · [Requirements & evidence](https://awesomerea.org/resources/rea-electron-guide/)
+
+  A source-owned Notes fixture teaches the renderer, preload, IPC and CSV path with linked analysis evidence.
+
+- [**rea-playbook**](https://github.com/jinshi666888/rea-playbook) · Learning resource · [Requirements & evidence](https://awesomerea.org/resources/rea-playbook/)
+
+  An Electron practice target, Evidence extractor and MCP probe; offline fixture mode is distinguished from real REA analysis.
+
+- [**rea-lab**](https://github.com/pablodiazjorge/rea-lab) · Research · [Requirements & evidence](https://awesomerea.org/resources/rea-lab/)
+
+  A Windows REA/Ghidra lab with seeded challenges, published studies, upstream contributions and recorded limitations.
+
+- [**OpenSecurityTraining2**](https://ost2.fyi/) · Learning resource · [Requirements & evidence](https://awesomerea.org/resources/ost2/)
+
+  Free self-paced security courses with learning paths for reverse engineering, firmware and systems foundations.
+
+- [**pwn.college: Reverse Engineering**](https://pwn.college/program-security/reverse-engineering/) · Learning resource · [Requirements & evidence](https://awesomerea.org/resources/pwn-college-re/)
+
+  Hands-on reverse-engineering module covering functions, data access, static tools and dynamic tools with hosted exercises.
+
+- [**Reverse Engineering for Beginners**](https://beginners.re/) · Learning resource · [Requirements & evidence](https://awesomerea.org/resources/re-for-beginners/)
+
+  Dennis Yurichev's free book on understanding compiled programs and assembly, available in multiple languages.
+
+- [**The Official Radare2 Book**](https://book.rada.re/) · Learning resource · [Requirements & evidence](https://awesomerea.org/resources/radare2-book/)
+
+  Official practical reference for radare2 analysis, disassembly, scripting, debugging and related plugins.
 <!-- END GENERATED CATALOG -->
 
 <!-- BEGIN GENERATED PAPERS -->
@@ -286,7 +786,7 @@ A bibliography of **40 papers** on reverse-engineering agent evaluation, decompi
 
 [Browse the paper directory](https://awesomerea.org/papers/) · [Complete bibliography JSON](data/papers.json) · [Suggest a paper](https://github.com/reacher-z/Awesome-REA/issues/new?template=paper.yml)
 
-**By topic** · [Agent evaluation](#papers-agent-evaluation) <sub>5</sub> · [Decompilation](#papers-decompilation) <sub>7</sub> · [Websites](#papers-website-reconstruction) <sub>12</sub> · [Games](#papers-game-reconstruction) <sub>6</sub> · [Apps](#papers-app-reconstruction) <sub>5</sub> · [Firmware](#papers-firmware-analysis) <sub>2</sub> · [Protocols](#papers-protocol-analysis) <sub>3</sub>
+**By topic** · [Agent evaluation](#papers-agent-evaluation) (5) · [Decompilation](#papers-decompilation) (7) · [Websites](#papers-website-reconstruction) (12) · [Games](#papers-game-reconstruction) (6) · [Apps](#papers-app-reconstruction) (5) · [Firmware](#papers-firmware-analysis) (2) · [Protocols](#papers-protocol-analysis) (3)
 
 Open “Scope and publication details” for each study’s full limitations. Papers are ordered newest first within each topic.
 
@@ -299,7 +799,7 @@ Open “Scope and publication details” for each study’s full limitations. Pa
 
   Compares human and LLM-agent understanding and navigation on the same static reverse-engineering challenges, then studies how binary representations consume context windows.
 
-  [PDF](https://arxiv.org/pdf/2610.14960)
+  [PDF](https://arxiv.org/pdf/2610.14960) · [Full entry & citation](https://awesomerea.org/papers/paper-humans-machines-sre/)
 
   <details>
   <summary>Scope and publication details</summary>
@@ -314,7 +814,7 @@ Open “Scope and publication details” for each study’s full limitations. Pa
 
   Introduces SRE-Bench, with privately authored programs and protected binary variants, to study agent recovery of program semantics while reducing training-data contamination.
 
-  [PDF](https://arxiv.org/pdf/2608.11469)
+  [PDF](https://arxiv.org/pdf/2608.11469) · [Full entry & citation](https://awesomerea.org/papers/paper-sre-bench/)
 
   <details>
   <summary>Scope and publication details</summary>
@@ -329,7 +829,7 @@ Open “Scope and publication details” for each study’s full limitations. Pa
 
   Evaluates agents on executable-checked CrackMe tasks: infer validation logic from binaries and submit an accepted input or artifact, while recording tool use, time, and scoring attempts.
 
-  [PDF](https://arxiv.org/pdf/2605.10597)
+  [PDF](https://arxiv.org/pdf/2605.10597) · [Full entry & citation](https://awesomerea.org/papers/paper-crackmebench/)
 
   <details>
   <summary>Scope and publication details</summary>
@@ -344,7 +844,7 @@ Open “Scope and publication details” for each study’s full limitations. Pa
 
   Evaluates black-box program reconstruction across 200 tasks: agents query an executable and read its documentation, then independently implement a codebase whose behavior is checked by generated tests.
 
-  [PDF](https://arxiv.org/pdf/2605.03546v1) · [Code](https://github.com/facebookresearch/ProgramBench)
+  [PDF](https://arxiv.org/pdf/2605.03546v1) · [Code](https://github.com/facebookresearch/ProgramBench) · [Full entry & citation](https://awesomerea.org/papers/paper-programbench/)
 
   <details>
   <summary>Scope and publication details</summary>
@@ -359,7 +859,7 @@ Open “Scope and publication details” for each study’s full limitations. Pa
 
   Benchmarks cryptographic binary reverse engineering across algorithm recognition, key or IV extraction, wrapper reconstruction, and flag recovery using 432 controlled challenges.
 
-  [PDF](https://arxiv.org/pdf/2604.03750v2) · [Code](https://github.com/wangyu-ovo/CREBench)
+  [PDF](https://arxiv.org/pdf/2604.03750v2) · [Code](https://github.com/wangyu-ovo/CREBench) · [Full entry & citation](https://awesomerea.org/papers/paper-crebench/)
 
   <details>
   <summary>Scope and publication details</summary>
@@ -379,7 +879,7 @@ Open “Scope and publication details” for each study’s full limitations. Pa
 
   Splits LLM decompilation into two phases: a Structure Recovery model turns decompiler pseudocode into an identifier-free IR that keeps control flow and data structures, trained with compiler-based RL rewards, and an Identifier Naming model then restores names under a semantic-similarity reward. The authors report a 21.6% average re-executability gain over GPT-5-mini on HumanEval and a 29.4% average R2I improvement over Idioms on GitHub2025.
 
-  [PDF](https://proceedings.iclr.cc/paper_files/paper/2026/file/9132583dd869acb0cafeb0ed25eb031a-Paper-Conference.pdf) · [Code](https://github.com/albertan017/LLM4Decompile/tree/85b364bf093eb2ee4f3687cfe38a203fca89f23e/sk2decompile)
+  [PDF](https://proceedings.iclr.cc/paper_files/paper/2026/file/9132583dd869acb0cafeb0ed25eb031a-Paper-Conference.pdf) · [Code](https://github.com/albertan017/LLM4Decompile/tree/85b364bf093eb2ee4f3687cfe38a203fca89f23e/sk2decompile) · [Full entry & citation](https://awesomerea.org/papers/paper-sk2decompile/)
 
   <details>
   <summary>Scope and publication details</summary>
@@ -394,7 +894,7 @@ Open “Scope and publication details” for each study’s full limitations. Pa
 
   Evaluates traditional and LLM-based decompilers using functions from real programs, runtime behavioral checks, and an LLM-assisted assessment of analyst-facing code understandability.
 
-  [PDF](https://aclanthology.org/2025.findings-acl.1194.pdf) · [Code](https://github.com/vul337/DecompileBench)
+  [PDF](https://aclanthology.org/2025.findings-acl.1194.pdf) · [Code](https://github.com/vul337/DecompileBench) · [Full entry & citation](https://awesomerea.org/papers/paper-decompilebench/)
 
   <details>
   <summary>Scope and publication details</summary>
@@ -409,7 +909,7 @@ Open “Scope and publication details” for each study’s full limitations. Pa
 
   Introduces two million C/C++ binary-source function pairs using a Compile-Trace-Filter pipeline, with an evaluation suite spanning translated HumanEval/MBPP tasks and recent GitHub functions.
 
-  [PDF](https://papers.nips.cc/paper_files/paper/2025/file/079cf13ae174c31f148207d94d213bdc-Paper-Datasets_and_Benchmarks_Track.pdf) · [Code](https://github.com/albertan017/LLM4Decompile)
+  [PDF](https://papers.nips.cc/paper_files/paper/2025/file/079cf13ae174c31f148207d94d213bdc-Paper-Datasets_and_Benchmarks_Track.pdf) · [Code](https://github.com/albertan017/LLM4Decompile) · [Full entry & citation](https://awesomerea.org/papers/paper-decompile-bench/)
 
   <details>
   <summary>Scope and publication details</summary>
@@ -424,7 +924,7 @@ Open “Scope and publication details” for each study’s full limitations. Pa
 
   Combines two fine-tuned language models with Prolog-based cross-function reasoning to infer local-variable symbols and user-defined data structures from stripped-binary decompilation.
 
-  [PDF](https://www.cs.purdue.edu/homes/lintan/publications/resym-ccs24.pdf) · [Code](https://github.com/lt-asset/resym)
+  [PDF](https://www.cs.purdue.edu/homes/lintan/publications/resym-ccs24.pdf) · [Code](https://github.com/lt-asset/resym) · [Full entry & citation](https://awesomerea.org/papers/paper-resym/)
 
   <details>
   <summary>Scope and publication details</summary>
@@ -439,7 +939,7 @@ Open “Scope and publication details” for each study’s full limitations. Pa
 
   Trains language models for assembly-to-C decompilation and for refining Ghidra pseudocode, evaluating whether recovered functions can be recompiled and executed correctly.
 
-  [PDF](https://aclanthology.org/2024.emnlp-main.203.pdf) · [Code](https://github.com/albertan017/LLM4Decompile)
+  [PDF](https://aclanthology.org/2024.emnlp-main.203.pdf) · [Code](https://github.com/albertan017/LLM4Decompile) · [Full entry & citation](https://awesomerea.org/papers/paper-llm4decompile/)
 
   <details>
   <summary>Scope and publication details</summary>
@@ -454,7 +954,7 @@ Open “Scope and publication details” for each study’s full limitations. Pa
 
   Introduces DIRTY, a Transformer model that recommends variable names and types from decompiled code and layout information, together with the DIRT corpus for training and evaluation.
 
-  [PDF](https://arxiv.org/pdf/2108.06363) · [Code](https://github.com/CMUSTRUDEL/DIRTY)
+  [PDF](https://arxiv.org/pdf/2108.06363) · [Code](https://github.com/CMUSTRUDEL/DIRTY) · [Full entry & citation](https://awesomerea.org/papers/paper-dirty/)
 
   <details>
   <summary>Scope and publication details</summary>
@@ -469,7 +969,7 @@ Open “Scope and publication details” for each study’s full limitations. Pa
 
   Combines lexical and structural information from decompiler output to predict meaningful variable names, with a training and evaluation corpus derived from compiled C projects.
 
-  [PDF](https://arxiv.org/pdf/1909.09029) · [Code](https://github.com/pcyin/dire)
+  [PDF](https://arxiv.org/pdf/1909.09029) · [Code](https://github.com/pcyin/dire) · [Full entry & citation](https://awesomerea.org/papers/paper-dire/)
 
   <details>
   <summary>Scope and publication details</summary>
@@ -489,7 +989,7 @@ Open “Scope and publication details” for each study’s full limitations. Pa
 
   Benchmarks website development from visual prototypes and written requirements across 100 static-page, 66 interactive-frontend and 27 full-stack tasks, combining workflow-based functional checks with model-judged visual comparison.
 
-  [PDF](https://raw.githubusercontent.com/mlresearch/v306/main/assets/he26n/he26n.pdf) · [Code](https://github.com/zai-org/Vision2Web)
+  [PDF](https://raw.githubusercontent.com/mlresearch/v306/main/assets/he26n/he26n.pdf) · [Code](https://github.com/zai-org/Vision2Web) · [Full entry & citation](https://awesomerea.org/papers/paper-vision2web/)
 
   <details>
   <summary>Scope and publication details</summary>
@@ -504,7 +1004,7 @@ Open “Scope and publication details” for each study’s full limitations. Pa
 
   Evaluates recovery of web-app behavior from a live reference with hidden source. It provides 4,063 feature-restoration tasks across 26 applications and a separate 12-application reconstruction setting, scored by replaying dependent browser workflows.
 
-  [PDF](https://arxiv.org/pdf/2609.18805v1) · [Code](https://huggingface.co/datasets/microsoft/ProgramDistill)
+  [PDF](https://arxiv.org/pdf/2609.18805v1) · [Code](https://huggingface.co/datasets/microsoft/ProgramDistill) · [Full entry & citation](https://awesomerea.org/papers/paper-programdistill/)
 
   <details>
   <summary>Scope and publication details</summary>
@@ -519,7 +1019,7 @@ Open “Scope and publication details” for each study’s full limitations. Pa
 
   UI2App evaluates runnable React/TypeScript applications generated from 600 screenshots across 95 web applications. It separates build executability, visual fidelity and screenshot-implied interaction behavior, including cross-route state, using a reference interaction taxonomy and public evaluation pipeline.
 
-  [PDF](https://arxiv.org/pdf/2607.06306v2) · [Code](https://github.com/chenmancm169/UI2App)
+  [PDF](https://arxiv.org/pdf/2607.06306v2) · [Code](https://github.com/chenmancm169/UI2App) · [Full entry & citation](https://awesomerea.org/papers/paper-ui2app/)
 
   <details>
   <summary>Scope and publication details</summary>
@@ -534,7 +1034,7 @@ Open “Scope and publication details” for each study’s full limitations. Pa
 
   Evaluates agents that actively explore a running dashboard and reconstruct its appearance and interaction logic. DashboardMimic provides 180 Plotly+Dash examples, with code-semantic analysis and dynamic interaction tests for the generated implementations.
 
-  [PDF](https://aclanthology.org/2026.acl-long.1750.pdf) · [Code](https://github.com/nth2000/Dashboard2Code)
+  [PDF](https://aclanthology.org/2026.acl-long.1750.pdf) · [Code](https://github.com/nth2000/Dashboard2Code) · [Full entry & citation](https://awesomerea.org/papers/paper-dashboard2code/)
 
   <details>
   <summary>Scope and publication details</summary>
@@ -549,7 +1049,7 @@ Open “Scope and publication details” for each study’s full limitations. Pa
 
   Uses Gemini to locate the prelude functions that Obfuscator.IO inserts for string obfuscation, then applies constant-propagation and inlining passes in the JSIR compiler IR to restore string literals and API names deterministically.
 
-  [PDF](https://arxiv.org/pdf/2507.17691v2) · [Code](https://github.com/google/jsir)
+  [PDF](https://arxiv.org/pdf/2507.17691v2) · [Code](https://github.com/google/jsir) · [Full entry & citation](https://awesomerea.org/papers/paper-cascade/)
 
   <details>
   <summary>Scope and publication details</summary>
@@ -564,7 +1064,7 @@ Open “Scope and publication details” for each study’s full limitations. Pa
 
   Splits screenshot-to-code generation among grounding, planning and generation agents that label UI regions, build a hierarchical layout tree and write HTML/CSS. The pipeline also produces the Screen-10K training pairs used for supervised and reinforcement fine-tuning, and the paper introduces the 1,000-page ScreenBench.
 
-  [PDF](https://arxiv.org/pdf/2507.22827v2) · [Code](https://github.com/leigest519/ScreenCoder)
+  [PDF](https://arxiv.org/pdf/2507.22827v2) · [Code](https://github.com/leigest519/ScreenCoder) · [Full entry & citation](https://awesomerea.org/papers/paper-screencoder/)
 
   <details>
   <summary>Scope and publication details</summary>
@@ -579,7 +1079,7 @@ Open “Scope and publication details” for each study’s full limitations. Pa
 
   Tests reconstruction of interactive webpages from user-interaction videos and supplied static assets. Its 113 tasks replay annotated action sequences to assess visual fidelity and functional behavior across observed page states.
 
-  [PDF](https://proceedings.iclr.cc/paper_files/paper/2026/file/55bfedfd31489e5ae83c9ce8eec7b0e1-Paper-Conference.pdf) · [Code](https://github.com/SIGMME/IWR-Bench)
+  [PDF](https://proceedings.iclr.cc/paper_files/paper/2026/file/55bfedfd31489e5ae83c9ce8eec7b0e1-Paper-Conference.pdf) · [Code](https://github.com/SIGMME/IWR-Bench) · [Full entry & citation](https://awesomerea.org/papers/paper-iwr-bench/)
 
   <details>
   <summary>Scope and publication details</summary>
@@ -594,7 +1094,7 @@ Open “Scope and publication details” for each study’s full limitations. Pa
 
   Builds an execution-verifiable JavaScript deobfuscation benchmark by applying seven JavaScript-Obfuscator transformations to Project CodeNet programs with test cases, then scores LLM and tool outputs for syntax, execution, code simplification and similarity to the original code.
 
-  [PDF](https://arxiv.org/pdf/2506.20170v1) · [Code](https://github.com/Ch3nYe/JsDeObsBench)
+  [PDF](https://arxiv.org/pdf/2506.20170v1) · [Code](https://github.com/Ch3nYe/JsDeObsBench) · [Full entry & citation](https://awesomerea.org/papers/paper-jsdeobsbench/)
 
   <details>
   <summary>Scope and publication details</summary>
@@ -609,7 +1109,7 @@ Open “Scope and publication details” for each study’s full limitations. Pa
 
   Benchmarks reconstruction of interactive webpages from screenshots before and after an interaction. The final study covers 127 webpages and 374 interactions, comparing rendered appearance, automated interaction checks, and human usability judgments.
 
-  [PDF](https://arxiv.org/pdf/2411.03292v3) · [Code](https://github.com/WebPAI/Interaction2Code)
+  [PDF](https://arxiv.org/pdf/2411.03292v3) · [Code](https://github.com/WebPAI/Interaction2Code) · [Full entry & citation](https://awesomerea.org/papers/paper-interaction2code/)
 
   <details>
   <summary>Scope and publication details</summary>
@@ -624,7 +1124,7 @@ Open “Scope and publication details” for each study’s full limitations. Pa
 
   Diagnoses webpage-to-code capability through visual perception, HTML programming, image-to-HTML understanding, and screenshot reconstruction tasks. It separates underlying skills using question-answer pairs derived from real websites.
 
-  [PDF](https://aclanthology.org/2025.findings-acl.815.pdf)
+  [PDF](https://aclanthology.org/2025.findings-acl.815.pdf) · [Full entry & citation](https://awesomerea.org/papers/paper-webuibench/)
 
   <details>
   <summary>Scope and publication details</summary>
@@ -639,7 +1139,7 @@ Open “Scope and publication details” for each study’s full limitations. Pa
 
   Recursively divides a webpage screenshot along visual separation lines, has a multimodal model generate HTML/CSS for each leaf segment, and assembles child code upward into the full page; evaluated with GPT-4o, Gemini and Claude models and a small developer study.
 
-  [PDF](https://arxiv.org/pdf/2406.16386v3) · [Code](https://github.com/WebPAI/DCGen)
+  [PDF](https://arxiv.org/pdf/2406.16386v3) · [Code](https://github.com/WebPAI/DCGen) · [Full entry & citation](https://awesomerea.org/papers/paper-dcgen/)
 
   <details>
   <summary>Scope and publication details</summary>
@@ -654,7 +1154,7 @@ Open “Scope and publication details” for each study’s full limitations. Pa
 
   Evaluates reconstruction of frontend code from webpage screenshots using real-world reference pages, visual-element and layout metrics, and human assessment.
 
-  [PDF](https://aclanthology.org/2025.naacl-long.199.pdf) · [Code](https://github.com/NoviScl/Design2Code)
+  [PDF](https://aclanthology.org/2025.naacl-long.199.pdf) · [Code](https://github.com/NoviScl/Design2Code) · [Full entry & citation](https://awesomerea.org/papers/paper-design2code/)
 
   <details>
   <summary>Scope and publication details</summary>
@@ -674,7 +1174,7 @@ Open “Scope and publication details” for each study’s full limitations. Pa
 
   Evaluates whether vision-language agents can infer hidden game rules through screenshots and active interaction, then build runnable single-file HTML replicas across 125 tasks from 25 web games, each with five difficulty levels.
 
-  [PDF](https://arxiv.org/pdf/2609.22308v1)
+  [PDF](https://arxiv.org/pdf/2609.22308v1) · [Full entry & citation](https://awesomerea.org/papers/paper-gamereplica/)
 
   <details>
   <summary>Scope and publication details</summary>
@@ -689,7 +1189,7 @@ Open “Scope and publication details” for each study’s full limitations. Pa
 
   Tycho constructs editable Python models of game state, transitions, rendering and outcomes from action/observation histories in unfamiliar ARC-AGI-3 games. It checks model predictions against recorded transitions and can use, repair or bypass these models during planning.
 
-  [PDF](https://arxiv.org/pdf/2607.28287v1) · [Code](https://github.com/NIMI-research/Tycho)
+  [PDF](https://arxiv.org/pdf/2607.28287v1) · [Code](https://github.com/NIMI-research/Tycho) · [Full entry & citation](https://awesomerea.org/papers/paper-tycho/)
 
   <details>
   <summary>Scope and publication details</summary>
@@ -704,7 +1204,7 @@ Open “Scope and publication details” for each study’s full limitations. Pa
 
   Tests whether agents can recover executable decision policies from behavioral traces and self-designed opponent probes, using 75 synthetic policies across five game arenas and measuring held-out action agreement and downstream competitive value.
 
-  [PDF](https://arxiv.org/pdf/2606.26094v1) · [Code](https://github.com/bethgelab/revenge-bench)
+  [PDF](https://arxiv.org/pdf/2606.26094v1) · [Code](https://github.com/bethgelab/revenge-bench) · [Full entry & citation](https://awesomerea.org/papers/paper-revengebench/)
 
   <details>
   <summary>Scope and publication details</summary>
@@ -719,7 +1219,7 @@ Open “Scope and publication details” for each study’s full limitations. Pa
 
   Transforms game-interface screenshots into editable engine assets through hierarchical YAML, visual grounding, asset extraction, and Unity UXML/USS synthesis, with evaluation on a curated game-UI benchmark and review by three senior UI/UX designers.
 
-  [PDF](https://baiyunshu.github.io/sprite.github.io/Source/chiea26-516.pdf)
+  [PDF](https://baiyunshu.github.io/sprite.github.io/Source/chiea26-516.pdf) · [Full entry & citation](https://awesomerea.org/papers/paper-sprite-game-ui/)
 
   <details>
   <summary>Scope and publication details</summary>
@@ -734,7 +1234,7 @@ Open “Scope and publication details” for each study’s full limitations. Pa
 
   WorldCoder learns executable Python transition and reward models from environment interactions and natural-language goals. It refines code against recorded experiences and an optimistic planning constraint, studying transfer and task solving in Sokoban, MiniGrid and ALFWorld.
 
-  [PDF](https://papers.neurips.cc/paper_files/paper/2024/file/820c61a0cd419163ccbd2c33b268816e-Paper-Conference.pdf) · [Code](https://github.com/haotang1995/WorldCoder)
+  [PDF](https://papers.neurips.cc/paper_files/paper/2024/file/820c61a0cd419163ccbd2c33b268816e-Paper-Conference.pdf) · [Code](https://github.com/haotang1995/WorldCoder) · [Full entry & citation](https://awesomerea.org/papers/paper-worldcoder/)
 
   <details>
   <summary>Scope and publication details</summary>
@@ -749,7 +1249,7 @@ Open “Scope and publication details” for each study’s full limitations. Pa
 
   GIF-MCTS generates executable Python transition and reward models from natural-language environment descriptions and offline state-transition trajectories, using prediction feedback to generate, improve and repair code. CWMB evaluates 18 reinforcement-learning environments and downstream planning; a separate experiment uses a simplified Read to Fight Monsters grid world.
 
-  [PDF](https://proceedings.neurips.cc/paper_files/paper/2024/file/6f479ea488e0908ac8b1b37b27fd134c-Paper-Conference.pdf) · [Code](https://github.com/nicoladainese96/code-world-models)
+  [PDF](https://proceedings.neurips.cc/paper_files/paper/2024/file/6f479ea488e0908ac8b1b37b27fd134c-Paper-Conference.pdf) · [Code](https://github.com/nicoladainese96/code-world-models) · [Full entry & citation](https://awesomerea.org/papers/paper-code-world-models/)
 
   <details>
   <summary>Scope and publication details</summary>
@@ -769,7 +1269,7 @@ Open “Scope and publication details” for each study’s full limitations. Pa
 
   Combines visual component extraction, multimodal models, page-transition graphs and iterative checks to reconstruct multi-page mobile UI code from designs or screenshots, evaluated with React Native, Flutter and ArkUI.
 
-  [PDF](https://xinyi-hou.github.io/files/zhou2024bridging.pdf) · [Code](https://github.com/security-pride/DeclarUI)
+  [PDF](https://xinyi-hou.github.io/files/zhou2024bridging.pdf) · [Code](https://github.com/security-pride/DeclarUI) · [Full entry & citation](https://awesomerea.org/papers/paper-declarui/)
 
   <details>
   <summary>Scope and publication details</summary>
@@ -784,7 +1284,7 @@ Open “Scope and publication details” for each study’s full limitations. Pa
 
   ReDraw turns screenshots or design mock-ups into native Android GUI prototypes by detecting components, classifying widget types with a CNN, and assembling a plausible view hierarchy with a data-driven nearest-neighbor method.
 
-  [PDF](https://arxiv.org/pdf/1802.02312v2)
+  [PDF](https://arxiv.org/pdf/1802.02312v2) · [Full entry & citation](https://awesomerea.org/papers/paper-redraw/)
 
   <details>
   <summary>Scope and publication details</summary>
@@ -799,7 +1299,7 @@ Open “Scope and publication details” for each study’s full limitations. Pa
 
   Learns screenshot-to-DSL generation for native Android XML, iOS Storyboards and web HTML/CSS interfaces, then compiles the DSL into platform UI code.
 
-  [PDF](https://arxiv.org/pdf/1705.07962v2) · [Code](https://github.com/tonybeltramelli/pix2code)
+  [PDF](https://arxiv.org/pdf/1705.07962v2) · [Code](https://github.com/tonybeltramelli/pix2code) · [Full entry & citation](https://awesomerea.org/papers/paper-pix2code/)
 
   <details>
   <summary>Scope and publication details</summary>
@@ -814,7 +1314,7 @@ Open “Scope and publication details” for each study’s full limitations. Pa
 
   UI2code translates a mobile UI image into an Android component hierarchy and layout skeleton using a neural encoder-decoder. The paper evaluates structural prediction and a small developer study of implementing layouts from generated skeletons.
 
-  [PDF](https://chunyang-chen.github.io/publication/ui2code.pdf) · [Code](https://github.com/ccywch/UI2code)
+  [PDF](https://chunyang-chen.github.io/publication/ui2code.pdf) · [Code](https://github.com/ccywch/UI2code) · [Full entry & citation](https://awesomerea.org/papers/paper-ui2code/)
 
   <details>
   <summary>Scope and publication details</summary>
@@ -829,7 +1329,7 @@ Open “Scope and publication details” for each study’s full limitations. Pa
 
   Reconstructs native Android UI code from screenshots or design bitmaps using OCR, computer vision, and layout heuristics; evaluates visual similarity and view hierarchies on 488 screenshots from over 100 Android and iOS applications.
 
-  [PDF](https://c.csallner.org/papers/nguyen15reverse.pdf) · [Code](https://github.com/soumikmohianuta/pixtoapp)
+  [PDF](https://c.csallner.org/papers/nguyen15reverse.pdf) · [Code](https://github.com/soumikmohianuta/pixtoapp) · [Full entry & citation](https://awesomerea.org/papers/paper-remaui/)
 
   <details>
   <summary>Scope and publication details</summary>
@@ -849,7 +1349,7 @@ Open “Scope and publication details” for each study’s full limitations. Pa
 
   Rehosts monolithic ARM Cortex-M firmware for fuzzing, using locally scoped symbolic execution to model memory-mapped I/O accesses and focus input mutations on values relevant to firmware logic.
 
-  [PDF](https://www.usenix.org/system/files/sec22-scharnowski.pdf) · [Code](https://github.com/fuzzware-fuzzer/fuzzware)
+  [PDF](https://www.usenix.org/system/files/sec22-scharnowski.pdf) · [Code](https://github.com/fuzzware-fuzzer/fuzzware) · [Full entry & citation](https://awesomerea.org/papers/paper-fuzzware/)
 
   <details>
   <summary>Scope and publication details</summary>
@@ -864,7 +1364,7 @@ Open “Scope and publication details” for each study’s full limitations. Pa
 
   Extends Firmadyne with empirically derived interventions for boot, networking, NVRAM, kernel behavior, and other runtime failures, enabling Linux router and IP-camera firmware web services to run for dynamic analysis.
 
-  [PDF](https://syssec.kaist.ac.kr/pub/2020/kim_acsac2020.pdf) · [Code](https://github.com/pr0v3rbs/FirmAE)
+  [PDF](https://syssec.kaist.ac.kr/pub/2020/kim_acsac2020.pdf) · [Code](https://github.com/pr0v3rbs/FirmAE) · [Full entry & citation](https://awesomerea.org/papers/paper-firmae/)
 
   <details>
   <summary>Scope and publication details</summary>
@@ -884,7 +1384,7 @@ Open “Scope and publication details” for each study’s full limitations. Pa
 
   Uses multiple sequence alignment and probabilistic keyword-field inference to cluster network messages by type, evaluated across ten protocols with downstream format and state-machine analysis.
 
-  [PDF](https://www.ndss-symposium.org/wp-content/uploads/ndss2021_4A-5_24531_paper.pdf) · [Code](https://github.com/yapengye/NetPlier)
+  [PDF](https://www.ndss-symposium.org/wp-content/uploads/ndss2021_4A-5_24531_paper.pdf) · [Code](https://github.com/yapengye/NetPlier) · [Full entry & citation](https://awesomerea.org/papers/paper-netplier/)
 
   <details>
   <summary>Scope and publication details</summary>
@@ -899,7 +1399,7 @@ Open “Scope and publication details” for each study’s full limitations. Pa
 
   Infers message formats of proprietary wireless protocols from demodulated physical-layer captures: it aligns messages by preamble and sync word, then uses RSSI and dedicated engines to label length, address, sequence-number and checksum fields, optionally using known addresses or field positions.
 
-  [PDF](https://www.usenix.org/system/files/woot19-paper_pohl.pdf) · [Code](https://github.com/jopohl/urh)
+  [PDF](https://www.usenix.org/system/files/woot19-paper_pohl.pdf) · [Code](https://github.com/jopohl/urh) · [Full entry & citation](https://awesomerea.org/papers/paper-wireless-protocol-re/)
 
   <details>
   <summary>Scope and publication details</summary>
@@ -914,7 +1414,7 @@ Open “Scope and publication details” for each study’s full limitations. Pa
 
   Infers approximate field boundaries within individual binary-protocol messages from changes in bit congruence, and introduces Format Match Score to compare inferred segmentation with known protocol dissectors.
 
-  [PDF](https://www.usenix.org/system/files/conference/woot18/woot18-paper-kleber.pdf) · [Code](https://github.com/vs-uulm/nemesys)
+  [PDF](https://www.usenix.org/system/files/conference/woot18/woot18-paper-kleber.pdf) · [Code](https://github.com/vs-uulm/nemesys) · [Full entry & citation](https://awesomerea.org/papers/paper-nemesys/)
 
   <details>
   <summary>Scope and publication details</summary>
@@ -948,6 +1448,8 @@ Help improve an entry or share a useful source. Start with the [contribution gui
 [Haozhe Wang](https://haozheh3.github.io/) — Game reconstruction resource collection: [awesome-rea-games](https://github.com/HaozheH3/awesome-rea-games).
 
 ## About
+
+[REA (Reverse Engineer Anything)](https://github.com/morluto/rea) is a separate upstream CLI and MCP project. This collection's name echoes it, but it is not the REA repository; “REA” in entry tags and labels such as “Official REA documentation” refers to that project.
 
 This is an independent community collection. Original descriptions and code are [MIT licensed](LICENSE); linked projects retain their own licenses.
 

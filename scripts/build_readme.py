@@ -157,7 +157,7 @@ def entry_type(record, language):
 
 
 def render_catalog(records, language, paper_urls=frozenset()):
-    """One awesome-lint list item per resource; papers listed in the bibliography appear only there."""
+    """Keep each source title and full description distinct; bibliography overlaps appear only there."""
     index = 0 if language == 'en' else 1
     translations = json.loads((ROOT / 'site/translations.zh-CN.json').read_text()) if language == 'zh' else {}
     groups = defaultdict(list)
@@ -188,8 +188,12 @@ def render_catalog(records, language, paper_urls=frozenset()):
                 name = plain_text((record.get('name_zh') or translations.get(record['id'], {}).get('name') or record['name']) if language == 'zh' else record['name'])
                 description = plain_text(record[f'description_{language}'])
                 metadata = plain_text(entry_type(record, language))
-                lines.append(f"- [**{name}**]({record['url']}) - {description} <sub>{metadata}</sub>")
-            lines.append('')
+                detail_url = f"https://awesomerea.org/{'zh/' if language == 'zh' else ''}resources/{record['id']}/"
+                detail_label = '条件与证据' if language == 'zh' else 'Requirements & evidence'
+                lines.extend([
+                    f"- [**{name}**]({record['url']}) · {metadata} · [{detail_label}]({detail_url})", '',
+                    f'  {description}', '',
+                ])
     return '\n'.join(lines).rstrip() + '\n'
 
 
@@ -218,16 +222,21 @@ def render_contents(records, papers, index_count, language):
     cases = sum(record.get('kind') == 'case-study' for record in records)
 
     def item(label, href, count):
-        return f'[{label}]({href}) <sub>{count:,}</sub>'
+        return f'[{label}]({href}) ({count:,})'
 
     targets = [item(zh_label if zh else label, f'#{section}', counts[section])
                for section, label, zh_label in CONTENTS_TARGETS if counts[section]]
-    more = [item('论文' if zh else 'Papers', '#papers', len(papers)),
-            item('案例' if zh else 'Cases', f"https://awesomerea.org/{'zh/' if zh else ''}?view=curated&kind=case-study", cases)]
-    more += [item(zh_label if zh else label, f'#{section}', counts[section])
-             for section, label, zh_label in CONTENTS_MORE if counts[section]]
-    more.append(item('仓库索引' if zh else 'Repository index', '#完整仓库索引' if zh else '#full-repository-index', index_count))
-    return f"- **{'目标' if zh else 'Targets'}** · " + ' · '.join(targets) + '\n\n- ' + ' · '.join(more) + '\n'
+    reading = [item('论文' if zh else 'Papers', '#papers', len(papers)),
+               item('全部案例' if zh else 'All cases', f"https://awesomerea.org/{'zh/' if zh else ''}?view=curated&kind=case-study", cases),
+               item('仓库索引' if zh else 'Repository index', '#完整仓库索引' if zh else '#full-repository-index', index_count)]
+    more = [item(zh_label if zh else label, f'#{section}', counts[section])
+            for section, label, zh_label in CONTENTS_MORE if counts[section]]
+    lines = [f"**{'按目标找工具与案例' if zh else 'Tools and cases by target'}**", '']
+    lines += ['- ' + ' · '.join(targets[start:start + 3]) for start in range(0, len(targets), 3)]
+    lines += ['', f"**{'论文与更多资源' if zh else 'Research and more'}**", '', '- ' + ' · '.join(reading)]
+    if more:
+        lines.append('- ' + ' · '.join(more))
+    return '\n'.join(lines) + '\n'
 
 
 def replace_contents(content, rendered):
@@ -296,7 +305,7 @@ def render_papers(papers, language):
                     'app': 'app-reconstruction', 'firmware': 'firmware-analysis',
                     'protocol': 'protocol-analysis'}.get(paper['targets'][0], 'decompilation'))
         groups[section].append(paper)
-    topics = [f'[{labels[index]}](#papers-{section}) <sub>{len(groups[section])}</sub>'
+    topics = [f'[{labels[index]}](#papers-{section}) ({len(groups[section])})'
               for section, labels in PAPER_TOPIC_LABELS.items() if groups[section]]
     lines.extend([f"**{'按主题' if zh else 'By topic'}** · " + ' · '.join(topics), '',
                   ('展开各条目的“范围与发表信息”可查看完整研究边界；以下按年份从新到旧排列。'
@@ -311,9 +320,11 @@ def render_papers(papers, language):
             status = PAPER_STATUSES[paper['publication_status']][index]
             metadata = plain_text(f"{paper['year']} · {paper['venue']} · {status}")
             author = plain_text(paper['authors'][0] + ((' 等' if zh else ' et al.') if len(paper['authors']) > 1 else ''))
+            detail_url = f"https://awesomerea.org/{'zh/' if zh else ''}papers/{paper['id']}/"
             links = [f"[PDF]({paper['pdf_url']})"]
             if paper['code_url']:
                 links.append(f"[{'代码' if zh else 'Code'}]({paper['code_url']})")
+            links.append(f"[{'完整条目与引用' if zh else 'Full entry & citation'}]({detail_url})")
             lines.extend([
                 f"- [**{title}**]({paper['url']}) · **{paper['year']} · {status}**", '',
                 '  ' + plain_text(paper[f'description_{language}']), '',
