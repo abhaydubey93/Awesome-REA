@@ -63,6 +63,24 @@ A top-level `404.html` makes unknown paths return HTTP 404 instead of the homepa
 
 Run `python3 scripts/submit_indexnow.py` to preview the sitemap URL batch, then `python3 scripts/submit_indexnow.py --submit` after deployment. The command checks the live ownership file, sitemap, public build manifest and canonical page content against this build before sending a notification. It submits only canonical awesomerea.org URLs. HTTP 200 confirms receipt; HTTP 202 means key validation is pending. Neither confirms indexing. See the [IndexNow protocol](https://www.indexnow.org/documentation).
 
+For an optional delta, retain a previous `build-manifest.json` outside `dist/` and obtain its SHA-256 from a reviewed publication receipt. A newly calculated digest of an untrusted download does not establish that it is an approved baseline. Set `APPROVED_PREVIOUS_SHA256` to that recorded digest, then preview:
+
+```sh
+python3 scripts/submit_indexnow.py \
+  --previous-manifest previous-build-manifest.json \
+  --previous-manifest-sha256 "$APPROVED_PREVIOUS_SHA256"
+```
+
+Both baseline arguments are required together. The baseline must match the supplied digest and the current manifest schema and HTML-normalization version. Malformed JSON, duplicate keys, unsafe file paths, symlinks and incompatible hashes are rejected. The baseline's referenced paths are never opened or fetched.
+
+The delta dry run makes no network requests. Its JSON report includes full current/baseline manifest digests, the current sitemap digest, checkout revision/cleanliness when available, and sorted added/updated **current canonical URLs**. Unchanged URLs are counted rather than printed. The manifest hashes bind the actual build; a checkout revision does not by itself prove that a dirty build came from that commit. HTML selection compares normalized `html_sha256`, so unchanged pages are excluded even if raw transport-only HTML differs.
+
+After reviewing the report and deploying the build, add `--submit` to the same command. Before any POST, the command still verifies ownership, the complete current sitemap, the deployed manifest and **every current canonical page**, including unchanged pages. Only the notification payload is smaller. An empty HTML delta makes no network request. If non-HTML files changed with no selected HTML pages, the report flags review as required and `--submit` exits nonzero without a POST: review which pages the data/assets affect, or use the default full-sitemap mode after that review. Non-HTML changes are also reported alongside nonempty deltas.
+
+Removed HTML candidates are **filenames only**, including possible noncanonical files such as `404.html`; they are never converted to historical URLs or notified as deletions. Other changed HTML files outside the current sitemap are reported separately and excluded. A previous canonical inventory and actual deployed deletion/redirect evidence would be needed for a separate removal workflow. A missing manifest entry alone supplies neither. IndexNow supports added, updated and deleted URLs, but a notification is not proof of search-engine removal. [IndexNow documentation](https://www.indexnow.org/documentation)
+
+Each `--submit` invocation sends at most one POST and never retries automatically. A timeout or unavailable response leaves the result unconfirmed; do not blindly repeat an uncertain submission. HTTP 202 remains key-validation-pending, and no response establishes indexing or ranking.
+
 `build-manifest.json` records deterministic hashes and byte sizes for public output files, including the paper bibliography and browser-search projection. It contains no environment paths or account settings. HTML comparison accounts for recognized Cloudflare analytics and email-obfuscation transformations; page text, structured data and application asset revisions remain part of the comparison. Missing or stale canonical pages stop submission even when the sitemap's URL list has not changed.
 
 `site/indexnow.txt` is intentionally public domain-ownership proof, not an account credential. Keep Google verification files and DNS ownership records in place. Search Console account details, DNS dashboard identifiers, credentials and private analytics must never be committed. The GitHub repository is not covered by the website's domain-verification key.
