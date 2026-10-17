@@ -170,7 +170,7 @@ def paper_card(paper: dict, language: str, use_pro: bool) -> str:
     details = ''.join(f'<dt>{escape(key)}</dt><dd>{escape(value)}</dd>' for key, value in metadata)
     source_links = ''.join(f'<li><a href="{web_url(url)}" target="_blank" rel="noopener noreferrer">{escape(url)}</a></li>' for url in paper['evidence_urls'])
     return f'''<article class="paper-card" id="{paper['id']}" data-paper-id="{paper['id']}">
-  <header><div class="paper-meta"><span class="paper-year">{paper['year']}</span><span class="paper-venue" lang="en">{escape(paper['venue'])}</span><span class="paper-status paper-status-{paper['publication_status']}">{status}</span></div><h3><a href="{web_url(paper['url'])}" target="_blank" rel="noopener noreferrer">{escape(title)}{icon('external', use_pro)}</a></h3>{original_title}<p class="paper-authors" lang="en">{escape('; '.join(paper['authors']))}</p></header>
+  <header><h3><a href="{web_url(paper['url'])}" target="_blank" rel="noopener noreferrer">{escape(title)}{icon('external', use_pro)}</a></h3>{original_title}<div class="paper-meta"><span class="paper-year">{paper['year']}</span><span class="paper-venue" lang="en">{escape(paper['venue'])}</span><span class="paper-status paper-status-{paper['publication_status']}">{status}</span></div><p class="paper-authors" lang="en">{escape('; '.join(paper['authors']))}</p></header>
   <p class="paper-description">{escape(paper[f'description_{language}'])}</p>
   <div class="paper-scope"><h4>{label('Scope & limitations', '研究范围与局限')}</h4><p>{escape(paper[f'scope_limitations_{language}'])}</p></div>
   <nav class="paper-links" aria-label="{escape(label('Links for ' + paper['title'], title + '的相关链接'), quote=True)}">{''.join(links)}</nav>
