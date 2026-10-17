@@ -143,6 +143,8 @@ html[lang="zh-CN"] .collection-intro h1{letter-spacing:-.6px}
 .requirements ul{margin:12px 0;padding-left:18px;color:var(--muted);font-size:13px;line-height:1.8}
 .requirements li+li{margin-top:7px}
 .resource-detail-meta{display:flex;flex-wrap:wrap;gap:8px 13px;color:var(--muted);font:12px/1.7 var(--sans)}
+.resource-entry-link{display:inline-flex;align-items:center;gap:6px;color:var(--link);font-weight:600;text-decoration:underline;text-underline-offset:3px}
+.resource-entry-link .icon{width:14px;height:14px;font-size:14px}
 .source-record-details dl{display:grid;grid-template-columns:132px minmax(0,1fr);gap:8px 14px;margin:14px 0 2px;color:var(--muted);font:12px/1.75 var(--sans)}
 .source-record-details dt{font-weight:600}
 .source-record-details dd{margin:0;overflow-wrap:anywhere}

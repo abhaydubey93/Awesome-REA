@@ -55,7 +55,7 @@ function setup(query, {curatedProtocol = true, sourceProtocol = true, pathname =
     history: {replaceState(_, __, next) { location.href = String(next); location.search = new URL(next).search; }},
     fetch: async url => { requests.push(String(url)); return {ok: true, json: async () => new URL(url).pathname.endsWith('catalog.json') ? {resources: curatedRows, meta: {source_index: {resource_count: rows.length}}} : browser}; }};
   vm.createContext(context);
-  vm.runInContext(script.replace('applyLanguage(); load();', '') + '\nglobalThis.audit = {state,sourceState,load,loadSources,filtered,sourceFiltered,applyLanguage,reset,resetSources,setIndexMode};', context);
+  vm.runInContext(script.replace('applyLanguage(); load();', '') + '\nglobalThis.audit = {state,sourceState,load,loadSources,filtered,sourceFiltered,applyLanguage,reset,resetSources,setIndexMode,sourceRelatedEntries};', context);
   return {api: context.audit, context, elements, buttons, protocolLabels, requests};
 }
 (async () => {
@@ -127,6 +127,25 @@ function setup(query, {curatedProtocol = true, sourceProtocol = true, pathname =
   const home = setup(''); await home.api.load();
   assert.equal(home.api.state.lang, 'en');
   assert.equal(home.api.sourceState.mode, 'curated');
+  for (const lang of ['en', 'zh']) {
+    const linked = setup(`?lang=${lang}`); await linked.api.load();
+    const card = linked.elements.get('#resource-grid').children[0];
+    const details = card.children.find(child => child.className === 'requirements');
+    const metadata = details.children.find(child => child.className === 'resource-detail-meta');
+    const entry = metadata.children.find(child => child.className === 'resource-entry-link');
+    assert.equal(entry.href, `${lang === 'zh' ? '/zh' : ''}/resources/fixture-0/`);
+    assert.equal(entry.target, undefined); // Navigation stays on the collection website.
+    assert(entry.attrs['aria-label'].includes(lang === 'zh' ? '测试 0' : 'Fixture 0'));
+  }
+  const direct = {kind: 'paper', id: 'paper-fixture', title_en: 'Paper', title_zh: '论文',
+    href_en: '/papers/paper-fixture/', href_zh: '/zh/papers/paper-fixture/'};
+  const legacy = {...direct, href_en: '/papers/#paper-fixture', href_zh: '/zh/papers/#paper-fixture'};
+  const accepts = row => home.api.sourceRelatedEntries({related_entries: [row]}).length;
+  assert.equal(accepts(direct), 1); assert.equal(accepts(legacy), 1);
+  for (const bad of [{...direct, href_en: 'https://example.com/'}, {...direct, id: '../fixture'},
+    {...direct, href_en: '/papers/wrong-id/'}, {...direct, href_zh: '/papers/paper-fixture/'}]) {
+    assert.equal(accepts(bad), 0);
+  }
   const layouts = setup('?view=curated&sourceq=fixture&target=protocol&layout=cards#catalog');
   await layouts.api.load(); await layouts.api.loadSources(); layouts.api.setIndexMode("source-index"); layouts.api.applyLanguage();
   assert.equal(layouts.context.document.documentElement.dataset.layout, 'cards');

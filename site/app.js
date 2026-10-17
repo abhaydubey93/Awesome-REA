@@ -6,6 +6,7 @@ const UI = {
     "layoutCompact": "Compact list",
     "layoutCards": "Cards",
     "requirementsShort": "Details & limits",
+    "openEntry": "Open full entry",
     "sourceTopicsLabel": "Topics",
     "noscriptNote": "JavaScript enables search and filters. Read the complete <a href=\"/browse/\">repository directory</a>, <a href=\"/resources/\">curated collection</a> and <a href=\"/papers/\">research papers</a> without JavaScript. <a href=\"/zh/\" lang=\"zh-CN\">简体中文</a>.",
     "exploreResources": "Explore the collection",
@@ -123,6 +124,7 @@ const UI = {
     "layoutCompact": "紧凑列表",
     "layoutCards": "卡片",
     "requirementsShort": "详情与局限",
+    "openEntry": "查看完整条目",
     "sourceTopicsLabel": "主题",
     "noscriptNote": "JavaScript 用于搜索和筛选。关闭 JavaScript 仍可阅读完整的<a href=\"/zh/browse/\">仓库目录</a>、<a href=\"/zh/resources/\">精选资源</a>与<a href=\"/zh/papers/\">研究论文</a>。<a href=\"/\" lang=\"en\">English</a>。",
     "exploreResources": "浏览资源集合",
@@ -260,6 +262,10 @@ const label = (map, key) => map[key] ? map[key][state.lang === "zh" ? 1 : 0] : k
 const node = (tag, className, text) => { const el = document.createElement(tag); if (className) el.className = className; if (text !== undefined) el.textContent = text; return el; };
 function icon(name, small = false) { if (document.documentElement.dataset.iconSet === "fontawesome") { const span = node("span", "icon fa-symbol fa-" + name + (small ? " icon-small" : "")); span.setAttribute("aria-hidden", "true"); return span; } const svg = document.createElementNS("http://www.w3.org/2000/svg", "svg"); svg.setAttribute("class", "icon" + (small ? " icon-small" : "")); svg.setAttribute("aria-hidden", "true"); const use = document.createElementNS("http://www.w3.org/2000/svg", "use"); use.setAttribute("href", "#i-" + name); svg.append(use); return svg; }
 function external(href, className, text) { const link = node("a", className, text); link.href = href; link.target = "_blank"; link.rel = "noopener noreferrer"; return link; }
+function entryHref(kind, identifier, language = state.lang) {
+  if (!["paper", "curated"].includes(kind) || typeof identifier !== "string" || !/^[a-z0-9]+(?:-[a-z0-9]+)*$/.test(identifier)) return null;
+  return `${language === "zh" ? "/zh" : ""}/${kind === "paper" ? "papers" : "resources"}/${identifier}/`;
+}
 function updateURL() { const next = new URL(location.href); ["q", "group", "category", "kind", "target", "lang"].forEach(key => { const value = state[key]; if (value && value !== "all") next.searchParams.set(key, value); else next.searchParams.delete(key); }); history.replaceState(null, "", next); }
 function applyLayout() {
   document.documentElement.dataset.layout = state.layout;
@@ -306,7 +312,10 @@ function card(record) {
   article.append(node("p","card-description",record[state.lang==="zh"?"description_zh":"description_en"]));
   const meta=node("div","card-meta");meta.append(node("span","card-category",label(CATEGORY,record.category)),external(record.evidence_url,"",t("readSource")+" ↗"));article.append(meta);
   const details=node("details","requirements");const summary=node("summary");summary.append(node("span","detail-label-full",t("requirements")),node("span","detail-label-compact",t("requirementsShort")));details.append(summary);const list=node("ul");const requirements=state.lang==="zh"?(record.requirements_zh||record.requirements):record.requirements;(Array.isArray(requirements)?requirements:[requirements]).forEach(item=>list.append(node("li","",item)));details.append(list);
-  const context=node("div","resource-detail-meta");const time=node("time","",t("reviewed")+" "+record.verified_at.slice(0,10));time.dateTime=record.verified_at;time.title=record.verified_at;context.append(node("span","",label(RELATION,record.relationship)),node("span","",t("sourceReviewed")),time);details.append(context);article.append(details);return article;
+  const context=node("div","resource-detail-meta");const time=node("time","",t("reviewed")+" "+record.verified_at.slice(0,10));time.dateTime=record.verified_at;time.title=record.verified_at;context.append(node("span","",label(RELATION,record.relationship)),node("span","",t("sourceReviewed")),time);
+  const href=entryHref("curated",record.id);
+  if(href){const entry=node("a","resource-entry-link",t("openEntry"));entry.href=href;entry.setAttribute("aria-label",t("openEntry")+": "+(state.lang==="zh"?(record.name_zh||record.name):record.name));entry.append(icon("arrow",true));context.append(entry);}
+  details.append(context);article.append(details);return article;
 }
 function filtered() { const terms=state.q.toLocaleLowerCase().trim().split(/\s+/).filter(Boolean);const found=state.records.filter(r=>(state.group==="all"||r.group===state.group)&&(state.target==="all"||r.targets.includes(state.target))&&(state.category==="all"||r.category===state.category)&&(state.kind==="all"||r.kind===state.kind)&&terms.every(term=>r.search.includes(term)));const rank=r=>{const featured=FEATURED.indexOf(r.id);if(featured>=0)return featured;return 100+({"tool":0,"integration":1,"project":2,"case-study":3,"collection":4,"research":5,"learning-resource":6,"documentation":7}[r.kind]??8);};return found.sort((a,b)=>rank(a)-rank(b)||a.order-b.order); }
 function render() {
@@ -388,7 +397,9 @@ function sourceRelatedEntries(record) {
   return (Array.isArray(record.related_entries) ? record.related_entries : []).filter(entry => {
     if (!entry || !["paper","curated"].includes(entry.kind) || typeof entry.id !== "string" || !/^[a-z0-9]+(?:-[a-z0-9]+)*$/.test(entry.id)) return false;
     const directory = entry.kind === "paper" ? "papers" : "resources";
-    if (entry.href_en !== `/${directory}/#${entry.id}` || entry.href_zh !== `/zh/${directory}/#${entry.id}`) return false;
+    const direct = entry.href_en === entryHref(entry.kind,entry.id,"en") && entry.href_zh === entryHref(entry.kind,entry.id,"zh");
+    const legacy = entry.href_en === `/${directory}/#${entry.id}` && entry.href_zh === `/zh/${directory}/#${entry.id}`;
+    if (!direct && !legacy) return false;
     if (![entry.title_en,entry.title_zh].every(title => typeof title === "string" && title.trim())) return false;
     const key = `${entry.kind}:${entry.id}`;
     if (seen.has(key)) return false;
