@@ -17,7 +17,7 @@ Browse by target or topic below. **Source review does not imply runtime verifica
 <!-- BEGIN GENERATED CONTENTS -->
 **Tools and cases by target**
 
-- [Website](#website) (15) · [Game](#game) (42) · [App](#app) (37)
+- [Website](#website) (16) · [Game](#game) (42) · [App](#app) (37)
 - [Native Binary](#native-binary) (20) · [Firmware and Hardware](#firmware) (12) · [Protocol](#protocol) (11)
 
 **Research and workflows**
@@ -26,7 +26,7 @@ Browse by target or topic below. **Source review does not imply runtime verifica
 
 **More ways to browse**
 
-- [All cases](https://awesomerea.org/cases/) (50) · [Related Collections](#related-collections) (4) · [Full Repository Index](#full-repository-index) (2,839)
+- [All cases](https://awesomerea.org/cases/) (51) · [Related Collections](#related-collections) (4) · [Full Repository Index](#full-repository-index) (2,839)
 <!-- END GENERATED CONTENTS -->
 
 <a id="resource-catalog"></a>
@@ -55,6 +55,11 @@ Includes independent projects and resources for [REA (Reverse Engineer Anything)
   Case study · Independent reconstruction · [Requirements & evidence](https://awesomerea.org/resources/rauchg-rsc-reconstruction-case/)
 
   Documents a website-rebuild-skill case that decodes browser-delivered React Server Component Flight streams, reconstructs a buildable Next project and compares its output with a captured site. The reported rauchg.com campaign uses route-tree comparison and module-reference mapping; the new server source is inferred from observable output.
+
+- [**BaoCut Slides: adapting an interactive web editor**](https://github.com/JimLiu/baocut/tree/b8585e0c8d7a82bdee9f0ed019cf6edb075e41c1/packages/slides-runtime)<br>
+  Case study · Independent reconstruction · [Requirements & evidence](https://awesomerea.org/resources/baocut-slides-editor-case/)
+
+  Documents BaoCut’s interactive slide editor, whose author says the implementation draws on Claude Slides. It adds a local deck store, HTML/CSS compiler and annotation-to-agent bridge for browser and desktop hosts; the design reports a Web-flow check, without establishing original backend recovery or full behavioral parity.
 
 #### Tools, projects and integrations
 

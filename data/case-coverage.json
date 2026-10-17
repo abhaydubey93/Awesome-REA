@@ -1,7 +1,7 @@
 {
   "schema_version": 1,
   "reviewed_at": "2026-10-17",
-  "catalog_revision": "dfd6c15656ca287e24ea52a9430b07e0a1fc0072",
+  "catalog_revision": "65f9292947ca93b7f73d2eb0bf88637658e06631",
   "runtime_reproduced": false,
   "project_identity_resolution": "incomplete",
   "collections": [
@@ -443,13 +443,28 @@
         "https://x.com/dotey/status/2109151666020794711",
         "https://github.com/JimLiu/baocut/commit/b8585e0c8d7a82bdee9f0ed019cf6edb075e41c1"
       ],
-      "state": "pending",
-      "review_level": "inventory-only",
+      "state": "already-curated",
+      "review_level": "primary-source-reviewed",
       "reviewed_at": "2026-10-17",
-      "reason_en": "A collection lead awaiting primary-source review; listing does not verify implementation or results.",
-      "reason_zh": "合集线索，等待一手来源核查；被列入合集不代表实现或结果已获验证。",
-      "primary_evidence_urls": [],
-      "catalog_matches": []
+      "reason_en": "Pinned component code, design notes and tests establish the named BaoCut Slides adaptation report. Full mapping covers this editor-specific report, not all BaoCut features or complete Claude service equivalence. Web validation remains author-reported; original backend, exact Claude input provenance and third-party reuse rights are not established by this review.",
+      "reason_zh": "固定版本的组件源码、设计说明与测试确立了具名 BaoCut Slides 改编报告。完整映射仅覆盖这一编辑器报告，不代表整个 BaoCut 或完整 Claude 服务等价。Web 验证仍为作者报告；本次审阅未确立原有后端、确切 Claude 输入来源或第三方复用权。",
+      "primary_evidence_urls": [
+        "https://github.com/JimLiu/baocut/blob/b8585e0c8d7a82bdee9f0ed019cf6edb075e41c1/docs/design/slides/slides-design.md",
+        "https://github.com/JimLiu/baocut/blob/b8585e0c8d7a82bdee9f0ed019cf6edb075e41c1/packages/slides-runtime/README.md",
+        "https://github.com/JimLiu/baocut/blob/b8585e0c8d7a82bdee9f0ed019cf6edb075e41c1/packages/slides/src/deck-store.test.ts",
+        "https://github.com/JimLiu/baocut/blob/b8585e0c8d7a82bdee9f0ed019cf6edb075e41c1/packages/slides/src/deck-routes.test.ts",
+        "https://github.com/JimLiu/baocut/blob/b8585e0c8d7a82bdee9f0ed019cf6edb075e41c1/packages/slides/src/deck-check.test.ts",
+        "https://github.com/JimLiu/baocut/blob/b8585e0c8d7a82bdee9f0ed019cf6edb075e41c1/LICENSE",
+        "https://github.com/JimLiu/baocut/blob/b8585e0c8d7a82bdee9f0ed019cf6edb075e41c1/THIRD_PARTY_NOTICES.md"
+      ],
+      "catalog_matches": [
+        {
+          "catalog": "resource",
+          "id": "baocut-slides-editor-case",
+          "kind": "case-study",
+          "scope": "full"
+        }
+      ]
     },
     {
       "id": "song:claude-code-analysis",
@@ -12048,18 +12063,18 @@
     "inventory_units": 541,
     "alias_merges": 2,
     "occurrences_by_state": {
-      "already-curated": 54,
-      "insufficient-evidence": 51,
-      "pending": 438
-    },
-    "units_by_state": {
-      "already-curated": 53,
+      "already-curated": 55,
       "insufficient-evidence": 51,
       "pending": 437
     },
-    "primary_reviewed_units": 49,
-    "catalog_linked_occurrences": 60,
-    "distinct_resource_ids": 51,
+    "units_by_state": {
+      "already-curated": 54,
+      "insufficient-evidence": 51,
+      "pending": 436
+    },
+    "primary_reviewed_units": 50,
+    "catalog_linked_occurrences": 61,
+    "distinct_resource_ids": 52,
     "distinct_paper_ids": 1,
     "unique_projects": null
   }

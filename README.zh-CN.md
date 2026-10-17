@@ -17,7 +17,7 @@
 <!-- BEGIN GENERATED CONTENTS -->
 **按目标找工具与案例**
 
-- [网站](#website) (15) · [游戏](#game) (42) · [应用](#app) (37)
+- [网站](#website) (16) · [游戏](#game) (42) · [应用](#app) (37)
 - [原生二进制](#native-binary) (20) · [固件与硬件](#firmware) (12) · [协议](#protocol) (11)
 
 **论文与工作流**
@@ -26,7 +26,7 @@
 
 **更多浏览方式**
 
-- [全部案例](https://awesomerea.org/zh/cases/) (50) · [相关合集](#related-collections) (4) · [完整仓库索引](#完整仓库索引) (2,839)
+- [全部案例](https://awesomerea.org/zh/cases/) (51) · [相关合集](#related-collections) (4) · [完整仓库索引](#完整仓库索引) (2,839)
 <!-- END GENERATED CONTENTS -->
 
 <a id="资源目录"></a>
@@ -56,6 +56,11 @@
   案例 · 独立重建 · [使用条件与证据](https://awesomerea.org/zh/resources/rauchg-rsc-reconstruction-case/)
 
   记录 website-rebuild-skill 的一个案例：解码浏览器收到的 React 服务端组件 Flight 流，重建可构建的 Next 项目，再与捕获站点的输出比较。作者报告的 rauchg.com 重建过程采用路由树比较与模块引用映射；新服务端源码由可观察输出推断。
+
+- [**BaoCut Slides：交互式网页编辑器改编**](https://github.com/JimLiu/baocut/tree/b8585e0c8d7a82bdee9f0ed019cf6edb075e41c1/packages/slides-runtime)<br>
+  案例 · 独立重建 · [使用条件与证据](https://awesomerea.org/zh/resources/baocut-slides-editor-case/)
+
+  记录 BaoCut 交互式幻灯片编辑器，作者称其实现借鉴自 Claude Slides。它为浏览器与桌面宿主加入本地文稿存储、HTML/CSS 编译器及标注到智能体的桥接；设计说明报告了 Web 流程检查，但未确立原有后端恢复或完整行为一致性。
 
 #### 工具、项目与集成
 
