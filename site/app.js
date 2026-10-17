@@ -2,6 +2,11 @@
 
 const UI = {
   "en": {
+    "layoutLabel": "Layout",
+    "layoutCompact": "Compact list",
+    "layoutCards": "Cards",
+    "requirementsShort": "Requirements",
+    "sourceTopicsLabel": "Topics",
     "noscriptNote": "JavaScript enables search and filters. Read the complete <a href=\"/browse/\">repository directory</a>, <a href=\"/resources/\">curated collection</a> and <a href=\"/papers/\">research papers</a> without JavaScript. <a href=\"/zh/\" lang=\"zh-CN\">简体中文</a>.",
     "exploreResources": "Explore the collection",
     "explorePapers": "Browse research papers",
@@ -114,6 +119,11 @@ const UI = {
     "sourceReadmeSize": "README bytes",
   },
   "zh": {
+    "layoutLabel": "布局",
+    "layoutCompact": "紧凑列表",
+    "layoutCards": "卡片",
+    "requirementsShort": "使用条件",
+    "sourceTopicsLabel": "主题",
     "noscriptNote": "JavaScript 用于搜索和筛选。关闭 JavaScript 仍可阅读完整的<a href=\"/zh/browse/\">仓库目录</a>、<a href=\"/zh/resources/\">精选资源</a>与<a href=\"/zh/papers/\">研究论文</a>。<a href=\"/\" lang=\"en\">English</a>。",
     "exploreResources": "浏览资源集合",
     "explorePapers": "阅读研究论文",
@@ -236,7 +246,7 @@ const RELATION = {
 };
 const params = new URLSearchParams(location.search);
 // Keep the bare homepage English; shared links explicitly select another language.
-const state = { lang: params.has("lang") ? (params.get("lang") === "zh" ? "zh" : "en") : (location.pathname.startsWith("/zh/") ? "zh" : "en"), q: params.get("q") || "", group: params.get("group") || "all", category: params.get("category") || "all", kind: params.get("kind") || "all", target: params.get("target") || "all", visible: 15, topicLabels: {}, records: [], loaded: false, error: false };
+const state = { layout: params.get("layout") === "cards" ? "cards" : "compact", lang: params.has("lang") ? (params.get("lang") === "zh" ? "zh" : "en") : (location.pathname.startsWith("/zh/") ? "zh" : "en"), q: params.get("q") || "", group: params.get("group") || "all", category: params.get("category") || "all", kind: params.get("kind") || "all", target: params.get("target") || "all", visible: 15, topicLabels: {}, records: [], loaded: false, error: false };
 const $ = (selector) => document.querySelector(selector);
 const $$ = (selector) => [...document.querySelectorAll(selector)];
 const t = (key) => UI[state.lang][key] || UI.en[key] || key;
@@ -247,7 +257,20 @@ const node = (tag, className, text) => { const el = document.createElement(tag);
 function icon(name, small = false) { if (document.documentElement.dataset.iconSet === "fontawesome") { const span = node("span", "icon fa-symbol fa-" + name + (small ? " icon-small" : "")); span.setAttribute("aria-hidden", "true"); return span; } const svg = document.createElementNS("http://www.w3.org/2000/svg", "svg"); svg.setAttribute("class", "icon" + (small ? " icon-small" : "")); svg.setAttribute("aria-hidden", "true"); const use = document.createElementNS("http://www.w3.org/2000/svg", "use"); use.setAttribute("href", "#i-" + name); svg.append(use); return svg; }
 function external(href, className, text) { const link = node("a", className, text); link.href = href; link.target = "_blank"; link.rel = "noopener noreferrer"; return link; }
 function updateURL() { const next = new URL(location.href); ["q", "group", "category", "kind", "target", "lang"].forEach(key => { const value = state[key]; if (value && value !== "all") next.searchParams.set(key, value); else next.searchParams.delete(key); }); history.replaceState(null, "", next); }
+function applyLayout() {
+  document.documentElement.dataset.layout = state.layout;
+  $("#layout-select").value = state.layout;
+}
+function changeLayout(value) {
+  state.layout = value === "cards" ? "cards" : "compact";
+  applyLayout();
+  const next = new URL(location.href);
+  if (state.layout === "cards") next.searchParams.set("layout", "cards");
+  else next.searchParams.delete("layout");
+  history.replaceState(null, "", next);
+}
 function applyLanguage() {
+  applyLayout();
   document.documentElement.lang = state.lang === "zh" ? "zh-CN" : "en";
   document.title = t("pageTitle");
   $("#browse-directory").href = state.lang === "zh" ? "/zh/browse/" : "/browse/";
@@ -278,7 +301,7 @@ function card(record) {
   const article=node("article","resource-card");article.dataset.recordId=record.id;const head=node("div","card-heading");const h3=node("h3");const title=external(record.url,"card-title-link",state.lang==="zh"?(record.name_zh||record.name):record.name);title.append(icon("external",true));h3.append(title);head.append(h3);if(record.kind)head.append(node("span","resource-kind",label(KIND,record.kind)));article.append(head);
   article.append(node("p","card-description",record[state.lang==="zh"?"description_zh":"description_en"]));
   const meta=node("div","card-meta");meta.append(node("span","card-category",label(CATEGORY,record.category)),external(record.evidence_url,"",t("readSource")+" ↗"));article.append(meta);
-  const details=node("details","requirements");details.append(node("summary","",t("requirements")));const list=node("ul");const requirements=state.lang==="zh"?(record.requirements_zh||record.requirements):record.requirements;(Array.isArray(requirements)?requirements:[requirements]).forEach(item=>list.append(node("li","",item)));details.append(list);
+  const details=node("details","requirements");const summary=node("summary");summary.append(node("span","detail-label-full",t("requirements")),node("span","detail-label-compact",t("requirementsShort")));details.append(summary);const list=node("ul");const requirements=state.lang==="zh"?(record.requirements_zh||record.requirements):record.requirements;(Array.isArray(requirements)?requirements:[requirements]).forEach(item=>list.append(node("li","",item)));details.append(list);
   const context=node("div","resource-detail-meta");const time=node("time","",t("reviewed")+" "+record.verified_at.slice(0,10));time.dateTime=record.verified_at;time.title=record.verified_at;context.append(node("span","",label(RELATION,record.relationship)),node("span","",t("sourceReviewed")),time);details.append(context);article.append(details);return article;
 }
 function filtered() { const terms=state.q.toLocaleLowerCase().trim().split(/\s+/).filter(Boolean);const found=state.records.filter(r=>(state.group==="all"||r.group===state.group)&&(state.target==="all"||r.targets.includes(state.target))&&(state.category==="all"||r.category===state.category)&&(state.kind==="all"||r.kind===state.kind)&&terms.every(term=>r.search.includes(term)));const rank=r=>{const featured=FEATURED.indexOf(r.id);if(featured>=0)return featured;return 100+({"tool":0,"integration":1,"project":2,"case-study":3,"collection":4,"research":5,"learning-resource":6,"documentation":7}[r.kind]??8);};return found.sort((a,b)=>rank(a)-rank(b)||a.order-b.order); }
@@ -312,6 +335,7 @@ $("#kind-select").addEventListener("change", event => { state.kind=event.target.
 $("#category-select").addEventListener("change", event => { state.category = event.target.value; state.visible = 15; updateURL(); if (state.loaded) render(); });
 $$('[data-group]').forEach(el => el.addEventListener("click", () => { state.group = el.dataset.group; state.visible = 15; updateURL(); if (state.loaded) render(); }));
 $$('[data-target]').forEach(el => el.addEventListener("click", () => { state.target = el.dataset.target; state.visible = 15; updateURL(); if (state.loaded) render(); }));
+$("#layout-select").addEventListener("change", event => changeLayout(event.target.value));
 $("#language-select").addEventListener("change", event => { const next = new URL(location.href); next.pathname = event.target.value === "zh" ? "/zh/" : "/"; next.searchParams.delete("lang"); location.assign(next); });
 $("#clear-filters").addEventListener("click",reset); $("#empty-reset").addEventListener("click", () => { reset(); $("#search-input").focus(); }); $("#retry-load").addEventListener("click",load);
 $("#load-more").addEventListener("click", () => { const previous = state.visible; state.visible += 15; render(); const next = $$(".card-title-link")[previous]; if (next) next.focus({preventScroll:true}); });
@@ -403,16 +427,30 @@ function sourceFiltered() {
   }
   return result;
 }
+function sourceTopicButtons(record, limit = 4) {
+  if (!record.topics.length) return null;
+  const topics = node("div", "source-topics");
+  record.topics.slice(0, limit).forEach(topic => {
+    const button = node("button", "source-topic-chip", topicLabel(topic));
+    button.type = "button"; button.title = t("sourceTopicHint") + ": " + topic;
+    button.addEventListener("click", () => { sourceState.topic = topic; sourceState.visible = 24; syncTopicInput(); sourceURL(); renderSources(); });
+    topics.append(button);
+  });
+  return topics;
+}
 function sourceCard(record) {
   const article = node("article","source-card"); article.dataset.recordId=record.id; const head = node("div","source-card-head"); const title = node("h3"); const link = external(record.url,"source-title-link"); const separator = record.full_name.indexOf("/"); if (separator > 0) { link.append(node("span","source-owner",record.full_name.slice(0,separator+1)),node("span","source-project",record.full_name.slice(separator+1))); } else { link.append(node("span","source-project",record.full_name)); } link.append(icon("external",true)); title.append(link); head.append(title);
   if (Number.isFinite(record.stars)) { const stars = node("span","source-stars",record.stars.toLocaleString(state.lang === "zh" ? "zh-CN" : "en-US") + " " + t("sourceStars")); stars.title = t("sourceStarsTitle"); head.append(stars); } article.append(head);
   const description = record[state.lang === "zh" ? "description_zh" : "description_en"];
   article.append(node("p","source-card-description" + (!description ? " source-card-empty" : ""),description || t(record.description_omission ? "sourceOmittedDescription" : "sourceNoDescription")));
   const related = sourceRelatedLinks(record); if (related) article.append(related);
-  if (record.topics.length) { const topics = node("div","source-topics"); record.topics.slice(0,4).forEach(topic => { const button = node("button","source-topic-chip",topicLabel(topic)); button.type = "button"; button.title = t("sourceTopicHint") + ": " + topic; button.addEventListener("click",() => { sourceState.topic = topic; sourceState.visible = 24; syncTopicInput(); sourceURL(); renderSources(); }); topics.append(button); }); article.append(topics); }
+  const topics = sourceTopicButtons(record); if (topics) article.append(topics);
   const footer = node("div","source-card-footer"); footer.append(external(record.readme_url || record.url,"","README ↗")); const license = typeof record.license === "string" && record.license.trim() && record.license.toUpperCase() !== "NOASSERTION" ? record.license : t("sourceLicenseUnknown"); footer.append(node("span","source-card-license",license)); article.append(footer);
   const details = node("details","source-record-details"); details.append(node("summary","",t("sourceScanDetails"))); const dl = node("dl");
-  [[t("indexStatusLabel"),t("sourceScanStatus")],[t("sourceRequirementsLabel"),t("sourceRequirements")],[t("sourcePushedAt"),sourceTime(record.pushed_at)],[t("sourceReadmeAt"),sourceTime(record.observed_at)],[t("sourceMetadataAt"),sourceTime(record.metadata_observed_at)],[t("sourceHash"),record.readme_sha256 || t("sourceNotRecorded")],[t("sourceRevision"),record.readme_git_sha || t("sourceNotRecorded")],[t("sourceReadmeSize"),record.readme_bytes != null ? Number(record.readme_bytes).toLocaleString() : t("sourceNotRecorded")]].forEach(([label,value]) => dl.append(node("dt","",label),node("dd","",String(value)))); details.append(dl); article.append(details); return article;
+  [[t("indexStatusLabel"),t("sourceScanStatus")],[t("sourceRequirementsLabel"),t("sourceRequirements")],[t("sourcePushedAt"),sourceTime(record.pushed_at)],[t("sourceReadmeAt"),sourceTime(record.observed_at)],[t("sourceMetadataAt"),sourceTime(record.metadata_observed_at)],[t("sourceHash"),record.readme_sha256 || t("sourceNotRecorded")],[t("sourceRevision"),record.readme_git_sha || t("sourceNotRecorded")],[t("sourceReadmeSize"),record.readme_bytes != null ? Number(record.readme_bytes).toLocaleString() : t("sourceNotRecorded")]].forEach(([label,value]) => dl.append(node("dt","",label),node("dd","",String(value)))); const compactContext = node("div", "source-compact-context");
+  const compactRelated = sourceRelatedLinks(record); if (compactRelated) compactContext.append(compactRelated);
+  const compactTopics = sourceTopicButtons(record, Infinity); if (compactTopics) { compactContext.append(node("p", "source-compact-topics", t("sourceTopicsLabel")), compactTopics); }
+  details.append(compactContext, dl); article.append(details); return article;
 }
 function renderSources() {
   if (!sourceState.loaded) return; const expanded = new Set($$(".source-card:has(details[open])").map(el=>el.dataset.recordId)); const found = sourceFiltered(); const fragment = document.createDocumentFragment(); found.slice(0,sourceState.visible).forEach(record => fragment.append(sourceCard(record))); $("#source-results").replaceChildren(fragment); $$(".source-card").forEach(el=>{if(expanded.has(el.dataset.recordId))el.querySelector("details").open=true;}); $("#source-results").setAttribute("aria-busy","false");
