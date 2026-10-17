@@ -90,9 +90,12 @@ def _resource_content(record: dict, language: str) -> tuple[str, str, str]:
              (label('Relationship', '关联'), RELATIONSHIPS[record['relationship']][int(zh)]),
              (label('Targets', '目标'), ' · '.join(TARGETS[t][int(zh)] for t in record['targets']))]
     requirements = ''.join(f'<li>{escape(item)}</li>' for item in _requirements(record, language))
+    links = [_link(record['url'], label('Visit original resource', '访问原始资源'), primary=True)]
+    if record['evidence_url'] != record['url']:
+        links.append(_link(record['evidence_url'], label('Primary source', '一手来源')))
     content = f'''<header class="entry-heading"><p class="entry-eyebrow">{escape(kind)}</p><h1>{escape(title)}</h1>
   <p class="entry-description">{escape(description)}</p></header>
-<nav class="entry-actions" aria-label="{label('Resource links', '资源链接')}">{_link(record['url'], label('Visit original resource', '访问原始资源'), primary=True)}{_link(record['evidence_url'], label('Primary source', '一手来源'))}</nav>
+<nav class="entry-actions" aria-label="{label('Resource links', '资源链接')}">{''.join(links)}</nav>
 <section class="entry-section" aria-labelledby="entry-requirements"><h2 id="entry-requirements">{label('Requirements and limitations', '使用条件与局限')}</h2><ul class="entry-requirements">{requirements}</ul></section>
 <section class="entry-section" aria-labelledby="entry-review"><h2 id="entry-review">{label('About this entry', '关于此条目')}</h2>{_definitions(facts)}
 <p class="entry-reviewed">{label('Sources reviewed', '来源复核于')} <time datetime="{escape(record['verified_at'], quote=True)}">{escape(record['verified_at'][:10])}</time></p>
