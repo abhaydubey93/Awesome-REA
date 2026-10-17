@@ -1,7 +1,7 @@
 {
   "schema_version": 1,
   "reviewed_at": "2026-10-17",
-  "catalog_revision": "2ad1320f848c4b81d14dfc4b7a8e58f94020709a",
+  "catalog_revision": "2fa65cc693d18841489d5d173bad0ec239d23f7e",
   "runtime_reproduced": false,
   "project_identity_resolution": "incomplete",
   "collections": [
@@ -131,6 +131,10 @@
           "bytes": 1813
         }
       ],
+      "locator_templates": [
+        "cases/{entry}.md",
+        "cases/en/{entry}.md"
+      ],
       "catalog_resource_id": "awesome-rea-cases"
     },
     {
@@ -195,6 +199,13 @@
           "sha256": "391a9170b9ba865fc5b2127b668793e87a479fc358c580bcf2a50b1816d25552",
           "bytes": 1229
         }
+      ],
+      "locator_templates": [
+        "categories/console-and-firmware.md",
+        "categories/game-decompilation.md",
+        "categories/related-practices-discussions.md",
+        "categories/static-recompilation-native-ports.md",
+        "categories/tooling-and-mcp.md"
       ],
       "catalog_resource_id": "yibie-awesome-rea"
     }
@@ -2298,13 +2309,27 @@
         "https://x.com/i/status/2109705658907959786",
         "https://github.com/nanolathe-gg/nanolathe"
       ],
-      "state": "pending",
-      "review_level": "inventory-only",
+      "state": "already-curated",
+      "review_level": "primary-source-reviewed",
       "reviewed_at": "2026-10-17",
-      "reason_en": "A collection lead awaiting primary-source review; listing does not verify implementation or results.",
-      "reason_zh": "合集线索，等待一手来源核查；被列入合集不代表实现或结果已获验证。",
-      "primary_evidence_urls": [],
-      "catalog_matches": []
+      "reason_en": "Primary sources reviewed for a bounded case; author-reported outcomes were not independently reproduced.",
+      "reason_zh": "已核查此有限范围案例的一手来源；未独立复现作者报告的结果。",
+      "primary_evidence_urls": [
+        "https://github.com/nanolathe-gg/nanolathe/blob/5007ba75354c06fc9752a2822d37ff1e1443b77b/README.md",
+        "https://github.com/nanolathe-gg/nanolathe/blob/5007ba75354c06fc9752a2822d37ff1e1443b77b/go.mod",
+        "https://github.com/nanolathe-gg/nanolathe/blob/5007ba75354c06fc9752a2822d37ff1e1443b77b/NOTICE.md",
+        "https://github.com/nanolathe-gg/nanolathe/blob/5007ba75354c06fc9752a2822d37ff1e1443b77b/docs/PUBLICATION.md",
+        "https://github.com/nanolathe-gg/nanolathe/blob/5007ba75354c06fc9752a2822d37ff1e1443b77b/research/retail-executable-spec/README.md",
+        "https://github.com/nanolathe-gg/nanolathe/blob/5007ba75354c06fc9752a2822d37ff1e1443b77b/LICENSE"
+      ],
+      "catalog_matches": [
+        {
+          "catalog": "resource",
+          "id": "nanolathe-case",
+          "kind": "case-study",
+          "scope": "full"
+        }
+      ]
     },
     {
       "id": "song:android-priv-app-permission-inspection",
@@ -2339,13 +2364,25 @@
         "https://x.com/i/status/2109713514990379076",
         "https://github.com/kristjaningi/cooler-lcd"
       ],
-      "state": "pending",
-      "review_level": "inventory-only",
+      "state": "already-curated",
+      "review_level": "primary-source-reviewed",
       "reviewed_at": "2026-10-17",
-      "reason_en": "A collection lead awaiting primary-source review; listing does not verify implementation or results.",
-      "reason_zh": "合集线索，等待一手来源核查；被列入合集不代表实现或结果已获验证。",
-      "primary_evidence_urls": [],
-      "catalog_matches": []
+      "reason_en": "Primary sources reviewed for a bounded case; author-reported outcomes were not independently reproduced.",
+      "reason_zh": "已核查此有限范围案例的一手来源；未独立复现作者报告的结果。",
+      "primary_evidence_urls": [
+        "https://github.com/kristjaningi/cooler-lcd/blob/9a343678ba102de784b2302f79c53fd6ddc31ab9/README.md",
+        "https://github.com/kristjaningi/cooler-lcd/blob/9a343678ba102de784b2302f79c53fd6ddc31ab9/Cargo.toml",
+        "https://github.com/kristjaningi/cooler-lcd/blob/9a343678ba102de784b2302f79c53fd6ddc31ab9/src/device.rs",
+        "https://github.com/kristjaningi/cooler-lcd/blob/9a343678ba102de784b2302f79c53fd6ddc31ab9/LICENSE"
+      ],
+      "catalog_matches": [
+        {
+          "catalog": "resource",
+          "id": "cooler-lcd-case",
+          "kind": "case-study",
+          "scope": "full"
+        }
+      ]
     },
     {
       "id": "song:camera-firmware-vm-boot",
@@ -2561,13 +2598,23 @@
         "https://x.com/i/status/2109767636452265990",
         "https://github.com/cudanexus/vd-streamer-linux"
       ],
-      "state": "pending",
-      "review_level": "inventory-only",
+      "state": "already-curated",
+      "review_level": "primary-source-reviewed",
       "reviewed_at": "2026-10-17",
-      "reason_en": "A collection lead awaiting primary-source review; listing does not verify implementation or results.",
-      "reason_zh": "合集线索，等待一手来源核查；被列入合集不代表实现或结果已获验证。",
-      "primary_evidence_urls": [],
-      "catalog_matches": []
+      "reason_en": "Primary sources reviewed for a bounded case; author-reported outcomes were not independently reproduced.",
+      "reason_zh": "已核查此有限范围案例的一手来源；未独立复现作者报告的结果。",
+      "primary_evidence_urls": [
+        "https://github.com/cudanexus/vd-streamer-linux/blob/e65c302f13639f044742bdc4951ab1a424c1c929/README.md",
+        "https://github.com/cudanexus/vd-streamer-linux/blob/e65c302f13639f044742bdc4951ab1a424c1c929/LICENSE"
+      ],
+      "catalog_matches": [
+        {
+          "catalog": "resource",
+          "id": "vd-streamer-linux-case",
+          "kind": "case-study",
+          "scope": "full"
+        }
+      ]
     },
     {
       "id": "song:lg-tv-native-claude-code",
@@ -2870,13 +2917,26 @@
         "https://x.com/i/status/2111061622521536967",
         "https://github.com/Caho1/open-claude-ui"
       ],
-      "state": "pending",
-      "review_level": "inventory-only",
+      "state": "already-curated",
+      "review_level": "primary-source-reviewed",
       "reviewed_at": "2026-10-17",
-      "reason_en": "A collection lead awaiting primary-source review; listing does not verify implementation or results.",
-      "reason_zh": "合集线索，等待一手来源核查；被列入合集不代表实现或结果已获验证。",
-      "primary_evidence_urls": [],
-      "catalog_matches": []
+      "reason_en": "Primary sources reviewed for a bounded case; author-reported outcomes were not independently reproduced.",
+      "reason_zh": "已核查此有限范围案例的一手来源；未独立复现作者报告的结果。",
+      "primary_evidence_urls": [
+        "https://github.com/Caho1/open-claude-ui/blob/ddf3aea1711db62fd6d24343bbab500a5ae69f64/README.md",
+        "https://github.com/Caho1/open-claude-ui/blob/ddf3aea1711db62fd6d24343bbab500a5ae69f64/package.json",
+        "https://github.com/Caho1/open-claude-ui/blob/ddf3aea1711db62fd6d24343bbab500a5ae69f64/assets/README.md",
+        "https://github.com/Caho1/open-claude-ui/blob/ddf3aea1711db62fd6d24343bbab500a5ae69f64/docs/v2/README.md",
+        "https://github.com/Caho1/open-claude-ui/blob/ddf3aea1711db62fd6d24343bbab500a5ae69f64/LICENSE"
+      ],
+      "catalog_matches": [
+        {
+          "catalog": "resource",
+          "id": "open-claude-ui-case",
+          "kind": "case-study",
+          "scope": "full"
+        }
+      ]
     },
     {
       "id": "song:fort-apocalypse-android-port",
@@ -3900,13 +3960,25 @@
         "https://x.com/i/status/2110628235797217327",
         "https://github.com/whylurking/IsaacRecomp"
       ],
-      "state": "pending",
-      "review_level": "inventory-only",
+      "state": "already-curated",
+      "review_level": "primary-source-reviewed",
       "reviewed_at": "2026-10-17",
-      "reason_en": "A collection lead awaiting primary-source review; listing does not verify implementation or results.",
-      "reason_zh": "合集线索，等待一手来源核查；被列入合集不代表实现或结果已获验证。",
-      "primary_evidence_urls": [],
-      "catalog_matches": []
+      "reason_en": "Primary sources reviewed for a bounded case; author-reported outcomes were not independently reproduced.",
+      "reason_zh": "已核查此有限范围案例的一手来源；未独立复现作者报告的结果。",
+      "primary_evidence_urls": [
+        "https://github.com/whylurking/IsaacRecomp/blob/7736f3d2961051b66cd315bcf5a719e9024d889d/README.md",
+        "https://github.com/whylurking/IsaacRecomp/blob/7736f3d2961051b66cd315bcf5a719e9024d889d/LICENSE",
+        "https://github.com/whylurking/IsaacRecomp/blob/7736f3d2961051b66cd315bcf5a719e9024d889d/CMakeLists.txt",
+        "https://github.com/whylurking/IsaacRecomp/blob/7736f3d2961051b66cd315bcf5a719e9024d889d/THIRD-PARTY-LICENSES.txt"
+      ],
+      "catalog_matches": [
+        {
+          "catalog": "resource",
+          "id": "isaacrecomp-case",
+          "kind": "case-study",
+          "scope": "full"
+        }
+      ]
     },
     {
       "id": "song:legacy-binary-agent-api-hallucination",
@@ -8088,18 +8160,18 @@
     "inventory_units": 370,
     "alias_merges": 2,
     "occurrences_by_state": {
-      "already-curated": 23,
+      "already-curated": 28,
       "insufficient-evidence": 49,
-      "pending": 300
+      "pending": 295
     },
     "units_by_state": {
-      "already-curated": 22,
+      "already-curated": 27,
       "insufficient-evidence": 49,
-      "pending": 299
+      "pending": 294
     },
-    "primary_reviewed_units": 10,
-    "catalog_linked_occurrences": 24,
-    "distinct_resource_ids": 22,
+    "primary_reviewed_units": 15,
+    "catalog_linked_occurrences": 29,
+    "distinct_resource_ids": 27,
     "distinct_paper_ids": 1,
     "unique_projects": null
   }

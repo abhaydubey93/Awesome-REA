@@ -37,6 +37,7 @@ def fixture():
         'runtime_reproduced': False, 'project_identity_resolution': 'incomplete',
         'collections': [{'id': 'one', 'repository_url': REPOSITORY, 'commit': PIN,
                          'entry_count': 3, 'catalog_resource_id': 'example-list',
+                         'locator_templates': ['README.md'],
                          'source_files': [{'path': 'README.md', 'url': FILE, 'git_blob_sha': 'b' * 40,
                                            'sha256': 'c' * 64, 'bytes': 50}]}],
         'entries': [entry('one:first', 'one:first'), entry('one:alias', 'one:first'),
@@ -103,6 +104,7 @@ class CaseCoverageTests(unittest.TestCase):
     def test_source_pins_and_public_url_boundary(self):
         for url in [REPOSITORY + '/blob/main/README.md', FILE + '?ref=main',
                     REPOSITORY + '/blob/' + PIN + '/../main/README.md',
+                    REPOSITORY + '/blob/' + PIN + '/unreceipted.md',
                     'https://example.org/README.md', 'https://localhost/readme']:
             with self.subTest(url=url):
                 document = fixture(); document['entries'][0]['collection_urls'] = [url]
@@ -110,6 +112,15 @@ class CaseCoverageTests(unittest.TestCase):
         document = fixture(); document['entries'][0]['reported_source_urls'] = ['https://name:secret@example.org/']
         self.assertTrue(self.errors(document))
         document = fixture(); document['collections'][0]['source_files'][0]['git_blob_sha'] = 'invalid'
+        self.assertTrue(self.errors(document))
+
+    def test_case_file_locator_must_match_its_occurrence_slug(self):
+        document = fixture(); document['collections'][0]['locator_templates'] = ['cases/{entry}.md']
+        for entry in document['entries']:
+            entry['collection_urls'] = [REPOSITORY + '/blob/' + PIN + '/cases/' + entry['id'].split(':')[1] + '.md']
+        document['aliases'][0]['evidence_urls'] = [url for entry in document['entries'][:2] for url in entry['collection_urls']]
+        self.assertEqual(self.errors(document), [])
+        document['entries'][0]['collection_urls'] = document['entries'][1]['collection_urls']
         self.assertTrue(self.errors(document))
 
     def test_collection_counts_ids_and_unknown_fields(self):

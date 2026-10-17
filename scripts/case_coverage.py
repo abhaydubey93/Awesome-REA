@@ -96,6 +96,9 @@ def validate_case_coverage(document, resources, papers, errors, *, url_check):
                 and bool(re.fullmatch(r'[A-Za-z0-9_.-]+(?:/[A-Za-z0-9_.-]+)*', suffix))
                 and all(part not in {'.', '..'} for part in suffix.split('/')))
 
+    def string_values(value):
+        return [item for item in value if isinstance(item, str)] if isinstance(value, list) else []
+
     if not fields(document, TOP_FIELDS, 'document'):
         return
     if PRIVATE.search(json.dumps(document, ensure_ascii=False)):
@@ -116,7 +119,7 @@ def validate_case_coverage(document, resources, papers, errors, *, url_check):
                 'paper': {r['id']: r for r in papers if isinstance(r, dict) and isinstance(r.get('id'), str)}}
     sources = {}
     for source in document['collections']:
-        if not fields(source, {'id', 'repository_url', 'commit', 'entry_count', 'source_files', 'catalog_resource_id'}, 'collection'):
+        if not fields(source, {'id', 'repository_url', 'commit', 'entry_count', 'source_files', 'catalog_resource_id', 'locator_templates'}, 'collection'):
             continue
         identifier = source['id']
         if not isinstance(identifier, str) or not re.fullmatch(r'[a-z][a-z0-9-]*', identifier) or identifier in sources:
@@ -129,7 +132,8 @@ def validate_case_coverage(document, resources, papers, errors, *, url_check):
             continue
         sources[identifier] = source
         target = catalogs['resource'].get(source['catalog_resource_id']) if isinstance(source['catalog_resource_id'], str) else None
-        if not target or target.get('kind') != 'collection' or target.get('url', '').casefold().rstrip('/') != repository.casefold():
+        if (not target or target.get('kind') != 'collection' or not isinstance(target.get('url'), str)
+                or target['url'].casefold().rstrip('/') != repository.casefold()):
             fail(identifier + ' collection catalog mapping does not resolve')
         if type(source['entry_count']) is not int or source['entry_count'] <= 0 or not isinstance(source['source_files'], list) or not source['source_files']:
             fail(identifier + ' needs a positive count and source file receipts')
@@ -151,6 +155,15 @@ def validate_case_coverage(document, resources, papers, errors, *, url_check):
                     fail(identifier + ' has invalid source receipt hash')
             if type(receipt['bytes']) is not int or receipt['bytes'] <= 0:
                 fail(identifier + ' has invalid source receipt byte count')
+        templates = source['locator_templates']
+        if not isinstance(templates, list) or not templates or len(templates) != len(set(string_values(templates))):
+            fail(identifier + ' needs unique locator templates')
+        else:
+            for template in templates:
+                if (not isinstance(template, str) or template.count('{entry}') > 1
+                        or not pinned_locator(repository + '/blob/' + source['commit'] + '/' + template.replace('{entry}', 'example'), source)
+                        or ('{entry}' not in template and template not in paths)):
+                    fail(identifier + ' locator template must use one entry slug or a receipted source file')
     ids, groups, populations = set(), defaultdict(list), Counter()
     for entry in document['entries']:
         if not fields(entry, ENTRY_FIELDS, 'entry'):
@@ -173,6 +186,10 @@ def validate_case_coverage(document, resources, papers, errors, *, url_check):
             if urls(entry['collection_urls'], identifier + ' locators', required=True):
                 if any(not pinned_locator(url, source) for url in entry['collection_urls']):
                     fail(identifier + ' locator is outside its pinned collection')
+                expected = {source['repository_url'] + '/blob/' + source['commit'] + '/' + template.replace('{entry}', identifier.split(':', 1)[1])
+                            for template in string_values(source['locator_templates'])}
+                if not set(entry['collection_urls']).issubset(expected):
+                    fail(identifier + ' locator does not match its entry or receipted category')
         text(entry['title'], identifier + ' title')
         text(entry['reason_en'], identifier + ' reason_en')
         text(entry['reason_zh'], identifier + ' reason_zh', chinese=True)
@@ -198,8 +215,8 @@ def validate_case_coverage(document, resources, papers, errors, *, url_check):
                 fail(identifier + ' catalog match is missing, duplicated or has the wrong kind')
             elif isinstance(entry['primary_evidence_urls'], list):
                 target_sources = ([target.get('url'), target.get('evidence_url'),
-                                   *target.get('additional_evidence_urls', [])] if catalog == 'resource'
-                                  else [target.get('url'), *target.get('evidence_urls', [])])
+                                   *string_values(target.get('additional_evidence_urls', []))] if catalog == 'resource'
+                                  else [target.get('url'), *string_values(target.get('evidence_urls', []))])
                 if not any(url in entry['primary_evidence_urls'] for url in target_sources if isinstance(url, str)):
                     fail(identifier + ' catalog mapping is not bound to that record’s sources')
             matched.add((catalog, key))
