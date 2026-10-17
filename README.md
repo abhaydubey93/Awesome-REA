@@ -136,6 +136,8 @@ Each entry appears once under its main purpose. The collection includes independ
 ### Protocols
 
 - [hw-harness: scanner USB protocol investigation](https://github.com/cschalle/hw-harness) — Documents an author-reported scanner investigation comparing vendor-driver USB control transfers with Linux-driver traces to infer initialization, timing and resolution parameters. The released harness organizes reference capture and comparison; it does not automatically recover a complete protocol specification. **[Case study · Independent reconstruction]**
+- [Netzob](https://github.com/netzob/netzob) — Model communication protocols and infer message layouts from traces, with configured active learning for protocol state machines. Python APIs expose message fields, symbols and automata for parsing, traffic generation and fuzzing. **[Tool]**
+- [Scapy](https://github.com/secdev/scapy) — Script packet dissection, construction, request/reply matching and capture-file analysis in Python. Custom packet fields and layer bindings let analysts encode understood wire formats and investigate protocol behavior. **[Tool]**
 
 <a id="agents-and-mcp"></a>
 ### Agents and MCP
@@ -193,7 +195,7 @@ Each entry appears once under its main purpose. The collection includes independ
 <a id="papers"></a>
 ## Papers
 
-A bibliography of **27 papers** on reverse-engineering agent evaluation, decompilation, protocol inference, firmware analysis, and website, game, and app reconstruction. Some papers also appear among curated resources; counts are not additive. Publication status and study scope are made explicit.
+A bibliography of **29 papers** on reverse-engineering agent evaluation, decompilation, protocol inference, firmware analysis, and website, game, and app reconstruction. Some papers also appear among curated resources; counts are not additive. Publication status and study scope are made explicit.
 
 [Browse the paper directory](https://awesomerea.org/papers/) · [Complete bibliography JSON](data/papers.json) · [Suggest a paper](https://github.com/reacher-z/Awesome-REA/issues/new?template=paper.yml)
 
@@ -290,6 +292,22 @@ A bibliography of **27 papers** on reverse-engineering agent evaluation, decompi
     **Scope and limits:** This is learned identifier naming, not complete source reconstruction or an autonomous agent. Its reported results concern an x86-64 C corpus and depend on decompiler output. The original author repository is deprecated and points to a successor.
 
 ### Website reconstruction
+
+- [Vision2Web: A Hierarchical Benchmark for Visual Website Development with Agent Verification](https://proceedings.mlr.press/v306/he26n.html) — **2026 · ICML 2026 · Conference paper**
+
+    Zehai He et al. · [PDF](https://raw.githubusercontent.com/mlresearch/v306/main/assets/he26n/he26n.pdf) · [Code](https://github.com/zai-org/Vision2Web)
+
+    Benchmarks website development from visual prototypes and written requirements across 100 static-page, 66 interactive-frontend and 27 full-stack tasks, combining workflow-based functional checks with model-judged visual comparison.
+
+    **Scope and limits:** The full-stack tier is specification-driven, not reconstruction solely by exploring a live website. Workflows test state management and CRUD outcomes, but finite agent judgments do not establish exact backend or durable-database equivalence. The current public evaluator maintains a browser session within each workflow and permits local business-API checks; this is not a universal persistence proof.
+
+- [ProgramDistill: From Interactive Web Apps to Verifiable Reference-Guided SWE Tasks](https://arxiv.org/abs/2609.18805) — **2026 · arXiv · Preprint**
+
+    Jeonghye Kim et al. · [PDF](https://arxiv.org/pdf/2609.18805v1) · [Code](https://huggingface.co/datasets/microsoft/ProgramDistill)
+
+    Evaluates recovery of web-app behavior from a live reference with hidden source. It provides 4,063 feature-restoration tasks across 26 applications and a separate 12-application reconstruction setting, scored by replaying dependent browser workflows.
+
+    **Scope and limits:** Tests cover finite, model-mined behaviors in self-contained apps, including SaaS clones. Persistence failures can be detected through replayed workflows, but passing does not establish all backend or database invariants. Evaluated agents receive structured browser observations without screenshots; visual fidelity is not measured. Public verifiers and reference solutions are not a contamination-resistant test set.
 
 - [Dashboard2Code: Evaluating Multimodal Models on Reconstructing Interactive Dashboards](https://aclanthology.org/2026.acl-long.1750/) — **2026 · ACL 2026 · Conference paper**
 

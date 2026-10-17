@@ -1889,5 +1889,71 @@
       "Hardware outcomes and Claude involvement are author-reported; this collection did not run the harness or reproduce the scanner results. REA use is unconfirmed, and no complete device or original-source recovery is claimed.",
       "The pinned harness code is MIT-licensed. Vendor software and driver dependencies remain separate inputs."
     ]
+  },
+  {
+    "id": "netzob",
+    "name": "Netzob",
+    "url": "https://github.com/netzob/netzob",
+    "category": "protocol-analysis",
+    "relationship": "foundation",
+    "kind": "tool",
+    "targets": [
+      "protocol"
+    ],
+    "description_en": "Model communication protocols and infer message layouts from traces, with configured active learning for protocol state machines. Python APIs expose message fields, symbols and automata for parsing, traffic generation and fuzzing.",
+    "description_zh": "对通信协议建模并从流量记录推断报文布局，通过配置主动学习来推断协议状态机。Python API 提供报文字段、符号和自动机，用于解析、流量生成及模糊测试。",
+    "evidence_url": "https://github.com/netzob/netzob/blob/088fe769e98e0bfbd3ed99e66b3982446bf8d197/README.rst",
+    "verified_at": "2026-10-17T02:53:06.350416Z",
+    "verification": "source-reviewed",
+    "requirements": [
+      "The upstream README requires Python 3.8+; the reviewed release metadata lists Linux x86/x64. Source builds need native build tools, Python headers, libpcap/libffi development libraries and the documented Graph::Easy dependency.",
+      "Latest PyPI release at review: 2.0.0, uploaded 2023-01-08. The reviewed source head identifies itself as 2.0.1.dev0, not a newer stable release. Its build pins Cython 0.29.32 and older dependencies including NumPy 1.24.1; compatibility with newer Python environments was not tested.",
+      "Provide representative raw/PCAP messages and analyst-selected models or symbols. Active grammar learning requires input/output symbols, a communication channel and target process control. The current inference documentation is explicitly unfinished; older GUI tutorials should not be treated as the current Python-library workflow.",
+      "GPL-3.0-or-later in the reviewed source notices; documentation uses CC-BY-SA. Inference and generated models require analyst validation and do not establish complete protocol semantics or device/application recovery. No installation, active queries or fuzzing were run."
+    ],
+    "additional_evidence_urls": [
+      "https://github.com/netzob/netzob/blob/088fe769e98e0bfbd3ed99e66b3982446bf8d197/setup.py",
+      "https://github.com/netzob/netzob/blob/088fe769e98e0bfbd3ed99e66b3982446bf8d197/pyproject.toml",
+      "https://github.com/netzob/netzob/blob/088fe769e98e0bfbd3ed99e66b3982446bf8d197/src/netzob/release.py",
+      "https://github.com/netzob/netzob/blob/088fe769e98e0bfbd3ed99e66b3982446bf8d197/COPYING.txt",
+      "https://github.com/netzob/netzob/blob/088fe769e98e0bfbd3ed99e66b3982446bf8d197/src/netzob/Inference/Grammar/ActiveGrammarInferer.py",
+      "https://github.com/netzob/netzob/blob/088fe769e98e0bfbd3ed99e66b3982446bf8d197/src/netzob/Inference/Grammar/all.py",
+      "https://github.com/netzob/netzob/blob/088fe769e98e0bfbd3ed99e66b3982446bf8d197/doc/documentation/source/tutorials/discover_features.rst",
+      "https://github.com/netzob/netzob/blob/088fe769e98e0bfbd3ed99e66b3982446bf8d197/doc/documentation/source/index.rst",
+      "https://netzob.github.io/netzob/installation/python.html",
+      "https://pypi.org/project/Netzob/2.0.0/",
+      "https://github.com/netzob/netzob/blob/088fe769e98e0bfbd3ed99e66b3982446bf8d197/src/netzob/Inference/Grammar/GenericMAT.py"
+    ]
+  },
+  {
+    "id": "scapy",
+    "name": "Scapy",
+    "url": "https://github.com/secdev/scapy",
+    "category": "protocol-analysis",
+    "relationship": "foundation",
+    "kind": "tool",
+    "targets": [
+      "protocol"
+    ],
+    "description_en": "Script packet dissection, construction, request/reply matching and capture-file analysis in Python. Custom packet fields and layer bindings let analysts encode understood wire formats and investigate protocol behavior.",
+    "description_zh": "使用 Python 编写报文解析、构造、请求／响应匹配及捕获文件分析流程；自定义报文字段与层绑定可将已理解的线格式编码为可操作模型，辅助研究协议行为。",
+    "evidence_url": "https://github.com/secdev/scapy/blob/e2e35c07bce2f40e7513e1b29a6d300d5329dbc3/README.md",
+    "verified_at": "2026-10-17T02:53:06.350416Z",
+    "verification": "source-reviewed",
+    "requirements": [
+      "Reviewed stable release: 2.8.0, published 2026-10-02. Its package metadata requires Python >=3.7,<4; upstream says the 2.8 major version is the last to support Python 3.7 and 3.8. Use release-matched documentation rather than older cached version pages.",
+      "Linux, macOS and BSD have documented platform support; Windows requires Npcap. Live capture or packet transmission needs suitable interfaces and privileges. Offline capture analysis is a separate workflow, and libpcap requirements vary by platform and feature.",
+      "Optional features have additional dependencies, such as cryptography for cryptographic functionality and plotting tools for visual reports. Unknown formats require suitable custom Packet/Field definitions and bindings; dissection does not automatically infer complete protocol semantics or peer implementations.",
+      "GPL-2.0-only in the reviewed package metadata, with dependency and capture-driver licenses separate. The 2.8.0 release notes describe security fixes; this entry is source-reviewed, not an independent runtime or security assessment. No installation, capture or packet transmission was performed."
+    ],
+    "additional_evidence_urls": [
+      "https://github.com/secdev/scapy/blob/e2e35c07bce2f40e7513e1b29a6d300d5329dbc3/pyproject.toml",
+      "https://github.com/secdev/scapy/blob/e2e35c07bce2f40e7513e1b29a6d300d5329dbc3/LICENSE",
+      "https://github.com/secdev/scapy/blob/e2e35c07bce2f40e7513e1b29a6d300d5329dbc3/doc/scapy/installation.rst",
+      "https://github.com/secdev/scapy/blob/e2e35c07bce2f40e7513e1b29a6d300d5329dbc3/doc/scapy/build_dissect.rst",
+      "https://scapy.readthedocs.io/en/stable/introduction.html",
+      "https://github.com/secdev/scapy/releases/tag/v2.8.0",
+      "https://pypi.org/project/scapy/2.8.0/"
+    ]
   }
 ]
