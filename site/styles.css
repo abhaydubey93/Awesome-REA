@@ -293,6 +293,7 @@ html[lang="zh-CN"] .collection-intro h1{letter-spacing:-.6px}
 .contributors-section{display:grid;grid-template-columns:1fr 2fr;gap:30px;border-top:1px solid var(--line);padding-top:30px;padding-bottom:35px;align-items:center}
 .contributors-section .eyebrow{font-size:9px;letter-spacing:1.3px;margin-bottom:8px}
 .contributors-section h2{font-size:22px;font-weight:600;letter-spacing:-.5px;margin:0}
+.contributor-list{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:28px}
 .contributor-entry{display:flex;gap:16px;align-items:flex-start}
 .contributor-monogram{display:grid;place-items:center;background:#f3f1fb;border:1px solid #e8e4f4;border-radius:50%;width:44px;height:44px;flex-shrink:0;font:16px Georgia,serif;color:var(--link)}
 .contributor-name{font-size:14px;font-weight:650}
@@ -307,3 +308,5 @@ html[lang="zh-CN"] .shelf-note{font-family:var(--sans);font-style:normal}
 @media(max-width:520px){.home-intro{padding:30px 0 24px}.home-intro h1{font-size:39px;line-height:1.12;letter-spacing:-1.9px}.home-intro h1 em{letter-spacing:-1.7px}.home-intro .eyebrow{font-size:9px;margin-bottom:17px;letter-spacing:1.4px}.home-intro .collection-description{font-size:14px;line-height:1.8;margin-top:17px}.hero-actions{gap:9px 18px;margin-top:20px}.hero-actions .button{padding:11px 14px;font-size:12px}.hero-text-link{font-size:12px}.home-intro .collection-directory{margin-top:20px;padding:16px 0;gap:12px 19px}.home-intro .collection-directory a{font-size:10px;gap:5px}.home-intro .collection-directory strong{font-size:20px}.home-intro .collection-directory .directory-about{width:100%;font-size:11px}.subject-directory{margin-top:15px;gap:7px}.subject-directory a{font-size:11px;padding:10px 9px;gap:7px}.subject-arrow{display:none}.contributors-section{grid-template-columns:1fr;gap:22px;padding-top:26px;padding-bottom:30px}html[lang="zh-CN"] .home-intro h1{font-size:37px}}
 @media(prefers-reduced-motion:reduce){.shelf-arrow,.subject-directory a{transition:none}.shelf-link:hover .shelf-arrow{transform:none}}
 @media(max-width:520px){.hero-actions{gap:8px 12px}.hero-text-link{font-size:11px}.home-intro .collection-directory{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:12px}.home-intro .collection-directory a:not(.directory-about){display:flex;flex-direction:column;align-items:flex-start;gap:0}.home-intro .collection-directory .directory-about{grid-column:1/-1;width:auto}.home-intro .collection-directory a{font-size:10px}}
+
+@media(max-width:700px){.contributor-list{grid-template-columns:1fr;gap:24px}}
