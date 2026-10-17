@@ -1871,5 +1871,44 @@
       "https://github.com/rbeilvert/otoscope/blob/d14ac8e368854146ded4f3347614a24539e6696a/app/src/main/kotlin/dev/rubec/otoscope/stream/i4season/I4seasonProtocol.kt",
       "https://github.com/rbeilvert/otoscope/blob/d14ac8e368854146ded4f3347614a24539e6696a/app/src/main/kotlin/dev/rubec/otoscope/stream/i4season/FrameAssembler.kt"
     ]
+  },
+  {
+    "id": "baocut-slides-editor-case",
+    "name": "BaoCut Slides: adapting an interactive web editor",
+    "url": "https://github.com/JimLiu/baocut/tree/b8585e0c8d7a82bdee9f0ed019cf6edb075e41c1/packages/slides-runtime",
+    "category": "reconstruction-cases",
+    "relationship": "independent-reconstruction",
+    "description_en": "Documents BaoCut’s interactive slide editor, whose author says the implementation draws on Claude Slides. It adds a local deck store, HTML/CSS compiler and annotation-to-agent bridge for browser and desktop hosts; the design reports a Web-flow check, without establishing original backend recovery or full behavioral parity.",
+    "description_zh": "记录 BaoCut 交互式幻灯片编辑器，作者称其实现借鉴自 Claude Slides。它为浏览器与桌面宿主加入本地文稿存储、HTML/CSS 编译器及标注到智能体的桥接；设计说明报告了 Web 流程检查，但未确立原有后端恢复或完整行为一致性。",
+    "evidence_url": "https://github.com/JimLiu/baocut/blob/b8585e0c8d7a82bdee9f0ed019cf6edb075e41c1/docs/design/slides/slides-design.md",
+    "verified_at": "2026-10-17",
+    "verification": "source-reviewed",
+    "requirements": [
+      "This entry covers the pinned Slides component, whose author says the implementation draws on Claude Slides, not the whole BaoCut product. It contains an editor runtime, a restricted HTML/CSS slide compiler and a new BaoCut host. Decks use a v4 deck.json index, per-slide HTML and local assets. The reviewed design/runtime notes do not identify the exact Claude Slides release or extraction record; they do not establish a clean-room process or recovery of Anthropic’s original hosted backend.",
+      "Building the editor requires Node.js >=22.12.0, npm workspace dependencies and the apps/slides-editor build; a BaoCut Runtime/host supplies file, annotation and download capabilities. The runtime declares React ^19.3.0 and PptxGenJS 3.12.0 with project patches. Full BaoCut source builds also require Rust/Cargo, CMake and platform C++ tools; Apple Silicon native inference needs full Xcode/Metal. Agent-driven deck creation requires a configured agent engine such as Codex CLI or Claude Code, with its own account and service terms.",
+      "The documented implementation is single-user and file-backed: it supports local saves with version/conflict checks, asset routes and external-change notifications. Conflict checks precede writes; individual-file writes do not establish whole-batch transactional rollback. Shared rooms/presence, share links, persistent comment threads and sending to Google Drive/Google Slides are explicitly out of scope. External updates may reload the editor and lose selection/scroll position. Export code exists, but the design still places PPTX/PDF downloads in P1; these documents do not establish complete export compatibility.",
+      "The design note reports end-to-end Web annotation validation and explicitly says Electron was not tested for that flow. Published tests exercise local file publication/conflicts, HTTP read/write boundaries and annotation forwarding; some host tests use fake fetch and agent-harness tests use a fake driver. HTML/CSS compiler and round-trip checks are skipped when the built compiler is unavailable. These are implementation tests, not an original-Claude differential oracle or proof of full visual/behavioral parity; this collection did not run them.",
+      "The root BaoCut Community License 1.0 is source-available: it permits stated personal/internal uses and content creation, while commercialization of the software/code or commercial hosting needs a separate license. Third-party components keep their own terms, including the documented PptxGenJS MIT and embedded mediabunny MPL-2.0 notices. Those dependency notices do not establish reuse rights in any reused Claude material or the bundled icon font; the runtime notes say that font needs replacement. This source review does not supply such rights or treat the whole component as permissively open source.",
+      "BaoCut documents agent-assisted creation and annotation workflows, but the reviewed case sources do not establish which model produced the adaptation or any REA involvement. Support for Claude Code/Codex as agent engines is not evidence of the reconstruction method. Use independently authorized slide content and respect external asset/font terms. This review inspected pinned source and test definitions without running the app, models or checks, or retrieving bundled fonts, media or application packages."
+    ],
+    "targets": [
+      "website",
+      "app"
+    ],
+    "kind": "case-study",
+    "additional_evidence_urls": [
+      "https://github.com/JimLiu/baocut/blob/b8585e0c8d7a82bdee9f0ed019cf6edb075e41c1/packages/slides-runtime/README.md",
+      "https://github.com/JimLiu/baocut/blob/b8585e0c8d7a82bdee9f0ed019cf6edb075e41c1/LICENSE",
+      "https://github.com/JimLiu/baocut/blob/b8585e0c8d7a82bdee9f0ed019cf6edb075e41c1/THIRD_PARTY_NOTICES.md",
+      "https://github.com/JimLiu/baocut/blob/b8585e0c8d7a82bdee9f0ed019cf6edb075e41c1/package.json",
+      "https://github.com/JimLiu/baocut/blob/b8585e0c8d7a82bdee9f0ed019cf6edb075e41c1/packages/slides-runtime/package.json",
+      "https://github.com/JimLiu/baocut/blob/b8585e0c8d7a82bdee9f0ed019cf6edb075e41c1/apps/slides-editor/build.mjs",
+      "https://github.com/JimLiu/baocut/blob/b8585e0c8d7a82bdee9f0ed019cf6edb075e41c1/packages/slides/src/deck-store.ts",
+      "https://github.com/JimLiu/baocut/blob/b8585e0c8d7a82bdee9f0ed019cf6edb075e41c1/packages/slides/src/deck-store.test.ts",
+      "https://github.com/JimLiu/baocut/blob/b8585e0c8d7a82bdee9f0ed019cf6edb075e41c1/packages/slides/src/deck-routes.test.ts",
+      "https://github.com/JimLiu/baocut/blob/b8585e0c8d7a82bdee9f0ed019cf6edb075e41c1/packages/slides/src/deck-check.test.ts",
+      "https://github.com/JimLiu/baocut/blob/b8585e0c8d7a82bdee9f0ed019cf6edb075e41c1/packages/slides/src/editor/editor-host.test.ts",
+      "https://github.com/JimLiu/baocut/blob/b8585e0c8d7a82bdee9f0ed019cf6edb075e41c1/packages/harness/src/slide-annotations.test.ts"
+    ]
   }
 ]
