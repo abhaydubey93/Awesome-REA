@@ -272,9 +272,11 @@ class IndexNowDeltaTests(unittest.TestCase):
 
     def test_accepted_pending_rejected_and_uncertain_responses_never_retry(self):
         args = self.delta_args(self.changed_baseline()) + ['--submit']
+        rate_limit = HTTPError(indexnow.ENDPOINT, 429, 'limited', None, None)
+        self.addCleanup(rate_limit.close)
         for status, error, expected in [(202, None, 0), (500, None, 1),
                                         (None, URLError('response unavailable'), 1),
-                                        (None, HTTPError(indexnow.ENDPOINT, 429, 'limited', None, None), 1)]:
+                                        (None, rate_limit, 1)]:
             events, fetch, post = self.live_network(status=status, error=error)
             with self.subTest(status=status, error=type(error).__name__), patch.object(indexnow, 'fetch_bytes', side_effect=fetch), patch.object(indexnow, 'urlopen', side_effect=post) as network:
                 code, output = self.run_main(args)
