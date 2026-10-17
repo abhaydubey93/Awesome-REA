@@ -219,7 +219,7 @@ class IndexNowDeltaTests(unittest.TestCase):
         cases = []
         for key, value in [('schema_version', True), ('algorithm', 'sha1'), ('html_normalization', 'old-rule')]:
             bad = deepcopy(self.current); bad[key] = value; cases.append(bad)
-        for bad_path in ['../secret.html', '/home/user/private.html', 'a/../b.html', 'a//b.html', './index.html',
+        for bad_path in ['../secret.html', '/absolute.html', 'a/../b.html', 'a//b.html', './index.html',
                          'https://outside.example/index.html', 'a\\b.html', '%2e%2e/index.html', 'a?b.html',
                          '.env', 'safe/.cache/file.html', 'credentials.json', 'fonts/font.woff2']:
             bad = deepcopy(self.current); bad['files'][bad_path] = entry(b'bad', bad_path.endswith('.html')); cases.append(bad)
