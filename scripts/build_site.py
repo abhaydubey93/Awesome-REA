@@ -15,6 +15,7 @@ from build_browse_pages import build_browse_pages
 from build_discovery_pages import build_discovery_pages
 from build_paper_pages import build_paper_pages
 from build_manifest import write_build_manifest
+from homepage_locales import localized_homepage
 from artifact_links import with_artifact_links
 from source_browser import write_source_browser
 from localization import read_localizations, localized_records
@@ -232,7 +233,11 @@ def main() -> None:
             data_digest.update(filename.encode("utf-8") + b"\0" + path.read_bytes())
     data_revision = data_digest.hexdigest()[:16]
     html = html.replace('<html ', f'<html data-catalog-revision="{data_revision}" ', 1)
-    (OUTPUT / "index.html").write_text(html, encoding="utf-8")
+    # Both entry pages contain their own language before JavaScript runs.
+    app_source = (SOURCE / "app.js").read_text(encoding="utf-8")
+    (OUTPUT / "index.html").write_text(localized_homepage(html, app_source, "en"), encoding="utf-8")
+    (OUTPUT / "zh").mkdir(exist_ok=True)
+    (OUTPUT / "zh/index.html").write_text(localized_homepage(html, app_source, "zh"), encoding="utf-8")
     browse_revision = hashlib.sha256((OUTPUT / "browse.css").read_bytes()).hexdigest()[:16]
     icon_stylesheet = "/fontawesome.css" if args.fontawesome_dir else (args.fontawesome_assets_url.rstrip("/") + "/fontawesome.css" if args.fontawesome_assets_url else None)
     browse_urls = build_browse_pages(
@@ -256,7 +261,7 @@ def main() -> None:
     (OUTPUT / "robots.txt").write_text(f"User-agent: *\nAllow: /\nSitemap: {SITE_URL}/sitemap.xml\n", encoding="utf-8")
     # Review timestamps describe sources, not every page's modification date.
     # Omit lastmod rather than advertising a fabricated build-time freshness signal.
-    sitemap_urls = [SITE_URL + "/", *browse_urls, *(SITE_URL + path for path in discovery_paths), *paper_urls]
+    sitemap_urls = [SITE_URL + "/", SITE_URL + "/zh/", *browse_urls, *(SITE_URL + path for path in discovery_paths), *paper_urls]
     sitemap_entries = [f'<url><loc>{xml_escape(url)}</loc></url>' for url in sitemap_urls]
     (OUTPUT / "sitemap.xml").write_text('<?xml version="1.0" encoding="UTF-8"?>\n<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">\n' + '\n'.join(sitemap_entries) + '\n</urlset>\n', encoding="utf-8")
     write_build_manifest(OUTPUT)

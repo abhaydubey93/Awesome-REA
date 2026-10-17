@@ -22,6 +22,14 @@ def content(html, node):
     return html[node['inner']:node['close']]
 
 
+def app_with_translations(**updates):
+    """Override parsed literal dictionaries without depending on current UI copy."""
+    strings = _ui_strings(APP)
+    for language, values in updates.items():
+        strings[language].update(values)
+    return 'const UI = ' + json.dumps(strings, ensure_ascii=False) + ';'
+
+
 def fixture():
     website = {'@type': 'WebSite', '@id': ORIGIN + '/#website', 'name': 'Original identity',
                'url': ORIGIN + '/', 'inLanguage': ['en', 'zh-CN']}
@@ -139,9 +147,10 @@ class HomepageLocaleTests(unittest.TestCase):
         with self.assertRaises(ValueError): localized_homepage(fixture().replace('rel="canonical"', 'rel="other"'), APP, 'zh')
 
     def test_translation_html_cannot_introduce_executable_markup(self):
-        source = APP.replace("'逆向工程资源合集<span class=\"title-dot\" aria-hidden=\"true\">.</span>'", "'<img src=x onerror=alert(1)>'")
+        source = app_with_translations(zh={'collectionTitle': '<img src=x onerror=alert(1)>'})
+        self.assertEqual(_ui_strings(source)['zh']['collectionTitle'], '<img src=x onerror=alert(1)>')
         with self.assertRaises(ValueError): localized_homepage(fixture(), source, 'zh')
-        source = APP.replace('"searchLabel": "搜索精选资源"', '"searchLabel": "A \\\"quoted\\\" label"')
+        source = app_with_translations(zh={'searchLabel': 'A "quoted" label'})
         html = localized_homepage(fixture(), source, 'zh')
         self.assertEqual(nodes(html, 'input')[0]['attrs']['aria-label'], 'A "quoted" label')
         self.assertIn('aria-label="A &quot;quoted&quot; label"', html)
@@ -149,8 +158,7 @@ class HomepageLocaleTests(unittest.TestCase):
     def test_noscript_internal_links_keep_their_explicit_language(self):
         en = '<em>Browse</em> <a href="/papers/#paper-example">papers</a> <a href="/zh/" lang="zh-CN">中文</a>'
         zh = '<em>浏览</em><a href="/zh/papers/#paper-example">论文</a><a href="/" lang="en">English</a>'
-        source = APP.replace('"en": {', '"en": {"noscriptNote":' + json.dumps(en) + ',').replace(
-            '"zh": {', '"zh": {"noscriptNote":' + json.dumps(zh) + ',')
+        source = app_with_translations(en={'noscriptNote': en}, zh={'noscriptNote': zh})
         original = fixture().replace('</body>', '<noscript><p data-i18n="noscriptNote">Old <a href="/papers/">link</a></p></noscript></body>')
         for lang, expected in [('en', en), ('zh', zh)]:
             html = localized_homepage(original, source, lang)
@@ -160,7 +168,7 @@ class HomepageLocaleTests(unittest.TestCase):
         for unsafe in ['//example.org/', '/%2fexample.org/', '/\\example.org/', 'https://example.org/',
                        '/papers/" onclick="alert(1)', '/papers/" target="_blank',
                        '//example.org/" href="/papers/']:
-            bad = APP.replace('"zh": {', '"zh": {"noscriptNote":' + json.dumps('<a href="' + unsafe + '">bad</a>') + ',')
+            bad = app_with_translations(zh={'noscriptNote': '<a href="' + unsafe + '">bad</a>'})
             with self.subTest(href=unsafe), self.assertRaises(ValueError):
                 localized_homepage(original, bad, 'zh')
 

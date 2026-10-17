@@ -2,9 +2,9 @@
 
 整理工具、重建案例与研究论文，帮助理解网站、游戏、应用、原生二进制、固件及通信协议。
 
-<a href="https://awesomerea.org/?lang=zh"><img src="assets/readme-banner.svg" alt="Awesome Reverse Engineering Anything — 覆盖六类逆向目标的工具、案例与论文" width="960"></a>
+<a href="https://awesomerea.org/zh/"><img src="assets/readme-banner.svg" alt="Awesome Reverse Engineering Anything — 覆盖六类逆向目标的工具、案例与论文" width="960"></a>
 
-**[浏览合集 ↗](https://awesomerea.org/?lang=zh) · [精选资源](https://awesomerea.org/zh/resources/) · [研究论文](https://awesomerea.org/zh/papers/) · [English](README.md)**
+**[浏览合集 ↗](https://awesomerea.org/zh/) · [精选资源](https://awesomerea.org/zh/resources/) · [研究论文](https://awesomerea.org/zh/papers/) · [English](README.md)**
 
 这是依据一手来源整理的独立合集。来源核查与运行验证分别记录，各条目保留证据、使用条件和限制。[了解核查方法](https://awesomerea.org/zh/about/)。
 
@@ -12,7 +12,7 @@
 
 - **目标** · [网站](#website) · [游戏](#game) · [应用](#app) · [原生二进制](#native-binary) · [固件与硬件](#firmware) · [协议](#protocol)
 
-- [论文](#papers) · [案例](https://awesomerea.org/?view=curated&kind=case-study&lang=zh) · [Agent 与 MCP](#agents-and-mcp) · [相关合集](#related-collections) · [学习资料](#references-and-learning) · [仓库索引](#完整仓库索引)
+- [论文](#papers) · [案例](https://awesomerea.org/zh/?view=curated&kind=case-study) · [Agent 与 MCP](#agents-and-mcp) · [相关合集](#related-collections) · [学习资料](#references-and-learning) · [仓库索引](#完整仓库索引)
 
 <a id="资源目录"></a>
 <a id="resource-catalog"></a>

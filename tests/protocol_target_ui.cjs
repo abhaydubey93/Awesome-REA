@@ -18,7 +18,7 @@ class Element {
   focus() {}
   scrollIntoView() {}
 }
-function setup(query, {curatedProtocol = true, sourceProtocol = true} = {}) {
+function setup(query, {curatedProtocol = true, sourceProtocol = true, pathname = "/"} = {}) {
   const elements = new Map();
   const buttons = [...html.matchAll(/<button[^>]+data-(source-target|target)="([^"]+)"[^>]*>/g)].map(match => {
     const node = new Element('button');
@@ -48,13 +48,15 @@ function setup(query, {curatedProtocol = true, sourceProtocol = true} = {}) {
   const browser = {meta: {schema_version: 1, status: 'complete', full_export: 'source-index.json', full_export_sha256: 'a'.repeat(64),
     scope: {scanned_count: 2, excluded_count: 0, browse_count: 2}}, resources: rows.map((row, i) => ({...row, targets: !i && !sourceProtocol ? ['app'] : row.targets}))};
   const curatedRows = rows.map((row, i) => ({...row, targets: !i && !curatedProtocol ? ['app'] : row.targets}));
-  const location = {href: 'https://awesomerea.org/' + query, search: query};
+  const location = new URL('https://awesomerea.org' + pathname + query);
+  const requests = [];
+  location.assign = next => { location.lastNavigation = String(next); };
   const context = {document, location, URL, URLSearchParams, console,
     history: {replaceState(_, __, next) { location.href = String(next); location.search = new URL(next).search; }},
-    fetch: async url => ({ok: true, json: async () => new URL(url).pathname.endsWith('catalog.json') ? {resources: curatedRows, meta: {source_index: {resource_count: 2}}} : browser})};
+    fetch: async url => { requests.push(String(url)); return {ok: true, json: async () => new URL(url).pathname.endsWith('catalog.json') ? {resources: curatedRows, meta: {source_index: {resource_count: 2}}} : browser}; }};
   vm.createContext(context);
   vm.runInContext(script.replace('applyLanguage(); load();', '') + '\nglobalThis.audit = {state,sourceState,load,loadSources,filtered,sourceFiltered,applyLanguage,reset,resetSources,setIndexMode};', context);
-  return {api: context.audit, context, elements, buttons, protocolLabels};
+  return {api: context.audit, context, elements, buttons, protocolLabels, requests};
 }
 (async () => {
   for (const lang of ['en', 'zh']) {
@@ -111,6 +113,20 @@ function setup(query, {curatedProtocol = true, sourceProtocol = true} = {}) {
     assert.equal(app.elements.get('#clear-filters').hidden, false);
     assert.equal(app.elements.get('#source-clear').hidden, false);
   }
+  const chinese = setup('?view=curated&target=protocol#catalog', {pathname: '/zh/'});
+  await chinese.api.load();
+  assert.equal(chinese.api.state.lang, 'zh');
+  assert(chinese.requests.every(url => !new URL(url).pathname.startsWith('/zh/')));
+  const picker = chinese.elements.get('#language-select');
+  picker.value = 'en'; picker.emit('change');
+  const switched = new URL(chinese.context.location.lastNavigation);
+  assert.equal(switched.pathname, '/');
+  assert.equal(switched.searchParams.get('target'), 'protocol');
+  assert.equal(switched.hash, '#catalog');
+  assert.equal(switched.searchParams.has('lang'), false);
+  const home = setup(''); await home.api.load();
+  assert.equal(home.api.state.lang, 'en');
+  assert.equal(home.api.sourceState.mode, 'curated');
   const invalid = setup('?view=curated&target=unrecognized&source-target=unrecognized');
   await invalid.api.load();
   assert.equal(invalid.api.state.target, 'all');
