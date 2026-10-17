@@ -85,3 +85,9 @@ npx wrangler pages deploy dist
 ```
 
 After deployment, verify the returned deployment URL, then confirm the custom-domain and DNS configuration for `awesomerea.org`. A generated `CNAME` file or a successful local build does not establish hosting, DNS or TLS status. Keep hosting credentials outside the repository; only the approved static artifacts belong in the optional backup repository.
+
+## Homepage languages and discovery
+
+The build writes an English homepage at `/` and a complete Chinese homepage at `/zh/`. Each has its own canonical URL, localized title and description, and reciprocal `hreflang` links. Both routes appear in the sitemap. The language control preserves query filters and the current fragment when moving between these routes; existing `?lang=zh` links remain readable.
+
+Homepage navigation and featured collection links are ordinary HTML links, available before JavaScript runs. Search uses the curated catalog by default; `?view=source-index` explicitly opens the automated repository index. Both views share the contributor credits. Font Awesome Pro continues to load through the configured authorized asset origin; no licensed font binaries are committed.

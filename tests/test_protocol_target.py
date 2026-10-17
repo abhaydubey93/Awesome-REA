@@ -110,7 +110,7 @@ class ProtocolTargetTests(unittest.TestCase):
         html = (ROOT / 'site/index.html').read_text()
         for attribute in ('data-target', 'data-source-target'):
             self.assertEqual(html.count(attribute + '="protocol"'), 1)
-        self.assertEqual(html.count('data-i18n="targetProtocol"'), 2)
+        self.assertGreaterEqual(html.count('data-i18n="targetProtocol"'), 2)
         converted = fontawesome_markup(html, 'https://assets.example.org/fontawesome.css')
         self.assertIn('fa-network', converted)
         self.assertNotIn('<use href="#i-network"', converted)

@@ -2,8 +2,24 @@
 
 const UI = {
   "en": {
-    "pageTitle": "Awesome Reverse Engineering Anything",
-    "collectionTitle": 'Awesome Reverse<br class="mobile-title-break"> Engineering Anything<span class="title-dot" aria-hidden="true">.</span>',
+    "noscriptNote": "JavaScript enables search and filters. Read the complete <a href=\"/browse/\">repository directory</a>, <a href=\"/resources/\">curated collection</a> and <a href=\"/papers/\">research papers</a> without JavaScript. <a href=\"/zh/\" lang=\"zh-CN\">简体中文</a>.",
+    "exploreResources": "Explore the collection",
+    "explorePapers": "Browse research papers",
+    "shelfTitle": "Explore these collections",
+    "shelfCases": "Awesome REA Cases",
+    "shelfCasesDescription": "A collection of software and hardware reconstruction reports.",
+    "shelfGames": "REA / Decompiled Games",
+    "shelfGamesDescription": "Decompilations, native ports and playable demos.",
+    "shelfResearch": "Research papers",
+    "shelfResearchDescription": "Papers, artifacts and the limits of their results.",
+    "shelfNote": "Each collection links to its original sources.",
+    "subjectNav": "Explore reverse engineering by target",
+    "contributorsEyebrow": "BUILT WITH THE COMMUNITY",
+    "contributorsTitle": "Contributors",
+    "contributorLead": "Lead",
+    "contributorHaozhe": "Game reconstruction resource curation and recommendations.",
+    "pageTitle": "Awesome Reverse Engineering Anything — Tools, Cases & Papers",
+    "collectionTitle": 'Awesome Reverse<br>Engineering <em>Anything.</em>',
     "languageSelection": "Language",
     "homeLabel": "AwesomeREA.org home",
     "skip": "Skip to the collection",
@@ -11,7 +27,7 @@ const UI = {
     "submitResource": "Submit resource",
     "collectionEyebrow": "AN OPEN RESOURCE COLLECTION",
     "pageDescription": "Tools, projects, case studies and resources for reverse engineering websites, games, apps, binaries, firmware and communication protocols.",
-    "collectionDescription": "A collection of reverse-engineering tools, projects, case studies and research papers.",
+    "collectionDescription": "Find reverse-engineering tools, reconstruction projects, case studies and research papers. Browse by subject or search the collection in English and Chinese.",
     "directoryNav": "Collection directories",
     "directoryRepositories": "repositories",
     "directoryCurated": "curated resources",
@@ -98,8 +114,24 @@ const UI = {
     "sourceReadmeSize": "README bytes",
   },
   "zh": {
+    "noscriptNote": "JavaScript 用于搜索和筛选。关闭 JavaScript 仍可阅读完整的<a href=\"/zh/browse/\">仓库目录</a>、<a href=\"/zh/resources/\">精选资源</a>与<a href=\"/zh/papers/\">研究论文</a>。<a href=\"/\" lang=\"en\">English</a>。",
+    "exploreResources": "浏览资源集合",
+    "explorePapers": "阅读研究论文",
+    "shelfTitle": "探索相关资源",
+    "shelfCases": "REA 案例合集",
+    "shelfCasesDescription": "软件与硬件重建实践报告的资源合集。",
+    "shelfGames": "游戏反编译与移植合集",
+    "shelfGamesDescription": "反编译、原生移植与可体验的演示。",
+    "shelfResearch": "研究论文",
+    "shelfResearchDescription": "论文、研究产物与结论的适用范围。",
+    "shelfNote": "各合集均提供原始来源链接。",
+    "subjectNav": "按目标领域探索逆向工程",
+    "contributorsEyebrow": "与社区共同整理",
+    "contributorsTitle": "贡献者",
+    "contributorLead": "负责人（Lead）",
+    "contributorHaozhe": "游戏重建资源集合整理与推荐。",
     "pageTitle": "逆向工程资源合集 · Awesome Reverse Engineering Anything",
-    "collectionTitle": '逆向工程资源合集<span class="title-dot" aria-hidden="true">.</span>',
+    "collectionTitle": '逆向工程资源合集<br><em>工具、案例与论文。</em>',
     "languageSelection": "语言",
     "homeLabel": "AwesomeREA.org 首页",
     "skip": "跳到资源集合",
@@ -107,7 +139,7 @@ const UI = {
     "submitResource": "提交资源",
     "collectionEyebrow": "开放的逆向工程资源集合",
     "pageDescription": "收集面向网站、游戏、应用、二进制、固件及通信协议逆向工程的工具、项目、案例与资料。",
-    "collectionDescription": "收集逆向工程工具、项目、案例与研究论文。",
+    "collectionDescription": "查找逆向工程工具、重建项目、案例与研究论文。按领域浏览，或使用中英文搜索资源集合。",
     "directoryNav": "资源目录",
     "directoryRepositories": "个项目仓库",
     "directoryCurated": "项精选资源",
@@ -204,12 +236,12 @@ const RELATION = {
 };
 const params = new URLSearchParams(location.search);
 // Keep the bare homepage English; shared links explicitly select another language.
-const state = { lang: params.get("lang") === "zh" ? "zh" : "en", q: params.get("q") || "", group: params.get("group") || "all", category: params.get("category") || "all", kind: params.get("kind") || "all", target: params.get("target") || "all", visible: 15, topicLabels: {}, records: [], loaded: false, error: false };
+const state = { lang: params.has("lang") ? (params.get("lang") === "zh" ? "zh" : "en") : (location.pathname.startsWith("/zh/") ? "zh" : "en"), q: params.get("q") || "", group: params.get("group") || "all", category: params.get("category") || "all", kind: params.get("kind") || "all", target: params.get("target") || "all", visible: 15, topicLabels: {}, records: [], loaded: false, error: false };
 const $ = (selector) => document.querySelector(selector);
 const $$ = (selector) => [...document.querySelectorAll(selector)];
 const t = (key) => UI[state.lang][key] || UI.en[key] || key;
 function targetSearchLabels(target) { const key = "target" + target[0].toUpperCase() + target.slice(1); return [target, UI.en[key] || "", UI.zh[key] || ""]; }
-function dataURL(filename) { const url = new URL(filename, document.baseURI); const revision = document.documentElement.dataset.catalogRevision; if (revision) url.searchParams.set("v", revision); return url; }
+function dataURL(filename) { const url = new URL("/" + filename, location.origin); const revision = document.documentElement.dataset.catalogRevision; if (revision) url.searchParams.set("v", revision); return url; }
 const label = (map, key) => map[key] ? map[key][state.lang === "zh" ? 1 : 0] : key.replaceAll("-", " ");
 const node = (tag, className, text) => { const el = document.createElement(tag); if (className) el.className = className; if (text !== undefined) el.textContent = text; return el; };
 function icon(name, small = false) { if (document.documentElement.dataset.iconSet === "fontawesome") { const span = node("span", "icon fa-symbol fa-" + name + (small ? " icon-small" : "")); span.setAttribute("aria-hidden", "true"); return span; } const svg = document.createElementNS("http://www.w3.org/2000/svg", "svg"); svg.setAttribute("class", "icon" + (small ? " icon-small" : "")); svg.setAttribute("aria-hidden", "true"); const use = document.createElementNS("http://www.w3.org/2000/svg", "use"); use.setAttribute("href", "#i-" + name); svg.append(use); return svg; }
@@ -219,7 +251,7 @@ function applyLanguage() {
   document.documentElement.lang = state.lang === "zh" ? "zh-CN" : "en";
   document.title = t("pageTitle");
   $("#browse-directory").href = state.lang === "zh" ? "/zh/browse/" : "/browse/";
-  $$('[data-locale-path]').forEach(el => { el.href = `${state.lang === "zh" ? "/zh" : ""}/${el.dataset.localePath}/`; });
+  $$('[data-locale-path]').forEach(el => { el.href = `${state.lang === "zh" ? "/zh" : ""}/${el.dataset.localePath}/${el.dataset.localeFragment ? "#" + el.dataset.localeFragment : ""}`; });
   $('meta[property="og:image:alt"]')?.setAttribute("content", t("pageTitle"));
   $("#language-select").value = state.lang;
   for (const selector of ['meta[name="description"]', 'meta[property="og:description"]', 'meta[name="twitter:description"]']) $(selector)?.setAttribute("content", t("pageDescription"));
@@ -280,7 +312,7 @@ $("#kind-select").addEventListener("change", event => { state.kind=event.target.
 $("#category-select").addEventListener("change", event => { state.category = event.target.value; state.visible = 15; updateURL(); if (state.loaded) render(); });
 $$('[data-group]').forEach(el => el.addEventListener("click", () => { state.group = el.dataset.group; state.visible = 15; updateURL(); if (state.loaded) render(); }));
 $$('[data-target]').forEach(el => el.addEventListener("click", () => { state.target = el.dataset.target; state.visible = 15; updateURL(); if (state.loaded) render(); }));
-$("#language-select").addEventListener("change", event => { state.lang = event.target.value === "zh" ? "zh" : "en"; updateURL(); applyLanguage(); });
+$("#language-select").addEventListener("change", event => { const next = new URL(location.href); next.pathname = event.target.value === "zh" ? "/zh/" : "/"; next.searchParams.delete("lang"); location.assign(next); });
 $("#clear-filters").addEventListener("click",reset); $("#empty-reset").addEventListener("click", () => { reset(); $("#search-input").focus(); }); $("#retry-load").addEventListener("click",load);
 $("#load-more").addEventListener("click", () => { const previous = state.visible; state.visible += 15; render(); const next = $$(".card-title-link")[previous]; if (next) next.focus({preventScroll:true}); });
 document.addEventListener("keydown", event => { if (event.key === "/" && !event.ctrlKey && !event.metaKey && !event.altKey && !["INPUT","TEXTAREA","SELECT"].includes(document.activeElement.tagName) && !document.activeElement.isContentEditable) { event.preventDefault(); const search = sourceState.mode === "source-index" ? $("#source-search") : $("#search-input"); search.focus(); search.scrollIntoView({block:"center",behavior:"smooth"}); } });
@@ -290,7 +322,7 @@ function sourceURL() { const next = new URL(location.href); if (sourceState.mode
 function configureSourceIndex(meta) {
   const count=Number(meta?.resource_count||0);sourceState.available=count>0;$("#mode-sources").hidden=!sourceState.available;$("#mode-source-count").textContent=count?count.toLocaleString():"";$("#mode-curated-count").textContent=state.records.length;
   $("#download-source-index").hidden = !sourceState.available;
-  const query=new URLSearchParams(location.search);const requested=query.get("view");const legacyCurated=["q","group","category","kind","target"].some(key=>query.has(key));setIndexMode(sourceState.available&&(requested==="source-index"||requested==="repositories"||(!requested&&!legacyCurated))?"source-index":"curated");
+  const query=new URLSearchParams(location.search);const requested=query.get("view");setIndexMode(sourceState.available&&(requested==="source-index"||requested==="repositories")?"source-index":"curated");
 }
 function setIndexMode(mode) {
   if (mode === "source-index" && !sourceState.available) return; sourceState.mode = mode; const isSource = mode === "source-index"; $("#curated-view").hidden = isSource; $("#source-view").hidden = !isSource;

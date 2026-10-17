@@ -1,5 +1,5 @@
 #!/usr/bin/env python3
-"""Render a compact, resource-first collection into both READMEs."""
+"""Render readable resource entries and research papers into both READMEs."""
 import argparse
 import html
 import json
@@ -165,13 +165,14 @@ def render_catalog(records, language):
     for section, titles in COLLECTION_SECTIONS.items():
         if not groups[section]:
             continue
-        lines.extend([f'<a id="{section}"></a>', f'### {titles[index]}', ''])
+        contents = '[↑ Contents](#contents)' if language == 'en' else '[↑ 返回目录](#目录)'
+        lines.extend([f'<a id="{section}"></a>', f'### {titles[index]}', '', contents, ''])
         for record in groups[section]:
             name = plain_text((record.get('name_zh') or translations.get(record['id'], {}).get('name') or record['name']) if language == 'zh' else record['name'])
             description = plain_text(record[f'description_{language}'])
             metadata = plain_text(entry_type(record, language))
-            lines.append(f"- [{name}]({record['url']}) — {description} **[{metadata}]**")
-        lines.append('')
+            lines.extend([f"- **[{name}]({record['url']})** <sub>{metadata}</sub>", '',
+                          f"  {description}", ''])
     return '\n'.join(lines).rstrip() + '\n'
 
 

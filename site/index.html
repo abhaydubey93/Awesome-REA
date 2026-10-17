@@ -4,13 +4,13 @@
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <meta name="theme-color" content="#ffffff">
-  <title>Awesome Reverse Engineering Anything</title>
+  <title>Awesome Reverse Engineering Anything — Tools, Cases &amp; Papers</title>
   <meta name="description" content="Explore reverse-engineering repositories, curated tools, case studies and research papers for websites, games, apps, binaries, firmware and communication protocols.">
   <link rel="canonical" href="https://awesomerea.org/">
   <meta property="og:locale" content="en_US">
   <meta property="og:type" content="website">
   <meta property="og:site_name" content="AwesomeREA.org">
-  <meta property="og:title" content="Awesome Reverse Engineering Anything">
+  <meta property="og:title" content="Awesome Reverse Engineering Anything — Tools, Cases &amp; Papers">
   <meta property="og:description" content="Explore reverse-engineering repositories and curated tools, projects, case studies and resources by target and topic.">
   <meta property="og:url" content="https://awesomerea.org/">
   <meta property="og:image" content="https://awesomerea.org/social-card.png">
@@ -19,14 +19,14 @@
   <meta property="og:image:height" content="630">
   <meta property="og:image:alt" content="Awesome Reverse Engineering Anything — a reverse-engineering resource collection.">
   <meta name="twitter:card" content="summary_large_image">
-  <meta name="twitter:title" content="Awesome Reverse Engineering Anything">
+  <meta name="twitter:title" content="Awesome Reverse Engineering Anything — Tools, Cases &amp; Papers">
   <meta name="twitter:description" content="A resource collection for reverse engineering websites, games, apps, binaries, firmware and communication protocols.">
   <meta name="twitter:image" content="https://awesomerea.org/social-card.png">
   <link rel="icon" href="favicon.svg" type="image/svg+xml">
   <link rel="stylesheet" href="styles.css">
   <script src="app.js" defer></script>
 </head>
-<body>
+<body class="collection-home">
 <a class="skip-link" href="#catalog" data-i18n="skip">Skip to the collection</a>
 <svg class="symbol-bank" aria-hidden="true" xmlns="http://www.w3.org/2000/svg"><defs>
     <symbol id="i-arrow" viewBox="0 0 24 24"><path d="M5 12h14M13 6l6 6-6 6"/></symbol>
@@ -57,14 +57,36 @@
   </nav>
 </div></header>
 <main class="shell collection-main">
-  <section class="collection-intro" aria-labelledby="collection-title"><p class="eyebrow mono" data-i18n="collectionEyebrow">AN OPEN RESOURCE COLLECTION</p><h1 id="collection-title" data-i18n="collectionTitle">Awesome Reverse<br class="mobile-title-break"> Engineering Anything<span class="title-dot" aria-hidden="true">.</span></h1><p class="collection-description" data-i18n="collectionDescription">A collection of reverse-engineering tools, projects, case studies and research papers.</p>
+  <section class="collection-intro home-intro" aria-labelledby="collection-title">
+    <div class="hero-layout">
+      <div class="hero-copy">
+        <p class="eyebrow" data-i18n="collectionEyebrow">AN OPEN RESOURCE COLLECTION</p>
+        <h1 id="collection-title" data-i18n="collectionTitle">Awesome Reverse<br>Engineering <em>Anything.</em></h1>
+        <p class="collection-description" data-i18n="collectionDescription">Find reverse-engineering tools, reconstruction projects, case studies and research papers. Browse by subject or search the collection in English and Chinese.</p>
+        <div class="hero-actions"><a class="button button-primary" href="#catalog"><span data-i18n="exploreResources">Explore the collection</span><svg class="icon icon-small" aria-hidden="true"><use href="#i-arrow"/></svg></a><a class="hero-text-link" href="/papers/" data-locale-path="papers"><span data-i18n="explorePapers">Browse research papers</span><span aria-hidden="true">↗</span></a></div>
+      </div>
+      <aside class="collection-shelf" aria-labelledby="shelf-title">
+        <div class="shelf-heading"><span class="shelf-dot" aria-hidden="true"></span><h2 id="shelf-title" data-i18n="shelfTitle">Explore these collections</h2><span class="mono" aria-hidden="true">01—03</span></div>
+        <a class="shelf-link" href="https://github.com/songshikang0111/awesome-REA-cases" target="_blank" rel="noopener noreferrer"><span class="shelf-icon"><svg class="icon" aria-hidden="true"><use href="#i-layers"/></svg></span><span><strong data-i18n="shelfCases">Awesome REA Cases</strong><small data-i18n="shelfCasesDescription">A collection of software and hardware reconstruction reports.</small></span><span class="shelf-arrow" aria-hidden="true">↗</span></a>
+        <a class="shelf-link" href="https://github.com/HaozheH3/awesome-rea-games" target="_blank" rel="noopener noreferrer"><span class="shelf-icon"><svg class="icon" aria-hidden="true"><use href="#i-gamepad"/></svg></span><span><strong data-i18n="shelfGames">REA / Decompiled Games</strong><small data-i18n="shelfGamesDescription">Decompilations, native ports and playable demos.</small></span><span class="shelf-arrow" aria-hidden="true">↗</span></a>
+        <a class="shelf-link" href="/papers/" data-locale-path="papers"><span class="shelf-icon"><svg class="icon" aria-hidden="true"><use href="#i-document"/></svg></span><span><strong data-i18n="shelfResearch">Research papers</strong><small data-i18n="shelfResearchDescription">Papers, artifacts and the limits of their results.</small></span><span class="shelf-arrow" aria-hidden="true">↗</span></a>
+        <p class="shelf-note" data-i18n="shelfNote">Each collection links to its original sources.</p>
+      </aside>
+    </div>
     <nav class="collection-directory" aria-label="Collection directories" data-i18n-aria="directoryNav">
-      <a href="/browse/" data-locale-path="browse"><strong>{{BROWSE_COUNT}}</strong> <span data-i18n="directoryRepositories">repositories</span></a>
-      <a href="/resources/" data-locale-path="resources"><strong>{{RESOURCE_COUNT}}</strong> <span data-i18n="directoryCurated">curated resources</span></a>
-      <a href="/papers/" data-locale-path="papers"><svg class="icon icon-small" aria-hidden="true"><use href="#i-document"/></svg><strong>{{PAPER_COUNT}}</strong> <span data-i18n="directoryPapers">research papers</span><span aria-hidden="true">↗</span></a>
-      <a href="/about/" data-locale-path="about" data-i18n="directoryAbout">About the collection ↗</a>
+      <a href="/resources/" data-locale-path="resources"><strong>{{RESOURCE_COUNT}}</strong><span data-i18n="directoryCurated">curated resources</span></a>
+      <a href="/papers/" data-locale-path="papers"><strong>{{PAPER_COUNT}}</strong><span data-i18n="directoryPapers">research papers</span></a>
+      <a href="/browse/" data-locale-path="browse"><strong>{{BROWSE_COUNT}}</strong><span data-i18n="directoryRepositories">repositories</span></a>
+      <a class="directory-about" href="/about/" data-locale-path="about" data-i18n="directoryAbout">About the collection ↗</a>
     </nav>
-    <p class="collection-provenance"><span>{{SCANNED_COUNT}}</span> <span data-i18n="directoryScanned">READMEs scanned · curated entries and papers reviewed against public sources.</span></p>
+    <nav class="subject-directory" aria-label="Explore reverse engineering by target" data-i18n-aria="subjectNav">
+      <a href="/resources/#website" data-locale-path="resources" data-locale-fragment="website"><svg class="icon" aria-hidden="true"><use href="#i-globe"/></svg><span data-i18n="targetWebsite">Website</span><span class="subject-arrow" aria-hidden="true">↗</span></a>
+      <a href="/resources/#game" data-locale-path="resources" data-locale-fragment="game"><svg class="icon" aria-hidden="true"><use href="#i-gamepad"/></svg><span data-i18n="targetGame">Game</span><span class="subject-arrow" aria-hidden="true">↗</span></a>
+      <a href="/resources/#app" data-locale-path="resources" data-locale-fragment="app"><svg class="icon" aria-hidden="true"><use href="#i-phone"/></svg><span data-i18n="targetApp">App</span><span class="subject-arrow" aria-hidden="true">↗</span></a>
+      <a href="/resources/#native-binary" data-locale-path="resources" data-locale-fragment="native-binary"><svg class="icon" aria-hidden="true"><use href="#i-code"/></svg><span data-i18n="targetBinary">Binary</span><span class="subject-arrow" aria-hidden="true">↗</span></a>
+      <a href="/resources/#firmware" data-locale-path="resources" data-locale-fragment="firmware"><svg class="icon" aria-hidden="true"><use href="#i-chip"/></svg><span data-i18n="targetFirmware">Firmware</span><span class="subject-arrow" aria-hidden="true">↗</span></a>
+      <a href="/resources/#protocol" data-locale-path="resources" data-locale-fragment="protocol"><svg class="icon" aria-hidden="true"><use href="#i-network"/></svg><span data-i18n="targetProtocol">Protocol</span><span class="subject-arrow" aria-hidden="true">↗</span></a>
+    </nav>
   </section>
   <section id="catalog" class="catalog-section" aria-labelledby="catalog-title">
     <h2 id="catalog-title" class="sr-only" data-i18n="browseCollection">Browse the collection</h2>
@@ -97,9 +119,16 @@
       <div id="error-state" class="empty-state" hidden><h3 data-i18n="errorTitle">The collection couldn’t load.</h3><p data-i18n="errorDescription">Please try again, or browse the collection on GitHub.</p><button class="button button-primary" type="button" id="retry-load" data-i18n="retry">Try again</button></div>
       <div class="load-more-row" id="load-more-row" hidden><button id="load-more" class="button button-outline" type="button"><span data-i18n="loadMore">Show more resources</span><span class="mono" id="remaining-count"></span><svg class="icon" aria-hidden="true"><use href="#i-arrow"/></svg></button><p class="mono" id="shown-count"></p></div>
     </div>
-    <noscript><p class="noscript-note">JavaScript enables search and filters. Read the complete <a href="/browse/">repository directory</a>, <a href="/resources/">curated collection</a> and <a href="/papers/">research papers</a> without JavaScript. <a href="/zh/browse/" lang="zh-CN">浏览中文版</a>.</p></noscript>
+    <noscript><p class="noscript-note" data-i18n="noscriptNote">JavaScript enables search and filters. Read the complete <a href="/browse/">repository directory</a>, <a href="/resources/">curated collection</a> and <a href="/papers/">research papers</a> without JavaScript. <a href="/zh/browse/" lang="zh-CN">浏览中文版</a>.</p></noscript>
   </section>
 </main>
-<footer class="site-footer"><div class="shell footer-top"><p data-i18n="footerDescription">A community collection, continuously updated.</p><div class="footer-links"><a id="browse-directory" href="/browse/" data-i18n="browseDirectory">Browse by category ↗</a><a href="https://github.com/reacher-z/Awesome-REA/blob/main/CONTRIBUTING.md" data-repo-path="blob/main/CONTRIBUTING.md" target="_blank" rel="noopener noreferrer" data-i18n="contributeButton">Contribute ↗</a><a id="download-source-index" href="source-index.json" download="awesomerea-repository-index.json" type="application/json" data-i18n="downloadSourceData" hidden>Repository index JSON ↓</a><a id="download-curated-catalog" href="catalog.json" download="awesomerea-curated-catalog.json" type="application/json" data-i18n="downloadCuratedData">Curated catalog JSON ↓</a><a href="https://github.com/reacher-z/Awesome-REA" data-repo-path="" target="_blank" rel="noopener noreferrer" data-i18n="viewSource">GitHub ↗</a></div></div><div class="shell footer-bottom"><span data-i18n="footerLicense">Original content: MIT. Linked projects keep their own licenses.</span></div></footer>
+<section id="contributors" class="contributors-section shell" aria-labelledby="contributors-title">
+  <div><p class="eyebrow" data-i18n="contributorsEyebrow">BUILT WITH THE COMMUNITY</p><h2 id="contributors-title" data-i18n="contributorsTitle">Contributors</h2></div>
+  <div class="contributor-list">
+    <div class="contributor-entry"><span class="contributor-monogram" aria-hidden="true">YZ</span><div><a class="contributor-name" href="https://yuxuan.world/" target="_blank" rel="noopener noreferrer">Yuxuan Zhang <span aria-hidden="true">↗</span></a><p data-i18n="contributorLead">Lead</p></div></div>
+    <div class="contributor-entry"><span class="contributor-monogram" aria-hidden="true">HW</span><div><a class="contributor-name" href="https://haozheh3.github.io/" target="_blank" rel="noopener noreferrer">Haozhe Wang <span aria-hidden="true">↗</span></a><p data-i18n="contributorHaozhe">Game reconstruction resource curation and recommendations.</p><a class="contributor-work" href="https://github.com/HaozheH3/awesome-rea-games" target="_blank" rel="noopener noreferrer">awesome-rea-games ↗</a></div></div>
+  </div>
+</section>
+<footer class="site-footer"><div class="shell footer-top"><p data-i18n="footerDescription">A community collection, continuously updated.</p><div class="footer-links"><a href="#contributors" data-i18n="contributorsTitle">Contributors</a><a id="browse-directory" href="/browse/" data-i18n="browseDirectory">Browse by category ↗</a><a href="https://github.com/reacher-z/Awesome-REA/blob/main/CONTRIBUTING.md" data-repo-path="blob/main/CONTRIBUTING.md" target="_blank" rel="noopener noreferrer" data-i18n="contributeButton">Contribute ↗</a><a id="download-source-index" href="source-index.json" download="awesomerea-repository-index.json" type="application/json" data-i18n="downloadSourceData" hidden>Repository index JSON ↓</a><a id="download-curated-catalog" href="catalog.json" download="awesomerea-curated-catalog.json" type="application/json" data-i18n="downloadCuratedData">Curated catalog JSON ↓</a><a href="https://github.com/reacher-z/Awesome-REA" data-repo-path="" target="_blank" rel="noopener noreferrer" data-i18n="viewSource">GitHub ↗</a></div></div><div class="shell footer-bottom"><span data-i18n="footerLicense">Original content: MIT. Linked projects keep their own licenses.</span></div></footer>
 </body>
 </html>

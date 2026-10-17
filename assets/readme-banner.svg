@@ -1,47 +1,50 @@
-<svg xmlns="http://www.w3.org/2000/svg" width="1280" height="360" viewBox="0 0 1280 360" role="img" aria-labelledby="title description">
+<svg xmlns="http://www.w3.org/2000/svg" width="1280" height="400" viewBox="0 0 1280 400" role="img" aria-labelledby="title description">
   <title id="title">Awesome Reverse Engineering Anything</title>
-  <desc id="description">A collection of reverse engineering tools, projects, integrations, and resources for websites, games, apps, native binaries, and firmware.</desc>
-  <rect width="1280" height="360" rx="18" fill="#FFFFFF"/>
-  <g font-family="Arial, Helvetica, sans-serif" fill="#1D3557">
-    <text x="52" y="51" font-size="13" font-weight="700" letter-spacing="2.3">AWESOMEREA.ORG</text>
-    <circle cx="267" cy="46" r="3" fill="#E63946"/>
-    <text x="49" y="127" font-size="59" font-weight="600" letter-spacing="-2.6">Awesome Reverse</text>
-    <text x="49" y="193" font-size="59" font-weight="600" letter-spacing="-2.6">Engineering Anything</text>
-    <text x="52" y="235" font-size="22" fill="#457B9D">Tools, projects, and resources. One collection.</text>
-    <g font-size="12" font-weight="600" letter-spacing=".8">
-      <rect x="52" y="267" width="112" height="32" rx="16" fill="#A8DADC" fill-opacity=".24"/>
-      <text x="70" y="288">WEBSITE</text>
-      <rect x="174" y="267" width="85" height="32" rx="16" fill="#A8DADC" fill-opacity=".24"/>
-      <text x="194" y="288">GAME</text>
-      <rect x="269" y="267" width="70" height="32" rx="16" fill="#A8DADC" fill-opacity=".24"/>
-      <text x="289" y="288">APP</text>
-      <text x="363" y="288">NATIVE BINARY</text>
-      <circle cx="490" cy="283" r="2" fill="#A8DADC"/>
-      <text x="509" y="288">FIRMWARE</text>
+  <desc id="description">An independent collection of tools, reconstruction cases and research papers for websites, games, apps, native binaries, firmware and communication protocols.</desc>
+  <rect x=".5" y=".5" width="1279" height="399" rx="16" fill="#fff" stroke="#e4e4eb"/>
+  <g font-family="Arial, Helvetica, sans-serif">
+    <rect x="48" y="37" width="8" height="8" rx="2" fill="#4f46e5"/>
+    <text x="68" y="47" font-size="13" font-weight="700" letter-spacing="1.8" fill="#27272a">AWESOMEREA.ORG</text>
+    <text x="1232" y="47" text-anchor="end" font-size="11" letter-spacing="1.4" fill="#71717a">AN INDEPENDENT COLLECTION</text>
+    <path d="M48 69H1232" stroke="#e4e4eb"/>
+    <g fill="#202027" font-size="56" font-weight="700" letter-spacing="-2.2">
+      <text x="45" y="148">Awesome Reverse</text>
+      <text x="45" y="214">Engineering Anything</text>
     </g>
-    <text x="52" y="330" font-size="10" letter-spacing="1.8">AN INDEPENDENT COMMUNITY COLLECTION</text>
-  </g>
-  <g transform="translate(823 44)" font-family="Arial, Helvetica, sans-serif">
-    <rect width="400" height="270" rx="13" fill="#FFFFFF" stroke="#A8DADC" stroke-opacity=".8"/>
-    <text x="24" y="31" font-size="11" font-weight="700" letter-spacing="1.7" fill="#1D3557">THE COLLECTION</text>
-    <path d="M24 48H376" stroke="#A8DADC" stroke-opacity=".6"/>
-    <g fill="#FFFFFF" stroke="#A8DADC" stroke-opacity=".7">
-      <rect x="24" y="67" width="352" height="48" rx="7"/>
-      <rect x="24" y="130" width="352" height="48" rx="7"/>
-      <rect x="24" y="193" width="352" height="48" rx="7"/>
+    <text x="49" y="261" font-size="21" fill="#61616e">Tools, cases and research. Grounded in primary sources.</text>
+    <g transform="translate(930 106)">
+      <path d="M-39 0V176" stroke="#e4e4eb"/>
+      <g fill="#fafafe" stroke="#dedeea">
+        <rect width="302" height="48" rx="7"/>
+        <rect y="64" width="302" height="48" rx="7"/>
+        <rect y="128" width="302" height="48" rx="7"/>
+      </g>
+      <g font-size="11" fill="#6d65ce" font-weight="700" letter-spacing=".5">
+        <text x="19" y="29">01</text>
+        <text x="19" y="93">02</text>
+        <text x="19" y="157">03</text>
+      </g>
+      <g font-size="17" fill="#30303a">
+        <text x="58" y="30">Tools &amp; integrations</text>
+        <text x="58" y="94">Reconstruction cases</text>
+        <text x="58" y="158">Research papers</text>
+      </g>
     </g>
-    <g font-size="16" fill="#1D3557">
-      <text x="43" y="97">Tools</text>
-      <text x="43" y="160">Projects</text>
-      <text x="43" y="223">Integrations</text>
+    <path d="M48 319H1232" stroke="#e4e4eb"/>
+    <g fill="#51515e" font-size="13" font-weight="600" letter-spacing="1">
+      <text x="49" y="361">WEBSITE</text>
+      <text x="234" y="361">GAME</text>
+      <text x="394" y="361">APP</text>
+      <text x="548" y="361">NATIVE BINARY</text>
+      <text x="812" y="361">FIRMWARE</text>
+      <text x="1064" y="361">PROTOCOL</text>
     </g>
-    <g stroke="#457B9D" stroke-width="2" stroke-linecap="round" stroke-opacity=".5">
-      <path d="M180 86H294M180 97H261"/>
-      <path d="M180 149H319M180 160H279"/>
-      <path d="M180 212H284M180 223H317"/>
+    <g fill="#b8b4ec">
+      <circle cx="188" cy="356" r="2"/>
+      <circle cx="348" cy="356" r="2"/>
+      <circle cx="502" cy="356" r="2"/>
+      <circle cx="766" cy="356" r="2"/>
+      <circle cx="1018" cy="356" r="2"/>
     </g>
-    <circle cx="350" cy="91" r="3" fill="#E63946"/>
-    <circle cx="350" cy="154" r="3" fill="#A8DADC"/>
-    <circle cx="350" cy="217" r="3" fill="#A8DADC"/>
   </g>
 </svg>
