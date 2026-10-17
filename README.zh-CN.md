@@ -26,6 +26,10 @@
 
 [↑ 返回目录](#目录)
 
+- **[恐龙跑酷：恢复一条加速规则](https://github.com/morluto/rea/blob/c360cfcd6d7901514b16dd6113eba2e0b0fdf422/website/evidence/calculator-and-dino.md#dinosaur-speed)** <sub>案例 · REA</sub>
+
+  REA 的教学案例检查 HTTP 版 t-rex-runner，并重建其速度更新规则。单独进行的受控原游戏检查与新演示对比更新次数，包含浮点递增越过名义速度阈值的一步。
+
 - **[webcrack](https://github.com/j4k0xb/webcrack)** <sub>工具</sub>
 
   识别支持的 JavaScript 混淆模式，并拆解 webpack/Browserify 打包文件，改善代码可读性。
@@ -110,6 +114,10 @@
 - **[Nanolathe：附研究文档的 Total Annihilation 引擎重实现](https://github.com/nanolathe-gg/nanolathe)** <sub>案例 · 独立重建</sub>
 
   用 Go 重实现兼容 Total Annihilation 的策略游戏引擎，公开文件格式研究并提供不同玩法配置。项目区分拟复现的零售版3.1行为、社区补丁研究和有意加入的现代改动，也区分合成检查与依赖原始游戏数据的测试。
+
+- **[TH08：精确源码重建与单独验证的移植](https://github.com/N0zoM1z0/th08)** <sub>案例 · 独立重建</sub>
+
+  依据原二进制和原编译器重建日版 Touhou 8 的 1.00d 版本，再将恢复的代码适配到其他平台。项目分别记录源码存在、严格函数匹配、完整可执行文件一致性和移植可玩性里程碑。
 
 - **[RenderDoc](https://github.com/baldurk/renderdoc)** <sub>工具</sub>
 
@@ -203,6 +211,18 @@
 - **[Open Claude UI：基于 REA 调查的界面参考组件](https://github.com/Caho1/open-claude-ui)** <sub>案例 · 混合工具流程</sub>
 
   发布 React 组件、动效辅助模块和设计系统笔记，作者将其归因于使用 REA 调查 Claude Desktop。它可作为界面重建案例；观察结果受版本约束，不能证明已完整复刻助手应用或后端。
+
+- **[PlxNative：重建原生 webOS 媒体客户端接口](https://github.com/GLinnik21/plx-native)** <sub>案例 · 独立重建</sub>
+
+  作者用 Ghidra 和编程智能体调查 LG webOS 原生媒体接口后构建的非官方 Plex 客户端。它自行绘制 Rust/OpenGL 界面并使用电视解码器，文档区分宿主测试、模拟器测试和实体设备测试。
+
+- **[Windows Calculator：重建百分比规则](https://github.com/morluto/rea/blob/c360cfcd6d7901514b16dd6113eba2e0b0fdf422/website/evidence/calculator-and-dino.md#windows-calculator)** <sub>案例 · REA</sub>
+
+  REA 案例追踪已安装 Windows Calculator 的模型 DLL，解释乘除运算与其他运算中不同的百分比行为。分析人员选定函数后，对照微软公开源码解释，并通过固定输入的浏览器示例演示。
+
+- **[飞书：作者报告的隔离第二应用实例](https://benx.ai/blog/posts/rea-reverse-engineer-feishu-dual-instance/)** <sub>案例 · 混合工具流程</sub>
+
+  作者报告借助 Codex 与 REA 分析，修改独立的 macOS 飞书副本，为其设置不同的应用身份、数据目录和单实例锁。文章描述本地签名与隔离检查，并称原应用保持不变。
 
 - **[JADX-AI-MCP](https://github.com/zinja-coder/jadx-ai-mcp)** <sub>集成 · 独立 MCP</sub>
 

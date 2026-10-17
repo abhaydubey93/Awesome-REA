@@ -25,6 +25,10 @@ Browse by purpose. Each entry appears once, with its type beside the name. Indep
 
 [↑ Contents](#contents)
 
+- **[Dinosaur runner: recovering one acceleration rule](https://github.com/morluto/rea/blob/c360cfcd6d7901514b16dd6113eba2e0b0fdf422/website/evidence/calculator-and-dino.md#dinosaur-speed)** <sub>Case study · REA</sub>
+
+  REA’s documented teaching case inspects the HTTP t-rex-runner edition and reconstructs its speed-update rule. A separate controlled original-game check and a new demonstration compare update counts, including the floating-point step that crosses the nominal speed threshold.
+
 - **[webcrack](https://github.com/j4k0xb/webcrack)** <sub>Tool</sub>
 
   Improves JavaScript readability by reversing supported obfuscation patterns and unpacking webpack/Browserify bundles.
@@ -109,6 +113,10 @@ Browse by purpose. Each entry appears once, with its type beside the name. Indep
 - **[Nanolathe: a documented Total Annihilation engine reimplementation](https://github.com/nanolathe-gg/nanolathe)** <sub>Case study · Independent reconstruction</sub>
 
   Reimplements a Total Annihilation-compatible strategy-game engine in Go, with public file-format research and separate gameplay profiles. It distinguishes intended retail 3.1 behavior from community-patch research and deliberate modern changes, and separates synthetic checks from tests requiring original game data.
+
+- **[TH08: exact-source reconstruction and separately tested ports](https://github.com/N0zoM1z0/th08)** <sub>Case study · Independent reconstruction</sub>
+
+  Reconstructs the original Japanese Touhou 8 version 1.00d against its binary and original compiler, then adapts the recovered code for other platforms. Source presence, strict function matching, whole-executable identity and playable-port checks are recorded as different milestones.
 
 - **[RenderDoc](https://github.com/baldurk/renderdoc)** <sub>Tool</sub>
 
@@ -202,6 +210,18 @@ Browse by purpose. Each entry appears once, with its type beside the name. Indep
 - **[Open Claude UI: REA-informed interface reference components](https://github.com/Caho1/open-claude-ui)** <sub>Case study · Mixed workflow</sub>
 
   Publishes React components, motion helpers and design-system notes derived from the author’s reported REA investigation of Claude Desktop. It is useful as an interface-reconstruction case, with version-specific observations rather than proof of a complete assistant application or backend clone.
+
+- **[PlxNative: reconstructing a native webOS media-client interface](https://github.com/GLinnik21/plx-native)** <sub>Case study · Independent reconstruction</sub>
+
+  An unofficial Plex client built after the author investigated LG webOS native media interfaces with Ghidra and coding agents. It draws its own Rust/OpenGL interface and uses the television’s decoder, with documented host, simulator and real-device test tiers.
+
+- **[Windows Calculator: reconstructing percentage rules](https://github.com/morluto/rea/blob/c360cfcd6d7901514b16dd6113eba2e0b0fdf422/website/evidence/calculator-and-dino.md#windows-calculator)** <sub>Case study · REA</sub>
+
+  REA’s case traces the installed Windows Calculator model DLL to explain different percentage behavior for multiplication/division and other operations. An analyst-selected function is interpreted against public Microsoft source and demonstrated with fixed browser examples.
+
+- **[Feishu: an author-reported isolated second app instance](https://benx.ai/blog/posts/rea-reverse-engineer-feishu-dual-instance/)** <sub>Case study · Mixed workflow</sub>
+
+  The author reports using Codex and REA analysis to adapt a separate macOS Feishu copy with its own application identity, data directory and single-instance lock. The account describes local signing and separation checks while retaining the original app unchanged.
 
 - **[JADX-AI-MCP](https://github.com/zinja-coder/jadx-ai-mcp)** <sub>Integration · Independent MCP</sub>
 
