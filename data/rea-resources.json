@@ -1055,5 +1055,139 @@
     "additional_evidence_urls": [
       "https://github.com/HaozheH3/awesome-rea-games/blob/4316a4ce86fdd851f0180ffee87dc336851bf5b6/CONTRIBUTING.md"
     ]
+  },
+  {
+    "id": "plx-native-case",
+    "name": "PlxNative: reconstructing a native webOS media-client interface",
+    "url": "https://github.com/GLinnik21/plx-native",
+    "category": "reconstruction-cases",
+    "relationship": "independent-reconstruction",
+    "description_en": "An unofficial Plex client built after the author investigated LG webOS native media interfaces with Ghidra and coding agents. It draws its own Rust/OpenGL interface and uses the television’s decoder, with documented host, simulator and real-device test tiers.",
+    "description_zh": "作者用 Ghidra 和编程智能体调查 LG webOS 原生媒体接口后构建的非官方 Plex 客户端。它自行绘制 Rust/OpenGL 界面并使用电视解码器，文档区分宿主测试、模拟器测试和实体设备测试。",
+    "evidence_url": "https://github.com/GLinnik21/plx-native/blob/0b0b22092b204432834c75f32148dbd16ec3493b/README.md",
+    "verified_at": "2026-10-17",
+    "verification": "source-reviewed",
+    "requirements": [
+      "Requires a Plex account/server and a compatible LG TV. The baseline is webOS 4.0+, with explicitly documented 3.4.3/3.9.3 exceptions; the latter needs a newer source build than prebuilt v0.8.0.",
+      "Developer Mode normally needs no root but requires renewal. Some k5lp/k3lp devices cannot play under its sandbox, and k6hp crashes remain unresolved; no universal LG-TV compatibility is claimed.",
+      "Product builds need macOS (x86_64 or arm64) or arm64 Linux, the webOS NDK, the pinned Rust toolchain and CMake. The desktop simulator has a different host/setup path.",
+      "The scope is movies and TV shows, excluding music, photos, live TV and DVR. Selected relay/encrypted-server paths lack end-to-end viewing tests; timing and playback results remain author/device-specific.",
+      "GPL-3.0-or-later for project code, with separate brand and third-party terms including bundled FFmpeg. This catalog did not install the client or reproduce TV tests; REA involvement is not established."
+    ],
+    "targets": [
+      "app"
+    ],
+    "kind": "case-study",
+    "additional_evidence_urls": [
+      "https://github.com/GLinnik21/plx-native/blob/0b0b22092b204432834c75f32148dbd16ec3493b/docs/building.md",
+      "https://github.com/GLinnik21/plx-native/blob/0b0b22092b204432834c75f32148dbd16ec3493b/docs/install-and-verify.md",
+      "https://github.com/GLinnik21/plx-native/blob/0b0b22092b204432834c75f32148dbd16ec3493b/LICENSE",
+      "https://github.com/GLinnik21/plx-native/blob/0b0b22092b204432834c75f32148dbd16ec3493b/THIRD-PARTY-NOTICES.md",
+      "https://www.reddit.com/r/ClaudeCode/comments/1x043yp/i_used_claude_code_to_reverseengineer_an_lg_tv/"
+    ]
+  },
+  {
+    "id": "th08-reconstruction-case",
+    "name": "TH08: exact-source reconstruction and separately tested ports",
+    "url": "https://github.com/N0zoM1z0/th08",
+    "category": "reconstruction-cases",
+    "relationship": "independent-reconstruction",
+    "description_en": "Reconstructs the original Japanese Touhou 8 version 1.00d against its binary and original compiler, then adapts the recovered code for other platforms. Source presence, strict function matching, whole-executable identity and playable-port checks are recorded as different milestones.",
+    "description_zh": "依据原二进制和原编译器重建日版 Touhou 8 的 1.00d 版本，再将恢复的代码适配到其他平台。项目分别记录源码存在、严格函数匹配、完整可执行文件一致性和移植可玩性里程碑。",
+    "evidence_url": "https://github.com/N0zoM1z0/th08/blob/08c7f00f81e35db8206d917b14f47883930beef6/README.md",
+    "verified_at": "2026-10-17",
+    "verification": "source-reviewed",
+    "requirements": [
+      "Exact checks require the user’s original Japanese TH08 1.00d executable and Visual C++ .NET 2002 toolchain. Ledgers and analysis helpers need Python 3.11+; Linux/macOS toolchain setup also needs Wine and msiextract. Playable products still need original game data.",
+      "The pinned main README reports source for 1,107 authored functions and strict acceptance of 1,106, with whole-executable identity still in progress. Linux/web playability and the separate portable-64bit branch do not imply complete binary identity.",
+      "The VC7 i386 runtime checkpoint is distinct from a redistributable modern Windows release; macOS remains in progress. Exact normal-build checks and bugfix playtests have different purposes.",
+      "A historical oracle accepted instruction bytes while missing wrong floating-literal data. The linked issue/PR records later data-reference checks; matching results support only the properties actually checked.",
+      "MIT covers repository code/docs, not the original game. Historical source lineage and agent contributions retain their attribution. No compiler, original game, replay or port was independently run for this catalog."
+    ],
+    "targets": [
+      "game"
+    ],
+    "kind": "case-study",
+    "additional_evidence_urls": [
+      "https://github.com/N0zoM1z0/th08/blob/08c7f00f81e35db8206d917b14f47883930beef6/docs/BUILD_MATCHING.md",
+      "https://github.com/N0zoM1z0/th08/blob/08c7f00f81e35db8206d917b14f47883930beef6/docs/REPLAY_RESULTS.md",
+      "https://github.com/N0zoM1z0/th08/blob/08c7f00f81e35db8206d917b14f47883930beef6/LICENSE",
+      "https://github.com/N0zoM1z0/th08/issues/10",
+      "https://github.com/N0zoM1z0/th08/pull/13"
+    ]
+  },
+  {
+    "id": "rea-dinosaur-speed-case",
+    "name": "Dinosaur runner: recovering one acceleration rule",
+    "url": "https://github.com/morluto/rea/blob/c360cfcd6d7901514b16dd6113eba2e0b0fdf422/website/evidence/calculator-and-dino.md#dinosaur-speed",
+    "category": "official-case-studies",
+    "relationship": "official-case-study",
+    "description_en": "REA’s documented teaching case inspects the HTTP t-rex-runner edition and reconstructs its speed-update rule. A separate controlled original-game check and a new demonstration compare update counts, including the floating-point step that crosses the nominal speed threshold.",
+    "description_zh": "REA 的教学案例检查 HTTP 版 t-rex-runner，并重建其速度更新规则。单独进行的受控原游戏检查与新演示对比更新次数，包含浮点递增越过名义速度阈值的一步。",
+    "evidence_url": "https://github.com/morluto/rea/blob/c360cfcd6d7901514b16dd6113eba2e0b0fdf422/website/evidence/calculator-and-dino.md",
+    "verified_at": "2026-10-17",
+    "verification": "source-reviewed",
+    "requirements": [
+      "The recorded target is wayou’s HTTP browser edition at the cited revision, not chrome://dino/. Source and observation hashes identify that edition.",
+      "After read-only inspection, a separate Playwright controller disabled future scheduling and obstacles to call the original update function under controlled conditions; this was not passive REA behavior.",
+      "The reconstructed claim is limited to acceleration. Drawing, jumping, collisions and controls in the teaching game are newly authored, not independently recovered original gameplay.",
+      "Public result tables and code document the author’s checks; this catalog did not rerun them. The cited original-source excerpts retain Chromium attribution and BSD-3-Clause terms."
+    ],
+    "targets": [
+      "game",
+      "website"
+    ],
+    "kind": "case-study",
+    "additional_evidence_urls": [
+      "https://github.com/morluto/rea/blob/c360cfcd6d7901514b16dd6113eba2e0b0fdf422/website/public/assets/licenses/dinosaur.txt"
+    ]
+  },
+  {
+    "id": "rea-calculator-percent-case",
+    "name": "Windows Calculator: reconstructing percentage rules",
+    "url": "https://github.com/morluto/rea/blob/c360cfcd6d7901514b16dd6113eba2e0b0fdf422/website/evidence/calculator-and-dino.md#windows-calculator",
+    "category": "official-case-studies",
+    "relationship": "official-case-study",
+    "description_en": "REA’s case traces the installed Windows Calculator model DLL to explain different percentage behavior for multiplication/division and other operations. An analyst-selected function is interpreted against public Microsoft source and demonstrated with fixed browser examples.",
+    "description_zh": "REA 案例追踪已安装 Windows Calculator 的模型 DLL，解释乘除运算与其他运算中不同的百分比行为。分析人员选定函数后，对照微软公开源码解释，并通过固定输入的浏览器示例演示。",
+    "evidence_url": "https://github.com/morluto/rea/blob/c360cfcd6d7901514b16dd6113eba2e0b0fdf422/website/evidence/calculator-and-dino.md",
+    "verified_at": "2026-10-17",
+    "verification": "source-reviewed",
+    "requirements": [
+      "The documented target is Calculator 11.2508.4.0 x64. The public source commit is an interpretation cross-check, not an identified build commit for that installed DLL.",
+      "Function selection was analyst-assisted; the illustrative agent conversation is not a recording of fully autonomous discovery. No PDB symbols were loaded.",
+      "Microsoft source tests were inspected, not run, and no completed Windows GUI input check is claimed. Browser checks exercise the explanatory examples only.",
+      "This reconstructs a bounded arithmetic rule, not the Calculator application. Public Microsoft source is MIT-licensed; access and rights to the installed target remain separate."
+    ],
+    "targets": [
+      "app",
+      "binary"
+    ],
+    "kind": "case-study",
+    "additional_evidence_urls": [
+      "https://github.com/morluto/rea/pull/1272"
+    ]
+  },
+  {
+    "id": "feishu-dual-instance-case",
+    "name": "Feishu: an author-reported isolated second app instance",
+    "url": "https://benx.ai/blog/posts/rea-reverse-engineer-feishu-dual-instance/",
+    "category": "community-case-studies",
+    "relationship": "community-reported-mixed-workflow",
+    "description_en": "The author reports using Codex and REA analysis to adapt a separate macOS Feishu copy with its own application identity, data directory and single-instance lock. The account describes local signing and separation checks while retaining the original app unchanged.",
+    "description_zh": "作者报告借助 Codex 与 REA 分析，修改独立的 macOS 飞书副本，为其设置不同的应用身份、数据目录和单实例锁。文章描述本地签名与隔离检查，并称原应用保持不变。",
+    "evidence_url": "https://benx.ai/blog/posts/rea-reverse-engineer-feishu-dual-instance/",
+    "verified_at": "2026-10-17",
+    "verification": "source-reviewed",
+    "requirements": [
+      "The report targets Feishu 8.1.17 with REA 6.5.0 on the author’s Mac; reported elapsed times and isolation results were not independently reproduced.",
+      "The modified copy is locally signed and has automatic updates disabled. The article does not publish a redistributable replacement app or original-source reconstruction.",
+      "The author attributes some architecture tracing directly to Codex and cites prior feishu-clone work; the outcome should not be credited solely to REA.",
+      "Original hash/signature and process/data separation checks are author-reported. This case does not establish compatibility with later versions, vendor approval or rights to redistribute a patched application."
+    ],
+    "targets": [
+      "app"
+    ],
+    "kind": "case-study"
   }
 ]
