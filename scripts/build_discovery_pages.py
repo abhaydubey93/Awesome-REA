@@ -20,6 +20,7 @@ SECTIONS = {
     'app': ('Apps', '应用'),
     'native-binary': ('Native binaries', '原生二进制'),
     'firmware': ('Firmware and hardware', '固件与硬件'),
+    'protocol': ('Protocols', '协议'),
     'agents-and-mcp': ('Agents and MCP', '智能体与 MCP'),
     'related-collections': ('Related collections', '相关资源合集'),
     'references-and-learning': ('References and learning', '文档与学习资料'),

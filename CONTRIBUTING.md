@@ -8,11 +8,13 @@ Use the resource issue template or submit a pull request with:
 
 - **Name and original URL** — prefer the project maintainer's repository or website.
 - **Resource type** — project, tool, integration, case study, collection, documentation, learning resource, or research.
-- **Target area** — Website, Game, App, Binary, or Firmware; multiple areas are allowed.
+- **Target area** — Website, Game, App, Binary, Firmware, or Protocol; multiple areas are allowed.
 - **Short description** — explain what the resource provides in your own words.
 - **Relevant conditions** — include platform, license, release, or external-tool requirements when they affect the description.
 
 Check the existing collection before adding a duplicate. A resource does not need a minimum number of Stars. Prefer original, maintained projects over copied forks. Claims about REA integration should be supported by the project's own documentation.
+
+Use Protocol when primary evidence describes communication-format analysis, traffic dissection, message exchanges or protocol-state inference, including hardware buses. Generic network access, API usage or an MCP interface alone does not qualify. Binary-encoded messages do not imply executable Binary analysis. Preserve existing targets when adding another reviewed task area; do not retag historical scan records automatically.
 
 ## Update the catalog
 
@@ -36,11 +38,11 @@ Use the [paper submission form](https://github.com/reacher-z/Awesome-REA/issues/
 
 Bibliographic records live in `data/papers.json`, separately from the tool catalog and automated scan index. For a pull request, follow an existing record and preserve the original title and full author names. Supply English and Chinese titles, summaries, relevance and limitations; distinguish preprints, conference acceptance, published proceedings and journal articles. Journal articles use `journal-article` and export as BibTeX `@article`; the journal title belongs in `venue`. Record only the verified date precision: never invent a publication day or conference date. Keep `runtime_tested` false unless the catalog schema and independent reproduction evidence are explicitly extended. Run `python3 scripts/validate_papers.py`, regenerate both READMEs, then run `python3 scripts/build_production.py`.
 
-Use a verified paper DOI or arXiv identifier whenever available. Never substitute a software or dataset DOI for a paper identifier. A published conference paper without either may use a reviewed publisher identity: the initial supported profile is a canonical USENIX Security presentation URL and its matching final `secYY-presenter.pdf`, with the same publication year and both exact URLs in `evidence_urls`. Other publisher profiles require a separate validator review. Preprints and accepted-but-unpublished papers still require a paper identifier. URL matching records an auditable source-review contract; reviewers must verify the actual publication, authors, date and PDF.
+Use a verified paper DOI or arXiv identifier whenever available. Never substitute a software or dataset DOI for a paper identifier. A published conference or workshop paper without either may use a reviewed publisher identity. Supported profiles pair a canonical USENIX Security presentation page with `/system/files/secYY-presenter.pdf`, or a WOOT presentation page with `/system/files/conference/wootYY/wootYY-paper-presenter.pdf`. The series, year and presenter must match, and both exact URLs must appear in `evidence_urls`. Other publisher profiles require a separate validator review. Preprints and accepted-but-unpublished papers still require a paper identifier. URL matching records an auditable source-review contract; reviewers must verify the actual publication, authors, date and PDF.
 
 ## Reconstruction cases
 
-Cases may use REA, other agents, or independent reverse-engineering tools. Use `independent-reconstruction` for a documented reconstruction project with no established REA connection, and `reconstruction-cases` as its category. The `targets` describe the actual Website, Game, App, Binary or Firmware domain. Identify author-reported results, incomplete behavior, platform limits and required original assets. Keep a pinned public source where possible; never include proprietary target binaries or private captures.
+Cases may use REA, other agents, or independent reverse-engineering tools. Use `independent-reconstruction` for a documented reconstruction project with no established REA connection, and `reconstruction-cases` as its category. The `targets` describe the actual Website, Game, App, Binary, Firmware or Protocol domain. Identify author-reported results, incomplete behavior, platform limits and required original assets. Keep a pinned public source where possible; never include proprietary target binaries or private captures.
 
 ## Review and publication
 

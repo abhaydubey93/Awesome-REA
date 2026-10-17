@@ -11,7 +11,7 @@ from urllib.parse import urlsplit
 
 ROOT = Path(__file__).resolve().parents[1]
 STATUSES = {'conference-paper', 'conference-accepted', 'journal-article', 'preprint'}
-TARGETS = {'website', 'game', 'app', 'binary', 'firmware'}
+TARGETS = {'website', 'game', 'app', 'binary', 'firmware', 'protocol'}
 TEXT_FIELDS = {
     'id', 'title', 'title_zh', 'date_precision', 'date_basis', 'date_basis_zh',
     'venue', 'publication_status', 'url', 'pdf_url', 'description_en',
@@ -58,7 +58,7 @@ def canonical_paper_url(value):
 
 
 def has_reviewed_publisher_identity(record, evidence):
-    """Recognize the reviewed USENIX Security proceedings URL/PDF profile.
+    """Recognize reviewed USENIX Security and WOOT proceedings URL/PDF profiles.
 
     This checks a source-review contract, not publication authenticity. Additional
     publisher profiles require review; a software-artifact DOI is not a paper ID.
@@ -69,13 +69,17 @@ def has_reviewed_publisher_identity(record, evidence):
     if not isinstance(landing, str) or not isinstance(pdf, str):
         return False
     match = re.fullmatch(
-        r'https://www\.usenix\.org/conference/usenixsecurity([0-9]{2})/'
+        r'https://www\.usenix\.org/conference/(usenixsecurity|woot)([0-9]{2})/'
         r'presentation/([a-z0-9]+(?:-[a-z0-9]+)*)', landing)
     if not match or type(record.get('year')) is not int:
         return False
-    year, presenter = match.groups()
+    series, year, presenter = match.groups()
+    expected_pdf = (
+        f'https://www.usenix.org/system/files/sec{year}-{presenter}.pdf'
+        if series == 'usenixsecurity' else
+        f'https://www.usenix.org/system/files/conference/woot{year}/woot{year}-paper-{presenter}.pdf')
     return (record['year'] == 2000 + int(year)
-            and pdf == f'https://www.usenix.org/system/files/sec{year}-{presenter}.pdf'
+            and pdf == expected_pdf
             and landing in evidence and pdf in evidence)
 
 

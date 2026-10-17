@@ -31,6 +31,7 @@ const UI = {
     "targetApp": "App",
     "targetBinary": "Binary",
     "targetFirmware": "Firmware",
+    "targetProtocol": "Protocol",
     "sourceTopicLabel": "Topic",
     "sourceAnyTopic": "All topics",
     "sourceSortLabel": "Sort",
@@ -126,6 +127,7 @@ const UI = {
     "targetApp": "应用",
     "targetBinary": "二进制",
     "targetFirmware": "固件",
+    "targetProtocol": "协议",
     "sourceTopicLabel": "主题",
     "sourceAnyTopic": "所有主题",
     "sourceSortLabel": "排序",
@@ -194,6 +196,7 @@ const UI = {
 };
 
 const CATEGORY = {
+  "protocol-analysis": ["Protocol analysis", "协议分析"],
   "jvm": ["JVM bytecode", "JVM 字节码"], "reconstruction-cases": ["Reconstruction cases", "重建案例"], "core": ["REA essentials", "REA 核心"], "workflow-guides": ["Workflow guides", "工作流指南"], "official-case-studies": ["Upstream case studies", "官方案例"], "community-case-studies": ["Community case studies", "社区案例"], "community-integrations": ["REA community integrations", "REA 社区集成"], "community-labs": ["Community labs", "社区实验"], "related-lists": ["Companion collections", "相关目录"], "agent-mcp": ["MCP servers", "MCP 服务"], "agent-workflows": ["Agent workflows", "智能体工作流"], "native-analysis": ["Native analysis", "原生二进制分析"], "dynamic-analysis": ["Runtime & debugging", "运行时与调试"], "android": ["Android", "Android"], "dotnet": [".NET", ".NET"], "javascript-electron": ["JavaScript & Electron", "JavaScript 与 Electron"], "webassembly": ["WebAssembly", "WebAssembly"], "firmware": ["Firmware", "固件"], "binary-libraries": ["Binary analysis libraries", "二进制分析库"], "binary-diffing": ["Binary diffing", "二进制差异分析"], "learning": ["Learning", "学习资源"], "game-analysis": ["Game analysis", "游戏分析"], "games": ["Games", "游戏"], "game-tools": ["Game tools", "游戏工具"], "web-analysis": ["Website & browser analysis", "网站与浏览器分析"]
 };
 const RELATION = {
@@ -205,6 +208,7 @@ const state = { lang: params.get("lang") === "zh" ? "zh" : "en", q: params.get("
 const $ = (selector) => document.querySelector(selector);
 const $$ = (selector) => [...document.querySelectorAll(selector)];
 const t = (key) => UI[state.lang][key] || UI.en[key] || key;
+function targetSearchLabels(target) { const key = "target" + target[0].toUpperCase() + target.slice(1); return [target, UI.en[key] || "", UI.zh[key] || ""]; }
 function dataURL(filename) { const url = new URL(filename, document.baseURI); const revision = document.documentElement.dataset.catalogRevision; if (revision) url.searchParams.set("v", revision); return url; }
 const label = (map, key) => map[key] ? map[key][state.lang === "zh" ? 1 : 0] : key.replaceAll("-", " ");
 const node = (tag, className, text) => { const el = document.createElement(tag); if (className) el.className = className; if (text !== undefined) el.textContent = text; return el; };
@@ -261,8 +265,10 @@ async function load() {
   try {
     const response = await fetch(dataURL("catalog.json"), {cache: "no-cache"}); if (!response.ok) throw new Error("Catalog HTTP " + response.status); const data = await response.json();
     state.topicLabels = data.topic_labels || {};
-    state.records = data.resources.map((r,index) => ({...r, order:index, targets: r.targets || [], search: [r.name,r.name_zh,r.description_en,r.description_zh,r.category,...(CATEGORY[r.category] || []),...(KIND[r.kind] || []),r.relationship,...r.requirements,...(r.requirements_zh || []),...(r.targets || [])].join(" ").toLocaleLowerCase()}));
-    if (!["all","rea","agents","tools","learn"].includes(state.group)) state.group = "all"; if (!["all","website","game","app","binary","firmware"].includes(state.target)) state.target = "all";
+    state.records = data.resources.map((r,index) => ({...r, order:index, targets: r.targets || [], search: [r.name,r.name_zh,r.description_en,r.description_zh,r.category,...(CATEGORY[r.category] || []),...(KIND[r.kind] || []),r.relationship,...r.requirements,...(r.requirements_zh || []),...(r.targets || []).flatMap(targetSearchLabels)].join(" ").toLocaleLowerCase()}));
+    if (!["all","rea","agents","tools","learn"].includes(state.group)) state.group = "all";
+    $('[data-target="protocol"]').hidden = !state.records.some(record => record.targets.includes("protocol"));
+    if (!["all","website","game","app","binary","firmware","protocol"].includes(state.target)) state.target = "all";
     $$('[data-count]').forEach(el => el.textContent = el.dataset.count === "all" ? state.records.length : state.records.filter(r => r.group === el.dataset.count).length);
     $$('[data-repo-path]').forEach(el => el.href = data.meta.repository_url + (el.dataset.repoPath ? "/" + el.dataset.repoPath : ""));
     state.loaded = true; renderCategories(); render(); configureSourceIndex(data.meta.source_index);
@@ -412,14 +418,15 @@ async function loadSources() {
   if (sourceState.loading) return; sourceState.loading = true; sourceState.error = false; $("#source-results").setAttribute("aria-busy","true"); $("#source-error").hidden = true; $("#source-status").textContent = t("sourceLoading");
   try {
     const response = await fetch(dataURL("source-browser.json"), {cache: "no-cache"}); if (!response.ok) throw new Error("Source index HTTP "+response.status); const data = sourceBrowserPayload(await response.json()); sourceState.meta = data.meta;
-    sourceState.records = (data.resources || []).filter(r => r.scan_status === "readme-scanned" && r.scope_status !== "excluded").map((r,index) => { const topics = Array.isArray(r.topics) ? r.topics.map(String) : []; const targets = Array.isArray(r.targets) ? r.targets : []; const full_name = r.full_name || r.name || r.id; const related_entries = sourceRelatedEntries(r); return {...r,full_name,topics,targets,related_entries,order:index,search:[full_name,r.description_en || "",r.description_zh || "",r.description_original || "",r.category || "",...topics.map(topicSearch),...related_entries.flatMap(entry => [entry.title_en,entry.title_zh]),...targets.flatMap(target => [target, UI.en["target"+target[0].toUpperCase()+target.slice(1)], UI.zh["target"+target[0].toUpperCase()+target.slice(1)]])].join(" ").toLocaleLowerCase()}; });
+    sourceState.records = (data.resources || []).filter(r => r.scan_status === "readme-scanned" && r.scope_status !== "excluded").map((r,index) => { const topics = Array.isArray(r.topics) ? r.topics.map(String) : []; const targets = Array.isArray(r.targets) ? r.targets : []; const full_name = r.full_name || r.name || r.id; const related_entries = sourceRelatedEntries(r); return {...r,full_name,topics,targets,related_entries,order:index,search:[full_name,r.description_en || "",r.description_zh || "",r.description_original || "",r.category || "",...topics.map(topicSearch),...related_entries.flatMap(entry => [entry.title_en,entry.title_zh]),...targets.flatMap(targetSearchLabels)].join(" ").toLocaleLowerCase()}; });
+    $('[data-source-target="protocol"]').hidden = !sourceState.records.some(record => record.targets.includes("protocol"));
     sourceState.loaded = true; indexSourceTopics(); syncTopicInput(); $("#mode-source-count").textContent = sourceState.records.length.toLocaleString(); renderSources();
   } catch (_) { sourceState.error = true; $("#source-status").textContent = t("sourceErrorTitle"); $("#source-results").setAttribute("aria-busy","false"); $("#source-error").hidden = false; $("#source-empty").hidden = true; $("#source-more-row").hidden = true; }
   finally { sourceState.loading = false; }
 }
 function resetSources() { sourceState.q=""; sourceState.topic=""; sourceState.target="all"; sourceState.sort="relevance"; sourceState.visible=24; $("#source-search").value=""; $("#source-topic").value=""; $("#source-sort").value="relevance"; renderTopicOptions(); sourceURL(); renderSources(); }
 $("#mode-curated").addEventListener("click",() => setIndexMode("curated")); $("#mode-sources").addEventListener("click",() => setIndexMode("source-index"));
-if (!["all","website","game","app","binary","firmware"].includes(sourceState.target)) sourceState.target="all";
+if (!["all","website","game","app","binary","firmware","protocol"].includes(sourceState.target)) sourceState.target="all";
 if (sourceState.sort === "updated") sourceState.sort = "pushed";
 if (!["relevance","stars","pushed","name"].includes(sourceState.sort)) sourceState.sort="relevance";
 $("#source-search").value=sourceState.q; $("#source-topic").value=sourceState.topic; $("#source-sort").value=sourceState.sort;

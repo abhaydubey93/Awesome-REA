@@ -26,6 +26,7 @@ CATEGORIES = {
     'agent-workflows': ('Independent agent workflows', '独立 Agent 工作流'),
     'game-analysis': ('Game analysis tools', '游戏分析工具'),
     'web-analysis': ('Website analysis tools', '网站分析工具'),
+    'protocol-analysis': ('Protocol analysis tools', '协议分析工具'),
     'native-analysis': ('Native analysis tools', '原生分析工具'),
     'dynamic-analysis': ('Debugging and dynamic analysis', '调试与动态分析'),
     'android': ('Android tools', 'Android 工具'),
@@ -60,6 +61,7 @@ TARGETS = {
     'app': ('App', '应用'),
     'binary': ('Binary', '二进制'),
     'firmware': ('Firmware', '固件'),
+    'protocol': ('Protocol', '协议'),
 }
 
 
@@ -82,6 +84,7 @@ COLLECTION_SECTIONS = {
     'app': ('App', 'App · 应用'),
     'native-binary': ('Native Binary', 'Native Binary · 原生二进制'),
     'firmware': ('Firmware and Hardware', 'Firmware · 固件与硬件'),
+    'protocol': ('Protocols', 'Protocols · 协议'),
     'agents-and-mcp': ('Agents and MCP', 'Agents & MCP · Agent 与集成'),
     'related-collections': ('Related Collections', 'Related Collections · 相关合集'),
     'references-and-learning': ('References and Learning', 'References & Learning · 文档与学习资料'),
@@ -112,9 +115,11 @@ def collection_section(record):
         return 'firmware'
     if category in {'core', 'agent-mcp', 'agent-workflows', 'community-integrations'}:
         return 'agents-and-mcp'
+    if category == 'protocol-analysis':
+        return 'protocol'
     if kind == 'case-study':
         # New community cases should follow their target, not silently become binaries.
-        for target in ('website', 'game', 'app', 'firmware'):
+        for target in ('website', 'game', 'app', 'firmware', 'protocol'):
             if target in record.get('targets', []):
                 return target
     return 'native-binary'
@@ -187,6 +192,7 @@ PAPER_SECTIONS = {
     'game-reconstruction': ('Game reconstruction and reverse engineering', '游戏重建与逆向工程'),
     'app-reconstruction': ('App reconstruction and analysis', '应用重建与分析'),
     'firmware-analysis': ('Firmware analysis and rehosting', '固件分析与重托管'),
+    'protocol-analysis': ('Protocol inference and analysis', '协议推断与分析'),
 }
 PAPER_STATUSES = {
     'conference-paper': ('Conference paper', '会议论文'),
@@ -203,16 +209,18 @@ AGENT_EVALUATION_PAPERS = {
 def render_papers(papers, language):
     zh = language == 'zh'
     index = int(zh)
+    protocol_scope = ('协议推断、' if zh else 'protocol inference, ') if any('protocol' in paper['targets'] for paper in papers) else ''
     directory = 'https://awesomerea.org/zh/papers/' if zh else 'https://awesomerea.org/papers/'
     lines = ['<a id="papers"></a>', '## 论文' if zh else '## Papers', '',
-             (f'收录 **{len(papers)} 篇论文**，涵盖逆向工程智能体评测、反编译、固件分析，以及网站、游戏和应用重建。部分论文也出现在精选资源目录中，两者数量不可相加。发表状态与研究范围分别标注，中文标题为译名。'
-              if zh else f'A bibliography of **{len(papers)} papers** on reverse-engineering agent evaluation, decompilation, firmware analysis, and website, game, and app reconstruction. Some papers also appear among curated resources; counts are not additive. Publication status and study scope are made explicit.'), '',
+             (f'收录 **{len(papers)} 篇论文**，涵盖逆向工程智能体评测、反编译、{protocol_scope}固件分析，以及网站、游戏和应用重建。部分论文也出现在精选资源目录中，两者数量不可相加。发表状态与研究范围分别标注，中文标题为译名。'
+              if zh else f'A bibliography of **{len(papers)} papers** on reverse-engineering agent evaluation, decompilation, {protocol_scope}firmware analysis, and website, game, and app reconstruction. Some papers also appear among curated resources; counts are not additive. Publication status and study scope are made explicit.'), '',
              f"[{'浏览论文目录' if zh else 'Browse the paper directory'}]({directory}) · [{'完整书目 JSON' if zh else 'Complete bibliography JSON'}](data/papers.json) · [{'推荐论文' if zh else 'Suggest a paper'}](https://github.com/reacher-z/Awesome-REA/issues/new?template=paper.yml)", '']
     groups = defaultdict(list)
     for paper in papers:
         section = ('agent-evaluation' if paper['id'] in AGENT_EVALUATION_PAPERS else
                    {'website': 'website-reconstruction', 'game': 'game-reconstruction',
-                    'app': 'app-reconstruction', 'firmware': 'firmware-analysis'}.get(paper['targets'][0], 'decompilation'))
+                    'app': 'app-reconstruction', 'firmware': 'firmware-analysis',
+                    'protocol': 'protocol-analysis'}.get(paper['targets'][0], 'decompilation'))
         groups[section].append(paper)
     for section, labels in PAPER_SECTIONS.items():
         if not groups[section]:

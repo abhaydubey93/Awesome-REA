@@ -25,7 +25,7 @@ SOURCE = ROOT / "site"
 OUTPUT = ROOT / "dist"
 SITE_URL = "https://awesomerea.org"
 REPOSITORY_URL = "https://github.com/reacher-z/Awesome-REA"
-TARGETS = {"website", "game", "app", "binary", "firmware"}
+TARGETS = {"website", "game", "app", "binary", "firmware", "protocol"}
 FONT_AWESOME_ICONS = {
     "arrow": "arrow-right", "external": "arrow-up-right-from-square",
     "search": "magnifying-glass", "copy": "copy", "check": "check",
@@ -115,7 +115,8 @@ def default_targets(record: dict) -> list[str]:
     category = record["category"]
     text = " ".join(str(record.get(k, "")) for k in ("id", "name", "description_en")).lower()
     if category == "core":
-        return sorted(TARGETS)
+        # New target capabilities must not silently widen historical core labels.
+        return ["app", "binary", "firmware", "game", "website"]
     found: set[str] = set()
     if category in {"javascript-electron", "android", "dotnet", "jvm"} or any(w in text for w in ("electron", "android", "aegis", "notion", "managed-code")):
         found.add("app")
@@ -123,6 +124,8 @@ def default_targets(record: dict) -> list[str]:
         found.add("website")
     if category == "firmware" or "firmware" in text:
         found.add("firmware")
+    if category == "protocol-analysis":
+        found.add("protocol")
     if any(w in text for w in ("dx-ball", "th04", "game", "unity")):
         found.add("game")
     if category in {"native-analysis", "dynamic-analysis", "binary-libraries", "binary-diffing", "agent-mcp", "agent-workflows", "learning"} or "native" in text:

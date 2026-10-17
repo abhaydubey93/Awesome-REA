@@ -23,7 +23,7 @@ def main():
     parser.add_argument('query', nargs='?', default='', help='Search name, description, category, and requirements')
     parser.add_argument('--category', help='Exact category; use --list-categories to see available values')
     parser.add_argument('--relationship', help='Exact relationship to REA')
-    parser.add_argument('--target', choices=['website', 'game', 'app', 'binary', 'firmware'], help='Type of target to investigate')
+    parser.add_argument('--target', choices=['website', 'game', 'app', 'binary', 'firmware', 'protocol'], help='Type of target to investigate')
     parser.add_argument('--language', choices=['en', 'zh'], default='en')
     parser.add_argument('--json', action='store_true', help='Print full records with provenance')
     mode = parser.add_mutually_exclusive_group()

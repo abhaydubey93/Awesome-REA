@@ -31,7 +31,53 @@ def errors_for(records):
     return errors
 
 
+def workshop_paper():
+    record = publisher_paper()
+    record.update(year=2018, publication_date='2018-08', venue='WOOT 18',
+                  url='https://www.usenix.org/conference/woot18/presentation/kleber',
+                  pdf_url='https://www.usenix.org/system/files/conference/woot18/woot18-paper-kleber.pdf')
+    record['evidence_urls'] = [record['url'], record['pdf_url']]
+    return record
+
+
 class PaperIdentityTests(unittest.TestCase):
+    def test_workshop_publication_has_its_own_exact_final_pdf_profile(self):
+        record = workshop_paper()
+        self.assertEqual(errors_for([record]), [])
+        self.assertTrue(bibtex_text(record).startswith('@inproceedings{'))
+        self.assertNotIn('doi =', bibtex_text(record))
+        self.assertNotIn('identifier', scholarly_article(record, 'en'))
+        for pdf in (
+            'https://www.usenix.org/system/files/sec18-kleber.pdf',
+            'https://www.usenix.org/system/files/woot18-paper-kleber.pdf',
+            'https://www.usenix.org/system/files/conference/woot17/woot18-paper-kleber.pdf',
+            'https://www.usenix.org/system/files/conference/woot18/woot18-slides-kleber.pdf',
+            'https://www.usenix.org/system/files/conference/woot18/woot18-paper-other.pdf',
+        ):
+            altered = deepcopy(record)
+            altered['pdf_url'] = pdf
+            altered['evidence_urls'][1] = pdf
+            self.assertTrue(errors_for([altered]))
+
+    def test_workshop_evidence_status_and_url_guards_remain_strict(self):
+        original = workshop_paper()
+        changes = [('publication_status', 'conference-accepted'), ('publication_status', 'preprint'),
+                   ('year', 2019), ('evidence_urls', [original['url']])]
+        for field in ('url', 'pdf_url'):
+            changes.extend((field, value) for value in (
+                original[field] + '?download=1', original[field] + '#paper',
+                original[field].replace('www.usenix.org', 'www.usenix.org:443'),
+                original[field].replace('www.usenix.org', 'user@www.usenix.org'),
+            ))
+        for field, value in changes:
+            record = deepcopy(original)
+            record[field] = value
+            if field in ('url', 'pdf_url'):
+                record['evidence_urls'] = [record['url'], record['pdf_url']]
+            if field == 'year':
+                record['publication_date'] = '2019-08'
+            self.assertTrue(errors_for([record]))
+
     def test_published_record_keeps_null_identifiers_in_citations_and_schema(self):
         record = publisher_paper()
         self.assertEqual(errors_for([record]), [])
@@ -55,7 +101,7 @@ class PaperIdentityTests(unittest.TestCase):
             'https://example.org/paper',
             'https://zenodo.org/records/6499215',
             'https://github.com/fuzzware-fuzzer/fuzzware',
-            'https://www.usenix.org/conference/woot18/presentation/kleber',
+            'https://www.usenix.org/conference/hotsec18/presentation/kleber',
         ):
             record = publisher_paper()
             record['url'] = landing

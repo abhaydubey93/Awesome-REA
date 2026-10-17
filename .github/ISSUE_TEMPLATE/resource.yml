@@ -40,6 +40,7 @@ body:
         - App
         - Binary
         - Firmware
+        - Protocol
     validations:
       required: true
   - type: dropdown
