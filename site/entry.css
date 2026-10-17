@@ -2,6 +2,7 @@
 .entry-main{max-width:1000px;padding-top:26px;padding-bottom:48px}
 .entry-language{display:inline-flex;align-items:center;min-height:44px;padding:8px 12px;border:1px solid var(--line);border-radius:7px;font-size:14px;color:var(--link);white-space:nowrap}
 .entry-language:hover{background:var(--soft);border-color:var(--strong)}
+.entry-github-fallback{font:700 12px/22px var(--sans);text-align:center}
 .entry-breadcrumbs{display:flex;align-items:baseline;gap:7px 10px;font-size:14px;line-height:1.7;color:var(--muted);margin-bottom:28px}
 .entry-breadcrumbs a,.entry-breadcrumbs>span[aria-hidden]{flex:none;white-space:nowrap}
 .entry-breadcrumbs a,.entry-return a{color:var(--link);text-decoration:underline;text-underline-offset:3px}

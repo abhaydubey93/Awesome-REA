@@ -157,7 +157,8 @@ def _document(record, kind, language, *, site_url, repository_url, styles_href, 
             {'@type': 'ListItem', 'position': 2, 'name': list_name, 'item': site_url + listing},
             {'@type': 'ListItem', 'position': 3, 'name': title, 'item': canonical}]}, entity]}
     icon_css = f'<link rel="stylesheet" href="{_asset_url(icon_stylesheet_href)}">' if icon_stylesheet_href else ''
-    github_icon = '<span class="icon fa-symbol fa-github" aria-hidden="true"></span>' if icon_stylesheet_href else ''
+    github_icon = ('<span class="icon fa-symbol fa-github" aria-hidden="true"></span>' if icon_stylesheet_href
+                   else '<span class="icon entry-github-fallback" aria-hidden="true">GH</span>')
     return f'''<!doctype html>
 {MARKER}
 <html lang="{locale}"{(' data-icon-set="fontawesome"' if icon_stylesheet_href else '')}>
