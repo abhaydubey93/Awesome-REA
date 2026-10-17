@@ -849,5 +849,55 @@
       "合集 LICENSE 声明采用 CC0 1.0 Universal。链接项目和来源文章保留各自权利及许可条件。",
       "这是独立社区合集；条目不一定与 REA 集成，也不代表官方上游隶属关系。"
     ]
+  },
+  "cooler-lcd-case": {
+    "name": "cooler-lcd：Thermalright 显示屏协议实现",
+    "requirements": [
+      "软件包版本为0.1.0，使用 Rust 2024 版次，面向480×480、USB 87ad:70db的显示屏系列；本次审阅未确认其他散热器或显示屏型号。",
+      "文档环境为带 udev/systemd 和 Omarchy 集成的 Linux。Hyprland 提供离开/锁屏状态，NVIDIA 遥测使用 NVML，各屏幕功能另有可选服务依赖。",
+      "驱动引用 TRCC Linux 的逆向笔记作为64字节帧报头与 JPEG 载荷的依据，并每秒保活重发。本目录未独立测量设备行为或报告中的CPU、内存数据。",
+      "同一时间只能由一个进程占用显示屏；厂商 TRCC 应用需释放设备。预览渲染不等于硬件兼容性测试。",
+      "代码采用 MIT；可选航迹、地图数据与其他外部服务保留各自条款。一手文件未证实使用 REA。"
+    ]
+  },
+  "isaacrecomp-case": {
+    "name": "IsaacRecomp：将 Flash 游戏字节码转换为原生 C++",
+    "requirements": [
+      "需要用户自己的原版 Steam Isaac.exe；Wrath of the Lamb 和 Eternal Edition 依赖对应游戏版本。这是提前转换，不是恢复原作者的 ActionScript 工程。",
+      "文档列出 64 位 Windows/Linux、64 位 ARM 设备上的 Android 7.0+ 及 Switch 自制程序目标。源码构建使用 CMake/Ninja 和 SDL2/OpenGL 3.3 或 ES 3.0；移动端、主机端另有 SDK 和工具链要求。",
+      "作者说明使用AI辅助，并报告30 Hz游戏逻辑配合更高频率的插值渲染。本目录未独立复现性能、玩法一致性或稳定性说法。",
+      "报告中的回归测试对比不同引擎版本的确定性逻辑和截图；这本身不能证明所有行为都与原 Flash 游戏一致。",
+      "MIT仅覆盖作者编写的引擎、工具、构建文件和文档。LICENSE明确排除 gen/、gen720/、patch1080/、patch720/ 中的游戏转换代码；第三方与原游戏权利另行处理。"
+    ]
+  },
+  "vd-streamer-linux-case": {
+    "name": "Virtual Desktop Streamer：在 Linux 上重建平台适配层",
+    "requirements": [
+      "需要官方 macOS Virtual Desktop 安装包中的专有库，以及用户自己的 Virtual Desktop 头显应用。它不是完整协议重实现，也不是厂商官方移植。",
+      "构建使用 .NET 8。Linux运行依赖包括 GStreamer 1.16+、PulseAudio/PipeWire、X11或适用的 Wayland portal、OpenSSL 1.1 或 3及 uinput 访问权限；视频文件播放还需要 FFmpeg 7。",
+      "公开测试使用模拟头显、模拟 portal 和容器网络。测试环境没有真实头显、真实 Wi-Fi 或 GPU 编码器；互联网配对和地址不变的网络切换未测试。",
+      "滚动修复只检查到设备/libinput层，未直接观察接收事件的 X11 应用。本目录未重做测试或验证头显兼容性。",
+      "MIT仅适用于本仓库代码。厂商库仍属专有软件；项目限制含这些库的软件包再分发，也不授予头显应用的权利。"
+    ]
+  },
+  "open-claude-ui-case": {
+    "name": "Open Claude UI：基于 REA 调查的界面参考组件",
+    "requirements": [
+      "软件包1.0.0声明 React/React DOM 18+、Framer Motion 10+和 lucide-react 0.280+为对等依赖；开发环境使用 TypeScript 5.5和 Framer Motion 11。",
+      "版本化分析明确面向 Claude Desktop v2.37337.1，并报告使用 REA v6.5.0。早期设计笔记与较新桌面端观察不能混作不受版本限制的统一规范。",
+      "软件包提供构建、类型检查和组件预览；生产级或高保真表述仍是作者说法，本目录没有进行独立对照验证。",
+      "UI组件示例不提供 Claude 模型访问、账号服务或完整恢复的桌面应用；原生桌面效果还需要相应宿主集成。",
+      "仓库采用MIT。资产政策说明使用系统字体回退和合成音频代替捆绑专有字体、音频文件；这不授予上游 Claude 资产或品牌权利。"
+    ]
+  },
+  "nanolathe-case": {
+    "name": "Nanolathe：附研究文档的 Total Annihilation 引擎重实现",
+    "requirements": [
+      "原生使用需要用户已安装的 Total Annihilation HPI 归档。参考安装包含 Core Contingency、Battle Tactics和3.1补丁；其他组合仍在测试。",
+      "固定提交源码要求 Go 1.27.1 或更新版本及 Ebitengine 2.10.5。原生目标包括 Windows、macOS 13+ 及具备图形、音频库的 Linux；浏览器构建仍属实验性。",
+      "项目仍为beta。Modern规则有意改变行为；Strict 3.1表达兼容目标，不是已独立证明完全等同零售版。",
+      "合成测试不使用零售资产，单独的零售测试层需要已安装游戏。本目录未构建、获取游戏文件或复现玩法、渲染说法。",
+      "原创引擎代码采用MIT，原游戏资产和依赖许可证另行处理。发布说明记录了整理后的集成快照、删去的原始研究及未解决的归属问题；这些快照不是逐一认证的发布版本。"
+    ]
   }
 }
