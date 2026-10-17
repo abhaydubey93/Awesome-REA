@@ -1,14 +1,12 @@
 # Awesome Reverse Engineering Anything
 
-整理工具、重建案例与研究论文，帮助理解网站、游戏、应用、原生二进制、固件及通信协议。
+独立整理的工具、重建案例与研究论文合集，涵盖网站、游戏、应用、原生二进制、固件和通信协议。
 
 <a href="https://awesomerea.org/zh/"><img src="assets/readme-banner.svg" alt="Awesome Reverse Engineering Anything — 覆盖六类逆向目标的工具、案例与论文" width="960"></a>
 
-**[浏览合集 ↗](https://awesomerea.org/zh/) · [精选资源](https://awesomerea.org/zh/resources/) · [研究论文](https://awesomerea.org/zh/papers/) · [English](README.md)**
+**[搜索与筛选](https://awesomerea.org/zh/)** · [精选资源](https://awesomerea.org/zh/resources/) · [研究论文](https://awesomerea.org/zh/papers/) · [English](README.md)
 
-**从哪里开始：** 通过下方目录按目标浏览；需要搜索、筛选或查看使用条件与原始证据时，可打开网站或条目旁的“条件与证据”。
-
-这是依据一手来源整理的独立合集。**来源核查不代表运行验证。** [了解核查方法](https://awesomerea.org/zh/about/)。
+按下方目录选择目标。条目附有一手来源；**来源核查不代表运行验证**。[核查方法](https://awesomerea.org/zh/about/)。
 
 ## 目录
 
@@ -20,7 +18,7 @@
 
 **论文与更多资源**
 
-- [论文](#papers) (45) · [全部案例](https://awesomerea.org/zh/?view=curated&kind=case-study) (47) · [完整仓库索引](#完整仓库索引) (2,846)
+- [论文](#papers) (45) · [全部案例](https://awesomerea.org/zh/cases/) (47) · [完整仓库索引](#完整仓库索引) (2,846)
 - [智能体与 MCP](#agents-and-mcp) (18) · [相关合集](#related-collections) (4) · [文档与学习资源](#references-and-learning) (17)
 <!-- END GENERATED CONTENTS -->
 
@@ -28,9 +26,9 @@
 <a id="resource-catalog"></a>
 ## 资源
 
-每个条目的**名称链接指向原始来源**，下方保留完整简介；“条件与证据”链接提供前提条件、限制及核查来源。案例与工具分组列出，资源按主要用途只出现一次；研究论文单独列于[论文主题](#papers)。
+名称链接指向原始来源；“使用条件与证据”提供使用前提、限制与核查来源。每项资源按主要用途列出一次；[研究论文单独列出](#papers)。
 
-合集包含独立项目和 [REA](https://github.com/morluto/rea) 相关资源；收录不代表已接入 REA。目录中的“全部案例”是同一批资源的筛选视图，不能另行累加。
+收录独立项目及 [REA](https://github.com/morluto/rea) 相关资源，不代表已接入 REA。“全部案例”复用本目录的条目，不另行计数。
 
 <!-- BEGIN GENERATED CATALOG -->
 <a id="website"></a>

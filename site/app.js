@@ -11,6 +11,8 @@ const UI = {
     "noscriptNote": "JavaScript enables search and filters. Read the complete <a href=\"/browse/\">repository directory</a>, <a href=\"/resources/\">curated collection</a> and <a href=\"/papers/\">research papers</a> without JavaScript. <a href=\"/zh/\" lang=\"zh-CN\">简体中文</a>.",
     "exploreResources": "Explore the collection",
     "explorePapers": "Browse research papers",
+    "exploreCases": "Browse case studies",
+    "directoryCases": "case studies",
     "shelfTitle": "Explore these collections",
     "shelfCases": "Awesome REA Cases",
     "shelfCasesDescription": "A collection of software and hardware reconstruction reports.",
@@ -129,6 +131,8 @@ const UI = {
     "noscriptNote": "JavaScript 用于搜索和筛选。关闭 JavaScript 仍可阅读完整的<a href=\"/zh/browse/\">仓库目录</a>、<a href=\"/zh/resources/\">精选资源</a>与<a href=\"/zh/papers/\">研究论文</a>。<a href=\"/\" lang=\"en\">English</a>。",
     "exploreResources": "浏览资源集合",
     "explorePapers": "阅读研究论文",
+    "exploreCases": "浏览案例",
+    "directoryCases": "案例",
     "shelfTitle": "探索相关资源",
     "shelfCases": "REA 案例合集",
     "shelfCasesDescription": "软件与硬件重建实践报告的资源合集。",
@@ -288,7 +292,7 @@ function applyLanguage() {
   document.title = t("pageTitle");
   $("#browse-directory").href = state.lang === "zh" ? "/zh/browse/" : "/browse/";
   $$('[data-locale-path]').forEach(el => { el.href = `${state.lang === "zh" ? "/zh" : ""}/${el.dataset.localePath}/${el.dataset.localeFragment ? "#" + el.dataset.localeFragment : ""}`; });
-  $('meta[property="og:image:alt"]')?.setAttribute("content", t("pageTitle"));
+  $('meta[property="og:locale:alternate"]')?.setAttribute("content", state.lang === "zh" ? "en_US" : "zh_CN");
   $("#language-select").value = state.lang;
   for (const selector of ['meta[name="description"]', 'meta[property="og:description"]', 'meta[name="twitter:description"]']) $(selector)?.setAttribute("content", t("pageDescription"));
   for (const selector of ['meta[property="og:title"]', 'meta[name="twitter:title"]']) $(selector)?.setAttribute("content", t("pageTitle"));

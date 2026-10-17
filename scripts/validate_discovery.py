@@ -34,7 +34,7 @@ def validate_route_inventory(urls, resources, papers, *, include_browse=True):
     routes = expected_entry_routes(resources, papers)
     expected = set(routes)
     for prefix in ("", "/zh"):
-        expected.update(prefix + path for path in ("/", "/resources/", "/papers/", "/about/"))
+        expected.update(prefix + path for path in ("/", "/resources/", "/cases/", "/papers/", "/about/"))
         if include_browse:
             expected.add(prefix + "/browse/")
             expected.update(f"{prefix}/browse/{category}/" for category in CATEGORIES)
@@ -131,6 +131,10 @@ def main():
     for path in ("/resources/", "/zh/resources/"):
         page = documents[ORIGIN + path]
         assert len(page.resources) == len(expected) and set(page.resources) == expected, path
+    expected_cases = {record["id"] for record in records if record["kind"] == "case-study"}
+    for path in ("/cases/", "/zh/cases/"):
+        page = documents[ORIGIN + path]
+        assert len(page.resources) == len(expected_cases) and set(page.resources) == expected_cases, path
     robots = RobotFileParser()
     robots.parse((OUTPUT / "robots.txt").read_text(encoding="utf-8").splitlines())
     for bot in ("Googlebot", "bingbot", "OAI-SearchBot", "PerplexityBot"):

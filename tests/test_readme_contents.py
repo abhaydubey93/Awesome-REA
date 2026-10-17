@@ -40,7 +40,7 @@ class ReadmeContentsTest(unittest.TestCase):
         self.assertIn('[Website](#website) (2)', rendered)
         self.assertIn('[Game](#game) (1)', rendered)
         self.assertIn('[Papers](#papers) (1)', rendered)
-        self.assertIn('kind=case-study) (1)', rendered)
+        self.assertIn('[All cases](https://awesomerea.org/cases/) (1)', rendered)
         self.assertIn('[Full Repository Index](#full-repository-index) (2,864)', rendered)
         # A research record listed under Papers is not rendered in Learning, so it is not counted there.
         self.assertNotIn('#references-and-learning', rendered)
@@ -52,7 +52,7 @@ class ReadmeContentsTest(unittest.TestCase):
         rendered = render_contents([resource()], [paper()], 10, 'zh')
         self.assertTrue(rendered.startswith('**按目标找工具与案例**\n\n- [网站](#website) (1)'))
         self.assertIn('[完整仓库索引](#完整仓库索引) (10)', rendered)
-        self.assertIn('https://awesomerea.org/zh/?view=curated&kind=case-study', rendered)
+        self.assertIn('https://awesomerea.org/zh/cases/', rendered)
 
     def test_resource_title_and_full_caveat_keep_separate_bilingual_paragraphs(self):
         record = resource(name='Fixture [tool]', name_zh='测试 [工具]',

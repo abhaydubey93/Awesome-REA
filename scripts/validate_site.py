@@ -17,10 +17,15 @@ from localization import localized_records, read_localizations
 from source_scope import apply_scope, read_scope
 from source_browser import BROWSER_FILENAME, FULL_EXPORT_FILENAME, validate_source_browser
 from validate_discovery import expected_entry_routes, validate_route_inventory
+from build_readme import collection_section
+from homepage_locales import _ui_strings
+from open_graph import OG_LOCALES, SOCIAL_IMAGE_ALT, png_size
 
 ROOT = Path(__file__).resolve().parents[1]
 OUTPUT = ROOT / 'dist'
 ORIGIN = 'https://awesomerea.org'
+ARROWS = re.compile('[\u2190-\u21ff\u27f0-\u27ff\u2900-\u297f]')
+VOID_TAGS = {'area', 'base', 'br', 'col', 'embed', 'hr', 'img', 'input', 'link', 'meta', 'source', 'track', 'wbr'}
 
 
 class Page(HTMLParser):
@@ -34,9 +39,13 @@ class Page(HTMLParser):
         self.current_record, self.current_related_link = None, None
         self.record_ids, self.related_links, self.record_links = [], {}, {}
         self.detail_links, self.entry_markers, self.entry_contents, self.meta = [], [], [], {}
+        self.meta_keys, self.h1_texts, self._h1, self._h1_stack = [], [], None, []
         self.current_detail_link = None
         self.current_entry, self.entry_heading, self.entry_time = None, None, None
         self.entry_article_depth = 0
+        self.case_rows, self.current_case = [], None
+        self.case_heading, self.case_time = None, None
+        self._case_sections = []
         self.raw_text_tag = None
         self.paper_groups, self._section_stack = [], []
         self._div_depth = 0
@@ -48,6 +57,8 @@ class Page(HTMLParser):
         assert len(values) == len(attrs), f'Duplicate HTML attributes on {tag}'
         classes = values.get('class', '').split()
         if tag == 'section':
+            self._case_sections.append({'section': values.get('data-case-section'), 'anchor': values.get('id')}
+                                       if 'case-section' in classes else None)
             group = None
             if 'paper-section' in classes:
                 group = {'anchor': values.get('aria-labelledby'), 'paper_ids': [],
@@ -84,6 +95,21 @@ class Page(HTMLParser):
             self.related_links[identifier] = []
             self.record_links[identifier] = []
             self.current_record = identifier
+        if tag == 'article' and 'data-case-id' in values:
+            assert self.current_case is None, 'Nested case articles are invalid'
+            case_section = next((section for section in reversed(self._case_sections) if section is not None), {})
+            self.current_case = {'id': values['data-case-id'], 'anchor': values.get('id'),
+                                 'section': values.get('data-case-section'), 'text': [],
+                                 'headings': [], 'times': [], 'links': [],
+                                 'parent_section': case_section.get('section'),
+                                 'parent_anchor': case_section.get('anchor')}
+            self.case_rows.append(self.current_case)
+        if self.current_case is not None and tag == 'h3':
+            self.case_heading = []
+            self.current_case['headings'].append(self.case_heading)
+        if self.current_case is not None and tag == 'time':
+            self.case_time = {'datetime': values.get('datetime'), 'text': []}
+            self.current_case['times'].append(self.case_time)
         if tag == 'article' and self.current_entry is not None:
             self.entry_article_depth += 1
         if tag == 'article' and ('data-entry-kind' in values or 'data-entry-id' in values):
@@ -105,6 +131,8 @@ class Page(HTMLParser):
             self.detail_links.append(self.current_detail_link)
         if tag in ('a', 'link') and values.get('href'):
             self.links.append(values['href'])
+            if self.current_case is not None:
+                self.current_case['links'].append(values['href'])
             if self.current_paper:
                 self.paper_links[self.current_paper].append(values['href'])
             if self.current_record:
@@ -122,13 +150,27 @@ class Page(HTMLParser):
             self.noindex = True
         if tag == 'meta':
             self.meta[values.get('name') or values.get('property')] = values.get('content')
+            self.meta_keys.append(values.get('name') or values.get('property'))
+        # Visible H1 text, without decorative aria-hidden descendants such as the title dot.
+        if self._h1 is not None and tag not in VOID_TAGS:
+            self._h1_stack.append((tag, values.get('aria-hidden') == 'true'))
+        if tag == 'h1' and self._h1 is None:
+            self._h1, self._h1_stack = [], []
         if tag in ('script', 'style'):
             self.raw_text_tag = tag
         if tag == 'script' and values.get('type') == 'application/ld+json':
             self.json_script = ''
 
     def handle_data(self, data):
+        if self._h1 is not None and not any(hidden for _, hidden in self._h1_stack):
+            self._h1.append(data)
         if self.raw_text_tag is None:
+            if self.current_case is not None:
+                self.current_case['text'].append(data)
+            if self.case_heading is not None:
+                self.case_heading.append(data)
+            if self.case_time is not None:
+                self.case_time['text'].append(data)
             if self.current_entry is not None:
                 self.current_entry['text'].append(data)
             if self.entry_heading is not None:
@@ -155,6 +197,7 @@ class Page(HTMLParser):
         if tag == self.raw_text_tag:
             self.raw_text_tag = None
         if tag == 'article':
+            self.current_case, self.case_heading, self.case_time = None, None, None
             self.current_paper = None
             self.current_record = None
             if self.current_entry is not None:
@@ -163,8 +206,17 @@ class Page(HTMLParser):
                     self.current_entry, self.entry_heading, self.entry_time = None, None, None
         if tag == 'h1':
             self.entry_heading = None
+        if self._h1 is not None:
+            if self._h1_stack and self._h1_stack[-1][0] == tag:
+                self._h1_stack.pop()
+            elif tag == 'h1':
+                self.h1_texts.append(' '.join(''.join(self._h1).split()))
+                self._h1 = None
         if tag == 'time':
             self.entry_time = None
+            self.case_time = None
+        if tag == 'h3':
+            self.case_heading = None
         if tag == 'a':
             self.current_related_link = None
             self.current_detail_link = None
@@ -176,6 +228,8 @@ class Page(HTMLParser):
             self._div_depth -= 1
         if tag == 'section' and self._section_stack:
             self._section_stack.pop()
+        if tag == 'section' and self._case_sections:
+            self._case_sections.pop()
 
 
 def structured_checks(value):
@@ -199,6 +253,133 @@ def schema_entities(value, type_name):
             yield value
         for item in value.values():
             yield from schema_entities(item, type_name)
+
+
+def validate_homepage_destinations(pages, app_source=None):
+    """Homepage ItemList names repeat each destination's H1, never arrowed UI link text."""
+    strings = _ui_strings(app_source if app_source is not None else (ROOT / 'site/app.js').read_text(encoding='utf-8'))
+    for route, language in (('/', 'en'), ('/zh/', 'zh')):
+        lists = [entity['mainEntity'] for entity in schema_entities(pages[route].schemas, 'CollectionPage')
+                 if isinstance(entity.get('mainEntity'), dict) and entity['mainEntity'].get('@type') == 'ItemList']
+        assert len(lists) == 1 and lists[0]['itemListElement'], f'Homepage needs one destination ItemList: {route}'
+        for item in lists[0]['itemListElement']:
+            name, destination = item.get('name'), urlsplit(item.get('url', '')).path
+            assert isinstance(name, str) and name.strip(), f'Homepage ItemList item needs a name: {route}'
+            assert not ARROWS.search(name), f'Homepage ItemList name contains an arrow: {name!r} ({route})'
+            assert name not in strings[language].values(), f'Homepage ItemList name reuses interface link text: {name!r} ({route})'
+            assert destination in pages and pages[destination].h1_texts == [name], f'Homepage ItemList name differs from the H1 of {destination}: {name!r}'
+
+
+def validate_open_graph(route, page, card_size):
+    """Every page publishes the shared social block; ``route=None`` is the uncanonical 404 template."""
+    assert len(page.meta_keys) == len(set(page.meta_keys)), f'Duplicate meta tags: {route}'
+    meta, language = page.meta, 'zh' if route and route.startswith('/zh/') else 'en'
+    expected = {'og:type': 'website', 'og:site_name': 'AwesomeREA.org', 'og:locale': OG_LOCALES[language],
+                'og:image:type': 'image/png', 'og:image:width': str(card_size[0]), 'og:image:height': str(card_size[1]),
+                'og:image:alt': SOCIAL_IMAGE_ALT[language], 'twitter:card': 'summary_large_image',
+                'twitter:image:alt': SOCIAL_IMAGE_ALT[language]}
+    if route is not None:
+        expected.update({'og:locale:alternate': OG_LOCALES['en' if language == 'zh' else 'zh'], 'og:url': ORIGIN + route})
+    assert {key: meta.get(key) for key in expected} == expected, f'Open Graph block differs from the shared generator: {route}'
+    if route is None:
+        assert 'og:url' not in meta and 'og:locale:alternate' not in meta, 'The 404 template must not publish an og:url or counterpart'
+    image = urlsplit(meta.get('og:image') or '')
+    assert (image.scheme, image.netloc, image.path) == ('https', 'awesomerea.org', '/social-card.png') and meta.get('twitter:image') == meta['og:image'], f'Social image URL mismatch: {route}'
+    assert meta['og:image:alt'] not in {meta.get('og:title'), meta.get('twitter:title')}, f'og:image:alt repeats the page title: {route}'
+
+
+def header_rules(text):
+    """Parse Cloudflare Pages _headers: unindented URL patterns, indented Name: value lines."""
+    rules, current = {}, None
+    for number, line in enumerate(text.splitlines(), 1):
+        if not line.strip() or line.lstrip().startswith('#'):
+            continue
+        if not line[0].isspace():
+            current = rules.setdefault(line.strip(), {})
+            continue
+        name, separator, value = line.strip().partition(':')
+        assert current is not None and separator and value.strip(), f'Malformed _headers line {number}'
+        assert name.strip().lower() not in current, f'Duplicate header in one _headers rule: line {number}'
+        current[name.strip().lower()] = value.strip()
+    return rules
+
+
+def csp_directives(policy):
+    directives = {}
+    for part in policy.split(';'):
+        tokens = part.split()
+        if tokens:
+            assert tokens[0].lower() not in directives, f'Duplicate CSP directive: {tokens[0]}'
+            directives[tokens[0].lower()] = tokens[1:]
+    return directives
+
+
+def csp_allows(directives, directive, url, base=ORIGIN + '/'):
+    """Match a resource against one fetch directive, falling back to default-src."""
+    sources = directives.get(directive, directives.get('default-src', []))
+    target = urlsplit(urljoin(base, url))
+    origin = target.scheme + '://' + target.netloc
+    return ("'self'" in sources and origin == ORIGIN) or origin in {source.rstrip('/') for source in sources}
+
+
+class PageResources(HTMLParser):
+    """Collect what a built page asks the browser to load or execute."""
+    def __init__(self, text):
+        super().__init__()
+        self.scripts, self.inline_scripts, self.stylesheets, self.images = [], 0, [], []
+        self.inline_styles, self.handlers, self.embeds = 0, [], []
+        self.feed(text)
+
+    def handle_starttag(self, tag, attrs):
+        values = dict(attrs)
+        self.handlers.extend(name for name in values if name.startswith('on'))
+        self.inline_styles += 'style' in values or tag == 'style'
+        if tag == 'script':
+            if values.get('src'):
+                self.scripts.append(values['src'])
+            elif (values.get('type') or 'text/javascript').lower() not in {'application/ld+json', 'application/json'}:
+                self.inline_scripts += 1
+        if tag == 'link' and values.get('href'):
+            relations = set((values.get('rel') or '').lower().split())
+            if 'stylesheet' in relations:
+                self.stylesheets.append(values['href'])
+            elif relations & {'icon', 'apple-touch-icon'}:
+                self.images.append(values['href'])
+        if tag == 'img' and values.get('src'):
+            self.images.append(values['src'])
+        if tag in {'iframe', 'object', 'embed', 'base', 'frame'}:
+            self.embeds.append(tag)
+
+
+def validate_security_headers(output):
+    """Keep the site-wide policy strict and sufficient for everything the built HTML loads."""
+    output = Path(output)
+    rules = header_rules((output / '_headers').read_text(encoding='utf-8'))
+    site = rules.get('/*', {})
+    assert site.get('x-frame-options') == 'DENY', 'Site pages must not be framed'
+    assert site.get('permissions-policy'), 'Missing Permissions-Policy'
+    hsts = site.get('strict-transport-security', '')
+    assert re.fullmatch(r'max-age=[1-9]\d*', hsts), 'HSTS needs a positive max-age; includeSubDomains and preload need a documented owner decision'
+    policies = [site[name] for name in ('content-security-policy', 'content-security-policy-report-only') if name in site]
+    assert len(policies) == 1, 'Use one site-wide Content-Security-Policy (or its Report-Only form)'
+    directives = csp_directives(policies[0])
+    for directive in ('default-src', 'base-uri', 'frame-ancestors'):
+        assert directives.get(directive) == ["'none'"], f'CSP {directive} must be none'
+    assert 'form-action' in directives, 'CSP must restrict form submissions'
+    for directive in ('script-src', 'style-src'):
+        assert not {"'unsafe-inline'", "'unsafe-eval'", '*', 'data:', 'http:', 'https:'} & set(directives.get(directive, [])), f'CSP {directive} is too broad'
+    assert csp_allows(directives, 'connect-src', '/catalog.json'), 'CSP must allow same-origin JSON fetches'
+    for path in sorted(output.rglob('*.html')):
+        page = PageResources(path.read_text(encoding='utf-8'))
+        where = '/' + path.relative_to(output).as_posix()
+        assert not page.inline_scripts and not page.inline_styles and not page.handlers and not page.embeds, f'Inline code, styles, handlers or embeds need a CSP review: {where}'
+        for directive, urls in (('script-src', page.scripts), ('style-src', page.stylesheets), ('img-src', page.images)):
+            for url in urls:
+                assert csp_allows(directives, directive, url), f'CSP {directive} blocks {url} on {where}'
+        for url in page.stylesheets:
+            # The icon stylesheet loads its fonts relative to its own origin.
+            if urlsplit(url).path.endswith('/fontawesome.css'):
+                assert csp_allows(directives, 'font-src', url), f'CSP font-src blocks the fonts of {url}'
 
 
 def validate_language_links(route, page):
@@ -402,6 +583,43 @@ def validate_source_browser_output(output):
     assert re.search(r'(?m)^/source-browser\.json\n[ \t]+Cache-Control: no-cache, must-revalidate[ \t]*$', headers), 'Browser source projection requires no-cache headers'
 
 
+def validate_case_outputs(pages, resources):
+    """Bind the script-free case subset, its full evidence, and its navigation."""
+    cases = {record['id']: record for record in resources if record['kind'] == 'case-study'}
+    normalize = lambda value: ' '.join(value.split())
+    for language, prefix in (('en', ''), ('zh', '/zh')):
+        route = prefix + '/cases/'
+        assert route in pages, f'Missing case directory: {route}'
+        page = pages[route]
+        ids = [row['id'] for row in page.case_rows]
+        assert len(ids) == len(cases) and set(ids) == set(cases), f'Case subset differs from curated case records: {route}'
+        collections = list(schema_entities(page.schemas, 'CollectionPage'))
+        assert len(collections) == 1, f'Case directory needs one CollectionPage: {route}'
+        collection = collections[0]
+        assert collection.get('url') == ORIGIN + route and collection.get('inLanguage') == ('zh-CN' if language == 'zh' else 'en'), f'Case schema identity mismatch: {route}'
+        items = collection.get('mainEntity', {})
+        assert items.get('@type') == 'ItemList' and items.get('numberOfItems') == len(cases), f'Case schema count mismatch: {route}'
+        expected_items = []
+        for position, row in enumerate(page.case_rows, 1):
+            record = cases[row['id']]
+            name = (record.get('name_zh') or record['name']) if language == 'zh' else record['name']
+            detail = f"{prefix}/resources/{row['id']}/"
+            expected_items.append({'@type': 'ListItem', 'position': position, 'name': name,
+                                   'url': ORIGIN + detail, 'description': record[f'description_{language}']})
+            assert row['anchor'] == row['id'] and row['section'] == collection_section(record), f'Case placement mismatch: {row["id"]}'
+            assert row['parent_section'] == row['section'] and row['parent_anchor'] == 'cases-' + row['section'], f'Case belongs to the wrong subject section: {row["id"]}'
+            assert len(row['headings']) == 1 and normalize(name) in normalize(''.join(row['headings'][0])), f'Case heading lost localized name: {row["id"]}'
+            requirements = record['requirements_zh' if language == 'zh' else 'requirements']
+            requirements = requirements if isinstance(requirements, list) else [requirements]
+            text = normalize(' '.join(row['text']))
+            assert all(normalize(phrase) in text for phrase in [name, record[f'description_{language}'], *requirements]), f'Case directory lost full localized content: {row["id"]}'
+            links = {detail, record['url'], record['evidence_url'], *record.get('additional_evidence_urls', [])}
+            assert links <= set(row['links']), f'Case directory lost entry/source links: {row["id"]}'
+            assert len(row['times']) == 1 and row['times'][0]['datetime'] == record['verified_at'], f'Case review timestamp mismatch: {row["id"]}'
+            assert record['verified_at'][:10] in normalize(''.join(row['times'][0]['text'])), f'Case review date is missing: {row["id"]}'
+        assert items.get('itemListElement') == expected_items, f'Case structured list differs from rendered entries: {route}'
+
+
 def validate_entry_outputs(pages, resources, papers):
     """Bind individual pages and their ordinary listing links to reviewed records."""
     routes = expected_entry_routes(resources, papers)
@@ -535,16 +753,22 @@ def main():
             assert local.is_file(), f'Missing local link on {parsed.path}: {link}'
             if target.fragment:
                 fragment_links.append((parsed.path, link, local))
+        validate_open_graph(parsed.path, page, png_size(OUTPUT / 'social-card.png'))
     validate_link_fragments(OUTPUT, pages, fragment_links)
+    validate_homepage_destinations(pages)
     validate_paper_outputs(OUTPUT, pages)
     validate_entry_outputs(pages, resources, papers)
+    validate_case_outputs(pages, resources)
     validate_artifact_links(OUTPUT, pages)
     validate_source_browser_output(OUTPUT)
-    assert Page((OUTPUT / '404.html').read_text(encoding='utf-8')).noindex, '404 must be noindex'
+    not_found = Page((OUTPUT / '404.html').read_text(encoding='utf-8'))
+    assert not_found.noindex, '404 must be noindex'
+    validate_open_graph(None, not_found, png_size(OUTPUT / 'social-card.png'))
+    validate_security_headers(OUTPUT)
     assert (OUTPUT / 'llms.txt').read_text(encoding='utf-8').startswith('# '), 'llms.txt must contain Markdown'
     assert re.fullmatch(r'[a-f0-9]{32}\n?', (OUTPUT / 'indexnow.txt').read_text(encoding='utf-8')), 'Invalid public ownership proof'
     read_build_manifest(OUTPUT)
-    print(f'Validated {len(urls)} canonical HTML pages, paper/source/citation coverage, language alternatives, JSON-LD, local links and the deployment manifest.')
+    print(f'Validated {len(urls)} canonical HTML pages, paper/source/citation coverage, language alternatives, JSON-LD, Open Graph, local links, security headers and the deployment manifest.')
 
 
 if __name__ == '__main__':

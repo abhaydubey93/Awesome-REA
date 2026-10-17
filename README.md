@@ -1,14 +1,12 @@
 # Awesome Reverse Engineering Anything
 
-Tools, reconstruction cases and research for understanding websites, games, apps, native binaries, firmware and communication protocols.
+An independent collection of tools, reconstruction cases and research for websites, games, apps, native binaries, firmware and communication protocols.
 
 <a href="https://awesomerea.org/"><img src="assets/readme-banner.svg" alt="Awesome Reverse Engineering Anything — tools, cases and papers across six reverse-engineering domains" width="960"></a>
 
-**[Explore the collection ↗](https://awesomerea.org/) · [Curated directory](https://awesomerea.org/resources/) · [Research papers](https://awesomerea.org/papers/) · [简体中文](README.zh-CN.md)**
+**[Search & filter](https://awesomerea.org/)** · [Curated resources](https://awesomerea.org/resources/) · [Research papers](https://awesomerea.org/papers/) · [简体中文](README.zh-CN.md)
 
-**Start here:** choose a target below to browse. Use the website for search and filters, or open an entry’s “Requirements & evidence” link for prerequisites and primary sources.
-
-An independent collection reviewed against primary sources. **Source review does not imply runtime verification.** [How entries are reviewed](https://awesomerea.org/about/).
+Choose a target below. Entries link to primary sources; **source review does not imply runtime verification**. [Review method](https://awesomerea.org/about/).
 
 ## Contents
 
@@ -20,16 +18,16 @@ An independent collection reviewed against primary sources. **Source review does
 
 **Research and more**
 
-- [Papers](#papers) (45) · [All cases](https://awesomerea.org/?view=curated&kind=case-study) (47) · [Full Repository Index](#full-repository-index) (2,846)
+- [Papers](#papers) (45) · [All cases](https://awesomerea.org/cases/) (47) · [Full Repository Index](#full-repository-index) (2,846)
 - [Agents and MCP](#agents-and-mcp) (18) · [Related Collections](#related-collections) (4) · [References and Learning](#references-and-learning) (17)
 <!-- END GENERATED CONTENTS -->
 
 <a id="resource-catalog"></a>
 ## Resources
 
-Each **name links to the original source**, followed by the full description. “Requirements & evidence” opens prerequisites, limitations and review sources. Cases and tools are grouped separately; each resource appears once under its main purpose, with research in [paper topics](#papers).
+Names link to original sources. “Requirements & evidence” opens prerequisites, limitations and review sources. Each resource appears once under its main purpose; [papers are listed separately](#papers).
 
-Independent projects and [REA](https://github.com/morluto/rea) resources are included; listing does not imply REA integration. “All cases” is a filtered view of these resources, not an additional collection to count.
+Includes independent projects and [REA](https://github.com/morluto/rea) resources. Listing does not imply REA integration, and the cases view reuses these entries.
 
 <!-- BEGIN GENERATED CATALOG -->
 <a id="website"></a>
