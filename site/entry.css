@@ -2,9 +2,10 @@
 .entry-main{max-width:1000px;padding-top:26px;padding-bottom:48px}
 .entry-language{display:inline-flex;align-items:center;min-height:44px;padding:8px 12px;border:1px solid var(--line);border-radius:7px;font-size:14px;color:var(--link);white-space:nowrap}
 .entry-language:hover{background:var(--soft);border-color:var(--strong)}
-.entry-breadcrumbs{display:flex;flex-wrap:wrap;align-items:baseline;gap:7px 10px;font-size:14px;line-height:1.7;color:var(--muted);margin-bottom:28px;overflow-wrap:anywhere}
+.entry-breadcrumbs{display:flex;align-items:baseline;gap:7px 10px;font-size:14px;line-height:1.7;color:var(--muted);margin-bottom:28px}
+.entry-breadcrumbs a,.entry-breadcrumbs>span[aria-hidden]{flex:none;white-space:nowrap}
 .entry-breadcrumbs a,.entry-return a{color:var(--link);text-decoration:underline;text-underline-offset:3px}
-.entry-breadcrumbs [aria-current]{min-width:0}
+.entry-breadcrumbs [aria-current]{flex:1;min-width:0;overflow:hidden;white-space:nowrap;text-overflow:ellipsis}
 .entry-article{min-width:0}
 .entry-heading{max-width:78ch}
 .entry-eyebrow{margin:0 0 12px;font-size:14px;font-weight:650;color:var(--link)}
