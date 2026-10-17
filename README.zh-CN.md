@@ -187,7 +187,7 @@
 <a id="papers"></a>
 ## 论文
 
-收录 **18 篇论文**，涵盖逆向工程智能体评测、反编译，以及网站、游戏和应用重建。部分论文也出现在精选资源目录中，两者数量不可相加。发表状态与研究范围分别标注，中文标题为译名。
+收录 **23 篇论文**，涵盖逆向工程智能体评测、反编译，以及网站、游戏和应用重建。部分论文也出现在精选资源目录中，两者数量不可相加。发表状态与研究范围分别标注，中文标题为译名。
 
 [浏览论文目录](https://awesomerea.org/zh/papers/) · [完整书目 JSON](data/papers.json) · [推荐论文](https://github.com/reacher-z/Awesome-REA/issues/new?template=paper.yml)
 
@@ -217,6 +217,14 @@
 
     **范围与限制:** v0 研究使用 12 个生成任务和 8 个公开校准任务，限定 Linux x86-64 ELF、Shell 接口和五分钟预算。紧凑的教学任务不能证明大型应用上的表现。未确认论文直接关联的公开研究产物 URL。
 
+- [ProgramBench：语言模型能否从零重建程序？](https://arxiv.org/abs/2605.03546) — **2026 · NeurIPS 2026 · 已接收**
+
+    John Yang 等 · [PDF](https://arxiv.org/pdf/2605.03546v1) · [代码](https://github.com/facebookresearch/ProgramBench)
+
+    通过 200 项任务评估黑盒程序重建：智能体运行可执行文件进行探测并阅读文档，再独立实现代码库，由生成的测试检查其行为。
+
+    **范围与限制:** 推理阶段禁止检查二进制内容、反编译和访问互联网。通过有限测试不能证明完整行为等价或恢复了原始源码。实时榜单中的后续运行结果应与所审阅 arXiv 版本的结果区分。
+
 - [CREBench：评估大语言模型的密码二进制逆向工程能力](https://arxiv.org/abs/2604.03750) — **2026 · COLM 2026 · 已接收**
 
     Baicheng Chen 等 · [PDF](https://arxiv.org/pdf/2604.03750) · [代码](https://github.com/wangyu-ovo/CREBench)
@@ -234,6 +242,14 @@
     利用真实程序中的函数、运行时行为检查，以及 LLM 辅助的代码可理解性评估，比较传统反编译器与基于 LLM 的方法。
 
     **范围与限制:** 评估语料包含 130 个程序中的 23,400 个函数。基于模糊测试的检查覆盖有限，可理解性评分部分依赖 LLM 评审器。研究产物说明，重新构建的 OSS-Fuzz 项目可能与论文版本不同。
+
+- [Decompile-Bench：面向真实二进制反编译的百万级二进制与源码函数对](https://papers.nips.cc/paper_files/paper/2025/hash/079cf13ae174c31f148207d94d213bdc-Abstract-Datasets_and_Benchmarks_Track.html) — **2025 · NeurIPS 2025 Datasets and Benchmarks · 会议论文**
+
+    Hanzhuo Tan 等 · [PDF](https://papers.nips.cc/paper_files/paper/2025/file/079cf13ae174c31f148207d94d213bdc-Paper-Datasets_and_Benchmarks_Track.pdf) · [代码](https://github.com/albertan017/LLM4Decompile)
+
+    通过 Compile-Trace-Filter 流程构建 200 万组 C/C++ 二进制与源码函数对，并提供涵盖转写为 C/C++ 的 HumanEval、MBPP 任务及近期 GitHub 函数的评测集。
+
+    **范围与限制:** 该工作研究函数级反编译。重新执行测试覆盖 HumanEval、MBPP；GitHub2025 未提供单元测试。内联可能使二进制与源码无法一一对应，微调实验仅使用 10% 的语料。这些结果不能证明整程序恢复能力。
 
 - [LLM4Decompile：使用大语言模型反编译二进制代码](https://aclanthology.org/2024.emnlp-main.203/) — **2024 · EMNLP 2024 · 会议论文**
 
@@ -336,6 +352,30 @@
     **范围与限制:** 生成的交互覆盖基本悬停、切换和点击行为，复杂时序与拖放逻辑仍不在范围内；半透明重叠元素或边界不明确的场景内界面可能处理失败。这是游戏界面原型重建，不是完整玩法重建；官方页面仍标注代码即将发布。
 
 ### 应用重建与分析
+
+- [DeclarUI：以自动生成声明式界面代码连接设计与开发](https://doi.org/10.1145/3715726) — **2025 · Proceedings of the ACM on Software Engineering · 期刊论文**
+
+    Ting Zhou 等 · [PDF](https://xinyi-hou.github.io/files/zhou2024bridging.pdf) · [代码](https://github.com/security-pride/DeclarUI)
+
+    结合视觉组件提取、多模态模型、页面跳转图与迭代检查，从设计稿或截图重建多页面移动界面代码，并在 React Native、Flutter 和 ArkUI 上评测。
+
+    **范围与限制:** 人员需审核并修正推断出的导航图。评测覆盖 50 组各含五页的界面；页面跳转覆盖率与编译成功不代表恢复了完整业务逻辑或后端。各框架结果存在差异，视觉指标也不能完全反映人眼感知的保真度。脚本与数据已公开，但核查的提交中未发现项目级许可证。
+
+- [基于机器学习的移动应用图形用户界面原型生成](https://doi.org/10.1109/TSE.2018.2844788) — **2020 · IEEE Transactions on Software Engineering · 期刊论文**
+
+    Kevin Moran 等 · [PDF](https://arxiv.org/pdf/1802.02312v2)
+
+    ReDraw 通过组件检测、CNN 控件类型分类及数据驱动的近邻层级组装，将截图或设计稿转换为原生 Android 图形界面原型。
+
+    **范围与限制:** 实现覆盖 15 类 Android 组件，每次生成单个屏幕；多屏需要人工组合，层级构建受采集时屏幕尺寸约束。评估关注外观和视图层级，不代表恢复原始应用逻辑或后端。实验以截图和重新制作的设计稿代替真实设计产物；本目录未独立复现实验。
+
+- [pix2code：从图形用户界面截图生成代码](https://doi.org/10.1145/3220134.3220135) — **2018 · EICS 2018 · 会议论文**
+
+    Tony Beltramelli · [PDF](https://arxiv.org/pdf/1705.07962v2) · [代码](https://github.com/tonybeltramelli/pix2code)
+
+    学习从界面截图生成领域专用语言（DSL），再编译为原生 Android XML、iOS Storyboard 或网页 HTML/CSS 界面代码。
+
+    **范围与限制:** 评测采用合成的截图与代码配对，每个平台含 1,500 个训练实例和 250 个测试实例。报告的准确率针对 DSL 词元，不代表完整应用或行为复现成功率。方法忽略文本标签内容，并以相同架构分别训练各平台模型；范围是布局、组件及其关系，不包括应用逻辑或后端恢复。仓库将其定位为教育用途的研究原型；本条目未对其较旧依赖进行运行测试。
 
 - [使用 REMAUI 逆向重建移动应用用户界面](https://ieeexplore.ieee.org/abstract/document/7372013) — **2015 · ASE 2015 · 会议论文**
 
