@@ -86,6 +86,7 @@ const UI = {
     "aboutCurated": "Collection notes ↗",
     "loading": "Loading resources…",
     "emptyDescription": "Try another search term or broaden your filters.",
+    "emptySearchPapers": "Search research papers",
     "emptySearchRepositories": "Search automatically indexed repositories",
     "emptySearchRepositoriesFor": "Search automatically indexed repositories for “{query}”",
     "emptyRepositoriesNote": "These repositories are collected automatically, not individually source-reviewed.",
@@ -210,6 +211,7 @@ const UI = {
     "aboutCurated": "收录说明（英文）↗",
     "loading": "正在加载资源…",
     "emptyDescription": "换一个关键词，或扩大筛选范围。",
+    "emptySearchPapers": "搜索研究论文",
     "emptySearchRepositories": "搜索自动采集的仓库",
     "emptySearchRepositoriesFor": "在自动采集的仓库中搜索“{query}”",
     "emptyRepositoriesNote": "这些仓库由自动采集获得，尚未逐项复核来源。",
@@ -343,19 +345,29 @@ function card(record) {
   details.append(context);article.append(details);return article;
 }
 function filtered() { const terms=state.q.toLocaleLowerCase().trim().split(/\s+/).filter(Boolean);const found=state.records.filter(r=>(state.group==="all"||r.group===state.group)&&(state.target==="all"||r.targets.includes(state.target))&&(state.category==="all"||r.category===state.category)&&(state.kind==="all"||r.kind===state.kind)&&terms.every(term=>r.search.includes(term)));const rank=r=>{const featured=FEATURED.indexOf(r.id);if(featured>=0)return featured;return 100+({"tool":0,"integration":1,"project":2,"case-study":3,"collection":4,"research":5,"learning-resource":6,"documentation":7}[r.kind]??8);};return found.sort((a,b)=>rank(a)-rank(b)||a.order-b.order); }
-function renderEmptyRepositoryAction(foundCount = state.loaded ? filtered().length : null) {
-  const show = state.loaded && !state.error && sourceState.available && sourceState.mode === "curated"
+function renderEmptySearchActions(foundCount = state.loaded ? filtered().length : null) {
+  const show = state.loaded && !state.error && sourceState.mode === "curated"
     && foundCount === 0 && state.q.trim() !== "";
+  const papers = $("#empty-search-papers");
+  papers.hidden = !show;
+  papers.textContent = t("emptySearchPapers");
+  if (show) {
+    const next = new URL(state.lang === "zh" ? "/zh/papers/" : "/papers/", location.origin);
+    // The directory applies its existing query cleanup and 240-character limit.
+    next.searchParams.set("q", state.q);
+    papers.href = next.pathname + next.search;
+  }
+  const showRepositories = show && sourceState.available;
   const button = $("#empty-search-repositories");
-  button.hidden = !show;
-  $("#empty-repositories-note").hidden = !show;
-  if (show) button.textContent = t("emptySearchRepositoriesFor").replace("{query}", () => state.q.trim());
+  button.hidden = !showRepositories;
+  $("#empty-repositories-note").hidden = !showRepositories;
+  if (showRepositories) button.textContent = t("emptySearchRepositoriesFor").replace("{query}", () => state.q.trim());
 }
 function render() {
   const expanded = expandedRecords(".resource-card");
   const found = filtered(); const grid = $("#resource-grid"); const fragment = document.createDocumentFragment(); found.slice(0, state.visible).forEach(r => fragment.append(card(r))); grid.replaceChildren(fragment); restoreExpanded(".resource-card", expanded); grid.setAttribute("aria-busy", "false");
   $("#results-status").textContent = state.lang === "zh" ? (found.length === state.records.length ? `${found.length} 项资源` : `${found.length} 项匹配资源 · 目录共 ${state.records.length} 项`) : (found.length === state.records.length ? `${found.length} ${found.length === 1 ? "resource" : "resources"}` : `${found.length} ${found.length === 1 ? "result" : "results"} · ${state.records.length} ${state.records.length === 1 ? "resource" : "resources"}`);
-  renderEmptyRepositoryAction(found.length);
+  renderEmptySearchActions(found.length);
   $("#empty-state").hidden = found.length !== 0; $("#error-state").hidden = true; $("#load-more-row").hidden = found.length <= state.visible; $("#remaining-count").textContent = "+" + Math.min(15, Math.max(0, found.length - state.visible)); $("#shown-count").textContent = state.lang === "zh" ? `已显示 ${Math.min(found.length, state.visible)} / ${found.length} 项` : `${Math.min(found.length, state.visible)} of ${found.length} ${found.length === 1 ? "resource" : "resources"} shown`;
   $("#clear-filters").hidden = !state.q && state.group === "all" && state.category === "all" && state.kind === "all" && state.target === "all";
   $$('[data-group]').forEach(el => { const active = el.dataset.group === state.group; el.classList.toggle("active", active); el.setAttribute("aria-pressed", String(active)); });
@@ -374,7 +386,7 @@ async function load() {
     $$('[data-count]').forEach(el => el.textContent = el.dataset.count === "all" ? state.records.length : state.records.filter(r => r.group === el.dataset.count).length);
     $$('[data-repo-path]').forEach(el => { const path = (state.lang === "zh" && ZH_REPOSITORY_PATHS[el.dataset.repoPath]) || el.dataset.repoPath; el.href = data.meta.repository_url + (path ? "/" + path : ""); });
     state.loaded = true; renderCategories(); render(); configureSourceIndex(data.meta.source_index);
-  } catch (error) { state.error = true; state.loaded = false; renderEmptyRepositoryAction(); $("#resource-grid").replaceChildren(); $("#resource-grid").setAttribute("aria-busy", "false"); $("#results-status").textContent = t("errorTitle"); $("#error-state").hidden = false; $("#empty-state").hidden = true; $("#load-more-row").hidden = true; }
+  } catch (error) { state.error = true; state.loaded = false; renderEmptySearchActions(); $("#resource-grid").replaceChildren(); $("#resource-grid").setAttribute("aria-busy", "false"); $("#results-status").textContent = t("errorTitle"); $("#error-state").hidden = false; $("#empty-state").hidden = true; $("#load-more-row").hidden = true; }
 }
 $("#search-input").value = state.q;
 $("#search-input").addEventListener("input", event => { state.q = event.target.value; state.visible = 15; updateURL(); if (state.loaded) render(); });
@@ -408,7 +420,7 @@ function configureSourceIndex(meta) {
 function setIndexMode(mode) {
   if (mode === "source-index" && !sourceState.available) return; sourceState.mode = mode; const isSource = mode === "source-index"; $("#curated-view").hidden = isSource; $("#source-view").hidden = !isSource;
   for (const [id,active] of [["#mode-curated",!isSource],["#mode-sources",isSource]]) { $(id).classList.toggle("active",active); $(id).setAttribute("aria-pressed",String(active)); }
-  renderEmptyRepositoryAction();
+  renderEmptySearchActions();
   sourceURL(); if (isSource && !sourceState.loaded) loadSources(); else if (isSource) renderSources();
 }
 function searchRepositoriesFromEmpty() {
