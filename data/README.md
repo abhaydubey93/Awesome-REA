@@ -9,7 +9,7 @@
 | `url` | Canonical public destination |
 | `category` | Task or tool family |
 | `kind` | Resource type: project, tool, integration, case-study, collection, documentation, learning-resource, or research |
-| `targets` | One or more browsing domains: `website`, `game`, `app`, `binary`, `firmware`; these describe task fit, not verified REA integration |
+| `targets` | One or more browsing domains: `website`, `game`, `app`, `binary`, `firmware`, `protocol`; these describe task fit, not verified REA integration |
 | `relationship` | Relationship to REA, independent integration, foundation, or learning |
 | `description_en` / `description_zh` | Original practical descriptions |
 | `evidence_url` | Primary source supporting the description |
