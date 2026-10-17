@@ -16,6 +16,7 @@ from catalog import ROOT, RESOURCE_FILES
 from localization import read_localizations, validate_localizations
 from source_scope import read_scope, validate_scope
 from validate_papers import validate_papers
+from review_dates import review_date_is_future
 from source_descriptions import validate_description_capture
 from case_coverage import read_case_coverage, validate_case_coverage
 
@@ -101,7 +102,8 @@ def normalized_url(value):
     return parsed.scheme.lower(), parsed.netloc.lower(), path, parsed.query, parsed.fragment
 
 
-def validate_resources(records, errors):
+def validate_resources(records, errors, *, now=None):
+    now = dt.datetime.now(dt.timezone.utc) if now is None else now.astimezone(dt.timezone.utc)
     ids, urls = set(), set()
     for index, record in enumerate(records):
         where = f'resource[{index}]'
@@ -160,7 +162,10 @@ def validate_resources(records, errors):
             errors.append(f'{where}.requirements: use a nonempty string or list of nonempty strings')
         try:
             reviewed = parse_iso(record['verified_at'])
-            if reviewed > dt.datetime.now(dt.timezone.utc) + dt.timedelta(days=1):
+            future = (review_date_is_future(reviewed.date(), now)
+                      if re.fullmatch(r'\d{4}-\d{2}-\d{2}', record['verified_at']) else
+                      reviewed > now + dt.timedelta(days=1))
+            if future:
                 errors.append(f'{where}.verified_at: review date is in the future')
         except (ValueError, TypeError):
             errors.append(f'{where}.verified_at: invalid ISO date or timezone-aware timestamp')

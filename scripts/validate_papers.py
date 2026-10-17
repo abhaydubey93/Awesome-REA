@@ -8,6 +8,8 @@ import re
 import sys
 from urllib.parse import urlsplit
 
+from review_dates import review_date_is_future
+
 
 ROOT = Path(__file__).resolve().parents[1]
 STATUSES = {'conference-paper', 'conference-accepted', 'journal-article', 'preprint'}
@@ -87,12 +89,13 @@ def has_reviewed_publisher_identity(record, evidence):
             and landing in evidence and pdf in evidence)
 
 
-def validate_papers(records, errors, *, url_check):
+def validate_papers(records, errors, *, url_check, now=None):
     """Use the caller's public-HTTPS checker so importing this module cannot cycle."""
     if not isinstance(records, list) or not records:
         errors.append('Paper catalog must be a nonempty array.')
         return
-    today = dt.datetime.now(dt.timezone.utc).date()
+    now = dt.datetime.now(dt.timezone.utc) if now is None else now.astimezone(dt.timezone.utc)
+    today = now.date()
     seen = {field: set() for field in ('id', 'url', 'arxiv_id', 'doi')}
     for index, record in enumerate(records):
         where = f'paper[{index}]'
@@ -163,10 +166,15 @@ def validate_papers(records, errors, *, url_check):
             try:
                 if not isinstance(value, str) or not re.fullmatch(r'\d{4}-\d{2}-\d{2}', value):
                     raise ValueError
-                if dt.date.fromisoformat(value) > today:
+                reviewed = dt.date.fromisoformat(value)
+                future = (review_date_is_future(reviewed, now) if field == 'verified_at'
+                          else reviewed > today)
+                if future:
                     raise ValueError
             except ValueError:
-                errors.append(f'{where}.{field}: use a non-future ISO calendar date')
+                expectation = ('an ISO calendar date no more than one day ahead of UTC'
+                               if field == 'verified_at' else 'a non-future ISO calendar date')
+                errors.append(f'{where}.{field}: use {expectation}')
 
         arxiv, doi, version = record.get('arxiv_id'), record.get('doi'), record.get('arxiv_version_reviewed')
         for field, value, pattern in (('arxiv_id', arxiv, ARXIV_ID), ('doi', doi, re.compile(r'10\.\d{4,9}/\S+'))):
