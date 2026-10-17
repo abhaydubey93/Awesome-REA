@@ -11,9 +11,9 @@ An independent, source-reviewed collection. Review does not imply runtime verifi
 ## Contents
 
 <!-- BEGIN GENERATED CONTENTS -->
-- **Targets** · [Website](#website) <sub>14</sub> · [Game](#game) <sub>27</sub> · [App](#app) <sub>29</sub> · [Native Binary](#native-binary) <sub>20</sub> · [Firmware & Hardware](#firmware) <sub>10</sub> · [Protocol](#protocol) <sub>7</sub>
+- **Targets** · [Website](#website) <sub>14</sub> · [Game](#game) <sub>32</sub> · [App](#app) <sub>29</sub> · [Native Binary](#native-binary) <sub>20</sub> · [Firmware & Hardware](#firmware) <sub>10</sub> · [Protocol](#protocol) <sub>7</sub>
 
-- [Papers](#papers) <sub>31</sub> · [Cases](https://awesomerea.org/?view=curated&kind=case-study) <sub>31</sub> · [Agents & MCP](#agents-and-mcp) <sub>17</sub> · [Collections](#related-collections) <sub>4</sub> · [Learning](#references-and-learning) <sub>17</sub> · [Repository index](#full-repository-index) <sub>2,864</sub>
+- [Papers](#papers) <sub>31</sub> · [Cases](https://awesomerea.org/?view=curated&kind=case-study) <sub>32</sub> · [Agents & MCP](#agents-and-mcp) <sub>17</sub> · [Collections](#related-collections) <sub>4</sub> · [Learning](#references-and-learning) <sub>17</sub> · [Repository index](#full-repository-index) <sub>2,864</sub>
 <!-- END GENERATED CONTENTS -->
 
 <a id="resource-catalog"></a>
@@ -62,6 +62,7 @@ Browse by purpose, with case studies separated from tools and integrations. Each
 - [**KartPad: platform integration for a Mario Kart Wii recompilation**](https://github.com/chrissotraidis/kartpad) - Builds Apple and Android integration around WiiCompiled’s ahead-of-time translation of Mario Kart Wii, with native graphics, input and optional Retro Rewind support. Its status and rights documents distinguish platform acceptance, unresolved device defects and game-content requirements. <sub>Case study · Independent reconstruction</sub>
 - [**BattleShip: an AI-assisted Super Smash Bros. native port**](https://github.com/vinvirile/BattleShip) - Ports the existing Super Smash Bros. N64 decompilation using libultraship and Torch. The author describes agent-built graphics/audio comparison tools and differential debugging against emulator behavior, rather than claiming AI recovered the game from a cartridge without prior community work. <sub>Case study · Independent reconstruction</sub>
 - [**Agent decompilation: a byte-matching retrospective**](https://momo5502.com/posts/2026-10-09-game-decompilation/) - Maurice Heumann describes replacing plausible-looking agent output with compiler-based checks of reconstructed functions, relocations, data and types. The retrospective reports 99% function presence and 83% of all functions byte-exact, while keeping the reconstruction code private. <sub>Case study · Independent reconstruction</sub>
+- [**Snowboard Kids 2: an LLM-assisted N64 matching decompilation**](https://github.com/cdlewis/snowboardkids2-decomp) - A public matching decompilation of the N64 game Snowboard Kids 2, begun in 2024 with community decompilation tools. The author’s dated posts document Claude, Codex and GLM workflows, including headless one-shot loops, similarity-based function scheduling and hook-guarded, hash-checked builds, through a reported complete function match. <sub>Case study · Independent reconstruction</sub>
 - [**IsaacRecomp: translating Flash game bytecode to native C++**](https://github.com/whylurking/IsaacRecomp) - Translates The Binding of Isaac’s Flash AVM1 bytecode into C++ functions and supplies a native rendering/input runtime. The project reads graphics and audio from the user’s original game and documents deterministic input, headless runs and screenshot regression checks. <sub>Case study · Independent reconstruction</sub>
 - [**Nanolathe: a documented Total Annihilation engine reimplementation**](https://github.com/nanolathe-gg/nanolathe) - Reimplements a Total Annihilation-compatible strategy-game engine in Go, with public file-format research and separate gameplay profiles. It distinguishes intended retail 3.1 behavior from community-patch research and deliberate modern changes, and separates synthetic checks from tests requiring original game data. <sub>Case study · Independent reconstruction</sub>
 - [**TH08: exact-source reconstruction and separately tested ports**](https://github.com/N0zoM1z0/th08) - Reconstructs the original Japanese Touhou 8 version 1.00d against its binary and original compiler, then adapts the recovered code for other platforms. Source presence, strict function matching, whole-executable identity and playable-port checks are recorded as different milestones. <sub>Case study · Independent reconstruction</sub>
@@ -78,12 +79,16 @@ Browse by purpose, with case studies separated from tools and integrations. Each
 - [**UndertaleModTool**](https://github.com/UnderminersTeam/UndertaleModTool) - Browse and modify supported GameMaker data files, extract assets, and decompile or compile GML VM code. Includes room editing, scripted changes, a CLI, and the reusable UndertaleModLib library. <sub>Tool</sub>
 - [**frida-il2cpp-bridge**](https://github.com/vfsfitvnm/frida-il2cpp-bridge) - Inspect IL2CPP classes, methods, and fields in a live process, and trace or intercept method calls without supplying global-metadata.dat. Complements static IL2CPP dumpers with runtime observation. <sub>Tool</sub>
 - [**objdiff**](https://github.com/encounter/objdiff) - Compare functions and data in reference and rebuilt object files to guide matching decompilation. Displays instruction-level differences, demangles C++ symbols, and can rebuild when source files change. <sub>Tool</sub>
+- [**decomp-permuter**](https://github.com/simonlindholm/decomp-permuter) - Randomly or systematically permutes one C function, recompiling each variant and scoring it against a target object file to search for matching compiler output. PERM macros specify manual alternatives, and the optional permuter@home mode distributes runs to other workers. <sub>Tool</sub>
+- [**asm-differ**](https://github.com/simonlindholm/asm-differ) - Diffs original and rebuilt assembly for one function or ROM address to guide matching decompilation; its watch mode can rerun make when sources change. The README describes it as decomp.me’s default diff viewer and points to objdiff as a modern alternative. <sub>Tool</sub>
 - [**UE Explorer**](https://github.com/UE-Explorer/UE-Explorer) - Explore Unreal packages through class, property, and dependency trees; decompile and export UnrealScript classes, inspect bytecode, and examine structured binary data. <sub>Tool</sub>
 - [**GARbro**](https://github.com/morkt/GARbro) - Browse recognized visual-novel resource archives as folders, preview their contents, and extract images or audio with conversion to common formats. <sub>Tool</sub>
 - [**Godot RE Tools**](https://github.com/GDRETools/gdsdecomp) - Recover supported Godot project files, GDScript and imported resources from exported games. Includes PCK inspection and extraction, script decompilation, and resource conversion for examining and rebuilding project structure. <sub>Tool</sub>
 - [**UE4SS**](https://github.com/UE4SS-RE/RE-UE4SS) - Inspect Unreal Engine games at runtime through live UObject property views, reflected C++ header dumps, property mappings and actor dumps. Lua and C++ APIs support experiments while reconstructing game structures. <sub>Tool</sub>
 - [**FModel**](https://github.com/4sval/FModel) - Explore Unreal Engine game archives with CUE4Parse-backed package and property inspection, asset previews and export. The 2026 summer release adds USD world export for reconstructing supported scene content. <sub>Tool</sub>
 - [**PSP Web Recomp**](https://github.com/snuri00/psp-web-recomp) - Translate PSP MIPS executables into C++ and WebAssembly, backed by a PSP high-level emulation runtime and WebGL2 renderer. Native tracing, frame capture and audio tools support investigating missing behavior during game porting. <sub>Project</sub>
+- [**N64: Recompiled**](https://github.com/N64Recomp/N64Recomp) - Statically recompiles N64 MIPS binaries into C functions from symbol metadata, emitting function lookups and relocation macros so a runtime can handle statically linked and relocatable overlays. The output needs a runtime such as N64ModernRuntime; the repository also includes RSP microcode and mod tooling. <sub>Tool</sub>
+- [**XenonRecomp**](https://github.com/hedge-dev/XenonRecomp) - Converts Xbox 360 PowerPC executables into C++ that can be compiled for other platforms, with the XenonAnalyse companion detecting jump tables and function boundaries. Output is a literal instruction translation rather than decompiled code and needs a runtime that the project does not supply. <sub>Tool</sub>
 
 <a id="app"></a>
 ### App
@@ -329,18 +334,18 @@ Open “Scope and publication details” for each study’s full limitations. Pa
 
   </details>
 
-- [**CREBench: Evaluating Large Language Models in Cryptographic Binary Reverse Engineering**](https://arxiv.org/abs/2604.03750) · **2026 · Accepted**
+- [**CREBench: Evaluating Large Language Models in Cryptographic Binary Reverse Engineering**](https://openreview.net/forum?id=tLYdf8hWJB) · **2026 · Conference paper**
 
   Benchmarks cryptographic binary reverse engineering across algorithm recognition, key or IV extraction, wrapper reconstruction, and flag recovery using 432 controlled challenges.
 
-  [PDF](https://arxiv.org/pdf/2604.03750) · [Code](https://github.com/wangyu-ovo/CREBench)
+  [PDF](https://arxiv.org/pdf/2604.03750v2) · [Code](https://github.com/wangyu-ovo/CREBench)
 
   <details>
   <summary>Scope and publication details</summary>
 
   **Scope and limits:** The corpus combines 48 algorithms, three insecure key-use scenarios, and three difficulty levels. It excludes professional-grade obfuscators such as Tigress and O-LLVM; results should not be generalized to heavily protected arbitrary binaries.
 
-  **Publication:** 2026 · COLM 2026 · Accepted · Baicheng Chen et al.
+  **Publication:** 2026 · COLM 2026 · Conference paper · Baicheng Chen et al.
 
   </details>
 
@@ -379,21 +384,6 @@ Open “Scope and publication details” for each study’s full limitations. Pa
 
   </details>
 
-- [**LLM4Decompile: Decompiling Binary Code with Large Language Models**](https://aclanthology.org/2024.emnlp-main.203/) · **2024 · Conference paper**
-
-  Trains language models for assembly-to-C decompilation and for refining Ghidra pseudocode, evaluating whether recovered functions can be recompiled and executed correctly.
-
-  [PDF](https://aclanthology.org/2024.emnlp-main.203.pdf) · [Code](https://github.com/albertan017/LLM4Decompile)
-
-  <details>
-  <summary>Scope and publication details</summary>
-
-  **Scope and limits:** The paper limits its experiments to C on x86 and function-level benchmarks. Re-executability on sampled tests does not establish whole-program equivalence or recovery of the original source. Later repository releases are separate from the 2024 paper.
-
-  **Publication:** 2024 · EMNLP 2024 · Conference paper · Hanzhuo Tan et al.
-
-  </details>
-
 - [**ReSym: Harnessing LLMs to Recover Variable and Data Structure Symbols from Stripped Binaries**](https://doi.org/10.1145/3658644.3670340) · **2024 · Conference paper**
 
   Combines two fine-tuned language models with Prolog-based cross-function reasoning to infer local-variable symbols and user-defined data structures from stripped-binary decompilation.
@@ -406,6 +396,21 @@ Open “Scope and publication details” for each study’s full limitations. Pa
   **Scope and limits:** The method depends on underlying decompilation and learned predictions over C/C++ data. Cross-checking reduces conflicting predictions but does not prove that recovered names or layouts match the unavailable source. The public artifact includes models, processed data, and evaluation code.
 
   **Publication:** 2024 · ACM CCS 2024 · Conference paper · Danning Xie et al.
+
+  </details>
+
+- [**LLM4Decompile: Decompiling Binary Code with Large Language Models**](https://aclanthology.org/2024.emnlp-main.203/) · **2024 · Conference paper**
+
+  Trains language models for assembly-to-C decompilation and for refining Ghidra pseudocode, evaluating whether recovered functions can be recompiled and executed correctly.
+
+  [PDF](https://aclanthology.org/2024.emnlp-main.203.pdf) · [Code](https://github.com/albertan017/LLM4Decompile)
+
+  <details>
+  <summary>Scope and publication details</summary>
+
+  **Scope and limits:** The paper limits its experiments to C on x86 and function-level benchmarks. Re-executability on sampled tests does not establish whole-program equivalence or recovery of the original source. Later repository releases are separate from the 2024 paper.
+
+  **Publication:** 2024 · EMNLP 2024 · Conference paper · Hanzhuo Tan et al.
 
   </details>
 
@@ -424,7 +429,7 @@ Open “Scope and publication details” for each study’s full limitations. Pa
 
   </details>
 
-- [**DIRE: A Neural Approach to Decompiled Identifier Naming**](https://arxiv.org/abs/1909.09029) · **2019 · Conference paper**
+- [**DIRE: A Neural Approach to Decompiled Identifier Naming**](https://doi.org/10.1109/ASE.2019.00064) · **2019 · Conference paper**
 
   Combines lexical and structural information from decompiler output to predict meaningful variable names, with a training and evaluation corpus derived from compiled C projects.
 

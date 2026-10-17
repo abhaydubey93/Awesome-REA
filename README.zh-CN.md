@@ -11,9 +11,9 @@
 ## 目录
 
 <!-- BEGIN GENERATED CONTENTS -->
-- **目标** · [网站](#website) <sub>14</sub> · [游戏](#game) <sub>27</sub> · [应用](#app) <sub>29</sub> · [原生二进制](#native-binary) <sub>20</sub> · [固件与硬件](#firmware) <sub>10</sub> · [协议](#protocol) <sub>7</sub>
+- **目标** · [网站](#website) <sub>14</sub> · [游戏](#game) <sub>32</sub> · [应用](#app) <sub>29</sub> · [原生二进制](#native-binary) <sub>20</sub> · [固件与硬件](#firmware) <sub>10</sub> · [协议](#protocol) <sub>7</sub>
 
-- [论文](#papers) <sub>31</sub> · [案例](https://awesomerea.org/zh/?view=curated&kind=case-study) <sub>31</sub> · [Agent 与 MCP](#agents-and-mcp) <sub>17</sub> · [相关合集](#related-collections) <sub>4</sub> · [学习资料](#references-and-learning) <sub>17</sub> · [仓库索引](#完整仓库索引) <sub>2,864</sub>
+- [论文](#papers) <sub>31</sub> · [案例](https://awesomerea.org/zh/?view=curated&kind=case-study) <sub>32</sub> · [Agent 与 MCP](#agents-and-mcp) <sub>17</sub> · [相关合集](#related-collections) <sub>4</sub> · [学习资料](#references-and-learning) <sub>17</sub> · [仓库索引](#完整仓库索引) <sub>2,864</sub>
 <!-- END GENERATED CONTENTS -->
 
 <a id="资源目录"></a>
@@ -63,6 +63,7 @@
 - [**KartPad：Mario Kart Wii 重编译的平台集成**](https://github.com/chrissotraidis/kartpad) - 围绕 WiiCompiled 对 Mario Kart Wii 的提前转换实现 Apple 与 Android 平台集成，提供原生图形、输入及可选 Retro Rewind 支持。状态和权利文档区分平台验收、未解决的设备缺陷及游戏内容要求。 <sub>案例 · 独立重建</sub>
 - [**BattleShip：AI 辅助的 Super Smash Bros. 原生移植**](https://github.com/vinvirile/BattleShip) - 使用 libultraship 和 Torch 移植已有的 Super Smash Bros. N64 反编译成果。作者介绍了智能体构建的图形、音频对比工具和对照模拟器行为的差分调试，并未将其说成脱离社区既有成果、仅靠卡带自动恢复游戏。 <sub>案例 · 独立重建</sub>
 - [**智能体反编译：字节匹配验收复盘**](https://momo5502.com/posts/2026-10-09-game-decompilation/) - Maurice Heumann 介绍如何用基于编译器的函数、重定位、数据和类型检查，取代看似合理的智能体输出。复盘报告 99% 的函数已进入重建源码，全部函数中 83% 达到字节一致；重建代码仍不公开。 <sub>案例 · 独立重建</sub>
+- [**Snowboard Kids 2：大模型辅助的 N64 匹配反编译**](https://github.com/cdlewis/snowboardkids2-decomp) - N64 游戏 Snowboard Kids 2 的公开匹配反编译项目，2024 年借助社区反编译工具启动。作者在按日期发布的文章中记录了 Claude、Codex 和 GLM 的使用流程，包括无界面的一次性匹配循环、按函数相似度安排任务，以及由钩子约束、经哈希校验的构建，直至报告全部函数完成匹配。 <sub>案例 · 独立重建</sub>
 - [**IsaacRecomp：将 Flash 游戏字节码转换为原生 C++**](https://github.com/whylurking/IsaacRecomp) - 将 The Binding of Isaac 的 Flash AVM1 字节码转换为 C++ 函数，并提供原生渲染与输入运行时。项目从用户自己的原游戏读取图像和音频，并记录了确定性输入、无界面运行和截图回归检查。 <sub>案例 · 独立重建</sub>
 - [**Nanolathe：附研究文档的 Total Annihilation 引擎重实现**](https://github.com/nanolathe-gg/nanolathe) - 用 Go 重实现兼容 Total Annihilation 的策略游戏引擎，公开文件格式研究并提供不同玩法配置。项目区分拟复现的零售版3.1行为、社区补丁研究和有意加入的现代改动，也区分合成检查与依赖原始游戏数据的测试。 <sub>案例 · 独立重建</sub>
 - [**TH08：精确源码重建与单独验证的移植**](https://github.com/N0zoM1z0/th08) - 依据原二进制和原编译器重建日版 Touhou 8 的 1.00d 版本，再将恢复的代码适配到其他平台。项目分别记录源码存在、严格函数匹配、完整可执行文件一致性和移植可玩性里程碑。 <sub>案例 · 独立重建</sub>
@@ -79,12 +80,16 @@
 - [**UndertaleModTool**](https://github.com/UnderminersTeam/UndertaleModTool) - 浏览和修改受支持的 GameMaker 数据文件、提取资源，以及反编译或编译 GML VM 代码；提供房间编辑、脚本化修改、CLI 和可复用的 UndertaleModLib 库。 <sub>工具</sub>
 - [**frida-il2cpp-bridge**](https://github.com/vfsfitvnm/frida-il2cpp-bridge) - 在运行中的进程里检查 IL2CPP 类、方法和字段，无需提供 global-metadata.dat 即可跟踪或拦截方法调用，为静态 IL2CPP 转储工具补充运行时观察能力。 <sub>工具</sub>
 - [**objdiff**](https://github.com/encounter/objdiff) - 比较参考目标文件与重新编译目标文件中的函数和数据，辅助匹配反编译；显示指令级差异、还原 C++ 符号，并可在源码变更时自动重新构建。 <sub>工具</sub>
+- [**decomp-permuter**](https://github.com/simonlindholm/decomp-permuter) - 随机或系统地改写单个 C 函数，逐个重新编译变体并与目标文件评分对比，以寻找与原编译输出一致的写法。可用 PERM 宏指定手动备选写法，可选的 permuter@home 模式能把运行分发给其他工作节点。 <sub>工具</sub>
+- [**asm-differ**](https://github.com/simonlindholm/asm-differ) - 对比单个函数或 ROM 地址的原始汇编与重新编译后的汇编，辅助匹配反编译；监视模式可在源码变更时重新运行 make。README 称它是 decomp.me 的默认差异查看器，并推荐 objdiff 作为现代替代方案。 <sub>工具</sub>
 - [**UE Explorer**](https://github.com/UE-Explorer/UE-Explorer) - 通过类、属性与依赖树浏览 Unreal 包，反编译和导出 UnrealScript 类、检查字节码，并查看结构化二进制数据。 <sub>工具</sub>
 - [**GARbro**](https://github.com/morkt/GARbro) - 像浏览文件夹一样查看已识别的视觉小说资源归档，预览内容，并在提取图像或音频时转换为常用格式。 <sub>工具</sub>
 - [**Godot 逆向工程工具**](https://github.com/GDRETools/gdsdecomp) - 从已导出的游戏中恢复受支持的 Godot 工程文件、GDScript 与导入资源，提供 PCK 检查与提取、脚本反编译及资源转换，便于分析和重建工程结构。 <sub>工具</sub>
 - [**UE4SS（虚幻引擎脚本系统）**](https://github.com/UE4SS-RE/RE-UE4SS) - 通过实时 UObject 属性视图、反射 C++ 头文件导出、属性映射和 Actor 转储分析虚幻引擎游戏；Lua 与 C++ API 可辅助实验和重建游戏结构。 <sub>工具</sub>
 - [**FModel 游戏资源浏览器**](https://github.com/4sval/FModel) - 基于 CUE4Parse 浏览虚幻引擎游戏归档，检查资源包和属性，预览并导出资源；2026 年夏季发行版新增 USD 世界导出，可辅助重建受支持的场景内容。 <sub>工具</sub>
 - [**PSP Web Recomp 浏览器游戏重编译项目**](https://github.com/snuri00/psp-web-recomp) - 将 PSP MIPS 可执行文件转换为 C++ 与 WebAssembly，配合 PSP 高层仿真运行时和 WebGL2 渲染器；原生跟踪、画面捕获及音频工具可辅助调查游戏移植中缺失的行为。 <sub>项目</sub>
+- [**N64: Recompiled**](https://github.com/N64Recomp/N64Recomp) - 依据符号元数据将 N64 MIPS 二进制静态重编译为 C 函数，并生成函数查找与重定位宏，供运行时处理静态链接和可重定位的覆盖段。输出需配合 N64ModernRuntime 等运行时；仓库还包含 RSP 微码重编译与模组工具。 <sub>工具</sub>
+- [**XenonRecomp**](https://github.com/hedge-dev/XenonRecomp) - 将 Xbox 360 PowerPC 可执行文件转换为可在其他平台编译的 C++ 代码，配套的 XenonAnalyse 负责检测跳转表和函数边界。输出是逐条指令的直译而非反编译代码，并需要项目本身不提供的运行时。 <sub>工具</sub>
 
 <a id="app"></a>
 ### App · 应用
@@ -330,18 +335,18 @@
 
   </details>
 
-- [**CREBench：评估大语言模型的密码二进制逆向工程能力**](https://arxiv.org/abs/2604.03750) · **2026 · 已接收**
+- [**CREBench：评估大语言模型的密码二进制逆向工程能力**](https://openreview.net/forum?id=tLYdf8hWJB) · **2026 · 会议论文**
 
   通过 432 个受控挑战，评估密码二进制逆向中的算法识别、密钥或 IV 提取、包装层重建及标志恢复。
 
-  [PDF](https://arxiv.org/pdf/2604.03750) · [代码](https://github.com/wangyu-ovo/CREBench)
+  [PDF](https://arxiv.org/pdf/2604.03750v2) · [代码](https://github.com/wangyu-ovo/CREBench)
 
   <details>
   <summary>范围与发表信息</summary>
 
   **范围与限制:** 语料组合 48 种算法、三类不安全密钥使用场景和三个难度等级。它不覆盖 Tigress、O-LLVM 等专业混淆器，结果不应推广到任意重度保护的二进制文件。
 
-  **发表信息:** 2026 · COLM 2026 · 已接收 · Baicheng Chen 等
+  **发表信息:** 2026 · COLM 2026 · 会议论文 · Baicheng Chen 等
 
   </details>
 
@@ -380,21 +385,6 @@
 
   </details>
 
-- [**LLM4Decompile：使用大语言模型反编译二进制代码**](https://aclanthology.org/2024.emnlp-main.203/) · **2024 · 会议论文**
-
-  训练语言模型将汇编反编译为 C，并改进 Ghidra 伪代码，以恢复函数能否重新编译并正确执行为评估目标。
-
-  [PDF](https://aclanthology.org/2024.emnlp-main.203.pdf) · [代码](https://github.com/albertan017/LLM4Decompile)
-
-  <details>
-  <summary>范围与发表信息</summary>
-
-  **范围与限制:** 论文实验限定于 x86 平台的 C 代码和函数级基准。通过抽样测试重新执行，不代表整程序等价或恢复了原始源码。仓库后续版本应与 2024 年论文区分。
-
-  **发表信息:** 2024 · EMNLP 2024 · 会议论文 · Hanzhuo Tan 等
-
-  </details>
-
 - [**ReSym：利用大语言模型恢复去符号二进制中的变量与数据结构符号**](https://doi.org/10.1145/3658644.3670340) · **2024 · 会议论文**
 
   结合两个微调语言模型与基于 Prolog 的跨函数推理，从去符号二进制的反编译结果中推断局部变量符号及用户自定义数据结构。
@@ -407,6 +397,21 @@
   **范围与限制:** 该方法依赖底层反编译结果及针对 C/C++ 数据学习的预测。交叉检查可减少预测冲突，但不能证明恢复的名称或布局与缺失源码完全一致。公开研究产物包含模型、处理后的数据与评估代码。
 
   **发表信息:** 2024 · ACM CCS 2024 · 会议论文 · Danning Xie 等
+
+  </details>
+
+- [**LLM4Decompile：使用大语言模型反编译二进制代码**](https://aclanthology.org/2024.emnlp-main.203/) · **2024 · 会议论文**
+
+  训练语言模型将汇编反编译为 C，并改进 Ghidra 伪代码，以恢复函数能否重新编译并正确执行为评估目标。
+
+  [PDF](https://aclanthology.org/2024.emnlp-main.203.pdf) · [代码](https://github.com/albertan017/LLM4Decompile)
+
+  <details>
+  <summary>范围与发表信息</summary>
+
+  **范围与限制:** 论文实验限定于 x86 平台的 C 代码和函数级基准。通过抽样测试重新执行，不代表整程序等价或恢复了原始源码。仓库后续版本应与 2024 年论文区分。
+
+  **发表信息:** 2024 · EMNLP 2024 · 会议论文 · Hanzhuo Tan 等
 
   </details>
 
@@ -425,7 +430,7 @@
 
   </details>
 
-- [**DIRE：基于神经网络的反编译标识符命名方法**](https://arxiv.org/abs/1909.09029) · **2019 · 会议论文**
+- [**DIRE：基于神经网络的反编译标识符命名方法**](https://doi.org/10.1109/ASE.2019.00064) · **2019 · 会议论文**
 
   结合反编译输出中的词法与结构信息预测有意义的变量名，并使用编译 C 项目构建训练和评估语料。
 
