@@ -2755,5 +2755,75 @@
     "verified_at": "2026-10-17",
     "verification": "source-reviewed",
     "runtime_tested": false
+  },
+  {
+    "id": "paper-icepre",
+    "title": "ICEPRE: ICS Protocol Reverse Engineering via Data-Driven Concolic Execution",
+    "title_zh": "ICEPRE：基于数据驱动混合符号执行的工控协议逆向工程",
+    "authors": [
+      "Yibo Qu",
+      "Dongliang Fang",
+      "Zhen Wang",
+      "Jiaxing Cheng",
+      "Shuaizong Si",
+      "Yongle Chen",
+      "Limin Sun"
+    ],
+    "year": 2025,
+    "publication_date": "2025-06-22",
+    "date_precision": "day",
+    "date_basis": "The ACM article page and publisher-deposited Crossref metadata agree on publication on 2025-06-22. The ISSTA presentation date is not substituted for this journal publication date.",
+    "date_basis_zh": "ACM 文章页面与出版方提交的 Crossref 元数据均将出版日期列为 2025-06-22；本条目不以 ISSTA 报告日期替代该期刊出版日期。",
+    "venue": "Proceedings of the ACM on Software Engineering (ISSTA 2025)",
+    "publication_status": "journal-article",
+    "arxiv_id": null,
+    "arxiv_version_reviewed": null,
+    "first_arxiv_date": null,
+    "doi": "10.1145/3728982",
+    "citation": {
+      "container_title": "Proceedings of the ACM on Software Engineering",
+      "publisher": "ACM",
+      "volume": "2",
+      "issue": "ISSTA",
+      "pages": "2384-2406",
+      "article_number": "ISSTA105",
+      "sources": [
+        "https://dl.acm.org/doi/10.1145/3728982",
+        "https://api.crossref.org/works/10.1145/3728982"
+      ]
+    },
+    "url": "https://dl.acm.org/doi/10.1145/3728982",
+    "pdf_url": "https://dl.acm.org/doi/pdf/10.1145/3728982",
+    "code_url": "https://github.com/QYbPtqyb/ICEPRE",
+    "project_url": null,
+    "targets": [
+      "protocol"
+    ],
+    "description_en": "Infers message-field boundaries by following concrete message-guided paths through binary protocol parsers, then symbolically replaying them to extract byte-level data flow. It merges bytes using value-preserving operations and similar processing traces. For the 1,000-message datasets of four public ICS protocols, the authors report average boundary F1 of 0.76 and field perfection of 0.67.",
+    "description_zh": "在二进制协议解析器中沿具体报文引导的路径分析，再进行符号化重放，提取字节级数据流以推断报文字段边界。它依据保持原值的运算和相似处理轨迹合并字节。作者在四种公开工控协议、每组 1,000 条报文的数据集上，报告平均边界 F1 分数为 0.76、字段完美分割率为 0.67。",
+    "scope_limitations_en": "Recovers message syntax, not field semantics, protocol state machines or endpoint equivalence. It needs the binary, loader configuration and correctly identified initialization, input and parsing functions; manual filtering remains necessary, especially without symbols. Encrypted protocols and bit-level fields are unsupported, and ignored or only copied bytes can be merged incorrectly. Perfection measures fields with both boundaries correct. Quantitative tests use four public protocols with 50- and 1,000-message sets; separate proprietary studies cover three protocols in five firmware targets, with interaction checks on three devices and manually established ground truth. Those checks do not demonstrate complete device behavior.",
+    "scope_limitations_zh": "恢复的是报文语法，并非字段语义、协议状态机或端点等价性。方法需要二进制、加载配置，以及正确识别的初始化、输入和解析函数；尤其在缺少符号时，仍需人工筛选。不支持加密协议和位级字段；被忽略或仅被复制的字节可能遭到错误合并。完美分割率衡量两端边界均正确的字段。量化实验使用四种公开协议的 50 条与 1,000 条报文集合；另行开展的专有协议研究覆盖五个固件目标中的三种协议，在三台设备上进行交互检查，并由人工建立真实标签。这些检查不能证明完整设备行为。",
+    "why_fits_en": "Adds firmware-assisted protocol format inference using concolic analysis, complementing live-server instrumentation and traffic-only field inference.",
+    "why_fits_zh": "补充借助固件与混合符号分析推断协议格式的方法，与实时服务端插桩和仅基于流量的字段推断互补。",
+    "metadata_notes": "The publisher identifies article ISSTA105 and licenses the paper under CC BY 4.0; its Data Availability section links the repository. The reviewed 2025-04-16 code snapshot has no project-level license declaration. Python 3 dependencies use compatible-release bounds, including angr~=9.2.100, Netzob~=2.0.0 and scapy~=2.5.0; the paper describes Ghidra 11.0.3 for function analysis. The repository includes public-protocol configurations and a Modbus capture, but no firmware images; target binaries and libraries need separate provision. The paper specifies trace-similarity threshold 0.9, while released InferSyntax.py uses 99 on a 100-point scale. Its batch evaluator excludes abnormal traces from aggregate metrics. These source differences prevent treating this snapshot as a reproduced paper configuration. No firmware, captures or model payloads were downloaded, and no upstream code or experiments were run.",
+    "metadata_notes_zh": "出版方将文章编号列为 ISSTA105，并以 CC BY 4.0 授权论文；其数据可用性章节链接了仓库。所审阅的 2025-04-16 代码快照未声明项目级许可证。Python 3 依赖使用兼容版本范围，包括 angr~=9.2.100、Netzob~=2.0.0 与 scapy~=2.5.0；论文说明使用 Ghidra 11.0.3 进行函数分析。仓库包含公开协议配置和一份 Modbus 捕获数据，但没有固件映像；目标二进制与库需要另行提供。论文指定轨迹相似度阈值为 0.9，发布的 InferSyntax.py 则在百分制上使用 99。批量评估器将异常轨迹排除在汇总指标之外。这些源码差异意味着不能将此快照视为已复现的论文配置。本次未下载固件、捕获数据或模型载荷，也未运行上游代码或实验。",
+    "evidence_urls": [
+      "https://dl.acm.org/doi/10.1145/3728982",
+      "https://api.crossref.org/works/10.1145/3728982",
+      "https://github.com/QYbPtqyb/ICEPRE/blob/506bdf1f970460d0eaa52f67ae9ae338795ef48b/README.md",
+      "https://github.com/QYbPtqyb/ICEPRE/blob/506bdf1f970460d0eaa52f67ae9ae338795ef48b/requirements.txt",
+      "https://github.com/QYbPtqyb/ICEPRE/blob/506bdf1f970460d0eaa52f67ae9ae338795ef48b/ICEPRE.py",
+      "https://github.com/QYbPtqyb/ICEPRE/blob/506bdf1f970460d0eaa52f67ae9ae338795ef48b/Ctracer.py",
+      "https://github.com/QYbPtqyb/ICEPRE/blob/506bdf1f970460d0eaa52f67ae9ae338795ef48b/InferSyntax.py",
+      "https://github.com/QYbPtqyb/ICEPRE/blob/506bdf1f970460d0eaa52f67ae9ae338795ef48b/config/modbus_config.yaml",
+      "https://github.com/QYbPtqyb/ICEPRE/blob/506bdf1f970460d0eaa52f67ae9ae338795ef48b/config/enip_config.yaml",
+      "https://github.com/QYbPtqyb/ICEPRE/blob/506bdf1f970460d0eaa52f67ae9ae338795ef48b/config/iec104_config.yaml",
+      "https://github.com/QYbPtqyb/ICEPRE/blob/506bdf1f970460d0eaa52f67ae9ae338795ef48b/config/s7comm_config.yaml",
+      "https://github.com/QYbPtqyb/ICEPRE/blob/506bdf1f970460d0eaa52f67ae9ae338795ef48b/evaluation/syntax_evaluation.py"
+    ],
+    "kind": "research",
+    "verified_at": "2026-10-17",
+    "verification": "source-reviewed",
+    "runtime_tested": false
   }
 ]

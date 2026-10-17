@@ -116,13 +116,19 @@ class ReviewedContainerRecordTests(unittest.TestCase):
                          ('{Proceedings 2023 Network and Distributed System Security Symposium}',
                           '{Internet Society}', '{10.14722/ndss.2023.23131}'))
         self.assertFalse({'pages', 'month', 'eprint'} & set(binaryinferno))
+        icepre = fields(bibtex_text(PAPERS['paper-icepre']))
+        self.assertEqual((icepre['journal'], icepre['volume'], icepre['number'], icepre['pages'], icepre['eid']),
+                         ('{Proceedings of the ACM on Software Engineering}', '{2}', '{ISSTA}',
+                          '{2384--2406}', '{ISSTA105}'))
+        self.assertEqual(icepre['doi'], '{10.1145/3728982}')
+        self.assertNotIn('booktitle', icepre)
 
     def test_only_reviewed_records_carry_container_metadata(self):
         expected = {'paper-dire', 'paper-resym', 'paper-redraw', 'paper-declarui', 'paper-fuzzware',
                     'paper-firmae', 'paper-vision2web', 'paper-ui2code', 'paper-worldcoder',
                     'paper-jsdeobsbench', 'paper-cascade', 'paper-dcgen', 'paper-code-world-models',
                     'paper-stateinspector', 'paper-halucinator', 'paper-web2code', 'paper-degpt',
-                    'paper-binpre', 'paper-binaryinferno'}
+                    'paper-binpre', 'paper-binaryinferno', 'paper-icepre'}
         self.assertEqual({identifier for identifier, record in PAPERS.items() if 'citation' in record}, expected)
         for identifier in sorted(PAPERS.keys() - expected):
             # Records without verified container metadata keep the short venue label.

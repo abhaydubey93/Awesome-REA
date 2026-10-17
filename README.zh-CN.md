@@ -22,7 +22,7 @@
 
 **论文与工作流**
 
-- [论文](#papers) (49) · [智能体与 MCP](#agents-and-mcp) (19) · [文档与学习资源](#references-and-learning) (20)
+- [论文](#papers) (50) · [智能体与 MCP](#agents-and-mcp) (19) · [文档与学习资源](#references-and-learning) (20)
 
 **更多浏览方式**
 
@@ -1024,7 +1024,7 @@
 <a id="papers"></a>
 ## 论文
 
-收录 **49 篇论文**，涵盖逆向工程智能体评测、反编译、协议推断、固件分析，以及网站、游戏和应用重建。部分论文也出现在精选资源目录中，两者数量不可相加。发表状态与研究范围分别标注，中文标题为译名。
+收录 **50 篇论文**，涵盖逆向工程智能体评测、反编译、协议推断、固件分析，以及网站、游戏和应用重建。部分论文也出现在精选资源目录中，两者数量不可相加。发表状态与研究范围分别标注，中文标题为译名。
 
 [浏览论文目录](https://awesomerea.org/zh/papers/) · [完整书目 JSON](data/papers.json) · [推荐论文](https://github.com/reacher-z/Awesome-REA/issues/new?template=paper.yml)
 
@@ -1032,7 +1032,7 @@
 
 - [智能体评测](#papers-agent-evaluation) (5) · [反编译](#papers-decompilation) (8) · [网站](#papers-website-reconstruction) (13)
 - [游戏](#papers-game-reconstruction) (6) · [应用](#papers-app-reconstruction) (5) · [固件](#papers-firmware-analysis) (5)
-- [协议](#papers-protocol-analysis) (7)
+- [协议](#papers-protocol-analysis) (8)
 
 展开各条目的“范围与发表信息”可查看完整研究边界；以下按年份从新到旧排列。
 
@@ -1658,6 +1658,20 @@
 ### 协议推断与分析
 
 [↑ 论文主题](#papers) · [目录](#目录)
+
+- [**ICEPRE：基于数据驱动混合符号执行的工控协议逆向工程**](https://dl.acm.org/doi/10.1145/3728982)<br>
+  2025 · 期刊论文 · [PDF](https://dl.acm.org/doi/pdf/10.1145/3728982) · [代码](https://github.com/QYbPtqyb/ICEPRE) · [完整条目与引用](https://awesomerea.org/zh/papers/paper-icepre/)
+
+  在二进制协议解析器中沿具体报文引导的路径分析，再进行符号化重放，提取字节级数据流以推断报文字段边界。它依据保持原值的运算和相似处理轨迹合并字节。作者在四种公开工控协议、每组 1,000 条报文的数据集上，报告平均边界 F1 分数为 0.76、字段完美分割率为 0.67。
+
+  <details>
+  <summary>范围与发表信息</summary>
+
+  **范围与限制:** 恢复的是报文语法，并非字段语义、协议状态机或端点等价性。方法需要二进制、加载配置，以及正确识别的初始化、输入和解析函数；尤其在缺少符号时，仍需人工筛选。不支持加密协议和位级字段；被忽略或仅被复制的字节可能遭到错误合并。完美分割率衡量两端边界均正确的字段。量化实验使用四种公开协议的 50 条与 1,000 条报文集合；另行开展的专有协议研究覆盖五个固件目标中的三种协议，在三台设备上进行交互检查，并由人工建立真实标签。这些检查不能证明完整设备行为。
+
+  **发表信息:** 2025 · Proceedings of the ACM on Software Engineering (ISSTA 2025) · 期刊论文 · Yibo Qu 等
+
+  </details>
 
 - [**BinPRE：增强基于二进制分析的协议逆向工程中的字段推断**](https://dl.acm.org/doi/10.1145/3658644.3690299)<br>
   2024 · 会议论文 · [PDF](https://tingsu.github.io/files/ccs24-BinPRE.pdf) · [代码](https://github.com/ecnusse/BinPRE) · [完整条目与引用](https://awesomerea.org/zh/papers/paper-binpre/)
