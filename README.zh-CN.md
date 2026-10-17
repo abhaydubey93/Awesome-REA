@@ -53,6 +53,12 @@
 
 - [DX-Ball：重建声音声像计算](https://rea.tools/showcase/dx-ball/) — 根据指令与常量重建单个声像函数；上游报告 3,205 例与 63 字节匹配。 **[案例 · REA]**
 - [TH04：恢复 DOS 子弹环辅助函数](https://rea.tools/showcase/th04/) — 检查 PC-98 DOS 的 16 位弹幕角度辅助函数，并关联固定版本重建与历史编译器检查。 **[案例 · REA]**
+- [Super Mario 64 DS：带重定位核对的匹配反编译](https://github.com/tangosdev/sm64ds-decomp) — 将 Super Mario 64 DS 函数重建为 C/C++ 和规则允许的汇编原语，并将编译结果与用户提供的卡带转储对比。独立的重定位目标核对强化匹配检查；PC 移植中的集成进度另行统计。 **[案例 · 独立重建]**
+- [GoldenEye 007：基于反编译成果的智能体辅助原生移植](https://github.com/jkdansereau/goldeneye-pc-port) — 在已有 GoldenEye 007 反编译成果之上构建原生 PC 移植，提供宿主平台适配层，并从用户自己的 ROM 提取资产。项目记录智能体协作、渲染对比、试玩范围和尚未解决的平台支持。 **[案例 · 独立重建]**
+- [ssbu-recomp：明确玩法边界的静态重编译](https://github.com/Denkishi/ssbu-recomp) — 将 Super Smash Bros. Ultimate 13.0.4 的 AArch64 代码提前转换，并提供带 Vulkan/OpenGL 渲染的 Windows 运行时。项目还将部分角色脚本重建为可编辑 C++，通过差分与确定性测试对比转换代码和源码行为。 **[案例 · 独立重建]**
+- [KartPad：Mario Kart Wii 重编译的平台集成](https://github.com/chrissotraidis/kartpad) — 围绕 WiiCompiled 对 Mario Kart Wii 的提前转换实现 Apple 与 Android 平台集成，提供原生图形、输入及可选 Retro Rewind 支持。状态和权利文档区分平台验收、未解决的设备缺陷及游戏内容要求。 **[案例 · 独立重建]**
+- [BattleShip：AI 辅助的 Super Smash Bros. 原生移植](https://github.com/vinvirile/BattleShip) — 使用 libultraship 和 Torch 移植已有的 Super Smash Bros. N64 反编译成果。作者介绍了智能体构建的图形、音频对比工具和对照模拟器行为的差分调试，并未将其说成脱离社区既有成果、仅靠卡带自动恢复游戏。 **[案例 · 独立重建]**
+- [智能体反编译：字节匹配验收复盘](https://momo5502.com/posts/2026-10-09-game-decompilation/) — Maurice Heumann 介绍如何用基于编译器的函数、重定位、数据和类型检查，取代看似合理的智能体输出。复盘报告 99% 的函数已进入重建源码，全部函数中 83% 达到字节一致；重建代码仍不公开。 **[案例 · 独立重建]**
 - [RenderDoc](https://github.com/baldurk/renderdoc) — 检查自己游戏或图形应用的帧捕获、绘制调用、着色器和图形资源。 **[工具]**
 - [AssetRipper](https://github.com/AssetRipper/AssetRipper) — 分析 Unity 游戏文件，检查资源依赖并将支持的资源转换为 Unity 工程格式。 **[工具]**
 - [Cpp2IL](https://github.com/SamboyCoding/Cpp2IL) — 结合二进制与元数据分析，从 Unity IL2CPP 构建恢复托管表示；重建能力仍在开发中。 **[工具]**
@@ -76,6 +82,7 @@
 - [Aegis：追踪登录验证码计算](https://rea.tools/showcase/aegis/) — 追踪 Aegis APK 的 TOTP 计算，官方公开目标指纹与选取的调查证据。 **[案例 · REA]**
 - [Notion：追踪剪贴板桥接](https://rea.tools/showcase/notion/) — 结合 REA 发现与独立源码阅读追踪剪贴板桥；动态包装器仍有明确限制。 **[案例 · REA]**
 - [ReaCut：视频编辑器重建案例](https://github.com/Xiangyu-CAS/rea-capcut) — 独立视频编辑器，作者公开了利用 REA 研究剪映／CapCut 行为与项目格式的过程。实现包含本地时间线、FFmpeg 导出，以及实验性的有损草稿导入。 **[案例 · 混合工具流程]**
+- [zee-rp：重建 Axure RP 11 的受支持文档操作](https://github.com/LilZeeCN/zee-rp) — 通过二进制记录编解码、考虑引用关系的克隆和受约束的交互写入器，读取并修改受支持的 Axure RP 11 原生文档。CLI 与 MCP 接口提供可检查的编辑操作，并区分离线结构检查和原生应用验收。 **[案例 · 独立重建]**
 - [JADX-AI-MCP](https://github.com/zinja-coder/jadx-ai-mcp) — 结合 JADX 插件与 Python MCP 服务，读取 Android 反编译代码、资源、交叉引用和调试上下文。 **[集成 · 独立 MCP]**
 - [frida-mcp (yfe404)](https://github.com/yfe404/frida-mcp) — Frida MCP 服务，提供持久插桩会话、运行时检查和 Android 静态代码与动态现场之间的导航。 **[集成 · 独立 MCP]**
 - [Super Trouper](https://github.com/crissyfield/super-trouper) — 单个可执行文件形式的 Frida MCP 服务，用于发现设备、管理进程会话和加载插桩脚本。 **[集成 · 独立 MCP]**
@@ -136,6 +143,9 @@
 <a id="protocol"></a>
 ### Protocols · 协议
 
+- [open-appleremote：Siri Remote 协议重建](https://github.com/a-funk/open-appleremote) — 重建第一代 Siri Remote 在 Linux 上的蓝牙报告，解析按键、触摸与 tvOS 风格手势。Python 实现和协议文档区分实测行为、历史报告与推测含义。 **[案例 · 独立重建]**
+- [GAMEKB-K17：重建宏键盘配置协议](https://github.com/dvdarkin/gamekb-k17) — 实现 GAMEKB-K17/HCY-K017 宏键盘的厂商 HID 配置协议，写入按键映射、固件宏和 RGB 设置后再读回核对。协议文档区分已测试命令、未确认观察和其他设备的研究结果。 **[案例 · 独立重建]**
+- [CF632BLE：基于体脂秤协议研究的本地客户端](https://github.com/guyru/cf632ble) — 根据对厂商 Unique Health 安卓应用的研究，重实现 CF632BLE 体脂秤的 BLE 协议和体成分计算。静态 Web Bluetooth 客户端接收测量数据、管理设备档案，并将历史记录保存在浏览器中。 **[案例 · 独立重建]**
 - [hw-harness：扫描仪 USB 协议调查](https://github.com/cschalle/hw-harness) — 记录作者报告的扫描仪调查：比较厂商驱动的 USB 控制传输与 Linux 驱动的记录，推断初始化、时序及分辨率参数。公开工具负责组织参考采集与比较，并不自动恢复完整协议规范。 **[案例 · 独立重建]**
 - [Netzob 协议建模与推断框架](https://github.com/netzob/netzob) — 对通信协议建模并从流量记录推断报文布局，通过配置主动学习来推断协议状态机。Python API 提供报文字段、符号和自动机，用于解析、流量生成及模糊测试。 **[工具]**
 - [Scapy 报文分析与构造工具](https://github.com/secdev/scapy) — 使用 Python 编写报文解析、构造、请求／响应匹配及捕获文件分析流程；自定义报文字段与层绑定可将已理解的线格式编码为可操作模型，辅助研究协议行为。 **[工具]**
@@ -166,6 +176,7 @@
 
 - [Awesome Reverse Engineering](https://github.com/morluto/awesome-reverse-engineering) — REA 维护者整理的通用逆向资源目录，适合查找基础知识与相邻工具。 **[合集]**
 - [Awesome REA Cases](https://github.com/songshikang0111/awesome-REA-cases) — 中英双语的 REA 与其他 AI 辅助逆向案例合集，附来源并区分作者报告、进行中的工作和复现状态。 **[合集]**
+- [awesome-rea（yibie）：关注验证的项目与实践报告](https://github.com/yibie/awesome-rea) — 围绕明确的验收检查整理 AI 辅助游戏反编译、原生移植、静态重编译和工具，并另设实践文章与讨论分类。适合寻找一手报告，比较不同项目如何定义正确性。 **[合集]**
 
 <a id="references-and-learning"></a>
 ### References & Learning · 文档与学习资料

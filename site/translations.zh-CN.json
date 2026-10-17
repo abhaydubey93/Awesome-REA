@@ -740,5 +740,114 @@
       "可选功能具有额外依赖，例如密码学功能所需的 cryptography，以及可视化报告所需的绘图工具。未知格式需要适用的自定义 Packet／Field 定义及绑定；解析不会自动推断完整协议语义或通信对端实现。",
       "核查的包元数据声明 GPL-2.0-only，依赖项与抓包驱动的许可单独适用。2.8.0 发布说明列出了安全修复；本条目仅核对来源，并非独立运行验证或安全评估。本次未安装、抓包或发送报文。"
     ]
+  },
+  "open-appleremote-case": {
+    "name": "open-appleremote：Siri Remote 协议重建",
+    "requirements": [
+      "软件包版本为 0.1.0；实际使用需要 Linux、BlueZ、Python 3.8+ 及设备 hidraw 接口访问权限。核心仅使用 Python 标准库。",
+      "项目的硬件检查覆盖 BlueZ 5.72、Linux 6.17 上的 A1962。A1513 仅预计可用，尚未测试；不支持第二、第三代 Siri Remote。",
+      "虚拟键盘尚未经过硬件测试。语音功能尚未发布，仅检查了合成或录制帧，未在本软件包中进行实时使用验证；还需要 libopus 和 HCI 监视权限。",
+      "协议文档分别标记实测、历史报告和推测事实。公开样本不能复现较大未公开捕获中的全部结论。",
+      "仓库采用 MIT 许可证。所审阅项目来源未证实使用 REA；本目录未独立复现设备行为。"
+    ]
+  },
+  "gamekb-k17-case": {
+    "name": "GAMEKB-K17：重建宏键盘配置协议",
+    "requirements": [
+      "软件包版本为 3.0.0，需要 Python 3.11+ 和 hidapi；可选编辑器使用 tkinter。设备 USB 标识为 0816:0220。",
+      "项目测试了 Windows；其他 hidapi 平台尚未测试。Linux 配置需要相应设备权限。",
+      "文档范围包括 18 个可重映射控件和最多 16 个固件宏。音量旋钮由固件固定；同系列设备不等于已经兼容。",
+      "读回核对和中断写入顺序属于项目结合协议文档报告的行为，本目录未独立进行设备测试。",
+      "采用 MIT 许可证。所审阅一手文件明确说明逆向了厂商 WebHID 配置器，但未证实 REA 参与。"
+    ]
+  },
+  "cf632ble-case": {
+    "name": "CF632BLE：基于体脂秤协议研究的本地客户端",
+    "requirements": [
+      "需要 CF632BLE 硬件，以及在安全上下文中支持 Web Bluetooth 的 Chromium 浏览器。Firefox 和 Safari/iOS 无法通过此应用连接体脂秤。",
+      "SvelteKit/Vite 应用通过 npm 和静态适配器构建。文档所述测量流程不依赖应用服务器或厂商后台。",
+      "单用户浏览器数据保存在 localStorage。设备页可由用户明确操作后写入设备档案和设置；本地历史与秤内存是不同存储。",
+      "所审阅 README 和软件包清单未给出项目许可证，固定提交的根目录也没有 LICENSE；源码公开不等于授予复用许可。",
+      "设备兼容性和公式准确性属于项目说法，本目录未独立测试。所审阅一手文件未证实使用 REA。"
+    ]
+  },
+  "zee-rp-case": {
+    "name": "zee-rp：重建 Axure RP 11 的受支持文档操作",
+    "requirements": [
+      "软件包版本为 0.1.1，需要 Node.js 18+；MCP 还使用可选 SDK 依赖。生成原生文档需要用户自己的 Axure 空白模板和兼容库。",
+      "记录的原生验收环境为 macOS arm64 和 Axure RP 11.0.0.4137。Linux CI 覆盖公开核心检查；原生 GUI 任务需要 macOS 和辅助功能权限。",
+      "不支持的文档形式、外部引用和交互表达式可能被拒绝。不支持编号列表和真正的原生合并表格单元格。",
+      "发布证据区分公开或生成式测试，以及依赖未公开精确样本包的历史断言。一个 GUI 样本检查了加载、保存、关闭、重开，未检查预览行为或手动编辑；新同步功能仍需原生验收。",
+      "作者编写的代码和文档采用 MIT；Axure、其库和第三方资产另行授权。合集关于 REA 使用的说法未由所审阅固定提交文件证实；本目录未独立重跑测试。"
+    ]
+  },
+  "sm64ds-decomp-case": {
+    "name": "Super Mario 64 DS：带重定位核对的匹配反编译",
+    "requirements": [
+      "需要用户自己的卡带转储、固定版本的 mwccarm 匹配编译器、单独的链接器及安装环境，以及 ndspy、Capstone、pyelftools 等 Python 工具。",
+      "固定提交 README 报告 11,389/11,389 个函数已匹配，其中包括 108 个字节一致的汇编原语；接入 PC 移植的函数为 10,957 个。这些计数代表不同检查。",
+      "同一 README 仍保留接近完成的旧表述，port/README.md 则描述历史冒烟构建阶段。匹配与移植可玩性应按各来源分别理解，不能视为已验证的完整可玩移植。",
+      "文档说明使用智能体辅助匹配，并配合源码审阅和重定位核对。本目录未获取 ROM、运行编译器或复现任何计数。",
+      "仓库有 MIT 许可证；原始游戏数据和外部编译器的权利另行处理。未建立 REA 隶属关系。"
+    ]
+  },
+  "goldeneye-pc-port-case": {
+    "name": "GoldenEye 007：基于反编译成果的智能体辅助原生移植",
+    "requirements": [
+      "所审阅 v0.5.0 文档支持 Windows 10/11 x64，以及带 glibc 2.31+ 的 x86-64 Linux/Steam Deck；两者都需要 OpenGL 3.0 驱动。macOS 与 ARM 构建仍在计划中，不能照搬仓库简介中更宽泛的平台表述。",
+      "发布包需要用户自己的美版 NTSC-U ROM；尚不支持欧版和日版。这是基于反编译源码的原生移植，不是静态二进制重编译。",
+      "源码构建需要 CMake 3.16+、C/C++、SDL2、zlib、OpenGL、Python 3 及文档所列资产提取工具。",
+      "v0.5.0 试玩为战役抽查和多人会话；完整 Agent 难度战役最后一次报告的全流程测试是 v0.4.0。本目录未独立重做画面对比或试玩。",
+      "MIT 仅覆盖作者原创的移植层、构建、工具和文档。NOTICE 说明继承的 n64decomp/007 材料没有明确上游许可证，内置第三方组件也有各自条款；MIT 文件不是全部内容的统一授权。"
+    ]
+  },
+  "ssbu-recomp-case": {
+    "name": "ssbu-recomp：明确玩法边界的静态重编译",
+    "requirements": [
+      "运行需要 Windows 10/11 x64、支持 Vulkan 1.3 的 GPU，以及用户自己的 13.0.4 游戏转储。Linux 和 Steam Deck 支持尚未开始。",
+      "构建需要 Python 3.10+ 及文档所列软件包、LLVM/clang 9.0.0（文档也说明 8.0.0 可用）、MSVC/Windows SDK、SDL3、Vulkan 头文件、glslang 和参考工具。音乐需要 libopus；影片需要 Media Foundation、VP9 Video Extensions 和 Web Media Extensions 2.x，Windows N 还需要 Media Feature Pack。",
+      "只有部分模式报告了游玩覆盖。冒险地图与战斗及若干多人模式尚未测试；在线功能不可用。虚拟设备测试不等于已确认实体手柄可用。",
+      "作者说明使用 Claude 智能体。报告的帧率、差分一致性和部分角色比赛轨迹不代表全游戏等价；本目录未运行这些检查。",
+      "README 授予 GPL 第 3 版或更新版本许可。公开仓库提供工具与运行时，而非游戏转储、密钥或资产；游戏派生产物需要另行处理。"
+    ]
+  },
+  "kartpad-case": {
+    "name": "KartPad：Mario Kart Wii 重编译的平台集成",
+    "requirements": [
+      "需要用户提供受支持的欧版 PAL RMCP01 revision 0 游戏数据。所审阅 0.8.3 构建的 Retro Rewind 6.13.3 支持需要另行获取匹配内容，并使用兼容的已编译配置。",
+      "Android 面向 Android 9+ 的 ARM64/Vulkan 设备；iPhone/iPad 需要 iOS/iPadOS 16+。README 给出了 Apple Silicon macOS 14+ 的 PadMint／源码路线，但固定版本状态表仍将 Mac 标为实验性。tvOS 17+ 也仍为实验性预览。",
+      "实体设备和模拟器检查只覆盖特定构建与设备。部分硬件仍有图形缺失、卡死、手柄和性能问题；Pixel 或 iPad 上成功不等于普遍兼容。",
+      "项目披露大量使用 AI 辅助，但没有经审计的代码生成比例。本目录未编译项目、获取游戏数据或复现测试。",
+      "KartPad 自有成果采用 GPL-3.0-only，保留上游组件条款。RIGHTS_AND_LICENSES 区分软件义务与游戏派生逻辑、资产；GPL 不会重新授权 Mario Kart Wii。"
+    ]
+  },
+  "battleship-port-case": {
+    "name": "BattleShip：AI 辅助的 Super Smash Bros. 原生移植",
+    "requirements": [
+      "需要用户自己的 Super Smash Bros. N64 美版 NTSC-U v1.0 转储，并匹配文档中的哈希；Torch 在本地提取资产。",
+      "文档列出的桌面目标为 Windows、Linux 和 Apple Silicon macOS。构建需要 Git/子模块、CMake 和 Python 3；Windows 使用 Visual Studio 2022/MSVC v143/Windows SDK，Linux/macOS 使用 Ninja。",
+      "作者关于 AI 贡献和开发时间的说法属于自述。ROM 身份检查和所描述的渲染、音频对比不能证明完整行为等价。",
+      "LICENSE 仅对移植专用代码、构建脚本、工具和文档授予 MIT。反编译 src 及 libultraship/Torch 依赖保留各自上游条款；游戏权利另行处理。",
+      "本次仅审阅文档和许可范围，没有获取游戏转储、构建、运行模拟器或独立复现。未证实使用 REA。"
+    ]
+  },
+  "agent-decompilation-oracle-case": {
+    "name": "智能体反编译：字节匹配验收复盘",
+    "requirements": [
+      "作者复盘发布于 2026-10-09；所审阅文章没有指明游戏名称。",
+      "项目以原编译器和二进制为参照；未提供公开实现或可复现产物。",
+      "覆盖率和运行成功属于作者报告，未经本目录独立复现。",
+      "这是有文档的案例研究，不是可获取的游戏移植，也不是已证实的 REA 集成。"
+    ]
+  },
+  "yibie-awesome-rea": {
+    "name": "awesome-rea（yibie）：关注验证的项目与实践报告",
+    "requirements": [
+      "项目条目描述验收机制；单独的讨论分类不要求公开代码或验收测试。被收录不等于经过独立运行验证。",
+      "所审阅快照的主机/固件分类刻意保持为空，不能从规划中的分类推断已有固件项目覆盖。",
+      "合集摘要可能落后于一手仓库，包括平台支持、进度和许可范围；依赖某项说法前应查看原项目来源。",
+      "合集 LICENSE 声明采用 CC0 1.0 Universal。链接项目和来源文章保留各自权利及许可条件。",
+      "这是独立社区合集；条目不一定与 REA 集成，也不代表官方上游隶属关系。"
+    ]
   }
 }
