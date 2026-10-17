@@ -2,7 +2,7 @@
 
 [简体中文](case-coverage.zh-CN.md) · [Machine-readable ledger](../data/case-coverage.json)
 
-Reviewed 2026-10-17 (UTC). **512 collection occurrences** become **510 inventory units** after 2 documented duplicate merges. These are reports, tools, papers, discussions and ideas—not a count of unique verified projects.
+Reviewed 2026-10-17 (UTC). **543 collection occurrences** become **541 inventory units** after 2 documented duplicate merges. These are reports, tools, papers, discussions and ideas—not a count of unique verified projects.
 
 Project identity resolution is incomplete, so the unique-project count is `null`, not zero. English/Chinese copies of one upstream entry are counted once. Separate reports about one project remain separate units unless an explicit alias decision joins them.
 
@@ -10,7 +10,7 @@ Project identity resolution is incomplete, so the unique-project count is `null`
 
 | Collection snapshot | Occurrences | Linked GitHub repositories | Catalog record |
 | --- | ---: | ---: | --- |
-| [songshikang0111/awesome-REA-cases · 2c9ce9597f0a](https://github.com/songshikang0111/awesome-REA-cases/tree/2c9ce9597f0afcbafaa79de0293083224a974e91) | 344 | 42 | [awesome-rea-cases](https://awesomerea.org/resources/awesome-rea-cases/) |
+| [songshikang0111/awesome-REA-cases · afea8a6c6ea2](https://github.com/songshikang0111/awesome-REA-cases/tree/afea8a6c6ea29559533cf5ba4063e15b6649e0af) | 375 | 46 | [awesome-rea-cases](https://awesomerea.org/resources/awesome-rea-cases/) |
 | [yibie/awesome-rea · 6df1bc922ac6](https://github.com/yibie/awesome-rea/tree/6df1bc922ac6b92dcd1b2f905c94d8cc4f3b5a3e) | 28 | 11 | [yibie-awesome-rea](https://awesomerea.org/resources/yibie-awesome-rea/) |
 | [HaozheH3/awesome-rea-games · 4316a4ce86fd](https://github.com/HaozheH3/awesome-rea-games/tree/4316a4ce86fdd851f0180ffee87dc336851bf5b6) | 140 | 137 | [haozhe-awesome-rea-games](https://awesomerea.org/resources/haozhe-awesome-rea-games/) |
 
@@ -23,7 +23,7 @@ Repository counts use normalized GitHub repository, tree and file links within e
 | State | Occurrences | Inventory units | Meaning |
 | --- | ---: | ---: | --- |
 | Already curated (`already-curated`) | 51 | 50 | Full-scope identity mapping to a catalog resource or paper; not independent runtime reproduction. |
-| Pending (`pending`) | 410 | 409 | Primary review or complete catalog coverage remains pending; partial matches stay here. |
+| Pending (`pending`) | 441 | 440 | Primary review or complete catalog coverage remains pending; partial matches stay here. |
 | Insufficient evidence (`insufficient-evidence`) | 51 | 51 | An idea, request or unsupported reconstruction claim is retained as a lead. |
 
 57 occurrences have catalog links. They reference 48 distinct resource IDs and 1 paper ID. Match scope is recorded separately; do not add these populations as unique projects.

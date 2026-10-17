@@ -2,7 +2,7 @@
 
 [English](case-coverage.md) · [机器可读记录](../data/case-coverage.json)
 
-核查日期：2026-10-17（UTC）。**512 个合集出现项**经 2 次有记录的重复合并后，对应 **510 个清单单元**。其中包括报告、工具、论文、讨论和想法，不能当作独立且已核验的项目数量。
+核查日期：2026-10-17（UTC）。**543 个合集出现项**经 2 次有记录的重复合并后，对应 **541 个清单单元**。其中包括报告、工具、论文、讨论和想法，不能当作独立且已核验的项目数量。
 
 项目身份归并尚未完成，因此独立项目数为 `null`，并非零。同一上游条目的中英文版本只计一次。同一项目的不同报告仍分别计为清单单元，除非已有明确的别名合并决定。
 
@@ -10,7 +10,7 @@
 
 | 合集快照 | 出现项 | 链接的 GitHub 仓库 | 目录记录 |
 | --- | ---: | ---: | --- |
-| [songshikang0111/awesome-REA-cases · 2c9ce9597f0a](https://github.com/songshikang0111/awesome-REA-cases/tree/2c9ce9597f0afcbafaa79de0293083224a974e91) | 344 | 42 | [awesome-rea-cases](https://awesomerea.org/zh/resources/awesome-rea-cases/) |
+| [songshikang0111/awesome-REA-cases · afea8a6c6ea2](https://github.com/songshikang0111/awesome-REA-cases/tree/afea8a6c6ea29559533cf5ba4063e15b6649e0af) | 375 | 46 | [awesome-rea-cases](https://awesomerea.org/zh/resources/awesome-rea-cases/) |
 | [yibie/awesome-rea · 6df1bc922ac6](https://github.com/yibie/awesome-rea/tree/6df1bc922ac6b92dcd1b2f905c94d8cc4f3b5a3e) | 28 | 11 | [yibie-awesome-rea](https://awesomerea.org/zh/resources/yibie-awesome-rea/) |
 | [HaozheH3/awesome-rea-games · 4316a4ce86fd](https://github.com/HaozheH3/awesome-rea-games/tree/4316a4ce86fdd851f0180ffee87dc336851bf5b6) | 140 | 137 | [haozhe-awesome-rea-games](https://awesomerea.org/zh/resources/haozhe-awesome-rea-games/) |
 
@@ -23,7 +23,7 @@
 | 状态 | 出现项 | 清单单元 | 含义 |
 | --- | ---: | ---: | --- |
 | 已收录 (`already-curated`) | 51 | 50 | 完整范围已对应目录资源或论文；不代表独立运行复现。 |
-| 待核查 (`pending`) | 410 | 409 | 一手核查或完整目录覆盖尚待完成；部分映射也保留在此状态。 |
+| 待核查 (`pending`) | 441 | 440 | 一手核查或完整目录覆盖尚待完成；部分映射也保留在此状态。 |
 | 证据不足 (`insufficient-evidence`) | 51 | 51 | 将想法、请求或尚缺支持的重建说法保留为线索。 |
 
 57 个出现项含目录链接；共关联 48 个不同资源 ID 和 1 个论文 ID。映射范围单独记录，不能将这些群体相加当作独立项目数。
