@@ -888,5 +888,146 @@
       "https://github.com/yibie/awesome-rea/blob/6df1bc922ac6b92dcd1b2f905c94d8cc4f3b5a3e/categories/related-practices-discussions.md",
       "https://github.com/yibie/awesome-rea/blob/6df1bc922ac6b92dcd1b2f905c94d8cc4f3b5a3e/categories/console-and-firmware.md"
     ]
+  },
+  {
+    "id": "cooler-lcd-case",
+    "name": "cooler-lcd: a Thermalright display protocol implementation",
+    "url": "https://github.com/kristjaningi/cooler-lcd",
+    "category": "reconstruction-cases",
+    "relationship": "independent-reconstruction",
+    "description_en": "Implements a USB picture-transfer driver for Thermalright Vision cooler displays, with a Rust dashboard replacing the vendor display application. The documented protocol sends a header and JPEG frames, with periodic resends to prevent the device reverting to its logo.",
+    "description_zh": "为 Thermalright Vision 散热器显示屏实现 USB 图像传输驱动，并用 Rust 仪表盘替代厂商显示应用。文档所述协议发送报头和 JPEG 帧，通过定期重发避免设备退回品牌标志画面。",
+    "evidence_url": "https://github.com/kristjaningi/cooler-lcd/blob/9a343678ba102de784b2302f79c53fd6ddc31ab9/README.md",
+    "verified_at": "2026-10-17",
+    "verification": "source-reviewed",
+    "requirements": [
+      "Package 0.1.0 uses Rust edition 2024 and targets the 480×480 USB 87ad:70db display family; other cooler/display models are not established by this review.",
+      "Its documented environment is Linux with udev/systemd and Omarchy integration. Hyprland supplies away/lock state; NVIDIA telemetry uses NVML, and individual screens need their own optional services.",
+      "The driver cites TRCC Linux reverse-engineering notes for its 64-byte frame header and JPEG payload, with one-second keepalive resends. Device handling and reported CPU/memory figures were not independently measured here.",
+      "Only one process can own the display at once; the vendor TRCC application must relinquish it. Preview rendering is not a hardware compatibility test.",
+      "MIT-licensed code. Optional traffic/map feeds and other external services retain their own terms. The primary files do not establish REA use."
+    ],
+    "targets": [
+      "protocol"
+    ],
+    "kind": "case-study",
+    "additional_evidence_urls": [
+      "https://github.com/kristjaningi/cooler-lcd/blob/9a343678ba102de784b2302f79c53fd6ddc31ab9/Cargo.toml",
+      "https://github.com/kristjaningi/cooler-lcd/blob/9a343678ba102de784b2302f79c53fd6ddc31ab9/src/device.rs",
+      "https://github.com/kristjaningi/cooler-lcd/blob/9a343678ba102de784b2302f79c53fd6ddc31ab9/LICENSE"
+    ]
+  },
+  {
+    "id": "isaacrecomp-case",
+    "name": "IsaacRecomp: translating Flash game bytecode to native C++",
+    "url": "https://github.com/whylurking/IsaacRecomp",
+    "category": "reconstruction-cases",
+    "relationship": "independent-reconstruction",
+    "description_en": "Translates The Binding of Isaac’s Flash AVM1 bytecode into C++ functions and supplies a native rendering/input runtime. The project reads graphics and audio from the user’s original game and documents deterministic input, headless runs and screenshot regression checks.",
+    "description_zh": "将 The Binding of Isaac 的 Flash AVM1 字节码转换为 C++ 函数，并提供原生渲染与输入运行时。项目从用户自己的原游戏读取图像和音频，并记录了确定性输入、无界面运行和截图回归检查。",
+    "evidence_url": "https://github.com/whylurking/IsaacRecomp/blob/7736f3d2961051b66cd315bcf5a719e9024d889d/README.md",
+    "verified_at": "2026-10-17",
+    "verification": "source-reviewed",
+    "requirements": [
+      "Requires the user’s original Steam Isaac.exe; Wrath of the Lamb and Eternal Edition depend on the corresponding game version. This is ahead-of-time translation, not recovery of the original authored ActionScript project.",
+      "Documented targets include 64-bit Windows/Linux, Android 7.0+ on 64-bit ARM and Switch homebrew. Source builds use CMake/Ninja and SDL2/OpenGL 3.3 or ES 3.0; mobile/console builds have separate SDK/toolchain requirements.",
+      "The author credits AI assistance and reports 30 Hz game logic with higher-rate interpolated rendering. Performance, gameplay parity and stability claims were not independently reproduced.",
+      "Reported regression tests compare deterministic logic and screenshots across engine revisions; they do not by themselves establish every behavior matches the original Flash game.",
+      "MIT covers the authored engine, tools, build files and docs only. LICENSE explicitly excludes gen/, gen720/, patch1080/ and patch720/ translated game-code directories; third-party and original-game rights remain separate."
+    ],
+    "targets": [
+      "game"
+    ],
+    "kind": "case-study",
+    "additional_evidence_urls": [
+      "https://github.com/whylurking/IsaacRecomp/blob/7736f3d2961051b66cd315bcf5a719e9024d889d/LICENSE",
+      "https://github.com/whylurking/IsaacRecomp/blob/7736f3d2961051b66cd315bcf5a719e9024d889d/CMakeLists.txt",
+      "https://github.com/whylurking/IsaacRecomp/blob/7736f3d2961051b66cd315bcf5a719e9024d889d/THIRD-PARTY-LICENSES.txt"
+    ]
+  },
+  {
+    "id": "vd-streamer-linux-case",
+    "name": "Virtual Desktop Streamer: rehosting the platform layer on Linux",
+    "url": "https://github.com/cudanexus/vd-streamer-linux",
+    "category": "community-case-studies",
+    "relationship": "community-reported-mixed-workflow",
+    "description_en": "An author-reported Claude Code and REA workflow replaces the macOS streamer’s capture, encoding, audio and input layer with Linux implementations while reusing vendor protocol libraries. The documented result targets desktop streaming and video playback, not Windows-only VR game streaming.",
+    "description_zh": "作者报告通过 Claude Code 与 REA，将 macOS 串流端的捕获、编码、音频和输入层替换为 Linux 实现，同时复用厂商协议库。文档中的目标是桌面串流和视频播放，而非仅 Windows 串流端提供的 VR 游戏串流。",
+    "evidence_url": "https://github.com/cudanexus/vd-streamer-linux/blob/e65c302f13639f044742bdc4951ab1a424c1c929/README.md",
+    "verified_at": "2026-10-17",
+    "verification": "source-reviewed",
+    "requirements": [
+      "Requires the official macOS Virtual Desktop installer for proprietary libraries and the user’s Virtual Desktop headset application. It is not a complete protocol reimplementation or an official vendor port.",
+      "The build uses .NET 8. Linux runtime dependencies include GStreamer 1.16+, PulseAudio/PipeWire, X11 or an appropriate Wayland portal, OpenSSL 1.1 or 3 and uinput access; video-file playback additionally needs FFmpeg 7.",
+      "Published testing used a simulated headset, mock portal and container networking. No real headset, real Wi-Fi or GPU encoder was available; internet matchmaking and same-address network changes were untested.",
+      "The scroll fix was checked at device/libinput level without directly observing the receiving X11 app. This catalog did not repeat those tests or validate headset compatibility.",
+      "MIT applies to this repository’s code only. Vendor libraries remain proprietary; the project limits redistribution of packages containing them and does not grant rights to the headset application."
+    ],
+    "targets": [
+      "app"
+    ],
+    "kind": "case-study",
+    "additional_evidence_urls": [
+      "https://github.com/cudanexus/vd-streamer-linux/blob/e65c302f13639f044742bdc4951ab1a424c1c929/LICENSE"
+    ]
+  },
+  {
+    "id": "open-claude-ui-case",
+    "name": "Open Claude UI: REA-informed interface reference components",
+    "url": "https://github.com/Caho1/open-claude-ui",
+    "category": "community-case-studies",
+    "relationship": "community-reported-mixed-workflow",
+    "description_en": "Publishes React components, motion helpers and design-system notes derived from the author’s reported REA investigation of Claude Desktop. It is useful as an interface-reconstruction case, with version-specific observations rather than proof of a complete assistant application or backend clone.",
+    "description_zh": "发布 React 组件、动效辅助模块和设计系统笔记，作者将其归因于使用 REA 调查 Claude Desktop。它可作为界面重建案例；观察结果受版本约束，不能证明已完整复刻助手应用或后端。",
+    "evidence_url": "https://github.com/Caho1/open-claude-ui/blob/ddf3aea1711db62fd6d24343bbab500a5ae69f64/README.md",
+    "verified_at": "2026-10-17",
+    "verification": "source-reviewed",
+    "requirements": [
+      "Package 1.0.0 declares React/React DOM 18+, Framer Motion 10+ and lucide-react 0.280+ peer dependencies; its development setup uses TypeScript 5.5 and Framer Motion 11.",
+      "Versioned analysis explicitly targets Claude Desktop v2.37337.1 and reports REA v6.5.0. Earlier design notes and newer desktop observations should not be treated as one timeless specification.",
+      "The package exposes build/typecheck and a component preview; production-grade or high-fidelity wording remains the author’s assertion, without an independent comparison performed by this catalog.",
+      "UI component examples do not supply Claude model access, account services or a recovered complete desktop application. Native desktop effects require their own host integration.",
+      "MIT repository license. The asset policy documents system-font fallbacks and synthesized audio instead of bundled proprietary font/audio files; it does not grant rights in upstream Claude assets or branding."
+    ],
+    "targets": [
+      "app"
+    ],
+    "kind": "case-study",
+    "additional_evidence_urls": [
+      "https://github.com/Caho1/open-claude-ui/blob/ddf3aea1711db62fd6d24343bbab500a5ae69f64/package.json",
+      "https://github.com/Caho1/open-claude-ui/blob/ddf3aea1711db62fd6d24343bbab500a5ae69f64/assets/README.md",
+      "https://github.com/Caho1/open-claude-ui/blob/ddf3aea1711db62fd6d24343bbab500a5ae69f64/docs/v2/README.md",
+      "https://github.com/Caho1/open-claude-ui/blob/ddf3aea1711db62fd6d24343bbab500a5ae69f64/LICENSE"
+    ]
+  },
+  {
+    "id": "nanolathe-case",
+    "name": "Nanolathe: a documented Total Annihilation engine reimplementation",
+    "url": "https://github.com/nanolathe-gg/nanolathe",
+    "category": "reconstruction-cases",
+    "relationship": "independent-reconstruction",
+    "description_en": "Reimplements a Total Annihilation-compatible strategy-game engine in Go, with public file-format research and separate gameplay profiles. It distinguishes intended retail 3.1 behavior from community-patch research and deliberate modern changes, and separates synthetic checks from tests requiring original game data.",
+    "description_zh": "用 Go 重实现兼容 Total Annihilation 的策略游戏引擎，公开文件格式研究并提供不同玩法配置。项目区分拟复现的零售版3.1行为、社区补丁研究和有意加入的现代改动，也区分合成检查与依赖原始游戏数据的测试。",
+    "evidence_url": "https://github.com/nanolathe-gg/nanolathe/blob/5007ba75354c06fc9752a2822d37ff1e1443b77b/README.md",
+    "verified_at": "2026-10-17",
+    "verification": "source-reviewed",
+    "requirements": [
+      "Native use requires the user’s installed Total Annihilation HPI archives. The reference installation includes Core Contingency, Battle Tactics and patch 3.1; other combinations remain under testing.",
+      "The pinned source requires Go 1.27.1 or newer and Ebitengine 2.10.5. Native targets include Windows, macOS 13+ and Linux with graphical/audio libraries; the browser build remains experimental.",
+      "The project is beta. Modern rules intentionally change behavior, while Strict 3.1 expresses a compatibility aim rather than independent proof of full retail equivalence.",
+      "Synthetic tests run without retail assets; the separate retail tier requires an installed game. This catalog did not build, obtain game files or reproduce gameplay/rendering claims.",
+      "Original engine code is MIT; original game assets and dependency licenses are separate. The publication note describes curated integration snapshots, omitted raw research and unresolved attribution questions; those snapshots are not individually certified releases."
+    ],
+    "targets": [
+      "game"
+    ],
+    "kind": "case-study",
+    "additional_evidence_urls": [
+      "https://github.com/nanolathe-gg/nanolathe/blob/5007ba75354c06fc9752a2822d37ff1e1443b77b/go.mod",
+      "https://github.com/nanolathe-gg/nanolathe/blob/5007ba75354c06fc9752a2822d37ff1e1443b77b/NOTICE.md",
+      "https://github.com/nanolathe-gg/nanolathe/blob/5007ba75354c06fc9752a2822d37ff1e1443b77b/docs/PUBLICATION.md",
+      "https://github.com/nanolathe-gg/nanolathe/blob/5007ba75354c06fc9752a2822d37ff1e1443b77b/research/retail-executable-spec/README.md",
+      "https://github.com/nanolathe-gg/nanolathe/blob/5007ba75354c06fc9752a2822d37ff1e1443b77b/LICENSE"
+    ]
   }
 ]

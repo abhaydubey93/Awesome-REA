@@ -59,6 +59,8 @@
 - [KartPad：Mario Kart Wii 重编译的平台集成](https://github.com/chrissotraidis/kartpad) — 围绕 WiiCompiled 对 Mario Kart Wii 的提前转换实现 Apple 与 Android 平台集成，提供原生图形、输入及可选 Retro Rewind 支持。状态和权利文档区分平台验收、未解决的设备缺陷及游戏内容要求。 **[案例 · 独立重建]**
 - [BattleShip：AI 辅助的 Super Smash Bros. 原生移植](https://github.com/vinvirile/BattleShip) — 使用 libultraship 和 Torch 移植已有的 Super Smash Bros. N64 反编译成果。作者介绍了智能体构建的图形、音频对比工具和对照模拟器行为的差分调试，并未将其说成脱离社区既有成果、仅靠卡带自动恢复游戏。 **[案例 · 独立重建]**
 - [智能体反编译：字节匹配验收复盘](https://momo5502.com/posts/2026-10-09-game-decompilation/) — Maurice Heumann 介绍如何用基于编译器的函数、重定位、数据和类型检查，取代看似合理的智能体输出。复盘报告 99% 的函数已进入重建源码，全部函数中 83% 达到字节一致；重建代码仍不公开。 **[案例 · 独立重建]**
+- [IsaacRecomp：将 Flash 游戏字节码转换为原生 C++](https://github.com/whylurking/IsaacRecomp) — 将 The Binding of Isaac 的 Flash AVM1 字节码转换为 C++ 函数，并提供原生渲染与输入运行时。项目从用户自己的原游戏读取图像和音频，并记录了确定性输入、无界面运行和截图回归检查。 **[案例 · 独立重建]**
+- [Nanolathe：附研究文档的 Total Annihilation 引擎重实现](https://github.com/nanolathe-gg/nanolathe) — 用 Go 重实现兼容 Total Annihilation 的策略游戏引擎，公开文件格式研究并提供不同玩法配置。项目区分拟复现的零售版3.1行为、社区补丁研究和有意加入的现代改动，也区分合成检查与依赖原始游戏数据的测试。 **[案例 · 独立重建]**
 - [RenderDoc](https://github.com/baldurk/renderdoc) — 检查自己游戏或图形应用的帧捕获、绘制调用、着色器和图形资源。 **[工具]**
 - [AssetRipper](https://github.com/AssetRipper/AssetRipper) — 分析 Unity 游戏文件，检查资源依赖并将支持的资源转换为 Unity 工程格式。 **[工具]**
 - [Cpp2IL](https://github.com/SamboyCoding/Cpp2IL) — 结合二进制与元数据分析，从 Unity IL2CPP 构建恢复托管表示；重建能力仍在开发中。 **[工具]**
@@ -83,6 +85,8 @@
 - [Notion：追踪剪贴板桥接](https://rea.tools/showcase/notion/) — 结合 REA 发现与独立源码阅读追踪剪贴板桥；动态包装器仍有明确限制。 **[案例 · REA]**
 - [ReaCut：视频编辑器重建案例](https://github.com/Xiangyu-CAS/rea-capcut) — 独立视频编辑器，作者公开了利用 REA 研究剪映／CapCut 行为与项目格式的过程。实现包含本地时间线、FFmpeg 导出，以及实验性的有损草稿导入。 **[案例 · 混合工具流程]**
 - [zee-rp：重建 Axure RP 11 的受支持文档操作](https://github.com/LilZeeCN/zee-rp) — 通过二进制记录编解码、考虑引用关系的克隆和受约束的交互写入器，读取并修改受支持的 Axure RP 11 原生文档。CLI 与 MCP 接口提供可检查的编辑操作，并区分离线结构检查和原生应用验收。 **[案例 · 独立重建]**
+- [Virtual Desktop Streamer：在 Linux 上重建平台适配层](https://github.com/cudanexus/vd-streamer-linux) — 作者报告通过 Claude Code 与 REA，将 macOS 串流端的捕获、编码、音频和输入层替换为 Linux 实现，同时复用厂商协议库。文档中的目标是桌面串流和视频播放，而非仅 Windows 串流端提供的 VR 游戏串流。 **[案例 · 混合工具流程]**
+- [Open Claude UI：基于 REA 调查的界面参考组件](https://github.com/Caho1/open-claude-ui) — 发布 React 组件、动效辅助模块和设计系统笔记，作者将其归因于使用 REA 调查 Claude Desktop。它可作为界面重建案例；观察结果受版本约束，不能证明已完整复刻助手应用或后端。 **[案例 · 混合工具流程]**
 - [JADX-AI-MCP](https://github.com/zinja-coder/jadx-ai-mcp) — 结合 JADX 插件与 Python MCP 服务，读取 Android 反编译代码、资源、交叉引用和调试上下文。 **[集成 · 独立 MCP]**
 - [frida-mcp (yfe404)](https://github.com/yfe404/frida-mcp) — Frida MCP 服务，提供持久插桩会话、运行时检查和 Android 静态代码与动态现场之间的导航。 **[集成 · 独立 MCP]**
 - [Super Trouper](https://github.com/crissyfield/super-trouper) — 单个可执行文件形式的 Frida MCP 服务，用于发现设备、管理进程会话和加载插桩脚本。 **[集成 · 独立 MCP]**
@@ -146,6 +150,7 @@
 - [open-appleremote：Siri Remote 协议重建](https://github.com/a-funk/open-appleremote) — 重建第一代 Siri Remote 在 Linux 上的蓝牙报告，解析按键、触摸与 tvOS 风格手势。Python 实现和协议文档区分实测行为、历史报告与推测含义。 **[案例 · 独立重建]**
 - [GAMEKB-K17：重建宏键盘配置协议](https://github.com/dvdarkin/gamekb-k17) — 实现 GAMEKB-K17/HCY-K017 宏键盘的厂商 HID 配置协议，写入按键映射、固件宏和 RGB 设置后再读回核对。协议文档区分已测试命令、未确认观察和其他设备的研究结果。 **[案例 · 独立重建]**
 - [CF632BLE：基于体脂秤协议研究的本地客户端](https://github.com/guyru/cf632ble) — 根据对厂商 Unique Health 安卓应用的研究，重实现 CF632BLE 体脂秤的 BLE 协议和体成分计算。静态 Web Bluetooth 客户端接收测量数据、管理设备档案，并将历史记录保存在浏览器中。 **[案例 · 独立重建]**
+- [cooler-lcd：Thermalright 显示屏协议实现](https://github.com/kristjaningi/cooler-lcd) — 为 Thermalright Vision 散热器显示屏实现 USB 图像传输驱动，并用 Rust 仪表盘替代厂商显示应用。文档所述协议发送报头和 JPEG 帧，通过定期重发避免设备退回品牌标志画面。 **[案例 · 独立重建]**
 - [hw-harness：扫描仪 USB 协议调查](https://github.com/cschalle/hw-harness) — 记录作者报告的扫描仪调查：比较厂商驱动的 USB 控制传输与 Linux 驱动的记录，推断初始化、时序及分辨率参数。公开工具负责组织参考采集与比较，并不自动恢复完整协议规范。 **[案例 · 独立重建]**
 - [Netzob 协议建模与推断框架](https://github.com/netzob/netzob) — 对通信协议建模并从流量记录推断报文布局，通过配置主动学习来推断协议状态机。Python API 提供报文字段、符号和自动机，用于解析、流量生成及模糊测试。 **[工具]**
 - [Scapy 报文分析与构造工具](https://github.com/secdev/scapy) — 使用 Python 编写报文解析、构造、请求／响应匹配及捕获文件分析流程；自定义报文字段与层绑定可将已理解的线格式编码为可操作模型，辅助研究协议行为。 **[工具]**
