@@ -20,6 +20,48 @@ The localization path was exercised in [PR #2](https://github.com/reacher-z/Awes
 
 `Source links` runs weekly and on manual request. It distinguishes confirmed missing links from rate limits and inconclusive network responses.
 
+## Triage source-link results
+
+From the repository root, save a local report outside the checkout so it is not accidentally included in a contribution:
+
+```sh
+python3 scripts/check_links.py --json ../awesome-rea-link-report.json
+```
+
+The same checker runs in the `Source links` workflow. It saves the JSON report as a run artifact for 14 days and adds a counts summary, including when the checker reports confirmed dead links. Local runs save JSON only when `--json` is supplied. For slower or restricted connections, use `--workers 2 --timeout 30` and retry later rather than treating a timeout as removal.
+
+Inspect `counts`, `complete`, and each result's `url`, `checked_url`, `references`, `status`, `reason`, and `attempts`. References identify the affected records and fields: `resource:<id>:<field>`, `paper:<id>:<field>`, or `benchmark:<full_name>:<field>`. Curated resources are in `data/rea-resources.json` and `data/tool-resources.json`; papers and benchmarks are in `data/papers.json` and `data/benchmarks.json`. One URL can have several references, so review all affected fields.
+
+| Result | What it establishes | Next step |
+| --- | --- | --- |
+| `ok` | The final HTTP response was 2xx. | Check that the destination still describes the intended resource; an HTTP success alone does not verify its identity or claims. |
+| `dead` | Two consecutive requests returned 404 or 410. | Check the original project's site, repository and release notices for a move, archival notice or removal before proposing a correction. |
+| `inconclusive` | Access restrictions, rate limits, network/server failures or another response prevent a conclusion. | Leave the record in place. Inspect the attempts, retry after the restriction clears, or review the public primary source manually. Do not treat authentication walls, 403/429 responses or transient failures as confirmed removals. |
+
+The command exits with status 1 when any link is confirmed dead. Inconclusive results alone still produce exit status 0: inspect `complete` and the counts before claiming all links passed. Do not add credentials to a report or commit raw reports to the repository.
+
+### Verify a moved resource
+
+The checker follows redirects and records the final URL in each HTTP attempt. Compare the original `url`, the actual `checked_url`, and `attempts[*].final_url`. GitHub blob evidence is deliberately checked through `raw.githubusercontent.com` at the same revision; that conversion is not evidence of a project move. Access restrictions such as HTTP 403 or 429 remain inconclusive. A login or access page returning HTTP 200 can still be reported as `ok`, so inspect the destination manually.
+
+Before replacing a canonical URL, verify that the destination belongs to the same upstream resource using a maintainer announcement, a repository transfer/rename, or another primary-source statement linking the old and new locations. Check that the title, authors or owner, and relevant content agree. A redirect to a generic homepage, login page or unrelated mirror is insufficient. Preserve the stable catalog `id` and update only the affected URL/evidence fields and any review metadata supported by the new review; keep pinned evidence at a verified revision where appropriate.
+
+### Submit a correction or retirement proposal
+
+Open an issue or a focused pull request naming the affected IDs, old URLs, observed statuses and check date. For a move, link the public primary evidence establishing the new canonical location. For retirement or replacement, explain the loss of the original resource and the reason for the proposed catalog decision publicly; do not silently substitute an unrelated mirror or reuse an existing ID for a different resource. If the evidence remains inconclusive, report that limitation and leave the entry unchanged pending review.
+
+For a curated catalog correction, regenerate the derived indexes and run the contributor checks:
+
+```sh
+python3 scripts/build_readme.py
+python3 scripts/build_repository_index.py
+python3 scripts/validate.py
+python3 scripts/build_site.py
+node --check site/app.js
+```
+
+For paper changes, also follow the paper-specific validation and production-build steps in [the contribution guide](../CONTRIBUTING.md#suggest-a-research-paper). Review the diff for unrelated generated changes, then include the validation commands and results in the pull request. Keep source review distinct from runtime testing of the linked project.
+
 ## Website delivery
 
 See [website building and publishing](website.md) for the static build and hosting setup. Production uses the public source repository while optional Font Awesome Pro assets are supplied through the licensed deployment path. Pro fonts, credentials, private configuration, raw analysis output, and deployment bundles are excluded from the public repository.

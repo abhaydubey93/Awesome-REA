@@ -32,6 +32,26 @@ node --check site/app.js
 
 Use `python3 scripts/check_links.py` for live source checks. Rate limits and temporary network failures are reported separately from confirmed missing links.
 
+### Choose kind, relationship, category and targets
+
+Choose these fields independently; one does not determine the others:
+
+- `kind`: what is being shared, such as a tool, integration or case study?
+- `relationship`: what connection to REA, an independent agent workflow, or a foundation tool does the evidence establish?
+- `category`: which task or tool family fits the resource?
+- `targets`: what subjects does it help analyze or reconstruct?
+
+Use the current values in the [catalog format guide](data/README.md). These existing records show how the choices fit together; their linked evidence is documentation, not a claim that the tools were run:
+
+- **Independent reconstruction:** [`kef-lsx-volume-case`](data/tool-resources.json) uses `kind: case-study`, `relationship: independent-reconstruction`, `category: reconstruction-cases`, and `targets: [app]`. Its [source](https://github.com/roberdorfer/kef-lsx-volume/blob/6fbd7f76c63bf6d7da0979db4a1b312a064e0b4b/README.md) describes an app using LAN control; network access alone does not make the target `protocol` or establish a REA connection.
+- **Foundation tool:** [`ghidra`](data/tool-resources.json) uses `kind: tool`, `relationship: foundation`, `category: native-analysis`, and `targets: [binary, game, firmware]`. The [source](https://github.com/NationalSecurityAgency/ghidra/blob/master/README.md) supports the catalog's foundation-tool classification; no REA connection is implied. One tool-family category can serve several target domains.
+- **Integration:** [`playwright-mcp`](data/tool-resources.json) uses `kind: integration`, `relationship: independent-agent-integration`, `category: agent-mcp`, and `targets: [website]`. The [source](https://github.com/microsoft/playwright-mcp/blob/main/README.md) describes an MCP interface; that alone does not establish official REA integration or protocol reverse engineering.
+- **Protocol analysis:** [`netzob`](data/tool-resources.json) uses `kind: tool`, `relationship: foundation`, `category: protocol-analysis`, and `targets: [protocol]`. Its [source](https://github.com/netzob/netzob/blob/088fe769e98e0bfbd3ed99e66b3982446bf8d197/README.rst) describes analysis of communication formats and state, rather than merely using a network connection.
+
+Choose multiple targets when the evidence supports each area. Category describes the task or tool family; targets describe its application areas. Keep existing reviewed targets rather than automatically reclassifying historical records.
+
+Paper ordering is separate from resource classification. In [papers.json](data/papers.json), `paper-pix2code` has `targets: [app, website]`; its first target selects the App reconstruction section. The [README builder](scripts/build_readme.py) uses `targets[0]` for ordinary papers and handles its agent-evaluation papers separately. Do not sort paper targets or apply that ordering rule to resource categories.
+
 ## Suggest a research paper
 
 Use the [paper submission form](https://github.com/reacher-z/Awesome-REA/issues/new?template=paper.yml). Include the canonical paper page or DOI, its publication status, the reverse-engineering task it studies, and links to author-provided code or data where available. An accessible paper does not imply that its benchmark or evaluation service is public.
