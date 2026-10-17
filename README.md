@@ -168,6 +168,7 @@ Each entry appears once under its main purpose. The collection includes independ
 - [Awesome Reverse Engineering](https://github.com/morluto/awesome-reverse-engineering) — A task-oriented reverse-engineering resource list by REA's maintainer, useful for broader tools and foundations. **[Collection]**
 - [Awesome REA Cases](https://github.com/songshikang0111/awesome-REA-cases) — A bilingual collection of REA and other AI-assisted reverse engineering cases, with source links and explicit distinctions between reported and reproduced outcomes. **[Collection]**
 - [awesome-rea (yibie): verification-focused projects and practice reports](https://github.com/yibie/awesome-rea) — Organizes AI-assisted game decompilation, native ports, static recompilation and tooling around stated acceptance checks, alongside a separate track of practitioner write-ups and discussions. Useful for finding primary reports and comparing how projects define correctness. **[Collection]**
+- [Awesome REA/Decompiled Games](https://github.com/HaozheH3/awesome-rea-games) — Groups game decompilations, source reconstructions, recompilations, native ports and demos by original game, with comparison rows linking related projects. It distinguishes launchers, engine work and creator-shared showcases from source-reconstruction efforts. **[Collection]**
 
 <a id="references-and-learning"></a>
 ### References and Learning
