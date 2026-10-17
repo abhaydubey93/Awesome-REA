@@ -1478,5 +1478,71 @@
       "https://github.com/OpenDriver2/REDRIVER2/wiki/Installation-instructions/35c32de044cc80e10574838860489e5fe773fed3",
       "https://github.com/OpenDriver2/REDRIVER2/wiki/Contributing-to-project/35c32de044cc80e10574838860489e5fe773fed3"
     ]
+  },
+  {
+    "id": "photocraft-case",
+    "name": "PhotoCraft: editor workflow reconstruction and PSD round-trip boundaries",
+    "url": "https://github.com/storytold/photocraft",
+    "category": "reconstruction-cases",
+    "relationship": "independent-reconstruction",
+    "description_en": "The authors describe this Rust image editor as a clean-room reimplementation of Photoshop-style workflows. Its document engine, UI and automation interfaces share editing commands, while the source distinguishes PSD editor round trips from byte preservation in the standalone file codec.",
+    "description_zh": "作者将这款 Rust 图像编辑器描述为 Photoshop 风格流程的净室重实现。文档引擎、界面与自动化接口共用编辑命令；源码区分编辑器中的 PSD 往返处理与独立文件编解码器的字节保留。",
+    "evidence_url": "https://github.com/storytold/photocraft/blob/5f65579ecb44047c2a619036c18ff273202e1389/README.md",
+    "verified_at": "2026-10-17",
+    "verification": "source-reviewed",
+    "requirements": [
+      "The pinned workspace identifies version 0.9.0 and declares Rust 1.95+ for source builds with Cargo. Native and WebAssembly paths have platform-specific dependencies; optional font inputs and reference documents are separate. No build or installer was run here.",
+      "This is an implemented document/compositing engine and editing interface, not merely a screenshot mockup. It does not establish recovery of Adobe’s source code or Photoshop cloud services; the author’s clean-room characterization was not independently audited.",
+      "The editor-level corpus tests compare rendering before and after export/reimport. Separate PSD codec tests compare bytes for parseable files, with a named malformed-file exception. Editor saves are explicitly not byte-identical to their inputs; these finite test definitions are not results independently reproduced by this catalog.",
+      "The project remains alpha and distinguishes menu-command coverage from behavioral fidelity. Its dated parity assessment retains gaps in PSD exchange, typography, professional workflows, performance and plug-in compatibility; no complete Photoshop-equivalence percentage is asserted here.",
+      "Project code is MIT OR Apache-2.0, subject to NOTICE; fonts, artwork and other assets retain separate terms. ArtCraft branding is excluded; published modified versions must remove it, apart from contribution-only forks. REA use is not established, and no application assets or corpus files were downloaded for this review."
+    ],
+    "targets": [
+      "app"
+    ],
+    "kind": "case-study",
+    "additional_evidence_urls": [
+      "https://github.com/storytold/photocraft/blob/5f65579ecb44047c2a619036c18ff273202e1389/Cargo.toml",
+      "https://github.com/storytold/photocraft/blob/5f65579ecb44047c2a619036c18ff273202e1389/docs/target-app-parity.md",
+      "https://github.com/storytold/photocraft/blob/5f65579ecb44047c2a619036c18ff273202e1389/crates/io/tests/corpus.rs",
+      "https://github.com/storytold/photocraft/blob/5f65579ecb44047c2a619036c18ff273202e1389/crates/psd/tests/corpus.rs",
+      "https://github.com/storytold/photocraft/blob/5f65579ecb44047c2a619036c18ff273202e1389/LICENSE-MIT",
+      "https://github.com/storytold/photocraft/blob/5f65579ecb44047c2a619036c18ff273202e1389/LICENSE-APACHE",
+      "https://github.com/storytold/photocraft/blob/5f65579ecb44047c2a619036c18ff273202e1389/NOTICE",
+      "https://github.com/storytold/photocraft/blob/5f65579ecb44047c2a619036c18ff273202e1389/docs/brand/LICENSE-brand.txt"
+    ]
+  },
+  {
+    "id": "wordcraft-case",
+    "name": "WordCraft: document workflow reconstruction and bounded DOCX compatibility",
+    "url": "https://github.com/storytold/wordcraft",
+    "category": "reconstruction-cases",
+    "relationship": "independent-reconstruction",
+    "description_en": "The authors describe WordCraft as a clean-room Rust implementation of familiar Microsoft Word workflows. It provides its own document model, layout engine and DOCX reader/writer, with desktop and browser interfaces; source tests exercise selected editing and file-preservation behavior.",
+    "description_zh": "作者将 WordCraft 描述为以 Rust 净室重实现熟悉的 Microsoft Word 流程。项目提供自己的文档模型、排版引擎和 DOCX 读写器，以及桌面与浏览器界面；源码测试覆盖选定的编辑与文件保留行为。",
+    "evidence_url": "https://github.com/storytold/wordcraft/blob/eae242176108d328c5dd81fbc10370c51ab90706/README.md",
+    "verified_at": "2026-10-17",
+    "verification": "source-reviewed",
+    "requirements": [
+      "The pinned workspace identifies version 0.7.0 and declares Rust 1.95+ with Cargo. The documented browser build uses Trunk; native builds and faithful layout require the relevant platform dependencies and fonts. The catalog did not build the app or download reference documents.",
+      "The outcome is a document-engine and interaction implementation, not recovery of Microsoft’s source tree or Microsoft 365’s hosted backend. CLI/MCP and control-channel support are automation surfaces, not evidence that REA was used.",
+      "The reviewed DOCX tests use constructed documents and specification-based XML fixtures to check modeled properties and passthrough parts. They do not establish arbitrary-document byte identity or Word-equivalent pagination. The dated assessment against Word for Mac 16.113.4 explicitly says real-world side-by-side file/page comparisons were not performed in that assessment pass.",
+      "The project is alpha. File fidelity, page layout, advanced typography, stability and ecosystem compatibility remain limited; ribbon-command counts and author readiness estimates are not acceptance-test pass rates. No original-versus-rebuilt application test was rerun here.",
+      "Code is MIT OR Apache-2.0 with NOTICE obligations; fonts and other assets retain separate rights, and ArtCraft branding has separate restricted terms. Clean-room is the authors’ characterization, not an independently established process or legal finding; no Microsoft code or assets are provided by this catalog."
+    ],
+    "targets": [
+      "app"
+    ],
+    "kind": "case-study",
+    "additional_evidence_urls": [
+      "https://github.com/storytold/wordcraft/blob/eae242176108d328c5dd81fbc10370c51ab90706/Cargo.toml",
+      "https://github.com/storytold/wordcraft/blob/eae242176108d328c5dd81fbc10370c51ab90706/docs/target-app-parity.md",
+      "https://github.com/storytold/wordcraft/blob/eae242176108d328c5dd81fbc10370c51ab90706/crates/docx/tests/passthrough.rs",
+      "https://github.com/storytold/wordcraft/blob/eae242176108d328c5dd81fbc10370c51ab90706/crates/docx/tests/roundtrip.rs",
+      "https://github.com/storytold/wordcraft/blob/eae242176108d328c5dd81fbc10370c51ab90706/LICENSE-MIT",
+      "https://github.com/storytold/wordcraft/blob/eae242176108d328c5dd81fbc10370c51ab90706/LICENSE-APACHE",
+      "https://github.com/storytold/wordcraft/blob/eae242176108d328c5dd81fbc10370c51ab90706/NOTICE",
+      "https://github.com/storytold/wordcraft/blob/eae242176108d328c5dd81fbc10370c51ab90706/docs/brand/LICENSE-brand.txt"
+    ]
   }
 ]

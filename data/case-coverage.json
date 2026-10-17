@@ -1,7 +1,7 @@
 {
   "schema_version": 1,
   "reviewed_at": "2026-10-17",
-  "catalog_revision": "4a4cf2b0884cc7ba85d48b79d1974449e60c09aa",
+  "catalog_revision": "1c472b08345031c47d2618236611ac22d1ef2c6b",
   "runtime_reproduced": false,
   "project_identity_resolution": "incomplete",
   "collections": [
@@ -929,12 +929,44 @@
         "https://x.com/i/status/2110714534591713611"
       ],
       "state": "pending",
-      "review_level": "inventory-only",
+      "review_level": "primary-source-reviewed",
       "reviewed_at": "2026-10-17",
-      "reason_en": "A collection lead awaiting primary-source review; listing does not verify implementation or results.",
-      "reason_zh": "合集线索，等待一手来源核查；被列入合集不代表实现或结果已获验证。",
-      "primary_evidence_urls": [],
-      "catalog_matches": []
+      "reason_en": "PhotoCraft and WordCraft would cover two documented app implementations only; GridCraft, DeckCraft and the broader Adobe/Office claims remain outside these mappings. No proprietary source recovery, legal clean-room certification or runtime reproduction is established.",
+      "reason_zh": "PhotoCraft 与 WordCraft 只覆盖两个有文档的应用实现；GridCraft、DeckCraft 及更广的 Adobe／Office 说法仍不在映射范围内。不确立专有源码恢复、净室流程法律认证或运行复现。",
+      "primary_evidence_urls": [
+        "https://github.com/storytold/photocraft/blob/5f65579ecb44047c2a619036c18ff273202e1389/README.md",
+        "https://github.com/storytold/photocraft/blob/5f65579ecb44047c2a619036c18ff273202e1389/Cargo.toml",
+        "https://github.com/storytold/photocraft/blob/5f65579ecb44047c2a619036c18ff273202e1389/docs/target-app-parity.md",
+        "https://github.com/storytold/photocraft/blob/5f65579ecb44047c2a619036c18ff273202e1389/crates/io/tests/corpus.rs",
+        "https://github.com/storytold/photocraft/blob/5f65579ecb44047c2a619036c18ff273202e1389/crates/psd/tests/corpus.rs",
+        "https://github.com/storytold/photocraft/blob/5f65579ecb44047c2a619036c18ff273202e1389/LICENSE-MIT",
+        "https://github.com/storytold/photocraft/blob/5f65579ecb44047c2a619036c18ff273202e1389/LICENSE-APACHE",
+        "https://github.com/storytold/photocraft/blob/5f65579ecb44047c2a619036c18ff273202e1389/NOTICE",
+        "https://github.com/storytold/photocraft/blob/5f65579ecb44047c2a619036c18ff273202e1389/docs/brand/LICENSE-brand.txt",
+        "https://github.com/storytold/wordcraft/blob/eae242176108d328c5dd81fbc10370c51ab90706/README.md",
+        "https://github.com/storytold/wordcraft/blob/eae242176108d328c5dd81fbc10370c51ab90706/Cargo.toml",
+        "https://github.com/storytold/wordcraft/blob/eae242176108d328c5dd81fbc10370c51ab90706/docs/target-app-parity.md",
+        "https://github.com/storytold/wordcraft/blob/eae242176108d328c5dd81fbc10370c51ab90706/crates/docx/tests/passthrough.rs",
+        "https://github.com/storytold/wordcraft/blob/eae242176108d328c5dd81fbc10370c51ab90706/crates/docx/tests/roundtrip.rs",
+        "https://github.com/storytold/wordcraft/blob/eae242176108d328c5dd81fbc10370c51ab90706/LICENSE-MIT",
+        "https://github.com/storytold/wordcraft/blob/eae242176108d328c5dd81fbc10370c51ab90706/LICENSE-APACHE",
+        "https://github.com/storytold/wordcraft/blob/eae242176108d328c5dd81fbc10370c51ab90706/NOTICE",
+        "https://github.com/storytold/wordcraft/blob/eae242176108d328c5dd81fbc10370c51ab90706/docs/brand/LICENSE-brand.txt"
+      ],
+      "catalog_matches": [
+        {
+          "catalog": "resource",
+          "id": "photocraft-case",
+          "kind": "case-study",
+          "scope": "partial"
+        },
+        {
+          "catalog": "resource",
+          "id": "wordcraft-case",
+          "kind": "case-study",
+          "scope": "partial"
+        }
+      ]
     },
     {
       "id": "song:obsidian-asar",
@@ -11252,9 +11284,9 @@
       "insufficient-evidence": 51,
       "pending": 410
     },
-    "primary_reviewed_units": 43,
-    "catalog_linked_occurrences": 55,
-    "distinct_resource_ids": 42,
+    "primary_reviewed_units": 44,
+    "catalog_linked_occurrences": 56,
+    "distinct_resource_ids": 44,
     "distinct_paper_ids": 1,
     "unique_projects": null
   }

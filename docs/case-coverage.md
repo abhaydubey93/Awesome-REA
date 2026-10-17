@@ -26,9 +26,9 @@ Repository counts use normalized GitHub repository, tree and file links within e
 | Pending (`pending`) | 411 | 410 | Primary review or complete catalog coverage remains pending; partial matches stay here. |
 | Insufficient evidence (`insufficient-evidence`) | 51 | 51 | An idea, request or unsupported reconstruction claim is retained as a lead. |
 
-55 occurrences have catalog links. They reference 42 distinct resource IDs and 1 paper ID. Match scope is recorded separately; do not add these populations as unique projects.
+56 occurrences have catalog links. They reference 44 distinct resource IDs and 1 paper ID. Match scope is recorded separately; do not add these populations as unique projects.
 
-This ledger records a new primary-source review for 43 inventory units. Other catalog-linked entries inherit the catalog’s separate source-review record; a link does not mean the entire collection report was reviewed again. No runtime experiment was independently reproduced for this ledger.
+This ledger records a new primary-source review for 44 inventory units. Other catalog-linked entries inherit the catalog’s separate source-review record; a link does not mean the entire collection report was reviewed again. No runtime experiment was independently reproduced for this ledger.
 
 Repository README scan IDs and counts are deliberately absent. A successful README fetch, an upstream list entry and a source-reviewed case are different facts.
 
@@ -41,6 +41,7 @@ Repository README scan IDs and counts are deliberately absent. A successful READ
 | open-appleremote: Siri Remote protocol reconstruction | Already curated | [Source](https://github.com/a-funk/open-appleremote/blob/1e6e190c3c29a3d2d8cad2c38c09f8953e9633e3/README.md) |
 | TH08: exact-source reconstruction and separately tested ports | Pending | [Source](https://github.com/N0zoM1z0/th08/blob/08c7f00f81e35db8206d917b14f47883930beef6/README.md) |
 | Dinosaur runner: recovering one acceleration rule | Already curated | [Source](https://github.com/morluto/rea/blob/c360cfcd6d7901514b16dd6113eba2e0b0fdf422/website/evidence/calculator-and-dino.md) |
+| PhotoCraft: editor workflow reconstruction and PSD round-trip boundaries | Pending | [Source](https://github.com/storytold/photocraft/blob/5f65579ecb44047c2a619036c18ff273202e1389/README.md) |
 | Windows Calculator: reconstructing percentage rules | Already curated | [Source](https://github.com/morluto/rea/blob/c360cfcd6d7901514b16dd6113eba2e0b0fdf422/website/evidence/calculator-and-dino.md) |
 | CF632BLE: a local client from scale-protocol research | Already curated | [Source](https://github.com/guyru/cf632ble/blob/c029ef5cfefbd323ffe2a194a75db5cc47aa6d5c/README.md) |
 | zee-rp: reconstructing supported Axure RP 11 document operations | Already curated | [Source](https://github.com/LilZeeCN/zee-rp/blob/473761e6a08f051e1666944db690332ef27a6038/README.md) |
@@ -85,6 +86,7 @@ Repository README scan IDs and counts are deliberately absent. A successful READ
 Partial or related catalog mappings:
 
 - `song:touhou-reconstruction` — The TH08 component is curated; TH04 and TH095 components in this combined report remain outside the mapping.
+- `song:artcraft-boundary` — PhotoCraft and WordCraft would cover two documented app implementations only; GridCraft, DeckCraft and the broader Adobe/Office claims remain outside these mappings. No proprietary source recovery, legal clean-room certification or runtime reproduction is established.
 - `song:schaller-opticfilm-thinkpad-linux` — The scanner USB investigation is curated; the same collection entry also reports MIPI camera work that remains outside this catalog mapping.
 - `hao-games:row-134` — The TH08 reconstruction is curated, but this separate WebAssembly companion repository is not covered as the same artifact. Its own implementation and deployment claims remain pending.
 - `hao-games:row-136` — Only the official TH04 bullet-ring helper showcase is covered. This collection row identifies a broader reconstruction repository, so full repository/game coverage remains pending.

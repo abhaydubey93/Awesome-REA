@@ -13,9 +13,9 @@
 ## 目录
 
 <!-- BEGIN GENERATED CONTENTS -->
-- **目标** · [网站](#website) <sub>14</sub> · [游戏](#game) <sub>41</sub> · [应用](#app) <sub>30</sub> · [原生二进制](#native-binary) <sub>20</sub> · [固件与硬件](#firmware) <sub>12</sub> · [协议](#protocol) <sub>11</sub>
+- **目标** · [网站](#website) <sub>14</sub> · [游戏](#game) <sub>41</sub> · [应用](#app) <sub>32</sub> · [原生二进制](#native-binary) <sub>20</sub> · [固件与硬件](#firmware) <sub>12</sub> · [协议](#protocol) <sub>11</sub>
 
-- [论文](#papers) <sub>40</sub> · [案例](https://awesomerea.org/zh/?view=curated&kind=case-study) <sub>41</sub> · [Agent 与 MCP](#agents-and-mcp) <sub>18</sub> · [相关合集](#related-collections) <sub>4</sub> · [学习资料](#references-and-learning) <sub>17</sub> · [仓库索引](#完整仓库索引) <sub>2,846</sub>
+- [论文](#papers) <sub>40</sub> · [案例](https://awesomerea.org/zh/?view=curated&kind=case-study) <sub>43</sub> · [Agent 与 MCP](#agents-and-mcp) <sub>18</sub> · [相关合集](#related-collections) <sub>4</sub> · [学习资料](#references-and-learning) <sub>17</sub> · [仓库索引](#完整仓库索引) <sub>2,846</sub>
 <!-- END GENERATED CONTENTS -->
 
 <a id="资源目录"></a>
@@ -118,6 +118,8 @@
 - [**PlxNative：重建原生 webOS 媒体客户端接口**](https://github.com/GLinnik21/plx-native) - 作者用 Ghidra 和编程智能体调查 LG webOS 原生媒体接口后构建的非官方 Plex 客户端。它自行绘制 Rust/OpenGL 界面并使用电视解码器，文档区分宿主测试、模拟器测试和实体设备测试。 <sub>案例 · 独立重建</sub>
 - [**Windows Calculator：重建百分比规则**](https://github.com/morluto/rea/blob/c360cfcd6d7901514b16dd6113eba2e0b0fdf422/website/evidence/calculator-and-dino.md#windows-calculator) - REA 案例追踪已安装 Windows Calculator 的模型 DLL，解释乘除运算与其他运算中不同的百分比行为。分析人员选定函数后，对照微软公开源码解释，并通过固定输入的浏览器示例演示。 <sub>案例 · REA</sub>
 - [**飞书：作者报告的隔离第二应用实例**](https://benx.ai/blog/posts/rea-reverse-engineer-feishu-dual-instance/) - 作者报告借助 Codex 与 REA 分析，修改独立的 macOS 飞书副本，为其设置不同的应用身份、数据目录和单实例锁。文章描述本地签名与隔离检查，并称原应用保持不变。 <sub>案例 · 混合工具流程</sub>
+- [**PhotoCraft：编辑流程重建与 PSD 往返边界**](https://github.com/storytold/photocraft) - 作者将这款 Rust 图像编辑器描述为 Photoshop 风格流程的净室重实现。文档引擎、界面与自动化接口共用编辑命令；源码区分编辑器中的 PSD 往返处理与独立文件编解码器的字节保留。 <sub>案例 · 独立重建</sub>
+- [**WordCraft：文档流程重建与有限范围 DOCX 兼容**](https://github.com/storytold/wordcraft) - 作者将 WordCraft 描述为以 Rust 净室重实现熟悉的 Microsoft Word 流程。项目提供自己的文档模型、排版引擎和 DOCX 读写器，以及桌面与浏览器界面；源码测试覆盖选定的编辑与文件保留行为。 <sub>案例 · 独立重建</sub>
 - [**LSX II 音量修正器：重建音量行为**](https://github.com/roberdorfer/kef-lsx-volume) - 根据实测 USB 音量行为，通过 macOS 音频代理将音量键映射到 KEF LSX II 的局域网控制。项目报告音量步进更均匀，同时转发 USB 音频；扬声器固件未修改。 <sub>案例 · 独立重建</sub>
 
 #### 工具、项目与集成

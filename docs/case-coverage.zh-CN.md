@@ -26,9 +26,9 @@
 | 待核查 (`pending`) | 411 | 410 | 一手核查或完整目录覆盖尚待完成；部分映射也保留在此状态。 |
 | 证据不足 (`insufficient-evidence`) | 51 | 51 | 将想法、请求或尚缺支持的重建说法保留为线索。 |
 
-55 个出现项含目录链接；共关联 42 个不同资源 ID 和 1 个论文 ID。映射范围单独记录，不能将这些群体相加当作独立项目数。
+56 个出现项含目录链接；共关联 44 个不同资源 ID 和 1 个论文 ID。映射范围单独记录，不能将这些群体相加当作独立项目数。
 
-此记录为 43 个清单单元记载了新的一手来源核查。其他已有目录链接的条目对应目录中独立的来源核查记录；链接本身不代表重新核查了整篇合集报告。此记录没有独立复现运行实验。
+此记录为 44 个清单单元记载了新的一手来源核查。其他已有目录链接的条目对应目录中独立的来源核查记录；链接本身不代表重新核查了整篇合集报告。此记录没有独立复现运行实验。
 
 此记录刻意不包含仓库 README 扫描 ID 或扫描数量。成功读取 README、被上游合集列出和案例经过来源核查，是不同事实。
 
@@ -41,6 +41,7 @@
 | open-appleremote：Siri Remote 协议重建 | 已收录 | [来源](https://github.com/a-funk/open-appleremote/blob/1e6e190c3c29a3d2d8cad2c38c09f8953e9633e3/README.md) |
 | TH08：精确源码重建与单独验证的移植 | 待核查 | [来源](https://github.com/N0zoM1z0/th08/blob/08c7f00f81e35db8206d917b14f47883930beef6/README.md) |
 | 恐龙跑酷：恢复一条加速规则 | 已收录 | [来源](https://github.com/morluto/rea/blob/c360cfcd6d7901514b16dd6113eba2e0b0fdf422/website/evidence/calculator-and-dino.md) |
+| PhotoCraft：编辑流程重建与 PSD 往返边界 | 待核查 | [来源](https://github.com/storytold/photocraft/blob/5f65579ecb44047c2a619036c18ff273202e1389/README.md) |
 | Windows Calculator：重建百分比规则 | 已收录 | [来源](https://github.com/morluto/rea/blob/c360cfcd6d7901514b16dd6113eba2e0b0fdf422/website/evidence/calculator-and-dino.md) |
 | CF632BLE：基于体脂秤协议研究的本地客户端 | 已收录 | [来源](https://github.com/guyru/cf632ble/blob/c029ef5cfefbd323ffe2a194a75db5cc47aa6d5c/README.md) |
 | zee-rp：重建 Axure RP 11 的受支持文档操作 | 已收录 | [来源](https://github.com/LilZeeCN/zee-rp/blob/473761e6a08f051e1666944db690332ef27a6038/README.md) |
@@ -85,6 +86,7 @@
 部分或相关目录映射：
 
 - `song:touhou-reconstruction` — TH08 部分已有精选条目；组合报告中的 TH04 和 TH095 部分仍不在该映射范围内。
+- `song:artcraft-boundary` — PhotoCraft 与 WordCraft 只覆盖两个有文档的应用实现；GridCraft、DeckCraft 及更广的 Adobe／Office 说法仍不在映射范围内。不确立专有源码恢复、净室流程法律认证或运行复现。
 - `song:schaller-opticfilm-thinkpad-linux` — 扫描仪 USB 调查已有精选条目；同一合集条目还报告 MIPI 相机工作，后者不在此次目录映射的覆盖范围内。
 - `hao-games:row-134` — TH08 重建已收录，但此独立 WebAssembly 配套仓库不能作为同一制品视为已覆盖；其自身实现与部署说法仍待核查。
 - `hao-games:row-136` — 目前只覆盖官方 TH04 弹幕角度辅助函数展示；此合集行指向更广的重建仓库，因此完整仓库／游戏覆盖仍待核查。

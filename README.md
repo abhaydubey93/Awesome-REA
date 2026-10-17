@@ -13,9 +13,9 @@ An independent, source-reviewed collection. Review does not imply runtime verifi
 ## Contents
 
 <!-- BEGIN GENERATED CONTENTS -->
-- **Targets** · [Website](#website) <sub>14</sub> · [Game](#game) <sub>41</sub> · [App](#app) <sub>30</sub> · [Native Binary](#native-binary) <sub>20</sub> · [Firmware & Hardware](#firmware) <sub>12</sub> · [Protocol](#protocol) <sub>11</sub>
+- **Targets** · [Website](#website) <sub>14</sub> · [Game](#game) <sub>41</sub> · [App](#app) <sub>32</sub> · [Native Binary](#native-binary) <sub>20</sub> · [Firmware & Hardware](#firmware) <sub>12</sub> · [Protocol](#protocol) <sub>11</sub>
 
-- [Papers](#papers) <sub>40</sub> · [Cases](https://awesomerea.org/?view=curated&kind=case-study) <sub>41</sub> · [Agents & MCP](#agents-and-mcp) <sub>18</sub> · [Collections](#related-collections) <sub>4</sub> · [Learning](#references-and-learning) <sub>17</sub> · [Repository index](#full-repository-index) <sub>2,846</sub>
+- [Papers](#papers) <sub>40</sub> · [Cases](https://awesomerea.org/?view=curated&kind=case-study) <sub>43</sub> · [Agents & MCP](#agents-and-mcp) <sub>18</sub> · [Collections](#related-collections) <sub>4</sub> · [Learning](#references-and-learning) <sub>17</sub> · [Repository index](#full-repository-index) <sub>2,846</sub>
 <!-- END GENERATED CONTENTS -->
 
 <a id="resource-catalog"></a>
@@ -117,6 +117,8 @@ Browse by purpose, with case studies separated from tools and integrations. Each
 - [**PlxNative: reconstructing a native webOS media-client interface**](https://github.com/GLinnik21/plx-native) - An unofficial Plex client built after the author investigated LG webOS native media interfaces with Ghidra and coding agents. It draws its own Rust/OpenGL interface and uses the television’s decoder, with documented host, simulator and real-device test tiers. <sub>Case study · Independent reconstruction</sub>
 - [**Windows Calculator: reconstructing percentage rules**](https://github.com/morluto/rea/blob/c360cfcd6d7901514b16dd6113eba2e0b0fdf422/website/evidence/calculator-and-dino.md#windows-calculator) - REA’s case traces the installed Windows Calculator model DLL to explain different percentage behavior for multiplication/division and other operations. An analyst-selected function is interpreted against public Microsoft source and demonstrated with fixed browser examples. <sub>Case study · REA</sub>
 - [**Feishu: an author-reported isolated second app instance**](https://benx.ai/blog/posts/rea-reverse-engineer-feishu-dual-instance/) - The author reports using Codex and REA analysis to adapt a separate macOS Feishu copy with its own application identity, data directory and single-instance lock. The account describes local signing and separation checks while retaining the original app unchanged. <sub>Case study · Mixed workflow</sub>
+- [**PhotoCraft: editor workflow reconstruction and PSD round-trip boundaries**](https://github.com/storytold/photocraft) - The authors describe this Rust image editor as a clean-room reimplementation of Photoshop-style workflows. Its document engine, UI and automation interfaces share editing commands, while the source distinguishes PSD editor round trips from byte preservation in the standalone file codec. <sub>Case study · Independent reconstruction</sub>
+- [**WordCraft: document workflow reconstruction and bounded DOCX compatibility**](https://github.com/storytold/wordcraft) - The authors describe WordCraft as a clean-room Rust implementation of familiar Microsoft Word workflows. It provides its own document model, layout engine and DOCX reader/writer, with desktop and browser interfaces; source tests exercise selected editing and file-preservation behavior. <sub>Case study · Independent reconstruction</sub>
 - [**LSX II Volume Fixer: reconstructing volume behavior**](https://github.com/roberdorfer/kef-lsx-volume) - Uses measured USB-volume behavior and a macOS audio proxy to map volume keys to a KEF LSX II’s LAN control. The project reports more even steps while forwarding USB audio; the speaker firmware is unchanged. <sub>Case study · Independent reconstruction</sub>
 
 #### Tools, projects and integrations
