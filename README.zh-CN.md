@@ -16,11 +16,11 @@
 **按目标找工具与案例**
 
 - [网站](#website) (14) · [游戏](#game) (42) · [应用](#app) (34)
-- [原生二进制](#native-binary) (20) · [固件与硬件](#firmware) (12) · [协议](#protocol) (11)
+- [原生二进制](#native-binary) (20) · [固件与硬件](#firmware) (13) · [协议](#protocol) (11)
 
 **论文与更多资源**
 
-- [论文](#papers) (42) · [全部案例](https://awesomerea.org/zh/?view=curated&kind=case-study) (46) · [仓库索引](#完整仓库索引) (2,846)
+- [论文](#papers) (43) · [全部案例](https://awesomerea.org/zh/?view=curated&kind=case-study) (47) · [仓库索引](#完整仓库索引) (2,846)
 - [Agent 与 MCP](#agents-and-mcp) (18) · [相关合集](#related-collections) (4) · [学习资料](#references-and-learning) (17)
 <!-- END GENERATED CONTENTS -->
 
@@ -520,6 +520,10 @@
 
   作者报告以 REA 开始 Android 调查，再借助独立 Hermes 工具实现 Windows BLE 打印。
 
+- [**ThinkPad IMX471：为 Linux 恢复相机调校信息**](https://github.com/cschalle/mipi-fixes-x1-aura) · 案例 · 独立重建 · [条件与证据](https://awesomerea.org/zh/resources/thinkpad-imx471-camera-case/)
+
+  从 Intel Windows 驱动包中恢复选定的相机调校结构，用于修复一个 ThinkPad 型号在 Linux 下的图像采集。公开的 CPFF／AIQB 解析器、内核补丁及 libcamera 修改，配有作者报告的 Claude 辅助调查和有限范围的前后测量。
+
 #### 工具、项目与集成
 
 - [**Binwalk**](https://github.com/ReFirmLabs/binwalk) · 工具 · [条件与证据](https://awesomerea.org/zh/resources/binwalk/)
@@ -795,11 +799,11 @@
 <a id="papers"></a>
 ## 论文
 
-收录 **42 篇论文**，涵盖逆向工程智能体评测、反编译、协议推断、固件分析，以及网站、游戏和应用重建。部分论文也出现在精选资源目录中，两者数量不可相加。发表状态与研究范围分别标注，中文标题为译名。
+收录 **43 篇论文**，涵盖逆向工程智能体评测、反编译、协议推断、固件分析，以及网站、游戏和应用重建。部分论文也出现在精选资源目录中，两者数量不可相加。发表状态与研究范围分别标注，中文标题为译名。
 
 [浏览论文目录](https://awesomerea.org/zh/papers/) · [完整书目 JSON](data/papers.json) · [推荐论文](https://github.com/reacher-z/Awesome-REA/issues/new?template=paper.yml)
 
-**按主题** · [智能体评测](#papers-agent-evaluation) (5) · [反编译](#papers-decompilation) (7) · [网站](#papers-website-reconstruction) (12) · [游戏](#papers-game-reconstruction) (6) · [应用](#papers-app-reconstruction) (5) · [固件](#papers-firmware-analysis) (3) · [协议](#papers-protocol-analysis) (4)
+**按主题** · [智能体评测](#papers-agent-evaluation) (5) · [反编译](#papers-decompilation) (7) · [网站](#papers-website-reconstruction) (12) · [游戏](#papers-game-reconstruction) (6) · [应用](#papers-app-reconstruction) (5) · [固件](#papers-firmware-analysis) (4) · [协议](#papers-protocol-analysis) (4)
 
 展开各条目的“范围与发表信息”可查看完整研究边界；以下按年份从新到旧排列。
 
@@ -1357,6 +1361,21 @@
 ### 固件分析与重托管
 
 [↑ 论文主题](#papers) · [目录](#目录)
+
+- [**面向 Linux 固件二进制的用户空间依赖感知重托管**](https://www.ndss-symposium.org/ndss-paper/user-space-dependency-aware-rehosting-for-linux-based-firmware-binaries/) · **2026 · 会议论文**
+
+  FIRMWELL 通过运行初始化进程、定位阻塞依赖并修补缺失的系统层行为，重建 Linux 固件服务的执行环境。它结合容器化 QEMU-user 仿真与 QEMU-system 回退，并利用进程轨迹和二进制分析恢复目标服务所需的资源。
+
+  [PDF](https://www.ndss-symposium.org/wp-content/uploads/2026-s249-paper.pdf) · [代码](https://github.com/qc9c/Firmwell) · [完整条目与引用](https://awesomerea.org/zh/papers/paper-firmwell/)
+
+  <details>
+  <summary>范围与发表信息</summary>
+
+  **范围与限制:** 评估针对选定网络服务，并非完整设备或硬件等价。HTTP 验收采用配置好的响应状态与错误内容检查；其他服务需要各自的判定标准。覆盖范围受解包、架构支持、初始化启发式规则和外设模型限制，符号执行路径爆炸、求解超时及复杂外设检查仍可能导致失败。论文中的修复策略避免补丁修改目标二进制；服务交互成功不能证明恢复了原始源码或全部设备功能。
+
+  **发表信息:** 2026 · NDSS 2026 · 会议论文 · Chuan Qin 等
+
+  </details>
 
 - [**Fuzzware：利用精确的 MMIO 建模提升固件模糊测试效果**](https://www.usenix.org/conference/usenixsecurity22/presentation/scharnowski) · **2022 · 会议论文**
 

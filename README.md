@@ -16,11 +16,11 @@ An independent collection reviewed against primary sources. **Source review does
 **Tools and cases by target**
 
 - [Website](#website) (14) · [Game](#game) (42) · [App](#app) (34)
-- [Native Binary](#native-binary) (20) · [Firmware & Hardware](#firmware) (12) · [Protocol](#protocol) (11)
+- [Native Binary](#native-binary) (20) · [Firmware & Hardware](#firmware) (13) · [Protocol](#protocol) (11)
 
 **Research and more**
 
-- [Papers](#papers) (42) · [All cases](https://awesomerea.org/?view=curated&kind=case-study) (46) · [Repository index](#full-repository-index) (2,846)
+- [Papers](#papers) (43) · [All cases](https://awesomerea.org/?view=curated&kind=case-study) (47) · [Repository index](#full-repository-index) (2,846)
 - [Agents & MCP](#agents-and-mcp) (18) · [Collections](#related-collections) (4) · [Learning](#references-and-learning) (17)
 <!-- END GENERATED CONTENTS -->
 
@@ -519,6 +519,10 @@ Independent projects and [REA](https://github.com/morluto/rea) resources are inc
 
   The author describes REA-assisted Android investigation followed by separate Hermes decompilation to support a Windows BLE printer.
 
+- [**ThinkPad IMX471: recovering camera tuning for Linux**](https://github.com/cschalle/mipi-fixes-x1-aura) · Case study · Independent reconstruction · [Requirements & evidence](https://awesomerea.org/resources/thinkpad-imx471-camera-case/)
+
+  Recovers selected camera-tuning structures from an Intel Windows driver package and uses them to repair Linux image capture on one ThinkPad model. Public CPFF/AIQB parsers, kernel patches and libcamera changes accompany the author’s Claude-assisted investigation and bounded before/after measurements.
+
 #### Tools, projects and integrations
 
 - [**Binwalk**](https://github.com/ReFirmLabs/binwalk) · Tool · [Requirements & evidence](https://awesomerea.org/resources/binwalk/)
@@ -794,11 +798,11 @@ Independent projects and [REA](https://github.com/morluto/rea) resources are inc
 <a id="papers"></a>
 ## Papers
 
-A bibliography of **42 papers** on reverse-engineering agent evaluation, decompilation, protocol inference, firmware analysis, and website, game, and app reconstruction. Some papers also appear among curated resources; counts are not additive. Publication status and study scope are made explicit.
+A bibliography of **43 papers** on reverse-engineering agent evaluation, decompilation, protocol inference, firmware analysis, and website, game, and app reconstruction. Some papers also appear among curated resources; counts are not additive. Publication status and study scope are made explicit.
 
 [Browse the paper directory](https://awesomerea.org/papers/) · [Complete bibliography JSON](data/papers.json) · [Suggest a paper](https://github.com/reacher-z/Awesome-REA/issues/new?template=paper.yml)
 
-**By topic** · [Agent evaluation](#papers-agent-evaluation) (5) · [Decompilation](#papers-decompilation) (7) · [Websites](#papers-website-reconstruction) (12) · [Games](#papers-game-reconstruction) (6) · [Apps](#papers-app-reconstruction) (5) · [Firmware](#papers-firmware-analysis) (3) · [Protocols](#papers-protocol-analysis) (4)
+**By topic** · [Agent evaluation](#papers-agent-evaluation) (5) · [Decompilation](#papers-decompilation) (7) · [Websites](#papers-website-reconstruction) (12) · [Games](#papers-game-reconstruction) (6) · [Apps](#papers-app-reconstruction) (5) · [Firmware](#papers-firmware-analysis) (4) · [Protocols](#papers-protocol-analysis) (4)
 
 Open “Scope and publication details” for each study’s full limitations. Papers are ordered newest first within each topic.
 
@@ -1356,6 +1360,21 @@ Open “Scope and publication details” for each study’s full limitations. Pa
 ### Firmware analysis and rehosting
 
 [↑ Paper topics](#papers) · [Contents](#contents)
+
+- [**User-Space Dependency-Aware Rehosting for Linux-Based Firmware Binaries**](https://www.ndss-symposium.org/ndss-paper/user-space-dependency-aware-rehosting-for-linux-based-firmware-binaries/) · **2026 · Conference paper**
+
+  FIRMWELL reconstructs the execution environment of Linux firmware services by running their initialization processes, locating blocking dependencies and repairing missing system-level behavior. It combines containerized QEMU-user emulation with a QEMU-system fallback, using process traces and binary analysis to recover resources needed by the target service.
+
+  [PDF](https://www.ndss-symposium.org/wp-content/uploads/2026-s249-paper.pdf) · [Code](https://github.com/qc9c/Firmwell) · [Full entry & citation](https://awesomerea.org/papers/paper-firmwell/)
+
+  <details>
+  <summary>Scope and publication details</summary>
+
+  **Scope and limits:** The evaluation concerns selected network services, not complete device or hardware equivalence. HTTP acceptance uses configured response-status and error-content checks; other services need their own criteria. Coverage depends on unpacking, supported architectures, initialization heuristics and peripheral models. Symbolic path explosion, solver timeouts and complex peripheral checks remain failure modes. The paper’s recovery strategy avoids patching target binaries; successful service interaction does not establish recovery of original source code or every device function.
+
+  **Publication:** 2026 · NDSS 2026 · Conference paper · Chuan Qin et al.
+
+  </details>
 
 - [**Fuzzware: Using Precise MMIO Modeling for Effective Firmware Fuzzing**](https://www.usenix.org/conference/usenixsecurity22/presentation/scharnowski) · **2022 · Conference paper**
 
