@@ -2825,5 +2825,71 @@
     "verified_at": "2026-10-17",
     "verification": "source-reviewed",
     "runtime_tested": false
+  },
+  {
+    "id": "paper-netlifter",
+    "title": "Lifting Network Protocol Implementation to Precise Format Specification with Security Applications",
+    "title_zh": "从网络协议实现提取精确格式规范及其安全应用",
+    "authors": [
+      "Qingkai Shi",
+      "Junyang Shao",
+      "Yapeng Ye",
+      "Mingwei Zheng",
+      "Xiangyu Zhang"
+    ],
+    "year": 2023,
+    "publication_date": "2023-11-15",
+    "date_precision": "day",
+    "date_basis": "ACM’s Crossref deposit records published/print publication on 2023-11-15 and a separate online/publication-history date of 2023-11-21. This entry uses the published/print date, not the November 26–30 conference dates.",
+    "date_basis_zh": "ACM 提交的 Crossref 元数据将 published／纸质出版日期记为 2023-11-15，另列在线／发表历史日期为 2023-11-21。本条目采用 published／纸质出版日期，而非 11 月 26–30 日的会议日期。",
+    "venue": "ACM CCS 2023",
+    "publication_status": "conference-paper",
+    "arxiv_id": "2305.11781",
+    "arxiv_version_reviewed": "v1",
+    "first_arxiv_date": "2023-05-19",
+    "doi": "10.1145/3576915.3616614",
+    "citation": {
+      "container_title": "Proceedings of the 2023 ACM SIGSAC Conference on Computer and Communications Security",
+      "publisher": "ACM",
+      "pages": "1287-1301",
+      "sources": [
+        "https://api.crossref.org/works/10.1145/3576915.3616614"
+      ]
+    },
+    "url": "https://dl.acm.org/doi/10.1145/3576915.3616614",
+    "pdf_url": "https://qingkaishi.github.io/public_pdfs/CCS23.pdf",
+    "code_url": "https://github.com/qingkaishi/netlifter",
+    "project_url": null,
+    "targets": [
+      "protocol"
+    ],
+    "description_en": "NetLifter statically lifts source-available C protocol parsers into BNF-style message grammars and first-order constraints between packet fields. It analyzes annotated LLVM bitcode using abstract format graphs, localized path-sensitive analysis, unfolding and reordering. The resulting field boundaries, constraints and names can support packet generation and parser construction.",
+    "description_zh": "NetLifter 将可获取源码的 C 协议解析器静态转换为 BNF 风格的报文文法及报文字段之间的一阶逻辑约束。它分析经过标注的 LLVM 位码，结合抽象格式图、局部路径敏感分析、展开与重排序。所得字段边界、约束与名称可用于报文生成及解析器构建。",
+    "scope_limitations_en": "Requires source/LLVM IR and packet-buffer/length annotations; it is not closed-binary or traffic-only recovery. The paper targets common top-down C parsers and does not support C++, inline assembly or libraries without available code. Pointer/loop analysis remains approximate; checksum fields can be identified while some checksum constraints are omitted, and fields ignored by an implementation may be missed. Precision/recall was manually checked on ten selected protocols. The reported fuzzing evaluation used three-hour runs repeated twenty times and bypassed checksum checks. It infers formats, not protocol state machines or proof of implementation equivalence.",
+    "scope_limitations_zh": "需要源码／LLVM 中间表示及报文缓冲区、长度标注，并非对闭源二进制或仅凭流量进行恢复。论文面向常见的自顶向下 C 解析器，不支持 C++、内联汇编及缺少源码的库。指针和循环分析仍有近似；可识别校验和字段，但部分校验和约束会被省略，实现中忽略的字段也可能遗漏。精确率／召回率在选定的十种协议上进行人工核对。报告的模糊测试采用每次三小时、重复二十次的实验，并绕过校验和检查。方法推断的是格式，而非协议状态机或实现等价性的证明。",
+    "why_fits_en": "Adds source-to-format inference with cross-field constraints, complementing traffic-based and binary-assisted protocol reconstruction research.",
+    "why_fits_zh": "补充包含跨字段约束的源码到格式推断方法，与基于流量及借助二进制的协议重建研究互补。",
+    "metadata_notes": "The final author PDF and Crossref establish the five-author order, CCS 2023 DOI and pages. The 19-page arXiv v1 retains an old CCS 2022 submission template and placeholder DOI; publication identity follows the final 15-page paper. The repository calls its prototype Popeye and warns of rough edges. Its reviewed 2025-04-21 snapshot declares AGPL-3.0-or-later in source headers. CMake requires 3.10+, LLVM 12.x and Z3>=4.8.12; README recommends LLVM 12.0.1 and the author’s modified Z3 4.8.12-popeye branch. Vectorized IR is unsupported: README documents -fno-vectorize and -fno-slp-vectorize, and recommends debug information and removal of optimization flags for field naming. This later artifact snapshot is not an independently reproduced 2023 environment; dependencies and target code retain separate terms. Source files were inspected without running upstream code, downloading benchmark inputs or reproducing experiments.",
+    "metadata_notes_zh": "最终作者版 PDF 与 Crossref 确认五位作者顺序、CCS 2023 DOI 和页码。19 页的 arXiv v1 保留旧的 CCS 2022 投稿模板及占位 DOI；出版身份以最终 15 页论文为准。仓库将原型称为 Popeye，并提示仍有粗糙之处。所审阅的 2025-04-21 快照在源码头部声明 AGPL-3.0-or-later。CMake 要求 3.10+、LLVM 12.x 与 Z3>=4.8.12；README 推荐 LLVM 12.0.1 及作者修改的 Z3 4.8.12-popeye 分支。不支持向量化中间表示：README 说明使用 -fno-vectorize 和 -fno-slp-vectorize，并建议保留调试信息、移除优化选项，以帮助字段命名。这个较晚的产物快照不代表独立复现了 2023 年环境；依赖与目标代码保留各自条款。本次仅审阅源码，未运行上游代码、下载基准输入或复现实验。",
+    "evidence_urls": [
+      "https://dl.acm.org/doi/10.1145/3576915.3616614",
+      "https://api.crossref.org/works/10.1145/3576915.3616614",
+      "https://qingkaishi.github.io/public_pdfs/CCS23.pdf",
+      "https://arxiv.org/abs/2305.11781",
+      "https://arxiv.org/pdf/2305.11781v1",
+      "https://github.com/qingkaishi/netlifter/blob/362fe1edc2c2027d6e404c5d27cf9fee8a6b6a48/README.md",
+      "https://github.com/qingkaishi/netlifter/blob/362fe1edc2c2027d6e404c5d27cf9fee8a6b6a48/LICENSE.txt",
+      "https://github.com/qingkaishi/netlifter/blob/362fe1edc2c2027d6e404c5d27cf9fee8a6b6a48/CMakeLists.txt",
+      "https://github.com/qingkaishi/netlifter/blob/362fe1edc2c2027d6e404c5d27cf9fee8a6b6a48/tools/popeye/popeye.cpp",
+      "https://github.com/qingkaishi/netlifter/blob/362fe1edc2c2027d6e404c5d27cf9fee8a6b6a48/tools/popeye/LiftingPass.cpp",
+      "https://github.com/qingkaishi/netlifter/blob/362fe1edc2c2027d6e404c5d27cf9fee8a6b6a48/benchmarks/popeye/readme.txt",
+      "https://github.com/qingkaishi/netlifter/blob/362fe1edc2c2027d6e404c5d27cf9fee8a6b6a48/benchmarks/popeye/regression.sh",
+      "https://github.com/qingkaishi/z3/blob/b42b2d6d6994f593976cb8cc7eb6b093532954c9/README-CMake.md",
+      "https://github.com/qingkaishi/z3/blob/b42b2d6d6994f593976cb8cc7eb6b093532954c9/LICENSE.txt"
+    ],
+    "kind": "research",
+    "verified_at": "2026-10-17",
+    "verification": "source-reviewed",
+    "runtime_tested": false
   }
 ]

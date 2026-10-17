@@ -22,7 +22,7 @@ Browse by target or topic below. **Source review does not imply runtime verifica
 
 **Research and workflows**
 
-- [Papers](#papers) (50) · [Agents and MCP](#agents-and-mcp) (19) · [References and Learning](#references-and-learning) (20)
+- [Papers](#papers) (51) · [Agents and MCP](#agents-and-mcp) (19) · [References and Learning](#references-and-learning) (20)
 
 **More ways to browse**
 
@@ -1023,7 +1023,7 @@ Includes independent projects and resources for [REA (Reverse Engineer Anything)
 <a id="papers"></a>
 ## Papers
 
-A bibliography of **50 papers** on reverse-engineering agent evaluation, decompilation, protocol inference, firmware analysis, and website, game, and app reconstruction. Some papers also appear among curated resources; counts are not additive. Publication status and study scope are made explicit.
+A bibliography of **51 papers** on reverse-engineering agent evaluation, decompilation, protocol inference, firmware analysis, and website, game, and app reconstruction. Some papers also appear among curated resources; counts are not additive. Publication status and study scope are made explicit.
 
 [Browse the paper directory](https://awesomerea.org/papers/) · [Complete bibliography JSON](data/papers.json) · [Suggest a paper](https://github.com/reacher-z/Awesome-REA/issues/new?template=paper.yml)
 
@@ -1031,7 +1031,7 @@ A bibliography of **50 papers** on reverse-engineering agent evaluation, decompi
 
 - [Agent evaluation](#papers-agent-evaluation) (5) · [Decompilation](#papers-decompilation) (8) · [Websites](#papers-website-reconstruction) (13)
 - [Games](#papers-game-reconstruction) (6) · [Apps](#papers-app-reconstruction) (5) · [Firmware](#papers-firmware-analysis) (5)
-- [Protocols](#papers-protocol-analysis) (8)
+- [Protocols](#papers-protocol-analysis) (9)
 
 Open “Scope and publication details” for each study’s full limitations. Papers are ordered newest first within each topic.
 
@@ -1683,6 +1683,20 @@ Open “Scope and publication details” for each study’s full limitations. Pa
   **Scope and limits:** This is field inference, not recovery of a protocol state machine or complete endpoint behavior. It requires an accessible, instrumentable implementation and runtime message processing; passive captures alone are insufficient. Perfection counts exactly segmented fields against all true fields, not fully recovered protocols. The detector library covers five semantic types and six functions. Byte-level taint cannot accurately resolve bit flags, and unexercised behavior is not established. Ground truth uses Wireshark dissectors and specifications; three binary-analysis baselines were author reimplementations. Reported fuzzing improvements are a downstream evaluation, not proof of implementation equivalence.
 
   **Publication:** 2024 · ACM CCS 2024 · Conference paper · Jiayi Jiang et al.
+
+  </details>
+
+- [**Lifting Network Protocol Implementation to Precise Format Specification with Security Applications**](https://dl.acm.org/doi/10.1145/3576915.3616614)<br>
+  2023 · Conference paper · [PDF](https://qingkaishi.github.io/public_pdfs/CCS23.pdf) · [Code](https://github.com/qingkaishi/netlifter) · [Full entry & citation](https://awesomerea.org/papers/paper-netlifter/)
+
+  NetLifter statically lifts source-available C protocol parsers into BNF-style message grammars and first-order constraints between packet fields. It analyzes annotated LLVM bitcode using abstract format graphs, localized path-sensitive analysis, unfolding and reordering. The resulting field boundaries, constraints and names can support packet generation and parser construction.
+
+  <details>
+  <summary>Scope and publication details</summary>
+
+  **Scope and limits:** Requires source/LLVM IR and packet-buffer/length annotations; it is not closed-binary or traffic-only recovery. The paper targets common top-down C parsers and does not support C++, inline assembly or libraries without available code. Pointer/loop analysis remains approximate; checksum fields can be identified while some checksum constraints are omitted, and fields ignored by an implementation may be missed. Precision/recall was manually checked on ten selected protocols. The reported fuzzing evaluation used three-hour runs repeated twenty times and bypassed checksum checks. It infers formats, not protocol state machines or proof of implementation equivalence.
+
+  **Publication:** 2023 · ACM CCS 2023 · Conference paper · Qingkai Shi et al.
 
   </details>
 

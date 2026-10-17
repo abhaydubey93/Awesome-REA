@@ -22,7 +22,7 @@
 
 **论文与工作流**
 
-- [论文](#papers) (50) · [智能体与 MCP](#agents-and-mcp) (19) · [文档与学习资源](#references-and-learning) (20)
+- [论文](#papers) (51) · [智能体与 MCP](#agents-and-mcp) (19) · [文档与学习资源](#references-and-learning) (20)
 
 **更多浏览方式**
 
@@ -1024,7 +1024,7 @@
 <a id="papers"></a>
 ## 论文
 
-收录 **50 篇论文**，涵盖逆向工程智能体评测、反编译、协议推断、固件分析，以及网站、游戏和应用重建。部分论文也出现在精选资源目录中，两者数量不可相加。发表状态与研究范围分别标注，中文标题为译名。
+收录 **51 篇论文**，涵盖逆向工程智能体评测、反编译、协议推断、固件分析，以及网站、游戏和应用重建。部分论文也出现在精选资源目录中，两者数量不可相加。发表状态与研究范围分别标注，中文标题为译名。
 
 [浏览论文目录](https://awesomerea.org/zh/papers/) · [完整书目 JSON](data/papers.json) · [推荐论文](https://github.com/reacher-z/Awesome-REA/issues/new?template=paper.yml)
 
@@ -1032,7 +1032,7 @@
 
 - [智能体评测](#papers-agent-evaluation) (5) · [反编译](#papers-decompilation) (8) · [网站](#papers-website-reconstruction) (13)
 - [游戏](#papers-game-reconstruction) (6) · [应用](#papers-app-reconstruction) (5) · [固件](#papers-firmware-analysis) (5)
-- [协议](#papers-protocol-analysis) (8)
+- [协议](#papers-protocol-analysis) (9)
 
 展开各条目的“范围与发表信息”可查看完整研究边界；以下按年份从新到旧排列。
 
@@ -1684,6 +1684,20 @@
   **范围与限制:** 研究对象是字段推断，不是恢复协议状态机或端点的完整行为。方法需要能够访问并插桩的实现及运行时的报文处理；仅有被动捕获数据并不足够。完美分割率统计被精确分割的字段占全部真实字段的比例，而非完整恢复的协议比例。检测器库覆盖五种语义类型与六种功能。字节级污点分析无法准确解析位标志，也不确立未执行行为。真实标签依据 Wireshark 解析器与协议规范构建；三种二进制分析基线由作者重新实现。报告的模糊测试改进属于下游评估，不是实现等价性的证明。
 
   **发表信息:** 2024 · ACM CCS 2024 · 会议论文 · Jiayi Jiang 等
+
+  </details>
+
+- [**从网络协议实现提取精确格式规范及其安全应用**](https://dl.acm.org/doi/10.1145/3576915.3616614)<br>
+  2023 · 会议论文 · [PDF](https://qingkaishi.github.io/public_pdfs/CCS23.pdf) · [代码](https://github.com/qingkaishi/netlifter) · [完整条目与引用](https://awesomerea.org/zh/papers/paper-netlifter/)
+
+  NetLifter 将可获取源码的 C 协议解析器静态转换为 BNF 风格的报文文法及报文字段之间的一阶逻辑约束。它分析经过标注的 LLVM 位码，结合抽象格式图、局部路径敏感分析、展开与重排序。所得字段边界、约束与名称可用于报文生成及解析器构建。
+
+  <details>
+  <summary>范围与发表信息</summary>
+
+  **范围与限制:** 需要源码／LLVM 中间表示及报文缓冲区、长度标注，并非对闭源二进制或仅凭流量进行恢复。论文面向常见的自顶向下 C 解析器，不支持 C++、内联汇编及缺少源码的库。指针和循环分析仍有近似；可识别校验和字段，但部分校验和约束会被省略，实现中忽略的字段也可能遗漏。精确率／召回率在选定的十种协议上进行人工核对。报告的模糊测试采用每次三小时、重复二十次的实验，并绕过校验和检查。方法推断的是格式，而非协议状态机或实现等价性的证明。
+
+  **发表信息:** 2023 · ACM CCS 2023 · 会议论文 · Qingkai Shi 等
 
   </details>
 
