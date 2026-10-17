@@ -1910,5 +1910,45 @@
       "https://github.com/JimLiu/baocut/blob/b8585e0c8d7a82bdee9f0ed019cf6edb075e41c1/packages/slides/src/editor/editor-host.test.ts",
       "https://github.com/JimLiu/baocut/blob/b8585e0c8d7a82bdee9f0ed019cf6edb075e41c1/packages/harness/src/slide-annotations.test.ts"
     ]
+  },
+  {
+    "id": "pocket-tasks-reconstruction-case",
+    "name": "Pocket Tasks: reconstructing task state and persistence",
+    "url": "https://github.com/ShadowSwaps/REA-Reconstruction-Companion/tree/main/evals/reference/reconstruction",
+    "category": "community-case-studies",
+    "relationship": "community-reported-mixed-workflow",
+    "kind": "case-study",
+    "targets": [
+      "app"
+    ],
+    "description_en": "A teaching case with disclosed prior source access carries a REA-assisted investigation of a small command-line app into a separate Node implementation. It preserves observed task editing, persistence and selection behavior, then compares scoped outputs against fixed expectations and captured reference sessions.",
+    "description_zh": "此教学案例明确披露作者先前接触过源码，将一次 REA 辅助的小型命令行应用调查推进为另行编写的 Node 实现。它保留所观察到的任务编辑、持久保存及选择行为，再将限定范围的输出与固定期望值及捕获的参考会话比较。",
+    "evidence_url": "https://github.com/ShadowSwaps/REA-Reconstruction-Companion/blob/590e65dd99596c7fb66598eaa5d6c051c2ec9a5f/evals/reference/reconstruction/README.md",
+    "verified_at": "2026-10-17",
+    "verification": "source-reviewed",
+    "requirements": [
+      "Pocket Tasks 1.0.0 is an authored local command-line app, not a commercial application or a native-binary benchmark. Its separate Node.js 20+ candidate implements nine commands and schema-1 JSON storage, including saved/draft separation, explicit save, cancel, restart and the original row-position selection quirk. It needs only the Node standard library and disposable local stores; there is no graphical interface or network backend.",
+      "The historical investigation combines REA JavaScript source analysis, ordinary source inspection and recorded process/file observations. The sanitized REA excerpt identifies the same target bytes but retains unknown semantic coverage and 230 semantic unknowns. It is not a canonical Evidence bundle or independent attestation, and parsing coverage is not behavioral equivalence. The later Node validator does not repeat that REA session.",
+      "The author had already seen the target source, reviewer scenarios, tests and prior answers before implementation. The candidate imports only Node filesystem/path modules; a published test definition copies its file alone before checking save behavior. Runtime independence from the reference does not establish independent discovery, a blind trial, clean-room provenance or an agent/model performance result.",
+      "The saved report records 16/16 checker process sessions across 12 scenarios and 10/10 replays of captured observations across seven scenarios. These overlap and must not be counted as 26 independent observations. The checker uses fixed, hand-authored expectations; responses and saved JSON are compared semantically, while malformed stores and foreign pending files use byte-preservation checks where required. The report retains humanReview=pending, reaTrial=unverified and independentEvaluation=false; these are author-reported results, not rerun by this collection.",
+      "The six recorded target/candidate/observation/validator/checker/packet-tool hashes and the oracle digest match the reviewed source. The report’s TASK.md packet hash instead matches an earlier instruction revision: a later edit changed review/authorization wording without changing the behavioral contract. Treat the packet record as historical evidence, not fresh validation of every file in the current package. The failure history also retains an initial restricted-Windows attempt with five passes and four failures, followed by nine passes with unchanged candidate code in a permitted local environment.",
+      "The contract bounds each invocation to 64 commands and 65,536 UTF-8 bytes, stores to 32 tasks and titles to 80 UTF-16 code units. Coverage is limited to named behaviors and tests; concurrent writers, crash durability, hostile filesystem races, UI behavior, hidden backends and production performance are outside the parity claim. MIT covers the authored example; upstream REA and other linked material remain separate. No target, candidate, checker, installer, model or upstream test was executed in this review."
+    ],
+    "additional_evidence_urls": [
+      "https://github.com/ShadowSwaps/REA-Reconstruction-Companion/blob/590e65dd99596c7fb66598eaa5d6c051c2ec9a5f/evals/reference/WALKTHROUGH.md",
+      "https://github.com/ShadowSwaps/REA-Reconstruction-Companion/blob/590e65dd99596c7fb66598eaa5d6c051c2ec9a5f/evals/reference/TASK.md",
+      "https://github.com/ShadowSwaps/REA-Reconstruction-Companion/blob/590e65dd99596c7fb66598eaa5d6c051c2ec9a5f/evals/reference/target/pocket-tasks.mjs",
+      "https://github.com/ShadowSwaps/REA-Reconstruction-Companion/blob/590e65dd99596c7fb66598eaa5d6c051c2ec9a5f/evals/reference/walkthrough/rea-excerpt.json",
+      "https://github.com/ShadowSwaps/REA-Reconstruction-Companion/blob/590e65dd99596c7fb66598eaa5d6c051c2ec9a5f/evals/reference/walkthrough/runtime-observations.json",
+      "https://github.com/ShadowSwaps/REA-Reconstruction-Companion/blob/590e65dd99596c7fb66598eaa5d6c051c2ec9a5f/evals/reference/reconstruction/candidate.mjs",
+      "https://github.com/ShadowSwaps/REA-Reconstruction-Companion/blob/590e65dd99596c7fb66598eaa5d6c051c2ec9a5f/evals/reference/reconstruction/validate.mjs",
+      "https://github.com/ShadowSwaps/REA-Reconstruction-Companion/blob/590e65dd99596c7fb66598eaa5d6c051c2ec9a5f/evals/reference/reconstruction/validation-report.json",
+      "https://github.com/ShadowSwaps/REA-Reconstruction-Companion/blob/590e65dd99596c7fb66598eaa5d6c051c2ec9a5f/evals/reference/reconstruction/validation-history.json",
+      "https://github.com/ShadowSwaps/REA-Reconstruction-Companion/blob/590e65dd99596c7fb66598eaa5d6c051c2ec9a5f/evals/reference/check.mjs",
+      "https://github.com/ShadowSwaps/REA-Reconstruction-Companion/blob/590e65dd99596c7fb66598eaa5d6c051c2ec9a5f/evals/reference/reviewer/scenarios.mjs",
+      "https://github.com/ShadowSwaps/REA-Reconstruction-Companion/blob/590e65dd99596c7fb66598eaa5d6c051c2ec9a5f/tests/reference-reconstruction.test.mjs",
+      "https://github.com/ShadowSwaps/REA-Reconstruction-Companion/blob/590e65dd99596c7fb66598eaa5d6c051c2ec9a5f/LICENSE",
+      "https://github.com/ShadowSwaps/REA-Reconstruction-Companion/blob/ad6dccd7760fae50f5e45fe74f1f2ef92a452239/evals/reference/TASK.md"
+    ]
   }
 ]
