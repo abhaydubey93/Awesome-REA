@@ -1,6 +1,6 @@
 # Collection roadmap
 
-Awesome Reverse Engineering Anything is a resource collection for reverse-engineering projects, tools, case studies, integrations, and references across websites, games, apps, native binaries, and firmware.
+Awesome Reverse Engineering Anything is a resource collection for reverse-engineering projects, tools, case studies, integrations, and references across websites, games, apps, native binaries, firmware, and communication protocols.
 
 ## Collection priorities
 
