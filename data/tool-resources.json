@@ -2458,5 +2458,42 @@
       "GPL-2.0 as a whole because it depends on GPLv2 components such as QEMU; individual files are MIT-licensed. The rev.ng site describes the decompilation pipeline as Free Software. The UI is in closed beta, with free cloud use planned for public projects and commercial plans for private projects and a fully offline version.",
       "Valid, recompilable C is a stated design goal, not a verified property for arbitrary binaries; inferred types and names need analyst review. No binaries were decompiled."
     ]
+  },
+  {
+    "id": "leanrea-skill",
+    "name": "LeanREA",
+    "url": "https://github.com/aicodeking/leanrea",
+    "category": "agent-workflows",
+    "relationship": "independent-agent-integration",
+    "description_en": "An independent agent skill that routes application and binary investigations through ordinary command-line tools. It supplies batched triage recipes, targeted source/disassembly reading and explicit seen/inferred/unknown evidence labels, accompanied by a small author-reported comparison against an REA MCP workflow.",
+    "description_zh": "独立智能体技能，使用普通命令行工具开展应用与二进制调查，提供批量初查、针对性源码／反汇编阅读，以及明确的已观察／推断／未知证据标记，并附有作者报告的 REA MCP 工作流小规模对照。",
+    "evidence_url": "https://github.com/aicodeking/leanrea/blob/09ba4aa0217f82cd880f855a60b877f59f39b22b/README.md",
+    "verified_at": "2026-10-17",
+    "verification": "source-reviewed",
+    "requirements": [
+      "LeanREA is a plain-text skill for an agent with shell access; it does not install analysis engines, implement a decompiler or require a REA MCP server. Manual installation needs a compatible skill client; the optional npx installation route needs Node.js/npm. Target-specific commands need their own tools, such as ripgrep, jq, Go, Electron asar tooling or Xcode command-line tools. Some recipes need adaptation or separately supplied files, including DecompileAll.java, which is not bundled.",
+      "The author reports a benchmark using Claude Code 2.1.301, Sonnet 5.5 and macOS arm64: four questions over three input artifacts, with three repetitions for each of three arms, making 36 runs. The inputs are Notion 7.35.1 app.asar and mac_utils.node, and a gh binary built with Go 1.27.1. The comparator is rea-agents 6.5.0 over MCP with its official skill. Reproduction needs the locally obtained targets, Python 3, Node/npm, relevant macOS tools and authenticated model access; the repository does not supply target binaries.",
+      "The published metrics total 12 runs per arm. LeanREA scores 74/75 checks against REA’s 75/75, with approximately 388 versus 627 seconds, $2.17 versus $3.36 and 55 versus 124 turns. These are author-provided records, not independent measurements or equal accuracy. The no-skill rows total 66/75; the prose corrects this to 67/75 for a reported regex false negative. The associated answer is not published, so this collection cannot independently confirm that correction.",
+      "Ground truth consists of hand-written regex keys for selected facts, not executable behavioral-equivalence tests or complete feature reconstruction. The public file contains metrics and missed-key labels, not answer transcripts or target hashes. The harness defaults to the mutable sonnet alias, allows a BENCH_MODEL override, and the published metrics do not record the resolved model ID. Its timer surrounds the model subprocess after workspace preparation, and the three arms run concurrently. These bounds limit reproducibility and attribution of timing differences.",
+      "The 400.7k-token figure is a separate all-tools-loaded context probe with tool search disabled, not the configuration used in the 36-run comparison. The main REA arm uses deferred tool search. Native analysis engines were absent, and Android work was not evaluated; command recipes for additional targets are not evidence of tested coverage. REA itself offers both CLI and MCP interfaces, so this benchmark does not establish that LeanREA replaces all REA workflows.",
+      "The pinned project declares MIT for its skill and benchmark code and credits REA’s code and documentation for many workflow details; it explicitly disclaims affiliation. External analysis tools, model services and target applications retain separate requirements and terms. The benchmark document is dated 2026-10-16; the initial public commit is dated 2026-10-17, and only the README changed before the reviewed pin. This collection inspected source and recomputed published metric totals without running the skill, models, tools or targets."
+    ],
+    "targets": [
+      "app",
+      "binary"
+    ],
+    "kind": "integration",
+    "additional_evidence_urls": [
+      "https://github.com/aicodeking/leanrea/blob/09ba4aa0217f82cd880f855a60b877f59f39b22b/leanrea/SKILL.md",
+      "https://github.com/aicodeking/leanrea/blob/09ba4aa0217f82cd880f855a60b877f59f39b22b/bench/BENCHMARK.md",
+      "https://github.com/aicodeking/leanrea/blob/09ba4aa0217f82cd880f855a60b877f59f39b22b/bench/results/final.jsonl",
+      "https://github.com/aicodeking/leanrea/blob/09ba4aa0217f82cd880f855a60b877f59f39b22b/bench/tasks.json",
+      "https://github.com/aicodeking/leanrea/blob/09ba4aa0217f82cd880f855a60b877f59f39b22b/bench/run.py",
+      "https://github.com/aicodeking/leanrea/blob/09ba4aa0217f82cd880f855a60b877f59f39b22b/bench/setup.sh",
+      "https://github.com/aicodeking/leanrea/blob/09ba4aa0217f82cd880f855a60b877f59f39b22b/bench/ctx.sh",
+      "https://github.com/aicodeking/leanrea/blob/09ba4aa0217f82cd880f855a60b877f59f39b22b/LICENSE",
+      "https://github.com/morluto/rea/blob/808339f0b1cf3837445f392b5d5f1f362d64a27d/README.md",
+      "https://github.com/morluto/rea/blob/808339f0b1cf3837445f392b5d5f1f362d64a27d/.agents/skills/reverse-engineer-anything/SKILL.md"
+    ]
   }
 ]

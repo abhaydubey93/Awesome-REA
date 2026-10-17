@@ -22,7 +22,7 @@ Browse by target or topic below. **Source review does not imply runtime verifica
 
 **Research and workflows**
 
-- [Papers](#papers) (47) · [Agents and MCP](#agents-and-mcp) (18) · [References and Learning](#references-and-learning) (20)
+- [Papers](#papers) (47) · [Agents and MCP](#agents-and-mcp) (19) · [References and Learning](#references-and-learning) (20)
 
 **More ways to browse**
 
@@ -872,6 +872,11 @@ Includes independent projects and resources for [REA (Reverse Engineer Anything)
   Integration · Independent MCP · [Requirements & evidence](https://awesomerea.org/resources/pyghidra-mcp/)
 
   PyGhidra-based MCP server that analyzes every binary in a Ghidra project and exposes decompilation, cross-references, call graphs, symbol and string search, indexed semantic code search, and renaming, typing and comment edits. A separate HTTP CLI client and an optional mode driving a Ghidra GUI it launches are included.
+
+- [**LeanREA**](https://github.com/aicodeking/leanrea)<br>
+  Integration · Independent agent · [Requirements & evidence](https://awesomerea.org/resources/leanrea-skill/)
+
+  An independent agent skill that routes application and binary investigations through ordinary command-line tools. It supplies batched triage recipes, targeted source/disassembly reading and explicit seen/inferred/unknown evidence labels, accompanied by a small author-reported comparison against an REA MCP workflow.
 
 <a id="related-collections"></a>
 ### Related Collections

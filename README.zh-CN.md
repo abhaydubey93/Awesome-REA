@@ -22,7 +22,7 @@
 
 **论文与工作流**
 
-- [论文](#papers) (47) · [智能体与 MCP](#agents-and-mcp) (18) · [文档与学习资源](#references-and-learning) (20)
+- [论文](#papers) (47) · [智能体与 MCP](#agents-and-mcp) (19) · [文档与学习资源](#references-and-learning) (20)
 
 **更多浏览方式**
 
@@ -873,6 +873,11 @@
   集成 · 独立 MCP · [使用条件与证据](https://awesomerea.org/zh/resources/pyghidra-mcp/)
 
   基于 PyGhidra 的 MCP 服务器，可分析 Ghidra 项目中的全部二进制，提供反编译、交叉引用、调用图、符号与字符串搜索、基于索引的语义代码检索，以及重命名、类型和注释编辑。另附基于 HTTP 的独立命令行客户端，以及可选的图形界面模式：由服务器自行启动 Ghidra 图形界面并加以操控。
+
+- [**LeanREA 命令行逆向分析技能**](https://github.com/aicodeking/leanrea)<br>
+  集成 · 独立智能体 · [使用条件与证据](https://awesomerea.org/zh/resources/leanrea-skill/)
+
+  独立智能体技能，使用普通命令行工具开展应用与二进制调查，提供批量初查、针对性源码／反汇编阅读，以及明确的已观察／推断／未知证据标记，并附有作者报告的 REA MCP 工作流小规模对照。
 
 <a id="related-collections"></a>
 ### Related Collections · 相关合集
