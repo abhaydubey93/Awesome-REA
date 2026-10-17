@@ -201,7 +201,7 @@ def build_paper_pages(
     search_script = (Path(__file__).resolve().parents[1] / 'site/paper-search.js').read_bytes()
     (site_dir / 'paper-search.js').write_bytes(search_script)
     search_href = '/paper-search.js?v=' + hashlib.sha256(search_script).hexdigest()[:16]
-    search_fields = ('id', 'title', 'title_zh', 'authors', 'doi', 'arxiv_id',
+    search_fields = ('id', 'title', 'title_zh', 'description_en', 'description_zh', 'authors', 'doi', 'arxiv_id',
                      'year', 'publication_status', 'targets')
     search_data = json.dumps({'schema_version': 1, 'papers': [
         {key: paper.get(key) for key in search_fields} for paper in papers
@@ -293,12 +293,12 @@ def build_paper_pages(
   <div class="papers-actions"><a class="button button-outline" href="{web_url(repository_url + "/issues/new?template=paper.yml")}" target="_blank" rel="noopener noreferrer">{icon("document", use_pro)}{label("Suggest a paper", "推荐论文")}</a><a class="button button-outline" href="{browse}">{icon('layers', use_pro)}{label('Browse repositories', '浏览仓库')}</a><a class="papers-bibliography" href="/papers/references.bib" download="awesomerea-papers.bib" type="application/x-bibtex">{label('Download bibliography', '下载参考文献')} · BibTeX ↓</a></div>
   <p class="papers-review-policy">{label('Journal articles, conference papers, accepted papers, and preprints are labeled separately. We check primary sources; inclusion does not mean experiments were rerun or results independently reproduced.', '期刊论文、会议论文、已接收论文和预印本分别标注。本合集核对一手来源；收录不代表已重新运行实验或独立复现结果。')}</p>
   <form id="paper-search" class="paper-search" role="search" aria-label="{label('Search research papers', '搜索研究论文')}" hidden>
-    <div class="paper-search-field paper-search-query"><label for="paper-query">{label('Search papers', '搜索论文')}</label><input id="paper-query" name="q" type="search" maxlength="240" autocomplete="off" placeholder="{label('English or Chinese title, author, DOI or arXiv ID', '英文或中文标题、作者、DOI 或 arXiv 编号')}" aria-describedby="paper-search-help"></div>
+    <div class="paper-search-field paper-search-query"><label for="paper-query">{label('Search papers', '搜索论文')}</label><input id="paper-query" name="q" type="search" maxlength="240" autocomplete="off" placeholder="{label('Title, author, keyword, DOI or arXiv ID', '标题、作者、关键词、DOI 或 arXiv 编号')}" aria-describedby="paper-search-help"></div>
     <div class="paper-search-field"><label for="paper-target">{label('Target', '目标')}</label><select id="paper-target" name="target"><option value="all">{label('All targets', '全部目标')}</option>{target_options}</select></div>
     <div class="paper-search-field"><label for="paper-status">{label('Publication status', '发表状态')}</label><select id="paper-status" name="status"><option value="all">{label('All statuses', '全部状态')}</option>{status_options}</select></div>
     <div class="paper-search-field"><label for="paper-year">{label('Year', '年份')}</label><select id="paper-year" name="year"><option value="all">{label('All years', '全部年份')}</option>{year_options}</select></div>
     <button id="paper-clear" class="button button-outline" type="button">{label('Clear filters', '清除筛选')}</button>
-    <p id="paper-search-help" class="paper-search-help">{label('Search both title languages. Target filters include every recorded target; papers stay in their primary research section.', '可搜索中英文标题。目标筛选包含论文记录的全部目标；论文仍显示在其主要研究分区。')}</p>
+    <p id="paper-search-help" class="paper-search-help">{label('Search titles and summaries in English or Chinese, plus authors and identifiers. Target filters include every recorded target; papers stay in their primary research section.', '可搜索中英文标题与简介，以及作者和标识符。目标筛选包含论文记录的全部目标；论文仍显示在其主要研究分区。')}</p>
     <p id="paper-results" class="paper-search-results" role="status" aria-live="polite" aria-atomic="true"></p>
   </form>
   <div id="paper-empty" class="paper-search-empty" hidden><p>{label('No papers match these filters.', '没有符合这些条件的论文。')}</p><button id="paper-empty-reset" class="button button-outline" type="button">{label('Clear filters and show all papers', '清除筛选并显示全部论文')}</button></div>
