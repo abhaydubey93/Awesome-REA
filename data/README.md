@@ -34,7 +34,7 @@ The validator accepts the category keys defined in `CATEGORIES` in [build_readme
 - `foundation` (Foundation tool): an established analysis tool, library or framework that works independently of REA.
 - `learning` (Learning resource): a course, book, reference or research resource with no established REA connection.
 
-Source review dates are snapshots; upstream requirements may change. A documentation link on `main` may describe functionality that is not in a released package; keep that distinction in the description or requirements.
+Source review dates are snapshots; upstream requirements may change. Resource and paper review dates allow at most the next UTC calendar day to accommodate reviewers ahead of UTC. Resource review timestamps retain an exact 24-hour allowance; publication and first-arXiv dates must not be in the future. A documentation link on `main` may describe functionality that is not in a released package; keep that distinction in the description or requirements.
 
 `benchmarks.json` is a separate repository comparison dataset. Star counts are observations at `observed_at`, not a live ranking, quality score, or predicted growth rate. The comparison notes explain the population and limitations.
 
@@ -67,7 +67,7 @@ Each paper record has exactly these fields; the validator rejects missing or ext
 | `evidence_urls` | Nonempty list of HTTPS URLs | Primary sources checked for the record |
 | `metadata_notes` / `metadata_notes_zh` | Text | Notes on identifiers, dates, acceptance or artifacts |
 | `kind` | `research` | Fixed value |
-| `verified_at` | ISO date | Date of the bibliography review; not in the future |
+| `verified_at` | ISO date | Date of the bibliography review; at most one calendar day ahead of UTC for timezone differences |
 | `verification` | `source-reviewed` | Fixed value; sources were checked, not reproduced |
 | `runtime_tested` | `false` | Fixed value; reproduction results are not recorded |
 
