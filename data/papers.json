@@ -1278,5 +1278,102 @@
       "https://github.com/pr0v3rbs/FirmAE/blob/653565b5d14e6d69a1dd242aa88ecfb4b090a74a/README.md",
       "https://github.com/pr0v3rbs/FirmAE/blob/653565b5d14e6d69a1dd242aa88ecfb4b090a74a/LICENSE.txt"
     ]
+  },
+  {
+    "targets": [
+      "protocol"
+    ],
+    "arxiv_id": null,
+    "arxiv_version_reviewed": null,
+    "first_arxiv_date": null,
+    "kind": "research",
+    "verified_at": "2026-10-16",
+    "verification": "source-reviewed",
+    "runtime_tested": false,
+    "id": "paper-nemesys",
+    "title": "NEMESYS: Network Message Syntax Reverse Engineering by Analysis of the Intrinsic Structure of Individual Messages",
+    "title_zh": "NEMESYS：通过分析单条报文的内在结构逆向推断网络报文语法",
+    "authors": [
+      "Stephan Kleber",
+      "Henning Kopp",
+      "Frank Kargl"
+    ],
+    "year": 2018,
+    "publication_date": "2018-08",
+    "date_precision": "month",
+    "date_basis": "The official USENIX BibTeX entry identifies August 2018 for the WOOT 18 workshop publication.",
+    "date_basis_zh": "USENIX 官方 BibTeX 将 WOOT 18 研讨会论文的出版月份列为2018年8月。",
+    "venue": "12th USENIX Workshop on Offensive Technologies (WOOT 18)",
+    "publication_status": "conference-paper",
+    "doi": null,
+    "url": "https://www.usenix.org/conference/woot18/presentation/kleber",
+    "pdf_url": "https://www.usenix.org/system/files/conference/woot18/woot18-paper-kleber.pdf",
+    "code_url": "https://github.com/vs-uulm/nemesys",
+    "project_url": null,
+    "description_en": "Infers approximate field boundaries within individual binary-protocol messages from changes in bit congruence, and introduces Format Match Score to compare inferred segmentation with known protocol dissectors.",
+    "description_zh": "根据单条二进制协议报文内比特一致性的变化，推断近似字段边界，并提出格式匹配分数，将推断的分段结果与已知协议解析器进行比较。",
+    "scope_limitations_en": "Requires plaintext payloads. Evaluation covers DNS, DHCP and NTP with protocol-tuned parameters. Single-byte fields are not inferred; zero-filled fields, character sequences and pseudo-random values can cause errors. FMS needs known field boundaries for validation. The output is approximate segmentation, not field semantics, a state machine or complete application/device behavior.",
+    "scope_limitations_zh": "需要明文载荷。评测覆盖 DNS、DHCP 和 NTP，并针对各协议调节参数。方法无法推断单字节字段；全零字段、字符序列和伪随机值可能导致误差。FMS 验证需要已知字段边界。输出是近似报文分段，不是字段语义、状态机或完整应用／设备行为。",
+    "why_fits_en": "Provides a foundational method for reconstructing wire-message structure from observed traffic.",
+    "why_fits_zh": "为依据观测流量重建通信报文结构提供基础方法。",
+    "metadata_notes": "The official USENIX citation verifies this workshop paper; no DOI or arXiv identifier was verified. The linked author repository now integrates NEMESYS with later NEMETYL and 2022 methods, so the reviewed current commit is not claimed to be the original 2018 artifact. Its README identifies it as experimental and its LICENSE declares MIT.",
+    "metadata_notes_zh": "USENIX 官方引文确认了这篇研讨会论文；尚未核实 DOI 或 arXiv 标识。所链接的作者仓库如今整合了 NEMESYS、后续 NEMETYL 及2022年方法，因此本次核查的当前提交不被视为2018年原始产物。README 将其定位为实验性软件，LICENSE 声明 MIT。",
+    "evidence_urls": [
+      "https://www.usenix.org/conference/woot18/presentation/kleber",
+      "https://www.usenix.org/system/files/conference/woot18/woot18-paper-kleber.pdf",
+      "https://www.usenix.org/biblio/export/bibtex/220576",
+      "https://github.com/vs-uulm/nemesys/blob/e98da1d9baa5727d8f085823369c733416b66a21/README.md",
+      "https://github.com/vs-uulm/nemesys/blob/e98da1d9baa5727d8f085823369c733416b66a21/LICENSE"
+    ]
+  },
+  {
+    "targets": [
+      "protocol"
+    ],
+    "arxiv_id": null,
+    "arxiv_version_reviewed": null,
+    "first_arxiv_date": null,
+    "kind": "research",
+    "verified_at": "2026-10-16",
+    "verification": "source-reviewed",
+    "runtime_tested": false,
+    "id": "paper-netplier",
+    "title": "NetPlier: Probabilistic Network Protocol Reverse Engineering from Message Traces",
+    "title_zh": "NetPlier：基于报文记录的概率网络协议逆向工程",
+    "authors": [
+      "Yapeng Ye",
+      "Zhuo Zhang",
+      "Fei Wang",
+      "Xiangyu Zhang",
+      "Dongyan Xu"
+    ],
+    "year": 2021,
+    "publication_date": null,
+    "date_precision": "year",
+    "date_basis": "Publisher-deposited Crossref metadata supplies publication year 2021; the publisher PDF separately identifies the 21–25 February 2021 symposium.",
+    "date_basis_zh": "出版方向 Crossref 提交的元数据仅给出出版年份2021；出版方 PDF 另列研讨会日期为2021年2月21—25日。",
+    "venue": "NDSS 2021",
+    "publication_status": "conference-paper",
+    "doi": "10.14722/ndss.2021.24531",
+    "url": "https://www.ndss-symposium.org/ndss-paper/netplier-probabilistic-network-protocol-reverse-engineering-from-message-traces/",
+    "pdf_url": "https://www.ndss-symposium.org/wp-content/uploads/ndss2021_4A-5_24531_paper.pdf",
+    "code_url": "https://github.com/yapengye/NetPlier",
+    "project_url": null,
+    "description_en": "Uses multiple sequence alignment and probabilistic keyword-field inference to cluster network messages by type, evaluated across ten protocols with downstream format and state-machine analysis.",
+    "description_zh": "通过多序列比对与概率式关键字段推断，按类型对网络报文聚类，并在十种协议上评测及开展后续格式与状态机分析。",
+    "scope_limitations_en": "Requires unencrypted traces and cannot recover unseen message types. Larger alignments, sub-byte keywords and one-way traffic can reduce accuracy. Format/FSM inference is downstream evaluation rather than the main contribution; state semantics in a case study were manually annotated. These models do not establish complete application/device reconstruction.",
+    "scope_limitations_zh": "需要未加密的报文记录，无法恢复从未出现的报文类型。较大的比对、亚字节关键字段及单向流量可能降低准确性。格式／有限状态机推断属于下游评测而非主要贡献；一个案例中的状态语义由人工标注。这些模型不能证明已完整重建应用／设备。",
+    "why_fits_en": "Connects observed application/device traffic to message-type models needed for protocol reconstruction.",
+    "why_fits_zh": "将观测到的应用／设备流量转化为协议重建所需的报文类型模型。",
+    "metadata_notes": "The publisher paper cites netplier-tool/NetPlier, which now redirects to yapengye/NetPlier. The pinned GPLv3 artifact implements keyword inference and clustering evaluation; its core retains TODOs for iteration and format inference. Do not treat this public repository as a complete reproduction of all paper stages. No runtime reproduction was performed.",
+    "metadata_notes_zh": "出版方论文引用 netplier-tool/NetPlier，当前重定向至 yapengye/NetPlier。固定提交下的 GPLv3 产物实现了关键字段推断与聚类评测；核心代码仍将迭代和格式推断列为 TODO。不能将此公开仓库视为论文所有阶段的完整复现。本次未进行运行复现。",
+    "evidence_urls": [
+      "https://www.ndss-symposium.org/ndss-paper/netplier-probabilistic-network-protocol-reverse-engineering-from-message-traces/",
+      "https://www.ndss-symposium.org/wp-content/uploads/ndss2021_4A-5_24531_paper.pdf",
+      "https://api.crossref.org/works/10.14722/ndss.2021.24531",
+      "https://github.com/yapengye/NetPlier/blob/78abbe67606c76fcd9bfec17667c662dce58f567/README.md",
+      "https://github.com/yapengye/NetPlier/blob/78abbe67606c76fcd9bfec17667c662dce58f567/netplier/netplier.py",
+      "https://github.com/yapengye/NetPlier/blob/78abbe67606c76fcd9bfec17667c662dce58f567/LICENSE"
+    ]
   }
 ]

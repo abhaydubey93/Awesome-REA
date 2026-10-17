@@ -1,6 +1,6 @@
 # Awesome Reverse Engineering Anything
 
-A collection of **tools, projects, integrations, and references** for reverse engineering websites, games, apps, native binaries, and firmware.
+A collection of **tools, projects, integrations, and references** for reverse engineering websites, games, apps, native binaries, firmware, and communication protocols.
 
 **[Website](https://awesomerea.org) · [Full repository index](https://awesomerea.org/?view=source-index) · [GitHub](https://github.com/reacher-z/Awesome-REA) · [简体中文](README.zh-CN.md)**
 
@@ -67,6 +67,7 @@ Each entry appears once under its main purpose. The collection includes independ
 - [UE4SS](https://github.com/UE4SS-RE/RE-UE4SS) — Inspect Unreal Engine games at runtime through live UObject property views, reflected C++ header dumps, property mappings and actor dumps. Lua and C++ APIs support experiments while reconstructing game structures. **[Tool]**
 - [FModel](https://github.com/4sval/FModel) — Explore Unreal Engine game archives with CUE4Parse-backed package and property inspection, asset previews and export. The 2026 summer release adds USD world export for reconstructing supported scene content. **[Tool]**
 - [PSP Web Recomp](https://github.com/snuri00/psp-web-recomp) — Translate PSP MIPS executables into C++ and WebAssembly, backed by a PSP high-level emulation runtime and WebGL2 renderer. Native tracing, frame capture and audio tools support investigating missing behavior during game porting. **[Project]**
+- [ArkWeb: a two-game movement and collision experiment](https://github.com/luki-1/ArkWeb) — Runs Spider-Man Remastered and Arkham Knight together, streaming Gotham collision into Spider-Man’s physics world and compositing his rendered frame into Arkham. This experimental runtime bridge is not a recovered standalone game or new engine. **[Case study · Independent reconstruction]**
 
 <a id="app"></a>
 ### App
@@ -91,6 +92,7 @@ Each entry appears once under its main purpose. The collection includes independ
 - [nibkit](https://github.com/tokenbleed/nibkit) — Decode compiled iOS/macOS interface archives into object trees, Outlet/Action connections, custom classes and navigation relationships. Exports JSON or Mermaid diagrams and exposes read-only inspection commands through MCP. **[Tool]**
 - [AOTopsy](https://github.com/BroNils/aotopsy) — Statically inspect Flutter/Dart AOT libapp.so files to recover available metadata, class structures, call edges and pseudocode without embedding a Dart VM or compiling a matching SDK. Supports ARM64 and x86_64 analysis paths. **[Tool · Android]**
 - [hbctool](https://github.com/bongtrop/hbctool) — Disassemble and reassemble supported React Native Hermes bytecode bundles through HASM files, enabling bytecode inspection and editing for the explicitly supported legacy HBC versions. **[Tool · Android]**
+- [LSX II Volume Fixer: reconstructing volume behavior](https://github.com/roberdorfer/kef-lsx-volume) — Uses measured USB-volume behavior and a macOS audio proxy to map volume keys to a KEF LSX II’s LAN control. The project reports more even steps while forwarding USB audio; the speaker firmware is unchanged. **[Case study · Independent reconstruction]**
 
 <a id="native-binary"></a>
 ### Native Binary
@@ -129,6 +131,11 @@ Each entry appears once under its main purpose. The collection includes independ
 - [FirmAE](https://github.com/pr0v3rbs/FirmAE) — Emulate router and IP-camera firmware to inspect network services and runtime behavior, with automated emulation checks and separate analysis, run, and debugging modes. **[Tool]**
 - [PulseView](https://github.com/sigrokproject/pulseview) — Examine captured logic and analog waveforms with sigrok's graphical frontend. Protocol decoders and decoder stacking expose bus messages and higher-level device operations, making hardware communication traces useful for firmware and interoperability investigations. **[Tool]**
 - [UEFITool](https://github.com/LongSoft/UEFITool) — Parse UEFI firmware images into an inspectable tree and check their structure. Companion UEFIExtract and UEFIFind tools extract parsed contents and locate patterns, supporting analysis of firmware components and vendor formats. **[Tool]**
+
+<a id="protocol"></a>
+### Protocols
+
+- [hw-harness: scanner USB protocol investigation](https://github.com/cschalle/hw-harness) — Documents an author-reported scanner investigation comparing vendor-driver USB control transfers with Linux-driver traces to infer initialization, timing and resolution parameters. The released harness organizes reference capture and comparison; it does not automatically recover a complete protocol specification. **[Case study · Independent reconstruction]**
 
 <a id="agents-and-mcp"></a>
 ### Agents and MCP
@@ -186,7 +193,7 @@ Each entry appears once under its main purpose. The collection includes independ
 <a id="papers"></a>
 ## Papers
 
-A bibliography of **25 papers** on reverse-engineering agent evaluation, decompilation, firmware analysis, and website, game, and app reconstruction. Some papers also appear among curated resources; counts are not additive. Publication status and study scope are made explicit.
+A bibliography of **27 papers** on reverse-engineering agent evaluation, decompilation, protocol inference, firmware analysis, and website, game, and app reconstruction. Some papers also appear among curated resources; counts are not additive. Publication status and study scope are made explicit.
 
 [Browse the paper directory](https://awesomerea.org/papers/) · [Complete bibliography JSON](data/papers.json) · [Suggest a paper](https://github.com/reacher-z/Awesome-REA/issues/new?template=paper.yml)
 
@@ -401,6 +408,24 @@ A bibliography of **25 papers** on reverse-engineering agent evaluation, decompi
     Extends Firmadyne with empirically derived interventions for boot, networking, NVRAM, kernel behavior, and other runtime failures, enabling Linux router and IP-camera firmware web services to run for dynamic analysis.
 
     **Scope and limits:** Arbitration deliberately changes execution and targets functioning web interfaces, not identical physical-device behavior. The evaluation covers ARM little-endian and MIPS little-/big-endian firmware from routers and IP cameras; heuristics may fail on unseen devices or configurations. It reuses firmware binaries rather than recovering their source.
+
+### Protocol inference and analysis
+
+- [NetPlier: Probabilistic Network Protocol Reverse Engineering from Message Traces](https://www.ndss-symposium.org/ndss-paper/netplier-probabilistic-network-protocol-reverse-engineering-from-message-traces/) — **2021 · NDSS 2021 · Conference paper**
+
+    Yapeng Ye et al. · [PDF](https://www.ndss-symposium.org/wp-content/uploads/ndss2021_4A-5_24531_paper.pdf) · [Code](https://github.com/yapengye/NetPlier)
+
+    Uses multiple sequence alignment and probabilistic keyword-field inference to cluster network messages by type, evaluated across ten protocols with downstream format and state-machine analysis.
+
+    **Scope and limits:** Requires unencrypted traces and cannot recover unseen message types. Larger alignments, sub-byte keywords and one-way traffic can reduce accuracy. Format/FSM inference is downstream evaluation rather than the main contribution; state semantics in a case study were manually annotated. These models do not establish complete application/device reconstruction.
+
+- [NEMESYS: Network Message Syntax Reverse Engineering by Analysis of the Intrinsic Structure of Individual Messages](https://www.usenix.org/conference/woot18/presentation/kleber) — **2018 · 12th USENIX Workshop on Offensive Technologies (WOOT 18) · Conference paper**
+
+    Stephan Kleber et al. · [PDF](https://www.usenix.org/system/files/conference/woot18/woot18-paper-kleber.pdf) · [Code](https://github.com/vs-uulm/nemesys)
+
+    Infers approximate field boundaries within individual binary-protocol messages from changes in bit congruence, and introduces Format Match Score to compare inferred segmentation with known protocol dissectors.
+
+    **Scope and limits:** Requires plaintext payloads. Evaluation covers DNS, DHCP and NTP with protocol-tuned parameters. Single-byte fields are not inferred; zero-filled fields, character sequences and pseudo-random values can cause errors. FMS needs known field boundaries for validation. The output is approximate segmentation, not field semantics, a state machine or complete application/device behavior.
 <!-- END GENERATED PAPERS -->
 
 <a id="search-the-catalog"></a>

@@ -1,6 +1,6 @@
 # Awesome Reverse Engineering Anything
 
-收集值得关注的**工具、项目、集成与参考资料**，覆盖网站、游戏、应用、原生二进制、固件与硬件逆向。
+收集值得关注的**工具、项目、集成与参考资料**，覆盖网站、游戏、应用、原生二进制、固件、硬件及通信协议逆向。
 
 **[网站](https://awesomerea.org/?lang=zh) · [完整仓库索引](https://awesomerea.org/?view=source-index&lang=zh) · [GitHub](https://github.com/reacher-z/Awesome-REA) · [English](README.md)**
 
@@ -68,6 +68,7 @@
 - [UE4SS（虚幻引擎脚本系统）](https://github.com/UE4SS-RE/RE-UE4SS) — 通过实时 UObject 属性视图、反射 C++ 头文件导出、属性映射和 Actor 转储分析虚幻引擎游戏；Lua 与 C++ API 可辅助实验和重建游戏结构。 **[工具]**
 - [FModel 游戏资源浏览器](https://github.com/4sval/FModel) — 基于 CUE4Parse 浏览虚幻引擎游戏归档，检查资源包和属性，预览并导出资源；2026 年夏季发行版新增 USD 世界导出，可辅助重建受支持的场景内容。 **[工具]**
 - [PSP Web Recomp 浏览器游戏重编译项目](https://github.com/snuri00/psp-web-recomp) — 将 PSP MIPS 可执行文件转换为 C++ 与 WebAssembly，配合 PSP 高层仿真运行时和 WebGL2 渲染器；原生跟踪、画面捕获及音频工具可辅助调查游戏移植中缺失的行为。 **[项目]**
+- [ArkWeb：双游戏动作与碰撞桥接实验](https://github.com/luki-1/ArkWeb) — 同时运行《漫威蜘蛛侠：重制版》与《蝙蝠侠：阿卡姆骑士》，将哥谭碰撞数据传入蜘蛛侠的物理世界，再将其渲染画面合成到阿卡姆中。这是实验性的运行时桥接，并非恢复出的独立游戏或新引擎。 **[案例 · 独立重建]**
 
 <a id="app"></a>
 ### App · 应用
@@ -92,6 +93,7 @@
 - [nibkit 原生界面结构分析工具](https://github.com/tokenbleed/nibkit) — 将已编译的 iOS/macOS 界面归档解码为对象树、Outlet／Action 连接、自定义类及导航关系，可导出 JSON 或 Mermaid 图，并通过 MCP 提供只读检查命令。 **[工具]**
 - [AOTopsy Flutter/Dart 静态分析工具](https://github.com/BroNils/aotopsy) — 静态检查 Flutter/Dart AOT libapp.so 文件，恢复可用元数据、类结构、调用关系及伪代码，无需嵌入 Dart VM 或编译匹配的 SDK，提供 ARM64 与 x86_64 分析路径。 **[工具 · Android]**
 - [hbctool Hermes 字节码汇编与反汇编工具](https://github.com/bongtrop/hbctool) — 通过 HASM 文件反汇编和重新汇编受支持的 React Native Hermes 字节码包，为明确支持的旧版 HBC 提供字节码检查与修改能力。 **[工具 · Android]**
+- [LSX II 音量修正器：重建音量行为](https://github.com/roberdorfer/kef-lsx-volume) — 根据实测 USB 音量行为，通过 macOS 音频代理将音量键映射到 KEF LSX II 的局域网控制。项目报告音量步进更均匀，同时转发 USB 音频；扬声器固件未修改。 **[案例 · 独立重建]**
 
 <a id="native-binary"></a>
 ### Native Binary · 原生二进制
@@ -130,6 +132,11 @@
 - [FirmAE](https://github.com/pr0v3rbs/FirmAE) — 仿真路由器与 IP 摄像机固件，检查网络服务和运行时行为，提供自动仿真检查，以及独立的分析、运行和调试模式。 **[工具]**
 - [PulseView 信号与协议分析工具](https://github.com/sigrokproject/pulseview) — 通过 sigrok 的图形前端检查逻辑与模拟波形；协议解码器及分层解码可展示总线消息和更高层的设备操作，便于利用硬件通信记录开展固件与互操作性分析。 **[工具]**
 - [UEFITool 固件镜像分析工具](https://github.com/LongSoft/UEFITool) — 将 UEFI 固件镜像解析为可检查的树状结构，并检查其结构；配套的 UEFIExtract 与 UEFIFind 可提取解析后的内容、查找模式，辅助分析固件组件与厂商格式。 **[工具]**
+
+<a id="protocol"></a>
+### Protocols · 协议
+
+- [hw-harness：扫描仪 USB 协议调查](https://github.com/cschalle/hw-harness) — 记录作者报告的扫描仪调查：比较厂商驱动的 USB 控制传输与 Linux 驱动的记录，推断初始化、时序及分辨率参数。公开工具负责组织参考采集与比较，并不自动恢复完整协议规范。 **[案例 · 独立重建]**
 
 <a id="agents-and-mcp"></a>
 ### Agents & MCP · Agent 与集成
@@ -187,7 +194,7 @@
 <a id="papers"></a>
 ## 论文
 
-收录 **25 篇论文**，涵盖逆向工程智能体评测、反编译、固件分析，以及网站、游戏和应用重建。部分论文也出现在精选资源目录中，两者数量不可相加。发表状态与研究范围分别标注，中文标题为译名。
+收录 **27 篇论文**，涵盖逆向工程智能体评测、反编译、协议推断、固件分析，以及网站、游戏和应用重建。部分论文也出现在精选资源目录中，两者数量不可相加。发表状态与研究范围分别标注，中文标题为译名。
 
 [浏览论文目录](https://awesomerea.org/zh/papers/) · [完整书目 JSON](data/papers.json) · [推荐论文](https://github.com/reacher-z/Awesome-REA/issues/new?template=paper.yml)
 
@@ -402,6 +409,24 @@
     在 Firmadyne 基础上，针对启动、网络、NVRAM、内核行为及其他运行失败加入经验性干预，使 Linux 路由器与 IP 摄像机固件的 Web 服务能够运行并接受动态分析。
 
     **范围与限制:** 仲裁式干预会有意改变执行过程，目标是运行 Web 界面，而非完整复现物理设备行为。评测覆盖路由器与 IP 摄像机的 ARM 小端、MIPS 小端及大端固件；启发式规则可能不适用于未见过的设备或配置。该方法复用固件二进制，并不恢复其源码。
+
+### 协议推断与分析
+
+- [NetPlier：基于报文记录的概率网络协议逆向工程](https://www.ndss-symposium.org/ndss-paper/netplier-probabilistic-network-protocol-reverse-engineering-from-message-traces/) — **2021 · NDSS 2021 · 会议论文**
+
+    Yapeng Ye 等 · [PDF](https://www.ndss-symposium.org/wp-content/uploads/ndss2021_4A-5_24531_paper.pdf) · [代码](https://github.com/yapengye/NetPlier)
+
+    通过多序列比对与概率式关键字段推断，按类型对网络报文聚类，并在十种协议上评测及开展后续格式与状态机分析。
+
+    **范围与限制:** 需要未加密的报文记录，无法恢复从未出现的报文类型。较大的比对、亚字节关键字段及单向流量可能降低准确性。格式／有限状态机推断属于下游评测而非主要贡献；一个案例中的状态语义由人工标注。这些模型不能证明已完整重建应用／设备。
+
+- [NEMESYS：通过分析单条报文的内在结构逆向推断网络报文语法](https://www.usenix.org/conference/woot18/presentation/kleber) — **2018 · 12th USENIX Workshop on Offensive Technologies (WOOT 18) · 会议论文**
+
+    Stephan Kleber 等 · [PDF](https://www.usenix.org/system/files/conference/woot18/woot18-paper-kleber.pdf) · [代码](https://github.com/vs-uulm/nemesys)
+
+    根据单条二进制协议报文内比特一致性的变化，推断近似字段边界，并提出格式匹配分数，将推断的分段结果与已知协议解析器进行比较。
+
+    **范围与限制:** 需要明文载荷。评测覆盖 DNS、DHCP 和 NTP，并针对各协议调节参数。方法无法推断单字节字段；全零字段、字符序列和伪随机值可能导致误差。FMS 验证需要已知字段边界。输出是近似报文分段，不是字段语义、状态机或完整应用／设备行为。
 <!-- END GENERATED PAPERS -->
 
 <a id="搜索目录"></a>

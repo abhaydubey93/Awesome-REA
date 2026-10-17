@@ -511,7 +511,8 @@
     ],
     "targets": [
       "app",
-      "firmware"
+      "firmware",
+      "protocol"
     ],
     "kind": "case-study"
   },

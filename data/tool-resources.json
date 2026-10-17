@@ -942,7 +942,8 @@
     "requirements": "Configure the client proxy; HTTPS inspection requires the appropriate local trust configuration. Saved captures and live interception are distinct workflows.",
     "targets": [
       "website",
-      "app"
+      "app",
+      "protocol"
     ],
     "kind": "tool"
   },
@@ -996,7 +997,8 @@
     "kind": "integration",
     "targets": [
       "website",
-      "app"
+      "app",
+      "protocol"
     ],
     "description_en": "Analyze captured application HTTP traffic with an LLM to generate MCP tools, OpenAPI 3.1 specifications, or GraphQL schemas. Generated tools call the observed API directly after capture and authentication setup.",
     "description_zh": "用 LLM 分析捕获的应用 HTTP 流量，生成 MCP 工具、OpenAPI 3.1 规范或 GraphQL 模式；完成抓包与认证配置后，生成的工具可直接调用已观察到的 API。",
@@ -1597,7 +1599,8 @@
     "kind": "tool",
     "targets": [
       "app",
-      "firmware"
+      "firmware",
+      "protocol"
     ],
     "description_en": "Inspect captured application and device traffic as decoded protocol fields, with filtering and shared GUI/TShark dissection. Custom dissectors let an analyst encode newly understood packet formats and compare protocol implementations.",
     "description_zh": "将捕获的应用与设备流量解析为协议字段，支持过滤，并由 GUI 与 TShark 共用解析逻辑；自定义解析器可将新识别的报文格式固化下来，辅助比较协议实现。",
@@ -1624,7 +1627,8 @@
     "relationship": "foundation",
     "kind": "tool",
     "targets": [
-      "firmware"
+      "firmware",
+      "protocol"
     ],
     "description_en": "Examine captured logic and analog waveforms with sigrok's graphical frontend. Protocol decoders and decoder stacking expose bus messages and higher-level device operations, making hardware communication traces useful for firmware and interoperability investigations.",
     "description_zh": "通过 sigrok 的图形前端检查逻辑与模拟波形；协议解码器及分层解码可展示总线消息和更高层的设备操作，便于利用硬件通信记录开展固件与互操作性分析。",
@@ -1804,6 +1808,86 @@
       "The reviewed package metadata is 0.1.5 and classified Alpha; it declares Python ^3.6 and docopt ^0.6.2. Compatibility with current Python interpreters was not tested for this catalog.",
       "README support is limited to HBC versions 59, 62, 74 and 76. Supply a compatible Hermes bytecode bundle; do not assume support for current Hermes bytecode versions.",
       "This is a bytecode assembler/disassembler, not complete original-JavaScript recovery. Overflow patching is listed as future work. MIT-licensed."
+    ]
+  },
+  {
+    "category": "reconstruction-cases",
+    "relationship": "independent-reconstruction",
+    "kind": "case-study",
+    "verified_at": "2026-10-16",
+    "verification": "source-reviewed",
+    "id": "kef-lsx-volume-case",
+    "name": "LSX II Volume Fixer: reconstructing volume behavior",
+    "url": "https://github.com/roberdorfer/kef-lsx-volume",
+    "targets": [
+      "app"
+    ],
+    "description_en": "Uses measured USB-volume behavior and a macOS audio proxy to map volume keys to a KEF LSX II’s LAN control. The project reports more even steps while forwarding USB audio; the speaker firmware is unchanged.",
+    "description_zh": "根据实测 USB 音量行为，通过 macOS 音频代理将音量键映射到 KEF LSX II 的局域网控制。项目报告音量步进更均匀，同时转发 USB 音频；扬声器固件未修改。",
+    "evidence_url": "https://github.com/roberdorfer/kef-lsx-volume/blob/6fbd7f76c63bf6d7da0979db4a1b312a064e0b4b/README.md",
+    "additional_evidence_urls": [
+      "https://github.com/roberdorfer/kef-lsx-volume/blob/6fbd7f76c63bf6d7da0979db4a1b312a064e0b4b/docs/usb-volume-curve.md",
+      "https://github.com/roberdorfer/kef-lsx-volume/blob/6fbd7f76c63bf6d7da0979db4a1b312a064e0b4b/LICENSE"
+    ],
+    "requirements": [
+      "Requires an LSX II connected by USB and on the same LAN, macOS 14+, Xcode Command Line Tools and administrator installation. The author reports testing on macOS 27; only LSX II is tested.",
+      "Builds from source with ad-hoc signing; Windows support is only proposed. MIT source is available.",
+      "The volume curve, latency and audio claims are author-reported, not reproduced here. REA use is unconfirmed; agent-assisted setup instructions do not establish who performed the investigation."
+    ]
+  },
+  {
+    "category": "reconstruction-cases",
+    "relationship": "independent-reconstruction",
+    "kind": "case-study",
+    "verified_at": "2026-10-16",
+    "verification": "source-reviewed",
+    "id": "arkweb-two-game-case",
+    "name": "ArkWeb: a two-game movement and collision experiment",
+    "url": "https://github.com/luki-1/ArkWeb",
+    "targets": [
+      "game"
+    ],
+    "description_en": "Runs Spider-Man Remastered and Arkham Knight together, streaming Gotham collision into Spider-Man’s physics world and compositing his rendered frame into Arkham. This experimental runtime bridge is not a recovered standalone game or new engine.",
+    "description_zh": "同时运行《漫威蜘蛛侠：重制版》与《蝙蝠侠：阿卡姆骑士》，将哥谭碰撞数据传入蜘蛛侠的物理世界，再将其渲染画面合成到阿卡姆中。这是实验性的运行时桥接，并非恢复出的独立游戏或新引擎。",
+    "evidence_url": "https://github.com/luki-1/ArkWeb/blob/17ec697bd431fce96a60fff1075f7e399d296058/README.md",
+    "additional_evidence_urls": [
+      "https://github.com/luki-1/ArkWeb/blob/17ec697bd431fce96a60fff1075f7e399d296058/PHASE2.md",
+      "https://github.com/luki-1/ArkWeb/commit/a936b62f8ba66864aaae24fd2829303197664e1d"
+    ],
+    "requirements": [
+      "Requires owned Steam copies of both games, Spider-Man 4.0630 specifically, Windows 10 x64, an Xbox-style controller and hardware able to run both games simultaneously.",
+      "Build prerequisites include Visual Studio 2019 C++ tools, Windows 10 SDK and Python 3.12 dependencies. Collision gaps, clipping, lighting and combat-pose limitations remain.",
+      "End-to-end operation is project-reported, not reproduced here. AI setup/documentation collaboration is visible; REA use and AI authorship of all reverse engineering are unconfirmed. Public source has no repository-wide license found in the reviewed tree; game files are not supplied."
+    ]
+  },
+  {
+    "id": "hw-harness-reference-case",
+    "name": "hw-harness: scanner USB protocol investigation",
+    "url": "https://github.com/cschalle/hw-harness",
+    "category": "reconstruction-cases",
+    "relationship": "independent-reconstruction",
+    "kind": "case-study",
+    "targets": [
+      "protocol"
+    ],
+    "description_en": "Documents an author-reported scanner investigation comparing vendor-driver USB control transfers with Linux-driver traces to infer initialization, timing and resolution parameters. The released harness organizes reference capture and comparison; it does not automatically recover a complete protocol specification.",
+    "description_zh": "记录作者报告的扫描仪调查：比较厂商驱动的 USB 控制传输与 Linux 驱动的记录，推断初始化、时序及分辨率参数。公开工具负责组织参考采集与比较，并不自动恢复完整协议规范。",
+    "evidence_url": "https://github.com/cschalle/hw-harness/blob/093afc5c576c200f29b771d01624a327d0ff1806/examples/plustek-film-scanner/README.md",
+    "additional_evidence_urls": [
+      "https://github.com/cschalle/hw-harness/blob/093afc5c576c200f29b771d01624a327d0ff1806/README.md",
+      "https://github.com/cschalle/hw-harness/blob/093afc5c576c200f29b771d01624a327d0ff1806/doc/method.md",
+      "https://github.com/cschalle/hw-harness/blob/093afc5c576c200f29b771d01624a327d0ff1806/examples/ipu7-imx471/README.md",
+      "https://github.com/cschalle/hw-harness/blob/093afc5c576c200f29b771d01624a327d0ff1806/LICENSE",
+      "https://blogs.gnome.org/uraeus/2026/10/15/aiandreverseengineerhardware/"
+    ],
+    "verified_at": "2026-10-17T02:37:34.781877Z",
+    "verification": "source-reviewed",
+    "requirements": [
+      "Developed on Fedora with libvirt/KVM and a Windows 11 Pro guest running the vendor driver. The documented USB case uses a Plustek scanner with device ID 07b3:1825; physical hardware is required.",
+      "USB passthrough, host-side usbmon capture, appropriate host privileges and a matching Linux-side operation are needed for comparable traces. The harness supplies capture/control tooling rather than an automatic protocol decoder.",
+      "The generic harness was published after the original bespoke investigation. Its separate MIPI camera example inspects configuration, ACPI and calibration data rather than using the scanner’s USB capture path.",
+      "Hardware outcomes and Claude involvement are author-reported; this collection did not run the harness or reproduce the scanner results. REA use is unconfirmed, and no complete device or original-source recovery is claimed.",
+      "The pinned harness code is MIT-licensed. Vendor software and driver dependencies remain separate inputs."
     ]
   }
 ]

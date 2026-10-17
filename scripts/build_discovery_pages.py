@@ -255,8 +255,8 @@ def build_discovery_pages(site_dir: Path, catalog: dict, source_index: dict | No
         prefix = '/zh' if zh else ''
         path = prefix + '/resources/'
         title = '精选逆向工程资源' if zh else 'Curated reverse engineering resources'
-        description = (f'{len(resources):,} 项工具、项目、集成、案例与参考资源，覆盖网站、游戏、应用、原生二进制和固件。'
-                       if zh else f'{len(resources):,} tools, projects, integrations, case studies, and references for websites, games, apps, native binaries, and firmware.')
+        description = (f'{len(resources):,} 项工具、项目、集成、案例与参考资源，覆盖网站、游戏、应用、原生二进制、固件及通信协议。'
+                       if zh else f'{len(resources):,} tools, projects, integrations, case studies, and references for websites, games, apps, native binaries, firmware, and communication protocols.')
         note = ('“资料已复核”表示说明已依据一手文档核对，不代表已安装、执行、安全审计或验证兼容性。前置条件和审阅日期随条目保留。'
                 if zh else 'Source-reviewed means descriptions were checked against primary documentation. It does not mean installation, execution, security auditing, or compatibility testing. Each entry retains requirements and its review date.')
         sections, items, navigation = [], [], []
@@ -329,7 +329,7 @@ def build_discovery_pages(site_dir: Path, catalog: dict, source_index: dict | No
     paper_summary = (f' The bibliography lists {len(papers)} research papers; {overlapping_papers} also appear among the {len(resources)} curated resources.' if papers else '')
     llms = f'''# Awesome Reverse Engineering Anything
 
-> AwesomeREA.org is an independent bilingual collection of reverse-engineering tools, projects, integrations, case studies, and references for websites, games, apps, native binaries, and firmware.
+> AwesomeREA.org is an independent bilingual collection of reverse-engineering tools, projects, integrations, case studies, and references for websites, games, apps, native binaries, firmware, and communication protocols.
 
 The collection contains {len(resources)} source-reviewed curated resources and {browse_count} browsable repositories from {len(scanned)} successful README scans. The full scan retains {excluded} scope-excluded records and their reasons.{paper_summary} These counts describe different collections and must not be combined as unique projects.
 
