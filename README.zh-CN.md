@@ -15,12 +15,12 @@
 <!-- BEGIN GENERATED CONTENTS -->
 **按目标找工具与案例**
 
-- [网站](#website) (14) · [游戏](#game) (41) · [应用](#app) (32)
+- [网站](#website) (14) · [游戏](#game) (42) · [应用](#app) (34)
 - [原生二进制](#native-binary) (20) · [固件与硬件](#firmware) (12) · [协议](#protocol) (11)
 
 **论文与更多资源**
 
-- [论文](#papers) (40) · [全部案例](https://awesomerea.org/zh/?view=curated&kind=case-study) (43) · [仓库索引](#完整仓库索引) (2,846)
+- [论文](#papers) (40) · [全部案例](https://awesomerea.org/zh/?view=curated&kind=case-study) (46) · [仓库索引](#完整仓库索引) (2,846)
 - [Agent 与 MCP](#agents-and-mcp) (18) · [相关合集](#related-collections) (4) · [学习资料](#references-and-learning) (17)
 <!-- END GENERATED CONTENTS -->
 
@@ -189,6 +189,10 @@
 
   将逆向分析的 Driver 2 MIPS 例程转为 C/C++，并用 Psy-X/Psy-Cross 将 PlayStation 接口适配到桌面系统。项目记录借助符号的 Ghidra/IDA 分析，同时明确包含有意修复的错误和玩法改动。
 
+- [**DevilutionX：移植重建后的 Diablo 引擎**](https://github.com/diasurgical/DevilutionX) · 案例 · 独立重建 · [条件与证据](https://awesomerea.org/zh/resources/devilutionx-case/)
+
+  基于 Devilution 重建成果提供现代平台上的 Diablo 与 Hellfire 移植，加入平台支持、错误修复及可选便利功能。项目记录了早期借助符号信息的重建过程，并包含特定地牢生成与存档回归检查。
+
 - [**LASRecomp：《织梦岛》静态重编译案例**](https://github.com/peiikai/LASRecomp) · 案例 · 独立重建 · [条件与证据](https://awesomerea.org/zh/resources/lasrecomp/)
 
   通过静态重编译，将 2019 年 Switch 版《塞尔达传说：织梦岛》重建为原生桌面程序。作者称大部分代码、工具与逆向工作由 Claude Code 完成，人类负责指导和复核。
@@ -321,6 +325,14 @@
 - [**WordCraft：文档流程重建与有限范围 DOCX 兼容**](https://github.com/storytold/wordcraft) · 案例 · 独立重建 · [条件与证据](https://awesomerea.org/zh/resources/wordcraft-case/)
 
   作者将 WordCraft 描述为以 Rust 净室重实现熟悉的 Microsoft Word 流程。项目提供自己的文档模型、排版引擎和 DOCX 读写器，以及桌面与浏览器界面；源码测试覆盖选定的编辑与文件保留行为。
+
+- [**GridCraft：电子表格流程重建与 XLSX 往返边界**](https://github.com/storytold/gridcraft) · 案例 · 独立重建 · [条件与证据](https://awesomerea.org/zh/resources/gridcraft-case/)
+
+  作者将 GridCraft 描述为以 Rust 净室重实现 Excel 风格的电子表格流程。工作簿模型、公式解析器与依赖驱动的重新计算连接到 XLSX 读写，以及供桌面、浏览器和自动化接口共用的编辑命令层。
+
+- [**DeckCraft：演示文稿流程重建与有限范围 PPTX 交换**](https://github.com/storytold/deckcraft) · 案例 · 独立重建 · [条件与证据](https://awesomerea.org/zh/resources/deckcraft-case/)
+
+  作者将 DeckCraft 描述为以 Rust 净室重实现 PowerPoint 风格的演示文稿流程。其幻灯片模型、渲染与命令层支撑桌面／浏览器编辑及 PPTX 交换；所审阅源码测试检查构造的文稿和选定的保留包部件。
 
 - [**LSX II 音量修正器：重建音量行为**](https://github.com/roberdorfer/kef-lsx-volume) · 案例 · 独立重建 · [条件与证据](https://awesomerea.org/zh/resources/kef-lsx-volume-case/)
 

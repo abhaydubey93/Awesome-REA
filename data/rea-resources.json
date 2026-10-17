@@ -1544,5 +1544,111 @@
       "https://github.com/storytold/wordcraft/blob/eae242176108d328c5dd81fbc10370c51ab90706/NOTICE",
       "https://github.com/storytold/wordcraft/blob/eae242176108d328c5dd81fbc10370c51ab90706/docs/brand/LICENSE-brand.txt"
     ]
+  },
+  {
+    "id": "gridcraft-case",
+    "name": "GridCraft: spreadsheet workflow reconstruction and XLSX round-trip limits",
+    "url": "https://github.com/storytold/gridcraft",
+    "category": "reconstruction-cases",
+    "relationship": "independent-reconstruction",
+    "description_en": "The authors describe GridCraft as a clean-room Rust implementation of Excel-style spreadsheet workflows. A workbook model, formula parser and dependency-driven recalculation are connected to XLSX I/O and a shared editing-command layer for desktop, browser and automation interfaces.",
+    "description_zh": "作者将 GridCraft 描述为以 Rust 净室重实现 Excel 风格的电子表格流程。工作簿模型、公式解析器与依赖驱动的重新计算连接到 XLSX 读写，以及供桌面、浏览器和自动化接口共用的编辑命令层。",
+    "evidence_url": "https://github.com/storytold/gridcraft/blob/f1894c6da64d4326022ae644c767581816a23c2c/README.md",
+    "verified_at": "2026-10-17",
+    "verification": "source-reviewed",
+    "requirements": [
+      "The pinned workspace identifies version 0.7.0 and declares Rust 1.90+ with Cargo. Browser builds use Trunk and wasm32-unknown-unknown; native Linux CI lists X11/Wayland, GTK, fontconfig/FreeType and graphics dependencies. Fonts and input workbooks are separate; no build was run here.",
+      "Reviewed XLSX tests construct workbooks and OOXML packages, compare modeled values after writing and reading, and check selected unmodeled parts and relationships. These checks do not establish arbitrary-workbook byte identity; preserving a connection part is not implementing or refreshing its data source.",
+      "Calculation tests use expected values for selected formulas, dependency changes and spilled arrays. The dated assessment against Excel for Mac 16.113.4 says Excel was not launched and no build or test ran in that assessment pass; it also records the absence of Excel-computed conformance oracles.",
+      "The project remains alpha. Ribbon/function-name counts and readiness estimates are not behavioral-compatibility pass rates. File fidelity, advanced workflows, performance and ecosystem compatibility remain bounded, and the README documents graphics-driver startup issues. No Microsoft source tree or Microsoft 365 backend recovery is established.",
+      "Code is MIT OR Apache-2.0 with NOTICE obligations; optional fonts and ArtCraft branding have separate terms. Published modified versions must remove the ArtCraft marks, except contribution-only forks. Clean-room is the authors’ characterization, not an independently audited process; CLI/MCP support does not establish REA involvement."
+    ],
+    "targets": [
+      "app"
+    ],
+    "kind": "case-study",
+    "additional_evidence_urls": [
+      "https://github.com/storytold/gridcraft/blob/f1894c6da64d4326022ae644c767581816a23c2c/Cargo.toml",
+      "https://github.com/storytold/gridcraft/blob/f1894c6da64d4326022ae644c767581816a23c2c/.github/workflows/ci.yml",
+      "https://github.com/storytold/gridcraft/blob/f1894c6da64d4326022ae644c767581816a23c2c/docs/target-app-parity.md",
+      "https://github.com/storytold/gridcraft/blob/f1894c6da64d4326022ae644c767581816a23c2c/crates/xlsx/src/tests/roundtrip.rs",
+      "https://github.com/storytold/gridcraft/blob/f1894c6da64d4326022ae644c767581816a23c2c/crates/xlsx/src/tests/passthrough_tests.rs",
+      "https://github.com/storytold/gridcraft/blob/f1894c6da64d4326022ae644c767581816a23c2c/crates/calc/src/tests.rs",
+      "https://github.com/storytold/gridcraft/blob/f1894c6da64d4326022ae644c767581816a23c2c/LICENSE-MIT",
+      "https://github.com/storytold/gridcraft/blob/f1894c6da64d4326022ae644c767581816a23c2c/LICENSE-APACHE",
+      "https://github.com/storytold/gridcraft/blob/f1894c6da64d4326022ae644c767581816a23c2c/NOTICE",
+      "https://github.com/storytold/gridcraft/blob/f1894c6da64d4326022ae644c767581816a23c2c/docs/brand/LICENSE-brand.txt"
+    ]
+  },
+  {
+    "id": "deckcraft-case",
+    "name": "DeckCraft: presentation workflow reconstruction and bounded PPTX interchange",
+    "url": "https://github.com/storytold/deckcraft",
+    "category": "reconstruction-cases",
+    "relationship": "independent-reconstruction",
+    "description_en": "The authors describe DeckCraft as a clean-room Rust implementation of PowerPoint-style presentation workflows. Its slide model, rendering and command layers support desktop/browser editing and PPTX interchange; reviewed source tests check constructed decks and selected preserved package parts.",
+    "description_zh": "作者将 DeckCraft 描述为以 Rust 净室重实现 PowerPoint 风格的演示文稿流程。其幻灯片模型、渲染与命令层支撑桌面／浏览器编辑及 PPTX 交换；所审阅源码测试检查构造的文稿和选定的保留包部件。",
+    "evidence_url": "https://github.com/storytold/deckcraft/blob/1dc69720db64323370dda061226becb09ad79fd4/README.md",
+    "verified_at": "2026-10-17",
+    "verification": "source-reviewed",
+    "requirements": [
+      "The pinned workspace identifies version 0.7.0 and declares Rust 1.95+ with Cargo. Linux source builds need ALSA headers and display/window dependencies; the browser path uses Trunk and wasm32-unknown-unknown. Optional craft-fonts inputs affect rendering, with system-font fallback documented; no application or asset package was downloaded or run here.",
+      "The reviewed PPTX corpus is authored in code, not collected from PowerPoint. Tests check retained text and content-part counts after saving, then part names and text after another save. Separate tests preserve selected XML metadata; they do not prove arbitrary-deck byte identity or original PowerPoint rendering.",
+      "The dated assessment against PowerPoint for Mac 16.113.4 explicitly says rendering fidelity, performance against PowerPoint and end-to-end workflows with real users’ decks were not measured in that assessment. Feature breadth and readiness percentages are checklist counts or author estimates, not acceptance-test pass rates.",
+      "The project is alpha and has documented file-exchange, presentation-workflow, stability and ecosystem gaps. Source snapshots and older assessment rows differ; no complete PowerPoint/Office equivalence, recovery of Microsoft’s authored source or reconstruction of its hosted services is asserted. The catalog did not rerun any original-versus-reimplementation comparison.",
+      "Code is MIT OR Apache-2.0 with NOTICE obligations. Fonts/icons retain separate terms, and NOTICE lists the Symphonia audio decoder under MPL-2.0. ArtCraft marks have restricted terms and must be removed from published modified versions except contribution-only forks. Clean-room remains author-attributed; automation interfaces do not establish REA use."
+    ],
+    "targets": [
+      "app"
+    ],
+    "kind": "case-study",
+    "additional_evidence_urls": [
+      "https://github.com/storytold/deckcraft/blob/1dc69720db64323370dda061226becb09ad79fd4/Cargo.toml",
+      "https://github.com/storytold/deckcraft/blob/1dc69720db64323370dda061226becb09ad79fd4/.github/workflows/ci.yml",
+      "https://github.com/storytold/deckcraft/blob/1dc69720db64323370dda061226becb09ad79fd4/apps/deckcraft-web/Trunk.toml",
+      "https://github.com/storytold/deckcraft/blob/1dc69720db64323370dda061226becb09ad79fd4/docs/target-app-parity.md",
+      "https://github.com/storytold/deckcraft/blob/1dc69720db64323370dda061226becb09ad79fd4/crates/pptx/tests/corpus.rs",
+      "https://github.com/storytold/deckcraft/blob/1dc69720db64323370dda061226becb09ad79fd4/crates/pptx/tests/roundtrip.rs",
+      "https://github.com/storytold/deckcraft/blob/1dc69720db64323370dda061226becb09ad79fd4/crates/pptx/tests/kept_parts.rs",
+      "https://github.com/storytold/deckcraft/blob/1dc69720db64323370dda061226becb09ad79fd4/LICENSE-MIT",
+      "https://github.com/storytold/deckcraft/blob/1dc69720db64323370dda061226becb09ad79fd4/LICENSE-APACHE",
+      "https://github.com/storytold/deckcraft/blob/1dc69720db64323370dda061226becb09ad79fd4/NOTICE",
+      "https://github.com/storytold/deckcraft/blob/1dc69720db64323370dda061226becb09ad79fd4/docs/brand/LICENSE-brand.txt"
+    ]
+  },
+  {
+    "id": "devilutionx-case",
+    "name": "DevilutionX: porting Diablo’s reconstructed engine",
+    "url": "https://github.com/diasurgical/DevilutionX",
+    "category": "reconstruction-cases",
+    "relationship": "independent-reconstruction",
+    "description_en": "Builds a modern Diablo and Hellfire port on the Devilution reconstruction, with platform support, bug fixes and optional quality-of-life features. The project documents the original symbol-assisted reconstruction and includes selected dungeon-generation and saved-game regression checks.",
+    "description_zh": "基于 Devilution 重建成果提供现代平台上的 Diablo 与 Hellfire 移植，加入平台支持、错误修复及可选便利功能。项目记录了早期借助符号信息的重建过程，并包含特定地牢生成与存档回归检查。",
+    "evidence_url": "https://github.com/diasurgical/DevilutionX/blob/94433061f847d22863e5d705c398f7c13d7bab85/README.md",
+    "verified_at": "2026-10-17",
+    "verification": "source-reviewed",
+    "requirements": [
+      "Full Diablo play requires the user’s original DIABDAT.MPQ. Hellfire additionally needs hellfire.mpq, hfmonk.mpq, hfmusic.mpq and hfvoice.mpq. The separately offered spawn.mpq supports only the shareware portion; source availability does not supply rights to original game content.",
+      "The pinned source identifies 1.6.0-dev and requires CMake 3.22 and C++23. SDL2 is the default, with separate SDL1/SDL3 options; build documentation lists platform-dependent libraries and packaging steps. This is a source snapshot, not a tested release.",
+      "The background describes Devilution’s use of PlayStation debug symbols, assertion strings, compiler information and assembly comparisons. Its historical binary-matching milestone does not establish that the current cross-platform port, with intentional fixes and enhancements, is byte-identical to the original executable.",
+      "The reviewed timedemo test replays a warrior’s level-1-to-2 session and compares saved hero state; it skips without MPQ data and explicitly selects shareware mode. Separate dungeon tests compare seeded fixtures. These are bounded regression checks, not a complete original-versus-port equivalence result; none was run here.",
+      "The root LICENSE.md declares Sustainable Use License 1.0: use/modification is limited to internal business purposes, non-commercial use or personal use, while distribution must be free and non-commercial. Components and original game data retain separate terms.",
+      "The same snapshot retains conflicting Public Domain wording in the Windows package README and Unlicense metadata in the Apple bundle configuration. Those notices are recorded without treating the complete current project as permissively licensed or resolving the conflict. The reviewed sources do not establish REA or coding-agent involvement."
+    ],
+    "targets": [
+      "game"
+    ],
+    "kind": "case-study",
+    "additional_evidence_urls": [
+      "https://github.com/diasurgical/DevilutionX/blob/94433061f847d22863e5d705c398f7c13d7bab85/docs/BACKGROUND.md",
+      "https://github.com/diasurgical/DevilutionX/blob/94433061f847d22863e5d705c398f7c13d7bab85/VERSION",
+      "https://github.com/diasurgical/DevilutionX/blob/94433061f847d22863e5d705c398f7c13d7bab85/CMakeLists.txt",
+      "https://github.com/diasurgical/DevilutionX/blob/94433061f847d22863e5d705c398f7c13d7bab85/docs/building.md",
+      "https://github.com/diasurgical/DevilutionX/blob/94433061f847d22863e5d705c398f7c13d7bab85/test/timedemo_test.cpp",
+      "https://github.com/diasurgical/DevilutionX/blob/94433061f847d22863e5d705c398f7c13d7bab85/test/drlg_l1_test.cpp",
+      "https://github.com/diasurgical/DevilutionX/blob/94433061f847d22863e5d705c398f7c13d7bab85/LICENSE.md",
+      "https://github.com/diasurgical/DevilutionX/blob/94433061f847d22863e5d705c398f7c13d7bab85/Packaging/windows/README.txt",
+      "https://github.com/diasurgical/DevilutionX/blob/94433061f847d22863e5d705c398f7c13d7bab85/Packaging/resources/README-SDL.txt"
+    ]
   }
 ]

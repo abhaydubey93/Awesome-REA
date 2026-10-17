@@ -1,7 +1,7 @@
 {
   "schema_version": 1,
   "reviewed_at": "2026-10-17",
-  "catalog_revision": "1c472b08345031c47d2618236611ac22d1ef2c6b",
+  "catalog_revision": "2e2edb48c28365c0dcb9a19919bb9c77cec41f76",
   "runtime_reproduced": false,
   "project_identity_resolution": "incomplete",
   "collections": [
@@ -931,8 +931,8 @@
       "state": "pending",
       "review_level": "primary-source-reviewed",
       "reviewed_at": "2026-10-17",
-      "reason_en": "PhotoCraft and WordCraft would cover two documented app implementations only; GridCraft, DeckCraft and the broader Adobe/Office claims remain outside these mappings. No proprietary source recovery, legal clean-room certification or runtime reproduction is established.",
-      "reason_zh": "PhotoCraft 与 WordCraft 只覆盖两个有文档的应用实现；GridCraft、DeckCraft 及更广的 Adobe／Office 说法仍不在映射范围内。不确立专有源码恢复、净室流程法律认证或运行复现。",
+      "reason_en": "PhotoCraft, WordCraft, GridCraft and DeckCraft cover four documented application implementations only. The broader Adobe/Office claims remain outside these partial mappings; proprietary source recovery, complete original-application/backend equivalence, legal clean-room certification and independent runtime reproduction are not established.",
+      "reason_zh": "PhotoCraft、WordCraft、GridCraft 与 DeckCraft 只覆盖四个有文档的应用实现；更广的 Adobe／Office 说法仍不在这些部分映射范围内。不确立专有源码恢复、与原应用／后端完整等价、净室流程法律认证或独立运行复现。",
       "primary_evidence_urls": [
         "https://github.com/storytold/photocraft/blob/5f65579ecb44047c2a619036c18ff273202e1389/README.md",
         "https://github.com/storytold/photocraft/blob/5f65579ecb44047c2a619036c18ff273202e1389/Cargo.toml",
@@ -951,7 +951,30 @@
         "https://github.com/storytold/wordcraft/blob/eae242176108d328c5dd81fbc10370c51ab90706/LICENSE-MIT",
         "https://github.com/storytold/wordcraft/blob/eae242176108d328c5dd81fbc10370c51ab90706/LICENSE-APACHE",
         "https://github.com/storytold/wordcraft/blob/eae242176108d328c5dd81fbc10370c51ab90706/NOTICE",
-        "https://github.com/storytold/wordcraft/blob/eae242176108d328c5dd81fbc10370c51ab90706/docs/brand/LICENSE-brand.txt"
+        "https://github.com/storytold/wordcraft/blob/eae242176108d328c5dd81fbc10370c51ab90706/docs/brand/LICENSE-brand.txt",
+        "https://github.com/storytold/gridcraft/blob/f1894c6da64d4326022ae644c767581816a23c2c/README.md",
+        "https://github.com/storytold/gridcraft/blob/f1894c6da64d4326022ae644c767581816a23c2c/Cargo.toml",
+        "https://github.com/storytold/gridcraft/blob/f1894c6da64d4326022ae644c767581816a23c2c/.github/workflows/ci.yml",
+        "https://github.com/storytold/gridcraft/blob/f1894c6da64d4326022ae644c767581816a23c2c/docs/target-app-parity.md",
+        "https://github.com/storytold/gridcraft/blob/f1894c6da64d4326022ae644c767581816a23c2c/crates/xlsx/src/tests/roundtrip.rs",
+        "https://github.com/storytold/gridcraft/blob/f1894c6da64d4326022ae644c767581816a23c2c/crates/xlsx/src/tests/passthrough_tests.rs",
+        "https://github.com/storytold/gridcraft/blob/f1894c6da64d4326022ae644c767581816a23c2c/crates/calc/src/tests.rs",
+        "https://github.com/storytold/gridcraft/blob/f1894c6da64d4326022ae644c767581816a23c2c/LICENSE-MIT",
+        "https://github.com/storytold/gridcraft/blob/f1894c6da64d4326022ae644c767581816a23c2c/LICENSE-APACHE",
+        "https://github.com/storytold/gridcraft/blob/f1894c6da64d4326022ae644c767581816a23c2c/NOTICE",
+        "https://github.com/storytold/gridcraft/blob/f1894c6da64d4326022ae644c767581816a23c2c/docs/brand/LICENSE-brand.txt",
+        "https://github.com/storytold/deckcraft/blob/1dc69720db64323370dda061226becb09ad79fd4/README.md",
+        "https://github.com/storytold/deckcraft/blob/1dc69720db64323370dda061226becb09ad79fd4/Cargo.toml",
+        "https://github.com/storytold/deckcraft/blob/1dc69720db64323370dda061226becb09ad79fd4/.github/workflows/ci.yml",
+        "https://github.com/storytold/deckcraft/blob/1dc69720db64323370dda061226becb09ad79fd4/apps/deckcraft-web/Trunk.toml",
+        "https://github.com/storytold/deckcraft/blob/1dc69720db64323370dda061226becb09ad79fd4/docs/target-app-parity.md",
+        "https://github.com/storytold/deckcraft/blob/1dc69720db64323370dda061226becb09ad79fd4/crates/pptx/tests/corpus.rs",
+        "https://github.com/storytold/deckcraft/blob/1dc69720db64323370dda061226becb09ad79fd4/crates/pptx/tests/roundtrip.rs",
+        "https://github.com/storytold/deckcraft/blob/1dc69720db64323370dda061226becb09ad79fd4/crates/pptx/tests/kept_parts.rs",
+        "https://github.com/storytold/deckcraft/blob/1dc69720db64323370dda061226becb09ad79fd4/LICENSE-MIT",
+        "https://github.com/storytold/deckcraft/blob/1dc69720db64323370dda061226becb09ad79fd4/LICENSE-APACHE",
+        "https://github.com/storytold/deckcraft/blob/1dc69720db64323370dda061226becb09ad79fd4/NOTICE",
+        "https://github.com/storytold/deckcraft/blob/1dc69720db64323370dda061226becb09ad79fd4/docs/brand/LICENSE-brand.txt"
       ],
       "catalog_matches": [
         {
@@ -963,6 +986,18 @@
         {
           "catalog": "resource",
           "id": "wordcraft-case",
+          "kind": "case-study",
+          "scope": "partial"
+        },
+        {
+          "catalog": "resource",
+          "id": "gridcraft-case",
+          "kind": "case-study",
+          "scope": "partial"
+        },
+        {
+          "catalog": "resource",
+          "id": "deckcraft-case",
           "kind": "case-study",
           "scope": "partial"
         }
@@ -9671,15 +9706,31 @@
       "reported_source_urls": [
         "https://github.com/diasurgical/DevilutionX"
       ],
-      "state": "pending",
+      "state": "already-curated",
       "review_level": "primary-source-reviewed",
       "reviewed_at": "2026-10-17",
-      "reason_en": "Held for license-scope review; not yet curated. DevilutionX is a Diablo/Hellfire port with improvements and requires original MPQ content or the limited shareware data. Pinned README now states a Sustainable Use License and non-commercial restriction. Do not call it permissively licensed/open source based on historical familiarity. Read pinned LICENSE.md and any per-component notices before a draft.",
-      "reason_zh": "许可范围暂缓：固定版本 DevilutionX README 说明采用 Sustainable Use License，并限制为非商业用途；运行仍需原 MPQ 或有限共享版素材。不能依据历史印象称为宽松许可项目。须进一步核查固定版本 LICENSE.md 和组件声明，本条尚未精选收录。",
+      "reason_en": "The curated case covers DevilutionX as a Diablo/Hellfire port built on Devilution’s reconstruction, with original-content prerequisites, bounded regression checks and deliberate behavior changes. The root Sustainable Use License, separately licensed components and conflicting packaging notices are recorded explicitly. This is source review, not complete-game equivalence or runtime reproduction.",
+      "reason_zh": "精选案例将 DevilutionX 收录为基于 Devilution 重建成果的 Diablo／Hellfire 移植，保留原内容前提、有限回归检查与主动行为改动，并明确记录根目录 Sustainable Use License、独立组件条款及打包声明冲突。这是来源复核，不是完整游戏等价证明或运行复现。",
       "primary_evidence_urls": [
-        "https://github.com/diasurgical/DevilutionX/blob/94433061f847d22863e5d705c398f7c13d7bab85/README.md"
+        "https://github.com/diasurgical/DevilutionX/blob/94433061f847d22863e5d705c398f7c13d7bab85/README.md",
+        "https://github.com/diasurgical/DevilutionX/blob/94433061f847d22863e5d705c398f7c13d7bab85/docs/BACKGROUND.md",
+        "https://github.com/diasurgical/DevilutionX/blob/94433061f847d22863e5d705c398f7c13d7bab85/VERSION",
+        "https://github.com/diasurgical/DevilutionX/blob/94433061f847d22863e5d705c398f7c13d7bab85/CMakeLists.txt",
+        "https://github.com/diasurgical/DevilutionX/blob/94433061f847d22863e5d705c398f7c13d7bab85/docs/building.md",
+        "https://github.com/diasurgical/DevilutionX/blob/94433061f847d22863e5d705c398f7c13d7bab85/test/timedemo_test.cpp",
+        "https://github.com/diasurgical/DevilutionX/blob/94433061f847d22863e5d705c398f7c13d7bab85/test/drlg_l1_test.cpp",
+        "https://github.com/diasurgical/DevilutionX/blob/94433061f847d22863e5d705c398f7c13d7bab85/LICENSE.md",
+        "https://github.com/diasurgical/DevilutionX/blob/94433061f847d22863e5d705c398f7c13d7bab85/Packaging/windows/README.txt",
+        "https://github.com/diasurgical/DevilutionX/blob/94433061f847d22863e5d705c398f7c13d7bab85/Packaging/resources/README-SDL.txt"
       ],
-      "catalog_matches": []
+      "catalog_matches": [
+        {
+          "catalog": "resource",
+          "id": "devilutionx-case",
+          "kind": "case-study",
+          "scope": "full"
+        }
+      ]
     },
     {
       "id": "hao-games:row-067",
@@ -11275,18 +11326,18 @@
     "inventory_units": 510,
     "alias_merges": 2,
     "occurrences_by_state": {
-      "already-curated": 50,
-      "insufficient-evidence": 51,
-      "pending": 411
-    },
-    "units_by_state": {
-      "already-curated": 49,
+      "already-curated": 51,
       "insufficient-evidence": 51,
       "pending": 410
     },
+    "units_by_state": {
+      "already-curated": 50,
+      "insufficient-evidence": 51,
+      "pending": 409
+    },
     "primary_reviewed_units": 44,
-    "catalog_linked_occurrences": 56,
-    "distinct_resource_ids": 44,
+    "catalog_linked_occurrences": 57,
+    "distinct_resource_ids": 47,
     "distinct_paper_ids": 1,
     "unique_projects": null
   }

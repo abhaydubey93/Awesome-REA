@@ -15,12 +15,12 @@ An independent collection reviewed against primary sources. **Source review does
 <!-- BEGIN GENERATED CONTENTS -->
 **Tools and cases by target**
 
-- [Website](#website) (14) · [Game](#game) (41) · [App](#app) (32)
+- [Website](#website) (14) · [Game](#game) (42) · [App](#app) (34)
 - [Native Binary](#native-binary) (20) · [Firmware & Hardware](#firmware) (12) · [Protocol](#protocol) (11)
 
 **Research and more**
 
-- [Papers](#papers) (40) · [All cases](https://awesomerea.org/?view=curated&kind=case-study) (43) · [Repository index](#full-repository-index) (2,846)
+- [Papers](#papers) (40) · [All cases](https://awesomerea.org/?view=curated&kind=case-study) (46) · [Repository index](#full-repository-index) (2,846)
 - [Agents & MCP](#agents-and-mcp) (18) · [Collections](#related-collections) (4) · [Learning](#references-and-learning) (17)
 <!-- END GENERATED CONTENTS -->
 
@@ -188,6 +188,10 @@ Independent projects and [REA](https://github.com/morluto/rea) resources are inc
 
   Translates reverse-engineered Driver 2 MIPS routines into C/C++ and uses Psy-X/Psy-Cross to adapt PlayStation interfaces for desktop systems. The project documents symbol-assisted Ghidra/IDA work alongside intentional bug fixes and gameplay changes.
 
+- [**DevilutionX: porting Diablo’s reconstructed engine**](https://github.com/diasurgical/DevilutionX) · Case study · Independent reconstruction · [Requirements & evidence](https://awesomerea.org/resources/devilutionx-case/)
+
+  Builds a modern Diablo and Hellfire port on the Devilution reconstruction, with platform support, bug fixes and optional quality-of-life features. The project documents the original symbol-assisted reconstruction and includes selected dungeon-generation and saved-game regression checks.
+
 - [**LASRecomp: Link’s Awakening static recompilation**](https://github.com/peiikai/LASRecomp) · Case study · Independent reconstruction · [Requirements & evidence](https://awesomerea.org/resources/lasrecomp/)
 
   A native desktop reconstruction of the 2019 Switch version of Link’s Awakening using static recompilation. The author attributes most code, tooling and reverse-engineering work to Claude Code with human direction and review.
@@ -320,6 +324,14 @@ Independent projects and [REA](https://github.com/morluto/rea) resources are inc
 - [**WordCraft: document workflow reconstruction and bounded DOCX compatibility**](https://github.com/storytold/wordcraft) · Case study · Independent reconstruction · [Requirements & evidence](https://awesomerea.org/resources/wordcraft-case/)
 
   The authors describe WordCraft as a clean-room Rust implementation of familiar Microsoft Word workflows. It provides its own document model, layout engine and DOCX reader/writer, with desktop and browser interfaces; source tests exercise selected editing and file-preservation behavior.
+
+- [**GridCraft: spreadsheet workflow reconstruction and XLSX round-trip limits**](https://github.com/storytold/gridcraft) · Case study · Independent reconstruction · [Requirements & evidence](https://awesomerea.org/resources/gridcraft-case/)
+
+  The authors describe GridCraft as a clean-room Rust implementation of Excel-style spreadsheet workflows. A workbook model, formula parser and dependency-driven recalculation are connected to XLSX I/O and a shared editing-command layer for desktop, browser and automation interfaces.
+
+- [**DeckCraft: presentation workflow reconstruction and bounded PPTX interchange**](https://github.com/storytold/deckcraft) · Case study · Independent reconstruction · [Requirements & evidence](https://awesomerea.org/resources/deckcraft-case/)
+
+  The authors describe DeckCraft as a clean-room Rust implementation of PowerPoint-style presentation workflows. Its slide model, rendering and command layers support desktop/browser editing and PPTX interchange; reviewed source tests check constructed decks and selected preserved package parts.
 
 - [**LSX II Volume Fixer: reconstructing volume behavior**](https://github.com/roberdorfer/kef-lsx-volume) · Case study · Independent reconstruction · [Requirements & evidence](https://awesomerea.org/resources/kef-lsx-volume-case/)
 

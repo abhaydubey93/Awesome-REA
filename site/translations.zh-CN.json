@@ -1261,5 +1261,36 @@
       "项目处于 alpha；文件保真度、页面布局、高级排版、稳定性和生态兼容性仍有限。功能区命令数量及作者的成熟度估算不是验收测试通过率；本合集未重跑原应用与重实现之间的测试。",
       "代码采用 MIT OR Apache-2.0，并有 NOTICE 义务；字体及其他素材保留各自权利，ArtCraft 品牌另有受限条款。净室只是作者的说法，不是本合集独立确认的流程或法律结论；本合集不提供 Microsoft 代码或素材。"
     ]
+  },
+  "gridcraft-case": {
+    "name": "GridCraft：电子表格流程重建与 XLSX 往返边界",
+    "requirements": [
+      "固定版本工作区标明 0.7.0，声明使用 Rust 1.90+ 与 Cargo。浏览器构建采用 Trunk 和 wasm32-unknown-unknown；原生 Linux CI 列出 X11/Wayland、GTK、fontconfig/FreeType 及图形依赖。字体与输入工作簿另行提供；本合集未执行构建。",
+      "所审阅 XLSX 测试构造工作簿与 OOXML 包，比较写入再读取后的已建模值，并检查选定的未建模部件及关系。这些检查不能证明任意工作簿逐字节一致；保留连接部件不等于实现或刷新其数据源。",
+      "计算测试使用预期值检查选定公式、依赖变化和溢出数组。针对 Excel for Mac 16.113.4 的注明日期评估表示，该轮没有启动 Excel，也未运行构建或测试，并记录缺少以 Excel 计算结果为基准的一致性测试。",
+      "项目仍处于 alpha。功能区／函数名称数量及成熟度估算不是行为兼容性通过率；文件保真度、高级流程、性能与生态兼容性仍有边界，README 还记录图形驱动启动问题。不确立 Microsoft 源码树或 Microsoft 365 后端恢复。",
+      "代码采用 MIT OR Apache-2.0，并有 NOTICE 义务；可选字体与 ArtCraft 品牌另有条款。公开发布修改版须移除 ArtCraft 标识，仅用于向上游提议改动的 fork 除外。净室只是作者的说法，未获独立流程审计；CLI/MCP 支持不能证明 REA 参与。"
+    ]
+  },
+  "deckcraft-case": {
+    "name": "DeckCraft：演示文稿流程重建与有限范围 PPTX 交换",
+    "requirements": [
+      "固定版本工作区标明 0.7.0，声明使用 Rust 1.95+ 与 Cargo。Linux 源码构建需要 ALSA 头文件及显示／窗口依赖；浏览器路径采用 Trunk 和 wasm32-unknown-unknown。可选 craft-fonts 输入会影响渲染，文档也说明了系统字体回退；本合集未下载或运行应用及素材包。",
+      "所审阅 PPTX 语料由代码构造，并非从 PowerPoint 收集。测试检查保存后的文本与内容部件数量，再检查再次保存后的部件名称和文本；另有测试保留选定 XML 元数据。这些检查不能证明任意演示文稿逐字节一致或呈现效果与原 PowerPoint 相同。",
+      "针对 PowerPoint for Mac 16.113.4 的注明日期评估明确表示，该轮未测量相对 PowerPoint 的渲染保真度、性能或真实用户文稿的端到端流程。功能广度与成熟度百分比是检查表计数或作者估算，不是验收测试通过率。",
+      "项目处于 alpha，文档记录文件交换、演示流程、稳定性和生态缺口；源码快照与较旧评估条目存在差异。不宣称完整 PowerPoint／Office 等价、恢复 Microsoft 原作者源码或重建其托管服务。本合集未重跑原应用与重实现的对比。",
+      "代码采用 MIT OR Apache-2.0，并有 NOTICE 义务。字体／图标另有条款，NOTICE 将 Symphonia 音频解码器列为 MPL-2.0。ArtCraft 标识采用受限条款，公开发布修改版须移除，仅用于向上游提议改动的 fork 除外。净室仍为作者的说法；自动化接口不能证明 REA 使用。"
+    ]
+  },
+  "devilutionx-case": {
+    "name": "DevilutionX：移植重建后的 Diablo 引擎",
+    "requirements": [
+      "完整运行 Diablo 需要用户自备原版 DIABDAT.MPQ。Hellfire 还需 hellfire.mpq、hfmonk.mpq、hfmusic.mpq 和 hfvoice.mpq。另行提供的 spawn.mpq 只支持共享版部分；源码公开不附带原游戏内容的使用权。",
+      "固定源码标识为 1.6.0-dev，要求 CMake 3.22 和 C++23。默认使用 SDL2，另有 SDL1／SDL3 选项；构建文档列出各平台依赖及打包步骤。这是源码快照，不表示本合集测试了发行版。",
+      "背景文档说明 Devilution 借助 PlayStation 调试符号、断言字符串、编译器信息和汇编对照开展重建。历史上的二进制匹配里程碑不能证明加入主动修复与增强后的当前跨平台移植与原可执行文件逐字节一致。",
+      "所审阅的 timedemo 测试回放战士从一级到二级的流程并对比角色存档状态；缺少 MPQ 时会跳过，而且明确使用共享版模式。另有地牢测试对比固定随机种子的样本。这些是有限回归检查，并非原版与移植完全等价的结果；本合集均未运行。",
+      "根目录 LICENSE.md 声明采用 Sustainable Use License 1.0：使用／修改限于内部业务、非商业或个人用途，分发须免费且用于非商业目的。各组件与原游戏数据仍有各自条款。",
+      "同一快照的 Windows 打包 README 仍写有 Public Domain，Apple 应用包配置仍含 Unlicense 元数据。本条保留这些冲突，不据此把当前完整项目称为宽松许可软件，也不裁定条款冲突。所审阅来源未证实 REA 或编程智能体参与。"
+    ]
   }
 }
