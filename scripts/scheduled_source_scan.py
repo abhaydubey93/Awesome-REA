@@ -339,6 +339,8 @@ def orchestrate(directory):
                    new_successful_scans=added, counts=counts(final), checkpoint_sha256=fingerprint,
                    target_reached=added == NEW_SUCCESSES)
     write_json(directory / 'checkpoint/receipt.json', receipt)
+    if (directory / 'checkpoint/receipt.json').stat().st_size > MAX_RECEIPT_BYTES:
+        raise ValueError('Checkpoint receipt exceeds the restore bound')
     write_json(directory / 'summary.json', receipt)
     with open(os.environ['GITHUB_OUTPUT'], 'a', encoding='utf-8') as stream:
         stream.write('checkpoint_ready=true\n')
