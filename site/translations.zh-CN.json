@@ -1740,5 +1740,45 @@
       "README（2026-09-29）报告：模糊匹配 99.60%、逐字节一致 73.65%、源码链接 34.79%，12,904 个函数中 12,052 个完全一致，732 个目标文件中 542 个由源码链接；PROGRESS.md（2026-09-27）的数字略低。因此 DOL 逐字节一致并不代表源码已经完整。分支的 CI 矩阵只构建 GMSJ01，GMSE01 结果均为本地报告，本合集也未重跑。",
       "AGENTS.md（CLAUDE.md 与 GEMINI.md 为指向它的符号链接）取消了上游对智能体自主处理库代码的禁令。它要求智能体只依据二进制、链接映射和本仓库开展工作，禁止伪匹配和使用泄露的 SDK 源码，但没有统计智能体编写了多少代码。仓库沿用 CC0-1.0，任天堂内容和编译器另有权利约束。未确立 REA 的使用。"
     ]
+  },
+  "dk64-recompiled-case": {
+    "name": "Donkey Kong 64: Recompiled：基于 N64Recomp 的原生移植",
+    "requirements": [
+      "仅可游玩用户自备的美版 Nintendo 64《大金刚 64》ROM；该 ROM 的其他转储格式会被转换为 .z64。仓库和发布包均不含游戏素材，它不是可运行其他 ROM 的模拟器；README 将模组和其他语言支持列为后续工作。",
+      "v1.0.3 版本（2026-09-30）提供 Windows、Linux x64／ARM64、Flatpak x64 和 macOS ARM64 压缩包。README 要求显卡支持带 Shader Model 6 的 Direct3D 12.0 或 Vulkan 1.2，CPU 支持 AVX，并将 Linux 上的 Intel 显卡、部分发行版上的预编译 Linux 程序以及叠加层软件列为已知问题。",
+      "源码构建需要递归克隆、CMake 与 Ninja 加 Clang（Windows 上为带 Clang 的 Visual Studio 2022 及 vcpkg curl）、另行构建的 N64Recomp 和 RSPRecomp，以及与 BUILDING.md 所列 SHA-1 一致的 NTSC-U 1.0 ROM 解压副本；游玩时仍使用标准 ROM。",
+      "README 称实现了高帧率、宽屏和低输入延迟改进，同时提到极宽画面比例下过场动画边缘的异常。项目未公布等价性或游戏流程测试；固定提交上的 CI 仅构建移植程序，额外输入来自由密钥配置的检出仓库。本合集未重跑这些说法。",
+      "项目采用 GPLv3；原游戏、反编译子模块及其他依赖保留各自条款。CONTRIBUTING.md 禁止提交 AI 生成的代码，所审来源未确立 REA 或编程智能体参与。"
+    ]
+  },
+  "twilight-princess-decomp-case": {
+    "name": "《黄昏公主》：GameCube 版代码完全一致的反编译",
+    "requirements": [
+      "README 将其描述为进行中的反编译，列出十个目标版本：三个 GameCube 发行版（GZ2E01、GZ2P01、GZ2J01）、包括体验版在内的五个 Wii 版本，以及两个 Nvidia Shield 中国版。产物是原平台的可执行文件和 REL 模块；README 说明项目不会制作 PC 或其他平台的移植，Dusklight 是基于这些代码的独立项目。",
+      "构建需要使用者自备所选版本的光盘镜像，格式可为 ISO／GCM、RVZ、WIA、WBFS、CISO、NFS、GCZ 或 TGC，首次构建后即可删除。仓库不含游戏素材或汇编；decomp-toolkit 在本地拆分原文件。",
+      "在 Windows 上可直接用 Python 与 ninja 构建；Linux／macOS 需 ninja，并会自动下载 wibo 包装器。configure.py 固定 decomp-toolkit v1.8.0、objdiff v3.6.1、binutils 2.42-1 及 20251118 编译器包，并按目标版本和库选用相应的 Metrowerks 编译器版本；objdiff 用于逐个对象比对。",
+      "默认构建对标为完成的单元链接由源码编译的对象，其余单元使用从原文件提取的对象，再按各版本的 build.sha1 校验输出（GZ2E01 有 758 条记录）。decomp.dev 针对该固定提交的报告显示，三个 GameCube 版本的代码均已 100% 匹配，2,608 个单元中有 2,583 个已完成；ShieldD 为 54.47%，Wii 版 RZDE01_00 为 47.06%。CI 在存有游戏文件的私有容器中运行；本合集未运行任何构建。",
+      "LICENSE.md 采用 CC0-1.0，不涵盖任天堂的游戏、光盘内容或下载的编译器。所审来源未确立 REA 或编码代理的参与。"
+    ]
+  },
+  "sotn-matching-decomp-case": {
+    "name": "Castlevania: Symphony of the Night：覆盖 PlayStation、PSP 与 Saturn 版本的一致性反编译",
+    "requirements": [
+      "README 将其描述为进行中的一致性反编译，涵盖四个构建：us（PlayStation 版 SLUS-00067，为参考版本）、hd（在 Castlevania: Dracula X Chronicles 数据中发现的未发售日版 PS1 构建）、pspeu（Dracula X Chronicles 欧版）和 saturn（由外部团队开发的 Saturn 移植版）。Build wiki 说明仍有部分不一致函数置于 NON_MATCHING 宏下，不保证功能等价。README 链接 sotn.xee.dev 和 decomp.dev 上会变动的进度页面；本合集未记录完成度数字。",
+      "仓库不含游戏素材，也不含编译所需的汇编；README 要求事先拥有游戏副本。Build wiki 要求未经修改的美版 PlayStation 光盘的 BIN/CUE 镜像；固定版本的 Makefile 则从欧版 Dracula X Chronicles ISO 读取两个 PSP 来源的构建，并从 Saturn 的 BIN/CUE 镜像读取 Saturn 构建，这些文件均以对应版本的名称放在 disks/ 下。",
+      "Build wiki 以 CI 所用的 Ubuntu 24.04 LTS 为测试环境，也涵盖通过 WSL 2 使用 Windows 以及基于 Arch 的发行版；Dockerfile 提供 Ubuntu Noble 环境。构建需要 Go、Rust、Python 3.12+、MIPS 与 SH binutils、MIPS GCC、ninja，以及 m2c、maspsx、asm-differ、mipsmatch、decomp-permuter 等子模块工具。项目托管的预编译归档（包括 cc1-psx、mwccpsp、Cygnus 2.7 工具链和 wibo）会依据 SHA-256 文件校验；Saturn 构建还需要 dosemu。",
+      "除非设置 SKIP_CHECK，固定版本的构建代码会依据 config/check.<version>.sha 对产物计算哈希：us 清单列出 main.exe、DRA.BIN、RIC.BIN 及关卡和覆盖模块文件，hd、pspeu 与 saturn 的清单较短。wiki 仍提到 make check 步骤，但固定版本的 Makefile 并未定义该目标。这些检查比较所供版本的文件一致性，不覆盖游戏行为，本合集也未重跑。",
+      "Makefile 也接受 pc 版本，src/pc 中有原生移植代码，但 PC Port wiki 页面说明目前尚无基于反编译、可端到端运行的移植；此处不主张存在 PC 移植。仓库声明采用 AGPL-3.0，光盘镜像、提取的素材和汇编以及下载的编译器各有权利约束。CONTRIBUTING 仅允许贡献者能够说明理由并可手动操作的编码代理辅助改动，并要求提交与拉取请求不得由自主工具生成；这不确立 REA 使用，也不主张运行复现。"
+    ]
+  },
+  "lego-island-portable-case": {
+    "name": "LEGO Island 可移植版：反编译源码的多平台移植",
+    "requirements": [
+      "README 将其描述为基于 isledecomp/isle 的英文版 LEGO Island 1.1 可移植版本，目标是实现平台无关，不改动玩法，也不为改进而重写代码；贡献指南表示，对 LEGO1 代码的修改通常只在直接提升平台兼容性时才会接受。轻度模组通过 extensions 实现，所审版本包含多人联机、第三人称镜头和素材加载器。状态表列出 Windows、macOS、Linux、FreeBSD、DOS、Web、iOS、Android、Xbox One、PlayStation Vita、Nintendo Switch 和 Nintendo 3DS。",
+      "需已有一份 LEGO Island。引导安装器要求零售版 CD-ROM 或由其制作的光盘镜像，并称任何语言的 1.0 或 1.1 零售版均可；可选的高清音频包仅适用于英文 1.1 版。安装器称 isle.pizza 的 Web 版本以串流方式运行、无需本地光盘；本次核查未检查该网站提供的内容及其依据。",
+      "构建使用 CMake 3.25+ 和 C++17 编译器；CMake 默认下载 SDL3 和 iniparser，libsmacker 与 miniaudio 为子模块。README 未提供单独的构建指南，而是让读者参考 CI 工作流；该工作流使用 MSVC、MinGW、macOS／Linux 工具链以及 Emscripten、devkitPro、VitaSDK、DJGPP、Android 等平台 SDK，桌面设置工具需要 Qt 6。发布下载为 master 的持续构建，README 提醒可能出现回归。",
+      "所审 CI 检查代码格式，并为各平台目标完成配置、构建和打包；它不运行游戏，也不与原版行为比较。各平台状态项是 CI 徽章，不是玩法一致性结果。Kaitai Struct 描述文件记录了存档、动画、世界数据库和纹理格式。本合集未构建或运行该移植。",
+      "仓库采用 LGPL-3.0；内置及下载的第三方库各自适用其条款，原游戏数据、LEGO 商标以及安装器取自原安装程序的位图仍有各自权利约束。所审来源未确立 AI 或 REA 使用归因。"
+    ]
   }
 }
