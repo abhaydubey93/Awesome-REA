@@ -27,6 +27,16 @@ An independent collection of tools, case studies and research for websites, game
 - [All cases](https://awesomerea.org/cases/) (56) · [Related Collections](#related-collections) (4) · [Full Repository Index](#full-repository-index) (2,836)
 <!-- END GENERATED CONTENTS -->
 
+## Find by task
+
+| Task | Relevant sections |
+| --- | --- |
+| Inspect a website or app interface | [Websites](#website) · [Apps](#app) |
+| Rebuild a game or check matching code | [Games](#game) · [Game cases](https://awesomerea.org/cases/#cases-game) |
+| Analyze compiled code or recover symbols | [Native binaries](#native-binary) · [Agents and MCP](#agents-and-mcp) |
+| Investigate firmware or device protocols | [Firmware](#firmware) · [Protocols](#protocol) |
+| Compare methods and evaluation evidence | [Papers](#papers) · [Survey comparisons](https://awesomerea.org/survey/#comparative-studies) |
+
 <a id="resource-catalog"></a>
 ## Resources
 

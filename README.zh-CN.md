@@ -27,6 +27,16 @@
 - [全部案例](https://awesomerea.org/zh/cases/) (56) · [相关合集](#related-collections) (4) · [完整仓库索引](#完整仓库索引) (2,836)
 <!-- END GENERATED CONTENTS -->
 
+## 按任务查找
+
+| 任务 | 相关分类 |
+| --- | --- |
+| 检查网站或应用界面 | [网站](#website) · [应用](#app) |
+| 重建游戏或检查代码匹配 | [游戏](#game) · [游戏案例](https://awesomerea.org/zh/cases/#cases-game) |
+| 分析编译后代码或恢复符号 | [原生二进制](#native-binary) · [智能体与 MCP](#agents-and-mcp) |
+| 研究固件或设备协议 | [固件](#firmware) · [协议](#protocol) |
+| 比较方法与评测证据 | [论文](#papers) · [综述中的对比分析](https://awesomerea.org/zh/survey/#comparative-studies) |
+
 <a id="资源目录"></a>
 <a id="resource-catalog"></a>
 ## 资源
