@@ -416,12 +416,12 @@ def validate_scan_discovery(meta, records, errors):
             errors.append(f'{where}: paper references require paper discovery')
 
 
-def validate_source_index(document, errors):
+def validate_source_index(document, errors, *, allow_incomplete=False):
     if not isinstance(document, dict) or not isinstance(document.get('meta'), dict) or not isinstance(document.get('resources'), list):
         errors.append('Source index must contain meta and resources.')
         return 0
     meta, records = document['meta'], document['resources']
-    if meta.get('status') != 'complete':
+    if meta.get('status') != 'complete' and not (allow_incomplete and meta.get('status') == 'in-progress'):
         errors.append('Source index is an incomplete checkpoint; finish the scan before publication.')
     if meta.get('successful_readme_scans') != len(records) or len(records) <= 1500:
         errors.append('Source index must retain more than 1,500 successful scans and matching counts.')
