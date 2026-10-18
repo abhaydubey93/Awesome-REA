@@ -23,7 +23,7 @@
 .paper-section-heading>span{color:var(--muted);font-size:14px;white-space:nowrap}
 .paper-grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:20px;align-items:start}
 .paper-card{min-width:0;padding:20px;border:1px solid var(--line);border-radius:12px;background:var(--surface);box-shadow:0 2px 5px var(--shadow)}
-.paper-meta{display:flex;flex-wrap:wrap;align-items:center;gap:7px 10px;margin-bottom:12px;font-size:14px;color:var(--muted)}
+.paper-meta{display:flex;flex-wrap:wrap;align-items:center;gap:7px 10px;margin:12px 0 0;font-size:14px;color:var(--muted)}
 .paper-year{color:var(--ink);font-weight:700;font-variant-numeric:tabular-nums}
 .paper-venue{font-weight:550}
 .paper-status{padding:2px 7px;border-radius:5px;font-size:13px;background:var(--tint);color:var(--link)}

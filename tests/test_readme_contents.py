@@ -69,6 +69,7 @@ class ReadmeContentsTest(unittest.TestCase):
                 self.assertEqual(rendered.count(f'- [**{title}**]({record["url"]})'), 1)
                 self.assertEqual(rendered.count('\n\n  ' + description + '\n'), 1)
                 self.assertIn(f'[{label}](https://awesomerea.org/{prefix}resources/{record["id"]}/)', rendered)
+                self.assertLess(rendered.index(description), rendered.index(f'[{label}]'))
                 self.assertNotIn('<sub>', rendered)
         self.assertEqual(record, before)
 
@@ -83,6 +84,8 @@ class ReadmeContentsTest(unittest.TestCase):
                 self.assertIn('](https://example.com/code)', rendered)
                 self.assertIn(f'[{label}](https://awesomerea.org/{prefix}papers/paper-readme-fixture/)', rendered)
                 self.assertIn(plain_text(record[f'description_{language}']), rendered)
+                self.assertLess(rendered.index(plain_text(record[f'description_{language}'])),
+                                rendered.index('[PDF]'))
                 self.assertIn(plain_text(record[f'scope_limitations_{language}']), rendered)
                 self.assertIn(str(record['year']), rendered)
                 self.assertIn(plain_text(record['venue']), rendered)

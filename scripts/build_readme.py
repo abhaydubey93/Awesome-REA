@@ -222,9 +222,9 @@ def render_catalog(records, language, paper_urls=frozenset()):
                 detail_url = f"https://awesomerea.org/{'zh/' if language == 'zh' else ''}resources/{record['id']}/"
                 detail_label = '使用条件与证据' if language == 'zh' else 'Requirements & evidence'
                 lines.extend([
-                    f"- [**{name}**]({record['url']})<br>",
-                    f"  {metadata} · [{detail_label}]({detail_url})", '',
+                    f"- [**{name}**]({record['url']})", '',
                     f'  {description}', '',
+                    f"  {metadata} · [{detail_label}]({detail_url})", '',
                 ])
     return '\n'.join(lines).rstrip() + '\n'
 
@@ -317,11 +317,10 @@ AGENT_EVALUATION_PAPERS = {
 def render_papers(papers, language):
     zh = language == 'zh'
     index = int(zh)
-    protocol_scope = ('协议推断、' if zh else 'protocol inference, ') if any('protocol' in paper['targets'] for paper in papers) else ''
     directory = 'https://awesomerea.org/zh/papers/' if zh else 'https://awesomerea.org/papers/'
     lines = ['<a id="papers"></a>', '## 论文' if zh else '## Papers', '',
-             (f'收录 **{len(papers)} 篇论文**，涵盖逆向工程智能体评测、反编译、{protocol_scope}固件分析，以及网站、游戏和应用重建。部分论文也出现在精选资源目录中，两者数量不可相加。发表状态与研究范围分别标注，中文标题为译名。'
-              if zh else f'A bibliography of **{len(papers)} papers** on reverse-engineering agent evaluation, decompilation, {protocol_scope}firmware analysis, and website, game, and app reconstruction. Some papers also appear among curated resources; counts are not additive. Publication status and study scope are made explicit.'), '',
+             (f'**{len(papers)} 篇论文**，按主题分组，组内按年份从新到旧排列。每项均标明发表状态，中文标题为译名。'
+              if zh else f'**{len(papers)} papers**, grouped by topic and ordered newest first. Each entry shows its publication status.'), '',
              f"[{'浏览论文目录' if zh else 'Browse the paper directory'}]({directory}) · [{'完整书目 JSON' if zh else 'Complete bibliography JSON'}](data/papers.json) · [{'推荐论文' if zh else 'Suggest a paper'}](https://github.com/reacher-z/Awesome-REA/issues/new?template=paper.yml)", '']
     groups = defaultdict(list)
     for paper in papers:
@@ -335,8 +334,8 @@ def render_papers(papers, language):
     lines.extend([f"**{'按主题' if zh else 'By topic'}**", ''])
     lines.extend('- ' + ' · '.join(topics[start:start + 3]) for start in range(0, len(topics), 3))
     lines.extend(['',
-                  ('展开各条目的“范围与发表信息”可查看完整研究边界；以下按年份从新到旧排列。'
-                   if zh else 'Open “Scope and publication details” for each study’s full limitations. Papers are ordered newest first within each topic.'), ''])
+                  ('展开“范围与发表信息”查看完整研究边界。部分论文也出现在精选资源目录中，两者数量不可相加。'
+                   if zh else 'Open “Scope and publication details” for each study’s full limitations. Some papers also appear among curated resources; counts are not additive.'), ''])
     for section, labels in PAPER_SECTIONS.items():
         if not groups[section]:
             continue
@@ -353,9 +352,9 @@ def render_papers(papers, language):
                 links.append(f"[{'代码' if zh else 'Code'}]({paper['code_url']})")
             links.append(f"[{'完整条目与引用' if zh else 'Full entry & citation'}]({detail_url})")
             lines.extend([
-                f"- [**{title}**]({paper['url']})<br>",
-                f"  {paper['year']} · {status} · " + ' · '.join(links), '',
+                f"- [**{title}**]({paper['url']})", '',
                 '  ' + plain_text(paper[f'description_{language}']), '',
+                f"  {paper['year']} · {status} · " + ' · '.join(links), '',
                 '  <details>',
                 f"  <summary>{'范围与发表信息' if zh else 'Scope and publication details'}</summary>", '',
                 f"  **{'范围与限制' if zh else 'Scope and limits'}:** "
