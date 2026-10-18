@@ -218,3 +218,19 @@ html[lang="zh-CN"] .survey-kicker {letter-spacing:.05em}
 }
 
 .survey-header > .survey-note { max-width: 72ch; font-size: 14px; line-height: 1.75; color: var(--muted); }
+
+/* Short task-oriented navigation keeps the article close on small screens. */
+.survey-toc-mobile{display:none}
+.survey-actions .button-primary{background:var(--ink);border-color:var(--ink);color:#fff}
+.survey-actions .button-primary:hover{background:var(--link)}
+.survey-header{padding-top:40px;padding-bottom:28px}
+.survey-toc-desktop a{min-height:36px;padding-block:6px}
+@media(max-width:999px){
+ .survey-toc-desktop{display:none}
+ .survey-toc-mobile{display:block;border-block:1px solid var(--line);padding:6px 0;margin-bottom:26px}
+ .survey-toc-mobile>summary{cursor:pointer;min-height:44px;padding:10px 0;color:var(--link);font-size:15px;font-weight:650}
+ .survey-toc-mobile ol{list-style:none;margin:0;padding:0 0 10px}
+ .survey-toc-mobile a{display:block;min-height:44px;padding:9px 8px;color:var(--muted);font-size:14px;line-height:1.7}
+}
+@media(max-width:700px){.survey-actions{display:grid;grid-template-columns:repeat(2,minmax(0,1fr))}.survey-actions a{font-size:13px;padding:9px 10px}.survey-header{padding-top:26px;padding-bottom:22px}}
+@media print{.survey-toc-mobile{display:none!important}.survey-header{padding-top:0;padding-bottom:16pt}}

@@ -3399,8 +3399,8 @@
     "zh": "逆向工程从不同证据重建不同对象：从图像恢复视觉布局，从交互推断规则模型，从二进制代码生成源码假设，或围绕保留的固件构建执行环境。本专题综述综合一个固定的 53 篇论文语料及八个有文档支持的项目案例，考察这些重建究竟能够确立什么。文献按网站、游戏、应用、二进制、固件和协议六个领域组织，比较观察权限、重建输出及验收判据。核心论点是：只有同时明确这三者，结果才可得到恰当解释。视觉相似、构建匹配、有限测试一致及服务成功启动，分别约束不同属性，不能合并为单一恢复分数。所选案例进一步说明，原始素材、先前源码接触、既有实现和云服务依赖如何塑造结果。跨领域来看，更清晰的评测有赖于明确记录所提供的信息、使用构建样例之外的检查，并分别报告结构、视觉和行为证据。本综述提供比较主张和识别未测试边界的框架，而非系统排名。[[paper-slade]] [[paper-programdistill]] [[paper-halucinator]]"
   },
   "disclosure": {
-    "en": "An AI-assisted editorial synthesis by Awesome REA contributors; not a peer-reviewed research article.",
-    "zh": "由 Awesome REA 贡献者整理的 AI 辅助专题综述，并非经过学术同行评审的研究论文。"
+    "en": "AI-assisted editorial synthesis. No new experiments; not peer reviewed.",
+    "zh": "借助 AI 编写的专题综述；无新增实验，未经同行评审。"
   },
   "reference_note": {
     "en": "Corpus membership and reference records are frozen at the snapshot shown above. All 53 papers are retained in the bibliography, including entries not cited in the narrative; the eight selected cases are also included. Linked collection entries may be updated separately. Changes to this survey’s paper corpus, reference metadata or bibliographic dates require a new version and date.",
@@ -3498,7 +3498,11 @@
           "en": "A useful evidence record separates checks that are defined, eligible, executed and passed. A missing fixture, disabled comparison or absent original file is a coverage gap, not a successful result. Likewise, compilation and startup checks establish different properties from a differential test. Reporting skipped checks and configuration switches alongside successes would make heterogeneous case reports easier to compare without pretending that their denominators are interchangeable.",
           "zh": "有用的证据记录应区分已定义、满足执行条件、实际执行及通过的检查。缺失样本、关闭比较或缺少原始文件，都属于覆盖缺口，而不是成功结果。同样，编译与启动检查确立的性质不同于差分测试。在报告成功的同时列出跳过项与配置开关，有助于比较异质案例，也避免假定它们的统计分母可以互换。"
         }
-      ]
+      ],
+      "nav_title": {
+        "en": "Scope and method",
+        "zh": "范围与方法"
+      }
     },
     {
       "id": "evidence-taxonomy",
@@ -3516,7 +3520,11 @@
           "zh": "一个反复出现的困难是欠确定性：不同实现可能解释相同观察。视觉相似无法确定业务逻辑，通过抽样执行不能恢复原始源码，有用的模拟环境也可能有意简化硬件。以下讨论区分三组概念：观察所得证据与额外提供的规范、重建与复用现有组件、测得的结果与该结果试图支持的更广泛主张。关键在于证据约束了哪些属性，以及哪些属性仍未检验。[[paper-ui2app]] [[paper-slade]] [[paper-firmae]]"
         }
       ],
-      "figure": true
+      "figure": true,
+      "nav_title": {
+        "en": "Evidence framework",
+        "zh": "证据框架"
+      }
     },
     {
       "id": "website",
@@ -3526,8 +3534,8 @@
       },
       "paragraphs": [
         {
-          "en": "Screenshot-to-code research treats rendered appearance as the main reference. Design2Code combines visual-element and layout measures with human assessment, while Web2Code separates screenshot understanding from HTML generation. DCGen and ScreenCoder make generation more structured by decomposing images into regions or assigning grounding, planning and generation to separate stages. DCGen and ScreenCoder make an intermediate layout structure explicit before producing the final page code. However, a generated button can look correct without implementing any action. Placeholder media and self-contained page snapshots also alter the reconstruction problem, so visual scores should be read with the supplied assets and reference construction in view. [[paper-design2code]] [[paper-web2code]] [[paper-dcgen]] [[paper-screencoder]]",
-          "zh": "截图到代码研究主要以渲染外观为参考。Design2Code 将视觉元素、布局指标与人工评估结合；Web2Code 则区分截图理解和 HTML 生成。DCGen 与 ScreenCoder 通过图像分区，或将定位、规划、生成分配给不同阶段，使生成过程更有结构。在生成最终页面代码前，DCGen 与 ScreenCoder 都明确构建了中间布局结构。不过，生成的按钮外观正确，并不意味着它实现了任何动作。占位素材和自包含页面快照也会改变任务本身，因此应结合所提供的素材及参考数据构建方式理解视觉分数。[[paper-design2code]] [[paper-web2code]] [[paper-dcgen]] [[paper-screencoder]]"
+          "en": "Screenshot-to-code research treats rendered appearance as the main reference. Design2Code combines visual-element and layout measures with human assessment, while Web2Code separates screenshot understanding from HTML generation. DCGen decomposes screenshots into regions; ScreenCoder separates visual grounding, layout planning and code generation. However, a generated button can look correct without implementing any action. Placeholder media and self-contained page snapshots also alter the reconstruction problem, so visual scores should be read with the supplied assets and reference construction in view. [[paper-design2code]] [[paper-web2code]] [[paper-dcgen]] [[paper-screencoder]]",
+          "zh": "截图到代码研究主要以渲染外观为参考。Design2Code 将视觉元素、布局指标与人工评估结合；Web2Code 则区分截图理解和 HTML 生成。DCGen 将截图分解为多个区域；ScreenCoder 则分离视觉定位、布局规划与代码生成。不过，生成的按钮外观正确，并不意味着它实现了任何动作。占位素材和自包含页面快照也会改变任务本身，因此应结合所提供的素材及参考数据构建方式理解视觉分数。[[paper-design2code]] [[paper-web2code]] [[paper-dcgen]] [[paper-screencoder]]"
         },
         {
           "en": "Interactive benchmarks supply or infer additional evidence. Interaction2Code provides before-and-after states for individual transitions; IWR-Bench uses interaction videos and annotated replay sequences. These test observed changes beyond a static screenshot, but IWR-Bench explicitly allows implied backend behavior to be mocked with static JavaScript data. UI2App instead asks models to infer plausible interactions from screenshots and accepts multiple valid implementations under a rubric. These are distinct tasks: reproducing demonstrated transitions and inventing behavior consistent with a design. Neither alone identifies the original server implementation, and cross-route state should not be equated with persistence across sessions. [[paper-interaction2code]] [[paper-iwr-bench]] [[paper-ui2app]]",
@@ -3537,7 +3545,11 @@
           "en": "ProgramDistill shifts emphasis toward behavior: evaluated agents inspect live references through structured browser observations, and submitted code is checked through dependent workflows in a fresh verification environment. Vision2Web also tests workflows, but its full-stack tier supplies written requirements alongside visual prototypes. Dashboard2Code adds active exploration within a particular dashboard framework. Access to text, selectors, DOM information or explicit requirements changes what must be inferred. Comparisons must therefore separate observation access from reconstruction skill. Workflow replay can expose a failed saved edit or an incorrect sequence of actions, while still leaving untested database invariants and visual fidelity outside its guarantees. [[paper-programdistill]] [[paper-vision2web]] [[paper-dashboard2code]]",
           "zh": "ProgramDistill 将重点转向行为：被评测智能体通过结构化浏览器观察检查运行中的参考应用，提交代码则在新的验证环境中接受有依赖关系的工作流检查。Vision2Web 也测试工作流，但其全栈任务同时提供视觉原型和文字需求。Dashboard2Code 则在特定仪表盘框架中加入主动探索。文本、选择器、DOM 信息或明确需求的可用性，会改变需要推断的内容。因此，比较时必须区分观察权限与重建能力。工作流回放可以发现编辑未保存或动作序列错误，却仍无法保证未测试的数据库不变量或视觉保真度。[[paper-programdistill]] [[paper-vision2web]] [[paper-dashboard2code]]"
         }
-      ]
+      ],
+      "nav_title": {
+        "en": "Websites",
+        "zh": "网站"
+      }
     },
     {
       "id": "game",
@@ -3558,7 +3570,11 @@
           "en": "RevengeBench narrows the unknown object further to executable decision policies, evaluated through held-out action agreement and competitive value. This distinguishes recovering an opponent's policy from rebuilding the environment in which it acts. Across these studies, exploration policy, access to symbolic state or textual rules, and the distribution of tested states determine the difficulty. A promising research direction is to evaluate models on interventions beyond their construction traces, while reporting model fidelity separately from task reward. Deterministic toy worlds and fixed policies provide useful controlled experiments, but do not establish performance on stochastic, partially observed or adaptive game systems. [[paper-revengebench]] [[paper-worldcoder]] [[paper-code-world-models]]",
           "zh": "RevengeBench 将未知对象进一步限定为可执行决策策略，通过留出状态上的动作一致性和对抗价值进行评估。这区分了恢复对手策略与重建策略所处环境。在这些研究中，探索策略、符号状态或文字规则的可用性，以及测试状态的分布，共同决定任务难度。一个值得研究的方向，是在构建轨迹之外施加干预来评估模型，同时分别报告模型保真度与任务奖励。确定性简化环境和固定策略能够提供受控实验，但不能据此确立在随机、部分可观察或自适应游戏系统中的表现。[[paper-revengebench]] [[paper-worldcoder]] [[paper-code-world-models]]"
         }
-      ]
+      ],
+      "nav_title": {
+        "en": "Games",
+        "zh": "游戏"
+      }
     },
     {
       "id": "app",
@@ -3579,7 +3595,11 @@
           "en": "The open problem is how to connect interface recovery to independently specified behavior without silently filling gaps. A screenshot cannot determine authentication rules, synchronization, permissions or off-screen state. Navigation graphs constrain some transitions, yet leave business semantics unresolved. Future comparisons should identify which elements came from images, which were supplied by people, and which were invented by the generator; they should also separate compilation, visual matching and runtime behavior. Artifact availability is an additional dimension: a described method or promised release can support a literature discussion without establishing that its complete implementation has been inspected or reproduced. [[paper-declarui]] [[paper-uiorchestra]] [[paper-redraw]]",
           "zh": "尚待解决的问题，是如何把界面恢复与独立规定的行为连接起来，而不悄然补造缺失信息。截图无法确定身份认证规则、同步机制、权限或屏幕之外的状态。导航图约束了部分转移，却仍留下业务语义问题。未来比较应明确哪些元素来自图像，哪些由人提供，哪些由生成器构造，并分别报告编译、视觉匹配和运行行为。产物可用性是另一维度：方法描述或发布承诺可以支撑文献讨论，却不能证明其完整实现已经接受检查或复现。[[paper-declarui]] [[paper-uiorchestra]] [[paper-redraw]]"
         }
-      ]
+      ],
+      "nav_title": {
+        "en": "Apps",
+        "zh": "应用"
+      }
     },
     {
       "id": "binary",
@@ -3600,7 +3620,11 @@
           "en": "DeGPT illustrates the different risks of rewriting existing decompiler output: simplification and naming may aid comprehension, while heuristic semantic checks can miss harmful changes. DecompileBench broadens evaluation to functions from real programs and combines behavioral checks with understandability assessment, but finite fuzzing coverage and model-assisted judgments remain bounded oracles. The useful comparison is thus multidimensional: symbol plausibility, structural readability, compilation, tested behavior and preserved dependencies. Research that reports these separately is easier to interpret than a single decompilation score. Testing beyond the examples used to select or repair an output is especially important for detecting plausible-looking mistakes. [[paper-degpt]] [[paper-decompilebench]] [[paper-slade]]",
           "zh": "DeGPT 展示了改写现有反编译输出的另一类风险：简化和命名可以帮助理解，启发式语义检查却可能漏掉有害修改。DecompileBench 把评测扩展到真实程序中的函数，并结合行为检查与可理解性评估，但有限的模糊测试覆盖和模型辅助判断仍是有边界的判定依据。因此，有用的比较应包含多个维度：符号合理性、结构可读性、编译情况、已测试行为及依赖保留情况。分别报告这些维度，比给出单一反编译分数更易解释。尤其应使用候选选择或修复过程之外的样例进行测试，以发现看似合理的错误。[[paper-degpt]] [[paper-decompilebench]] [[paper-slade]]"
         }
-      ]
+      ],
+      "nav_title": {
+        "en": "Binaries",
+        "zh": "二进制"
+      }
     },
     {
       "id": "firmware",
@@ -3621,7 +3645,11 @@
           "en": "The central research tension is between reachability and fidelity. A permissive model can expose more code while also admitting impossible inputs; a detailed model may demand substantial manual knowledge and still miss a peripheral condition. Useful evaluations should connect accepted service behavior and discovered faults to documented assumptions, then distinguish emulator-only observations from checks on physical devices. This also makes negative results informative: unsupported architectures, incomplete unpacking, missing initialization or failed peripheral models are different failure categories. None of these rehosting achievements alone implies original-source recovery or reconstruction of every device function. [[paper-fuzzware]] [[paper-halucinator]] [[paper-firmwell]]",
           "zh": "核心研究张力在于可达性与保真度。宽松模型可能暴露更多代码，同时允许现实中不可能出现的输入；详细模型可能需要大量人工知识，却仍遗漏某种外设条件。有用的评测应把服务验收和发现的故障与明确记录的假设联系起来，并区分仅在模拟器中观察到的结果与真实设备检查。这也使负面结果具有信息价值：不支持的架构、不完整的解包、缺失的初始化和失败的外设模型，属于不同故障类别。任何一类重托管成果，都不能单独证明恢复了原始源码或重建了设备的全部功能。[[paper-fuzzware]] [[paper-halucinator]] [[paper-firmwell]]"
         }
-      ]
+      ],
+      "nav_title": {
+        "en": "Firmware",
+        "zh": "固件"
+      }
     },
     {
       "id": "protocol",
@@ -3642,7 +3670,11 @@
           "en": "State-machine learning asks which sequences of messages lead to distinguishable responses. StateInspector combines active queries with runtime memory evidence, whereas BLE automata learning interacts with physical devices through a predefined set of abstract protocol actions. Both illustrate that state coverage depends on what the harness can send, how outputs are abstracted, and how reset, timing and nondeterminism are handled. These methods do not automatically recover unknown message syntax. Conversely, format inference does not supply an entire state machine. Bringing the two together remains a research problem: a format-valid message can be inappropriate in a particular state, while an omitted input can hide a whole branch of behavior. [[paper-stateinspector]] [[paper-ble-automata-learning]] [[paper-netplier]]",
           "zh": "状态机学习研究哪些报文序列会产生可区分的响应。StateInspector 将主动查询与运行时内存证据结合；BLE 自动机学习则通过预先定义的一组抽象协议动作与真实设备交互。二者都说明，状态覆盖取决于测试框架能发送什么、如何抽象输出，以及如何处理复位、时序和非确定性。这些方法不会自动恢复未知报文语法；反过来，格式推断也不会提供完整状态机。如何连接二者仍是研究问题：格式有效的报文可能不适合某个状态，而遗漏一种输入可能掩盖整条行为分支。[[paper-stateinspector]] [[paper-ble-automata-learning]] [[paper-netplier]]"
         }
-      ]
+      ],
+      "nav_title": {
+        "en": "Protocols",
+        "zh": "协议"
+      }
     },
     {
       "id": "agent-benchmarks",
@@ -3663,7 +3695,11 @@
           "en": "ProgramBench takes another route: agents query a reference executable and consult documentation, while binary inspection, decompilation and internet access are forbidden during inference. Generated tests evaluate the replacement program over finite inputs. Comparisons across agent studies should record tool permissions, query and resource budgets, test visibility and prior exposure, then align the required submission. Rebuilding behavior from black-box queries is not the same task as identifying a secret, explaining static code or recovering source through disassembly. [[paper-programbench]]",
           "zh": "ProgramBench 采用另一条路线：智能体查询参考可执行程序并查阅文档，但在推断期间禁止二进制检查、反编译和互联网访问。生成测试在有限输入上评估替代程序。跨智能体研究的比较应记录工具权限、查询和资源预算、测试可见性及先前接触情况，再对齐要求提交的产物。根据黑盒查询重建行为，与识别秘密、解释静态代码或通过反汇编恢复源码，并不是同一任务。[[paper-programbench]]"
         }
-      ]
+      ],
+      "nav_title": {
+        "en": "Agent benchmarks",
+        "zh": "智能体评测"
+      }
     },
     {
       "id": "comparative-studies",
@@ -3677,7 +3713,11 @@
           "zh": "下表比较研究设计，而非分数。每行说明方法获得什么、生成什么、如何评估输出，以及解释该评估所需的一项边界。观察权限、原始上下文和人工协助，应与算法一同纳入比较。所选研究跨越六个领域，展示若干方法类别，但不是用于估计整个领域成功率的代表性样本。"
         }
       ],
-      "table": "papers"
+      "table": "papers",
+      "nav_title": {
+        "en": "Study comparison",
+        "zh": "研究对比"
+      }
     },
     {
       "id": "case-evidence",
@@ -3707,7 +3747,11 @@
           "zh": "NJFE 的摄像头到桌面桥接通过定制 USB 串口传输 JPEG 帧，不提供标准 USB 摄像头（UVC）接口，也没有恢复原始摄像头应用。它复用此前的 otoscope 协议实现，作者则将实现辅助归因于 Claude Code。TCLimate 在发送命令后检查部分云端上报状态；确认结果并不独立证明压缩机或气流的实际行为。报告的覆盖限于文档中的地区与设备，不能据此确立对其他地区或机型的支持。[[njfe-ear-camera-bridge-case]] [[tclimate-cloud-controls-case]]"
         }
       ],
-      "table": "cases"
+      "table": "cases",
+      "nav_title": {
+        "en": "Case comparison",
+        "zh": "案例对比"
+      }
     },
     {
       "id": "evaluation-reliability",
@@ -3728,7 +3772,11 @@
           "en": "These reports are also insufficient for causal claims about agent productivity. A reconstruction may combine human analysis, inherited implementations, generated code and target-specific fixes. Without comparable baselines and recorded interventions, success cannot be assigned to one model or tool. Future studies should separate discovery effort from implementation effort, report failed attempts and resource budgets, and distinguish assistance during reconstruction from agent functionality merely supported by the finished application.",
           "zh": "这些报告同样不足以支持有关智能体生产效率的因果结论。一项重建可能结合人工分析、既有实现、生成代码及针对目标的修正。缺少可比基线和干预记录时，不能将成功归因于单一模型或工具。后续研究应分别记录查明目标机制与编写重建实现所需的工作量，报告失败尝试和资源预算，并区分重建期间的智能体辅助与成品应用仅仅支持的智能体功能。"
         }
-      ]
+      ],
+      "nav_title": {
+        "en": "Evaluation and attribution",
+        "zh": "评测与归因"
+      }
     },
     {
       "id": "research-agenda",
@@ -3763,7 +3811,11 @@
           "en": "How much of a reconstruction survives a new target version, device variant or compiler setting? Report regressions separately from adaptation work, with the original acceptance conditions retained.",
           "zh": "目标版本、设备变体或编译器设置改变后，重建成果有多少仍然成立？应保留原验收条件，将回归问题与适配工作分别报告。"
         }
-      ]
+      ],
+      "nav_title": {
+        "en": "Research questions",
+        "zh": "研究问题"
+      }
     },
     {
       "id": "limitations",
@@ -3776,7 +3828,11 @@
           "en": "This is a purposive editorial synthesis of a fixed collection, not a systematic review or a pooled performance analysis. The source records cover different publication stages, artifact revisions and degrees of access. Documentary inspection supports the distinctions discussed here but does not replace experiment reproduction. The selected cases expose methodological contrasts; their frequency in this survey says nothing about how common or successful those approaches are in practice.",
           "zh": "本综述是对固定合集进行的有目的的编辑性综合，并非系统综述或汇总性能分析。来源记录涉及不同发表阶段、产物修订和访问程度。文档检查能够支持这里讨论的区分，但不能替代实验复现。所选案例用于展示方法上的对比，其在本综述中出现的频率，并不说明这些方法在实践中有多常见或多成功。"
         }
-      ]
+      ],
+      "nav_title": {
+        "en": "Limitations",
+        "zh": "综述局限"
+      }
     },
     {
       "id": "conclusion",
@@ -3789,7 +3845,11 @@
           "en": "Across the six domains, reconstruction is best understood through the relationship between evidence, intended output and acceptance oracle. The practical value of an approximation can be substantial even when its claim is narrow. Explicit input access, reuse, version boundaries and test coverage make that value easier to assess. A shared reporting framework can connect work on interfaces, code, behavior and environments while preserving the distinctions that give each result its meaning.",
           "zh": "在六个领域中，通过证据、预期输出与验收判据之间的关系，可以更恰当地理解重建。即使主张范围有限，近似实现仍可能具有重要实践价值。明确输入权限、复用情况、版本边界和测试覆盖，有助于判断这种价值。共同的报告框架可以连接界面、代码、行为与环境方面的研究，同时保留赋予各项结果意义的差异。"
         }
-      ]
+      ],
+      "nav_title": {
+        "en": "Conclusion",
+        "zh": "结论"
+      }
     }
   ],
   "tables": {

@@ -80,6 +80,8 @@ def validate_survey(document, papers, resources):
     used_tables = []
     for section in document['sections']:
         pair(section['title'], citations=False)
+        if 'nav_title' in section:
+            pair(section['nav_title'], citations=False)
         assert section['paragraphs'], 'Empty survey section'
         for paragraph in section['paragraphs']:
             pair(paragraph)
@@ -220,7 +222,8 @@ def build_survey(site_dir, papers, resources, *, document=None, site_url='https:
         for number, section in enumerate(document['sections'], 1):
             identifier = section['id']
             heading = f'{number}. {text(section["title"])}'
-            toc.append(f'<li><a href="#{identifier}">{escape(heading)}</a></li>')
+            toc_title = f'{number}. {text(section.get("nav_title", section["title"]))}'
+            toc.append(f'<li><a href="#{identifier}">{escape(toc_title)}</a></li>')
             body = ''.join(f'<p>{prose(text(p))}</p>' for p in section['paragraphs'])
             if section.get('figure'):
                 stages = ''.join(f'<li><strong>{escape(text(s["title"]))}</strong><span>{escape(text(s["text"]))}</span></li>' for s in document['pipeline'])
@@ -259,7 +262,8 @@ def build_survey(site_dir, papers, resources, *, document=None, site_url='https:
             unused = '' if backlinks else f'<span class="survey-note">{choose("Corpus bibliography", "语料文献")}</span>'
             reference_items.append(f'<li class="survey-reference" id="ref-{identifier}" data-survey-reference="{identifier}"><strong>{escape(name)}</strong><div>{escape(metadata)}</div><div class="survey-reference-links">{nav}{backlinks}{unused}</div></li>')
         toc.extend([f'<li><a href="#references">{choose("References", "参考文献")}</a></li>', f'<li><a href="#citation">{choose("Cite this survey", "引用本综述")}</a></li>'])
-        snapshot = document['snapshot']
+        snapshot = dict(document['snapshot'])
+        snapshot['domains'] = len({s['id'] for s in document['sections']} & {'website', 'game', 'app', 'binary', 'firmware', 'protocol'})
         schema = {'@context': 'https://schema.org', '@graph': [
             {'@type': 'WebPage', '@id': canonical + '#webpage', 'url': canonical, 'name': title,
              'inLanguage': 'zh-CN' if zh else 'en', 'mainEntity': {'@id': canonical + '#article'}},
@@ -272,7 +276,15 @@ def build_survey(site_dir, papers, resources, *, document=None, site_url='https:
         ]}
         icons = f'<link rel="stylesheet" href="{escape(icon_stylesheet_href, quote=True)}">' if icon_stylesheet_href else ''
         github_icon = icon('github', bool(icons)).replace('paper-github-fallback', 'survey-github-fallback')
-        stats = ''.join(f'<div><strong>{snapshot[key]}</strong><span>{label}</span></div>' for key, label in [('papers', choose('papers in the snapshot', '快照中的论文')), ('cases', choose('cataloged case studies', '目录中的案例')), ('selected_cases', choose('cases compared here', '本综述对比案例'))])
+        quick_links = []
+        for section in document['sections']:
+            table_key = section.get('table')
+            if table_key in {'papers', 'cases'}:
+                count = len(document['tables'][table_key]['rows'])
+                label = choose('study comparisons', '项研究对比') if table_key == 'papers' else choose('case comparisons', '个案例对比')
+                quick_links.append(f'<a href="#{section["id"]}">{count} {label}</a>')
+        quick_links = ''.join(quick_links)
+        stats = ''.join(f'<div><strong>{snapshot[key]}</strong><span>{label}</span></div>' for key, label in [('papers', choose('papers in the snapshot', '快照中的论文')), ('domains', choose('domains of reconstruction', '重建领域')), ('selected_cases', choose('cases compared here', '本综述对比案例'))])
         html = f'''<!doctype html>
 <html lang="{('zh-CN' if zh else 'en')}"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1"><meta name="theme-color" content="#ffffff">
 <title>{escape(title)} | AwesomeREA.org</title><meta name="description" content="{escape(text(document['description']), quote=True)}">
@@ -281,8 +293,8 @@ def build_survey(site_dir, papers, resources, *, document=None, site_url='https:
 <link rel="icon" href="{escape(favicon_href, quote=True)}" type="image/svg+xml"><link rel="stylesheet" href="{escape(styles_href, quote=True)}"><link rel="stylesheet" href="{css_href}">{icons}{jsonld_script(schema)}</head>
 <body class="survey-page"><a class="skip-link" href="#survey-content">{choose('Skip to the survey', '跳到综述正文')}</a>
 <header class="site-header"><div class="shell header-inner"><a class="wordmark" href="{prefix}/" aria-label="{choose('AwesomeREA.org home', 'AwesomeREA.org 首页')}"><span class="brand-mark" aria-hidden="true">r<span>↗</span></span><span>Awesome<span class="wordmark-rea">REA</span><span class="wordmark-domain">.org</span></span></a><nav class="header-nav" aria-label="{choose('Main navigation', '主导航')}"><a class="survey-language" href="{counterpart}" lang="{choose('zh-CN', 'en')}" hreflang="{choose('zh-CN', 'en')}">{icon('globe', bool(icons))}{choose('简体中文', 'English')}</a><a class="github-link" href="{repository_url}">{github_icon}<span>GitHub</span></a></nav></div></header>
-<main class="shell survey-main"><header class="survey-header"><p class="survey-kicker">{choose('AWESOME REA · EDITORIAL SURVEY', 'AWESOME REA · 专题综述')}</p><h1 class="survey-title">{escape(title)}</h1><p class="survey-deck">{escape(text(document['subtitle']))}</p><p class="survey-meta">{choose('Version', '版本')} {document['version']} · <time datetime="{document['date']}">{document['date']}</time> · {choose('Awesome REA contributors', 'Awesome REA 贡献者')}</p><p class="survey-note">{escape(text(document['disclosure']))}</p><div class="survey-actions"><a class="button button-primary" href="#abstract">{choose('Read the survey', '阅读综述')}</a><a class="button button-outline" href="/survey/citation.bib" download="awesome-rea-survey.bib">{choose('Cite this survey', '引用本综述')} · BibTeX ↓</a><a href="{prefix}/papers/">{choose('Explore the paper collection', '浏览论文合集')} ↗</a></div><div class="survey-corpus">{stats}</div></header>
-<div class="survey-layout"><nav class="survey-toc" aria-label="{choose('Survey contents', '综述目录')}"><h2>{choose('Contents', '目录')}</h2><ol>{''.join(toc)}</ol><p><a href="#citation">{choose('Print-friendly · citation', '支持打印 · 引用信息')}</a></p></nav>
+<main class="shell survey-main"><header class="survey-header"><p class="survey-kicker">{choose('AWESOME REA · EDITORIAL SURVEY', 'AWESOME REA · 专题综述')}</p><h1 class="survey-title">{escape(title)}</h1><p class="survey-deck">{escape(text(document['subtitle']))}</p><p class="survey-meta">{choose('Version', '版本')} {document['version']} · <time datetime="{document['date']}">{document['date']}</time> · {choose('Awesome REA contributors', 'Awesome REA 贡献者')}</p><p class="survey-note">{escape(text(document['disclosure']))}</p><div class="survey-actions"><a class="button button-primary" href="#abstract">{choose('Read the survey', '阅读综述')}</a>{quick_links}<a class="button button-outline" href="/survey/citation.bib" download="awesome-rea-survey.bib">{choose('Cite', '引用')} · BibTeX ↓</a></div><div class="survey-corpus">{stats}</div></header>
+<div class="survey-layout"><nav class="survey-toc survey-toc-desktop" aria-label="{choose('Survey contents', '综述目录')}"><h2>{choose('Contents', '目录')}</h2><ol>{''.join(toc)}</ol><p><a href="#citation">{choose('Print-friendly · citation', '支持打印 · 引用信息')}</a></p></nav><details class="survey-toc-mobile"><summary>{choose('Contents', '目录')} · {len(document['sections'])} {choose('sections', '节')}</summary><nav aria-label="{choose('Survey contents', '综述目录')}"><ol>{''.join(toc)}</ol></nav></details>
 <article class="survey-article" id="survey-content" data-survey-version="{document['version']}"><section class="survey-abstract" id="abstract"><h2>{choose('Abstract', '摘要')}</h2><p>{abstract}</p></section><aside class="survey-findings"><h2>{choose('Main findings', '主要认识')}</h2><ul>{findings}</ul></aside>{''.join(sections)}
 <section class="survey-section" id="references"><h2>{choose('References', '参考文献')}</h2><p class="survey-note">{escape(text(document['reference_note']))}</p><p><a href="/survey/references.bib" download="awesome-rea-survey-references.bib">{choose('Download the paper references', '下载论文参考文献')} · BibTeX ↓</a></p><ol class="survey-references">{''.join(reference_items)}</ol></section>
 <section class="survey-section" id="citation"><h2>{choose('Cite this survey', '引用本综述')}</h2><p>{choose('An online editorial survey, prepared with AI assistance. It has not undergone peer review and reports no new experiments. Use your browser’s Print command to save a PDF.', '本页是借助 AI 编写的在线专题综述，未经同行评审，也不报告新实验。可使用浏览器的打印功能保存为 PDF。')}</p><pre class="survey-citation-block"><code>{escape(citation)}</code></pre><p><a href="{repository_url}/tree/{snapshot['revision']}">{choose('Catalog snapshot used in this survey', '本综述使用的目录快照')}</a> · <a href="{repository_url}/issues">{choose('Suggest a correction', '建议修订')}</a></p></section></article></div></main>
