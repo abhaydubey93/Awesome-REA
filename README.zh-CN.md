@@ -11,7 +11,7 @@
 <a href="https://awesomerea.org/zh/"><img src="assets/readme-banner.svg" alt="Awesome Reverse Engineering Anything — 覆盖六类逆向目标的工具、案例与论文" width="960"></a>
 
 <!-- BEGIN GENERATED BADGES -->
-[![精选资源: 207](https://img.shields.io/badge/%E7%B2%BE%E9%80%89%E8%B5%84%E6%BA%90-207-53309C?style=flat-square&labelColor=303447)](https://awesomerea.org/zh/resources/) [![案例: 68](https://img.shields.io/badge/%E6%A1%88%E4%BE%8B-68-53309C?style=flat-square&labelColor=303447)](https://awesomerea.org/zh/cases/) [![论文: 53](https://img.shields.io/badge/%E8%AE%BA%E6%96%87-53-53309C?style=flat-square&labelColor=303447)](https://awesomerea.org/zh/papers/) [![目录检查](https://github.com/reacher-z/Awesome-REA/actions/workflows/validate.yml/badge.svg?branch=main)](https://github.com/reacher-z/Awesome-REA/actions/workflows/validate.yml) [![许可: MIT](https://img.shields.io/badge/%E8%AE%B8%E5%8F%AF-MIT-606779?style=flat-square&labelColor=303447)](LICENSE) [![网站: awesomerea.org](https://img.shields.io/badge/%E7%BD%91%E7%AB%99-awesomerea.org-6235B5?style=flat-square&labelColor=303447)](https://awesomerea.org/zh/)
+[![精选资源: 212](https://img.shields.io/badge/%E7%B2%BE%E9%80%89%E8%B5%84%E6%BA%90-212-53309C?style=flat-square&labelColor=303447)](https://awesomerea.org/zh/resources/) [![案例: 73](https://img.shields.io/badge/%E6%A1%88%E4%BE%8B-73-53309C?style=flat-square&labelColor=303447)](https://awesomerea.org/zh/cases/) [![论文: 53](https://img.shields.io/badge/%E8%AE%BA%E6%96%87-53-53309C?style=flat-square&labelColor=303447)](https://awesomerea.org/zh/papers/) [![目录检查](https://github.com/reacher-z/Awesome-REA/actions/workflows/validate.yml/badge.svg?branch=main)](https://github.com/reacher-z/Awesome-REA/actions/workflows/validate.yml) [![许可: MIT](https://img.shields.io/badge/%E8%AE%B8%E5%8F%AF-MIT-606779?style=flat-square&labelColor=303447)](LICENSE) [![网站: awesomerea.org](https://img.shields.io/badge/%E7%BD%91%E7%AB%99-awesomerea.org-6235B5?style=flat-square&labelColor=303447)](https://awesomerea.org/zh/)
 <!-- END GENERATED BADGES -->
 
 **[搜索与筛选](https://awesomerea.org/zh/)** · **[浏览案例](https://awesomerea.org/zh/cases/)** · **[研究论文](https://awesomerea.org/zh/papers/)** · **[HTML 综述](https://awesomerea.org/zh/survey/)**
@@ -23,7 +23,7 @@
 <!-- BEGIN GENERATED CONTENTS -->
 **按目标找工具与案例**
 
-- [网站](#website) (16) · [游戏](#game) (52) · [应用](#app) (44)
+- [网站](#website) (17) · [游戏](#game) (56) · [应用](#app) (44)
 - [原生二进制](#native-binary) (20) · [固件与硬件](#firmware) (12) · [协议](#protocol) (11)
 
 **论文与工作流**
@@ -32,7 +32,7 @@
 
 **更多浏览方式**
 
-- [全部案例](https://awesomerea.org/zh/cases/) (68) · [相关合集](#related-collections) (4) · [完整仓库索引](#完整仓库索引) (2,836)
+- [全部案例](https://awesomerea.org/zh/cases/) (73) · [相关合集](#related-collections) (4) · [完整仓库索引](#完整仓库索引) (2,836)
 <!-- END GENERATED CONTENTS -->
 
 ## 按任务查找
@@ -80,6 +80,12 @@ REA 标签指向单独维护的[上游 CLI 与 MCP 项目](https://github.com/mo
   记录 BaoCut 交互式幻灯片编辑器，作者称其实现借鉴自 Claude Slides。它为浏览器与桌面宿主加入本地文稿存储、HTML/CSS 编译器及标注到智能体的桥接；设计说明报告了 Web 流程检查，但未确立原有后端恢复或完整行为一致性。
 
   案例 · 独立重建 · [使用条件与证据](https://awesomerea.org/zh/resources/baocut-slides-editor-case/)
+
+- [**BaoCut Design：移植重建的设计稿与设计系统编辑器**](https://github.com/JimLiu/baocut/tree/7aa049e82e1367da013b7aba80f0b79033fa04ad/packages/design-runtime)
+
+  记录 BaoCut 的设计稿（画布）与设计系统编辑器；项目称其按 1:1 移植自 Claude Design 编辑器的 TypeScript 重建，并在智能体会话中提供标注与导出。运行时说明记录了对照原脚本修正的标识符，以及画布主页面 20463 个函数中有 19111 个结构完全一致的比对结果。未审阅的差异、未公开的重建记录及复用权利仍待确认；不主张恢复任何托管后端。
+
+  案例 · 独立重建 · [使用条件与证据](https://awesomerea.org/zh/resources/baocut-design-canvas-case/)
 
 #### 工具、项目与集成
 
@@ -371,6 +377,30 @@ REA 标签指向单独维护的[上游 CLI 与 MCP 项目](https://github.com/mo
   依据游戏内信息和静态或动态分析，为《塞尔达传说：缩小帽》重建 C 源码库，可构建美版、欧版、日版及两个演示版共五个 Game Boy Advance ROM。每个版本的素材都来自使用者自备的原始 ROM，常规构建会核对产物的 SHA-1 哈希。项目仍在进行中，ROM 的部分内容可能尚不能移动。
 
   案例 · 独立重建 · [使用条件与证据](https://awesomerea.org/zh/resources/zelda-tmc-decomp-case/)
+
+- [**《时之笛》：16 个版本均以 MD5 校验 ROM 构建的反编译**](https://github.com/zeldaret/oot)
+
+  借助游戏本身的信息以及静态与动态分析，为《时之笛》重建 C 源码库，可重新构建 Nintendo 64、GameCube 和 iQue Player 共 16 个 ROM 版本。素材取自使用者自备的 ROM，默认构建会以对应版本的 MD5 校验；README 说明项目不制作 PC 移植，并仍称仓库处于开发中。
+
+  案例 · 独立重建 · [使用条件与证据](https://awesomerea.org/zh/resources/ocarina-of-time-decomp-case/)
+
+- [**Project Arwing：由一致性反汇编重编译的 Star Fox**](https://github.com/carlosrmz009/arwing)
+
+  依据运行覆盖率和递归下降反汇编 Star Fox 的 65816 与 SuperFX 代码，重新汇编出与原 ROM 一致的文件，再静态翻译为 C，运行于从零编写的 SNES 运行时，支持 Windows、macOS 和 Linux。录制会话中未执行到的代码，以及与 ROM 不再一致的 RAM 代码，回退到解释器执行；README 报告两条路径的逐帧哈希一致。生成的 C 是机械翻译而非手工反编译的源码，结果仍为项目报告。
+
+  案例 · 独立重建 · [使用条件与证据](https://awesomerea.org/zh/resources/project-arwing-star-fox-recomp-case/)
+
+- [**Project Arwing (2)：由一致性反汇编重编译的 Star Fox 2**](https://github.com/carlosrmz009/arwing2)
+
+  从以运行覆盖率为种子的 65816 与 SuperFX 反汇编重建 Star Fox 2：反汇编可重新汇编为与原 ROM 一致的文件，再静态翻译为 C，生成原生 Windows、macOS 和 Linux 版本。未执行到的代码及与 ROM 不一致的 RAM 代码由解释器执行，README 报告其与解释运行的逐帧哈希一致。项目接受 SNES Classic 版映像，不支持 1995 年的原型版；结果仍为项目报告。
+
+  案例 · 独立重建 · [使用条件与证据](https://awesomerea.org/zh/resources/project-arwing-2-star-fox-2-recomp-case/)
+
+- [**Little Planet：由一致性反汇编重编译的 Sonic CD**](https://github.com/carlosrmz009/littleplanet)
+
+  依据运行覆盖率和递归下降，反汇编 Sonic CD 光盘上的全部可执行文件并逐字节一致地重新汇编，再将代码静态翻译为 C，运行于从零编写、以高层实现替代 BIOS 的 Mega-CD 运行时。重编译代码块只在内存仍为其来源代码时执行，并有脚本以 96 段关卡运行逐帧对照解释器。项目还以补丁加入宽屏和逐区存档；结果仍为项目报告。
+
+  案例 · 独立重建 · [使用条件与证据](https://awesomerea.org/zh/resources/little-planet-sonic-cd-recomp-case/)
 
 #### 工具、项目与集成
 

@@ -11,7 +11,7 @@ An independent collection of tools, case studies and research for websites, game
 <a href="https://awesomerea.org/"><img src="assets/readme-banner.svg" alt="Awesome Reverse Engineering Anything — tools, cases and papers across six reverse-engineering domains" width="960"></a>
 
 <!-- BEGIN GENERATED BADGES -->
-[![resources: 207](https://img.shields.io/badge/resources-207-53309C?style=flat-square&labelColor=303447)](https://awesomerea.org/resources/) [![cases: 68](https://img.shields.io/badge/cases-68-53309C?style=flat-square&labelColor=303447)](https://awesomerea.org/cases/) [![papers: 53](https://img.shields.io/badge/papers-53-53309C?style=flat-square&labelColor=303447)](https://awesomerea.org/papers/) [![Catalog checks](https://github.com/reacher-z/Awesome-REA/actions/workflows/validate.yml/badge.svg?branch=main)](https://github.com/reacher-z/Awesome-REA/actions/workflows/validate.yml) [![license: MIT](https://img.shields.io/badge/license-MIT-606779?style=flat-square&labelColor=303447)](LICENSE) [![website: awesomerea.org](https://img.shields.io/badge/website-awesomerea.org-6235B5?style=flat-square&labelColor=303447)](https://awesomerea.org/)
+[![resources: 212](https://img.shields.io/badge/resources-212-53309C?style=flat-square&labelColor=303447)](https://awesomerea.org/resources/) [![cases: 73](https://img.shields.io/badge/cases-73-53309C?style=flat-square&labelColor=303447)](https://awesomerea.org/cases/) [![papers: 53](https://img.shields.io/badge/papers-53-53309C?style=flat-square&labelColor=303447)](https://awesomerea.org/papers/) [![Catalog checks](https://github.com/reacher-z/Awesome-REA/actions/workflows/validate.yml/badge.svg?branch=main)](https://github.com/reacher-z/Awesome-REA/actions/workflows/validate.yml) [![license: MIT](https://img.shields.io/badge/license-MIT-606779?style=flat-square&labelColor=303447)](LICENSE) [![website: awesomerea.org](https://img.shields.io/badge/website-awesomerea.org-6235B5?style=flat-square&labelColor=303447)](https://awesomerea.org/)
 <!-- END GENERATED BADGES -->
 
 **[Search & filter](https://awesomerea.org/)** · **[Browse cases](https://awesomerea.org/cases/)** · **[Research papers](https://awesomerea.org/papers/)** · **[HTML survey](https://awesomerea.org/survey/)**
@@ -23,7 +23,7 @@ An independent collection of tools, case studies and research for websites, game
 <!-- BEGIN GENERATED CONTENTS -->
 **Tools and cases by target**
 
-- [Website](#website) (16) · [Game](#game) (52) · [App](#app) (44)
+- [Website](#website) (17) · [Game](#game) (56) · [App](#app) (44)
 - [Native Binary](#native-binary) (20) · [Firmware and Hardware](#firmware) (12) · [Protocol](#protocol) (11)
 
 **Research and workflows**
@@ -32,7 +32,7 @@ An independent collection of tools, case studies and research for websites, game
 
 **More ways to browse**
 
-- [All cases](https://awesomerea.org/cases/) (68) · [Related Collections](#related-collections) (4) · [Full Repository Index](#full-repository-index) (2,836)
+- [All cases](https://awesomerea.org/cases/) (73) · [Related Collections](#related-collections) (4) · [Full Repository Index](#full-repository-index) (2,836)
 <!-- END GENERATED CONTENTS -->
 
 ## Find by task
@@ -79,6 +79,12 @@ REA labels refer to the separate [upstream CLI and MCP project](https://github.c
   Documents BaoCut’s interactive slide editor, whose author says the implementation draws on Claude Slides. It adds a local deck store, HTML/CSS compiler and annotation-to-agent bridge for browser and desktop hosts; the design reports a Web-flow check, without establishing original backend recovery or full behavioral parity.
 
   Case study · Independent reconstruction · [Requirements & evidence](https://awesomerea.org/resources/baocut-slides-editor-case/)
+
+- [**BaoCut Design: porting reconstructed canvas and design-system editors**](https://github.com/JimLiu/baocut/tree/7aa049e82e1367da013b7aba80f0b79033fa04ad/packages/design-runtime)
+
+  Documents BaoCut’s design-canvas and design-system editors, which the project says it ported 1:1 from TypeScript reconstructions of Claude Design’s editors and hosts in agent sessions with annotation and export. Its runtime notes record identifier fixes checked against the original scripts and a structural comparison matching 19,111 of 20,463 canvas main-page functions. Unreviewed differences, the unpublished reconstruction record and reuse rights remain open; no hosted-backend recovery is claimed.
+
+  Case study · Independent reconstruction · [Requirements & evidence](https://awesomerea.org/resources/baocut-design-canvas-case/)
 
 #### Tools, projects and integrations
 
@@ -370,6 +376,30 @@ REA labels refer to the separate [upstream CLI and MCP project](https://github.c
   Recreates a C source base for The Legend of Zelda: The Minish Cap from information in the game and static or dynamic analysis, building five Game Boy Advance ROMs: USA, EU, JP and two demos. Each version takes its assets from a user-supplied original ROM, and normal builds check the output’s SHA-1 hash. The project remains a work in progress, and some parts of the ROM may not yet be shiftable.
 
   Case study · Independent reconstruction · [Requirements & evidence](https://awesomerea.org/resources/zelda-tmc-decomp-case/)
+
+- [**Ocarina of Time: decompilation with MD5-checked ROM builds for 16 versions**](https://github.com/zeldaret/oot)
+
+  Recreates a C source base for Ocarina of Time that rebuilds 16 Nintendo 64, GameCube and iQue Player ROM versions, using information from the game and static and dynamic analysis. Assets come from the user’s own ROM and each default build is checked against that version’s MD5; README states the project is not producing a PC port and still calls the repository a work in progress.
+
+  Case study · Independent reconstruction · [Requirements & evidence](https://awesomerea.org/resources/ocarina-of-time-decomp-case/)
+
+- [**Project Arwing: Star Fox recompiled from a matching disassembly**](https://github.com/carlosrmz009/arwing)
+
+  Disassembles Star Fox’s 65816 and SuperFX code from runtime coverage and recursive descent, reassembles it into the original ROM, then translates it statically to C on a from-scratch SNES runtime for Windows, macOS and Linux. Code never reached in recorded sessions, and RAM code that no longer matches the ROM, falls back to an interpreter; the README reports identical per-frame hashes for both paths. The generated C is a mechanical translation rather than hand-decompiled source, and results remain project-reported.
+
+  Case study · Independent reconstruction · [Requirements & evidence](https://awesomerea.org/resources/project-arwing-star-fox-recomp-case/)
+
+- [**Project Arwing (2): Star Fox 2 recompiled from a matching disassembly**](https://github.com/carlosrmz009/arwing2)
+
+  Rebuilds Star Fox 2 from a coverage-seeded 65816 and SuperFX disassembly that reassembles to the original ROM, then translates it statically to C for native Windows, macOS and Linux builds. Unreached code and RAM code that differs from the ROM run through an interpreter, and the README reports identical per-frame hashes against interpreted runs. It accepts the SNES Classic release image, not the 1995 prototypes; results remain project-reported.
+
+  Case study · Independent reconstruction · [Requirements & evidence](https://awesomerea.org/resources/project-arwing-2-star-fox-2-recomp-case/)
+
+- [**Little Planet: Sonic CD recompiled from a matching disassembly**](https://github.com/carlosrmz009/littleplanet)
+
+  Disassembles every executable file on the Sonic CD disc from runtime coverage and recursive descent, reassembles them byte-identically, and translates the code statically to C on a from-scratch Mega-CD runtime that replaces the BIOS with a high-level implementation. Recompiled blocks run only where memory still holds the code they came from, and a script compares 96 stage runs frame by frame against the interpreter. The project also patches in widescreen and per-zone saves; results remain project-reported.
+
+  Case study · Independent reconstruction · [Requirements & evidence](https://awesomerea.org/resources/little-planet-sonic-cd-recomp-case/)
 
 #### Tools, projects and integrations
 
