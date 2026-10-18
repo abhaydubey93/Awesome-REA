@@ -156,6 +156,31 @@ def reference_order(document):
     return ordered
 
 
+def discussion_sections(document):
+    """Map explicit section-prose citations to their localized discussion headings.
+
+    Bibliography membership, table rows and front matter do not establish that a
+    record is discussed in a section. The site builder supplies the same survey
+    document already validated and rendered by build_survey().
+    """
+    discussions = {}
+    for section in document['sections']:
+        identifiers = []
+        for paragraph in [*section['paragraphs'], *section.get('bullets', [])]:
+            english = cited_ids(paragraph['en'])
+            chinese = cited_ids(paragraph['zh'])
+            if set(english) != set(chinese):
+                raise ValueError('Survey discussion links require matching bilingual citations')
+            for identifier in english:
+                if identifier not in identifiers:
+                    identifiers.append(identifier)
+        for identifier in identifiers:
+            discussions.setdefault(identifier, []).append({
+                'section': section['id'], 'title': dict(section['title']),
+            })
+    return discussions
+
+
 class Citations:
     def __init__(self, order, records, language):
         self.numbers = {identifier: n for n, identifier in enumerate(order, 1)}

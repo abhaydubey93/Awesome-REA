@@ -84,6 +84,24 @@ def _definitions(items: list[tuple[str, str]]) -> str:
     return '<dl class="entry-facts">' + ''.join(f'<dt>{escape(label)}</dt><dd>{escape(value)}</dd>' for label, value in items) + '</dl>'
 
 
+def _survey_discussion(sections: list[dict], language: str) -> str:
+    if not sections:
+        return ''
+    prefix = '/zh' if language == 'zh' else ''
+    links = []
+    for section in sections:
+        identifier = section['section']
+        if not isinstance(identifier, str) or not re.fullmatch(r'[a-z][a-z0-9-]*', identifier):
+            raise ValueError('Survey discussion links require safe section IDs')
+        title = section['title'][language]
+        if not isinstance(title, str) or not title.strip():
+            raise ValueError('Survey discussion links require localized titles')
+        links.append(f'<li><a href="{prefix}/survey/#{identifier}">{escape(title)}</a></li>')
+    heading = '综述中的讨论' if language == 'zh' else 'Discussed in the survey'
+    return (f'<section class="entry-section" aria-labelledby="entry-survey"><h2 id="entry-survey">{heading}</h2>'
+            f'<ul class="entry-sources">{"".join(links)}</ul></section>')
+
+
 def _output_path(root: Path, relative: str) -> Path:
     current = root
     for part in ('', *Path(relative).parts):
@@ -93,7 +111,7 @@ def _output_path(root: Path, relative: str) -> Path:
     return current
 
 
-def _resource_content(record: dict, language: str) -> tuple[str, str, str]:
+def _resource_content(record: dict, language: str, discussion: str = '') -> tuple[str, str, str]:
     zh = language == 'zh'
     label = lambda en, cn: cn if zh else en
     title = _text(record, 'name_zh' if zh else 'name')
@@ -114,11 +132,11 @@ def _resource_content(record: dict, language: str) -> tuple[str, str, str]:
 <section class="entry-section" aria-labelledby="entry-review"><h2 id="entry-review">{label('About this entry', '关于此条目')}</h2>{_definitions(facts)}
 <p class="entry-reviewed">{label('Sources reviewed', '来源复核于')} <time datetime="{escape(record['verified_at'], quote=True)}">{escape(record['verified_at'][:10])}</time></p>
 <p class="entry-review-note">{label('The description was reviewed against primary sources. This does not establish runtime testing, security auditing or verified compatibility.', '说明已依据一手来源复核；这不代表已运行验证、经过安全审计或确认兼容。')}</p></section>
-{_sources([record['evidence_url'], *record.get('additional_evidence_urls', [])], language)}'''
+{discussion}{_sources([record['evidence_url'], *record.get('additional_evidence_urls', [])], language)}'''
     return title, description, content
 
 
-def _paper_content(paper: dict, language: str) -> tuple[str, str, str]:
+def _paper_content(paper: dict, language: str, discussion: str = '') -> tuple[str, str, str]:
     zh = language == 'zh'
     label = lambda en, cn: cn if zh else en
     title = _text(paper, 'title_zh' if zh else 'title')
@@ -147,12 +165,12 @@ def _paper_content(paper: dict, language: str) -> tuple[str, str, str]:
 <p>{escape(paper['metadata_notes_zh' if zh else 'metadata_notes'])}</p>
 <p class="entry-reviewed">{label('Sources reviewed', '来源复核于')} <time datetime="{escape(paper['verified_at'], quote=True)}">{escape(paper['verified_at'][:10])}</time></p>
 <p class="entry-review-note">{label('Source review only; experiments were not rerun for this collection. Cite the original authors using the linked paper or BibTeX.', '本合集仅做来源复核，未重新运行论文实验。请通过原始论文或 BibTeX 引用原作者。')}</p></section>
-{_sources(paper['evidence_urls'], language)}'''
+{discussion}{_sources(paper['evidence_urls'], language)}'''
     return title, description, content
 
 
 def _document(record, kind, language, *, site_url, repository_url, styles_href, entry_styles_href,
-              favicon_href, social_image_href, icon_stylesheet_href):
+              favicon_href, social_image_href, icon_stylesheet_href, survey_discussions):
     zh = language == 'zh'
     label = lambda en, cn: cn if zh else en
     locale, prefix = ('zh-CN', '/zh') if zh else ('en', '')
@@ -162,7 +180,8 @@ def _document(record, kind, language, *, site_url, repository_url, styles_href, 
     counterpart = entry_path(kind, record['id'], 'en' if zh else 'zh')
     listing = f'{prefix}/{kind}s/'
     list_name = label('Curated resources', '精选资源') if kind == 'resource' else label('Research papers', '研究论文')
-    title, description, content = (_resource_content if kind == 'resource' else _paper_content)(record, language)
+    discussion = _survey_discussion(survey_discussions.get(record['id'], []), language)
+    title, description, content = (_resource_content if kind == 'resource' else _paper_content)(record, language, discussion)
     entity_id = canonical + ('#resource' if kind == 'resource' else '#paper')
     entity = ({'@type': 'CreativeWork', '@id': entity_id, 'url': record['url'], 'name': title, 'description': description}
               if kind == 'resource' else {**scholarly_article(record, language), '@id': entity_id})
@@ -206,7 +225,8 @@ def build_entry_pages(site_dir: Path, resources: list[dict], papers: list[dict],
                       repository_url: str = 'https://github.com/reacher-z/Awesome-REA',
                       styles_href: str = '/styles.css', entry_styles_href: str = '/entry.css',
                       favicon_href: str = '/favicon.svg', social_image_href: str = 'https://awesomerea.org/social-card.png',
-                      icon_stylesheet_href: str | None = None) -> list[str]:
+                      icon_stylesheet_href: str | None = None,
+                      survey_discussions: dict | None = None) -> list[str]:
     """Write only curated /resources/<id>/ and /papers/<id>/ pairs; return sitemap URLs."""
     site_dir = Path(site_dir)
     site_url = site_url.rstrip('/')
@@ -215,7 +235,8 @@ def build_entry_pages(site_dir: Path, resources: list[dict], papers: list[dict],
         raise ValueError('The public site URL must be an HTTPS origin')
     options = dict(site_url=site_url, repository_url=repository_url, styles_href=styles_href,
                    entry_styles_href=entry_styles_href, favicon_href=favicon_href,
-                   social_image_href=social_image_href, icon_stylesheet_href=icon_stylesheet_href)
+                   social_image_href=social_image_href, icon_stylesheet_href=icon_stylesheet_href,
+                   survey_discussions=survey_discussions or {})
     rendered = {}
     for kind, records in (('resource', resources), ('paper', papers)):
         identifiers = set()

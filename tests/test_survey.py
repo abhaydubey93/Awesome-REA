@@ -13,7 +13,7 @@ import unittest
 ROOT = next(path for path in Path(__file__).resolve().parents
             if (path / 'scripts/build_survey.py').is_file())
 sys.path.insert(0, str(ROOT / 'scripts'))
-from build_survey import build_survey, reference_order, validate_survey
+from build_survey import build_survey, discussion_sections, reference_order, validate_survey
 from build_paper_pages import bibtex_text
 
 CATALOG_PAPERS = json.loads((ROOT / 'data/papers.json').read_text())
@@ -117,6 +117,31 @@ class SurveyTests(unittest.TestCase):
             files = {path.relative_to(directory).as_posix(): path.read_text()
                      for path in directory.rglob('*') if path.is_file()}
         return urls, files
+
+    def test_discussion_sections_only_follow_numbered_prose_in_document_order(self):
+        document, papers, resources = fixture()
+        document['abstract'] = pair('Overview [[' + P2 + ']].', '概述 [[' + P2 + ']]。')
+        document['findings'] = [pair('Finding [[' + CASE + ']].', '认识 [[' + CASE + ']]。')]
+        document['sections'][0]['paragraphs'].append(
+            pair('First [[' + P1 + ']] again [[' + P1 + ']].', '首先 [[' + P1 + ']] 再次 [[' + P1 + ']]。'))
+        document['sections'][1]['paragraphs'] = [pair('Another view [[' + P1 + ']].', '另一视角 [[' + P1 + ']]。')]
+        validate_survey(document, papers, resources)
+        before = deepcopy(document)
+        self.assertEqual(discussion_sections(document), {P1: [
+            {'section': 'methods', 'title': pair('Method', '方法')},
+            {'section': 'limits', 'title': pair('Limits', '边界')},
+        ]})
+        self.assertEqual(document, before)
+        # P2 appears in abstract/table labels/bibliography and CASE in findings/
+        # table rows; none of those is a numbered section-prose discussion.
+        self.assertNotIn(P2, discussion_sections(document))
+        self.assertNotIn(CASE, discussion_sections(document))
+
+    def test_discussion_sections_reject_translation_citation_drift(self):
+        document, _, _ = fixture()
+        document['sections'][0]['bullets'][0]['zh'] = '遗漏引文。'
+        with self.assertRaisesRegex(ValueError, 'matching bilingual citations'):
+            discussion_sections(document)
 
     def test_citations_reject_malformed_unknown_and_outside_frozen_corpus(self):
         for token in ('[[paper-UI2app]]', '[[paper-ui2app]', 'paper-ui2app]]',

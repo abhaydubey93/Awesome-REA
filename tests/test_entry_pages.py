@@ -11,6 +11,7 @@ import unittest
 ROOT = Path(__file__).resolve().parents[1]
 sys.path.insert(0, str(ROOT / 'scripts'))
 from build_entry_pages import MARKER, build_entry_pages, entry_path
+from build_survey import build_survey, discussion_sections
 
 
 def resource(**changes):
@@ -57,6 +58,51 @@ class Page(HTMLParser):
 
 
 class EntryPageTests(unittest.TestCase):
+    def test_survey_discussion_links_are_localized_and_point_to_rendered_sections(self):
+        from test_survey import fixture, pair, P1, P2, CASE
+        document, papers, resources = fixture()
+        document['sections'][1]['paragraphs'] = [
+            pair('A documented case [[' + CASE + ']].', '有文档支持的案例 [[' + CASE + ']]。')]
+        before = deepcopy(document)
+        with TemporaryDirectory() as tmp:
+            root = Path(tmp)
+            build_survey(root, papers, resources, document=document)
+            build_entry_pages(root, resources, papers, survey_discussions=discussion_sections(document))
+            for language, prefix in [('en', ''), ('zh', '/zh')]:
+                for kind, identifier, section, title in [
+                    ('paper', P1, 'methods', 'Method' if language == 'en' else '方法'),
+                    ('resource', CASE, 'limits', 'Limits' if language == 'en' else '边界'),
+                ]:
+                    text = (root / entry_path(kind, identifier, language).lstrip('/') / 'index.html').read_text()
+                    page = Page(text)
+                    href = f'{prefix}/survey/#{section}'
+                    self.assertEqual(sum(link.get('href') == href for link in page.links), 1)
+                    self.assertIn('>' + title + '</a>', text)
+                    self.assertLess(text.index('id="entry-survey"'), text.index('id="entry-sources"'))
+                    survey = (root / prefix.lstrip('/') / 'survey/index.html').read_text()
+                    self.assertIn('id="' + section + '"', survey)
+                unmentioned = (root / entry_path('paper', P2, language).lstrip('/') / 'index.html').read_text()
+                self.assertNotIn('entry-survey', unmentioned)
+                self.assertNotIn('/survey/#', unmentioned)
+        self.assertEqual(document, before)
+
+    def test_survey_discussion_titles_are_escaped_and_unsafe_anchors_fail_before_writes(self):
+        p = paper()
+        title = '<img src=x onerror=alert(1)> & evidence'
+        sections = {p['id']: [{'section': 'methods', 'title': {'en': title, 'zh': '方法与证据'}}]}
+        with TemporaryDirectory() as tmp:
+            root = Path(tmp)
+            build_entry_pages(root, [], [p], survey_discussions=sections)
+            text = (root / entry_path('paper', p['id']).lstrip('/') / 'index.html').read_text()
+            self.assertNotIn('<img src=x', text)
+            self.assertIn('&lt;img src=x onerror=alert(1)&gt; &amp; evidence', text)
+        sections[p['id']][0]['section'] = 'methods" onclick="bad'
+        with TemporaryDirectory() as tmp:
+            root = Path(tmp)
+            with self.assertRaisesRegex(ValueError, 'safe section IDs'):
+                build_entry_pages(root, [], [p], survey_discussions=sections)
+            self.assertEqual(list(root.iterdir()), [])
+
     def test_full_bilingual_evidence_and_canonical_identity(self):
         r, p = resource(), paper()
         before = deepcopy((r, p))

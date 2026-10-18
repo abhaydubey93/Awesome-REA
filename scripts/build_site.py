@@ -15,7 +15,7 @@ from xml.sax.saxutils import escape as xml_escape
 from build_browse_pages import build_browse_pages
 from build_discovery_pages import build_discovery_pages
 from build_paper_pages import build_paper_pages
-from build_survey import build_survey
+from build_survey import build_survey, discussion_sections
 from build_entry_pages import build_entry_pages
 from build_manifest import write_build_manifest
 from homepage_locales import HOMEPAGE_DESTINATIONS, localized_homepage
@@ -257,9 +257,9 @@ def build_site(output: Path, *, fontawesome_dir: Path | None = None,
         favicon_href=asset_hrefs["favicon.svg"], social_image_href=f"{SITE_URL}/social-card.png?v={social_revision}",
         icon_stylesheet_href=icon_stylesheet,
     )
+    survey_document = json.loads((ROOT / "data/survey.json").read_text(encoding="utf-8"))
     survey_urls = build_survey(
-        output, papers, resources,
-        document=json.loads((ROOT / "data/survey.json").read_text(encoding="utf-8")),
+        output, papers, resources, document=survey_document,
         site_url=SITE_URL, repository_url=REPOSITORY_URL,
         styles_href=asset_hrefs["styles.css"], favicon_href=asset_hrefs["favicon.svg"],
         social_image_href=f"{SITE_URL}/social-card.png?v={social_revision}",
@@ -270,7 +270,7 @@ def build_site(output: Path, *, fontawesome_dir: Path | None = None,
         output, resources, papers, site_url=SITE_URL, repository_url=REPOSITORY_URL,
         styles_href=asset_hrefs["styles.css"], entry_styles_href=f"/entry.css?v={entry_revision}",
         favicon_href=asset_hrefs["favicon.svg"], social_image_href=f"{SITE_URL}/social-card.png?v={social_revision}",
-        icon_stylesheet_href=icon_stylesheet,
+        icon_stylesheet_href=icon_stylesheet, survey_discussions=discussion_sections(survey_document),
     )
     (output / ".nojekyll").write_text("", encoding="utf-8")
     (output / "CNAME").write_text("awesomerea.org\n", encoding="utf-8")
