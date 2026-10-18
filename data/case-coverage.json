@@ -12103,15 +12103,34 @@
         "https://github.com/perfect-dark-pc-port/perfect_dark",
         "https://i.4cdn.org/vr/1791496164085175.png"
       ],
-      "state": "pending",
+      "state": "already-curated",
       "review_level": "primary-source-reviewed",
-      "reviewed_at": "2026-10-17",
-      "reason_en": "Bounded primary README review only; further focused review is pending. Perfect Dark is a WIP port from a separate decompilation. README distinguishes recommended US 1.1 ROM from other/custom-build editions, and documents minor gameplay/graphics issues, crashes and experimental high rates. Review code license and build requirements; distinguish the main port from netplay branch and do not generalize advertised platforms to every fork.",
-      "reason_zh": "Perfect Dark 是独立反编译成果上的进行中移植，README 区分推荐美版 1.1 ROM 与其他需专门构建的版本，并记录图形／玩法问题、崩溃和实验性高帧率。发表前需核查许可与依赖，不能将主分支、联网分支和其他 fork 混为一谈。",
+      "reviewed_at": "2026-10-18",
+      "reason_en": "Building on the earlier bounded README look, the pinned README, CMake build, ROM-data loader, CI workflow, licence, release page and fork comparison support the named port of the n64decomp Perfect Dark decompilation. Full mapping covers this port branch; the separately curated matching decompilation is linked as related, and the netplay branch, other forks and the collection's image link are not covered. The user-supplied ROM, committed text and tile data inherited from the decompilation, and project-reported issues remain explicit.",
+      "reason_zh": "在此前有限的 README 核查基础上，固定版本的 README、CMake 构建、ROM 数据加载代码、CI 工作流、许可、发布页面及分叉比较，支持该基于 n64decomp Perfect Dark 反编译的具名移植。完整映射覆盖此移植分支；已单独收录的一致性反编译作为相关条目关联，联网分支、其他分叉和合集中的图片链接不在覆盖范围内。使用者自备 ROM、从反编译继承并提交的文本与图块数据，以及项目报告的问题均明确保留。",
       "primary_evidence_urls": [
-        "https://github.com/perfect-dark-pc-port/perfect_dark/blob/32a1cb9f268dd3ac73016801025c6bbbfa20130f/README.md"
+        "https://github.com/perfect-dark-pc-port/perfect_dark/blob/32a1cb9f268dd3ac73016801025c6bbbfa20130f/README.md",
+        "https://github.com/perfect-dark-pc-port/perfect_dark/blob/32a1cb9f268dd3ac73016801025c6bbbfa20130f/CMakeLists.txt",
+        "https://github.com/perfect-dark-pc-port/perfect_dark/blob/32a1cb9f268dd3ac73016801025c6bbbfa20130f/port/src/romdata.c",
+        "https://github.com/perfect-dark-pc-port/perfect_dark/blob/32a1cb9f268dd3ac73016801025c6bbbfa20130f/.github/workflows/c-cpp.yml",
+        "https://github.com/perfect-dark-pc-port/perfect_dark/blob/32a1cb9f268dd3ac73016801025c6bbbfa20130f/LICENSE",
+        "https://github.com/perfect-dark-pc-port/perfect_dark/compare/169ed48bdcbfb3b568b028bd5bebb27680073514...32a1cb9f268dd3ac73016801025c6bbbfa20130f",
+        "https://github.com/n64decomp/perfect_dark/blob/169ed48bdcbfb3b568b028bd5bebb27680073514/README.md"
       ],
-      "catalog_matches": []
+      "catalog_matches": [
+        {
+          "catalog": "resource",
+          "id": "perfect-dark-pc-port-case",
+          "kind": "case-study",
+          "scope": "full"
+        },
+        {
+          "catalog": "resource",
+          "id": "perfect-dark-matching-decomp-case",
+          "kind": "case-study",
+          "scope": "related"
+        }
+      ]
     },
     {
       "id": "hao-games:row-093",
@@ -14171,18 +14190,18 @@
     "inventory_units": 589,
     "alias_merges": 2,
     "occurrences_by_state": {
-      "already-curated": 111,
-      "insufficient-evidence": 86,
-      "pending": 394
-    },
-    "units_by_state": {
-      "already-curated": 110,
+      "already-curated": 112,
       "insufficient-evidence": 86,
       "pending": 393
     },
+    "units_by_state": {
+      "already-curated": 111,
+      "insufficient-evidence": 86,
+      "pending": 392
+    },
     "primary_reviewed_units": 139,
-    "catalog_linked_occurrences": 122,
-    "distinct_resource_ids": 116,
+    "catalog_linked_occurrences": 123,
+    "distinct_resource_ids": 117,
     "distinct_paper_ids": 1,
     "unique_projects": null
   }
