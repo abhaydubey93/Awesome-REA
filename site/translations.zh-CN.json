@@ -1700,5 +1700,45 @@
       "GitHub Actions 工作流构建 Windows、macOS、Linux、Switch 和网页版本。README 称 CI 构建仅供试玩，并提醒可能出现错误和崩溃。项目没有公布一致性、回归或与原硬件对比的结果，本合集也未构建或运行该移植。",
       "根目录 LICENSE.md 以 MIT（2026，Lywx）授权项目自有代码。子模块各有条款；源自任天堂代码的内容和 ROM 素材不受该许可覆盖，README 表示不支持盗版。所审来源未确立 REA 或编码智能体的参与。"
     ]
+  },
+  "sms-matching-decomp-case": {
+    "name": "Super Mario Sunshine：仍在推进的 GameCube 一致性反编译重建",
+    "requirements": [
+      "README 称该项目为仍在进行中的反编译工程。configure.py 默认目标为 GMSJ01（日版 Rev 0），另支持 GMSP01、GMSE01、GMSJ01 Rev 1，以及 Super Mario 3D All-Stars 中的 GMSP01_NX。默认只链接标记为 Matching 的目标文件；--non-matching 会链接等价或经修改的目标文件。在所审阅的提交上，decomp.dev 报告 GMSJ01 已反编译 49.51% 的代码、完全链接 18.42%；本合集未重新计算这些数字。",
+      "需将各版本自备的光盘镜像放入 orig/<version>。支持 ISO（GCM）、RVZ、WIA、WBFS、CISO、NFS、GCZ 和 TGC 格式，仓库声明不包含任何游戏素材或汇编。GMSJ01 的符号配置由该光盘中的 mario.MAP 链接映射生成；CI 工作流注明 GMSE01 没有 MAP 文件，因此跳过其符号顺序检查。",
+      "构建需在 Windows、macOS 或 Linux 上安装 Python 和 Ninja；构建过程会获取 decomp-toolkit、binutils 和旧版 Metrowerks 编译器（大部分代码使用 GC 1.2.5），在 macOS 和 Linux 上通过 wibo 包装器运行。objdiff 将重建的目标文件与从原 DOL 中提取的目标文件比对，各版本的 build.sha1 记录目标 DOL 的哈希。",
+      "AGENTS.md 要求对全部五个版本运行 ninja baseline 与 changes_all 生成回归报告，且每个版本的 DOL 仍须显示 OK。CI 在提供原始文件的构建容器中构建所有版本，并对改动的单元检查符号顺序。这些都是项目自报的检查与进度数据，不能证明已重建出完整或可游玩的游戏；本合集未运行任何构建。",
+      "AGENTS.md（CLAUDE.md 与 GEMINI.md 均为指向它的符号链接）规定了 AI 智能体的工作流程：禁止无人监督的智能体处理 MSL、MetroTRK、THPPlayer、Dolphin SDK 和 JSystem 代码，并把难以判断的决定交给人类，但没有量化智能体编写的代码比例。仓库声明采用 CC0-1.0；任天堂的游戏、光盘内容及下载的编译器另有权利约束。未确立 REA 的使用。"
+    ]
+  },
+  "dusklight-twilight-princess-port-case": {
+    "name": "Dusklight：基于反编译的《黄昏公主》原生移植",
+    "requirements": [
+      "README 称 Dusklight 是通过逆向工程实现的重新实现，力求尽可能忠于原作，同时提供新选项、增强功能和工具。它基于 zeldaret/tp 反编译项目，而 README 指出该项目目前只有 GameCube 版一致，因此即使使用 Wii 光盘，也会呈现 GameCube 版的 HUD 及其他特性。这是修改后的移植，不是原可执行文件的一致性重建。",
+      "项目不提供任何受版权保护的素材：使用者须自行转储自己的光盘；README 说明支持除韩版 Wii 以外的所有正式发行光盘。程序可直接读取 ISO（GCM）、RVZ、WIA、WBFS、CISO 和 GCZ 镜像。",
+      "运行需要支持 D3D12、Vulkan 1.1+ 或 Metal 的 GPU；D3D11 和 Android 的 OpenGL ES 仅为尽力支持，无法达到完整的准确性或性能。固定版本中有 Windows、Linux、macOS、iOS、tvOS 和 Android 平台目录，CI 构建 Linux、macOS、iOS、Android 和 Windows 目标。从源码构建需 CMake 3.25+、Python 3、各系统列明的工具链，以及包括 Aurora 在内的递归子模块。",
+      "所审 CI 工作流只构建软件包，不与原版游戏进行比对。准确性与增强功能均为项目报告，本合集未构建或运行任何内容。",
+      "LICENSE.md 采用 CC0-1.0，不涵盖任天堂的游戏或光盘内容；Aurora 与随机器模组等子模块为独立仓库。README 声明不接受主要由 AI 生成的贡献，并提醒存在传播 AI 生成错误信息的非官方网站；所审来源未确立 REA 的参与。"
+    ]
+  },
+  "metaforce-metroid-prime-case": {
+    "name": "Metaforce：在反编译之上重建的《密特罗德 Prime》引擎重实现",
+    "requirements": [
+      "README 称项目由 Cirrus 和 Antidote 于 2015 年 6 月开始开发，近期已在 PrimeDecomp 一致性反编译之上重写；稳定之前不提供构建版本，尽管 CI 会构建 Windows、Linux、Apple 和 Android 安装包。GitHub 上唯一的发布是 2015 年的预发布版，没有与重写版对应的发布。它与另一个基于 PrimeDecomp 的原生移植 Odrannnn/MetroidPrimePort 是不同项目。",
+      "仓库不附带任何游戏文件，orig/ 下各版本文件夹仅有占位文件。应用启动时通过参数或选择窗口读取《密特罗德 Prime》光盘镜像（ISO、GCM、CISO、GCZ、RVZ、WIA 或 TGC）。CMake 以 TARGET_PC、NONMATCHING 和 VERSION=1 编译原生目标，configure.py 将版本 1 定为默认的 GM8E01_00（NTSC-U v1.088）构建；README 未列出受支持的光盘版本。",
+      "构建需要 CMake 3.25+、Python 3，并递归克隆 aurora、borealis 和 musyx 子模块；Windows 使用带 Clang 与 clang-cl 组件的 Visual Studio 2019，macOS 需要 Xcode 11.5+，Linux 需要所列的 Ubuntu、Arch 或 Fedora 软件包。README 列出的平台为 Windows 10+（D3D12、Vulkan 或 D3D11）、macOS 10.15+（Metal）、Linux（Vulkan）、Android（Vulkan 或 OpenGL ES）和 iOS（Metal）；Android 另需 SDK Platform 37、NDK 和 JDK 17+。",
+      "configure.py 仍为独立的 GameCube 构建记录十个光盘版本的逐对象一致性状态，但 CI 忽略这些文件，只构建原生安装包。所审阅来源未公开原生应用的保真度或游戏行为检查，本合集也未构建或运行它。",
+      "Metaforce 贡献者的代码采用 MIT，另有一份 LICENSE.decomp 采用 CC0 1.0；所审阅文件未说明二者各自覆盖哪些目录。光盘内容保留各自权利。所审阅来源未确立 AI 或 REA 使用。"
+    ]
+  },
+  "sms-english-gmse01-decomp-case": {
+    "name": "Super Mario Sunshine（美版）：AI 辅助的一致性反编译分支",
+    "requirements": [
+      "这是 doldecomp/sms 的业余分支，目标为 GMSE01（美版 Rev 0）。README 称分支创建时上游日版反编译约完成 38% 的匹配，PROGRESS.md 注明以上游 ab00c3c9 为基础。GMSJ01 与 GMSP01 配置仍在代码树中，但 README 标注 PAL 版略有问题，AGENTS.md 也说明二者在本分支中都无法构建或做回归测试。",
+      "需将自备的北美 Rev 0 光盘镜像放入 orig/GMSE01（ISO、RVZ、WIA、WBFS、CISO、NFS、GCZ 或 TGC）。GMSE01 构建说明记录了提取出的 DOL 必须符合的 SHA-1。该说明称初始符号来自社区托管的 marioUS.map，并不在美版光盘上；而 AGENTS.md 却称美版映射是光盘自带的真实链接映射。此处不对这一来源矛盾作出判断。",
+      "构建需在 Windows、macOS（配合 Wine Crossover）或 Linux（x86 使用 wibo，其他架构使用 Wine）上安装 Python 3 和 Ninja，并使用固定版本的 decomp-toolkit 与 Metrowerks 工具。产物为 build/GMSE01/mario.dol，并与提取的原始文件比对。运行时仍需在 Dolphin 中使用原光盘镜像；另有一个原生 PC 移植以该分支作为反编译子模块。",
+      "README（2026-09-29）报告：模糊匹配 99.60%、逐字节一致 73.65%、源码链接 34.79%，12,904 个函数中 12,052 个完全一致，732 个目标文件中 542 个由源码链接；PROGRESS.md（2026-09-27）的数字略低。因此 DOL 逐字节一致并不代表源码已经完整。分支的 CI 矩阵只构建 GMSJ01，GMSE01 结果均为本地报告，本合集也未重跑。",
+      "AGENTS.md（CLAUDE.md 与 GEMINI.md 为指向它的符号链接）取消了上游对智能体自主处理库代码的禁令。它要求智能体只依据二进制、链接映射和本仓库开展工作，禁止伪匹配和使用泄露的 SDK 源码，但没有统计智能体编写了多少代码。仓库沿用 CC0-1.0，任天堂内容和编译器另有权利约束。未确立 REA 的使用。"
+    ]
   }
 }

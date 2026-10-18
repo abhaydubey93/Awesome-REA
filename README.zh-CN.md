@@ -11,7 +11,7 @@
 <a href="https://awesomerea.org/zh/"><img src="assets/readme-banner.svg" alt="Awesome Reverse Engineering Anything — 覆盖六类逆向目标的工具、案例与论文" width="960"></a>
 
 <!-- BEGIN GENERATED BADGES -->
-[![精选资源: 216](https://img.shields.io/badge/%E7%B2%BE%E9%80%89%E8%B5%84%E6%BA%90-216-53309C?style=flat-square&labelColor=303447)](https://awesomerea.org/zh/resources/) [![案例: 77](https://img.shields.io/badge/%E6%A1%88%E4%BE%8B-77-53309C?style=flat-square&labelColor=303447)](https://awesomerea.org/zh/cases/) [![论文: 53](https://img.shields.io/badge/%E8%AE%BA%E6%96%87-53-53309C?style=flat-square&labelColor=303447)](https://awesomerea.org/zh/papers/) [![目录检查](https://github.com/reacher-z/Awesome-REA/actions/workflows/validate.yml/badge.svg?branch=main)](https://github.com/reacher-z/Awesome-REA/actions/workflows/validate.yml) [![许可: MIT](https://img.shields.io/badge/%E8%AE%B8%E5%8F%AF-MIT-606779?style=flat-square&labelColor=303447)](LICENSE) [![网站: awesomerea.org](https://img.shields.io/badge/%E7%BD%91%E7%AB%99-awesomerea.org-6235B5?style=flat-square&labelColor=303447)](https://awesomerea.org/zh/)
+[![精选资源: 220](https://img.shields.io/badge/%E7%B2%BE%E9%80%89%E8%B5%84%E6%BA%90-220-53309C?style=flat-square&labelColor=303447)](https://awesomerea.org/zh/resources/) [![案例: 81](https://img.shields.io/badge/%E6%A1%88%E4%BE%8B-81-53309C?style=flat-square&labelColor=303447)](https://awesomerea.org/zh/cases/) [![论文: 53](https://img.shields.io/badge/%E8%AE%BA%E6%96%87-53-53309C?style=flat-square&labelColor=303447)](https://awesomerea.org/zh/papers/) [![目录检查](https://github.com/reacher-z/Awesome-REA/actions/workflows/validate.yml/badge.svg?branch=main)](https://github.com/reacher-z/Awesome-REA/actions/workflows/validate.yml) [![许可: MIT](https://img.shields.io/badge/%E8%AE%B8%E5%8F%AF-MIT-606779?style=flat-square&labelColor=303447)](LICENSE) [![网站: awesomerea.org](https://img.shields.io/badge/%E7%BD%91%E7%AB%99-awesomerea.org-6235B5?style=flat-square&labelColor=303447)](https://awesomerea.org/zh/)
 <!-- END GENERATED BADGES -->
 
 **[搜索与筛选](https://awesomerea.org/zh/)** · **[浏览案例](https://awesomerea.org/zh/cases/)** · **[研究论文](https://awesomerea.org/zh/papers/)** · **[HTML 综述](https://awesomerea.org/zh/survey/)**
@@ -23,7 +23,7 @@
 <!-- BEGIN GENERATED CONTENTS -->
 **按目标找工具与案例**
 
-- [网站](#website) (17) · [游戏](#game) (60) · [应用](#app) (44)
+- [网站](#website) (17) · [游戏](#game) (64) · [应用](#app) (44)
 - [原生二进制](#native-binary) (20) · [固件与硬件](#firmware) (12) · [协议](#protocol) (11)
 
 **论文与工作流**
@@ -32,7 +32,7 @@
 
 **更多浏览方式**
 
-- [全部案例](https://awesomerea.org/zh/cases/) (77) · [相关合集](#related-collections) (4) · [完整仓库索引](#完整仓库索引) (2,836)
+- [全部案例](https://awesomerea.org/zh/cases/) (81) · [相关合集](#related-collections) (4) · [完整仓库索引](#完整仓库索引) (2,836)
 <!-- END GENERATED CONTENTS -->
 
 ## 按任务查找
@@ -425,6 +425,30 @@ REA 标签指向单独维护的[上游 CLI 与 MCP 项目](https://github.com/mo
   将反编译风格的游戏源码编译到 libultraship 平台库上，把 Super Mario 64 构建为原生 PC、Switch 和 Android 程序。附带的提取工具会在首次启动或构建时，把使用者自备的美版或日版 ROM 转换为 O2R 存档。项目提供现代渲染器、配置菜单和模组存档加载，而不是生成一致的 ROM。
 
   案例 · 独立重建 · [使用条件与证据](https://awesomerea.org/zh/resources/ghostship-sm64-port-case/)
+
+- [**Super Mario Sunshine：仍在推进的 GameCube 一致性反编译重建**](https://github.com/doldecomp/sms)
+
+  重建 Super Mario Sunshine 的 C++ 源码，目标是让原版 Metrowerks 编译器为四个 GameCube 发行版本及 Switch 版 3D All-Stars 生成逐字节一致的目标文件。目标二进制取自使用者自备的光盘镜像，objdiff 按函数比对重建出的目标文件。工作尚未完成，仓库在人工流程之外还发布了面向 AI 智能体的贡献规则。
+
+  案例 · 独立重建 · [使用条件与证据](https://awesomerea.org/zh/resources/sms-matching-decomp-case/)
+
+- [**Dusklight：基于反编译的《黄昏公主》原生移植**](https://github.com/TwilitRealm/dusklight)
+
+  以 zeldaret/tp 反编译项目和 Aurora GameCube／Wii 兼容层为基础，将《塞尔达传说 黄昏公主》重新实现为桌面与移动平台的原生应用。程序读取使用者自备的光盘镜像运行，不附带任何素材；项目力求忠于原作，同时加入新选项、增强功能和模组。
+
+  案例 · 独立重建 · [使用条件与证据](https://awesomerea.org/zh/resources/dusklight-twilight-princess-port-case/)
+
+- [**Metaforce：在反编译之上重建的《密特罗德 Prime》引擎重实现**](https://github.com/AxioDL/metaforce)
+
+  Metaforce 于 2015 年作为《密特罗德 Prime》引擎的逆向重实现项目启动，现已在 PrimeDecomp 一致性反编译之上重写。其原生应用借助 Aurora GameCube 兼容层，将这些游戏代码以非一致模式编译为桌面和移动端程序，并读取使用者选择的光盘镜像。README 表示重写稳定之前暂不提供构建版本。
+
+  案例 · 独立重建 · [使用条件与证据](https://awesomerea.org/zh/resources/metaforce-metroid-prime-case/)
+
+- [**Super Mario Sunshine（美版）：AI 辅助的一致性反编译分支**](https://github.com/chasem-dev/sms-english)
+
+  将 doldecomp 的 Super Mario Sunshine 反编译工作扩展到北美 GMSE01 版本。README 称大量使用了 AI，仓库中的智能体规则、工作顺序和进度文件也记录了按批次编排 Claude 与 Codex 的方式。项目报告重建的 DOL 逐字节一致，但尚未完成的目标文件仍取自使用者光盘中提取的代码。
+
+  案例 · 独立重建 · [使用条件与证据](https://awesomerea.org/zh/resources/sms-english-gmse01-decomp-case/)
 
 #### 工具、项目与集成
 

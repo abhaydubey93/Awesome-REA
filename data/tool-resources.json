@@ -3313,5 +3313,136 @@
       "https://github.com/HarbourMasters/Ghostship/tree/40eef13823a954a466574dc78e73187a17a2dd42/.github/workflows",
       "https://github.com/HarbourMasters/Ghostship/releases/tag/3.0.0"
     ]
+  },
+  {
+    "id": "sms-matching-decomp-case",
+    "name": "Super Mario Sunshine: an in-progress matching GameCube decompilation",
+    "url": "https://github.com/doldecomp/sms",
+    "category": "reconstruction-cases",
+    "relationship": "independent-reconstruction",
+    "kind": "case-study",
+    "targets": [
+      "game"
+    ],
+    "description_en": "Reconstructs Super Mario Sunshine’s C++ source so that the original Metrowerks compiler reproduces byte-identical object files for four GameCube releases and the Switch 3D All-Stars build. The target binary comes from the user’s own disc image, and objdiff compares rebuilt objects function by function. The work is incomplete, and the repository publishes contribution rules for AI agents alongside its human workflow.",
+    "description_zh": "重建 Super Mario Sunshine 的 C++ 源码，目标是让原版 Metrowerks 编译器为四个 GameCube 发行版本及 Switch 版 3D All-Stars 生成逐字节一致的目标文件。目标二进制取自使用者自备的光盘镜像，objdiff 按函数比对重建出的目标文件。工作尚未完成，仓库在人工流程之外还发布了面向 AI 智能体的贡献规则。",
+    "evidence_url": "https://github.com/doldecomp/sms/blob/b2350a119b0e113e6cebc389fda9af00328ee85e/README.md",
+    "verified_at": "2026-10-18",
+    "verification": "source-reviewed",
+    "requirements": [
+      "The README calls this a work-in-progress decompilation. configure.py defaults to GMSJ01 (JPN Rev 0) and also targets GMSP01, GMSE01, GMSJ01 Rev 1 and the GMSP01_NX build from Super Mario 3D All-Stars. Only objects marked Matching are linked by default; --non-matching links equivalent or modded objects. For GMSJ01 at the reviewed commit, decomp.dev reported 49.51% of code decompiled and 18.42% fully linked; this collection did not recompute those figures.",
+      "Copy your own disc image for each version into orig/<version>. ISO (GCM), RVZ, WIA, WBFS, CISO, NFS, GCZ and TGC images are accepted, and the repository says it contains no game assets or assembly. The GMSJ01 symbol configuration is generated from the mario.MAP linker map found on that disc; the CI workflow notes that GMSE01 has no MAP file and skips symbol-order checks for it.",
+      "Builds need Python and Ninja on Windows, macOS or Linux; the build fetches decomp-toolkit, binutils and retro Metrowerks compilers (GC 1.2.5 for most code), and runs them through the wibo wrapper on macOS and Linux. objdiff compares rebuilt objects with those extracted from the original DOL, and each version’s build.sha1 records the target DOL hash.",
+      "AGENTS.md requires ninja baseline and changes_all regression reports for all five versions, each still reporting its DOL as OK. CI builds every version in a build container that supplies the original files and checks symbol order for changed units. These are project-reported checks and progress figures, not evidence of a complete or playable rebuilt game; no build was run here.",
+      "AGENTS.md, symlinked as CLAUDE.md and GEMINI.md, sets workflows for AI agents. It bars unsupervised agents from MSL, MetroTRK, THPPlayer, Dolphin SDK and JSystem code and defers hard judgment calls to humans, but it does not quantify agent-written code. The repository declares CC0-1.0; Nintendo’s game, disc contents and the downloaded compilers keep separate rights. No REA use is established."
+    ],
+    "additional_evidence_urls": [
+      "https://github.com/doldecomp/sms/blob/b2350a119b0e113e6cebc389fda9af00328ee85e/AGENTS.md",
+      "https://github.com/doldecomp/sms/blob/b2350a119b0e113e6cebc389fda9af00328ee85e/configure.py",
+      "https://github.com/doldecomp/sms/blob/b2350a119b0e113e6cebc389fda9af00328ee85e/config/GMSJ01/config.yml",
+      "https://github.com/doldecomp/sms/blob/b2350a119b0e113e6cebc389fda9af00328ee85e/config/GMSJ01/build.sha1",
+      "https://github.com/doldecomp/sms/blob/b2350a119b0e113e6cebc389fda9af00328ee85e/.github/workflows/build.yml",
+      "https://github.com/doldecomp/sms/blob/b2350a119b0e113e6cebc389fda9af00328ee85e/docs/AGENT_MATCHING_TIPS.md",
+      "https://github.com/doldecomp/sms/blob/b2350a119b0e113e6cebc389fda9af00328ee85e/LICENSE",
+      "https://decomp.dev/doldecomp/sms"
+    ]
+  },
+  {
+    "id": "dusklight-twilight-princess-port-case",
+    "name": "Dusklight: a native Twilight Princess port built on the decompilation",
+    "url": "https://github.com/TwilitRealm/dusklight",
+    "category": "reconstruction-cases",
+    "relationship": "independent-reconstruction",
+    "kind": "case-study",
+    "targets": [
+      "game"
+    ],
+    "description_en": "Reimplements Twilight Princess as a native application for desktop and mobile platforms, building on the zeldaret/tp decompilation and the Aurora GameCube/Wii compatibility layer. It runs from the user’s own disc image with no bundled assets and aims to stay accurate to the original while adding options, enhancements and mods.",
+    "description_zh": "以 zeldaret/tp 反编译项目和 Aurora GameCube／Wii 兼容层为基础，将《塞尔达传说 黄昏公主》重新实现为桌面与移动平台的原生应用。程序读取使用者自备的光盘镜像运行，不附带任何素材；项目力求忠于原作，同时加入新选项、增强功能和模组。",
+    "evidence_url": "https://github.com/TwilitRealm/dusklight/blob/34a144a493b7f57adeb4034d382317c826eb5c8d/README.md",
+    "verified_at": "2026-10-18",
+    "verification": "source-reviewed",
+    "requirements": [
+      "README calls Dusklight a reverse-engineered reimplementation that aims to be as accurate as possible while adding options, enhancements and tools. It is based on the zeldaret/tp decompilation, which README says is matching only for GameCube, so Wii discs still show the GameCube HUD and other GameCube specifics. This is a modified port, not a matching rebuild of the original executable.",
+      "No copyrighted assets are provided: the user supplies a dump of their own disc, and README says every commercial disc except the Korean Wii release is supported. The executable reads ISO (GCM), RVZ, WIA, WBFS, CISO and GCZ images directly.",
+      "Runtime needs a GPU with D3D12, Vulkan 1.1+ or Metal; D3D11 and Android OpenGL ES are best-effort without full accuracy or performance. The pinned tree has Windows, Linux, macOS, iOS, tvOS and Android platform folders, and CI builds Linux, macOS, iOS, Android and Windows targets. Source builds need CMake 3.25+, Python 3, the listed per-OS toolchains and recursive submodules, including Aurora.",
+      "The reviewed CI workflow builds packages but runs no comparison against the original game. Accuracy and enhancement claims are project-reported, and this collection built or ran nothing.",
+      "LICENSE.md is CC0-1.0; it does not cover Nintendo’s game or disc content, and submodules such as Aurora and the randomizer mod are separate repositories. README says the project does not accept primarily AI-generated contributions and warns of unaffiliated sites spreading AI-generated misinformation; the reviewed sources establish no REA involvement."
+    ],
+    "additional_evidence_urls": [
+      "https://github.com/TwilitRealm/dusklight/blob/34a144a493b7f57adeb4034d382317c826eb5c8d/docs/building.md",
+      "https://github.com/TwilitRealm/dusklight/blob/34a144a493b7f57adeb4034d382317c826eb5c8d/LICENSE.md",
+      "https://github.com/TwilitRealm/dusklight/blob/34a144a493b7f57adeb4034d382317c826eb5c8d/.gitmodules",
+      "https://github.com/TwilitRealm/dusklight/blob/34a144a493b7f57adeb4034d382317c826eb5c8d/CMakeLists.txt",
+      "https://github.com/TwilitRealm/dusklight/tree/34a144a493b7f57adeb4034d382317c826eb5c8d/platforms",
+      "https://github.com/TwilitRealm/dusklight/blob/34a144a493b7f57adeb4034d382317c826eb5c8d/.github/workflows/build.yml",
+      "https://github.com/encounter/aurora/blob/3227d76c60e1e782ca576610bce61c9e7744d8be/README.md"
+    ]
+  },
+  {
+    "id": "metaforce-metroid-prime-case",
+    "name": "Metaforce: a Metroid Prime engine reimplementation rebuilt on the decompilation",
+    "url": "https://github.com/AxioDL/metaforce",
+    "category": "reconstruction-cases",
+    "relationship": "independent-reconstruction",
+    "kind": "case-study",
+    "targets": [
+      "game"
+    ],
+    "description_en": "Started in 2015 as a reverse-engineered reimplementation of the Metroid Prime engine, Metaforce has been rewritten on top of the PrimeDecomp matching decompilation. Its native app compiles that game code as non-matching C++ for desktop and mobile through the Aurora GameCube compatibility layer and loads a user-selected disc image. The README says builds are unavailable while the rewrite stabilizes.",
+    "description_zh": "Metaforce 于 2015 年作为《密特罗德 Prime》引擎的逆向重实现项目启动，现已在 PrimeDecomp 一致性反编译之上重写。其原生应用借助 Aurora GameCube 兼容层，将这些游戏代码以非一致模式编译为桌面和移动端程序，并读取使用者选择的光盘镜像。README 表示重写稳定之前暂不提供构建版本。",
+    "evidence_url": "https://github.com/AxioDL/metaforce/blob/de8fc69bd7f345d6cf5f0c8fc2798295e22522d3/README.md",
+    "verified_at": "2026-10-18",
+    "verification": "source-reviewed",
+    "requirements": [
+      "README dates development to June 2015 by Cirrus and Antidote and says the project was recently rewritten on the PrimeDecomp matching decompilation; builds are unavailable while it stabilizes, although CI builds Windows, Linux, Apple and Android packages. The only GitHub release is a 2015 prerelease, so none corresponds to the rewrite. This is separate from Odrannnn/MetroidPrimePort, another native port built from PrimeDecomp.",
+      "The repository ships no game files; its orig/ version folders hold only placeholders. At startup the app takes or asks for a Metroid Prime disc image (ISO, GCM, CISO, GCZ, RVZ, WIA or TGC). CMake compiles the native target with TARGET_PC, NONMATCHING and VERSION=1, and configure.py names version 1 as the default GM8E01_00 (NTSC-U v1.088) build; the README lists no supported disc revisions.",
+      "Building needs CMake 3.25+, Python 3 and a recursive clone with the aurora, borealis and musyx submodules; Windows uses Visual Studio 2019 with the Clang and clang-cl components, macOS needs Xcode 11.5+, and Linux needs the listed Ubuntu, Arch or Fedora packages. README platforms are Windows 10+ (D3D12, Vulkan or D3D11), macOS 10.15+ (Metal), Linux (Vulkan), Android (Vulkan or OpenGL ES) and iOS (Metal); Android also needs SDK Platform 37, the NDK and JDK 17+.",
+      "configure.py still records per-object matching status across ten disc versions for the separate GameCube build, but CI ignores those files and builds only native packages. The reviewed sources publish no fidelity or gameplay checks for the native app, and this collection did not build or run it.",
+      "Metaforce contributors’ code is MIT, and a separate LICENSE.decomp carries CC0 1.0; the reviewed files do not say which directories each covers. Disc content keeps its own rights. The reviewed sources establish no AI or REA use."
+    ],
+    "additional_evidence_urls": [
+      "https://github.com/AxioDL/metaforce/blob/de8fc69bd7f345d6cf5f0c8fc2798295e22522d3/CMakeLists.txt",
+      "https://github.com/AxioDL/metaforce/blob/de8fc69bd7f345d6cf5f0c8fc2798295e22522d3/configure.py",
+      "https://github.com/AxioDL/metaforce/blob/de8fc69bd7f345d6cf5f0c8fc2798295e22522d3/src/Metaforce/Runtime.cpp",
+      "https://github.com/AxioDL/metaforce/blob/de8fc69bd7f345d6cf5f0c8fc2798295e22522d3/.github/workflows/build.yml",
+      "https://github.com/AxioDL/metaforce/blob/de8fc69bd7f345d6cf5f0c8fc2798295e22522d3/.gitmodules",
+      "https://github.com/AxioDL/metaforce/blob/de8fc69bd7f345d6cf5f0c8fc2798295e22522d3/platforms/android/README.md",
+      "https://github.com/AxioDL/metaforce/blob/de8fc69bd7f345d6cf5f0c8fc2798295e22522d3/LICENSE",
+      "https://github.com/AxioDL/metaforce/blob/de8fc69bd7f345d6cf5f0c8fc2798295e22522d3/LICENSE.decomp",
+      "https://github.com/encounter/aurora/blob/40cf48fce6ce85366608596bae018c6188f2b2e7/README.md"
+    ]
+  },
+  {
+    "id": "sms-english-gmse01-decomp-case",
+    "name": "Super Mario Sunshine (USA): an AI-assisted matching decompilation fork",
+    "url": "https://github.com/chasem-dev/sms-english",
+    "category": "reconstruction-cases",
+    "relationship": "independent-reconstruction",
+    "kind": "case-study",
+    "targets": [
+      "game"
+    ],
+    "description_en": "Extends the doldecomp Super Mario Sunshine decompilation to the North American GMSE01 release. The README says AI was used extensively, and the repository’s agent rules, work order and progress files describe batch-based Claude and Codex orchestration. Its rebuilt DOL is reported byte-identical, but unfinished objects are still linked from code extracted from the user’s disc.",
+    "description_zh": "将 doldecomp 的 Super Mario Sunshine 反编译工作扩展到北美 GMSE01 版本。README 称大量使用了 AI，仓库中的智能体规则、工作顺序和进度文件也记录了按批次编排 Claude 与 Codex 的方式。项目报告重建的 DOL 逐字节一致，但尚未完成的目标文件仍取自使用者光盘中提取的代码。",
+    "evidence_url": "https://github.com/chasem-dev/sms-english/blob/d5f4eb3eb54ac49638b5513efb1fc368068805da/README.md",
+    "verified_at": "2026-10-18",
+    "verification": "source-reviewed",
+    "requirements": [
+      "This hobby fork of doldecomp/sms targets GMSE01 (USA Rev 0). The README says it began when upstream’s Japanese decompilation was about 38% matched, and PROGRESS.md names upstream ab00c3c9 as its base. GMSJ01 and GMSP01 configs remain, but the README marks PAL as slightly broken and AGENTS.md says neither can be built or regression-tested in this clone.",
+      "Supply your own North American Rev 0 disc image in orig/GMSE01 (ISO, RVZ, WIA, WBFS, CISO, NFS, GCZ or TGC). The GMSE01 build notes record the required extracted-DOL SHA-1. Those notes say the initial symbols came from a community-hosted marioUS.map that is not on the US disc, while AGENTS.md calls the US map a real map shipped on the disc; that provenance conflict is left unresolved here.",
+      "Builds use Python 3 and Ninja on Windows, macOS (with Wine Crossover) or Linux (wibo on x86, Wine elsewhere), plus the pinned decomp-toolkit and Metrowerks tools. The output is build/GMSE01/mario.dol, checked against the extracted original. Playing it still needs the original disc image in Dolphin; a separate native PC port uses this fork as its decompilation submodule.",
+      "The README (2026-09-29) reports 99.60% fuzzy, 73.65% byte-perfect and 34.79% source-linked code, with 12,052 of 12,904 functions exact and 542 of 732 objects linked; PROGRESS.md (2026-09-27) gives slightly lower figures. A byte-identical DOL therefore does not mean complete source. The fork’s CI matrix builds only GMSJ01, so GMSE01 results are locally reported, and none were rerun here.",
+      "AGENTS.md, symlinked as CLAUDE.md and GEMINI.md, lifts upstream’s ban on autonomous library work. It requires agents to work only from the binary, the linker map and the repository, and forbids fakematches and leaked SDK sources. It does not measure how much code agents wrote. The repository keeps CC0-1.0, while Nintendo content and the compilers keep separate rights. No REA use is established."
+    ],
+    "additional_evidence_urls": [
+      "https://github.com/chasem-dev/sms-english/blob/d5f4eb3eb54ac49638b5513efb1fc368068805da/PROGRESS.md",
+      "https://github.com/chasem-dev/sms-english/blob/d5f4eb3eb54ac49638b5513efb1fc368068805da/config/GMSE01/README.md",
+      "https://github.com/chasem-dev/sms-english/blob/d5f4eb3eb54ac49638b5513efb1fc368068805da/AGENTS.md",
+      "https://github.com/chasem-dev/sms-english/blob/d5f4eb3eb54ac49638b5513efb1fc368068805da/STRATEGY.md",
+      "https://github.com/chasem-dev/sms-english/blob/d5f4eb3eb54ac49638b5513efb1fc368068805da/DECOMPILATION_PLAN.md",
+      "https://github.com/chasem-dev/sms-english/blob/d5f4eb3eb54ac49638b5513efb1fc368068805da/.github/workflows/build.yml",
+      "https://github.com/chasem-dev/sms-english/blob/d5f4eb3eb54ac49638b5513efb1fc368068805da/LICENSE"
+    ]
   }
 ]
