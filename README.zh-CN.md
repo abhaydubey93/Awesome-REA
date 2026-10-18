@@ -11,7 +11,7 @@
 <a href="https://awesomerea.org/zh/"><img src="assets/readme-banner.svg" alt="Awesome Reverse Engineering Anything — 覆盖六类逆向目标的工具、案例与论文" width="960"></a>
 
 <!-- BEGIN GENERATED BADGES -->
-[![精选资源: 227](https://img.shields.io/badge/%E7%B2%BE%E9%80%89%E8%B5%84%E6%BA%90-227-53309C?style=flat-square&labelColor=303447)](https://awesomerea.org/zh/resources/) [![案例: 88](https://img.shields.io/badge/%E6%A1%88%E4%BE%8B-88-53309C?style=flat-square&labelColor=303447)](https://awesomerea.org/zh/cases/) [![论文: 53](https://img.shields.io/badge/%E8%AE%BA%E6%96%87-53-53309C?style=flat-square&labelColor=303447)](https://awesomerea.org/zh/papers/) [![目录检查](https://github.com/reacher-z/Awesome-REA/actions/workflows/validate.yml/badge.svg?branch=main)](https://github.com/reacher-z/Awesome-REA/actions/workflows/validate.yml) [![许可: MIT](https://img.shields.io/badge/%E8%AE%B8%E5%8F%AF-MIT-606779?style=flat-square&labelColor=303447)](LICENSE) [![网站: awesomerea.org](https://img.shields.io/badge/%E7%BD%91%E7%AB%99-awesomerea.org-6235B5?style=flat-square&labelColor=303447)](https://awesomerea.org/zh/)
+[![精选资源: 233](https://img.shields.io/badge/%E7%B2%BE%E9%80%89%E8%B5%84%E6%BA%90-233-53309C?style=flat-square&labelColor=303447)](https://awesomerea.org/zh/resources/) [![案例: 94](https://img.shields.io/badge/%E6%A1%88%E4%BE%8B-94-53309C?style=flat-square&labelColor=303447)](https://awesomerea.org/zh/cases/) [![论文: 53](https://img.shields.io/badge/%E8%AE%BA%E6%96%87-53-53309C?style=flat-square&labelColor=303447)](https://awesomerea.org/zh/papers/) [![目录检查](https://github.com/reacher-z/Awesome-REA/actions/workflows/validate.yml/badge.svg?branch=main)](https://github.com/reacher-z/Awesome-REA/actions/workflows/validate.yml) [![许可: MIT](https://img.shields.io/badge/%E8%AE%B8%E5%8F%AF-MIT-606779?style=flat-square&labelColor=303447)](LICENSE) [![网站: awesomerea.org](https://img.shields.io/badge/%E7%BD%91%E7%AB%99-awesomerea.org-6235B5?style=flat-square&labelColor=303447)](https://awesomerea.org/zh/)
 <!-- END GENERATED BADGES -->
 
 **[搜索与筛选](https://awesomerea.org/zh/)** · **[浏览案例](https://awesomerea.org/zh/cases/)** · **[研究论文](https://awesomerea.org/zh/papers/)** · **[HTML 综述](https://awesomerea.org/zh/survey/)**
@@ -23,7 +23,7 @@
 <!-- BEGIN GENERATED CONTENTS -->
 **按目标找工具与案例**
 
-- [网站](#website) (17) · [游戏](#game) (71) · [应用](#app) (44)
+- [网站](#website) (18) · [游戏](#game) (76) · [应用](#app) (44)
 - [原生二进制](#native-binary) (20) · [固件与硬件](#firmware) (12) · [协议](#protocol) (11)
 
 **论文与工作流**
@@ -32,7 +32,7 @@
 
 **更多浏览方式**
 
-- [全部案例](https://awesomerea.org/zh/cases/) (88) · [相关合集](#related-collections) (4) · [完整仓库索引](#完整仓库索引) (2,836)
+- [全部案例](https://awesomerea.org/zh/cases/) (94) · [相关合集](#related-collections) (4) · [完整仓库索引](#完整仓库索引) (2,836)
 <!-- END GENERATED CONTENTS -->
 
 ## 按任务查找
@@ -80,6 +80,12 @@ REA 标签指向单独维护的[上游 CLI 与 MCP 项目](https://github.com/mo
   记录 BaoCut 交互式幻灯片编辑器，作者称其实现借鉴自 Claude Slides。它为浏览器与桌面宿主加入本地文稿存储、HTML/CSS 编译器及标注到智能体的桥接；设计说明报告了 Web 流程检查，但未确立原有后端恢复或完整行为一致性。
 
   案例 · 独立重建 · [使用条件与证据](https://awesomerea.org/zh/resources/baocut-slides-editor-case/)
+
+- [**Claude Code 中的 REA：隔离配置下的静态分析 A/B 试验**](https://zenn.dev/keigoly/articles/8738d8d241b5a1)
+
+  一篇日文实践报告在单独的项目目录中把 REA 6.4.0 接入 Claude Code，屏蔽其 170 个工具中的 43 个以及常见的命令行启动方式，并在两个真实任务上比较启用与禁用 REA 的运行：一个 Electron 终端的分发文件，以及一份保存的 HAR 通信记录。两组都给出正确答案，而启用 REA 的一组耗时最多为 2.00 倍、按 API 计价的费用最多为 1.67 倍。这是分析评估与安全配置案例，而非重建案例。
+
+  案例 · 混合工具流程 · [使用条件与证据](https://awesomerea.org/zh/resources/rea-claude-code-isolated-ab-case/)
 
 - [**BaoCut Design：移植重建的设计稿与设计系统编辑器**](https://github.com/JimLiu/baocut/tree/7aa049e82e1367da013b7aba80f0b79033fa04ad/packages/design-runtime)
 
@@ -312,6 +318,12 @@ REA 标签指向单独维护的[上游 CLI 与 MCP 项目](https://github.com/mo
 
   案例 · REA · [使用条件与证据](https://awesomerea.org/zh/resources/rea-touhou-reconstruction-method-case/)
 
+- [**TicTacToe-AI：REA 分叉对单个游戏方法的有限重建**](https://github.com/heaven-hm/re-agent/tree/develop/benchmarks/tictactoe)
+
+  作者的 REA 分叉（发帖时名为 rea-engine，后更名为 RE-Agent）反编译 GPL 许可的 TicTacToe-AI 游戏所发布的 .NET 可执行文件，重新编译恢复出的 C# 与资源，并依据原始 IL 修复一处反编译错误。差分探针在一个状态判定方法的全部 19,683 种棋盘赋值上运行原版与重建代码，并比较六张窗体渲染图。报告只判定该方法通过，整个游戏仍属部分重建。
+
+  案例 · 混合工具流程 · [使用条件与证据](https://awesomerea.org/zh/resources/rea-engine-tictactoe-case/)
+
 - [**LASRecomp：《织梦岛》静态重编译案例**](https://github.com/peiikai/LASRecomp)
 
   通过静态重编译，将 2019 年 Switch 版《塞尔达传说：织梦岛》重建为原生桌面程序。作者称大部分代码、工具与逆向工作由 Claude Code 完成，人类负责指导和复核。
@@ -491,6 +503,30 @@ REA 标签指向单独维护的[上游 CLI 与 MCP 项目](https://github.com/mo
   为《塞尔达传说 风之杖》GameCube 版的可执行文件和 REL 模块重建源码，涵盖美版／韩版、PAL 版、日版及日本体验版。已匹配的单元由源码编译，再与从使用者光盘中拆分出的对象链接，并按各版本的 SHA-1 哈希校验；仓库不含素材或汇编，范围是 GameCube 版而非 HD 重制版。
 
   案例 · 独立重建 · [使用条件与证据](https://awesomerea.org/zh/resources/wind-waker-decomp-case/)
+
+- [**Sonic Mania：面向 RSDKv5 引擎的游戏代码反编译重建**](https://github.com/RSDKModding/Sonic-Mania-Decompilation)
+
+  以 C 重建《索尼克狂欢》的游戏代码，并与另行反编译的 RSDKv5 或 RSDKv5U 引擎一起构建，支持 Windows、Linux、Switch 和 Android。素材必须来自官方发行的 Sonic Mania (Plus)；项目加入了模组加载器，并可构建多个零售版本。其许可证称代码大多在功能上与原作相同，而不是逐字节一致。
+
+  案例 · 独立重建 · [使用条件与证据](https://awesomerea.org/zh/resources/sonic-mania-decomp-case/)
+
+- [**MediEvil Recomp：PlayStation 游戏静态重编译为 C#**](https://github.com/BlackLabelHQ/MediEvilRecomp)
+
+  使用 RecompOne 重编译器及运行时，将北美版 PlayStation《MediEvil》静态重编译为 C# 代码。运行时代为提供 BIOS、GPU、CD-ROM 等硬件服务，项目补丁则修改渲染、宽屏和地形表现。README 强调这是重编译而非反编译，并将其标为公开测试版。
+
+  案例 · 独立重建 · [使用条件与证据](https://awesomerea.org/zh/resources/medievil-recomp-case/)
+
+- [**Crash Bandicoot 2 Recompiled：基于 PSXRecomp 的原生构建**](https://github.com/Zumbo06/Crash2Recomp)
+
+  一个 Windows 启动器，借助 PSXRecomp 重编译器与运行时，将用户自备的《古惑狼 2》光盘转换为 C 代码并在本地编译，使游戏以原生代码配合模拟的 PlayStation 硬件层运行。仓库包含启动器、打过补丁的内置运行时以及详细的调试记录，不分发任何游戏代码或数据。
+
+  案例 · 独立重建 · [使用条件与证据](https://awesomerea.org/zh/resources/crash2recomp-case/)
+
+- [**Petari：Super Mario Galaxy 一致性反编译重建**](https://github.com/SMGCommunity/Petari)
+
+  将 Super Mario Galaxy 的 Wii 代码重建为 C++，并以使用者从自有日版、北美版、PAL 版或韩版光盘中提取的 main.dol 为目标，逐个目标文件重建。已匹配的目标文件由源码链接，并通过 objdiff 和目标哈希检查。项目自称仍在进行中，与任何 PC 移植无关，并表示不接受 AI 生成的反编译代码。
+
+  案例 · 独立重建 · [使用条件与证据](https://awesomerea.org/zh/resources/petari-smg-decomp-case/)
 
 #### 工具、项目与集成
 

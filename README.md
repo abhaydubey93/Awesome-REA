@@ -11,7 +11,7 @@ An independent collection of tools, case studies and research for websites, game
 <a href="https://awesomerea.org/"><img src="assets/readme-banner.svg" alt="Awesome Reverse Engineering Anything — tools, cases and papers across six reverse-engineering domains" width="960"></a>
 
 <!-- BEGIN GENERATED BADGES -->
-[![resources: 227](https://img.shields.io/badge/resources-227-53309C?style=flat-square&labelColor=303447)](https://awesomerea.org/resources/) [![cases: 88](https://img.shields.io/badge/cases-88-53309C?style=flat-square&labelColor=303447)](https://awesomerea.org/cases/) [![papers: 53](https://img.shields.io/badge/papers-53-53309C?style=flat-square&labelColor=303447)](https://awesomerea.org/papers/) [![Catalog checks](https://github.com/reacher-z/Awesome-REA/actions/workflows/validate.yml/badge.svg?branch=main)](https://github.com/reacher-z/Awesome-REA/actions/workflows/validate.yml) [![license: MIT](https://img.shields.io/badge/license-MIT-606779?style=flat-square&labelColor=303447)](LICENSE) [![website: awesomerea.org](https://img.shields.io/badge/website-awesomerea.org-6235B5?style=flat-square&labelColor=303447)](https://awesomerea.org/)
+[![resources: 233](https://img.shields.io/badge/resources-233-53309C?style=flat-square&labelColor=303447)](https://awesomerea.org/resources/) [![cases: 94](https://img.shields.io/badge/cases-94-53309C?style=flat-square&labelColor=303447)](https://awesomerea.org/cases/) [![papers: 53](https://img.shields.io/badge/papers-53-53309C?style=flat-square&labelColor=303447)](https://awesomerea.org/papers/) [![Catalog checks](https://github.com/reacher-z/Awesome-REA/actions/workflows/validate.yml/badge.svg?branch=main)](https://github.com/reacher-z/Awesome-REA/actions/workflows/validate.yml) [![license: MIT](https://img.shields.io/badge/license-MIT-606779?style=flat-square&labelColor=303447)](LICENSE) [![website: awesomerea.org](https://img.shields.io/badge/website-awesomerea.org-6235B5?style=flat-square&labelColor=303447)](https://awesomerea.org/)
 <!-- END GENERATED BADGES -->
 
 **[Search & filter](https://awesomerea.org/)** · **[Browse cases](https://awesomerea.org/cases/)** · **[Research papers](https://awesomerea.org/papers/)** · **[HTML survey](https://awesomerea.org/survey/)**
@@ -23,7 +23,7 @@ An independent collection of tools, case studies and research for websites, game
 <!-- BEGIN GENERATED CONTENTS -->
 **Tools and cases by target**
 
-- [Website](#website) (17) · [Game](#game) (71) · [App](#app) (44)
+- [Website](#website) (18) · [Game](#game) (76) · [App](#app) (44)
 - [Native Binary](#native-binary) (20) · [Firmware and Hardware](#firmware) (12) · [Protocol](#protocol) (11)
 
 **Research and workflows**
@@ -32,7 +32,7 @@ An independent collection of tools, case studies and research for websites, game
 
 **More ways to browse**
 
-- [All cases](https://awesomerea.org/cases/) (88) · [Related Collections](#related-collections) (4) · [Full Repository Index](#full-repository-index) (2,836)
+- [All cases](https://awesomerea.org/cases/) (94) · [Related Collections](#related-collections) (4) · [Full Repository Index](#full-repository-index) (2,836)
 <!-- END GENERATED CONTENTS -->
 
 ## Find by task
@@ -79,6 +79,12 @@ REA labels refer to the separate [upstream CLI and MCP project](https://github.c
   Documents BaoCut’s interactive slide editor, whose author says the implementation draws on Claude Slides. It adds a local deck store, HTML/CSS compiler and annotation-to-agent bridge for browser and desktop hosts; the design reports a Web-flow check, without establishing original backend recovery or full behavioral parity.
 
   Case study · Independent reconstruction · [Requirements & evidence](https://awesomerea.org/resources/baocut-slides-editor-case/)
+
+- [**REA in Claude Code: an isolated static-analysis A/B trial**](https://zenn.dev/keigoly/articles/8738d8d241b5a1)
+
+  A Japanese field report connects REA 6.4.0 to Claude Code in a separate project directory, denies 43 of its 170 tools and common shell launch forms, and compares REA-enabled and REA-disabled runs on two real tasks: an Electron terminal’s packaged files and a saved HAR capture. Both arms answered correctly, while the REA arm took up to 2.00× the time and 1.67× the API-equivalent cost. It is an analysis-evaluation and safety-configuration case, not a reconstruction.
+
+  Case study · Mixed workflow · [Requirements & evidence](https://awesomerea.org/resources/rea-claude-code-isolated-ab-case/)
 
 - [**BaoCut Design: porting reconstructed canvas and design-system editors**](https://github.com/JimLiu/baocut/tree/7aa049e82e1367da013b7aba80f0b79033fa04ad/packages/design-runtime)
 
@@ -311,6 +317,12 @@ REA labels refer to the separate [upstream CLI and MCP project](https://github.c
 
   Case study · REA · [Requirements & evidence](https://awesomerea.org/resources/rea-touhou-reconstruction-method-case/)
 
+- [**TicTacToe-AI: a bounded REA-fork reconstruction of one game method**](https://github.com/heaven-hm/re-agent/tree/develop/benchmarks/tictactoe)
+
+  The author’s REA fork, posted as rea-engine and since renamed RE-Agent, decompiles the shipped .NET executable of the GPL-licensed TicTacToe-AI game, recompiles the recovered C# and resources, and repairs one decompiler error against the original IL. A differential probe runs original and rebuilt code on all 19,683 board assignments for one status method and compares six form renders. The report passes only that method; the whole game remains partial.
+
+  Case study · Mixed workflow · [Requirements & evidence](https://awesomerea.org/resources/rea-engine-tictactoe-case/)
+
 - [**LASRecomp: Link’s Awakening static recompilation**](https://github.com/peiikai/LASRecomp)
 
   A native desktop reconstruction of the 2019 Switch version of Link’s Awakening using static recompilation. The author attributes most code, tooling and reverse-engineering work to Claude Code with human direction and review.
@@ -490,6 +502,30 @@ REA labels refer to the separate [upstream CLI and MCP project](https://github.c
   Reconstructs source for The Wind Waker’s GameCube executable and REL modules across the USA/Korea, PAL and Japanese releases and a Japanese kiosk demo. Matched units are compiled from source and linked with objects split from the user’s disc, then checked against per-version SHA-1 hashes; the repository ships no assets or assembly and covers the GameCube game, not the HD remaster.
 
   Case study · Independent reconstruction · [Requirements & evidence](https://awesomerea.org/resources/wind-waker-decomp-case/)
+
+- [**Sonic Mania: a game-code decompilation for the RSDKv5 engine**](https://github.com/RSDKModding/Sonic-Mania-Decompilation)
+
+  Reconstructs Sonic Mania’s game code in C and builds it with the separately decompiled RSDKv5 or RSDKv5U engine for Windows, Linux, Switch and Android. Assets must come from an official Sonic Mania (Plus) release; the project adds a mod loader and can build several retail versions. Its license describes the code as mostly functionally the same as the original, not byte-matching.
+
+  Case study · Independent reconstruction · [Requirements & evidence](https://awesomerea.org/resources/sonic-mania-decomp-case/)
+
+- [**MediEvil Recomp: a PlayStation static recompilation to C#**](https://github.com/BlackLabelHQ/MediEvilRecomp)
+
+  Statically recompiles the North American PlayStation release of MediEvil into C# with the RecompOne recompiler and runtime. The runtime stands in for BIOS, GPU, CD-ROM and other hardware services, and project patches change rendering, widescreen and terrain behavior. README stresses that this is a recompilation, not a decompilation, and labels it an open beta.
+
+  Case study · Independent reconstruction · [Requirements & evidence](https://awesomerea.org/resources/medievil-recomp-case/)
+
+- [**Crash Bandicoot 2 Recompiled: a PSXRecomp native build**](https://github.com/Zumbo06/Crash2Recomp)
+
+  A Windows launcher that uses the PSXRecomp recompiler and runtime to translate the user’s Crash Bandicoot 2: Cortex Strikes Back disc to C and compile it locally, so the game runs as native code with an emulated PlayStation hardware layer. The repository holds the launcher, a patched vendored runtime and a long bring-up log; it distributes no game code or data.
+
+  Case study · Independent reconstruction · [Requirements & evidence](https://awesomerea.org/resources/crash2recomp-case/)
+
+- [**Petari: a matching Super Mario Galaxy decompilation**](https://github.com/SMGCommunity/Petari)
+
+  Reconstructs Super Mario Galaxy’s Wii code as C++ that rebuilds, object by object, against main.dol files extracted from the user’s own Japanese, North American, PAL or Korean disc. Matched objects are linked from source and checked with objdiff and a target hash. The project describes itself as a work in progress, separate from any PC port, and says it does not accept AI-generated decompilation.
+
+  Case study · Independent reconstruction · [Requirements & evidence](https://awesomerea.org/resources/petari-smg-decomp-case/)
 
 #### Tools, projects and integrations
 

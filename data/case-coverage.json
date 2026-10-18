@@ -4054,13 +4054,31 @@
         "https://x.com/i/status/2110641814545764484",
         "https://x.com/i/status/2110737629465514404"
       ],
-      "state": "pending",
-      "review_level": "inventory-only",
-      "reviewed_at": "2026-10-17",
-      "reason_en": "A collection lead awaiting primary-source review; listing does not verify implementation or results.",
-      "reason_zh": "合集线索，等待一手来源核查；被列入合集不代表实现或结果已获验证。",
-      "primary_evidence_urls": [],
-      "catalog_matches": []
+      "state": "already-curated",
+      "review_level": "primary-source-reviewed",
+      "reviewed_at": "2026-10-18",
+      "reason_en": "The linked fork, renamed from rea-engine to RE-Agent, publishes the TicTacToe target report, recovered source, recovery and probe scripts and a current result file for the reported rebuild. The full mapping covers that bounded case: one method passes over its 19,683-board domain, while executables, terminal bytes and whole-game behavior are not equivalent or verified. The separate Heaven Skills post adds workflow context only; nothing was rerun here.",
+      "reason_zh": "所链接的分叉（由 rea-engine 更名为 RE-Agent）公开了所报告重建的 TicTacToe 目标报告、恢复出的源码、恢复与探针脚本及当前结果文件。完整映射覆盖这一有限案例：一个方法在 19,683 种棋盘输入域上通过，而可执行文件、终端字节和整个游戏行为并不等价或未经验证。另一条 Heaven Skills 帖子只提供工作流背景；本次未重新运行任何内容。",
+      "primary_evidence_urls": [
+        "https://github.com/heaven-hm/re-agent/blob/a84c61e8baa65d445485722420a57ff4132b90d3/benchmarks/native-windows-ports/reports/targets/tictactoe.md",
+        "https://github.com/heaven-hm/re-agent/blob/a84c61e8baa65d445485722420a57ff4132b90d3/benchmarks/README.md",
+        "https://github.com/heaven-hm/re-agent/blob/a84c61e8baa65d445485722420a57ff4132b90d3/docs/verification/rea-engine/game-report-current-2026-10-14.json",
+        "https://github.com/heaven-hm/re-agent/blob/a84c61e8baa65d445485722420a57ff4132b90d3/scripts/recover-tictactoe-replica.mjs",
+        "https://github.com/heaven-hm/re-agent/blob/a84c61e8baa65d445485722420a57ff4132b90d3/scripts/verify-tictactoe-reconstruction.mjs",
+        "https://github.com/heaven-hm/re-agent/blob/a84c61e8baa65d445485722420a57ff4132b90d3/scripts/benchmarks/TicTacToeProbe.cs",
+        "https://github.com/heaven-hm/re-agent/blob/a84c61e8baa65d445485722420a57ff4132b90d3/benchmarks/tictactoe/LICENSE",
+        "https://github.com/heaven-hm/re-agent/blob/a84c61e8baa65d445485722420a57ff4132b90d3/README.md",
+        "https://github.com/heaven-hm/re-agent/blob/a84c61e8baa65d445485722420a57ff4132b90d3/LICENSE",
+        "https://github.com/tatlead/TicTacToe-AI/tree/ce0f81b05e190dcfb72ea68c5fbb1114fa994a5a"
+      ],
+      "catalog_matches": [
+        {
+          "catalog": "resource",
+          "id": "rea-engine-tictactoe-case",
+          "kind": "case-study",
+          "scope": "full"
+        }
+      ]
     },
     {
       "id": "song:bitfish-local-llm-home-control",
@@ -4167,13 +4185,22 @@
       "reported_source_urls": [
         "https://x.com/i/status/2110558521209356397"
       ],
-      "state": "pending",
-      "review_level": "inventory-only",
-      "reviewed_at": "2026-10-17",
-      "reason_en": "A collection lead awaiting primary-source review; listing does not verify implementation or results.",
-      "reason_zh": "合集线索，等待一手来源核查；被列入合集不代表实现或结果已获验证。",
-      "primary_evidence_urls": [],
-      "catalog_matches": []
+      "state": "already-curated",
+      "review_level": "primary-source-reviewed",
+      "reviewed_at": "2026-10-18",
+      "reason_en": "The linked Zenn article documents the author’s REA 6.4.0 setup in Claude Code, its configuration-based safety limits and a two-task, one-run-per-arm comparison with REA enabled and disabled. The full mapping covers this author-reported evaluation as a community case study, not a reconstruction, sandbox design or general performance result. Scripts and logs are unpublished, and nothing was rerun here.",
+      "reason_zh": "所链接的 Zenn 文章记录了作者在 Claude Code 中配置 REA 6.4.0 的方式、基于配置的安全限制，以及在两个任务上各运行一次、启用与禁用 REA 的对照。完整映射将这一作者报告的评估作为社区案例收录，而非重建、沙箱设计或普遍性能结论。脚本和日志未公开，本次也未重新运行。",
+      "primary_evidence_urls": [
+        "https://zenn.dev/keigoly/articles/8738d8d241b5a1"
+      ],
+      "catalog_matches": [
+        {
+          "catalog": "resource",
+          "id": "rea-claude-code-isolated-ab-case",
+          "kind": "case-study",
+          "scope": "full"
+        }
+      ]
     },
     {
       "id": "song:rea-640-windows-managed-electron-test",
@@ -5010,11 +5037,15 @@
         "https://x.com/i/status/2110680583634366777"
       ],
       "state": "pending",
-      "review_level": "inventory-only",
-      "reviewed_at": "2026-10-17",
-      "reason_en": "A collection lead awaiting primary-source review; listing does not verify implementation or results.",
-      "reason_zh": "合集线索，等待一手来源核查；被列入合集不代表实现或结果已获验证。",
-      "primary_evidence_urls": [],
+      "review_level": "primary-source-reviewed",
+      "reviewed_at": "2026-10-18",
+      "reason_en": "Primary look recorded. The post links zhaoxuya520/reverse-skill, which at the pinned commit is an MIT-licensed skill router for coding agents: it routes APK, binary, .NET and JavaScript reverse-engineering tasks alongside penetration-testing, exploit-development, EDR-bypass and CTF modules (the CTF component is GPLv3), with routing-regression CI. It is a tool rather than a reconstruction case and states no REA connection. Whether to curate it as an agent-integration record given that broad offensive-security scope is left to a maintainer; the post's claims are not adopted.",
+      "reason_zh": "已记录一手查看。帖子链接的 zhaoxuya520/reverse-skill 在固定版本中是一个采用 MIT 许可、面向编程智能体的 skill 路由包：除 APK、二进制、.NET 与 JavaScript 逆向任务外，还路由渗透测试、漏洞利用开发、EDR 绕过及 CTF 模块（CTF 组件采用 GPLv3），并以 CI 运行路由回归测试。它是工具而非重建案例，也未说明与 REA 的关联。鉴于其进攻性安全范围较广，是否作为智能体集成条目收录留待维护者决定；帖子中的说法不予采纳。",
+      "primary_evidence_urls": [
+        "https://x.com/i/status/2110680583634366777",
+        "https://github.com/zhaoxuya520/reverse-skill/blob/cab634bd855fc287f6e420c1f36fd1a6b9245960/README.md",
+        "https://github.com/zhaoxuya520/reverse-skill/blob/cab634bd855fc287f6e420c1f36fd1a6b9245960/LICENSE"
+      ],
       "catalog_matches": []
     },
     {
@@ -5310,12 +5341,15 @@
       "reported_source_urls": [
         "https://x.com/i/status/2110713533193453572"
       ],
-      "state": "pending",
-      "review_level": "inventory-only",
-      "reviewed_at": "2026-10-17",
-      "reason_en": "A collection lead awaiting primary-source review; listing does not verify implementation or results.",
-      "reason_zh": "合集线索，等待一手来源核查；被列入合集不代表实现或结果已获验证。",
-      "primary_evidence_urls": [],
+      "state": "insufficient-evidence",
+      "review_level": "primary-source-reviewed",
+      "reviewed_at": "2026-10-18",
+      "reason_en": "The author's post and linked Notion page describe a Dragon Ball-themed 3D story game made in about five hours with Claude Opus 5.5 after reverse-engineering the Little Prince AI+3D game, offered as a 24.3 MB single-file HTML download that the page says embeds Three.js r170. The page documents no recovered components, method, reference comparison or license, and this review did not download or run the file. The post says no other tools were used, so no REA involvement is established. Retain the lead without a catalog mapping; the original game is listed separately as hao-games:row-139.",
+      "reason_zh": "作者帖子及所链接的 Notion 页面称，在逆向《小王子》AI+3D 游戏后，借助 Claude Opus 5.5 用约五小时做出一款龙珠主题 3D 剧情游戏，并以 24.3 MB 的单文件 HTML 提供下载；页面称文件内嵌 Three.js r170。页面未记录恢复了哪些组件、所用方法、与原作的对照或许可证，本次审阅也未下载或运行该文件。帖子称未使用其他工具，因此未确立 REA 参与。保留此线索而不建立目录映射；原作游戏另列为 hao-games:row-139。",
+      "primary_evidence_urls": [
+        "https://x.com/i/status/2110713533193453572",
+        "https://periodic-lynx-544.notion.site/AI-3D-84be9192c75144e287e47a48579eaa8d"
+      ],
       "catalog_matches": []
     },
     {
@@ -9787,13 +9821,28 @@
       "reported_source_urls": [
         "https://github.com/SMGCommunity/Petari"
       ],
-      "state": "pending",
-      "review_level": "inventory-only",
-      "reviewed_at": "2026-10-17",
-      "reason_en": "Project row 9 (README line 88) lists SMGCommunity/Petari under 🍄 Super Mario Galaxy. Primary implementation, prerequisites and reported results remain unreviewed; this row is not a verified reconstruction.",
-      "reason_zh": "项目第 9 行（README 第 88 行）在 🍄 Super Mario Galaxy 下列出 SMGCommunity/Petari。其一手实现、使用条件和报告结果仍待核查；该行不是已经核验的重建成果。",
-      "primary_evidence_urls": [],
-      "catalog_matches": []
+      "state": "already-curated",
+      "review_level": "primary-source-reviewed",
+      "reviewed_at": "2026-10-18",
+      "reason_en": "The pinned README, configure.py, version configs, CI workflow and contribution rules document a four-version matching Wii decompilation built against user-extracted main.dol files, and decomp.dev reports per-version progress for this commit. Full mapping covers this decompilation, not the unpublished AstroCore PC port. Progress figures, the no-AI statement and matching status remain project-reported.",
+      "reason_zh": "固定版本的 README、configure.py、各版本配置、CI 工作流和贡献规则，记录了一个覆盖四个版本的 Wii 一致性反编译工程，构建目标为使用者提取的 main.dol，decomp.dev 也报告了该提交的各版本进度。完整映射覆盖此反编译项目，不包括未公开的 AstroCore PC 移植。进度数字、未使用 AI 的声明及一致性状态均为项目自报。",
+      "primary_evidence_urls": [
+        "https://github.com/SMGCommunity/Petari/blob/86ae7a3d3241adf07d5d3f9949e0462cccc583c1/README.md",
+        "https://github.com/SMGCommunity/Petari/blob/86ae7a3d3241adf07d5d3f9949e0462cccc583c1/configure.py",
+        "https://github.com/SMGCommunity/Petari/blob/86ae7a3d3241adf07d5d3f9949e0462cccc583c1/CONTRIBUTING.md",
+        "https://github.com/SMGCommunity/Petari/blob/86ae7a3d3241adf07d5d3f9949e0462cccc583c1/config/RMGK01/config.yml",
+        "https://github.com/SMGCommunity/Petari/blob/86ae7a3d3241adf07d5d3f9949e0462cccc583c1/.github/workflows/build.yml",
+        "https://github.com/SMGCommunity/Petari/blob/86ae7a3d3241adf07d5d3f9949e0462cccc583c1/LICENSE",
+        "https://decomp.dev/SMGCommunity/Petari"
+      ],
+      "catalog_matches": [
+        {
+          "catalog": "resource",
+          "id": "petari-smg-decomp-case",
+          "kind": "case-study",
+          "scope": "full"
+        }
+      ]
     },
     {
       "id": "hao-games:row-010",
@@ -10391,15 +10440,26 @@
       "reported_source_urls": [
         "https://github.com/RSDKModding/Sonic-Mania-Decompilation"
       ],
-      "state": "pending",
+      "state": "already-curated",
       "review_level": "primary-source-reviewed",
-      "reviewed_at": "2026-10-17",
-      "reason_en": "Bounded primary README review only; further focused review is pending. Sonic Mania decompilation adds a mod loader and supports the separate RSDKv5(U) engine. README requires official assets, excludes the Netflix version, and warns that nonrecursive ZIPs omit required submodules. Review its custom licensing and exact supported game/engine build combination before drafting; do not merge the separate engine row into one completed case.",
-      "reason_zh": "Sonic Mania 反编译项目包含模组支持，并可结合独立 RSDKv5(U) 引擎；README 要求官方素材、不支持 Netflix 版，并提醒非递归 ZIP 缺少子模块。发表前需核查许可和具体游戏／引擎组合，不将引擎行合并为同一完成案例。",
+      "reviewed_at": "2026-10-18",
+      "reason_en": "Building on the bounded README look, the pinned README, custom license, submodule list, CI workflow and v1.1.1 release support this Sonic Mania game-code decompilation built with the RSDKv5 or RSDKv5U engine. The full mapping covers the game repository only; the engine row stays separate. Official-asset dependency, the excluded Netflix version, the default engine/game build combination, non-byte-matching scope and non-commercial license terms remain explicit.",
+      "reason_zh": "在此前有限的 README 核查基础上，固定版本的 README、自定义许可证、子模块清单、CI 工作流和 v1.1.1 发布，支持这一与 RSDKv5 或 RSDKv5U 引擎一起构建的 Sonic Mania 游戏代码反编译。完整映射只覆盖游戏仓库，引擎项目另行处理。依赖官方素材、不支持 Netflix 版本、默认引擎与游戏版本组合、非逐字节一致的范围以及非商业许可条款均明确保留。",
       "primary_evidence_urls": [
-        "https://github.com/RSDKModding/Sonic-Mania-Decompilation/blob/9dc699428420d752af9767bdb13f585ee0881bc0/README.md"
+        "https://github.com/RSDKModding/Sonic-Mania-Decompilation/blob/9dc699428420d752af9767bdb13f585ee0881bc0/README.md",
+        "https://github.com/RSDKModding/Sonic-Mania-Decompilation/blob/9dc699428420d752af9767bdb13f585ee0881bc0/LICENSE.md",
+        "https://github.com/RSDKModding/Sonic-Mania-Decompilation/blob/9dc699428420d752af9767bdb13f585ee0881bc0/.gitmodules",
+        "https://github.com/RSDKModding/Sonic-Mania-Decompilation/blob/9dc699428420d752af9767bdb13f585ee0881bc0/.github/workflows/build.yml",
+        "https://github.com/RSDKModding/Sonic-Mania-Decompilation/releases/tag/v1.1.1"
       ],
-      "catalog_matches": []
+      "catalog_matches": [
+        {
+          "catalog": "resource",
+          "id": "sonic-mania-decomp-case",
+          "kind": "case-study",
+          "scope": "full"
+        }
+      ]
     },
     {
       "id": "hao-games:row-028",
@@ -10530,13 +10590,26 @@
         "https://github.com/Zumbo06/Crash2Recomp",
         "https://i.4cdn.org/vr/1791496164085175.png"
       ],
-      "state": "pending",
-      "review_level": "inventory-only",
-      "reviewed_at": "2026-10-17",
-      "reason_en": "Project row 32 (README line 310) lists Zumbo06/Crash2Recomp under 🌀 Crash Bandicoot 2: Cortex Strikes Back. Primary implementation, prerequisites and reported results remain unreviewed; this row is not a verified reconstruction.",
-      "reason_zh": "项目第 32 行（README 第 310 行）在 🌀 Crash Bandicoot 2: Cortex Strikes Back 下列出 Zumbo06/Crash2Recomp。其一手实现、使用条件和报告结果仍待核查；该行不是已经核验的重建成果。",
-      "primary_evidence_urls": [],
-      "catalog_matches": []
+      "state": "already-curated",
+      "review_level": "primary-source-reviewed",
+      "reviewed_at": "2026-10-18",
+      "reason_en": "The pinned README, generated-project files, recompiler build script, runtime patches and bring-up notes document a PSXRecomp static recompilation of the user’s North American Crash Bandicoot 2 disc into a native Windows build with an emulated hardware layer and interpreter fallback. Full mapping covers this launcher and runtime case, not the separate PSXRecomp project or independently reproduced gameplay. The collection row’s linked image was not used as evidence.",
+      "reason_zh": "固定版本的 README、生成项目文件、重编译器构建脚本、运行时补丁和调试记录，说明了用 PSXRecomp 将用户自备的北美版《古惑狼 2》光盘静态重编译为原生 Windows 构建的过程，并保留模拟硬件层与解释器回退。完整映射覆盖该启动器与运行时案例，不涵盖独立的 PSXRecomp 项目或独立复现的游戏行为。合集条目链接的图片未作为证据。",
+      "primary_evidence_urls": [
+        "https://github.com/Zumbo06/Crash2Recomp/blob/48036cf3b49dfe4343e5c093d1df8a7b12617f81/README.md",
+        "https://github.com/Zumbo06/Crash2Recomp/blob/48036cf3b49dfe4343e5c093d1df8a7b12617f81/tuning/NOTES.md",
+        "https://github.com/Zumbo06/Crash2Recomp/blob/48036cf3b49dfe4343e5c093d1df8a7b12617f81/_build/Crash2Recomp/README.md",
+        "https://github.com/Zumbo06/Crash2Recomp/blob/48036cf3b49dfe4343e5c093d1df8a7b12617f81/_build/build_recompiler.ps1",
+        "https://github.com/Zumbo06/Crash2Recomp/releases/tag/v0.9.6"
+      ],
+      "catalog_matches": [
+        {
+          "catalog": "resource",
+          "id": "crash2recomp-case",
+          "kind": "case-study",
+          "scope": "full"
+        }
+      ]
     },
     {
       "id": "hao-games:row-033",
@@ -10925,13 +10998,27 @@
         "https://github.com/BlackLabelHQ/MediEvilRecomp",
         "https://x.com/mdaman010/status/2109111127238230239?s=46"
       ],
-      "state": "pending",
-      "review_level": "inventory-only",
-      "reviewed_at": "2026-10-17",
-      "reason_en": "Project row 49 (README line 462) lists BlackLabelHQ/MediEvilRecomp under 🧭 MediEvil. Primary implementation, prerequisites and reported results remain unreviewed; this row is not a verified reconstruction.",
-      "reason_zh": "项目第 49 行（README 第 462 行）在 🧭 MediEvil 下列出 BlackLabelHQ/MediEvilRecomp。其一手实现、使用条件和报告结果仍待核查；该行不是已经核验的重建成果。",
-      "primary_evidence_urls": [],
-      "catalog_matches": []
+      "state": "already-curated",
+      "review_level": "primary-source-reviewed",
+      "reviewed_at": "2026-10-18",
+      "reason_en": "Pinned README, disc instructions, recompilation config, changelog, build workflow and the RecompOne submodule's README support the reported PlayStation static recompilation, its North American disc requirement and its beta status. The full mapping covers this recompilation, not a source decompilation or independently tested gameplay. The missing project license and the authors' no-AI statement are recorded; the collection post's archive link is outside this mapping.",
+      "reason_zh": "固定版本的 README、光盘说明、重编译配置、更新日志、构建工作流及 RecompOne 子模块的 README，支持该报告所述的 PlayStation 静态重编译、北美版光盘要求及测试版状态。完整映射覆盖此重编译项目，不涵盖源码反编译或经独立测试的游戏行为。项目缺少许可证及作者声明未使用 AI 等情况均已记录；合集帖子中的存档链接不在此映射范围内。",
+      "primary_evidence_urls": [
+        "https://github.com/BlackLabelHQ/MediEvilRecomp/blob/b9e46db34db40d6e5c8e19b538e4d517299a4012/README.md",
+        "https://github.com/BlackLabelHQ/MediEvilRecomp/blob/b9e46db34db40d6e5c8e19b538e4d517299a4012/disc/README.md",
+        "https://github.com/BlackLabelHQ/MediEvilRecomp/blob/b9e46db34db40d6e5c8e19b538e4d517299a4012/config/MediEvil.json",
+        "https://github.com/BlackLabelHQ/MediEvilRecomp/blob/b9e46db34db40d6e5c8e19b538e4d517299a4012/changelog.md",
+        "https://github.com/BlackLabelHQ/MediEvilRecomp/blob/b9e46db34db40d6e5c8e19b538e4d517299a4012/.github/workflows/build.yml",
+        "https://github.com/BlackLabelHQ/RecompOne/blob/1272fb80b1638efdae8f281ff6c6e90f93866ae6/README.md"
+      ],
+      "catalog_matches": [
+        {
+          "catalog": "resource",
+          "id": "medievil-recomp-case",
+          "kind": "case-study",
+          "scope": "full"
+        }
+      ]
     },
     {
       "id": "hao-games:row-050",
@@ -13903,18 +13990,18 @@
     "inventory_units": 589,
     "alias_merges": 2,
     "occurrences_by_state": {
-      "already-curated": 93,
-      "insufficient-evidence": 81,
-      "pending": 417
+      "already-curated": 99,
+      "insufficient-evidence": 82,
+      "pending": 410
     },
     "units_by_state": {
-      "already-curated": 92,
-      "insufficient-evidence": 81,
-      "pending": 416
+      "already-curated": 98,
+      "insufficient-evidence": 82,
+      "pending": 409
     },
-    "primary_reviewed_units": 116,
-    "catalog_linked_occurrences": 104,
-    "distinct_resource_ids": 98,
+    "primary_reviewed_units": 123,
+    "catalog_linked_occurrences": 110,
+    "distinct_resource_ids": 104,
     "distinct_paper_ids": 1,
     "unique_projects": null
   }

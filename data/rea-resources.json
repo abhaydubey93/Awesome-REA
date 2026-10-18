@@ -2177,5 +2177,65 @@
       "https://github.com/N0zoM1z0/th08/pull/11",
       "https://github.com/N0zoM1z0/th08/pull/13"
     ]
+  },
+  {
+    "id": "rea-engine-tictactoe-case",
+    "name": "TicTacToe-AI: a bounded REA-fork reconstruction of one game method",
+    "url": "https://github.com/heaven-hm/re-agent/tree/develop/benchmarks/tictactoe",
+    "category": "community-case-studies",
+    "relationship": "community-reported-mixed-workflow",
+    "kind": "case-study",
+    "targets": [
+      "game"
+    ],
+    "description_en": "The author’s REA fork, posted as rea-engine and since renamed RE-Agent, decompiles the shipped .NET executable of the GPL-licensed TicTacToe-AI game, recompiles the recovered C# and resources, and repairs one decompiler error against the original IL. A differential probe runs original and rebuilt code on all 19,683 board assignments for one status method and compares six form renders. The report passes only that method; the whole game remains partial.",
+    "description_zh": "作者的 REA 分叉（发帖时名为 rea-engine，后更名为 RE-Agent）反编译 GPL 许可的 TicTacToe-AI 游戏所发布的 .NET 可执行文件，重新编译恢复出的 C# 与资源，并依据原始 IL 修复一处反编译错误。差分探针在一个状态判定方法的全部 19,683 种棋盘赋值上运行原版与重建代码，并比较六张窗体渲染图。报告只判定该方法通过，整个游戏仍属部分重建。",
+    "evidence_url": "https://github.com/heaven-hm/re-agent/blob/a84c61e8baa65d445485722420a57ff4132b90d3/benchmarks/native-windows-ports/reports/targets/tictactoe.md",
+    "verified_at": "2026-10-18",
+    "verification": "source-reviewed",
+    "requirements": [
+      "The reviewed develop commit (2026-10-15) reports Feature PASS for CheckGameStatus over its declared 3^9 board domain and PARTIAL for the whole game. AI move selection and RNG, menus, timing and sound are unverified, the executables are not byte-identical, and raw terminal captures differ by one carriage return. The posts’ “byte for byte” wording therefore applies to structured board records and six render PNGs, not to the program.",
+      "The input is the published TicTacToe-AI executable from tatlead’s GPL-3.0 repository, identified by SHA-256 in the report. The repository redistributes it with the GPL text and a source archive kept for license compliance; the statement that this source was not consulted during reconstruction is author-reported.",
+      "The fork needs Node.js 22.19+ or 24.11+; recovery uses ilspycmd plus a host Roslyn compiler and Mono references, with script defaults pointing at Homebrew paths on macOS. Verification needs a local X11 display and Mono/libgdiplus. The recorded run used macOS 15.3.1 on ARM64 with Xvfb, so both renders come from the same Mono runtime rather than native Windows.",
+      "Scripts recover a fresh replica, then a probe executes the original and rebuilt assemblies, compares return values and indicator bytes for every board, and captures Form.DrawToBitmap images after button sequences. The current result JSON records zero board-record mismatches and terminalBytesEqual false. This collection read the reports and scripts without running the executables, tools or probe.",
+      "The fork is MIT with morluto’s REA copyright retained and lists optional engines such as Ghidra and Frida under their own licenses; the game and its reconstruction carry GPL-3.0 obligations. Fork-specific code is not part of upstream REA releases, and the repository was renamed after the posts, whose rea-engine link now redirects to RE-Agent."
+    ],
+    "additional_evidence_urls": [
+      "https://github.com/heaven-hm/re-agent/blob/a84c61e8baa65d445485722420a57ff4132b90d3/benchmarks/README.md",
+      "https://github.com/heaven-hm/re-agent/blob/a84c61e8baa65d445485722420a57ff4132b90d3/docs/verification/rea-engine/game-report-current-2026-10-14.json",
+      "https://github.com/heaven-hm/re-agent/blob/a84c61e8baa65d445485722420a57ff4132b90d3/scripts/recover-tictactoe-replica.mjs",
+      "https://github.com/heaven-hm/re-agent/blob/a84c61e8baa65d445485722420a57ff4132b90d3/scripts/verify-tictactoe-reconstruction.mjs",
+      "https://github.com/heaven-hm/re-agent/blob/a84c61e8baa65d445485722420a57ff4132b90d3/scripts/benchmarks/TicTacToeProbe.cs",
+      "https://github.com/heaven-hm/re-agent/blob/a84c61e8baa65d445485722420a57ff4132b90d3/benchmarks/tictactoe/LICENSE",
+      "https://github.com/heaven-hm/re-agent/blob/a84c61e8baa65d445485722420a57ff4132b90d3/README.md",
+      "https://github.com/heaven-hm/re-agent/blob/a84c61e8baa65d445485722420a57ff4132b90d3/THIRD_PARTY_NOTICES.md",
+      "https://github.com/heaven-hm/re-agent/blob/a84c61e8baa65d445485722420a57ff4132b90d3/LICENSE",
+      "https://github.com/heaven-hm/re-agent/blob/a84c61e8baa65d445485722420a57ff4132b90d3/package.json",
+      "https://github.com/tatlead/TicTacToe-AI/tree/ce0f81b05e190dcfb72ea68c5fbb1114fa994a5a"
+    ]
+  },
+  {
+    "id": "rea-claude-code-isolated-ab-case",
+    "name": "REA in Claude Code: an isolated static-analysis A/B trial",
+    "url": "https://zenn.dev/keigoly/articles/8738d8d241b5a1",
+    "category": "community-case-studies",
+    "relationship": "community-reported-mixed-workflow",
+    "kind": "case-study",
+    "targets": [
+      "app",
+      "website"
+    ],
+    "description_en": "A Japanese field report connects REA 6.4.0 to Claude Code in a separate project directory, denies 43 of its 170 tools and common shell launch forms, and compares REA-enabled and REA-disabled runs on two real tasks: an Electron terminal’s packaged files and a saved HAR capture. Both arms answered correctly, while the REA arm took up to 2.00× the time and 1.67× the API-equivalent cost. It is an analysis-evaluation and safety-configuration case, not a reconstruction.",
+    "description_zh": "一篇日文实践报告在单独的项目目录中把 REA 6.4.0 接入 Claude Code，屏蔽其 170 个工具中的 43 个以及常见的命令行启动方式，并在两个真实任务上比较启用与禁用 REA 的运行：一个 Electron 终端的分发文件，以及一份保存的 HAR 通信记录。两组都给出正确答案，而启用 REA 的一组耗时最多为 2.00 倍、按 API 计价的费用最多为 1.67 倍。这是分析评估与安全配置案例，而非重建案例。",
+    "evidence_url": "https://zenn.dev/keigoly/articles/8738d8d241b5a1",
+    "verified_at": "2026-10-18",
+    "verification": "source-reviewed",
+    "requirements": [
+      "The article by keigoly was published on Zenn on 2026-10-14 (JST). It pins REA 6.4.0 from the rea-agents package and runs it with a checksum-verified official Node.js 24.21.0 placed inside the project, because the host’s Homebrew Node 25.8.1 is outside REA’s supported range. All trials used non-interactive claude -p with Claude Opus 5.5 and permission prompts bypassed; the Claude Code version is not stated.",
+      "Isolation is configuration, not a sandbox: REA is enabled only through a project-local .mcp.json, a generated deny list blocks 43 tools selected from effect metadata, and Bash prefix rules block common package-runner launches. The author states that deny rules are a fence rather than isolation, that other invocation forms bypass the prefix rules, and that prompt injection through analysis output was not tested.",
+      "The tasks were MIT-licensed Orca terminal v1.4.224 (128 MB of distributed Electron files) and a 2.5 MB HAR from an unnamed venue website; answers were checked against Orca’s public source and the HAR data. The author excluded DRM or license circumvention, online multiplayer games, business or customer data and malware from scope.",
+      "Each condition ran once (n=1), the REA arm was told to prefer REA tools, parallel processes make timings approximate, and only static JavaScript/web work with one model was tested; an interrupted run was excluded and repeated. One REA analysis result exceeded the 10 MB MCP response limit. Scripts and JSONL logs are excerpted rather than published, so this collection could not and did not rerun the trials.",
+      "The author reports that REA helped with extraction, such as asar unpacking and HAR element extraction, while grep and small scripts carried code reading in both arms. Nothing was reconstructed: the HAR task identified an existing request path. Native binaries and APKs are deferred to a planned second step; Orca, the venue site, REA and the model service keep their own terms."
+    ]
   }
 ]

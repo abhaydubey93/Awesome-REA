@@ -3674,5 +3674,132 @@
       "https://github.com/zeldaret/tww/actions/runs/38619222013",
       "https://decomp.dev/zeldaret/tww"
     ]
+  },
+  {
+    "id": "sonic-mania-decomp-case",
+    "name": "Sonic Mania: a game-code decompilation for the RSDKv5 engine",
+    "url": "https://github.com/RSDKModding/Sonic-Mania-Decompilation",
+    "category": "reconstruction-cases",
+    "relationship": "independent-reconstruction",
+    "kind": "case-study",
+    "targets": [
+      "game"
+    ],
+    "description_en": "Reconstructs Sonic Mania’s game code in C and builds it with the separately decompiled RSDKv5 or RSDKv5U engine for Windows, Linux, Switch and Android. Assets must come from an official Sonic Mania (Plus) release; the project adds a mod loader and can build several retail versions. Its license describes the code as mostly functionally the same as the original, not byte-matching.",
+    "description_zh": "以 C 重建《索尼克狂欢》的游戏代码，并与另行反编译的 RSDKv5 或 RSDKv5U 引擎一起构建，支持 Windows、Linux、Switch 和 Android。素材必须来自官方发行的 Sonic Mania (Plus)；项目加入了模组加载器，并可构建多个零售版本。其许可证称代码大多在功能上与原作相同，而不是逐字节一致。",
+    "evidence_url": "https://github.com/RSDKModding/Sonic-Mania-Decompilation/blob/9dc699428420d752af9767bdb13f585ee0881bc0/README.md",
+    "verified_at": "2026-10-18",
+    "verification": "source-reviewed",
+    "requirements": [
+      "The repository describes itself as a complete decompilation of Sonic Mania (2017); its license says it also contains original code and that most code is expected to be functionally the same, so no byte-matching build is claimed. It adds a built-in mod loader and API and can build 1.00 (console launch), 1.03 (PC launch) and 1.06 (Plus update) variants. The reviewed commit is 15 commits after release v1.1.1 (2025-11-01).",
+      "It does not run without assets from an official Sonic Mania (Plus) release for Windows (Steam or Epic Games Store), Switch, PS4 or Xbox One; the Netflix Games version is not supported. By default it builds with the bundled RSDKv5 engine submodule at revision 3 (RSDKv5U) and game version 6, the last Steam release; with WITH_RSDK off it builds only the game code, and RETRO_DISABLE_PLUS is to be enabled for distribution builds.",
+      "Clone recursively, because GitHub’s source ZIPs omit the required submodules. CMake builds use Visual Studio with vcpkg (libtheora, libogg, GLEW, GLFW3, SDL2) on Windows, build tools with GLEW, GLFW and libtheora development packages on Linux, devkitPro packages for Switch, and the engine repository’s instructions for Android. GL builds need a user-made shader mod for videos and filters.",
+      "CI builds Windows x86 and x64 and Linux binaries against both the RSDKv5 and RSDKv5U configurations. The project publishes no comparison with the original binaries, and its FAQ says bugs present in official releases will mostly not be fixed. This collection did not build or run it.",
+      "The custom Sonic Mania Decompilation Source Code License v1 allows copying, modification and distribution only for non-commercial use, requires stating that the code is not the distributor’s, forbids distributing game assets other than unique modded ones, and binds forks to the same terms. Sega’s game and assets keep their own rights. The reviewed sources establish no AI or REA use."
+    ],
+    "additional_evidence_urls": [
+      "https://github.com/RSDKModding/Sonic-Mania-Decompilation/blob/9dc699428420d752af9767bdb13f585ee0881bc0/LICENSE.md",
+      "https://github.com/RSDKModding/Sonic-Mania-Decompilation/blob/9dc699428420d752af9767bdb13f585ee0881bc0/.gitmodules",
+      "https://github.com/RSDKModding/Sonic-Mania-Decompilation/blob/9dc699428420d752af9767bdb13f585ee0881bc0/.github/workflows/build.yml",
+      "https://github.com/RSDKModding/Sonic-Mania-Decompilation/releases/tag/v1.1.1"
+    ]
+  },
+  {
+    "id": "medievil-recomp-case",
+    "name": "MediEvil Recomp: a PlayStation static recompilation to C#",
+    "url": "https://github.com/BlackLabelHQ/MediEvilRecomp",
+    "category": "reconstruction-cases",
+    "relationship": "independent-reconstruction",
+    "kind": "case-study",
+    "targets": [
+      "game"
+    ],
+    "description_en": "Statically recompiles the North American PlayStation release of MediEvil into C# with the RecompOne recompiler and runtime. The runtime stands in for BIOS, GPU, CD-ROM and other hardware services, and project patches change rendering, widescreen and terrain behavior. README stresses that this is a recompilation, not a decompilation, and labels it an open beta.",
+    "description_zh": "使用 RecompOne 重编译器及运行时，将北美版 PlayStation《MediEvil》静态重编译为 C# 代码。运行时代为提供 BIOS、GPU、CD-ROM 等硬件服务，项目补丁则修改渲染、宽屏和地形表现。README 强调这是重编译而非反编译，并将其标为公开测试版。",
+    "evidence_url": "https://github.com/BlackLabelHQ/MediEvilRecomp/blob/b9e46db34db40d6e5c8e19b538e4d517299a4012/README.md",
+    "verified_at": "2026-10-18",
+    "verification": "source-reviewed",
+    "requirements": [
+      "The reviewed tree targets the North American PlayStation release (SCUS-942.27); config/MediEvil.json lists the main executable and its overlays for RecompOne to translate. README calls this an open beta in which things will break, with stable 1.0 unreleased. The v0.2b changelog replaces the PGXP renderer with a native floating-point rendering patch and adds widescreen fixes and an automatic updater.",
+      "Requires a legally owned North American MediEvil disc in bin/cue or CHD form; README and disc/README.md name the two track .bin files and the .cue expected in disc/. The project does not supply game files. RecompOne states that its runtime needs no BIOS or other Sony files, only the game files.",
+      "Building needs Git with the pinned RecompOne and ShaderMod submodules and the .NET 10 SDK. Windows batch scripts or a manual RecompOne run against config/MediEvil.json generate the game code, which is then compiled as a .NET 10 application. Running needs the .NET 10 runtime, OpenAL and an OpenGL 2.1 GPU; v0.2b release packages cover Windows x64/arm64, macOS x64/arm64 and Linux x64.",
+      "The build workflow recompiles and compiles the project using disc inputs from a separate access-restricted repository, then uploads the build; it does not run the game or compare behavior with the original. README credits references from an unnamed decompilation for function names and patches. This collection did not build or run the project.",
+      "MediEvilRecomp has no license file in the reviewed tree, so its reuse terms are unstated; the RecompOne submodule declares MIT. Original game content, including the executable code the recompiler translates, retains separate rights. Both READMEs state that no AI was used to write the code and that AI-generated contributions are rejected; this is not an REA-assisted case."
+    ],
+    "additional_evidence_urls": [
+      "https://github.com/BlackLabelHQ/MediEvilRecomp/blob/b9e46db34db40d6e5c8e19b538e4d517299a4012/disc/README.md",
+      "https://github.com/BlackLabelHQ/MediEvilRecomp/blob/b9e46db34db40d6e5c8e19b538e4d517299a4012/config/MediEvil.json",
+      "https://github.com/BlackLabelHQ/MediEvilRecomp/blob/b9e46db34db40d6e5c8e19b538e4d517299a4012/changelog.md",
+      "https://github.com/BlackLabelHQ/MediEvilRecomp/blob/b9e46db34db40d6e5c8e19b538e4d517299a4012/.gitmodules",
+      "https://github.com/BlackLabelHQ/MediEvilRecomp/blob/b9e46db34db40d6e5c8e19b538e4d517299a4012/RecompOne.MediEvil.csproj",
+      "https://github.com/BlackLabelHQ/MediEvilRecomp/blob/b9e46db34db40d6e5c8e19b538e4d517299a4012/.github/workflows/build.yml",
+      "https://github.com/BlackLabelHQ/MediEvilRecomp/releases/tag/v0.2b",
+      "https://github.com/BlackLabelHQ/RecompOne/blob/1272fb80b1638efdae8f281ff6c6e90f93866ae6/README.md",
+      "https://github.com/BlackLabelHQ/RecompOne/blob/1272fb80b1638efdae8f281ff6c6e90f93866ae6/LICENSE"
+    ]
+  },
+  {
+    "id": "crash2recomp-case",
+    "name": "Crash Bandicoot 2 Recompiled: a PSXRecomp native build",
+    "url": "https://github.com/Zumbo06/Crash2Recomp",
+    "category": "reconstruction-cases",
+    "relationship": "independent-reconstruction",
+    "kind": "case-study",
+    "targets": [
+      "game"
+    ],
+    "description_en": "A Windows launcher that uses the PSXRecomp recompiler and runtime to translate the user’s Crash Bandicoot 2: Cortex Strikes Back disc to C and compile it locally, so the game runs as native code with an emulated PlayStation hardware layer. The repository holds the launcher, a patched vendored runtime and a long bring-up log; it distributes no game code or data.",
+    "description_zh": "一个 Windows 启动器，借助 PSXRecomp 重编译器与运行时，将用户自备的《古惑狼 2》光盘转换为 C 代码并在本地编译，使游戏以原生代码配合模拟的 PlayStation 硬件层运行。仓库包含启动器、打过补丁的内置运行时以及详细的调试记录，不分发任何游戏代码或数据。",
+    "evidence_url": "https://github.com/Zumbo06/Crash2Recomp/blob/48036cf3b49dfe4343e5c093d1df8a7b12617f81/README.md",
+    "verified_at": "2026-10-18",
+    "verification": "source-reviewed",
+    "requirements": [
+      "Needs a disc image the user owns of the North American release (serial SCUS-94154), as .cue/.bin or .chd; the launcher checks tracks, sectors and boot serial and hashes the image. No PlayStation BIOS is required because MIT-licensed OpenBIOS is included, and locally generated files derived from the disc must not be redistributed.",
+      "Release v0.9.6 (2026-10-08) is a 64-bit Windows 10+ bundle; a first build takes about 3 GB of disk space and five to twenty minutes. Source use needs Python 3.11+ with PySide6 and the PSXRecomp MinGW-w64 Clang toolchain; the notes say MSVC is unsupported, and 59 runtime patches are kept in tuning/patches.",
+      "The README calls the game completable from start to finish but a work-in-progress preview with minor sound and graphical issues. Streamed level-code overlays are compiled natively when possible and otherwise fall back to a MIPS interpreter; the opt-in 60 FPS mode runs the emulated CPU at 200% and is not verified across the whole game.",
+      "Published checks are launcher settings and UI smoke tests, scenario scripts and a harness comparing its own Direct3D 12 and OpenGL renderers; none claims equivalence with original hardware, and no result was rerun here.",
+      "There is no top-level license file. The README lists PolyForm Noncommercial 1.0.0 for PSXRecomp, MIT for OpenBIOS, zlib for SDL3 and LGPLv3 for Qt/PySide6; the game and its trademarks belong to their owners. No REA or coding-agent involvement is documented."
+    ],
+    "additional_evidence_urls": [
+      "https://github.com/Zumbo06/Crash2Recomp/blob/48036cf3b49dfe4343e5c093d1df8a7b12617f81/tuning/NOTES.md",
+      "https://github.com/Zumbo06/Crash2Recomp/blob/48036cf3b49dfe4343e5c093d1df8a7b12617f81/_build/Crash2Recomp/README.md",
+      "https://github.com/Zumbo06/Crash2Recomp/blob/48036cf3b49dfe4343e5c093d1df8a7b12617f81/_build/Crash2Recomp/CMakeLists.txt",
+      "https://github.com/Zumbo06/Crash2Recomp/blob/48036cf3b49dfe4343e5c093d1df8a7b12617f81/_build/build_recompiler.ps1",
+      "https://github.com/Zumbo06/Crash2Recomp/tree/48036cf3b49dfe4343e5c093d1df8a7b12617f81/tuning/patches",
+      "https://github.com/Zumbo06/Crash2Recomp/tree/48036cf3b49dfe4343e5c093d1df8a7b12617f81/tuning/renderer_parity",
+      "https://github.com/Zumbo06/Crash2Recomp/releases/tag/v0.9.6"
+    ]
+  },
+  {
+    "id": "petari-smg-decomp-case",
+    "name": "Petari: a matching Super Mario Galaxy decompilation",
+    "url": "https://github.com/SMGCommunity/Petari",
+    "category": "reconstruction-cases",
+    "relationship": "independent-reconstruction",
+    "kind": "case-study",
+    "targets": [
+      "game"
+    ],
+    "description_en": "Reconstructs Super Mario Galaxy’s Wii code as C++ that rebuilds, object by object, against main.dol files extracted from the user’s own Japanese, North American, PAL or Korean disc. Matched objects are linked from source and checked with objdiff and a target hash. The project describes itself as a work in progress, separate from any PC port, and says it does not accept AI-generated decompilation.",
+    "description_zh": "将 Super Mario Galaxy 的 Wii 代码重建为 C++，并以使用者从自有日版、北美版、PAL 版或韩版光盘中提取的 main.dol 为目标，逐个目标文件重建。已匹配的目标文件由源码链接，并通过 objdiff 和目标哈希检查。项目自称仍在进行中，与任何 PC 移植无关，并表示不接受 AI 生成的反编译代码。",
+    "evidence_url": "https://github.com/SMGCommunity/Petari/blob/86ae7a3d3241adf07d5d3f9949e0462cccc583c1/README.md",
+    "verified_at": "2026-10-18",
+    "verification": "source-reviewed",
+    "requirements": [
+      "configure.py targets RMGJ01, RMGE01, RMGP01 and RMGK01, defaulting to the Korean RMGK01 build. Only objects marked Matching are linked unless --non-matching is used. For the reviewed commit, decomp.dev reported 100.00% of RMGK01 code decompiled with 68.75% fully linked, and 99.70% decompiled for the other three versions, with 55.61–58.17% linked. These figures are project-tracker results, not a complete source-built game.",
+      "Extract your own copy of the game for the chosen region with Dolphin into orig/RMG<region>01; only sys/main.dol is needed. The repository says it contains no game assets or assembly. Each version’s config records the expected DOL SHA-1 in config.yml and build.sha1.",
+      "Builds need Python and Ninja on Windows, macOS or Linux; wibo runs the Windows tools on macOS and Linux. configure.py pins Metrowerks compiler packages from the GC 2.7–3.0a5.2 and Wii 1.0 families. The GitHub Actions workflow builds all four versions in a build container its comments call private. This collection did not build or diff the project.",
+      "CONTRIBUTING.md requires 1:1 matching for objects marked as decompiled, objdiff checks and a successful link. Every non-matching function in a pull request must link a decomp.me scratch, and decompiler output must not be copied directly. The README credits doldecomp bte, zeldaret tp (JSystem) and ogws as sources of code and headers.",
+      "The README states that AI or LLMs played no role in the decompilation and limits permitted AI use to cleanup, formatting, documentation and naming. That is a project statement, not something this review can verify. The repository declares CC0-1.0, while Nintendo content, extracted files and toolchains keep separate rights. No REA use is established, and the separate AstroCore PC port mentioned in the README has no public source here."
+    ],
+    "additional_evidence_urls": [
+      "https://github.com/SMGCommunity/Petari/blob/86ae7a3d3241adf07d5d3f9949e0462cccc583c1/configure.py",
+      "https://github.com/SMGCommunity/Petari/blob/86ae7a3d3241adf07d5d3f9949e0462cccc583c1/CONTRIBUTING.md",
+      "https://github.com/SMGCommunity/Petari/blob/86ae7a3d3241adf07d5d3f9949e0462cccc583c1/config/RMGK01/config.yml",
+      "https://github.com/SMGCommunity/Petari/blob/86ae7a3d3241adf07d5d3f9949e0462cccc583c1/config/RMGK01/build.sha1",
+      "https://github.com/SMGCommunity/Petari/blob/86ae7a3d3241adf07d5d3f9949e0462cccc583c1/.github/workflows/build.yml",
+      "https://github.com/SMGCommunity/Petari/blob/86ae7a3d3241adf07d5d3f9949e0462cccc583c1/LICENSE",
+      "https://decomp.dev/SMGCommunity/Petari"
+    ]
   }
 ]
