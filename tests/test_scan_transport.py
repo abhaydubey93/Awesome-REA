@@ -1,6 +1,7 @@
 """Transport changes must preserve evidence and avoid counting deferred metadata."""
 import base64
 import contextlib
+import copy
 import hashlib
 import io
 import json
@@ -12,7 +13,7 @@ import unittest
 from unittest.mock import patch
 
 sys.path.insert(0, str(Path(__file__).resolve().parents[1] / 'scripts'))
-from scan_sources import run_scan
+from scan_sources import run_scan, save
 
 BODY = b'# Example\n\n## Usage\nRead a public protocol trace.\n'
 OID = hashlib.sha1(b'blob ' + str(len(BODY)).encode() + b'\0' + BODY).hexdigest()
@@ -66,6 +67,28 @@ class ScanTransportTests(unittest.TestCase):
             with contextlib.redirect_stdout(io.StringIO()):
                 code = run_scan(api, args, readme_transport=transport or Transport(status))
             return code, json.loads(output.read_text()), api
+
+    def test_checkpoint_keeps_unicode_bytes_and_does_not_mutate_retained_state(self):
+        _, document, _ = self.scan('ok')
+        document['resources'][0]['description_en'] = '协议分析 — trace 🔎\nSecond line'
+        original = copy.deepcopy(document)
+        expected = (json.dumps(document, ensure_ascii=False, indent=2) + '\n').encode('utf-8')
+        with tempfile.TemporaryDirectory() as directory:
+            output = Path(directory) / 'scan.json'
+            with patch('scan_sources.now', return_value=document['meta']['last_checkpoint_at']):
+                save(output, document['meta'], document['resources'], document['failures'], complete=True)
+            self.assertEqual(output.read_bytes(), expected)
+        self.assertEqual(document, original)
+
+    def test_checkpoint_encoding_failure_keeps_the_previous_checkpoint(self):
+        _, document, _ = self.scan('ok')
+        document['resources'][0]['unserializable'] = object()
+        with tempfile.TemporaryDirectory() as directory:
+            output = Path(directory) / 'scan.json'
+            output.write_bytes(b'previous checkpoint')
+            with self.assertRaises(TypeError):
+                save(output, document['meta'], document['resources'], document['failures'])
+            self.assertEqual(output.read_bytes(), b'previous checkpoint')
 
     def test_graphql_reads_have_real_hashes_and_no_fabricated_rest_request(self):
         code, document, api = self.scan('ok')

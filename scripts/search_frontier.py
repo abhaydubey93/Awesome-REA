@@ -462,15 +462,28 @@ def save_frontier(path, state, *, approved_queries=None, cache_root=None):
     approved = QUERY_BASES if approved_queries is None else approved_queries
     validate_frontier(state, approved_queries=approved)
     path = cache_path(path, cache_root)
-    raw = (json.dumps(state, ensure_ascii=False, separators=(',', ':')) + '\n').encode('utf-8')
-    if len(raw) > MAX_STATE_BYTES:
-        raise ValueError('Frontier exceeds the state byte bound; existing file retained')
     path.parent.mkdir(parents=True, exist_ok=True)
     temporary = path.with_suffix(path.suffix + '.tmp')
     if temporary.is_symlink():
         raise ValueError('Refusing a symlinked temporary frontier')
-    temporary.write_bytes(raw); temporary.replace(path)
-    return hashlib.sha256(raw).hexdigest()
+    fingerprint, size = hashlib.sha256(), 0
+    encoder = json.JSONEncoder(ensure_ascii=False, separators=(',', ':'))
+    try:
+        with temporary.open('wb') as stream:
+            for chunk in encoder.iterencode(state):
+                raw = chunk.encode('utf-8')
+                size += len(raw)
+                if size + 1 > MAX_STATE_BYTES:  # Reserve the final newline.
+                    raise ValueError('Frontier exceeds the state byte bound; existing file retained')
+                stream.write(raw)
+                fingerprint.update(raw)
+            stream.write(b'\n')
+            fingerprint.update(b'\n')
+        temporary.replace(path)
+    except BaseException:
+        temporary.unlink(missing_ok=True)
+        raise
+    return fingerprint.hexdigest()
 
 
 def load_frontier(path, *, approved_queries=None, cache_root=None):

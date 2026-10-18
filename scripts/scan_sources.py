@@ -582,7 +582,9 @@ def scan_readme(api, repo):
 
 
 def save(output, meta, records, failures, complete=False):
-    meta = copy.deepcopy(meta)
+    # Only these two mappings change below. Retained observations and records
+    # stay shared while the single writer serializes the checkpoint.
+    meta = {**meta, 'current_run': dict(meta['current_run'])}
     checkpoint = now()
     attempted = len(records) + len(failures)
     known_ids = meta.get('discovered_repository_ids', [])
@@ -614,7 +616,10 @@ def save(output, meta, records, failures, complete=False):
     document = {'meta': meta, 'resources': records, 'failures': failures}
     output.parent.mkdir(parents=True, exist_ok=True)
     temporary = output.with_suffix(output.suffix + '.tmp')
-    temporary.write_text(json.dumps(document, ensure_ascii=False, indent=2) + '\n', encoding='utf-8')
+    with temporary.open('w', encoding='utf-8') as stream:
+        # Avoid a second, potentially hundreds-of-megabytes Unicode document.
+        json.dump(document, stream, ensure_ascii=False, indent=2)
+        stream.write('\n')
     temporary.replace(output)
 
 

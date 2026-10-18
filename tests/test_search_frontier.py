@@ -1,5 +1,6 @@
 """Partition discovery must not truncate, widen scope, or lose pending identities."""
 import copy
+import hashlib
 import json
 from pathlib import Path
 import sys
@@ -245,11 +246,40 @@ class PersistenceTests(unittest.TestCase):
         with patch.object(frontier, 'MAX_STATE_BYTES', 10), self.assertRaises(ValueError):
             frontier.save_frontier(self.path, document, approved_queries=BASES, cache_root=self.root)
         self.assertEqual(self.path.read_bytes(), before)
+        self.assertFalse(self.path.with_suffix('.json.tmp').exists())
         with self.assertRaises(ValueError):
             frontier.save_frontier(self.root.parent / 'not-cache.json', document, approved_queries=BASES, cache_root=self.root)
         linked = self.root / 'link.json'; linked.symlink_to(self.path)
         with self.assertRaises(ValueError):
             frontier.load_frontier(linked, approved_queries=BASES, cache_root=self.root)
+
+    def test_unicode_frontier_hash_and_byte_bound_include_the_final_newline(self):
+        bases = ['逆向 in:readme']
+        document = state(bases)
+        expected = (json.dumps(document, ensure_ascii=False, separators=(',', ':')) + '\n').encode('utf-8')
+        with patch.object(frontier, 'MAX_STATE_BYTES', len(expected)):
+            fingerprint = frontier.save_frontier(self.path, document, approved_queries=bases, cache_root=self.root)
+        self.assertEqual(self.path.read_bytes(), expected)
+        self.assertEqual(fingerprint, hashlib.sha256(expected).hexdigest())
+        with patch.object(frontier, 'MAX_STATE_BYTES', len(expected) - 1), self.assertRaises(ValueError):
+            frontier.save_frontier(self.path, document, approved_queries=bases, cache_root=self.root)
+        self.assertEqual(self.path.read_bytes(), expected)
+        self.assertFalse(self.path.with_suffix('.json.tmp').exists())
+
+    def test_interrupted_frontier_encoding_preserves_previous_bytes_and_state(self):
+        document = state()
+        frontier.save_frontier(self.path, document, approved_queries=BASES, cache_root=self.root)
+        before, original = self.path.read_bytes(), copy.deepcopy(document)
+
+        def interrupted_encoder(encoder, value, *args, **kwargs):
+            yield '{"schema_version":1,'
+            raise OSError('simulated write interruption')
+
+        with patch.object(json.JSONEncoder, 'iterencode', interrupted_encoder), self.assertRaises(OSError):
+            frontier.save_frontier(self.path, document, approved_queries=BASES, cache_root=self.root)
+        self.assertEqual(self.path.read_bytes(), before)
+        self.assertEqual(document, original)
+        self.assertFalse(self.path.with_suffix('.json.tmp').exists())
 
     def test_invalid_query_overrides_cannot_relax_eligibility(self):
         for base in ('topic:decompiler OR topic:games', 'topic:decompiler fork:true', 'topic:decompiler created:>2020-01-01', 'topic:decompiler is:private'):
