@@ -99,6 +99,26 @@ class PartitionTests(unittest.TestCase):
 
 
 class QueueTests(unittest.TestCase):
+    def test_offsets_page_only_due_unacknowledged_candidates_in_fair_order(self):
+        document = state([BASES[0]])
+        frontier.record_response(document, frontier.next_request(document), response([repo(i) for i in range(1, 9)]))
+        frontier.acknowledge_candidates(document, [2, 7], checkpoint_sha256='a' * 64)
+        frontier.defer_candidates(document, [1, 4], reason='retry', retry_after_seconds=60, observed_at=LOW)
+        moment = frontier.utc_seconds(LOW)
+        before = copy.deepcopy(document)
+        for instant, expected in ((moment + 1, [3, 5, 6, 8]), (moment + 60, [3, 5, 6, 8, 1, 4])):
+            with self.subTest(now=instant):
+                pages = [frontier.pending_candidates(document, limit=2, offset=offset, now=instant)
+                         for offset in range(0, len(expected) + 2, 2)]
+                self.assertEqual([row['id'] for page in pages for row in page], expected)
+                self.assertEqual(pages[-1], [])
+        self.assertEqual(document, before)
+        for offset in (-1, True, 1.5, '1'):
+            with self.subTest(offset=offset), self.assertRaises(ValueError):
+                frontier.pending_candidates(document, offset=offset)
+        with self.assertRaises(ValueError):
+            frontier.pending_candidates(document, limit=1001)
+
     def test_deferred_ineligible_candidates_do_not_starve_unattempted_candidates(self):
         document = state([BASES[0]])
         frontier.record_response(document, frontier.next_request(document), response([repo(1), repo(2), repo(3)]))

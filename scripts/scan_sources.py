@@ -843,14 +843,24 @@ def run_scan(api, args, resumed=None, resume_sha256=None, *, readme_transport=No
     checkpoint()
     if frontier_api is not None:
         known_ids.update('scan-' + key for key in frontier_state['candidates'])
-        for pending in frontier_api.pending_candidates(frontier_state, limit=1000):
-            if len(candidates) >= candidate_goal:
+        # Freeze eligibility until all pages are loaded; no ACK or deferral mutates
+        # the queue before the checkpoint below.
+        pending_now, pending_offset = frontier_api.current_seconds(), 0
+        while len(candidates) < candidate_goal:
+            page_limit = min(1000, candidate_goal - len(candidates))
+            pending_page = frontier_api.pending_candidates(
+                frontier_state, limit=page_limit, offset=pending_offset, now=pending_now)
+            if not pending_page:
                 break
-            public = {'id': pending['id'], 'node_id': pending.get('node_id'), 'full_name': pending['full_name'],
-                      'html_url': 'https://github.com/' + pending['full_name'],
-                      'private': False, 'fork': False, 'archived': False, 'visibility': 'public'}
-            for query in pending['_matched_queries']:
-                add_candidate(public, pending['observed_at'], query=query)
+            pending_offset += len(pending_page)
+            for pending in pending_page:
+                public = {'id': pending['id'], 'node_id': pending.get('node_id'), 'full_name': pending['full_name'],
+                          'html_url': 'https://github.com/' + pending['full_name'],
+                          'private': False, 'fork': False, 'archived': False, 'visibility': 'public'}
+                for query in pending['_matched_queries']:
+                    add_candidate(public, pending['observed_at'], query=query)
+            if len(pending_page) < page_limit:
+                break
         checkpoint()
     if resumed:
         pending_legacy = known_ids - attempted_ids - set(candidates)

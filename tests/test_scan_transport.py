@@ -169,6 +169,68 @@ class ScanTransportTests(unittest.TestCase):
                 run_scan(api, args, readme_transport=Transport('ok'),
                          frontier=(state, Path(directory) / 'frontier.json', approved))
 
+    def test_saved_queue_over_1000_is_drained_without_new_http_discovery(self):
+        import search_frontier as frontier
+        import scan_sources
+        approved = ['topic:reverse-engineering', 'topic:decompiler', 'topic:website-clone']
+        state = frontier.new_frontier(until='2026-10-18T00:00:00Z', approved_queries=approved[:2])
+        old_run = '2026-10-18T01:00:00Z'
+        # Two completed queries retain 1,200 distinct identities. A third open
+        # query makes an unnecessary discovery request observable to the sentinel.
+        for _ in range(12):
+            request = frontier.next_request(state)
+            root = next(item['root'] for item in state['partitions'] if item['id'] == request['partition_id'])
+            start = root * 600 + (request['page'] - 1) * 100 + 1
+            items = [{**repository(), 'id': identifier, 'full_name': f'example/tool-{identifier}',
+                      'html_url': f'https://github.com/example/tool-{identifier}',
+                      'created_at': '2026-10-01T00:00:00Z'} for identifier in range(start, start + 100)]
+            frontier.record_response(state, request, {'items': items, 'total_count': 600,
+                                     'incomplete_results': False}, observed_at=old_run, run_id=old_run)
+        frontier.add_queries(state, approved[2:], approved_queries=approved)
+        frontier.defer_candidates(state, [1], reason='retry', retry_after_seconds=86400)
+        deferred = dict(state['candidates']['1'])
+
+        class VerifiedTransport:
+            batch_size = 16
+
+            def fetch_batch(self, repositories):
+                return {row['id']: {'status': 'ok', 'repository': {**repository(), **row}, 'content': BODY,
+                    'metadata': {'path': 'README.md', 'sha': OID, 'size': len(BODY), 'commit_oid': 'a' * 40,
+                                 'html_url': row['html_url'] + '/blob/' + 'a' * 40 + '/README.md'}}
+                        for row in repositories}
+
+        cache = scan_sources.ROOT / '.cache'
+        cache.mkdir(exist_ok=True)
+        with tempfile.TemporaryDirectory(dir=cache) as directory:
+            output, frontier_path = Path(directory) / 'scan.json', Path(directory) / 'frontier.json'
+            frontier.save_frontier(frontier_path, state, approved_queries=approved)
+            restored = frontier.load_frontier(frontier_path, approved_queries=approved)
+            args = SimpleNamespace(target=1100, workers=1, requests_per_second=1, max_pages=1,
+                                   candidate_buffer=0, seed_curated=False, seed_papers=False,
+                                   queries=[QUERY], output=output)
+            api = API()
+            with contextlib.redirect_stdout(io.StringIO()), \
+                    patch.object(api, 'json', side_effect=AssertionError('Saved queue must satisfy the target')) as http, \
+                    patch.object(frontier, 'pending_candidates', wraps=frontier.pending_candidates) as pages:
+                code = run_scan(api, args, readme_transport=VerifiedTransport(),
+                                frontier=(restored, frontier_path, approved))
+            document = json.loads(output.read_text())
+            self.assertEqual(code, 0)
+            http.assert_not_called()
+            self.assertEqual([call.kwargs['offset'] for call in pages.call_args_list], [0, 1000])
+            self.assertEqual([call.kwargs['limit'] for call in pages.call_args_list], [1000, 100])
+            self.assertEqual(len({call.kwargs['now'] for call in pages.call_args_list}), 1)
+            self.assertIsNotNone(pages.call_args_list[0].kwargs['now'])
+            self.assertEqual(document['meta']['current_run']['query_count'], 0)
+            self.assertEqual({row['id'] for row in document['resources']},
+                             {f'scan-{identifier}' for identifier in range(2, 1102)})
+            self.assertEqual(restored['request_count'], 12)
+            self.assertIsNotNone(frontier.next_request(restored))
+            self.assertEqual(restored['candidates']['1'], deferred)
+            acknowledged = {int(key) for key, row in restored['candidates'].items() if row['checkpoint_sha256']}
+            self.assertEqual(acknowledged, set(range(2, 1102)))
+            self.assertEqual([row['id'] for row in frontier.pending_candidates(restored)], list(range(1102, 1201)))
+
 
 if __name__ == '__main__':
     unittest.main()
