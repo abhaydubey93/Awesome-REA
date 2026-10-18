@@ -464,6 +464,19 @@ def validate_source_index(document, errors):
                 if (parsed.netloc != 'api.github.com'
                         or parsed.path != '/repos/' + str(record.get('full_name', '')) + '/readme'):
                     errors.append(f'{where}: README API URL must match the public GitHub repository')
+        graphql_fields = {'readme_transport', 'readme_graphql_endpoint', 'readme_commit_sha'}
+        if graphql_fields.intersection(record):
+            commit = record.get('readme_commit_sha')
+            path = record.get('readme_path')
+            if (not graphql_fields.issubset(record) or record.get('readme_transport') != 'github-graphql-blob'
+                    or record.get('readme_graphql_endpoint') != 'https://api.github.com/graphql'
+                    or not isinstance(commit, str) or not re.fullmatch(r'[0-9a-f]{40}', commit)
+                    or not isinstance(path, str) or not path or path.startswith('/')
+                    or any(part in ('', '.', '..') for part in path.split('/'))
+                    or 'readme_api_url' in record or record.get('readme_git_sha_matches_content') is not True
+                    or not isinstance(record.get('readme_url'), str) or not isinstance(record.get('url'), str)
+                    or unquote(record.get('readme_url', '')) != record['url'] + '/blob/' + str(commit) + '/' + str(path)):
+                errors.append(f'{where}: GraphQL README evidence needs a verified blob and immutable commit URL')
         if (record.get('private', False) is not False or record.get('visibility', 'public') != 'public'
                 or record.get('archived', False) is not False or record.get('fork', False) is not False):
             errors.append(f'{where}: repository metadata must describe a public, non-fork, non-archived repository')

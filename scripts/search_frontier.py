@@ -64,6 +64,14 @@ def utc_seconds(value):
     return int(parsed.timestamp())
 
 
+def checked_run_id(value):
+    """Preserve the scanner's UTC run identity, including subsecond precision."""
+    if not isinstance(value, str) or not re.fullmatch(r'\d{4}-\d{2}-\d{2}T\d{2}:\d{2}:\d{2}(?:\.\d{1,6})?Z', value):
+        raise ValueError('Expected a UTC scanner run identity')
+    dt.datetime.fromisoformat(value.replace('Z', '+00:00'))
+    return value
+
+
 def timestamp(value):
     return dt.datetime.fromtimestamp(value, dt.timezone.utc).strftime(DATE_FORMAT)
 
@@ -167,7 +175,7 @@ def record_response(state, request, response, *, known_ids=(), observed_at=None,
             or len(response['items']) > 100):
         raise ValueError('Invalid search response envelope; no cursor was changed')
     moment = current_seconds() if observed_at is None else utc_seconds(observed_at)
-    recorded_run = timestamp(moment) if run_id is None else timestamp(utc_seconds(run_id))
+    recorded_run = timestamp(moment) if run_id is None else checked_run_id(run_id)
     known = set(known_ids)
     if any(type(value) is not int or value <= 0 for value in known):
         raise ValueError('Durable known IDs must be positive integers')
@@ -229,7 +237,7 @@ def record_failure(state, request, *, reason, retry_after_seconds=60, observed_a
     if not re.fullmatch(r'[a-z][a-z0-9-]{0,60}', reason) or type(retry_after_seconds) is not int or not 1 <= retry_after_seconds <= 86400:
         raise ValueError('Failure must use a bounded outcome code and backoff')
     instant = current_seconds() if observed_at is None else utc_seconds(observed_at)
-    recorded_run = timestamp(instant) if run_id is None else timestamp(utc_seconds(run_id))
+    recorded_run = timestamp(instant) if run_id is None else checked_run_id(run_id)
     state['request_count'] += 1
     state['observations'].append({'sequence': state['request_count'], 'partition_id': item['id'], 'page': item['page'],
                                   'observed_at': timestamp(instant), 'run_id': recorded_run, 'status': 'failed', 'reason': reason,
@@ -311,7 +319,7 @@ def query_observations(state, *, start=0, run_id=None):
     into a new current_run slice when reconciling missing historical provenance.
     """
     if run_id is not None:
-        utc_seconds(run_id)
+        checked_run_id(run_id)
     if type(start) is not int or not 0 <= start <= len(state['observations']):
         raise ValueError('Invalid query observation offset')
     partitions = {item['id']: item for item in state['partitions']}
@@ -388,7 +396,7 @@ def validate_frontier(state, *, approved_queries):
         if set(event) != common | extra or event['sequence'] != sequence or event['partition_id'] not in ids or type(event['page']) is not int or not 1 <= event['page'] <= 10 or event['status'] not in ('ok', 'failed'):
             raise ValueError('Invalid request observation')
         utc_seconds(event['observed_at'])
-        utc_seconds(event['run_id'])
+        checked_run_id(event['run_id'])
         if event['status'] == 'failed':
             if not re.fullmatch(r'[a-z][a-z0-9-]{0,60}', str(event['reason'])) or type(event['retry_after_seconds']) is not int or not 1 <= event['retry_after_seconds'] <= 86400:
                 raise ValueError('Invalid failure observation')
