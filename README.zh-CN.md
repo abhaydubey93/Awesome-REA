@@ -15,16 +15,16 @@
 <!-- BEGIN GENERATED CONTENTS -->
 **按目标找工具与案例**
 
-- [网站](#website) (16) · [游戏](#game) (42) · [应用](#app) (40)
+- [网站](#website) (16) · [游戏](#game) (43) · [应用](#app) (41)
 - [原生二进制](#native-binary) (20) · [固件与硬件](#firmware) (12) · [协议](#protocol) (11)
 
 **论文与工作流**
 
-- [论文](#papers) (52) · [智能体与 MCP](#agents-and-mcp) (19) · [文档与学习资源](#references-and-learning) (20)
+- [论文](#papers) (53) · [智能体与 MCP](#agents-and-mcp) (19) · [文档与学习资源](#references-and-learning) (20)
 
 **更多浏览方式**
 
-- [全部案例](https://awesomerea.org/zh/cases/) (54) · [相关合集](#related-collections) (4) · [完整仓库索引](#完整仓库索引) (2,836)
+- [全部案例](https://awesomerea.org/zh/cases/) (56) · [相关合集](#related-collections) (4) · [完整仓库索引](#完整仓库索引) (2,836)
 <!-- END GENERATED CONTENTS -->
 
 <a id="资源目录"></a>
@@ -294,6 +294,12 @@ REA 标签指向单独维护的[上游 CLI 与 MCP 项目](https://github.com/mo
 
   案例 · 独立重建 · [使用条件与证据](https://awesomerea.org/zh/resources/arkweb-two-game-case/)
 
+- [**Perfect Dark：生成一致 ROM 的 Nintendo 64 反编译重建**](https://github.com/n64decomp/perfect_dark)
+
+  重建 Perfect Dark 的 Nintendo 64 代码，并提供生成一致 ROM 的构建流程。项目将重建源码与使用者自备原 ROM 中的素材结合，再检查各版本产物的哈希。这是可复现构建研究案例，与独立的原生 PC 移植不同；此处的一致性结果仍为项目报告。
+
+  案例 · 独立重建 · [使用条件与证据](https://awesomerea.org/zh/resources/perfect-dark-matching-decomp-case/)
+
 #### 工具、项目与集成
 
 - [**RenderDoc**](https://github.com/baldurk/renderdoc)
@@ -530,6 +536,12 @@ REA 标签指向单独维护的[上游 CLI 与 MCP 项目](https://github.com/mo
   实现网易 UU 远程的非官方原生 Linux 被控端；维护者称协议行为来自对官方客户端流量及已发布程序的调查。Rust 实现将选定的桌面、输入和辅助工具通道连接到 Linux 服务，另有仍处于实验阶段的 Linux 控制端。作者将开发归因于 Claude 与 Codex，未确立 REA 使用。
 
   案例 · 独立重建 · [使用条件与证据](https://awesomerea.org/zh/resources/uu-remote-linux-protocol-case/)
+
+- [**TCLimate：重建选定的 TCL Home 云端控制**](https://github.com/umarz317/TCLimate)
+
+  在原生 macOS 菜单栏应用中实现选定的 TCL Home 空调控制与用电量报告。项目改编既有社区协议实现，并记录通过调查 Android 模块恢复另一条统计请求的过程。报告的验证检查云端状态，不等于独立核实设备实际运行或完整设备等价性。
+
+  案例 · 独立重建 · [使用条件与证据](https://awesomerea.org/zh/resources/tclimate-cloud-controls-case/)
 
 #### 工具、项目与集成
 
@@ -1216,13 +1228,13 @@ REA 标签指向单独维护的[上游 CLI 与 MCP 项目](https://github.com/mo
 <a id="papers"></a>
 ## 论文
 
-**52 篇论文**，按主题分组，组内按年份从新到旧排列。每项均标明发表状态，中文标题为译名。
+**53 篇论文**，按主题分组，组内按年份从新到旧排列。每项均标明发表状态，中文标题为译名。
 
 [浏览论文目录](https://awesomerea.org/zh/papers/) · [完整书目 JSON](data/papers.json) · [推荐论文](https://github.com/reacher-z/Awesome-REA/issues/new?template=paper.yml)
 
 **按主题**
 
-- [智能体评测](#papers-agent-evaluation) (5) · [反编译](#papers-decompilation) (8) · [网站](#papers-website-reconstruction) (13)
+- [智能体评测](#papers-agent-evaluation) (5) · [反编译](#papers-decompilation) (9) · [网站](#papers-website-reconstruction) (13)
 - [游戏](#papers-game-reconstruction) (6) · [应用](#papers-app-reconstruction) (6) · [固件](#papers-firmware-analysis) (5)
 - [协议](#papers-protocol-analysis) (9)
 
@@ -1385,6 +1397,21 @@ REA 标签指向单独维护的[上游 CLI 与 MCP 项目](https://github.com/mo
   **范围与限制:** 论文实验限定于 x86 平台的 C 代码和函数级基准。通过抽样测试重新执行，不代表整程序等价或恢复了原始源码。仓库后续版本应与 2024 年论文区分。
 
   **发表信息:** 2024 · EMNLP 2024 · 会议论文 · Hanzhuo Tan 等
+
+  </details>
+
+- [**SLaDe：面向优化汇编的可移植小语言模型反编译器**](https://ieeexplore.ieee.org/document/10444788)
+
+  SLaDe 使用 200M 参数的编码器—解码器模型、面向代码的分词及 PsycheC 类型补全，将函数级汇编转换为 C。研究覆盖 x86 与 ARM 的 -O0、-O3 设置，并结合生成候选与输入／输出检查。输入是汇编文本而非原始机器字节，反汇编不属于该方法。
+
+  2024 · 会议论文 · [PDF](https://arxiv.org/pdf/2305.12520v3) · [代码](https://zenodo.org/records/10205121) · [完整条目与引用](https://awesomerea.org/zh/papers/paper-slade/)
+
+  <details>
+  <summary>范围与发表信息</summary>
+
+  **范围与限制:** 评测覆盖约 4,000 个 ExeBench 函数及含 112 个程序的合成基准。束宽为 5，并选择首个通过有限输入／输出测试的候选；生成函数被放回原始调用上下文。通过这些测试不代表完整程序或全部输入上的等价性。编辑相似度只是可读性的代理指标。较长函数、外部调用及错误的类型／运算符预测仍会导致失败；模型的输入和输出窗口均为 1,024 个位置。历史基线比较的覆盖范围不同，不能据此确立当前排名。
+
+  **发表信息:** 2024 · IEEE/ACM CGO 2024 · 会议论文 · Jordi Armengol-Estapé 等
 
   </details>
 

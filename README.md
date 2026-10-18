@@ -15,16 +15,16 @@ An independent collection of tools, case studies and research for websites, game
 <!-- BEGIN GENERATED CONTENTS -->
 **Tools and cases by target**
 
-- [Website](#website) (16) · [Game](#game) (42) · [App](#app) (40)
+- [Website](#website) (16) · [Game](#game) (43) · [App](#app) (41)
 - [Native Binary](#native-binary) (20) · [Firmware and Hardware](#firmware) (12) · [Protocol](#protocol) (11)
 
 **Research and workflows**
 
-- [Papers](#papers) (52) · [Agents and MCP](#agents-and-mcp) (19) · [References and Learning](#references-and-learning) (20)
+- [Papers](#papers) (53) · [Agents and MCP](#agents-and-mcp) (19) · [References and Learning](#references-and-learning) (20)
 
 **More ways to browse**
 
-- [All cases](https://awesomerea.org/cases/) (54) · [Related Collections](#related-collections) (4) · [Full Repository Index](#full-repository-index) (2,836)
+- [All cases](https://awesomerea.org/cases/) (56) · [Related Collections](#related-collections) (4) · [Full Repository Index](#full-repository-index) (2,836)
 <!-- END GENERATED CONTENTS -->
 
 <a id="resource-catalog"></a>
@@ -293,6 +293,12 @@ REA labels refer to the separate [upstream CLI and MCP project](https://github.c
 
   Case study · Independent reconstruction · [Requirements & evidence](https://awesomerea.org/resources/arkweb-two-game-case/)
 
+- [**Perfect Dark: matching Nintendo 64 decompilation**](https://github.com/n64decomp/perfect_dark)
+
+  Reconstructs Perfect Dark’s Nintendo 64 code with a documented matching-ROM build. The project combines reconstructed source with assets from a user-supplied original ROM, then checks version-specific artifact hashes. It is a reproducible-build research case, distinct from the separate native PC port; matching results remain project-reported here.
+
+  Case study · Independent reconstruction · [Requirements & evidence](https://awesomerea.org/resources/perfect-dark-matching-decomp-case/)
+
 #### Tools, projects and integrations
 
 - [**RenderDoc**](https://github.com/baldurk/renderdoc)
@@ -529,6 +535,12 @@ REA labels refer to the separate [upstream CLI and MCP project](https://github.c
   Implements an unofficial native Linux host for NetEase UU Remote, using protocol behavior the maintainer says was recovered from official-client traffic and shipped programs. The Rust implementation connects selected desktop, input and auxiliary-tool channels to Linux services; an additional Linux viewer remains experimental. The author attributes development to Claude and Codex, without establishing REA use.
 
   Case study · Independent reconstruction · [Requirements & evidence](https://awesomerea.org/resources/uu-remote-linux-protocol-case/)
+
+- [**TCLimate: reconstructing selected TCL Home cloud controls**](https://github.com/umarz317/TCLimate)
+
+  Implements selected TCL Home air-conditioner controls and electricity reporting in a native macOS menu-bar app. It adapts earlier community protocol work and documents an Android-module investigation to recover a separate statistics request. Reported validation checks cloud state, not independent physical operation or complete device equivalence.
+
+  Case study · Independent reconstruction · [Requirements & evidence](https://awesomerea.org/resources/tclimate-cloud-controls-case/)
 
 #### Tools, projects and integrations
 
@@ -1215,13 +1227,13 @@ REA labels refer to the separate [upstream CLI and MCP project](https://github.c
 <a id="papers"></a>
 ## Papers
 
-**52 papers**, grouped by topic and ordered newest first. Each entry shows its publication status.
+**53 papers**, grouped by topic and ordered newest first. Each entry shows its publication status.
 
 [Browse the paper directory](https://awesomerea.org/papers/) · [Complete bibliography JSON](data/papers.json) · [Suggest a paper](https://github.com/reacher-z/Awesome-REA/issues/new?template=paper.yml)
 
 **By topic**
 
-- [Agent evaluation](#papers-agent-evaluation) (5) · [Decompilation](#papers-decompilation) (8) · [Websites](#papers-website-reconstruction) (13)
+- [Agent evaluation](#papers-agent-evaluation) (5) · [Decompilation](#papers-decompilation) (9) · [Websites](#papers-website-reconstruction) (13)
 - [Games](#papers-game-reconstruction) (6) · [Apps](#papers-app-reconstruction) (6) · [Firmware](#papers-firmware-analysis) (5)
 - [Protocols](#papers-protocol-analysis) (9)
 
@@ -1384,6 +1396,21 @@ Open “Scope and publication details” for each study’s full limitations. So
   **Scope and limits:** The paper limits its experiments to C on x86 and function-level benchmarks. Re-executability on sampled tests does not establish whole-program equivalence or recovery of the original source. Later repository releases are separate from the 2024 paper.
 
   **Publication:** 2024 · EMNLP 2024 · Conference paper · Hanzhuo Tan et al.
+
+  </details>
+
+- [**SLaDe: A Portable Small Language Model Decompiler for Optimized Assembly**](https://ieeexplore.ieee.org/document/10444788)
+
+  SLaDe translates function-level assembly into C with a 200M-parameter encoder–decoder model, code-specific tokenization and PsycheC type completion. It studies x86 and ARM at -O0 and -O3, combining generated candidates with input/output checks. The input is assembly text, not raw machine bytes; disassembly is outside the method.
+
+  2024 · Conference paper · [PDF](https://arxiv.org/pdf/2305.12520v3) · [Code](https://zenodo.org/records/10205121) · [Full entry & citation](https://awesomerea.org/papers/paper-slade/)
+
+  <details>
+  <summary>Scope and publication details</summary>
+
+  **Scope and limits:** Evaluation covers about 4,000 ExeBench functions and a 112-program synthesis suite. Beam size 5 selects the first candidate passing finite I/O tests; generated functions are inserted into the original calling context. Passing these tests is not whole-program or all-input equivalence. Edit similarity is a readability proxy. Longer functions, external calls and incorrect type/operator predictions remain failure modes; the model has 1,024-position source and target windows. Historical baseline comparisons have different coverage and do not establish current rankings.
+
+  **Publication:** 2024 · IEEE/ACM CGO 2024 · Conference paper · Jordi Armengol-Estapé et al.
 
   </details>
 

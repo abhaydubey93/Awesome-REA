@@ -2955,5 +2955,66 @@
     "verified_at": "2026-10-18",
     "verification": "source-reviewed",
     "runtime_tested": false
+  },
+  {
+    "id": "paper-slade",
+    "title": "SLaDe: A Portable Small Language Model Decompiler for Optimized Assembly",
+    "title_zh": "SLaDe：面向优化汇编的可移植小语言模型反编译器",
+    "authors": [
+      "Jordi Armengol-Estapé",
+      "Jackson Woodruff",
+      "Chris Cummins",
+      "Michael F. P. O'Boyle"
+    ],
+    "year": 2024,
+    "publication_date": "2024-03-02",
+    "date_precision": "day",
+    "date_basis": "IEEE’s Crossref deposit gives published/print date 2024-03-02. Edinburgh’s publication record instead gives 2024-02-28, also the DOI-creation date. This entry uses the publisher-deposited print date and does not infer it solely from the conference schedule.",
+    "date_basis_zh": "IEEE 提交的 Crossref 元数据将 published／纸质出版日期记为 2024-03-02；爱丁堡大学出版记录则给出 2024-02-28，这也是 DOI 创建日期。本条目采用出版方提交的纸质出版日期，并非仅依据会议日程推定。",
+    "venue": "IEEE/ACM CGO 2024",
+    "publication_status": "conference-paper",
+    "arxiv_id": "2305.12520",
+    "arxiv_version_reviewed": "v3",
+    "first_arxiv_date": "2023-05-21",
+    "doi": "10.1109/CGO57630.2024.10444788",
+    "citation": {
+      "container_title": "2024 IEEE/ACM International Symposium on Code Generation and Optimization (CGO)",
+      "publisher": "IEEE",
+      "pages": "67-80",
+      "sources": [
+        "https://api.crossref.org/works/10.1109/CGO57630.2024.10444788",
+        "https://www.research.ed.ac.uk/en/publications/slade-a-portable-small-language-model-decompiler-for-optimized-as/"
+      ]
+    },
+    "url": "https://ieeexplore.ieee.org/document/10444788",
+    "pdf_url": "https://arxiv.org/pdf/2305.12520v3",
+    "code_url": "https://zenodo.org/records/10205121",
+    "project_url": null,
+    "targets": [
+      "binary"
+    ],
+    "description_en": "SLaDe translates function-level assembly into C with a 200M-parameter encoder–decoder model, code-specific tokenization and PsycheC type completion. It studies x86 and ARM at -O0 and -O3, combining generated candidates with input/output checks. The input is assembly text, not raw machine bytes; disassembly is outside the method.",
+    "description_zh": "SLaDe 使用 200M 参数的编码器—解码器模型、面向代码的分词及 PsycheC 类型补全，将函数级汇编转换为 C。研究覆盖 x86 与 ARM 的 -O0、-O3 设置，并结合生成候选与输入／输出检查。输入是汇编文本而非原始机器字节，反汇编不属于该方法。",
+    "scope_limitations_en": "Evaluation covers about 4,000 ExeBench functions and a 112-program synthesis suite. Beam size 5 selects the first candidate passing finite I/O tests; generated functions are inserted into the original calling context. Passing these tests is not whole-program or all-input equivalence. Edit similarity is a readability proxy. Longer functions, external calls and incorrect type/operator predictions remain failure modes; the model has 1,024-position source and target windows. Historical baseline comparisons have different coverage and do not establish current rankings.",
+    "scope_limitations_zh": "评测覆盖约 4,000 个 ExeBench 函数及含 112 个程序的合成基准。束宽为 5，并选择首个通过有限输入／输出测试的候选；生成函数被放回原始调用上下文。通过这些测试不代表完整程序或全部输入上的等价性。编辑相似度只是可读性的代理指标。较长函数、外部调用及错误的类型／运算符预测仍会导致失败；模型的输入和输出窗口均为 1,024 个位置。历史基线比较的覆盖范围不同，不能据此确立当前排名。",
+    "why_fits_en": "Adds type-inference-assisted neural decompilation with explicit execution-based evaluation, complementing symbol recovery and later LLM decompilation studies.",
+    "why_fits_zh": "补充结合类型推断与执行结果评测的神经反编译方法，与符号恢复及后续大语言模型反编译研究互补。",
+    "metadata_notes": "Reviewed arXiv v3 dated 2024-02-15, the accepted CGO manuscript; publication metadata establishes the final venue and pages. Paper reference 65 links the Zenodo artifact. Its separate LICENSE restricts included code/data/models to paper reproducibility and calls it nonproduction research code; no permissive license is inferred. The 1.83 GB archive was not downloaded or inspected. Appendix prerequisites include Python 3.8, PyTorch 1.10.2, Transformers 4.22.2, PsycheC, Haskell Stack and an AArch64 GCC toolchain. BTC weights are not redistributed and ChatGPT outputs may change. These are documented historical requirements, not a verified installation; no code or experiments were run.",
+    "metadata_notes_zh": "审阅 2024-02-15 发布的 arXiv v3，即 CGO 接收稿；出版元数据确认最终发表场所及页码。论文参考文献 65 链接至 Zenodo 产物，其独立 LICENSE 将所含代码／数据／模型限定用于论文复现，并说明这是不适合生产环境的研究代码，不能据此推定宽松许可。未下载或检查 1.83 GB 压缩包。附录列出的前提包括 Python 3.8、PyTorch 1.10.2、Transformers 4.22.2、PsycheC、Haskell Stack 及 AArch64 GCC 工具链。产物不再分发 BTC 权重，ChatGPT 输出也可能变化。这些是文档中的历史要求，并非已验证的安装环境；本次未运行代码或实验。",
+    "evidence_urls": [
+      "https://ieeexplore.ieee.org/document/10444788",
+      "https://api.crossref.org/works/10.1109/CGO57630.2024.10444788",
+      "https://www.research.ed.ac.uk/en/publications/slade-a-portable-small-language-model-decompiler-for-optimized-as/",
+      "https://conf.researchr.org/details/cgo-2024/cgo-2024-main-conference/17/SLaDe-A-Portable-Small-Language-Model-Decompiler-for-Optimized-Assembly",
+      "https://arxiv.org/abs/2305.12520",
+      "https://arxiv.org/pdf/2305.12520v3",
+      "https://zenodo.org/records/10205121",
+      "https://zenodo.org/api/records/10205121",
+      "https://zenodo.org/api/records/10205121/files/LICENSE/content"
+    ],
+    "kind": "research",
+    "verified_at": "2026-10-18",
+    "verification": "source-reviewed",
+    "runtime_tested": false
   }
 ]
