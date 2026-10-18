@@ -22,7 +22,7 @@ An independent collection of tools, case studies and research for websites, game
 
 **Research and workflows**
 
-- [Papers](#papers) (53) · [Agents and MCP](#agents-and-mcp) (20) · [References and Learning](#references-and-learning) (20)
+- [Papers](#papers) (53) · [Agents and MCP](#agents-and-mcp) (21) · [References and Learning](#references-and-learning) (20)
 
 **More ways to browse**
 
@@ -1001,6 +1001,12 @@ REA labels refer to the separate [upstream CLI and MCP project](https://github.c
   A Claude Code mod collects received REA Evidence, tracks unknowns and records findings that cite delivered evidence IDs.
 
   Integration · REA · [Requirements & evidence](https://awesomerea.org/resources/rea-casebook/)
+
+- [**Eleven**](https://github.com/Zfinix/eleven)
+
+  An agent-first desktop reverse-engineering app that opens Mach-O, ELF and PE binaries, Android packages and GPU kernels, and lets any Agent Client Protocol agent read code, rename functions, add notes and propose patches in a shared window. Native code is decompiled by Ghidra through a bundled REA build, with Rizin and jadx as alternative engines. It is a workbench around existing engines, not a new decompiler or a reconstruction case.
+
+  Integration · REA · [Requirements & evidence](https://awesomerea.org/resources/eleven-agent-re-workbench/)
 
 - [**Hex-Rays IDA MCP**](https://github.com/HexRaysSA/ida-mcp)
 
