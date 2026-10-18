@@ -1520,5 +1520,95 @@
       "在该固定版本中，分支的 PROGRESS.md 报告截至 2026-09-27：模糊相似度 99.57%、逐字节一致代码 72.94%、由源码链接的代码 33.18%，12,904 个函数中有 12,002 个匹配；重建的 DOL 与原版逐字节一致，但未完成部分仍链接提取出的目标文件。其 README 给出 2026-09-29 略高的数字。移植编译反编译中的 588 个游戏、JSystem 和 THPPlayer 单元，因此未匹配的函数仍可能与原版不同。项目报告了按基线哈希核对、并在 32 位与 64 位构建间比较的脚本化无界面运行，与原版 Dolphin 捕获数据的逐步追踪对照，以及在 qemu-ppc 下检查数学例程；本合集均未运行。",
       "移植项目采用 MIT 许可（SoftwareAura LLC），反编译分支采用 CC0-1.0；游戏本身及使用者光盘内容的权利另行保留。AI 参与情况来自分支 README 和智能体指南（其中描述 Claude 与 Codex 编排流程），未作量化；所报告的 X 帖子未提供额外技术证据。未确立 REA 使用。"
     ]
+  },
+  "zelda-mm-decomp-case": {
+    "name": "《姆吉拉的假面》：生成一致美版 N64 ROM 的反编译重建",
+    "requirements": [
+      "README 称其为仍在进行中的反编译项目，代码库仍可能大幅变动，并提醒 ROM 的部分内容可能尚不能移动，因此修改可能较困难。目前只支持 N64 美版 1.0；Makefile 另列出进行中的 N64 日版 1.1 目标，该目标关闭了校验比较。《姆吉拉的假面 3D》不在范围内，产物是 N64 ROM，而不是 PC 可执行文件。",
+      "需自备美版《姆吉拉的假面》ROM 作为基础 ROM，可接受 .z64、.n64 和 .v64 字节序。仓库不含任何游戏素材或汇编：构建流程先解压所供 ROM，从中得到文件、素材以及反汇编的代码和数据，再编译出 ROM 和压缩版 ROM。",
+      "文档说明的宿主为 Linux（原生、WSL 或虚拟机，推荐 Debian 或 Ubuntu），需 Git、build-essential、MIPS binutils、curl、带 pip 和 venv 的 Python 3、libpng 与 libxml2；macOS 和 Docker 另有指南。默认编译器是 IDO 5.3 和 7.1 的静态重编译版本，由 tools 目录的 Makefile 从 decompals/ido-static-recomp 下载；GCC 和 NON_MATCHING 构建会关闭校验比较。",
+      "默认构建会用仓库保存的 MD5 值检查两个 ROM，输出 OK 或 FAILED；FAILED 表示基础 ROM 有误或代码不一致。CI 以一致模式构建美版、以非一致模式构建日版 1.1，基础 ROM 由项目构建容器提供。核查时项目可变的进度徽章显示 100%，README 仍标注为进行中；本合集未重新运行构建。",
+      "所审阅代码树没有顶层许可证文件，GitHub 也未识别出许可证，因此源码的再使用条款未予说明；ROM 内容和由其得到的素材保留各自权利。README 禁止任何曾接触泄露的 Nintendo 64 SDK、libultra 或 Zelda 64 源码的人参与贡献。所审阅来源未确立 AI 或 REA 使用，也不主张运行复现。"
+    ]
+  },
+  "wine-uwp-store-apps-case": {
+    "name": "wine-uwp：在修改版 Wine 上运行打包的 Windows 商店应用",
+    "requirements": [
+      "README 的应用列表报告：Shapr3D 的草图、建模、菜单、云同步、登录及 STL／PDF 导出可用；Solitaire 可游玩；Media Player 能从自身界面播放音频；Calculator 完全可用；Feedback Hub 可交互；Camera 只能进入它自己的错误页面。Shapr3D for Linux（58d9173）将同一固定版本的 wine-uwp 打包为测试版 AppImage 和 Flatpak；它是非官方项目，与 Shapr3D 无关。",
+      "需要使用者自己的应用包（.msix 或 .msixbundle，或 Shapr3D 的 .appinstaller，安装程序据此下载约 1.8 GB），以及从微软免费的 Windows 11 评估版 ISO 或其他 Windows 11 镜像中提取的 Windows 组件。仓库和发布包均不含这些内容，提交钩子会拒绝 Windows 二进制文件。Shapr3D 还需要账号并通过浏览器登录。",
+      "构建时把仓库内的 wine/ 文件复制到 Wine 11.17 源码之上，再运行 autoreconf、带 --enable-archs=x86_64 的 configure 和 make；WinRT 替身组件使用 clang-cl 与 lld-link，针对 xwin 获取的 Windows SDK 头文件构建。Shapr3D for Linux 需要 glibc 2.38+ 的 64 位 Linux、可用的 Vulkan 驱动，安装期间约需 11 GB 空闲空间；其发布包用 flatpak-builder 在 freedesktop 25.08 SDK 中构建。",
+      "regress.sh 要求 Calculator 与仓库中保存的基线逐像素一致，并要求其他应用能在私有 Xvfb 显示上启动；release.sh 的冒烟测试检查全新安装能否进入 Shapr3D 的首个界面。Findings 日志既记录修复，也记录失败的尝试。这些检查均为项目自报；本合集未构建 Wine，也未运行任何应用。",
+      "两个仓库都没有顶层许可证文件，GitHub 也未识别出许可证。仓库内的 Wine 文件带有 LGPL-2.1-or-later 声明，安装程序的 Cargo 清单也声明相同许可；替身组件和调查工具未声明许可证。提取的微软组件和商店应用各自保留条款，项目计划也指出，可分发的产品需要以净室方式替换这些组件。作者在 X 帖子中披露大量借助 Claude；未确立 REA 使用。"
+    ]
+  },
+  "rea-touhou-reconstruction-method-case": {
+    "name": "东方 Project 重建：贯穿三款游戏的智能体驱动方法",
+    "requirements": [
+      "证据说明于 2026 年 10 月 10 日核查，涉及三个独立项目：延续 GensokyoClub 的 TH08 1.00d 重建、从零个已确认函数起步的 TH095 1.02a 重建，以及注明借鉴 ReC98 的 PC-98 版 TH04 重建。里程碑间隔依据公开提交的时间戳计算，衡量的是记录上的时间间隔，而非计算时间、投入工时或受控的提速对比。",
+      "固定版本的进度记录报告：TH08 的 1,107 个函数中 1,106 个通过验收，TH095 的 697 个已确认函数中 696 个精确一致，TH04 的 663 个已审阅候选中 661 个精确一致，各自采用不同定义；说明明确提醒不要据此计算跨游戏比率或整个可执行文件的完成百分比。TH08 的 Linux 与 Web 移植、可游玩的 TH095 Windows i386 构建，以及 TH04 的四个 DOS 产物均为记录在案的里程碑。TH04 的游玩结果依据维护者的手动观察，其 64 位移植仍在开发中。",
+      "在 TH08 中，一项指令字节比对因未检查所引用的字面量数据，接受了用 0.0 代替原可执行文件中 128.0 的源码。TH08 的 PR #11 与 #13 加入字面量数据检查，并在审计的 1,548 处引用中另外修正了十二处过时引用。网站工作只重新检查了历史与元数据，没有重新运行历史编译器或游戏。",
+      "文章与说明不提供游戏文件、编译器或构建产物；各项目仓库自行说明对原游戏与工具链的要求，游戏权利仍归原权利人。GensokyoClub 的 TH08 历史保留其署名与许可；其排除以 AI 为主的贡献的公开政策仅被转述，并未被采纳。TH08 另有独立的目录条目；本次审阅未单独审阅 TH095 或 TH04 仓库，也未运行任何项目。",
+      "文章说明 REA 为智能体提供分析证据；各项目也使用了自己的分析桥接与工具，历史结果不被重新标记为 REA 的输出。作者将该方法及其工业化类比作为经验陈述和观点提出，并非经测量的智能体与人工对比，也不证明它能推广到其他领域。"
+    ]
+  },
+  "dlssnr-amd-neural-rendering-case": {
+    "name": "DLSSNR-AMD：为 RDNA4 重新实现 DLSS 5 神经渲染",
+    "requirements": [
+      "所审阅的 0.0.x 版 main 分支面向 RX 9000 显卡，因为网络需要通过 VK_KHR_cooperative_matrix 调用 RDNA4 的 FP8 矩阵指令；README 称仅在 RX 9070 XT 上测试。主版本运行于 Steam／Proton 下的 Linux，需要 Mesa 26.2+；Windows 为实验性预览版，测试驱动为 AMD Software 26.9.2，默认较慢，使用预编译的 ACO 机器码后接近 Linux。不支持 OpenGL 游戏，README 还警告不要在带反作弊的在线游戏中使用。",
+      "需要使用者自己的 nvngx_dlssnr.dll：310.9.16 版（含两个模型）或 310.8.0 版（仅旧模型）；其他版本会被拒绝，只有当每个提取条目都与已知哈希一致时才会写出模型文件。README 说明不得分享包含模型的软件包。可选的 int4 混合网络在安装时由使用者的模型和项目校准表生成权重，THIRD_PARTY.md 称这些表不含权重数值。",
+      "文档说明的构建环境为 Ubuntu 24.04，需要 git、curl、Python 3、CMake、Ninja、MinGW-w64 和 multilib g++；fetch_deps.sh 固定第三方组件版本，其中 glslang 16.5.0 用于生成可复现的 SPIR-V，Windows DLL 通过交叉编译生成。游戏可经由 OptiScaler-NR 加载的 NGX 核心模块接入网络（适用于带超分辨率选项的 DirectX 11／12 游戏），也可经由从画面估计运动的 ReShade 途径接入。",
+      "对于 310.9.16 模型，验证说明报告：以一帧 Tomb Raider (2013) 画面及其缩小版本为输入，与在 RTX 5090 上运行的未修改 NVIDIA DLL 相比，单帧 PSNR 为 49.15–50.59 dB，SSIM 约 0.997，并比较了短运动序列；310.8.0 的对比结果为 45.56–49.06 dB。这些是项目在单张 AMD 显卡上的测量；本合集两侧均未运行。",
+      "仓库代码采用 MIT 许可；第三方组件保留各自许可，其中按原样附带的 OptiScaler-NR 为 GPL-3.0。NVIDIA 的 DLL 和权重仍归 NVIDIA 所有，项目声明与 NVIDIA 或 AMD 无关。仓库未说明网络结构如何恢复；其 CLAUDE.md 面向编码助手，但不能确立 AI 署名。未确立 REA 使用。"
+    ]
+  },
+  "botw-decomp-case": {
+    "name": "《旷野之息》：Switch 主程序的逐函数一致性反编译",
+    "requirements": [
+      "README 称其为 Switch v1.5.0 的实验性、进行中的反编译。About 页面将范围限定为主程序（游戏代码及大部分静态链接库），不包括 RomFS 素材、动态链接的 SDK 库、libcurl、NEX 及 Havok 的大部分代码。函数逐个匹配，不放回原始地址，因此这不是整个可执行文件一致的构建，也不是可游玩的游戏或移植。",
+      "设置时需要使用者自己的 Switch 版 main NSO 可执行文件。固定版本的安装脚本会校验其哈希：1.5.0 直接使用，列明的 1.6.0 或 1.9.0 可执行文件则借助项目托管的补丁转换为 1.5.0；不使用 RomFS 或其他游戏内容。About 页面指出，本项目对未拥有该游戏的人毫无用处。",
+      "安装指南假定使用 Linux（原生或 WSL）或 macOS，列出 Python 3、Ninja、CMake、ccache、xdelta3、Clang 和 Rust 工具链；固定版本的 CMakeLists 要求 CMake 3.30。安装脚本为游戏代码获取 Clang 4.0.1，并安装 tools/check。子模块提供 sead、agl、EventFlow、NintendoSDK 头文件及共用的 nx-decomp-tools；反编译指南以 Hex-Rays 或 Ghidra 的输出为起点。",
+      "tools/check 将每个列出的函数与原可执行文件逐一比对，data/uking_functions.csv 记录各函数状态。在固定提交中，该列表的 113,490 个函数里，32,079 个标为一致，514 个不一致，7,601 个进行中，6,270 个为库函数，67,026 个尚未反编译；审阅时可变的 botw.link 徽章显示按大小计 17.493%、按函数数计 30.398%。本合集未运行该检查工具。",
+      "固定版本的仓库根目录没有许可证文件，GitHub 也未识别出许可证，因此未声明复用许可；子模块和任天堂内容各有其条款，About 页面也称这项工作处于法律灰色地带。AGENTS.md 为 AI 辅助贡献规定了披露和人工审核要求，但所审文件既未将重建归因于 REA，也未量化 AI 的使用。"
+    ]
+  },
+  "skyward-sword-decomp-case": {
+    "name": "《天空之剑》：以哈希校验重新链接的 Wii 版反编译",
+    "requirements": [
+      "README 称其为进行中的 Wii 版反编译，目前唯一支持的版本是 SOUE01（NTSC-U 1.0）；configure.py 还列出 SOUP01，但固定版本中只有 SOUE01 的配置。产物是 Wii 用的重建 main.dol 和 REL 组，不是 PC 可执行文件或移植。",
+      "构建需要使用者自己的 SOUE01 游戏：README 指明只需其数据分区中的 sys/main.dol 和 files/rels.arc。仓库不含游戏素材或汇编；decomp-toolkit 依据 config/SOUE01 中的输入哈希和拆分表，在本地将使用者的文件拆分为对象。",
+      "在 Windows 上可直接用 Python 与 ninja 构建；Linux／macOS 需 ninja，并会自动下载 wibo 包装器。configure.py 固定 decomp-toolkit v1.7.1、objdiff v3.4.1、binutils 2.42-1 及 20250812 编译器包，大部分代码选用 Metrowerks Wii/1.5，大部分 NW4R 代码选用 Wii/1.3；开发时用 objdiff 逐个对象比对。",
+      "默认 ninja 目标只对标为 Matching 的单元（configure.py 中有 493 个，另有 536 个仍为 NonMatching）链接由源码编译的对象，其余单元使用从原文件提取的对象，再按 build.sha1 校验 main.dol 和 636 个 REL。因此校验通过表示输出一致，并不代表反编译已完成。decomp.dev 针对该固定提交的报告显示，27.89% 的代码字节及 76,968 个函数中的 33,940 个已匹配；CI 使用存放游戏文件的私有容器，本合集两者均未运行。",
+      "仓库采用 CC0-1.0；该声明不涵盖任天堂的游戏及其文件，也不涵盖下载的编译器。所审来源未确立 REA 或编码代理的参与。"
+    ]
+  },
+  "2ship2harkinian-mm-port-case": {
+    "name": "2 Ship 2 Harkinian：基于反编译的《姆吉拉的假面》原生移植",
+    "requirements": [
+      "所审阅的 develop 提交位于 5.0.1 版（2026-08-25）之后，该版本提供 Windows、Linux 和 macOS 压缩包；CI 每夜构建仅供试玩，可能存在缺陷和崩溃。仓库中的 decomp_diff.py 将其游戏源码描述为相对官方 zeldaret/mm 仓库有所修改的反编译代码。渲染可使用 DirectX 11、OpenGL 或 Metal。",
+      "仓库不含受版权保护的素材：需自备受支持的《姆吉拉的假面》副本。文档列出 NTSC-U 1.0 与 NTSC-U GC 版本的 SHA-1 哈希。内置提取功能会将所供游戏转换为 mm.o2r 存档；自定义 .o2r 或 .otr 素材包放入 mods 文件夹，README 提醒 fast64 尚未完全支持 MM。",
+      "源码构建需要 libultraship、OTRExporter 和 ZAPDTR 子模块以及 CMake。Windows 使用带 v143 工具集的 Visual Studio 2022、Python 3，并至少需要 8 GB 内存；Linux 依赖清单包括 GCC 或 Clang、Ninja、SDL2、libzip、spdlog、tinyxml2 以及 Opus/Vorbis 库；macOS 需要 Xcode 工具及 SDL2、libpng、GLEW、Ninja、CMake、nlohmann-json 和 libzip。",
+      "所审阅的 README 和构建指南没有报告针对移植版的一致性、校验或保真度检查；发布说明列出的是调整和缺陷修复。增强功能和随机化代码会改变相对原版游戏的行为。本合集未构建或运行该项目。",
+      "仓库采用 CC0 1.0，libultraship 子模块采用 MIT；来自使用者副本的游戏内容保留各自权利，README 表示项目不纵容盗版。所审阅来源未确立 AI 或 REA 使用。"
+    ]
+  },
+  "ship-of-harkinian-oot-port-case": {
+    "name": "Ship of Harkinian：基于反编译源码的《时之笛》原生移植",
+    "requirements": [
+      "README 介绍 Ship of Harkinian 以 libultraship 为基础，并依赖《时之笛》反编译项目提供的源码；soh/src 目录即为这部分源自反编译的游戏代码。产物是加入新功能的修改版原生移植（CMake 项目版本 9.3.0），不是一致性 ROM 构建，也不是逐字节重建。",
+      "游玩需要合法取得且受支持的《时之笛》ROM；docs/supportedHashes.json 列出 19 条 SHA-1 记录，涵盖 PAL、NTSC（美版／日版）、GameCube、Master Quest 及调试版。仓库不含受版权保护的素材，素材由该 ROM 转换为 oot.o2r 或 oot-mq.o2r；使用预构建版本同样需要 ROM。",
+      "README 说明提供 Windows、Linux（AppImage）和 macOS 版本，渲染可选 DirectX 11、OpenGL 或 Metal；CMake 中还有 Nintendo Switch 与 CafeOS（Wii U）分支。从源码构建需 CMake 3.26+、Python 3、Git 以及 libultraship 和 Torch 子模块；Windows 另需 Visual Studio 2022（v143），Linux 需列明的发行版软件包及最低 GCC／Clang 版本。",
+      "所审 CI 工作流构建 Windows、macOS 和 Linux 软件包并生成 soh.o2r，不与原版游戏进行玩法或保真度比对。游戏行为与增强功能均为项目文档所述，本合集未构建或运行任何内容。",
+      "固定版本的仓库根目录没有许可证文件，GitHub 也未识别出许可证；随机器中的 3drando 组件附有自身的许可证，子模块为独立仓库，任天堂内容仍保有其权利。README 声明项目不支持盗版；所审来源未确立 REA 或编码代理的参与。"
+    ]
+  },
+  "zelda-tmc-decomp-case": {
+    "name": "《缩小帽》：面向五个 ROM 的 GBA 反编译重建",
+    "requirements": [
+      "README 称其为仍在进行中的反编译项目，代码库仍可能大幅变动，并提醒 ROM 的部分内容可能尚不能移动，因此修改可能较困难。构建目标为 tmc.gba（美版，默认）、tmc_eu.gba、tmc_jp.gba、tmc_demo_usa.gba 和 tmc_demo_jp.gba。产物是 GBA ROM，而不是原生 PC 移植。",
+      "仓库不含任何游戏素材。每个要构建的版本都需要各自的原始基础 ROM，其 SHA-1 须与 INSTALL.md 所列一致；构建过程从该 ROM 中取得素材。",
+      "可在 Linux、装有 Xcode 命令行工具的 macOS（建议使用 GNU make 和 sed），或通过 WSL、WSL2、Cygwin 在 Windows 上构建。需要 build-essential、Git、带 pip 和 pycparser 的 Python 3、CMake、libpng、arm-none-eabi-gcc 工具链（独立安装或 devkitPro 的 gba-dev），以及安装到仓库中的 pret 独立 agbcc 编译器。",
+      "COMPARE 对常规构建执行 SHA-1 检查，对 CUSTOM 构建默认关闭；按 INSTALL.md，修改游戏后必须使用 CUSTOM 构建。Jenkins 流水线使用构建节点上保存的 ROM 构建全部五个版本，并依据美版 map 文件发布进度。就所审阅提交而言，一致性进度日志按脚本自身规则（也把 asm/src、asm/lib 和 libc 目标计入）将美版全部 647,908 个代码字节计为源码，而 13,933,140 个数据字节中仅计入 238,628 个；本合集未重新构建。",
+      "所审阅代码树没有许可证文件，GitHub 也未识别出许可证，因此源码的再使用条款未予说明；原始 ROM、由其得到的素材以及 agbcc 保留各自条款。所审阅来源未确立 AI 或 REA 使用，也不主张运行复现。"
+    ]
   }
 }

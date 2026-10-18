@@ -11,7 +11,7 @@
 <a href="https://awesomerea.org/zh/"><img src="assets/readme-banner.svg" alt="Awesome Reverse Engineering Anything — 覆盖六类逆向目标的工具、案例与论文" width="960"></a>
 
 <!-- BEGIN GENERATED BADGES -->
-[![精选资源: 198](https://img.shields.io/badge/%E7%B2%BE%E9%80%89%E8%B5%84%E6%BA%90-198-53309C?style=flat-square&labelColor=303447)](https://awesomerea.org/zh/resources/) [![案例: 59](https://img.shields.io/badge/%E6%A1%88%E4%BE%8B-59-53309C?style=flat-square&labelColor=303447)](https://awesomerea.org/zh/cases/) [![论文: 53](https://img.shields.io/badge/%E8%AE%BA%E6%96%87-53-53309C?style=flat-square&labelColor=303447)](https://awesomerea.org/zh/papers/) [![目录检查](https://github.com/reacher-z/Awesome-REA/actions/workflows/validate.yml/badge.svg?branch=main)](https://github.com/reacher-z/Awesome-REA/actions/workflows/validate.yml) [![许可: MIT](https://img.shields.io/badge/%E8%AE%B8%E5%8F%AF-MIT-606779?style=flat-square&labelColor=303447)](LICENSE) [![网站: awesomerea.org](https://img.shields.io/badge/%E7%BD%91%E7%AB%99-awesomerea.org-6235B5?style=flat-square&labelColor=303447)](https://awesomerea.org/zh/)
+[![精选资源: 207](https://img.shields.io/badge/%E7%B2%BE%E9%80%89%E8%B5%84%E6%BA%90-207-53309C?style=flat-square&labelColor=303447)](https://awesomerea.org/zh/resources/) [![案例: 68](https://img.shields.io/badge/%E6%A1%88%E4%BE%8B-68-53309C?style=flat-square&labelColor=303447)](https://awesomerea.org/zh/cases/) [![论文: 53](https://img.shields.io/badge/%E8%AE%BA%E6%96%87-53-53309C?style=flat-square&labelColor=303447)](https://awesomerea.org/zh/papers/) [![目录检查](https://github.com/reacher-z/Awesome-REA/actions/workflows/validate.yml/badge.svg?branch=main)](https://github.com/reacher-z/Awesome-REA/actions/workflows/validate.yml) [![许可: MIT](https://img.shields.io/badge/%E8%AE%B8%E5%8F%AF-MIT-606779?style=flat-square&labelColor=303447)](LICENSE) [![网站: awesomerea.org](https://img.shields.io/badge/%E7%BD%91%E7%AB%99-awesomerea.org-6235B5?style=flat-square&labelColor=303447)](https://awesomerea.org/zh/)
 <!-- END GENERATED BADGES -->
 
 **[搜索与筛选](https://awesomerea.org/zh/)** · **[浏览案例](https://awesomerea.org/zh/cases/)** · **[研究论文](https://awesomerea.org/zh/papers/)** · **[HTML 综述](https://awesomerea.org/zh/survey/)**
@@ -23,7 +23,7 @@
 <!-- BEGIN GENERATED CONTENTS -->
 **按目标找工具与案例**
 
-- [网站](#website) (16) · [游戏](#game) (44) · [应用](#app) (43)
+- [网站](#website) (16) · [游戏](#game) (52) · [应用](#app) (44)
 - [原生二进制](#native-binary) (20) · [固件与硬件](#firmware) (12) · [协议](#protocol) (11)
 
 **论文与工作流**
@@ -32,7 +32,7 @@
 
 **更多浏览方式**
 
-- [全部案例](https://awesomerea.org/zh/cases/) (59) · [相关合集](#related-collections) (4) · [完整仓库索引](#完整仓库索引) (2,836)
+- [全部案例](https://awesomerea.org/zh/cases/) (68) · [相关合集](#related-collections) (4) · [完整仓库索引](#完整仓库索引) (2,836)
 <!-- END GENERATED CONTENTS -->
 
 ## 按任务查找
@@ -300,6 +300,12 @@ REA 标签指向单独维护的[上游 CLI 与 MCP 项目](https://github.com/mo
 
   案例 · 独立重建 · [使用条件与证据](https://awesomerea.org/zh/resources/devilutionx-case/)
 
+- [**东方 Project 重建：贯穿三款游戏的智能体驱动方法**](https://rea.tools/blog/touhou-reconstruction/)
+
+  REA 网站发表的一篇文章及其固定版本的证据说明，介绍一位作者以智能体驱动重建 TH08、TH095 与 TH04 的过程。文章依据公开提交与进度记录标注里程碑，区分精确比对与可游玩构建两类判定依据，并记录 TH08 一项检查漏查错误浮点字面量数据的问题。项目结果仍为作者报告；REA 的作用是为智能体提供分析证据，而非完成重建本身。
+
+  案例 · REA · [使用条件与证据](https://awesomerea.org/zh/resources/rea-touhou-reconstruction-method-case/)
+
 - [**LASRecomp：《织梦岛》静态重编译案例**](https://github.com/peiikai/LASRecomp)
 
   通过静态重编译，将 2019 年 Switch 版《塞尔达传说：织梦岛》重建为原生桌面程序。作者称大部分代码、工具与逆向工作由 Claude Code 完成，人类负责指导和复核。
@@ -323,6 +329,48 @@ REA 标签指向单独维护的[上游 CLI 与 MCP 项目](https://github.com/mo
   以固定版本的一致性反编译分支为基础，构建 Super Mario Sunshine 北美版的原生 PC 移植，并为图形、光盘、音频、输入和系统服务提供宿主平台层。该分支的 README 称，其代码的重建与匹配大量借助 AI；移植项目记录了脚本化回归哈希，以及与原版捕获数据的逐步对照。尚未匹配的函数仍可能与原版行为不同，游戏数据须来自使用者自己的光盘镜像。
 
   案例 · 独立重建 · [使用条件与证据](https://awesomerea.org/zh/resources/sms-pc-port-case/)
+
+- [**《姆吉拉的假面》：生成一致美版 N64 ROM 的反编译重建**](https://github.com/zeldaret/mm)
+
+  依据游戏内信息和静态或动态分析，为《塞尔达传说：姆吉拉的假面》重建 C 源码库，并重新构建美版 Nintendo 64 ROM。构建流程从使用者自备的 ROM 中取得素材和汇编，再用仓库保存的 MD5 校验输出。团队声明不会制作 PC 移植；另行收录的 Zelda 64: Recompiled 只注明借用了其头文件和部分函数。
+
+  案例 · 独立重建 · [使用条件与证据](https://awesomerea.org/zh/resources/zelda-mm-decomp-case/)
+
+- [**DLSSNR-AMD：为 RDNA4 重新实现 DLSS 5 神经渲染**](https://github.com/mochizuki0323/DLSSNR-AMD)
+
+  将 NVIDIA DLSS 5 库中的神经渲染网络重新实现为面向 AMD RX 9000（RDNA4）显卡的 Vulkan 计算着色器，并通过兼容 NGX 的核心模块以及 ReShade 或 Vulkan 层等途径提供给游戏。项目不分发权重：安装程序从使用者自己的 nvngx\_dlssnr.dll 310.9.16 或 310.8.0 中提取权重并核对哈希。项目将输出与 NVIDIA DLL 在 RTX 5090 上的结果对比，报告画面接近但并非逐位一致。
+
+  案例 · 独立重建 · [使用条件与证据](https://awesomerea.org/zh/resources/dlssnr-amd-neural-rendering-case/)
+
+- [**《旷野之息》：Switch 主程序的逐函数一致性反编译**](https://github.com/zeldaret/botw)
+
+  以 C++ 重新实现《塞尔达传说 旷野之息》Switch v1.5.0 主程序的部分代码，并逐个函数与原始机器码比对。项目自称是反编译与重新实现的混合体：不含游戏素材，生成的 ELF 仅包含已重新实现的函数、无法运行游戏，移植到其他平台也明确不是目标。
+
+  案例 · 独立重建 · [使用条件与证据](https://awesomerea.org/zh/resources/botw-decomp-case/)
+
+- [**《天空之剑》：以哈希校验重新链接的 Wii 版反编译**](https://github.com/zeldaret/ss)
+
+  以使用者自备的 NTSC-U 1.0（SOUE01）光盘文件为起点，为《塞尔达传说 天空之剑》Wii 版的 main.dol 和 REL 模块重建 C++ 源码。标为一致的对象由源码编译，再与从原文件拆分出的其余对象链接，并以 SHA-1 哈希校验结果；仓库不含素材或汇编，也不是移植。
+
+  案例 · 独立重建 · [使用条件与证据](https://awesomerea.org/zh/resources/skyward-sword-decomp-case/)
+
+- [**2 Ship 2 Harkinian：基于反编译的《姆吉拉的假面》原生移植**](https://github.com/2ship2harkinian/2ship2harkinian)
+
+  以改编自 zeldaret/mm 反编译的源码为基础，构建《塞尔达传说：姆吉拉的假面》的原生 Windows、Linux 和 macOS 版本，并由 libultraship 重新实现 N64 SDK 函数。游戏数据来自使用者自备的 ROM，打包为可被自定义素材包覆盖的存档文件。它面向带增强功能的可玩 PC 移植，而不是逐字节一致的 ROM。
+
+  案例 · 独立重建 · [使用条件与证据](https://awesomerea.org/zh/resources/2ship2harkinian-mm-port-case/)
+
+- [**Ship of Harkinian：基于反编译源码的《时之笛》原生移植**](https://github.com/HarbourMasters/Shipwright)
+
+  以《时之笛》反编译项目的源码为基础，将游戏构建为原生 PC 程序，用 libultraship 替代 N64 的 libultra SDK，并以 DirectX 11、OpenGL 或 Metal 渲染。不随附游戏素材，而是从使用者自备的受支持 ROM 转换生成 .o2r 归档；移植版还加入了即时存档、替换与自定义素材等增强功能。
+
+  案例 · 独立重建 · [使用条件与证据](https://awesomerea.org/zh/resources/ship-of-harkinian-oot-port-case/)
+
+- [**《缩小帽》：面向五个 ROM 的 GBA 反编译重建**](https://github.com/zeldaret/tmc)
+
+  依据游戏内信息和静态或动态分析，为《塞尔达传说：缩小帽》重建 C 源码库，可构建美版、欧版、日版及两个演示版共五个 Game Boy Advance ROM。每个版本的素材都来自使用者自备的原始 ROM，常规构建会核对产物的 SHA-1 哈希。项目仍在进行中，ROM 的部分内容可能尚不能移动。
+
+  案例 · 独立重建 · [使用条件与证据](https://awesomerea.org/zh/resources/zelda-tmc-decomp-case/)
 
 #### 工具、项目与集成
 
@@ -578,6 +626,12 @@ REA 标签指向单独维护的[上游 CLI 与 MCP 项目](https://github.com/mo
   实现可替代 Meta AI 配套应用的 Android 客户端：直接使用 Ray-Ban Meta 眼镜自有的蓝牙与 Wi-Fi Direct 协议，导入媒体、提供设置，并用用户选择的模型回应“Hey Meta”。项目 wiki 记录了链路分层、加密、服务及 Meta 端的所有权流程，并列出 153 个未解问题。项目以实机试用代替测试套件，因此所述型号和固件之外的行为仍未经验证。
 
   案例 · 独立重建 · [使用条件与证据](https://awesomerea.org/zh/resources/visor-ray-ban-meta-client-case/)
+
+- [**wine-uwp：在修改版 Wine 上运行打包的 Windows 商店应用**](https://github.com/designgears/wine-uwp)
+
+  扩展 Wine 11.17，使已签名的 MSIX 商店应用（主要目标为 Shapr3D）无需源码或符号即可在 Linux 上安装运行。约 49,000 行改动新增了 DirectComposition 实现、合成交换链和应用模型宿主；微软自己的 XAML 与应用模型 DLL 则在使用者机器上从 Windows 11 镜像中提取后原样运行。作者称大部分逆向工程和代码由 Claude 完成；各应用支持程度不一，由项目回归测试检查。
+
+  案例 · 独立重建 · [使用条件与证据](https://awesomerea.org/zh/resources/wine-uwp-store-apps-case/)
 
 #### 工具、项目与集成
 

@@ -2756,5 +2756,272 @@
       "https://github.com/chasem-dev/sms-english/blob/967436b8c623834d38a57d34923775f45eca8861/AGENTS.md",
       "https://github.com/chasem-dev/sms-english/blob/967436b8c623834d38a57d34923775f45eca8861/LICENSE"
     ]
+  },
+  {
+    "id": "zelda-mm-decomp-case",
+    "name": "Majora’s Mask: matching US N64 decompilation",
+    "url": "https://github.com/zeldaret/mm",
+    "category": "reconstruction-cases",
+    "relationship": "independent-reconstruction",
+    "kind": "case-study",
+    "targets": [
+      "game"
+    ],
+    "description_en": "Recreates a C source base for The Legend of Zelda: Majora’s Mask from information in the game and static or dynamic analysis, then rebuilds the US Nintendo 64 ROM. The build takes assets and assembly from a user-supplied ROM and checks the output against stored MD5 checksums. The team states it will not produce a PC port; the separately curated Zelda 64: Recompiled only credits it for headers and some functions.",
+    "description_zh": "依据游戏内信息和静态或动态分析，为《塞尔达传说：姆吉拉的假面》重建 C 源码库，并重新构建美版 Nintendo 64 ROM。构建流程从使用者自备的 ROM 中取得素材和汇编，再用仓库保存的 MD5 校验输出。团队声明不会制作 PC 移植；另行收录的 Zelda 64: Recompiled 只注明借用了其头文件和部分函数。",
+    "evidence_url": "https://github.com/zeldaret/mm/blob/bf6bd9d0d3a90fe2f8960e034fbfd328e8bdef22/README.md",
+    "verified_at": "2026-10-18",
+    "verification": "source-reviewed",
+    "requirements": [
+      "README calls this a work-in-progress decompilation whose codebase may still change drastically, and warns that some parts of the ROM may not yet be shiftable, so modifications can be difficult. Only N64 US 1.0 is supported; the Makefile also lists a WIP N64 Japan 1.1 target with checksum comparison disabled. Majora’s Mask 3D is out of scope, and the output is an N64 ROM, not a PC executable.",
+      "Supply your own US Majora’s Mask ROM as the base ROM; .z64, .n64 and .v64 byte orders are accepted. The repository includes no game assets or assembly: the build decompresses the supplied ROM and derives files, assets and disassembled code and data from it before compiling a ROM and a compressed ROM.",
+      "The documented host is Linux, native or under WSL or a VM, with Debian or Ubuntu recommended: Git, build-essential, MIPS binutils, curl, Python 3 with pip and venv, libpng and libxml2. macOS and Docker have separate guides. The default compiler is a static recompilation of IDO 5.3 and 7.1 that the tools Makefile downloads from decompals/ido-static-recomp; GCC and NON_MATCHING builds turn the checksum comparison off.",
+      "A default build checks both ROMs against stored MD5 values and prints OK or FAILED; FAILED means a bad base ROM or non-matching code. CI builds the US version in matching mode and Japan 1.1 as non-matching, using base ROMs from the project’s build container. The project’s mutable progress badge read 100% at review while the README still says WIP; this collection did not rerun the build.",
+      "The reviewed tree has no top-level license file and GitHub detects no license, so source reuse terms are unstated; ROM contents and derived assets keep their own rights. The README forbids contributions from anyone who has ever accessed leaked Nintendo 64 SDK, libultra or Zelda 64 source. The reviewed sources establish no AI or REA use, and no runtime reproduction is claimed."
+    ],
+    "additional_evidence_urls": [
+      "https://github.com/zeldaret/mm/blob/bf6bd9d0d3a90fe2f8960e034fbfd328e8bdef22/Makefile",
+      "https://github.com/zeldaret/mm/blob/bf6bd9d0d3a90fe2f8960e034fbfd328e8bdef22/tools/Makefile",
+      "https://github.com/zeldaret/mm/blob/bf6bd9d0d3a90fe2f8960e034fbfd328e8bdef22/baseroms/n64-us/checksum.md5",
+      "https://github.com/zeldaret/mm/blob/bf6bd9d0d3a90fe2f8960e034fbfd328e8bdef22/.github/workflows/ci.yml",
+      "https://zelda.deco.mp/assets/csv/progress-mm-shield.json",
+      "https://github.com/Zelda64Recomp/Zelda64Recomp/blob/b65c482ed672258eb684ab94a4e8c8aa662615ee/README.md"
+    ]
+  },
+  {
+    "id": "wine-uwp-store-apps-case",
+    "name": "wine-uwp: running packaged Windows Store apps on a patched Wine",
+    "url": "https://github.com/designgears/wine-uwp",
+    "category": "reconstruction-cases",
+    "relationship": "independent-reconstruction",
+    "kind": "case-study",
+    "targets": [
+      "app"
+    ],
+    "description_en": "Extends Wine 11.17 so that signed MSIX Store apps, with Shapr3D as the main target, install and run on Linux without their source or symbols. About 49,000 changed lines add a DirectComposition implementation, composition swap chains and an app-model host, while Microsoft’s own XAML and app-model DLLs, harvested from a Windows 11 image on the user’s machine, run unmodified. The author says Claude did most of the reverse engineering and code; app support is uneven and checked by a project regression suite.",
+    "description_zh": "扩展 Wine 11.17，使已签名的 MSIX 商店应用（主要目标为 Shapr3D）无需源码或符号即可在 Linux 上安装运行。约 49,000 行改动新增了 DirectComposition 实现、合成交换链和应用模型宿主；微软自己的 XAML 与应用模型 DLL 则在使用者机器上从 Windows 11 镜像中提取后原样运行。作者称大部分逆向工程和代码由 Claude 完成；各应用支持程度不一，由项目回归测试检查。",
+    "evidence_url": "https://github.com/designgears/wine-uwp/blob/1cf79d025e0c18167de803820345a1c5f82fd17d/README.md",
+    "verified_at": "2026-10-18",
+    "verification": "source-reviewed",
+    "requirements": [
+      "README’s app table reports Shapr3D sketching, modelling, menus, cloud sync, sign-in and STL/PDF export; Solitaire playable; Media Player playing audio from its own UI; Calculator fully working; Feedback Hub interactive; and Camera only reaching its own error page. Shapr3D for Linux (58d9173) packages this same pinned wine-uwp commit as a beta AppImage and Flatpak; it is unofficial and not affiliated with Shapr3D.",
+      "Needs the user’s own app package (.msix or .msixbundle, or Shapr3D’s .appinstaller, from which setup downloads about 1.8 GB) and Windows components extracted from Microsoft’s free Windows 11 evaluation ISO or another Windows 11 image. Neither the repositories nor the release packages contain them, and a commit hook refuses Windows binaries. Shapr3D also needs an account and a browser sign-in.",
+      "Building copies the vendored wine/ files over the Wine 11.17 source, then runs autoreconf, configure with --enable-archs=x86_64 and make; the WinRT stand-in shims build with clang-cl and lld-link against Windows SDK headers fetched by xwin. Shapr3D for Linux needs 64-bit Linux with glibc 2.38+, working Vulkan drivers and about 11 GB free during setup, and its releases build with flatpak-builder on the freedesktop 25.08 SDK.",
+      "regress.sh requires Calculator to stay pixel-identical to a committed baseline and other apps to come up on a private Xvfb display; release.sh smoke-tests that an empty setup reaches Shapr3D’s first screen. The Findings logs record failed approaches as well as fixes. These checks are project-reported; this collection did not build Wine or run any app.",
+      "Neither repository has a top-level license file, and GitHub detects none. The vendored Wine files carry LGPL-2.1-or-later headers and the setup app’s Cargo manifest declares the same; the shims and investigation tools state no license. Harvested Microsoft components and Store apps keep their own terms, and the plan notes that a distributable product would need clean-room replacements for them. The author’s X posts disclose heavy Claude assistance; REA use is not established."
+    ],
+    "additional_evidence_urls": [
+      "https://github.com/designgears/wine-uwp/blob/1cf79d025e0c18167de803820345a1c5f82fd17d/AGENTS.md",
+      "https://github.com/designgears/wine-uwp/blob/1cf79d025e0c18167de803820345a1c5f82fd17d/docs/Plan.md",
+      "https://github.com/designgears/wine-uwp/blob/1cf79d025e0c18167de803820345a1c5f82fd17d/docs/Findings-M4.md",
+      "https://github.com/designgears/wine-uwp/blob/1cf79d025e0c18167de803820345a1c5f82fd17d/wine/README.md",
+      "https://github.com/designgears/wine-uwp/blob/1cf79d025e0c18167de803820345a1c5f82fd17d/wine/BASE.txt",
+      "https://github.com/designgears/wine-uwp/blob/1cf79d025e0c18167de803820345a1c5f82fd17d/wine/dlls/dcomp/composition.c",
+      "https://github.com/designgears/wine-uwp/blob/1cf79d025e0c18167de803820345a1c5f82fd17d/regress.sh",
+      "https://github.com/designgears/wine-uwp/blob/1cf79d025e0c18167de803820345a1c5f82fd17d/packaging/harvest/manifest.txt",
+      "https://github.com/designgears/shapr3d-linux/blob/58d91731a3cef9f9279a9f277f0f6d87e3ec7e41/README.md",
+      "https://github.com/designgears/shapr3d-linux/blob/58d91731a3cef9f9279a9f277f0f6d87e3ec7e41/.gitmodules",
+      "https://github.com/designgears/shapr3d-linux/blob/58d91731a3cef9f9279a9f277f0f6d87e3ec7e41/installer/Cargo.toml",
+      "https://x.com/DesignGears/status/2109530620321788301",
+      "https://x.com/DesignGears/status/2109532140907921698"
+    ]
+  },
+  {
+    "id": "dlssnr-amd-neural-rendering-case",
+    "name": "DLSSNR-AMD: reimplementing DLSS 5 neural rendering for RDNA4",
+    "url": "https://github.com/mochizuki0323/DLSSNR-AMD",
+    "category": "reconstruction-cases",
+    "relationship": "independent-reconstruction",
+    "kind": "case-study",
+    "targets": [
+      "binary",
+      "game"
+    ],
+    "description_en": "Reimplements the neural-rendering network of NVIDIA’s DLSS 5 library as Vulkan compute shaders for AMD RX 9000 (RDNA4) cards and supplies it to games through an NGX-compatible core and ReShade or Vulkan-layer routes. The weights are not distributed: installers extract them, hash-checked, from the user’s own nvngx_dlssnr.dll 310.9.16 or 310.8.0. The project compares its output with NVIDIA’s DLL on an RTX 5090 and reports close, not bit-identical, pictures.",
+    "description_zh": "将 NVIDIA DLSS 5 库中的神经渲染网络重新实现为面向 AMD RX 9000（RDNA4）显卡的 Vulkan 计算着色器，并通过兼容 NGX 的核心模块以及 ReShade 或 Vulkan 层等途径提供给游戏。项目不分发权重：安装程序从使用者自己的 nvngx_dlssnr.dll 310.9.16 或 310.8.0 中提取权重并核对哈希。项目将输出与 NVIDIA DLL 在 RTX 5090 上的结果对比，报告画面接近但并非逐位一致。",
+    "evidence_url": "https://github.com/mochizuki0323/DLSSNR-AMD/blob/ab00d2b23584de0f42ac91eca4d7d2d2fad11465/README.md",
+    "verified_at": "2026-10-18",
+    "verification": "source-reviewed",
+    "requirements": [
+      "The reviewed 0.0.x main targets RX 9000 cards because the network needs RDNA4 FP8 matrix instructions, reached through VK_KHR_cooperative_matrix; README says it was tested only on an RX 9070 XT. Linux under Steam/Proton with Mesa 26.2+ is the main version; Windows is an experimental preview tested with AMD Software 26.9.2, slower by default and closer to Linux with precompiled ACO machine code. OpenGL games are unsupported, and README warns against online games with anti-cheat.",
+      "Requires the user’s own nvngx_dlssnr.dll, version 310.9.16 (both models) or 310.8.0 (the old model only); other versions are refused, and a model file is written only when every extracted entry matches a known hash. README says packages containing the model must not be shared. The optional int4-mixed network derives its weights at install from the user’s model and project calibration tables, which THIRD_PARTY.md says hold no weight values.",
+      "The documented build runs on Ubuntu 24.04 with git, curl, Python 3, CMake, Ninja, MinGW-w64 and multilib g++; fetch_deps.sh pins third-party components, including glslang 16.5.0 for reproducible SPIR-V, and the Windows DLLs are cross-compiled. Games reach the network through an NGX core loaded by OptiScaler-NR, for DirectX 11/12 titles with an upscaler option, or through ReShade-based routes that estimate motion from the picture.",
+      "For the 310.9.16 model, the verification notes report single-frame PSNR of 49.15–50.59 dB and SSIM of about 0.997 against NVIDIA’s unmodified DLL on an RTX 5090, plus short moving sequences, from one Tomb Raider (2013) frame and its downscales; the 310.8.0 comparison reports 45.56–49.06 dB. These are project measurements on one AMD card; this collection ran neither side.",
+      "MIT covers the repository’s code; third-party components keep their own licenses, including GPL-3.0 OptiScaler-NR shipped as released. NVIDIA’s DLL and weights remain NVIDIA’s, and the project states it is not affiliated with NVIDIA or AMD. The repository does not describe how the network structure was recovered; its CLAUDE.md addresses coding assistants but does not establish AI authorship. REA use is not established."
+    ],
+    "additional_evidence_urls": [
+      "https://github.com/mochizuki0323/DLSSNR-AMD/blob/ab00d2b23584de0f42ac91eca4d7d2d2fad11465/docs/ARCHITECTURE.md",
+      "https://github.com/mochizuki0323/DLSSNR-AMD/blob/ab00d2b23584de0f42ac91eca4d7d2d2fad11465/docs/ngx-verification/310.9.16/NGX-VERIFICATION.md",
+      "https://github.com/mochizuki0323/DLSSNR-AMD/blob/ab00d2b23584de0f42ac91eca4d7d2d2fad11465/docs/ngx-verification/310.8.0/NGX-VERIFICATION.md",
+      "https://github.com/mochizuki0323/DLSSNR-AMD/blob/ab00d2b23584de0f42ac91eca4d7d2d2fad11465/THIRD_PARTY.md",
+      "https://github.com/mochizuki0323/DLSSNR-AMD/blob/ab00d2b23584de0f42ac91eca4d7d2d2fad11465/CLAUDE.md",
+      "https://github.com/mochizuki0323/DLSSNR-AMD/blob/ab00d2b23584de0f42ac91eca4d7d2d2fad11465/LICENSE"
+    ]
+  },
+  {
+    "id": "botw-decomp-case",
+    "name": "Breath of the Wild: per-function matching decompilation of the Switch executable",
+    "url": "https://github.com/zeldaret/botw",
+    "category": "reconstruction-cases",
+    "relationship": "independent-reconstruction",
+    "kind": "case-study",
+    "targets": [
+      "game"
+    ],
+    "description_en": "Reimplements part of Breath of the Wild’s Switch v1.5.0 main executable in C++ and checks each function against the original machine code. The project calls itself a hybrid decompilation/reimplementation: it contains no assets, its ELF holds only reimplemented functions and cannot run the game, and porting is an explicit non-goal.",
+    "description_zh": "以 C++ 重新实现《塞尔达传说 旷野之息》Switch v1.5.0 主程序的部分代码，并逐个函数与原始机器码比对。项目自称是反编译与重新实现的混合体：不含游戏素材，生成的 ELF 仅包含已重新实现的函数、无法运行游戏，移植到其他平台也明确不是目标。",
+    "evidence_url": "https://github.com/zeldaret/botw/blob/e78c02499d0f108ae9c00158198289764c5980fe/README.md",
+    "verified_at": "2026-10-18",
+    "verification": "source-reviewed",
+    "requirements": [
+      "README calls this an experimental work-in-progress decompilation of Switch v1.5.0. The About page scopes it to the main executable (game code and most statically linked libraries), excluding RomFS assets, dynamically linked SDK libraries, libcurl, NEX and most of Havok. Functions are matched individually rather than placed at original addresses, so this is not a whole-executable matching build, a playable game or a port.",
+      "Setup needs the user’s own main NSO executable from the Switch release. The pinned setup script verifies its hash, uses 1.5.0 directly and converts listed 1.6.0 or 1.9.0 executables to 1.5.0 with a project-hosted patch; RomFS and other game content are not used. The About page says the project is useless to anyone who does not own the game.",
+      "The installation guide assumes Linux (native or WSL) or macOS and lists Python 3, Ninja, CMake, ccache, xdelta3, Clang and a Rust toolchain; the pinned CMakeLists requires CMake 3.30. Setup fetches Clang 4.0.1 for game code and installs tools/check. Submodules supply sead, agl, EventFlow, NintendoSDK headers and the shared nx-decomp-tools; the decompiling guide works from Hex-Rays or Ghidra output.",
+      "tools/check diffs each listed function against the original executable, and data/uking_functions.csv records its status. At the pinned commit that list marks 32,079 of 113,490 functions matching, 514 non-matching, 7,601 work in progress, 6,270 library and 67,026 not decompiled; the mutable botw.link badges showed 17.493% by size and 30.398% by function on review. This collection did not run the checker.",
+      "The pinned tree has no root license file and GitHub detects none, so no reuse license is stated; submodules and Nintendo content keep their own terms, and the About page calls the work a legal gray zone. AGENTS.md sets disclosure and human-review rules for AI-assisted contributions, but the reviewed files neither attribute the reconstruction to REA nor quantify AI use."
+    ],
+    "additional_evidence_urls": [
+      "https://github.com/zeldaret/botw/blob/e78c02499d0f108ae9c00158198289764c5980fe/tools/setup.py",
+      "https://github.com/zeldaret/botw/blob/e78c02499d0f108ae9c00158198289764c5980fe/CMakeLists.txt",
+      "https://github.com/zeldaret/botw/blob/e78c02499d0f108ae9c00158198289764c5980fe/.gitmodules",
+      "https://github.com/zeldaret/botw/blob/e78c02499d0f108ae9c00158198289764c5980fe/tools/config.toml",
+      "https://github.com/zeldaret/botw/blob/e78c02499d0f108ae9c00158198289764c5980fe/data/uking_functions.csv",
+      "https://github.com/zeldaret/botw/blob/e78c02499d0f108ae9c00158198289764c5980fe/AGENTS.md",
+      "https://github.com/open-ead/botw-decomp-www/blob/bafa2192811908bdba7c558dca0e1584900d9866/docs/about.mdx",
+      "https://github.com/open-ead/botw-decomp-www/blob/bafa2192811908bdba7c558dca0e1584900d9866/docs/contribute/installation.mdx",
+      "https://github.com/open-ead/botw-decomp-www/blob/bafa2192811908bdba7c558dca0e1584900d9866/docs/contribute/how-to-decompile.mdx",
+      "https://github.com/open-ead/nx-decomp-tools/blob/e0eae2f7f403befec6b60cb615f6680a6937d0c9/viking/src/functions.rs",
+      "https://botw.link/progress"
+    ]
+  },
+  {
+    "id": "skyward-sword-decomp-case",
+    "name": "Skyward Sword: Wii decompilation with hash-checked relinking",
+    "url": "https://github.com/zeldaret/ss",
+    "category": "reconstruction-cases",
+    "relationship": "independent-reconstruction",
+    "kind": "case-study",
+    "targets": [
+      "game"
+    ],
+    "description_en": "Reconstructs C++ source for The Legend of Zelda: Skyward Sword’s Wii main.dol and REL modules, starting from the user’s NTSC-U 1.0 (SOUE01) disc files. Objects marked matching are compiled from source and linked with objects split from the original, and the result is checked against SHA-1 hashes; the repository ships no assets or assembly and is not a port.",
+    "description_zh": "以使用者自备的 NTSC-U 1.0（SOUE01）光盘文件为起点，为《塞尔达传说 天空之剑》Wii 版的 main.dol 和 REL 模块重建 C++ 源码。标为一致的对象由源码编译，再与从原文件拆分出的其余对象链接，并以 SHA-1 哈希校验结果；仓库不含素材或汇编，也不是移植。",
+    "evidence_url": "https://github.com/zeldaret/ss/blob/d3d8e3cbf3d353b2231f06690965cac5366e28a1/README.md",
+    "verified_at": "2026-10-18",
+    "verification": "source-reviewed",
+    "requirements": [
+      "README describes a work-in-progress Wii decompilation whose only supported version is SOUE01 (NTSC-U 1.0); configure.py also lists SOUP01, but the pinned tree has configuration only for SOUE01. The output is a rebuilt main.dol and REL set for the Wii, not a PC executable or port.",
+      "Building needs the user’s own SOUE01 game: README names sys/main.dol and files/rels.arc from its data partition as the only required files. The repository contains no game assets or assembly; decomp-toolkit splits the user’s files into objects locally, using the input hash and split tables in config/SOUE01.",
+      "Builds run natively on Windows with Python and ninja, or on Linux/macOS with ninja and the automatically downloaded wibo wrapper. configure.py pins decomp-toolkit v1.7.1, objdiff v3.4.1, binutils 2.42-1 and a 20250812 compiler bundle, selecting Metrowerks Wii/1.5 for most code and Wii/1.3 for most NW4R code; objdiff compares individual objects during development.",
+      "The default ninja target links source-built objects only for units marked Matching (493 in configure.py; 536 remain NonMatching) and uses the original extracted object for the rest, then checks main.dol and 636 RELs against build.sha1. A passing check shows output identity, not complete decompilation. decomp.dev’s report for the pinned commit lists 27.89% of code bytes and 33,940 of 76,968 functions matched; CI uses a private container holding game files, and this collection ran neither.",
+      "The repository carries CC0-1.0; that dedication does not cover Nintendo’s game, its files or the downloaded compilers. The reviewed sources establish no REA or coding-agent involvement."
+    ],
+    "additional_evidence_urls": [
+      "https://github.com/zeldaret/ss/blob/d3d8e3cbf3d353b2231f06690965cac5366e28a1/configure.py",
+      "https://github.com/zeldaret/ss/blob/d3d8e3cbf3d353b2231f06690965cac5366e28a1/tools/project.py",
+      "https://github.com/zeldaret/ss/blob/d3d8e3cbf3d353b2231f06690965cac5366e28a1/config/SOUE01/config.yml",
+      "https://github.com/zeldaret/ss/blob/d3d8e3cbf3d353b2231f06690965cac5366e28a1/config/SOUE01/build.sha1",
+      "https://github.com/zeldaret/ss/blob/d3d8e3cbf3d353b2231f06690965cac5366e28a1/LICENSE",
+      "https://github.com/zeldaret/ss/blob/d3d8e3cbf3d353b2231f06690965cac5366e28a1/.github/workflows/build.yml",
+      "https://decomp.dev/zeldaret/ss"
+    ]
+  },
+  {
+    "id": "2ship2harkinian-mm-port-case",
+    "name": "2 Ship 2 Harkinian: a native Majora’s Mask port built on the decompilation",
+    "url": "https://github.com/2ship2harkinian/2ship2harkinian",
+    "category": "reconstruction-cases",
+    "relationship": "independent-reconstruction",
+    "kind": "case-study",
+    "targets": [
+      "game"
+    ],
+    "description_en": "Builds native Windows, Linux and macOS versions of The Legend of Zelda: Majora’s Mask from an adapted copy of the zeldaret/mm decompilation, with libultraship reimplementing N64 SDK functions. Game data comes from a user-supplied ROM and is packed into an archive that custom asset packs can override. It targets a playable PC port with enhancements, not a byte-identical ROM.",
+    "description_zh": "以改编自 zeldaret/mm 反编译的源码为基础，构建《塞尔达传说：姆吉拉的假面》的原生 Windows、Linux 和 macOS 版本，并由 libultraship 重新实现 N64 SDK 函数。游戏数据来自使用者自备的 ROM，打包为可被自定义素材包覆盖的存档文件。它面向带增强功能的可玩 PC 移植，而不是逐字节一致的 ROM。",
+    "evidence_url": "https://github.com/2ship2harkinian/2ship2harkinian/blob/f1dda4c28cb9ed7cc80d8c78337ee31a8d2c7d0e/README.md",
+    "verified_at": "2026-10-18",
+    "verification": "source-reviewed",
+    "requirements": [
+      "The reviewed develop commit follows release 5.0.1 (2026-08-25), published as Windows, Linux and macOS archives; nightly CI builds are for playtesting and may have bugs and crashes. The repository’s decomp_diff.py describes its game sources as changed decompilation code compared with the official zeldaret/mm repository. Rendering uses DirectX 11, OpenGL or Metal.",
+      "No copyrighted assets are included: supply a supported copy of Majora’s Mask. The docs list SHA-1 hashes for NTSC-U 1.0 and NTSC-U GC versions. Built-in extraction turns the supplied game into an mm.o2r archive; custom .o2r or .otr packs go in a mods folder, and the README notes that fast64 does not fully support MM.",
+      "Source builds need the libultraship, OTRExporter and ZAPDTR submodules plus CMake. Windows uses Visual Studio 2022 with the v143 toolset, Python 3 and at least 8 GB of RAM; the Linux lists include GCC or Clang, Ninja, SDL2, libzip, spdlog, tinyxml2 and Opus/Vorbis libraries; macOS needs Xcode tools with SDL2, libpng, GLEW, Ninja, CMake, nlohmann-json and libzip.",
+      "The reviewed README and build guide report no matching, checksum or fidelity checks for the port; the release notes list tweaks and bug fixes. Enhancement and randomizer code changes behavior relative to the original game. This collection did not build or run it.",
+      "The repository is CC0 1.0, and the libultraship submodule is MIT; game content from the user’s copy keeps its own rights, and the README says the project does not condone piracy. The reviewed sources establish no AI or REA use."
+    ],
+    "additional_evidence_urls": [
+      "https://github.com/2ship2harkinian/2ship2harkinian/blob/f1dda4c28cb9ed7cc80d8c78337ee31a8d2c7d0e/docs/BUILDING.md",
+      "https://github.com/2ship2harkinian/2ship2harkinian/blob/f1dda4c28cb9ed7cc80d8c78337ee31a8d2c7d0e/docs/supportedHashes.json",
+      "https://github.com/2ship2harkinian/2ship2harkinian/blob/f1dda4c28cb9ed7cc80d8c78337ee31a8d2c7d0e/decomp_diff.py",
+      "https://github.com/2ship2harkinian/2ship2harkinian/blob/f1dda4c28cb9ed7cc80d8c78337ee31a8d2c7d0e/.gitmodules",
+      "https://github.com/2ship2harkinian/2ship2harkinian/blob/f1dda4c28cb9ed7cc80d8c78337ee31a8d2c7d0e/LICENSE",
+      "https://github.com/2ship2harkinian/2ship2harkinian/releases/tag/5.0.1",
+      "https://github.com/Kenix3/libultraship/blob/7f9b86a593c526fc42261d7fe197100cecf57178/README.md",
+      "https://github.com/Kenix3/libultraship/blob/7f9b86a593c526fc42261d7fe197100cecf57178/LICENSE"
+    ]
+  },
+  {
+    "id": "ship-of-harkinian-oot-port-case",
+    "name": "Ship of Harkinian: a native Ocarina of Time port built on the decompilation",
+    "url": "https://github.com/HarbourMasters/Shipwright",
+    "category": "reconstruction-cases",
+    "relationship": "independent-reconstruction",
+    "kind": "case-study",
+    "targets": [
+      "game"
+    ],
+    "description_en": "Builds Ocarina of Time as a native PC application from the OoT decompilation’s source, with libultraship standing in for the N64 libultra SDK and DirectX 11, OpenGL or Metal rendering. No game assets are shipped: they are converted from the user’s supported ROM into an .o2r archive, and the port adds save states, alternate and custom assets and other enhancements.",
+    "description_zh": "以《时之笛》反编译项目的源码为基础，将游戏构建为原生 PC 程序，用 libultraship 替代 N64 的 libultra SDK，并以 DirectX 11、OpenGL 或 Metal 渲染。不随附游戏素材，而是从使用者自备的受支持 ROM 转换生成 .o2r 归档；移植版还加入了即时存档、替换与自定义素材等增强功能。",
+    "evidence_url": "https://github.com/HarbourMasters/Shipwright/blob/dd702b0679f2240209763d00277e7343ee1424b9/README.md",
+    "verified_at": "2026-10-18",
+    "verification": "source-reviewed",
+    "requirements": [
+      "README presents Ship of Harkinian as built on libultraship and dependent on source from the OoT decompilation project; the soh/src tree carries that decomp-derived game code. The output is a modified native port (CMake project version 9.3.0) with added features, not a matching ROM build or a byte-for-byte reconstruction.",
+      "Play requires a legally acquired, supported Ocarina of Time ROM; docs/supportedHashes.json lists 19 SHA-1 entries covering PAL, NTSC (US/JP), GameCube, Master Quest and debug variants. Copyrighted assets are not included and are converted from that ROM into oot.o2r or oot-mq.o2r; prebuilt releases still need the ROM.",
+      "README documents Windows, Linux (AppImage) and macOS releases with DirectX 11, OpenGL or Metal; CMake also has Nintendo Switch and CafeOS (Wii U) branches. Source builds need CMake 3.26+, Python 3, Git and the libultraship and Torch submodules, plus Visual Studio 2022 (v143) on Windows or the listed distribution packages and minimum GCC/Clang versions on Linux.",
+      "The reviewed CI workflow builds Windows, macOS and Linux packages and generates soh.o2r; it runs no gameplay or fidelity comparison against the original game. Behavior and enhancements are project-documented, and this collection built or ran nothing.",
+      "The pinned tree has no root license file and GitHub detects none; the randomizer’s 3drando component carries its own license, the submodules are separate repositories and Nintendo content keeps its own rights. README says the project does not condone piracy; the reviewed sources establish no REA or coding-agent involvement."
+    ],
+    "additional_evidence_urls": [
+      "https://github.com/HarbourMasters/Shipwright/blob/dd702b0679f2240209763d00277e7343ee1424b9/docs/BUILDING.md",
+      "https://github.com/HarbourMasters/Shipwright/blob/dd702b0679f2240209763d00277e7343ee1424b9/docs/supportedHashes.json",
+      "https://github.com/HarbourMasters/Shipwright/blob/dd702b0679f2240209763d00277e7343ee1424b9/CMakeLists.txt",
+      "https://github.com/HarbourMasters/Shipwright/blob/dd702b0679f2240209763d00277e7343ee1424b9/.gitmodules",
+      "https://github.com/HarbourMasters/Shipwright/blob/dd702b0679f2240209763d00277e7343ee1424b9/soh/.gitrepo",
+      "https://github.com/HarbourMasters/Shipwright/blob/dd702b0679f2240209763d00277e7343ee1424b9/docs/CREDITS.md",
+      "https://github.com/HarbourMasters/Shipwright/blob/dd702b0679f2240209763d00277e7343ee1424b9/.github/workflows/generate-builds.yml",
+      "https://github.com/HarbourMasters/Shipwright/blob/dd702b0679f2240209763d00277e7343ee1424b9/soh/soh/Enhancements/randomizer/3drando/LICENSE.md"
+    ]
+  },
+  {
+    "id": "zelda-tmc-decomp-case",
+    "name": "The Minish Cap: a GBA decompilation targeting five ROMs",
+    "url": "https://github.com/zeldaret/tmc",
+    "category": "reconstruction-cases",
+    "relationship": "independent-reconstruction",
+    "kind": "case-study",
+    "targets": [
+      "game"
+    ],
+    "description_en": "Recreates a C source base for The Legend of Zelda: The Minish Cap from information in the game and static or dynamic analysis, building five Game Boy Advance ROMs: USA, EU, JP and two demos. Each version takes its assets from a user-supplied original ROM, and normal builds check the output’s SHA-1 hash. The project remains a work in progress, and some parts of the ROM may not yet be shiftable.",
+    "description_zh": "依据游戏内信息和静态或动态分析，为《塞尔达传说：缩小帽》重建 C 源码库，可构建美版、欧版、日版及两个演示版共五个 Game Boy Advance ROM。每个版本的素材都来自使用者自备的原始 ROM，常规构建会核对产物的 SHA-1 哈希。项目仍在进行中，ROM 的部分内容可能尚不能移动。",
+    "evidence_url": "https://github.com/zeldaret/tmc/blob/6fb6dfb4a7efbe24d0fd1dda5097af6131faacde/README.md",
+    "verified_at": "2026-10-18",
+    "verification": "source-reviewed",
+    "requirements": [
+      "README calls this a WIP decompilation whose codebase can still change drastically, and warns that some parts of the ROM may not yet be shiftable, so modifications can be difficult. Its targets are tmc.gba (USA, the default), tmc_eu.gba, tmc_jp.gba, tmc_demo_usa.gba and tmc_demo_jp.gba. The output is a GBA ROM, not a native PC port.",
+      "The repository includes no game assets. Each version to be built needs its own original base ROM matching the SHA-1 listed in INSTALL.md; the build derives its assets from that ROM.",
+      "Builds run on Linux, on macOS with the Xcode command line tools (GNU make and sed are recommended), or on Windows through WSL, WSL2 or Cygwin. They need build-essential, Git, Python 3 with pip and pycparser, CMake, libpng, an arm-none-eabi-gcc toolchain (standalone or devkitPro gba-dev) and pret’s separate agbcc compiler installed into the tree.",
+      "COMPARE runs the SHA-1 check for normal builds and is off for CUSTOM builds, which INSTALL.md requires after modifying the game. The Jenkins pipeline builds all five versions with ROMs held on its build agent and publishes progress from the USA map file. For the reviewed commit, the matching log counts all 647,908 USA code bytes as source by the script’s own rules, which also count asm/src, asm/lib and libc objects, but only 238,628 of 13,933,140 data bytes; this collection did not rebuild it.",
+      "The reviewed tree has no license file and GitHub detects no license, so reuse terms for the source are unstated; original ROMs, derived assets and agbcc keep their own terms. The reviewed sources establish no AI or REA use, and no runtime reproduction is claimed."
+    ],
+    "additional_evidence_urls": [
+      "https://github.com/zeldaret/tmc/blob/6fb6dfb4a7efbe24d0fd1dda5097af6131faacde/INSTALL.md",
+      "https://github.com/zeldaret/tmc/blob/6fb6dfb4a7efbe24d0fd1dda5097af6131faacde/Makefile",
+      "https://github.com/zeldaret/tmc/blob/6fb6dfb4a7efbe24d0fd1dda5097af6131faacde/GBA.mk",
+      "https://github.com/zeldaret/tmc/blob/6fb6dfb4a7efbe24d0fd1dda5097af6131faacde/tmc.sha1",
+      "https://github.com/zeldaret/tmc/blob/6fb6dfb4a7efbe24d0fd1dda5097af6131faacde/Jenkinsfile",
+      "https://github.com/zeldaret/tmc/blob/6fb6dfb4a7efbe24d0fd1dda5097af6131faacde/progress.py",
+      "https://zelda.deco.mp/assets/csv/progress-tmc-matching.csv"
+    ]
   }
 ]

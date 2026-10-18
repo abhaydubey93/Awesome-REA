@@ -11,7 +11,7 @@ An independent collection of tools, case studies and research for websites, game
 <a href="https://awesomerea.org/"><img src="assets/readme-banner.svg" alt="Awesome Reverse Engineering Anything — tools, cases and papers across six reverse-engineering domains" width="960"></a>
 
 <!-- BEGIN GENERATED BADGES -->
-[![resources: 198](https://img.shields.io/badge/resources-198-53309C?style=flat-square&labelColor=303447)](https://awesomerea.org/resources/) [![cases: 59](https://img.shields.io/badge/cases-59-53309C?style=flat-square&labelColor=303447)](https://awesomerea.org/cases/) [![papers: 53](https://img.shields.io/badge/papers-53-53309C?style=flat-square&labelColor=303447)](https://awesomerea.org/papers/) [![Catalog checks](https://github.com/reacher-z/Awesome-REA/actions/workflows/validate.yml/badge.svg?branch=main)](https://github.com/reacher-z/Awesome-REA/actions/workflows/validate.yml) [![license: MIT](https://img.shields.io/badge/license-MIT-606779?style=flat-square&labelColor=303447)](LICENSE) [![website: awesomerea.org](https://img.shields.io/badge/website-awesomerea.org-6235B5?style=flat-square&labelColor=303447)](https://awesomerea.org/)
+[![resources: 207](https://img.shields.io/badge/resources-207-53309C?style=flat-square&labelColor=303447)](https://awesomerea.org/resources/) [![cases: 68](https://img.shields.io/badge/cases-68-53309C?style=flat-square&labelColor=303447)](https://awesomerea.org/cases/) [![papers: 53](https://img.shields.io/badge/papers-53-53309C?style=flat-square&labelColor=303447)](https://awesomerea.org/papers/) [![Catalog checks](https://github.com/reacher-z/Awesome-REA/actions/workflows/validate.yml/badge.svg?branch=main)](https://github.com/reacher-z/Awesome-REA/actions/workflows/validate.yml) [![license: MIT](https://img.shields.io/badge/license-MIT-606779?style=flat-square&labelColor=303447)](LICENSE) [![website: awesomerea.org](https://img.shields.io/badge/website-awesomerea.org-6235B5?style=flat-square&labelColor=303447)](https://awesomerea.org/)
 <!-- END GENERATED BADGES -->
 
 **[Search & filter](https://awesomerea.org/)** · **[Browse cases](https://awesomerea.org/cases/)** · **[Research papers](https://awesomerea.org/papers/)** · **[HTML survey](https://awesomerea.org/survey/)**
@@ -23,7 +23,7 @@ An independent collection of tools, case studies and research for websites, game
 <!-- BEGIN GENERATED CONTENTS -->
 **Tools and cases by target**
 
-- [Website](#website) (16) · [Game](#game) (44) · [App](#app) (43)
+- [Website](#website) (16) · [Game](#game) (52) · [App](#app) (44)
 - [Native Binary](#native-binary) (20) · [Firmware and Hardware](#firmware) (12) · [Protocol](#protocol) (11)
 
 **Research and workflows**
@@ -32,7 +32,7 @@ An independent collection of tools, case studies and research for websites, game
 
 **More ways to browse**
 
-- [All cases](https://awesomerea.org/cases/) (59) · [Related Collections](#related-collections) (4) · [Full Repository Index](#full-repository-index) (2,836)
+- [All cases](https://awesomerea.org/cases/) (68) · [Related Collections](#related-collections) (4) · [Full Repository Index](#full-repository-index) (2,836)
 <!-- END GENERATED CONTENTS -->
 
 ## Find by task
@@ -299,6 +299,12 @@ REA labels refer to the separate [upstream CLI and MCP project](https://github.c
 
   Case study · Independent reconstruction · [Requirements & evidence](https://awesomerea.org/resources/devilutionx-case/)
 
+- [**Touhou reconstructions: an agent-driven method across three games**](https://rea.tools/blog/touhou-reconstruction/)
+
+  An essay published on REA’s site, with pinned evidence notes, describes one author’s agent-driven reconstructions of TH08, TH095 and TH04. It dates milestones from public commits and progress ledgers, separates exact-comparison and playable-build oracles, and documents a TH08 check that missed wrong floating-literal data. Project results remain author-reported, and REA is credited with supplying analysis evidence, not the reconstructions themselves.
+
+  Case study · REA · [Requirements & evidence](https://awesomerea.org/resources/rea-touhou-reconstruction-method-case/)
+
 - [**LASRecomp: Link’s Awakening static recompilation**](https://github.com/peiikai/LASRecomp)
 
   A native desktop reconstruction of the 2019 Switch version of Link’s Awakening using static recompilation. The author attributes most code, tooling and reverse-engineering work to Claude Code with human direction and review.
@@ -322,6 +328,48 @@ REA labels refer to the separate [upstream CLI and MCP project](https://github.c
   Builds a native PC port of Super Mario Sunshine’s North American release from a pinned matching-decompilation fork, adding a host platform layer for graphics, disc, audio, input and OS services. The fork’s README says AI was used extensively to reconstruct and match its code; the port documents scripted regression hashes and lockstep comparisons with retail captures. Functions that do not yet match can still behave differently from retail, and the game must come from the user’s own disc image.
 
   Case study · Independent reconstruction · [Requirements & evidence](https://awesomerea.org/resources/sms-pc-port-case/)
+
+- [**Majora’s Mask: matching US N64 decompilation**](https://github.com/zeldaret/mm)
+
+  Recreates a C source base for The Legend of Zelda: Majora’s Mask from information in the game and static or dynamic analysis, then rebuilds the US Nintendo 64 ROM. The build takes assets and assembly from a user-supplied ROM and checks the output against stored MD5 checksums. The team states it will not produce a PC port; the separately curated Zelda 64: Recompiled only credits it for headers and some functions.
+
+  Case study · Independent reconstruction · [Requirements & evidence](https://awesomerea.org/resources/zelda-mm-decomp-case/)
+
+- [**DLSSNR-AMD: reimplementing DLSS 5 neural rendering for RDNA4**](https://github.com/mochizuki0323/DLSSNR-AMD)
+
+  Reimplements the neural-rendering network of NVIDIA’s DLSS 5 library as Vulkan compute shaders for AMD RX 9000 (RDNA4) cards and supplies it to games through an NGX-compatible core and ReShade or Vulkan-layer routes. The weights are not distributed: installers extract them, hash-checked, from the user’s own nvngx\_dlssnr.dll 310.9.16 or 310.8.0. The project compares its output with NVIDIA’s DLL on an RTX 5090 and reports close, not bit-identical, pictures.
+
+  Case study · Independent reconstruction · [Requirements & evidence](https://awesomerea.org/resources/dlssnr-amd-neural-rendering-case/)
+
+- [**Breath of the Wild: per-function matching decompilation of the Switch executable**](https://github.com/zeldaret/botw)
+
+  Reimplements part of Breath of the Wild’s Switch v1.5.0 main executable in C++ and checks each function against the original machine code. The project calls itself a hybrid decompilation/reimplementation: it contains no assets, its ELF holds only reimplemented functions and cannot run the game, and porting is an explicit non-goal.
+
+  Case study · Independent reconstruction · [Requirements & evidence](https://awesomerea.org/resources/botw-decomp-case/)
+
+- [**Skyward Sword: Wii decompilation with hash-checked relinking**](https://github.com/zeldaret/ss)
+
+  Reconstructs C++ source for The Legend of Zelda: Skyward Sword’s Wii main.dol and REL modules, starting from the user’s NTSC-U 1.0 (SOUE01) disc files. Objects marked matching are compiled from source and linked with objects split from the original, and the result is checked against SHA-1 hashes; the repository ships no assets or assembly and is not a port.
+
+  Case study · Independent reconstruction · [Requirements & evidence](https://awesomerea.org/resources/skyward-sword-decomp-case/)
+
+- [**2 Ship 2 Harkinian: a native Majora’s Mask port built on the decompilation**](https://github.com/2ship2harkinian/2ship2harkinian)
+
+  Builds native Windows, Linux and macOS versions of The Legend of Zelda: Majora’s Mask from an adapted copy of the zeldaret/mm decompilation, with libultraship reimplementing N64 SDK functions. Game data comes from a user-supplied ROM and is packed into an archive that custom asset packs can override. It targets a playable PC port with enhancements, not a byte-identical ROM.
+
+  Case study · Independent reconstruction · [Requirements & evidence](https://awesomerea.org/resources/2ship2harkinian-mm-port-case/)
+
+- [**Ship of Harkinian: a native Ocarina of Time port built on the decompilation**](https://github.com/HarbourMasters/Shipwright)
+
+  Builds Ocarina of Time as a native PC application from the OoT decompilation’s source, with libultraship standing in for the N64 libultra SDK and DirectX 11, OpenGL or Metal rendering. No game assets are shipped: they are converted from the user’s supported ROM into an .o2r archive, and the port adds save states, alternate and custom assets and other enhancements.
+
+  Case study · Independent reconstruction · [Requirements & evidence](https://awesomerea.org/resources/ship-of-harkinian-oot-port-case/)
+
+- [**The Minish Cap: a GBA decompilation targeting five ROMs**](https://github.com/zeldaret/tmc)
+
+  Recreates a C source base for The Legend of Zelda: The Minish Cap from information in the game and static or dynamic analysis, building five Game Boy Advance ROMs: USA, EU, JP and two demos. Each version takes its assets from a user-supplied original ROM, and normal builds check the output’s SHA-1 hash. The project remains a work in progress, and some parts of the ROM may not yet be shiftable.
+
+  Case study · Independent reconstruction · [Requirements & evidence](https://awesomerea.org/resources/zelda-tmc-decomp-case/)
 
 #### Tools, projects and integrations
 
@@ -577,6 +625,12 @@ REA labels refer to the separate [upstream CLI and MCP project](https://github.c
   Implements an Android replacement for the Meta AI companion app that speaks the Ray-Ban Meta glasses’ own Bluetooth and Wi-Fi Direct protocol, imports media, exposes settings and answers “Hey Meta” with a model the user chooses. The project wiki documents the link layers, encryption, services and Meta-side ownership steps, and lists 153 open questions. Testing is on real glasses rather than test suites, so behavior beyond the stated model and firmware remains unverified.
 
   Case study · Independent reconstruction · [Requirements & evidence](https://awesomerea.org/resources/visor-ray-ban-meta-client-case/)
+
+- [**wine-uwp: running packaged Windows Store apps on a patched Wine**](https://github.com/designgears/wine-uwp)
+
+  Extends Wine 11.17 so that signed MSIX Store apps, with Shapr3D as the main target, install and run on Linux without their source or symbols. About 49,000 changed lines add a DirectComposition implementation, composition swap chains and an app-model host, while Microsoft’s own XAML and app-model DLLs, harvested from a Windows 11 image on the user’s machine, run unmodified. The author says Claude did most of the reverse engineering and code; app support is uneven and checked by a project regression suite.
+
+  Case study · Independent reconstruction · [Requirements & evidence](https://awesomerea.org/resources/wine-uwp-store-apps-case/)
 
 #### Tools, projects and integrations
 
