@@ -1,3 +1,5 @@
+<a href="https://awesomerea.org/"><img src="assets/featured-by-awesome-rea-compact.svg" alt="Featured by Awesome REA" width="200" height="48"></a>
+
 # Awesome Reverse Engineering Anything
 
 An independent collection of tools, case studies and research for websites, games, apps, native binaries, firmware and communication protocols.

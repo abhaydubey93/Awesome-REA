@@ -1,3 +1,5 @@
+<a href="https://awesomerea.org/zh/"><img src="assets/featured-by-awesome-rea-compact.svg" alt="Featured by Awesome REA" width="200" height="48"></a>
+
 # Awesome Reverse Engineering Anything
 
 独立整理的工具、案例与研究论文合集，涵盖网站、游戏、应用、原生二进制、固件和通信协议。
