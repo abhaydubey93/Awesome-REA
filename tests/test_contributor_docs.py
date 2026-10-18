@@ -91,6 +91,7 @@ class ContributorReferenceTests(unittest.TestCase):
 
     def test_documented_scans_write_outside_data(self):
         text = (ROOT / 'docs/source-scan.md').read_text(encoding='utf-8')
+        text = text.replace('\\' + '\n', '')  # Shell line continuations form one command.
         commands = re.findall(r'^python3 scripts/scan_sources\.py .+$', text, re.MULTILINE)
         self.assertGreaterEqual(len(commands), 2)
         for command in commands:

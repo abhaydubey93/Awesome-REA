@@ -2895,6 +2895,360 @@
     ]
   },
   {
+    "id": "skyward-sword-decomp-case",
+    "name": "Skyward Sword: Wii decompilation with hash-checked relinking",
+    "url": "https://github.com/zeldaret/ss",
+    "category": "reconstruction-cases",
+    "relationship": "independent-reconstruction",
+    "kind": "case-study",
+    "targets": [
+      "game"
+    ],
+    "description_en": "Reconstructs C++ source for The Legend of Zelda: Skyward Sword’s Wii main.dol and REL modules, starting from the user’s NTSC-U 1.0 (SOUE01) disc files. Objects marked matching are compiled from source and linked with objects split from the original, and the result is checked against SHA-1 hashes; the repository ships no assets or assembly and is not a port.",
+    "description_zh": "以使用者自备的 NTSC-U 1.0（SOUE01）光盘文件为起点，为《塞尔达传说 天空之剑》Wii 版的 main.dol 和 REL 模块重建 C++ 源码。标为一致的对象由源码编译，再与从原文件拆分出的其余对象链接，并以 SHA-1 哈希校验结果；仓库不含素材或汇编，也不是移植。",
+    "evidence_url": "https://github.com/zeldaret/ss/blob/d3d8e3cbf3d353b2231f06690965cac5366e28a1/README.md",
+    "verified_at": "2026-10-18",
+    "verification": "source-reviewed",
+    "requirements": [
+      "README describes a work-in-progress Wii decompilation whose only supported version is SOUE01 (NTSC-U 1.0); configure.py also lists SOUP01, but the pinned tree has configuration only for SOUE01. The output is a rebuilt main.dol and REL set for the Wii, not a PC executable or port.",
+      "Building needs the user’s own SOUE01 game: README names sys/main.dol and files/rels.arc from its data partition as the only required files. The repository contains no game assets or assembly; decomp-toolkit splits the user’s files into objects locally, using the input hash and split tables in config/SOUE01.",
+      "Builds run natively on Windows with Python and ninja, or on Linux/macOS with ninja and the automatically downloaded wibo wrapper. configure.py pins decomp-toolkit v1.7.1, objdiff v3.4.1, binutils 2.42-1 and a 20250812 compiler bundle, selecting Metrowerks Wii/1.5 for most code and Wii/1.3 for most NW4R code; objdiff compares individual objects during development.",
+      "The default ninja target links source-built objects only for units marked Matching (493 in configure.py; 536 remain NonMatching) and uses the original extracted object for the rest, then checks main.dol and 636 RELs against build.sha1. A passing check shows output identity, not complete decompilation. decomp.dev’s report for the pinned commit lists 27.89% of code bytes and 33,940 of 76,968 functions matched; CI uses a private container holding game files, and this collection ran neither.",
+      "The repository carries CC0-1.0; that dedication does not cover Nintendo’s game, its files or the downloaded compilers. The reviewed sources establish no REA or coding-agent involvement."
+    ],
+    "additional_evidence_urls": [
+      "https://github.com/zeldaret/ss/blob/d3d8e3cbf3d353b2231f06690965cac5366e28a1/configure.py",
+      "https://github.com/zeldaret/ss/blob/d3d8e3cbf3d353b2231f06690965cac5366e28a1/tools/project.py",
+      "https://github.com/zeldaret/ss/blob/d3d8e3cbf3d353b2231f06690965cac5366e28a1/config/SOUE01/config.yml",
+      "https://github.com/zeldaret/ss/blob/d3d8e3cbf3d353b2231f06690965cac5366e28a1/config/SOUE01/build.sha1",
+      "https://github.com/zeldaret/ss/blob/d3d8e3cbf3d353b2231f06690965cac5366e28a1/LICENSE",
+      "https://github.com/zeldaret/ss/blob/d3d8e3cbf3d353b2231f06690965cac5366e28a1/.github/workflows/build.yml",
+      "https://decomp.dev/zeldaret/ss"
+    ]
+  },
+  {
+    "id": "2ship2harkinian-mm-port-case",
+    "name": "2 Ship 2 Harkinian: a native Majora’s Mask port built on the decompilation",
+    "url": "https://github.com/2ship2harkinian/2ship2harkinian",
+    "category": "reconstruction-cases",
+    "relationship": "independent-reconstruction",
+    "kind": "case-study",
+    "targets": [
+      "game"
+    ],
+    "description_en": "Builds native Windows, Linux and macOS versions of The Legend of Zelda: Majora’s Mask from an adapted copy of the zeldaret/mm decompilation, with libultraship reimplementing N64 SDK functions. Game data comes from a user-supplied ROM and is packed into an archive that custom asset packs can override. It targets a playable PC port with enhancements, not a byte-identical ROM.",
+    "description_zh": "以改编自 zeldaret/mm 反编译的源码为基础，构建《塞尔达传说：姆吉拉的假面》的原生 Windows、Linux 和 macOS 版本，并由 libultraship 重新实现 N64 SDK 函数。游戏数据来自使用者自备的 ROM，打包为可被自定义素材包覆盖的存档文件。它面向带增强功能的可玩 PC 移植，而不是逐字节一致的 ROM。",
+    "evidence_url": "https://github.com/2ship2harkinian/2ship2harkinian/blob/f1dda4c28cb9ed7cc80d8c78337ee31a8d2c7d0e/README.md",
+    "verified_at": "2026-10-18",
+    "verification": "source-reviewed",
+    "requirements": [
+      "The reviewed develop commit follows release 5.0.1 (2026-08-25), published as Windows, Linux and macOS archives; nightly CI builds are for playtesting and may have bugs and crashes. The repository’s decomp_diff.py describes its game sources as changed decompilation code compared with the official zeldaret/mm repository. Rendering uses DirectX 11, OpenGL or Metal.",
+      "No copyrighted assets are included: supply a supported copy of Majora’s Mask. The docs list SHA-1 hashes for NTSC-U 1.0 and NTSC-U GC versions. Built-in extraction turns the supplied game into an mm.o2r archive; custom .o2r or .otr packs go in a mods folder, and the README notes that fast64 does not fully support MM.",
+      "Source builds need the libultraship, OTRExporter and ZAPDTR submodules plus CMake. Windows uses Visual Studio 2022 with the v143 toolset, Python 3 and at least 8 GB of RAM; the Linux lists include GCC or Clang, Ninja, SDL2, libzip, spdlog, tinyxml2 and Opus/Vorbis libraries; macOS needs Xcode tools with SDL2, libpng, GLEW, Ninja, CMake, nlohmann-json and libzip.",
+      "The reviewed README and build guide report no matching, checksum or fidelity checks for the port; the release notes list tweaks and bug fixes. Enhancement and randomizer code changes behavior relative to the original game. This collection did not build or run it.",
+      "The repository is CC0 1.0, and the libultraship submodule is MIT; game content from the user’s copy keeps its own rights, and the README says the project does not condone piracy. The reviewed sources establish no AI or REA use."
+    ],
+    "additional_evidence_urls": [
+      "https://github.com/2ship2harkinian/2ship2harkinian/blob/f1dda4c28cb9ed7cc80d8c78337ee31a8d2c7d0e/docs/BUILDING.md",
+      "https://github.com/2ship2harkinian/2ship2harkinian/blob/f1dda4c28cb9ed7cc80d8c78337ee31a8d2c7d0e/docs/supportedHashes.json",
+      "https://github.com/2ship2harkinian/2ship2harkinian/blob/f1dda4c28cb9ed7cc80d8c78337ee31a8d2c7d0e/decomp_diff.py",
+      "https://github.com/2ship2harkinian/2ship2harkinian/blob/f1dda4c28cb9ed7cc80d8c78337ee31a8d2c7d0e/.gitmodules",
+      "https://github.com/2ship2harkinian/2ship2harkinian/blob/f1dda4c28cb9ed7cc80d8c78337ee31a8d2c7d0e/LICENSE",
+      "https://github.com/2ship2harkinian/2ship2harkinian/releases/tag/5.0.1",
+      "https://github.com/Kenix3/libultraship/blob/7f9b86a593c526fc42261d7fe197100cecf57178/README.md",
+      "https://github.com/Kenix3/libultraship/blob/7f9b86a593c526fc42261d7fe197100cecf57178/LICENSE"
+    ]
+  },
+  {
+    "id": "ship-of-harkinian-oot-port-case",
+    "name": "Ship of Harkinian: a native Ocarina of Time port built on the decompilation",
+    "url": "https://github.com/HarbourMasters/Shipwright",
+    "category": "reconstruction-cases",
+    "relationship": "independent-reconstruction",
+    "kind": "case-study",
+    "targets": [
+      "game"
+    ],
+    "description_en": "Builds Ocarina of Time as a native PC application from the OoT decompilation’s source, with libultraship standing in for the N64 libultra SDK and DirectX 11, OpenGL or Metal rendering. No game assets are shipped: they are converted from the user’s supported ROM into an .o2r archive, and the port adds save states, alternate and custom assets and other enhancements.",
+    "description_zh": "以《时之笛》反编译项目的源码为基础，将游戏构建为原生 PC 程序，用 libultraship 替代 N64 的 libultra SDK，并以 DirectX 11、OpenGL 或 Metal 渲染。不随附游戏素材，而是从使用者自备的受支持 ROM 转换生成 .o2r 归档；移植版还加入了即时存档、替换与自定义素材等增强功能。",
+    "evidence_url": "https://github.com/HarbourMasters/Shipwright/blob/dd702b0679f2240209763d00277e7343ee1424b9/README.md",
+    "verified_at": "2026-10-18",
+    "verification": "source-reviewed",
+    "requirements": [
+      "README presents Ship of Harkinian as built on libultraship and dependent on source from the OoT decompilation project; the soh/src tree carries that decomp-derived game code. The output is a modified native port (CMake project version 9.3.0) with added features, not a matching ROM build or a byte-for-byte reconstruction.",
+      "Play requires a legally acquired, supported Ocarina of Time ROM; docs/supportedHashes.json lists 19 SHA-1 entries covering PAL, NTSC (US/JP), GameCube, Master Quest and debug variants. Copyrighted assets are not included and are converted from that ROM into oot.o2r or oot-mq.o2r; prebuilt releases still need the ROM.",
+      "README documents Windows, Linux (AppImage) and macOS releases with DirectX 11, OpenGL or Metal; CMake also has Nintendo Switch and CafeOS (Wii U) branches. Source builds need CMake 3.26+, Python 3, Git and the libultraship and Torch submodules, plus Visual Studio 2022 (v143) on Windows or the listed distribution packages and minimum GCC/Clang versions on Linux.",
+      "The reviewed CI workflow builds Windows, macOS and Linux packages and generates soh.o2r; it runs no gameplay or fidelity comparison against the original game. Behavior and enhancements are project-documented, and this collection built or ran nothing.",
+      "The pinned tree has no root license file and GitHub detects none; the randomizer’s 3drando component carries its own license, the submodules are separate repositories and Nintendo content keeps its own rights. README says the project does not condone piracy; the reviewed sources establish no REA or coding-agent involvement."
+    ],
+    "additional_evidence_urls": [
+      "https://github.com/HarbourMasters/Shipwright/blob/dd702b0679f2240209763d00277e7343ee1424b9/docs/BUILDING.md",
+      "https://github.com/HarbourMasters/Shipwright/blob/dd702b0679f2240209763d00277e7343ee1424b9/docs/supportedHashes.json",
+      "https://github.com/HarbourMasters/Shipwright/blob/dd702b0679f2240209763d00277e7343ee1424b9/CMakeLists.txt",
+      "https://github.com/HarbourMasters/Shipwright/blob/dd702b0679f2240209763d00277e7343ee1424b9/.gitmodules",
+      "https://github.com/HarbourMasters/Shipwright/blob/dd702b0679f2240209763d00277e7343ee1424b9/soh/.gitrepo",
+      "https://github.com/HarbourMasters/Shipwright/blob/dd702b0679f2240209763d00277e7343ee1424b9/docs/CREDITS.md",
+      "https://github.com/HarbourMasters/Shipwright/blob/dd702b0679f2240209763d00277e7343ee1424b9/.github/workflows/generate-builds.yml",
+      "https://github.com/HarbourMasters/Shipwright/blob/dd702b0679f2240209763d00277e7343ee1424b9/soh/soh/Enhancements/randomizer/3drando/LICENSE.md"
+    ]
+  },
+  {
+    "id": "zelda-tmc-decomp-case",
+    "name": "The Minish Cap: a GBA decompilation targeting five ROMs",
+    "url": "https://github.com/zeldaret/tmc",
+    "category": "reconstruction-cases",
+    "relationship": "independent-reconstruction",
+    "kind": "case-study",
+    "targets": [
+      "game"
+    ],
+    "description_en": "Recreates a C source base for The Legend of Zelda: The Minish Cap from information in the game and static or dynamic analysis, building five Game Boy Advance ROMs: USA, EU, JP and two demos. Each version takes its assets from a user-supplied original ROM, and normal builds check the output’s SHA-1 hash. The project remains a work in progress, and some parts of the ROM may not yet be shiftable.",
+    "description_zh": "依据游戏内信息和静态或动态分析，为《塞尔达传说：缩小帽》重建 C 源码库，可构建美版、欧版、日版及两个演示版共五个 Game Boy Advance ROM。每个版本的素材都来自使用者自备的原始 ROM，常规构建会核对产物的 SHA-1 哈希。项目仍在进行中，ROM 的部分内容可能尚不能移动。",
+    "evidence_url": "https://github.com/zeldaret/tmc/blob/6fb6dfb4a7efbe24d0fd1dda5097af6131faacde/README.md",
+    "verified_at": "2026-10-18",
+    "verification": "source-reviewed",
+    "requirements": [
+      "README calls this a WIP decompilation whose codebase can still change drastically, and warns that some parts of the ROM may not yet be shiftable, so modifications can be difficult. Its targets are tmc.gba (USA, the default), tmc_eu.gba, tmc_jp.gba, tmc_demo_usa.gba and tmc_demo_jp.gba. The output is a GBA ROM, not a native PC port.",
+      "The repository includes no game assets. Each version to be built needs its own original base ROM matching the SHA-1 listed in INSTALL.md; the build derives its assets from that ROM.",
+      "Builds run on Linux, on macOS with the Xcode command line tools (GNU make and sed are recommended), or on Windows through WSL, WSL2 or Cygwin. They need build-essential, Git, Python 3 with pip and pycparser, CMake, libpng, an arm-none-eabi-gcc toolchain (standalone or devkitPro gba-dev) and pret’s separate agbcc compiler installed into the tree.",
+      "COMPARE runs the SHA-1 check for normal builds and is off for CUSTOM builds, which INSTALL.md requires after modifying the game. The Jenkins pipeline builds all five versions with ROMs held on its build agent and publishes progress from the USA map file. For the reviewed commit, the matching log counts all 647,908 USA code bytes as source by the script’s own rules, which also count asm/src, asm/lib and libc objects, but only 238,628 of 13,933,140 data bytes; this collection did not rebuild it.",
+      "The reviewed tree has no license file and GitHub detects no license, so reuse terms for the source are unstated; original ROMs, derived assets and agbcc keep their own terms. The reviewed sources establish no AI or REA use, and no runtime reproduction is claimed."
+    ],
+    "additional_evidence_urls": [
+      "https://github.com/zeldaret/tmc/blob/6fb6dfb4a7efbe24d0fd1dda5097af6131faacde/INSTALL.md",
+      "https://github.com/zeldaret/tmc/blob/6fb6dfb4a7efbe24d0fd1dda5097af6131faacde/Makefile",
+      "https://github.com/zeldaret/tmc/blob/6fb6dfb4a7efbe24d0fd1dda5097af6131faacde/GBA.mk",
+      "https://github.com/zeldaret/tmc/blob/6fb6dfb4a7efbe24d0fd1dda5097af6131faacde/tmc.sha1",
+      "https://github.com/zeldaret/tmc/blob/6fb6dfb4a7efbe24d0fd1dda5097af6131faacde/Jenkinsfile",
+      "https://github.com/zeldaret/tmc/blob/6fb6dfb4a7efbe24d0fd1dda5097af6131faacde/progress.py",
+      "https://zelda.deco.mp/assets/csv/progress-tmc-matching.csv"
+    ]
+  },
+  {
+    "id": "ocarina-of-time-decomp-case",
+    "name": "Ocarina of Time: decompilation with MD5-checked ROM builds for 16 versions",
+    "url": "https://github.com/zeldaret/oot",
+    "category": "reconstruction-cases",
+    "relationship": "independent-reconstruction",
+    "kind": "case-study",
+    "targets": [
+      "game"
+    ],
+    "description_en": "Recreates a C source base for Ocarina of Time that rebuilds 16 Nintendo 64, GameCube and iQue Player ROM versions, using information from the game and static and dynamic analysis. Assets come from the user’s own ROM and each default build is checked against that version’s MD5; README states the project is not producing a PC port and still calls the repository a work in progress.",
+    "description_zh": "借助游戏本身的信息以及静态与动态分析，为《时之笛》重建 C 源码库，可重新构建 Nintendo 64、GameCube 和 iQue Player 共 16 个 ROM 版本。素材取自使用者自备的 ROM，默认构建会以对应版本的 MD5 校验；README 说明项目不制作 PC 移植，并仍称仓库处于开发中。",
+    "evidence_url": "https://github.com/zeldaret/oot/blob/8a3634ca774a9b58d822cbc2cc09309f31eac6a4/README.md",
+    "verified_at": "2026-10-18",
+    "verification": "source-reviewed",
+    "requirements": [
+      "README describes recreating a source base from scratch using information inside the game and static and/or dynamic analysis, and states that it is not producing a PC port. It builds 16 N64, GameCube and iQue Player ROM versions (default gc-eu-mq-dbg); some ROM parts may not yet be shiftable, so modding can be difficult.",
+      "Each build needs the user’s own base ROM for the chosen version, matching an MD5 listed in README; the repository includes no game assets and extracts them from that ROM during setup. Native ports such as Ship of Harkinian, and recompilation projects, are separate from this repository’s output.",
+      "README documents Linux or WSL builds, with separate macOS and Docker guides, needing Git, build-essential, curl, Python 3.10+ with pip and venv, libxml2 and a MIPS binutils toolchain. N64 and GameCube code builds with IDO 7.1 and 5.3 through ido-static-recomp; iQue builds also use EGCS for some files, and an optional GCC build is non-matching.",
+      "With the default COMPARE=1, make checks the built ROM’s MD5 against the version’s checksum file and prints OK or FAILED; NON_MATCHING=1 or COMPILER=gcc turns the check off. GitHub Actions, using a private container holding the base ROMs, reported all 16 version builds successful for the pinned commit, and the mutable progress badge read 100% on review. This collection ran no build.",
+      "The pinned tree has no license file and GitHub detects none, so no reuse license is stated; Nintendo content and compiler components keep their own terms. The reviewed sources establish no REA or coding-agent involvement."
+    ],
+    "additional_evidence_urls": [
+      "https://github.com/zeldaret/oot/blob/8a3634ca774a9b58d822cbc2cc09309f31eac6a4/Makefile",
+      "https://github.com/zeldaret/oot/blob/8a3634ca774a9b58d822cbc2cc09309f31eac6a4/docs/compilers.md",
+      "https://github.com/zeldaret/oot/blob/8a3634ca774a9b58d822cbc2cc09309f31eac6a4/docs/BUILDING_MACOS.md",
+      "https://github.com/zeldaret/oot/blob/8a3634ca774a9b58d822cbc2cc09309f31eac6a4/baseroms/ntsc-1.0/checksum-US.md5",
+      "https://github.com/zeldaret/oot/blob/8a3634ca774a9b58d822cbc2cc09309f31eac6a4/.github/workflows/ci.yml",
+      "https://github.com/zeldaret/oot/actions/runs/38614247271",
+      "https://zelda.deco.mp/games/oot"
+    ]
+  },
+  {
+    "id": "baocut-design-canvas-case",
+    "name": "BaoCut Design: porting reconstructed canvas and design-system editors",
+    "url": "https://github.com/JimLiu/baocut/tree/7aa049e82e1367da013b7aba80f0b79033fa04ad/packages/design-runtime",
+    "category": "reconstruction-cases",
+    "relationship": "independent-reconstruction",
+    "kind": "case-study",
+    "targets": [
+      "website",
+      "app"
+    ],
+    "description_en": "Documents BaoCut’s design-canvas and design-system editors, which the project says it ported 1:1 from TypeScript reconstructions of Claude Design’s editors and hosts in agent sessions with annotation and export. Its runtime notes record identifier fixes checked against the original scripts and a structural comparison matching 19,111 of 20,463 canvas main-page functions. Unreviewed differences, the unpublished reconstruction record and reuse rights remain open; no hosted-backend recovery is claimed.",
+    "description_zh": "记录 BaoCut 的设计稿（画布）与设计系统编辑器；项目称其按 1:1 移植自 Claude Design 编辑器的 TypeScript 重建，并在智能体会话中提供标注与导出。运行时说明记录了对照原脚本修正的标识符，以及画布主页面 20463 个函数中有 19111 个结构完全一致的比对结果。未审阅的差异、未公开的重建记录及复用权利仍待确认；不主张恢复任何托管后端。",
+    "evidence_url": "https://github.com/JimLiu/baocut/blob/7aa049e82e1367da013b7aba80f0b79033fa04ad/packages/design-runtime/README.md",
+    "verified_at": "2026-10-18",
+    "verification": "source-reviewed",
+    "requirements": [
+      "This entry covers the design-canvas and design-system editors added in the pinned commit, not the whole BaoCut product or its separately curated Slides editor. The runtime READMEs say both are ported 1:1 from separate TypeScript reconstructions of the original editor types (src/design-type, src/design-system-type), keeping file formats, UI, behavior and module structure, with BaoCut hosting changes marked by BaoCut: comments. Those reconstruction projects, their notes and evidence are not in this repository, and the sources name no exact original release.",
+      "Hosting changes replace the original globalThis.claude host interface with BaoCut shims, empty the parent-origin allowlist, disable analytics, and drop rooms, sampling and hosted design-system installs. The port omits Anthropic Sans in favor of system fonts but still inlines the original Anthropicons icon font, whose distribution license the READMEs call unconfirmed and slated for replacement. Use independently authorized design content and assets.",
+      "Building the editors needs Node.js >=22.12.0, npm workspace dependencies and the apps/design-editor and apps/design-system-editor builds. The canvas runtime keeps React 18.3.1 for artboards beside the workspace’s React 19, with Babel standalone 7.29.0, happy-dom, jQuery and dom-to-svg; full BaoCut source builds also need Rust, CMake and platform build tools. Agent-made designs use BaoCut’s built-in design and design-system skills through a configured local agent CLI such as Codex, under its own account and service terms.",
+      "The design-runtime README reports identifier fixes checked against the original scripts, then Babel-based structural fingerprints matching 19,111 of the original canvas main page’s 20,463 functions exactly; remaining binding-only differences fall in dependencies, while 1,019 structurally different innermost functions and renamed property-scrubber internals remain unreviewed residual risk. Published tests cover canvas checks, file routes and grants, downloads and annotation targets, and acceptance cases UI-11–UI-13 describe manual Web/desktop flows. None is a behavioral oracle against the original service; this collection did not run them.",
+      "The root BaoCut Community License 1.0 is source-available: personal, internal and content-creation uses are permitted, while commercializing BaoCut or its code needs a separate license. Third-party notices cover bundled npm packages but do not establish reuse rights in the reconstructed Claude Design code or the icon font. The author’s post does not name REA for this port, and a later third-party post’s REA claim is not confirmed by the author or the repository. This review read pinned sources without running the editors, agents or tests."
+    ],
+    "additional_evidence_urls": [
+      "https://github.com/JimLiu/baocut/blob/7aa049e82e1367da013b7aba80f0b79033fa04ad/packages/design-system-runtime/README.md",
+      "https://github.com/JimLiu/baocut/blob/7aa049e82e1367da013b7aba80f0b79033fa04ad/docs/design/canvas/README.md",
+      "https://github.com/JimLiu/baocut/blob/7aa049e82e1367da013b7aba80f0b79033fa04ad/docs/acceptance/acceptance-spec.md",
+      "https://github.com/JimLiu/baocut/blob/7aa049e82e1367da013b7aba80f0b79033fa04ad/skills/baocut/built-in-skills/design/SKILL.md",
+      "https://github.com/JimLiu/baocut/blob/7aa049e82e1367da013b7aba80f0b79033fa04ad/package.json",
+      "https://github.com/JimLiu/baocut/blob/7aa049e82e1367da013b7aba80f0b79033fa04ad/packages/design-runtime/package.json",
+      "https://github.com/JimLiu/baocut/blob/7aa049e82e1367da013b7aba80f0b79033fa04ad/apps/design-editor/package.json",
+      "https://github.com/JimLiu/baocut/blob/7aa049e82e1367da013b7aba80f0b79033fa04ad/packages/design/src/canvas-check.test.ts",
+      "https://github.com/JimLiu/baocut/blob/7aa049e82e1367da013b7aba80f0b79033fa04ad/packages/design/src/canvas-routes.test.ts",
+      "https://github.com/JimLiu/baocut/blob/7aa049e82e1367da013b7aba80f0b79033fa04ad/packages/design/src/editor/downloads-bridge.test.ts",
+      "https://github.com/JimLiu/baocut/blob/7aa049e82e1367da013b7aba80f0b79033fa04ad/packages/design-system/src/routes.test.ts",
+      "https://github.com/JimLiu/baocut/blob/7aa049e82e1367da013b7aba80f0b79033fa04ad/packages/design-system/src/editor/comment-targets.test.ts",
+      "https://github.com/JimLiu/baocut/blob/7aa049e82e1367da013b7aba80f0b79033fa04ad/LICENSE",
+      "https://github.com/JimLiu/baocut/blob/7aa049e82e1367da013b7aba80f0b79033fa04ad/THIRD_PARTY_NOTICES.md",
+      "https://github.com/JimLiu/baocut/commit/7aa049e82e1367da013b7aba80f0b79033fa04ad"
+    ]
+  },
+  {
+    "id": "project-arwing-star-fox-recomp-case",
+    "name": "Project Arwing: Star Fox recompiled from a matching disassembly",
+    "url": "https://github.com/carlosrmz009/arwing",
+    "category": "reconstruction-cases",
+    "relationship": "independent-reconstruction",
+    "kind": "case-study",
+    "targets": [
+      "game"
+    ],
+    "description_en": "Disassembles Star Fox’s 65816 and SuperFX code from runtime coverage and recursive descent, reassembles it into the original ROM, then translates it statically to C on a from-scratch SNES runtime for Windows, macOS and Linux. Code never reached in recorded sessions, and RAM code that no longer matches the ROM, falls back to an interpreter; the README reports identical per-frame hashes for both paths. The generated C is a mechanical translation rather than hand-decompiled source, and results remain project-reported.",
+    "description_zh": "依据运行覆盖率和递归下降反汇编 Star Fox 的 65816 与 SuperFX 代码，重新汇编出与原 ROM 一致的文件，再静态翻译为 C，运行于从零编写的 SNES 运行时，支持 Windows、macOS 和 Linux。录制会话中未执行到的代码，以及与 ROM 不再一致的 RAM 代码，回退到解释器执行；README 报告两条路径的逐帧哈希一致。生成的 C 是机械翻译而非手工反编译的源码，结果仍为项目报告。",
+    "evidence_url": "https://github.com/carlosrmz009/arwing/blob/d8fe7aaf67e0f4ba77c9814852d2ffaccd7d63c7/README.md",
+    "verified_at": "2026-10-18",
+    "verification": "source-reviewed",
+    "requirements": [
+      "README reports a byte-identical ROM rebuild, 34,472 65816 and 14,577 SuperFX instructions, and 99.4% CPU / 100% SuperFX dispatches running recompiled over 20k gameplay frames. It lists the intro, title, training, Corneria and other levels reached by random play as playable. Labels are auto-generated, unreached code remains data run by the interpreter, and audio was checked only indirectly, not against hardware.",
+      "Supply your own Star Fox (USA) (Rev 2) ROM matching the SHA-1 in README; other revisions and regions are untested. Graphics, models and music are extracted from it at build time. The source build expects a headerless image, while the installer strips a 512-byte copier header. No game data is included.",
+      "Releases target Windows x64, macOS 11+ (not notarized) and Linux x86_64/ARM64 AppImages. Source builds need Python (3.10+ on Windows) with Visual Studio 2022 Build Tools, Xcode command-line tools and SDL2, or gcc, SDL2, FreeType and DejaVu fonts; tools/build.py chains extraction, assembly, recompilation and compilation.",
+      "tools/build.py compares the reassembled ROM’s SHA-1 but only warns on a mismatch. The documented contributor check diffs --hashlog output from recompiled and --interp runs. CI assembles and recompiles without a ROM, zero-filling data, so it confirms neither matching nor gameplay; this collection did not rerun any check.",
+      "MIT covers tools/, src/, installer/, res/ and the build scripts; LICENSE excludes asm/, a disassembly of Nintendo's Star Fox code, and anything extracted from a ROM. This is an unofficial fan project unaffiliated with Nintendo. The reviewed repository makes no AI or REA attribution, so a circulating post's account of Opus 5.5 and a single prompt is unconfirmed here."
+    ],
+    "additional_evidence_urls": [
+      "https://github.com/carlosrmz009/arwing/blob/d8fe7aaf67e0f4ba77c9814852d2ffaccd7d63c7/LICENSE",
+      "https://github.com/carlosrmz009/arwing/blob/d8fe7aaf67e0f4ba77c9814852d2ffaccd7d63c7/tools/build.py",
+      "https://github.com/carlosrmz009/arwing/blob/d8fe7aaf67e0f4ba77c9814852d2ffaccd7d63c7/tools/recomp.py",
+      "https://github.com/carlosrmz009/arwing/blob/d8fe7aaf67e0f4ba77c9814852d2ffaccd7d63c7/.github/workflows/build.yml"
+    ]
+  },
+  {
+    "id": "project-arwing-2-star-fox-2-recomp-case",
+    "name": "Project Arwing (2): Star Fox 2 recompiled from a matching disassembly",
+    "url": "https://github.com/carlosrmz009/arwing2",
+    "category": "reconstruction-cases",
+    "relationship": "independent-reconstruction",
+    "kind": "case-study",
+    "targets": [
+      "game"
+    ],
+    "description_en": "Rebuilds Star Fox 2 from a coverage-seeded 65816 and SuperFX disassembly that reassembles to the original ROM, then translates it statically to C for native Windows, macOS and Linux builds. Unreached code and RAM code that differs from the ROM run through an interpreter, and the README reports identical per-frame hashes against interpreted runs. It accepts the SNES Classic release image, not the 1995 prototypes; results remain project-reported.",
+    "description_zh": "从以运行覆盖率为种子的 65816 与 SuperFX 反汇编重建 Star Fox 2：反汇编可重新汇编为与原 ROM 一致的文件，再静态翻译为 C，生成原生 Windows、macOS 和 Linux 版本。未执行到的代码及与 ROM 不一致的 RAM 代码由解释器执行，README 报告其与解释运行的逐帧哈希一致。项目接受 SNES Classic 版映像，不支持 1995 年的原型版；结果仍为项目报告。",
+    "evidence_url": "https://github.com/carlosrmz009/arwing2/blob/15af0bfd85d00a79e8913094f7242e1b938f093f/README.md",
+    "verified_at": "2026-10-18",
+    "verification": "source-reviewed",
+    "requirements": [
+      "README reports a byte-identical ROM rebuild, 66,520 65816 and 23,186 SuperFX instructions, and 99.7% CPU / 100% SuperFX dispatches running recompiled over 20k gameplay frames, listing intro, title, menus, map and missions as playable. Labels are auto-generated, unreached code stays as interpreted data, and audio was checked only indirectly. README says Smooth mode removes slowdown but, unlike the Star Fox project, adds no interpolated 60 fps frames yet.",
+      "Supply your own Star Fox 2 ROM from the SNES Classic / Mini release, matching the SHA-1 in README; the 1995 prototypes will not work. Graphics, models and music are extracted from it at build time, and battery saves are written beside the rebuilt ROM. No game data is included.",
+      "Releases target Windows x64, macOS 11+ (not notarized) and Linux x86_64/ARM64 AppImages. Source builds need Python (3.10+ on Windows) with Visual Studio 2022 Build Tools, Xcode command-line tools and SDL2, or gcc, SDL2, FreeType and DejaVu fonts; tools/build.py chains extraction, assembly, recompilation and compilation.",
+      "tools/build.py compares the reassembled ROM’s SHA-1 but only warns on a mismatch, and the documented contributor check diffs --hashlog output from recompiled and --interp runs. HD 3D hooks one of several projection routines and recovers sub-pixel positions for about 66–90% of vertices. This collection did not rerun these checks.",
+      "MIT covers tools/, src/, installer/, res/ and the build scripts; LICENSE excludes asm/, a disassembly of Nintendo's Star Fox 2 code, and anything extracted from a ROM. This is an unofficial fan project unaffiliated with Nintendo. The reviewed repository makes no AI or REA attribution, so a circulating post's account of Opus 5.5 and a single prompt is unconfirmed here."
+    ],
+    "additional_evidence_urls": [
+      "https://github.com/carlosrmz009/arwing2/blob/15af0bfd85d00a79e8913094f7242e1b938f093f/LICENSE",
+      "https://github.com/carlosrmz009/arwing2/blob/15af0bfd85d00a79e8913094f7242e1b938f093f/tools/build.py"
+    ]
+  },
+  {
+    "id": "little-planet-sonic-cd-recomp-case",
+    "name": "Little Planet: Sonic CD recompiled from a matching disassembly",
+    "url": "https://github.com/carlosrmz009/littleplanet",
+    "category": "reconstruction-cases",
+    "relationship": "independent-reconstruction",
+    "kind": "case-study",
+    "targets": [
+      "game"
+    ],
+    "description_en": "Disassembles every executable file on the Sonic CD disc from runtime coverage and recursive descent, reassembles them byte-identically, and translates the code statically to C on a from-scratch Mega-CD runtime that replaces the BIOS with a high-level implementation. Recompiled blocks run only where memory still holds the code they came from, and a script compares 96 stage runs frame by frame against the interpreter. The project also patches in widescreen and per-zone saves; results remain project-reported.",
+    "description_zh": "依据运行覆盖率和递归下降，反汇编 Sonic CD 光盘上的全部可执行文件并逐字节一致地重新汇编，再将代码静态翻译为 C，运行于从零编写、以高层实现替代 BIOS 的 Mega-CD 运行时。重编译代码块只在内存仍为其来源代码时执行，并有脚本以 96 段关卡运行逐帧对照解释器。项目还以补丁加入宽屏和逐区存档；结果仍为项目报告。",
+    "evidence_url": "https://github.com/carlosrmz009/littleplanet/blob/658d834d53d90baf6a899fa1e5d81a6fee187bbb/README.md",
+    "verified_at": "2026-10-18",
+    "verification": "source-reviewed",
+    "requirements": [
+      "README reports that all 112 executable files reassemble byte-identically to the Japanese release, that 622k instructions recompile into 22,897 blocks, and that boot, gameplay, audio and bit-exact save states work. The disassembly is code only; graphics, sound and level data stay on the user’s disc. True16:9 widescreen and saves after every zone patch the game’s own programs, so those options depart from the original game.",
+      "Supply your own Sonic CD disc image (cue/bin, iso, ccd/img/sub, chd, or cue with compressed audio). The Japanese G-6021 release, identified by a data-track SHA-1 in README, is the tested one; other releases boot but are untested. No BIOS dump is needed, and no disc data is included.",
+      "Releases target Windows x64 (installer or portable zip), macOS 11+ (not notarized) and Linux x86_64/ARM64 AppImages. Source builds need Python (3.10+ on Windows) and SDL3, with Visual Studio 2022 Build Tools, Xcode command-line tools or gcc/g++. The optional remastered opening also needs a separately built FFmpeg and a fetched video.",
+      "README documents tools/decomp.sh for extracting the disc, reassembling asm/ and comparing each file; tests/rc_check.sh compares per-frame RAM and CPU-PC hashes of recompiled and --interp runs across 96 scripted stages. README also reports SingleStepTests results: all 1.6M Z80 cases, and all 1M 68000 cases apart from some undocumented DIVS/ASR and address-error cases. CI tests only a homebrew test disc; this collection ran nothing.",
+      "MIT covers the runtime, tools and installer. third_party/ code, the bundled LGPL 2.1 FFmpeg and LuanUP’s remastered opening, included with permission, keep their own terms, and nothing extracted from a disc is covered. The reviewed LICENSE’s exclusion note names Star Fox 2 rather than Sonic CD. The project is unofficial, unaffiliated with Sega, and makes no AI or REA attribution."
+    ],
+    "additional_evidence_urls": [
+      "https://github.com/carlosrmz009/littleplanet/blob/658d834d53d90baf6a899fa1e5d81a6fee187bbb/LICENSE",
+      "https://github.com/carlosrmz009/littleplanet/blob/658d834d53d90baf6a899fa1e5d81a6fee187bbb/tools/decomp.sh",
+      "https://github.com/carlosrmz009/littleplanet/blob/658d834d53d90baf6a899fa1e5d81a6fee187bbb/tests/rc_check.sh",
+      "https://github.com/carlosrmz009/littleplanet/blob/658d834d53d90baf6a899fa1e5d81a6fee187bbb/.github/workflows/build.yml"
+    ]
+  },
+  {
+    "id": "vf2-decomp-differential-recovery-case",
+    "name": "vf2-decomp: differentially validated Virtua Fighter 2 recovery",
+    "url": "https://github.com/celsowm/vf2-decomp",
+    "category": "reconstruction-cases",
+    "relationship": "independent-reconstruction",
+    "kind": "case-study",
+    "targets": [
+      "game"
+    ],
+    "description_en": "Recovers Virtua Fighter 2 Version 2.1’s Sega Model 2A i960 program into portable, non-matching C17, accepting each recovered path only when it matches a reference i960 executor at controlled boundaries. The repository adds ROM validation, i960 and 68000 analysis tools, a bounded Model 2A hardware model and snapshot-based differential runners. README states that it is not yet a playable port; match flow, combat, physics, AI, rasterization and much of the audio remain open.",
+    "description_zh": "将 Virtua Fighter 2 Version 2.1 的 Sega Model 2A i960 程序恢复为可移植、非一致性的 C17 代码，每条恢复路径须在受控边界上与参考 i960 执行器一致才被接受。仓库还提供 ROM 校验、i960 与 68000 分析工具、有限范围的 Model 2A 硬件模型，以及基于快照的差分运行器。README 说明它尚不是可游玩的移植；对战流程、格斗、物理、AI、光栅化及大部分音频仍未完成。",
+    "evidence_url": "https://github.com/celsowm/vf2-decomp/blob/9a9f7270f090cfa0f38b0ec6a22c3e53dae4bd18/README.md",
+    "verified_at": "2026-10-18",
+    "verification": "source-reviewed",
+    "requirements": [
+      "README describes a clean-room, non-matching recovery whose native runtime preserves CPU, frame, counter and mutable-memory state through repeated scheduler and gameplay dispatches, including a 1,270,824-instruction post-scheduler corridor with no interpreted instructions. It explicitly does not claim complete decompilation, a playable executable, full Model 2/TGP emulation, SCSP DSP audio or every gameplay branch. Unverified paths fail closed with VF2_ERROR_UNSUPPORTED.",
+      "ROM-backed analysis and differential tests need a user-supplied, legally obtained copy of the supported arcade ROM set. config/vf2_v22_roms.csv records only filenames, sizes and hashes, and vf2rom verifies the set. The repository contains no Sega game data, and contributors must not commit ROMs or reconstructed region images.",
+      "Builds use CMake with a C17 compiler and warnings treated as errors, plus an optional sanitizer configuration. STATUS lists GCC/Clang CI, and README names native Windows MSVC as the canonical agent workflow. Setting VF2_ROM_DIR enables the ROM-backed CTest targets; otherwise only ROM-independent tests run.",
+      "The vf2i960 native-dispatch commands run the recorded differential milestones, and vf2cycles advances recovered C and the reference executor from a shared snapshot, stopping in strict mode at the first unsupported block, reference failure or state mismatch. STATUS reports MATCH for the third through sixth dispatches. CI runs only ROM-independent tests, so the ROM-backed results remain project-reported and were not rerun for this collection.",
+      "BSD-3-Clause covers the project’s code; MAME and public Intel i960 documentation serve as cross-references, not included source. docs/LEGAL.md discloses 301 original Sega symbol names, taken from a later Model 2 port DLL, as non-clean-room naming, and an untracked Sonic The Fighters disassembly is used only as a navigation aid. AGENTS.md addresses coding agents, but the reviewed sources establish no REA use."
+    ],
+    "additional_evidence_urls": [
+      "https://github.com/celsowm/vf2-decomp/blob/9a9f7270f090cfa0f38b0ec6a22c3e53dae4bd18/LICENSE",
+      "https://github.com/celsowm/vf2-decomp/blob/9a9f7270f090cfa0f38b0ec6a22c3e53dae4bd18/docs/LEGAL.md",
+      "https://github.com/celsowm/vf2-decomp/blob/9a9f7270f090cfa0f38b0ec6a22c3e53dae4bd18/THIRD_PARTY.md",
+      "https://github.com/celsowm/vf2-decomp/blob/9a9f7270f090cfa0f38b0ec6a22c3e53dae4bd18/docs/STATUS.md",
+      "https://github.com/celsowm/vf2-decomp/blob/9a9f7270f090cfa0f38b0ec6a22c3e53dae4bd18/AGENTS.md",
+      "https://github.com/celsowm/vf2-decomp/blob/9a9f7270f090cfa0f38b0ec6a22c3e53dae4bd18/config/vf2_v22_roms.csv",
+      "https://github.com/celsowm/vf2-decomp/blob/9a9f7270f090cfa0f38b0ec6a22c3e53dae4bd18/.github/workflows/ci.yml"
+    ]
+  },
+  {
+    "id": "z2rs-zelda2-reconstruction-case",
+    "name": "z2rs: an incremental Rust reconstruction of Zelda II checked against an emulator",
+    "url": "https://github.com/troyedwardsjr/z2rs",
+    "category": "reconstruction-cases",
+    "relationship": "independent-reconstruction",
+    "kind": "case-study",
+    "targets": [
+      "game"
+    ],
+    "description_en": "Rebuilds Zelda II: The Adventure of Link (NES) in Rust for desktop, browser and Android by replacing the game’s 6502 routines one at a time. A built-in interpreter still runs the user’s ROM and hands ported routines to Rust, while a verifier compares RAM, sprites, palette and frames with a reference emulator. It is a behavioral, clean-room-style reconstruction guided by a community disassembly, not a decompilation or a finished standalone engine.",
+    "description_zh": "以 Rust 重建 NES 游戏《塞尔达传说 II：林克的冒险》，逐个替换游戏的 6502 例程，可运行于桌面、浏览器和 Android。内置解释器仍执行使用者的 ROM，并把已移植例程交给 Rust 实现；验证工具将 RAM、精灵、调色板和画面与参考模拟器逐帧比较。它是参考社区反汇编、以行为为准的类净室重建，而不是反编译，也还不是独立完整的引擎。",
+    "evidence_url": "https://github.com/troyedwardsjr/z2rs/blob/4fe7a35f8ccfdccdf32421badf97b48b02d0127f/README.md",
+    "verified_at": "2026-10-18",
+    "verification": "source-reviewed",
+    "requirements": [
+      "The reviewed commit is release v0.5.2 (2026-10-10), with Linux, macOS (Intel and Apple Silicon) and Windows archives plus an Android 8.0+ APK; z2rs.com hosts the browser build. PROVENANCE.md says it is not yet a standalone reimplementation: ported routines register in trap tables and the rest of the ROM is interpreted. The pinned ports.toml still marks all 2,960 routines unported, so it does not document how much logic runs as Rust.",
+      "Only the No-Intro USA dump is accepted, identified by the hash of the ROM body without its 16-byte iNES header (CRC32 BA322865). Graphics, maps, text and music are read from that ROM at run time, and nothing from the game is in the repository. Co-op, widescreen, HD packs, the randomizer and other enhancements are optional additions; Android lacks online co-op, the randomizer and enhancements.",
+      "Source builds need stable Rust; the browser build adds the wasm32-unknown-unknown target and wasm-pack, Android adds the SDK, NDK and cargo-ndk, and the default desktop netplay feature needs a C compiler. Release archives are not code-signed. Online co-op uses a public signalling server by default, and the desktop build shows Discord presence unless it is turned off.",
+      "z2-verify runs the ROM in tetanes-core 0.15 beside z2rs with identical input and compares RAM, battery WRAM, sprite OAM, palette and framebuffer after every frame, with two documented edge allowances for that emulator. Long tests replay TASVideos movies downloaded separately, and ROM-dependent tests skip without their inputs. The reviewed workflow only packages releases; no published verification results were found, and this collection ran no checks.",
+      "The sole maintainer releases the code under MIT; vendored matchbox_socket is MIT OR Apache-2.0, and the game itself is not covered. Routine layout comes from the CC0 FiendsOfTheElements/z2disassembly submodule and Data Crystal notes; the project describes one maintainer working from that material, not a two-team clean room, and publishes only a snapshot of earlier private history. PROVENANCE.md does not describe the tools used to write code, so no AI or REA use is established."
+    ],
+    "additional_evidence_urls": [
+      "https://github.com/troyedwardsjr/z2rs/blob/4fe7a35f8ccfdccdf32421badf97b48b02d0127f/PROVENANCE.md",
+      "https://github.com/troyedwardsjr/z2rs/blob/4fe7a35f8ccfdccdf32421badf97b48b02d0127f/LEGAL.md",
+      "https://github.com/troyedwardsjr/z2rs/blob/4fe7a35f8ccfdccdf32421badf97b48b02d0127f/guide/development.md",
+      "https://github.com/troyedwardsjr/z2rs/blob/4fe7a35f8ccfdccdf32421badf97b48b02d0127f/ports.toml",
+      "https://github.com/troyedwardsjr/z2rs/blob/4fe7a35f8ccfdccdf32421badf97b48b02d0127f/crates/z2-core/src/traps.rs",
+      "https://github.com/troyedwardsjr/z2rs/blob/4fe7a35f8ccfdccdf32421badf97b48b02d0127f/.github/workflows/release.yml",
+      "https://github.com/troyedwardsjr/z2rs/blob/4fe7a35f8ccfdccdf32421badf97b48b02d0127f/LICENSE",
+      "https://github.com/troyedwardsjr/z2rs/releases/tag/v0.5.2",
+      "https://z2rs.com/"
+    ]
+  },
+  {
     "id": "ue5-binka-to-wav",
     "name": "UE5 BINKA to WAV",
     "url": "https://github.com/AbienteSadness/ue5-binka-to-wav",

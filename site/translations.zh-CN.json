@@ -1571,6 +1571,116 @@
       "固定版本的仓库根目录没有许可证文件，GitHub 也未识别出许可证，因此未声明复用许可；子模块和任天堂内容各有其条款，About 页面也称这项工作处于法律灰色地带。AGENTS.md 为 AI 辅助贡献规定了披露和人工审核要求，但所审文件既未将重建归因于 REA，也未量化 AI 的使用。"
     ]
   },
+  "skyward-sword-decomp-case": {
+    "name": "《天空之剑》：以哈希校验重新链接的 Wii 版反编译",
+    "requirements": [
+      "README 称其为进行中的 Wii 版反编译，目前唯一支持的版本是 SOUE01（NTSC-U 1.0）；configure.py 还列出 SOUP01，但固定版本中只有 SOUE01 的配置。产物是 Wii 用的重建 main.dol 和 REL 组，不是 PC 可执行文件或移植。",
+      "构建需要使用者自己的 SOUE01 游戏：README 指明只需其数据分区中的 sys/main.dol 和 files/rels.arc。仓库不含游戏素材或汇编；decomp-toolkit 依据 config/SOUE01 中的输入哈希和拆分表，在本地将使用者的文件拆分为对象。",
+      "在 Windows 上可直接用 Python 与 ninja 构建；Linux／macOS 需 ninja，并会自动下载 wibo 包装器。configure.py 固定 decomp-toolkit v1.7.1、objdiff v3.4.1、binutils 2.42-1 及 20250812 编译器包，大部分代码选用 Metrowerks Wii/1.5，大部分 NW4R 代码选用 Wii/1.3；开发时用 objdiff 逐个对象比对。",
+      "默认 ninja 目标只对标为 Matching 的单元（configure.py 中有 493 个，另有 536 个仍为 NonMatching）链接由源码编译的对象，其余单元使用从原文件提取的对象，再按 build.sha1 校验 main.dol 和 636 个 REL。因此校验通过表示输出一致，并不代表反编译已完成。decomp.dev 针对该固定提交的报告显示，27.89% 的代码字节及 76,968 个函数中的 33,940 个已匹配；CI 使用存放游戏文件的私有容器，本合集两者均未运行。",
+      "仓库采用 CC0-1.0；该声明不涵盖任天堂的游戏及其文件，也不涵盖下载的编译器。所审来源未确立 REA 或编码代理的参与。"
+    ]
+  },
+  "2ship2harkinian-mm-port-case": {
+    "name": "2 Ship 2 Harkinian：基于反编译的《姆吉拉的假面》原生移植",
+    "requirements": [
+      "所审阅的 develop 提交位于 5.0.1 版（2026-08-25）之后，该版本提供 Windows、Linux 和 macOS 压缩包；CI 每夜构建仅供试玩，可能存在缺陷和崩溃。仓库中的 decomp_diff.py 将其游戏源码描述为相对官方 zeldaret/mm 仓库有所修改的反编译代码。渲染可使用 DirectX 11、OpenGL 或 Metal。",
+      "仓库不含受版权保护的素材：需自备受支持的《姆吉拉的假面》副本。文档列出 NTSC-U 1.0 与 NTSC-U GC 版本的 SHA-1 哈希。内置提取功能会将所供游戏转换为 mm.o2r 存档；自定义 .o2r 或 .otr 素材包放入 mods 文件夹，README 提醒 fast64 尚未完全支持 MM。",
+      "源码构建需要 libultraship、OTRExporter 和 ZAPDTR 子模块以及 CMake。Windows 使用带 v143 工具集的 Visual Studio 2022、Python 3，并至少需要 8 GB 内存；Linux 依赖清单包括 GCC 或 Clang、Ninja、SDL2、libzip、spdlog、tinyxml2 以及 Opus/Vorbis 库；macOS 需要 Xcode 工具及 SDL2、libpng、GLEW、Ninja、CMake、nlohmann-json 和 libzip。",
+      "所审阅的 README 和构建指南没有报告针对移植版的一致性、校验或保真度检查；发布说明列出的是调整和缺陷修复。增强功能和随机化代码会改变相对原版游戏的行为。本合集未构建或运行该项目。",
+      "仓库采用 CC0 1.0，libultraship 子模块采用 MIT；来自使用者副本的游戏内容保留各自权利，README 表示项目不纵容盗版。所审阅来源未确立 AI 或 REA 使用。"
+    ]
+  },
+  "ship-of-harkinian-oot-port-case": {
+    "name": "Ship of Harkinian：基于反编译源码的《时之笛》原生移植",
+    "requirements": [
+      "README 介绍 Ship of Harkinian 以 libultraship 为基础，并依赖《时之笛》反编译项目提供的源码；soh/src 目录即为这部分源自反编译的游戏代码。产物是加入新功能的修改版原生移植（CMake 项目版本 9.3.0），不是一致性 ROM 构建，也不是逐字节重建。",
+      "游玩需要合法取得且受支持的《时之笛》ROM；docs/supportedHashes.json 列出 19 条 SHA-1 记录，涵盖 PAL、NTSC（美版／日版）、GameCube、Master Quest 及调试版。仓库不含受版权保护的素材，素材由该 ROM 转换为 oot.o2r 或 oot-mq.o2r；使用预构建版本同样需要 ROM。",
+      "README 说明提供 Windows、Linux（AppImage）和 macOS 版本，渲染可选 DirectX 11、OpenGL 或 Metal；CMake 中还有 Nintendo Switch 与 CafeOS（Wii U）分支。从源码构建需 CMake 3.26+、Python 3、Git 以及 libultraship 和 Torch 子模块；Windows 另需 Visual Studio 2022（v143），Linux 需列明的发行版软件包及最低 GCC／Clang 版本。",
+      "所审 CI 工作流构建 Windows、macOS 和 Linux 软件包并生成 soh.o2r，不与原版游戏进行玩法或保真度比对。游戏行为与增强功能均为项目文档所述，本合集未构建或运行任何内容。",
+      "固定版本的仓库根目录没有许可证文件，GitHub 也未识别出许可证；随机器中的 3drando 组件附有自身的许可证，子模块为独立仓库，任天堂内容仍保有其权利。README 声明项目不支持盗版；所审来源未确立 REA 或编码代理的参与。"
+    ]
+  },
+  "zelda-tmc-decomp-case": {
+    "name": "《缩小帽》：面向五个 ROM 的 GBA 反编译重建",
+    "requirements": [
+      "README 称其为仍在进行中的反编译项目，代码库仍可能大幅变动，并提醒 ROM 的部分内容可能尚不能移动，因此修改可能较困难。构建目标为 tmc.gba（美版，默认）、tmc_eu.gba、tmc_jp.gba、tmc_demo_usa.gba 和 tmc_demo_jp.gba。产物是 GBA ROM，而不是原生 PC 移植。",
+      "仓库不含任何游戏素材。每个要构建的版本都需要各自的原始基础 ROM，其 SHA-1 须与 INSTALL.md 所列一致；构建过程从该 ROM 中取得素材。",
+      "可在 Linux、装有 Xcode 命令行工具的 macOS（建议使用 GNU make 和 sed），或通过 WSL、WSL2、Cygwin 在 Windows 上构建。需要 build-essential、Git、带 pip 和 pycparser 的 Python 3、CMake、libpng、arm-none-eabi-gcc 工具链（独立安装或 devkitPro 的 gba-dev），以及安装到仓库中的 pret 独立 agbcc 编译器。",
+      "COMPARE 对常规构建执行 SHA-1 检查，对 CUSTOM 构建默认关闭；按 INSTALL.md，修改游戏后必须使用 CUSTOM 构建。Jenkins 流水线使用构建节点上保存的 ROM 构建全部五个版本，并依据美版 map 文件发布进度。就所审阅提交而言，一致性进度日志按脚本自身规则（也把 asm/src、asm/lib 和 libc 目标计入）将美版全部 647,908 个代码字节计为源码，而 13,933,140 个数据字节中仅计入 238,628 个；本合集未重新构建。",
+      "所审阅代码树没有许可证文件，GitHub 也未识别出许可证，因此源码的再使用条款未予说明；原始 ROM、由其得到的素材以及 agbcc 保留各自条款。所审阅来源未确立 AI 或 REA 使用，也不主张运行复现。"
+    ]
+  },
+  "ocarina-of-time-decomp-case": {
+    "name": "《时之笛》：16 个版本均以 MD5 校验 ROM 构建的反编译",
+    "requirements": [
+      "README 说明项目利用游戏内部信息及静态和／或动态分析，从零重建源码库，并明确表示不制作 PC 移植。项目可构建 N64、GameCube 和 iQue Player 共 16 个 ROM 版本（默认 gc-eu-mq-dbg）；ROM 的部分内容可能尚不能移位，因此修改起来可能较困难。",
+      "每次构建都需要使用者自备所选版本的基础 ROM，且须与 README 列出的 MD5 一致；仓库不含游戏素材，素材在设置阶段从该 ROM 中提取。Ship of Harkinian 等原生移植及重编译项目都是独立项目，并非本仓库的产物。",
+      "README 说明在 Linux 或 WSL 上构建，另有 macOS 与 Docker 指南；需要 Git、build-essential、curl、带 pip 与 venv 的 Python 3.10+、libxml2 以及 MIPS binutils 工具链。N64 和 GameCube 代码通过 ido-static-recomp 使用 IDO 7.1 与 5.3 编译；iQue 版本还有部分文件使用 EGCS，可选的 GCC 构建不保证一致。",
+      "默认 COMPARE=1 时，make 会将构建出的 ROM 的 MD5 与该版本的校验文件比对，并输出 OK 或 FAILED；设置 NON_MATCHING=1 或 COMPILER=gcc 会关闭该检查。GitHub Actions 在存有基础 ROM 的私有容器中运行，报告固定提交的 16 个版本均构建成功；审阅时可变的进度徽章显示 100%。本合集未运行任何构建。",
+      "固定版本的仓库中没有许可证文件，GitHub 也未识别出许可证，因此未声明复用许可；任天堂内容与编译器组件各有其条款。所审来源未确立 REA 或编码代理的参与。"
+    ]
+  },
+  "baocut-design-canvas-case": {
+    "name": "BaoCut Design：移植重建的设计稿与设计系统编辑器",
+    "requirements": [
+      "本条目覆盖固定版本提交中加入的设计稿（画布）与设计系统编辑器，不涵盖整个 BaoCut 产品，也不涵盖另行收录的 Slides 编辑器。运行时 README 称二者分别按 1:1 移植自原编辑器类型的 TypeScript 重建（src/design-type、src/design-system-type），保留文件格式、界面、行为与模块结构，BaoCut 托管所需的改动以 BaoCut: 注释标出。这些重建工程及其笔记与证据不在本仓库中，来源也未写明对应的原版确切版本。",
+      "托管改动将原有的 globalThis.claude 宿主接口换成 BaoCut 的 shim，清空父窗口 origin 白名单，关闭使用分析，并去掉多人房间、sample 及从托管地址安装设计系统等能力。移植版不内置 Anthropic Sans 而改用系统字体，但仍内联原有的 Anthropicons 图标字体；README 称其分发许可待确认，且计划替换。请使用已获独立授权的设计内容与素材。",
+      "构建编辑器需要 Node.js >=22.12.0、npm 工作区依赖，以及 apps/design-editor 与 apps/design-system-editor 的构建。画布运行时在工作区的 React 19 之外为画板保留 React 18.3.1，并使用 Babel standalone 7.29.0、happy-dom、jQuery 与 dom-to-svg；完整 BaoCut 源码构建另需 Rust、CMake 及平台构建工具。由智能体制作设计稿时，经已配置的本机智能体 CLI（如 Codex）使用 BaoCut 内置的 design 与 design-system skill，并遵守其账号与服务条款。",
+      "design-runtime 的 README 报告：先对照原脚本修正标识符，再用 Babel 做结构指纹比对，原画布主页面 20463 个函数中有 19111 个完全一致；其余仅绑定不同的函数都在依赖中，而 1019 个结构有差异的最内层函数以及被改名的 property-scrubber 内部属性仍未审阅，属残余风险。公开测试覆盖设计稿检查、文件路由与授权、下载及标注目标，验收用例 UI-11–UI-13 描述了 Web／桌面端的手动流程。这些都不是与原服务对照的行为测试基准；本合集未运行它们。",
+      "根目录的 BaoCut Community License 1.0 是源码可见许可：允许个人、内部使用及内容创作，将 BaoCut 或其代码商业化则需另行许可。第三方声明涵盖随包的 npm 依赖，但不能确立所重建的 Claude Design 代码或图标字体的复用权。作者帖子未说明此次移植使用了 REA；后来的第三方帖子所称的 REA 使用未获作者或仓库证实。本次仅审阅固定版本的来源，未运行编辑器、智能体或测试。"
+    ]
+  },
+  "project-arwing-star-fox-recomp-case": {
+    "name": "Project Arwing：由一致性反汇编重编译的 Star Fox",
+    "requirements": [
+      "README 报告重新汇编的 ROM 逐字节一致，含 34,472 条 65816 指令和 14,577 条 SuperFX 指令；在 2 万帧游戏过程中，99.4% 的 CPU 分派和 100% 的 SuperFX 分派以重编译代码执行。README 列出可游玩的部分为开场、标题、训练、Corneria 及随机游玩到达的其他关卡。标签均为自动生成，未执行到的代码仍作为数据由解释器运行，音频仅经过间接检查，未与实机对照。",
+      "需自备 Star Fox (USA) (Rev 2) ROM，并与 README 给出的 SHA-1 一致；其他修订版和地区版本未经测试。构建时从该 ROM 提取图形、模型与音乐。源码构建需要无文件头的映像，安装程序则会去除 512 字节的拷贝机文件头。仓库不含任何游戏数据。",
+      "发布版面向 Windows x64、macOS 11+（未经公证）及 Linux x86_64／ARM64 AppImage。源码构建需要 Python（Windows 上为 3.10+），并分别搭配 Visual Studio 2022 Build Tools、Xcode 命令行工具与 SDL2，或 gcc、SDL2、FreeType 与 DejaVu 字体；tools/build.py 依次执行提取、汇编、重编译和编译。",
+      "tools/build.py 会比较重新汇编 ROM 的 SHA-1，但不一致时只发出警告。文档中的贡献者检查会比对重编译运行与 --interp 运行的 --hashlog 输出。CI 在没有 ROM 的情况下以零填充数据完成汇编和重编译，因此既不能确认一致性，也不能确认游戏行为；本合集未重跑任何检查。",
+      "MIT 覆盖 tools/、src/、installer/、res/ 及构建脚本；LICENSE 排除 asm/（Nintendo Star Fox 代码的反汇编）及任何从 ROM 提取的内容。这是与 Nintendo 无关的非官方爱好者项目。所审阅仓库未作任何 AI 或 REA 归因，因此流传帖文所称 Opus 5.5 加单一提示完成的说法在此未获证实。"
+    ]
+  },
+  "project-arwing-2-star-fox-2-recomp-case": {
+    "name": "Project Arwing (2)：由一致性反汇编重编译的 Star Fox 2",
+    "requirements": [
+      "README 报告重新汇编的 ROM 逐字节一致，含 66,520 条 65816 指令和 23,186 条 SuperFX 指令；在 2 万帧游戏过程中，99.7% 的 CPU 分派和 100% 的 SuperFX 分派以重编译代码执行，并列出开场、标题、菜单、地图和任务为可游玩。标签均为自动生成，未执行到的代码仍作为数据由解释器运行，音频仅经过间接检查。README 说明 Smooth 模式可消除减速，但与 Star Fox 项目不同，目前尚未加入插值的 60 fps 画面。",
+      "需自备 SNES Classic／Mini 版的 Star Fox 2 ROM，并与 README 给出的 SHA-1 一致；1995 年的原型版无法使用。构建时从该 ROM 提取图形、模型与音乐，电池存档写在重建的 ROM 旁边。仓库不含任何游戏数据。",
+      "发布版面向 Windows x64、macOS 11+（未经公证）及 Linux x86_64／ARM64 AppImage。源码构建需要 Python（Windows 上为 3.10+），并分别搭配 Visual Studio 2022 Build Tools、Xcode 命令行工具与 SDL2，或 gcc、SDL2、FreeType 与 DejaVu 字体；tools/build.py 依次执行提取、汇编、重编译和编译。",
+      "tools/build.py 会比较重新汇编 ROM 的 SHA-1，但不一致时只发出警告；文档中的贡献者检查会比对重编译运行与 --interp 运行的 --hashlog 输出。HD 3D 仅挂接多个投影例程中的一个，约为 66–90% 的顶点恢复亚像素位置。本合集未重跑这些检查。",
+      "MIT 覆盖 tools/、src/、installer/、res/ 及构建脚本；LICENSE 排除 asm/（Nintendo Star Fox 2 代码的反汇编）及任何从 ROM 提取的内容。这是与 Nintendo 无关的非官方爱好者项目。所审阅仓库未作任何 AI 或 REA 归因，因此流传帖文所称 Opus 5.5 加单一提示完成的说法在此未获证实。"
+    ]
+  },
+  "little-planet-sonic-cd-recomp-case": {
+    "name": "Little Planet：由一致性反汇编重编译的 Sonic CD",
+    "requirements": [
+      "README 报告全部 112 个可执行文件可重新汇编为与日版逐字节一致的文件，62.2 万条指令重编译为 22,897 个代码块，启动、游戏、音频及逐位一致的即时存档均可运行。反汇编只含代码，图形、声音和关卡数据保留在使用者的光盘中。True16:9 宽屏和每区存档通过修改游戏自身程序实现，因此这些选项有别于原版游戏。",
+      "需自备 Sonic CD 光盘映像（cue/bin、iso、ccd/img/sub、chd，或附压缩音轨的 cue）。经测试的是日版 G-6021，README 给出其数据轨 SHA-1；其他版本可以启动但未经测试。无需 BIOS 转储，仓库也不含任何光盘数据。",
+      "发布版面向 Windows x64（安装程序或便携 zip）、macOS 11+（未经公证）及 Linux x86_64／ARM64 AppImage。源码构建需要 Python（Windows 上为 3.10+）和 SDL3，并分别搭配 Visual Studio 2022 Build Tools、Xcode 命令行工具或 gcc/g++。可选的重制版开场还需另行构建 FFmpeg 并获取视频。",
+      "README 说明 tools/decomp.sh 用于提取光盘、重新汇编 asm/ 并逐个文件比较；tests/rc_check.sh 在 96 段脚本化关卡中，比较重编译运行与 --interp 运行每帧的 RAM 及 CPU PC 哈希。README 还报告 SingleStepTests 结果：Z80 通过全部 160 万个用例，68000 除部分未公开的 DIVS／ASR 及地址错误用例外通过全部 100 万个用例。CI 仅以自制测试光盘进行测试；本合集未运行任何检查。",
+      "MIT 覆盖运行时、工具和安装程序。third_party/ 代码、随附的 LGPL 2.1 FFmpeg 以及经许可收录的 LuanUP 重制版开场各自保留条款，任何从光盘提取的内容均不在许可范围内。所审阅 LICENSE 的排除说明写的是 Star Fox 2 而非 Sonic CD。该项目为非官方作品，与 Sega 无关，也未作任何 AI 或 REA 归因。"
+    ]
+  },
+  "vf2-decomp-differential-recovery-case": {
+    "name": "vf2-decomp：经差分验证的 Virtua Fighter 2 代码恢复",
+    "requirements": [
+      "README 将其描述为净室、非一致性的恢复项目：原生运行时在重复的调度器与游戏分派中保持 CPU、调用帧、计数器及可变内存状态，其中调度器之后的一段严格路径包含 1,270,824 条恢复指令，且无解释执行指令。项目明确不主张完整反编译、可游玩的可执行文件、完整的 Model 2／TGP 模拟、SCSP DSP 音频或覆盖全部游戏分支。未验证路径以 VF2_ERROR_UNSUPPORTED 失败关闭。",
+      "依赖 ROM 的分析和差分测试，需要使用者自行提供合法取得的受支持街机 ROM 组。config/vf2_v22_roms.csv 仅记录文件名、大小和哈希，vf2rom 用于校验该 ROM 组。仓库不含任何 Sega 游戏数据，贡献者不得提交 ROM 或重建的区域映像。",
+      "使用 CMake 与 C17 编译器构建，警告视为错误，并可选用 sanitizer 配置。STATUS 列出 GCC／Clang CI，README 将原生 Windows MSVC 称为代理的标准工作流程。设置 VF2_ROM_DIR 后启用依赖 ROM 的 CTest 目标；否则只运行不依赖 ROM 的测试。",
+      "vf2i960 的原生分派命令运行已记录的差分里程碑；vf2cycles 从同一快照推进恢复的 C 代码与参考执行器，严格模式下遇到首个不受支持的代码块、参考执行失败或状态不一致即停止。STATUS 报告第三至第六次分派均为 MATCH。CI 只运行不依赖 ROM 的测试，因此依赖 ROM 的结果仍为项目报告，本合集未重跑。",
+      "项目代码采用 BSD-3-Clause；MAME 与公开的 Intel i960 文档仅作交叉参考，未收录其源码。docs/LEGAL.md 披露 301 个取自后续 Model 2 移植版 DLL 的 Sega 原始符号名，并说明这部分命名并非净室成果；未纳入版本库的 Sonic The Fighters 反汇编快照仅作导航参考。AGENTS.md 面向编码代理，但所审来源未确立 REA 的使用。"
+    ]
+  },
+  "z2rs-zelda2-reconstruction-case": {
+    "name": "z2rs：以模拟器对照逐步重建《塞尔达传说 II》的 Rust 项目",
+    "requirements": [
+      "所审阅提交即 v0.5.2 版（2026-10-10），提供 Linux、macOS（Intel 与 Apple Silicon）和 Windows 压缩包以及适用于 Android 8.0+ 的 APK；z2rs.com 提供浏览器版本。PROVENANCE.md 表示它还不是独立的重新实现：已移植例程注册在陷阱表中，ROM 的其余部分由解释器执行。固定版本的 ports.toml 仍把全部 2,960 个例程标为未移植，因此无法从中得知有多少逻辑以 Rust 运行。",
+      "只接受 No-Intro 美版镜像，以去掉 16 字节 iNES 文件头后的 ROM 主体哈希识别（CRC32 BA322865）。图形、地图、文本和音乐在运行时从该 ROM 读取，仓库中不含任何游戏内容。合作模式、宽屏、高清素材包、随机化和其他增强功能均为可选附加内容；Android 版暂不支持在线合作、随机化和增强功能。",
+      "源码构建需要稳定版 Rust；浏览器版本另需 wasm32-unknown-unknown 目标和 wasm-pack，Android 版另需 SDK、NDK 和 cargo-ndk，桌面版默认启用的联网功能还需要 C 编译器。发布包未经代码签名。在线合作默认使用公共信令服务器，桌面版在未关闭时会显示 Discord 状态。",
+      "z2-verify 在 tetanes-core 0.15 中与 z2rs 并行运行同一 ROM 并输入相同操作，每帧比较 RAM、电池 WRAM、精灵 OAM、调色板和帧缓冲，并对该模拟器的两处画面边缘差异作了说明性豁免。长时测试回放需另行下载的 TASVideos 录像，缺少输入时依赖 ROM 的测试会自动跳过。所审阅的工作流只负责打包发布；未发现公开的验证结果，本合集也未运行任何检查。",
+      "代码由唯一维护者以 MIT 发布；内置的 matchbox_socket 采用 MIT 或 Apache-2.0，游戏本身不在许可范围内。例程布局来自 CC0 的 FiendsOfTheElements/z2disassembly 子模块和 Data Crystal 资料；项目说明这是一名维护者依据这些材料完成的工作，并非双团队净室流程，且只公开了早期私有历史的快照。PROVENANCE.md 未说明编写代码所用工具，因此未确立 AI 或 REA 使用。"
+    ]
+  },
   "ue5-binka-to-wav": {
     "name": "UE5 BINKA 转 WAV",
     "requirements": [

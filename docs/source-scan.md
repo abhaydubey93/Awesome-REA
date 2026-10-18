@@ -32,7 +32,7 @@ The remaining 2,836 entries have not all received individual relevance or functi
 
 Queries cover reverse engineering, binary analysis, Ghidra, IDA, Frida, decompilers, disassemblers, firmware analysis, Android, game reconstruction, JavaScript deobfuscation, protocol analysis and related tools. Every executed query, page, result count, timestamp and incomplete-result flag is recorded. Repositories are deduplicated by GitHub's numeric repository ID; private repositories, forks and archived repositories are excluded.
 
-The scanner performs a real [Get a repository README](https://docs.github.com/en/rest/repos/contents#get-a-repository-readme) request for each candidate it attempts. It records the README's URL, advertised Git blob identifier, SHA-256 digest, byte count, line count, a bounded heading count and detected installation/usage/requirements/example/license sections. Full README bodies are discarded rather than republished. No code, installers, binaries, tests or commands from a repository are executed.
+In the default REST mode, the scanner performs a real [Get a repository README](https://docs.github.com/en/rest/repos/contents#get-a-repository-readme) request for each candidate it attempts. It records the README's URL, advertised Git blob identifier, SHA-256 digest, byte count, line count, a bounded heading count and detected installation/usage/requirements/example/license sections. Full README bodies are discarded rather than republished. No code, installers, binaries, tests or commands from a repository are executed.
 
 Retained repository descriptions remain in their original upstream language in `data/source-index.json`. New captures use `bounded-upstream-v1`: descriptions longer than 1,000 characters are omitted, leaving empty source and locale strings plus `description_omission` length and SHA-256 evidence. Three new anomalous descriptions were omitted in this batch; no full text or replacement claim is published for them. Historical source objects remain unchanged. For historical schema compatibility, `description_en` holds that source text even when it is not English, while `description_zh` mirrors it with status `not-translated`. The separate [localization files](../data/locales/README.md) supply English and Simplified Chinese descriptions for the website. Its generated source index retains available original text in `description_original` and marks the derived descriptions as AI-assisted translations. Translation does not verify a repository's claims, safety, or compatibility.
 
@@ -82,6 +82,45 @@ Search calls are spaced by at least 2.1 seconds; README requests share a bounded
 
 This is not a complete census of reverse engineering software. Search vocabulary, repository metadata, star ordering, API availability and the configured scan budget affect coverage. README URLs may change later; the SHA-256 and byte count identify the observed content. New scanner versions also compute `readme_content_git_sha` and set `readme_git_sha_matches_content` by comparing it with the API-advertised identifier. A false flag must not be treated as proof that the advertised blob contains the captured bytes. Explicit follow-up checks can be recorded in `readme_integrity_review`. A successful scan is a starting point for investigation, not a product recommendation.
 
+## Opt-in batched reads and persistent discovery
+
+The collection goal is **160,000 distinct successful repository README reads**. This is a target, not a completed count or a claim that GitHub contains that many relevant projects. The authoritative progress value is `meta.successful_readme_scans`; `--target` counts retained and new successes together.
+
+REST remains the default. To opt into GraphQL and preserve search progress in ignored cache storage:
+
+```sh
+python3 scripts/scan_sources.py \
+  --resume data/source-index.json \
+  --transport graphql \
+  --graphql-batch-size 8 \
+  --frontier .cache/scan-160000/frontier.json \
+  --output .cache/scan-160000/checkpoint-01.json \
+  --target 160000 \
+  --search-request-budget 120 \
+  --pending-metadata-budget 200
+```
+
+This uses the existing `gh` login and makes network requests. A large target does not reserve API capacity or guarantee completion in one run. Resume from the newest checkpoint with its matching frontier and a **different output path**, such as `checkpoint-02.json`. Do not pair a newer frontier with an older checkpoint: acknowledged IDs must already exist in the supplied scan evidence. Frontier storage is restricted to `.cache/`; checkpoint and frontier paths must differ.
+
+Pending identities and page positions survive restarts. Legacy pending IDs receive a bounded metadata lookup pass, with stale identities rotated behind unchecked ones. `--search-request-budget` bounds search calls per run. `--graphql-batch-size` accepts 1–16, default 8; larger batches should follow a measured small run. GraphQL requests remain sequential and at least one second apart. `--workers` and `--requests-per-second` do not raise GraphQL concurrency.
+
+Discovery keeps the approved reverse-engineering vocabulary and public/non-fork/non-archived gates. Repeated `--query` options explicitly choose other scope bases; a larger target never silently broadens them. The frontier fixes its initial UTC creation-time boundary and splits intervals when a query exceeds GitHub's 1,000-result cap or returns incomplete results. Unsplittable intervals remain visibly blocked. Finished traversal is not proof of complete coverage because search results change. See [GitHub search limits](https://docs.github.com/en/rest/search/search#about-search).
+
+| Counter | Meaning |
+| --- | --- |
+| `successful_readme_scans` / `current_run.new_successful_readme_scans` | Actual accepted README reads across distinct repository IDs / this run's additions. |
+| `failed` / `attempted_readme_scans` | Recorded README failures / successful plus failed README attempts. Search and metadata lookups are excluded. |
+| `unique_repos` / `unattempted_candidates` | Persisted discovered IDs / IDs without a recorded README attempt; neither is a success count. |
+| `current_run.readme_transport.outcomes` | Diagnostic results: `ok`, `fallback`, `rejected`, `retry`, `deferred`. A fallback may later succeed through REST; an `ok` payload still passes record validation. |
+
+Read `target_reached` and the actual success count. A run can finish below its target, and separate repositories can share an identical README hash. Frontier counts describe discovery, not README reads or editorial review.
+
+GraphQL checks the numeric repository ID and eligibility in both phases; stored node IDs support renames. README selection follows `.github`, root, then `docs`. Directory OIDs must match the captured default-branch commit's root tree. The selected blob is fetched at that commit and must be untruncated UTF-8 text with an exact byte count and matching Git blob SHA. Accepted records retain SHA-256, blob/commit identifiers, document features and the actual GraphQL endpoint. Bodies are analyzed in memory and discarded.
+
+Ambiguous selection, unsupported files, encoding/hash mismatches and conservative byte limits request the existing REST README reader; a fallback must pass that reader's checks before counting. Rate limits, access failures, network errors and server failures instead leave work pending and stop the batch. They never trigger REST to escape backpressure, and sibling fallback work is deferred too. Already verified successes can be retained. Responses are bounded to 12 MiB, with additional per-blob and aggregate budgets. Credentials stay in memory at the fixed GitHub API origin; GraphQL redirects are refused. GitHub's quota, reset time and `Retry-After` determine deferral, with at least a minute for secondary limits without another retry instruction. See [GraphQL limits](https://docs.github.com/en/graphql/overview/rate-limits-and-query-limits-for-the-graphql-api) and [Git blob fields](https://docs.github.com/en/graphql/reference/git#blob).
+
+These flags do not install a schedule or publish data. Translation, scope review, generation and validation remain required before updating the public source index; curated promotion requires a separate source review. Automated reads do not grant a Featured badge or establish functionality, safety or REA compatibility.
+
 ## Recheck availability
 
 The weekly link checker covers curated, benchmark and paper URLs only, and a URL check cannot tell when a scanned name now belongs to a different repository. The [availability recheck](../scripts/source_availability.py) asks GitHub for each retained scan by its numeric repository ID instead. It is opt-in: it runs only when invoked with a token in `GH_TOKEN` or `GITHUB_TOKEN`, and no test, validator or workflow calls it.
@@ -110,3 +149,11 @@ The recheck reads no README and changes no source record, hash, timestamp or cou
 An upstream that no longer resolves by ID is excluded with reason code `upstream-unavailable`. In place of `evidence_url`, which would no longer serve the scanned README or would lead to another repository, the decision keeps the scanned README SHA-256 and copies the record's recheck result unchanged into `availability_check`: the scanned ID, recorded name, check timestamp, outcome, ID lookup status and name lookup status, plus the other repository's ID for a reassigned name. Validation accepts only `not-found`, `blocked` and `name-reassigned` results whose statuses match the outcome, taken after the README scan and no later than the review. Both reasons must give the check date, the IDs, the ID lookup status and the recorded name. A record whose ID still resolves, including a renamed or transferred repository, cannot use this reason and stays browsable. Archived and fork results need a separate decision.
 
 The first full recheck of all 3,000 records, on 2026-10-17, reported three such records; its four renamed repositories, whose old names redirect to the same ID, stay browsable. A fresh check of only the three IDs later that day returned the same results. GitHub returned 404 for repository IDs 1377172300 (newliver666/apk-reverse) and 1409072094 (BAB2007/yuda-run-helper) and for both recorded names. Repository ID 1238268014 also returned 404, while its recorded name, Shellghostt/De-Caffeinator, now resolves to a different repository, ID 1244345068, which was never scanned or reviewed. All three are excluded as `upstream-unavailable`, so the website and repository directories no longer list or link them. Their scan records stay in the full export, and `successful_readme_scans` still counts them.
+
+## Scheduled checkpoints and publication
+
+The [scheduled discovery workflow](automation.md#scheduled-readme-discovery) requests three scans per day and carries its incremental state in Actions artifacts. The checked-in `data/source-index.json` remains the reviewed publication baseline; scheduled results are a separate discovery queue. Running the schedule three times does not imply 900 new sources were obtained: inspect each receipt's actual `new_successful_scans`, `counts`, `outcome` and `target_reached` fields.
+
+Each checkpoint artifact contains only `checkpoint.json` and `receipt.json`. The receipt identifies the workflow run and attempt, source commit, input reconciliation, retained counts, actual new successes and the checkpoint SHA-256. A checkpoint marked `in-progress` can be resumed but remains rejected by the normal publication validator. The scheduler explicitly requests incomplete-checkpoint validation without rewriting the stored status.
+
+When extending the published index from an artifact, retain the numeric repository IDs, original capture objects, README hashes and observation provenance. Review relevance, exclusions, attribution and bilingual descriptions separately; regenerate and validate the source-index browser projection and localized directory before opening a normal PR. Do not copy an entire artifact directory into the repository. Successful README retrieval is not source review, execution testing, a license permission or an endorsement.

@@ -416,12 +416,12 @@ def validate_scan_discovery(meta, records, errors):
             errors.append(f'{where}: paper references require paper discovery')
 
 
-def validate_source_index(document, errors):
+def validate_source_index(document, errors, *, allow_incomplete=False):
     if not isinstance(document, dict) or not isinstance(document.get('meta'), dict) or not isinstance(document.get('resources'), list):
         errors.append('Source index must contain meta and resources.')
         return 0
     meta, records = document['meta'], document['resources']
-    if meta.get('status') != 'complete':
+    if meta.get('status') != 'complete' and not (allow_incomplete and meta.get('status') == 'in-progress'):
         errors.append('Source index is an incomplete checkpoint; finish the scan before publication.')
     if meta.get('successful_readme_scans') != len(records) or len(records) <= 1500:
         errors.append('Source index must retain more than 1,500 successful scans and matching counts.')
@@ -464,6 +464,19 @@ def validate_source_index(document, errors):
                 if (parsed.netloc != 'api.github.com'
                         or parsed.path != '/repos/' + str(record.get('full_name', '')) + '/readme'):
                     errors.append(f'{where}: README API URL must match the public GitHub repository')
+        graphql_fields = {'readme_transport', 'readme_graphql_endpoint', 'readme_commit_sha'}
+        if graphql_fields.intersection(record):
+            commit = record.get('readme_commit_sha')
+            path = record.get('readme_path')
+            if (not graphql_fields.issubset(record) or record.get('readme_transport') != 'github-graphql-blob'
+                    or record.get('readme_graphql_endpoint') != 'https://api.github.com/graphql'
+                    or not isinstance(commit, str) or not re.fullmatch(r'[0-9a-f]{40}', commit)
+                    or not isinstance(path, str) or not path or path.startswith('/')
+                    or any(part in ('', '.', '..') for part in path.split('/'))
+                    or 'readme_api_url' in record or record.get('readme_git_sha_matches_content') is not True
+                    or not isinstance(record.get('readme_url'), str) or not isinstance(record.get('url'), str)
+                    or unquote(record.get('readme_url', '')) != record['url'] + '/blob/' + str(commit) + '/' + str(path)):
+                errors.append(f'{where}: GraphQL README evidence needs a verified blob and immutable commit URL')
         if (record.get('private', False) is not False or record.get('visibility', 'public') != 'public'
                 or record.get('archived', False) is not False or record.get('fork', False) is not False):
             errors.append(f'{where}: repository metadata must describe a public, non-fork, non-archived repository')
