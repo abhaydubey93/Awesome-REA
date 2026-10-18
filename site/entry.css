@@ -32,6 +32,7 @@
 .entry-sources{margin:0;padding-left:24px;font-size:15px;line-height:1.8;max-width:80ch}
 .entry-sources li+li{margin-top:10px}
 .entry-sources a{color:var(--link);text-decoration:underline;text-underline-offset:3px;overflow-wrap:anywhere}
+.entry-source-context{display:block;margin-top:2px;color:var(--muted);font-size:14px;line-height:1.6;overflow-wrap:anywhere}
 .entry-return{display:flex;flex-wrap:wrap;gap:12px 24px;padding-top:24px;border-top:1px solid var(--line);font-size:15px;line-height:1.8}
 .entry-return a{display:inline-flex;align-items:center;min-height:44px}
 html[lang="zh-CN"] .entry-heading h1{letter-spacing:0;line-height:1.4}

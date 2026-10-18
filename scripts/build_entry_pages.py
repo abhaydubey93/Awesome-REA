@@ -61,9 +61,23 @@ def _link(url: str, label: str, *, primary: bool = False) -> str:
 
 
 def _sources(urls: list[str], language: str) -> str:
-    links = ''.join(f'<li><a href="{_public_url(url)}" target="_blank" rel="noopener noreferrer">{escape(url)}</a></li>'
-                    for url in dict.fromkeys(urls))
-    return f'<section class="entry-section" aria-labelledby="entry-sources"><h2 id="entry-sources">{("一手来源" if language == "zh" else "Primary sources")}</h2><ol class="entry-sources">{links}</ol></section>'
+    links = []
+    for url in dict.fromkeys(urls):
+        href, label, context = _public_url(url), url, ''
+        parsed = urlsplit(url)
+        parts = parsed.path.lstrip('/').split('/', 4)
+        # Only immutable GitHub file/directory links get a compact display label.
+        # The full source URL, revision and any line anchor remain in the link.
+        if (parsed.netloc == 'github.com' and not parsed.query and len(parts) == 5
+                and parts[0] and parts[1] and parts[4]
+                and parts[2] in {'blob', 'tree'} and re.fullmatch(r'[a-f0-9]{40}', parts[3])):
+            owner, repository, _, revision, path = parts
+            label = path + ('#' + parsed.fragment if parsed.fragment else '')
+            revision_label = '修订' if language == 'zh' else 'Revision'
+            context = (f'<span class="entry-source-context">GitHub · {escape(owner + "/" + repository)}'
+                       f' · {revision_label} <span title="{revision}">{revision[:7]}</span></span>')
+        links.append(f'<li><a href="{href}" title="{href}" target="_blank" rel="noopener noreferrer">{escape(label)}</a>{context}</li>')
+    return f'<section class="entry-section" aria-labelledby="entry-sources"><h2 id="entry-sources">{("一手来源" if language == "zh" else "Primary sources")}</h2><ol class="entry-sources">{"".join(links)}</ol></section>'
 
 
 def _definitions(items: list[tuple[str, str]]) -> str:
