@@ -303,15 +303,57 @@ class SurveyTests(unittest.TestCase):
         self.assertNotIn(CASE, keys)
         self.assertNotIn(extra['id'], references)
 
-    def test_survey_is_editorial_article_and_misc_citation_not_fake_scholarly_publication(self):
+    def test_repository_citation_matches_collection_metadata_without_survey_publication_fields(self):
         document, papers, resources = fixture()
         _, files = self.render(document, papers, resources)
         citation = files['survey/citation.bib']
-        self.assertTrue(citation.startswith('@misc{awesome-rea-survey-2026,'))
-        self.assertIn('author = {{Awesome REA contributors}}', citation)
-        self.assertIn('no new experiments', citation)
-        self.assertNotRegex(citation, r'(?m)^\s*(doi|journal|booktitle|issn)\s*=')
+        metadata = (ROOT / 'CITATION.cff').read_text(encoding='utf-8')
+        title = re.search(r'^title: (.+)$', metadata, re.M)[1]
+        repository = re.search(r'^repository-code: (.+)$', metadata, re.M)[1]
+        author_block = re.search(r'^authors:\n(.*?)(?=^\S)', metadata, re.M | re.S)[1]
+        authors = []
+        for block in re.findall(r'^  - (.*?)(?=^  - |\Z)', author_block, re.M | re.S):
+            fields = dict(re.findall(r'^\s*([a-z-]+): (.+)$', block, re.M))
+            authors.append('{' + fields['name'] + '}' if 'name' in fields
+                           else fields['family-names'] + ', ' + fields['given-names'])
+        self.assertTrue(citation.startswith('@misc{awesome-rea,'))
+        self.assertIn('author = {' + ' and '.join(authors) + '}', citation)
+        self.assertIn('title = {{' + title + '}}', citation)
+        self.assertIn('url = {' + repository + '}', citation)
+        self.assertIn('howpublished = {GitHub repository}', citation)
+        self.assertNotRegex(citation, r'(?m)^\s*(year|version|doi|journal|booktitle|issn)\s*=')
+        self.assertNotIn('/survey/', citation)
+        self.assertNotIn('Evidence-Centered Survey', citation)
         self.assertNotIn(papers[0]['authors'][0], citation)
+        changed = deepcopy(document)
+        changed.update(version='9.1', date='2031-01-02')
+        _, later_files = self.render(changed, papers, resources)
+        self.assertEqual(later_files['survey/citation.bib'], citation)
+        self.assertEqual(later_files['survey/references.bib'], files['survey/references.bib'])
+
+    def test_repository_citation_actions_and_legacy_download_are_localized(self):
+        document, papers, resources = fixture()
+        _, files = self.render(document, papers, resources)
+        for path, label in [('survey/index.html', 'Cite the repository'),
+                            ('zh/survey/index.html', '引用仓库')]:
+            with self.subTest(path=path):
+                page = Page(files[path])
+                downloads = [link for link in page.links if link.get('href') == '/survey/citation.bib']
+                self.assertEqual(len(downloads), 1)
+                self.assertEqual(downloads[0]['download'], 'awesome-rea.bib')
+                self.assertIn(label, downloads[0]['text'])
+                self.assertEqual(sum(link.get('href') == '#citation' and link['text'] == label
+                                     for link in page.links), 2)
+                self.assertIn('id="citation"><h2>' + label + '</h2>', files[path])
+                self.assertIn('https://github.com/reacher-z/Awesome-REA/blob/main/CITATION.cff',
+                              {link.get('href') for link in page.links})
+                self.assertNotIn('Cite this survey', files[path])
+                self.assertNotIn('引用本综述', files[path])
+                self.assertNotIn('download="awesome-rea-survey.bib"', files[path])
+
+    def test_survey_remains_an_editorial_article_not_a_scholarly_publication(self):
+        document, papers, resources = fixture()
+        _, files = self.render(document, papers, resources)
         for path in ('survey/index.html', 'zh/survey/index.html'):
             page = Page(files[path])
             graph = page.schemas[0]['@graph']
