@@ -2495,5 +2495,44 @@
       "https://github.com/morluto/rea/blob/808339f0b1cf3837445f392b5d5f1f362d64a27d/README.md",
       "https://github.com/morluto/rea/blob/808339f0b1cf3837445f392b5d5f1f362d64a27d/.agents/skills/reverse-engineer-anything/SKILL.md"
     ]
+  },
+  {
+    "id": "uu-remote-linux-protocol-case",
+    "name": "UU Remote on Linux: an unofficial protocol implementation",
+    "url": "https://github.com/VallierDev/uu-remote-linux",
+    "category": "reconstruction-cases",
+    "relationship": "independent-reconstruction",
+    "description_en": "Implements an unofficial native Linux host for NetEase UU Remote, using protocol behavior the maintainer says was recovered from official-client traffic and shipped programs. The Rust implementation connects selected desktop, input and auxiliary-tool channels to Linux services; an additional Linux viewer remains experimental. The author attributes development to Claude and Codex, without establishing REA use.",
+    "description_zh": "实现网易 UU 远程的非官方原生 Linux 被控端；维护者称协议行为来自对官方客户端流量及已发布程序的调查。Rust 实现将选定的桌面、输入和辅助工具通道连接到 Linux 服务，另有仍处于实验阶段的 Linux 控制端。作者将开发归因于 Claude 与 Codex，未确立 REA 使用。",
+    "evidence_url": "https://github.com/VallierDev/uu-remote-linux/blob/696cf10e334b2e7fe1afcb698b354c09ee328447/README.en.md",
+    "verified_at": "2026-10-18",
+    "verification": "source-reviewed",
+    "requirements": [
+      "Reviewed version 0.2.8 implements selected protocol formats and session behavior in native Rust with small C components, without Wine or bundled NetEase binaries. The additional Linux viewer is experimental. Cargo.toml declares GPL-3.0-or-later; dependencies and official clients/services retain separate terms. This is not recovered vendor source or a replacement cloud backend.",
+      "The host needs Linux, stable Rust, a C toolchain, pkg-config, X11 development libraries and FFmpeg. GTK3 supports graphical login; the optional viewer also needs SDL2. Wayland/portal builds require additional libraries and authorized desktop access. Dependencies vary by feature; arbitrary Linux compatibility is not established.",
+      "UU cloud services remain required; the host and experimental viewer interoperate with supported official clients and hosts. Account connections use the user’s own authorized account; experimental remote assistance requires an explicitly enabled host and recipient-provided connection details. The project is unaffiliated with NetEase, and no security audit or complete protocol equivalence is established.",
+      "Public parsing and initialization code has synthetic checks for malformed inputs, capability replies and echo correlation. Local/virtual WebRTC peers test pending-desktop responses, independent tool connections and session isolation. These are implementation checks, not an independent official-client conformance corpus. This entry is source-reviewed; tests and device behavior were not independently run.",
+      "The README reports real-machine GNOME/X11 use and selected GNOME Wayland checks; other desktop coverage is largely virtual-machine based. Its viewer acceptance matrix is explicitly partial, with different official-host coverage for clipboard, audio, codecs and keyboards. These remain author-reported observations, not generally applicable compatibility results.",
+      "Wayland remains experimental, with single-screen and resolution/recovery limits. Multi-monitor switching is under development; HDR, privacy-screen mode, microphone forwarding and the Linux pre-login screen are unsupported. Restrictive-network relay behavior is not thoroughly tested. Cloud behavior and supported versions may change independently of this snapshot."
+    ],
+    "targets": [
+      "protocol",
+      "app"
+    ],
+    "kind": "case-study",
+    "additional_evidence_urls": [
+      "https://github.com/VallierDev/uu-remote-linux/blob/696cf10e334b2e7fe1afcb698b354c09ee328447/README.md",
+      "https://github.com/VallierDev/uu-remote-linux/blob/696cf10e334b2e7fe1afcb698b354c09ee328447/AGENTS.md",
+      "https://github.com/VallierDev/uu-remote-linux/blob/696cf10e334b2e7fe1afcb698b354c09ee328447/Cargo.toml",
+      "https://github.com/VallierDev/uu-remote-linux/blob/696cf10e334b2e7fe1afcb698b354c09ee328447/LICENSE",
+      "https://github.com/VallierDev/uu-remote-linux/blob/696cf10e334b2e7fe1afcb698b354c09ee328447/src/control_protocol.rs",
+      "https://github.com/VallierDev/uu-remote-linux/blob/696cf10e334b2e7fe1afcb698b354c09ee328447/src/protocol.rs",
+      "https://github.com/VallierDev/uu-remote-linux/blob/696cf10e334b2e7fe1afcb698b354c09ee328447/src/initialization.rs",
+      "https://github.com/VallierDev/uu-remote-linux/blob/696cf10e334b2e7fe1afcb698b354c09ee328447/src/desktop_control_tests.rs",
+      "https://github.com/VallierDev/uu-remote-linux/blob/696cf10e334b2e7fe1afcb698b354c09ee328447/src/webrtc_lifecycle_tests.rs",
+      "https://github.com/VallierDev/uu-remote-linux/blob/696cf10e334b2e7fe1afcb698b354c09ee328447/src/viewer/wire.rs",
+      "https://github.com/VallierDev/uu-remote-linux/blob/696cf10e334b2e7fe1afcb698b354c09ee328447/src/viewer/tests.rs",
+      "https://github.com/VallierDev/uu-remote-linux/blob/696cf10e334b2e7fe1afcb698b354c09ee328447/.github/workflows/ci.yml"
+    ]
   }
 ]

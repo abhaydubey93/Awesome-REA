@@ -15,16 +15,16 @@
 <!-- BEGIN GENERATED CONTENTS -->
 **按目标找工具与案例**
 
-- [网站](#website) (16) · [游戏](#game) (42) · [应用](#app) (38)
+- [网站](#website) (16) · [游戏](#game) (42) · [应用](#app) (40)
 - [原生二进制](#native-binary) (20) · [固件与硬件](#firmware) (12) · [协议](#protocol) (11)
 
 **论文与工作流**
 
-- [论文](#papers) (51) · [智能体与 MCP](#agents-and-mcp) (19) · [文档与学习资源](#references-and-learning) (20)
+- [论文](#papers) (52) · [智能体与 MCP](#agents-and-mcp) (19) · [文档与学习资源](#references-and-learning) (20)
 
 **更多浏览方式**
 
-- [全部案例](https://awesomerea.org/zh/cases/) (52) · [相关合集](#related-collections) (4) · [完整仓库索引](#完整仓库索引) (2,836)
+- [全部案例](https://awesomerea.org/zh/cases/) (54) · [相关合集](#related-collections) (4) · [完整仓库索引](#完整仓库索引) (2,836)
 <!-- END GENERATED CONTENTS -->
 
 <a id="资源目录"></a>
@@ -513,11 +513,23 @@ REA 标签指向单独维护的[上游 CLI 与 MCP 项目](https://github.com/mo
 
   案例 · 混合工具流程 · [使用条件与证据](https://awesomerea.org/zh/resources/pocket-tasks-reconstruction-case/)
 
+- [**Open Scrantic：重建 Johnny Castaway 屏幕保护程序引擎**](https://github.com/glauberlima/open-scrantic)
+
+  以 Rust 重建 Johnny Castaway 屏幕保护程序引擎，作者明确披露使用 REA 与 Claude Code。它读取原始文件，在现代桌面上运行恢复的动画脚本及按日历推进的故事状态；文档保留实现差异与有限测试范围，未确立完整行为等价。
+
+  案例 · 混合工具流程 · [使用条件与证据](https://awesomerea.org/zh/resources/open-scrantic-screensaver-case/)
+
 - [**LSX II 音量修正器：重建音量行为**](https://github.com/roberdorfer/kef-lsx-volume)
 
   根据实测 USB 音量行为，通过 macOS 音频代理将音量键映射到 KEF LSX II 的局域网控制。项目报告音量步进更均匀，同时转发 USB 音频；扬声器固件未修改。
 
   案例 · 独立重建 · [使用条件与证据](https://awesomerea.org/zh/resources/kef-lsx-volume-case/)
+
+- [**Linux 上的 UU 远程：非官方协议实现**](https://github.com/VallierDev/uu-remote-linux)
+
+  实现网易 UU 远程的非官方原生 Linux 被控端；维护者称协议行为来自对官方客户端流量及已发布程序的调查。Rust 实现将选定的桌面、输入和辅助工具通道连接到 Linux 服务，另有仍处于实验阶段的 Linux 控制端。作者将开发归因于 Claude 与 Codex，未确立 REA 使用。
+
+  案例 · 独立重建 · [使用条件与证据](https://awesomerea.org/zh/resources/uu-remote-linux-protocol-case/)
 
 #### 工具、项目与集成
 
@@ -1204,14 +1216,14 @@ REA 标签指向单独维护的[上游 CLI 与 MCP 项目](https://github.com/mo
 <a id="papers"></a>
 ## 论文
 
-**51 篇论文**，按主题分组，组内按年份从新到旧排列。每项均标明发表状态，中文标题为译名。
+**52 篇论文**，按主题分组，组内按年份从新到旧排列。每项均标明发表状态，中文标题为译名。
 
 [浏览论文目录](https://awesomerea.org/zh/papers/) · [完整书目 JSON](data/papers.json) · [推荐论文](https://github.com/reacher-z/Awesome-REA/issues/new?template=paper.yml)
 
 **按主题**
 
 - [智能体评测](#papers-agent-evaluation) (5) · [反编译](#papers-decompilation) (8) · [网站](#papers-website-reconstruction) (13)
-- [游戏](#papers-game-reconstruction) (6) · [应用](#papers-app-reconstruction) (5) · [固件](#papers-firmware-analysis) (5)
+- [游戏](#papers-game-reconstruction) (6) · [应用](#papers-app-reconstruction) (6) · [固件](#papers-firmware-analysis) (5)
 - [协议](#papers-protocol-analysis) (9)
 
 展开“范围与发表信息”查看完整研究边界。部分论文也出现在精选资源目录中，两者数量不可相加。
@@ -1720,6 +1732,21 @@ REA 标签指向单独维护的[上游 CLI 与 MCP 项目](https://github.com/mo
 ### 应用重建与分析
 
 [↑ 论文主题](#papers) · [目录](#目录)
+
+- [**UIOrchestra：通过多智能体系统将 UI 设计转换为高保真代码**](https://aclanthology.org/2025.findings-emnlp.150/)
+
+  UIOrchestra 通过布局描述、代码生成及渲染图像比较三个智能体，将静态移动 UI 设计转换为 React/CSS。其 APPUI 基准包含 1,101 组经人工修订的代码与渲染图像，依据 12 类中的 165 款应用截图构建。参考代码为评测而重建，并非恢复出的原始应用源码。
+
+  2025 · 会议论文 · [PDF](https://aclanthology.org/2025.findings-emnlp.150.pdf) · [完整条目与引用](https://awesomerea.org/zh/papers/paper-uiorchestra/)
+
+  <details>
+  <summary>范围与发表信息</summary>
+
+  **范围与限制:** 评测视觉、组件及代码相似度，不验证原生安装包执行、交互、后端行为或应用等价性。APPUI 参考图像来自对 iOS 截图所做重建的渲染结果；无法获取的图片／图标使用占位素材。人工研究由四位标注者评估 200 个样本。差异分析提示词忽略字号／字体差异及占位图像内容。未核实模型快照、渲染依赖或可复现的运行环境，亦未重新运行实验。
+
+  **发表信息:** 2025 · Findings of EMNLP 2025 · 会议论文 · Chuhuai Yue 等
+
+  </details>
 
 - [**DeclarUI：以自动生成声明式界面代码连接设计与开发**](https://doi.org/10.1145/3715726)
 

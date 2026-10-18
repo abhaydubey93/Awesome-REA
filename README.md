@@ -15,16 +15,16 @@ An independent collection of tools, case studies and research for websites, game
 <!-- BEGIN GENERATED CONTENTS -->
 **Tools and cases by target**
 
-- [Website](#website) (16) · [Game](#game) (42) · [App](#app) (38)
+- [Website](#website) (16) · [Game](#game) (42) · [App](#app) (40)
 - [Native Binary](#native-binary) (20) · [Firmware and Hardware](#firmware) (12) · [Protocol](#protocol) (11)
 
 **Research and workflows**
 
-- [Papers](#papers) (51) · [Agents and MCP](#agents-and-mcp) (19) · [References and Learning](#references-and-learning) (20)
+- [Papers](#papers) (52) · [Agents and MCP](#agents-and-mcp) (19) · [References and Learning](#references-and-learning) (20)
 
 **More ways to browse**
 
-- [All cases](https://awesomerea.org/cases/) (52) · [Related Collections](#related-collections) (4) · [Full Repository Index](#full-repository-index) (2,836)
+- [All cases](https://awesomerea.org/cases/) (54) · [Related Collections](#related-collections) (4) · [Full Repository Index](#full-repository-index) (2,836)
 <!-- END GENERATED CONTENTS -->
 
 <a id="resource-catalog"></a>
@@ -512,11 +512,23 @@ REA labels refer to the separate [upstream CLI and MCP project](https://github.c
 
   Case study · Mixed workflow · [Requirements & evidence](https://awesomerea.org/resources/pocket-tasks-reconstruction-case/)
 
+- [**Open Scrantic: reconstructing the Johnny Castaway screensaver engine**](https://github.com/glauberlima/open-scrantic)
+
+  Reconstructs the Johnny Castaway screensaver engine in Rust, with author-disclosed REA and Claude Code use. It reads original files to run recovered animation scripts and calendar-based story state on modern desktops; documented deviations and limited tests stop short of complete behavioral equivalence.
+
+  Case study · Mixed workflow · [Requirements & evidence](https://awesomerea.org/resources/open-scrantic-screensaver-case/)
+
 - [**LSX II Volume Fixer: reconstructing volume behavior**](https://github.com/roberdorfer/kef-lsx-volume)
 
   Uses measured USB-volume behavior and a macOS audio proxy to map volume keys to a KEF LSX II’s LAN control. The project reports more even steps while forwarding USB audio; the speaker firmware is unchanged.
 
   Case study · Independent reconstruction · [Requirements & evidence](https://awesomerea.org/resources/kef-lsx-volume-case/)
+
+- [**UU Remote on Linux: an unofficial protocol implementation**](https://github.com/VallierDev/uu-remote-linux)
+
+  Implements an unofficial native Linux host for NetEase UU Remote, using protocol behavior the maintainer says was recovered from official-client traffic and shipped programs. The Rust implementation connects selected desktop, input and auxiliary-tool channels to Linux services; an additional Linux viewer remains experimental. The author attributes development to Claude and Codex, without establishing REA use.
+
+  Case study · Independent reconstruction · [Requirements & evidence](https://awesomerea.org/resources/uu-remote-linux-protocol-case/)
 
 #### Tools, projects and integrations
 
@@ -1203,14 +1215,14 @@ REA labels refer to the separate [upstream CLI and MCP project](https://github.c
 <a id="papers"></a>
 ## Papers
 
-**51 papers**, grouped by topic and ordered newest first. Each entry shows its publication status.
+**52 papers**, grouped by topic and ordered newest first. Each entry shows its publication status.
 
 [Browse the paper directory](https://awesomerea.org/papers/) · [Complete bibliography JSON](data/papers.json) · [Suggest a paper](https://github.com/reacher-z/Awesome-REA/issues/new?template=paper.yml)
 
 **By topic**
 
 - [Agent evaluation](#papers-agent-evaluation) (5) · [Decompilation](#papers-decompilation) (8) · [Websites](#papers-website-reconstruction) (13)
-- [Games](#papers-game-reconstruction) (6) · [Apps](#papers-app-reconstruction) (5) · [Firmware](#papers-firmware-analysis) (5)
+- [Games](#papers-game-reconstruction) (6) · [Apps](#papers-app-reconstruction) (6) · [Firmware](#papers-firmware-analysis) (5)
 - [Protocols](#papers-protocol-analysis) (9)
 
 Open “Scope and publication details” for each study’s full limitations. Some papers also appear among curated resources; counts are not additive.
@@ -1719,6 +1731,21 @@ Open “Scope and publication details” for each study’s full limitations. So
 ### App reconstruction and analysis
 
 [↑ Paper topics](#papers) · [Contents](#contents)
+
+- [**UIOrchestra: Generating High-Fidelity Code from UI Designs with a Multi-agent System**](https://aclanthology.org/2025.findings-emnlp.150/)
+
+  UIOrchestra converts static mobile UI designs into React/CSS through layout-description, code-generation and rendered-image comparison agents. Its APPUI benchmark contains 1,101 human-refined code/rendering pairs based on screenshots from 165 apps across 12 categories. The reference code is reconstructed for evaluation, rather than recovered original application source.
+
+  2025 · Conference paper · [PDF](https://aclanthology.org/2025.findings-emnlp.150.pdf) · [Full entry & citation](https://awesomerea.org/papers/paper-uiorchestra/)
+
+  <details>
+  <summary>Scope and publication details</summary>
+
+  **Scope and limits:** Tests visual, component and code similarity, not native-package execution, interaction, backend behavior or application equivalence. APPUI references are rendered reconstructions of iOS screenshots; unavailable images/icons use placeholders. A human study covers 200 samples with four annotators. The difference-analysis prompt ignores font-size/typeface differences and placeholder image content. Model snapshots, rendering dependencies and a reproducible runtime setup were not verified; experiments were not rerun.
+
+  **Publication:** 2025 · Findings of EMNLP 2025 · Conference paper · Chuhuai Yue et al.
+
+  </details>
 
 - [**DeclarUI: Bridging Design and Development with Automated Declarative UI Code Generation**](https://doi.org/10.1145/3715726)
 

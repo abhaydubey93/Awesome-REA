@@ -1950,5 +1950,44 @@
       "https://github.com/ShadowSwaps/REA-Reconstruction-Companion/blob/590e65dd99596c7fb66598eaa5d6c051c2ec9a5f/LICENSE",
       "https://github.com/ShadowSwaps/REA-Reconstruction-Companion/blob/ad6dccd7760fae50f5e45fe74f1f2ef92a452239/evals/reference/TASK.md"
     ]
+  },
+  {
+    "id": "open-scrantic-screensaver-case",
+    "name": "Open Scrantic: reconstructing the Johnny Castaway screensaver engine",
+    "url": "https://github.com/glauberlima/open-scrantic",
+    "category": "community-case-studies",
+    "relationship": "community-reported-mixed-workflow",
+    "kind": "case-study",
+    "targets": [
+      "app"
+    ],
+    "description_en": "Reconstructs the Johnny Castaway screensaver engine in Rust, with author-disclosed REA and Claude Code use. It reads original files to run recovered animation scripts and calendar-based story state on modern desktops; documented deviations and limited tests stop short of complete behavioral equivalence.",
+    "description_zh": "以 Rust 重建 Johnny Castaway 屏幕保护程序引擎，作者明确披露使用 REA 与 Claude Code。它读取原始文件，在现代桌面上运行恢复的动画脚本及按日历推进的故事状态；文档保留实现差异与有限测试范围，未确立完整行为等价。",
+    "evidence_url": "https://github.com/glauberlima/open-scrantic/blob/2db75008931eb744f79d0c3fb12e0d89950466ff/README.md",
+    "verified_at": "2026-10-18",
+    "verification": "source-reviewed",
+    "requirements": [
+      "Reviewed at v0.3.0: this is a Windows 3.1 screensaver-engine reconstruction, not a game port. The author reports recovering formats and TTM/ADS script semantics from disassembly, with human-directed REA/Claude Code work and comparisons against the original. Those reports do not establish exhaustive parity or an independent agent-performance result.",
+      "Builds pin Rust 1.99.1; Cargo declares minimum Rust 1.99 and edition 2024. The project targets Windows, macOS and Linux using winit, softbuffer and rodio. Linux builds also require ALSA development headers and pkg-config.",
+      "Runtime requires separately obtained SCRANTIC.SCR, RESOURCE.MAP and RESOURCE.001 beside the executable. README sizes and SHA-256 values identify the expected original files; the loader instead checks known executable strings/layout, not whole-file hashes. Arbitrary original builds are unsupported. Options and story state use SCRANTIC.INI, saved on normal exit.",
+      "Deliberate differences include full-frame redraw, potentially one-pixel line/ellipse differences, bounded final-scene selection and a fixed two-second title display. Optional dedithering and softened audio default off. The original settings dialog and password feature are absent, as are unused animated-palette, 256-color and ADS-variable features.",
+      "The headless test runs 6,000 steps and requires three completed scenes, without original-frame comparison. Data-dependent tests silently return when OPEN_SCRANTIC_DATA is unset; other tests cover parsing and arithmetic. CI checks formatting, lint, three-platform builds and --version, not cargo test or original-data playback. Snapshot output supports inspection, not an automated original-output oracle.",
+      "MIT covers project source, not original executable content, art, scripts or sounds, which users must supply with appropriate authorization. The author describes independent, non-commercial interoperability without Sierra/Dynamix endorsement. This collection reviewed sources and test definitions; it did not reproduce the implementation or results."
+    ],
+    "additional_evidence_urls": [
+      "https://github.com/glauberlima/open-scrantic/blob/2db75008931eb744f79d0c3fb12e0d89950466ff/docs/ENGINE.md",
+      "https://github.com/glauberlima/open-scrantic/blob/2db75008931eb744f79d0c3fb12e0d89950466ff/docs/ARCHITECTURE.md",
+      "https://github.com/glauberlima/open-scrantic/blob/2db75008931eb744f79d0c3fb12e0d89950466ff/Cargo.toml",
+      "https://github.com/glauberlima/open-scrantic/blob/2db75008931eb744f79d0c3fb12e0d89950466ff/rust-toolchain.toml",
+      "https://github.com/glauberlima/open-scrantic/blob/2db75008931eb744f79d0c3fb12e0d89950466ff/LICENSE",
+      "https://github.com/glauberlima/open-scrantic/blob/2db75008931eb744f79d0c3fb12e0d89950466ff/src/assets/exe.rs",
+      "https://github.com/glauberlima/open-scrantic/blob/2db75008931eb744f79d0c3fb12e0d89950466ff/src/assets/mod.rs",
+      "https://github.com/glauberlima/open-scrantic/blob/2db75008931eb744f79d0c3fb12e0d89950466ff/src/engine/mod.rs",
+      "https://github.com/glauberlima/open-scrantic/blob/2db75008931eb744f79d0c3fb12e0d89950466ff/src/engine/config.rs",
+      "https://github.com/glauberlima/open-scrantic/blob/2db75008931eb744f79d0c3fb12e0d89950466ff/src/engine/rng.rs",
+      "https://github.com/glauberlima/open-scrantic/blob/2db75008931eb744f79d0c3fb12e0d89950466ff/examples/snapshot.rs",
+      "https://github.com/glauberlima/open-scrantic/blob/2db75008931eb744f79d0c3fb12e0d89950466ff/.github/workflows/ci.yml",
+      "https://github.com/glauberlima/open-scrantic/blob/2db75008931eb744f79d0c3fb12e0d89950466ff/CHANGELOG.md"
+    ]
   }
 ]

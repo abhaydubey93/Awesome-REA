@@ -2891,5 +2891,69 @@
     "verified_at": "2026-10-17",
     "verification": "source-reviewed",
     "runtime_tested": false
+  },
+  {
+    "id": "paper-uiorchestra",
+    "title": "UIOrchestra: Generating High-Fidelity Code from UI Designs with a Multi-agent System",
+    "title_zh": "UIOrchestra：通过多智能体系统将 UI 设计转换为高保真代码",
+    "authors": [
+      "Chuhuai Yue",
+      "Jiajun Chai",
+      "Yufei Zhang",
+      "Zixiang Ding",
+      "Xihao Liang",
+      "Peixin Wang",
+      "Shihai Chen",
+      "Wang Yixuan",
+      "Yanping Wang",
+      "Guojun Yin",
+      "Wei Lin"
+    ],
+    "year": 2025,
+    "publication_date": "2025-11",
+    "date_precision": "month",
+    "date_basis": "The official ACL Anthology citation gives November 2025. Crossref records only the year; the November 4–9 conference dates printed in the PDF are not treated as a publication day.",
+    "date_basis_zh": "ACL Anthology 官方引文给出 2025 年 11 月。Crossref 仅记录年份；PDF 中的 11 月 4–9 日会议日期不作为具体出版日。",
+    "venue": "Findings of EMNLP 2025",
+    "publication_status": "conference-paper",
+    "arxiv_id": null,
+    "arxiv_version_reviewed": null,
+    "first_arxiv_date": null,
+    "doi": "10.18653/v1/2025.findings-emnlp.150",
+    "citation": {
+      "container_title": "Findings of the Association for Computational Linguistics: EMNLP 2025",
+      "publisher": "Association for Computational Linguistics",
+      "pages": "2769-2782",
+      "sources": [
+        "https://aclanthology.org/2025.findings-emnlp.150/",
+        "https://api.crossref.org/works/10.18653/v1/2025.findings-emnlp.150"
+      ]
+    },
+    "url": "https://aclanthology.org/2025.findings-emnlp.150/",
+    "pdf_url": "https://aclanthology.org/2025.findings-emnlp.150.pdf",
+    "code_url": null,
+    "project_url": null,
+    "targets": [
+      "app",
+      "website"
+    ],
+    "description_en": "UIOrchestra converts static mobile UI designs into React/CSS through layout-description, code-generation and rendered-image comparison agents. Its APPUI benchmark contains 1,101 human-refined code/rendering pairs based on screenshots from 165 apps across 12 categories. The reference code is reconstructed for evaluation, rather than recovered original application source.",
+    "description_zh": "UIOrchestra 通过布局描述、代码生成及渲染图像比较三个智能体，将静态移动 UI 设计转换为 React/CSS。其 APPUI 基准包含 1,101 组经人工修订的代码与渲染图像，依据 12 类中的 165 款应用截图构建。参考代码为评测而重建，并非恢复出的原始应用源码。",
+    "scope_limitations_en": "Tests visual, component and code similarity, not native-package execution, interaction, backend behavior or application equivalence. APPUI references are rendered reconstructions of iOS screenshots; unavailable images/icons use placeholders. A human study covers 200 samples with four annotators. The difference-analysis prompt ignores font-size/typeface differences and placeholder image content. Model snapshots, rendering dependencies and a reproducible runtime setup were not verified; experiments were not rerun.",
+    "scope_limitations_zh": "评测视觉、组件及代码相似度，不验证原生安装包执行、交互、后端行为或应用等价性。APPUI 参考图像来自对 iOS 截图所做重建的渲染结果；无法获取的图片／图标使用占位素材。人工研究由四位标注者评估 200 个样本。差异分析提示词忽略字号／字体差异及占位图像内容。未核实模型快照、渲染依赖或可复现的运行环境，亦未重新运行实验。",
+    "why_fits_en": "Adds a mobile-oriented screenshot reconstruction method and benchmark with explicit human-built reference data; also evaluates on Design2Code-hard webpages.",
+    "why_fits_zh": "补充面向移动界面的截图重建方法与基准，明确参考数据由人工参与构建，并在 Design2Code-hard 网页上开展评测。",
+    "metadata_notes": "Reviewed the final 14-page proceedings PDF. Its eleven-author order is retained, including Yanping Wang where ACL/Crossref metadata renders Wangyanping; Wang Yixuan is preserved as printed. No arXiv version was verified. The paper promises a code/data release, but the reviewed coauthor page has disabled code/project placeholders and no attributable release or artifact license was verified. Code/project URLs therefore remain unset. The paper is covered by ACL’s CC BY 4.0 policy; this does not establish licensing for an unreleased dataset or depicted apps.",
+    "metadata_notes_zh": "审阅最终 14 页会议论文 PDF，保留其中十一位作者的顺序，包括 ACL／Crossref 元数据写作 Wangyanping 的 Yanping Wang；Wang Yixuan 按论文原样保留。未核实 arXiv 版本。论文承诺发布代码与数据，但所审阅的合作者主页中，代码／项目链接仍是禁用的占位链接；未核实可归属于作者的发布产物或其许可，因此代码／项目 URL 留空。论文适用 ACL 的 CC BY 4.0 政策，但这并不证明尚未发布的数据集或所展示应用的许可。",
+    "evidence_urls": [
+      "https://aclanthology.org/2025.findings-emnlp.150/",
+      "https://aclanthology.org/2025.findings-emnlp.150.pdf",
+      "https://api.crossref.org/works/10.18653/v1/2025.findings-emnlp.150",
+      "https://gjyin.github.io/"
+    ],
+    "kind": "research",
+    "verified_at": "2026-10-18",
+    "verification": "source-reviewed",
+    "runtime_tested": false
   }
 ]
