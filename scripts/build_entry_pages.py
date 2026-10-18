@@ -74,7 +74,7 @@ def _sources(urls: list[str], language: str) -> str:
             owner, repository, _, revision, path = parts
             label = path + ('#' + parsed.fragment if parsed.fragment else '')
             revision_label = '修订' if language == 'zh' else 'Revision'
-            context = (f'<span class="entry-source-context">GitHub · {escape(owner + "/" + repository)}'
+            context = (f' <span class="entry-source-context">GitHub · {escape(owner + "/" + repository)}'
                        f' · {revision_label} <span title="{revision}">{revision[:7]}</span></span>')
         links.append(f'<li><a href="{href}" title="{href}" target="_blank" rel="noopener noreferrer">{escape(label)}</a>{context}</li>')
     return f'<section class="entry-section" aria-labelledby="entry-sources"><h2 id="entry-sources">{("一手来源" if language == "zh" else "Primary sources")}</h2><ol class="entry-sources">{"".join(links)}</ol></section>'
