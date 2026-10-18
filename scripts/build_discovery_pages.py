@@ -372,6 +372,7 @@ def build_discovery_pages(site_dir: Path, catalog: dict, source_index: dict | No
             (prefix + '/resources/', '精选资源' if zh else 'Curated resources'),
             (prefix + '/browse/', '完整仓库目录' if zh else 'Repository directory'),
             (prefix + '/papers/', '研究论文目录' if zh else 'Research papers'),
+            (prefix + '/survey/', '专题综述' if zh else 'Editorial survey'),
             ('/catalog.json', '精选资源 JSON' if zh else 'Curated catalog JSON'),
             ('/source-index.json', '完整双语扫描 JSON' if zh else 'Complete bilingual scan JSON'),
             ('/papers.json', '论文元数据 JSON' if zh else 'Paper metadata JSON'),
@@ -413,6 +414,7 @@ Source review checks documentation, not successful execution, security, or REA c
 - [Case studies]({site_url}/cases/): {case_count} documented cases, a subset of the curated resources, with full descriptions and source evidence.
 - [Repository directory]({site_url}/browse/): Static categories and public repository descriptions.
 - [Research papers]({site_url}/papers/): A separate research bibliography.
+- [Editorial survey]({site_url}/survey/): A bilingual synthesis of the collection’s evidence, methods and limits; a versioned editorial companion, not an additional research paper.
 - [About and provenance]({site_url}/about/): Scope, source methods, counts, translations, and licenses.
 
 ## 简体中文
@@ -421,6 +423,7 @@ Source review checks documentation, not successful execution, security, or REA c
 - [案例合集]({site_url}/zh/cases/): {case_count} 个案例，是精选资源的子集，保留完整说明与来源证据。
 - [仓库目录]({site_url}/zh/browse/): 静态分类与公开项目简介。
 - [研究论文]({site_url}/zh/papers/): 单独维护的研究文献目录。
+- [专题综述]({site_url}/zh/survey/): 综合比较证据、方法与边界的双语编辑性综述，单独版本化，不计入研究论文数量。
 - [关于与来源]({site_url}/zh/about/): 收录范围、来源方法、数量、翻译与许可。
 
 ## Public data and sources

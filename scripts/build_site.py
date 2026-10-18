@@ -15,6 +15,7 @@ from xml.sax.saxutils import escape as xml_escape
 from build_browse_pages import build_browse_pages
 from build_discovery_pages import build_discovery_pages
 from build_paper_pages import build_paper_pages
+from build_survey import build_survey
 from build_entry_pages import build_entry_pages
 from build_manifest import write_build_manifest
 from homepage_locales import HOMEPAGE_DESTINATIONS, localized_homepage
@@ -256,6 +257,14 @@ def build_site(output: Path, *, fontawesome_dir: Path | None = None,
         favicon_href=asset_hrefs["favicon.svg"], social_image_href=f"{SITE_URL}/social-card.png?v={social_revision}",
         icon_stylesheet_href=icon_stylesheet,
     )
+    survey_urls = build_survey(
+        output, papers, resources,
+        document=json.loads((ROOT / "data/survey.json").read_text(encoding="utf-8")),
+        site_url=SITE_URL, repository_url=REPOSITORY_URL,
+        styles_href=asset_hrefs["styles.css"], favicon_href=asset_hrefs["favicon.svg"],
+        social_image_href=f"{SITE_URL}/social-card.png?v={social_revision}",
+        icon_stylesheet_href=icon_stylesheet,
+    )
     entry_revision = hashlib.sha256((output / "entry.css").read_bytes()).hexdigest()[:16]
     entry_urls = build_entry_pages(
         output, resources, papers, site_url=SITE_URL, repository_url=REPOSITORY_URL,
@@ -268,7 +277,7 @@ def build_site(output: Path, *, fontawesome_dir: Path | None = None,
     (output / "robots.txt").write_text(f"User-agent: *\nAllow: /\nSitemap: {SITE_URL}/sitemap.xml\n", encoding="utf-8")
     # Review timestamps describe sources, not every page's modification date.
     # Omit lastmod rather than advertising a fabricated build-time freshness signal.
-    sitemap_urls = [SITE_URL + "/", SITE_URL + "/zh/", *browse_urls, *(SITE_URL + path for path in discovery_paths), *paper_urls, *entry_urls]
+    sitemap_urls = [SITE_URL + "/", SITE_URL + "/zh/", *browse_urls, *(SITE_URL + path for path in discovery_paths), *paper_urls, *survey_urls, *entry_urls]
     sitemap_entries = [f'<url><loc>{xml_escape(url)}</loc></url>' for url in sitemap_urls]
     (output / "sitemap.xml").write_text('<?xml version="1.0" encoding="UTF-8"?>\n<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">\n' + '\n'.join(sitemap_entries) + '\n</urlset>\n', encoding="utf-8")
     write_build_manifest(output)

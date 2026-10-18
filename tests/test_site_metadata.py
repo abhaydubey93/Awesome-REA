@@ -13,6 +13,7 @@ from build_browse_pages import build_browse_pages
 from build_discovery_pages import build_discovery_pages
 from build_entry_pages import build_entry_pages
 from build_paper_pages import build_paper_pages
+from build_survey import build_survey
 from homepage_locales import HOMEPAGE_DESTINATIONS, _ui_strings
 from open_graph import SOCIAL_CARD, SOCIAL_IMAGE_ALT, open_graph_meta, png_size
 from test_source_browser import full_export
@@ -55,6 +56,8 @@ class OpenGraphTests(unittest.TestCase):
 
     def test_every_generator_emits_the_shared_block(self):
         papers = json.loads((ROOT / 'data/papers.json').read_text())
+        resources = (json.loads((ROOT / 'data/rea-resources.json').read_text())
+                     + json.loads((ROOT / 'data/tool-resources.json').read_text()))
         with tempfile.TemporaryDirectory() as directory:
             output = Path(directory)
             build_browse_pages(output, full_export(), curated_count=1, site_url=ORIGIN,
@@ -64,7 +67,9 @@ class OpenGraphTests(unittest.TestCase):
             build_discovery_pages(output, {'resources': [resource()], 'meta': {}}, None)
             build_paper_pages(output, papers, social_image_href=CARD)
             build_entry_pages(output, [resource()], papers[:1], social_image_href=CARD)
+            build_survey(output, papers, resources, social_image_href=CARD)
             routes = ['/browse/', '/zh/browse/android/', '/resources/', '/zh/about/', '/papers/', '/zh/papers/',
+                      '/survey/', '/zh/survey/',
                       f'/resources/{resource()["id"]}/', f'/zh/papers/{papers[0]["id"]}/']
             for route in routes:
                 with self.subTest(route=route):

@@ -29,10 +29,38 @@ class StagedSiteBuildTests(unittest.TestCase):
         shutil.copytree(ROOT / 'site', self.source)
         data = self.root / 'data'
         data.mkdir()
-        for filename in ('rea-resources.json', 'papers.json'):
-            records = json.loads((ROOT / 'data' / filename).read_text())[:1]
-            (data / filename).write_text(json.dumps(records))
+        resources = json.loads((ROOT / 'data/rea-resources.json').read_text())
+        case = next(record for record in resources if record['kind'] == 'case-study')
+        paper = json.loads((ROOT / 'data/papers.json').read_text())[0]
+        for filename, record in [('rea-resources.json', case), ('papers.json', paper)]:
+            (data / filename).write_text(json.dumps([record]))
         (data / 'tool-resources.json').write_text('[]')
+        # Exercise the real survey renderer against this same bounded catalog.
+        pair = lambda en, zh: {'en': en, 'zh': zh}
+        survey = {
+            'schema_version': 1, 'version': '1.0', 'date': '2026-10-18',
+            'snapshot': {'revision': 'a' * 40, 'papers': 1, 'resources': 1,
+                         'cases': 1, 'selected_cases': 1},
+            'paper_ids': [paper['id']], 'reference_records': [paper, case],
+            'subtitle': pair('A bounded synthesis.', '范围明确的综述。'),
+            'description': pair('Methods and evidence.', '方法与证据。'),
+            'abstract': pair('A reviewed source [[' + paper['id'] + ']].',
+                             '已核查来源 [[' + paper['id'] + ']]。'),
+            'disclosure': pair('Editorial synthesis; no new experiments.', '编辑性综述；无新实验。'),
+            'reference_note': pair('Original sources.', '原始来源。'),
+            'figure_caption': pair('Observe and compare.', '观察与比较。'),
+            'findings': [pair('Evidence bounds claims.', '证据限定结论。')],
+            'pipeline': [{'title': pair('Observe', '观察'),
+                          'text': pair('Retain evidence.', '保留证据。')}],
+            'sections': [{'id': 'methods', 'title': pair('Methods', '方法'),
+                          'paragraphs': [pair('Compare a documented case.', '比较有文档记录的案例。')],
+                          'table': 'cases'}],
+            'tables': {'cases': {'caption': pair('Case evidence', '案例证据'),
+                'headers': [pair('Case', '案例'), pair('Evidence', '证据')],
+                'rows': [{'reference': case['id'], 'label': pair('Case', '案例'),
+                          'cells': [pair('Project documentation', '项目文档')]}]}},
+        }
+        (data / 'survey.json').write_text(json.dumps(survey))
         self.unowned = self.root / 'keep.txt'
         self.unowned.write_bytes(b'Not deployment output\n')
         stack = self.enterContext(ExitStack())
@@ -44,6 +72,10 @@ class StagedSiteBuildTests(unittest.TestCase):
         self.assertEqual(result[:2], (1, 1))
         manifest = read_build_manifest(self.output)
         self.assertTrue(manifest['files']['index.html']['html_sha256'])
+        for route in ('survey/index.html', 'zh/survey/index.html'):
+            self.assertTrue(manifest['files'][route]['html_sha256'])
+        self.assertIn('survey/references.bib', manifest['files'])
+        self.assertIn('survey/citation.bib', manifest['files'])
         self.assertNotIn(str(self.root), json.dumps(manifest))
         self.assertEqual(self.unowned.read_bytes(), b'Not deployment output\n')
         self.assertEqual(list((self.root / '.cache').glob('site-build-*')), [])

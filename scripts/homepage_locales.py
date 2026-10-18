@@ -6,6 +6,7 @@ import re
 from urllib.parse import unquote, urljoin, urlsplit, urlunsplit
 
 from open_graph import open_graph_meta
+from build_survey import TITLES as SURVEY_TITLES
 
 # Homepage ItemList names: each destination page's H1, not the arrowed link text.
 HOMEPAGE_DESTINATIONS = {
@@ -13,6 +14,7 @@ HOMEPAGE_DESTINATIONS = {
     'resources': ('Curated reverse engineering resources', '精选逆向工程资源'),
     'cases': ('Reverse-engineering case studies', '逆向工程案例合集'),
     'papers': ('Papers & benchmarks', '论文与评测基准'),
+    'survey': SURVEY_TITLES,
     'about': ('About the collection and its sources', '关于合集与数据来源'),
 }
 
@@ -188,7 +190,7 @@ def _locale_url(value, origin, language):
     if path.startswith('/zh/'):
         path = path[3:]
     if path == '/' or any(path == '/' + area + '/' or path.startswith('/' + area + '/')
-                          for area in ('browse', 'resources', 'cases', 'papers', 'about')):
+                          for area in ('browse', 'resources', 'cases', 'papers', 'survey', 'about')):
         path = ('/zh' if language == 'zh' else '') + path
     return urlunsplit((parsed.scheme, parsed.netloc, path, parsed.query, parsed.fragment))
 
