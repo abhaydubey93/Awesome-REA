@@ -48,6 +48,104 @@ META_FIELDS = set('attempted_readme_scans classification_engine_version classifi
                   'target_reached unattempted_candidates unique_repos unique_repos_policy checkpoint_reconciliations'.split())
 
 
+# Explicit schemas are maintained alongside the scanner's serialization contract.
+# Never infer allowed keys from the restored artifact or the current input file.
+def fields(names, schema):
+    return dict.fromkeys(names.split(), schema)
+
+
+def nullable(schema):
+    return ('nullable', schema)
+
+
+COUNTS_SCHEMA = fields('successful_readme_scans failed attempted_readme_scans unique_repos unattempted_candidates', int)
+LIMITS_SCHEMA = {**fields('workers max_readme_bytes max_pages_per_query per_page', int),
+                 **fields('requests_per_second search_interval_seconds', (int, float))}
+RUN_SCHEMA = {
+    **fields('run_id started_at mode status', str), 'completed_at': nullable(str),
+    **fields('query_start_index retained_successful_readme_scans retained_failed_readme_scans '
+             'requested_new_successful_scans readme_queue_candidates classification_engine_version '
+             'retained_unattempted_repository_ids seed_observation_start_index resume_observation_start_index '
+             'query_count seed_observation_count resume_observation_count new_successful_readme_scans '
+             'new_failed_readme_scans', int),
+    **fields('seed_curated seed_papers', bool), 'query_plan': [str],
+}
+ARTIFACT_REFERENCE_SCHEMA = fields('paper_id field url', str)
+QUERY_SCHEMA = {
+    **fields('query observed_at run_id status reason', str),
+    **fields('page per_page total_count returned retained_attempts_skipped name_collisions_skipped invalid_items_skipped', int),
+    'http_status': nullable(int), 'incomplete_results': bool,
+    'invalid_item_reasons': fields('invalid-repository-metadata', int),
+}
+OBSERVATION_SCHEMA = {**fields('repository_id observed_at run_id method status reason', str), 'http_status': nullable(int)}
+SEED_SCHEMA = {**OBSERVATION_SCHEMA, 'full_name': str, 'reference_ids': [str],
+               'artifact_references': [ARTIFACT_REFERENCE_SCHEMA]}
+HISTORY_SCHEMA = {
+    **fields('started_at completed_at last_checkpoint_at status method description_policy classification_policy', nullable(str)),
+    **{key: nullable(value) for key, value in COUNTS_SCHEMA.items()},
+    **fields('requested_successful_scans classification_engine_version', nullable(int)),
+    **fields('query_count known_repository_ids', int), 'source_sha256': nullable(str),
+    'candidate_ids_retained': bool, 'limits': nullable(LIMITS_SCHEMA), 'run': nullable(RUN_SCHEMA),
+}
+RECONCILIATION_SCHEMA = {
+    **fields('mode reconciled_at canonical_sha256 checkpoint_sha256', str),
+    **fields('canonical_counts checkpoint_counts', COUNTS_SCHEMA),
+    **fields('canonical_current_run checkpoint_current_run', nullable(RUN_SCHEMA)),
+    'superseded': [fields('id selected canonical_record_sha256 checkpoint_record_sha256 canonical_status checkpoint_status', str)],
+    'checkpoint_observation_counts': fields('queries seed_observations resume_observations', int),
+}
+RECORD_SCHEMA = {
+    **dict.fromkeys(RECORD_FIELDS, str),
+    **fields('archived readme_git_sha_matches_content', bool),
+    **fields('classification_engine_version stars readme_bytes readme_lines readme_heading_count', int),
+    **fields('license updated_at pushed_at readme_path readme_git_sha', nullable(str)),
+    **fields('classification_reference_ids discovery_methods matched_queries readme_signals seed_paper_ids '
+             'seed_reference_ids targets topics', [str]),
+    'seed_paper_references': [ARTIFACT_REFERENCE_SCHEMA],
+    'description_omission': {**fields('reason original_sha256', str),
+                             **fields('original_characters original_utf8_bytes limit_characters', int)},
+    'readme_integrity_review': {**fields('reviewed_at method advertised_blob_sha256', str), 'advertised_blob_bytes': int},
+}
+META_SCHEMA = {
+    **dict.fromkeys(META_FIELDS, str), **COUNTS_SCHEMA,
+    **fields('schema_version classification_engine_version requested_successful_scans', int),
+    'target_reached': bool, 'completed_at': nullable(str), 'current_run': RUN_SCHEMA,
+    'limits': LIMITS_SCHEMA, 'limitations': [str], 'discovered_repository_ids': [str],
+    'queries': [QUERY_SCHEMA], 'seed_observations': [SEED_SCHEMA],
+    'resume_observations': [OBSERVATION_SCHEMA], 'resume_history': [HISTORY_SCHEMA],
+    'checkpoint_reconciliations': [RECONCILIATION_SCHEMA],
+}
+SNAPSHOT_SCHEMA = {'meta': META_SCHEMA, 'resources': [RECORD_SCHEMA],
+                   'failures': [{**dict.fromkeys(FAILURE_FIELDS, str), 'http_status': nullable(int)}]}
+RECEIPT_SCHEMA = {
+    **fields('schema_version run_id run_attempt new_success_limit scan_seconds workflow_id '
+             'restored_run_id restored_artifact_id scanner_exit_code new_successful_scans', int),
+    **fields('source_commit started_at completed_at outcome checkpoint_sha256', str),
+    **fields('retained_counts counts', COUNTS_SCHEMA), 'reconciliation': RECONCILIATION_SCHEMA,
+    'target_reached': bool,
+}
+
+
+def validate_shape(value, schema):
+    """Reject unexpected nested keys/containers without echoing untrusted values."""
+    if isinstance(schema, tuple) and schema and schema[0] == 'nullable':
+        if value is not None:
+            validate_shape(value, schema[1])
+        return
+    if isinstance(schema, dict):
+        if not isinstance(value, dict) or set(value) - set(schema):
+            raise ValueError('Checkpoint contains unexpected nested fields or object shape; values withheld')
+        for key, item in value.items():
+            validate_shape(item, schema[key])
+    elif isinstance(schema, list):
+        if not isinstance(value, list):
+            raise ValueError('Checkpoint contains an unexpected nested array shape; values withheld')
+        for item in value:
+            validate_shape(item, schema[0])
+    elif type(value) not in (schema if isinstance(schema, tuple) else (schema,)):
+        raise ValueError('Checkpoint contains an unexpected nested value type; values withheld')
+
+
 def now():
     return dt.datetime.now(dt.timezone.utc).isoformat()
 
@@ -75,6 +173,7 @@ def read_snapshot(path):
     for field, allowed in (('resources', RECORD_FIELDS), ('failures', FAILURE_FIELDS)):
         if not isinstance(document[field], list) or any(not isinstance(row, dict) or set(row) - allowed for row in document[field]):
             raise ValueError('Checkpoint contains unexpected record fields')
+    validate_shape(document, SNAPSHOT_SCHEMA)
     if private_json_locations(document):
         raise ValueError('Checkpoint contains credential-like text or a personal path; values withheld')
     _, fingerprint = load_resume(path)
@@ -254,6 +353,9 @@ def unpack_checkpoint(raw, artifact, run, directory):
                 raise ValueError('Checkpoint archive contains an unsafe or oversized member')
         receipt_raw, snapshot = archive.read('receipt.json'), archive.read('checkpoint.json')
     receipt = parse_json(receipt_raw.decode('utf-8'))
+    validate_shape(receipt, RECEIPT_SCHEMA)
+    if private_json_locations(receipt):
+        raise ValueError('Checkpoint receipt contains credential-like text or a personal path; values withheld')
     if (receipt.get('schema_version') != 1 or receipt.get('run_id') != run['id']
             or receipt.get('run_attempt') != run['run_attempt'] or receipt.get('workflow_id') != run['workflow_id']
             or receipt.get('source_commit') != run['head_sha']
@@ -338,6 +440,9 @@ def orchestrate(directory):
     receipt.update(completed_at=now(), outcome=outcome, scanner_exit_code=code,
                    new_successful_scans=added, counts=counts(final), checkpoint_sha256=fingerprint,
                    target_reached=added == NEW_SUCCESSES)
+    validate_shape(receipt, RECEIPT_SCHEMA)
+    if private_json_locations(receipt):
+        raise ValueError('Checkpoint receipt contains credential-like text or a personal path; values withheld')
     write_json(directory / 'checkpoint/receipt.json', receipt)
     if (directory / 'checkpoint/receipt.json').stat().st_size > MAX_RECEIPT_BYTES:
         raise ValueError('Checkpoint receipt exceeds the restore bound')

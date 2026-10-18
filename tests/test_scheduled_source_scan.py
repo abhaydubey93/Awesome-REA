@@ -214,6 +214,96 @@ class ArchiveTests(unittest.TestCase):
             self.unpack(archive_bytes(self.doc))
 
 
+class NestedSchemaTests(unittest.TestCase):
+    @classmethod
+    def setUpClass(cls):
+        cls.canonical_path = scheduled.ROOT / 'data/source-index.json'
+        cls.canonical = json.loads(cls.canonical_path.read_text(encoding='utf-8'))
+
+    def check(self, document):
+        with tempfile.TemporaryDirectory() as temporary:
+            path = Path(temporary) / 'checkpoint.json'
+            path.write_text(json.dumps(document), encoding='utf-8')
+            return scheduled.read_snapshot(path)[0]
+
+    def test_current_snapshot_and_real_resumed_serialization_keep_all_evidence(self):
+        document, _ = scheduled.read_snapshot(self.canonical_path)
+        self.assertEqual(document, self.canonical)
+        # Exercise the real serializer, including legacy history fields that can
+        # be null, while requesting no new reads and forbidding network access.
+        with tempfile.TemporaryDirectory() as temporary:
+            path = Path(temporary) / 'checkpoint.json'
+            args = SimpleNamespace(target=len(document['resources']), workers=1,
+                                   requests_per_second=2, max_pages=3, candidate_buffer=0,
+                                   seed_curated=False, seed_papers=False, queries=[], output=path)
+            with patch.object(scheduled.GitHub, 'json', side_effect=AssertionError('No network expected')):
+                self.assertEqual(scheduled.run_scan(scheduled.GitHub('unused'), args, document, 'a' * 64), 0)
+            resumed, _ = scheduled.read_snapshot(path)
+        self.assertEqual(resumed['resources'], self.canonical['resources'])
+        self.assertEqual(resumed['failures'], self.canonical['failures'])
+        self.assertEqual(resumed['meta']['resume_history'][-1]['run'], self.canonical['meta']['current_run'])
+
+    def test_nested_unknown_keys_and_disguised_containers_are_rejected_without_values(self):
+        payload = 'REJECTED_BODY_SENTINEL: synthetic upstream document contents'
+        mutations = {
+            'current run': lambda d: d['meta']['current_run'].update(raw_readme=payload),
+            'historical run': lambda d: next(item['run'] for item in d['meta']['resume_history'] if isinstance(item.get('run'), dict)).update(raw_readme=payload),
+            'query observation': lambda d: d['meta']['queries'][0].update(raw_readme=payload),
+            'limits': lambda d: d['meta']['limits'].update(raw_readme=payload),
+            'signal object': lambda d: d['resources'][0].update(readme_signals=[{'raw_readme': payload}]),
+            'topic object': lambda d: d['resources'][0].update(topics=[{'raw_readme': payload}]),
+            'query plan object': lambda d: d['meta']['current_run'].update(query_plan=[{'raw_readme': payload}]),
+            'reconciliation run': lambda d: d['meta'].update(checkpoint_reconciliations=[{
+                'mode': 'union', 'checkpoint_current_run': {**d['meta']['current_run'], 'raw_readme': payload}}]),
+            'superseded object': lambda d: d['meta'].update(checkpoint_reconciliations=[{
+                'mode': 'union', 'superseded': [{'id': 'scan-1', 'raw_readme': payload}]}]),
+        }
+        for name, mutate in mutations.items():
+            with self.subTest(location=name):
+                document = copy.deepcopy(self.canonical)
+                mutate(document)
+                with self.assertRaisesRegex(ValueError, 'nested') as raised:
+                    self.check(document)
+                self.assertNotIn(payload, str(raised.exception))
+
+    def test_nested_receipt_fields_are_checked_before_archive_files_are_written(self):
+        doc = snapshot(range(1, 1502))
+        raw = archive_bytes(doc, overrides={'reconciliation': {
+            'mode': 'union', 'checkpoint_current_run': {'raw_readme': 'REJECTED_RECEIPT_BODY'}}})
+        item = artifact(digest='sha256:' + hashlib.sha256(raw).hexdigest())
+        with tempfile.TemporaryDirectory() as temporary:
+            directory = Path(temporary) / 'restored'
+            with self.assertRaisesRegex(ValueError, 'nested') as raised:
+                scheduled.unpack_checkpoint(raw, item, run(), directory)
+            self.assertNotIn('REJECTED_RECEIPT_BODY', str(raised.exception))
+            self.assertFalse(directory.exists())
+
+    def test_valid_nested_evidence_and_reconciliation_shapes_are_preserved(self):
+        first, second = snapshot(range(1, 1502)), snapshot(range(1, 1503), pending=(1600,))
+        merged, receipt = scheduled.reconcile(first, second, 'c' * 64, 'd' * 64)
+        self.assertEqual(self.check(merged), merged)
+        scheduled.validate_shape(receipt, scheduled.RECONCILIATION_SCHEMA)
+        # New capture fields and optional query error counts remain accepted.
+        evidence = {
+            'description_omission': {'reason': 'upstream-description-too-long', 'original_characters': 1001,
+                                     'original_utf8_bytes': 1001, 'original_sha256': 'a' * 64,
+                                     'limit_characters': 1000},
+            'readme_integrity_review': {'reviewed_at': '2026-10-18T00:00:00Z',
+                                       'method': 'readme-json-and-raw-match-captured-sha256',
+                                       'advertised_blob_sha256': 'b' * 64, 'advertised_blob_bytes': 42},
+            'seed_paper_references': [{'paper_id': 'paper-example', 'field': 'code_url',
+                                      'url': 'https://github.com/example/project'}],
+        }
+        scheduled.validate_shape(evidence, scheduled.RECORD_SCHEMA)
+        scheduled.validate_shape({'invalid_item_reasons': {'invalid-repository-metadata': 1}}, scheduled.QUERY_SCHEMA)
+        for field in evidence:
+            changed = copy.deepcopy(evidence)
+            target = changed[field][0] if isinstance(changed[field], list) else changed[field]
+            target['raw_readme'] = 'REJECTED_NESTED_BODY'
+            with self.subTest(field=field), self.assertRaises(ValueError):
+                scheduled.validate_shape(changed, scheduled.RECORD_SCHEMA)
+
+
 class WorkflowTests(unittest.TestCase):
     def test_schedule_permissions_upload_scope_and_bounds(self):
         text = (scheduled.ROOT / '.github/workflows/source-scan.yml').read_text()
