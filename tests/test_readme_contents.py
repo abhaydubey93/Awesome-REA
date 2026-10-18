@@ -8,7 +8,8 @@ import unittest
 
 ROOT = Path(__file__).resolve().parents[1]
 sys.path.insert(0, str(ROOT / 'scripts'))
-from build_readme import CONTENTS_BEGIN, CONTENTS_END, plain_text, render_catalog, render_contents, render_papers
+from build_readme import (BADGES_BEGIN, BADGES_END, CONTENTS_BEGIN, CONTENTS_END, plain_text,
+                         render_badges, replace_badges, render_catalog, render_contents, render_papers)
 
 
 def resource(**changes):
@@ -26,6 +27,39 @@ def paper(**changes):
 
 
 class ReadmeContentsTest(unittest.TestCase):
+    def test_badges_keep_overlapping_resource_case_and_paper_counts_separate(self):
+        listed = paper(url='https://example.com/paper')
+        records = [resource(), resource(id='case', kind='case-study'),
+                   resource(id='paper-copy', kind='research', url=listed['url'])]
+        before = deepcopy((records, [listed]))
+        en = render_badges(records, [listed], 'en')
+        self.assertIn('/badge/resources-3-', en)
+        self.assertIn('/badge/cases-1-', en)
+        self.assertIn('/badge/papers-1-', en)
+        self.assertIn('/validate.yml/badge.svg?branch=main', en)
+        self.assertIn('](LICENSE)', en)
+        self.assertNotRegex(en.lower(), r'runtime|reproduced|verified|total-4')
+        zh = render_badges(records, [listed], 'zh')
+        for route in ('resources/', 'cases/', 'papers/'):
+            self.assertIn('](https://awesomerea.org/zh/' + route + ')', zh)
+        self.assertIn('精选资源: 3', zh)
+        self.assertIn('案例: 1', zh)
+        self.assertIn('论文: 1', zh)
+        self.assertEqual((records, [listed]), before)
+
+    def test_badge_generation_preserves_authored_header_and_rejects_ambiguous_markers(self):
+        prefix = '<img src="featured.svg">\n# Collection\n<img src="banner.svg">\n'
+        suffix = '\n**Primary navigation**\n'
+        document = prefix + BADGES_BEGIN + '\nstale\n' + BADGES_END + suffix
+        rendered = render_badges([resource()], [paper()], 'en')
+        expected = prefix + BADGES_BEGIN + '\n' + rendered + BADGES_END + suffix
+        self.assertEqual(replace_badges(document, rendered), expected)
+        self.assertEqual(replace_badges(expected, rendered), expected)
+        for invalid in ('', BADGES_BEGIN, BADGES_END + BADGES_BEGIN,
+                        document + BADGES_BEGIN, document + BADGES_END):
+            with self.subTest(invalid=invalid), self.assertRaises(ValueError):
+                replace_badges(invalid, rendered)
+
     def test_counts_follow_rendered_sections(self):
         listed = paper(url='https://example.com/paper')
         records = [

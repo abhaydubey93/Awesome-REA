@@ -6,6 +6,7 @@ import json
 import re
 import sys
 from collections import Counter, defaultdict
+from urllib.parse import quote
 
 from catalog import ROOT, load_resources
 from build_paper_pages import papers_newest_first
@@ -19,6 +20,8 @@ PAPERS_BEGIN = '<!-- BEGIN GENERATED PAPERS -->'
 PAPERS_END = '<!-- END GENERATED PAPERS -->'
 CONTENTS_BEGIN = '<!-- BEGIN GENERATED CONTENTS -->'
 CONTENTS_END = '<!-- END GENERATED CONTENTS -->'
+BADGES_BEGIN = '<!-- BEGIN GENERATED BADGES -->'
+BADGES_END = '<!-- END GENERATED BADGES -->'
 CATEGORIES = {
     'core': ('Official REA: core and setup', 'REA 官方：核心与配置'),
     'workflow-guides': ('Official REA: investigation guides', 'REA 官方：调查指南'),
@@ -264,6 +267,41 @@ def render_contents(records, papers, index_count, language):
     return '\n'.join(lines) + '\n'
 
 
+def render_badges(records, papers, language):
+    """Report catalog populations, not execution verification or additive totals."""
+    zh = language == 'zh'
+    prefix = 'https://awesomerea.org/' + ('zh/' if zh else '')
+
+    def badge(label, value, target, color='53309C'):
+        component = lambda text: quote(str(text).replace('-', '--').replace('_', '__'), safe='')
+        image = (f'https://img.shields.io/badge/{component(label)}-{component(value)}-{color}'
+                 '?style=flat-square&labelColor=303447')
+        return f'[![{label}: {value}]({image})]({target})'
+
+    cases = sum(record['kind'] == 'case-study' for record in records)
+    workflow = 'https://github.com/reacher-z/Awesome-REA/actions/workflows/validate.yml'
+    labels = ('精选资源', '案例', '论文', '目录检查', '许可', '网站') if zh else (
+        'resources', 'cases', 'papers', 'Catalog checks', 'license', 'website')
+    return ' '.join([
+        badge(labels[0], f'{len(records):,}', prefix + 'resources/'),
+        badge(labels[1], f'{cases:,}', prefix + 'cases/'),
+        badge(labels[2], f'{len(papers):,}', prefix + 'papers/'),
+        f'[![{labels[3]}]({workflow}/badge.svg?branch=main)]({workflow})',
+        badge(labels[4], 'MIT', 'LICENSE', '606779'),
+        badge(labels[5], 'awesomerea.org', prefix, '6235B5'),
+    ]) + '\n'
+
+
+def replace_badges(content, rendered):
+    if content.count(BADGES_BEGIN) != 1 or content.count(BADGES_END) != 1:
+        raise ValueError('Each README must contain exactly one BEGIN/END badges marker pair')
+    before, rest = content.split(BADGES_BEGIN, 1)
+    if BADGES_END not in rest:
+        raise ValueError('Badges END marker must follow BEGIN')
+    _, after = rest.split(BADGES_END, 1)
+    return before + BADGES_BEGIN + '\n' + rendered + BADGES_END + after
+
+
 def replace_contents(content, rendered):
     if content.count(CONTENTS_BEGIN) != 1 or content.count(CONTENTS_END) != 1:
         raise ValueError('Each README must contain exactly one BEGIN/END contents marker pair')
@@ -398,12 +436,13 @@ def main():
             expected = replace_catalog(current, render_catalog(records, language, {paper['url'] for paper in papers}))
             expected = replace_papers(expected, render_papers(papers, language), language)
             expected = replace_contents(expected, render_contents(records, papers, index_count, language))
+            expected = replace_badges(expected, render_badges(records, papers, language))
             if current != expected:
                 stale.append(name)
                 if not args.check:
                     path.write_text(expected, encoding='utf-8')
         if args.check and stale:
-            print('Stale generated catalog or paper section: ' + ', '.join(stale), file=sys.stderr)
+            print('Stale generated README blocks: ' + ', '.join(stale), file=sys.stderr)
             print('Run python3 scripts/build_readme.py', file=sys.stderr)
             return 1
         if args.check:
