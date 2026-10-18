@@ -1,4 +1,6 @@
-<a href="https://awesomerea.org/zh/"><img src="assets/featured-by-awesome-rea-compact.svg" alt="Featured by Awesome REA" width="200" height="48"></a>
+<p align="center">
+  <a href="https://awesomerea.org/zh/"><img src="assets/featured-by-awesome-rea-compact.svg" alt="Featured by Awesome REA" width="200" height="48"></a>
+</p>
 
 # Awesome Reverse Engineering Anything
 
