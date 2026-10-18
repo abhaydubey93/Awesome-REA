@@ -246,14 +246,20 @@ def record_failure(state, request, *, reason, retry_after_seconds=60, observed_a
                 not_before=instant + retry_after_seconds, reason=reason)
 
 
-def pending_candidates(state, *, limit=100, now=None):
+def pending_candidates(state, *, limit=100, offset=0, now=None):
+    """Page the eligible queue; keep state and ``now`` fixed across a traversal."""
     if type(limit) is not int or not 1 <= limit <= 1000:
         raise ValueError('Candidate batch limit must be 1..1000')
+    if type(offset) is not int or offset < 0:
+        raise ValueError('Candidate offset must be a nonnegative integer')
     partitions = {item['id']: item for item in state['partitions']}
     instant = current_seconds() if now is None else now
     result = []
     for value in sorted(state['candidates'].values(), key=lambda item: (item['last_attempt_at'], item['id'])):
         if value['checkpoint_sha256'] is not None or value['next_attempt_at'] > instant:
+            continue
+        if offset:
+            offset -= 1
             continue
         result.append({**copy.deepcopy(value), 'metadata_observed_at': value['observed_at'],
                        '_matched_queries': [request_for(state, partitions[identifier])['query']

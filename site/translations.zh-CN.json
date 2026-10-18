@@ -1701,6 +1701,165 @@
       "根目录 LICENSE.md 以 MIT（2026，Lywx）授权项目自有代码。子模块各有条款；源自任天堂代码的内容和 ROM 素材不受该许可覆盖，README 表示不支持盗版。所审来源未确立 REA 或编码智能体的参与。"
     ]
   },
+  "sms-matching-decomp-case": {
+    "name": "Super Mario Sunshine：仍在推进的 GameCube 一致性反编译重建",
+    "requirements": [
+      "README 称该项目为仍在进行中的反编译工程。configure.py 默认目标为 GMSJ01（日版 Rev 0），另支持 GMSP01、GMSE01、GMSJ01 Rev 1，以及 Super Mario 3D All-Stars 中的 GMSP01_NX。默认只链接标记为 Matching 的目标文件；--non-matching 会链接等价或经修改的目标文件。在所审阅的提交上，decomp.dev 报告 GMSJ01 已反编译 49.51% 的代码、完全链接 18.42%；本合集未重新计算这些数字。",
+      "需将各版本自备的光盘镜像放入 orig/<version>。支持 ISO（GCM）、RVZ、WIA、WBFS、CISO、NFS、GCZ 和 TGC 格式，仓库声明不包含任何游戏素材或汇编。GMSJ01 的符号配置由该光盘中的 mario.MAP 链接映射生成；CI 工作流注明 GMSE01 没有 MAP 文件，因此跳过其符号顺序检查。",
+      "构建需在 Windows、macOS 或 Linux 上安装 Python 和 Ninja；构建过程会获取 decomp-toolkit、binutils 和旧版 Metrowerks 编译器（大部分代码使用 GC 1.2.5），在 macOS 和 Linux 上通过 wibo 包装器运行。objdiff 将重建的目标文件与从原 DOL 中提取的目标文件比对，各版本的 build.sha1 记录目标 DOL 的哈希。",
+      "AGENTS.md 要求对全部五个版本运行 ninja baseline 与 changes_all 生成回归报告，且每个版本的 DOL 仍须显示 OK。CI 在提供原始文件的构建容器中构建所有版本，并对改动的单元检查符号顺序。这些都是项目自报的检查与进度数据，不能证明已重建出完整或可游玩的游戏；本合集未运行任何构建。",
+      "AGENTS.md（CLAUDE.md 与 GEMINI.md 均为指向它的符号链接）规定了 AI 智能体的工作流程：禁止无人监督的智能体处理 MSL、MetroTRK、THPPlayer、Dolphin SDK 和 JSystem 代码，并把难以判断的决定交给人类，但没有量化智能体编写的代码比例。仓库声明采用 CC0-1.0；任天堂的游戏、光盘内容及下载的编译器另有权利约束。未确立 REA 的使用。"
+    ]
+  },
+  "dusklight-twilight-princess-port-case": {
+    "name": "Dusklight：基于反编译的《黄昏公主》原生移植",
+    "requirements": [
+      "README 称 Dusklight 是通过逆向工程实现的重新实现，力求尽可能忠于原作，同时提供新选项、增强功能和工具。它基于 zeldaret/tp 反编译项目，而 README 指出该项目目前只有 GameCube 版一致，因此即使使用 Wii 光盘，也会呈现 GameCube 版的 HUD 及其他特性。这是修改后的移植，不是原可执行文件的一致性重建。",
+      "项目不提供任何受版权保护的素材：使用者须自行转储自己的光盘；README 说明支持除韩版 Wii 以外的所有正式发行光盘。程序可直接读取 ISO（GCM）、RVZ、WIA、WBFS、CISO 和 GCZ 镜像。",
+      "运行需要支持 D3D12、Vulkan 1.1+ 或 Metal 的 GPU；D3D11 和 Android 的 OpenGL ES 仅为尽力支持，无法达到完整的准确性或性能。固定版本中有 Windows、Linux、macOS、iOS、tvOS 和 Android 平台目录，CI 构建 Linux、macOS、iOS、Android 和 Windows 目标。从源码构建需 CMake 3.25+、Python 3、各系统列明的工具链，以及包括 Aurora 在内的递归子模块。",
+      "所审 CI 工作流只构建软件包，不与原版游戏进行比对。准确性与增强功能均为项目报告，本合集未构建或运行任何内容。",
+      "LICENSE.md 采用 CC0-1.0，不涵盖任天堂的游戏或光盘内容；Aurora 与随机器模组等子模块为独立仓库。README 声明不接受主要由 AI 生成的贡献，并提醒存在传播 AI 生成错误信息的非官方网站；所审来源未确立 REA 的参与。"
+    ]
+  },
+  "metaforce-metroid-prime-case": {
+    "name": "Metaforce：在反编译之上重建的《密特罗德 Prime》引擎重实现",
+    "requirements": [
+      "README 称项目由 Cirrus 和 Antidote 于 2015 年 6 月开始开发，近期已在 PrimeDecomp 一致性反编译之上重写；稳定之前不提供构建版本，尽管 CI 会构建 Windows、Linux、Apple 和 Android 安装包。GitHub 上唯一的发布是 2015 年的预发布版，没有与重写版对应的发布。它与另一个基于 PrimeDecomp 的原生移植 Odrannnn/MetroidPrimePort 是不同项目。",
+      "仓库不附带任何游戏文件，orig/ 下各版本文件夹仅有占位文件。应用启动时通过参数或选择窗口读取《密特罗德 Prime》光盘镜像（ISO、GCM、CISO、GCZ、RVZ、WIA 或 TGC）。CMake 以 TARGET_PC、NONMATCHING 和 VERSION=1 编译原生目标，configure.py 将版本 1 定为默认的 GM8E01_00（NTSC-U v1.088）构建；README 未列出受支持的光盘版本。",
+      "构建需要 CMake 3.25+、Python 3，并递归克隆 aurora、borealis 和 musyx 子模块；Windows 使用带 Clang 与 clang-cl 组件的 Visual Studio 2019，macOS 需要 Xcode 11.5+，Linux 需要所列的 Ubuntu、Arch 或 Fedora 软件包。README 列出的平台为 Windows 10+（D3D12、Vulkan 或 D3D11）、macOS 10.15+（Metal）、Linux（Vulkan）、Android（Vulkan 或 OpenGL ES）和 iOS（Metal）；Android 另需 SDK Platform 37、NDK 和 JDK 17+。",
+      "configure.py 仍为独立的 GameCube 构建记录十个光盘版本的逐对象一致性状态，但 CI 忽略这些文件，只构建原生安装包。所审阅来源未公开原生应用的保真度或游戏行为检查，本合集也未构建或运行它。",
+      "Metaforce 贡献者的代码采用 MIT，另有一份 LICENSE.decomp 采用 CC0 1.0；所审阅文件未说明二者各自覆盖哪些目录。光盘内容保留各自权利。所审阅来源未确立 AI 或 REA 使用。"
+    ]
+  },
+  "sms-english-gmse01-decomp-case": {
+    "name": "Super Mario Sunshine（美版）：AI 辅助的一致性反编译分支",
+    "requirements": [
+      "这是 doldecomp/sms 的业余分支，目标为 GMSE01（美版 Rev 0）。README 称分支创建时上游日版反编译约完成 38% 的匹配，PROGRESS.md 注明以上游 ab00c3c9 为基础。GMSJ01 与 GMSP01 配置仍在代码树中，但 README 标注 PAL 版略有问题，AGENTS.md 也说明二者在本分支中都无法构建或做回归测试。",
+      "需将自备的北美 Rev 0 光盘镜像放入 orig/GMSE01（ISO、RVZ、WIA、WBFS、CISO、NFS、GCZ 或 TGC）。GMSE01 构建说明记录了提取出的 DOL 必须符合的 SHA-1。该说明称初始符号来自社区托管的 marioUS.map，并不在美版光盘上；而 AGENTS.md 却称美版映射是光盘自带的真实链接映射。此处不对这一来源矛盾作出判断。",
+      "构建需在 Windows、macOS（配合 Wine Crossover）或 Linux（x86 使用 wibo，其他架构使用 Wine）上安装 Python 3 和 Ninja，并使用固定版本的 decomp-toolkit 与 Metrowerks 工具。产物为 build/GMSE01/mario.dol，并与提取的原始文件比对。运行时仍需在 Dolphin 中使用原光盘镜像；另有一个原生 PC 移植以该分支作为反编译子模块。",
+      "README（2026-09-29）报告：模糊匹配 99.60%、逐字节一致 73.65%、源码链接 34.79%，12,904 个函数中 12,052 个完全一致，732 个目标文件中 542 个由源码链接；PROGRESS.md（2026-09-27）的数字略低。因此 DOL 逐字节一致并不代表源码已经完整。分支的 CI 矩阵只构建 GMSJ01，GMSE01 结果均为本地报告，本合集也未重跑。",
+      "AGENTS.md（CLAUDE.md 与 GEMINI.md 为指向它的符号链接）取消了上游对智能体自主处理库代码的禁令。它要求智能体只依据二进制、链接映射和本仓库开展工作，禁止伪匹配和使用泄露的 SDK 源码，但没有统计智能体编写了多少代码。仓库沿用 CC0-1.0，任天堂内容和编译器另有权利约束。未确立 REA 的使用。"
+    ]
+  },
+  "dk64-recompiled-case": {
+    "name": "Donkey Kong 64: Recompiled：基于 N64Recomp 的原生移植",
+    "requirements": [
+      "仅可游玩用户自备的美版 Nintendo 64《大金刚 64》ROM；该 ROM 的其他转储格式会被转换为 .z64。仓库和发布包均不含游戏素材，它不是可运行其他 ROM 的模拟器；README 将模组和其他语言支持列为后续工作。",
+      "v1.0.3 版本（2026-09-30）提供 Windows、Linux x64／ARM64、Flatpak x64 和 macOS ARM64 压缩包。README 要求显卡支持带 Shader Model 6 的 Direct3D 12.0 或 Vulkan 1.2，CPU 支持 AVX，并将 Linux 上的 Intel 显卡、部分发行版上的预编译 Linux 程序以及叠加层软件列为已知问题。",
+      "源码构建需要递归克隆、CMake 与 Ninja 加 Clang（Windows 上为带 Clang 的 Visual Studio 2022 及 vcpkg curl）、另行构建的 N64Recomp 和 RSPRecomp，以及与 BUILDING.md 所列 SHA-1 一致的 NTSC-U 1.0 ROM 解压副本；游玩时仍使用标准 ROM。",
+      "README 称实现了高帧率、宽屏和低输入延迟改进，同时提到极宽画面比例下过场动画边缘的异常。项目未公布等价性或游戏流程测试；固定提交上的 CI 仅构建移植程序，额外输入来自由密钥配置的检出仓库。本合集未重跑这些说法。",
+      "项目采用 GPLv3；原游戏、反编译子模块及其他依赖保留各自条款。CONTRIBUTING.md 禁止提交 AI 生成的代码，所审来源未确立 REA 或编程智能体参与。"
+    ]
+  },
+  "twilight-princess-decomp-case": {
+    "name": "《黄昏公主》：GameCube 版代码完全一致的反编译",
+    "requirements": [
+      "README 将其描述为进行中的反编译，列出十个目标版本：三个 GameCube 发行版（GZ2E01、GZ2P01、GZ2J01）、包括体验版在内的五个 Wii 版本，以及两个 Nvidia Shield 中国版。产物是原平台的可执行文件和 REL 模块；README 说明项目不会制作 PC 或其他平台的移植，Dusklight 是基于这些代码的独立项目。",
+      "构建需要使用者自备所选版本的光盘镜像，格式可为 ISO／GCM、RVZ、WIA、WBFS、CISO、NFS、GCZ 或 TGC，首次构建后即可删除。仓库不含游戏素材或汇编；decomp-toolkit 在本地拆分原文件。",
+      "在 Windows 上可直接用 Python 与 ninja 构建；Linux／macOS 需 ninja，并会自动下载 wibo 包装器。configure.py 固定 decomp-toolkit v1.8.0、objdiff v3.6.1、binutils 2.42-1 及 20251118 编译器包，并按目标版本和库选用相应的 Metrowerks 编译器版本；objdiff 用于逐个对象比对。",
+      "默认构建对标为完成的单元链接由源码编译的对象，其余单元使用从原文件提取的对象，再按各版本的 build.sha1 校验输出（GZ2E01 有 758 条记录）。decomp.dev 针对该固定提交的报告显示，三个 GameCube 版本的代码均已 100% 匹配，2,608 个单元中有 2,583 个已完成；ShieldD 为 54.47%，Wii 版 RZDE01_00 为 47.06%。CI 在存有游戏文件的私有容器中运行；本合集未运行任何构建。",
+      "LICENSE.md 采用 CC0-1.0，不涵盖任天堂的游戏、光盘内容或下载的编译器。所审来源未确立 REA 或编码代理的参与。"
+    ]
+  },
+  "sotn-matching-decomp-case": {
+    "name": "Castlevania: Symphony of the Night：覆盖 PlayStation、PSP 与 Saturn 版本的一致性反编译",
+    "requirements": [
+      "README 将其描述为进行中的一致性反编译，涵盖四个构建：us（PlayStation 版 SLUS-00067，为参考版本）、hd（在 Castlevania: Dracula X Chronicles 数据中发现的未发售日版 PS1 构建）、pspeu（Dracula X Chronicles 欧版）和 saturn（由外部团队开发的 Saturn 移植版）。Build wiki 说明仍有部分不一致函数置于 NON_MATCHING 宏下，不保证功能等价。README 链接 sotn.xee.dev 和 decomp.dev 上会变动的进度页面；本合集未记录完成度数字。",
+      "仓库不含游戏素材，也不含编译所需的汇编；README 要求事先拥有游戏副本。Build wiki 要求未经修改的美版 PlayStation 光盘的 BIN/CUE 镜像；固定版本的 Makefile 则从欧版 Dracula X Chronicles ISO 读取两个 PSP 来源的构建，并从 Saturn 的 BIN/CUE 镜像读取 Saturn 构建，这些文件均以对应版本的名称放在 disks/ 下。",
+      "Build wiki 以 CI 所用的 Ubuntu 24.04 LTS 为测试环境，也涵盖通过 WSL 2 使用 Windows 以及基于 Arch 的发行版；Dockerfile 提供 Ubuntu Noble 环境。构建需要 Go、Rust、Python 3.12+、MIPS 与 SH binutils、MIPS GCC、ninja，以及 m2c、maspsx、asm-differ、mipsmatch、decomp-permuter 等子模块工具。项目托管的预编译归档（包括 cc1-psx、mwccpsp、Cygnus 2.7 工具链和 wibo）会依据 SHA-256 文件校验；Saturn 构建还需要 dosemu。",
+      "除非设置 SKIP_CHECK，固定版本的构建代码会依据 config/check.<version>.sha 对产物计算哈希：us 清单列出 main.exe、DRA.BIN、RIC.BIN 及关卡和覆盖模块文件，hd、pspeu 与 saturn 的清单较短。wiki 仍提到 make check 步骤，但固定版本的 Makefile 并未定义该目标。这些检查比较所供版本的文件一致性，不覆盖游戏行为，本合集也未重跑。",
+      "Makefile 也接受 pc 版本，src/pc 中有原生移植代码，但 PC Port wiki 页面说明目前尚无基于反编译、可端到端运行的移植；此处不主张存在 PC 移植。仓库声明采用 AGPL-3.0，光盘镜像、提取的素材和汇编以及下载的编译器各有权利约束。CONTRIBUTING 仅允许贡献者能够说明理由并可手动操作的编码代理辅助改动，并要求提交与拉取请求不得由自主工具生成；这不确立 REA 使用，也不主张运行复现。"
+    ]
+  },
+  "lego-island-portable-case": {
+    "name": "LEGO Island 可移植版：反编译源码的多平台移植",
+    "requirements": [
+      "README 将其描述为基于 isledecomp/isle 的英文版 LEGO Island 1.1 可移植版本，目标是实现平台无关，不改动玩法，也不为改进而重写代码；贡献指南表示，对 LEGO1 代码的修改通常只在直接提升平台兼容性时才会接受。轻度模组通过 extensions 实现，所审版本包含多人联机、第三人称镜头和素材加载器。状态表列出 Windows、macOS、Linux、FreeBSD、DOS、Web、iOS、Android、Xbox One、PlayStation Vita、Nintendo Switch 和 Nintendo 3DS。",
+      "需已有一份 LEGO Island。引导安装器要求零售版 CD-ROM 或由其制作的光盘镜像，并称任何语言的 1.0 或 1.1 零售版均可；可选的高清音频包仅适用于英文 1.1 版。安装器称 isle.pizza 的 Web 版本以串流方式运行、无需本地光盘；本次核查未检查该网站提供的内容及其依据。",
+      "构建使用 CMake 3.25+ 和 C++17 编译器；CMake 默认下载 SDL3 和 iniparser，libsmacker 与 miniaudio 为子模块。README 未提供单独的构建指南，而是让读者参考 CI 工作流；该工作流使用 MSVC、MinGW、macOS／Linux 工具链以及 Emscripten、devkitPro、VitaSDK、DJGPP、Android 等平台 SDK，桌面设置工具需要 Qt 6。发布下载为 master 的持续构建，README 提醒可能出现回归。",
+      "所审 CI 检查代码格式，并为各平台目标完成配置、构建和打包；它不运行游戏，也不与原版行为比较。各平台状态项是 CI 徽章，不是玩法一致性结果。Kaitai Struct 描述文件记录了存档、动画、世界数据库和纹理格式。本合集未构建或运行该移植。",
+      "仓库采用 LGPL-3.0；内置及下载的第三方库各自适用其条款，原游戏数据、LEGO 商标以及安装器取自原安装程序的位图仍有各自权利约束。所审来源未确立 AI 或 REA 使用归因。"
+    ]
+  },
+  "crash-bandicoot-c1-port-case": {
+    "name": "c1：PlayStation 版《古惑狼》的 C 语言移植",
+    "requirements": [
+      "README 称代码已 100% 移植，但功能完成度为 78%。已记录的问题包括多个关卡崩溃、镜头与碰撞行为不正确、演示模式和标题状态失效，以及开启编译器优化后行为改变；PlayStation（Psy-Q）构建无法使用。",
+      "运行时需要用户自有《古惑狼》光盘中的 NSD／NSF 素材文件；仓库不附带游戏数据，README 也未注明支持的光盘地区或版本。游戏默认进入标题流程，若要更改需修改常量并重新编译。",
+      "仅支持 32 位 x86 可执行文件，需使用 GNU Make 和 32 位 GNU 工具链（64 位宿主上为 multilib GCC／G++），并依赖 OpenGL 2.0+、SDL2 和 FluidSynth（已内置 cimgui）。编译仅在 Ubuntu／Debian 上测试过；没有发布版本，审阅时最后一次提交为 2024-01-22。",
+      "项目未公布字节一致、等价性或自动化游戏流程检查，本合集也未复现其进度数字。仓库没有许可证文件，复用权利未明确，原游戏保留各自权利；所审来源未记录 REA 或 AI 参与。"
+    ]
+  },
+  "metroid-prime-port-case": {
+    "name": "Metroid Prime Port：AI 辅助完成的 PrimeDecomp 反编译原生移植",
+    "requirements": [
+      "所审阅的 port 分支提交位于 v0.29.0 版（2026-10-17）之后 16 个提交；该版本提供 Windows、Linux 压缩包、AppImage、Flatpak、Android 和 macOS arm64 安装包，其中 macOS 版本仍属实验性质，尚无人在真实 Mac 上游玩。仓库派生自 PrimeDecomp/prime，增加了宽屏、不锁帧率、操作、存档转换、随机化和 Archipelago 客户端等功能。它不链接另一个 DolRecomp 重编译实验，decomp/ 中的 GameCube 构建也不用于移植版。",
+      "仓库不含任何游戏内容：需自备 GameCube 美版 1.00、1.01 或 1.02（GM8E01）或 PAL 版（GM8P01）光盘镜像，格式可为 .iso、.gcm、.rvz、.wbfs、.ciso 或 .nkit。日版、韩版、Wii 三部曲和重制版不能作为基础游戏运行；实验性导入功能可从使用者自备的重制版镜像读取模型和特效。",
+      "构建需要 CMake 3.25+、Ninja、C++20 编译器，以及支持 C23 的 C 编译器（供 MusyX 使用）；Windows 在 MSVC 开发者环境中使用 LLVM 的 clang-cl，Android 通过 Gradle 构建。配置时会下载约十几个经 SHA-256 校验的依赖；Linux 版本静态链接其中多项，运行时只需 OpenSSL 3 和 C/C++ 运行库。macOS 应用仅作临时签名，未经公证。",
+      "CI 在推送和拉取请求时于 Linux 上用 GCC 14 与 Clang 18 构建并运行无需光盘的 CTest 移植测试；Windows 和 macOS 工作流每周运行或手动触发，Windows 作业还检查安装包能进入 main 并报告缺少光盘。可选的真实光盘冒烟驱动覆盖生命周期、鼠标、区域重载和世界跳转等场景，结果由作者报告。1.00 版速通兼容选项只恢复指定的脚本锁，不恢复 1.00 版缺失的几何结构；本合集未构建或运行该移植版。",
+      "MIT 仅覆盖项目自身的平台层、脚本、测试、工具和文档。NOTICE 说明 src/ 与 include/ 中的游戏代码、反编译的 Dolphin SDK 以及 config/ 中的符号数据均源自零售版可执行文件，归各自所有者，不在该授权范围内，且不得随构建打包任何游戏素材；内置和下载的组件保留各自许可。AI 编程辅助由作者自行披露，未确立 REA 使用。"
+    ]
+  },
+  "wind-waker-decomp-case": {
+    "name": "《风之杖》：以哈希校验重新链接的 GameCube 版反编译",
+    "requirements": [
+      "README 将其描述为进行中的 GameCube 版反编译，支持全部 GameCube 版本：GZLE01（美版 Rev 0 与韩版 Rev 48）、GZLP01（PAL 版）、GZLJ01（日版）以及 D44J01 日本体验版。产物是原可执行文件和 REL 模块，不是移植；所审来源不涉及 Wii U HD 重制版。",
+      "构建需要使用者自备所选版本的光盘镜像，格式可为 ISO／GCM、RVZ、WIA、WBFS、CISO、NFS、GCZ 或 TGC，首次构建后即可删除。仓库不含游戏素材或汇编；decomp-toolkit 在本地拆分原文件。",
+      "在 Windows 上可直接用 Python 与 ninja 构建；Linux／macOS 需 ninja，并会自动下载 wibo 包装器。configure.py 固定 decomp-toolkit v1.8.3、objdiff v3.7.3、binutils 2.42-1 及 20251118 编译器包；README 还介绍了一个共享 Ghidra 项目作为辅助，但其输出不够准确，不能直接复制使用。",
+      "默认构建只对标为完成的单元链接由源码编译的对象，其余单元使用从原文件提取的对象，再按该版本的 build.sha1 校验结果（每个版本 415–417 条记录）。decomp.dev 针对该固定提交的报告显示，GZLE01 有 79.58% 的代码（39,324 个函数中的 32,968 个）已匹配，其他零售版本为 78.38%–78.65%，体验版为 74.08%。CI 在存有游戏文件的私有容器中运行；本合集未运行任何构建。",
+      "仓库采用 CC0-1.0，不涵盖任天堂的游戏、光盘内容或下载的编译器。CONTRIBUTING.md 拒绝主要由 AI 生成的拉取请求；所审来源未确立 REA 的参与。"
+    ]
+  },
+  "rea-engine-tictactoe-case": {
+    "name": "TicTacToe-AI：REA 分叉对单个游戏方法的有限重建",
+    "requirements": [
+      "所审阅的 develop 提交（2026-10-15）报告 CheckGameStatus 在其声明的 3^9 棋盘输入域上功能通过（Feature PASS），整个游戏为部分重建（PARTIAL）。AI 落子与随机数、菜单、计时和声音均未验证，可执行文件并非逐字节相同，原始终端捕获也相差一个回车符。因此帖子中“逐字节一致”的说法仅适用于结构化棋盘记录和六张渲染 PNG，而非整个程序。",
+      "输入是 tatlead 的 GPL-3.0 仓库所发布的 TicTacToe-AI 可执行文件，报告以 SHA-256 标识。仓库随 GPL 文本一并再分发该文件，并为履行许可义务保留一份源码归档；“重建过程中未参考该源码”属于作者报告。",
+      "该分叉需要 Node.js 22.19+ 或 24.11+；恢复步骤使用 ilspycmd 以及本机 Roslyn 编译器和 Mono 引用，脚本默认指向 macOS 上的 Homebrew 路径。验证需要本地 X11 显示和 Mono／libgdiplus。记录的运行环境是 ARM64 上的 macOS 15.3.1 加 Xvfb，因此两张渲染图都来自同一 Mono 运行时，而非原生 Windows。",
+      "脚本先重新恢复出副本，再由探针执行原版与重建程序集，逐一比较每种棋盘的返回值和指示状态字节，并在按钮操作序列后捕获 Form.DrawToBitmap 图像。当前结果 JSON 记录棋盘记录零差异、terminalBytesEqual 为 false。本目录阅读了报告与脚本，未运行可执行文件、工具或探针。",
+      "该分叉采用 MIT，保留 morluto 的 REA 版权声明，并列出 Ghidra、Frida 等可选引擎及其各自许可；游戏及其重建负有 GPL-3.0 义务。分叉特有的代码不在上游 REA 版本中；仓库在发帖后更名，帖子中的 rea-engine 链接现会重定向到 RE-Agent。"
+    ]
+  },
+  "rea-claude-code-isolated-ab-case": {
+    "name": "Claude Code 中的 REA：隔离配置下的静态分析 A/B 试验",
+    "requirements": [
+      "文章由 keigoly 于 2026-10-14（日本时间）发布在 Zenn。它固定使用 rea-agents 软件包中的 REA 6.4.0，并在项目内放置经校验和核对的官方 Node.js 24.21.0 来运行，因为本机 Homebrew 的 Node 25.8.1 不在 REA 支持范围内。所有试验均使用非交互的 claude -p、Claude Opus 5.5，并跳过权限确认；文章未说明 Claude Code 版本。",
+      "隔离依靠配置而非沙箱：REA 只通过项目内的 .mcp.json 启用，按效果元数据生成的拒绝列表屏蔽 43 个工具，Bash 前缀规则拦截常见的包运行器启动方式。作者明确表示拒绝规则只是围栏而非隔离，其他调用写法可以绕过前缀规则，且未测试经由分析输出进行的提示注入。",
+      "任务对象是 MIT 许可的 Orca 终端 v1.4.224（128 MB 的 Electron 分发文件），以及一个未具名会场网站的 2.5 MB HAR；答案依据 Orca 公开源码和 HAR 数据核对。作者将 DRM 或许可认证规避、在线对战游戏、业务或客户数据以及恶意软件排除在范围之外。",
+      "每种条件只运行一次（n=1），启用 REA 的一组被要求优先使用 REA 工具，多个进程并行运行使耗时只能作参考，且只测试了单一模型下的静态 JavaScript／Web 工作；一次中断的运行被剔除并重做。有一项 REA 分析结果超过了 MCP 的 10 MB 响应上限。脚本和 JSONL 日志只以摘录形式出现而未公开，因此本目录无法也未曾重新运行这些试验。",
+      "作者报告 REA 在提取环节（如展开 asar、从 HAR 中提取元素）有所帮助，而两组的代码阅读都主要依靠 grep 和小脚本。没有重建任何内容：HAR 任务确认的是一条已有的请求路径。原生二进制和 APK 留待计划中的第二步；Orca、会场网站、REA 及模型服务保留各自条款。"
+    ]
+  },
+  "sonic-mania-decomp-case": {
+    "name": "Sonic Mania：面向 RSDKv5 引擎的游戏代码反编译重建",
+    "requirements": [
+      "仓库自述为《索尼克狂欢》（2017）的完整反编译；其许可证说明仓库中也有原创代码，且大部分代码预期在功能上与原作相同，因此并不主张能构建逐字节一致的产物。项目加入了内置模组加载器与 API，并可构建 1.00（主机首发）、1.03（PC 首发）和 1.06（Plus 更新）版本。所审阅提交位于 v1.1.1 版（2025-11-01）之后 15 个提交。",
+      "缺少官方发行版 Sonic Mania (Plus) 的素材便无法运行，素材可来自 Windows（Steam 或 Epic Games Store）、Switch、PS4 或 Xbox One 版本；不支持 Netflix Games 版本。默认会连同内置的 RSDKv5 引擎子模块一起构建，引擎修订版为 3（RSDKv5U），游戏版本为 6，即最后一个 Steam 版本；关闭 WITH_RSDK 时只构建游戏代码，用于分发的构建应开启 RETRO_DISABLE_PLUS。",
+      "须递归克隆仓库，因为 GitHub 的源码 ZIP 不含所需子模块。CMake 构建在 Windows 上使用 Visual Studio 与 vcpkg（libtheora、libogg、GLEW、GLFW3、SDL2），在 Linux 上使用构建工具及 GLEW、GLFW、libtheora 开发包，Switch 使用 devkitPro 软件包，Android 则按引擎仓库的说明构建。GL 构建需要使用者自建着色器模组，才能正常显示视频和滤镜。",
+      "CI 针对 RSDKv5 和 RSDKv5U 两种配置构建 Windows x86、x64 及 Linux 版本。项目未公开与原版二进制文件的对照结果，其常见问题还说明官方版本中已有的缺陷大多不会修复。本合集未构建或运行该项目。",
+      "自定义的《Sonic Mania 反编译源码许可证 v1》仅允许非商业用途的复制、修改和分发，要求声明代码并非分发者所有，禁止分发独特模组素材以外的游戏素材，并要求所有派生版本遵守同一许可。Sega 的游戏和素材保留各自权利。所审阅来源未确立 AI 或 REA 使用。"
+    ]
+  },
+  "medievil-recomp-case": {
+    "name": "MediEvil Recomp：PlayStation 游戏静态重编译为 C#",
+    "requirements": [
+      "所审版本针对北美版 PlayStation 发行版（SCUS-942.27）；config/MediEvil.json 列出供 RecompOne 转译的主程序及其覆盖模块。README 称其为公开测试版，功能必然会出现故障，稳定的 1.0 版尚未发布。v0.2b 更新日志以原生浮点渲染补丁取代 PGXP 渲染器，并加入宽屏修正和自动更新。",
+      "需合法拥有的北美版 MediEvil 光盘，格式为 bin/cue 或 CHD；README 和 disc/README.md 列明 disc/ 目录中应放置的两个音轨 .bin 文件及 .cue 文件。项目不提供游戏文件。RecompOne 称其运行时只需游戏文件，不需要 BIOS 或其他 Sony 文件。",
+      "构建需要 Git、固定版本的 RecompOne 与 ShaderMod 子模块，以及 .NET 10 SDK。通过 Windows 批处理脚本，或手动以 config/MediEvil.json 运行 RecompOne，生成游戏代码，再将其编译为 .NET 10 应用。运行需 .NET 10 运行时、OpenAL 及支持 OpenGL 2.1 的 GPU；v0.2b 发布包涵盖 Windows x64／arm64、macOS x64／arm64 和 Linux x64。",
+      "构建工作流使用另一个访问受限仓库中的光盘输入完成重编译和编译，然后上传构建产物；它不运行游戏，也不与原版行为比较。README 致谢一个未具名的反编译项目，其成果用作函数命名和补丁参考。本合集未构建或运行该项目。",
+      "所审版本的 MediEvilRecomp 没有许可证文件，复用条款未作说明；RecompOne 子模块声明采用 MIT。原游戏内容，包括重编译器所转译的可执行代码，仍有各自权利约束。两份 README 均称编写代码时未使用 AI，并拒绝 AI 生成的贡献；这不是 REA 辅助案例。"
+    ]
+  },
+  "crash2recomp-case": {
+    "name": "Crash Bandicoot 2 Recompiled：基于 PSXRecomp 的原生构建",
+    "requirements": [
+      "需要用户自有北美版（序列号 SCUS-94154）的光盘镜像，格式为 .cue／.bin 或 .chd；启动器会检查音轨、扇区和启动序列号并计算镜像哈希。由于内置 MIT 许可的 OpenBIOS，无需 PlayStation BIOS；本地生成的、源自光盘的文件不得再分发。",
+      "v0.9.6 版本（2026-10-08）为 64 位 Windows 10+ 安装包；首次构建约占 3 GB 磁盘空间、耗时五到二十分钟。从源码使用需要 Python 3.11+ 与 PySide6 以及 PSXRecomp 的 MinGW-w64 Clang 工具链；记录称不支持 MSVC，tuning/patches 中保存了 59 个运行时补丁。",
+      "README 称游戏可从头到尾通关，但仍是存在轻微声音与画面问题的开发中预览版。流式加载的关卡代码覆盖段会尽量原生编译，否则回退到 MIPS 解释器；可选的 60 FPS 模式会将模拟 CPU 提速到 200%，且未在全游戏范围内验证。",
+      "已公开的检查包括启动器设置与界面冒烟测试、场景脚本，以及比较其自身 Direct3D 12 与 OpenGL 渲染器的测试框架；均未声称与原硬件等价，本合集也未重跑任何结果。",
+      "仓库没有顶层许可证文件。README 列出 PSXRecomp 采用 PolyForm Noncommercial 1.0.0、OpenBIOS 采用 MIT、SDL3 采用 zlib、Qt／PySide6 采用 LGPLv3；游戏及其商标归各自权利人所有。所审来源未记录 REA 或编程智能体参与。"
+    ]
+  },
   "ue5-binka-to-wav": {
     "name": "UE5 BINKA 转 WAV",
     "requirements": [

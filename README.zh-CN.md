@@ -11,7 +11,7 @@
 <a href="https://awesomerea.org/zh/"><img src="assets/readme-banner.svg" alt="Awesome Reverse Engineering Anything — 覆盖六类逆向目标的工具、案例与论文" width="960"></a>
 
 <!-- BEGIN GENERATED BADGES -->
-[![精选资源: 217](https://img.shields.io/badge/%E7%B2%BE%E9%80%89%E8%B5%84%E6%BA%90-217-53309C?style=flat-square&labelColor=303447)](https://awesomerea.org/zh/resources/) [![案例: 77](https://img.shields.io/badge/%E6%A1%88%E4%BE%8B-77-53309C?style=flat-square&labelColor=303447)](https://awesomerea.org/zh/cases/) [![论文: 53](https://img.shields.io/badge/%E8%AE%BA%E6%96%87-53-53309C?style=flat-square&labelColor=303447)](https://awesomerea.org/zh/papers/) [![目录检查](https://github.com/reacher-z/Awesome-REA/actions/workflows/validate.yml/badge.svg?branch=main)](https://github.com/reacher-z/Awesome-REA/actions/workflows/validate.yml) [![许可: MIT](https://img.shields.io/badge/%E8%AE%B8%E5%8F%AF-MIT-606779?style=flat-square&labelColor=303447)](LICENSE) [![网站: awesomerea.org](https://img.shields.io/badge/%E7%BD%91%E7%AB%99-awesomerea.org-6235B5?style=flat-square&labelColor=303447)](https://awesomerea.org/zh/)
+[![精选资源: 233](https://img.shields.io/badge/%E7%B2%BE%E9%80%89%E8%B5%84%E6%BA%90-233-53309C?style=flat-square&labelColor=303447)](https://awesomerea.org/zh/resources/) [![案例: 93](https://img.shields.io/badge/%E6%A1%88%E4%BE%8B-93-53309C?style=flat-square&labelColor=303447)](https://awesomerea.org/zh/cases/) [![论文: 53](https://img.shields.io/badge/%E8%AE%BA%E6%96%87-53-53309C?style=flat-square&labelColor=303447)](https://awesomerea.org/zh/papers/) [![目录检查](https://github.com/reacher-z/Awesome-REA/actions/workflows/validate.yml/badge.svg?branch=main)](https://github.com/reacher-z/Awesome-REA/actions/workflows/validate.yml) [![许可: MIT](https://img.shields.io/badge/%E8%AE%B8%E5%8F%AF-MIT-606779?style=flat-square&labelColor=303447)](LICENSE) [![网站: awesomerea.org](https://img.shields.io/badge/%E7%BD%91%E7%AB%99-awesomerea.org-6235B5?style=flat-square&labelColor=303447)](https://awesomerea.org/zh/)
 <!-- END GENERATED BADGES -->
 
 **[搜索与筛选](https://awesomerea.org/zh/)** · **[浏览案例](https://awesomerea.org/zh/cases/)** · **[研究论文](https://awesomerea.org/zh/papers/)** · **[HTML 综述](https://awesomerea.org/zh/survey/)**
@@ -23,7 +23,7 @@
 <!-- BEGIN GENERATED CONTENTS -->
 **按目标找工具与案例**
 
-- [网站](#website) (17) · [游戏](#game) (61) · [应用](#app) (44)
+- [网站](#website) (18) · [游戏](#game) (76) · [应用](#app) (44)
 - [原生二进制](#native-binary) (20) · [固件与硬件](#firmware) (12) · [协议](#protocol) (11)
 
 **论文与工作流**
@@ -32,7 +32,7 @@
 
 **更多浏览方式**
 
-- [全部案例](https://awesomerea.org/zh/cases/) (77) · [相关合集](#related-collections) (4) · [完整仓库索引](#完整仓库索引) (2,836)
+- [全部案例](https://awesomerea.org/zh/cases/) (93) · [相关合集](#related-collections) (4) · [完整仓库索引](#完整仓库索引) (2,836)
 <!-- END GENERATED CONTENTS -->
 
 ## 按任务查找
@@ -80,6 +80,12 @@ REA 标签指向单独维护的[上游 CLI 与 MCP 项目](https://github.com/mo
   记录 BaoCut 交互式幻灯片编辑器，作者称其实现借鉴自 Claude Slides。它为浏览器与桌面宿主加入本地文稿存储、HTML/CSS 编译器及标注到智能体的桥接；设计说明报告了 Web 流程检查，但未确立原有后端恢复或完整行为一致性。
 
   案例 · 独立重建 · [使用条件与证据](https://awesomerea.org/zh/resources/baocut-slides-editor-case/)
+
+- [**Claude Code 中的 REA：隔离配置下的静态分析 A/B 试验**](https://zenn.dev/keigoly/articles/8738d8d241b5a1)
+
+  一篇日文实践报告在单独的项目目录中把 REA 6.4.0 接入 Claude Code，屏蔽其 170 个工具中的 43 个以及常见的命令行启动方式，并在两个真实任务上比较启用与禁用 REA 的运行：一个 Electron 终端的分发文件，以及一份保存的 HAR 通信记录。两组都给出正确答案，而启用 REA 的一组耗时最多为 2.00 倍、按 API 计价的费用最多为 1.67 倍。这是分析评估与安全配置案例，而非重建案例。
+
+  案例 · 混合工具流程 · [使用条件与证据](https://awesomerea.org/zh/resources/rea-claude-code-isolated-ab-case/)
 
 - [**BaoCut Design：移植重建的设计稿与设计系统编辑器**](https://github.com/JimLiu/baocut/tree/7aa049e82e1367da013b7aba80f0b79033fa04ad/packages/design-runtime)
 
@@ -312,6 +318,12 @@ REA 标签指向单独维护的[上游 CLI 与 MCP 项目](https://github.com/mo
 
   案例 · REA · [使用条件与证据](https://awesomerea.org/zh/resources/rea-touhou-reconstruction-method-case/)
 
+- [**TicTacToe-AI：REA 分叉对单个游戏方法的有限重建**](https://github.com/heaven-hm/re-agent/tree/develop/benchmarks/tictactoe)
+
+  作者的 REA 分叉（发帖时名为 rea-engine，后更名为 RE-Agent）反编译 GPL 许可的 TicTacToe-AI 游戏所发布的 .NET 可执行文件，重新编译恢复出的 C# 与资源，并依据原始 IL 修复一处反编译错误。差分探针在一个状态判定方法的全部 19,683 种棋盘赋值上运行原版与重建代码，并比较六张窗体渲染图。报告只判定该方法通过，整个游戏仍属部分重建。
+
+  案例 · 混合工具流程 · [使用条件与证据](https://awesomerea.org/zh/resources/rea-engine-tictactoe-case/)
+
 - [**LASRecomp：《织梦岛》静态重编译案例**](https://github.com/peiikai/LASRecomp)
 
   通过静态重编译，将 2019 年 Switch 版《塞尔达传说：织梦岛》重建为原生桌面程序。作者称大部分代码、工具与逆向工作由 Claude Code 完成，人类负责指导和复核。
@@ -425,6 +437,90 @@ REA 标签指向单独维护的[上游 CLI 与 MCP 项目](https://github.com/mo
   将反编译风格的游戏源码编译到 libultraship 平台库上，把 Super Mario 64 构建为原生 PC、Switch 和 Android 程序。附带的提取工具会在首次启动或构建时，把使用者自备的美版或日版 ROM 转换为 O2R 存档。项目提供现代渲染器、配置菜单和模组存档加载，而不是生成一致的 ROM。
 
   案例 · 独立重建 · [使用条件与证据](https://awesomerea.org/zh/resources/ghostship-sm64-port-case/)
+
+- [**Super Mario Sunshine：仍在推进的 GameCube 一致性反编译重建**](https://github.com/doldecomp/sms)
+
+  重建 Super Mario Sunshine 的 C++ 源码，目标是让原版 Metrowerks 编译器为四个 GameCube 发行版本及 Switch 版 3D All-Stars 生成逐字节一致的目标文件。目标二进制取自使用者自备的光盘镜像，objdiff 按函数比对重建出的目标文件。工作尚未完成，仓库在人工流程之外还发布了面向 AI 智能体的贡献规则。
+
+  案例 · 独立重建 · [使用条件与证据](https://awesomerea.org/zh/resources/sms-matching-decomp-case/)
+
+- [**Dusklight：基于反编译的《黄昏公主》原生移植**](https://github.com/TwilitRealm/dusklight)
+
+  以 zeldaret/tp 反编译项目和 Aurora GameCube／Wii 兼容层为基础，将《塞尔达传说 黄昏公主》重新实现为桌面与移动平台的原生应用。程序读取使用者自备的光盘镜像运行，不附带任何素材；项目力求忠于原作，同时加入新选项、增强功能和模组。
+
+  案例 · 独立重建 · [使用条件与证据](https://awesomerea.org/zh/resources/dusklight-twilight-princess-port-case/)
+
+- [**Metaforce：在反编译之上重建的《密特罗德 Prime》引擎重实现**](https://github.com/AxioDL/metaforce)
+
+  Metaforce 于 2015 年作为《密特罗德 Prime》引擎的逆向重实现项目启动，现已在 PrimeDecomp 一致性反编译之上重写。其原生应用借助 Aurora GameCube 兼容层，将这些游戏代码以非一致模式编译为桌面和移动端程序，并读取使用者选择的光盘镜像。README 表示重写稳定之前暂不提供构建版本。
+
+  案例 · 独立重建 · [使用条件与证据](https://awesomerea.org/zh/resources/metaforce-metroid-prime-case/)
+
+- [**Super Mario Sunshine（美版）：AI 辅助的一致性反编译分支**](https://github.com/chasem-dev/sms-english)
+
+  将 doldecomp 的 Super Mario Sunshine 反编译工作扩展到北美 GMSE01 版本。README 称大量使用了 AI，仓库中的智能体规则、工作顺序和进度文件也记录了按批次编排 Claude 与 Codex 的方式。项目报告重建的 DOL 逐字节一致，但尚未完成的目标文件仍取自使用者光盘中提取的代码。
+
+  案例 · 独立重建 · [使用条件与证据](https://awesomerea.org/zh/resources/sms-english-gmse01-decomp-case/)
+
+- [**Donkey Kong 64: Recompiled：基于 N64Recomp 的原生移植**](https://github.com/Rainchus/Donkey-Kong-64-Recompiled)
+
+  使用 N64Recomp 将美版 Nintendo 64《大金刚 64》静态重编译为原生移植版，并以 RT64 作为渲染器。该移植并非基于反编译源码构建，但借用仍在进行中的 DK64 反编译项目的头文件和部分函数来实现补丁与增强。其重编译配置读取仓库内的符号转储和 ROM，而非反编译生成的 ELF。
+
+  案例 · 独立重建 · [使用条件与证据](https://awesomerea.org/zh/resources/dk64-recompiled-case/)
+
+- [**《黄昏公主》：GameCube 版代码完全一致的反编译**](https://github.com/zeldaret/tp)
+
+  重建《塞尔达传说 黄昏公主》的源码，使其能重新编译出与原版一致的二进制文件；GameCube、Wii 与 Nvidia Shield 各版本通过条件编译共用同一套代码。README 报告 GameCube 版代码已完全一致，但尚未链接全部翻译单元，调试版与 Wii 版的对齐仍在进行；仓库不含素材或汇编，也不会制作移植。
+
+  案例 · 独立重建 · [使用条件与证据](https://awesomerea.org/zh/resources/twilight-princess-decomp-case/)
+
+- [**Castlevania: Symphony of the Night：覆盖 PlayStation、PSP 与 Saturn 版本的一致性反编译**](https://github.com/Xeeynamo/sotn-decomp)
+
+  从《恶魔城 月下夜想曲》的 PlayStation、PSP 和 Saturn 版二进制重建 C 源码，目标是逐字节编译出与原游戏文件一致的产物。这一进行中的构建将已反编译代码与从使用者自备光盘镜像提取的素材和汇编结合，再按版本检查 SHA-1 哈希。同一仓库中的原生 PC 实验被文档说明为尚未完成，并不是已发布的移植。
+
+  案例 · 独立重建 · [使用条件与证据](https://awesomerea.org/zh/resources/sotn-matching-decomp-case/)
+
+- [**LEGO Island 可移植版：反编译源码的多平台移植**](https://github.com/isledecomp/isle-portable)
+
+  将 LEGO Island 反编译源码改造为可在桌面、移动设备、游戏主机、DOS 及 Web 上构建的移植版本。项目以 SDL3、miniaudio、iniparser 和自行重新实现的 Direct3D Retained Mode 替代仅限 Windows 的子系统，并力求保持核心玩法不变。它移植的是重建源码，而不校验与原版逐字节一致的二进制文件，因此有别于精确重构建的反编译案例。
+
+  案例 · 独立重建 · [使用条件与证据](https://awesomerea.org/zh/resources/lego-island-portable-case/)
+
+- [**c1：PlayStation 版《古惑狼》的 C 语言移植**](https://github.com/wurlyfox/c1)
+
+  将 PlayStation 版《古惑狼》的原始游戏代码逐函数移植为 C 语言；其编码规范要求为函数标注原实现的地址。目前只有基于 OpenGL、SDL2 和 FluidSynth 的 PC 构建可用；它读取用户自备游戏光盘中的素材文件，仅能部分游玩。
+
+  案例 · 独立重建 · [使用条件与证据](https://awesomerea.org/zh/resources/crash-bandicoot-c1-port-case/)
+
+- [**Metroid Prime Port：AI 辅助完成的 PrimeDecomp 反编译原生移植**](https://github.com/Odrannnn/MetroidPrimePort)
+
+  将 PrimeDecomp 对《密特罗德 Prime》游戏与引擎代码的反编译结果编译为原生 C++20 程序，支持 Linux、Windows 和 Android，另有实验性 macOS 版本。Aurora 提供 GameCube SDK 兼容层和渲染，移植版在运行时读取使用者自备的光盘镜像。作者声明部分代码是在其监督下借助 AI 编程助手编写的。
+
+  案例 · 独立重建 · [使用条件与证据](https://awesomerea.org/zh/resources/metroid-prime-port-case/)
+
+- [**《风之杖》：以哈希校验重新链接的 GameCube 版反编译**](https://github.com/zeldaret/tww)
+
+  为《塞尔达传说 风之杖》GameCube 版的可执行文件和 REL 模块重建源码，涵盖美版／韩版、PAL 版、日版及日本体验版。已匹配的单元由源码编译，再与从使用者光盘中拆分出的对象链接，并按各版本的 SHA-1 哈希校验；仓库不含素材或汇编，范围是 GameCube 版而非 HD 重制版。
+
+  案例 · 独立重建 · [使用条件与证据](https://awesomerea.org/zh/resources/wind-waker-decomp-case/)
+
+- [**Sonic Mania：面向 RSDKv5 引擎的游戏代码反编译重建**](https://github.com/RSDKModding/Sonic-Mania-Decompilation)
+
+  以 C 重建《索尼克狂欢》的游戏代码，并与另行反编译的 RSDKv5 或 RSDKv5U 引擎一起构建，支持 Windows、Linux、Switch 和 Android。素材必须来自官方发行的 Sonic Mania (Plus)；项目加入了模组加载器，并可构建多个零售版本。其许可证称代码大多在功能上与原作相同，而不是逐字节一致。
+
+  案例 · 独立重建 · [使用条件与证据](https://awesomerea.org/zh/resources/sonic-mania-decomp-case/)
+
+- [**MediEvil Recomp：PlayStation 游戏静态重编译为 C#**](https://github.com/BlackLabelHQ/MediEvilRecomp)
+
+  使用 RecompOne 重编译器及运行时，将北美版 PlayStation《MediEvil》静态重编译为 C# 代码。运行时代为提供 BIOS、GPU、CD-ROM 等硬件服务，项目补丁则修改渲染、宽屏和地形表现。README 强调这是重编译而非反编译，并将其标为公开测试版。
+
+  案例 · 独立重建 · [使用条件与证据](https://awesomerea.org/zh/resources/medievil-recomp-case/)
+
+- [**Crash Bandicoot 2 Recompiled：基于 PSXRecomp 的原生构建**](https://github.com/Zumbo06/Crash2Recomp)
+
+  一个 Windows 启动器，借助 PSXRecomp 重编译器与运行时，将用户自备的《古惑狼 2》光盘转换为 C 代码并在本地编译，使游戏以原生代码配合模拟的 PlayStation 硬件层运行。仓库包含启动器、打过补丁的内置运行时以及详细的调试记录，不分发任何游戏代码或数据。
+
+  案例 · 独立重建 · [使用条件与证据](https://awesomerea.org/zh/resources/crash2recomp-case/)
 
 #### 工具、项目与集成
 

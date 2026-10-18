@@ -17,8 +17,9 @@ The caller must coordinate this instance with any other authenticated API traffi
 Selection follows GitHub's .github, root, docs priority. The first query captures
 the default-branch commit's root tree and directory listings. Directory OIDs must
 match that pinned root; a branch race therefore falls back instead of selecting
-from a different commit. The second query reads the selected blob at that commit.
-Multiple recognized README files in a location are deliberately left to REST.
+from a different commit. A second query measures only the selected blob at that
+commit; bounded third-phase groups then read its text. Unrelated tree entries
+never request sizes. Multiple recognized README files are left to REST.
 
 Primary references:
 https://docs.github.com/en/graphql/reference/git
@@ -54,7 +55,7 @@ NODE_ID_RE = re.compile(r'[A-Za-z0-9_=/+:-]{1,256}\Z')
 OID_RE = re.compile(r'[0-9a-f]{40}\Z')
 README_RE = re.compile(r'readme(?:\.(?:md|markdown|mdown|mkdn|mkd|rst|txt|textile|rdoc|org|wiki|mediawiki|adoc|asciidoc))?\Z', re.I)
 IDENTITY_FIELDS = '__typename databaseId nameWithOwner isPrivate isFork isArchived'
-TREE_FIELDS = '__typename oid ... on Tree { entries { name type mode oid size } }'
+TREE_FIELDS = '__typename oid ... on Tree { entries { name type mode oid } }'
 METADATA_FIELDS = IDENTITY_FIELDS + '''
   id url description stargazerCount updatedAt pushedAt licenseInfo { spdxId }
   repositoryTopics(first: 100) { nodes { topic { name } } pageInfo { hasNextPage } }
@@ -173,8 +174,7 @@ def _entries(tree):
                 or not item['name'] or '/' in item['name'] or '\x00' in item['name']
                 or item['name'] in ('.', '..') or item['name'] in entries
                 or not _oid(item.get('oid')) or type(item.get('mode')) is not int
-                or item.get('type') not in ('blob', 'tree', 'commit')
-                or not _integer(item.get('size'))):
+                or item.get('type') not in ('blob', 'tree', 'commit')):
             raise ValueError('invalid-readme-tree-entry')
         entries[item['name']] = item
     return entries
@@ -208,10 +208,8 @@ def _select_readme(value):
         item = candidates[0]
         if item['type'] != 'blob' or item['mode'] not in (0o100644, 0o100755):
             raise ValueError('unsupported-readme-file')
-        if item['size'] > MAX_README_BYTES or item['size'] * 6 + 4096 > TEXT_RESPONSE_BUDGET:
-            raise ValueError('readme-exceeds-graphql-byte-budget')
         return {'path': (prefix + '/' if prefix else '') + item['name'],
-                'sha': item['oid'], 'size': item['size'], 'commit_oid': target['oid']}
+                'sha': item['oid'], 'commit_oid': target['oid']}
     raise ValueError('no-recognized-readme')
 
 
@@ -355,9 +353,9 @@ class GraphQLReadmeTransport:
             delay = self._delay(headers, rate, secondary=rate_error and not exhausted)
             self._blocked_until = self._monotonic() + delay
             receipt['retry_after'] = delay
-        # A metadata response at zero remaining is useful, but may not initiate
-        # either the blob query or an ambiguity fallback via a different API.
-        if rate_error or (exhausted and (errors or phase == 'metadata')):
+        # Metadata/preflight at zero remaining cannot initiate a text query or
+        # an ambiguity fallback through a different API.
+        if rate_error or (exhausted and (errors or phase in ('metadata', 'preflight'))):
             failure = {'status': 'deferred', 'reason': 'graphql-rate-limit', 'retry_after': delay}
         elif status in (401, 403):
             failure = {'status': 'deferred', 'reason': 'graphql-access-denied'}
@@ -395,7 +393,7 @@ class GraphQLReadmeTransport:
         return True
 
     @staticmethod
-    def _query(repositories, selections=None):
+    def _query(repositories, selections=None, *, include_text=True):
         definitions, fields, variables = [], [], {}
         for index, repo in enumerate(repositories):
             if repo.get('node_id'):
@@ -415,8 +413,9 @@ class GraphQLReadmeTransport:
                 definitions.append(f'$expression{index}: String!')
                 chosen = selections[repo['id']]
                 variables[f'expression{index}'] = chosen['commit_oid'] + ':' + chosen['path']
+                blob_fields = 'byteSize isBinary isTruncated' + (' text' if include_text else '')
                 selection = IDENTITY_FIELDS + f''' readme: object(expression: $expression{index}) {{
-                    __typename oid ... on Blob {{ byteSize isBinary isTruncated text }}
+                    __typename oid ... on Blob {{ {blob_fields} }}
                 }}'''
             if repo.get('node_id'):
                 selection = '... on Repository { ' + selection + ' }'
@@ -477,9 +476,46 @@ class GraphQLReadmeTransport:
                 continue
             selected[key] = chosen
             eligible.append(repo)
+        batch_failure = None
+        measured = []
+        if eligible:
+            query, variables = self._query(eligible, selected, include_text=False)
+            data, batch_failure, receipt = self._request(query, variables, 'preflight', len(eligible))
+            for index, repo in enumerate(eligible):
+                key = repo['id']
+                if batch_failure:
+                    outcomes[key] = self._result(**batch_failure, repository=repo)
+                    continue
+                value = data.get(f'r{index}')
+                identity_error = _identity(value, key)
+                if identity_error:
+                    outcomes[key] = self._result('rejected', identity_error)
+                    continue
+                chosen = selected[key]
+                blob = value.get('readme')
+                reason = None
+                if (not isinstance(blob, dict) or blob.get('__typename') != 'Blob'
+                        or blob.get('oid') != chosen['sha']):
+                    reason = 'readme-blob-identity-mismatch'
+                elif blob.get('isBinary') is not False or blob.get('isTruncated') is not False:
+                    reason = 'binary-unknown-or-truncated-readme'
+                elif not _integer(blob.get('byteSize')):
+                    reason = 'readme-byte-size-mismatch'
+                elif blob['byteSize'] > MAX_README_BYTES or blob['byteSize'] * 6 + 4096 > TEXT_RESPONSE_BUDGET:
+                    reason = 'readme-exceeds-graphql-byte-budget'
+                elif not blob['byteSize']:
+                    reason = 'empty-or-nontext-readme'
+                current_name = value['nameWithOwner']
+                repo = {**repo, 'full_name': current_name, 'name': current_name.split('/')[1],
+                        'html_url': 'https://github.com/' + current_name}
+                if reason:
+                    outcomes[key] = self._result('fallback', reason, repository=repo)
+                    continue
+                selected[key] = {**chosen, 'size': blob['byteSize']}
+                measured.append(repo)
         # Response budget also applies to the aggregate, not only each blob.
         groups, group, budget = [], [], 0
-        for repo in eligible:
+        for repo in measured:
             estimate = selected[repo['id']]['size'] * 6 + 4096
             if group and budget + estimate > TEXT_RESPONSE_BUDGET:
                 groups.append(group)
@@ -488,7 +524,6 @@ class GraphQLReadmeTransport:
             budget += estimate
         if group:
             groups.append(group)
-        batch_failure = None
         for group in groups:
             if batch_failure:
                 data, failure = None, batch_failure
@@ -504,9 +539,12 @@ class GraphQLReadmeTransport:
                 value = data.get(f'r{index}')
                 identity_error = _identity(value, key)
                 if identity_error:
-                    # Visibility/identity can change between the two requests.
+                    # Visibility/identity can change at any phase.
                     outcomes[key] = self._result('rejected', identity_error)
                     continue
+                current_name = value['nameWithOwner']
+                repo = {**repo, 'full_name': current_name, 'name': current_name.split('/')[1],
+                        'html_url': 'https://github.com/' + current_name}
                 chosen = selected[key]
                 blob = value.get('readme')
                 reason = None
@@ -533,9 +571,6 @@ class GraphQLReadmeTransport:
                 if reason:
                     outcomes[key] = self._result('fallback', reason, repository=repo)
                     continue
-                current_name = value['nameWithOwner']
-                repo = {**repo, 'full_name': current_name, 'name': current_name.split('/')[1],
-                        'html_url': 'https://github.com/' + current_name}
                 metadata = {**chosen, 'type': 'file', 'html_url': repo['html_url'] + '/blob/'
                             + chosen['commit_oid'] + '/' + quote(chosen['path'], safe='/')}
                 provenance = {'transport': 'github-graphql', 'endpoint': GRAPHQL_URL, 'method': 'POST',

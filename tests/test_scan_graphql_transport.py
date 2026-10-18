@@ -27,7 +27,7 @@ def git_sha(content):
 
 def entry(name='README.md', content=CONTENT, **changes):
     return {'name': name, 'type': 'blob', 'mode': 0o100644,
-            'oid': git_sha(content), 'size': len(content), **changes}
+            'oid': git_sha(content), **changes}
 
 
 def tree(entries, oid=ROOT_TREE):
@@ -51,6 +51,12 @@ def blob_result(identifier=1, name='example/demo', content=CONTENT, **blob_chang
             'isPrivate': False, 'isFork': False, 'isArchived': False,
             'readme': {'__typename': 'Blob', 'oid': git_sha(content), 'byteSize': len(content),
                        'isBinary': False, 'isTruncated': False, 'text': content.decode('utf-8'), **blob_changes}}
+
+
+def probe_result(*args, **kwargs):
+    result = blob_result(*args, **kwargs)
+    del result['readme']['text']
+    return result
 
 
 def envelope(*values, errors=None, remaining=4000):
@@ -114,7 +120,7 @@ def client(*responses, **kwargs):
 
 class VerifiedReadmeTests(unittest.TestCase):
     def test_actual_unicode_bytes_and_hash_are_pinned_to_commit_and_public_id(self):
-        instance, opener, clock = client(envelope(repository()), envelope(blob_result()))
+        instance, opener, clock = client(envelope(repository()), envelope(probe_result()), envelope(blob_result()))
         output = instance.fetch_batch([{'id': 1, 'full_name': 'example/demo', 'description': 'UNTRUSTED OLD VALUE'}])[1]
         self.assertEqual(output['status'], 'ok')
         self.assertEqual(output['content'], CONTENT)
@@ -130,16 +136,23 @@ class VerifiedReadmeTests(unittest.TestCase):
         self.assertNotIn('UNTRUSTED', output['repository']['description'])
         self.assertNotIn('readme_api_url', output['metadata'])
         self.assertNotIn('readme_api_url', output['provenance'])
-        self.assertEqual(len(opener.requests), 2)
-        self.assertEqual(clock.sleeps, [1.0])
+        self.assertEqual(len(opener.requests), 3)
+        self.assertEqual(clock.sleeps, [1.0, 1.0])
         for request, timeout in opener.requests:
             self.assertEqual(request.full_url, transport.GRAPHQL_URL)
             self.assertEqual(request.method, 'POST')
             self.assertEqual(request.get_header('Authorization'), 'Bearer ' + TOKEN)
             self.assertNotIn(TOKEN, request.data.decode())
             self.assertLessEqual(timeout, 60)
-        payload = json.loads(opener.requests[1][0].data)
-        self.assertEqual(payload['variables']['expression0'], COMMIT + ':README.md')
+        payloads = [json.loads(request.data) for request, _ in opener.requests]
+        self.assertNotRegex(payloads[0]['query'], r'\bsize\b|\bbyteSize\b|\btext\b')
+        self.assertIn('entries { name type mode oid }', payloads[0]['query'])
+        for payload in payloads[1:]:
+            self.assertEqual(payload['variables']['expression0'], COMMIT + ':README.md')
+        self.assertNotRegex(payloads[1]['query'], r'\btext\b')
+        self.assertIn('byteSize isBinary isTruncated', payloads[1]['query'])
+        self.assertRegex(payloads[2]['query'], r'\btext\b')
+        self.assertEqual([row['phase'] for row in instance.last_batch_receipts], ['metadata', 'preflight', 'blob'])
         receipt_json = json.dumps(instance.last_batch_receipts)
         self.assertNotIn(TOKEN, receipt_json)
         self.assertNotIn('café', receipt_json)
@@ -148,16 +161,18 @@ class VerifiedReadmeTests(unittest.TestCase):
 
     def test_batch_results_are_bound_to_ids_not_response_order_or_input_metadata(self):
         instance, opener, _ = client(envelope(repository(2, 'o/two'), repository(1, 'o/one')),
+                                     envelope(probe_result(2, 'o/two'), probe_result(1, 'o/one')),
                                      envelope(blob_result(2, 'o/two'), blob_result(1, 'o/one')))
         result = instance.fetch_batch([{'id': 2, 'full_name': 'o/two'}, {'id': 1, 'full_name': 'o/one'}])
         self.assertEqual(set(result), {1, 2})
         self.assertEqual(result[1]['repository']['full_name'], 'o/one')
         self.assertEqual(result[2]['repository']['full_name'], 'o/two')
         self.assertTrue(all(value['status'] == 'ok' for value in result.values()))
-        self.assertEqual(len(opener.requests), 2)
+        self.assertEqual(len(opener.requests), 3)
 
     def test_same_id_rename_between_phases_updates_public_url(self):
-        instance, _, _ = client(envelope(repository()), envelope(blob_result(name='example/renamed')))
+        instance, _, _ = client(envelope(repository()), envelope(probe_result(name='example/intermediate')),
+                                envelope(blob_result(name='example/renamed')))
         result = instance.fetch_batch([{'id': 1, 'full_name': 'example/demo'}])[1]
         self.assertEqual(result['status'], 'ok')
         self.assertEqual(result['repository']['full_name'], 'example/renamed')
@@ -166,6 +181,7 @@ class VerifiedReadmeTests(unittest.TestCase):
     def test_stored_node_id_survives_slug_rename_but_never_bypasses_numeric_binding(self):
         queued = {'id': 1, 'full_name': 'example/old', 'node_id': 'Repository-1'}
         instance, opener, _ = client(envelope(repository(name='example/renamed')),
+                                     envelope(probe_result(name='example/renamed')),
                                      envelope(blob_result(name='example/renamed')))
         result = instance.fetch_batch([queued])[1]
         self.assertEqual(result['status'], 'ok')
@@ -195,13 +211,13 @@ class VerifiedReadmeTests(unittest.TestCase):
             with self.subTest(prefix=prefix):
                 value = repository()
                 if prefix:
-                    root_entries = [entry(prefix, type='tree', mode=0o040000, oid=DIRECTORY_TREE, size=0)]
+                    root_entries = [entry(prefix, type='tree', mode=0o040000, oid=DIRECTORY_TREE)]
                     if prefix == '.github':
                         root_entries.append(entry())  # A lower-priority root README must not win.
                     value['defaultBranchRef']['target']['tree'] = tree(root_entries)
                     field = 'githubDirectory' if prefix == '.github' else 'docsDirectory'
                     value[field] = tree([entry('ReadMe.md')], DIRECTORY_TREE)
-                instance, _, _ = client(envelope(value), envelope(blob_result()))
+                instance, _, _ = client(envelope(value), envelope(probe_result()), envelope(blob_result()))
                 result = instance.fetch_batch([{'id': 1, 'full_name': 'example/demo'}])[1]
                 self.assertEqual(result['status'], 'ok')
                 self.assertEqual(result['metadata']['path'], prefix + '/ReadMe.md' if prefix else 'README.md')
@@ -209,7 +225,7 @@ class VerifiedReadmeTests(unittest.TestCase):
     def test_head_directory_must_match_the_pinned_root_tree(self):
         value = repository()
         value['defaultBranchRef']['target']['tree']['entries'].append(
-            entry('.github', type='tree', mode=0o040000, oid=DIRECTORY_TREE, size=0))
+            entry('.github', type='tree', mode=0o040000, oid=DIRECTORY_TREE))
         value['githubDirectory'] = tree([entry()], 'd' * 40)
         instance, opener, _ = client(envelope(value))
         result = instance.fetch_batch([{'id': 1, 'full_name': 'example/demo'}])[1]
@@ -251,21 +267,71 @@ class VerifiedReadmeTests(unittest.TestCase):
         ]
         for fields, reason in changes:
             with self.subTest(fields=fields):
-                instance, _, _ = client(envelope(repository()), envelope(blob_result(**fields)))
+                instance, _, _ = client(envelope(repository()), envelope(probe_result()), envelope(blob_result(**fields)))
                 result = instance.fetch_batch([{'id': 1, 'full_name': 'example/demo'}])[1]
                 self.assertEqual((result['status'], result['reason']), ('fallback', reason))
                 self.assertIsNone(result['content'])
                 self.assertEqual(result['provenance'], {})
 
+    def test_preflight_requires_the_selected_blob_and_measured_text_size(self):
+        changes = [
+            ({'__typename': 'Tree'}, 'readme-blob-identity-mismatch'),
+            ({'oid': 'f' * 40}, 'readme-blob-identity-mismatch'),
+            ({'isBinary': True}, 'binary-unknown-or-truncated-readme'),
+            ({'isBinary': None}, 'binary-unknown-or-truncated-readme'),
+            ({'isTruncated': True}, 'binary-unknown-or-truncated-readme'),
+            ({'byteSize': None}, 'readme-byte-size-mismatch'),
+            ({'byteSize': True}, 'readme-byte-size-mismatch'),
+            ({'byteSize': -1}, 'readme-byte-size-mismatch'),
+            ({'byteSize': 0}, 'empty-or-nontext-readme'),
+            ({'byteSize': transport.MAX_README_BYTES + 1}, 'readme-exceeds-graphql-byte-budget'),
+        ]
+        for fields, reason in changes:
+            with self.subTest(fields=fields):
+                instance, opener, _ = client(envelope(repository()), envelope(probe_result(**fields)))
+                result = instance.fetch_batch([{'id': 1, 'full_name': 'example/demo'}])[1]
+                self.assertEqual((result['status'], result['reason']), ('fallback', reason))
+                self.assertIsNone(result['content'])
+                self.assertEqual(result['provenance'], {})
+                self.assertEqual(len(opener.requests), 2)
+                self.assertNotRegex(json.loads(opener.requests[1][0].data)['query'], r'\btext\b')
+
+    def test_final_bytes_must_match_the_size_observed_in_preflight(self):
+        instance, opener, _ = client(envelope(repository()), envelope(probe_result(byteSize=len(CONTENT) + 1)),
+                                     envelope(blob_result()))
+        result = instance.fetch_batch([{'id': 1, 'full_name': 'example/demo'}])[1]
+        self.assertEqual((result['status'], result['reason']), ('fallback', 'readme-byte-size-mismatch'))
+        self.assertIsNone(result['content'])
+        self.assertEqual(len(opener.requests), 3)
+
+    def test_renamed_public_identity_is_refreshed_before_probe_or_text_fallback(self):
+        for phase, fields in (('preflight', {'isBinary': True}),
+                              ('preflight', {'byteSize': transport.MAX_README_BYTES + 1}),
+                              ('blob', {'byteSize': len(CONTENT) + 1})):
+            with self.subTest(phase=phase, fields=fields):
+                responses = [envelope(repository())]
+                if phase == 'blob':
+                    responses.append(envelope(probe_result()))
+                result_row = probe_result if phase == 'preflight' else blob_result
+                instance, _, _ = client(*responses, envelope(result_row(name='example/renamed', **fields)))
+                result = instance.fetch_batch([{'id': 1, 'full_name': 'example/demo'}])[1]
+                self.assertEqual(result['status'], 'fallback')
+                self.assertEqual(result['repository']['full_name'], 'example/renamed')
+                self.assertEqual(result['repository']['name'], 'renamed')
+                self.assertEqual(result['repository']['html_url'], 'https://github.com/example/renamed')
+                self.assertIsNone(result['content'])
+
     def test_empty_and_nul_blobs_cannot_be_successful_reads(self):
         for body in (b'', b'a\0b'):
-            instance, _, _ = client(envelope(repository(content=body)), envelope(blob_result(content=body)))
+            instance, _, _ = client(envelope(repository(content=body)), envelope(probe_result(content=body)),
+                                    envelope(blob_result(content=body)))
             result = instance.fetch_batch([{'id': 1, 'full_name': 'example/demo'}])[1]
             self.assertEqual((result['status'], result['reason']), ('fallback', 'empty-or-nontext-readme'))
 
     def test_literal_replacement_character_is_kept_when_bytes_and_blob_agree(self):
         body = 'An actual replacement character: \ufffd'.encode()
-        instance, _, _ = client(envelope(repository(content=body)), envelope(blob_result(content=body)))
+        instance, _, _ = client(envelope(repository(content=body)), envelope(probe_result(content=body)),
+                                envelope(blob_result(content=body)))
         result = instance.fetch_batch([{'id': 1, 'full_name': 'example/demo'}])[1]
         self.assertEqual((result['status'], result['content']), ('ok', body))
 
@@ -284,15 +350,22 @@ class IdentityAndPrivacyTests(unittest.TestCase):
                 self.assertNotIn('secret-name', json.dumps(result))
                 self.assertEqual(len(opener.requests), 1)
 
-    def test_second_query_rechecks_public_flags_and_numeric_id(self):
+    def test_both_probe_and_text_queries_recheck_public_flags_and_numeric_id(self):
         for fields in ({'isPrivate': True}, {'databaseId': 999}, {'isFork': True}, {'isArchived': True}):
-            value = blob_result()
-            value.update(fields)
-            instance, _, _ = client(envelope(repository()), envelope(value))
-            result = instance.fetch_batch([{'id': 1, 'full_name': 'example/demo'}])[1]
-            self.assertEqual(result['status'], 'rejected')
-            self.assertIsNone(result['repository'])
-            self.assertIsNone(result['content'])
+            for phase in ('preflight', 'blob'):
+                with self.subTest(fields=fields, phase=phase):
+                    value = probe_result() if phase == 'preflight' else blob_result()
+                    value.update(fields, nameWithOwner='private/secret-name')
+                    responses = [envelope(repository())]
+                    if phase == 'blob':
+                        responses.append(envelope(probe_result()))
+                    instance, opener, _ = client(*responses, envelope(value))
+                    result = instance.fetch_batch([{'id': 1, 'full_name': 'example/demo'}])[1]
+                    self.assertEqual(result['status'], 'rejected')
+                    self.assertIsNone(result['repository'])
+                    self.assertIsNone(result['content'])
+                    self.assertNotIn('secret-name', json.dumps(result))
+                    self.assertEqual(len(opener.requests), 2 if phase == 'preflight' else 3)
 
     def test_invalid_repository_metadata_is_retry_without_copied_fields(self):
         for fields in ({'url': 'https://evil.invalid/example/demo'}, {'stargazerCount': True},
@@ -306,7 +379,7 @@ class IdentityAndPrivacyTests(unittest.TestCase):
     def test_one_top_level_not_found_does_not_poison_other_ids(self):
         response = envelope(None, repository(2, 'o/two'), errors=[
             {'type': 'NOT_FOUND', 'path': ['r0'], 'message': 'Repository unavailable'}])
-        instance, opener, _ = client(response, envelope(blob_result(2, 'o/two')))
+        instance, opener, _ = client(response, envelope(probe_result(2, 'o/two')), envelope(blob_result(2, 'o/two')))
         result = instance.fetch_batch([{'id': 1, 'full_name': 'o/one'}, {'id': 2, 'full_name': 'o/two'}])
         self.assertEqual(result[1]['status'], 'rejected')
         self.assertEqual(result[2]['status'], 'ok')
@@ -360,8 +433,22 @@ class RateAndBudgetTests(unittest.TestCase):
         self.assertEqual(clock.sleeps, [])
 
     def test_last_allowed_blob_is_success_but_next_batch_waits(self):
-        instance, opener, _ = client(envelope(repository()), envelope(blob_result(), remaining=0))
+        instance, opener, _ = client(envelope(repository()), envelope(probe_result()), envelope(blob_result(), remaining=0))
         self.assertEqual(instance.fetch_batch([{'id': 1, 'full_name': 'example/demo'}])[1]['status'], 'ok')
+        self.assertEqual(instance.fetch_batch([{'id': 2, 'full_name': 'o/two'}])[2]['status'], 'deferred')
+        self.assertEqual(len(opener.requests), 3)
+
+    def test_zero_remaining_after_preflight_defers_text_and_sibling_rest_fallback(self):
+        ambiguous = repository()
+        ambiguous['defaultBranchRef']['target']['tree']['entries'].append(entry('README.rst'))
+        instance, opener, _ = client(envelope(ambiguous, repository(2, 'o/two')),
+                                     envelope(probe_result(2, 'o/two'), remaining=0))
+        results = instance.fetch_batch([{'id': 1, 'full_name': 'example/demo'}, {'id': 2, 'full_name': 'o/two'}])
+        self.assertEqual({row['status'] for row in results.values()}, {'deferred'})
+        self.assertEqual({row['reason'] for row in results.values()}, {'graphql-rate-limit'})
+        self.assertTrue(all(row['content'] is None and row['retry_after'] >= 3600 for row in results.values()))
+        self.assertEqual(len(opener.requests), 2)
+        self.assertEqual([row['phase'] for row in instance.last_batch_receipts], ['metadata', 'preflight'])
         self.assertEqual(instance.fetch_batch([{'id': 2, 'full_name': 'o/two'}])[2]['status'], 'deferred')
         self.assertEqual(len(opener.requests), 2)
 
@@ -398,32 +485,39 @@ class RateAndBudgetTests(unittest.TestCase):
                 self.assertNotIn('SECRET', json.dumps(result) + json.dumps(instance.last_batch_receipts))
 
     def test_failure_in_blob_phase_is_pending_with_verified_fresh_metadata(self):
-        instance, _, _ = client(envelope(repository()), URLError('failed after metadata'))
+        instance, _, _ = client(envelope(repository()), envelope(probe_result()), URLError('failed after probe'))
         result = instance.fetch_batch([{'id': 1, 'full_name': 'example/demo'}])[1]
         self.assertEqual(result['status'], 'retry')
         self.assertEqual(result['repository']['id'], 1)
         self.assertIsNone(result['content'])
 
-    def test_later_backpressure_suppresses_earlier_sibling_rest_fallback(self):
+    def test_probe_and_text_backpressure_suppress_earlier_sibling_rest_fallback(self):
         ambiguous = repository()
         ambiguous['defaultBranchRef']['target']['tree']['entries'].append(entry('README.rst'))
-        failures = [URLError('temporary outage'), Response(b'overloaded', status=503),
-                    Response(envelope(None, errors=[{'type': 'RATE_LIMITED', 'message': 'rate limited'}])),
-                    HTTPError(transport.GRAPHQL_URL, 429, 'slow down', {'Retry-After': '61'}, io.BytesIO())]
-        for failure in failures:
-            with self.subTest(failure=type(failure).__name__):
-                instance, opener, _ = client(envelope(ambiguous, repository(2, 'o/two')), failure)
-                results = instance.fetch_batch([{'id': 1, 'full_name': 'example/demo'}, {'id': 2, 'full_name': 'o/two'}])
-                self.assertIn(results[2]['status'], ('retry', 'deferred'))
-                self.assertEqual(results[1]['status'], results[2]['status'])
-                self.assertEqual(results[1]['reason'], results[2]['reason'])
-                self.assertTrue(all(row['content'] is None for row in results.values()))
-                self.assertEqual(len(opener.requests), 2)
+        for phase in ('preflight', 'blob'):
+            failures = [URLError('SECRET temporary outage'), TimeoutError('SECRET timeout'),
+                        Response(b'SECRET overloaded', status=503),
+                        Response(envelope(None, errors=[{'type': 'RATE_LIMITED', 'message': 'SECRET rate limited'}])),
+                        HTTPError(transport.GRAPHQL_URL, 429, 'slow down', {'Retry-After': '61'}, io.BytesIO())]
+            for failure in failures:
+                with self.subTest(phase=phase, failure=type(failure).__name__):
+                    responses = [envelope(ambiguous, repository(2, 'o/two'))]
+                    if phase == 'blob':
+                        responses.append(envelope(probe_result(2, 'o/two')))
+                    instance, opener, _ = client(*responses, failure)
+                    results = instance.fetch_batch([{'id': 1, 'full_name': 'example/demo'}, {'id': 2, 'full_name': 'o/two'}])
+                    self.assertIn(results[2]['status'], ('retry', 'deferred'))
+                    self.assertEqual(results[1]['status'], results[2]['status'])
+                    self.assertEqual(results[1]['reason'], results[2]['reason'])
+                    self.assertTrue(all(row['content'] is None for row in results.values()))
+                    self.assertEqual(len(opener.requests), 2 if phase == 'preflight' else 3)
+                    self.assertNotIn('SECRET', json.dumps(results) + json.dumps(instance.last_batch_receipts))
 
     def test_last_allowed_blob_keeps_success_and_suppresses_sibling_rest_fallback(self):
         ambiguous = repository()
         ambiguous['defaultBranchRef']['target']['tree']['entries'].append(entry('README.rst'))
         instance, _, _ = client(envelope(ambiguous, repository(2, 'o/two')),
+                                envelope(probe_result(2, 'o/two')),
                                 envelope(blob_result(2, 'o/two'), remaining=0))
         result = instance.fetch_batch([{'id': 1, 'full_name': 'example/demo'}, {'id': 2, 'full_name': 'o/two'}])
         self.assertEqual(result[1]['status'], 'deferred')
@@ -443,30 +537,47 @@ class RateAndBudgetTests(unittest.TestCase):
     def test_aggregate_byte_budget_splits_blob_queries_sequentially(self):
         body = b'x' * 2000
         instance, opener, clock = client(envelope(repository(1, 'o/one', body), repository(2, 'o/two', body)),
+                                         envelope(probe_result(1, 'o/one', body), probe_result(2, 'o/two', body)),
                                          envelope(blob_result(1, 'o/one', body)), envelope(blob_result(2, 'o/two', body)))
         with patch.object(transport, 'TEXT_RESPONSE_BUDGET', 20000):
             result = instance.fetch_batch([{'id': 1, 'full_name': 'o/one'}, {'id': 2, 'full_name': 'o/two'}])
         self.assertTrue(all(row['status'] == 'ok' for row in result.values()))
-        self.assertEqual(len(opener.requests), 3)
-        self.assertEqual(clock.sleeps, [1.0, 1.0])
-        self.assertEqual([row['repository_count'] for row in instance.last_batch_receipts], [2, 1, 1])
+        self.assertEqual(len(opener.requests), 4)
+        self.assertEqual(clock.sleeps, [1.0, 1.0, 1.0])
+        self.assertEqual([row['repository_count'] for row in instance.last_batch_receipts], [2, 2, 1, 1])
 
     def test_backpressure_stops_remaining_byte_budget_groups(self):
         body = b'x' * 2000
         instance, opener, _ = client(envelope(repository(1, 'o/one', body), repository(2, 'o/two', body)),
+                                     envelope(probe_result(1, 'o/one', body), probe_result(2, 'o/two', body)),
                                      URLError('outage'))
         with patch.object(transport, 'TEXT_RESPONSE_BUDGET', 20000):
             result = instance.fetch_batch([{'id': 1, 'full_name': 'o/one'}, {'id': 2, 'full_name': 'o/two'}])
         self.assertEqual({row['status'] for row in result.values()}, {'retry'})
-        self.assertEqual(len(opener.requests), 2)
+        self.assertEqual(len(opener.requests), 3)
 
-    def test_large_single_blob_and_tree_go_to_rest_before_blob_query(self):
+    def test_successful_text_group_survives_later_group_backpressure(self):
+        body = b'x' * 2000
+        ambiguous = repository(3, 'o/three')
+        ambiguous['defaultBranchRef']['target']['tree']['entries'].append(entry('README.rst'))
+        instance, opener, _ = client(envelope(repository(1, 'o/one', body), repository(2, 'o/two', body), ambiguous),
+                                     envelope(probe_result(1, 'o/one', body), probe_result(2, 'o/two', body)),
+                                     envelope(blob_result(1, 'o/one', body)), TimeoutError('SECRET timeout'))
+        with patch.object(transport, 'TEXT_RESPONSE_BUDGET', 20000):
+            result = instance.fetch_batch([{'id': 1, 'full_name': 'o/one'}, {'id': 2, 'full_name': 'o/two'},
+                                           {'id': 3, 'full_name': 'o/three'}])
+        self.assertEqual(result[1]['status'], 'ok')
+        self.assertEqual(result[1]['content'], body)
+        self.assertEqual((result[2]['status'], result[3]['status']), ('retry', 'retry'))
+        self.assertEqual(len(opener.requests), 4)
+        self.assertNotIn('SECRET', json.dumps(instance.last_batch_receipts))
+
+    def test_large_single_blob_and_tree_go_to_rest_before_text_query(self):
         value = repository()
-        value['defaultBranchRef']['target']['tree']['entries'][0]['size'] = transport.MAX_README_BYTES
-        instance, opener, _ = client(envelope(value))
+        instance, opener, _ = client(envelope(value), envelope(probe_result(byteSize=transport.MAX_README_BYTES)))
         result = instance.fetch_batch([{'id': 1, 'full_name': 'example/demo'}])[1]
         self.assertEqual((result['status'], result['reason']), ('fallback', 'readme-exceeds-graphql-byte-budget'))
-        self.assertEqual(len(opener.requests), 1)
+        self.assertEqual(len(opener.requests), 2)
         value = repository()
         value['defaultBranchRef']['target']['tree']['entries'] = [entry(str(i)) for i in range(4)]
         instance, _, _ = client(envelope(value))
@@ -475,12 +586,12 @@ class RateAndBudgetTests(unittest.TestCase):
         self.assertEqual((result['status'], result['reason']), ('fallback', 'invalid-or-large-readme-tree'))
 
     def test_every_request_in_successive_batches_is_throttled(self):
-        instance, opener, clock = client(envelope(repository()), envelope(blob_result()),
-                                         envelope(repository()), envelope(blob_result()))
+        instance, opener, clock = client(envelope(repository()), envelope(probe_result()), envelope(blob_result()),
+                                         envelope(repository()), envelope(probe_result()), envelope(blob_result()))
         instance.fetch_batch([{'id': 1, 'full_name': 'example/demo'}])
         instance.fetch_batch([{'id': 1, 'full_name': 'example/demo'}])
-        self.assertEqual(len(opener.requests), 4)
-        self.assertEqual(clock.sleeps, [1.0, 1.0, 1.0])
+        self.assertEqual(len(opener.requests), 6)
+        self.assertEqual(clock.sleeps, [1.0] * 5)
 
 
 if __name__ == '__main__':
