@@ -728,7 +728,7 @@ def scanner_child(seed, output, frontier_path):
     paired_ack_guard(document, frontier)
     args = SimpleNamespace(target=target, workers=4, requests_per_second=2, max_pages=3,
                            candidate_buffer=min(200, max(50, (planned + 9) // 10)),
-                           pending_metadata_budget=200, search_request_budget=120,
+                           pending_metadata_budget=200, search_request_budget=360,
                            seed_curated=True, seed_papers=True,
                            queries=[query + ' ' + search_frontier.GATES for query in APPROVED_QUERIES], output=output)
     rest = GitHub(token, 2)
