@@ -79,7 +79,7 @@
 - [KobaltBlu/KotOR.js](https://github.com/KobaltBlu/KotOR.js) — 使用 JavaScript 重制 Odyssey 游戏引擎，该引擎曾用于《KotOR I》和《KotOR II》。 **[149 星标]**
 - [repnz/ReversingMinesweeper](https://github.com/repnz/ReversingMinesweeper) — 逆向分析扫雷：重建扫雷源码 **[146 星标]**
 - [xmoezzz/rfvp](https://github.com/xmoezzz/rfvp) — FVP 引擎及 IDE 的非官方 Rust 跨平台实现 **[146 星标]**
-- [centollOS/SwitchWakerHD](https://github.com/centollOS/SwitchWakerHD) — 将 Wind Waker HD（Wii U）静态重编译到 Nintendo Switch，采用 deko3d 渲染器。需自备游戏转储。 **[139 星标]**
+- [centollOS/SwitchWakerHD](https://github.com/centollOS/SwitchWakerHD) — 将 Wind Waker HD（Wii U）静态重编译到 Nintendo Switch，采用 deko3d 渲染器。需自备游戏转储。 **[139 星标]** · 精选：[SwitchWakerHD：《风之杖 HD》重编译的 Nintendo Switch 移植](https://awesomerea.org/zh/resources/switchwakerhd-switch-port-case/)
 - [krystalgamer/spidey-decomp](https://github.com/krystalgamer/spidey-decomp) — Neversoft《蜘蛛侠》游戏 PC 移植版的反编译项目 **[138 星标]**
 - [Unchiga/YuGiOhForbiddenMemoriesRecomp](https://github.com/Unchiga/YuGiOhForbiddenMemoriesRecomp) — 将 Yu-Gi-Oh! Forbidden Memories（PS1）静态重编译为原生可执行文件，带有实时决斗评级表、融合助手、可调卡片掉落及作弊菜单。需自备光盘。 **[137 星标]**
 - [2003scape/rsc-c](https://github.com/2003scape/rsc-c) — 🍫 将 RuneScape Classic 客户端移植到 C **[135 星标]**

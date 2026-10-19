@@ -79,7 +79,7 @@ These are automatically discovered projects, not individually curated or tested 
 - [KobaltBlu/KotOR.js](https://github.com/KobaltBlu/KotOR.js) — A remake of the Odyssey Game Engine that powered KotOR I &amp; II written in JavaScript **[149 stars]**
 - [repnz/ReversingMinesweeper](https://github.com/repnz/ReversingMinesweeper) — Reverse Engineering Minesweeper: Reconstruct Minesweeper Source Code **[146 stars]**
 - [xmoezzz/rfvp](https://github.com/xmoezzz/rfvp) — A Non-Official Rust cross-platform implementation of the FVP engine &amp; IDE **[146 stars]**
-- [centollOS/SwitchWakerHD](https://github.com/centollOS/SwitchWakerHD) — Wind Waker HD (Wii U) static recompilation for Nintendo Switch, deko3d renderer. Requires your own game dump. **[139 stars]**
+- [centollOS/SwitchWakerHD](https://github.com/centollOS/SwitchWakerHD) — Wind Waker HD (Wii U) static recompilation for Nintendo Switch, deko3d renderer. Requires your own game dump. **[139 stars]** · Curated: [SwitchWakerHD: a Nintendo Switch port of the Wind Waker HD recompilation](https://awesomerea.org/resources/switchwakerhd-switch-port-case/)
 - [krystalgamer/spidey-decomp](https://github.com/krystalgamer/spidey-decomp) — Decompilation of Neversoft's Spider-Man game (PC PORT) **[138 stars]**
 - [Unchiga/YuGiOhForbiddenMemoriesRecomp](https://github.com/Unchiga/YuGiOhForbiddenMemoriesRecomp) — Static recompilation of Yu-Gi-Oh! Forbidden Memories (PS1) into a native executable - with a live duel-rank meter, a fusion assistant, adjustable card drops and a cheat menu. Bring your own disc. **[137 stars]**
 - [2003scape/rsc-c](https://github.com/2003scape/rsc-c) — 🍫 runescape classic client ported to C **[135 stars]**
