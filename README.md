@@ -11,7 +11,7 @@ An independent collection of tools, case studies and research for websites, game
 <a href="https://awesomerea.org/"><img src="assets/readme-banner.svg" alt="Awesome Reverse Engineering Anything — tools, cases and papers across six reverse-engineering domains" width="960"></a>
 
 <!-- BEGIN GENERATED BADGES -->
-[![resources: 440](https://img.shields.io/badge/resources-440-53309C?style=flat-square&labelColor=303447)](https://awesomerea.org/resources/) [![cases: 185](https://img.shields.io/badge/cases-185-53309C?style=flat-square&labelColor=303447)](https://awesomerea.org/cases/) [![papers: 84](https://img.shields.io/badge/papers-84-53309C?style=flat-square&labelColor=303447)](https://awesomerea.org/papers/) [![Catalog checks](https://github.com/reacher-z/Awesome-REA/actions/workflows/validate.yml/badge.svg?branch=main)](https://github.com/reacher-z/Awesome-REA/actions/workflows/validate.yml) [![license: MIT](https://img.shields.io/badge/license-MIT-606779?style=flat-square&labelColor=303447)](LICENSE) [![website: awesomerea.org](https://img.shields.io/badge/website-awesomerea.org-6235B5?style=flat-square&labelColor=303447)](https://awesomerea.org/)
+[![resources: 440](https://img.shields.io/badge/resources-440-53309C?style=flat-square&labelColor=303447)](https://awesomerea.org/resources/) [![cases: 185](https://img.shields.io/badge/cases-185-53309C?style=flat-square&labelColor=303447)](https://awesomerea.org/cases/) [![papers: 85](https://img.shields.io/badge/papers-85-53309C?style=flat-square&labelColor=303447)](https://awesomerea.org/papers/) [![Catalog checks](https://github.com/reacher-z/Awesome-REA/actions/workflows/validate.yml/badge.svg?branch=main)](https://github.com/reacher-z/Awesome-REA/actions/workflows/validate.yml) [![license: MIT](https://img.shields.io/badge/license-MIT-606779?style=flat-square&labelColor=303447)](LICENSE) [![website: awesomerea.org](https://img.shields.io/badge/website-awesomerea.org-6235B5?style=flat-square&labelColor=303447)](https://awesomerea.org/)
 <!-- END GENERATED BADGES -->
 
 **[Search & filter](https://awesomerea.org/)** · **[Browse cases](https://awesomerea.org/cases/)** · **[Research papers](https://awesomerea.org/papers/)** · **[HTML survey](https://awesomerea.org/survey/)**
@@ -28,7 +28,7 @@ An independent collection of tools, case studies and research for websites, game
 
 **Research and workflows**
 
-- [Papers](#papers) (84) · [Agents and MCP](#agents-and-mcp) (40) · [References and Learning](#references-and-learning) (28)
+- [Papers](#papers) (85) · [Agents and MCP](#agents-and-mcp) (40) · [References and Learning](#references-and-learning) (28)
 
 **More ways to browse**
 
@@ -2755,13 +2755,13 @@ REA labels refer to the separate [upstream CLI and MCP project](https://github.c
 <a id="papers"></a>
 ## Papers
 
-**84 papers**, grouped by topic and ordered newest first. Each entry shows its venue and publication status.
+**85 papers**, grouped by topic and ordered newest first. Each entry shows its venue and publication status.
 
 [Browse the paper directory](https://awesomerea.org/papers/) · [Complete bibliography JSON](data/papers.json) · [Suggest a paper](https://github.com/reacher-z/Awesome-REA/issues/new?template=paper.yml)
 
 **By topic**
 
-- [Agent evaluation](#papers-agent-evaluation) (8) · [Decompilation](#papers-decompilation) (32) · [Websites](#papers-website-reconstruction) (15)
+- [Agent evaluation](#papers-agent-evaluation) (8) · [Decompilation](#papers-decompilation) (33) · [Websites](#papers-website-reconstruction) (15)
 - [Games](#papers-game-reconstruction) (6) · [Apps](#papers-app-reconstruction) (7) · [Firmware](#papers-firmware-analysis) (6)
 - [Protocols](#papers-protocol-analysis) (10)
 
@@ -2896,6 +2896,21 @@ Open “Scope and publication details” for each study’s full limitations. So
 ### Decompilation and symbol recovery
 
 [↑ Paper topics](#papers) · [Contents](#contents)
+
+- [**Decoupling is a Necessity: Transformation-Agnostic Decompiled Code Recovery under Optimization and Obfuscation**](https://arxiv.org/abs/2608.27889)
+
+  ReSource refines decompiled functions affected by compiler optimization and obfuscation. Its stages retrieve guidance from a Semantic Distortion Database, predict a control-flow skeleton, and refine names and formatting. Evaluation measures code similarity and retrieval of the corresponding original function from a source corpus.
+
+  arXiv 2026 · Preprint · [PDF](https://arxiv.org/pdf/2608.27889v1) · [Full entry & citation](https://awesomerea.org/papers/paper-resource/)
+
+  <details>
+  <summary>Scope and publication details</summary>
+
+  **Scope and limits:** Function-level similarity and retrieval are proxies; they do not establish compilability, executable equivalence or complete program recovery. Section 5.2 notes missing global context and untested custom obfuscation. The author-linked artifact page describes a simplified dataset and explicitly says the database-construction and control-flow-prediction modules are not yet available.
+
+  **Authors:** Zhiping Zhou et al.
+
+  </details>
 
 - [**SoK: AI-Augmented Binary Reversing**](https://arxiv.org/abs/2606.17398)
 

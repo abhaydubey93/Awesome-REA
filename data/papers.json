@@ -4765,5 +4765,55 @@
     "verified_at": "2026-10-19",
     "verification": "source-reviewed",
     "runtime_tested": false
+  },
+  {
+    "id": "paper-resource",
+    "title": "Decoupling is a Necessity: Transformation-Agnostic Decompiled Code Recovery under Optimization and Obfuscation",
+    "title_zh": "解耦的必要性：面向优化与混淆、无需识别具体变换的反编译代码恢复",
+    "authors": [
+      "Zhiping Zhou",
+      "Xiaohong Li",
+      "Ruitao Feng",
+      "Yao Zhang",
+      "Yuekang Li",
+      "Wenbu Feng"
+    ],
+    "year": 2026,
+    "publication_date": "2026-08-28",
+    "date_precision": "day",
+    "date_basis": "arXiv v1 first-submission date.",
+    "date_basis_zh": "arXiv v1 首次提交日期。",
+    "venue": "arXiv",
+    "publication_status": "preprint",
+    "arxiv_id": "2608.27889",
+    "arxiv_version_reviewed": "v1",
+    "first_arxiv_date": "2026-08-28",
+    "doi": null,
+    "url": "https://arxiv.org/abs/2608.27889",
+    "pdf_url": "https://arxiv.org/pdf/2608.27889v1",
+    "code_url": null,
+    "project_url": "https://sites.google.com/view/resource4binary",
+    "targets": [
+      "binary"
+    ],
+    "description_en": "ReSource refines decompiled functions affected by compiler optimization and obfuscation. Its stages retrieve guidance from a Semantic Distortion Database, predict a control-flow skeleton, and refine names and formatting. Evaluation measures code similarity and retrieval of the corresponding original function from a source corpus.",
+    "description_zh": "ReSource 针对受编译优化与混淆影响的反编译函数进行修复：先从语义失真数据库检索指导信息，再预测控制流骨架，最后调整名称与格式。评估衡量代码相似性，以及能否从源码语料中检索到对应的原始函数。",
+    "scope_limitations_en": "Function-level similarity and retrieval are proxies; they do not establish compilability, executable equivalence or complete program recovery. Section 5.2 notes missing global context and untested custom obfuscation. The author-linked artifact page describes a simplified dataset and explicitly says the database-construction and control-flow-prediction modules are not yet available.",
+    "scope_limitations_zh": "函数级相似性与检索指标属于替代指标，不能证明代码可编译、可执行等价或完整程序恢复。第 5.2 节指出全局上下文缺失，以及定制混淆尚未测试。作者链接的产物页面介绍了简化数据集，并明确说明数据库构建与控制流预测模块尚未提供。",
+    "why_fits_en": "Adds staged refinement of optimized and obfuscated decompiler output, with explicit limits on what retrieval-based evaluation establishes.",
+    "why_fits_zh": "补充对优化及混淆后反编译代码的分阶段修复研究，并明确检索评估能够支持的结论边界。",
+    "metadata_notes": "Title, six-author order and preprint status agree across arXiv metadata and v1 full text. The project page links an anonymous artifact that returned HTTP 403 during review; code_url remains unset. No code, dataset or model was downloaded or run.",
+    "metadata_notes_zh": "arXiv 元数据与 v1 正文的标题、六位作者顺序及预印本状态一致。项目页面链接的匿名产物在审阅时返回 HTTP 403，因此 code_url 留空。本次未下载或运行代码、数据集及模型。",
+    "evidence_urls": [
+      "https://arxiv.org/abs/2608.27889v1",
+      "https://arxiv.org/html/2608.27889v1",
+      "https://arxiv.org/pdf/2608.27889v1",
+      "https://sites.google.com/view/resource4binary",
+      "https://sites.google.com/view/resource4binary/dataset-source-code"
+    ],
+    "kind": "research",
+    "verified_at": "2026-10-19",
+    "verification": "source-reviewed",
+    "runtime_tested": false
   }
 ]
