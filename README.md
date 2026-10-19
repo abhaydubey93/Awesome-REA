@@ -11,7 +11,7 @@ An independent collection of tools, case studies and research for websites, game
 <a href="https://awesomerea.org/"><img src="assets/readme-banner.svg" alt="Awesome Reverse Engineering Anything — tools, cases and papers across six reverse-engineering domains" width="960"></a>
 
 <!-- BEGIN GENERATED BADGES -->
-[![resources: 354](https://img.shields.io/badge/resources-354-53309C?style=flat-square&labelColor=303447)](https://awesomerea.org/resources/) [![cases: 183](https://img.shields.io/badge/cases-183-53309C?style=flat-square&labelColor=303447)](https://awesomerea.org/cases/) [![papers: 83](https://img.shields.io/badge/papers-83-53309C?style=flat-square&labelColor=303447)](https://awesomerea.org/papers/) [![Catalog checks](https://github.com/reacher-z/Awesome-REA/actions/workflows/validate.yml/badge.svg?branch=main)](https://github.com/reacher-z/Awesome-REA/actions/workflows/validate.yml) [![license: MIT](https://img.shields.io/badge/license-MIT-606779?style=flat-square&labelColor=303447)](LICENSE) [![website: awesomerea.org](https://img.shields.io/badge/website-awesomerea.org-6235B5?style=flat-square&labelColor=303447)](https://awesomerea.org/)
+[![resources: 355](https://img.shields.io/badge/resources-355-53309C?style=flat-square&labelColor=303447)](https://awesomerea.org/resources/) [![cases: 183](https://img.shields.io/badge/cases-183-53309C?style=flat-square&labelColor=303447)](https://awesomerea.org/cases/) [![papers: 83](https://img.shields.io/badge/papers-83-53309C?style=flat-square&labelColor=303447)](https://awesomerea.org/papers/) [![Catalog checks](https://github.com/reacher-z/Awesome-REA/actions/workflows/validate.yml/badge.svg?branch=main)](https://github.com/reacher-z/Awesome-REA/actions/workflows/validate.yml) [![license: MIT](https://img.shields.io/badge/license-MIT-606779?style=flat-square&labelColor=303447)](LICENSE) [![website: awesomerea.org](https://img.shields.io/badge/website-awesomerea.org-6235B5?style=flat-square&labelColor=303447)](https://awesomerea.org/)
 <!-- END GENERATED BADGES -->
 
 **[Search & filter](https://awesomerea.org/)** · **[Browse cases](https://awesomerea.org/cases/)** · **[Research papers](https://awesomerea.org/papers/)** · **[HTML survey](https://awesomerea.org/survey/)**
@@ -24,7 +24,7 @@ An independent collection of tools, case studies and research for websites, game
 **Tools and cases by target**
 
 - [Website](#website) (19) · [Game](#game) (165) · [App](#app) (50)
-- [Native Binary](#native-binary) (25) · [Firmware and Hardware](#firmware) (15) · [Protocol](#protocol) (13)
+- [Native Binary](#native-binary) (25) · [Firmware and Hardware](#firmware) (15) · [Protocol](#protocol) (14)
 
 **Research and workflows**
 
@@ -1832,6 +1832,12 @@ REA labels refer to the separate [upstream CLI and MCP project](https://github.c
   NCC Group's tools for decoding and re-encoding Protocol Buffers messages without the matching .proto definition. The decoder returns the message data with an editable type definition built from best-effort guesses based on wire types; analysts can name fields, correct types and re-encode edited messages, which protoc --decode\_raw cannot do. It ships as a Python library with a bbpb CLI, a Jython Burp Suite extension and a mitmproxy addon, and its README traces it to modifying messages during mobile penetration tests.
 
   Tool · Also: App · [Requirements & evidence](https://awesomerea.org/resources/blackbox-protobuf/)
+
+- [**protobuf-inspector**](https://github.com/mildsunrise/protobuf-inspector)
+
+  Parses Protocol Buffers blobs (proto2 or proto3) without their .proto definition and prints a colored view of the fields in wire order, trying each length-delimited chunk as a nested message, then a packed array, a string and finally a hexdump. Analysts record what they work out in a protobuf\_config.py file, with field types and names, message and enum types and custom native types, until the parser no longer has to guess. Field names, zig-zag encoding, signedness and integer-versus-float choices cannot be read from the wire, and the README says guesses can be wrong, especially for small chunks.
+
+  Tool · [Requirements & evidence](https://awesomerea.org/resources/protobuf-inspector/)
 
 <a id="agents-and-mcp"></a>
 ### Agents and MCP
