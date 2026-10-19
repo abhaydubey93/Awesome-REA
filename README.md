@@ -11,7 +11,7 @@ An independent collection of tools, case studies and research for websites, game
 <a href="https://awesomerea.org/"><img src="assets/readme-banner.svg" alt="Awesome Reverse Engineering Anything — tools, cases and papers across six reverse-engineering domains" width="960"></a>
 
 <!-- BEGIN GENERATED BADGES -->
-[![resources: 357](https://img.shields.io/badge/resources-357-53309C?style=flat-square&labelColor=303447)](https://awesomerea.org/resources/) [![cases: 184](https://img.shields.io/badge/cases-184-53309C?style=flat-square&labelColor=303447)](https://awesomerea.org/cases/) [![papers: 83](https://img.shields.io/badge/papers-83-53309C?style=flat-square&labelColor=303447)](https://awesomerea.org/papers/) [![Catalog checks](https://github.com/reacher-z/Awesome-REA/actions/workflows/validate.yml/badge.svg?branch=main)](https://github.com/reacher-z/Awesome-REA/actions/workflows/validate.yml) [![license: MIT](https://img.shields.io/badge/license-MIT-606779?style=flat-square&labelColor=303447)](LICENSE) [![website: awesomerea.org](https://img.shields.io/badge/website-awesomerea.org-6235B5?style=flat-square&labelColor=303447)](https://awesomerea.org/)
+[![resources: 358](https://img.shields.io/badge/resources-358-53309C?style=flat-square&labelColor=303447)](https://awesomerea.org/resources/) [![cases: 184](https://img.shields.io/badge/cases-184-53309C?style=flat-square&labelColor=303447)](https://awesomerea.org/cases/) [![papers: 83](https://img.shields.io/badge/papers-83-53309C?style=flat-square&labelColor=303447)](https://awesomerea.org/papers/) [![Catalog checks](https://github.com/reacher-z/Awesome-REA/actions/workflows/validate.yml/badge.svg?branch=main)](https://github.com/reacher-z/Awesome-REA/actions/workflows/validate.yml) [![license: MIT](https://img.shields.io/badge/license-MIT-606779?style=flat-square&labelColor=303447)](LICENSE) [![website: awesomerea.org](https://img.shields.io/badge/website-awesomerea.org-6235B5?style=flat-square&labelColor=303447)](https://awesomerea.org/)
 <!-- END GENERATED BADGES -->
 
 **[Search & filter](https://awesomerea.org/)** · **[Browse cases](https://awesomerea.org/cases/)** · **[Research papers](https://awesomerea.org/papers/)** · **[HTML survey](https://awesomerea.org/survey/)**
@@ -24,7 +24,7 @@ An independent collection of tools, case studies and research for websites, game
 **Tools and cases by target**
 
 - [Website](#website) (19) · [Game](#game) (166) · [App](#app) (52)
-- [Native Binary](#native-binary) (25) · [Firmware and Hardware](#firmware) (15) · [Protocol](#protocol) (13)
+- [Native Binary](#native-binary) (26) · [Firmware and Hardware](#firmware) (15) · [Protocol](#protocol) (13)
 
 **Research and workflows**
 
@@ -1664,6 +1664,12 @@ REA labels refer to the separate [upstream CLI and MCP project](https://github.c
   C++ disassembler and decompiler for compiled Python bytecode that aims to support bytecode from any Python version. pycdas prints the disassembly of a .pyc file, and pycdc prints reconstructed Python source to stdout with errors on stderr; both also accept raw marshalled code objects when the Python version is given on the command line. The source carries opcode tables for Python 1.0 through 3.13.
 
   Tool · Also: App · [Requirements & evidence](https://awesomerea.org/resources/pycdc/)
+
+- [**pymobiledevice3**](https://github.com/doronz88/pymobiledevice3)
+
+  Pure Python 3 library and command-line tool for communicating with iPhones, iPads and other iOS devices from Windows, Linux or macOS, implementing usbmux, lockdown and its services, DTX-based developer (DVT) services and the RemoteXPC tunnels that iOS 17+ uses for developer access. Commands cover device discovery and port forwarding, syslog and crash-report collection, AFC file access, app and profile management, PCAP capture of device traffic, Bluetooth HCI logging, WebInspector automation with a Chrome DevTools Protocol bridge for Safari and WebViews, and DVT tooling such as process monitoring and screenshots; firmware update, recovery/DFU and backups are also handled. Its protocol-internals documentation walks through the usbmux, lockdown, DTX and RemoteXPC layers, and helper scripts in misc/ sniff plist and RemoteXPC traffic.
+
+  Tool · Also: App, Protocol · [Requirements & evidence](https://awesomerea.org/resources/pymobiledevice3/)
 
 <a id="firmware"></a>
 ### Firmware and Hardware
