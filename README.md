@@ -11,7 +11,7 @@ An independent collection of tools, case studies and research for websites, game
 <a href="https://awesomerea.org/"><img src="assets/readme-banner.svg" alt="Awesome Reverse Engineering Anything — tools, cases and papers across six reverse-engineering domains" width="960"></a>
 
 <!-- BEGIN GENERATED BADGES -->
-[![resources: 450](https://img.shields.io/badge/resources-450-53309C?style=flat-square&labelColor=303447)](https://awesomerea.org/resources/) [![cases: 190](https://img.shields.io/badge/cases-190-53309C?style=flat-square&labelColor=303447)](https://awesomerea.org/cases/) [![papers: 86](https://img.shields.io/badge/papers-86-53309C?style=flat-square&labelColor=303447)](https://awesomerea.org/papers/) [![Catalog checks](https://github.com/reacher-z/Awesome-REA/actions/workflows/validate.yml/badge.svg?branch=main)](https://github.com/reacher-z/Awesome-REA/actions/workflows/validate.yml) [![license: MIT](https://img.shields.io/badge/license-MIT-606779?style=flat-square&labelColor=303447)](LICENSE) [![website: awesomerea.org](https://img.shields.io/badge/website-awesomerea.org-6235B5?style=flat-square&labelColor=303447)](https://awesomerea.org/)
+[![resources: 450](https://img.shields.io/badge/resources-450-53309C?style=flat-square&labelColor=303447)](https://awesomerea.org/resources/) [![cases: 190](https://img.shields.io/badge/cases-190-53309C?style=flat-square&labelColor=303447)](https://awesomerea.org/cases/) [![papers: 87](https://img.shields.io/badge/papers-87-53309C?style=flat-square&labelColor=303447)](https://awesomerea.org/papers/) [![Catalog checks](https://github.com/reacher-z/Awesome-REA/actions/workflows/validate.yml/badge.svg?branch=main)](https://github.com/reacher-z/Awesome-REA/actions/workflows/validate.yml) [![license: MIT](https://img.shields.io/badge/license-MIT-606779?style=flat-square&labelColor=303447)](LICENSE) [![website: awesomerea.org](https://img.shields.io/badge/website-awesomerea.org-6235B5?style=flat-square&labelColor=303447)](https://awesomerea.org/)
 <!-- END GENERATED BADGES -->
 
 **[Search & filter](https://awesomerea.org/)** · **[Browse cases](https://awesomerea.org/cases/)** · **[Research papers](https://awesomerea.org/papers/)** · **[HTML survey](https://awesomerea.org/survey/)**
@@ -28,7 +28,7 @@ An independent collection of tools, case studies and research for websites, game
 
 **Research and workflows**
 
-- [Papers](#papers) (86) · [Agents and MCP](#agents-and-mcp) (40) · [References and Learning](#references-and-learning) (30)
+- [Papers](#papers) (87) · [Agents and MCP](#agents-and-mcp) (40) · [References and Learning](#references-and-learning) (30)
 
 **More ways to browse**
 
@@ -2815,13 +2815,13 @@ REA labels refer to the separate [upstream CLI and MCP project](https://github.c
 <a id="papers"></a>
 ## Papers
 
-**86 papers**, grouped by topic and ordered newest first. Each entry shows its venue and publication status.
+**87 papers**, grouped by topic and ordered newest first. Each entry shows its venue and publication status.
 
 [Browse the paper directory](https://awesomerea.org/papers/) · [Complete bibliography JSON](data/papers.json) · [Suggest a paper](https://github.com/reacher-z/Awesome-REA/issues/new?template=paper.yml)
 
 **By topic**
 
-- [Agent evaluation](#papers-agent-evaluation) (8) · [Decompilation](#papers-decompilation) (34) · [Websites](#papers-website-reconstruction) (15)
+- [Agent evaluation](#papers-agent-evaluation) (9) · [Decompilation](#papers-decompilation) (34) · [Websites](#papers-website-reconstruction) (15)
 - [Games](#papers-game-reconstruction) (6) · [Apps](#papers-app-reconstruction) (7) · [Firmware](#papers-firmware-analysis) (6)
 - [Protocols](#papers-protocol-analysis) (10)
 
@@ -2859,6 +2859,21 @@ Open “Scope and publication details” for each study’s full limitations. So
   **Scope and limits:** The revised study reports 19 programs, 262 binary instances, and 1,572 graded tasks. Binaries and task instances are not publicly released; access is through an evaluation service. Its contamination-control claim is the authors' methodology, not an independent guarantee.
 
   **Authors:** Jeremy Spence et al.
+
+  </details>
+
+- [**Automatically Attacking Software Reverse Engineering AI Agents**](https://papers.academic-conferences.org/index.php/eccws/article/view/4597)
+
+  A proof of concept for indirect prompt injection against Cline/GhidraMCP binary-analysis agents. An adapted AutoDAN generates embedded strings that make the agent describe different behavior. The authors demonstrate four small C programs with Qwen3-8B and transfer the examples to GPT-OSS-120B.
+
+  ECCWS 2026 · Conference paper · [PDF](https://papers.academic-conferences.org/index.php/eccws/article/download/4597/4412/17540) · [Full entry & citation](https://awesomerea.org/papers/paper-attacking-re-ai-agents/)
+
+  <details>
+  <summary>Scope and publication details</summary>
+
+  **Scope and limits:** Four illustrative programs, each with one or two functions; no repeated-trial success rate, realistic malware corpus or defense evaluation. The reported decompiler setting truncates strings beyond 2,048 characters. These examples do not establish general reliability across models or complex binaries.
+
+  **Authors:** Brian Crawford et al.
 
   </details>
 

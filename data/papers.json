@@ -4858,5 +4858,52 @@
     "verified_at": "2026-10-19",
     "verification": "source-reviewed",
     "runtime_tested": false
+  },
+  {
+    "id": "paper-attacking-re-ai-agents",
+    "title": "Automatically Attacking Software Reverse Engineering AI Agents",
+    "title_zh": "针对软件逆向工程 AI 智能体的自动化攻击",
+    "authors": [
+      "Brian Crawford",
+      "Justin Phillips",
+      "Patrick McClure"
+    ],
+    "year": 2026,
+    "publication_date": "2026-06-15",
+    "date_precision": "day",
+    "date_basis": "Publisher and Crossref online publication date; arXiv submission is recorded separately.",
+    "date_basis_zh": "采用出版方与 Crossref 的在线出版日期，arXiv 首次提交日期另行记录。",
+    "venue": "ECCWS 2026",
+    "publication_status": "conference-paper",
+    "arxiv_id": "2605.30667",
+    "arxiv_version_reviewed": "v1",
+    "first_arxiv_date": "2026-05-28",
+    "doi": "10.34190/eccws.25.1.4597",
+    "url": "https://papers.academic-conferences.org/index.php/eccws/article/view/4597",
+    "pdf_url": "https://papers.academic-conferences.org/index.php/eccws/article/download/4597/4412/17540",
+    "code_url": null,
+    "project_url": null,
+    "targets": [
+      "binary"
+    ],
+    "description_en": "A proof of concept for indirect prompt injection against Cline/GhidraMCP binary-analysis agents. An adapted AutoDAN generates embedded strings that make the agent describe different behavior. The authors demonstrate four small C programs with Qwen3-8B and transfer the examples to GPT-OSS-120B.",
+    "description_zh": "研究针对 Cline/GhidraMCP 二进制分析智能体的间接提示注入。改造后的 AutoDAN 生成嵌入字符串，使分析报告偏离程序实际行为。作者以四个小型 C 程序在 Qwen3-8B 上演示，并将样例迁移到 GPT-OSS-120B。",
+    "scope_limitations_en": "Four illustrative programs, each with one or two functions; no repeated-trial success rate, realistic malware corpus or defense evaluation. The reported decompiler setting truncates strings beyond 2,048 characters. These examples do not establish general reliability across models or complex binaries.",
+    "scope_limitations_zh": "仅有四个单函数或双函数示例，没有重复试验成功率、真实恶意软件语料或防御评测。论文所用反编译设置会截断超过 2,048 字符的字符串，结果不能推及其他模型或复杂二进制。",
+    "why_fits_en": "Adds direct evidence of a trust-boundary failure in agent-assisted reverse engineering.",
+    "why_fits_zh": "补充智能体辅助逆向工程中信任边界失效的直接研究证据。",
+    "metadata_notes": "ECCWS proceedings, pages 199–205; Crossref labels its deposit journal-article. Author order agrees across publisher, Crossref and arXiv. No implementation or dataset is linked in the reviewed primary sources; code/project links remain null. No experiments were run.",
+    "metadata_notes_zh": "发表于 ECCWS 论文集，第 199–205 页；Crossref 将该元数据条目标为 journal-article。三处一手来源的作者顺序一致。所审阅的一手来源未链接实现或数据集，代码和项目链接留空。本次未运行实验。",
+    "evidence_urls": [
+      "https://papers.academic-conferences.org/index.php/eccws/article/view/4597",
+      "https://papers.academic-conferences.org/index.php/eccws/article/download/4597/4412/17540",
+      "https://api.crossref.org/works/10.34190/eccws.25.1.4597",
+      "https://arxiv.org/abs/2605.30667v1",
+      "https://arxiv.org/pdf/2605.30667v1"
+    ],
+    "kind": "research",
+    "verified_at": "2026-10-19",
+    "verification": "source-reviewed",
+    "runtime_tested": false
   }
 ]

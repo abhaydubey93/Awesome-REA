@@ -11,7 +11,7 @@
 <a href="https://awesomerea.org/zh/"><img src="assets/readme-banner.svg" alt="Awesome Reverse Engineering Anything — 覆盖六类逆向目标的工具、案例与论文" width="960"></a>
 
 <!-- BEGIN GENERATED BADGES -->
-[![精选资源: 450](https://img.shields.io/badge/%E7%B2%BE%E9%80%89%E8%B5%84%E6%BA%90-450-53309C?style=flat-square&labelColor=303447)](https://awesomerea.org/zh/resources/) [![案例: 190](https://img.shields.io/badge/%E6%A1%88%E4%BE%8B-190-53309C?style=flat-square&labelColor=303447)](https://awesomerea.org/zh/cases/) [![论文: 86](https://img.shields.io/badge/%E8%AE%BA%E6%96%87-86-53309C?style=flat-square&labelColor=303447)](https://awesomerea.org/zh/papers/) [![目录检查](https://github.com/reacher-z/Awesome-REA/actions/workflows/validate.yml/badge.svg?branch=main)](https://github.com/reacher-z/Awesome-REA/actions/workflows/validate.yml) [![许可: MIT](https://img.shields.io/badge/%E8%AE%B8%E5%8F%AF-MIT-606779?style=flat-square&labelColor=303447)](LICENSE) [![网站: awesomerea.org](https://img.shields.io/badge/%E7%BD%91%E7%AB%99-awesomerea.org-6235B5?style=flat-square&labelColor=303447)](https://awesomerea.org/zh/)
+[![精选资源: 450](https://img.shields.io/badge/%E7%B2%BE%E9%80%89%E8%B5%84%E6%BA%90-450-53309C?style=flat-square&labelColor=303447)](https://awesomerea.org/zh/resources/) [![案例: 190](https://img.shields.io/badge/%E6%A1%88%E4%BE%8B-190-53309C?style=flat-square&labelColor=303447)](https://awesomerea.org/zh/cases/) [![论文: 87](https://img.shields.io/badge/%E8%AE%BA%E6%96%87-87-53309C?style=flat-square&labelColor=303447)](https://awesomerea.org/zh/papers/) [![目录检查](https://github.com/reacher-z/Awesome-REA/actions/workflows/validate.yml/badge.svg?branch=main)](https://github.com/reacher-z/Awesome-REA/actions/workflows/validate.yml) [![许可: MIT](https://img.shields.io/badge/%E8%AE%B8%E5%8F%AF-MIT-606779?style=flat-square&labelColor=303447)](LICENSE) [![网站: awesomerea.org](https://img.shields.io/badge/%E7%BD%91%E7%AB%99-awesomerea.org-6235B5?style=flat-square&labelColor=303447)](https://awesomerea.org/zh/)
 <!-- END GENERATED BADGES -->
 
 **[搜索与筛选](https://awesomerea.org/zh/)** · **[浏览案例](https://awesomerea.org/zh/cases/)** · **[研究论文](https://awesomerea.org/zh/papers/)** · **[HTML 综述](https://awesomerea.org/zh/survey/)**
@@ -28,7 +28,7 @@
 
 **论文与工作流**
 
-- [论文](#papers) (86) · [智能体与 MCP](#agents-and-mcp) (40) · [文档与学习资源](#references-and-learning) (30)
+- [论文](#papers) (87) · [智能体与 MCP](#agents-and-mcp) (40) · [文档与学习资源](#references-and-learning) (30)
 
 **更多浏览方式**
 
@@ -2816,13 +2816,13 @@ REA 标签指向单独维护的[上游 CLI 与 MCP 项目](https://github.com/mo
 <a id="papers"></a>
 ## 论文
 
-**86 篇论文**，按主题分组，组内按年份从新到旧排列。每项均标明发表场所与状态，中文标题为译名。
+**87 篇论文**，按主题分组，组内按年份从新到旧排列。每项均标明发表场所与状态，中文标题为译名。
 
 [浏览论文目录](https://awesomerea.org/zh/papers/) · [完整书目 JSON](data/papers.json) · [推荐论文](https://github.com/reacher-z/Awesome-REA/issues/new?template=paper.yml)
 
 **按主题**
 
-- [智能体评测](#papers-agent-evaluation) (8) · [反编译](#papers-decompilation) (34) · [网站](#papers-website-reconstruction) (15)
+- [智能体评测](#papers-agent-evaluation) (9) · [反编译](#papers-decompilation) (34) · [网站](#papers-website-reconstruction) (15)
 - [游戏](#papers-game-reconstruction) (6) · [应用](#papers-app-reconstruction) (7) · [固件](#papers-firmware-analysis) (6)
 - [协议](#papers-protocol-analysis) (10)
 
@@ -2860,6 +2860,21 @@ REA 标签指向单独维护的[上游 CLI 与 MCP 项目](https://github.com/mo
   **范围与限制:** 修订版研究报告 19 个程序、262 个二进制实例和 1,572 个评分任务。二进制与任务实例未公开发布，只能通过评估服务访问。污染控制是作者的方法论主张，并非独立保证。
 
   **作者:** Jeremy Spence 等
+
+  </details>
+
+- [**针对软件逆向工程 AI 智能体的自动化攻击**](https://papers.academic-conferences.org/index.php/eccws/article/view/4597)
+
+  研究针对 Cline/GhidraMCP 二进制分析智能体的间接提示注入。改造后的 AutoDAN 生成嵌入字符串，使分析报告偏离程序实际行为。作者以四个小型 C 程序在 Qwen3-8B 上演示，并将样例迁移到 GPT-OSS-120B。
+
+  ECCWS 2026 · 会议论文 · [PDF](https://papers.academic-conferences.org/index.php/eccws/article/download/4597/4412/17540) · [完整条目与引用](https://awesomerea.org/zh/papers/paper-attacking-re-ai-agents/)
+
+  <details>
+  <summary>范围与发表信息</summary>
+
+  **范围与限制:** 仅有四个单函数或双函数示例，没有重复试验成功率、真实恶意软件语料或防御评测。论文所用反编译设置会截断超过 2,048 字符的字符串，结果不能推及其他模型或复杂二进制。
+
+  **作者:** Brian Crawford 等
 
   </details>
 
