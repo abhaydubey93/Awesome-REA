@@ -220,7 +220,7 @@
 - [naivenom/reversing-list](https://github.com/naivenom/reversing-list) — 逆向工程资源列表 **[148 星标]**
 - [pret/pokepinballrs](https://github.com/pret/pokepinballrs) — 《宝可梦弹珠台：红宝石与蓝宝石》反编译项目 **[148 星标]**
 - [dashr9230/SA-MP](https://github.com/dashr9230/SA-MP) — San Andreas Multiplayer 0.3.7 版本的匹配反编译项目，仍在开发中 **[147 星标]**
-- [dreamingmoths/memory-of-alessa](https://github.com/dreamingmoths/memory-of-alessa) — 《寂静岭 3》的匹配反编译项目，仍在开发中 **[145 星标]**
+- [dreamingmoths/memory-of-alessa](https://github.com/dreamingmoths/memory-of-alessa) — 《寂静岭 3》的匹配反编译项目，仍在开发中 **[145 星标]** · 精选：[memory of alessa：进行中的 Silent Hill 3 PS2 匹配反编译](https://awesomerea.org/zh/resources/silent-hill-3-memory-of-alessa-decomp-case/)
 - [xbret/xenoblade](https://github.com/xbret/xenoblade) — 《异度之刃》日版反编译项目 **[142 星标]**
 - [mazeworks-security/Simplifier](https://github.com/mazeworks-security/Simplifier) — 高效的通用布尔算术混合（MBA）表达式简化器 **[137 星标]**
 - [Alfaa123/Volvo-CAN-Gauge](https://github.com/Alfaa123/Volvo-CAN-Gauge) — 对 Volvo VIDA 协议和 CAN 网络进行逆向工程，以获取 Volvo 汽车上无法通过 OBD2 取得的诊断信息。 **[135 星标]**

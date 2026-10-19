@@ -220,7 +220,7 @@ These are automatically discovered projects, not individually curated or tested 
 - [naivenom/reversing-list](https://github.com/naivenom/reversing-list) — Reversing list **[148 stars]**
 - [pret/pokepinballrs](https://github.com/pret/pokepinballrs) — Decompilation of Pokémon Pinball: Ruby &amp; Sapphire **[148 stars]**
 - [dashr9230/SA-MP](https://github.com/dashr9230/SA-MP) — A work-in-progress matching decompilation of the 0.3.7 version of San Andreas Multiplayer **[147 stars]**
-- [dreamingmoths/memory-of-alessa](https://github.com/dreamingmoths/memory-of-alessa) — In-progress matching decompilation of Silent Hill 3 **[145 stars]**
+- [dreamingmoths/memory-of-alessa](https://github.com/dreamingmoths/memory-of-alessa) — In-progress matching decompilation of Silent Hill 3 **[145 stars]** · Curated: [memory of alessa: an in-progress Silent Hill 3 PS2 matching decompilation](https://awesomerea.org/resources/silent-hill-3-memory-of-alessa-decomp-case/)
 - [xbret/xenoblade](https://github.com/xbret/xenoblade) — Decompilation of Xenoblade (JP) **[142 stars]**
 - [mazeworks-security/Simplifier](https://github.com/mazeworks-security/Simplifier) — Efficient general mixed boolean-arithmetic (MBA) simplifier **[137 stars]**
 - [Alfaa123/Volvo-CAN-Gauge](https://github.com/Alfaa123/Volvo-CAN-Gauge) — Reverse engineering the Volvo VIDA protocol and CAN network to gather diagnostic information not available via OBD2 on Volvo cars. **[135 stars]**
