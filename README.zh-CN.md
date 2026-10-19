@@ -11,7 +11,7 @@
 <a href="https://awesomerea.org/zh/"><img src="assets/readme-banner.svg" alt="Awesome Reverse Engineering Anything — 覆盖六类逆向目标的工具、案例与论文" width="960"></a>
 
 <!-- BEGIN GENERATED BADGES -->
-[![精选资源: 367](https://img.shields.io/badge/%E7%B2%BE%E9%80%89%E8%B5%84%E6%BA%90-367-53309C?style=flat-square&labelColor=303447)](https://awesomerea.org/zh/resources/) [![案例: 184](https://img.shields.io/badge/%E6%A1%88%E4%BE%8B-184-53309C?style=flat-square&labelColor=303447)](https://awesomerea.org/zh/cases/) [![论文: 83](https://img.shields.io/badge/%E8%AE%BA%E6%96%87-83-53309C?style=flat-square&labelColor=303447)](https://awesomerea.org/zh/papers/) [![目录检查](https://github.com/reacher-z/Awesome-REA/actions/workflows/validate.yml/badge.svg?branch=main)](https://github.com/reacher-z/Awesome-REA/actions/workflows/validate.yml) [![许可: MIT](https://img.shields.io/badge/%E8%AE%B8%E5%8F%AF-MIT-606779?style=flat-square&labelColor=303447)](LICENSE) [![网站: awesomerea.org](https://img.shields.io/badge/%E7%BD%91%E7%AB%99-awesomerea.org-6235B5?style=flat-square&labelColor=303447)](https://awesomerea.org/zh/)
+[![精选资源: 368](https://img.shields.io/badge/%E7%B2%BE%E9%80%89%E8%B5%84%E6%BA%90-368-53309C?style=flat-square&labelColor=303447)](https://awesomerea.org/zh/resources/) [![案例: 184](https://img.shields.io/badge/%E6%A1%88%E4%BE%8B-184-53309C?style=flat-square&labelColor=303447)](https://awesomerea.org/zh/cases/) [![论文: 83](https://img.shields.io/badge/%E8%AE%BA%E6%96%87-83-53309C?style=flat-square&labelColor=303447)](https://awesomerea.org/zh/papers/) [![目录检查](https://github.com/reacher-z/Awesome-REA/actions/workflows/validate.yml/badge.svg?branch=main)](https://github.com/reacher-z/Awesome-REA/actions/workflows/validate.yml) [![许可: MIT](https://img.shields.io/badge/%E8%AE%B8%E5%8F%AF-MIT-606779?style=flat-square&labelColor=303447)](LICENSE) [![网站: awesomerea.org](https://img.shields.io/badge/%E7%BD%91%E7%AB%99-awesomerea.org-6235B5?style=flat-square&labelColor=303447)](https://awesomerea.org/zh/)
 <!-- END GENERATED BADGES -->
 
 **[搜索与筛选](https://awesomerea.org/zh/)** · **[浏览案例](https://awesomerea.org/zh/cases/)** · **[研究论文](https://awesomerea.org/zh/papers/)** · **[HTML 综述](https://awesomerea.org/zh/survey/)**
@@ -23,7 +23,7 @@
 <!-- BEGIN GENERATED CONTENTS -->
 **按目标找工具与案例**
 
-- [网站](#website) (19) · [游戏](#game) (166) · [应用](#app) (54)
+- [网站](#website) (19) · [游戏](#game) (166) · [应用](#app) (55)
 - [原生二进制](#native-binary) (29) · [固件与硬件](#firmware) (16) · [协议](#protocol) (13)
 
 **论文与工作流**
@@ -1518,6 +1518,12 @@ REA 标签指向单独维护的[上游 CLI 与 MCP 项目](https://github.com/mo
   用于读取、修改和重建 PE（可移植可执行）文件的 C# 库，既支持 Windows 原生映像，也支持带 .NET 元数据的映像。它提供三个抽象层次：原始文件头和节区（PEFile）；导入、导出、TLS、异常、调试信息和 Win32 资源等数据目录的解析结果（PEImage）；以及类似 System.Reflection 的 .NET 程序集和模块模型，涵盖托管、原生和动态方法体。它还能从 AppHost／单文件捆绑包中提取文件，支持 ReadyToRun 映像，无需 DIA 即可读取 PDB 和 Portable PDB 符号；上游的设计目标是在面对格式异常或经过混淆的二进制时保持稳健。
 
   工具 · .NET · 也适用：二进制 · [使用条件与证据](https://awesomerea.org/zh/resources/asmresolver/)
+
+- [**dex2jar Android DEX 转换工具集**](https://github.com/pxb1988/dex2jar)
+
+  用 Java 编写的工具集，可将 Android DEX 字节码（包括 APK 内的 DEX 文件）转换为打包成 jar 的 JVM .class 文件，供 Java 反编译器和字节码工具使用。它还通过类似 ASM 的 API 读写 DEX，以自有实现进行 smali 反汇编与汇编，可将 jar 转回 DEX，并附带 d2j-decrypt-string 等辅助工具。
+
+  工具 · Android · [使用条件与证据](https://awesomerea.org/zh/resources/dex2jar/)
 
 <a id="native-binary"></a>
 ### Native Binary · 原生二进制

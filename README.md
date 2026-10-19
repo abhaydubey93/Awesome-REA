@@ -11,7 +11,7 @@ An independent collection of tools, case studies and research for websites, game
 <a href="https://awesomerea.org/"><img src="assets/readme-banner.svg" alt="Awesome Reverse Engineering Anything — tools, cases and papers across six reverse-engineering domains" width="960"></a>
 
 <!-- BEGIN GENERATED BADGES -->
-[![resources: 367](https://img.shields.io/badge/resources-367-53309C?style=flat-square&labelColor=303447)](https://awesomerea.org/resources/) [![cases: 184](https://img.shields.io/badge/cases-184-53309C?style=flat-square&labelColor=303447)](https://awesomerea.org/cases/) [![papers: 83](https://img.shields.io/badge/papers-83-53309C?style=flat-square&labelColor=303447)](https://awesomerea.org/papers/) [![Catalog checks](https://github.com/reacher-z/Awesome-REA/actions/workflows/validate.yml/badge.svg?branch=main)](https://github.com/reacher-z/Awesome-REA/actions/workflows/validate.yml) [![license: MIT](https://img.shields.io/badge/license-MIT-606779?style=flat-square&labelColor=303447)](LICENSE) [![website: awesomerea.org](https://img.shields.io/badge/website-awesomerea.org-6235B5?style=flat-square&labelColor=303447)](https://awesomerea.org/)
+[![resources: 368](https://img.shields.io/badge/resources-368-53309C?style=flat-square&labelColor=303447)](https://awesomerea.org/resources/) [![cases: 184](https://img.shields.io/badge/cases-184-53309C?style=flat-square&labelColor=303447)](https://awesomerea.org/cases/) [![papers: 83](https://img.shields.io/badge/papers-83-53309C?style=flat-square&labelColor=303447)](https://awesomerea.org/papers/) [![Catalog checks](https://github.com/reacher-z/Awesome-REA/actions/workflows/validate.yml/badge.svg?branch=main)](https://github.com/reacher-z/Awesome-REA/actions/workflows/validate.yml) [![license: MIT](https://img.shields.io/badge/license-MIT-606779?style=flat-square&labelColor=303447)](LICENSE) [![website: awesomerea.org](https://img.shields.io/badge/website-awesomerea.org-6235B5?style=flat-square&labelColor=303447)](https://awesomerea.org/)
 <!-- END GENERATED BADGES -->
 
 **[Search & filter](https://awesomerea.org/)** · **[Browse cases](https://awesomerea.org/cases/)** · **[Research papers](https://awesomerea.org/papers/)** · **[HTML survey](https://awesomerea.org/survey/)**
@@ -23,7 +23,7 @@ An independent collection of tools, case studies and research for websites, game
 <!-- BEGIN GENERATED CONTENTS -->
 **Tools and cases by target**
 
-- [Website](#website) (19) · [Game](#game) (166) · [App](#app) (54)
+- [Website](#website) (19) · [Game](#game) (166) · [App](#app) (55)
 - [Native Binary](#native-binary) (29) · [Firmware and Hardware](#firmware) (16) · [Protocol](#protocol) (13)
 
 **Research and workflows**
@@ -1517,6 +1517,12 @@ REA labels refer to the separate [upstream CLI and MCP project](https://github.c
   C# library for reading, modifying and rebuilding Portable Executable files, covering both native Windows images and images with .NET metadata. It offers three levels of abstraction: raw headers and sections (PEFile); interpreted data directories such as imports, exports, TLS, exceptions, debug data and Win32 resources (PEImage); and a System.Reflection-like model of .NET assemblies and modules with managed, native and dynamic method bodies. It also extracts files from AppHost/single-file bundles, supports ReadyToRun images and reads PDB and Portable PDB symbols without DIA, and upstream designs it to stay robust against malformed or obfuscated binaries.
 
   Tool · .NET · Also: Binary · [Requirements & evidence](https://awesomerea.org/resources/asmresolver/)
+
+- [**dex2jar**](https://github.com/pxb1988/dex2jar)
+
+  Java toolkit that converts Android DEX bytecode, including DEX inside APKs, into JVM .class files packed as a jar for Java decompilers and bytecode tools. It also reads and writes DEX through an ASM-like API, disassembles and assembles smali with its own implementation, converts jars back to DEX and ships helpers such as d2j-decrypt-string.
+
+  Tool · Android · [Requirements & evidence](https://awesomerea.org/resources/dex2jar/)
 
 <a id="native-binary"></a>
 ### Native Binary
