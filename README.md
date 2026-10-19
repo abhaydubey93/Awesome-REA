@@ -11,7 +11,7 @@ An independent collection of tools, case studies and research for websites, game
 <a href="https://awesomerea.org/"><img src="assets/readme-banner.svg" alt="Awesome Reverse Engineering Anything — tools, cases and papers across six reverse-engineering domains" width="960"></a>
 
 <!-- BEGIN GENERATED BADGES -->
-[![resources: 360](https://img.shields.io/badge/resources-360-53309C?style=flat-square&labelColor=303447)](https://awesomerea.org/resources/) [![cases: 184](https://img.shields.io/badge/cases-184-53309C?style=flat-square&labelColor=303447)](https://awesomerea.org/cases/) [![papers: 83](https://img.shields.io/badge/papers-83-53309C?style=flat-square&labelColor=303447)](https://awesomerea.org/papers/) [![Catalog checks](https://github.com/reacher-z/Awesome-REA/actions/workflows/validate.yml/badge.svg?branch=main)](https://github.com/reacher-z/Awesome-REA/actions/workflows/validate.yml) [![license: MIT](https://img.shields.io/badge/license-MIT-606779?style=flat-square&labelColor=303447)](LICENSE) [![website: awesomerea.org](https://img.shields.io/badge/website-awesomerea.org-6235B5?style=flat-square&labelColor=303447)](https://awesomerea.org/)
+[![resources: 361](https://img.shields.io/badge/resources-361-53309C?style=flat-square&labelColor=303447)](https://awesomerea.org/resources/) [![cases: 184](https://img.shields.io/badge/cases-184-53309C?style=flat-square&labelColor=303447)](https://awesomerea.org/cases/) [![papers: 83](https://img.shields.io/badge/papers-83-53309C?style=flat-square&labelColor=303447)](https://awesomerea.org/papers/) [![Catalog checks](https://github.com/reacher-z/Awesome-REA/actions/workflows/validate.yml/badge.svg?branch=main)](https://github.com/reacher-z/Awesome-REA/actions/workflows/validate.yml) [![license: MIT](https://img.shields.io/badge/license-MIT-606779?style=flat-square&labelColor=303447)](LICENSE) [![website: awesomerea.org](https://img.shields.io/badge/website-awesomerea.org-6235B5?style=flat-square&labelColor=303447)](https://awesomerea.org/)
 <!-- END GENERATED BADGES -->
 
 **[Search & filter](https://awesomerea.org/)** · **[Browse cases](https://awesomerea.org/cases/)** · **[Research papers](https://awesomerea.org/papers/)** · **[HTML survey](https://awesomerea.org/survey/)**
@@ -24,7 +24,7 @@ An independent collection of tools, case studies and research for websites, game
 **Tools and cases by target**
 
 - [Website](#website) (19) · [Game](#game) (166) · [App](#app) (53)
-- [Native Binary](#native-binary) (26) · [Firmware and Hardware](#firmware) (16) · [Protocol](#protocol) (13)
+- [Native Binary](#native-binary) (26) · [Firmware and Hardware](#firmware) (16) · [Protocol](#protocol) (14)
 
 **Research and workflows**
 
@@ -1868,6 +1868,12 @@ REA labels refer to the separate [upstream CLI and MCP project](https://github.c
   NCC Group's tools for decoding and re-encoding Protocol Buffers messages without the matching .proto definition. The decoder returns the message data with an editable type definition built from best-effort guesses based on wire types; analysts can name fields, correct types and re-encode edited messages, which protoc --decode\_raw cannot do. It ships as a Python library with a bbpb CLI, a Jython Burp Suite extension and a mitmproxy addon, and its README traces it to modifying messages during mobile penetration tests.
 
   Tool · Also: App · [Requirements & evidence](https://awesomerea.org/resources/blackbox-protobuf/)
+
+- [**Packetry**](https://github.com/greatscottgadgets/packetry)
+
+  Great Scott Gadgets' USB 2.0 protocol analysis application for live capture with the Cynthion analyzer or for exploring previously captured traffic, working from physical-layer packet data at High, Full and Low Speed. Its GTK 4 interface offers a hierarchical view that expands high-level events into their transactions and packets, plus chronological transaction and packet views, while a device pane summarizes each observed device from its decoded descriptors, including HID report descriptors. Captures are opened and saved as pcap files with the LINKTYPE\_USB\_2\_0 link type, and v0.5.0 added pcapng with custom blocks for non-packet events.
+
+  Tool · [Requirements & evidence](https://awesomerea.org/resources/packetry/)
 
 <a id="agents-and-mcp"></a>
 ### Agents and MCP

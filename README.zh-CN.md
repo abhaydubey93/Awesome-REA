@@ -11,7 +11,7 @@
 <a href="https://awesomerea.org/zh/"><img src="assets/readme-banner.svg" alt="Awesome Reverse Engineering Anything — 覆盖六类逆向目标的工具、案例与论文" width="960"></a>
 
 <!-- BEGIN GENERATED BADGES -->
-[![精选资源: 360](https://img.shields.io/badge/%E7%B2%BE%E9%80%89%E8%B5%84%E6%BA%90-360-53309C?style=flat-square&labelColor=303447)](https://awesomerea.org/zh/resources/) [![案例: 184](https://img.shields.io/badge/%E6%A1%88%E4%BE%8B-184-53309C?style=flat-square&labelColor=303447)](https://awesomerea.org/zh/cases/) [![论文: 83](https://img.shields.io/badge/%E8%AE%BA%E6%96%87-83-53309C?style=flat-square&labelColor=303447)](https://awesomerea.org/zh/papers/) [![目录检查](https://github.com/reacher-z/Awesome-REA/actions/workflows/validate.yml/badge.svg?branch=main)](https://github.com/reacher-z/Awesome-REA/actions/workflows/validate.yml) [![许可: MIT](https://img.shields.io/badge/%E8%AE%B8%E5%8F%AF-MIT-606779?style=flat-square&labelColor=303447)](LICENSE) [![网站: awesomerea.org](https://img.shields.io/badge/%E7%BD%91%E7%AB%99-awesomerea.org-6235B5?style=flat-square&labelColor=303447)](https://awesomerea.org/zh/)
+[![精选资源: 361](https://img.shields.io/badge/%E7%B2%BE%E9%80%89%E8%B5%84%E6%BA%90-361-53309C?style=flat-square&labelColor=303447)](https://awesomerea.org/zh/resources/) [![案例: 184](https://img.shields.io/badge/%E6%A1%88%E4%BE%8B-184-53309C?style=flat-square&labelColor=303447)](https://awesomerea.org/zh/cases/) [![论文: 83](https://img.shields.io/badge/%E8%AE%BA%E6%96%87-83-53309C?style=flat-square&labelColor=303447)](https://awesomerea.org/zh/papers/) [![目录检查](https://github.com/reacher-z/Awesome-REA/actions/workflows/validate.yml/badge.svg?branch=main)](https://github.com/reacher-z/Awesome-REA/actions/workflows/validate.yml) [![许可: MIT](https://img.shields.io/badge/%E8%AE%B8%E5%8F%AF-MIT-606779?style=flat-square&labelColor=303447)](LICENSE) [![网站: awesomerea.org](https://img.shields.io/badge/%E7%BD%91%E7%AB%99-awesomerea.org-6235B5?style=flat-square&labelColor=303447)](https://awesomerea.org/zh/)
 <!-- END GENERATED BADGES -->
 
 **[搜索与筛选](https://awesomerea.org/zh/)** · **[浏览案例](https://awesomerea.org/zh/cases/)** · **[研究论文](https://awesomerea.org/zh/papers/)** · **[HTML 综述](https://awesomerea.org/zh/survey/)**
@@ -24,7 +24,7 @@
 **按目标找工具与案例**
 
 - [网站](#website) (19) · [游戏](#game) (166) · [应用](#app) (53)
-- [原生二进制](#native-binary) (26) · [固件与硬件](#firmware) (16) · [协议](#protocol) (13)
+- [原生二进制](#native-binary) (26) · [固件与硬件](#firmware) (16) · [协议](#protocol) (14)
 
 **论文与工作流**
 
@@ -1869,6 +1869,12 @@ REA 标签指向单独维护的[上游 CLI 与 MCP 项目](https://github.com/mo
   NCC Group 推出的工具集，可在没有对应 .proto 定义的情况下解码并重新编码 Protocol Buffers 报文。解码器返回报文数据，以及根据线路类型尽力推测生成、可编辑的类型定义；分析者可以为字段命名、修正类型并重新编码修改后的报文，这是 protoc --decode\_raw 做不到的。它提供 Python 库及 bbpb 命令行工具、基于 Jython 的 Burp Suite 扩展和 mitmproxy 插件，README 说明它最初用于在移动应用渗透测试中修改报文。
 
   工具 · 也适用：应用 · [使用条件与证据](https://awesomerea.org/zh/resources/blackbox-protobuf/)
+
+- [**Packetry USB 2.0 协议分析工具**](https://github.com/greatscottgadgets/packetry)
+
+  Great Scott Gadgets 推出的 USB 2.0 协议分析应用，可配合 Cynthion 分析仪实时捕获，也可浏览已捕获的流量，处理高速、全速和低速 USB 的物理层数据包。其 GTK 4 界面提供分层视图，可将高层事件逐级展开为事务和数据包，另有按时间顺序排列的事务视图和数据包视图；设备面板则根据解码后的描述符（包括 HID 报告描述符）汇总每个观察到的设备。捕获以 LINKTYPE\_USB\_2\_0 链路类型的 pcap 文件打开和保存，v0.5.0 还加入了带有非数据包事件自定义块的 pcapng 格式。
+
+  工具 · [使用条件与证据](https://awesomerea.org/zh/resources/packetry/)
 
 <a id="agents-and-mcp"></a>
 ### Agents and MCP · 智能体与 MCP
