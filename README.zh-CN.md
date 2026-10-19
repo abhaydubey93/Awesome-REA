@@ -11,7 +11,7 @@
 <a href="https://awesomerea.org/zh/"><img src="assets/readme-banner.svg" alt="Awesome Reverse Engineering Anything — 覆盖六类逆向目标的工具、案例与论文" width="960"></a>
 
 <!-- BEGIN GENERATED BADGES -->
-[![精选资源: 351](https://img.shields.io/badge/%E7%B2%BE%E9%80%89%E8%B5%84%E6%BA%90-351-53309C?style=flat-square&labelColor=303447)](https://awesomerea.org/zh/resources/) [![案例: 183](https://img.shields.io/badge/%E6%A1%88%E4%BE%8B-183-53309C?style=flat-square&labelColor=303447)](https://awesomerea.org/zh/cases/) [![论文: 83](https://img.shields.io/badge/%E8%AE%BA%E6%96%87-83-53309C?style=flat-square&labelColor=303447)](https://awesomerea.org/zh/papers/) [![目录检查](https://github.com/reacher-z/Awesome-REA/actions/workflows/validate.yml/badge.svg?branch=main)](https://github.com/reacher-z/Awesome-REA/actions/workflows/validate.yml) [![许可: MIT](https://img.shields.io/badge/%E8%AE%B8%E5%8F%AF-MIT-606779?style=flat-square&labelColor=303447)](LICENSE) [![网站: awesomerea.org](https://img.shields.io/badge/%E7%BD%91%E7%AB%99-awesomerea.org-6235B5?style=flat-square&labelColor=303447)](https://awesomerea.org/zh/)
+[![精选资源: 351](https://img.shields.io/badge/%E7%B2%BE%E9%80%89%E8%B5%84%E6%BA%90-351-53309C?style=flat-square&labelColor=303447)](https://awesomerea.org/zh/resources/) [![案例: 183](https://img.shields.io/badge/%E6%A1%88%E4%BE%8B-183-53309C?style=flat-square&labelColor=303447)](https://awesomerea.org/zh/cases/) [![论文: 84](https://img.shields.io/badge/%E8%AE%BA%E6%96%87-84-53309C?style=flat-square&labelColor=303447)](https://awesomerea.org/zh/papers/) [![目录检查](https://github.com/reacher-z/Awesome-REA/actions/workflows/validate.yml/badge.svg?branch=main)](https://github.com/reacher-z/Awesome-REA/actions/workflows/validate.yml) [![许可: MIT](https://img.shields.io/badge/%E8%AE%B8%E5%8F%AF-MIT-606779?style=flat-square&labelColor=303447)](LICENSE) [![网站: awesomerea.org](https://img.shields.io/badge/%E7%BD%91%E7%AB%99-awesomerea.org-6235B5?style=flat-square&labelColor=303447)](https://awesomerea.org/zh/)
 <!-- END GENERATED BADGES -->
 
 **[搜索与筛选](https://awesomerea.org/zh/)** · **[浏览案例](https://awesomerea.org/zh/cases/)** · **[研究论文](https://awesomerea.org/zh/papers/)** · **[HTML 综述](https://awesomerea.org/zh/survey/)**
@@ -28,7 +28,7 @@
 
 **论文与工作流**
 
-- [论文](#papers) (83) · [智能体与 MCP](#agents-and-mcp) (31) · [文档与学习资源](#references-and-learning) (27)
+- [论文](#papers) (84) · [智能体与 MCP](#agents-and-mcp) (31) · [文档与学习资源](#references-and-learning) (27)
 
 **更多浏览方式**
 
@@ -2222,14 +2222,14 @@ REA 标签指向单独维护的[上游 CLI 与 MCP 项目](https://github.com/mo
 <a id="papers"></a>
 ## 论文
 
-**83 篇论文**，按主题分组，组内按年份从新到旧排列。每项均标明发表场所与状态，中文标题为译名。
+**84 篇论文**，按主题分组，组内按年份从新到旧排列。每项均标明发表场所与状态，中文标题为译名。
 
 [浏览论文目录](https://awesomerea.org/zh/papers/) · [完整书目 JSON](data/papers.json) · [推荐论文](https://github.com/reacher-z/Awesome-REA/issues/new?template=paper.yml)
 
 **按主题**
 
 - [智能体评测](#papers-agent-evaluation) (8) · [反编译](#papers-decompilation) (31) · [网站](#papers-website-reconstruction) (15)
-- [游戏](#papers-game-reconstruction) (6) · [应用](#papers-app-reconstruction) (7) · [固件](#papers-firmware-analysis) (6)
+- [游戏](#papers-game-reconstruction) (6) · [应用](#papers-app-reconstruction) (7) · [固件](#papers-firmware-analysis) (7)
 - [协议](#papers-protocol-analysis) (10)
 
 展开“范围与发表信息”查看完整研究边界。部分论文也出现在精选资源目录中，两者数量不可相加。
@@ -3311,6 +3311,21 @@ REA 标签指向单独维护的[上游 CLI 与 MCP 项目](https://github.com/mo
   **范围与限制:** 面向 Cortex-M3/M4 的产物需要配置内存映射，且不会自动为 DMA 建模。对硬件的抽象可能产生真实设备上不可能出现的崩溃。该工作构建分析环境，不代表恢复原始源码或忠实重建完整设备。
 
   **作者:** Tobias Scharnowski 等
+
+  </details>
+
+- [**SoK：通过重托管实现嵌入式系统的安全分析**](https://dl.acm.org/doi/10.1145/3433210.3453093)
+
+  系统化梳理“重托管”：把嵌入式固件从实体硬件迁移到虚拟环境中，该环境对硬件行为的建模足以支持模糊测试、符号执行等动态分析。作者以 2,574 个硬件配置衡量全系统仿真为何难以扩展，包括来自 Linux 5.11.4 的 1,956 个设备树二进制文件（DTB）和 618 个厂商提供的 ARM Cortex SVD 文件。他们将语料中的 CPU 型号与 QEMU 的支持情况对比，统计不同外设的数量，以驱动源码行数作为复杂度的近似指标，并以蒙特卡罗模拟逐个 SoC 添加外设模型。若要支持随机抽取的 10% SoC，Linux 语料约需 3,947 种外设，ARM Cortex 语料约需 1,730 种，而 QEMU 5.2 实现的外设为 1,083 种。论文随后按各系统在每一层采用仿真、替换、符号建模、透传至硬件或保持不变的方式对既有工作分类，描述含保真度评估的迭代式重托管流程，并列出开放问题。
+
+  ACM ASIA CCS 2021 · 会议论文 · [PDF](https://dl.acm.org/doi/pdf/10.1145/3433210.3453093) · [代码](https://github.com/rehosting/rehosting_sok) · [完整条目与引用](https://awesomerea.org/zh/papers/paper-rehosting-sok/)
+
+  <details>
+  <summary>范围与发表信息</summary>
+
+  **范围与限制:** 这是一项结合测量研究的系统化综述，并非新的重托管工具。测量基于硬件描述而非固件镜像：设备树覆盖基于 Linux 的（Type-1）系统，SVD 文件只涵盖 ARM Cortex 硬件，且只统计样本数不少于十个的架构或厂商。驱动源码行数被明确作为外设建模工作量的粗略近似，闭源驱动则按所属架构的平均值计。“手工编写的硬件仿真器难以扩展”这一结论依赖于这些近似指标以及 2021 年初的 QEMU 5.2 与 OVPsim。作者指出，重托管保真度缺乏正式定义，也没有大规模保真度评估，因此分类法只对各方法作定性比较；同期的另一篇综述对保真度有更详细的讨论。
+
+  **作者:** Andrew Fasano 等
 
   </details>
 

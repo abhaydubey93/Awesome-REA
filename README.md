@@ -11,7 +11,7 @@ An independent collection of tools, case studies and research for websites, game
 <a href="https://awesomerea.org/"><img src="assets/readme-banner.svg" alt="Awesome Reverse Engineering Anything — tools, cases and papers across six reverse-engineering domains" width="960"></a>
 
 <!-- BEGIN GENERATED BADGES -->
-[![resources: 351](https://img.shields.io/badge/resources-351-53309C?style=flat-square&labelColor=303447)](https://awesomerea.org/resources/) [![cases: 183](https://img.shields.io/badge/cases-183-53309C?style=flat-square&labelColor=303447)](https://awesomerea.org/cases/) [![papers: 83](https://img.shields.io/badge/papers-83-53309C?style=flat-square&labelColor=303447)](https://awesomerea.org/papers/) [![Catalog checks](https://github.com/reacher-z/Awesome-REA/actions/workflows/validate.yml/badge.svg?branch=main)](https://github.com/reacher-z/Awesome-REA/actions/workflows/validate.yml) [![license: MIT](https://img.shields.io/badge/license-MIT-606779?style=flat-square&labelColor=303447)](LICENSE) [![website: awesomerea.org](https://img.shields.io/badge/website-awesomerea.org-6235B5?style=flat-square&labelColor=303447)](https://awesomerea.org/)
+[![resources: 351](https://img.shields.io/badge/resources-351-53309C?style=flat-square&labelColor=303447)](https://awesomerea.org/resources/) [![cases: 183](https://img.shields.io/badge/cases-183-53309C?style=flat-square&labelColor=303447)](https://awesomerea.org/cases/) [![papers: 84](https://img.shields.io/badge/papers-84-53309C?style=flat-square&labelColor=303447)](https://awesomerea.org/papers/) [![Catalog checks](https://github.com/reacher-z/Awesome-REA/actions/workflows/validate.yml/badge.svg?branch=main)](https://github.com/reacher-z/Awesome-REA/actions/workflows/validate.yml) [![license: MIT](https://img.shields.io/badge/license-MIT-606779?style=flat-square&labelColor=303447)](LICENSE) [![website: awesomerea.org](https://img.shields.io/badge/website-awesomerea.org-6235B5?style=flat-square&labelColor=303447)](https://awesomerea.org/)
 <!-- END GENERATED BADGES -->
 
 **[Search & filter](https://awesomerea.org/)** · **[Browse cases](https://awesomerea.org/cases/)** · **[Research papers](https://awesomerea.org/papers/)** · **[HTML survey](https://awesomerea.org/survey/)**
@@ -28,7 +28,7 @@ An independent collection of tools, case studies and research for websites, game
 
 **Research and workflows**
 
-- [Papers](#papers) (83) · [Agents and MCP](#agents-and-mcp) (31) · [References and Learning](#references-and-learning) (27)
+- [Papers](#papers) (84) · [Agents and MCP](#agents-and-mcp) (31) · [References and Learning](#references-and-learning) (27)
 
 **More ways to browse**
 
@@ -2221,14 +2221,14 @@ REA labels refer to the separate [upstream CLI and MCP project](https://github.c
 <a id="papers"></a>
 ## Papers
 
-**83 papers**, grouped by topic and ordered newest first. Each entry shows its venue and publication status.
+**84 papers**, grouped by topic and ordered newest first. Each entry shows its venue and publication status.
 
 [Browse the paper directory](https://awesomerea.org/papers/) · [Complete bibliography JSON](data/papers.json) · [Suggest a paper](https://github.com/reacher-z/Awesome-REA/issues/new?template=paper.yml)
 
 **By topic**
 
 - [Agent evaluation](#papers-agent-evaluation) (8) · [Decompilation](#papers-decompilation) (31) · [Websites](#papers-website-reconstruction) (15)
-- [Games](#papers-game-reconstruction) (6) · [Apps](#papers-app-reconstruction) (7) · [Firmware](#papers-firmware-analysis) (6)
+- [Games](#papers-game-reconstruction) (6) · [Apps](#papers-app-reconstruction) (7) · [Firmware](#papers-firmware-analysis) (7)
 - [Protocols](#papers-protocol-analysis) (10)
 
 Open “Scope and publication details” for each study’s full limitations. Some papers also appear among curated resources; counts are not additive.
@@ -3310,6 +3310,21 @@ Open “Scope and publication details” for each study’s full limitations. So
   **Scope and limits:** The Cortex-M3/M4 artifact requires memory-map configuration and does not automatically model DMA. Abstracting hardware can produce crashes that are impossible on the physical device. This is an analysis environment, not original-source recovery or faithful full-device reconstruction.
 
   **Authors:** Tobias Scharnowski et al.
+
+  </details>
+
+- [**SoK: Enabling Security Analyses of Embedded Systems via Rehosting**](https://dl.acm.org/doi/10.1145/3433210.3453093)
+
+  Systematizes rehosting: moving embedded firmware from its physical hardware into a virtual environment that models enough hardware behavior for dynamic analysis such as fuzzing and symbolic execution. The authors measure why whole-system emulation does not scale using 2,574 hardware configurations, 1,956 device tree blobs from Linux 5.11.4 and 618 vendor ARM Cortex SVD files. They compare corpus CPU models with QEMU support, count unique peripherals, use driver source lines as a complexity proxy, and run a Monte Carlo simulation of adding peripheral models SoC by SoC. Supporting a random 10% of the SoCs would need about 3,947 peripherals for the Linux corpus and 1,730 for the ARM Cortex corpus, against 1,083 implemented in QEMU 5.2. The paper then classifies prior systems by how they emulate, replace, symbolically model, pass through to hardware or leave each layer unmodified, describes an iterative rehosting process with fidelity evaluation, and sets out open problems.
+
+  ACM ASIA CCS 2021 · Conference paper · [PDF](https://dl.acm.org/doi/pdf/10.1145/3433210.3453093) · [Code](https://github.com/rehosting/rehosting_sok) · [Full entry & citation](https://awesomerea.org/papers/paper-rehosting-sok/)
+
+  <details>
+  <summary>Scope and publication details</summary>
+
+  **Scope and limits:** This is a systematization with a measurement study, not a new rehosting tool. The measurements use hardware descriptions rather than firmware images: device trees cover Linux-based (Type-1) systems and SVD files cover only ARM Cortex hardware, and only architectures or vendors with ten or more samples are counted. Driver source lines are an explicitly rough proxy for the effort of modeling a peripheral, and closed-source drivers are assigned an architecture average. The conclusion that manually written hardware emulators will not scale rests on these proxies and on QEMU 5.2 and OVPsim as of early 2021. The authors note that rehosting fidelity lacks a formal definition and that no large-scale fidelity evaluations exist, so the taxonomy compares approaches qualitatively; a concurrent survey covers fidelity in more detail.
+
+  **Authors:** Andrew Fasano et al.
 
   </details>
 
