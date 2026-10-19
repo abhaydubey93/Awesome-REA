@@ -10495,5 +10495,34 @@
       "https://github.com/PrimeDecomp/prime/blob/2fd31790998c0486744a6289cac7e2fecc22d143/LICENSE",
       "https://decomp.dev/PrimeDecomp/prime"
     ]
+  },
+  {
+    "id": "batla-3d-server-emulator-case",
+    "name": "Batla 3D server emulator (2015 client)",
+    "targets": [
+      "game",
+      "protocol"
+    ],
+    "description_en": "C# server emulator for the 2015 Steam client of Batla 3D, covering HTTP account, shop and room services and Lidgren UDP gameplay. It includes a client-assembly patcher and protocol notes that distinguish recovered client evidence from emulator rules.",
+    "description_zh": "面向 Batla 3D 2015 年 Steam 客户端的 C# 服务端模拟器，涵盖账户、商店、房间 HTTP 服务与 Lidgren UDP 对战。项目包含客户端程序集补丁工具，协议文档区分了从客户端恢复的证据与模拟器自行选择的规则。",
+    "requirements": [
+      "Requires an owned Unity 4.6.9f1 Steam client and .NET 10 SDK. The patcher uses dnlib; strict Steam validation requires Windows x86 Steam libraries.",
+      "MIT covers the repository code; game files must come from your own installation. Client patches also change packet fields and gameplay behavior beyond the server address.",
+      "Some combat, economy and objective values are emulator policies. Client evidence does not establish every original server rule or full behavioral equivalence.",
+      "The README declares this stack frozen and unsupported. The referenced Batla.UdpSmoke harness is absent from the reviewed tree. No runtime reproduction or REA integration was verified."
+    ],
+    "url": "https://github.com/Serega25511s/Batla-3D-server-emu",
+    "category": "reconstruction-cases",
+    "relationship": "independent-reconstruction",
+    "kind": "case-study",
+    "evidence_url": "https://github.com/Serega25511s/Batla-3D-server-emu/blob/c70f254ee86b3fa7363b5afb98541bcaa9e6c751/README.md",
+    "additional_evidence_urls": [
+      "https://github.com/Serega25511s/Batla-3D-server-emu/blob/c70f254ee86b3fa7363b5afb98541bcaa9e6c751/LICENSE",
+      "https://github.com/Serega25511s/Batla-3D-server-emu/blob/c70f254ee86b3fa7363b5afb98541bcaa9e6c751/server/docs/protocol.md",
+      "https://github.com/Serega25511s/Batla-3D-server-emu/blob/c70f254ee86b3fa7363b5afb98541bcaa9e6c751/server/docs/weapon-upgrades.md",
+      "https://github.com/Serega25511s/Batla-3D-server-emu/blob/c70f254ee86b3fa7363b5afb98541bcaa9e6c751/server/src/Batla.Server/Batla.Server.csproj"
+    ],
+    "verified_at": "2026-10-19",
+    "verification": "source-reviewed"
   }
 ]
