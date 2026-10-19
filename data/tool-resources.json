@@ -9541,5 +9541,29 @@
       "https://github.com/QBDI/QBDI/releases/tag/v0.12.1",
       "https://pypi.org/project/PyQBDI/0.12.1/"
     ]
+  },
+  {
+    "category": "reconstruction-cases",
+    "relationship": "independent-reconstruction",
+    "kind": "case-study",
+    "verified_at": "2026-10-18",
+    "verification": "source-reviewed",
+    "id": "wino-mail-case",
+    "name": "Wino Mail: recreating Windows Mail and Calendar",
+    "url": "https://github.com/bkaankose/Wino-Mail",
+    "targets": [
+      "app"
+    ],
+    "description_en": "Native Windows client that aims to preserve the familiar Windows Mail and Calendar experience while rebuilding its functionality. The upstream README documents a WinUI 3 interface, mail and calendar providers, contacts, tasks and offline workflows.",
+    "description_zh": "原生 Windows 客户端，以重建 Windows 邮件与日历的功能、保留熟悉的使用体验为目标。上游 README 说明了 WinUI 3 界面、邮件与日历服务、联系人、待办及离线工作流。",
+    "evidence_url": "https://github.com/bkaankose/Wino-Mail/blob/72b8d56881789ab11e42c9ab41b6567db1b85cde/README.md",
+    "additional_evidence_urls": [
+      "https://github.com/bkaankose/Wino-Mail/blob/72b8d56881789ab11e42c9ab41b6567db1b85cde/LICENSE.md"
+    ],
+    "requirements": [
+      "Windows application from bkaankose/Wino-Mail; the reviewed README links Microsoft Store and App Installer distribution.",
+      "The repository publishes GNU GPL v3 license text for its code; this does not license the original Microsoft application or branding.",
+      "Feature coverage and preservation of the original experience are upstream goals and claims. The application was not installed, built or compared here; no REA integration is established."
+    ]
   }
 ]

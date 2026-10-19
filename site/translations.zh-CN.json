@@ -3636,5 +3636,13 @@
       "README 说明 QBDI 不处理信号、新线程创建和 C++ 异常。其文档还指出，插桩工具与目标程序共用堆和库，因此堆分配器等不可重入代码应交给插桩范围之外的执行代理处理，且操作系统加载器本身无法插桩。用户需自备目标程序和注入途径。",
       "LICENSE.txt 说明 QBDI 采用 Apache-2.0 许可，并列出静态链接的组件：LLVM（Apache-2.0 附 LLVM 例外）、spdlog、fmtlib、Catch2、pybind11，以及采用 GPLv3/Apache-2.0 的 SHA-256 实现；GitHub 无法识别这份合并许可文件。本条目未对任何程序进行插桩。"
     ]
+  },
+  "wino-mail-case": {
+    "name": "Wino Mail：重建 Windows 邮件与日历体验",
+    "requirements": [
+      "来自 bkaankose/Wino-Mail 的 Windows 应用；已审查 README 链接 Microsoft Store 与 App Installer 分发渠道。",
+      "仓库为其代码提供 GNU GPL 第 3 版许可证正文；这不授予原 Microsoft 应用或品牌的许可。",
+      "功能覆盖与保留原有体验均为上游目标和声明。本次未安装、构建或对比应用，未证实 REA 集成。"
+    ]
   }
 }
