@@ -11,7 +11,7 @@
 <a href="https://awesomerea.org/zh/"><img src="assets/readme-banner.svg" alt="Awesome Reverse Engineering Anything — 覆盖六类逆向目标的工具、案例与论文" width="960"></a>
 
 <!-- BEGIN GENERATED BADGES -->
-[![精选资源: 357](https://img.shields.io/badge/%E7%B2%BE%E9%80%89%E8%B5%84%E6%BA%90-357-53309C?style=flat-square&labelColor=303447)](https://awesomerea.org/zh/resources/) [![案例: 184](https://img.shields.io/badge/%E6%A1%88%E4%BE%8B-184-53309C?style=flat-square&labelColor=303447)](https://awesomerea.org/zh/cases/) [![论文: 83](https://img.shields.io/badge/%E8%AE%BA%E6%96%87-83-53309C?style=flat-square&labelColor=303447)](https://awesomerea.org/zh/papers/) [![目录检查](https://github.com/reacher-z/Awesome-REA/actions/workflows/validate.yml/badge.svg?branch=main)](https://github.com/reacher-z/Awesome-REA/actions/workflows/validate.yml) [![许可: MIT](https://img.shields.io/badge/%E8%AE%B8%E5%8F%AF-MIT-606779?style=flat-square&labelColor=303447)](LICENSE) [![网站: awesomerea.org](https://img.shields.io/badge/%E7%BD%91%E7%AB%99-awesomerea.org-6235B5?style=flat-square&labelColor=303447)](https://awesomerea.org/zh/)
+[![精选资源: 357](https://img.shields.io/badge/%E7%B2%BE%E9%80%89%E8%B5%84%E6%BA%90-357-53309C?style=flat-square&labelColor=303447)](https://awesomerea.org/zh/resources/) [![案例: 184](https://img.shields.io/badge/%E6%A1%88%E4%BE%8B-184-53309C?style=flat-square&labelColor=303447)](https://awesomerea.org/zh/cases/) [![论文: 84](https://img.shields.io/badge/%E8%AE%BA%E6%96%87-84-53309C?style=flat-square&labelColor=303447)](https://awesomerea.org/zh/papers/) [![目录检查](https://github.com/reacher-z/Awesome-REA/actions/workflows/validate.yml/badge.svg?branch=main)](https://github.com/reacher-z/Awesome-REA/actions/workflows/validate.yml) [![许可: MIT](https://img.shields.io/badge/%E8%AE%B8%E5%8F%AF-MIT-606779?style=flat-square&labelColor=303447)](LICENSE) [![网站: awesomerea.org](https://img.shields.io/badge/%E7%BD%91%E7%AB%99-awesomerea.org-6235B5?style=flat-square&labelColor=303447)](https://awesomerea.org/zh/)
 <!-- END GENERATED BADGES -->
 
 **[搜索与筛选](https://awesomerea.org/zh/)** · **[浏览案例](https://awesomerea.org/zh/cases/)** · **[研究论文](https://awesomerea.org/zh/papers/)** · **[HTML 综述](https://awesomerea.org/zh/survey/)**
@@ -28,7 +28,7 @@
 
 **论文与工作流**
 
-- [论文](#papers) (83) · [智能体与 MCP](#agents-and-mcp) (31) · [文档与学习资源](#references-and-learning) (27)
+- [论文](#papers) (84) · [智能体与 MCP](#agents-and-mcp) (31) · [文档与学习资源](#references-and-learning) (27)
 
 **更多浏览方式**
 
@@ -2258,13 +2258,13 @@ REA 标签指向单独维护的[上游 CLI 与 MCP 项目](https://github.com/mo
 <a id="papers"></a>
 ## 论文
 
-**83 篇论文**，按主题分组，组内按年份从新到旧排列。每项均标明发表场所与状态，中文标题为译名。
+**84 篇论文**，按主题分组，组内按年份从新到旧排列。每项均标明发表场所与状态，中文标题为译名。
 
 [浏览论文目录](https://awesomerea.org/zh/papers/) · [完整书目 JSON](data/papers.json) · [推荐论文](https://github.com/reacher-z/Awesome-REA/issues/new?template=paper.yml)
 
 **按主题**
 
-- [智能体评测](#papers-agent-evaluation) (8) · [反编译](#papers-decompilation) (31) · [网站](#papers-website-reconstruction) (15)
+- [智能体评测](#papers-agent-evaluation) (8) · [反编译](#papers-decompilation) (32) · [网站](#papers-website-reconstruction) (15)
 - [游戏](#papers-game-reconstruction) (6) · [应用](#papers-app-reconstruction) (7) · [固件](#papers-firmware-analysis) (6)
 - [协议](#papers-protocol-analysis) (10)
 
@@ -2817,6 +2817,21 @@ REA 标签指向单独维护的[上游 CLI 与 MCP 项目](https://github.com/mo
   **范围与限制:** 评测使用来自纯 C 语言 GNU 软件包、构建为 x86-64 Linux 可执行文件的 67,246 个过程；在剔除 C++ 可执行文件、测试程序、静态链接软件包及同一软件包的重复版本后，按软件包划分为 60,403／2,034／4,809 个样本。标签取自剥离前的名称，F1 按名称子词计算，因此输出是模型学到的建议，而非恢复出的原始符号。模拟 API 名称混淆（将 .dynstr 节清零）会使 Nero-GNN 的 F1 降至 38.83；论文未处理加壳和更强的混淆。每个过程至少需要一个可静态检测的调用点，内联过程无法命名。数据生成依赖已授权的 IDA Pro（测试版本 6.95）识别过程边界并导出，另需 angr 与 LLVM 10；模型代码使用 TensorFlow 1.13.1。本条不对与当前工具版本的兼容性作任何判断。
 
   **作者:** Yaniv David 等
+
+  </details>
+
+- [**Egalito：与布局无关的二进制重编译**](https://dl.acm.org/doi/10.1145/3373376.3378470)
+
+  Egalito 对去除符号的 x86-64 与 ARM64 二进制进行静态重编译，借助位置无关的可执行文件和库所携带的元数据，恢复完整的反汇编，使每一处代码与数据交叉引用都成为显式链接。其与布局无关的中间表示 EIR 贴近机器码，因此重新生成的输出可预测，同时提供更高层的视图用于分析；对于没有元数据的跳转表，则借助数据流分析推断。由于不受原始布局约束，工具可以自由移动或改写代码；作者构建了九种工具，包括由 Egalito 变换自身的持续代码随机化、retpoline 防御以及 Intel CET 的软件模拟。作者报告，在来自 172 个 Debian 软件包的 867 个可执行文件与库中，有 866 个的跳转表与编译器给出的真实结果一致；变换后的 149 个软件包中有 90 个通过全部测试；在 SPEC CPU 2006 上性能提升 1.7%。
+
+  ASPLOS 2020 · 会议论文 · [PDF](https://www.cs.columbia.edu/~junfeng/papers/egalito-asplos20.pdf) · [代码](https://github.com/columbia/egalito) · [完整条目与引用](https://awesomerea.org/zh/papers/paper-egalito/)
+
+  <details>
+  <summary>范围与发表信息</summary>
+
+  **范围与限制:** Egalito 依赖位置无关代码提供足够的元数据；除非像作者对 Fuchsia 内核的实验那样提供完整重定位信息，非位置无关的输入不在该方法范围内。跳转表恢复依靠数据流分析和相邻性启发式，因此不能保证反汇编完整；Debian 研究中唯一的失败案例是深度嵌套的跳转表。作者列出的不支持情形包括混淆代码、将数据嵌入代码符号的内联汇编、C++ 异常、符号版本控制，以及 Go 或 V8 二进制。部分软件包测试失败即归因于这些特性。论文发表时 RISC-V 支持尚未完成。columbia/egalito 的主分支自 2020 年 6 月以来没有新提交，因此不代表项目仍在维护。
+
+  **作者:** David Williams-King 等
 
   </details>
 
