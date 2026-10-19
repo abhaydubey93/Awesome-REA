@@ -11,7 +11,7 @@ An independent collection of tools, case studies and research for websites, game
 <a href="https://awesomerea.org/"><img src="assets/readme-banner.svg" alt="Awesome Reverse Engineering Anything — tools, cases and papers across six reverse-engineering domains" width="960"></a>
 
 <!-- BEGIN GENERATED BADGES -->
-[![resources: 358](https://img.shields.io/badge/resources-358-53309C?style=flat-square&labelColor=303447)](https://awesomerea.org/resources/) [![cases: 184](https://img.shields.io/badge/cases-184-53309C?style=flat-square&labelColor=303447)](https://awesomerea.org/cases/) [![papers: 83](https://img.shields.io/badge/papers-83-53309C?style=flat-square&labelColor=303447)](https://awesomerea.org/papers/) [![Catalog checks](https://github.com/reacher-z/Awesome-REA/actions/workflows/validate.yml/badge.svg?branch=main)](https://github.com/reacher-z/Awesome-REA/actions/workflows/validate.yml) [![license: MIT](https://img.shields.io/badge/license-MIT-606779?style=flat-square&labelColor=303447)](LICENSE) [![website: awesomerea.org](https://img.shields.io/badge/website-awesomerea.org-6235B5?style=flat-square&labelColor=303447)](https://awesomerea.org/)
+[![resources: 359](https://img.shields.io/badge/resources-359-53309C?style=flat-square&labelColor=303447)](https://awesomerea.org/resources/) [![cases: 184](https://img.shields.io/badge/cases-184-53309C?style=flat-square&labelColor=303447)](https://awesomerea.org/cases/) [![papers: 83](https://img.shields.io/badge/papers-83-53309C?style=flat-square&labelColor=303447)](https://awesomerea.org/papers/) [![Catalog checks](https://github.com/reacher-z/Awesome-REA/actions/workflows/validate.yml/badge.svg?branch=main)](https://github.com/reacher-z/Awesome-REA/actions/workflows/validate.yml) [![license: MIT](https://img.shields.io/badge/license-MIT-606779?style=flat-square&labelColor=303447)](LICENSE) [![website: awesomerea.org](https://img.shields.io/badge/website-awesomerea.org-6235B5?style=flat-square&labelColor=303447)](https://awesomerea.org/)
 <!-- END GENERATED BADGES -->
 
 **[Search & filter](https://awesomerea.org/)** · **[Browse cases](https://awesomerea.org/cases/)** · **[Research papers](https://awesomerea.org/papers/)** · **[HTML survey](https://awesomerea.org/survey/)**
@@ -23,7 +23,7 @@ An independent collection of tools, case studies and research for websites, game
 <!-- BEGIN GENERATED CONTENTS -->
 **Tools and cases by target**
 
-- [Website](#website) (19) · [Game](#game) (166) · [App](#app) (52)
+- [Website](#website) (19) · [Game](#game) (166) · [App](#app) (53)
 - [Native Binary](#native-binary) (25) · [Firmware and Hardware](#firmware) (16) · [Protocol](#protocol) (13)
 
 **Research and workflows**
@@ -1505,6 +1505,12 @@ REA labels refer to the separate [upstream CLI and MCP project](https://github.c
   Command-line APK editor built on ARSCLib that decodes an APK's binary resources and DEX into editable JSON, XML or smali and rebuilds a package from them, independent of aapt and aapt2. It also merges split bundles such as XAPK, APKM and APKS, refactors obfuscated resource names, and prints package information.
 
   Tool · Android · [Requirements & evidence](https://awesomerea.org/resources/apkeditor/)
+
+- [**APKiD**](https://github.com/rednaga/APKiD)
+
+  PEiD-style identifier for Android packages from RedNaga. It scans APK and DEX files, nested ZIP entries and the native ELF libraries, PE DLLs and resources inside them with YARA rules, using the yara-python-dex DEX module, and reports the compilers, packers, protectors, obfuscators and anti-VM or anti-disassembly tricks it recognizes, per file or as JSON. Optional tracker rules attributed to the Exodus API flag embedded tracking SDKs; APKiD only identifies, and does not unpack or deobfuscate anything.
+
+  Tool · Android · [Requirements & evidence](https://awesomerea.org/resources/apkid/)
 
 <a id="native-binary"></a>
 ### Native Binary
