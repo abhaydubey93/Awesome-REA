@@ -3627,5 +3627,31 @@
       "README 称该项目是基于逆向工程的早期实验，并警告可能损坏相机，开发者不承担任何责任。固件文件的解包由独立的 fwtool 项目负责，本次未审阅；其推荐的 OpenMemories 应用和框架也未审阅。",
       "采用 MIT 许可。仓库中没有 Sony 固件或应用；updatershell/fdat 下预先构建的更新程序载荷由 pack.py 用项目自身的源码打包生成。本次未连接相机，也未运行任何程序。"
     ]
+  },
+  "qbdi": {
+    "name": "QBDI 动态二进制插桩框架",
+    "requirements": [
+      "README 的状态表显示，x86-64 和 x86 在 Android、Linux、macOS 和 Windows 上，ARM 在 Android 和 Linux 上，AArch64 在 Android、Linux、macOS 和 iOS 上均支持执行与内存访问信息；iOS 支持被描述为不稳定，且需要越狱设备。审阅时最新版本为 v0.12.1，发布于 2026-01-07，提供 Android、iOS、macOS 和 Windows 软件包；Linux 软件包最后见于 v0.12.0（2025-10-14）。PyPI 上的 PyQBDI 0.12.1 需要 Python 3.8+。",
+      "所审阅的 dev-next 提交领先 v0.12.1 共 12 个提交；README 说明所有新功能都合并到该分支，且没有固定的发布计划。从源码构建需要 CMake 3.12+、Ninja 或 Make 以及 C++17 工具链，并会静态构建自带的 LLVM，因为 QBDI 使用特定版本 LLVM 的私有 API；各平台的配置脚本涵盖 Linux、macOS、Windows（需原生 Python 3 和 Visual Studio）以及基于 Android NDK 的交叉编译。",
+      "README 说明 QBDI 不处理信号、新线程创建和 C++ 异常。其文档还指出，插桩工具与目标程序共用堆和库，因此堆分配器等不可重入代码应交给插桩范围之外的执行代理处理，且操作系统加载器本身无法插桩。用户需自备目标程序和注入途径。",
+      "LICENSE.txt 说明 QBDI 采用 Apache-2.0 许可，并列出静态链接的组件：LLVM（Apache-2.0 附 LLVM 例外）、spdlog、fmtlib、Catch2、pybind11，以及采用 GPLv3/Apache-2.0 的 SHA-256 实现；GitHub 无法识别这份合并许可文件。本条目未对任何程序进行插桩。"
+    ]
+  },
+  "medusa-framework": {
+    "name": "MEDUSA",
+    "requirements": [
+      "需要 Python 3，可在 Linux 或 macOS 上运行，README 指出在 Windows 上功能有限；同时提供预配置的 Dockerfile。",
+      "对目标进行插桩需要已 root 的设备或模拟器，并具备 adb 与运行中的 Frida server；工具仅用于分析者有权测试的应用。",
+      "README 称其提供 90 多个可复用模块以及可选的 MCP 服务组件；它列出了诸如 SSL 固定处理等能力，本记录不复述任何具体步骤。采用 GPL-3.0 许可证；仓库仅包含框架及其模块，不含任何应用安装包。"
+    ]
+  },
+  "binsider": {
+    "name": "binsider ELF 二进制分析终端界面",
+    "requirements": [
+      "审阅时最新版本为 v0.3.2，发布于 2026-02-01，可从 crates.io 安装，也提供预编译压缩包，覆盖 Linux（x86_64、i686、AArch64、ARM 和 powerpc64le，含 glibc 与 musl 版本）、Intel 和 Apple 芯片的 macOS 以及 Windows x86_64。发布工作流只在 x86_64 Linux 构建和 AArch64 glibc 构建中启用动态分析。所审阅的 main 提交比该版本晚六个提交，新增了 --syscall-number、--string-limit 和 --no-abbrev 跟踪选项，网站文档已有说明，但尚未包含在任何发布版本中。",
+      "Cargo.toml 要求 Rust 1.88+，而网站安装页面仍写着最低支持版本为 1.74.1。dynamic-analysis 功能默认启用，可用 --no-default-features 去掉。网站还介绍了 Docker、Nix、Arch Linux 和 Alpine Linux 的安装方式。",
+      "输入为使用者选择的 ELF 文件。动态分析会在宿主机上以基于 ptrace 的跟踪方式执行该二进制，因此不可信样本只应在隔离环境中跟踪；其他视图只读取文件，不会运行它。",
+      "采用 MIT 或 Apache-2.0 双许可。本次未安装或运行任何内容。"
+    ]
   }
 }

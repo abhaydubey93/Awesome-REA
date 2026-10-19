@@ -9509,5 +9509,95 @@
       "https://github.com/ma1co/Sony-PMCA-RE/releases/tag/v0.18",
       "https://openmemories.readthedocs.io/devices.html"
     ]
+  },
+  {
+    "id": "qbdi",
+    "name": "QBDI",
+    "url": "https://github.com/QBDI/QBDI",
+    "category": "dynamic-analysis",
+    "relationship": "foundation",
+    "kind": "tool",
+    "targets": [
+      "binary",
+      "app"
+    ],
+    "description_en": "Quarkslab's modular dynamic binary instrumentation (DBI) framework, which JIT-recompiles a program's basic blocks inside its own process so that an instrumentation tool can register callbacks before or after instructions, on memory reads and writes, and on VM events. The engine is a library that can start an instrumented execution anywhere in a process, scripted from C, C++, Python (PyQBDI) or Frida JavaScript. It has no preferred injection method: it bundles the LD_PRELOAD-based QBDIPreload for Linux and macOS dynamic executables and is integrated with Frida.",
+    "description_zh": "Quarkslab 开发的模块化动态二进制插桩（DBI）框架：在目标进程内部按基本块对程序进行 JIT 重编译，使插桩工具可以在指令执行前后、内存读写以及虚拟机事件上注册回调。引擎以库的形式提供，可在进程中任意位置启动插桩执行，并可通过 C、C++、Python（PyQBDI）或 Frida JavaScript 编写脚本。它不绑定特定注入方式：自带基于 LD_PRELOAD 的 QBDIPreload，用于 Linux 和 macOS 动态可执行文件，并已与 Frida 集成。",
+    "evidence_url": "https://github.com/QBDI/QBDI/blob/3318580550215a0c7a64e9c2476e02eb5fc55f14/README.rst",
+    "verified_at": "2026-10-19",
+    "verification": "source-reviewed",
+    "requirements": [
+      "The README status table supports execution and memory-access information for x86-64 and x86 on Android, Linux, macOS and Windows, ARM on Android and Linux, and AArch64 on Android, Linux, macOS and iOS; iOS support is described as unstable and needs a jailbroken device. Latest release at review: v0.12.1, published 2026-01-07, with Android, iOS, macOS and Windows packages; Linux packages last appear in v0.12.0 (2025-10-14). PyQBDI 0.12.1 on PyPI requires Python 3.8+.",
+      "The reviewed dev-next commit is 12 commits ahead of v0.12.1; the README says all new work merges there and there is no scheduled release plan. Source builds need CMake 3.12+, Ninja or Make and a C++17 toolchain, and build a bundled LLVM statically because QBDI uses private LLVM APIs of one specific version; per-platform configuration scripts cover Linux, macOS, Windows (with a native Python 3 and Visual Studio) and Android NDK cross-compilation.",
+      "The README states that QBDI does not handle signals, new-thread creation or C++ exceptions. Its documentation adds that the instrumentation tool shares the target's heap and libraries, so non-reentrant code such as the heap allocator should be left to the execution broker outside the instrumentation range, and the OS loader itself cannot be instrumented. Users supply their own target programs and an injection route.",
+      "LICENSE.txt places QBDI under Apache-2.0 and lists statically linked components: LLVM (Apache-2.0 with LLVM exceptions), spdlog, fmtlib, Catch2, pybind11 and a GPLv3/Apache-2.0 SHA-256 implementation; GitHub could not classify the combined file. No programs were instrumented for this entry."
+    ],
+    "additional_evidence_urls": [
+      "https://github.com/QBDI/QBDI/blob/3318580550215a0c7a64e9c2476e02eb5fc55f14/README.rst#L18-L52",
+      "https://github.com/QBDI/QBDI/blob/3318580550215a0c7a64e9c2476e02eb5fc55f14/docs/source/intro.rst",
+      "https://github.com/QBDI/QBDI/blob/3318580550215a0c7a64e9c2476e02eb5fc55f14/docs/source/api_description.rst",
+      "https://github.com/QBDI/QBDI/blob/3318580550215a0c7a64e9c2476e02eb5fc55f14/docs/source/changelog.rst",
+      "https://github.com/QBDI/QBDI/blob/3318580550215a0c7a64e9c2476e02eb5fc55f14/LICENSE.txt",
+      "https://github.com/QBDI/QBDI/releases/tag/v0.12.1",
+      "https://pypi.org/project/PyQBDI/0.12.1/"
+    ]
+  },
+  {
+    "id": "medusa-framework",
+    "name": "MEDUSA",
+    "url": "https://github.com/Ch0pin/medusa",
+    "category": "android",
+    "relationship": "foundation",
+    "kind": "tool",
+    "targets": [
+      "app"
+    ],
+    "description_en": "Modular Frida-based framework for runtime analysis of Android and iOS apps the analyst is authorized to test. From a single coordinated script it loads plug-in modules to inspect network and WebView activity, trace API calls, examine memory and cryptographic operations, monitor malware behavior, and handle protections such as SSL pinning. The README reports it ships with over 90 reusable modules.",
+    "description_zh": "基于 Frida 的模块化框架，用于对分析者有权测试的 Android 与 iOS 应用进行运行时分析。通过单个协调脚本加载插件模块，检查网络与 WebView 活动、跟踪 API 调用、查看内存与加密操作、监控恶意软件行为，并处理 SSL 固定等保护。README 称其内置 90 多个可复用模块。",
+    "evidence_url": "https://github.com/Ch0pin/medusa/blob/a7bd929f297f0725a5e4d2e3952874a757d4e2fc/README.md",
+    "additional_evidence_urls": [
+      "https://github.com/Ch0pin/medusa/blob/a7bd929f297f0725a5e4d2e3952874a757d4e2fc/LICENSE"
+    ],
+    "verified_at": "2026-10-19",
+    "verification": "source-reviewed",
+    "requirements": [
+      "Requires Python 3 and runs on Linux or macOS, with the README noting limited functionality on Windows; a preconfigured Dockerfile is also provided.",
+      "Instrumenting a target needs a rooted device or emulator with adb and a running Frida server; the tool operates only on apps the analyst is authorized to test.",
+      "The README reports 90+ reusable modules and an optional MCP server component; it names capabilities such as SSL-pinning handling, which this record does not restate as a procedure. GPL-3.0 licensed; the repository ships the framework and its modules, no application packages."
+    ]
+  },
+  {
+    "id": "binsider",
+    "name": "binsider",
+    "url": "https://github.com/orhun/binsider",
+    "category": "native-analysis",
+    "relationship": "foundation",
+    "kind": "tool",
+    "targets": [
+      "binary"
+    ],
+    "description_en": "Terminal user interface for inspecting ELF binaries. It shows file information and linked shared libraries in the manner of stat and ldd, browses ELF headers, notes, sections, segments, symbols, dynamic symbols and relocations much like readelf, extracts strings with an adjustable minimum length, and offers a searchable hexdump view. Optional dynamic analysis runs the binary and traces its system calls like strace, with a summary of time and call counts per system call; the interface can also be embedded as a Rust library in Ratatui applications.",
+    "description_zh": "用于查看 ELF 二进制的终端用户界面。它可像 stat 和 ldd 那样显示文件信息和所链接的共享库，像 readelf 那样浏览 ELF 头、注释、节区、段、符号、动态符号和重定位，按可调的最小长度提取字符串，并提供可搜索的十六进制视图。可选的动态分析会运行该二进制，像 strace 那样跟踪其系统调用，并按系统调用汇总耗时和调用次数；该界面还能作为 Rust 库嵌入 Ratatui 应用。",
+    "evidence_url": "https://github.com/orhun/binsider/blob/7f0633d1a69af15cc3be9e0533cb36dbe67eb598/README.md",
+    "verified_at": "2026-10-19",
+    "verification": "source-reviewed",
+    "requirements": [
+      "Latest release at review: v0.3.2, published 2026-02-01, on crates.io and as prebuilt archives for Linux (x86_64, i686, AArch64, ARM and powerpc64le, with glibc and musl variants), macOS on Intel and Apple silicon, and Windows x86_64. The release workflow enables dynamic analysis only in the x86_64 Linux builds and the AArch64 glibc build. The reviewed main commit is six commits later and adds the --syscall-number, --string-limit and --no-abbrev trace options, which the website documents but no release includes yet.",
+      "Cargo.toml requires Rust 1.88+, although the website's installation pages still give an MSRV of 1.74.1. The dynamic-analysis feature is enabled by default and can be left out with --no-default-features. The website also documents Docker, Nix, Arch Linux and Alpine Linux installation.",
+      "Input is an ELF file chosen by the user. Dynamic analysis executes that binary on the host under ptrace-based tracing, so untrusted samples should only be traced in an isolated environment; the other views read the file without running it.",
+      "Dual-licensed MIT OR Apache-2.0. Nothing was installed or run."
+    ],
+    "additional_evidence_urls": [
+      "https://github.com/orhun/binsider/blob/7f0633d1a69af15cc3be9e0533cb36dbe67eb598/Cargo.toml",
+      "https://github.com/orhun/binsider/blob/7f0633d1a69af15cc3be9e0533cb36dbe67eb598/CHANGELOG.md",
+      "https://github.com/orhun/binsider/blob/7f0633d1a69af15cc3be9e0533cb36dbe67eb598/.github/workflows/cd.yml",
+      "https://github.com/orhun/binsider/blob/7f0633d1a69af15cc3be9e0533cb36dbe67eb598/website/src/content/docs/usage/dynamic-analysis.md",
+      "https://github.com/orhun/binsider/blob/7f0633d1a69af15cc3be9e0533cb36dbe67eb598/website/src/content/docs/usage/static-analysis.md",
+      "https://github.com/orhun/binsider/blob/7f0633d1a69af15cc3be9e0533cb36dbe67eb598/website/src/content/docs/installation/crates-io.md",
+      "https://github.com/orhun/binsider/blob/7f0633d1a69af15cc3be9e0533cb36dbe67eb598/website/src/content/docs/extras/library.md",
+      "https://github.com/orhun/binsider/blob/7f0633d1a69af15cc3be9e0533cb36dbe67eb598/LICENSE-MIT",
+      "https://github.com/orhun/binsider/blob/7f0633d1a69af15cc3be9e0533cb36dbe67eb598/LICENSE-APACHE",
+      "https://github.com/orhun/binsider/releases/tag/v0.3.2"
+    ]
   }
 ]
