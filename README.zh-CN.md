@@ -11,7 +11,7 @@
 <a href="https://awesomerea.org/zh/"><img src="assets/readme-banner.svg" alt="Awesome Reverse Engineering Anything — 覆盖六类逆向目标的工具、案例与论文" width="960"></a>
 
 <!-- BEGIN GENERATED BADGES -->
-[![精选资源: 370](https://img.shields.io/badge/%E7%B2%BE%E9%80%89%E8%B5%84%E6%BA%90-370-53309C?style=flat-square&labelColor=303447)](https://awesomerea.org/zh/resources/) [![案例: 184](https://img.shields.io/badge/%E6%A1%88%E4%BE%8B-184-53309C?style=flat-square&labelColor=303447)](https://awesomerea.org/zh/cases/) [![论文: 83](https://img.shields.io/badge/%E8%AE%BA%E6%96%87-83-53309C?style=flat-square&labelColor=303447)](https://awesomerea.org/zh/papers/) [![目录检查](https://github.com/reacher-z/Awesome-REA/actions/workflows/validate.yml/badge.svg?branch=main)](https://github.com/reacher-z/Awesome-REA/actions/workflows/validate.yml) [![许可: MIT](https://img.shields.io/badge/%E8%AE%B8%E5%8F%AF-MIT-606779?style=flat-square&labelColor=303447)](LICENSE) [![网站: awesomerea.org](https://img.shields.io/badge/%E7%BD%91%E7%AB%99-awesomerea.org-6235B5?style=flat-square&labelColor=303447)](https://awesomerea.org/zh/)
+[![精选资源: 371](https://img.shields.io/badge/%E7%B2%BE%E9%80%89%E8%B5%84%E6%BA%90-371-53309C?style=flat-square&labelColor=303447)](https://awesomerea.org/zh/resources/) [![案例: 184](https://img.shields.io/badge/%E6%A1%88%E4%BE%8B-184-53309C?style=flat-square&labelColor=303447)](https://awesomerea.org/zh/cases/) [![论文: 83](https://img.shields.io/badge/%E8%AE%BA%E6%96%87-83-53309C?style=flat-square&labelColor=303447)](https://awesomerea.org/zh/papers/) [![目录检查](https://github.com/reacher-z/Awesome-REA/actions/workflows/validate.yml/badge.svg?branch=main)](https://github.com/reacher-z/Awesome-REA/actions/workflows/validate.yml) [![许可: MIT](https://img.shields.io/badge/%E8%AE%B8%E5%8F%AF-MIT-606779?style=flat-square&labelColor=303447)](LICENSE) [![网站: awesomerea.org](https://img.shields.io/badge/%E7%BD%91%E7%AB%99-awesomerea.org-6235B5?style=flat-square&labelColor=303447)](https://awesomerea.org/zh/)
 <!-- END GENERATED BADGES -->
 
 **[搜索与筛选](https://awesomerea.org/zh/)** · **[浏览案例](https://awesomerea.org/zh/cases/)** · **[研究论文](https://awesomerea.org/zh/papers/)** · **[HTML 综述](https://awesomerea.org/zh/survey/)**
@@ -23,7 +23,7 @@
 <!-- BEGIN GENERATED CONTENTS -->
 **按目标找工具与案例**
 
-- [网站](#website) (20) · [游戏](#game) (166) · [应用](#app) (54)
+- [网站](#website) (21) · [游戏](#game) (166) · [应用](#app) (54)
 - [原生二进制](#native-binary) (30) · [固件与硬件](#firmware) (16) · [协议](#protocol) (13)
 
 **论文与工作流**
@@ -186,6 +186,12 @@ REA 标签指向单独维护的[上游 CLI 与 MCP 项目](https://github.com/mo
   Node.js 命令行工具，通过 Playwright 驱动 Chromium 或 Firefox 渲染网站，并从 DOM 读取计算样式来提取其设计系统：标志、附带判定依据的颜色角色、字体排版、间距、边框、阴影、动效、断点，以及按钮、输入框等组件样式。结果可导出为 W3C 设计令牌（DTCG）、Tailwind v4 或 shadcn/ui 主题、DESIGN.md、HTML 报告或品牌指南 PDF，还能对页面中实际的前景与背景组合做 WCAG 对比度检查，并在 CI 中与已提交的基线比较、拦截设计漂移。它也能作为 MCP 服务器供智能体客户端调用。
 
   工具 · [使用条件与证据](https://awesomerea.org/zh/resources/dembrandt/)
+
+- [**CRX Viewer 浏览器扩展源码查看器**](https://github.com/Rob--W/crxviewer)
+
+  Rob Wu 开发的浏览器扩展及网页版工具，无需安装即可查看已打包的浏览器扩展。在 Chrome 网上应用店、Opera、Firefox、Thunderbird 和 Microsoft Edge 的扩展页面上，它会添加一个按钮，可将扩展包下载为 zip 或在查看器中打开；托管在其他位置的扩展包链接也能打开。查看器支持 CRX、NEX、XPI 和 ZIP 文件：可列出并筛选文件，按字符串或正则表达式搜索内容，格式化代码并高亮语法，预览图片，打开嵌套的 zip，显示各文件的哈希值，还能根据扩展包的公钥、签名或 manifest 推算扩展 ID。
+
+  工具 · [使用条件与证据](https://awesomerea.org/zh/resources/crxviewer/)
 
 <a id="game"></a>
 ### Game · 游戏
