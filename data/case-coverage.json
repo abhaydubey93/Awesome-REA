@@ -9116,13 +9116,26 @@
       "reported_source_urls": [
         "https://scientia.godsibb.net/t/xenosaga-ep-i-decompilation-project/1496"
       ],
-      "state": "pending",
-      "review_level": "inventory-only",
-      "reviewed_at": "2026-10-17",
-      "reason_en": "A collection lead awaiting primary-source review; listing does not verify implementation or results.",
-      "reason_zh": "合集线索，等待一手来源核查；被列入合集不代表实现或结果已获验证。",
-      "primary_evidence_urls": [],
-      "catalog_matches": []
+      "state": "already-curated",
+      "review_level": "primary-source-reviewed",
+      "reviewed_at": "2026-10-18",
+      "reason_en": "The forum announcement links OpokXeno/xsg-i-decomp, whose pinned README, originals manifest, tracked-file allowlist and progress workflow document an AI-assisted matching PS2 decompilation gated by whole-file SHA-256 comparison with the user's own NTSC-U files. The full mapping covers this in-progress code reconstruction; progress figures are project-reported, and nothing was built or compared. The tracked decompiled Java scene scripts, the missing license file and the absence of any stated REA use remain explicit.",
+      "reason_zh": "论坛公告链接 OpokXeno/xsg-i-decomp；该仓库固定版本的 README、原始文件清单、跟踪文件白名单及进度工作流，记录了一个 AI 辅助的 PS2 匹配反编译项目，并以与使用者自有 NTSC-U 文件的整文件 SHA-256 比对把关。完整映射覆盖这一仍在进行中的代码重建；进度数字为项目报告，未进行任何构建或比对。仓库收录的反编译 Java 场景脚本、缺少许可证文件以及未说明使用 REA 等情况均明确保留。",
+      "primary_evidence_urls": [
+        "https://scientia.godsibb.net/t/xenosaga-ep-i-decompilation-project/1496",
+        "https://github.com/OpokXeno/xsg-i-decomp/blob/d34e8072f8e05429bb800e209a467a7ca3b5645d/README.md",
+        "https://github.com/OpokXeno/xsg-i-decomp/blob/d34e8072f8e05429bb800e209a467a7ca3b5645d/.gitignore",
+        "https://github.com/OpokXeno/xsg-i-decomp/blob/d34e8072f8e05429bb800e209a467a7ca3b5645d/config/originals.json",
+        "https://github.com/OpokXeno/xsg-i-decomp/blob/d34e8072f8e05429bb800e209a467a7ca3b5645d/.github/workflows/report.yml"
+      ],
+      "catalog_matches": [
+        {
+          "catalog": "resource",
+          "id": "xenosaga-ep1-matching-decomp-case",
+          "kind": "case-study",
+          "scope": "full"
+        }
+      ]
     },
     {
       "id": "yibie:define-correctness-as-pass-fail-then-let-agents-iterate",
@@ -14928,18 +14941,18 @@
     "inventory_units": 589,
     "alias_merges": 2,
     "occurrences_by_state": {
-      "already-curated": 154,
-      "insufficient-evidence": 126,
-      "pending": 311
-    },
-    "units_by_state": {
-      "already-curated": 153,
+      "already-curated": 155,
       "insufficient-evidence": 126,
       "pending": 310
     },
-    "primary_reviewed_units": 219,
-    "catalog_linked_occurrences": 165,
-    "distinct_resource_ids": 159,
+    "units_by_state": {
+      "already-curated": 154,
+      "insufficient-evidence": 126,
+      "pending": 309
+    },
+    "primary_reviewed_units": 220,
+    "catalog_linked_occurrences": 166,
+    "distinct_resource_ids": 160,
     "distinct_paper_ids": 1,
     "unique_projects": null
   }
