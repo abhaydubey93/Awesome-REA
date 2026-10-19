@@ -11,7 +11,7 @@
 <a href="https://awesomerea.org/zh/"><img src="assets/readme-banner.svg" alt="Awesome Reverse Engineering Anything — 覆盖六类逆向目标的工具、案例与论文" width="960"></a>
 
 <!-- BEGIN GENERATED BADGES -->
-[![精选资源: 354](https://img.shields.io/badge/%E7%B2%BE%E9%80%89%E8%B5%84%E6%BA%90-354-53309C?style=flat-square&labelColor=303447)](https://awesomerea.org/zh/resources/) [![案例: 183](https://img.shields.io/badge/%E6%A1%88%E4%BE%8B-183-53309C?style=flat-square&labelColor=303447)](https://awesomerea.org/zh/cases/) [![论文: 83](https://img.shields.io/badge/%E8%AE%BA%E6%96%87-83-53309C?style=flat-square&labelColor=303447)](https://awesomerea.org/zh/papers/) [![目录检查](https://github.com/reacher-z/Awesome-REA/actions/workflows/validate.yml/badge.svg?branch=main)](https://github.com/reacher-z/Awesome-REA/actions/workflows/validate.yml) [![许可: MIT](https://img.shields.io/badge/%E8%AE%B8%E5%8F%AF-MIT-606779?style=flat-square&labelColor=303447)](LICENSE) [![网站: awesomerea.org](https://img.shields.io/badge/%E7%BD%91%E7%AB%99-awesomerea.org-6235B5?style=flat-square&labelColor=303447)](https://awesomerea.org/zh/)
+[![精选资源: 355](https://img.shields.io/badge/%E7%B2%BE%E9%80%89%E8%B5%84%E6%BA%90-355-53309C?style=flat-square&labelColor=303447)](https://awesomerea.org/zh/resources/) [![案例: 183](https://img.shields.io/badge/%E6%A1%88%E4%BE%8B-183-53309C?style=flat-square&labelColor=303447)](https://awesomerea.org/zh/cases/) [![论文: 83](https://img.shields.io/badge/%E8%AE%BA%E6%96%87-83-53309C?style=flat-square&labelColor=303447)](https://awesomerea.org/zh/papers/) [![目录检查](https://github.com/reacher-z/Awesome-REA/actions/workflows/validate.yml/badge.svg?branch=main)](https://github.com/reacher-z/Awesome-REA/actions/workflows/validate.yml) [![许可: MIT](https://img.shields.io/badge/%E8%AE%B8%E5%8F%AF-MIT-606779?style=flat-square&labelColor=303447)](LICENSE) [![网站: awesomerea.org](https://img.shields.io/badge/%E7%BD%91%E7%AB%99-awesomerea.org-6235B5?style=flat-square&labelColor=303447)](https://awesomerea.org/zh/)
 <!-- END GENERATED BADGES -->
 
 **[搜索与筛选](https://awesomerea.org/zh/)** · **[浏览案例](https://awesomerea.org/zh/cases/)** · **[研究论文](https://awesomerea.org/zh/papers/)** · **[HTML 综述](https://awesomerea.org/zh/survey/)**
@@ -24,7 +24,7 @@
 **按目标找工具与案例**
 
 - [网站](#website) (19) · [游戏](#game) (165) · [应用](#app) (50)
-- [原生二进制](#native-binary) (25) · [固件与硬件](#firmware) (15) · [协议](#protocol) (13)
+- [原生二进制](#native-binary) (26) · [固件与硬件](#firmware) (15) · [协议](#protocol) (13)
 
 **论文与工作流**
 
@@ -1647,6 +1647,12 @@ REA 标签指向单独维护的[上游 CLI 与 MCP 项目](https://github.com/mo
   用 C++ 编写的 Python 字节码反汇编器与反编译器，目标是支持任意 Python 版本的字节码。pycdas 输出 .pyc 文件的反汇编结果，pycdc 则把重建出的 Python 源码输出到标准输出，错误信息输出到标准错误；在命令行中指定 Python 版本后，两者也能处理原始的 marshal 代码对象。源码中包含 Python 1.0 至 3.13 的操作码表。
 
   工具 · 也适用：应用 · [使用条件与证据](https://awesomerea.org/zh/resources/pycdc/)
+
+- [**Lighthouse 代码覆盖率浏览插件**](https://github.com/gaasedelen/lighthouse)
+
+  面向 IDA Pro 和 Binary Ninja 的代码覆盖率浏览插件，载入原生程序的执行轨迹，并在反汇编器的各个视图中为已执行代码着色，无需符号或源码。覆盖率总览按函数列出覆盖情况；组合命令行可用逻辑运算符组合已载入的覆盖率集合，用于比较多次运行的差异、筛选函数或跳转到指定地址；覆盖率交叉引用则显示批量载入的众多集合中哪些执行过某个基本块。它可读取 DynamoRIO drcov 日志、模块+偏移、绝对地址和 Tenet 轨迹，能生成简单的 HTML 覆盖率报告，并附带可输出 drcov 兼容日志的原型 Intel Pin 工具和 Frida 脚本。
+
+  工具 · [使用条件与证据](https://awesomerea.org/zh/resources/lighthouse/)
 
 <a id="firmware"></a>
 ### Firmware and Hardware · 固件与硬件

@@ -11,7 +11,7 @@ An independent collection of tools, case studies and research for websites, game
 <a href="https://awesomerea.org/"><img src="assets/readme-banner.svg" alt="Awesome Reverse Engineering Anything — tools, cases and papers across six reverse-engineering domains" width="960"></a>
 
 <!-- BEGIN GENERATED BADGES -->
-[![resources: 354](https://img.shields.io/badge/resources-354-53309C?style=flat-square&labelColor=303447)](https://awesomerea.org/resources/) [![cases: 183](https://img.shields.io/badge/cases-183-53309C?style=flat-square&labelColor=303447)](https://awesomerea.org/cases/) [![papers: 83](https://img.shields.io/badge/papers-83-53309C?style=flat-square&labelColor=303447)](https://awesomerea.org/papers/) [![Catalog checks](https://github.com/reacher-z/Awesome-REA/actions/workflows/validate.yml/badge.svg?branch=main)](https://github.com/reacher-z/Awesome-REA/actions/workflows/validate.yml) [![license: MIT](https://img.shields.io/badge/license-MIT-606779?style=flat-square&labelColor=303447)](LICENSE) [![website: awesomerea.org](https://img.shields.io/badge/website-awesomerea.org-6235B5?style=flat-square&labelColor=303447)](https://awesomerea.org/)
+[![resources: 355](https://img.shields.io/badge/resources-355-53309C?style=flat-square&labelColor=303447)](https://awesomerea.org/resources/) [![cases: 183](https://img.shields.io/badge/cases-183-53309C?style=flat-square&labelColor=303447)](https://awesomerea.org/cases/) [![papers: 83](https://img.shields.io/badge/papers-83-53309C?style=flat-square&labelColor=303447)](https://awesomerea.org/papers/) [![Catalog checks](https://github.com/reacher-z/Awesome-REA/actions/workflows/validate.yml/badge.svg?branch=main)](https://github.com/reacher-z/Awesome-REA/actions/workflows/validate.yml) [![license: MIT](https://img.shields.io/badge/license-MIT-606779?style=flat-square&labelColor=303447)](LICENSE) [![website: awesomerea.org](https://img.shields.io/badge/website-awesomerea.org-6235B5?style=flat-square&labelColor=303447)](https://awesomerea.org/)
 <!-- END GENERATED BADGES -->
 
 **[Search & filter](https://awesomerea.org/)** · **[Browse cases](https://awesomerea.org/cases/)** · **[Research papers](https://awesomerea.org/papers/)** · **[HTML survey](https://awesomerea.org/survey/)**
@@ -24,7 +24,7 @@ An independent collection of tools, case studies and research for websites, game
 **Tools and cases by target**
 
 - [Website](#website) (19) · [Game](#game) (165) · [App](#app) (50)
-- [Native Binary](#native-binary) (25) · [Firmware and Hardware](#firmware) (15) · [Protocol](#protocol) (13)
+- [Native Binary](#native-binary) (26) · [Firmware and Hardware](#firmware) (15) · [Protocol](#protocol) (13)
 
 **Research and workflows**
 
@@ -1646,6 +1646,12 @@ REA labels refer to the separate [upstream CLI and MCP project](https://github.c
   C++ disassembler and decompiler for compiled Python bytecode that aims to support bytecode from any Python version. pycdas prints the disassembly of a .pyc file, and pycdc prints reconstructed Python source to stdout with errors on stderr; both also accept raw marshalled code objects when the Python version is given on the command line. The source carries opcode tables for Python 1.0 through 3.13.
 
   Tool · Also: App · [Requirements & evidence](https://awesomerea.org/resources/pycdc/)
+
+- [**Lighthouse**](https://github.com/gaasedelen/lighthouse)
+
+  Code-coverage explorer plugin for IDA Pro and Binary Ninja that loads execution traces of native programs and paints the executed code across the disassembler's views, without needing symbols or source. Its coverage overview lists per-function coverage, and a composing shell combines loaded coverage sets with logical operators to diff runs, filter functions and jump to addresses, while coverage cross-references show which of many batch-loaded sets executed a block. It reads DynamoRIO drcov logs, module+offset, absolute-address and Tenet traces, writes basic HTML coverage reports, and ships a prototype Intel Pin tool and a Frida script that produce drcov-compatible logs.
+
+  Tool · [Requirements & evidence](https://awesomerea.org/resources/lighthouse/)
 
 <a id="firmware"></a>
 ### Firmware and Hardware
