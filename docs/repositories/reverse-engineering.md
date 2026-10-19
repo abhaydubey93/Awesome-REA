@@ -196,7 +196,7 @@ These are automatically discovered projects, not individually curated or tested 
 - [CMUSTRUDEL/DIRTY](https://github.com/CMUSTRUDEL/DIRTY) — DIRTY: Augmenting Decompiler Output with Learned Variable Names and Types **[191 stars]** · Paper: [Augmenting Decompiler Output with Learned Variable Names and Types](https://awesomerea.org/papers/paper-dirty/)
 - [i-soxi/even-g2-protocol](https://github.com/i-soxi/even-g2-protocol) — Let's reverse engineer the EvenRealities G2s! By reverse engineering the BLE protocol, developers can understand how to call G2 services, unleashing the true potential of the G2 smart glasses in a true open-source environment. **[190 stars]**
 - [LLVM-but-worse/maple-ir](https://github.com/LLVM-but-worse/maple-ir) — Industrial IR-based static analysis framework for Java bytecode **[189 stars]**
-- [techge/PRE-list](https://github.com/techge/PRE-list) — List of (automatic) protocol reverse engineering tools for network protocols **[188 stars]**
+- [techge/PRE-list](https://github.com/techge/PRE-list) — List of (automatic) protocol reverse engineering tools for network protocols **[188 stars]** · Curated: [PRE-list](https://awesomerea.org/resources/pre-list/)
 - [danielkrupinski/vac-hooks](https://github.com/danielkrupinski/vac-hooks) — Hook WinAPI functions used by Valve Anti-Cheat. Log calls and intercept arguments &amp; return values. DLL written in C. **[186 stars]**
 - [T14Raptor/go-fAST](https://github.com/T14Raptor/go-fAST) — A JavaScript AST parser, traverser, and generator written in Go **[186 stars]**
 - [mikeroyal/Firmware-Guide](https://github.com/mikeroyal/Firmware-Guide) — Firmware Guide **[171 stars]**
