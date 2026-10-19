@@ -3047,5 +3047,14 @@
       "输入的 .pyc 文件或 marshal 代码对象由使用者提供；从打包应用中取得这些文件不在本工具范围内。README 未说明对反编译结果的任何验证，存疑之处应与 pycdas 的反汇编输出对照。",
       "采用 GPL-3.0 许可。恢复出的源码仍受原程序权利人的权利约束。本次未构建或反编译任何内容。"
     ]
+  },
+  "redasm": {
+    "name": "REDasm 反汇编器",
+    "requirements": [
+      "审阅时最新版本为 v4.0.0-beta3，发布于 2026-09-02，提供 Linux x86_64 AppImage 和免安装的 Windows x86_64 ZIP，并附 GPG 签名的校验和；所审阅的 master 提交比该标签多 43 个提交。基于 master 的每夜构建另含 macOS DMG，README 提醒其可能不稳定。第 4 版是仍处于测试阶段的完全重写；README 称第 3 版已停止维护，其最后一个版本 3.0 beta 5 发布于 2021 年。",
+      "README 将 Windows 10+（Visual Studio 2022）和 Linux（GCC 12+，以 Ubuntu 24.04/Debian 13 为参考）列为持续测试并提供官方二进制的平台；FreeBSD 和 macOS 仅通过 CI 编译和测试，Haiku 仅能编译。从源码构建需借助独立的 workspace 仓库，它会拉取核心、图形界面、插件和知识库各仓库，要求 CMake 3.20、C17/C++17 编译器和 Qt 6.8 LTS。",
+      "可执行文件和主机程序文件由使用者自备。README 的成熟度表将 PE、ELF 和 x86/x86-64 支持评为可用于生产，Visual Basic 5/6 事件恢复评为高度稳定，而 DOS MZ、PS1 BIOS、Xbox、ZX Spectrum 和 NES（仅 NROM）加载器以及 Z80、6502 处理器仅为可用级别，MSVC RTTI 和异常处理恢复仍在开发中。目前尚无反编译器，扩展须用 C 编写；Python 插件 API 已列入路线图。",
+      "图形界面、核心和所有内置插件均采用 GPL-3.0；独立的知识库仓库收录 TOML 格式的签名和类型定义，采用 CC0-1.0。本次未构建，也未分析任何二进制。"
+    ]
   }
 }
