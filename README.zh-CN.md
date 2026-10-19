@@ -11,7 +11,7 @@
 <a href="https://awesomerea.org/zh/"><img src="assets/readme-banner.svg" alt="Awesome Reverse Engineering Anything — 覆盖六类逆向目标的工具、案例与论文" width="960"></a>
 
 <!-- BEGIN GENERATED BADGES -->
-[![精选资源: 346](https://img.shields.io/badge/%E7%B2%BE%E9%80%89%E8%B5%84%E6%BA%90-346-53309C?style=flat-square&labelColor=303447)](https://awesomerea.org/zh/resources/) [![案例: 180](https://img.shields.io/badge/%E6%A1%88%E4%BE%8B-180-53309C?style=flat-square&labelColor=303447)](https://awesomerea.org/zh/cases/) [![论文: 83](https://img.shields.io/badge/%E8%AE%BA%E6%96%87-83-53309C?style=flat-square&labelColor=303447)](https://awesomerea.org/zh/papers/) [![目录检查](https://github.com/reacher-z/Awesome-REA/actions/workflows/validate.yml/badge.svg?branch=main)](https://github.com/reacher-z/Awesome-REA/actions/workflows/validate.yml) [![许可: MIT](https://img.shields.io/badge/%E8%AE%B8%E5%8F%AF-MIT-606779?style=flat-square&labelColor=303447)](LICENSE) [![网站: awesomerea.org](https://img.shields.io/badge/%E7%BD%91%E7%AB%99-awesomerea.org-6235B5?style=flat-square&labelColor=303447)](https://awesomerea.org/zh/)
+[![精选资源: 347](https://img.shields.io/badge/%E7%B2%BE%E9%80%89%E8%B5%84%E6%BA%90-347-53309C?style=flat-square&labelColor=303447)](https://awesomerea.org/zh/resources/) [![案例: 180](https://img.shields.io/badge/%E6%A1%88%E4%BE%8B-180-53309C?style=flat-square&labelColor=303447)](https://awesomerea.org/zh/cases/) [![论文: 83](https://img.shields.io/badge/%E8%AE%BA%E6%96%87-83-53309C?style=flat-square&labelColor=303447)](https://awesomerea.org/zh/papers/) [![目录检查](https://github.com/reacher-z/Awesome-REA/actions/workflows/validate.yml/badge.svg?branch=main)](https://github.com/reacher-z/Awesome-REA/actions/workflows/validate.yml) [![许可: MIT](https://img.shields.io/badge/%E8%AE%B8%E5%8F%AF-MIT-606779?style=flat-square&labelColor=303447)](LICENSE) [![网站: awesomerea.org](https://img.shields.io/badge/%E7%BD%91%E7%AB%99-awesomerea.org-6235B5?style=flat-square&labelColor=303447)](https://awesomerea.org/zh/)
 <!-- END GENERATED BADGES -->
 
 **[搜索与筛选](https://awesomerea.org/zh/)** · **[浏览案例](https://awesomerea.org/zh/cases/)** · **[研究论文](https://awesomerea.org/zh/papers/)** · **[HTML 综述](https://awesomerea.org/zh/survey/)**
@@ -24,7 +24,7 @@
 **按目标找工具与案例**
 
 - [网站](#website) (19) · [游戏](#game) (161) · [应用](#app) (49)
-- [原生二进制](#native-binary) (24) · [固件与硬件](#firmware) (15) · [协议](#protocol) (13)
+- [原生二进制](#native-binary) (24) · [固件与硬件](#firmware) (15) · [协议](#protocol) (14)
 
 **论文与工作流**
 
@@ -1795,6 +1795,12 @@ REA 标签指向单独维护的[上游 CLI 与 MCP 项目](https://github.com/mo
   NCC Group 推出的工具集，可在没有对应 .proto 定义的情况下解码并重新编码 Protocol Buffers 报文。解码器返回报文数据，以及根据线路类型尽力推测生成、可编辑的类型定义；分析者可以为字段命名、修正类型并重新编码修改后的报文，这是 protoc --decode\_raw 做不到的。它提供 Python 库及 bbpb 命令行工具、基于 Jython 的 Burp Suite 扩展和 mitmproxy 插件，README 说明它最初用于在移动应用渗透测试中修改报文。
 
   工具 · [使用条件与证据](https://awesomerea.org/zh/resources/blackbox-protobuf/)
+
+- [**SteamKit Steam 网络协议库**](https://github.com/SteamRE/SteamKit)
+
+  实现 Valve Steam 网络协议客户端的 .NET 库，涵盖连接管理服务器会话、身份验证、好友、统一服务消息与 Game Coordinator 消息、Web API 调用以及 CDN depot 下载。消息类由子模块跟踪的 Steam protobuf 和项目自有的 SteamLanguage 定义生成。其 Resources 目录还提供协议研究工具：NetHook2 是挂钩正在运行的 Steam 客户端、转储其收发网络消息的 Windows DLL，NetHookAnalyzer2 用于查看这些转储，ProtobufDumper 则从可执行文件中恢复 protobuf 定义。
+
+  工具 · [使用条件与证据](https://awesomerea.org/zh/resources/steamkit/)
 
 <a id="agents-and-mcp"></a>
 ### Agents and MCP · 智能体与 MCP

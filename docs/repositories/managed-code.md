@@ -2,7 +2,7 @@
 
 [All categories](README.md) · [简体中文](managed-code.zh-CN.md)
 
-**131 repositories** · 2026-10-16 UTC
+**130 repositories** · 2026-10-16 UTC
 
 These are automatically discovered projects, not individually curated or tested recommendations. Categories derive from metadata and descriptions from upstream text. Stars are collection-time snapshots, not live rankings.
 
@@ -11,7 +11,6 @@ These are automatically discovered projects, not individually curated or tested 
 - [LavaGang/MelonLoader](https://github.com/LavaGang/MelonLoader) — The World's First Universal Mod Loader for Unity Games compatible with both Il2Cpp and Mono **[4,258 stars]**
 - [Tyrrrz/YoutubeExplode](https://github.com/Tyrrrz/YoutubeExplode) — Abstraction layer over YouTube's internal API **[3,741 stars]**
 - [icedland/iced](https://github.com/icedland/iced) — Blazing fast and correct x86/x64 disassembler, assembler, decoder, encoder for Rust, .NET, Java, Python, Lua **[3,592 stars]**
-- [SteamRE/SteamKit](https://github.com/SteamRE/SteamKit) — SteamKit2 is a .NET library designed to interoperate with Valve's Steam network. It aims to provide a simple, yet extensible, interface to perform various actions on the network. **[3,210 stars]**
 - [uxmal/reko](https://github.com/uxmal/reko) — Reko is a binary decompiler. **[2,617 stars]**
 - [ErikEJ/EFCorePowerTools](https://github.com/ErikEJ/EFCorePowerTools) — Entity Framework Core Power Tools - reverse engineering, migrations and model visualization in Visual Studio &amp; CLI **[2,514 stars]**
 - [ValveResourceFormat/ValveResourceFormat](https://github.com/ValveResourceFormat/ValveResourceFormat) — Source 2 Viewer is an all-in-one tool to browse VPK archives, view, extract, and decompile Source 2 assets, including maps, models, materials, textures, sounds, and more. **[2,507 stars]**

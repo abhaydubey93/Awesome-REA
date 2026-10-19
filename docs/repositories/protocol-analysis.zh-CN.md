@@ -2,12 +2,13 @@
 
 [全部分类](README.zh-CN.md) · [English](protocol-analysis.md)
 
-**103 个仓库** · 2026-10-16 UTC
+**104 个仓库** · 2026-10-16 UTC
 
 这些是自动发现的项目，不是逐项精选或运行验证后的推荐。分类来自元数据；简介由上游描述翻译而来。星标为采集时快照，不是实时排名。
 
 - [alufers/mitmproxy2swagger](https://github.com/alufers/mitmproxy2swagger) — 通过捕获流量，自动逆向分析 REST API。 **[9,652 星标]**
 - [Mouseww/anything-analyzer](https://github.com/Mouseww/anything-analyzer) — 全能协议分析工具：内置浏览器抓包、MITM 代理、JS hook、指纹伪装、AI 分析及 MCP Server，可无缝对接 AI 智能体与 IDE。 **[3,776 星标]**
+- [SteamRE/SteamKit](https://github.com/SteamRE/SteamKit) — SteamKit2 是与 Valve 的 Steam 网络互操作的 .NET 库，旨在提供简单且可扩展的接口，以执行网络上的各种操作。 **[3,210 星标]**
 - [alphaSeclab/awesome-network-stuff](https://github.com/alphaSeclab/awesome-network-stuff) — 网络安全资源，涵盖代理/GFW/反向代理/隧道/VPN/Tor/I2P，以及中间人攻击、端口敲门、网络嗅探、网络分析等。目前收录 1700 多个开源工具，后续将补充文章。 **[926 星标]**
 - [netzob/netzob](https://github.com/netzob/netzob) — Netzob：协议逆向工程、建模与模糊测试 **[838 星标]**
 - [furiousMAC/continuity](https://github.com/furiousMAC/continuity) — Apple Continuity 协议逆向工程与协议解析器 **[688 星标]**

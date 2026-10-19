@@ -2,12 +2,13 @@
 
 [All categories](README.md) · [简体中文](protocol-analysis.zh-CN.md)
 
-**103 repositories** · 2026-10-16 UTC
+**104 repositories** · 2026-10-16 UTC
 
 These are automatically discovered projects, not individually curated or tested recommendations. Categories derive from metadata and descriptions from upstream text. Stars are collection-time snapshots, not live rankings.
 
 - [alufers/mitmproxy2swagger](https://github.com/alufers/mitmproxy2swagger) — Automagically reverse-engineer REST APIs via capturing traffic **[9,652 stars]**
 - [Mouseww/anything-analyzer](https://github.com/Mouseww/anything-analyzer) — All-in-one protocol analysis toolkit: built-in browser capture, MITM proxy, JS hooks, fingerprint spoofing, AI analysis, and an MCP server for seamless AI agent and IDE integration. **[3,776 stars]**
+- [SteamRE/SteamKit](https://github.com/SteamRE/SteamKit) — SteamKit2 is a .NET library designed to interoperate with Valve's Steam network. It aims to provide a simple, yet extensible, interface to perform various actions on the network. **[3,210 stars]**
 - [alphaSeclab/awesome-network-stuff](https://github.com/alphaSeclab/awesome-network-stuff) — Resources about network security, including: Proxy/GFW/ReverseProxy/Tunnel/VPN/Tor/I2P, and MiTM/PortKnocking/NetworkSniff/NetworkAnalysis/etc。More than 1700 open source tools for now. Post incoming. **[926 stars]**
 - [netzob/netzob](https://github.com/netzob/netzob) — Netzob: Protocol Reverse Engineering, Modeling and Fuzzing **[838 stars]**
 - [furiousMAC/continuity](https://github.com/furiousMAC/continuity) — Apple Continuity Protocol Reverse Engineering and Dissector **[688 stars]**
