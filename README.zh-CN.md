@@ -11,7 +11,7 @@
 <a href="https://awesomerea.org/zh/"><img src="assets/readme-banner.svg" alt="Awesome Reverse Engineering Anything — 覆盖六类逆向目标的工具、案例与论文" width="960"></a>
 
 <!-- BEGIN GENERATED BADGES -->
-[![精选资源: 360](https://img.shields.io/badge/%E7%B2%BE%E9%80%89%E8%B5%84%E6%BA%90-360-53309C?style=flat-square&labelColor=303447)](https://awesomerea.org/zh/resources/) [![案例: 184](https://img.shields.io/badge/%E6%A1%88%E4%BE%8B-184-53309C?style=flat-square&labelColor=303447)](https://awesomerea.org/zh/cases/) [![论文: 83](https://img.shields.io/badge/%E8%AE%BA%E6%96%87-83-53309C?style=flat-square&labelColor=303447)](https://awesomerea.org/zh/papers/) [![目录检查](https://github.com/reacher-z/Awesome-REA/actions/workflows/validate.yml/badge.svg?branch=main)](https://github.com/reacher-z/Awesome-REA/actions/workflows/validate.yml) [![许可: MIT](https://img.shields.io/badge/%E8%AE%B8%E5%8F%AF-MIT-606779?style=flat-square&labelColor=303447)](LICENSE) [![网站: awesomerea.org](https://img.shields.io/badge/%E7%BD%91%E7%AB%99-awesomerea.org-6235B5?style=flat-square&labelColor=303447)](https://awesomerea.org/zh/)
+[![精选资源: 361](https://img.shields.io/badge/%E7%B2%BE%E9%80%89%E8%B5%84%E6%BA%90-361-53309C?style=flat-square&labelColor=303447)](https://awesomerea.org/zh/resources/) [![案例: 184](https://img.shields.io/badge/%E6%A1%88%E4%BE%8B-184-53309C?style=flat-square&labelColor=303447)](https://awesomerea.org/zh/cases/) [![论文: 83](https://img.shields.io/badge/%E8%AE%BA%E6%96%87-83-53309C?style=flat-square&labelColor=303447)](https://awesomerea.org/zh/papers/) [![目录检查](https://github.com/reacher-z/Awesome-REA/actions/workflows/validate.yml/badge.svg?branch=main)](https://github.com/reacher-z/Awesome-REA/actions/workflows/validate.yml) [![许可: MIT](https://img.shields.io/badge/%E8%AE%B8%E5%8F%AF-MIT-606779?style=flat-square&labelColor=303447)](LICENSE) [![网站: awesomerea.org](https://img.shields.io/badge/%E7%BD%91%E7%AB%99-awesomerea.org-6235B5?style=flat-square&labelColor=303447)](https://awesomerea.org/zh/)
 <!-- END GENERATED BADGES -->
 
 **[搜索与筛选](https://awesomerea.org/zh/)** · **[浏览案例](https://awesomerea.org/zh/cases/)** · **[研究论文](https://awesomerea.org/zh/papers/)** · **[HTML 综述](https://awesomerea.org/zh/survey/)**
@@ -24,7 +24,7 @@
 **按目标找工具与案例**
 
 - [网站](#website) (19) · [游戏](#game) (166) · [应用](#app) (53)
-- [原生二进制](#native-binary) (26) · [固件与硬件](#firmware) (16) · [协议](#protocol) (13)
+- [原生二进制](#native-binary) (26) · [固件与硬件](#firmware) (17) · [协议](#protocol) (13)
 
 **论文与工作流**
 
@@ -1782,6 +1782,12 @@ REA 标签指向单独维护的[上游 CLI 与 MCP 项目](https://github.com/mo
   由 EURECOM S3 小组开发的 Python 框架，可协调模拟器、调试器和物理设备，对嵌入式固件进行动态分析。分析脚本先声明目标（如修改版 QEMU、PANDA、Unicorn、gdbserver，或 OpenOCD、J-Link 调试探针），再定义内存布局（其中的内存区间可把访问从一个目标转发到另一个目标）和执行计划。执行过程以及寄存器、内存状态可在目标之间转移，从而让固件在模拟器中运行，同时把外设访问转发给真实设备。
 
   工具 · [使用条件与证据](https://awesomerea.org/zh/resources/avatar2/)
+
+- [**binbloom 原始固件端序与基址分析工具**](https://github.com/quarkslab/binbloom)
+
+  Quarkslab 开发的命令行工具，通过对内容做简单统计来推断无文件头原始固件镜像的基本属性，因此 README 称其适用于所有架构。它根据指针宽度数值的高位字节在两种字节序下的聚集程度推测端序，并按候选加载地址（基址）下有多少数值会指向已索引的文本字符串和指针数组，对候选地址排序。给定基址后，它还能在汽车 ECU 固件中查找统一诊断服务（UDS）命令 ID 表，并输出推断出的结构体布局，供反汇编器使用。
+
+  工具 · [使用条件与证据](https://awesomerea.org/zh/resources/binbloom/)
 
 <a id="protocol"></a>
 ### Protocol · 协议
