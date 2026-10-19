@@ -22,13 +22,13 @@ Repository counts use normalized GitHub repository, tree and file links within e
 
 | State | Occurrences | Inventory units | Meaning |
 | --- | ---: | ---: | --- |
-| Already curated (`already-curated`) | 153 | 152 | Full-scope identity mapping to a catalog resource or paper; not independent runtime reproduction. |
-| Pending (`pending`) | 312 | 311 | Primary review or complete catalog coverage remains pending; partial matches stay here. |
+| Already curated (`already-curated`) | 154 | 153 | Full-scope identity mapping to a catalog resource or paper; not independent runtime reproduction. |
+| Pending (`pending`) | 311 | 310 | Primary review or complete catalog coverage remains pending; partial matches stay here. |
 | Insufficient evidence (`insufficient-evidence`) | 126 | 126 | An idea, request or unsupported reconstruction claim is retained as a lead. |
 
-164 occurrences have catalog links. They reference 158 distinct resource IDs and 1 paper ID. Match scope is recorded separately; do not add these populations as unique projects.
+165 occurrences have catalog links. They reference 159 distinct resource IDs and 1 paper ID. Match scope is recorded separately; do not add these populations as unique projects.
 
-This ledger records a new primary-source review for 218 inventory units. Other catalog-linked entries inherit the catalog’s separate source-review record; a link does not mean the entire collection report was reviewed again. No runtime experiment was independently reproduced for this ledger.
+This ledger records a new primary-source review for 219 inventory units. Other catalog-linked entries inherit the catalog’s separate source-review record; a link does not mean the entire collection report was reviewed again. No runtime experiment was independently reproduced for this ledger.
 
 Repository README scan IDs and counts are deliberately absent. A successful README fetch, an upstream list entry and a source-reviewed case are different facts.
 
@@ -147,6 +147,7 @@ Repository README scan IDs and counts are deliberately absent. A successful READ
 | SentinelOne and Daybreak: a reported malware-analysis time reduction | Insufficient evidence | [Source](https://x.com/i/status/2110726263392387158) |
 | Plustek 8200i / ThinkPad MIPI: improve Linux drivers using Windows reference behavior | Pending | [Source](https://github.com/cschalle/hw-harness/blob/093afc5c576c200f29b771d01624a327d0ff1806/examples/plustek-film-scanner/README.md) |
 | UU Remote on Linux: an unofficial protocol implementation | Already curated | [Source](https://github.com/VallierDev/uu-remote-linux/blob/696cf10e334b2e7fe1afcb698b354c09ee328447/README.en.md) |
+| darling-lol: running the macOS League of Legends client on Linux through Darling | Already curated | [Source](https://x.com/0x0SojalSec/status/2111250313164607859) |
 | REA Reconstruction Companion: connect evidence to specifications, implementation and acceptance | Pending | [Source](https://github.com/ShadowSwaps/REA-Reconstruction-Companion/blob/590e65dd99596c7fb66598eaa5d6c051c2ec9a5f/evals/reference/reconstruction/README.md) |
 | NJFE: a Soulear camera protocol bridge for desktop inspection | Already curated | [Source](https://github.com/WildweaselMS/NJFE/blob/992866c6609f8c813f459ff79840cf04d5883f8e/README.md) |
 | LeanREA | Already curated | [Source](https://github.com/aicodeking/leanrea/blob/09ba4aa0217f82cd880f855a60b877f59f39b22b/README.md) |

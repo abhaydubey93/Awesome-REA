@@ -22,13 +22,13 @@
 
 | 状态 | 出现项 | 清单单元 | 含义 |
 | --- | ---: | ---: | --- |
-| 已收录 (`already-curated`) | 153 | 152 | 完整范围已对应目录资源或论文；不代表独立运行复现。 |
-| 待核查 (`pending`) | 312 | 311 | 一手核查或完整目录覆盖尚待完成；部分映射也保留在此状态。 |
+| 已收录 (`already-curated`) | 154 | 153 | 完整范围已对应目录资源或论文；不代表独立运行复现。 |
+| 待核查 (`pending`) | 311 | 310 | 一手核查或完整目录覆盖尚待完成；部分映射也保留在此状态。 |
 | 证据不足 (`insufficient-evidence`) | 126 | 126 | 将想法、请求或尚缺支持的重建说法保留为线索。 |
 
-164 个出现项含目录链接；共关联 158 个不同资源 ID 和 1 个论文 ID。映射范围单独记录，不能将这些群体相加当作独立项目数。
+165 个出现项含目录链接；共关联 159 个不同资源 ID 和 1 个论文 ID。映射范围单独记录，不能将这些群体相加当作独立项目数。
 
-此记录为 218 个清单单元记载了新的一手来源核查。其他已有目录链接的条目对应目录中独立的来源核查记录；链接本身不代表重新核查了整篇合集报告。此记录没有独立复现运行实验。
+此记录为 219 个清单单元记载了新的一手来源核查。其他已有目录链接的条目对应目录中独立的来源核查记录；链接本身不代表重新核查了整篇合集报告。此记录没有独立复现运行实验。
 
 此记录刻意不包含仓库 README 扫描 ID 或扫描数量。成功读取 README、被上游合集列出和案例经过来源核查，是不同事实。
 
@@ -147,6 +147,7 @@
 | SentinelOne and Daybreak: a reported malware-analysis time reduction | 证据不足 | [来源](https://x.com/i/status/2110726263392387158) |
 | Plustek 8200i / ThinkPad MIPI: improve Linux drivers using Windows reference behavior | 待核查 | [来源](https://github.com/cschalle/hw-harness/blob/093afc5c576c200f29b771d01624a327d0ff1806/examples/plustek-film-scanner/README.md) |
 | Linux 上的 UU 远程：非官方协议实现 | 已收录 | [来源](https://github.com/VallierDev/uu-remote-linux/blob/696cf10e334b2e7fe1afcb698b354c09ee328447/README.en.md) |
+| darling-lol：通过 Darling 在 Linux 上运行 macOS 版《英雄联盟》客户端 | 已收录 | [来源](https://x.com/0x0SojalSec/status/2111250313164607859) |
 | REA Reconstruction Companion: connect evidence to specifications, implementation and acceptance | 待核查 | [来源](https://github.com/ShadowSwaps/REA-Reconstruction-Companion/blob/590e65dd99596c7fb66598eaa5d6c051c2ec9a5f/evals/reference/reconstruction/README.md) |
 | NJFE：用于电脑检查的 Soulear 相机协议桥接 | 已收录 | [来源](https://github.com/WildweaselMS/NJFE/blob/992866c6609f8c813f459ff79840cf04d5883f8e/README.md) |
 | LeanREA 命令行逆向分析技能 | 已收录 | [来源](https://github.com/aicodeking/leanrea/blob/09ba4aa0217f82cd880f855a60b877f59f39b22b/README.md) |
