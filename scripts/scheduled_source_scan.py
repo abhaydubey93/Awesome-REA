@@ -47,7 +47,9 @@ APPROVED_QUERIES = [*QUERY_BASES,
                     '"website" "reconstruction" in:description', '"pixel-perfect" "clone" in:description',
                     'topic:game-recreation', 'topic:game-reimplementation',
                     '"game" "reimplementation" in:description', '"UI" "reconstruction" in:description',
-                    'topic:app-clone', '"reverse engineering" in:readme', '"pixel perfect" "clone" in:readme']
+                    'topic:app-clone', '"reverse engineering" in:readme', '"pixel perfect" "clone" in:readme',
+                    '逆向 in:readme', '"clean room" in:readme', '"game" "reimplementation" in:readme',
+                    '"网页" "复刻" in:readme', '"游戏" "复刻" in:readme']
 RECORD_FIELDS = set('archived category classification_origin classification_reference_ids classification_engine_version '
                     'description_capture_policy description_en description_language description_omission description_origin '
                     'description_zh description_zh_status discovery_methods full_name id license matched_queries '
@@ -75,6 +77,13 @@ def nullable(schema):
 
 
 COUNTS_SCHEMA = fields('successful_readme_scans failed attempted_readme_scans unique_repos unattempted_candidates', int)
+SEED_IMPORT_SCHEMA = {
+    **fields('kind imported_at manifest_sha256 checkpoint_sha256 selected_frontier_sha256 '
+             'frontier_policy worker_commit', str),
+    'evidence_frontier_sha256': [str],
+    'imported_counts': COUNTS_SCHEMA,
+}
+EXECUTION_SOURCE_SCHEMA = fields('repository commit', str)
 LIMITS_SCHEMA = {**fields('workers max_readme_bytes max_pages_per_query per_page', int),
                  **fields('requests_per_second search_interval_seconds', (int, float))}
 TRANSPORT_SCHEMA = {
@@ -157,6 +166,8 @@ RECEIPT_V2_SCHEMA = {
     'files': {'checkpoint.json': FILE_SCHEMA, 'frontier.json': FILE_SCHEMA},
     'frontier': FRONTIER_SUMMARY_SCHEMA, 'transport': nullable(TRANSPORT_SCHEMA),
     'reconciliation': {**RECONCILIATION_SCHEMA, 'superseded_count': int, 'superseded_sha256': str},
+    'manual_seed_import': SEED_IMPORT_SCHEMA, 'execution_source': EXECUTION_SOURCE_SCHEMA,
+    'bootstrap_origins': [SEED_IMPORT_SCHEMA],
 }
 
 
@@ -235,6 +246,12 @@ def validate_resume_identities(document):
 def read_snapshot(path):
     fingerprint = file_info(path, MAX_SCAN_BYTES)['sha256']
     document = parse_json(path.read_text(encoding='utf-8'))
+    validate_snapshot(document)
+    return document, fingerprint
+
+
+def validate_snapshot(document):
+    """Validate an already parsed seed union without allocating another full copy."""
     if not isinstance(document, dict) or set(document) != {'meta', 'resources', 'failures'}:
         raise ValueError('Checkpoint contains unexpected top-level fields')
     if not isinstance(document['meta'], dict) or set(document['meta']) - META_FIELDS:
@@ -266,7 +283,37 @@ def read_snapshot(path):
     for run in runs:
         if isinstance(run, dict) and 'readme_transport' in run:
             validate_transport(run['readme_transport'])
-    return document, fingerprint
+
+
+def validate_seed_import(value):
+    validate_shape(value, SEED_IMPORT_SCHEMA)
+    if (set(value) != set(SEED_IMPORT_SCHEMA) or value['kind'] != 'manual-local-union'
+            or value['frontier_policy'] != 'selected-seed-frontier'
+            or not re.fullmatch('[0-9a-f]{40}', value['worker_commit'])
+            or any(not re.fullmatch('[0-9a-f]{64}', value[key]) for key in
+                   ('manifest_sha256', 'checkpoint_sha256', 'selected_frontier_sha256'))
+            or len(value['evidence_frontier_sha256']) > 4
+            or any(not re.fullmatch('[0-9a-f]{64}', item) for item in value['evidence_frontier_sha256'])):
+        raise ValueError('Invalid manual seed provenance')
+    instant = dt.datetime.fromisoformat(value['imported_at'].replace('Z', '+00:00'))
+    if instant.tzinfo is None:
+        raise ValueError('Manual seed import time must include its timezone')
+    validate_seed_counts(value['imported_counts'])
+
+
+def validate_seed_counts(value):
+    validate_shape(value, COUNTS_SCHEMA)
+    if (set(value) != set(COUNTS_SCHEMA) or any(number < 0 for number in value.values())
+            or value['attempted_readme_scans'] != value['successful_readme_scans'] + value['failed']
+            or value['unique_repos'] != value['attempted_readme_scans'] + value['unattempted_candidates']):
+        raise ValueError('Invalid manual seed counters')
+
+
+def validate_execution_source(value):
+    validate_shape(value, EXECUTION_SOURCE_SCHEMA)
+    if (set(value) != set(EXECUTION_SOURCE_SCHEMA) or value['repository'] != 'reacher-z/Awesome-REA'
+            or not re.fullmatch('[0-9a-f]{40}', value['commit'])):
+        raise ValueError('Invalid pinned scanner source')
 
 
 def snapshot_view(document):
@@ -386,7 +433,7 @@ class ActionsAPI:
         remaining = 30 if self.deadline is None else min(30, self.deadline - time.monotonic())
         if remaining <= 0:
             raise ValueError('Checkpoint restore reached its time bound')
-        request = Request('https://api.github.com/repos/' + self.repository + '/' + suffix, headers={
+        request = Request('https://api.github.com/repos/' + self.repository + ('/' + suffix if suffix else ''), headers={
             'Authorization': 'Bearer ' + self.token, 'Accept': 'application/vnd.github+json',
             'X-GitHub-Api-Version': '2022-11-28', 'User-Agent': 'Awesome-REA-scheduled-scan'})
         try:
@@ -507,7 +554,7 @@ def merge_frontier_ids(document, frontier):
     return True
 
 
-def unpack_checkpoint(archive_source, artifact, run, directory):
+def unpack_checkpoint(archive_source, artifact, run, directory, *, receipt_out=None):
     # Bytes are accepted for small offline tests; production uses a streamed file.
     if isinstance(archive_source, bytes):
         if len(archive_source) > MAX_ARCHIVE_BYTES:
@@ -540,6 +587,14 @@ def unpack_checkpoint(archive_source, artifact, run, directory):
         if names != expected_names:
             raise ValueError('Checkpoint archive members do not match its receipt version')
         validate_shape(receipt, RECEIPT_SCHEMA if version == 1 else RECEIPT_V2_SCHEMA)
+        if 'manual_seed_import' in receipt:
+            validate_seed_import(receipt['manual_seed_import'])
+        if 'execution_source' in receipt:
+            validate_execution_source(receipt['execution_source'])
+        if len(receipt.get('bootstrap_origins', [])) > 1:
+            raise ValueError('Multiple bootstrap origins require an explicit reviewed migration')
+        for origin in receipt.get('bootstrap_origins', []):
+            validate_seed_import(origin)
         if private_json_locations(receipt):
             raise ValueError('Checkpoint receipt contains credential-like text or a personal path; values withheld')
         if (receipt.get('run_id') != run['id'] or receipt.get('run_attempt') != run['run_attempt']
@@ -568,6 +623,8 @@ def unpack_checkpoint(archive_source, artifact, run, directory):
         paired_ack_guard(document, frontier)
         if receipt.get('frontier') != search_frontier.summary(frontier):
             raise ValueError('Frontier receipt counts do not match the paired state')
+    if receipt_out is not None:
+        receipt_out.update(receipt)
     return document, fingerprint, frontier
 
 
@@ -677,7 +734,7 @@ def emit_summary(directory, receipt, *, upload):
                      'These are automated captures, not curated recommendations. Published data was not changed.\n')
 
 
-def orchestrate(directory):
+def orchestrate(directory, *, manual_seed=None, execution_source=None, bootstrap_only=False):
     started_clock = time.monotonic()
     repository, branch = os.environ['GITHUB_REPOSITORY'], os.environ['DEFAULT_BRANCH']
     if os.environ.get('GITHUB_REF') != 'refs/heads/' + branch:
@@ -689,17 +746,39 @@ def orchestrate(directory):
     receipt = {'schema_version': 2, 'run_id': run_id, 'run_attempt': int(os.environ['GITHUB_RUN_ATTEMPT']),
                'source_commit': source, 'started_at': now(), 'new_success_limit': NEW_SUCCESSES,
                'global_target_successes': GLOBAL_TARGET, 'scan_seconds': SCAN_SECONDS}
+    if execution_source is not None:
+        validate_execution_source(execution_source)
+        receipt['execution_source'] = execution_source
+    if bootstrap_only and manual_seed is None:
+        raise ValueError('Bootstrap-only mode requires an explicit seed')
     canonical, canonical_sha = read_snapshot(ROOT / 'data/source-index.json')
     previous, previous_sha, frontier, artifact = None, None, None, None
     api = ActionsAPI(repository, os.environ['GH_TOKEN'], deadline=started_clock + 180)
     receipt['workflow_id'] = api.get('actions/workflows/' + WORKFLOW)['id']
     selected = select_checkpoint(api, branch, run_id, receipt['run_attempt'])
+    if execution_source is not None and selected is None and manual_seed is None:
+        raise ValueError('A private worker requires an explicit first seed or a trusted retained checkpoint')
     if selected:
         run, artifact = selected
         archive_path = directory / 'restored.zip'
         api.download(f"actions/artifacts/{artifact['id']}/zip", archive_path)
-        previous, previous_sha, frontier = unpack_checkpoint(archive_path, artifact, run, directory / 'restored')
+        restored_receipt = {}
+        previous, previous_sha, frontier = unpack_checkpoint(archive_path, artifact, run, directory / 'restored',
+                                                             receipt_out=restored_receipt)
+        if restored_receipt.get('bootstrap_origins'):
+            receipt['bootstrap_origins'] = restored_receipt['bootstrap_origins']
         receipt['restored_run_id'], receipt['restored_artifact_id'] = run['id'], artifact['id']
+    if manual_seed is not None:
+        if os.environ.get('GITHUB_EVENT_NAME') != 'workflow_dispatch' or execution_source is None:
+            raise ValueError('Manual seed import requires an explicit private worker dispatch')
+        repository_info = api.get('')
+        if repository_info.get('private') is not True or repository_info.get('full_name') != repository:
+            raise ValueError('Manual evidence import is restricted to the private worker repository')
+        from scan_seed import import_seed
+        previous, previous_sha, frontier, imported = import_seed(
+            manual_seed, directory / 'manual-seed', previous, previous_sha, frontier, worker_commit=source)
+        receipt['manual_seed_import'] = imported
+        receipt['bootstrap_origins'] = [imported]
     try:
         seed, reconciliation = reconcile(canonical, previous, canonical_sha, previous_sha)
     except ValueError:
@@ -708,7 +787,7 @@ def orchestrate(directory):
             write_json(directory / 'review/previous-input.json', previous)
         raise
     retained = len(seed['resources'])
-    planned = planned_successes(retained)
+    planned = 0 if bootstrap_only else planned_successes(retained)
     receipt.update(planned_new_successes=planned, retained_counts=counts(seed),
                    reconciliation=compact_reconciliation(reconciliation))
     was_v2 = frontier is not None
@@ -719,7 +798,7 @@ def orchestrate(directory):
     seed_reconciled = merge_frontier_ids(seed, frontier)
     seed_reconciled = retain_superseded_hashes(seed, reconciliation) or seed_reconciled
     # At goal, preserve a still-live paired artifact without repeatedly rewriting it.
-    if (planned == 0 and was_v2 and not seed_reconciled and reconciliation['mode'] == 'checkpoint-covers-canonical'
+    if (manual_seed is None and planned == 0 and was_v2 and not seed_reconciled and reconciliation['mode'] == 'checkpoint-covers-canonical'
             and not retention_needs_refresh(artifact)):
         receipt.update(completed_at=now(), outcome='global-target-already-reached', scanner_exit_code=0,
                        new_successful_scans=0, counts=counts(seed), checkpoint_sha256=previous_sha,
@@ -729,7 +808,7 @@ def orchestrate(directory):
                        frontier=search_frontier.summary(frontier), transport=None)
         emit_summary(directory, receipt, upload=False)
         return 0
-    if planned:
+    if planned or bootstrap_only:
         search_frontier.add_queries(frontier, APPROVED_QUERIES, approved_queries=APPROVED_QUERIES)
         cutoff = dt.datetime.now(dt.timezone.utc).strftime('%Y-%m-%dT%H:%M:%SZ')
         if search_frontier.utc_seconds(cutoff) > frontier['until']:
@@ -737,7 +816,8 @@ def orchestrate(directory):
     seed_path, output = directory / 'seed.json', directory / 'working/checkpoint.json'
     frontier_path = directory / 'working/frontier.json'
     # Persist discovery IDs even when a previous process stopped between the two saves.
-    unchanged_path = (directory / 'restored/checkpoint.json' if reconciliation['mode'] == 'checkpoint-covers-canonical'
+    unchanged_path = ((directory / 'manual-seed/scan-seed-checkpoint.json' if manual_seed is not None
+                       else directory / 'restored/checkpoint.json') if reconciliation['mode'] == 'checkpoint-covers-canonical'
                       else ROOT / 'data/source-index.json' if reconciliation['mode'] in ('canonical', 'canonical-covers-checkpoint') else None)
     if unchanged_path is not None and not seed_reconciled:
         shutil.copyfile(unchanged_path, seed_path)
@@ -769,7 +849,7 @@ def orchestrate(directory):
                 os.killpg(child.pid, signal.SIGKILL); child.wait()
             outcome, code = 'time-budget', 124
     else:
-        outcome, code = 'global-target-already-reached', 0
+        outcome, code = ('bootstrap-imported' if bootstrap_only else 'global-target-already-reached'), 0
     final, fingerprint = read_snapshot(output)
     frontier = read_frontier(frontier_path)
     paired_ack_guard(final, frontier)
