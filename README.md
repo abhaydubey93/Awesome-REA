@@ -11,7 +11,7 @@ An independent collection of tools, case studies and research for websites, game
 <a href="https://awesomerea.org/"><img src="assets/readme-banner.svg" alt="Awesome Reverse Engineering Anything — tools, cases and papers across six reverse-engineering domains" width="960"></a>
 
 <!-- BEGIN GENERATED BADGES -->
-[![resources: 346](https://img.shields.io/badge/resources-346-53309C?style=flat-square&labelColor=303447)](https://awesomerea.org/resources/) [![cases: 180](https://img.shields.io/badge/cases-180-53309C?style=flat-square&labelColor=303447)](https://awesomerea.org/cases/) [![papers: 83](https://img.shields.io/badge/papers-83-53309C?style=flat-square&labelColor=303447)](https://awesomerea.org/papers/) [![Catalog checks](https://github.com/reacher-z/Awesome-REA/actions/workflows/validate.yml/badge.svg?branch=main)](https://github.com/reacher-z/Awesome-REA/actions/workflows/validate.yml) [![license: MIT](https://img.shields.io/badge/license-MIT-606779?style=flat-square&labelColor=303447)](LICENSE) [![website: awesomerea.org](https://img.shields.io/badge/website-awesomerea.org-6235B5?style=flat-square&labelColor=303447)](https://awesomerea.org/)
+[![resources: 346](https://img.shields.io/badge/resources-346-53309C?style=flat-square&labelColor=303447)](https://awesomerea.org/resources/) [![cases: 180](https://img.shields.io/badge/cases-180-53309C?style=flat-square&labelColor=303447)](https://awesomerea.org/cases/) [![papers: 84](https://img.shields.io/badge/papers-84-53309C?style=flat-square&labelColor=303447)](https://awesomerea.org/papers/) [![Catalog checks](https://github.com/reacher-z/Awesome-REA/actions/workflows/validate.yml/badge.svg?branch=main)](https://github.com/reacher-z/Awesome-REA/actions/workflows/validate.yml) [![license: MIT](https://img.shields.io/badge/license-MIT-606779?style=flat-square&labelColor=303447)](LICENSE) [![website: awesomerea.org](https://img.shields.io/badge/website-awesomerea.org-6235B5?style=flat-square&labelColor=303447)](https://awesomerea.org/)
 <!-- END GENERATED BADGES -->
 
 **[Search & filter](https://awesomerea.org/)** · **[Browse cases](https://awesomerea.org/cases/)** · **[Research papers](https://awesomerea.org/papers/)** · **[HTML survey](https://awesomerea.org/survey/)**
@@ -28,7 +28,7 @@ An independent collection of tools, case studies and research for websites, game
 
 **Research and workflows**
 
-- [Papers](#papers) (83) · [Agents and MCP](#agents-and-mcp) (30) · [References and Learning](#references-and-learning) (27)
+- [Papers](#papers) (84) · [Agents and MCP](#agents-and-mcp) (30) · [References and Learning](#references-and-learning) (27)
 
 **More ways to browse**
 
@@ -2187,13 +2187,13 @@ REA labels refer to the separate [upstream CLI and MCP project](https://github.c
 <a id="papers"></a>
 ## Papers
 
-**83 papers**, grouped by topic and ordered newest first. Each entry shows its venue and publication status.
+**84 papers**, grouped by topic and ordered newest first. Each entry shows its venue and publication status.
 
 [Browse the paper directory](https://awesomerea.org/papers/) · [Complete bibliography JSON](data/papers.json) · [Suggest a paper](https://github.com/reacher-z/Awesome-REA/issues/new?template=paper.yml)
 
 **By topic**
 
-- [Agent evaluation](#papers-agent-evaluation) (8) · [Decompilation](#papers-decompilation) (31) · [Websites](#papers-website-reconstruction) (15)
+- [Agent evaluation](#papers-agent-evaluation) (8) · [Decompilation](#papers-decompilation) (32) · [Websites](#papers-website-reconstruction) (15)
 - [Games](#papers-game-reconstruction) (6) · [Apps](#papers-app-reconstruction) (7) · [Firmware](#papers-firmware-analysis) (6)
 - [Protocols](#papers-protocol-analysis) (10)
 
@@ -2581,6 +2581,21 @@ Open “Scope and publication details” for each study’s full limitations. So
   **Scope and limits:** The reported rates are author results on C programs compiled to Wasm with Emscripten. About half of the outputs recompile, fewer than half re-execute and roughly a quarter reproduce the original output, so decompiled code is generally not semantically equivalent. The 3,977-file benchmark comes from the same two sources as the training programs. Optimized builds are not evaluated: the authors neither adapted the method to nor trained it on O1/O2 code. The model also handles data structures poorly, often flattening them into separate variables or arrays. Only C sources are studied; Wasm produced from other languages or toolchains is not evaluated. Baselines are Wasm2c and Ghidra's Wasm plugin, and LLM baselines were excluded because none could decompile Wasm functions without fine-tuning. Slicing means one function may be decompiled several times, at about 0.1 to 2 seconds per prompt.
 
   **Authors:** Xinyu She et al.
+
+  </details>
+
+- [**TYGR: Type Inference on Stripped Binaries using Graph Neural Networks**](https://www.usenix.org/conference/usenixsecurity24/presentation/zhu-chang)
+
+  TYGR infers the types of stack and heap variables in stripped binaries by running an architecture-agnostic, intra-procedural data-flow analysis on angr's VEX IR and classifying each variable's data-flow graph with a graph neural network. It predicts base types, pointers and struct member layouts, covering 97.1% of the types observed in its data. The authors also build TyDa, 163,643 binaries compiled with debug information from Gentoo and Debian C packages for x86, x64, AArch64, Arm32 and MIPS at O0–O3, and deduplicate functions in the evaluated subset before splitting it. On x64 across O0–O3 they report 76.6% overall and 45.2% struct accuracy, and say TYGR beats prior work by at least 26.1% overall and 10.2% on structs.
+
+  USENIX Security 2024 · Conference paper · [PDF](https://www.usenix.org/system/files/usenixsecurity24-zhu-chang.pdf) · [Code](https://github.com/sefcom/TYGR) · [Full entry & citation](https://awesomerea.org/papers/paper-tygr/)
+
+  <details>
+  <summary>Scope and publication details</summary>
+
+  **Scope and limits:** Ground truth comes from DWARF information in binaries compiled by the authors, and training and testing use TyDa-min, about 8% of TyDa's binaries, so the results do not cover wild, obfuscated or C++ code. The analysis is intra-procedural and covers stack and heap variables only, not globals; unresolved indirect jumps can leave code unexplored, and adjacent stack structs are predicted as one struct, though the authors find this rare in TyDa. Accuracy plateaus near 80% as training data grows, which the authors attribute to rare types and types that usage alone cannot distinguish. Comparisons follow each baseline's original setting: DIRTY and OSPREY on x64 only, and OSPREY through results its authors supplied for Coreutils x64-O0. Accuracy is not compared directly with Ghidra or IDA Pro. Predictions choose from a fixed set of base, pointer and struct-member types; they do not recover type names or full struct declarations.
+
+  **Authors:** Chang Zhu et al.
 
   </details>
 
