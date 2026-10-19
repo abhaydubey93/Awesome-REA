@@ -2,7 +2,7 @@
 
 [全部分类](README.zh-CN.md) · [English](native-analysis.md)
 
-**679 个仓库** · 2026-10-16 UTC
+**680 个仓库** · 2026-10-16 UTC
 
 这些是自动发现的项目，不是逐项精选或运行验证后的推荐。分类来自元数据；简介由上游描述翻译而来。星标为采集时快照，不是实时排名。标有“精选”或“论文”的行指向以同一仓库为来源的已复核目录条目或论文。
 
@@ -20,7 +20,7 @@
 - [capstone-engine/capstone](https://github.com/capstone-engine/capstone) — Capstone 反汇编框架，支持 ARM、ARM64（ARMv8）、Alpha、BPF、Ethereum VM、HPPA、LoongArch、M68K、M680X、Mips、MOS65XX、PPC、RISC-V（rv32G/rv64G）、SH、Sparc、SystemZ、TMS320C64X、TriCore、WebAssembly、XCore 和 X86。 **[9,107 星标]** · 精选：[Capstone](https://awesomerea.org/zh/resources/capstone/)
 - [albertan017/LLM4Decompile](https://github.com/albertan017/LLM4Decompile) — 逆向工程：利用大语言模型反编译二进制代码。 **[7,134 星标]** · 论文：[Decompile-Bench：面向真实二进制反编译的百万级二进制与源码函数对](https://awesomerea.org/zh/papers/paper-decompile-bench/), [LLM4Decompile：使用大语言模型反编译二进制代码](https://awesomerea.org/zh/papers/paper-llm4decompile/), [SK2Decompile：从骨架到皮肤的大语言模型两阶段二进制反编译](https://awesomerea.org/zh/papers/paper-sk2decompile/)
 - [mandiant/capa](https://github.com/mandiant/capa) — FLARE 团队的开源工具，用于识别可执行文件的能力。 **[6,247 星标]**
-- [0xZ0F/Z0FCourse\_ReverseEngineering](https://github.com/0xZ0F/Z0FCourse_ReverseEngineering) — 专注于 x64 Windows 的逆向工程。 **[5,962 星标]**
+- [0xZ0F/Z0FCourse\_ReverseEngineering](https://github.com/0xZ0F/Z0FCourse_ReverseEngineering) — 专注于 x64 Windows 的逆向工程。 **[5,962 星标]** · 精选：[Z0FCourse 逆向工程课程](https://awesomerea.org/zh/resources/z0f-reverse-engineering-course/)
 - [bethington/ghidra-mcp](https://github.com/bethington/ghidra-mcp) — Ghidra MCP Server：提供 200 多个 MCP 工具，支持 AI 逆向工程。包含 GUI 插件与无界面服务器、工具延迟加载、约定约束、批量操作、Ghidra Server 集成和 Docker 部署。 **[5,659 星标]** · 精选：[Ghidra MCP Server（bethington）](https://awesomerea.org/zh/resources/ghidra-mcp-bethington/)
 - [lief-project/LIEF](https://github.com/lief-project/LIEF) — LIEF：用于可执行文件格式插桩的库，支持 C++、Python 和 Rust。 **[5,595 星标]** · 精选：[LIEF](https://awesomerea.org/zh/resources/lief/)
 - [pret/pokered](https://github.com/pret/pokered) — 《宝可梦 红/蓝》的反汇编代码。 **[4,993 星标]** · 精选：[pokered：一致构建的《精灵宝可梦 红／蓝》反汇编](https://awesomerea.org/zh/resources/pokered-disassembly-case/)
@@ -31,7 +31,7 @@
 - [orhun/binsider](https://github.com/orhun/binsider) — 像高手一样分析 ELF 二进制文件 😼🕵️‍♂️。 **[4,481 星标]** · 精选：[binsider ELF 二进制分析终端界面](https://awesomerea.org/zh/resources/binsider/)
 - [joxeankoret/diaphora](https://github.com/joxeankoret/diaphora) — Diaphora：最先进的自由开源程序差异比较工具。 **[4,428 星标]** · 精选：[Diaphora](https://awesomerea.org/zh/resources/diaphora/)
 - [zyantific/zydis](https://github.com/zyantific/zydis) — 快速、轻量的 x86/x86-64 反汇编与代码生成库。 **[4,393 星标]** · 精选：[Zydis x86 反汇编与代码生成库](https://awesomerea.org/zh/resources/zydis/)
-- [JonathanSalwan/Triton](https://github.com/JonathanSalwan/Triton) — Triton 是动态二进制分析库。可用它构建程序分析工具、自动化逆向工程、执行软件验证或模拟代码运行。 **[4,332 星标]**
+- [JonathanSalwan/Triton](https://github.com/JonathanSalwan/Triton) — Triton 是动态二进制分析库。可用它构建程序分析工具、自动化逆向工程、执行软件验证或模拟代码运行。 **[4,332 星标]** · 精选：[Triton 动态二进制分析库](https://awesomerea.org/zh/resources/triton/)
 - [rocky/python-uncompyle6](https://github.com/rocky/python-uncompyle6) — 跨版本 Python 字节码反编译器。 **[4,331 星标]** · 精选：[uncompyle6 跨版本 Python 字节码反编译器](https://awesomerea.org/zh/resources/uncompyle6/)
 - [mandiant/flare-floss](https://github.com/mandiant/flare-floss) — FLARE 混淆字符串求解器：自动提取恶意软件中的混淆字符串。 **[4,189 星标]** · 精选：[FLOSS 混淆字符串提取工具](https://awesomerea.org/zh/resources/flare-floss/)
 - [cea-sec/miasm](https://github.com/cea-sec/miasm) — Python 逆向工程框架。 **[3,992 星标]**
@@ -65,6 +65,7 @@
 - [L4ys/LazyIDA](https://github.com/L4ys/LazyIDA) — 让你的 IDA 更省事！ **[1,447 星标]**
 - [AllsafeCyberSecurity/awesome-ghidra](https://github.com/AllsafeCyberSecurity/awesome-ghidra) — 精选 Ghidra 优质资料列表。 **[1,442 星标]**
 - [WPeace-HcH/WPeGPT](https://github.com/WPeace-HcH/WPeGPT) — 由 OpenAI、DeepSeek 等 AI 模型驱动的 IDA 二进制文件分析插件。 **[1,425 星标]**
+- [syssec-utd/pylingual](https://github.com/syssec-utd/pylingual) — 支持现代 Python 版本的 Python 反编译器。 **[1,420 星标]** · 精选：[PyLingual Python 字节码反编译器](https://awesomerea.org/zh/resources/pylingual/)
 - [fkie-cad/cwe\_checker](https://github.com/fkie-cad/cwe_checker) — cwe\_checker 可在二进制可执行文件中查找易受攻击的模式。 **[1,362 星标]** · 精选：[cwe\_checker 二进制漏洞模式检查工具](https://awesomerea.org/zh/resources/cwe-checker/)
 - [gdabah/distorm](https://github.com/gdabah/distorm) — 功能强大的 x86/AMD64 反汇编库。 **[1,340 星标]**
 - [Vector35/binaryninja-api](https://github.com/Vector35/binaryninja-api) — Binary Ninja 的公共 API、示例、文档与问题跟踪。 **[1,327 星标]**

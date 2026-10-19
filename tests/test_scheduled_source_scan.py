@@ -597,7 +597,7 @@ class PairedCheckpointTests(unittest.TestCase):
 
 
 class ScheduledBudgetTests(unittest.TestCase):
-    def test_larger_increment_keeps_remaining_goal_and_candidate_surplus_bounded(self):
+    def test_expanded_discovery_keeps_capture_goal_surplus_and_other_budgets_bounded(self):
         document = snapshot(range(1, 1502))
         document['resources'][0] = record(1, integrity=None)
         document['resources'][1] = record(2, integrity=False)
@@ -614,7 +614,11 @@ class ScheduledBudgetTests(unittest.TestCase):
             args = scan.call_args.args[1]
             self.assertEqual(args.target, len(document['resources']) + planned)
             self.assertEqual(args.candidate_buffer, surplus)
-            self.assertEqual((args.search_request_budget, args.pending_metadata_budget), (120, 200))
+            self.assertEqual((args.search_request_budget, args.pending_metadata_budget), (360, 200))
+            self.assertEqual((args.workers, args.requests_per_second, args.max_pages), (4, 2, 3))
+            self.assertEqual(scan.call_args.kwargs['readme_transport'].batch_size, 16)
+        self.assertEqual(scheduled.SCAN_SECONDS, 38 * 60)
+        self.assertEqual(scheduled.NEW_SUCCESSES, 2000)
 
     def test_observed_graphql_quota_and_fallback_budget_defer_without_extra_requests(self):
         calls = []
@@ -635,6 +639,14 @@ class ScheduledBudgetTests(unittest.TestCase):
         policy.rate_limit = {}; policy.reported_cost = 800
         self.assertTrue(all(r['status'] == 'deferred' for r in policy.fetch_batch(rows).values()))
         self.assertEqual(len(calls), 1)
+        policy.reported_cost = 0; policy.requests = 800
+        self.assertTrue(all(r['status'] == 'deferred' for r in policy.fetch_batch(rows).values()))
+        self.assertEqual(len(calls), 1)
+        policy.requests = 0; policy.fallbacks = 200
+        policy.rest.rate['core']['remaining'] = 1000
+        self.assertTrue(all(r['status'] == 'deferred' for r in policy.fetch_batch(rows).values()))
+        self.assertEqual(policy.fallbacks, 200)
+        self.assertEqual(len(calls), 2)
 
 
 if __name__ == '__main__':

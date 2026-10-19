@@ -2,7 +2,7 @@
 
 [All categories](README.md) · [简体中文](native-analysis.zh-CN.md)
 
-**679 repositories** · 2026-10-16 UTC
+**680 repositories** · 2026-10-16 UTC
 
 These are automatically discovered projects, not individually curated or tested recommendations. Categories derive from metadata and descriptions from upstream text. Stars are collection-time snapshots, not live rankings. Lines marked “Curated” or “Paper” link to the reviewed catalog entry or paper whose source is that exact repository.
 
@@ -20,7 +20,7 @@ These are automatically discovered projects, not individually curated or tested 
 - [capstone-engine/capstone](https://github.com/capstone-engine/capstone) — Capstone disassembly/disassembler framework for ARM, ARM64 (ARMv8), Alpha, BPF, Ethereum VM, HPPA, LoongArch, M68K, M680X, Mips, MOS65XX, PPC, RISC-V(rv32G/rv64G), SH, Sparc, SystemZ, TMS320C64X, TriCore, Webassembly, XCore and X86. **[9,107 stars]** · Curated: [Capstone](https://awesomerea.org/resources/capstone/)
 - [albertan017/LLM4Decompile](https://github.com/albertan017/LLM4Decompile) — Reverse Engineering: Decompiling Binary Code with Large Language Models **[7,134 stars]** · Paper: [Decompile-Bench: Million-Scale Binary-Source Function Pairs for Real-World Binary Decompilation](https://awesomerea.org/papers/paper-decompile-bench/), [LLM4Decompile: Decompiling Binary Code with Large Language Models](https://awesomerea.org/papers/paper-llm4decompile/), [SK2Decompile: LLM-based Two-Phase Binary Decompilation from Skeleton to Skin](https://awesomerea.org/papers/paper-sk2decompile/)
 - [mandiant/capa](https://github.com/mandiant/capa) — The FLARE team's open-source tool to identify capabilities in executable files. **[6,247 stars]**
-- [0xZ0F/Z0FCourse\_ReverseEngineering](https://github.com/0xZ0F/Z0FCourse_ReverseEngineering) — Reverse engineering focusing on x64 Windows. **[5,962 stars]**
+- [0xZ0F/Z0FCourse\_ReverseEngineering](https://github.com/0xZ0F/Z0FCourse_ReverseEngineering) — Reverse engineering focusing on x64 Windows. **[5,962 stars]** · Curated: [Z0FCourse Reverse Engineering](https://awesomerea.org/resources/z0f-reverse-engineering-course/)
 - [bethington/ghidra-mcp](https://github.com/bethington/ghidra-mcp) — Ghidra MCP Server — 200+ MCP tools for AI-powered reverse engineering. GUI plugin + headless server, lazy tool loading, convention enforcement, batch operations, Ghidra Server integration, and Docker deployment. **[5,659 stars]** · Curated: [Ghidra MCP Server (bethington)](https://awesomerea.org/resources/ghidra-mcp-bethington/)
 - [lief-project/LIEF](https://github.com/lief-project/LIEF) — LIEF - Library to Instrument Executable Formats (C++, Python, Rust) **[5,595 stars]** · Curated: [LIEF](https://awesomerea.org/resources/lief/)
 - [pret/pokered](https://github.com/pret/pokered) — Disassembly of Pokémon Red/Blue **[4,993 stars]** · Curated: [pokered: a matching Pokémon Red and Blue disassembly](https://awesomerea.org/resources/pokered-disassembly-case/)
@@ -31,7 +31,7 @@ These are automatically discovered projects, not individually curated or tested 
 - [orhun/binsider](https://github.com/orhun/binsider) — Analyze ELF binaries like a boss 😼🕵️‍♂️ **[4,481 stars]** · Curated: [binsider](https://awesomerea.org/resources/binsider/)
 - [joxeankoret/diaphora](https://github.com/joxeankoret/diaphora) — Diaphora, the most advanced Free and Open Source program diffing tool. **[4,428 stars]** · Curated: [Diaphora](https://awesomerea.org/resources/diaphora/)
 - [zyantific/zydis](https://github.com/zyantific/zydis) — Fast and lightweight x86/x86-64 disassembler and code generation library **[4,393 stars]** · Curated: [Zydis](https://awesomerea.org/resources/zydis/)
-- [JonathanSalwan/Triton](https://github.com/JonathanSalwan/Triton) — Triton is a dynamic binary analysis library. Build your own program analysis tools, automate your reverse engineering, perform software verification or just emulate code. **[4,332 stars]**
+- [JonathanSalwan/Triton](https://github.com/JonathanSalwan/Triton) — Triton is a dynamic binary analysis library. Build your own program analysis tools, automate your reverse engineering, perform software verification or just emulate code. **[4,332 stars]** · Curated: [Triton](https://awesomerea.org/resources/triton/)
 - [rocky/python-uncompyle6](https://github.com/rocky/python-uncompyle6) — A cross-version Python bytecode decompiler **[4,331 stars]** · Curated: [uncompyle6](https://awesomerea.org/resources/uncompyle6/)
 - [mandiant/flare-floss](https://github.com/mandiant/flare-floss) — FLARE Obfuscated String Solver - Automatically extract obfuscated strings from malware. **[4,189 stars]** · Curated: [FLOSS (FLARE Obfuscated String Solver)](https://awesomerea.org/resources/flare-floss/)
 - [cea-sec/miasm](https://github.com/cea-sec/miasm) — Reverse engineering framework in Python **[3,992 stars]**
@@ -65,6 +65,7 @@ These are automatically discovered projects, not individually curated or tested 
 - [L4ys/LazyIDA](https://github.com/L4ys/LazyIDA) — Make your IDA Lazy! **[1,447 stars]**
 - [AllsafeCyberSecurity/awesome-ghidra](https://github.com/AllsafeCyberSecurity/awesome-ghidra) — A curated list of awesome Ghidra materials **[1,442 stars]**
 - [WPeace-HcH/WPeGPT](https://github.com/WPeace-HcH/WPeGPT) — An IDA plugin for binary file analysis, powered by AI models such as OpenAI and DeepSeek. **[1,425 stars]**
+- [syssec-utd/pylingual](https://github.com/syssec-utd/pylingual) — Python decompiler for modern Python versions. **[1,420 stars]** · Curated: [PyLingual](https://awesomerea.org/resources/pylingual/)
 - [fkie-cad/cwe\_checker](https://github.com/fkie-cad/cwe_checker) — cwe\_checker finds vulnerable patterns in binary executables **[1,362 stars]** · Curated: [cwe\_checker](https://awesomerea.org/resources/cwe-checker/)
 - [gdabah/distorm](https://github.com/gdabah/distorm) — Powerful Disassembler Library For x86/AMD64 **[1,340 stars]**
 - [Vector35/binaryninja-api](https://github.com/Vector35/binaryninja-api) — Public API, examples, documentation and issues for Binary Ninja **[1,327 stars]**

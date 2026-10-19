@@ -3822,5 +3822,78 @@
       "GEF 依赖 GDB API 以及 /proc/<pid> 等 Linux 特有的信息来源，因此部分功能在定制或加固的系统上可能无法使用，堆命令也只支持 glibc 分配器。qemu 模式需要本地保存一份被调试的二进制，因为 QEMU 的 GDB stub 无法传输文件。README 将其定位为面向漏洞利用开发者和逆向工程人员的工具；本条目只涉及其调试与检查用途。",
       "采用 MIT 许可。测试使用 pytest，并须在 GDB 编译时所用的 Python 版本下运行。本次未运行任何调试会话。"
     ]
+  },
+  "z0f-reverse-engineering-course": {
+    "name": "Z0FCourse 逆向工程课程",
+    "requirements": [
+      "审阅提交为 ee4b070（2026-07-25）。大部分课程写于 2019–2020 年，目录将第 7 章（Windows）和第 8 章（Generic Table）标为未完成；环境配置页和 Before You Begin 页面预告的 .NET 及其他架构内容并不在仓库中。之后的提交多为小修正、格式整理、更新 PDF 副本和添加链接。README 推荐两个 TryHackMe 房间，作为第 1–6 章的交互式版本。",
+      "第 1 章列出的前置要求是熟练掌握 C/C++、面向对象编程和指针，并强烈建议先学过 x86/x64 汇编。课程需要 64 位 Windows 系统，在进入恶意软件内容之前虚拟机并非必需；环境配置页列为必需的有 Microsoft Visual C++ Redistributable、x64dbg（可选 xAnalyzer 插件），以及 dnSpy 或 ILSpy，并强烈推荐 Ghidra 和 Visual Studio。",
+      "课程中的目标程序均由作者编写，并连同源码放在 FilesNeeded 中：第 6 章的 DLL、两个调用它的宿主程序及调试符号，另有一个恶意软件样本程序及其投放器，对应尚未撰写的章节，FilesNeeded 注明使用风险自负。第 8 章则分析 Windows 自带的 ntdll.dll，仓库并未包含该文件。仓库还提交了各章的 PDF 副本，README 提醒这些 PDF 可能落后于 Markdown 课程。",
+      "仓库中的 License.md 为 AGPL-3.0 全文；FAQ 另称仅允许为个人使用而下载，再分发和教学使用则以许可证为准。本合集在所审阅提交中阅读了 README、环境配置页、目录、FilesNeeded 说明、FAQ 和许可证，没有实际学习课程或运行示例程序；课程中也未提及 AI 或 REA。"
+    ]
+  },
+  "apklab": {
+    "name": "APKLab Android 逆向工作台",
+    "requirements": [
+      "最新标签 v2.0.0 在更新日志中的日期为 2026-04-06，新增 smali-lsp、Frida 钩子生成与 gadget 注入，并兼容 Apktool 3.0+；所审阅的 master 分支提交日期为 2026-07-16，比该标签多 5 个提交。扩展发布在 VS Code 应用市场和 Open VSX，package.json 要求 VS Code 1.91+。README 列出 Linux、macOS 和 WSL2，CI 还在 Windows 上构建和测试。",
+      "需要 JDK 17+。首次使用时，扩展会把项目更新配置中列出的工具下载到用户主目录下的 .apklab 文件夹，审阅时为 Apktool 3.0.2、smali-lsp 1.5.0、uber-apk-signer 1.3.0 和 Jadx 1.5.6；使用者也可自行指定路径。adb 为可选项，用于安装到设备；Quark-Engine 21.01.6+ 为可选项，用于生成恶意软件报告。APK 由使用者自备。",
+      "CI 在 Ubuntu、macOS 和 Windows 上运行代码检查、打包扩展并执行测试套件，测试使用独立 testdata 仓库中的一个开源示例 APK；这只检查集成本身，不代表所整合工具在真实应用上的效果。Jadx 的输出可能不完整；重新构建的 APK 由 uber-apk-signer 重新签名，设置了密钥库时使用该密钥库。",
+      "采用 AGPL-3.0 许可；Apktool、Jadx、smali-lsp、uber-apk-signer、apk-mitm、Frida 和 Quark-Engine 保留各自许可证。HTTPS 检查补丁和 gadget 注入会修改被分析的应用，本工具不授予分析、修补或再分发第三方应用的任何权利。本次审阅未安装任何内容，也未修改任何应用。"
+    ]
+  },
+  "triton": {
+    "name": "Triton 动态二进制分析库",
+    "requirements": [
+      "README 称 Triton 是业余维护的项目，未必完全可靠。GitHub 上最新的发布版本是 2022-02-09 的 v0.9，且仅提供 Windows 构建；PyPI 上的 triton-library 1.0.0rc4 首次上传于 2024-05-22，此后陆续补充 wheel 至 2026-02-23，提供面向 x86_64 Linux（manylinux 2.31/2.34）、macOS 12 和 Windows 的 CPython 3.8–3.14 wheel。所审阅的 master 分支提交声明版本为 1.0，dev-v1.0 分支领先 22 个提交。",
+      "从源码构建使用 CMake 3.20+，并需要 Capstone 5+。Z3 4.6+ 是默认求解器；Bitwuzla 0.4+、用于提升的 LLVM 12+、Boost 1.68+ 以及用于 Python 绑定的 libpython 3.6+ 均为可选，其中 LLVM 和 Bitwuzla 默认不启用。README 还介绍了 Windows 构建以及由项目外部维护的 vcpkg 移植。",
+      "README 示例针对调用方设置的寄存器处理原始指令字节；部分随附示例自行用 LIEF 加载可执行文件并钩住 libc 函数，示例中还包括附带题目二进制的 CTF 解题记录。CTest 运行 Python 单元测试，以及按架构将 Triton 语义与 Unicorn 模拟器对照的脚本；x86 脚本注明 Unicorn 2.1.1 不支持部分被测指令。",
+      "采用 Apache-2.0 许可；Capstone、Z3、Bitwuzla、LLVM 和 Boost 沿用各自的许可证。符号分析结果只描述已执行的指令和已建模的状态。本次未分析任何二进制。"
+    ]
+  },
+  "pylingual": {
+    "name": "PyLingual Python 字节码反编译器",
+    "requirements": [
+      "审阅时的首个版本为 v0.0.1，发布于 2026-09-21，其发布说明称在独立的 pylingual_eval_dataset 上，Python 3.6–3.12 的反编译成功率约为 82–87%，3.13–3.15 约为 71%；这些均为项目自报数据。所审阅的 main 提交比该版本晚 67 个提交，声明的版本为 0.1.0。README 提醒，这份注重可读性的代码在控制流准确度上起初可能不及在线服务。",
+      "需从克隆的仓库用 uv tool install 安装；pyproject.toml 要求 Python 3.12+，并依赖 PyTorch、Transformers、Hugging Face Hub 和 xdis。各版本的分段模型和语句模型从 syssec-utd 的 Hugging Face 组织下载，使用未固定的 main 修订版；有 CUDA 时在 GPU 上运行，否则使用 CPU。各模型卡声明的许可证不一：3.12 语句模型标为 Apache-2.0，其分段模型则未声明。",
+      "检查重建结果需要用目标版本编译：uv 管理的解释器覆盖 3.8–3.15，3.6 和 3.7 则需要 pyenv 或 pyenv-win，可通过 --init-pyenv 安装。可选的 Redis 实例用于缓存模型预测，缓存键包含版本和规范化后的字节码，但不包含模型修订版。pylingual.io 网页服务是托管的替代方案，因此机密的 .pyc 文件应只用本地命令行处理。",
+      "采用 GPL-3.0-only 许可。通过控制流检查并不能证明恢复出的源码与原始源码完全一致，恢复出的代码仍归原权利人所有。本次未安装或运行任何模型，论文仅核对了其书目信息。"
+    ]
+  },
+  "sf64-matching-decomp-case": {
+    "name": "《星际火狐 64》：完整的 Nintendo 64 版一致性反编译",
+    "requirements": [
+      "所审阅的 master 固定版本是 2026 年 9 月 28 日的一次整理提交，此前于 2026 年 7 月有提交宣布完成度达到 100%。README 称其为美版 1.1（Rev A）ROM 的完整一致性反编译，对应 MD5 为 741a94eee093c4c8684e66b89f8685e8，并说明这不是 PC 移植。仓库中还有美版 1.0、日版和欧版的 splat 配置与链接脚本，以及日版和欧版 1.0 未压缩 ROM 的校验文件，但 README 未说明如何构建这些版本。",
+      "构建需要使用者自备美版 1.1 Rev A ROM，并以 baserom.us.rev1.z64 为名放在项目根目录。README 表示仓库不含任何素材或汇编代码；make init 会解压 ROM，用 splat 拆分代码、数据与素材，然后构建。config.yml 和 assets/yaml 中还有供 Starship 移植使用的 Torch 素材定义，用于生成 starship.otr。",
+      "README 说明的构建环境是 Linux（原生、WSL 或虚拟机），需要 make、Git、build-essential、MIPS binutils、带 pip 的 Python 3、libpng 及列明的 clang 工具；或是 macOS，通过 Homebrew 安装 coreutils、make、pkg-config 与 mips64-elf binutils；不支持在 Windows 上原生构建。make toolchain 会下载 decompals 用 ido-static-recomp 制作的 IDO 编译器，并构建 mio0 工具与 Torch；子模块提供 splat、asm-processor、asm-differ、m2c 和 Torch。也可用 GCC 构建，但会定义 NON_MATCHING。",
+      "默认 COMPARE=1 时，构建会依据 starfox64.us.rev1.md5 校验产物；README 将校验失败解释为基础 ROM 有误或部分代码尚未一致。CI 对通过密钥从私有仓库取得的美版 ROM 运行 make init，另有工作流检查代码格式。这些检查只确认该版本 ROM 的一致性，并不覆盖游戏行为；本合集未运行任何内容。",
+      "仓库采用 CC0-1.0，不涵盖任天堂的游戏、ROM 或提取出的素材；IDO 编译器与各子模块仍受各自条款约束。所审来源未确立 AI 或 REA 的参与。"
+    ]
+  },
+  "galaxy-buds-client-protocol-case": {
+    "name": "Galaxy Buds Client：基于三星耳机协议的非官方管理器",
+    "requirements": [
+      "审阅对象为 2026-10-01 的 master 最新提交，比 5.2.1 版（2026-06-07）多 72 个提交。源码中的设备规格覆盖从 2019 款初代 Buds 到 Buds4 系列的 Galaxy Buds 型号。协议笔记自称并不完整，细节需参考源码；这是独立客户端，并非恢复出的三星源码，功能因型号而异。",
+      "需要用户自己通过蓝牙配对的 Galaxy Buds；耳机固件和三星官方应用都不在仓库中。固件刷写和降级会从作者的固件服务下载版本，应用内先显示免责声明，并做型号兼容性检查以避免设备变砖。发布说明称，应用可通过按需启用的众包功能共享协议数据，用于支持作者没有的型号，并会把崩溃转储发送到 Sentry；两者都可在设置中关闭。",
+      "使用 .NET 10 SDK（global.json 固定为 10.0.300）和 Avalonia 从同一解决方案构建，面向 Windows 10 build 19041+、macOS 12+、Linux 及 Android 7.0+（API 24）；Linux 蓝牙通过仓库自带的 BlueZ D-Bus 库实现。5.2.1 版附带未签名的 Windows 与 macOS 安装包以及 Linux x64/ARM 便携版；README 还列出 Flatpak、AUR 和 winget 软件包，Android 版在 Google Play 付费提供。",
+      "NUnit 测试项目解码七个型号的已捕获扩展状态数据包，并检查报文和空间音频解析；所审阅的 CI 工作流只构建并发布二进制文件，不运行这些测试。协议与功能在真实耳机上的表现在此仍属作者报告，本次来源核查既未运行测试也未运行应用。",
+      "采用 GPLv3（LICENSE）；README 声明项目与三星无关，也不受其监管。三星固件、应用和商标保留各自权利，README 中另行提供的固件存档链接未被本条目收录。所审阅来源未确立任何 AI 或 REA 的使用。"
+    ]
+  },
+  "owasp-mastg": {
+    "name": "OWASP 移动应用安全测试指南（MASTG）",
+    "requirements": [
+      "审阅基于 2026-09-30 的 master 分支提交。最新版本 v2.0.0 发布于 2026-06-30，发布说明称其完成了向模块化、机器可读组件的重构，并且是该框架的首个稳定版；而 CITATION.cff 仍写着 2022 年的 1.5.0 版。所固定的提交包含 92 项 v1 测试和 200 项原子测试、167 项技术、135 个工具页面、157 个演示、141 篇知识条目和 74 项最佳实践。",
+      "阅读只需浏览器；网站由 OWASP 独立的 mas-website 工作流构建。按技术页面操作需要 Windows、Linux 或 macOS 主机，以及各页面列出的工具（如 Android SDK 平台工具），并准备测试设备或模拟器。指南建议使用已 root 的 Android 测试设备或已越狱的 iOS 设备进行动态分析，提醒不要使用个人设备，并为没有此类设备的测试者介绍了替代办法。",
+      "Android 与 iOS 版 UnCrackable 应用是 OWASP 自己的逆向工程挑战，在指南中通篇用作示例。示例应用页面介绍的是第三方应用，工具页面介绍的是外部软件，二者均保留各自条款。演示结果基于指南自带的示例代码撰写，并非对正式发布应用的测试。",
+      "仓库采用 CC BY-SA 4.0 许可，改编文本须署名并沿用相同许可。该指南未确立与 REA 的关联；本条目将其作为测试与逆向工程参考收录，本次审阅未运行任何演示。"
+    ]
+  },
+  "wino-mail-case": {
+    "name": "Wino Mail：重建 Windows 邮件与日历体验",
+    "requirements": [
+      "来自 bkaankose/Wino-Mail 的 Windows 应用；已审查 README 链接 Microsoft Store 与 App Installer 分发渠道。",
+      "仓库为其代码提供 GNU GPL 第 3 版许可证正文；这不授予原 Microsoft 应用或品牌的许可。",
+      "功能覆盖与保留原有体验均为上游目标和声明。本次未安装、构建或对比应用，未证实 REA 集成。"
+    ]
   }
 }

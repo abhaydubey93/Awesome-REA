@@ -11,7 +11,7 @@ An independent collection of tools, case studies and research for websites, game
 <a href="https://awesomerea.org/"><img src="assets/readme-banner.svg" alt="Awesome Reverse Engineering Anything — tools, cases and papers across six reverse-engineering domains" width="960"></a>
 
 <!-- BEGIN GENERATED BADGES -->
-[![resources: 440](https://img.shields.io/badge/resources-440-53309C?style=flat-square&labelColor=303447)](https://awesomerea.org/resources/) [![cases: 185](https://img.shields.io/badge/cases-185-53309C?style=flat-square&labelColor=303447)](https://awesomerea.org/cases/) [![papers: 85](https://img.shields.io/badge/papers-85-53309C?style=flat-square&labelColor=303447)](https://awesomerea.org/papers/) [![Catalog checks](https://github.com/reacher-z/Awesome-REA/actions/workflows/validate.yml/badge.svg?branch=main)](https://github.com/reacher-z/Awesome-REA/actions/workflows/validate.yml) [![license: MIT](https://img.shields.io/badge/license-MIT-606779?style=flat-square&labelColor=303447)](LICENSE) [![website: awesomerea.org](https://img.shields.io/badge/website-awesomerea.org-6235B5?style=flat-square&labelColor=303447)](https://awesomerea.org/)
+[![resources: 448](https://img.shields.io/badge/resources-448-53309C?style=flat-square&labelColor=303447)](https://awesomerea.org/resources/) [![cases: 188](https://img.shields.io/badge/cases-188-53309C?style=flat-square&labelColor=303447)](https://awesomerea.org/cases/) [![papers: 86](https://img.shields.io/badge/papers-86-53309C?style=flat-square&labelColor=303447)](https://awesomerea.org/papers/) [![Catalog checks](https://github.com/reacher-z/Awesome-REA/actions/workflows/validate.yml/badge.svg?branch=main)](https://github.com/reacher-z/Awesome-REA/actions/workflows/validate.yml) [![license: MIT](https://img.shields.io/badge/license-MIT-606779?style=flat-square&labelColor=303447)](LICENSE) [![website: awesomerea.org](https://img.shields.io/badge/website-awesomerea.org-6235B5?style=flat-square&labelColor=303447)](https://awesomerea.org/)
 <!-- END GENERATED BADGES -->
 
 **[Search & filter](https://awesomerea.org/)** · **[Browse cases](https://awesomerea.org/cases/)** · **[Research papers](https://awesomerea.org/papers/)** · **[HTML survey](https://awesomerea.org/survey/)**
@@ -23,16 +23,16 @@ An independent collection of tools, case studies and research for websites, game
 <!-- BEGIN GENERATED CONTENTS -->
 **Tools and cases by target**
 
-- [Website](#website) (25) · [Game](#game) (177) · [App](#app) (66)
-- [Native Binary](#native-binary) (56) · [Firmware and Hardware](#firmware) (21) · [Protocol](#protocol) (18)
+- [Website](#website) (25) · [Game](#game) (178) · [App](#app) (69)
+- [Native Binary](#native-binary) (58) · [Firmware and Hardware](#firmware) (21) · [Protocol](#protocol) (18)
 
 **Research and workflows**
 
-- [Papers](#papers) (85) · [Agents and MCP](#agents-and-mcp) (40) · [References and Learning](#references-and-learning) (28)
+- [Papers](#papers) (86) · [Agents and MCP](#agents-and-mcp) (40) · [References and Learning](#references-and-learning) (30)
 
 **More ways to browse**
 
-- [All cases](https://awesomerea.org/cases/) (185) · [Related Collections](#related-collections) (6) · [Full Repository Index](#full-repository-index) (2,836)
+- [All cases](https://awesomerea.org/cases/) (188) · [Related Collections](#related-collections) (6) · [Full Repository Index](#full-repository-index) (2,836)
 <!-- END GENERATED CONTENTS -->
 
 ## Find by task
@@ -1063,6 +1063,12 @@ REA labels refer to the separate [upstream CLI and MCP project](https://github.c
 
   Case study · Independent reconstruction · [Requirements & evidence](https://awesomerea.org/resources/odyssey-decomp-case/)
 
+- [**Star Fox 64: a complete matching Nintendo 64 decompilation**](https://github.com/sonicdcer/sf64)
+
+  Reconstructs C source for the US 1.1 (Rev A) Nintendo 64 release of Star Fox 64 that, compiled with the IDO compiler through a static recompilation, rebuilds a ROM with the published MD5; the README badge counts all 2,951 functions as matching. Code and assets are split from the user’s own ROM at build time, and the repository contains no assets or assembly. The separately curated Starship PC port compiles this C code, while Starfox 64: Recompiled takes headers and some functions from it for its patches.
+
+  Case study · Independent reconstruction · [Requirements & evidence](https://awesomerea.org/resources/sf64-matching-decomp-case/)
+
 #### Tools, projects and integrations
 
 - [**RenderDoc**](https://github.com/baldurk/renderdoc)
@@ -1468,6 +1474,18 @@ REA labels refer to the separate [upstream CLI and MCP project](https://github.c
 
   Case study · Independent reconstruction · [Requirements & evidence](https://awesomerea.org/resources/lgwebos-menubar-remote-case/)
 
+- [**Galaxy Buds Client: an unofficial manager built on Samsung’s earbud protocol**](https://github.com/timschneeb/GalaxyBudsClient)
+
+  Reimplements control of Samsung Galaxy Buds over their proprietary RFCOMM serial protocol in a cross-platform desktop and Android manager. The author reports recovering the message format by analyzing the earbuds’ binary stream and disassembling Samsung’s official Android apps, and publishes partial packet notes for the 2019 Buds and the Buds+. Beyond the official app’s settings, it exposes battery statistics, diagnostics, factory self-tests, hidden debug information and firmware flashing for supported models.
+
+  Case study · Independent reconstruction · Also: Protocol · [Requirements & evidence](https://awesomerea.org/resources/galaxy-buds-client-protocol-case/)
+
+- [**Wino Mail: recreating Windows Mail and Calendar**](https://github.com/bkaankose/Wino-Mail)
+
+  Native Windows client that aims to preserve the familiar Windows Mail and Calendar experience while rebuilding its functionality. The upstream README documents a WinUI 3 interface, mail and calendar providers, contacts, tasks and offline workflows.
+
+  Case study · Independent reconstruction · [Requirements & evidence](https://awesomerea.org/resources/wino-mail-case/)
+
 #### Tools, projects and integrations
 
 - [**JADX-AI-MCP**](https://github.com/zinja-coder/jadx-ai-mcp)
@@ -1691,6 +1709,12 @@ REA labels refer to the separate [upstream CLI and MCP project](https://github.c
   Windows-native Dalvik decompiler and Android analysis workbench written in C++ that opens APK, DEX, ODEX, OAT, JAR, AAR and class files without installation. Besides Java and Smali views with cross-references, renaming and comments, it identifies packers, deobfuscates and decrypts strings, tracks data flow and taint, solves paths, runs rule-based malicious-behaviour, vulnerability and privacy-leak scans, and can dump device memory or hook methods with Frida. Shell and server CLI modes, Python and Java scripting and a sample malware-triage agent skill expose the same analysis to scripts and agents.
 
   Tool · Android · [Requirements & evidence](https://awesomerea.org/resources/gda-android-decompiler/)
+
+- [**APKLab**](https://github.com/APKLab/APKLab)
+
+  VS Code extension that turns the editor into an Android reverse-engineering workbench around Apktool, Jadx, smali-lsp and uber-apk-signer. It decodes an APK into resources and Smali, decompiles it to Java, gives Smali go-to-definition, references and diagnostics through a language server, and rebuilds, signs and installs the modified app. It can also generate Frida hooks for Smali methods, add a Frida gadget, prepare an app for HTTPS traffic inspection with apk-mitm and produce a Quark-Engine malware-analysis report.
+
+  Tool · Android · [Requirements & evidence](https://awesomerea.org/resources/apklab/)
 
 <a id="native-binary"></a>
 ### Native Binary
@@ -2036,6 +2060,18 @@ REA labels refer to the separate [upstream CLI and MCP project](https://github.c
   Single-file Python extension, gef.py, that adds dynamic-analysis commands to GDB. Each stop shows a context view of registers, stack, code, threads and call trace, and commands cover memory maps, pointer dereferencing, searching process memory for patterns, ELF and security-property information, process status and glibc heap inspection. An architecture abstraction layer covers x86-32/64, ARMv5–v7, AArch64, SPARC, MIPS and PowerPC, and gef-remote enriches remote sessions through gdbserver or the GDB stubs of qemu-user and qemu-system.
 
   Tool · [Requirements & evidence](https://awesomerea.org/resources/gef/)
+
+- [**Triton**](https://github.com/JonathanSalwan/Triton)
+
+  C++ library with Python bindings for dynamic binary analysis of x86, x86-64, ARM32, AArch64 and RISC-V 32/64 code. Callers process instructions one at a time, optionally with concrete register and memory values; Triton builds symbolic expressions from each instruction's semantics, tracks taint and solves path constraints through Z3 or Bitwuzla. It also synthesizes and simplifies expressions and lifts them to LLVM IR or Z3 and back, for building analysis tools, automating reverse engineering, software verification or emulating code.
+
+  Tool · Library · [Requirements & evidence](https://awesomerea.org/resources/triton/)
+
+- [**PyLingual**](https://github.com/syssec-utd/pylingual)
+
+  Research decompiler for CPython bytecode from Python 3.6 onward that pairs per-version transformer models with control-flow reconstruction. A segmentation model splits bytecode into statements, a statement model translates each into source, and templates rebuild loops, conditionals, exception handlers, with blocks and match statements. The result is recompiled with the target Python version and its control flow compared with the original bytecode, and failing segments are retried with alternative segmentations; the design is described in the IEEE S&amp;P 2025 paper “PyLingual: Toward Perfect Decompilation of Evolving High-Level Languages”.
+
+  Tool · Also: App · [Requirements & evidence](https://awesomerea.org/resources/pylingual/)
 
 <a id="firmware"></a>
 ### Firmware and Hardware
@@ -2749,19 +2785,31 @@ REA labels refer to the separate [upstream CLI and MCP project](https://github.c
   A free, English lesson index by mytechnotalent that grows almost daily: 490 numbered lessons, most of which have learners write small programs and then debug and patch ("hack") them, across x86, x64, 32/64-bit ARM, RISC-V and AVR. Early courses start from number systems, registers, memory and the stack; later ones cover microcontroller firmware on Raspberry Pi Pico/Pico 2, STM32F401, ESP32-C3, ATmega328P and micro:bit boards, plus Windows, Go, Rust and WebAssembly programs. The README is a table of links; the lesson text lives in a GitBook and in the author's other repositories and PDF books.
 
   Learning resource · Targets: Binary, Firmware · [Requirements & evidence](https://awesomerea.org/resources/mytechnotalent-reverse-engineering/)
+
+- [**Z0FCourse Reverse Engineering**](https://github.com/0xZ0F/Z0FCourse_ReverseEngineering)
+
+  A free English course by Z0F on reverse engineering 64-bit Windows programs, which its README pitches as taking learners from beginner to intermediate. Markdown lessons move from number systems, x64 registers, memory layout and calling conventions to x64dbg and Ghidra, then reverse small samples and an author-written DLL, recovering a Player class and calling the DLL's exports from a program of one's own. The unfinished later chapters introduce Windows internals and reverse ntdll's generic-table functions.
+
+  Learning resource · Targets: Binary · [Requirements & evidence](https://awesomerea.org/resources/z0f-reverse-engineering-course/)
+
+- [**OWASP Mobile Application Security Testing Guide (MASTG)**](https://mas.owasp.org/MASTG/)
+
+  OWASP’s open manual for Android and iOS app security testing and reverse engineering, published at mas.owasp.org. Chapters on platform internals, test setup and app tampering and reverse engineering sit beside modular, individually referenced tests, techniques, tool pages, knowledge articles, best practices and runnable demos, all mapped to MASVS controls and MASWE weaknesses. OWASP’s UnCrackable crackme apps serve as practice targets and examples.
+
+  Learning resource · Targets: App · [Requirements & evidence](https://awesomerea.org/resources/owasp-mastg/)
 <!-- END GENERATED CATALOG -->
 
 <!-- BEGIN GENERATED PAPERS -->
 <a id="papers"></a>
 ## Papers
 
-**85 papers**, grouped by topic and ordered newest first. Each entry shows its venue and publication status.
+**86 papers**, grouped by topic and ordered newest first. Each entry shows its venue and publication status.
 
 [Browse the paper directory](https://awesomerea.org/papers/) · [Complete bibliography JSON](data/papers.json) · [Suggest a paper](https://github.com/reacher-z/Awesome-REA/issues/new?template=paper.yml)
 
 **By topic**
 
-- [Agent evaluation](#papers-agent-evaluation) (8) · [Decompilation](#papers-decompilation) (33) · [Websites](#papers-website-reconstruction) (15)
+- [Agent evaluation](#papers-agent-evaluation) (8) · [Decompilation](#papers-decompilation) (34) · [Websites](#papers-website-reconstruction) (15)
 - [Games](#papers-game-reconstruction) (6) · [Apps](#papers-app-reconstruction) (7) · [Firmware](#papers-firmware-analysis) (6)
 - [Protocols](#papers-protocol-analysis) (10)
 
@@ -2924,6 +2972,21 @@ Open “Scope and publication details” for each study’s full limitations. So
   **Scope and limits:** A literature systematization with no new experiments, benchmark or tool; it classifies and summarizes reported results without reproducing them. The corpus covers papers available up to July 31, 2026, applies citation thresholds that fall from 12 for 2015–2016 papers to 2 for 2025–2026 papers, excludes methods that need source code at inference time, and leaves out Android and interpreted-language bytecode. Detailed per-stage tables draw on 88 top-venue studies rather than the full corpus. It is an arXiv preprint with no stated venue, and this record makes no claim of peer review. Papers it cites are not thereby part of this collection; each needs its own review.
 
   **Authors:** Yujeong Kwon et al.
+
+  </details>
+
+- [**LLM Agent-Assisted Reverse Engineering with Quantitative Readability Metrics**](https://arxiv.org/abs/2606.06838)
+
+  Uses a composite Quantitative Readability Score (QRS) to guide agents refining decompiled C. Lexical familiarity, structural simplicity and coding idioms are combined with a binary-structure similarity gate. Experiments compare refinement with and without shell access on 210 simple C binaries.
+
+  arXiv 2026 · Preprint · [PDF](https://arxiv.org/pdf/2606.06838v1) · [Full entry & citation](https://awesomerea.org/papers/paper-qrs-readability/)
+
+  <details>
+  <summary>Scope and publication details</summary>
+
+  **Scope and limits:** Structural similarity does not prove semantic equivalence. QRS both guides and evaluates refinement; human readability validation remains future work. The selected synthetic corpus limits generalization. Recovering compilable, behaviorally correct code from difficult binaries is outside the claimed contribution.
+
+  **Authors:** Neil Archibald et al.
 
   </details>
 

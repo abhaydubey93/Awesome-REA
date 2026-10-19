@@ -4767,6 +4767,49 @@
     "runtime_tested": false
   },
   {
+    "id": "paper-qrs-readability",
+    "title": "LLM Agent-Assisted Reverse Engineering with Quantitative Readability Metrics",
+    "title_zh": "以量化可读性指标引导 LLM 智能体辅助逆向工程",
+    "authors": [
+      "Neil Archibald",
+      "Ruben Thijssen"
+    ],
+    "year": 2026,
+    "publication_date": "2026-06-05",
+    "date_precision": "day",
+    "date_basis": "arXiv v1 submission date.",
+    "date_basis_zh": "arXiv v1 首次提交日期。",
+    "venue": "arXiv",
+    "publication_status": "preprint",
+    "arxiv_id": "2606.06838",
+    "arxiv_version_reviewed": "v1",
+    "first_arxiv_date": "2026-06-05",
+    "doi": null,
+    "url": "https://arxiv.org/abs/2606.06838",
+    "pdf_url": "https://arxiv.org/pdf/2606.06838v1",
+    "code_url": null,
+    "project_url": null,
+    "targets": [
+      "binary"
+    ],
+    "description_en": "Uses a composite Quantitative Readability Score (QRS) to guide agents refining decompiled C. Lexical familiarity, structural simplicity and coding idioms are combined with a binary-structure similarity gate. Experiments compare refinement with and without shell access on 210 simple C binaries.",
+    "description_zh": "用综合量化可读性分数（QRS）引导智能体改进反编译 C 代码，将词汇熟悉度、结构简洁度和编程惯用法与二进制结构相似性门槛结合，在 210 个简单 C 二进制程序上比较有无 shell 访问的迭代。",
+    "scope_limitations_en": "Structural similarity does not prove semantic equivalence. QRS both guides and evaluates refinement; human readability validation remains future work. The selected synthetic corpus limits generalization. Recovering compilable, behaviorally correct code from difficult binaries is outside the claimed contribution.",
+    "scope_limitations_zh": "结构相似性不能证明语义等价。QRS 同时用于指导和评价改进，仍缺少人工可读性验证；经过筛选的合成语料限制了泛化。处理困难二进制并恢复可编译、行为正确代码，不属于本文的贡献范围。",
+    "why_fits_en": "Connects agent feedback design with the readability of recovered code.",
+    "why_fits_zh": "把智能体反馈机制与恢复代码的可读性联系起来。",
+    "metadata_notes": "Reviewed the v1 abstract and full HTML. No implementation artifact identified; experiments were not rerun.",
+    "metadata_notes_zh": "审阅了 v1 摘要与完整 HTML；未确认实现产物，也未复现实验。",
+    "evidence_urls": [
+      "https://arxiv.org/abs/2606.06838v1",
+      "https://arxiv.org/html/2606.06838v1"
+    ],
+    "kind": "research",
+    "verified_at": "2026-10-19",
+    "verification": "source-reviewed",
+    "runtime_tested": false
+  },
+  {
     "id": "paper-resource",
     "title": "Decoupling is a Necessity: Transformation-Agnostic Decompiled Code Recovery under Optimization and Obfuscation",
     "title_zh": "解耦的必要性：面向优化与混淆、无需识别具体变换的反编译代码恢复",

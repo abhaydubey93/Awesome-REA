@@ -10203,5 +10203,261 @@
       "https://github.com/hugsy/gef/blob/49c07dc60624f264d40b5c6ea39b2bf3a4e9958f/LICENSE",
       "https://github.com/hugsy/gef/releases/tag/2026.01"
     ]
+  },
+  {
+    "id": "z0f-reverse-engineering-course",
+    "name": "Z0FCourse Reverse Engineering",
+    "url": "https://github.com/0xZ0F/Z0FCourse_ReverseEngineering",
+    "category": "learning",
+    "relationship": "learning",
+    "kind": "learning-resource",
+    "targets": [
+      "binary"
+    ],
+    "description_en": "A free English course by Z0F on reverse engineering 64-bit Windows programs, which its README pitches as taking learners from beginner to intermediate. Markdown lessons move from number systems, x64 registers, memory layout and calling conventions to x64dbg and Ghidra, then reverse small samples and an author-written DLL, recovering a Player class and calling the DLL's exports from a program of one's own. The unfinished later chapters introduce Windows internals and reverse ntdll's generic-table functions.",
+    "description_zh": "Z0F 编写的免费英文课程，讲解如何逆向 64 位 Windows 程序，README 称目标是帮助学习者从入门进阶到中级。Markdown 课程从数制、x64 寄存器、内存布局和调用约定讲起，过渡到 x64dbg 与 Ghidra，再逆向若干小样本以及作者自己编写的 DLL，还原其中的 Player 类，并在自己编写的程序中调用该 DLL 的导出函数。尚未完成的后续章节介绍 Windows 内部机制，并逆向 ntdll 中的 generic table 系列函数。",
+    "evidence_url": "https://github.com/0xZ0F/Z0FCourse_ReverseEngineering/blob/ee4b07095d6f81ba5e5c7e0b70f7cb39e3af83b1/README.md",
+    "verified_at": "2026-10-19",
+    "verification": "source-reviewed",
+    "requirements": [
+      "Reviewed at commit ee4b070 (2026-07-25). Most lessons were written in 2019–2020, and the table of contents marks Chapter 7 (Windows) and Chapter 8 (Generic Table) as work in progress; the .NET and other-architecture material promised by the setup and Before You Begin pages is not in the tree. Later commits are small fixes, formatting, refreshed PDF copies and new links. The README points to two TryHackMe rooms as an interactive version of chapters 1–6.",
+      "Chapter 1 lists a good understanding of C/C++, object-oriented programming and pointers as prerequisites and highly recommends prior x86/x64 assembly. The course needs a 64-bit Windows system, a virtual machine being optional until the malware material; setup names the Microsoft Visual C++ Redistributable, x64dbg (with the optional xAnalyzer plugin) and dnSpy or ILSpy as required, with Ghidra and Visual Studio highly recommended.",
+      "The target programs are the author's own and ship with their source in FilesNeeded: the Chapter 6 DLL with two host programs and debug symbols, plus a sample malware program and dropper for a chapter not yet written, which FilesNeeded marks as use-at-your-own-risk. Chapter 8 instead analyzes Windows's own ntdll.dll, which is not included. PDF copies of the chapters are also committed, and the README warns they may lag the Markdown lessons.",
+      "The repository's License.md is the AGPL-3.0 text; the FAQ adds that downloading is allowed for personal use only and defers redistribution and teaching use to the license. This collection read the README, setup, table of contents, FilesNeeded notes, FAQ and license at the reviewed commit; it did not work through the lessons or run the sample programs, and nothing in the course mentions AI or REA."
+    ],
+    "additional_evidence_urls": [
+      "https://github.com/0xZ0F/Z0FCourse_ReverseEngineering/blob/ee4b07095d6f81ba5e5c7e0b70f7cb39e3af83b1/TableOfContents.md",
+      "https://github.com/0xZ0F/Z0FCourse_ReverseEngineering/blob/ee4b07095d6f81ba5e5c7e0b70f7cb39e3af83b1/Chapter%201%20-%20Introduction/1.0%20Introduction.md",
+      "https://github.com/0xZ0F/Z0FCourse_ReverseEngineering/blob/ee4b07095d6f81ba5e5c7e0b70f7cb39e3af83b1/Chapter%201%20-%20Introduction/1.2%20Setup.md",
+      "https://github.com/0xZ0F/Z0FCourse_ReverseEngineering/blob/ee4b07095d6f81ba5e5c7e0b70f7cb39e3af83b1/FilesNeeded/FilesNeeded.md",
+      "https://github.com/0xZ0F/Z0FCourse_ReverseEngineering/blob/ee4b07095d6f81ba5e5c7e0b70f7cb39e3af83b1/Chapter%208%20-%20Generic%20Table/8.00%20GenericTable.md",
+      "https://github.com/0xZ0F/Z0FCourse_ReverseEngineering/blob/ee4b07095d6f81ba5e5c7e0b70f7cb39e3af83b1/FAQ.md",
+      "https://github.com/0xZ0F/Z0FCourse_ReverseEngineering/blob/ee4b07095d6f81ba5e5c7e0b70f7cb39e3af83b1/License.md"
+    ]
+  },
+  {
+    "id": "apklab",
+    "name": "APKLab",
+    "url": "https://github.com/APKLab/APKLab",
+    "category": "android",
+    "relationship": "foundation",
+    "kind": "tool",
+    "targets": [
+      "app"
+    ],
+    "description_en": "VS Code extension that turns the editor into an Android reverse-engineering workbench around Apktool, Jadx, smali-lsp and uber-apk-signer. It decodes an APK into resources and Smali, decompiles it to Java, gives Smali go-to-definition, references and diagnostics through a language server, and rebuilds, signs and installs the modified app. It can also generate Frida hooks for Smali methods, add a Frida gadget, prepare an app for HTTPS traffic inspection with apk-mitm and produce a Quark-Engine malware-analysis report.",
+    "description_zh": "把 VS Code 变成 Android 逆向工作台的扩展，整合 Apktool、Jadx、smali-lsp 和 uber-apk-signer。它可将 APK 解码为资源文件和 Smali 并反编译为 Java，借助语言服务器为 Smali 提供定义跳转、引用查找和诊断，还能重新构建、签名并安装修改后的应用。此外，它可为 Smali 方法生成 Frida 钩子、加入 Frida gadget、借助 apk-mitm 为 HTTPS 流量检查做准备，并生成 Quark-Engine 恶意软件分析报告。",
+    "evidence_url": "https://github.com/APKLab/APKLab/blob/6ae69b1ba03d65cb78388f7e2fa6a3b8f0081c74/README.md",
+    "verified_at": "2026-10-19",
+    "verification": "source-reviewed",
+    "requirements": [
+      "The latest tag, v2.0.0, dated 2026-04-06 in the changelog, added smali-lsp, Frida hook generation and gadget injection and Apktool 3.0+ compatibility; the reviewed master commit of 2026-07-16 is five commits ahead of it. The extension is published on the VS Code Marketplace and Open VSX, and package.json requires VS Code 1.91+. The README lists Linux, macOS and WSL2, and CI also builds and tests it on Windows.",
+      "JDK 17+ is required. On first use the extension downloads the tools named in the project’s update configuration into a .apklab folder in the user’s home directory, at review Apktool 3.0.2, smali-lsp 1.5.0, uber-apk-signer 1.3.0 and Jadx 1.5.6, unless the user sets their paths. adb is optional for installing to a device, and Quark-Engine 21.01.6+ is optional for malware reports. Users supply the APKs.",
+      "CI lints and packages the extension and runs its test suite on Ubuntu, macOS and Windows against a sample open-source APK from the separate testdata repository; this checks the integration, not the bundled tools’ results on real apps. Jadx output can be incomplete, and rebuilt APKs are re-signed with uber-apk-signer, using the configured keystore when one is set.",
+      "AGPL-3.0; Apktool, Jadx, smali-lsp, uber-apk-signer, apk-mitm, Frida and Quark-Engine keep their own licenses. HTTPS-inspection patching and gadget injection modify the app under analysis, and the tool grants no rights to analyze, patch or redistribute third-party apps. This review installed nothing and modified no apps."
+    ],
+    "additional_evidence_urls": [
+      "https://github.com/APKLab/APKLab/blob/6ae69b1ba03d65cb78388f7e2fa6a3b8f0081c74/CHANGELOG.md",
+      "https://github.com/APKLab/APKLab/blob/6ae69b1ba03d65cb78388f7e2fa6a3b8f0081c74/package.json",
+      "https://github.com/APKLab/APKLab/blob/6ae69b1ba03d65cb78388f7e2fa6a3b8f0081c74/src/data/constants.ts",
+      "https://github.com/APKLab/APKLab/blob/6ae69b1ba03d65cb78388f7e2fa6a3b8f0081c74/.github/workflows/apklab.yml",
+      "https://github.com/APKLab/APKLab/blob/6ae69b1ba03d65cb78388f7e2fa6a3b8f0081c74/LICENSE",
+      "https://github.com/APKLab/website/blob/f8afc6deac69b4ef77f741f891e4d836bf3720f9/static/apklab_update_config.json"
+    ]
+  },
+  {
+    "id": "triton",
+    "name": "Triton",
+    "url": "https://github.com/JonathanSalwan/Triton",
+    "category": "binary-libraries",
+    "relationship": "foundation",
+    "kind": "tool",
+    "targets": [
+      "binary"
+    ],
+    "description_en": "C++ library with Python bindings for dynamic binary analysis of x86, x86-64, ARM32, AArch64 and RISC-V 32/64 code. Callers process instructions one at a time, optionally with concrete register and memory values; Triton builds symbolic expressions from each instruction's semantics, tracks taint and solves path constraints through Z3 or Bitwuzla. It also synthesizes and simplifies expressions and lifts them to LLVM IR or Z3 and back, for building analysis tools, automating reverse engineering, software verification or emulating code.",
+    "description_zh": "面向 x86、x86-64、ARM32、AArch64 和 RISC-V 32/64 代码动态二进制分析的 C++ 库，提供 Python 绑定。调用方逐条处理指令，并可设置具体的寄存器和内存值；Triton 依据每条指令的语义构建符号表达式、进行污点跟踪，并通过 Z3 或 Bitwuzla 求解路径约束。它还能合成与化简表达式，并将其提升为 LLVM IR 或 Z3 表达式后再转换回来，可用于构建分析工具、自动化逆向工程、软件验证或模拟执行代码。",
+    "evidence_url": "https://github.com/JonathanSalwan/Triton/blob/bc84cf745e99768e07d51dcd734eba35c59f1b3e/README.md",
+    "verified_at": "2026-10-19",
+    "verification": "source-reviewed",
+    "requirements": [
+      "The README calls Triton a part-time project that may not be fully reliable. The newest GitHub release is v0.9 from 2022-02-09, with Windows builds only; PyPI's triton-library 1.0.0rc4, first uploaded 2024-05-22 with wheels added through 2026-02-23, provides CPython 3.8–3.14 wheels for x86_64 Linux (manylinux 2.31/2.34), macOS 12 and Windows. The reviewed master commit declares version 1.0, and the dev-v1.0 branch was 22 commits ahead.",
+      "Source builds use CMake 3.20+ and need Capstone 5+. Z3 4.6+ is the default solver; Bitwuzla 0.4+, LLVM 12+ for lifting, Boost 1.68+ and libpython 3.6+ for the Python bindings are optional, and LLVM and Bitwuzla are off by default. The README also covers Windows builds and a vcpkg port maintained outside the project.",
+      "The README example processes raw instruction bytes against caller-set registers; some bundled examples load executables with LIEF and hook libc functions themselves, and the examples include CTF write-ups with their challenge binaries. CTest runs Python unit tests and per-architecture scripts that compare Triton's semantics with the Unicorn emulator; the x86 script notes that Unicorn 2.1.1 lacks some tested instructions.",
+      "Apache-2.0; Capstone, Z3, Bitwuzla, LLVM and Boost keep their own licenses. Symbolic results describe only the executed instructions and modeled state. No binaries were analyzed."
+    ],
+    "additional_evidence_urls": [
+      "https://github.com/JonathanSalwan/Triton/blob/bc84cf745e99768e07d51dcd734eba35c59f1b3e/README.md#L102-L130",
+      "https://github.com/JonathanSalwan/Triton/blob/bc84cf745e99768e07d51dcd734eba35c59f1b3e/CMakeLists.txt#L9-L38",
+      "https://github.com/JonathanSalwan/Triton/blob/bc84cf745e99768e07d51dcd734eba35c59f1b3e/src/testers/CMakeLists.txt",
+      "https://github.com/JonathanSalwan/Triton/blob/bc84cf745e99768e07d51dcd734eba35c59f1b3e/src/testers/x86/unicorn_test_x86.py#L19-L21",
+      "https://github.com/JonathanSalwan/Triton/tree/bc84cf745e99768e07d51dcd734eba35c59f1b3e/src/examples/python",
+      "https://github.com/JonathanSalwan/Triton/blob/bc84cf745e99768e07d51dcd734eba35c59f1b3e/LICENSE.txt",
+      "https://github.com/JonathanSalwan/Triton/releases/tag/v0.9",
+      "https://pypi.org/project/triton-library/1.0.0rc4/"
+    ]
+  },
+  {
+    "id": "pylingual",
+    "name": "PyLingual",
+    "url": "https://github.com/syssec-utd/pylingual",
+    "category": "native-analysis",
+    "relationship": "foundation",
+    "kind": "tool",
+    "targets": [
+      "binary",
+      "app"
+    ],
+    "description_en": "Research decompiler for CPython bytecode from Python 3.6 onward that pairs per-version transformer models with control-flow reconstruction. A segmentation model splits bytecode into statements, a statement model translates each into source, and templates rebuild loops, conditionals, exception handlers, with blocks and match statements. The result is recompiled with the target Python version and its control flow compared with the original bytecode, and failing segments are retried with alternative segmentations; the design is described in the IEEE S&P 2025 paper “PyLingual: Toward Perfect Decompilation of Evolving High-Level Languages”.",
+    "description_zh": "面向 Python 3.6 及以后版本 CPython 字节码的研究型反编译器，将按版本训练的 Transformer 模型与控制流重建相结合。分段模型把字节码切分为语句，语句模型将每段翻译为源码，再由模板重建循环、条件分支、异常处理、with 块和 match 语句。生成结果会用目标 Python 版本重新编译，并与原字节码比较控制流，未通过的片段会改用其他分段方案重试；其设计见 IEEE S&P 2025 论文《PyLingual: Toward Perfect Decompilation of Evolving High-Level Languages》。",
+    "evidence_url": "https://github.com/syssec-utd/pylingual/blob/509ea92e560b2c2c99b0c9901bd33e404fbfb4b8/README.md",
+    "verified_at": "2026-10-19",
+    "verification": "source-reviewed",
+    "requirements": [
+      "First release at review: v0.0.1, published 2026-09-21, whose notes report decompilation rates of about 82–87% for Python 3.6–3.12 and about 71% for 3.13–3.15 on the separate pylingual_eval_dataset; these are project-reported figures. The reviewed main commit is 67 commits later and declares version 0.1.0. The README warns that this readability-focused codebase may initially regress in control-flow accuracy compared with the hosted service.",
+      "Installed from a clone with uv tool install; pyproject.toml requires Python 3.12+ and pulls in PyTorch, Transformers, Hugging Face Hub and xdis. Per-version segmentation and statement models are downloaded from the syssec-utd Hugging Face organization at their unpinned main revision and run on CUDA when available, otherwise on CPU. Model cards differ in declared licenses: the 3.12 statement model states Apache-2.0, while its segmenter states none.",
+      "Checking a reconstruction compiles it in the target version: uv-managed interpreters cover 3.8–3.15, while 3.6 and 3.7 need pyenv or pyenv-win, which --init-pyenv can install. An optional Redis instance caches model predictions, keyed by version and normalized bytecode but not by model revision. The pylingual.io web service is a hosted alternative, so confidential .pyc files should stay with the local CLI.",
+      "GPL-3.0-only. Passing the control-flow check does not prove that the recovered source is identical to the original, and recovered code keeps the original owner’s rights. Nothing was installed, no models were run and the paper was checked only for its bibliographic record."
+    ],
+    "additional_evidence_urls": [
+      "https://github.com/syssec-utd/pylingual/blob/509ea92e560b2c2c99b0c9901bd33e404fbfb4b8/pyproject.toml",
+      "https://github.com/syssec-utd/pylingual/blob/509ea92e560b2c2c99b0c9901bd33e404fbfb4b8/pylingual/decompiler_config.yaml",
+      "https://github.com/syssec-utd/pylingual/blob/509ea92e560b2c2c99b0c9901bd33e404fbfb4b8/pylingual/decompiler.py",
+      "https://github.com/syssec-utd/pylingual/blob/509ea92e560b2c2c99b0c9901bd33e404fbfb4b8/pylingual/equivalence_check.py",
+      "https://github.com/syssec-utd/pylingual/blob/509ea92e560b2c2c99b0c9901bd33e404fbfb4b8/pylingual/models.py",
+      "https://github.com/syssec-utd/pylingual/tree/509ea92e560b2c2c99b0c9901bd33e404fbfb4b8/pylingual/control_flow_reconstruction/templates",
+      "https://github.com/syssec-utd/pylingual/blob/509ea92e560b2c2c99b0c9901bd33e404fbfb4b8/LICENSE",
+      "https://github.com/syssec-utd/pylingual/releases/tag/v0.0.1",
+      "https://huggingface.co/syssec-utd/py312-pylingual-v1-statement",
+      "https://doi.org/10.1109/SP61157.2025.00052"
+    ]
+  },
+  {
+    "id": "sf64-matching-decomp-case",
+    "name": "Star Fox 64: a complete matching Nintendo 64 decompilation",
+    "url": "https://github.com/sonicdcer/sf64",
+    "category": "reconstruction-cases",
+    "relationship": "independent-reconstruction",
+    "kind": "case-study",
+    "targets": [
+      "game"
+    ],
+    "description_en": "Reconstructs C source for the US 1.1 (Rev A) Nintendo 64 release of Star Fox 64 that, compiled with the IDO compiler through a static recompilation, rebuilds a ROM with the published MD5; the README badge counts all 2,951 functions as matching. Code and assets are split from the user’s own ROM at build time, and the repository contains no assets or assembly. The separately curated Starship PC port compiles this C code, while Starfox 64: Recompiled takes headers and some functions from it for its patches.",
+    "description_zh": "为 Nintendo 64 版《星际火狐 64》美版 1.1（Rev A）重建 C 源码；借助静态重编译运行的 IDO 编译器编译后，可重建出 MD5 与公布值一致的 ROM，README 徽章显示全部 2,951 个函数均已一致。构建时从使用者自备的 ROM 中拆分代码与素材，仓库本身不含素材或汇编。另行收录的 Starship PC 移植直接编译这份 C 代码，Starfox 64: Recompiled 则从中取用头文件和部分函数来编写补丁。",
+    "evidence_url": "https://github.com/sonicdcer/sf64/blob/4235c59f00b04440e3fd5fec49f0bc80e48cf212/README.md",
+    "verified_at": "2026-10-19",
+    "verification": "source-reviewed",
+    "requirements": [
+      "The reviewed master pin of 2026-09-28 is a clean-up commit after the July 2026 commits announcing 100% completion. README calls this a complete matching decompilation of the US 1.1 (Rev A) ROM, MD5 741a94eee093c4c8684e66b89f8685e8, and says it is not a PC port. Splat configurations and linker scripts also exist for US 1.0, Japanese and European releases, with checksum files for uncompressed Japanese and European 1.0 ROMs, but README does not document building them.",
+      "Building needs the user’s own US 1.1 Rev A ROM, placed in the project root as baserom.us.rev1.z64. README says the repository includes no assets or assembly code; make init decompresses the ROM, splits code, data and assets with splat, then builds. config.yml and assets/yaml also hold the Torch asset definitions that write starship.otr for the Starship port.",
+      "README documents Linux, natively or under WSL or a VM, with make, Git, build-essential, MIPS binutils, Python 3 with pip, libpng and the listed clang tools, or macOS with Homebrew’s coreutils, make, pkg-config and mips64-elf binutils; native Windows builds are unsupported. make toolchain downloads decompals’ ido-static-recomp build of the IDO compiler and builds the mio0 tool and Torch, while submodules add splat, asm-processor, asm-differ, m2c and Torch. A GCC build is available but defines NON_MATCHING.",
+      "With COMPARE=1 by default, the build checks the output against starfox64.us.rev1.md5, and README reads a mismatch as a bad base ROM or non-matching code. CI runs make init on the US ROM, fetched from a private repository through secrets, and a separate workflow checks formatting. These checks establish ROM identity for that release, not gameplay coverage; this collection ran nothing.",
+      "The repository carries CC0-1.0, which does not cover Nintendo’s game, the ROM or extracted assets; the IDO compiler and the submodules keep their own terms. The reviewed sources establish no AI or REA involvement."
+    ],
+    "additional_evidence_urls": [
+      "https://github.com/sonicdcer/sf64/blob/4235c59f00b04440e3fd5fec49f0bc80e48cf212/Makefile",
+      "https://github.com/sonicdcer/sf64/blob/4235c59f00b04440e3fd5fec49f0bc80e48cf212/tools/Makefile",
+      "https://github.com/sonicdcer/sf64/blob/4235c59f00b04440e3fd5fec49f0bc80e48cf212/starfox64.us.rev1.md5",
+      "https://github.com/sonicdcer/sf64/blob/4235c59f00b04440e3fd5fec49f0bc80e48cf212/config.yml",
+      "https://github.com/sonicdcer/sf64/blob/4235c59f00b04440e3fd5fec49f0bc80e48cf212/.gitmodules",
+      "https://github.com/sonicdcer/sf64/blob/4235c59f00b04440e3fd5fec49f0bc80e48cf212/.github/workflows/ci.yaml",
+      "https://github.com/sonicdcer/sf64/blob/4235c59f00b04440e3fd5fec49f0bc80e48cf212/LICENSE.md"
+    ]
+  },
+  {
+    "id": "galaxy-buds-client-protocol-case",
+    "name": "Galaxy Buds Client: an unofficial manager built on Samsung’s earbud protocol",
+    "url": "https://github.com/timschneeb/GalaxyBudsClient",
+    "category": "reconstruction-cases",
+    "relationship": "independent-reconstruction",
+    "kind": "case-study",
+    "targets": [
+      "protocol",
+      "app"
+    ],
+    "description_en": "Reimplements control of Samsung Galaxy Buds over their proprietary RFCOMM serial protocol in a cross-platform desktop and Android manager. The author reports recovering the message format by analyzing the earbuds’ binary stream and disassembling Samsung’s official Android apps, and publishes partial packet notes for the 2019 Buds and the Buds+. Beyond the official app’s settings, it exposes battery statistics, diagnostics, factory self-tests, hidden debug information and firmware flashing for supported models.",
+    "description_zh": "在跨平台桌面与 Android 管理器中，通过三星 Galaxy Buds 专有的 RFCOMM 串口协议重新实现耳机控制。作者称通过分析耳机发出的二进制数据流并反汇编三星官方 Android 应用来恢复报文格式，并公开了 2019 款 Buds 和 Buds+ 的部分数据包笔记。除官方应用的设置外，它还提供电池统计、诊断、出厂自检、隐藏调试信息，以及适用型号的固件刷写。",
+    "evidence_url": "https://github.com/timschneeb/GalaxyBudsClient/blob/754b6fdfb1c151b022cece775c8aaad4eb185afa/README.md",
+    "verified_at": "2026-10-19",
+    "verification": "source-reviewed",
+    "requirements": [
+      "Reviewed at the 2026-10-01 master head, 72 commits after release 5.2.1 (2026-06-07). Device specifications in source cover Galaxy Buds models from the original 2019 Buds through the Buds4 series. The protocol notes say they are incomplete and point to the source for details; this is an independent client, not recovered Samsung source, and features vary by model.",
+      "Requires the user’s own Galaxy Buds paired over Bluetooth; earbud firmware and Samsung’s official apps are not part of the repository. Firmware flashing and downgrades download builds from the author’s firmware service, behind an in-app disclaimer and a model-compatibility check meant to avoid bricking. Release notes say the app can share protocol data through an on-demand crowdsourcing feature to support models the author does not own, and sends crash dumps to Sentry; both can be disabled in settings.",
+      "Builds from one solution with the .NET 10 SDK (global.json pins 10.0.300) and Avalonia, targeting Windows 10 build 19041+, macOS 12+, Linux and Android 7.0+ (API 24); Linux Bluetooth uses a bundled BlueZ D-Bus library. Release 5.2.1 attaches unsigned Windows and macOS installers and Linux x64/ARM portable binaries; the README also lists Flatpak, AUR and winget packages, and the Android version is sold on Google Play.",
+      "An NUnit test project decodes captured extended-status packets from seven models and checks message and spatial-audio parsing; the reviewed CI workflows build and publish binaries without running those tests. Protocol and feature behavior on real earbuds remains author-reported here, and this source review ran neither the tests nor the app.",
+      "GPLv3 (LICENSE); the README states the project is not affiliated with or supervised by Samsung. Samsung firmware, apps and trademarks keep their own rights, and the separate firmware archive the README points to is deliberately not linked from this record. The reviewed sources establish no AI or REA use."
+    ],
+    "additional_evidence_urls": [
+      "https://github.com/timschneeb/GalaxyBudsClient/blob/754b6fdfb1c151b022cece775c8aaad4eb185afa/GalaxyBudsRFCommProtocol.md",
+      "https://github.com/timschneeb/GalaxyBudsClient/blob/754b6fdfb1c151b022cece775c8aaad4eb185afa/Galaxy%20Buds%20Plus%20RFComm%20Protocol%20Notes.md",
+      "https://github.com/timschneeb/GalaxyBudsClient/blob/754b6fdfb1c151b022cece775c8aaad4eb185afa/GalaxyBudsClient/GalaxyBudsClient.csproj",
+      "https://github.com/timschneeb/GalaxyBudsClient/blob/754b6fdfb1c151b022cece775c8aaad4eb185afa/GalaxyBudsClient.Android/GalaxyBudsClient.Android.csproj",
+      "https://github.com/timschneeb/GalaxyBudsClient/blob/754b6fdfb1c151b022cece775c8aaad4eb185afa/global.json",
+      "https://github.com/timschneeb/GalaxyBudsClient/tree/754b6fdfb1c151b022cece775c8aaad4eb185afa/GalaxyBudsClient/Model/Specifications",
+      "https://github.com/timschneeb/GalaxyBudsClient/blob/754b6fdfb1c151b022cece775c8aaad4eb185afa/GalaxyBudsClient/Model/Firmware/FirmwareRemoteClient.cs",
+      "https://github.com/timschneeb/GalaxyBudsClient/blob/754b6fdfb1c151b022cece775c8aaad4eb185afa/GalaxyBudsClient/Interface/ViewModels/Pages/FirmwarePageViewModel.cs",
+      "https://github.com/timschneeb/GalaxyBudsClient/blob/754b6fdfb1c151b022cece775c8aaad4eb185afa/GalaxyBudsClient.Tests/GalaxyBudsClient.Tests.csproj",
+      "https://github.com/timschneeb/GalaxyBudsClient/blob/754b6fdfb1c151b022cece775c8aaad4eb185afa/GalaxyBudsClient.Tests/Buds2Pro/ExtendedStatusUpdateTests.cs",
+      "https://github.com/timschneeb/GalaxyBudsClient/blob/754b6fdfb1c151b022cece775c8aaad4eb185afa/.github/workflows/compile-linux.yml",
+      "https://github.com/timschneeb/GalaxyBudsClient/blob/754b6fdfb1c151b022cece775c8aaad4eb185afa/LICENSE",
+      "https://github.com/timschneeb/GalaxyBudsClient/releases/tag/5.2.1"
+    ]
+  },
+  {
+    "id": "owasp-mastg",
+    "name": "OWASP Mobile Application Security Testing Guide (MASTG)",
+    "url": "https://mas.owasp.org/MASTG/",
+    "category": "learning",
+    "relationship": "learning",
+    "kind": "learning-resource",
+    "targets": [
+      "app"
+    ],
+    "description_en": "OWASP’s open manual for Android and iOS app security testing and reverse engineering, published at mas.owasp.org. Chapters on platform internals, test setup and app tampering and reverse engineering sit beside modular, individually referenced tests, techniques, tool pages, knowledge articles, best practices and runnable demos, all mapped to MASVS controls and MASWE weaknesses. OWASP’s UnCrackable crackme apps serve as practice targets and examples.",
+    "description_zh": "OWASP 维护的开放手册，讲解 Android 和 iOS 应用的安全测试与逆向工程，发布于 mas.owasp.org。除平台原理、测试环境搭建以及应用篡改与逆向工程等章节外，还收录可单独引用的测试、技术、工具页面、知识条目、最佳实践和可运行的演示，均与 MASVS 控制项和 MASWE 弱点对应。OWASP 自己的 UnCrackable 破解练习应用用作练习目标和示例。",
+    "evidence_url": "https://github.com/OWASP/mastg/blob/02ffd85fb74383ec2a30b42866d38f89d72c0ead/README.md",
+    "verified_at": "2026-10-19",
+    "verification": "source-reviewed",
+    "requirements": [
+      "Reviewed at the 2026-09-30 master commit. The latest release, v2.0.0 of 2026-06-30, is described as completing the refactor into modular, machine-readable components and as the first stable release of that framework, while CITATION.cff still names version 1.5.0 of 2022. The pin holds 92 v1 tests and 200 atomic tests, 167 techniques, 135 tool pages, 157 demos, 141 knowledge articles and 74 best practices.",
+      "Reading needs only a browser; OWASP’s separate mas-website workflow builds the site. Following the techniques needs a Windows, Linux or macOS host with the tools each page names, such as the Android SDK platform tools, plus test devices or emulators. The guide recommends a rooted Android test device or jailbroken iOS device for dynamic analysis, warns against using a personal device, and describes fallbacks for testers without one.",
+      "The UnCrackable apps for Android and iOS are OWASP’s own reverse-engineering challenges, used as examples throughout the guide. Sample-app pages describe third-party apps, and tool pages describe external software; both keep their own terms. Demo results are written up from the guide’s sample code, not from tests of production apps.",
+      "The repository is licensed CC BY-SA 4.0, so adapted text needs attribution and the same license. The guide establishes no REA connection; this entry records it as a testing and reverse-engineering reference, and this review ran none of its demos."
+    ],
+    "additional_evidence_urls": [
+      "https://github.com/OWASP/mastg/blob/02ffd85fb74383ec2a30b42866d38f89d72c0ead/Document/0x04c-Tampering-and-Reverse-Engineering.md",
+      "https://github.com/OWASP/mastg/blob/02ffd85fb74383ec2a30b42866d38f89d72c0ead/Document/0x05b-Android-Security-Testing.md",
+      "https://github.com/OWASP/mastg/blob/02ffd85fb74383ec2a30b42866d38f89d72c0ead/Document/0x06b-iOS-Security-Testing.md",
+      "https://github.com/OWASP/mastg/blob/02ffd85fb74383ec2a30b42866d38f89d72c0ead/tests-beta/index.md",
+      "https://github.com/OWASP/mastg/blob/02ffd85fb74383ec2a30b42866d38f89d72c0ead/demos/index.md",
+      "https://github.com/OWASP/mastg/blob/02ffd85fb74383ec2a30b42866d38f89d72c0ead/Crackmes/README.md",
+      "https://github.com/OWASP/mastg/blob/02ffd85fb74383ec2a30b42866d38f89d72c0ead/CITATION.cff",
+      "https://github.com/OWASP/mastg/blob/02ffd85fb74383ec2a30b42866d38f89d72c0ead/License.md",
+      "https://github.com/OWASP/mastg/releases/tag/v2.0.0"
+    ]
+  },
+  {
+    "category": "reconstruction-cases",
+    "relationship": "independent-reconstruction",
+    "kind": "case-study",
+    "verified_at": "2026-10-18",
+    "verification": "source-reviewed",
+    "id": "wino-mail-case",
+    "name": "Wino Mail: recreating Windows Mail and Calendar",
+    "url": "https://github.com/bkaankose/Wino-Mail",
+    "targets": [
+      "app"
+    ],
+    "description_en": "Native Windows client that aims to preserve the familiar Windows Mail and Calendar experience while rebuilding its functionality. The upstream README documents a WinUI 3 interface, mail and calendar providers, contacts, tasks and offline workflows.",
+    "description_zh": "原生 Windows 客户端，以重建 Windows 邮件与日历的功能、保留熟悉的使用体验为目标。上游 README 说明了 WinUI 3 界面、邮件与日历服务、联系人、待办及离线工作流。",
+    "evidence_url": "https://github.com/bkaankose/Wino-Mail/blob/72b8d56881789ab11e42c9ab41b6567db1b85cde/README.md",
+    "additional_evidence_urls": [
+      "https://github.com/bkaankose/Wino-Mail/blob/72b8d56881789ab11e42c9ab41b6567db1b85cde/LICENSE.md"
+    ],
+    "requirements": [
+      "Windows application from bkaankose/Wino-Mail; the reviewed README links Microsoft Store and App Installer distribution.",
+      "The repository publishes GNU GPL v3 license text for its code; this does not license the original Microsoft application or branding.",
+      "Feature coverage and preservation of the original experience are upstream goals and claims. The application was not installed, built or compared here; no REA integration is established."
+    ]
   }
 ]

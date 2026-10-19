@@ -11,7 +11,7 @@
 <a href="https://awesomerea.org/zh/"><img src="assets/readme-banner.svg" alt="Awesome Reverse Engineering Anything — 覆盖六类逆向目标的工具、案例与论文" width="960"></a>
 
 <!-- BEGIN GENERATED BADGES -->
-[![精选资源: 440](https://img.shields.io/badge/%E7%B2%BE%E9%80%89%E8%B5%84%E6%BA%90-440-53309C?style=flat-square&labelColor=303447)](https://awesomerea.org/zh/resources/) [![案例: 185](https://img.shields.io/badge/%E6%A1%88%E4%BE%8B-185-53309C?style=flat-square&labelColor=303447)](https://awesomerea.org/zh/cases/) [![论文: 85](https://img.shields.io/badge/%E8%AE%BA%E6%96%87-85-53309C?style=flat-square&labelColor=303447)](https://awesomerea.org/zh/papers/) [![目录检查](https://github.com/reacher-z/Awesome-REA/actions/workflows/validate.yml/badge.svg?branch=main)](https://github.com/reacher-z/Awesome-REA/actions/workflows/validate.yml) [![许可: MIT](https://img.shields.io/badge/%E8%AE%B8%E5%8F%AF-MIT-606779?style=flat-square&labelColor=303447)](LICENSE) [![网站: awesomerea.org](https://img.shields.io/badge/%E7%BD%91%E7%AB%99-awesomerea.org-6235B5?style=flat-square&labelColor=303447)](https://awesomerea.org/zh/)
+[![精选资源: 448](https://img.shields.io/badge/%E7%B2%BE%E9%80%89%E8%B5%84%E6%BA%90-448-53309C?style=flat-square&labelColor=303447)](https://awesomerea.org/zh/resources/) [![案例: 188](https://img.shields.io/badge/%E6%A1%88%E4%BE%8B-188-53309C?style=flat-square&labelColor=303447)](https://awesomerea.org/zh/cases/) [![论文: 86](https://img.shields.io/badge/%E8%AE%BA%E6%96%87-86-53309C?style=flat-square&labelColor=303447)](https://awesomerea.org/zh/papers/) [![目录检查](https://github.com/reacher-z/Awesome-REA/actions/workflows/validate.yml/badge.svg?branch=main)](https://github.com/reacher-z/Awesome-REA/actions/workflows/validate.yml) [![许可: MIT](https://img.shields.io/badge/%E8%AE%B8%E5%8F%AF-MIT-606779?style=flat-square&labelColor=303447)](LICENSE) [![网站: awesomerea.org](https://img.shields.io/badge/%E7%BD%91%E7%AB%99-awesomerea.org-6235B5?style=flat-square&labelColor=303447)](https://awesomerea.org/zh/)
 <!-- END GENERATED BADGES -->
 
 **[搜索与筛选](https://awesomerea.org/zh/)** · **[浏览案例](https://awesomerea.org/zh/cases/)** · **[研究论文](https://awesomerea.org/zh/papers/)** · **[HTML 综述](https://awesomerea.org/zh/survey/)**
@@ -23,16 +23,16 @@
 <!-- BEGIN GENERATED CONTENTS -->
 **按目标找工具与案例**
 
-- [网站](#website) (25) · [游戏](#game) (177) · [应用](#app) (66)
-- [原生二进制](#native-binary) (56) · [固件与硬件](#firmware) (21) · [协议](#protocol) (18)
+- [网站](#website) (25) · [游戏](#game) (178) · [应用](#app) (69)
+- [原生二进制](#native-binary) (58) · [固件与硬件](#firmware) (21) · [协议](#protocol) (18)
 
 **论文与工作流**
 
-- [论文](#papers) (85) · [智能体与 MCP](#agents-and-mcp) (40) · [文档与学习资源](#references-and-learning) (28)
+- [论文](#papers) (86) · [智能体与 MCP](#agents-and-mcp) (40) · [文档与学习资源](#references-and-learning) (30)
 
 **更多浏览方式**
 
-- [全部案例](https://awesomerea.org/zh/cases/) (185) · [相关合集](#related-collections) (6) · [完整仓库索引](#完整仓库索引) (2,836)
+- [全部案例](https://awesomerea.org/zh/cases/) (188) · [相关合集](#related-collections) (6) · [完整仓库索引](#完整仓库索引) (2,836)
 <!-- END GENERATED CONTENTS -->
 
 ## 按任务查找
@@ -1064,6 +1064,12 @@ REA 标签指向单独维护的[上游 CLI 与 MCP 项目](https://github.com/mo
 
   案例 · 独立重建 · [使用条件与证据](https://awesomerea.org/zh/resources/odyssey-decomp-case/)
 
+- [**《星际火狐 64》：完整的 Nintendo 64 版一致性反编译**](https://github.com/sonicdcer/sf64)
+
+  为 Nintendo 64 版《星际火狐 64》美版 1.1（Rev A）重建 C 源码；借助静态重编译运行的 IDO 编译器编译后，可重建出 MD5 与公布值一致的 ROM，README 徽章显示全部 2,951 个函数均已一致。构建时从使用者自备的 ROM 中拆分代码与素材，仓库本身不含素材或汇编。另行收录的 Starship PC 移植直接编译这份 C 代码，Starfox 64: Recompiled 则从中取用头文件和部分函数来编写补丁。
+
+  案例 · 独立重建 · [使用条件与证据](https://awesomerea.org/zh/resources/sf64-matching-decomp-case/)
+
 #### 工具、项目与集成
 
 - [**RenderDoc**](https://github.com/baldurk/renderdoc)
@@ -1469,6 +1475,18 @@ REA 标签指向单独维护的[上游 CLI 与 MCP 项目](https://github.com/mo
 
   案例 · 独立重建 · [使用条件与证据](https://awesomerea.org/zh/resources/lgwebos-menubar-remote-case/)
 
+- [**Galaxy Buds Client：基于三星耳机协议的非官方管理器**](https://github.com/timschneeb/GalaxyBudsClient)
+
+  在跨平台桌面与 Android 管理器中，通过三星 Galaxy Buds 专有的 RFCOMM 串口协议重新实现耳机控制。作者称通过分析耳机发出的二进制数据流并反汇编三星官方 Android 应用来恢复报文格式，并公开了 2019 款 Buds 和 Buds+ 的部分数据包笔记。除官方应用的设置外，它还提供电池统计、诊断、出厂自检、隐藏调试信息，以及适用型号的固件刷写。
+
+  案例 · 独立重建 · 也适用：协议 · [使用条件与证据](https://awesomerea.org/zh/resources/galaxy-buds-client-protocol-case/)
+
+- [**Wino Mail：重建 Windows 邮件与日历体验**](https://github.com/bkaankose/Wino-Mail)
+
+  原生 Windows 客户端，以重建 Windows 邮件与日历的功能、保留熟悉的使用体验为目标。上游 README 说明了 WinUI 3 界面、邮件与日历服务、联系人、待办及离线工作流。
+
+  案例 · 独立重建 · [使用条件与证据](https://awesomerea.org/zh/resources/wino-mail-case/)
+
 #### 工具、项目与集成
 
 - [**JADX-AI-MCP**](https://github.com/zinja-coder/jadx-ai-mcp)
@@ -1692,6 +1710,12 @@ REA 标签指向单独维护的[上游 CLI 与 MCP 项目](https://github.com/mo
   以 C++ 编写、原生运行于 Windows 的 Dalvik 反编译器与 Android 分析工作台，无需安装即可打开 APK、DEX、ODEX、OAT、JAR、AAR 和 class 文件。除带交叉引用、重命名和注释的 Java 与 Smali 视图外，它还能识别加固壳、反混淆并解密字符串、追踪数据流与污点、求解路径，运行基于规则的恶意行为、漏洞和隐私泄露扫描，并可转储设备内存或用 Frida 钩挂方法。Shell 与服务器两种命令行模式、Python 和 Java 脚本以及一个恶意软件分诊智能体技能示例，让脚本和智能体也能调用这些分析功能。
 
   工具 · Android · [使用条件与证据](https://awesomerea.org/zh/resources/gda-android-decompiler/)
+
+- [**APKLab Android 逆向工作台**](https://github.com/APKLab/APKLab)
+
+  把 VS Code 变成 Android 逆向工作台的扩展，整合 Apktool、Jadx、smali-lsp 和 uber-apk-signer。它可将 APK 解码为资源文件和 Smali 并反编译为 Java，借助语言服务器为 Smali 提供定义跳转、引用查找和诊断，还能重新构建、签名并安装修改后的应用。此外，它可为 Smali 方法生成 Frida 钩子、加入 Frida gadget、借助 apk-mitm 为 HTTPS 流量检查做准备，并生成 Quark-Engine 恶意软件分析报告。
+
+  工具 · Android · [使用条件与证据](https://awesomerea.org/zh/resources/apklab/)
 
 <a id="native-binary"></a>
 ### Native Binary · 原生二进制
@@ -2037,6 +2061,18 @@ REA 标签指向单独维护的[上游 CLI 与 MCP 项目](https://github.com/mo
   单文件 Python 扩展 gef.py，为 GDB 增加动态分析命令。每次程序停下时都会显示寄存器、栈、代码、线程和调用轨迹等上下文视图，命令涵盖内存映射、指针解引用、在进程内存中搜索模式、ELF 与安全属性信息、进程状态以及 glibc 堆检查。其架构抽象层覆盖 x86-32/64、ARMv5–v7、AArch64、SPARC、MIPS 和 PowerPC；gef-remote 命令可通过 gdbserver 或 qemu-user、qemu-system 的 GDB stub 增强远程调试会话。
 
   工具 · [使用条件与证据](https://awesomerea.org/zh/resources/gef/)
+
+- [**Triton 动态二进制分析库**](https://github.com/JonathanSalwan/Triton)
+
+  面向 x86、x86-64、ARM32、AArch64 和 RISC-V 32/64 代码动态二进制分析的 C++ 库，提供 Python 绑定。调用方逐条处理指令，并可设置具体的寄存器和内存值；Triton 依据每条指令的语义构建符号表达式、进行污点跟踪，并通过 Z3 或 Bitwuzla 求解路径约束。它还能合成与化简表达式，并将其提升为 LLVM IR 或 Z3 表达式后再转换回来，可用于构建分析工具、自动化逆向工程、软件验证或模拟执行代码。
+
+  工具 · 程序库 · [使用条件与证据](https://awesomerea.org/zh/resources/triton/)
+
+- [**PyLingual Python 字节码反编译器**](https://github.com/syssec-utd/pylingual)
+
+  面向 Python 3.6 及以后版本 CPython 字节码的研究型反编译器，将按版本训练的 Transformer 模型与控制流重建相结合。分段模型把字节码切分为语句，语句模型将每段翻译为源码，再由模板重建循环、条件分支、异常处理、with 块和 match 语句。生成结果会用目标 Python 版本重新编译，并与原字节码比较控制流，未通过的片段会改用其他分段方案重试；其设计见 IEEE S&amp;P 2025 论文《PyLingual: Toward Perfect Decompilation of Evolving High-Level Languages》。
+
+  工具 · 也适用：应用 · [使用条件与证据](https://awesomerea.org/zh/resources/pylingual/)
 
 <a id="firmware"></a>
 ### Firmware and Hardware · 固件与硬件
@@ -2750,19 +2786,31 @@ REA 标签指向单独维护的[上游 CLI 与 MCP 项目](https://github.com/mo
   mytechnotalent 维护的免费英文课程索引，几乎每天更新：共 490 节编号课程，多数课程让学习者先编写小程序，再对其调试和打补丁（文中称 "hack"），覆盖 x86、x64、32/64 位 ARM、RISC-V 和 AVR。前期课程从数制、寄存器、内存和栈讲起；后期转向 Raspberry Pi Pico/Pico 2、STM32F401、ESP32-C3、ATmega328P 和 micro:bit 等开发板上的微控制器固件，以及 Windows、Go、Rust 和 WebAssembly 程序。README 本身只是链接目录，课程正文位于一个 GitBook 以及作者其他仓库中的课程文件和 PDF 书。
 
   学习资源 · 目标：二进制、固件 · [使用条件与证据](https://awesomerea.org/zh/resources/mytechnotalent-reverse-engineering/)
+
+- [**Z0FCourse 逆向工程课程**](https://github.com/0xZ0F/Z0FCourse_ReverseEngineering)
+
+  Z0F 编写的免费英文课程，讲解如何逆向 64 位 Windows 程序，README 称目标是帮助学习者从入门进阶到中级。Markdown 课程从数制、x64 寄存器、内存布局和调用约定讲起，过渡到 x64dbg 与 Ghidra，再逆向若干小样本以及作者自己编写的 DLL，还原其中的 Player 类，并在自己编写的程序中调用该 DLL 的导出函数。尚未完成的后续章节介绍 Windows 内部机制，并逆向 ntdll 中的 generic table 系列函数。
+
+  学习资源 · 目标：二进制 · [使用条件与证据](https://awesomerea.org/zh/resources/z0f-reverse-engineering-course/)
+
+- [**OWASP 移动应用安全测试指南（MASTG）**](https://mas.owasp.org/MASTG/)
+
+  OWASP 维护的开放手册，讲解 Android 和 iOS 应用的安全测试与逆向工程，发布于 mas.owasp.org。除平台原理、测试环境搭建以及应用篡改与逆向工程等章节外，还收录可单独引用的测试、技术、工具页面、知识条目、最佳实践和可运行的演示，均与 MASVS 控制项和 MASWE 弱点对应。OWASP 自己的 UnCrackable 破解练习应用用作练习目标和示例。
+
+  学习资源 · 目标：应用 · [使用条件与证据](https://awesomerea.org/zh/resources/owasp-mastg/)
 <!-- END GENERATED CATALOG -->
 
 <!-- BEGIN GENERATED PAPERS -->
 <a id="papers"></a>
 ## 论文
 
-**85 篇论文**，按主题分组，组内按年份从新到旧排列。每项均标明发表场所与状态，中文标题为译名。
+**86 篇论文**，按主题分组，组内按年份从新到旧排列。每项均标明发表场所与状态，中文标题为译名。
 
 [浏览论文目录](https://awesomerea.org/zh/papers/) · [完整书目 JSON](data/papers.json) · [推荐论文](https://github.com/reacher-z/Awesome-REA/issues/new?template=paper.yml)
 
 **按主题**
 
-- [智能体评测](#papers-agent-evaluation) (8) · [反编译](#papers-decompilation) (33) · [网站](#papers-website-reconstruction) (15)
+- [智能体评测](#papers-agent-evaluation) (8) · [反编译](#papers-decompilation) (34) · [网站](#papers-website-reconstruction) (15)
 - [游戏](#papers-game-reconstruction) (6) · [应用](#papers-app-reconstruction) (7) · [固件](#papers-firmware-analysis) (6)
 - [协议](#papers-protocol-analysis) (10)
 
@@ -2925,6 +2973,21 @@ REA 标签指向单独维护的[上游 CLI 与 MCP 项目](https://github.com/mo
   **范围与限制:** 这是一篇文献系统化综述，不包含新的实验、基准或工具；它对已报告的结果进行分类和总结，并未复现。语料涵盖截至 2026 年 7 月 31 日可获得的论文，引用量门槛从 2015—2016 年论文的 12 次逐步降至 2025—2026 年论文的 2 次，排除推断时需要源码的方法，也不包括 Android 与解释型语言字节码。各阶段的详细表格基于 88 项顶级会议研究，而非完整语料。它是未注明发表场所的 arXiv 预印本，本条目不声称其经过同行评审。其引用的论文并不因此纳入本合集，每篇都需要单独审阅。
 
   **作者:** Yujeong Kwon 等
+
+  </details>
+
+- [**以量化可读性指标引导 LLM 智能体辅助逆向工程**](https://arxiv.org/abs/2606.06838)
+
+  用综合量化可读性分数（QRS）引导智能体改进反编译 C 代码，将词汇熟悉度、结构简洁度和编程惯用法与二进制结构相似性门槛结合，在 210 个简单 C 二进制程序上比较有无 shell 访问的迭代。
+
+  arXiv 2026 · 预印本 · [PDF](https://arxiv.org/pdf/2606.06838v1) · [完整条目与引用](https://awesomerea.org/zh/papers/paper-qrs-readability/)
+
+  <details>
+  <summary>范围与发表信息</summary>
+
+  **范围与限制:** 结构相似性不能证明语义等价。QRS 同时用于指导和评价改进，仍缺少人工可读性验证；经过筛选的合成语料限制了泛化。处理困难二进制并恢复可编译、行为正确代码，不属于本文的贡献范围。
+
+  **作者:** Neil Archibald 等
 
   </details>
 
