@@ -11,9 +11,13 @@ concurrency:
   group: ${{ github.workflow }}-${{ github.ref == 'refs/heads/main' && github.run_id || github.ref }}
   cancel-in-progress: true
 jobs:
-  validate:
+  unit:
     runs-on: ubuntu-latest
     timeout-minutes: 10
+    strategy:
+      fail-fast: false
+      matrix:
+        shard: [0, 1]
     steps:
       - uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
         with:
@@ -27,11 +31,60 @@ jobs:
       - name: Compile Python scripts and tests
         run: python3 -m compileall -q scripts tests
       - name: Run unit tests
-        run: python3 -m unittest discover -s tests -v
+        env:
+          CI_TEST_SHARD: ${{ matrix.shard }}
+        run: |
+          python3 - <<'PY'
+          import os
+          import sys
+          import unittest
+
+          def cases(suite):
+              for test in suite:
+                  if isinstance(test, unittest.TestSuite):
+                      yield from cases(test)
+                  else:
+                      yield test
+
+          discovered = list(cases(unittest.defaultTestLoader.discover('tests')))
+          shard = int(os.environ['CI_TEST_SHARD'])
+          assert shard in (0, 1) and discovered
+          selected = discovered[shard::2]
+          assert selected
+          print(f'Shard {shard + 1}/2: {len(selected)} of {len(discovered)} discovered tests', flush=True)
+          result = unittest.TextTestRunner(verbosity=2).run(unittest.TestSuite(selected))
+          sys.exit(0 if result.wasSuccessful() else 1)
+          PY
+  production:
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    steps:
+      - uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
+        with:
+          persist-credentials: false
+      - uses: actions/setup-python@5fda3b95a4ea91299a34e894583c3862153e4b97 # v7.0.0
+        with:
+          python-version: '3.12'
+      - uses: actions/setup-node@949feb2413d6458794dcd2491c4babbbce0c15c1 # v7.1.0
+        with:
+          node-version: '26'
       # The Cloudflare Pages build command: validate.py, node --check, build_site.py,
       # validate_discovery.py and validate_site.py. The asset URL is only written into HTML.
       - name: Run the production build
         run: python3 scripts/build_production.py --fontawesome-assets-url https://awesome-rea.pages.dev
+  browser:
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    steps:
+      - uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
+        with:
+          persist-credentials: false
+      - uses: actions/setup-python@5fda3b95a4ea91299a34e894583c3862153e4b97 # v7.0.0
+        with:
+          python-version: '3.12'
+      - uses: actions/setup-node@949feb2413d6458794dcd2491c4babbbce0c15c1 # v7.1.0
+        with:
+          node-version: '26'
       # The smoke test rebuilds dist/ with the public fallback icons and loads it in the runner's installed
       # Chrome; the pinned puppeteer-core package downloads no browser. CI=true makes a missing Chrome fail.
       - name: Install the browser smoke-test driver
@@ -47,3 +100,23 @@ jobs:
           include-hidden-files: true
           if-no-files-found: ignore
           retention-days: 14
+  # Keep the required check name. A failed, skipped or cancelled dependency
+  # must never turn into a successful aggregate result.
+  validate:
+    needs: [unit, production, browser]
+    if: ${{ always() }}
+    runs-on: ubuntu-latest
+    timeout-minutes: 5
+    steps:
+      - name: Require every catalog check to pass
+        env:
+          CI_UNIT_RESULT: ${{ needs.unit.result }}
+          CI_PRODUCTION_RESULT: ${{ needs.production.result }}
+          CI_BROWSER_RESULT: ${{ needs.browser.result }}
+        run: |
+          for result in "$CI_UNIT_RESULT" "$CI_PRODUCTION_RESULT" "$CI_BROWSER_RESULT"; do
+            if [ "$result" != success ]; then
+              echo '::error::Every catalog check must succeed.'
+              exit 1
+            fi
+          done
