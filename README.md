@@ -11,7 +11,7 @@ An independent collection of tools, case studies and research for websites, game
 <a href="https://awesomerea.org/"><img src="assets/readme-banner.svg" alt="Awesome Reverse Engineering Anything — tools, cases and papers across six reverse-engineering domains" width="960"></a>
 
 <!-- BEGIN GENERATED BADGES -->
-[![resources: 359](https://img.shields.io/badge/resources-359-53309C?style=flat-square&labelColor=303447)](https://awesomerea.org/resources/) [![cases: 184](https://img.shields.io/badge/cases-184-53309C?style=flat-square&labelColor=303447)](https://awesomerea.org/cases/) [![papers: 83](https://img.shields.io/badge/papers-83-53309C?style=flat-square&labelColor=303447)](https://awesomerea.org/papers/) [![Catalog checks](https://github.com/reacher-z/Awesome-REA/actions/workflows/validate.yml/badge.svg?branch=main)](https://github.com/reacher-z/Awesome-REA/actions/workflows/validate.yml) [![license: MIT](https://img.shields.io/badge/license-MIT-606779?style=flat-square&labelColor=303447)](LICENSE) [![website: awesomerea.org](https://img.shields.io/badge/website-awesomerea.org-6235B5?style=flat-square&labelColor=303447)](https://awesomerea.org/)
+[![resources: 359](https://img.shields.io/badge/resources-359-53309C?style=flat-square&labelColor=303447)](https://awesomerea.org/resources/) [![cases: 184](https://img.shields.io/badge/cases-184-53309C?style=flat-square&labelColor=303447)](https://awesomerea.org/cases/) [![papers: 84](https://img.shields.io/badge/papers-84-53309C?style=flat-square&labelColor=303447)](https://awesomerea.org/papers/) [![Catalog checks](https://github.com/reacher-z/Awesome-REA/actions/workflows/validate.yml/badge.svg?branch=main)](https://github.com/reacher-z/Awesome-REA/actions/workflows/validate.yml) [![license: MIT](https://img.shields.io/badge/license-MIT-606779?style=flat-square&labelColor=303447)](LICENSE) [![website: awesomerea.org](https://img.shields.io/badge/website-awesomerea.org-6235B5?style=flat-square&labelColor=303447)](https://awesomerea.org/)
 <!-- END GENERATED BADGES -->
 
 **[Search & filter](https://awesomerea.org/)** · **[Browse cases](https://awesomerea.org/cases/)** · **[Research papers](https://awesomerea.org/papers/)** · **[HTML survey](https://awesomerea.org/survey/)**
@@ -28,7 +28,7 @@ An independent collection of tools, case studies and research for websites, game
 
 **Research and workflows**
 
-- [Papers](#papers) (83) · [Agents and MCP](#agents-and-mcp) (31) · [References and Learning](#references-and-learning) (27)
+- [Papers](#papers) (84) · [Agents and MCP](#agents-and-mcp) (31) · [References and Learning](#references-and-learning) (27)
 
 **More ways to browse**
 
@@ -2269,13 +2269,13 @@ REA labels refer to the separate [upstream CLI and MCP project](https://github.c
 <a id="papers"></a>
 ## Papers
 
-**83 papers**, grouped by topic and ordered newest first. Each entry shows its venue and publication status.
+**84 papers**, grouped by topic and ordered newest first. Each entry shows its venue and publication status.
 
 [Browse the paper directory](https://awesomerea.org/papers/) · [Complete bibliography JSON](data/papers.json) · [Suggest a paper](https://github.com/reacher-z/Awesome-REA/issues/new?template=paper.yml)
 
 **By topic**
 
-- [Agent evaluation](#papers-agent-evaluation) (8) · [Decompilation](#papers-decompilation) (31) · [Websites](#papers-website-reconstruction) (15)
+- [Agent evaluation](#papers-agent-evaluation) (8) · [Decompilation](#papers-decompilation) (31) · [Websites](#papers-website-reconstruction) (16)
 - [Games](#papers-game-reconstruction) (6) · [Apps](#papers-app-reconstruction) (7) · [Firmware](#papers-firmware-analysis) (6)
 - [Protocols](#papers-protocol-analysis) (10)
 
@@ -3103,6 +3103,21 @@ Open “Scope and publication details” for each study’s full limitations. So
   **Scope and limits:** Evaluation uses 1,198 screenshots and 5,990 yes/no questions. WCGB grades rendered images with GPT-4V; its User Interface and Interactivity category measures element appearance, not executed click paths, persistent state or backend behavior. Synthetic and refined examples do not establish coverage of arbitrary real web applications, original-source equivalence or code quality. The paper reports contact-information issues in 2.7% of a 1,000-item privacy sample, so a blanket claim that the data is free of such information is unsupported.
 
   **Authors:** Sukmin Yun et al.
+
+  </details>
+
+- [**Crawling Ajax-Based Web Applications through Dynamic Analysis of User Interface State Changes**](https://dl.acm.org/doi/10.1145/2109205.2109208)
+
+  Crawljax infers a state-flow graph of an Ajax web application by driving it in a real browser. It scans the DOM for candidate clickable elements, fires events on them, compares the resulting DOM against known states with configurable comparison and similarity thresholds, and records new states and the event transitions between them, backtracking by reloading and replaying paths. A concurrent variant partitions the crawl across browser instances. The Java tool uses Selenium WebDriver and plugins; one plugin writes a static mirror of the crawled states. The authors evaluate six open-source and industrial sites and measure how the number of concurrent browsers affects crawling runtime on Google AdSense.
+
+  ACM Transactions on the Web 2012 · Journal article · [PDF](https://dl.acm.org/doi/pdf/10.1145/2109205.2109208) · [Code](https://github.com/crawljax/crawljax) · [Full entry & citation](https://awesomerea.org/papers/paper-crawljax/)
+
+  <details>
+  <summary>Scope and publication details</summary>
+
+  **Scope and limits:** Crawljax recovers client-side UI states and navigation transitions, not application source code, server-side logic or a complete behavioral model. The inferred graph is one snapshot instance: click order, server-side factors and state-explosion limits such as depth, time and state caps affect what is found. With default settings it clicks each element once and missed elements that only appear after repeated clicks: 33 of 36 annotated elements were found in Pet Store, and 38 of 40 sampled clickables across four external sites. No gold standard or comparable Ajax crawler was available, so accuracy was assessed by injected elements, a manual reference model and spot checks. External sites change over time, and the concurrent study ran at Google on AdSense. The reviewed 2023 repository is a later Java 11 and Selenium 4 codebase, not the 2012 evaluation build.
+
+  **Authors:** Ali Mesbah et al.
 
   </details>
 

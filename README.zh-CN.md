@@ -11,7 +11,7 @@
 <a href="https://awesomerea.org/zh/"><img src="assets/readme-banner.svg" alt="Awesome Reverse Engineering Anything — 覆盖六类逆向目标的工具、案例与论文" width="960"></a>
 
 <!-- BEGIN GENERATED BADGES -->
-[![精选资源: 359](https://img.shields.io/badge/%E7%B2%BE%E9%80%89%E8%B5%84%E6%BA%90-359-53309C?style=flat-square&labelColor=303447)](https://awesomerea.org/zh/resources/) [![案例: 184](https://img.shields.io/badge/%E6%A1%88%E4%BE%8B-184-53309C?style=flat-square&labelColor=303447)](https://awesomerea.org/zh/cases/) [![论文: 83](https://img.shields.io/badge/%E8%AE%BA%E6%96%87-83-53309C?style=flat-square&labelColor=303447)](https://awesomerea.org/zh/papers/) [![目录检查](https://github.com/reacher-z/Awesome-REA/actions/workflows/validate.yml/badge.svg?branch=main)](https://github.com/reacher-z/Awesome-REA/actions/workflows/validate.yml) [![许可: MIT](https://img.shields.io/badge/%E8%AE%B8%E5%8F%AF-MIT-606779?style=flat-square&labelColor=303447)](LICENSE) [![网站: awesomerea.org](https://img.shields.io/badge/%E7%BD%91%E7%AB%99-awesomerea.org-6235B5?style=flat-square&labelColor=303447)](https://awesomerea.org/zh/)
+[![精选资源: 359](https://img.shields.io/badge/%E7%B2%BE%E9%80%89%E8%B5%84%E6%BA%90-359-53309C?style=flat-square&labelColor=303447)](https://awesomerea.org/zh/resources/) [![案例: 184](https://img.shields.io/badge/%E6%A1%88%E4%BE%8B-184-53309C?style=flat-square&labelColor=303447)](https://awesomerea.org/zh/cases/) [![论文: 84](https://img.shields.io/badge/%E8%AE%BA%E6%96%87-84-53309C?style=flat-square&labelColor=303447)](https://awesomerea.org/zh/papers/) [![目录检查](https://github.com/reacher-z/Awesome-REA/actions/workflows/validate.yml/badge.svg?branch=main)](https://github.com/reacher-z/Awesome-REA/actions/workflows/validate.yml) [![许可: MIT](https://img.shields.io/badge/%E8%AE%B8%E5%8F%AF-MIT-606779?style=flat-square&labelColor=303447)](LICENSE) [![网站: awesomerea.org](https://img.shields.io/badge/%E7%BD%91%E7%AB%99-awesomerea.org-6235B5?style=flat-square&labelColor=303447)](https://awesomerea.org/zh/)
 <!-- END GENERATED BADGES -->
 
 **[搜索与筛选](https://awesomerea.org/zh/)** · **[浏览案例](https://awesomerea.org/zh/cases/)** · **[研究论文](https://awesomerea.org/zh/papers/)** · **[HTML 综述](https://awesomerea.org/zh/survey/)**
@@ -28,7 +28,7 @@
 
 **论文与工作流**
 
-- [论文](#papers) (83) · [智能体与 MCP](#agents-and-mcp) (31) · [文档与学习资源](#references-and-learning) (27)
+- [论文](#papers) (84) · [智能体与 MCP](#agents-and-mcp) (31) · [文档与学习资源](#references-and-learning) (27)
 
 **更多浏览方式**
 
@@ -2270,13 +2270,13 @@ REA 标签指向单独维护的[上游 CLI 与 MCP 项目](https://github.com/mo
 <a id="papers"></a>
 ## 论文
 
-**83 篇论文**，按主题分组，组内按年份从新到旧排列。每项均标明发表场所与状态，中文标题为译名。
+**84 篇论文**，按主题分组，组内按年份从新到旧排列。每项均标明发表场所与状态，中文标题为译名。
 
 [浏览论文目录](https://awesomerea.org/zh/papers/) · [完整书目 JSON](data/papers.json) · [推荐论文](https://github.com/reacher-z/Awesome-REA/issues/new?template=paper.yml)
 
 **按主题**
 
-- [智能体评测](#papers-agent-evaluation) (8) · [反编译](#papers-decompilation) (31) · [网站](#papers-website-reconstruction) (15)
+- [智能体评测](#papers-agent-evaluation) (8) · [反编译](#papers-decompilation) (31) · [网站](#papers-website-reconstruction) (16)
 - [游戏](#papers-game-reconstruction) (6) · [应用](#papers-app-reconstruction) (7) · [固件](#papers-firmware-analysis) (6)
 - [协议](#papers-protocol-analysis) (10)
 
@@ -3104,6 +3104,21 @@ REA 标签指向单独维护的[上游 CLI 与 MCP 项目](https://github.com/mo
   **范围与限制:** 评估使用 1,198 张截图和 5,990 个是／否问题。WCGB 用 GPT-4V 评价渲染图像；其“用户界面与交互性”类别衡量元素外观，并不执行点击路径、持久状态或后端行为。合成与改进样本不能确立对任意真实 Web 应用的覆盖、与原始源码等价或代码质量。论文报告，在 1,000 项隐私抽样中，2.7% 存在联系信息问题，因此不能笼统宣称数据完全不含此类信息。
 
   **作者:** Sukmin Yun 等
+
+  </details>
+
+- [**通过动态分析用户界面状态变化爬取基于 Ajax 的 Web 应用**](https://dl.acm.org/doi/10.1145/2109205.2109208)
+
+  Crawljax 在真实浏览器中驱动 Ajax Web 应用，以推断其状态流图。它扫描 DOM 中候选的可点击元素并触发事件，再用可配置的比较方法与相似度阈值将得到的 DOM 与已知状态比对，记录新状态及状态间的事件转换，并通过重新加载与重放路径进行回溯。并发版本将爬取任务划分给多个浏览器实例。该 Java 工具基于 Selenium WebDriver 与插件机制，其中一个插件可为已爬取的状态生成静态镜像。作者评测了六个开源与工业网站，并在 Google AdSense 上测量并发浏览器数量对爬取耗时的影响。
+
+  ACM Transactions on the Web 2012 · 期刊论文 · [PDF](https://dl.acm.org/doi/pdf/10.1145/2109205.2109208) · [代码](https://github.com/crawljax/crawljax) · [完整条目与引用](https://awesomerea.org/zh/papers/paper-crawljax/)
+
+  <details>
+  <summary>范围与发表信息</summary>
+
+  **范围与限制:** Crawljax 恢复的是客户端 UI 状态与导航转换，而非应用源码、服务端逻辑或完整的行为模型。推断出的图只是某一时刻的快照实例：点击顺序、服务端因素以及深度、时间与状态数上限等状态爆炸控制都会影响结果。默认设置下每个元素只点击一次，因而遗漏了需要多次点击才出现的元素：在 Pet Store 中找到 36 个标注元素中的 33 个，在四个外部网站抽样的 40 个可点击元素中找到 38 个。由于缺少黄金标准与可比较的 Ajax 爬虫，准确性通过注入元素、人工参考模型及抽查评估。外部网站会随时间变化，并发实验则在 Google 内部基于 AdSense 进行。所审阅的 2023 年仓库是后来基于 Java 11 与 Selenium 4 的代码，并非 2012 年评测所用版本。
+
+  **作者:** Ali Mesbah 等
 
   </details>
 
