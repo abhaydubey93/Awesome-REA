@@ -13,7 +13,7 @@ import unittest
 from unittest.mock import patch
 
 sys.path.insert(0, str(Path(__file__).resolve().parents[1] / 'scripts'))
-from scan_sources import run_scan, save
+from scan_sources import ScanError, run_scan, save
 
 BODY = b'# Example\n\n## Usage\nRead a public protocol trace.\n'
 OID = hashlib.sha1(b'blob ' + str(len(BODY)).encode() + b'\0' + BODY).hexdigest()
@@ -36,6 +36,8 @@ class API:
     def json(self, path, search=False):
         if search:
             return {'items': [repository()], 'total_count': 1, 'incomplete_results': False}
+        if path.startswith('/repositories/'):
+            return repository()
         self.readme_calls += 1
         return {'type': 'file', 'path': 'README.md', 'sha': OID, 'size': len(BODY),
                 'html_url': repository()['html_url'] + '/blob/main/README.md',
@@ -143,6 +145,30 @@ class ScanTransportTests(unittest.TestCase):
         self.assertEqual((code, api.readme_calls), (1, 0))
         self.assertEqual(document['meta']['attempted_readme_scans'], 0)
         self.assertEqual(document['meta']['status'], 'in-progress')
+
+    def test_exhausted_rest_backpressure_leaves_ids_pending_and_stops_sibling_requests(self):
+        class TwoAPI(API):
+            def __init__(self, reason, http_status):
+                super().__init__()
+                self.reason, self.http_status, self.rest_calls = reason, http_status, 0
+
+            def json(self, path, search=False):
+                if search:
+                    other = {**repository(), 'id': 43, 'full_name': 'example/second',
+                             'html_url': 'https://github.com/example/second'}
+                    return {'items': [repository(), other], 'total_count': 2, 'incomplete_results': False}
+                self.rest_calls += 1
+                raise ScanError(self.reason, self.http_status)
+
+        for reason, status in [('http-429', 429), ('http-503', 503), ('network-failure', None)]:
+            api = TwoAPI(reason, status)
+            code, document, _ = self.scan('fallback', api=api, target=2)
+            self.assertEqual(code, 1)
+            self.assertEqual(api.rest_calls, 1)
+            self.assertEqual(document['resources'], [])
+            self.assertEqual(document['failures'], [])
+            self.assertEqual(document['meta']['status'], 'in-progress')
+            self.assertEqual(document['meta']['unattempted_candidates'], 2)
 
     def test_verified_but_nontext_blob_is_a_recorded_failed_read(self):
         class Nontext(Transport):

@@ -51,7 +51,7 @@ APPROVED_QUERIES = [*QUERY_BASES,
 RECORD_FIELDS = set('archived category classification_origin classification_reference_ids classification_engine_version '
                     'description_capture_policy description_en description_language description_omission description_origin '
                     'description_zh description_zh_status discovery_methods full_name id license matched_queries '
-                    'metadata_observed_at name observed_at pushed_at readme_api_url readme_bytes readme_content_git_sha '
+                    'metadata_observed_at name observed_at pushed_at readme_api_url readme_blob_api_url readme_bytes readme_content_git_sha '
                     'readme_git_sha readme_git_sha_matches_content readme_heading_count readme_integrity_review readme_lines '
                     'readme_path readme_sha256 readme_signals readme_url requirements scan_status seed_paper_ids '
                     'seed_paper_references seed_reference_ids stars targets topics updated_at url verification '
@@ -591,7 +591,7 @@ class ScheduledTransport:
         self.reported_cost += sum(row.get('rate_limit', {}).get('cost', 0) for row in self.last_batch_receipts)
         fallback_ids = [identifier for identifier, value in results.items() if value['status'] == 'fallback']
         core_remaining = self.rest.rate.get('core', {}).get('remaining')
-        if self.fallbacks + len(fallback_ids) > 200 or core_remaining is not None and core_remaining < 100 + 2 * len(fallback_ids):
+        if self.fallbacks + len(fallback_ids) > 200 or core_remaining is not None and core_remaining < 100 + 3 * len(fallback_ids):
             for identifier in fallback_ids:
                 results[identifier] = {'status': 'deferred', 'retry_after': 60}
         elif not any(value['status'] in ('retry', 'deferred') for value in results.values()):

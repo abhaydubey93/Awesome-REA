@@ -465,6 +465,13 @@ def validate_source_index(document, errors, *, allow_incomplete=False):
                         or parsed.path != '/repos/' + str(record.get('full_name', '')) + '/readme'):
                     errors.append(f'{where}: README API URL must match the public GitHub repository')
         graphql_fields = {'readme_transport', 'readme_graphql_endpoint', 'readme_commit_sha'}
+        if 'readme_blob_api_url' in record:
+            expected = ('https://api.github.com/repos/' + str(record.get('full_name', ''))
+                        + '/git/blobs/' + str(record.get('readme_git_sha', '')))
+            if (record['readme_blob_api_url'] != expected or 'readme_api_url' not in record
+                    or graphql_fields.intersection(record)
+                    or record.get('readme_git_sha_matches_content') is not True):
+                errors.append(f'{where}: REST blob recovery must identify the verified immutable GitHub blob and README lookup')
         if graphql_fields.intersection(record):
             commit = record.get('readme_commit_sha')
             path = record.get('readme_path')

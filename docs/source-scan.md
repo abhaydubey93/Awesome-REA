@@ -2,6 +2,12 @@
 
 The [source index](../data/source-index.json) is a separate discovery layer from the curated catalog. Its records are **automated README scans**, not individually reviewed recommendations.
 
+New captures require the received byte length and computed Git blob SHA to match the source metadata. The REST README endpoint can return a truncated or transcoded inline body. When its size or hash disagrees, the scanner reads the advertised immutable Git blob once, verifies the original bytes, and records both `readme_api_url` and `readme_blob_api_url`. It confirms the public repository's numeric identity before requesting document bytes. Unsupported UTF-8, incomplete blobs and hash mismatches do not become successful captures.
+
+The scheduled REST fallback budget allows up to three logical API calls per candidate: repository identity, README metadata/body, and optional immutable blob recovery. In the GraphQL pipeline, exhausted REST rate limits, server errors and network failures leave candidates pending and stop further fallback requests in that batch.
+
+Historical records retain their original evidence. A legacy capture without `readme_git_sha_matches_content: true` is not automatically upgraded by this change. Keep counts of actual captures, explicitly verified captures, missing legacy comparison evidence and known mismatches separate; re-read uncertain records before including them in a verified-capture campaign total. Retained snapshots remain accepted for migration and review.
+
 Initial completed snapshot: **1,600 distinct repository READMEs**, retrieved between 2026-10-16 01:34:02 and 01:37:38 UTC. The 29 queries discovered 2,020 unique candidates; 1,611 were attempted, 11 failed (10 HTTP 404 responses and one empty README), and 409 were not attempted after reaching the target. The successful scan read 16,525,491 bytes and produced 1,596 distinct content hashes. Different repositories can carry identical README content.
 
 Second completed snapshot: **400 new successful README scans** from 405 attempts, completed on 2026-10-16 at 07:15:17 UTC. That snapshot retained **2,000 successful scans** and **16 failed attempts**. All original 1,600 records and 11 failures remain unchanged. The batch added 32 previously unscanned curated repositories and used 10 focused technology/reverse-engineering search queries. Its combined scan records contained 20,426,367 README bytes and 1,996 distinct content hashes.

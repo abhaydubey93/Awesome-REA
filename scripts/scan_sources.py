@@ -20,7 +20,7 @@ import subprocess
 import threading
 import time
 from urllib.error import HTTPError, URLError
-from urllib.parse import quote, urlencode, urlsplit
+from urllib.parse import quote, unquote, urlencode, urlsplit
 from urllib.request import HTTPRedirectHandler, Request, build_opener
 from source_descriptions import SOURCE_DESCRIPTION_POLICY, capture_description
 from source_scope import DUPLICATE_README_REASON, read_scope
@@ -478,8 +478,16 @@ def readme_record(repo, metadata, content, *, api_url=None):
         raise ScanError('empty-readme')
     if len(content) > MAX_README_BYTES:
         raise ScanError('readme-too-large')
-    text = content.decode('utf-8', errors='replace')
-    if text.count('\x00') > 0 or text.count('\ufffd') > max(20, len(text) // 50):
+    if type(metadata.get('size')) is not int or metadata['size'] != len(content):
+        raise ScanError('readme-size-mismatch')
+    content_git_sha = hashlib.sha1(b'blob ' + str(len(content)).encode('ascii') + b'\0' + content).hexdigest()
+    if not re.fullmatch('[0-9a-f]{40}', str(metadata.get('sha', ''))) or metadata['sha'] != content_git_sha:
+        raise ScanError('readme-git-sha-mismatch')
+    try:
+        text = content.decode('utf-8')
+    except UnicodeDecodeError:
+        raise ScanError('non-utf8-readme') from None
+    if '\x00' in text or text.count('\ufffd') > max(20, len(text) // 50):
         raise ScanError('nontext-readme')
     # These are automatic document features, not endorsements or compatibility claims.
     headings = []
@@ -525,7 +533,7 @@ def readme_record(repo, metadata, content, *, api_url=None):
         'readme_url': metadata.get('html_url') or repo['html_url'] + '#readme',
         'readme_path': metadata.get('path'),
         'readme_git_sha': metadata.get('sha'),
-        'readme_content_git_sha': hashlib.sha1(b'blob ' + str(len(content)).encode('ascii') + b'\0' + content).hexdigest(),
+        'readme_content_git_sha': content_git_sha,
         'readme_sha256': hashlib.sha256(content).hexdigest(),
         'readme_bytes': len(content),
         'readme_lines': len(text.splitlines()),
@@ -559,19 +567,63 @@ def scan_readme(api, repo):
     if ref:
         path += '?' + urlencode({'ref': ref})
     try:
+        # Queued REST metadata may be old. Confirm the numeric identity and
+        # current public status before fetching any document bytes.
+        current = api.json('/repositories/' + str(repo['id']))
+        if (not isinstance(current, dict) or type(current.get('id')) is not int or current.get('id') != repo['id']
+                or current.get('full_name') != repo['full_name']
+                or current.get('html_url') != repo['html_url'] or repository_ineligibility(current)):
+            raise ScanError('readme-repository-identity-unconfirmed')
         metadata = api.json(path)
         if not isinstance(metadata, dict) or metadata.get('type') != 'file':
             raise ScanError('not-a-readme-file')
-        if metadata.get('size', 0) > MAX_README_BYTES:
+        size, oid = metadata.get('size'), metadata.get('sha')
+        if type(size) is not int or size < 0 or not isinstance(oid, str) or not re.fullmatch('[0-9a-f]{40}', oid):
+            raise ScanError('invalid-readme-metadata')
+        if size > MAX_README_BYTES:
             raise ScanError('readme-too-large')
+        readme_path = metadata.get('path')
+        if (not isinstance(readme_path, str) or not readme_path or '\\' in readme_path
+                or any(part in ('', '.', '..') for part in readme_path.split('/'))
+                or any(ord(char) < 32 for char in readme_path)):
+            raise ScanError('invalid-readme-path')
+        url = metadata.get('html_url')
+        parsed = urlsplit(url) if isinstance(url, str) else None
+        if (parsed is None or not url.startswith(repo['html_url'] + '/blob/')
+                or any(ord(char) < 32 for char in url) or parsed.query or parsed.fragment
+                or not unquote(parsed.path).endswith('/' + readme_path)
+                or any(part in ('.', '..') for part in unquote(parsed.path).split('/'))):
+            raise ScanError('invalid-readme-url')
+        content = None
         if metadata.get('encoding') == 'base64' and isinstance(metadata.get('content'), str):
             try:
                 content = base64.b64decode(re.sub(r'\s', '', metadata['content']), validate=True)
             except ValueError:
                 raise ScanError('invalid-readme-encoding') from None
-        else:
-            content = api.get(path, accept='application/vnd.github.raw+json')
-        return readme_record(repo, metadata, content, api_url='https://api.github.com' + path), None
+        elif metadata.get('encoding') != 'none':
+            raise ScanError('invalid-readme-encoding')
+        blob_path = None
+        if (content is None or len(content) != size
+                or hashlib.sha1(b'blob ' + str(len(content)).encode('ascii') + b'\0' + content).hexdigest() != oid):
+            # The README endpoint can truncate or transcode its inline body.
+            # Read the immutable advertised blob once. API failures propagate;
+            # never escape backpressure by
+            # requesting another representation or a third-party download URL.
+            blob_path = '/repos/' + repo['full_name'] + '/git/blobs/' + oid
+            blob = api.json(blob_path)
+            if (not isinstance(blob, dict) or blob.get('sha') != oid or type(blob.get('size')) is not int
+                    or not 0 <= blob['size'] <= MAX_README_BYTES or blob.get('encoding') != 'base64'
+                    or not isinstance(blob.get('content'), str)):
+                raise ScanError('invalid-readme-blob')
+            try:
+                content = base64.b64decode(re.sub(r'\s', '', blob['content']), validate=True)
+            except ValueError:
+                raise ScanError('invalid-readme-encoding') from None
+            metadata = {**metadata, 'size': blob['size']}
+        record = readme_record(repo, metadata, content, api_url='https://api.github.com' + path)
+        if blob_path is not None:
+            record['readme_blob_api_url'] = 'https://api.github.com' + blob_path
+        return record, None
     except ScanError as error:
         return None, {
             'id': 'scan-' + str(repo['id']), 'full_name': repo['full_name'],
@@ -1041,6 +1093,16 @@ def run_scan(api, args, resumed=None, resume_sha256=None, *, readme_transport=No
                     raise ValueError('README transport returned inconsistent repository identity')
                 if status == 'fallback':
                     record, failure = scan_readme(api, repo)
+                    if failure and (failure.get('http_status') in (401, 403, 408, 429)
+                                    or (failure.get('http_status') or 0) >= 500
+                                    or failure['reason'] in ('network-failure', 'retry-limit', 'rate-limited', 'invalid-api-json')):
+                        # An exhausted REST retry must not become a permanent
+                        # source failure or trigger another sibling fallback.
+                        deferred = batch_paused = True
+                        if frontier_api is not None and str(candidate['id']) in frontier_state['candidates']:
+                            frontier_api.defer_candidates(frontier_state, [candidate['id']], reason='deferred',
+                                retry_after_seconds=max(60, min(604800, batch_retry_after)))
+                        continue
                 else:
                     try:
                         record = readme_record(repo, result['metadata'], result['content'])
