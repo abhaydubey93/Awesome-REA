@@ -11,7 +11,7 @@ An independent collection of tools, case studies and research for websites, game
 <a href="https://awesomerea.org/"><img src="assets/readme-banner.svg" alt="Awesome Reverse Engineering Anything — tools, cases and papers across six reverse-engineering domains" width="960"></a>
 
 <!-- BEGIN GENERATED BADGES -->
-[![resources: 337](https://img.shields.io/badge/resources-337-53309C?style=flat-square&labelColor=303447)](https://awesomerea.org/resources/) [![cases: 175](https://img.shields.io/badge/cases-175-53309C?style=flat-square&labelColor=303447)](https://awesomerea.org/cases/) [![papers: 77](https://img.shields.io/badge/papers-77-53309C?style=flat-square&labelColor=303447)](https://awesomerea.org/papers/) [![Catalog checks](https://github.com/reacher-z/Awesome-REA/actions/workflows/validate.yml/badge.svg?branch=main)](https://github.com/reacher-z/Awesome-REA/actions/workflows/validate.yml) [![license: MIT](https://img.shields.io/badge/license-MIT-606779?style=flat-square&labelColor=303447)](LICENSE) [![website: awesomerea.org](https://img.shields.io/badge/website-awesomerea.org-6235B5?style=flat-square&labelColor=303447)](https://awesomerea.org/)
+[![resources: 338](https://img.shields.io/badge/resources-338-53309C?style=flat-square&labelColor=303447)](https://awesomerea.org/resources/) [![cases: 176](https://img.shields.io/badge/cases-176-53309C?style=flat-square&labelColor=303447)](https://awesomerea.org/cases/) [![papers: 77](https://img.shields.io/badge/papers-77-53309C?style=flat-square&labelColor=303447)](https://awesomerea.org/papers/) [![Catalog checks](https://github.com/reacher-z/Awesome-REA/actions/workflows/validate.yml/badge.svg?branch=main)](https://github.com/reacher-z/Awesome-REA/actions/workflows/validate.yml) [![license: MIT](https://img.shields.io/badge/license-MIT-606779?style=flat-square&labelColor=303447)](LICENSE) [![website: awesomerea.org](https://img.shields.io/badge/website-awesomerea.org-6235B5?style=flat-square&labelColor=303447)](https://awesomerea.org/)
 <!-- END GENERATED BADGES -->
 
 **[Search & filter](https://awesomerea.org/)** · **[Browse cases](https://awesomerea.org/cases/)** · **[Research papers](https://awesomerea.org/papers/)** · **[HTML survey](https://awesomerea.org/survey/)**
@@ -23,7 +23,7 @@ An independent collection of tools, case studies and research for websites, game
 <!-- BEGIN GENERATED CONTENTS -->
 **Tools and cases by target**
 
-- [Website](#website) (19) · [Game](#game) (158) · [App](#app) (48)
+- [Website](#website) (19) · [Game](#game) (159) · [App](#app) (48)
 - [Native Binary](#native-binary) (24) · [Firmware and Hardware](#firmware) (14) · [Protocol](#protocol) (12)
 
 **Research and workflows**
@@ -32,7 +32,7 @@ An independent collection of tools, case studies and research for websites, game
 
 **More ways to browse**
 
-- [All cases](https://awesomerea.org/cases/) (175) · [Related Collections](#related-collections) (5) · [Full Repository Index](#full-repository-index) (2,836)
+- [All cases](https://awesomerea.org/cases/) (176) · [Related Collections](#related-collections) (5) · [Full Repository Index](#full-repository-index) (2,836)
 <!-- END GENERATED CONTENTS -->
 
 ## Find by task
@@ -982,6 +982,12 @@ REA labels refer to the separate [upstream CLI and MCP project](https://github.c
   Reimplements the Rise of Nations: Extended Edition engine as a native macOS app with a Metal renderer, a deterministic simulation, a computer opponent and a compatible BigHugeScript compiler and virtual machine, loading art, maps, rules and scripts from the user’s own Windows installation. Subsystem specifications written from Ghidra study of the symbol-bearing executable, together with JavaScript reference tools, guided a C++17 implementation built with heavy Claude Code assistance. The alpha plays tutorials and scenarios, and its bit-exactness checks remain project-reported.
 
   Case study · Independent reconstruction · [Requirements & evidence](https://awesomerea.org/resources/openriseofnations-engine-case/)
+
+- [**Crimsonland, rebuilt: a matching decompilation and a tick-accurate Python port**](https://github.com/banteg/crimson)
+
+  Rebuilds Crimsonland (2003), as its 1.9.93 GOG Crimsonland Classic release, twice: as a matching decompilation whose C/C++ source Visual C++ 6 compiles back into the original crimsonland.exe and grim.dll, also built to WebAssembly so the original game runs in a browser, and as a Python and raylib reimplementation that matches the original’s timings, random rolls and float32 rounding tick by tick. CI requires the recovered source to replay every recorded run exactly as the Python port does. Game files come from the project’s own host, which states that it distributes them with permission from the developer, 10tons.
+
+  Case study · Independent reconstruction · [Requirements & evidence](https://awesomerea.org/resources/crimsonland-rebuilt-case/)
 
 #### Tools, projects and integrations
 
