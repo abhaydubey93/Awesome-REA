@@ -1004,9 +1004,9 @@ REA 标签指向单独维护的[上游 CLI 与 MCP 项目](https://github.com/mo
 
   案例 · 独立重建 · [使用条件与证据](https://awesomerea.org/zh/resources/th04-reconstruction-case/)
 
-- [**《马力欧赛车：双重冲刺!!》：调试版 GameCube 一致性反编译**](https://github.com/doldecomp/mkdd)
+- [**《马力欧卡丁车：双重冲刺!!》：调试版 GameCube 一致性反编译**](https://github.com/doldecomp/mkdd)
 
-  《马力欧赛车：双重冲刺!!》的进行中 1:1 反编译：用原版 Metrowerks 编译器从 C 与 C++ 源码重建美版调试构建（MarioClub\_us）的 GameCube main.dol，并与仓库保存的 SHA-1 比对。构建从使用者自备的光盘镜像中拆分二进制，开发时用 objdiff 比对目标文件。decomp.dev 报告所审提交有 47.09% 的代码已匹配；欧版零售目标虽已配置，但标注为尚不可用。
+  《马力欧卡丁车：双重冲刺!!》的进行中 1:1 反编译：用原版 Metrowerks 编译器从 C 与 C++ 源码重建美版调试构建（MarioClub\_us）的 GameCube main.dol，并与仓库保存的 SHA-1 比对。构建从使用者自备的光盘镜像中拆分二进制，开发时用 objdiff 比对目标文件。decomp.dev 报告所审提交有 47.09% 的代码已匹配；欧版零售目标虽已配置，但标注为尚不可用。
 
   案例 · 独立重建 · [使用条件与证据](https://awesomerea.org/zh/resources/mario-kart-double-dash-decomp-case/)
 
