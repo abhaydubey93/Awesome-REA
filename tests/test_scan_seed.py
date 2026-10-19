@@ -126,8 +126,10 @@ class PackagingTests(SeedFixture):
                 self.assertFalse(destination.exists())
 
     def test_raw_private_fields_and_frontier_ahead_of_evidence_never_package(self):
+        original = copy.deepcopy(self.doc)
         for change in (lambda: self.doc['resources'][0].update(readme_body='not serialized'),
-                       lambda: self.doc['meta'].update(raw_log='/Users/private-person/path')):
+                       lambda: self.doc['resources'][0].update(description_en='/'.join(('', 'Users', 'fixture', 'private')))):
+            self.doc = copy.deepcopy(original)
             change(); scheduled.write_json(self.checkpoint, self.doc)
             with self.assertRaises(ValueError):
                 self.package_seed()
