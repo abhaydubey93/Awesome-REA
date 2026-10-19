@@ -11,7 +11,7 @@
 <a href="https://awesomerea.org/zh/"><img src="assets/readme-banner.svg" alt="Awesome Reverse Engineering Anything — 覆盖六类逆向目标的工具、案例与论文" width="960"></a>
 
 <!-- BEGIN GENERATED BADGES -->
-[![精选资源: 432](https://img.shields.io/badge/%E7%B2%BE%E9%80%89%E8%B5%84%E6%BA%90-432-53309C?style=flat-square&labelColor=303447)](https://awesomerea.org/zh/resources/) [![案例: 185](https://img.shields.io/badge/%E6%A1%88%E4%BE%8B-185-53309C?style=flat-square&labelColor=303447)](https://awesomerea.org/zh/cases/) [![论文: 83](https://img.shields.io/badge/%E8%AE%BA%E6%96%87-83-53309C?style=flat-square&labelColor=303447)](https://awesomerea.org/zh/papers/) [![目录检查](https://github.com/reacher-z/Awesome-REA/actions/workflows/validate.yml/badge.svg?branch=main)](https://github.com/reacher-z/Awesome-REA/actions/workflows/validate.yml) [![许可: MIT](https://img.shields.io/badge/%E8%AE%B8%E5%8F%AF-MIT-606779?style=flat-square&labelColor=303447)](LICENSE) [![网站: awesomerea.org](https://img.shields.io/badge/%E7%BD%91%E7%AB%99-awesomerea.org-6235B5?style=flat-square&labelColor=303447)](https://awesomerea.org/zh/)
+[![精选资源: 434](https://img.shields.io/badge/%E7%B2%BE%E9%80%89%E8%B5%84%E6%BA%90-434-53309C?style=flat-square&labelColor=303447)](https://awesomerea.org/zh/resources/) [![案例: 185](https://img.shields.io/badge/%E6%A1%88%E4%BE%8B-185-53309C?style=flat-square&labelColor=303447)](https://awesomerea.org/zh/cases/) [![论文: 83](https://img.shields.io/badge/%E8%AE%BA%E6%96%87-83-53309C?style=flat-square&labelColor=303447)](https://awesomerea.org/zh/papers/) [![目录检查](https://github.com/reacher-z/Awesome-REA/actions/workflows/validate.yml/badge.svg?branch=main)](https://github.com/reacher-z/Awesome-REA/actions/workflows/validate.yml) [![许可: MIT](https://img.shields.io/badge/%E8%AE%B8%E5%8F%AF-MIT-606779?style=flat-square&labelColor=303447)](LICENSE) [![网站: awesomerea.org](https://img.shields.io/badge/%E7%BD%91%E7%AB%99-awesomerea.org-6235B5?style=flat-square&labelColor=303447)](https://awesomerea.org/zh/)
 <!-- END GENERATED BADGES -->
 
 **[搜索与筛选](https://awesomerea.org/zh/)** · **[浏览案例](https://awesomerea.org/zh/cases/)** · **[研究论文](https://awesomerea.org/zh/papers/)** · **[HTML 综述](https://awesomerea.org/zh/survey/)**
@@ -23,8 +23,8 @@
 <!-- BEGIN GENERATED CONTENTS -->
 **按目标找工具与案例**
 
-- [网站](#website) (25) · [游戏](#game) (177) · [应用](#app) (62)
-- [原生二进制](#native-binary) (55) · [固件与硬件](#firmware) (20) · [协议](#protocol) (17)
+- [网站](#website) (25) · [游戏](#game) (177) · [应用](#app) (63)
+- [原生二进制](#native-binary) (55) · [固件与硬件](#firmware) (20) · [协议](#protocol) (18)
 
 **论文与工作流**
 
@@ -1669,6 +1669,12 @@ REA 标签指向单独维护的[上游 CLI 与 MCP 项目](https://github.com/mo
 
   工具 · Android · 也适用：协议 · [使用条件与证据](https://awesomerea.org/zh/resources/frida-interception-and-unpinning/)
 
+- [**reFlutter**](https://github.com/Impact-I/reFlutter)
+
+  面向分析者有权检查的应用的 Flutter 逆向框架。它通过替换为预编译的已打补丁 Dart 引擎（repack 模式）或在运行时插桩应用自带引擎（attach 模式），导出包含每个函数名称、类、库以及其在 Dart 指令镜像中代码偏移的 JSONL 清单，供 Frida 或 IDA/Ghidra 使用。它还能在关闭 Flutter 证书固定的情况下，将应用的 HTTPS 流量路由到检查代理。
+
+  工具 · Android · 也适用：协议 · [使用条件与证据](https://awesomerea.org/zh/resources/reflutter/)
+
 <a id="native-binary"></a>
 ### Native Binary · 原生二进制
 
@@ -2247,6 +2253,12 @@ REA 标签指向单独维护的[上游 CLI 与 MCP 项目](https://github.com/mo
   基于 Frida 的工具，在运行中的进程内挂钩 OpenSSL、BoringSSL、NSS、GnuTLS 等 TLS 库，输出 NSS 格式的密钥日志和解密后的 PCAP 明文，便于分析者在 Wireshark 中检查应用的加密流量。对于去除符号或静态链接的库，可通过字节模式或偏移量定位函数、扫描被重命名的库，也可不挂钩而改为扫描堆内存来恢复 TLS 密钥。终端界面、Python API 和 Wireshark extcap 集成都基于同一套捕获功能。
 
   工具 · 也适用：应用 · [使用条件与证据](https://awesomerea.org/zh/resources/fritap/)
+
+- [**pbtk Protobuf 逆向工具集**](https://github.com/marin-m/pbtk)
+
+  从已编译程序中恢复 Protobuf 消息定义，并还原为可读的 .proto 文件。提取器覆盖 JAR、DEX 和 APK 中的各类 Java 运行时（包括经 ProGuard 混淆的代码）、内嵌 Protobuf 反射元数据的二进制文件，以及使用 Protobuf-URL 格式的 Web 应用。随后可在图形界面中把恢复出的消息类型绑定到 HTTP 端点，将十六进制形式的抓包样本解码为可编辑的字段树，并重新发送修改后的消息，帮助分析者把每个字段与响应对应起来。
+
+  工具 · 也适用：应用 · [使用条件与证据](https://awesomerea.org/zh/resources/pbtk/)
 
 <a id="agents-and-mcp"></a>
 ### Agents and MCP · 智能体与 MCP
