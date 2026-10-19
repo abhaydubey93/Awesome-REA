@@ -11,7 +11,7 @@
 <a href="https://awesomerea.org/zh/"><img src="assets/readme-banner.svg" alt="Awesome Reverse Engineering Anything — 覆盖六类逆向目标的工具、案例与论文" width="960"></a>
 
 <!-- BEGIN GENERATED BADGES -->
-[![精选资源: 345](https://img.shields.io/badge/%E7%B2%BE%E9%80%89%E8%B5%84%E6%BA%90-345-53309C?style=flat-square&labelColor=303447)](https://awesomerea.org/zh/resources/) [![案例: 180](https://img.shields.io/badge/%E6%A1%88%E4%BE%8B-180-53309C?style=flat-square&labelColor=303447)](https://awesomerea.org/zh/cases/) [![论文: 82](https://img.shields.io/badge/%E8%AE%BA%E6%96%87-82-53309C?style=flat-square&labelColor=303447)](https://awesomerea.org/zh/papers/) [![目录检查](https://github.com/reacher-z/Awesome-REA/actions/workflows/validate.yml/badge.svg?branch=main)](https://github.com/reacher-z/Awesome-REA/actions/workflows/validate.yml) [![许可: MIT](https://img.shields.io/badge/%E8%AE%B8%E5%8F%AF-MIT-606779?style=flat-square&labelColor=303447)](LICENSE) [![网站: awesomerea.org](https://img.shields.io/badge/%E7%BD%91%E7%AB%99-awesomerea.org-6235B5?style=flat-square&labelColor=303447)](https://awesomerea.org/zh/)
+[![精选资源: 345](https://img.shields.io/badge/%E7%B2%BE%E9%80%89%E8%B5%84%E6%BA%90-345-53309C?style=flat-square&labelColor=303447)](https://awesomerea.org/zh/resources/) [![案例: 180](https://img.shields.io/badge/%E6%A1%88%E4%BE%8B-180-53309C?style=flat-square&labelColor=303447)](https://awesomerea.org/zh/cases/) [![论文: 83](https://img.shields.io/badge/%E8%AE%BA%E6%96%87-83-53309C?style=flat-square&labelColor=303447)](https://awesomerea.org/zh/papers/) [![目录检查](https://github.com/reacher-z/Awesome-REA/actions/workflows/validate.yml/badge.svg?branch=main)](https://github.com/reacher-z/Awesome-REA/actions/workflows/validate.yml) [![许可: MIT](https://img.shields.io/badge/%E8%AE%B8%E5%8F%AF-MIT-606779?style=flat-square&labelColor=303447)](LICENSE) [![网站: awesomerea.org](https://img.shields.io/badge/%E7%BD%91%E7%AB%99-awesomerea.org-6235B5?style=flat-square&labelColor=303447)](https://awesomerea.org/zh/)
 <!-- END GENERATED BADGES -->
 
 **[搜索与筛选](https://awesomerea.org/zh/)** · **[浏览案例](https://awesomerea.org/zh/cases/)** · **[研究论文](https://awesomerea.org/zh/papers/)** · **[HTML 综述](https://awesomerea.org/zh/survey/)**
@@ -28,7 +28,7 @@
 
 **论文与工作流**
 
-- [论文](#papers) (82) · [智能体与 MCP](#agents-and-mcp) (30) · [文档与学习资源](#references-and-learning) (26)
+- [论文](#papers) (83) · [智能体与 MCP](#agents-and-mcp) (30) · [文档与学习资源](#references-and-learning) (26)
 
 **更多浏览方式**
 
@@ -2182,13 +2182,13 @@ REA 标签指向单独维护的[上游 CLI 与 MCP 项目](https://github.com/mo
 <a id="papers"></a>
 ## 论文
 
-**82 篇论文**，按主题分组，组内按年份从新到旧排列。每项均标明发表场所与状态，中文标题为译名。
+**83 篇论文**，按主题分组，组内按年份从新到旧排列。每项均标明发表场所与状态，中文标题为译名。
 
 [浏览论文目录](https://awesomerea.org/zh/papers/) · [完整书目 JSON](data/papers.json) · [推荐论文](https://github.com/reacher-z/Awesome-REA/issues/new?template=paper.yml)
 
 **按主题**
 
-- [智能体评测](#papers-agent-evaluation) (8) · [反编译](#papers-decompilation) (30) · [网站](#papers-website-reconstruction) (15)
+- [智能体评测](#papers-agent-evaluation) (8) · [反编译](#papers-decompilation) (31) · [网站](#papers-website-reconstruction) (15)
 - [游戏](#papers-game-reconstruction) (6) · [应用](#papers-app-reconstruction) (7) · [固件](#papers-firmware-analysis) (6)
 - [协议](#papers-protocol-analysis) (10)
 
@@ -2561,6 +2561,21 @@ REA 标签指向单独维护的[上游 CLI 与 MCP 项目](https://github.com/mo
   **范围与限制:** 所报告的比率是作者在经 Emscripten 编译为 Wasm 的 C 程序上取得的结果。约一半输出可重新编译，不到一半可重新执行，约四分之一能复现原始输出，因此反编译代码总体上并不语义等价。含 3,977 个文件的基准与训练程序来自相同的两个来源。未评估优化构建：作者既未针对 O1/O2 代码调整方法，也未用其训练模型。模型处理数据结构的能力也较弱，常将其拆成独立变量或数组。研究仅涉及 C 源码，未评估由其他语言或工具链生成的 Wasm。基线为 Wasm2c 与 Ghidra 的 Wasm 插件；由于没有大语言模型能在未经微调时反编译 Wasm 函数，此类基线被排除。切片意味着一个函数可能需多次反编译，每个提示约需 0.1 至 2 秒。
 
   **作者:** Xinyu She 等
+
+  </details>
+
+- [**代码并非自然语言：释放面向语义的图表示在二进制代码相似性检测中的潜力**](https://www.usenix.org/conference/usenixsecurity24/presentation/he-haojie)
+
+  HermesSim 将每个函数提升为 Ghidra P-code，并构建面向语义的图，以显式表示指令内部的操作数结构、定义—使用关系、控制流及副作用顺序，同时舍弃与语义无关的细节，例如由哪个寄存器临时保存某个值。它使用带多头 softmax 聚合器的门控图神经网络对图进行嵌入，再按嵌入相似度比较函数。作者在 Marcelli 等人发布的 Dataset-1 基准上报告：在 10,000 个函数的候选池中进行 x64 跨编译器检索时，RECALL<span>@</span>1 为 48.1%，经微调的 jTrans 为 31.4%；HermesSim 模型参数量为 388K。
+
+  USENIX Security 2024 · 会议论文 · [PDF](https://www.usenix.org/system/files/usenixsecurity24-he-haojie.pdf) · [代码](https://github.com/NSSL-SJTU/HermesSim) · [完整条目与引用](https://awesomerea.org/zh/papers/paper-hermessim/)
+
+  <details>
+  <summary>范围与发表信息</summary>
+
+  **范围与限制:** 实验室结果沿用 Marcelli 等人的 Dataset-1：训练、验证与测试集分别含 257K、13K 与 522K 个函数，覆盖 x86、ARM 和 MIPS 的 32 位与 64 位代码，由 GCC 和 Clang 以 O0–O3 及 Os 编译。HermesSim 保留该数据集由 IDA Pro 7.3 恢复的控制流和基本块边界，仅用 Ghidra 反汇编并提升各基本块，因此结果并不衡量函数或控制流图的恢复能力。每项设置抽取 1,000 个查询函数，候选池最多为 10,000 个函数；性能提升是相对于论文自行运行的 SAFE、Asm2Vec、GMN、Trex 和 jTrans 而言，其中 jTrans 仅支持 x86，只在 x64 子集上比较。真实场景实验在来自三家厂商 12 个 RTOS 固件映像的 62,605 个 ARM32 与 MIPS32 函数中，检索与 5 个 CVE 相关的 10 个函数；其真实标签来自对各比较方法前 20 个结果的人工检查。方法不编码字符串、整数及外部符号引用，只建模内存副作用，未解析的间接跳转也会使图不完整。相似度用于为人工审查排列候选，并不能证明等价性或存在漏洞。
+
+  **作者:** Haojie He 等
 
   </details>
 

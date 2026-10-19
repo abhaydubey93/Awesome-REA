@@ -11,7 +11,7 @@ An independent collection of tools, case studies and research for websites, game
 <a href="https://awesomerea.org/"><img src="assets/readme-banner.svg" alt="Awesome Reverse Engineering Anything — tools, cases and papers across six reverse-engineering domains" width="960"></a>
 
 <!-- BEGIN GENERATED BADGES -->
-[![resources: 345](https://img.shields.io/badge/resources-345-53309C?style=flat-square&labelColor=303447)](https://awesomerea.org/resources/) [![cases: 180](https://img.shields.io/badge/cases-180-53309C?style=flat-square&labelColor=303447)](https://awesomerea.org/cases/) [![papers: 82](https://img.shields.io/badge/papers-82-53309C?style=flat-square&labelColor=303447)](https://awesomerea.org/papers/) [![Catalog checks](https://github.com/reacher-z/Awesome-REA/actions/workflows/validate.yml/badge.svg?branch=main)](https://github.com/reacher-z/Awesome-REA/actions/workflows/validate.yml) [![license: MIT](https://img.shields.io/badge/license-MIT-606779?style=flat-square&labelColor=303447)](LICENSE) [![website: awesomerea.org](https://img.shields.io/badge/website-awesomerea.org-6235B5?style=flat-square&labelColor=303447)](https://awesomerea.org/)
+[![resources: 345](https://img.shields.io/badge/resources-345-53309C?style=flat-square&labelColor=303447)](https://awesomerea.org/resources/) [![cases: 180](https://img.shields.io/badge/cases-180-53309C?style=flat-square&labelColor=303447)](https://awesomerea.org/cases/) [![papers: 83](https://img.shields.io/badge/papers-83-53309C?style=flat-square&labelColor=303447)](https://awesomerea.org/papers/) [![Catalog checks](https://github.com/reacher-z/Awesome-REA/actions/workflows/validate.yml/badge.svg?branch=main)](https://github.com/reacher-z/Awesome-REA/actions/workflows/validate.yml) [![license: MIT](https://img.shields.io/badge/license-MIT-606779?style=flat-square&labelColor=303447)](LICENSE) [![website: awesomerea.org](https://img.shields.io/badge/website-awesomerea.org-6235B5?style=flat-square&labelColor=303447)](https://awesomerea.org/)
 <!-- END GENERATED BADGES -->
 
 **[Search & filter](https://awesomerea.org/)** · **[Browse cases](https://awesomerea.org/cases/)** · **[Research papers](https://awesomerea.org/papers/)** · **[HTML survey](https://awesomerea.org/survey/)**
@@ -28,7 +28,7 @@ An independent collection of tools, case studies and research for websites, game
 
 **Research and workflows**
 
-- [Papers](#papers) (82) · [Agents and MCP](#agents-and-mcp) (30) · [References and Learning](#references-and-learning) (26)
+- [Papers](#papers) (83) · [Agents and MCP](#agents-and-mcp) (30) · [References and Learning](#references-and-learning) (26)
 
 **More ways to browse**
 
@@ -2181,13 +2181,13 @@ REA labels refer to the separate [upstream CLI and MCP project](https://github.c
 <a id="papers"></a>
 ## Papers
 
-**82 papers**, grouped by topic and ordered newest first. Each entry shows its venue and publication status.
+**83 papers**, grouped by topic and ordered newest first. Each entry shows its venue and publication status.
 
 [Browse the paper directory](https://awesomerea.org/papers/) · [Complete bibliography JSON](data/papers.json) · [Suggest a paper](https://github.com/reacher-z/Awesome-REA/issues/new?template=paper.yml)
 
 **By topic**
 
-- [Agent evaluation](#papers-agent-evaluation) (8) · [Decompilation](#papers-decompilation) (30) · [Websites](#papers-website-reconstruction) (15)
+- [Agent evaluation](#papers-agent-evaluation) (8) · [Decompilation](#papers-decompilation) (31) · [Websites](#papers-website-reconstruction) (15)
 - [Games](#papers-game-reconstruction) (6) · [Apps](#papers-app-reconstruction) (7) · [Firmware](#papers-firmware-analysis) (6)
 - [Protocols](#papers-protocol-analysis) (10)
 
@@ -2560,6 +2560,21 @@ Open “Scope and publication details” for each study’s full limitations. So
   **Scope and limits:** The reported rates are author results on C programs compiled to Wasm with Emscripten. About half of the outputs recompile, fewer than half re-execute and roughly a quarter reproduce the original output, so decompiled code is generally not semantically equivalent. The 3,977-file benchmark comes from the same two sources as the training programs. Optimized builds are not evaluated: the authors neither adapted the method to nor trained it on O1/O2 code. The model also handles data structures poorly, often flattening them into separate variables or arrays. Only C sources are studied; Wasm produced from other languages or toolchains is not evaluated. Baselines are Wasm2c and Ghidra's Wasm plugin, and LLM baselines were excluded because none could decompile Wasm functions without fine-tuning. Slicing means one function may be decompiled several times, at about 0.1 to 2 seconds per prompt.
 
   **Authors:** Xinyu She et al.
+
+  </details>
+
+- [**Code is not Natural Language: Unlock the Power of Semantics-Oriented Graph Representation for Binary Code Similarity Detection**](https://www.usenix.org/conference/usenixsecurity24/presentation/he-haojie)
+
+  HermesSim detects binary code similarity by lifting each function to Ghidra P-code and building a semantics-oriented graph that exposes operand structure inside instructions, def-use, control-flow and effect-order relations, while dropping semantics-independent details such as which register temporarily holds a value. A gated graph neural network with a multi-head softmax aggregator embeds the graph, and functions are compared by embedding similarity. On the Dataset-1 benchmark of Marcelli et al., the authors report 48.1% RECALL<span>@</span>1 for x64 cross-compiler retrieval in pools of 10,000 functions, against 31.4% for a fine-tuned jTrans, with a 388K-parameter model.
+
+  USENIX Security 2024 · Conference paper · [PDF](https://www.usenix.org/system/files/usenixsecurity24-he-haojie.pdf) · [Code](https://github.com/NSSL-SJTU/HermesSim) · [Full entry & citation](https://awesomerea.org/papers/paper-hermessim/)
+
+  <details>
+  <summary>Scope and publication details</summary>
+
+  **Scope and limits:** Laboratory results reuse Dataset-1 from Marcelli et al.: 257K, 13K and 522K training, validation and test functions for x86, ARM and MIPS in 32 and 64 bits, built at O0–O3 and Os by GCC and Clang. HermesSim keeps that dataset's IDA Pro 7.3 control flow and basic-block boundaries and uses Ghidra only to disassemble and lift each block, so the results do not measure function or CFG recovery. Each setting samples 1,000 queries against pools of up to 10,000 functions, and the gains are relative to the paper's own runs of SAFE, Asm2Vec, GMN, Trex and jTrans, which supports x86 only and was compared on the x64 subset. The real-world study searches 62,605 ARM32 and MIPS32 functions from 12 RTOS firmware images of three vendors for 10 functions linked to 5 CVEs; its ground truth comes from manually examining the top 20 results of the compared methods. String, integer and external-symbol references are not encoded, only memory effects are modeled, and unresolved indirect branches leave graphs incomplete. Similarity ranks candidates for review; it does not establish equivalence or vulnerability.
+
+  **Authors:** Haojie He et al.
 
   </details>
 
