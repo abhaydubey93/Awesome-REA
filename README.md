@@ -11,7 +11,7 @@ An independent collection of tools, case studies and research for websites, game
 <a href="https://awesomerea.org/"><img src="assets/readme-banner.svg" alt="Awesome Reverse Engineering Anything — tools, cases and papers across six reverse-engineering domains" width="960"></a>
 
 <!-- BEGIN GENERATED BADGES -->
-[![resources: 363](https://img.shields.io/badge/resources-363-53309C?style=flat-square&labelColor=303447)](https://awesomerea.org/resources/) [![cases: 184](https://img.shields.io/badge/cases-184-53309C?style=flat-square&labelColor=303447)](https://awesomerea.org/cases/) [![papers: 83](https://img.shields.io/badge/papers-83-53309C?style=flat-square&labelColor=303447)](https://awesomerea.org/papers/) [![Catalog checks](https://github.com/reacher-z/Awesome-REA/actions/workflows/validate.yml/badge.svg?branch=main)](https://github.com/reacher-z/Awesome-REA/actions/workflows/validate.yml) [![license: MIT](https://img.shields.io/badge/license-MIT-606779?style=flat-square&labelColor=303447)](LICENSE) [![website: awesomerea.org](https://img.shields.io/badge/website-awesomerea.org-6235B5?style=flat-square&labelColor=303447)](https://awesomerea.org/)
+[![resources: 364](https://img.shields.io/badge/resources-364-53309C?style=flat-square&labelColor=303447)](https://awesomerea.org/resources/) [![cases: 185](https://img.shields.io/badge/cases-185-53309C?style=flat-square&labelColor=303447)](https://awesomerea.org/cases/) [![papers: 83](https://img.shields.io/badge/papers-83-53309C?style=flat-square&labelColor=303447)](https://awesomerea.org/papers/) [![Catalog checks](https://github.com/reacher-z/Awesome-REA/actions/workflows/validate.yml/badge.svg?branch=main)](https://github.com/reacher-z/Awesome-REA/actions/workflows/validate.yml) [![license: MIT](https://img.shields.io/badge/license-MIT-606779?style=flat-square&labelColor=303447)](LICENSE) [![website: awesomerea.org](https://img.shields.io/badge/website-awesomerea.org-6235B5?style=flat-square&labelColor=303447)](https://awesomerea.org/)
 <!-- END GENERATED BADGES -->
 
 **[Search & filter](https://awesomerea.org/)** · **[Browse cases](https://awesomerea.org/cases/)** · **[Research papers](https://awesomerea.org/papers/)** · **[HTML survey](https://awesomerea.org/survey/)**
@@ -23,7 +23,7 @@ An independent collection of tools, case studies and research for websites, game
 <!-- BEGIN GENERATED CONTENTS -->
 **Tools and cases by target**
 
-- [Website](#website) (19) · [Game](#game) (166) · [App](#app) (53)
+- [Website](#website) (19) · [Game](#game) (166) · [App](#app) (54)
 - [Native Binary](#native-binary) (29) · [Firmware and Hardware](#firmware) (16) · [Protocol](#protocol) (13)
 
 **Research and workflows**
@@ -32,7 +32,7 @@ An independent collection of tools, case studies and research for websites, game
 
 **More ways to browse**
 
-- [All cases](https://awesomerea.org/cases/) (184) · [Related Collections](#related-collections) (6) · [Full Repository Index](#full-repository-index) (2,836)
+- [All cases](https://awesomerea.org/cases/) (185) · [Related Collections](#related-collections) (6) · [Full Repository Index](#full-repository-index) (2,836)
 <!-- END GENERATED CONTENTS -->
 
 ## Find by task
@@ -1365,6 +1365,12 @@ REA labels refer to the separate [upstream CLI and MCP project](https://github.c
   A native macOS menu-bar app that pairs with an LG webOS TV over its local encrypted WebSocket interface to launch apps, switch inputs, adjust volume and picture settings, send pointer input and cast selected media. The project credits the public Connect SDK for webOS protocol behavior and reuses PyWebOSTV’s registration manifest. Testing covers one TV on webOS 5.0.
 
   Case study · Independent reconstruction · [Requirements & evidence](https://awesomerea.org/resources/lgwebos-menubar-remote-case/)
+
+- [**NOOP: an offline WHOOP strap client built from Bluetooth protocol research**](https://github.com/ryanbr/noop)
+
+  Replaces the WHOOP companion app with offline macOS, Android and iOS clients that pair with WHOOP 4.0 and 5.0/MG straps over Bluetooth, decode their vendor GATT frames, offload the strap’s history into local SQLite and compute recovery, strain, HRV and sleep on the device. A versioned protocol reference documents framing, checksums, commands and sensor records per strap family, building on the community my-whoop and goose projects. WHOOP 4.0 is the supported path; deeper WHOOP 5.0/MG metrics and Oura ring support remain experimental.
+
+  Case study · Independent reconstruction · Also: Protocol · [Requirements & evidence](https://awesomerea.org/resources/noop-whoop-ble-client-case/)
 
 #### Tools, projects and integrations
 
