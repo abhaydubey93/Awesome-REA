@@ -11,7 +11,7 @@
 <a href="https://awesomerea.org/zh/"><img src="assets/readme-banner.svg" alt="Awesome Reverse Engineering Anything — 覆盖六类逆向目标的工具、案例与论文" width="960"></a>
 
 <!-- BEGIN GENERATED BADGES -->
-[![精选资源: 446](https://img.shields.io/badge/%E7%B2%BE%E9%80%89%E8%B5%84%E6%BA%90-446-53309C?style=flat-square&labelColor=303447)](https://awesomerea.org/zh/resources/) [![案例: 187](https://img.shields.io/badge/%E6%A1%88%E4%BE%8B-187-53309C?style=flat-square&labelColor=303447)](https://awesomerea.org/zh/cases/) [![论文: 85](https://img.shields.io/badge/%E8%AE%BA%E6%96%87-85-53309C?style=flat-square&labelColor=303447)](https://awesomerea.org/zh/papers/) [![目录检查](https://github.com/reacher-z/Awesome-REA/actions/workflows/validate.yml/badge.svg?branch=main)](https://github.com/reacher-z/Awesome-REA/actions/workflows/validate.yml) [![许可: MIT](https://img.shields.io/badge/%E8%AE%B8%E5%8F%AF-MIT-606779?style=flat-square&labelColor=303447)](LICENSE) [![网站: awesomerea.org](https://img.shields.io/badge/%E7%BD%91%E7%AB%99-awesomerea.org-6235B5?style=flat-square&labelColor=303447)](https://awesomerea.org/zh/)
+[![精选资源: 448](https://img.shields.io/badge/%E7%B2%BE%E9%80%89%E8%B5%84%E6%BA%90-448-53309C?style=flat-square&labelColor=303447)](https://awesomerea.org/zh/resources/) [![案例: 188](https://img.shields.io/badge/%E6%A1%88%E4%BE%8B-188-53309C?style=flat-square&labelColor=303447)](https://awesomerea.org/zh/cases/) [![论文: 85](https://img.shields.io/badge/%E8%AE%BA%E6%96%87-85-53309C?style=flat-square&labelColor=303447)](https://awesomerea.org/zh/papers/) [![目录检查](https://github.com/reacher-z/Awesome-REA/actions/workflows/validate.yml/badge.svg?branch=main)](https://github.com/reacher-z/Awesome-REA/actions/workflows/validate.yml) [![许可: MIT](https://img.shields.io/badge/%E8%AE%B8%E5%8F%AF-MIT-606779?style=flat-square&labelColor=303447)](LICENSE) [![网站: awesomerea.org](https://img.shields.io/badge/%E7%BD%91%E7%AB%99-awesomerea.org-6235B5?style=flat-square&labelColor=303447)](https://awesomerea.org/zh/)
 <!-- END GENERATED BADGES -->
 
 **[搜索与筛选](https://awesomerea.org/zh/)** · **[浏览案例](https://awesomerea.org/zh/cases/)** · **[研究论文](https://awesomerea.org/zh/papers/)** · **[HTML 综述](https://awesomerea.org/zh/survey/)**
@@ -23,16 +23,16 @@
 <!-- BEGIN GENERATED CONTENTS -->
 **按目标找工具与案例**
 
-- [网站](#website) (25) · [游戏](#game) (178) · [应用](#app) (68)
+- [网站](#website) (25) · [游戏](#game) (178) · [应用](#app) (69)
 - [原生二进制](#native-binary) (58) · [固件与硬件](#firmware) (21) · [协议](#protocol) (18)
 
 **论文与工作流**
 
-- [论文](#papers) (85) · [智能体与 MCP](#agents-and-mcp) (40) · [文档与学习资源](#references-and-learning) (29)
+- [论文](#papers) (85) · [智能体与 MCP](#agents-and-mcp) (40) · [文档与学习资源](#references-and-learning) (30)
 
 **更多浏览方式**
 
-- [全部案例](https://awesomerea.org/zh/cases/) (187) · [相关合集](#related-collections) (6) · [完整仓库索引](#完整仓库索引) (2,836)
+- [全部案例](https://awesomerea.org/zh/cases/) (188) · [相关合集](#related-collections) (6) · [完整仓库索引](#完整仓库索引) (2,836)
 <!-- END GENERATED CONTENTS -->
 
 ## 按任务查找
@@ -1481,6 +1481,12 @@ REA 标签指向单独维护的[上游 CLI 与 MCP 项目](https://github.com/mo
 
   案例 · 独立重建 · 也适用：协议 · [使用条件与证据](https://awesomerea.org/zh/resources/galaxy-buds-client-protocol-case/)
 
+- [**Wino Mail：重建 Windows 邮件与日历体验**](https://github.com/bkaankose/Wino-Mail)
+
+  原生 Windows 客户端，以重建 Windows 邮件与日历的功能、保留熟悉的使用体验为目标。上游 README 说明了 WinUI 3 界面、邮件与日历服务、联系人、待办及离线工作流。
+
+  案例 · 独立重建 · [使用条件与证据](https://awesomerea.org/zh/resources/wino-mail-case/)
+
 #### 工具、项目与集成
 
 - [**JADX-AI-MCP**](https://github.com/zinja-coder/jadx-ai-mcp)
@@ -2786,6 +2792,12 @@ REA 标签指向单独维护的[上游 CLI 与 MCP 项目](https://github.com/mo
   Z0F 编写的免费英文课程，讲解如何逆向 64 位 Windows 程序，README 称目标是帮助学习者从入门进阶到中级。Markdown 课程从数制、x64 寄存器、内存布局和调用约定讲起，过渡到 x64dbg 与 Ghidra，再逆向若干小样本以及作者自己编写的 DLL，还原其中的 Player 类，并在自己编写的程序中调用该 DLL 的导出函数。尚未完成的后续章节介绍 Windows 内部机制，并逆向 ntdll 中的 generic table 系列函数。
 
   学习资源 · 目标：二进制 · [使用条件与证据](https://awesomerea.org/zh/resources/z0f-reverse-engineering-course/)
+
+- [**OWASP 移动应用安全测试指南（MASTG）**](https://mas.owasp.org/MASTG/)
+
+  OWASP 维护的开放手册，讲解 Android 和 iOS 应用的安全测试与逆向工程，发布于 mas.owasp.org。除平台原理、测试环境搭建以及应用篡改与逆向工程等章节外，还收录可单独引用的测试、技术、工具页面、知识条目、最佳实践和可运行的演示，均与 MASVS 控制项和 MASWE 弱点对应。OWASP 自己的 UnCrackable 破解练习应用用作练习目标和示例。
+
+  学习资源 · 目标：应用 · [使用条件与证据](https://awesomerea.org/zh/resources/owasp-mastg/)
 <!-- END GENERATED CATALOG -->
 
 <!-- BEGIN GENERATED PAPERS -->

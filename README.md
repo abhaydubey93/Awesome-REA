@@ -11,7 +11,7 @@ An independent collection of tools, case studies and research for websites, game
 <a href="https://awesomerea.org/"><img src="assets/readme-banner.svg" alt="Awesome Reverse Engineering Anything — tools, cases and papers across six reverse-engineering domains" width="960"></a>
 
 <!-- BEGIN GENERATED BADGES -->
-[![resources: 446](https://img.shields.io/badge/resources-446-53309C?style=flat-square&labelColor=303447)](https://awesomerea.org/resources/) [![cases: 187](https://img.shields.io/badge/cases-187-53309C?style=flat-square&labelColor=303447)](https://awesomerea.org/cases/) [![papers: 85](https://img.shields.io/badge/papers-85-53309C?style=flat-square&labelColor=303447)](https://awesomerea.org/papers/) [![Catalog checks](https://github.com/reacher-z/Awesome-REA/actions/workflows/validate.yml/badge.svg?branch=main)](https://github.com/reacher-z/Awesome-REA/actions/workflows/validate.yml) [![license: MIT](https://img.shields.io/badge/license-MIT-606779?style=flat-square&labelColor=303447)](LICENSE) [![website: awesomerea.org](https://img.shields.io/badge/website-awesomerea.org-6235B5?style=flat-square&labelColor=303447)](https://awesomerea.org/)
+[![resources: 448](https://img.shields.io/badge/resources-448-53309C?style=flat-square&labelColor=303447)](https://awesomerea.org/resources/) [![cases: 188](https://img.shields.io/badge/cases-188-53309C?style=flat-square&labelColor=303447)](https://awesomerea.org/cases/) [![papers: 85](https://img.shields.io/badge/papers-85-53309C?style=flat-square&labelColor=303447)](https://awesomerea.org/papers/) [![Catalog checks](https://github.com/reacher-z/Awesome-REA/actions/workflows/validate.yml/badge.svg?branch=main)](https://github.com/reacher-z/Awesome-REA/actions/workflows/validate.yml) [![license: MIT](https://img.shields.io/badge/license-MIT-606779?style=flat-square&labelColor=303447)](LICENSE) [![website: awesomerea.org](https://img.shields.io/badge/website-awesomerea.org-6235B5?style=flat-square&labelColor=303447)](https://awesomerea.org/)
 <!-- END GENERATED BADGES -->
 
 **[Search & filter](https://awesomerea.org/)** · **[Browse cases](https://awesomerea.org/cases/)** · **[Research papers](https://awesomerea.org/papers/)** · **[HTML survey](https://awesomerea.org/survey/)**
@@ -23,16 +23,16 @@ An independent collection of tools, case studies and research for websites, game
 <!-- BEGIN GENERATED CONTENTS -->
 **Tools and cases by target**
 
-- [Website](#website) (25) · [Game](#game) (178) · [App](#app) (68)
+- [Website](#website) (25) · [Game](#game) (178) · [App](#app) (69)
 - [Native Binary](#native-binary) (58) · [Firmware and Hardware](#firmware) (21) · [Protocol](#protocol) (18)
 
 **Research and workflows**
 
-- [Papers](#papers) (85) · [Agents and MCP](#agents-and-mcp) (40) · [References and Learning](#references-and-learning) (29)
+- [Papers](#papers) (85) · [Agents and MCP](#agents-and-mcp) (40) · [References and Learning](#references-and-learning) (30)
 
 **More ways to browse**
 
-- [All cases](https://awesomerea.org/cases/) (187) · [Related Collections](#related-collections) (6) · [Full Repository Index](#full-repository-index) (2,836)
+- [All cases](https://awesomerea.org/cases/) (188) · [Related Collections](#related-collections) (6) · [Full Repository Index](#full-repository-index) (2,836)
 <!-- END GENERATED CONTENTS -->
 
 ## Find by task
@@ -1480,6 +1480,12 @@ REA labels refer to the separate [upstream CLI and MCP project](https://github.c
 
   Case study · Independent reconstruction · Also: Protocol · [Requirements & evidence](https://awesomerea.org/resources/galaxy-buds-client-protocol-case/)
 
+- [**Wino Mail: recreating Windows Mail and Calendar**](https://github.com/bkaankose/Wino-Mail)
+
+  Native Windows client that aims to preserve the familiar Windows Mail and Calendar experience while rebuilding its functionality. The upstream README documents a WinUI 3 interface, mail and calendar providers, contacts, tasks and offline workflows.
+
+  Case study · Independent reconstruction · [Requirements & evidence](https://awesomerea.org/resources/wino-mail-case/)
+
 #### Tools, projects and integrations
 
 - [**JADX-AI-MCP**](https://github.com/zinja-coder/jadx-ai-mcp)
@@ -2785,6 +2791,12 @@ REA labels refer to the separate [upstream CLI and MCP project](https://github.c
   A free English course by Z0F on reverse engineering 64-bit Windows programs, which its README pitches as taking learners from beginner to intermediate. Markdown lessons move from number systems, x64 registers, memory layout and calling conventions to x64dbg and Ghidra, then reverse small samples and an author-written DLL, recovering a Player class and calling the DLL's exports from a program of one's own. The unfinished later chapters introduce Windows internals and reverse ntdll's generic-table functions.
 
   Learning resource · Targets: Binary · [Requirements & evidence](https://awesomerea.org/resources/z0f-reverse-engineering-course/)
+
+- [**OWASP Mobile Application Security Testing Guide (MASTG)**](https://mas.owasp.org/MASTG/)
+
+  OWASP’s open manual for Android and iOS app security testing and reverse engineering, published at mas.owasp.org. Chapters on platform internals, test setup and app tampering and reverse engineering sit beside modular, individually referenced tests, techniques, tool pages, knowledge articles, best practices and runnable demos, all mapped to MASVS controls and MASWE weaknesses. OWASP’s UnCrackable crackme apps serve as practice targets and examples.
+
+  Learning resource · Targets: App · [Requirements & evidence](https://awesomerea.org/resources/owasp-mastg/)
 <!-- END GENERATED CATALOG -->
 
 <!-- BEGIN GENERATED PAPERS -->
