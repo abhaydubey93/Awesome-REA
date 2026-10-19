@@ -11,7 +11,7 @@ An independent collection of tools, case studies and research for websites, game
 <a href="https://awesomerea.org/"><img src="assets/readme-banner.svg" alt="Awesome Reverse Engineering Anything — tools, cases and papers across six reverse-engineering domains" width="960"></a>
 
 <!-- BEGIN GENERATED BADGES -->
-[![resources: 444](https://img.shields.io/badge/resources-444-53309C?style=flat-square&labelColor=303447)](https://awesomerea.org/resources/) [![cases: 185](https://img.shields.io/badge/cases-185-53309C?style=flat-square&labelColor=303447)](https://awesomerea.org/cases/) [![papers: 85](https://img.shields.io/badge/papers-85-53309C?style=flat-square&labelColor=303447)](https://awesomerea.org/papers/) [![Catalog checks](https://github.com/reacher-z/Awesome-REA/actions/workflows/validate.yml/badge.svg?branch=main)](https://github.com/reacher-z/Awesome-REA/actions/workflows/validate.yml) [![license: MIT](https://img.shields.io/badge/license-MIT-606779?style=flat-square&labelColor=303447)](LICENSE) [![website: awesomerea.org](https://img.shields.io/badge/website-awesomerea.org-6235B5?style=flat-square&labelColor=303447)](https://awesomerea.org/)
+[![resources: 446](https://img.shields.io/badge/resources-446-53309C?style=flat-square&labelColor=303447)](https://awesomerea.org/resources/) [![cases: 187](https://img.shields.io/badge/cases-187-53309C?style=flat-square&labelColor=303447)](https://awesomerea.org/cases/) [![papers: 85](https://img.shields.io/badge/papers-85-53309C?style=flat-square&labelColor=303447)](https://awesomerea.org/papers/) [![Catalog checks](https://github.com/reacher-z/Awesome-REA/actions/workflows/validate.yml/badge.svg?branch=main)](https://github.com/reacher-z/Awesome-REA/actions/workflows/validate.yml) [![license: MIT](https://img.shields.io/badge/license-MIT-606779?style=flat-square&labelColor=303447)](LICENSE) [![website: awesomerea.org](https://img.shields.io/badge/website-awesomerea.org-6235B5?style=flat-square&labelColor=303447)](https://awesomerea.org/)
 <!-- END GENERATED BADGES -->
 
 **[Search & filter](https://awesomerea.org/)** · **[Browse cases](https://awesomerea.org/cases/)** · **[Research papers](https://awesomerea.org/papers/)** · **[HTML survey](https://awesomerea.org/survey/)**
@@ -23,7 +23,7 @@ An independent collection of tools, case studies and research for websites, game
 <!-- BEGIN GENERATED CONTENTS -->
 **Tools and cases by target**
 
-- [Website](#website) (25) · [Game](#game) (177) · [App](#app) (67)
+- [Website](#website) (25) · [Game](#game) (178) · [App](#app) (68)
 - [Native Binary](#native-binary) (58) · [Firmware and Hardware](#firmware) (21) · [Protocol](#protocol) (18)
 
 **Research and workflows**
@@ -32,7 +32,7 @@ An independent collection of tools, case studies and research for websites, game
 
 **More ways to browse**
 
-- [All cases](https://awesomerea.org/cases/) (185) · [Related Collections](#related-collections) (6) · [Full Repository Index](#full-repository-index) (2,836)
+- [All cases](https://awesomerea.org/cases/) (187) · [Related Collections](#related-collections) (6) · [Full Repository Index](#full-repository-index) (2,836)
 <!-- END GENERATED CONTENTS -->
 
 ## Find by task
@@ -1063,6 +1063,12 @@ REA labels refer to the separate [upstream CLI and MCP project](https://github.c
 
   Case study · Independent reconstruction · [Requirements & evidence](https://awesomerea.org/resources/odyssey-decomp-case/)
 
+- [**Star Fox 64: a complete matching Nintendo 64 decompilation**](https://github.com/sonicdcer/sf64)
+
+  Reconstructs C source for the US 1.1 (Rev A) Nintendo 64 release of Star Fox 64 that, compiled with the IDO compiler through a static recompilation, rebuilds a ROM with the published MD5; the README badge counts all 2,951 functions as matching. Code and assets are split from the user’s own ROM at build time, and the repository contains no assets or assembly. The separately curated Starship PC port compiles this C code, while Starfox 64: Recompiled takes headers and some functions from it for its patches.
+
+  Case study · Independent reconstruction · [Requirements & evidence](https://awesomerea.org/resources/sf64-matching-decomp-case/)
+
 #### Tools, projects and integrations
 
 - [**RenderDoc**](https://github.com/baldurk/renderdoc)
@@ -1467,6 +1473,12 @@ REA labels refer to the separate [upstream CLI and MCP project](https://github.c
   A native macOS menu-bar app that pairs with an LG webOS TV over its local encrypted WebSocket interface to launch apps, switch inputs, adjust volume and picture settings, send pointer input and cast selected media. The project credits the public Connect SDK for webOS protocol behavior and reuses PyWebOSTV’s registration manifest. Testing covers one TV on webOS 5.0.
 
   Case study · Independent reconstruction · [Requirements & evidence](https://awesomerea.org/resources/lgwebos-menubar-remote-case/)
+
+- [**Galaxy Buds Client: an unofficial manager built on Samsung’s earbud protocol**](https://github.com/timschneeb/GalaxyBudsClient)
+
+  Reimplements control of Samsung Galaxy Buds over their proprietary RFCOMM serial protocol in a cross-platform desktop and Android manager. The author reports recovering the message format by analyzing the earbuds’ binary stream and disassembling Samsung’s official Android apps, and publishes partial packet notes for the 2019 Buds and the Buds+. Beyond the official app’s settings, it exposes battery statistics, diagnostics, factory self-tests, hidden debug information and firmware flashing for supported models.
+
+  Case study · Independent reconstruction · Also: Protocol · [Requirements & evidence](https://awesomerea.org/resources/galaxy-buds-client-protocol-case/)
 
 #### Tools, projects and integrations
 
