@@ -77,6 +77,10 @@ def nullable(schema):
 
 
 COUNTS_SCHEMA = fields('successful_readme_scans failed attempted_readme_scans unique_repos unattempted_candidates', int)
+INTEGRITY_COUNTS_SCHEMA = fields('qualified legacy_unknown mismatched', int)
+GOAL_BASIS = 'explicit-git-blob-sha-match'
+INTEGRITY_RECEIPT_FIELDS = {'goal_basis', 'retained_integrity_counts', 'integrity_counts',
+                            'new_qualified_successful_scans'}
 SEED_IMPORT_SCHEMA = {
     **fields('kind imported_at manifest_sha256 checkpoint_sha256 selected_frontier_sha256 '
              'frontier_policy worker_commit', str),
@@ -168,6 +172,8 @@ RECEIPT_V2_SCHEMA = {
     'reconciliation': {**RECONCILIATION_SCHEMA, 'superseded_count': int, 'superseded_sha256': str},
     'manual_seed_import': SEED_IMPORT_SCHEMA, 'execution_source': EXECUTION_SOURCE_SCHEMA,
     'bootstrap_origins': [SEED_IMPORT_SCHEMA],
+    'goal_basis': str, 'retained_integrity_counts': INTEGRITY_COUNTS_SCHEMA,
+    'integrity_counts': INTEGRITY_COUNTS_SCHEMA, 'new_qualified_successful_scans': int,
 }
 
 
@@ -418,6 +424,55 @@ def counts(document):
                                                    'unique_repos', 'unattempted_candidates')}
 
 
+def integrity_counts(document):
+    """Partition retained captures without upgrading or removing any evidence."""
+    result = dict.fromkeys(INTEGRITY_COUNTS_SCHEMA, 0)
+    for record in document['resources']:
+        if 'readme_git_sha_matches_content' not in record:
+            result['legacy_unknown'] += 1
+        elif record['readme_git_sha_matches_content'] is True:
+            result['qualified'] += 1
+        elif record['readme_git_sha_matches_content'] is False:
+            result['mismatched'] += 1
+        else:
+            raise ValueError('Capture integrity flag must be an explicit boolean or absent')
+    return result
+
+
+def validate_integrity_receipt(receipt, document=None):
+    """Old receipts remain readable; new qualification fields are inseparable."""
+    present = INTEGRITY_RECEIPT_FIELDS.intersection(receipt)
+    if not present:
+        return  # Historical raw-count receipts never establish the current goal.
+    if present != INTEGRITY_RECEIPT_FIELDS or receipt['goal_basis'] != GOAL_BASIS:
+        raise ValueError('Qualified goal receipt fields are incomplete or unsupported')
+    for name, raw_name in (('retained_integrity_counts', 'retained_counts'), ('integrity_counts', 'counts')):
+        value = receipt[name]
+        if (not isinstance(value, dict) or set(value) != set(INTEGRITY_COUNTS_SCHEMA)
+                or any(type(number) is not int or number < 0 for number in value.values())
+                or sum(value.values()) != receipt.get(raw_name, {}).get('successful_readme_scans')):
+            raise ValueError('Integrity counts must partition the retained raw captures')
+    before, after = receipt['retained_integrity_counts'], receipt['integrity_counts']
+    added, planned = receipt['new_qualified_successful_scans'], receipt.get('planned_new_successes')
+    target, limit = receipt.get('global_target_successes'), receipt.get('new_success_limit')
+    if (type(added) is not int or type(planned) is not int or type(target) is not int or type(limit) is not int
+            or min(added, planned, target, limit) < 0 or target == 0 or limit == 0
+            or added != after['qualified'] - before['qualified']
+            or added != receipt.get('new_successful_scans') or added > planned
+            or receipt['counts']['successful_readme_scans'] - receipt['retained_counts']['successful_readme_scans'] != added
+            or any(after[key] != before[key] for key in ('legacy_unknown', 'mismatched'))):
+        raise ValueError('New successful captures must all have explicit verified integrity')
+    expected_plan = 0 if receipt.get('outcome') == 'bootstrap-imported' else min(limit, max(0, target - before['qualified']))
+    if (planned != expected_plan or type(receipt.get('global_target_reached')) is not bool
+            or receipt['global_target_reached'] != (after['qualified'] >= target)
+            or receipt.get('outcome') == 'global-target-already-reached' and after['qualified'] < target
+            or receipt.get('run_target_reached') is not (added == planned)
+            or receipt.get('target_reached') is not (added == planned)):
+        raise ValueError('Goal flags must follow qualified captures, not raw totals')
+    if document is not None and after != integrity_counts(document):
+        raise ValueError('Receipt integrity counts do not match its checkpoint records')
+
+
 class NoRedirect(HTTPRedirectHandler):
     def redirect_request(self, request, fp, code, message, headers, new_url):
         return None
@@ -618,6 +673,7 @@ def unpack_checkpoint(archive_source, artifact, run, directory, *, receipt_out=N
     document, fingerprint = read_snapshot(directory / 'checkpoint.json')
     if receipt.get('counts') != counts(document):
         raise ValueError('Checkpoint receipt counts do not match the data')
+    validate_integrity_receipt(receipt, document)
     frontier = read_frontier(directory / 'frontier.json') if version == 2 else None
     if frontier is not None:
         paired_ack_guard(document, frontier)
@@ -659,8 +715,9 @@ class ScheduledTransport:
 def scanner_child(seed, output, frontier_path):
     from scan_graphql_transport import GraphQLReadmeTransport
     document, fingerprint = read_snapshot(seed)
-    target = min(GLOBAL_TARGET, len(document['resources']) + NEW_SUCCESSES)
-    if len(document['resources']) >= target:
+    planned = planned_successes(integrity_counts(document)['qualified'])
+    target = len(document['resources']) + planned
+    if planned == 0:
         shutil.copyfile(seed, output)
         return 0
     token = os.environ.get('GH_TOKEN', '')
@@ -713,6 +770,7 @@ def retention_needs_refresh(artifact):
 
 
 def planned_successes(retained):
+    """Plan new verified captures from the retained qualified count only."""
     if type(retained) is not int or retained < 0:
         raise ValueError('Retained successes must be a nonnegative integer')
     return min(NEW_SUCCESSES, max(0, GLOBAL_TARGET - retained))
@@ -720,6 +778,7 @@ def planned_successes(retained):
 
 def emit_summary(directory, receipt, *, upload):
     validate_shape(receipt, RECEIPT_V2_SCHEMA)
+    validate_integrity_receipt(receipt)
     if private_json_locations(receipt):
         raise ValueError('Checkpoint receipt contains credential-like text or a personal path; values withheld')
     write_json(directory / 'summary.json', receipt)
@@ -727,9 +786,12 @@ def emit_summary(directory, receipt, *, upload):
     with open(os.environ['GITHUB_OUTPUT'], 'a', encoding='utf-8') as stream:
         stream.write('checkpoint_ready=' + ('true' if upload else 'false') + '\n')
     with open(os.environ['GITHUB_STEP_SUMMARY'], 'a', encoding='utf-8') as stream:
-        stream.write(f"## Scheduled README discovery\n\nNew successful README reads: **{receipt['new_successful_scans']} / "
-                     f"{receipt['planned_new_successes']} planned**. Retained total: **{receipt['counts']['successful_readme_scans']}** "
-                     f"of **{GLOBAL_TARGET}** goal; failures: **{receipt['counts']['failed']}**. "
+        integrity = receipt['integrity_counts']
+        stream.write(f"## Scheduled README discovery\n\nNew verified README reads: **{receipt['new_qualified_successful_scans']} / "
+                     f"{receipt['planned_new_successes']} planned**. Qualified total: **{integrity['qualified']}** "
+                     f"of **{GLOBAL_TARGET}** goal. Raw retained captures: **{receipt['counts']['successful_readme_scans']}**; "
+                     f"legacy integrity unknown: **{integrity['legacy_unknown']}**; known mismatches: **{integrity['mismatched']}**; "
+                     f"failed attempts: **{receipt['counts']['failed']}**. "
                      f"Outcome: **{receipt['outcome']}**.\n\n"
                      'These are automated captures, not curated recommendations. Published data was not changed.\n')
 
@@ -787,9 +849,11 @@ def orchestrate(directory, *, manual_seed=None, execution_source=None, bootstrap
             write_json(directory / 'review/previous-input.json', previous)
         raise
     retained = len(seed['resources'])
-    planned = 0 if bootstrap_only else planned_successes(retained)
+    retained_integrity = integrity_counts(seed)
+    planned = 0 if bootstrap_only else planned_successes(retained_integrity['qualified'])
     receipt.update(planned_new_successes=planned, retained_counts=counts(seed),
-                   reconciliation=compact_reconciliation(reconciliation))
+                   reconciliation=compact_reconciliation(reconciliation), goal_basis=GOAL_BASIS,
+                   retained_integrity_counts=retained_integrity)
     was_v2 = frontier is not None
     if frontier is None:
         frontier = search_frontier.new_frontier(until=dt.datetime.now(dt.timezone.utc).strftime('%Y-%m-%dT%H:%M:%SZ'),
@@ -802,6 +866,7 @@ def orchestrate(directory, *, manual_seed=None, execution_source=None, bootstrap
             and not retention_needs_refresh(artifact)):
         receipt.update(completed_at=now(), outcome='global-target-already-reached', scanner_exit_code=0,
                        new_successful_scans=0, counts=counts(seed), checkpoint_sha256=previous_sha,
+                       integrity_counts=retained_integrity, new_qualified_successful_scans=0,
                        target_reached=True, run_target_reached=True, global_target_reached=True,
                        files={name: file_info(directory / 'restored' / name, bound) for name, bound in
                               (('checkpoint.json', MAX_SCAN_BYTES), ('frontier.json', MAX_FRONTIER_BYTES))},
@@ -864,6 +929,11 @@ def orchestrate(directory, *, manual_seed=None, execution_source=None, bootstrap
     added = len(final['resources']) - retained
     if not 0 <= added <= planned:
         raise ValueError('Scanner exceeded its remaining-success budget')
+    final_integrity = integrity_counts(final)
+    qualified_added = final_integrity['qualified'] - retained_integrity['qualified']
+    if (qualified_added != added or any(final_integrity[key] != retained_integrity[key]
+                                       for key in ('legacy_unknown', 'mismatched'))):
+        raise ValueError('Scanner appended a success without explicit verified integrity')
     durable = [int(key) for key, row in frontier['candidates'].items()
                if row['checkpoint_sha256'] is None and 'scan-' + key in final_ids]
     search_frontier.acknowledge_candidates(frontier, durable, checkpoint_sha256=fingerprint)
@@ -876,10 +946,12 @@ def orchestrate(directory, *, manual_seed=None, execution_source=None, bootstrap
              (('checkpoint.json', MAX_SCAN_BYTES), ('frontier.json', MAX_FRONTIER_BYTES))}
     receipt.update(completed_at=now(), outcome=outcome, scanner_exit_code=code, new_successful_scans=added,
                    counts=counts(final), checkpoint_sha256=fingerprint, target_reached=added == planned,
-                   run_target_reached=added == planned, global_target_reached=len(final['resources']) >= GLOBAL_TARGET,
+                   run_target_reached=added == planned, global_target_reached=final_integrity['qualified'] >= GLOBAL_TARGET,
+                   integrity_counts=final_integrity, new_qualified_successful_scans=qualified_added,
                    files=infos, frontier=search_frontier.summary(frontier),
                    transport=final['meta'].get('current_run', {}).get('readme_transport') if planned else None)
     validate_shape(receipt, RECEIPT_V2_SCHEMA)
+    validate_integrity_receipt(receipt, final)
     if private_json_locations(receipt):
         raise ValueError('Checkpoint receipt contains credential-like text or a personal path; values withheld')
     write_json(bundle / 'receipt.json', receipt)  # Last file is the pair's commit marker.

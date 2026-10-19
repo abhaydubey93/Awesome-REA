@@ -20,15 +20,20 @@ import scheduled_source_scan as scheduled
 from validate import validate_source_index
 
 
-def record(identifier, *, failed=False, name=None):
+def record(identifier, *, failed=False, name=None, integrity=True):
     name = name or f'example/repository-{identifier}'
     result = {'id': f'scan-{identifier}', 'full_name': name, 'url': 'https://github.com/' + name,
               'scan_status': 'failed' if failed else 'readme-scanned', 'observed_at': '2026-10-18T00:00:00Z'}
     if failed:
         result.update(reason='http-404', http_status=404)
     else:
+        body = b'# Synthetic fixture\n'
+        oid = hashlib.sha1(b'blob ' + str(len(body)).encode() + b'\0' + body).hexdigest()
         result.update(verification='automated-readme-scan', readme_url='https://github.com/' + name + '#readme',
-                      readme_sha256='a' * 64, readme_bytes=42, targets=[], stars=0)
+                      readme_sha256=hashlib.sha256(body).hexdigest(), readme_bytes=len(body), targets=[], stars=0)
+        if integrity is not None:
+            result.update(readme_git_sha=oid if integrity else 'f' * 40,
+                          readme_content_git_sha=oid, readme_git_sha_matches_content=integrity)
     return result
 
 
