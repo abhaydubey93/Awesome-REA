@@ -11,7 +11,7 @@ An independent collection of tools, case studies and research for websites, game
 <a href="https://awesomerea.org/"><img src="assets/readme-banner.svg" alt="Awesome Reverse Engineering Anything — tools, cases and papers across six reverse-engineering domains" width="960"></a>
 
 <!-- BEGIN GENERATED BADGES -->
-[![resources: 440](https://img.shields.io/badge/resources-440-53309C?style=flat-square&labelColor=303447)](https://awesomerea.org/resources/) [![cases: 185](https://img.shields.io/badge/cases-185-53309C?style=flat-square&labelColor=303447)](https://awesomerea.org/cases/) [![papers: 83](https://img.shields.io/badge/papers-83-53309C?style=flat-square&labelColor=303447)](https://awesomerea.org/papers/) [![Catalog checks](https://github.com/reacher-z/Awesome-REA/actions/workflows/validate.yml/badge.svg?branch=main)](https://github.com/reacher-z/Awesome-REA/actions/workflows/validate.yml) [![license: MIT](https://img.shields.io/badge/license-MIT-606779?style=flat-square&labelColor=303447)](LICENSE) [![website: awesomerea.org](https://img.shields.io/badge/website-awesomerea.org-6235B5?style=flat-square&labelColor=303447)](https://awesomerea.org/)
+[![resources: 440](https://img.shields.io/badge/resources-440-53309C?style=flat-square&labelColor=303447)](https://awesomerea.org/resources/) [![cases: 185](https://img.shields.io/badge/cases-185-53309C?style=flat-square&labelColor=303447)](https://awesomerea.org/cases/) [![papers: 84](https://img.shields.io/badge/papers-84-53309C?style=flat-square&labelColor=303447)](https://awesomerea.org/papers/) [![Catalog checks](https://github.com/reacher-z/Awesome-REA/actions/workflows/validate.yml/badge.svg?branch=main)](https://github.com/reacher-z/Awesome-REA/actions/workflows/validate.yml) [![license: MIT](https://img.shields.io/badge/license-MIT-606779?style=flat-square&labelColor=303447)](LICENSE) [![website: awesomerea.org](https://img.shields.io/badge/website-awesomerea.org-6235B5?style=flat-square&labelColor=303447)](https://awesomerea.org/)
 <!-- END GENERATED BADGES -->
 
 **[Search & filter](https://awesomerea.org/)** · **[Browse cases](https://awesomerea.org/cases/)** · **[Research papers](https://awesomerea.org/papers/)** · **[HTML survey](https://awesomerea.org/survey/)**
@@ -28,7 +28,7 @@ An independent collection of tools, case studies and research for websites, game
 
 **Research and workflows**
 
-- [Papers](#papers) (83) · [Agents and MCP](#agents-and-mcp) (40) · [References and Learning](#references-and-learning) (28)
+- [Papers](#papers) (84) · [Agents and MCP](#agents-and-mcp) (40) · [References and Learning](#references-and-learning) (28)
 
 **More ways to browse**
 
@@ -2755,13 +2755,13 @@ REA labels refer to the separate [upstream CLI and MCP project](https://github.c
 <a id="papers"></a>
 ## Papers
 
-**83 papers**, grouped by topic and ordered newest first. Each entry shows its venue and publication status.
+**84 papers**, grouped by topic and ordered newest first. Each entry shows its venue and publication status.
 
 [Browse the paper directory](https://awesomerea.org/papers/) · [Complete bibliography JSON](data/papers.json) · [Suggest a paper](https://github.com/reacher-z/Awesome-REA/issues/new?template=paper.yml)
 
 **By topic**
 
-- [Agent evaluation](#papers-agent-evaluation) (8) · [Decompilation](#papers-decompilation) (31) · [Websites](#papers-website-reconstruction) (15)
+- [Agent evaluation](#papers-agent-evaluation) (8) · [Decompilation](#papers-decompilation) (32) · [Websites](#papers-website-reconstruction) (15)
 - [Games](#papers-game-reconstruction) (6) · [Apps](#papers-app-reconstruction) (7) · [Firmware](#papers-firmware-analysis) (6)
 - [Protocols](#papers-protocol-analysis) (10)
 
@@ -2909,6 +2909,21 @@ Open “Scope and publication details” for each study’s full limitations. So
   **Scope and limits:** A literature systematization with no new experiments, benchmark or tool; it classifies and summarizes reported results without reproducing them. The corpus covers papers available up to July 31, 2026, applies citation thresholds that fall from 12 for 2015–2016 papers to 2 for 2025–2026 papers, excludes methods that need source code at inference time, and leaves out Android and interpreted-language bytecode. Detailed per-stage tables draw on 88 top-venue studies rather than the full corpus. It is an arXiv preprint with no stated venue, and this record makes no claim of peer review. Papers it cites are not thereby part of this collection; each needs its own review.
 
   **Authors:** Yujeong Kwon et al.
+
+  </details>
+
+- [**LLM Agent-Assisted Reverse Engineering with Quantitative Readability Metrics**](https://arxiv.org/abs/2606.06838)
+
+  Uses a composite Quantitative Readability Score (QRS) to guide agents refining decompiled C. Lexical familiarity, structural simplicity and coding idioms are combined with a binary-structure similarity gate. Experiments compare refinement with and without shell access on 210 simple C binaries.
+
+  arXiv 2026 · Preprint · [PDF](https://arxiv.org/pdf/2606.06838v1) · [Full entry & citation](https://awesomerea.org/papers/paper-qrs-readability/)
+
+  <details>
+  <summary>Scope and publication details</summary>
+
+  **Scope and limits:** Structural similarity does not prove semantic equivalence. QRS both guides and evaluates refinement; human readability validation remains future work. The selected synthetic corpus limits generalization. Recovering compilable, behaviorally correct code from difficult binaries is outside the claimed contribution.
+
+  **Authors:** Neil Archibald et al.
 
   </details>
 
