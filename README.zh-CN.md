@@ -11,7 +11,7 @@
 <a href="https://awesomerea.org/zh/"><img src="assets/readme-banner.svg" alt="Awesome Reverse Engineering Anything — 覆盖六类逆向目标的工具、案例与论文" width="960"></a>
 
 <!-- BEGIN GENERATED BADGES -->
-[![精选资源: 441](https://img.shields.io/badge/%E7%B2%BE%E9%80%89%E8%B5%84%E6%BA%90-441-53309C?style=flat-square&labelColor=303447)](https://awesomerea.org/zh/resources/) [![案例: 186](https://img.shields.io/badge/%E6%A1%88%E4%BE%8B-186-53309C?style=flat-square&labelColor=303447)](https://awesomerea.org/zh/cases/) [![论文: 84](https://img.shields.io/badge/%E8%AE%BA%E6%96%87-84-53309C?style=flat-square&labelColor=303447)](https://awesomerea.org/zh/papers/) [![目录检查](https://github.com/reacher-z/Awesome-REA/actions/workflows/validate.yml/badge.svg?branch=main)](https://github.com/reacher-z/Awesome-REA/actions/workflows/validate.yml) [![许可: MIT](https://img.shields.io/badge/%E8%AE%B8%E5%8F%AF-MIT-606779?style=flat-square&labelColor=303447)](LICENSE) [![网站: awesomerea.org](https://img.shields.io/badge/%E7%BD%91%E7%AB%99-awesomerea.org-6235B5?style=flat-square&labelColor=303447)](https://awesomerea.org/zh/)
+[![精选资源: 441](https://img.shields.io/badge/%E7%B2%BE%E9%80%89%E8%B5%84%E6%BA%90-441-53309C?style=flat-square&labelColor=303447)](https://awesomerea.org/zh/resources/) [![案例: 186](https://img.shields.io/badge/%E6%A1%88%E4%BE%8B-186-53309C?style=flat-square&labelColor=303447)](https://awesomerea.org/zh/cases/) [![论文: 85](https://img.shields.io/badge/%E8%AE%BA%E6%96%87-85-53309C?style=flat-square&labelColor=303447)](https://awesomerea.org/zh/papers/) [![目录检查](https://github.com/reacher-z/Awesome-REA/actions/workflows/validate.yml/badge.svg?branch=main)](https://github.com/reacher-z/Awesome-REA/actions/workflows/validate.yml) [![许可: MIT](https://img.shields.io/badge/%E8%AE%B8%E5%8F%AF-MIT-606779?style=flat-square&labelColor=303447)](LICENSE) [![网站: awesomerea.org](https://img.shields.io/badge/%E7%BD%91%E7%AB%99-awesomerea.org-6235B5?style=flat-square&labelColor=303447)](https://awesomerea.org/zh/)
 <!-- END GENERATED BADGES -->
 
 **[搜索与筛选](https://awesomerea.org/zh/)** · **[浏览案例](https://awesomerea.org/zh/cases/)** · **[研究论文](https://awesomerea.org/zh/papers/)** · **[HTML 综述](https://awesomerea.org/zh/survey/)**
@@ -28,7 +28,7 @@
 
 **论文与工作流**
 
-- [论文](#papers) (84) · [智能体与 MCP](#agents-and-mcp) (40) · [文档与学习资源](#references-and-learning) (28)
+- [论文](#papers) (85) · [智能体与 MCP](#agents-and-mcp) (40) · [文档与学习资源](#references-and-learning) (28)
 
 **更多浏览方式**
 
@@ -2762,13 +2762,13 @@ REA 标签指向单独维护的[上游 CLI 与 MCP 项目](https://github.com/mo
 <a id="papers"></a>
 ## 论文
 
-**84 篇论文**，按主题分组，组内按年份从新到旧排列。每项均标明发表场所与状态，中文标题为译名。
+**85 篇论文**，按主题分组，组内按年份从新到旧排列。每项均标明发表场所与状态，中文标题为译名。
 
 [浏览论文目录](https://awesomerea.org/zh/papers/) · [完整书目 JSON](data/papers.json) · [推荐论文](https://github.com/reacher-z/Awesome-REA/issues/new?template=paper.yml)
 
 **按主题**
 
-- [智能体评测](#papers-agent-evaluation) (8) · [反编译](#papers-decompilation) (32) · [网站](#papers-website-reconstruction) (15)
+- [智能体评测](#papers-agent-evaluation) (8) · [反编译](#papers-decompilation) (33) · [网站](#papers-website-reconstruction) (15)
 - [游戏](#papers-game-reconstruction) (6) · [应用](#papers-app-reconstruction) (7) · [固件](#papers-firmware-analysis) (6)
 - [协议](#papers-protocol-analysis) (10)
 
@@ -2916,6 +2916,21 @@ REA 标签指向单独维护的[上游 CLI 与 MCP 项目](https://github.com/mo
   **范围与限制:** 这是一篇文献系统化综述，不包含新的实验、基准或工具；它对已报告的结果进行分类和总结，并未复现。语料涵盖截至 2026 年 7 月 31 日可获得的论文，引用量门槛从 2015—2016 年论文的 12 次逐步降至 2025—2026 年论文的 2 次，排除推断时需要源码的方法，也不包括 Android 与解释型语言字节码。各阶段的详细表格基于 88 项顶级会议研究，而非完整语料。它是未注明发表场所的 arXiv 预印本，本条目不声称其经过同行评审。其引用的论文并不因此纳入本合集，每篇都需要单独审阅。
 
   **作者:** Yujeong Kwon 等
+
+  </details>
+
+- [**以量化可读性指标引导 LLM 智能体辅助逆向工程**](https://arxiv.org/abs/2606.06838)
+
+  用综合量化可读性分数（QRS）引导智能体改进反编译 C 代码，将词汇熟悉度、结构简洁度和编程惯用法与二进制结构相似性门槛结合，在 210 个简单 C 二进制程序上比较有无 shell 访问的迭代。
+
+  arXiv 2026 · 预印本 · [PDF](https://arxiv.org/pdf/2606.06838v1) · [完整条目与引用](https://awesomerea.org/zh/papers/paper-qrs-readability/)
+
+  <details>
+  <summary>范围与发表信息</summary>
+
+  **范围与限制:** 结构相似性不能证明语义等价。QRS 同时用于指导和评价改进，仍缺少人工可读性验证；经过筛选的合成语料限制了泛化。处理困难二进制并恢复可编译、行为正确代码，不属于本文的贡献范围。
+
+  **作者:** Neil Archibald 等
 
   </details>
 
