@@ -11,7 +11,7 @@
 <a href="https://awesomerea.org/zh/"><img src="assets/readme-banner.svg" alt="Awesome Reverse Engineering Anything — 覆盖六类逆向目标的工具、案例与论文" width="960"></a>
 
 <!-- BEGIN GENERATED BADGES -->
-[![精选资源: 347](https://img.shields.io/badge/%E7%B2%BE%E9%80%89%E8%B5%84%E6%BA%90-347-53309C?style=flat-square&labelColor=303447)](https://awesomerea.org/zh/resources/) [![案例: 180](https://img.shields.io/badge/%E6%A1%88%E4%BE%8B-180-53309C?style=flat-square&labelColor=303447)](https://awesomerea.org/zh/cases/) [![论文: 83](https://img.shields.io/badge/%E8%AE%BA%E6%96%87-83-53309C?style=flat-square&labelColor=303447)](https://awesomerea.org/zh/papers/) [![目录检查](https://github.com/reacher-z/Awesome-REA/actions/workflows/validate.yml/badge.svg?branch=main)](https://github.com/reacher-z/Awesome-REA/actions/workflows/validate.yml) [![许可: MIT](https://img.shields.io/badge/%E8%AE%B8%E5%8F%AF-MIT-606779?style=flat-square&labelColor=303447)](LICENSE) [![网站: awesomerea.org](https://img.shields.io/badge/%E7%BD%91%E7%AB%99-awesomerea.org-6235B5?style=flat-square&labelColor=303447)](https://awesomerea.org/zh/)
+[![精选资源: 347](https://img.shields.io/badge/%E7%B2%BE%E9%80%89%E8%B5%84%E6%BA%90-347-53309C?style=flat-square&labelColor=303447)](https://awesomerea.org/zh/resources/) [![案例: 180](https://img.shields.io/badge/%E6%A1%88%E4%BE%8B-180-53309C?style=flat-square&labelColor=303447)](https://awesomerea.org/zh/cases/) [![论文: 84](https://img.shields.io/badge/%E8%AE%BA%E6%96%87-84-53309C?style=flat-square&labelColor=303447)](https://awesomerea.org/zh/papers/) [![目录检查](https://github.com/reacher-z/Awesome-REA/actions/workflows/validate.yml/badge.svg?branch=main)](https://github.com/reacher-z/Awesome-REA/actions/workflows/validate.yml) [![许可: MIT](https://img.shields.io/badge/%E8%AE%B8%E5%8F%AF-MIT-606779?style=flat-square&labelColor=303447)](LICENSE) [![网站: awesomerea.org](https://img.shields.io/badge/%E7%BD%91%E7%AB%99-awesomerea.org-6235B5?style=flat-square&labelColor=303447)](https://awesomerea.org/zh/)
 <!-- END GENERATED BADGES -->
 
 **[搜索与筛选](https://awesomerea.org/zh/)** · **[浏览案例](https://awesomerea.org/zh/cases/)** · **[研究论文](https://awesomerea.org/zh/papers/)** · **[HTML 综述](https://awesomerea.org/zh/survey/)**
@@ -28,7 +28,7 @@
 
 **论文与工作流**
 
-- [论文](#papers) (83) · [智能体与 MCP](#agents-and-mcp) (30) · [文档与学习资源](#references-and-learning) (27)
+- [论文](#papers) (84) · [智能体与 MCP](#agents-and-mcp) (30) · [文档与学习资源](#references-and-learning) (27)
 
 **更多浏览方式**
 
@@ -2198,7 +2198,7 @@ REA 标签指向单独维护的[上游 CLI 与 MCP 项目](https://github.com/mo
 <a id="papers"></a>
 ## 论文
 
-**83 篇论文**，按主题分组，组内按年份从新到旧排列。每项均标明发表场所与状态，中文标题为译名。
+**84 篇论文**，按主题分组，组内按年份从新到旧排列。每项均标明发表场所与状态，中文标题为译名。
 
 [浏览论文目录](https://awesomerea.org/zh/papers/) · [完整书目 JSON](data/papers.json) · [推荐论文](https://github.com/reacher-z/Awesome-REA/issues/new?template=paper.yml)
 
@@ -2206,7 +2206,7 @@ REA 标签指向单独维护的[上游 CLI 与 MCP 项目](https://github.com/mo
 
 - [智能体评测](#papers-agent-evaluation) (8) · [反编译](#papers-decompilation) (31) · [网站](#papers-website-reconstruction) (15)
 - [游戏](#papers-game-reconstruction) (6) · [应用](#papers-app-reconstruction) (7) · [固件](#papers-firmware-analysis) (6)
-- [协议](#papers-protocol-analysis) (10)
+- [协议](#papers-protocol-analysis) (11)
 
 展开“范围与发表信息”查看完整研究边界。部分论文也出现在精选资源目录中，两者数量不可相加。
 
@@ -3487,6 +3487,21 @@ REA 标签指向单独维护的[上游 CLI 与 MCP 项目](https://github.com/mo
   **范围与限制:** 需要明文载荷。评测覆盖 DNS、DHCP 和 NTP，并针对各协议调节参数。方法无法推断单字节字段；全零字段、字符序列和伪随机值可能导致误差。FMS 验证需要已知字段边界。输出是近似报文分段，不是字段语义、状态机或完整应用／设备行为。
 
   **作者:** Stephan Kleber 等
+
+  </details>
+
+- [**Polyglot：基于动态二进制分析的协议报文格式自动提取**](https://dl.acm.org/doi/10.1145/1315245.1315286)
+
+  Polyglot 通过监测程序二进制如何处理接收到的报文来推断其格式，作者称这一方法为“影随”（shadowing）。执行监控器对网络输入施加污点标记并记录指令轨迹；离线分析再依据受污点数据参与的内存访问与循环条件识别长度字段、指针字段等指向字段，依据受污点字节与常量之间的比较识别分隔符，依据指令如何组合输入字节识别多字节定长字段，并依据成功的比较提取协议关键字。该方法适用于剥离符号的 IA-32 二进制，无需源码或调试信息。
+
+  ACM CCS 2007 · 会议论文 · [PDF](https://dl.acm.org/doi/pdf/10.1145/1315245.1315286) · [完整条目与引用](https://awesomerea.org/zh/papers/paper-polyglot/)
+
+  <details>
+  <summary>范围与发表信息</summary>
+
+  **范围与限制:** 方法每次提取一条接收报文的格式，且只覆盖提供给分析的报文；从未出现的报文仍然未知，程序发送的报文也不在分析范围内。它不推断协议状态机。评测覆盖 11 个 2007 年前后的程序，实现 DNS、HTTP、IRC、ICQ 与 Samba 五种协议，以 Windows 服务端为主，另含一个 ICQ 客户端和一个 Linux 上的 Samba 服务端；每种协议选取一条代表性报文，并与 Wireshark 0.99.5 的解析器对比。字段格式不包括数据类型与编码；分析以字节为粒度，因此会遗漏不足一字节的标志位；字段语义仅限于指向字段，不识别时间戳、校验和或地址。报文边界依赖同步协议这一假设；ICQ 长度字段之后未使用的定长字段被并入了变长字段。作者也说明这些技术尚不能完全抵御混淆。
+
+  **作者:** Juan Caballero 等
 
   </details>
 <!-- END GENERATED PAPERS -->
