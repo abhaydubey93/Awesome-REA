@@ -102,13 +102,14 @@ RUN_SCHEMA = {
              'retained_unattempted_repository_ids seed_observation_start_index resume_observation_start_index '
              'query_count seed_observation_count resume_observation_count new_successful_readme_scans '
              'new_failed_readme_scans', int),
-    **fields('seed_curated seed_papers', bool), 'query_plan': [str],
+    **fields('seed_curated seed_papers', bool), 'query_plan': [str], 'held_repository_ids': [str],
     'readme_transport': TRANSPORT_SCHEMA,
 }
 ARTIFACT_REFERENCE_SCHEMA = fields('paper_id field url', str)
 QUERY_SCHEMA = {
     **fields('query observed_at run_id status reason', str),
-    **fields('page per_page total_count returned retained_attempts_skipped name_collisions_skipped invalid_items_skipped rejected_items', int),
+    **fields('page per_page total_count returned retained_attempts_skipped name_collisions_skipped invalid_items_skipped rejected_items '
+             'held_candidates_skipped deferred_candidates_skipped', int),
     'http_status': nullable(int), 'incomplete_results': bool,
     'invalid_item_reasons': fields('invalid-repository-metadata', int),
 }
