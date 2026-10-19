@@ -39,7 +39,7 @@ MAX_ARCHIVE_BYTES = 512 * 1024 * 1024
 MAX_RECEIPT_BYTES = 8 * 1024 * 1024
 MAX_TOTAL_BYTES = MAX_SCAN_BYTES + MAX_FRONTIER_BYTES + MAX_RECEIPT_BYTES
 CHUNK_BYTES = 1024 * 1024
-NEW_SUCCESSES = 1000
+NEW_SUCCESSES = 2000
 GLOBAL_TARGET = 160000
 SCAN_SECONDS = 38 * 60
 APPROVED_QUERIES = [*QUERY_BASES,
@@ -725,7 +725,8 @@ def scanner_child(seed, output, frontier_path):
         raise ValueError('The ephemeral GitHub token is unavailable')
     frontier = read_frontier(frontier_path)
     paired_ack_guard(document, frontier)
-    args = SimpleNamespace(target=target, workers=4, requests_per_second=2, max_pages=3, candidate_buffer=50,
+    args = SimpleNamespace(target=target, workers=4, requests_per_second=2, max_pages=3,
+                           candidate_buffer=min(200, max(50, (planned + 9) // 10)),
                            pending_metadata_budget=200, search_request_budget=120,
                            seed_curated=True, seed_papers=True,
                            queries=[query + ' ' + search_frontier.GATES for query in APPROVED_QUERIES], output=output)
