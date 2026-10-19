@@ -15509,12 +15509,23 @@
         "https://www.synacktiv.com/en/publications/ufc-666-frontkick-vs-rikugan"
       ],
       "state": "pending",
-      "review_level": "inventory-only",
-      "reviewed_at": "2026-10-18",
-      "reason_en": "A collection lead awaiting primary-source review; listing does not verify implementation or results.",
-      "reason_zh": "合集线索，等待一手来源核查；被列入合集不代表实现或结果已获验证。",
-      "primary_evidence_urls": [],
-      "catalog_matches": []
+      "review_level": "primary-source-reviewed",
+      "reviewed_at": "2026-10-19",
+      "reason_en": "The Synacktiv article (Matthieu Breuil, 2026-10-13) compares the Frontkick and Rikugan agents on CREBench’s AES-128-CBC and ChaCha20 cases with four runs per case, and attributes most of Frontkick’s lead to a system prompt that listed the installed Python libraries rather than to its code-executing design. Rikugan’s pinned README and license now back the rikugan record, mapped as related because it covers the plugin under test, not the comparison. The article itself has no catalog record yet, so the lead stays pending; its results are the author’s and were not rerun.",
+      "reason_zh": "Synacktiv 的文章（Matthieu Breuil，2026-10-13）在 CREBench 的 AES-128-CBC 与 ChaCha20 用例上比较 Frontkick 和 Rikugan 两款智能体，每个用例运行四次，并把 Frontkick 的领先主要归因于其系统提示词列出了已安装的 Python 库，而非其执行生成代码的设计。Rikugan 固定版本的 README 与许可证现支持 rikugan 条目，按相关条目映射，因为它涵盖的是受测插件而非这次比较。该文章本身尚无目录条目，因此线索仍待核查；结果为作者报告，未重新运行。",
+      "primary_evidence_urls": [
+        "https://www.synacktiv.com/en/publications/ufc-666-frontkick-vs-rikugan",
+        "https://github.com/buzzer-re/Rikugan/blob/a2ba6691baa0a7ace3bce9fe834a4f6f7610b77d/README.md",
+        "https://github.com/buzzer-re/Rikugan/blob/a2ba6691baa0a7ace3bce9fe834a4f6f7610b77d/LICENSE"
+      ],
+      "catalog_matches": [
+        {
+          "catalog": "resource",
+          "id": "rikugan",
+          "kind": "integration",
+          "scope": "related"
+        }
+      ]
     },
     {
       "id": "song:ableton-live12-agent-96h",
@@ -15869,9 +15880,9 @@
       "insufficient-evidence": 199,
       "pending": 194
     },
-    "primary_reviewed_units": 337,
-    "catalog_linked_occurrences": 210,
-    "distinct_resource_ids": 201,
+    "primary_reviewed_units": 338,
+    "catalog_linked_occurrences": 211,
+    "distinct_resource_ids": 202,
     "distinct_paper_ids": 1,
     "unique_projects": null
   }

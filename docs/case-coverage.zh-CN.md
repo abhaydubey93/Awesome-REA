@@ -26,9 +26,9 @@
 | 待核查 (`pending`) | 194 | 194 | 一手核查或完整目录覆盖尚待完成；部分映射也保留在此状态。 |
 | 证据不足 (`insufficient-evidence`) | 199 | 199 | 将想法、请求或尚缺支持的重建说法保留为线索。 |
 
-210 个出现项含目录链接；共关联 201 个不同资源 ID 和 1 个论文 ID。映射范围单独记录，不能将这些群体相加当作独立项目数。
+211 个出现项含目录链接；共关联 202 个不同资源 ID 和 1 个论文 ID。映射范围单独记录，不能将这些群体相加当作独立项目数。
 
-此记录为 337 个清单单元记载了新的一手来源核查。其他已有目录链接的条目对应目录中独立的来源核查记录；链接本身不代表重新核查了整篇合集报告。此记录没有独立复现运行实验。
+此记录为 338 个清单单元记载了新的一手来源核查。其他已有目录链接的条目对应目录中独立的来源核查记录；链接本身不代表重新核查了整篇合集报告。此记录没有独立复现运行实验。
 
 此记录刻意不包含仓库 README 扫描 ID 或扫描数量。成功读取 README、被上游合集列出和案例经过来源核查，是不同事实。
 
@@ -372,6 +372,7 @@
 | DeepSeek V4.1: a reported V8 n-day to Electron IPC investigation | 证据不足 | [来源](https://x.com/i/status/2111587595750637954) |
 | Cursor: an account of custom relays and personal Codex/Claude Code quotas | 证据不足 | [来源](https://x.com/FoxSnowing/status/2111465121126207605) |
 | Open Scrantic：重建 Johnny Castaway 屏幕保护程序引擎 | 已收录 | [来源](https://github.com/glauberlima/open-scrantic/blob/2db75008931eb744f79d0c3fb12e0d89950466ff/README.md) |
+| Frontkick vs Rikugan: a prompt confound in two cryptographic binary tasks | 待核查 | [来源](https://www.synacktiv.com/en/publications/ufc-666-frontkick-vs-rikugan) |
 | 《声名狼藉：次子》原生 PC 移植 | 已收录 | [来源](https://github.com/HayatoG/iss_pc/blob/d3995feb0cea1e2edc0c71fab139d1e89f0a7305/README.md) |
 
 ## 部分覆盖与别名
@@ -400,6 +401,7 @@
 - `hao-games:row-135` — 固定版本的 README、自动生成的进度、判定依据与运行问题说明、工具锁定文件、初始化脚本、CI 及许可证，支持该 TH095 1.02a 重建报告。完整映射覆盖此仓库的函数级重建及可游玩的 Windows i386 构建，不涵盖整个可执行文件一致性、计划中的移植或独立复现的游戏过程；REA 的东方重建方法文章作为相关条目关联。原可执行文件要求和项目报告的数字均明确保留。
 - `hao-games:row-136` — 固定版本的 README、自动生成的进度、DOS 构建、工具链、判定依据、运行与参考说明、CI 及许可证，支持该 TH04 重建报告。完整映射覆盖此仓库的四程序 DOS 重建及作者报告的差分回放，不涵盖字节一致性、完整流程、原生 x64 分支或独立复现。REA 的单函数展示仍为部分匹配，其东方重建文章为相关条目。
 - `hao-games:row-137` — 固定版本的 README、REA 实例说明、匹配、构建与进度说明、目标与工具锁定文件、一项差分测试、CI 及许可证，支持该 DX-Ball 重建报告及作者记录的 REA 与 Codex 使用。完整映射覆盖这一进行中的函数级重建，不代表字节一致、已完成的可游玩 VC4 构建或独立复现；REA 的单函数声像展示仍为部分匹配。原版压缩包要求及其未经核实的下载来源均明确保留。
+- `song:synacktiv-frontkick-rikugan-crebench` — Synacktiv 的文章（Matthieu Breuil，2026-10-13）在 CREBench 的 AES-128-CBC 与 ChaCha20 用例上比较 Frontkick 和 Rikugan 两款智能体，每个用例运行四次，并把 Frontkick 的领先主要归因于其系统提示词列出了已安装的 Python 库，而非其执行生成代码的设计。Rikugan 固定版本的 README 与许可证现支持 rikugan 条目，按相关条目映射，因为它涵盖的是受测插件而非这次比较。该文章本身尚无目录条目，因此线索仍待核查；结果为作者报告，未重新运行。
 
 别名决定：
 

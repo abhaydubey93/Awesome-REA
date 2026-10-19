@@ -26,9 +26,9 @@ Repository counts use normalized GitHub repository, tree and file links within e
 | Pending (`pending`) | 194 | 194 | Primary review or complete catalog coverage remains pending; partial matches stay here. |
 | Insufficient evidence (`insufficient-evidence`) | 199 | 199 | An idea, request or unsupported reconstruction claim is retained as a lead. |
 
-210 occurrences have catalog links. They reference 201 distinct resource IDs and 1 paper ID. Match scope is recorded separately; do not add these populations as unique projects.
+211 occurrences have catalog links. They reference 202 distinct resource IDs and 1 paper ID. Match scope is recorded separately; do not add these populations as unique projects.
 
-This ledger records a new primary-source review for 337 inventory units. Other catalog-linked entries inherit the catalog’s separate source-review record; a link does not mean the entire collection report was reviewed again. No runtime experiment was independently reproduced for this ledger.
+This ledger records a new primary-source review for 338 inventory units. Other catalog-linked entries inherit the catalog’s separate source-review record; a link does not mean the entire collection report was reviewed again. No runtime experiment was independently reproduced for this ledger.
 
 Repository README scan IDs and counts are deliberately absent. A successful README fetch, an upstream list entry and a source-reviewed case are different facts.
 
@@ -372,6 +372,7 @@ Repository README scan IDs and counts are deliberately absent. A successful READ
 | DeepSeek V4.1: a reported V8 n-day to Electron IPC investigation | Insufficient evidence | [Source](https://x.com/i/status/2111587595750637954) |
 | Cursor: an account of custom relays and personal Codex/Claude Code quotas | Insufficient evidence | [Source](https://x.com/FoxSnowing/status/2111465121126207605) |
 | Open Scrantic: reconstructing the Johnny Castaway screensaver engine | Already curated | [Source](https://github.com/glauberlima/open-scrantic/blob/2db75008931eb744f79d0c3fb12e0d89950466ff/README.md) |
+| Frontkick vs Rikugan: a prompt confound in two cryptographic binary tasks | Pending | [Source](https://www.synacktiv.com/en/publications/ufc-666-frontkick-vs-rikugan) |
 | inFAMOUS Second Son native PC port | Already curated | [Source](https://github.com/HayatoG/iss_pc/blob/d3995feb0cea1e2edc0c71fab139d1e89f0a7305/README.md) |
 
 ## Partial coverage and aliases
@@ -400,6 +401,7 @@ Partial or related catalog mappings:
 - `hao-games:row-135` — Pinned README, generated progress, oracle and runtime-issue notes, tool lock, bootstrap script, CI and license support the named TH095 1.02a reconstruction report. Full mapping covers this repository’s function-level reconstruction and playable Windows i386 build, not whole-executable identity, planned ports or independently reproduced play; REA’s Touhou method essay is linked as related. Original-executable requirements and project-reported counts remain explicit.
 - `hao-games:row-136` — Pinned README, generated progress, DOS build, toolchain, oracle, runtime and reference notes, CI and license support the named TH04 reconstruction report. Full mapping covers this repository’s four-program DOS reconstruction and its author-reported differential replays, not byte identity, complete campaigns, the native x64 branch or independent reproduction. REA’s one-helper showcase remains a partial match and its Touhou essay a related one.
 - `hao-games:row-137` — Pinned README, REA worked example, matching, build and progress notes, target and tool locks, a differential test, CI and license support the named DX-Ball reconstruction with author-documented REA and Codex use. Full mapping covers this in-progress function-level reconstruction, not byte identity, a finished playable VC4 build or independent reproduction; REA’s one-function sound-pan showcase remains a partial match. The original-archive requirement and its unverified download source remain explicit.
+- `song:synacktiv-frontkick-rikugan-crebench` — The Synacktiv article (Matthieu Breuil, 2026-10-13) compares the Frontkick and Rikugan agents on CREBench’s AES-128-CBC and ChaCha20 cases with four runs per case, and attributes most of Frontkick’s lead to a system prompt that listed the installed Python libraries rather than to its code-executing design. Rikugan’s pinned README and license now back the rikugan record, mapped as related because it covers the plugin under test, not the comparison. The article itself has no catalog record yet, so the lead stays pending; its results are the author’s and were not rerun.
 
 Alias decisions:
 
