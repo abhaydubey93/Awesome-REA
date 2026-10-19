@@ -20,15 +20,20 @@ import scheduled_source_scan as scheduled
 from validate import validate_source_index
 
 
-def record(identifier, *, failed=False, name=None):
+def record(identifier, *, failed=False, name=None, integrity=True):
     name = name or f'example/repository-{identifier}'
     result = {'id': f'scan-{identifier}', 'full_name': name, 'url': 'https://github.com/' + name,
               'scan_status': 'failed' if failed else 'readme-scanned', 'observed_at': '2026-10-18T00:00:00Z'}
     if failed:
         result.update(reason='http-404', http_status=404)
     else:
+        body = b'# Synthetic fixture\n'
+        oid = hashlib.sha1(b'blob ' + str(len(body)).encode() + b'\0' + body).hexdigest()
         result.update(verification='automated-readme-scan', readme_url='https://github.com/' + name + '#readme',
-                      readme_sha256='a' * 64, readme_bytes=42, targets=[], stars=0)
+                      readme_sha256=hashlib.sha256(body).hexdigest(), readme_bytes=len(body), targets=[], stars=0)
+        if integrity is not None:
+            result.update(readme_git_sha=oid if integrity else 'f' * 40,
+                          readme_content_git_sha=oid, readme_git_sha_matches_content=integrity)
     return result
 
 
@@ -335,7 +340,7 @@ class WorkflowTests(unittest.TestCase):
         self.assertIn("steps.scan.outputs.checkpoint_ready == 'true'", text)
         self.assertIn('checkpoint/checkpoint.json', text)
         self.assertNotIn('path: .cache/', text.split('name: Preserve validated incremental checkpoint')[1].split('name: Preserve validated inputs')[0])
-        self.assertEqual(scheduled.NEW_SUCCESSES, 1000)
+        self.assertEqual(scheduled.NEW_SUCCESSES, 2000)
         self.assertEqual(scheduled.GLOBAL_TARGET, 160000)
         self.assertIn('checkpoint/frontier.json', text)
         self.assertNotIn('retention-days: 90', text)
@@ -592,6 +597,25 @@ class PairedCheckpointTests(unittest.TestCase):
 
 
 class ScheduledBudgetTests(unittest.TestCase):
+    def test_larger_increment_keeps_remaining_goal_and_candidate_surplus_bounded(self):
+        document = snapshot(range(1, 1502))
+        document['resources'][0] = record(1, integrity=None)
+        document['resources'][1] = record(2, integrity=False)
+        qualified = 1499
+        for remaining, planned, surplus in ((1, 1, 50), (500, 500, 50), (501, 501, 51),
+                                            (2000, 2000, 200), (9000, 2000, 200)):
+            with self.subTest(remaining=remaining), \
+                    patch.dict(os.environ, GH_TOKEN='offline-test-only'), \
+                    patch.object(scheduled, 'GLOBAL_TARGET', qualified + remaining), \
+                    patch.object(scheduled, 'read_snapshot', return_value=(document, 'a' * 64)), \
+                    patch.object(scheduled, 'read_frontier', return_value=small_frontier()), \
+                    patch.object(scheduled, 'run_scan', return_value=0) as scan:
+                self.assertEqual(scheduled.scanner_child(Path('seed.json'), Path('output.json'), Path('frontier.json')), 0)
+            args = scan.call_args.args[1]
+            self.assertEqual(args.target, len(document['resources']) + planned)
+            self.assertEqual(args.candidate_buffer, surplus)
+            self.assertEqual((args.search_request_budget, args.pending_metadata_budget), (120, 200))
+
     def test_observed_graphql_quota_and_fallback_budget_defer_without_extra_requests(self):
         calls = []
         class Transport:

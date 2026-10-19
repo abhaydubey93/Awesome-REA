@@ -103,6 +103,38 @@ def normalized_url(value):
     return parsed.scheme.lower(), parsed.netloc.lower(), path, parsed.query, parsed.fragment
 
 
+def evidence_pin_warnings(records):
+    """Advisory only: evidence that cannot show the reviewed revision.
+
+    A GitHub wiki page without its `/<revision>` suffix, or a bare repository root, always shows the
+    current text. These are warnings rather than errors so records already in review keep passing.
+    """
+    warnings = []
+    for record in records:
+        if not isinstance(record, dict):
+            continue
+        where = f"resource {record.get('id')!r}"
+        additional = record.get('additional_evidence_urls')
+        links = [('evidence_url', record.get('evidence_url'))]
+        links += [('additional_evidence_urls', url) for url in additional] if isinstance(additional, list) else []
+        for field, url in links:
+            if not isinstance(url, str):
+                continue
+            try:
+                parsed = urlsplit(url)
+                host = (parsed.hostname or '').lower()
+            except ValueError:
+                continue  # validate_resources reports malformed URLs.
+            parts = [part for part in parsed.path.split('/') if part]
+            if (host == 'github.com' and len(parts) >= 3 and parts[2] == 'wiki'
+                    and not re.fullmatch(r'[0-9a-f]{40}', parts[-1])):
+                warnings.append(f'{where}.{field}: GitHub wiki evidence should end in the reviewed page revision: {url}')
+            elif ((host in {'github.com', 'codeberg.org'} and len(parts) == 2)
+                  or (host == 'gitlab.com' and len(parts) >= 2 and '-' not in parts)):
+                warnings.append(f'{where}.{field}: link the README or tree at the reviewed commit, not the repository root: {url}')
+    return warnings
+
+
 def validate_resources(records, errors, *, now=None):
     now = dt.datetime.now(dt.timezone.utc) if now is None else now.astimezone(dt.timezone.utc)
     ids, urls = set(), set()
@@ -254,12 +286,47 @@ def validate_benchmarks(records, errors):
                 errors.append(f'{where}.observed_at: snapshot is in the future')
 
 
-def validate_scan_discovery(meta, records, errors):
+def scan_run_entries(meta):
+    """Known run containers only; no arbitrary nested metadata is trusted."""
+    yield 'current_run', meta.get('current_run')
+    histories = meta.get('resume_history', [])
+    for index, history in enumerate(histories if isinstance(histories, list) else []):
+        if isinstance(history, dict):
+            yield f'resume_history[{index}].run', history.get('run')
+    reconciliations = meta.get('checkpoint_reconciliations', [])
+    for index, reconciliation in enumerate(reconciliations if isinstance(reconciliations, list) else []):
+        if isinstance(reconciliation, dict):
+            for key in ('canonical_current_run', 'checkpoint_current_run'):
+                yield f'checkpoint_reconciliations[{index}].{key}', reconciliation.get(key)
+
+
+def validate_scan_discovery(meta, records, errors, failures=()):
     """Check optional discovery evidence without inventing legacy observations."""
+    def nonnegative_integer(value):
+        return type(value) is int and value >= 0
+
     methods = {'github-search', 'curated-reference', 'paper-artifact-reference', 'retained-repository-id'}
-    statuses = {'candidate', 'retained-attempt', 'name-collision', 'ineligible', 'failed'}
+    statuses = {'candidate', 'retained-attempt', 'name-collision', 'ineligible', 'failed', 'held', 'frontier-deferred'}
     ledger = meta.get('discovered_repository_ids', [])
     known = {value for value in ledger if isinstance(value, str)} if isinstance(ledger, list) else set()
+    held_by_run = {}
+    for location, run in scan_run_entries(meta):
+        if not isinstance(run, dict) or 'held_repository_ids' not in run:
+            continue
+        held = run['held_repository_ids']
+        if (not isinstance(held, list) or len(held) > 1000
+                or any(not isinstance(value, str) or not re.fullmatch(r'scan-[1-9][0-9]*', value) for value in held)
+                or len(set(held)) != len(held)
+                or held != sorted(held, key=lambda value: int(value[5:]))):
+            errors.append(f'Source index {location} held_repository_ids must be sorted unique canonical IDs.')
+            continue
+        if isinstance(run.get('run_id'), str):
+            held_by_run[run['run_id']] = set(held)
+        if location == 'current_run':
+            for rows, field in ((records, 'retained_successful_readme_scans'), (failures, 'retained_failed_readme_scans')):
+                retained = run.get(field)
+                if type(retained) is int and retained >= 0 and any(row.get('id') in held for row in rows[retained:] if isinstance(row, dict)):
+                    errors.append('Source index current_run held IDs must not become new README attempts.')
     seeds, resumed = {}, set()
     observed_queries = set()
 
@@ -313,6 +380,10 @@ def validate_scan_discovery(meta, records, errors):
                 errors.append(f'{where}: expected an object')
                 continue
             if key == 'queries':
+                for field in ('held_candidates_skipped', 'deferred_candidates_skipped'):
+                    if field in entry and (not nonnegative_integer(entry[field])
+                            or not nonnegative_integer(entry.get('returned')) or entry[field] > entry['returned']):
+                        errors.append(f'{where}: invalid administrative/backoff skip count')
                 if entry.get('status') == 'ok' and nonempty_string(entry.get('query')):
                     observed_queries.add(entry['query'])
                 continue
@@ -331,11 +402,14 @@ def validate_scan_discovery(meta, records, errors):
                 errors.append(f'{where}: invalid metadata lookup status')
                 status = None
             identifier = entry.get('repository_id')
-            needs_id = key == 'resume_observations' or status in {'candidate', 'retained-attempt', 'name-collision'}
+            needs_id = key == 'resume_observations' or status in {'candidate', 'retained-attempt', 'name-collision', 'held', 'frontier-deferred'}
             if needs_id or identifier is not None:
                 if (not isinstance(identifier, str) or not re.fullmatch(r'scan-[0-9]+', identifier)
                         or identifier not in known):
                     errors.append(f'{where}: repository ID must be present in the discovery ledger')
+            if status == 'held' and (not isinstance(entry.get('run_id'), str)
+                                     or identifier not in held_by_run.get(entry['run_id'], set())):
+                errors.append(f'{where}: held metadata outcome requires an explicit hold in that run')
             if key == 'resume_observations':
                 if entry.get('method') != 'retained-repository-id' or status == 'retained-attempt':
                     errors.append(f'{where}: invalid retained repository lookup provenance')
@@ -465,6 +539,13 @@ def validate_source_index(document, errors, *, allow_incomplete=False):
                         or parsed.path != '/repos/' + str(record.get('full_name', '')) + '/readme'):
                     errors.append(f'{where}: README API URL must match the public GitHub repository')
         graphql_fields = {'readme_transport', 'readme_graphql_endpoint', 'readme_commit_sha'}
+        if 'readme_blob_api_url' in record:
+            expected = ('https://api.github.com/repos/' + str(record.get('full_name', ''))
+                        + '/git/blobs/' + str(record.get('readme_git_sha', '')))
+            if (record['readme_blob_api_url'] != expected or 'readme_api_url' not in record
+                    or graphql_fields.intersection(record)
+                    or record.get('readme_git_sha_matches_content') is not True):
+                errors.append(f'{where}: REST blob recovery must identify the verified immutable GitHub blob and README lookup')
         if graphql_fields.intersection(record):
             commit = record.get('readme_commit_sha')
             path = record.get('readme_path')
@@ -641,7 +722,7 @@ def validate_source_index(document, errors, *, allow_incomplete=False):
                                         if isinstance(entry, dict) and isinstance(entry.get('id'), str)}
                         if retained_ids.intersection(current_ids):
                             errors.append('Source index current_run metadata lookups must exclude retained README attempts.')
-    validate_scan_discovery(meta, records, errors)
+    validate_scan_discovery(meta, records, errors, failures)
     return len(records)
 
 
@@ -949,6 +1030,8 @@ def main():
     papers = read_array(ROOT / 'data/papers.json', errors)
     validate_papers(papers, errors, url_check=public_https_error)
     validate_resources(records, errors)
+    for warning in evidence_pin_warnings(records):
+        print(f'Warning: {warning}', file=sys.stderr)
     validate_benchmarks(benchmarks, errors)
     try:
         validate_case_coverage(read_case_coverage(ROOT), records, papers, errors,

@@ -10,7 +10,7 @@
 - [WerWolv/ImHex](https://github.com/WerWolv/ImHex) — 🔍 面向逆向工程师、程序员，以及凌晨 3 点工作时仍爱护视力的人士的十六进制编辑器。 **[55,252 星标]** · 精选：[ImHex](https://awesomerea.org/zh/resources/imhex/)
 - [radareorg/radare2](https://github.com/radareorg/radare2) — 类 UNIX 的逆向工程框架和命令行工具集。 **[25,054 星标]** · 精选：[radare2](https://awesomerea.org/zh/resources/radare2/)
 - [rizinorg/cutter](https://github.com/rizinorg/cutter) — 由 rizin 驱动的自由开源逆向工程平台。 **[20,030 星标]** · 精选：[Cutter](https://awesomerea.org/zh/resources/cutter/)
-- [mytechnotalent/Reverse-Engineering](https://github.com/mytechnotalent/Reverse-Engineering) — 免费的全面逆向工程教程，涵盖 x86、x64、32 位/64 位 ARM、8 位 AVR 和 32 位 RISC-V 架构。 **[14,719 星标]**
+- [mytechnotalent/Reverse-Engineering](https://github.com/mytechnotalent/Reverse-Engineering) — 免费的全面逆向工程教程，涵盖 x86、x64、32 位/64 位 ARM、8 位 AVR 和 32 位 RISC-V 架构。 **[14,719 星标]** · 精选：[逆向工程教程（mytechnotalent）](https://awesomerea.org/zh/resources/mytechnotalent-reverse-engineering/)
 - [mrexodia/ida-pro-mcp](https://github.com/mrexodia/ida-pro-mcp) — 通过 MCP 将 IDA Pro 与语言模型连接起来的 AI 逆向工程助手。 **[12,922 星标]** · 精选：[IDA Pro MCP（mrexodia）](https://awesomerea.org/zh/resources/ida-pro-mcp-community/)
 - [horsicq/Detect-It-Easy](https://github.com/horsicq/Detect-It-Easy) — 用于识别文件类型的程序，支持 Windows、Linux 和 macOS。 **[11,732 星标]** · 精选：[Detect It Easy](https://awesomerea.org/zh/resources/detect-it-easy/)
 - [LaurieWired/GhidraMCP](https://github.com/LaurieWired/GhidraMCP) — Ghidra 的 MCP 服务器。 **[11,297 星标]** · 精选：[GhidraMCP](https://awesomerea.org/zh/resources/ghidramcp/)
@@ -29,7 +29,7 @@
 - [zrax/pycdc](https://github.com/zrax/pycdc) — 以 C++ 编写的 Python 字节码反汇编器与反编译器。 **[4,651 星标]** · 精选：[Decompyle++（pycdc）Python 字节码反编译器](https://awesomerea.org/zh/resources/pycdc/)
 - [extremecoders-re/pyinstxtractor](https://github.com/extremecoders-re/pyinstxtractor) — PyInstaller 提取工具。 **[4,505 星标]** · 精选：[PyInstaller Extractor（pyinstxtractor）PyInstaller 程序提取工具](https://awesomerea.org/zh/resources/pyinstxtractor/)
 - [JonathanSalwan/ROPgadget](https://github.com/JonathanSalwan/ROPgadget) — 在二进制文件中搜索 gadget，方便进行 ROP 漏洞利用。ROPgadget 支持 x86、x64、ARM、ARM64、PowerPC、SPARC、MIPS、RISC-V 64 和 RISC-V Compressed 架构上的 ELF、PE 与 Mach-O 格式。 **[4,498 星标]**
-- [orhun/binsider](https://github.com/orhun/binsider) — 像高手一样分析 ELF 二进制文件 😼🕵️‍♂️。 **[4,481 星标]**
+- [orhun/binsider](https://github.com/orhun/binsider) — 像高手一样分析 ELF 二进制文件 😼🕵️‍♂️。 **[4,481 星标]** · 精选：[binsider ELF 二进制分析终端界面](https://awesomerea.org/zh/resources/binsider/)
 - [joxeankoret/diaphora](https://github.com/joxeankoret/diaphora) — Diaphora：最先进的自由开源程序差异比较工具。 **[4,428 星标]** · 精选：[Diaphora](https://awesomerea.org/zh/resources/diaphora/)
 - [zyantific/zydis](https://github.com/zyantific/zydis) — 快速、轻量的 x86/x86-64 反汇编与代码生成库。 **[4,393 星标]** · 精选：[Zydis x86 反汇编与代码生成库](https://awesomerea.org/zh/resources/zydis/)
 - [JonathanSalwan/Triton](https://github.com/JonathanSalwan/Triton) — Triton 是动态二进制分析库。可用它构建程序分析工具、自动化逆向工程、执行软件验证或模拟代码运行。 **[4,332 星标]**
@@ -37,6 +37,7 @@
 - [mandiant/flare-floss](https://github.com/mandiant/flare-floss) — FLARE 混淆字符串求解器：自动提取恶意软件中的混淆字符串。 **[4,189 星标]** · 精选：[FLOSS 混淆字符串提取工具](https://awesomerea.org/zh/resources/flare-floss/)
 - [cea-sec/miasm](https://github.com/cea-sec/miasm) — Python 逆向工程框架。 **[3,992 星标]**
 - [rizinorg/rizin](https://github.com/rizinorg/rizin) — 类 UNIX 的逆向工程框架和命令行工具集。 **[3,972 星标]** · 精选：[Rizin 逆向工程框架](https://awesomerea.org/zh/resources/rizin/)
+- [icedland/iced](https://github.com/icedland/iced) — 极速且准确的 x86/x64 反汇编器、汇编器、解码器和编码器，支持 Rust、.NET、Java、Python 和 Lua。 **[3,592 星标]** · 精选：[iced x86 指令解码与汇编库](https://awesomerea.org/zh/resources/iced/)
 - [joernio/joern](https://github.com/joernio/joern) — 基于代码属性图的开源代码分析平台，支持 C/C++/Java/二进制文件/JavaScript/Python/Kotlin。Discord：https<span>:</span>//discord.gg/vv4MH284Hc **[3,576 星标]**
 - [JusticeRage/Gepetto](https://github.com/JusticeRage/Gepetto) — 通过查询语言模型来加速逆向工程的 IDA 插件。 **[3,487 星标]** · 精选：[Gepetto：调用大模型辅助逆向的 IDA 插件](https://awesomerea.org/zh/resources/gepetto/)
 - [ljagiello/ctf-skills](https://github.com/ljagiello/ctf-skills) — 用于解决 CTF 挑战的智能体技能，涵盖 Web 漏洞利用、二进制 pwn、密码学、逆向工程、取证、OSINT 等。 **[3,459 星标]**
@@ -46,9 +47,9 @@
 - [uxmal/reko](https://github.com/uxmal/reko) — Reko 是一款二进制反编译器。 **[2,617 星标]** · 精选：[Reko 通用反编译器](https://awesomerea.org/zh/resources/reko/)
 - [BinaryAnalysisPlatform/bap](https://github.com/BinaryAnalysisPlatform/bap) — 二进制分析平台。 **[2,262 星标]** · 精选：[BAP 二进制分析平台](https://awesomerea.org/zh/resources/bap/)
 - [Dryxio/reagent](https://github.com/Dryxio/reagent) — 利用 AI 从已编译程序中重建并验证 C/C++ 代码。 **[2,100 星标]**
-- [KasperskyLab/hrtng](https://github.com/KasperskyLab/hrtng) — 功能丰富的 IDA Pro 插件，支持解密、去混淆、打补丁、库代码识别及各种伪代码转换。 **[1,949 星标]**
+- [KasperskyLab/hrtng](https://github.com/KasperskyLab/hrtng) — 功能丰富的 IDA Pro 插件，支持解密、去混淆、打补丁、库代码识别及各种伪代码转换。 **[1,949 星标]** · 精选：[hrtng IDA 反编译增强插件](https://awesomerea.org/zh/resources/hrtng/)
 - [yetone/native-feel-skill](https://github.com/yetone/native-feel-skill) — 用于设计具有原生体验的跨平台桌面应用的智能体技能，提炼自对 Raycast 2.0 的深入研究与 Raycast Beta.app 的逆向分析。包含八项架构原则、四层架构、WebKit/WebView2 生存指南和 75 项发布审核清单。 **[1,931 星标]**
-- [airbus-seclab/bincat](https://github.com/airbus-seclab/bincat) — 集成 IDA 的二进制代码静态分析器，可执行值分析、污点分析、类型重建、释放后使用及重复释放检测。 **[1,880 星标]**
+- [airbus-seclab/bincat](https://github.com/airbus-seclab/bincat) — 集成 IDA 的二进制代码静态分析器，可执行值分析、污点分析、类型重建、释放后使用及重复释放检测。 **[1,880 星标]** · 精选：[BinCAT 二进制静态分析工具包](https://awesomerea.org/zh/resources/bincat/)
 - [redasm-dev/redasm](https://github.com/redasm-dev/redasm) — 开源反汇编器。 **[1,822 星标]**
 - [cmu-sei/pharos](https://github.com/cmu-sei/pharos) — 面向二进制程序的自动化静态分析工具。 **[1,739 星标]**
 - [KeenSecurityLab/BinAbsInspector](https://github.com/KeenSecurityLab/BinAbsInspector) — BinAbsInspector：二进制文件漏洞扫描器。 **[1,681 星标]**
@@ -105,7 +106,6 @@
 - [danigargu/heap-viewer](https://github.com/danigargu/heap-viewer) — 用于检查 glibc 堆的 IDA Pro 插件，专注于漏洞利用开发。 **[773 星标]**
 - [fay59/fcd](https://github.com/fay59/fcd) — 支持优化的反编译器。 **[773 星标]**
 - [symgraph/GhidrAssist](https://github.com/symgraph/GhidrAssist) — 为 Ghidra 提供 AI 逆向工程辅助的 LLM 扩展。 **[760 星标]**
-- [airbus-seclab/cpu\_rec](https://github.com/airbus-seclab/cpu_rec) — 识别任意二进制文件中的 CPU 指令。 **[757 星标]**
 - [binsync/binsync](https://github.com/binsync/binsync) — 基于 Git 的逆向工程插件，支持跨反编译器协作。 **[752 星标]**
 - [HexHive/retrowrite](https://github.com/HexHive/retrowrite) — RetroWrite：通过二进制重写将编译器处理流程应用于现有程序。 **[751 星标]**
 - [radareorg/awesome-radare2](https://github.com/radareorg/awesome-radare2) — 精选基于 Radare2 的优质项目、文章及其他资料列表。 **[739 星标]**

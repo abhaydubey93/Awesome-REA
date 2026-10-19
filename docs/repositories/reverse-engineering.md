@@ -2,7 +2,7 @@
 
 [All categories](README.md) · [简体中文](reverse-engineering.zh-CN.md)
 
-**610 repositories** · 2026-10-16 UTC
+**607 repositories** · 2026-10-16 UTC
 
 These are automatically discovered projects, not individually curated or tested recommendations. Categories derive from metadata and descriptions from upstream text. Stars are collection-time snapshots, not live rankings. Lines marked “Curated” or “Paper” link to the reviewed catalog entry or paper whose source is that exact repository.
 
@@ -48,7 +48,6 @@ These are automatically discovered projects, not individually curated or tested 
 - [zhizhuodemao/js-reverse-mcp](https://github.com/zhizhuodemao/js-reverse-mcp) — An AI-agent-first MCP server for JavaScript reverse engineering: headed Chrome debugging, breakpoints, network/WebSocket analysis, Patchright anti-detection, and optional CloakBrowser. **[2,961 stars]**
 - [ivRodriguezCA/RE-iOS-Apps](https://github.com/ivRodriguezCA/RE-iOS-Apps) — A completely free, open source and online course about Reverse Engineering iOS Applications. **[2,917 stars]**
 - [wzhudev/reverse-linear-sync-engine](https://github.com/wzhudev/reverse-linear-sync-engine) — A reverse engineering of Linear's sync engine. **[2,865 stars]**
-- [Impact-I/reFlutter](https://github.com/Impact-I/reFlutter) — Flutter Reverse Engineering Framework **[2,775 stars]**
 - [onethawt/reverseengineering-reading-list](https://github.com/onethawt/reverseengineering-reading-list) — A list of Reverse Engineering articles, books, and papers **[2,750 stars]**
 - [user1342/Awesome-Android-Reverse-Engineering](https://github.com/user1342/Awesome-Android-Reverse-Engineering) — A curated list of awesome Android Reverse Engineering training, resources, and tools. **[2,739 stars]**
 - [rockbruno/swiftshield](https://github.com/rockbruno/swiftshield) — 🔒 Swift Obfuscator that protects iOS apps against reverse engineering attacks. **[2,548 stars]**
@@ -57,7 +56,6 @@ These are automatically discovered projects, not individually curated or tested 
 - [dgiese/dustcloud](https://github.com/dgiese/dustcloud) — Xiaomi Smart Home Device Reverse Engineering and Hacking **[2,282 stars]**
 - [zeldaret/botw](https://github.com/zeldaret/botw) — Decompilation of The Legend of Zelda: Breath of the Wild (Switch 1.5.0) **[2,236 stars]** · Curated: [Breath of the Wild: per-function matching decompilation of the Switch executable](https://awesomerea.org/resources/botw-decomp-case/)
 - [michalmalik/linux-re-101](https://github.com/michalmalik/linux-re-101) — A collection of resources for linux reverse engineering **[2,083 stars]**
-- [ainfosec/FISSURE](https://github.com/ainfosec/FISSURE) — The RF and reverse engineering framework for everyone. Follow and ★ to show your support! **[2,069 stars]**
 - [nmikhailov/Validity90](https://github.com/nmikhailov/Validity90) — Reverse engineering of Validity/Synaptics 138a:0090, 138a:0094, 138a:0097, 06cb:0081, 06cb:009a fingerprint readers protocol **[1,879 stars]**
 - [rootkit-io/awesome-malware-development](https://github.com/rootkit-io/awesome-malware-development) — Curated resources for malware dev, reverse engineering, and defensive security research. **[1,855 stars]**
 - [KEV0143/Direct-memory-access-CS2-DMA](https://github.com/KEV0143/Direct-memory-access-CS2-DMA) — Low-level Direct Memory Access (DMA) framework for CS2, designed for memory acquisition, entity-state parsing, synchronization, and PCIe/reverse-engineering research. **[1,851 stars]**
@@ -65,7 +63,6 @@ These are automatically discovered projects, not individually curated or tested 
 - [xishandong/crawlProject](https://github.com/xishandong/crawlProject) — A collection of Python web-scraping projects, from the basics to JavaScript reverse engineering, with sections on fundamentals, automation, advanced techniques, and CAPTCHAs. Examples cover major websites including Xiaohongshu, Douyin, Weibo, Instagram, boss job, JD, and more, teaching web scraping, anti-scraping, automation, and CAPTCHAs. **[1,797 stars]**
 - [zeldaret/mm](https://github.com/zeldaret/mm) — Decompilation of The Legend of Zelda: Majora's Mask **[1,743 stars]** · Curated: [Majora’s Mask: matching US N64 decompilation](https://awesomerea.org/resources/zelda-mm-decomp-case/)
 - [michalmalik/osx-re-101](https://github.com/michalmalik/osx-re-101) — A collection of resources for OSX/iOS reverse engineering. **[1,732 stars]**
-- [marin-m/pbtk](https://github.com/marin-m/pbtk) — A toolset for reverse engineering and fuzzing Protobuf-based apps **[1,691 stars]**
 - [0xdea/frida-scripts](https://github.com/0xdea/frida-scripts) — A collection of my Frida instrumentation scripts to reverse engineer mobile apps and more. **[1,672 stars]**
 - [pret/pokefirered](https://github.com/pret/pokefirered) — Decompilation of Pokémon FireRed/LeafGreen **[1,664 stars]** · Curated: [Pokémon FireRed and LeafGreen: a matching Game Boy Advance decompilation](https://awesomerea.org/resources/pokemon-firered-leafgreen-decomp-case/)
 - [scadastrangelove/awesome-ai-security-tools](https://github.com/scadastrangelove/awesome-ai-security-tools) — A curated list of public-source, research, and commercial tools for AI security and AI-assisted cybersecurity — autotriage, agent security, AI/ML supply chain, pentest agents, AI SAST, LLM-driven fuzzing, threat intelligence, SOC/SIEM triage, reverse engineering, LLM red-teaming, and more. **[1,658 stars]**

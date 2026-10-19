@@ -2,7 +2,7 @@
 
 [全部分类](README.zh-CN.md) · [English](firmware.md)
 
-**210 个仓库** · 2026-10-16 UTC
+**211 个仓库** · 2026-10-16 UTC
 
 这些是自动发现的项目，不是逐项精选或运行验证后的推荐。分类来自元数据；简介由上游描述翻译而来。星标为采集时快照，不是实时排名。标有“精选”或“论文”的行指向以同一仓库为来源的已复核目录条目或论文。
 
@@ -15,13 +15,14 @@
 - [redballoonsecurity/ofrak](https://github.com/redballoonsecurity/ofrak) — OFRAK：解包、修改并重新打包二进制文件。 **[2,080 星标]** · 精选：[OFRAK](https://awesomerea.org/zh/resources/ofrak/)
 - [marin-m/vmlinux-to-elf](https://github.com/marin-m/vmlinux-to-elf) — 通过提取内核符号表（kallsyms），从原始内核恢复可完整分析的 .ELF 文件的工具。 **[1,832 星标]** · 精选：[vmlinux-to-elf 内核符号恢复工具](https://awesomerea.org/zh/resources/vmlinux-to-elf/)
 - [fkie-cad/FACT\_core](https://github.com/fkie-cad/FACT_core) — 固件分析与比较工具。 **[1,468 星标]** · 精选：[固件分析与比较工具（FACT）](https://awesomerea.org/zh/resources/fact-core/)
-- [platomav/MEAnalyzer](https://github.com/platomav/MEAnalyzer) — Intel Engine 与图形固件分析工具 **[1,335 星标]**
+- [platomav/MEAnalyzer](https://github.com/platomav/MEAnalyzer) — Intel Engine 与图形固件分析工具 **[1,335 星标]** · 精选：[ME Analyzer Intel 引擎与图形固件分析工具](https://awesomerea.org/zh/resources/me-analyzer/)
 - [REhints/efiXplorer](https://github.com/REhints/efiXplorer) — 用于自动化 UEFI 固件分析与逆向工程的 IDA 插件和加载器。 **[1,138 星标]** · 精选：[efiXplorer UEFI 固件分析 IDA 插件](https://awesomerea.org/zh/resources/efixplorer/)
 - [Anime4000/RTL960x](https://github.com/Anime4000/RTL960x) — 破解和逆向分析基于 RTL960x 的 xPON ONT，使其适配你的 OLT。 **[1,053 星标]**
 - [gcarmix/HexWalk](https://github.com/gcarmix/HexWalk) — 兼容 Linux、Windows 和 macOS 的十六进制查看器、编辑器与分析器。 **[1,027 星标]**
 - [pr0v3rbs/FirmAE](https://github.com/pr0v3rbs/FirmAE) — 面向动态分析的物联网固件大规模模拟执行研究。 **[949 星标]** · 论文：[FirmAE：面向动态分析的物联网固件大规模仿真](https://awesomerea.org/zh/papers/paper-firmae/) · 精选：[FirmAE](https://awesomerea.org/zh/resources/firmae/)
 - [FirmWire/FirmWire](https://github.com/FirmWire/FirmWire) — FirmWire 是一个全系统基带固件仿真平台，用于对智能手机基带固件进行模糊测试、调试和根因分析 **[891 星标]**
 - [sigrokproject/pulseview](https://github.com/sigrokproject/pulseview) — 官方仓库 git<span>:</span>//sigrok.org/pulseview 的只读镜像。欢迎提交拉取请求。请在 sigrok.org/bugzilla 提交缺陷报告。 **[805 星标]** · 精选：[PulseView 信号与协议分析工具](https://awesomerea.org/zh/resources/pulseview/)
+- [airbus-seclab/cpu\_rec](https://github.com/airbus-seclab/cpu_rec) — 识别任意二进制文件中的 CPU 指令。 **[757 星标]** · 精选：[cpu\_rec CPU 指令集统计识别工具](https://awesomerea.org/zh/resources/cpu-rec/)
 - [avatartwo/avatar2](https://github.com/avatartwo/avatar2) — avatar² 的 Python 核心。 **[579 星标]** · 精选：[avatar² 多目标固件动态分析编排框架](https://awesomerea.org/zh/resources/avatar2/)
 - [al3xtjames/ghidra-firmware-utils](https://github.com/al3xtjames/ghidra-firmware-utils) — 用于分析 PC 固件的 Ghidra 实用工具。 **[506 星标]** · 精选：[Ghidra 固件工具集](https://awesomerea.org/zh/resources/ghidra-firmware-utils/)
 - [scriptingxss/owasp-fstm](https://github.com/scriptingxss/owasp-fstm) — 固件安全测试方法（FSTM）包含九个阶段，专为帮助安全研究人员、软件开发人员、顾问及信息安全专业人员开展固件安全评估而设计。 **[502 星标]**

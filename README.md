@@ -11,7 +11,7 @@ An independent collection of tools, case studies and research for websites, game
 <a href="https://awesomerea.org/"><img src="assets/readme-banner.svg" alt="Awesome Reverse Engineering Anything — tools, cases and papers across six reverse-engineering domains" width="960"></a>
 
 <!-- BEGIN GENERATED BADGES -->
-[![resources: 421](https://img.shields.io/badge/resources-421-53309C?style=flat-square&labelColor=303447)](https://awesomerea.org/resources/) [![cases: 186](https://img.shields.io/badge/cases-186-53309C?style=flat-square&labelColor=303447)](https://awesomerea.org/cases/) [![papers: 83](https://img.shields.io/badge/papers-83-53309C?style=flat-square&labelColor=303447)](https://awesomerea.org/papers/) [![Catalog checks](https://github.com/reacher-z/Awesome-REA/actions/workflows/validate.yml/badge.svg?branch=main)](https://github.com/reacher-z/Awesome-REA/actions/workflows/validate.yml) [![license: MIT](https://img.shields.io/badge/license-MIT-606779?style=flat-square&labelColor=303447)](LICENSE) [![website: awesomerea.org](https://img.shields.io/badge/website-awesomerea.org-6235B5?style=flat-square&labelColor=303447)](https://awesomerea.org/)
+[![resources: 440](https://img.shields.io/badge/resources-440-53309C?style=flat-square&labelColor=303447)](https://awesomerea.org/resources/) [![cases: 186](https://img.shields.io/badge/cases-186-53309C?style=flat-square&labelColor=303447)](https://awesomerea.org/cases/) [![papers: 83](https://img.shields.io/badge/papers-83-53309C?style=flat-square&labelColor=303447)](https://awesomerea.org/papers/) [![Catalog checks](https://github.com/reacher-z/Awesome-REA/actions/workflows/validate.yml/badge.svg?branch=main)](https://github.com/reacher-z/Awesome-REA/actions/workflows/validate.yml) [![license: MIT](https://img.shields.io/badge/license-MIT-606779?style=flat-square&labelColor=303447)](LICENSE) [![website: awesomerea.org](https://img.shields.io/badge/website-awesomerea.org-6235B5?style=flat-square&labelColor=303447)](https://awesomerea.org/)
 <!-- END GENERATED BADGES -->
 
 **[Search & filter](https://awesomerea.org/)** · **[Browse cases](https://awesomerea.org/cases/)** · **[Research papers](https://awesomerea.org/papers/)** · **[HTML survey](https://awesomerea.org/survey/)**
@@ -23,12 +23,12 @@ An independent collection of tools, case studies and research for websites, game
 <!-- BEGIN GENERATED CONTENTS -->
 **Tools and cases by target**
 
-- [Website](#website) (25) · [Game](#game) (177) · [App](#app) (60)
-- [Native Binary](#native-binary) (51) · [Firmware and Hardware](#firmware) (19) · [Protocol](#protocol) (15)
+- [Website](#website) (25) · [Game](#game) (177) · [App](#app) (67)
+- [Native Binary](#native-binary) (55) · [Firmware and Hardware](#firmware) (21) · [Protocol](#protocol) (18)
 
 **Research and workflows**
 
-- [Papers](#papers) (83) · [Agents and MCP](#agents-and-mcp) (38) · [References and Learning](#references-and-learning) (27)
+- [Papers](#papers) (83) · [Agents and MCP](#agents-and-mcp) (40) · [References and Learning](#references-and-learning) (28)
 
 **More ways to browse**
 
@@ -1656,6 +1656,48 @@ REA labels refer to the separate [upstream CLI and MCP project](https://github.c
 
   Tool · Android · [Requirements & evidence](https://awesomerea.org/resources/medusa-framework/)
 
+- [**Android Unpinner**](https://github.com/mitmproxy/android-unpinner)
+
+  Tool from the mitmproxy project that removes certificate pinning from an Android APK you own or are authorized to test, without a rooted device. It marks the app debuggable, touching only AndroidManifest.xml, and injects a Frida Gadget over ADB so an interception proxy can read the app's traffic, reusing HTTP Toolkit's unpinning script. It bundles the Android SDK helpers it needs and can also handle split APKs delivered as XAPK.
+
+  Tool · Android · Also: Protocol · [Requirements & evidence](https://awesomerea.org/resources/android-unpinner/)
+
+- [**apk-mitm**](https://github.com/niklashigi/apk-mitm)
+
+  Command-line tool that prepares an Android APK you own or are authorized to test for HTTPS traffic inspection. It decodes the package with Apktool, adjusts the network security configuration to trust user-added certificates, disables certificate pinning, then re-encodes and signs the patched APK, so a proxy can read the app's traffic without a rooted device. App bundles supplied as .xapk or .apks are also supported.
+
+  Tool · Android · Also: Protocol · [Requirements & evidence](https://awesomerea.org/resources/apk-mitm/)
+
+- [**Frida Mobile Interception Scripts**](https://github.com/httptoolkit/frida-interception-and-unpinning)
+
+  A set of Frida scripts from HTTP Toolkit for inspecting a mobile app's HTTPS traffic while analysing apps you own or are authorized to test. Injected into a running Android or iOS app, they redirect its connections to an interception proxy, add a user-supplied CA certificate to the trust stores, and disable certificate pinning and transparency checks so the proxy can read the traffic. Individual scripts can also be used on their own to hook specific behaviour.
+
+  Tool · Android · Also: Protocol · [Requirements & evidence](https://awesomerea.org/resources/frida-interception-and-unpinning/)
+
+- [**reFlutter**](https://github.com/Impact-I/reFlutter)
+
+  Flutter reverse-engineering framework for apps the analyst is authorized to inspect. It repacks an app with a prebuilt patched Dart engine, or instruments the app's own engine at runtime, to emit a JSONL dump of every function's name, class, library and code offset into the Dart instructions image for Frida or IDA/Ghidra work. It can also route the app's HTTPS traffic through an inspection proxy with Flutter certificate pinning disabled.
+
+  Tool · Android · Also: Protocol · [Requirements & evidence](https://awesomerea.org/resources/reflutter/)
+
+- [**ddc**](https://github.com/ejfkdev/ddc)
+
+  Rust decompiler that turns Android DEX bytecode, versions 035 to 041, from APKs, multi-dex apps and XAPK/APKS/APKM containers into Java, folding lambdas and string concatenation back into Java syntax and giving locals jadx-style names. By default every file also goes through a source-level cleanup pass, described as semantics-preserving, that inlines copy chains, recovers ternaries and for-each loops and drops dead stores; --fast skips it. Alongside full decompilation, 15 query subcommands return app and manifest information, resources, strings, cross-references, class hierarchies, disassembly or single classes and methods on demand, and the same queries are served over REST and MCP.
+
+  Tool · Android · [Requirements & evidence](https://awesomerea.org/resources/ddc/)
+
+- [**Simplify**](https://github.com/CalebFenton/simplify)
+
+  Generic Android deobfuscator built on smalivm, a sandboxed Dalvik virtual machine that executes each method and records every possible register and class value along all execution paths, taking both branches when a value such as file or network input is unknown. Simplify then repeatedly applies constant propagation, dead-code removal, unreflection and peephole optimizations to the APK or DEX, which can decrypt strings and remove reflection while keeping behaviour the same; it does not rename classes or methods. smalivm can also be used as a library, and the last release adds sdbg, a step-through Smali debugger built on it.
+
+  Tool · Android · [Requirements & evidence](https://awesomerea.org/resources/simplify-android-deobfuscator/)
+
+- [**GDA (GJoy Dex Analyzer)**](https://github.com/charles2gan/GDA-android-reversing-Tool)
+
+  Windows-native Dalvik decompiler and Android analysis workbench written in C++ that opens APK, DEX, ODEX, OAT, JAR, AAR and class files without installation. Besides Java and Smali views with cross-references, renaming and comments, it identifies packers, deobfuscates and decrypts strings, tracks data flow and taint, solves paths, runs rule-based malicious-behaviour, vulnerability and privacy-leak scans, and can dump device memory or hook methods with Frida. Shell and server CLI modes, Python and Java scripting and a sample malware-triage agent skill expose the same analysis to scripts and agents.
+
+  Tool · Android · [Requirements & evidence](https://awesomerea.org/resources/gda-android-decompiler/)
+
 <a id="native-binary"></a>
 ### Native Binary
 
@@ -1971,6 +2013,30 @@ REA labels refer to the separate [upstream CLI and MCP project](https://github.c
 
   Tool · Also: App · [Requirements & evidence](https://awesomerea.org/resources/qbdi/)
 
+- [**binsider**](https://github.com/orhun/binsider)
+
+  Terminal user interface for inspecting ELF binaries. It shows file information and linked shared libraries in the manner of stat and ldd, browses ELF headers, notes, sections, segments, symbols, dynamic symbols and relocations much like readelf, extracts strings with an adjustable minimum length, and offers a searchable hexdump view. Optional dynamic analysis runs the binary and traces its system calls like strace, with a summary of time and call counts per system call; the interface can also be embedded as a Rust library in Ratatui applications.
+
+  Tool · [Requirements & evidence](https://awesomerea.org/resources/binsider/)
+
+- [**iced**](https://github.com/icedland/iced)
+
+  x86 instruction library for 16-, 32- and 64-bit code that decodes, formats, assembles and encodes instructions, with masm, nasm, GNU AT&amp;T and Intel XED output syntaxes. Its instruction-info API reports the registers, memory operands and RFLAGS bits an instruction reads or writes, its CPUID feature flags and control-flow type, and the encoder can re-encode decoded instructions at any address. Rust, C# (.NET) and Java implementations live in one repository, with Python, JavaScript (WebAssembly) and Lua bindings built on the Rust crate.
+
+  Tool · Library · [Requirements & evidence](https://awesomerea.org/resources/iced/)
+
+- [**hrtng**](https://github.com/KasperskyLab/hrtng)
+
+  IDA plugin published by Kaspersky that extends the Hex-Rays decompiler with tools its author collected for reverse-engineering work, including malware analysis. It decrypts strings, data and constants with built-in ciphers or in bulk through IDA's Appcall debugger feature, resolves API-name hashes, unflattens control flow and forces decompilation of obfuscated code, and recognizes library code through microcode signatures, inlined-function detection and PAT files built from an IDA database. Pseudocode helpers cover automatic renaming, retyping and enum substitution, structure creation, virtual and indirect call navigation, and patching.
+
+  Tool · [Requirements & evidence](https://awesomerea.org/resources/hrtng/)
+
+- [**BinCAT**](https://github.com/airbus-seclab/bincat)
+
+  Static binary code analysis toolkit designed for reverse engineers. Starting from a chosen address and initial state, it computes register and memory values, taint and reconstructed types, with forward and backward analysis and heap use-after-free and double-free detection; bits it cannot determine are shown as unknown. It is driven from an IDA plugin, where analysts can override values or taint, skip functions or replace instructions with NOPs before re-running, or from Python and an .ini configuration for automation.
+
+  Tool · [Requirements & evidence](https://awesomerea.org/resources/bincat/)
+
 <a id="firmware"></a>
 ### Firmware and Hardware
 
@@ -2094,6 +2160,18 @@ REA labels refer to the separate [upstream CLI and MCP project](https://github.c
 
   Tool · Also: Protocol · [Requirements & evidence](https://awesomerea.org/resources/sony-pmca-re/)
 
+- [**cpu\_rec**](https://github.com/airbus-seclab/cpu_rec)
+
+  Statistically recognize the CPU instruction set in an arbitrary binary file, such as an unknown firmware image, by comparing Markov-chain byte statistics with a default corpus covering dozens of architectures, from 6502 and 8051 to ARM, MIPS, PowerPC, RISC-V, x86-64 and WebAssembly. It reports a match for the whole file, then the largest chunk that matches one architecture, and shows entropy so that encrypted or compressed regions can be discounted. It runs standalone, as a Python function or as a binwalk module.
+
+  Tool · Also: Binary · [Requirements & evidence](https://awesomerea.org/resources/cpu-rec/)
+
+- [**ME Analyzer**](https://github.com/platomav/MEAnalyzer)
+
+  Parse Intel Management Engine (CS)ME, TXE and SPS firmware, Graphics System Controller firmware and their independent PMC, PCHC, PHY and option-ROM images to report family, version, release, SKU, platform, size and health status. Research options print flash partition, BPDT/IFWI and CSE layout tables, validate RSA signatures and checksums, and unpack the supported CSE and GSC code and file systems. A bundled database identifies known images and reports those not yet listed in the community firmware repositories.
+
+  Tool · [Requirements & evidence](https://awesomerea.org/resources/me-analyzer/)
+
 <a id="protocol"></a>
 ### Protocol
 
@@ -2192,6 +2270,24 @@ REA labels refer to the separate [upstream CLI and MCP project](https://github.c
   comma.ai's repository of DBC files describing the CAN messages and signals of many car makes, with a Python library that parses and builds CAN messages from those definitions; its porting guide has contributors reverse engineer new messages from recorded drives in the cabana tool. Per-brand car ports built on it parse vehicle state, identify models from ECU firmware versions and generate openpilot's steering, gas and brake messages, while safety code for comma's panda interface restricts which messages can be sent.
 
   Tool · [Requirements & evidence](https://awesomerea.org/resources/opendbc/)
+
+- [**FISSURE**](https://github.com/ainfosec/FISSURE)
+
+  GNU Radio-based RF framework that carries a signal from survey and detection through IQ capture, inspection, conditioning, feature extraction and classification into a protocol discovery workflow. Its demodulation workspace estimates symbol rates for OOK/ASK and binary FSK recordings, and the bitstream and framing stage applies Manchester or differential decoding, sync-pattern and CRC evidence and repeated-message detection to propose message boundaries. A Qt dashboard coordinates local or remote SDR sensor nodes, a library keeps protocol and packet definitions, dissectors and archived recordings, and plugins add inspection modules such as radar pulse analysis.
+
+  Tool · [Requirements & evidence](https://awesomerea.org/resources/fissure/)
+
+- [**friTap**](https://github.com/fkie-cad/friTap)
+
+  Frida-based tool that hooks TLS libraries such as OpenSSL, BoringSSL, NSS and GnuTLS inside a running process and writes NSS key logs and decrypted payloads as PCAP, so analysts can inspect an application's encrypted traffic in Wireshark. For stripped or statically linked libraries it accepts byte patterns or offsets and can scan for renamed libraries, or it can recover TLS secrets by scanning heap memory instead of hooking. A terminal UI, a Python API and a Wireshark extcap integration wrap the same capture.
+
+  Tool · Also: App · [Requirements & evidence](https://awesomerea.org/resources/fritap/)
+
+- [**pbtk**](https://github.com/marin-m/pbtk)
+
+  Recover Protobuf message definitions from compiled programs as readable .proto files. Extractors cover the Java runtimes in JAR, DEX and APK files (including ProGuard-obfuscated code), binaries that embed Protobuf reflection metadata, and web apps using the Protobuf-URL format. A GUI then binds a recovered message type to an HTTP endpoint, decodes hex-encoded captured samples into an editable field tree and resends edited messages, so analysts can relate each field to the response.
+
+  Tool · Also: App · [Requirements & evidence](https://awesomerea.org/resources/pbtk/)
 
 <a id="agents-and-mcp"></a>
 ### Agents and MCP
@@ -2428,6 +2524,18 @@ REA labels refer to the separate [upstream CLI and MCP project](https://github.c
 
   Integration · Independent agent · Targets: Binary · [Requirements & evidence](https://awesomerea.org/resources/kong-agentic-reverse-engineer/)
 
+- [**Co-op Anything**](https://github.com/cranebeaker/coop-anything)
+
+  Agent playbook, skill set and stdio MCP server for adding online or split-screen co-op to single-player games the players already have installed. Agents either revive an existing co-op mod or reverse engineer the game and engine to build one, test it with in-game bots and send their notes back, while the MCP server searches a directory of 223 co-op projects and 32 open gaps, detects a game’s engine from its install folder and records the executable’s identity. Its README and reverse-engineering skill pair it with REA for native code, and two game write-ups report observations made through REA’s Ghidra lane.
+
+  Integration · Community REA · Targets: Game · [Requirements & evidence](https://awesomerea.org/resources/coop-anything/)
+
+- [**DeepExtract (DeepExtractIDA)**](https://github.com/marcosd4h/DeepExtractIDA)
+
+  IDA Pro 9.x plugin and PowerShell batch extractor that turn Windows PE files into material AI coding agents can read: a per-binary SQLite database of PE metadata, signatures, disassembly, Hex-Rays pseudocode, cross-references, strings, stack frames, loops and dangerous API calls, plus optional grouped C++ and assembly files with per-function caller, callee and string headers and JSON indexes. It runs headless over directories, file lists or the modules of a running process, or interactively on the open IDA database, keeping the analyst’s renames and comments. The agent commands that work on this output come from the separate DeepExtractRuntime project.
+
+  Integration · Independent agent · Targets: Binary · [Requirements & evidence](https://awesomerea.org/resources/deepextract-ida/)
+
 <a id="related-collections"></a>
 ### Related Collections
 
@@ -2635,6 +2743,12 @@ REA labels refer to the separate [upstream CLI and MCP project](https://github.c
   JPCERT/CC’s 15 October 2026 blog post on the infrastructure behind a series of unauthorized-access incidents in Japan. It reports that the attackers used AI for known-vulnerability scanning and API attacks, and that attack servers held APKs, jadx- and Blutter-related files, APK-extraction directories and an SSRF test script used to probe app APIs. It is a defender’s account of observed attacker tooling with mitigation advice, not a published AI-assisted analysis method or reproducible workflow.
 
   Learning resource · Targets: App · [Requirements & evidence](https://awesomerea.org/resources/jpcert-apk-api-attack-infrastructure-report/)
+
+- [**Reverse Engineering (mytechnotalent)**](https://github.com/mytechnotalent/Reverse-Engineering)
+
+  A free, English lesson index by mytechnotalent that grows almost daily: 490 numbered lessons, most of which have learners write small programs and then debug and patch ("hack") them, across x86, x64, 32/64-bit ARM, RISC-V and AVR. Early courses start from number systems, registers, memory and the stack; later ones cover microcontroller firmware on Raspberry Pi Pico/Pico 2, STM32F401, ESP32-C3, ATmega328P and micro:bit boards, plus Windows, Go, Rust and WebAssembly programs. The README is a table of links; the lesson text lives in a GitBook and in the author's other repositories and PDF books.
+
+  Learning resource · Targets: Binary, Firmware · [Requirements & evidence](https://awesomerea.org/resources/mytechnotalent-reverse-engineering/)
 <!-- END GENERATED CATALOG -->
 
 <!-- BEGIN GENERATED PAPERS -->

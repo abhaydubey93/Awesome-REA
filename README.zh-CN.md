@@ -11,7 +11,7 @@
 <a href="https://awesomerea.org/zh/"><img src="assets/readme-banner.svg" alt="Awesome Reverse Engineering Anything — 覆盖六类逆向目标的工具、案例与论文" width="960"></a>
 
 <!-- BEGIN GENERATED BADGES -->
-[![精选资源: 421](https://img.shields.io/badge/%E7%B2%BE%E9%80%89%E8%B5%84%E6%BA%90-421-53309C?style=flat-square&labelColor=303447)](https://awesomerea.org/zh/resources/) [![案例: 186](https://img.shields.io/badge/%E6%A1%88%E4%BE%8B-186-53309C?style=flat-square&labelColor=303447)](https://awesomerea.org/zh/cases/) [![论文: 83](https://img.shields.io/badge/%E8%AE%BA%E6%96%87-83-53309C?style=flat-square&labelColor=303447)](https://awesomerea.org/zh/papers/) [![目录检查](https://github.com/reacher-z/Awesome-REA/actions/workflows/validate.yml/badge.svg?branch=main)](https://github.com/reacher-z/Awesome-REA/actions/workflows/validate.yml) [![许可: MIT](https://img.shields.io/badge/%E8%AE%B8%E5%8F%AF-MIT-606779?style=flat-square&labelColor=303447)](LICENSE) [![网站: awesomerea.org](https://img.shields.io/badge/%E7%BD%91%E7%AB%99-awesomerea.org-6235B5?style=flat-square&labelColor=303447)](https://awesomerea.org/zh/)
+[![精选资源: 440](https://img.shields.io/badge/%E7%B2%BE%E9%80%89%E8%B5%84%E6%BA%90-440-53309C?style=flat-square&labelColor=303447)](https://awesomerea.org/zh/resources/) [![案例: 186](https://img.shields.io/badge/%E6%A1%88%E4%BE%8B-186-53309C?style=flat-square&labelColor=303447)](https://awesomerea.org/zh/cases/) [![论文: 83](https://img.shields.io/badge/%E8%AE%BA%E6%96%87-83-53309C?style=flat-square&labelColor=303447)](https://awesomerea.org/zh/papers/) [![目录检查](https://github.com/reacher-z/Awesome-REA/actions/workflows/validate.yml/badge.svg?branch=main)](https://github.com/reacher-z/Awesome-REA/actions/workflows/validate.yml) [![许可: MIT](https://img.shields.io/badge/%E8%AE%B8%E5%8F%AF-MIT-606779?style=flat-square&labelColor=303447)](LICENSE) [![网站: awesomerea.org](https://img.shields.io/badge/%E7%BD%91%E7%AB%99-awesomerea.org-6235B5?style=flat-square&labelColor=303447)](https://awesomerea.org/zh/)
 <!-- END GENERATED BADGES -->
 
 **[搜索与筛选](https://awesomerea.org/zh/)** · **[浏览案例](https://awesomerea.org/zh/cases/)** · **[研究论文](https://awesomerea.org/zh/papers/)** · **[HTML 综述](https://awesomerea.org/zh/survey/)**
@@ -23,12 +23,12 @@
 <!-- BEGIN GENERATED CONTENTS -->
 **按目标找工具与案例**
 
-- [网站](#website) (25) · [游戏](#game) (177) · [应用](#app) (60)
-- [原生二进制](#native-binary) (51) · [固件与硬件](#firmware) (19) · [协议](#protocol) (15)
+- [网站](#website) (25) · [游戏](#game) (177) · [应用](#app) (67)
+- [原生二进制](#native-binary) (55) · [固件与硬件](#firmware) (21) · [协议](#protocol) (18)
 
 **论文与工作流**
 
-- [论文](#papers) (83) · [智能体与 MCP](#agents-and-mcp) (38) · [文档与学习资源](#references-and-learning) (27)
+- [论文](#papers) (83) · [智能体与 MCP](#agents-and-mcp) (40) · [文档与学习资源](#references-and-learning) (28)
 
 **更多浏览方式**
 
@@ -1657,6 +1657,48 @@ REA 标签指向单独维护的[上游 CLI 与 MCP 项目](https://github.com/mo
 
   工具 · Android · [使用条件与证据](https://awesomerea.org/zh/resources/medusa-framework/)
 
+- [**Android Unpinner**](https://github.com/mitmproxy/android-unpinner)
+
+  来自 mitmproxy 项目的工具，可在无需 root 的情况下移除使用者拥有或有权测试的 Android APK 的证书固定。它将应用标记为可调试（仅改动 AndroidManifest.xml），并通过 ADB 注入 Frida Gadget，复用 HTTP Toolkit 的解固定脚本，使检查代理能够读取应用流量。工具自带所需的 Android SDK 辅助程序，并可处理以 XAPK 形式提供的分包。
+
+  工具 · Android · 也适用：协议 · [使用条件与证据](https://awesomerea.org/zh/resources/android-unpinner/)
+
+- [**apk-mitm**](https://github.com/niklashigi/apk-mitm)
+
+  命令行工具，为使用者拥有或有权测试的 Android APK 准备 HTTPS 流量检查。它用 Apktool 解码安装包、调整网络安全配置以信任用户添加的证书、关闭证书固定，再重新编码并签名修补后的 APK，使代理无需 root 设备即可读取应用流量。也支持以 .xapk 或 .apks 形式提供的应用捆绑包。
+
+  工具 · Android · 也适用：协议 · [使用条件与证据](https://awesomerea.org/zh/resources/apk-mitm/)
+
+- [**Frida 移动端拦截脚本**](https://github.com/httptoolkit/frida-interception-and-unpinning)
+
+  来自 HTTP Toolkit 的一组 Frida 脚本，用于在分析自有或经授权测试的应用时检查移动应用的 HTTPS 流量。将其注入运行中的 Android 或 iOS 应用后，可把连接重定向到检查代理、将用户提供的 CA 证书加入信任库，并关闭证书固定与证书透明度检查，使代理能够读取流量。各脚本也可单独使用以挂钩特定行为。
+
+  工具 · Android · 也适用：协议 · [使用条件与证据](https://awesomerea.org/zh/resources/frida-interception-and-unpinning/)
+
+- [**reFlutter**](https://github.com/Impact-I/reFlutter)
+
+  面向分析者有权检查的应用的 Flutter 逆向框架。它通过替换为预编译的已打补丁 Dart 引擎（repack 模式）或在运行时插桩应用自带引擎（attach 模式），导出包含每个函数名称、类、库以及其在 Dart 指令镜像中代码偏移的 JSONL 清单，供 Frida 或 IDA/Ghidra 使用。它还能在关闭 Flutter 证书固定的情况下，将应用的 HTTPS 流量路由到检查代理。
+
+  工具 · Android · 也适用：协议 · [使用条件与证据](https://awesomerea.org/zh/resources/reflutter/)
+
+- [**ddc Android DEX 反编译器**](https://github.com/ejfkdev/ddc)
+
+  用 Rust 编写的反编译器，可将 APK、多 DEX 应用以及 XAPK/APKS/APKM 容器中 035 至 041 版本的 Android DEX 字节码转换为 Java，把 lambda 和字符串拼接还原为 Java 语法，并按 jadx 的风格为局部变量命名。默认情况下，每个文件还会经过一道据称保持语义的源码级整理，内联拷贝链、恢复三元表达式和 for-each 循环并删除无用赋值；--fast 可跳过这一步。除完整反编译外，15 个查询子命令可按需返回应用与清单信息、资源、字符串、交叉引用、类层次结构、反汇编以及单个类或方法，同样的查询也可通过 REST 和 MCP 提供。
+
+  工具 · Android · [使用条件与证据](https://awesomerea.org/zh/resources/ddc/)
+
+- [**Simplify Android 反混淆工具**](https://github.com/CalebFenton/simplify)
+
+  基于 smalivm 的通用 Android 反混淆工具。smalivm 是一个沙箱化的 Dalvik 虚拟机，会逐个执行方法并记录所有执行路径上可能的寄存器与类取值；遇到文件或网络输入等未知值时，两个分支都会执行。Simplify 随后对 APK 或 DEX 反复进行常量传播、死代码删除、反射还原和窥孔优化，可在保持行为不变的前提下解密字符串、去除反射；它不会重命名类或方法。smalivm 也可作为库使用，最新发布版还附带基于它的单步 Smali 调试器 sdbg。
+
+  工具 · Android · [使用条件与证据](https://awesomerea.org/zh/resources/simplify-android-deobfuscator/)
+
+- [**GDA Android 反编译器**](https://github.com/charles2gan/GDA-android-reversing-Tool)
+
+  以 C++ 编写、原生运行于 Windows 的 Dalvik 反编译器与 Android 分析工作台，无需安装即可打开 APK、DEX、ODEX、OAT、JAR、AAR 和 class 文件。除带交叉引用、重命名和注释的 Java 与 Smali 视图外，它还能识别加固壳、反混淆并解密字符串、追踪数据流与污点、求解路径，运行基于规则的恶意行为、漏洞和隐私泄露扫描，并可转储设备内存或用 Frida 钩挂方法。Shell 与服务器两种命令行模式、Python 和 Java 脚本以及一个恶意软件分诊智能体技能示例，让脚本和智能体也能调用这些分析功能。
+
+  工具 · Android · [使用条件与证据](https://awesomerea.org/zh/resources/gda-android-decompiler/)
+
 <a id="native-binary"></a>
 ### Native Binary · 原生二进制
 
@@ -1972,6 +2014,30 @@ REA 标签指向单独维护的[上游 CLI 与 MCP 项目](https://github.com/mo
 
   工具 · 也适用：应用 · [使用条件与证据](https://awesomerea.org/zh/resources/qbdi/)
 
+- [**binsider ELF 二进制分析终端界面**](https://github.com/orhun/binsider)
+
+  用于查看 ELF 二进制的终端用户界面。它可像 stat 和 ldd 那样显示文件信息和所链接的共享库，像 readelf 那样浏览 ELF 头、注释、节区、段、符号、动态符号和重定位，按可调的最小长度提取字符串，并提供可搜索的十六进制视图。可选的动态分析会运行该二进制，像 strace 那样跟踪其系统调用，并按系统调用汇总耗时和调用次数；该界面还能作为 Rust 库嵌入 Ratatui 应用。
+
+  工具 · [使用条件与证据](https://awesomerea.org/zh/resources/binsider/)
+
+- [**iced x86 指令解码与汇编库**](https://github.com/icedland/iced)
+
+  面向 16、32 和 64 位 x86 代码的指令库，可解码、格式化、汇编和编码指令，输出支持 masm、nasm、GNU AT&amp;T 和 Intel XED 语法。其指令信息 API 可报告指令读写的寄存器、内存操作数和 RFLAGS 标志位，以及所需的 CPUID 特性标志和控制流类型；编码器还能把已解码的指令重新编码到任意地址。同一仓库维护 Rust、C#（.NET）和 Java 三套实现，另有基于 Rust crate 的 Python、JavaScript（WebAssembly）和 Lua 绑定。
+
+  工具 · 程序库 · [使用条件与证据](https://awesomerea.org/zh/resources/iced/)
+
+- [**hrtng IDA 反编译增强插件**](https://github.com/KasperskyLab/hrtng)
+
+  Kaspersky 发布的 IDA 插件，为 Hex-Rays 反编译器加入了作者在包括恶意软件分析在内的逆向工作中积累的各类工具。它可用内置密码算法解密字符串、数据和常量，或借助 IDA 的 Appcall 调试器功能批量解密；还能识别 API 名称哈希、消除控制流平坦化并强制反编译混淆代码，并通过微码签名、内联函数检测和从 IDA 数据库生成的 PAT 文件识别库代码。伪代码辅助功能包括自动重命名、类型修改和枚举替换、结构体创建、虚函数与间接调用导航以及补丁。
+
+  工具 · [使用条件与证据](https://awesomerea.org/zh/resources/hrtng/)
+
+- [**BinCAT 二进制静态分析工具包**](https://github.com/airbus-seclab/bincat)
+
+  面向逆向工程人员的二进制代码静态分析工具包。它从选定的地址和初始状态出发，计算寄存器与内存的值、污点和重建出的类型，支持前向与后向分析，并能检测堆上的释放后使用和重复释放；无法确定的位会标为未知。分析可在 IDA 插件中进行，分析人员可覆盖值或污点、跳过函数或把指令替换为 NOP 后重新运行；也可通过 Python 和 .ini 配置文件实现自动化。
+
+  工具 · [使用条件与证据](https://awesomerea.org/zh/resources/bincat/)
+
 <a id="firmware"></a>
 ### Firmware and Hardware · 固件与硬件
 
@@ -2095,6 +2161,18 @@ REA 标签指向单独维护的[上游 CLI 与 MCP 项目](https://github.com/mo
 
   工具 · 也适用：协议 · [使用条件与证据](https://awesomerea.org/zh/resources/sony-pmca-re/)
 
+- [**cpu\_rec CPU 指令集统计识别工具**](https://github.com/airbus-seclab/cpu_rec)
+
+  对任意二进制文件（例如来历不明的固件镜像）中的 CPU 指令集进行统计识别：把字节的马尔可夫链统计与默认语料库比较，语料库涵盖数十种架构，从 6502、8051 到 ARM、MIPS、PowerPC、RISC-V、x86-64 和 WebAssembly。它先给出整个文件的匹配结果，再找出与单一架构匹配的最大数据块，并显示熵值，以便排除加密或压缩区域。可独立运行，也可作为 Python 函数或 binwalk 模块使用。
+
+  工具 · 也适用：二进制 · [使用条件与证据](https://awesomerea.org/zh/resources/cpu-rec/)
+
+- [**ME Analyzer Intel 引擎与图形固件分析工具**](https://github.com/platomav/MEAnalyzer)
+
+  解析 Intel 管理引擎 (CS)ME、TXE 和 SPS 固件、图形系统控制器（GSC）固件，以及与之配套的独立 PMC、PCHC、PHY 和 Option ROM 镜像，报告系列、版本、发布类型、SKU、平台、大小和健康状态。研究用参数可显示 Flash 分区表、BPDT/IFWI 和 CSE 布局表，校验 RSA 签名与校验和，并解包所支持的 CSE、GSC 代码及文件系统。附带的数据库能识别已知镜像，并报告社区固件仓库尚未收录的镜像。
+
+  工具 · [使用条件与证据](https://awesomerea.org/zh/resources/me-analyzer/)
+
 <a id="protocol"></a>
 ### Protocol · 协议
 
@@ -2193,6 +2271,24 @@ REA 标签指向单独维护的[上游 CLI 与 MCP 项目](https://github.com/mo
   comma.ai 维护的 DBC 文件库，描述多个汽车品牌的 CAN 报文与信号，并附带一个依据这些定义解析和构造 CAN 报文的 Python 库；其车型移植指南要求贡献者在 cabana 工具中利用行车记录逆向分析新的报文。基于它的各品牌车型移植代码可解析车辆状态、根据 ECU 固件版本识别车型，并生成 openpilot 的转向、油门和制动报文；面向 comma panda 接口的安全代码则限制哪些报文可以发出。
 
   工具 · [使用条件与证据](https://awesomerea.org/zh/resources/opendbc/)
+
+- [**FISSURE 射频信号分析与协议发现框架**](https://github.com/ainfosec/FISSURE)
+
+  基于 GNU Radio 的射频框架，可将信号从频谱巡查与检测，经 IQ 采集、检查、调理、特征提取和分类，一路带入协议发现流程。其解调工作区可为 OOK/ASK 和二进制 FSK 录制估计符号速率；比特流与成帧阶段则结合曼彻斯特或差分解码、同步模式与 CRC 证据以及重复报文检测，推断报文边界。Qt 仪表盘负责协调本地或远程的 SDR 传感节点，资料库保存协议与数据包定义、解析器和归档录制，插件还可加入雷达脉冲分析等检查模块。
+
+  工具 · [使用条件与证据](https://awesomerea.org/zh/resources/fissure/)
+
+- [**friTap TLS 密钥提取与流量解密工具**](https://github.com/fkie-cad/friTap)
+
+  基于 Frida 的工具，在运行中的进程内挂钩 OpenSSL、BoringSSL、NSS、GnuTLS 等 TLS 库，输出 NSS 格式的密钥日志和解密后的 PCAP 明文，便于分析者在 Wireshark 中检查应用的加密流量。对于去除符号或静态链接的库，可通过字节模式或偏移量定位函数、扫描被重命名的库，也可不挂钩而改为扫描堆内存来恢复 TLS 密钥。终端界面、Python API 和 Wireshark extcap 集成都基于同一套捕获功能。
+
+  工具 · 也适用：应用 · [使用条件与证据](https://awesomerea.org/zh/resources/fritap/)
+
+- [**pbtk Protobuf 逆向工具集**](https://github.com/marin-m/pbtk)
+
+  从已编译程序中恢复 Protobuf 消息定义，并还原为可读的 .proto 文件。提取器覆盖 JAR、DEX 和 APK 中的各类 Java 运行时（包括经 ProGuard 混淆的代码）、内嵌 Protobuf 反射元数据的二进制文件，以及使用 Protobuf-URL 格式的 Web 应用。随后可在图形界面中把恢复出的消息类型绑定到 HTTP 端点，将十六进制形式的抓包样本解码为可编辑的字段树，并重新发送修改后的消息，帮助分析者把每个字段与响应对应起来。
+
+  工具 · 也适用：应用 · [使用条件与证据](https://awesomerea.org/zh/resources/pbtk/)
 
 <a id="agents-and-mcp"></a>
 ### Agents and MCP · 智能体与 MCP
@@ -2429,6 +2525,18 @@ REA 标签指向单独维护的[上游 CLI 与 MCP 项目](https://github.com/mo
 
   集成 · 独立智能体 · 目标：二进制 · [使用条件与证据](https://awesomerea.org/zh/resources/kong-agentic-reverse-engineer/)
 
+- [**Co-op Anything：为单人游戏加入合作模式的智能体手册**](https://github.com/cranebeaker/coop-anything)
+
+  为玩家已安装的单人游戏加入联机或分屏合作模式的智能体操作手册、技能集与 stdio MCP 服务器。智能体或修复已有的合作模组，或逆向分析游戏及其引擎从头实现，再用游戏内机器人测试并把笔记回馈给仓库；MCP 服务器则可检索收录 223 个合作项目和 32 处空缺的目录，根据安装目录识别游戏引擎，并记录可执行文件的身份信息。其 README 和逆向分析技能建议原生代码部分搭配 REA 使用，另有两份游戏笔记报告了借助 REA 的 Ghidra 通道得到的观察结果。
+
+  集成 · REA 社区 · 目标：游戏 · [使用条件与证据](https://awesomerea.org/zh/resources/coop-anything/)
+
+- [**DeepExtract：把 PE 文件导出给 AI 智能体的 IDA 插件**](https://github.com/marcosd4h/DeepExtractIDA)
+
+  IDA Pro 9.x 插件与 PowerShell 批量提取脚本，可把 Windows PE 文件转换为 AI 编程智能体能够读取的材料：每个二进制文件对应一个 SQLite 数据库，内含 PE 元数据、函数签名、反汇编、Hex-Rays 伪代码、交叉引用、字符串、栈帧、循环与危险 API 调用；还可选择输出分组的 C++ 与汇编文件，每个函数附带调用者、被调者与字符串信息头，并生成 JSON 索引。它可以无界面地处理目录、文件列表或正在运行进程加载的模块，也可以在已打开的 IDA 数据库上交互运行，并保留分析者所做的重命名和注释。处理这些输出的智能体命令来自独立的 DeepExtractRuntime 项目。
+
+  集成 · 独立智能体 · 目标：二进制 · [使用条件与证据](https://awesomerea.org/zh/resources/deepextract-ida/)
+
 <a id="related-collections"></a>
 ### Related Collections · 相关合集
 
@@ -2636,6 +2744,12 @@ REA 标签指向单独维护的[上游 CLI 与 MCP 项目](https://github.com/mo
   JPCERT/CC 于 2026 年 10 月 15 日发布的博客文章，调查日本国内一系列不正当访问事件背后的攻击基础设施。文章报告攻击者利用 AI 扫描已知漏洞并经由 API 发动攻击，攻击服务器上存有 APK 文件、与 jadx 和 Blutter 相关的文件、APK 解包目录，以及用于探测应用 API 的 SSRF 验证脚本。这是防御方对所观察到的攻击者工具的记述并附缓解建议，而非公开的 AI 辅助分析方法或可复现的工作流程。
 
   学习资源 · 目标：应用 · [使用条件与证据](https://awesomerea.org/zh/resources/jpcert-apk-api-attack-infrastructure-report/)
+
+- [**逆向工程教程（mytechnotalent）**](https://github.com/mytechnotalent/Reverse-Engineering)
+
+  mytechnotalent 维护的免费英文课程索引，几乎每天更新：共 490 节编号课程，多数课程让学习者先编写小程序，再对其调试和打补丁（文中称 "hack"），覆盖 x86、x64、32/64 位 ARM、RISC-V 和 AVR。前期课程从数制、寄存器、内存和栈讲起；后期转向 Raspberry Pi Pico/Pico 2、STM32F401、ESP32-C3、ATmega328P 和 micro:bit 等开发板上的微控制器固件，以及 Windows、Go、Rust 和 WebAssembly 程序。README 本身只是链接目录，课程正文位于一个 GitBook 以及作者其他仓库中的课程文件和 PDF 书。
+
+  学习资源 · 目标：二进制、固件 · [使用条件与证据](https://awesomerea.org/zh/resources/mytechnotalent-reverse-engineering/)
 <!-- END GENERATED CATALOG -->
 
 <!-- BEGIN GENERATED PAPERS -->

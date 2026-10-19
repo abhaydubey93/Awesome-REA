@@ -20,7 +20,7 @@ import subprocess
 import threading
 import time
 from urllib.error import HTTPError, URLError
-from urllib.parse import quote, urlencode, urlsplit
+from urllib.parse import quote, unquote, urlencode, urlsplit
 from urllib.request import HTTPRedirectHandler, Request, build_opener
 from source_descriptions import SOURCE_DESCRIPTION_POLICY, capture_description
 from source_scope import DUPLICATE_README_REASON, read_scope
@@ -478,8 +478,16 @@ def readme_record(repo, metadata, content, *, api_url=None):
         raise ScanError('empty-readme')
     if len(content) > MAX_README_BYTES:
         raise ScanError('readme-too-large')
-    text = content.decode('utf-8', errors='replace')
-    if text.count('\x00') > 0 or text.count('\ufffd') > max(20, len(text) // 50):
+    if type(metadata.get('size')) is not int or metadata['size'] != len(content):
+        raise ScanError('readme-size-mismatch')
+    content_git_sha = hashlib.sha1(b'blob ' + str(len(content)).encode('ascii') + b'\0' + content).hexdigest()
+    if not re.fullmatch('[0-9a-f]{40}', str(metadata.get('sha', ''))) or metadata['sha'] != content_git_sha:
+        raise ScanError('readme-git-sha-mismatch')
+    try:
+        text = content.decode('utf-8')
+    except UnicodeDecodeError:
+        raise ScanError('non-utf8-readme') from None
+    if '\x00' in text or text.count('\ufffd') > max(20, len(text) // 50):
         raise ScanError('nontext-readme')
     # These are automatic document features, not endorsements or compatibility claims.
     headings = []
@@ -525,7 +533,7 @@ def readme_record(repo, metadata, content, *, api_url=None):
         'readme_url': metadata.get('html_url') or repo['html_url'] + '#readme',
         'readme_path': metadata.get('path'),
         'readme_git_sha': metadata.get('sha'),
-        'readme_content_git_sha': hashlib.sha1(b'blob ' + str(len(content)).encode('ascii') + b'\0' + content).hexdigest(),
+        'readme_content_git_sha': content_git_sha,
         'readme_sha256': hashlib.sha256(content).hexdigest(),
         'readme_bytes': len(content),
         'readme_lines': len(text.splitlines()),
@@ -559,19 +567,68 @@ def scan_readme(api, repo):
     if ref:
         path += '?' + urlencode({'ref': ref})
     try:
+        # Queued REST metadata may be old. Confirm the numeric identity and
+        # current public status before fetching any document bytes.
+        try:
+            current = api.json('/repositories/' + str(repo['id']))
+        except ScanError as error:
+            if error.status in (404, 410):
+                raise ScanError('readme-repository-unavailable', error.status) from None
+            raise
+        if (not isinstance(current, dict) or type(current.get('id')) is not int or current.get('id') != repo['id']
+                or current.get('full_name') != repo['full_name']
+                or current.get('html_url') != repo['html_url'] or repository_ineligibility(current)):
+            raise ScanError('readme-repository-identity-unconfirmed')
         metadata = api.json(path)
         if not isinstance(metadata, dict) or metadata.get('type') != 'file':
             raise ScanError('not-a-readme-file')
-        if metadata.get('size', 0) > MAX_README_BYTES:
+        size, oid = metadata.get('size'), metadata.get('sha')
+        if type(size) is not int or size < 0 or not isinstance(oid, str) or not re.fullmatch('[0-9a-f]{40}', oid):
+            raise ScanError('invalid-readme-metadata')
+        if size > MAX_README_BYTES:
             raise ScanError('readme-too-large')
+        readme_path = metadata.get('path')
+        if (not isinstance(readme_path, str) or not readme_path or '\\' in readme_path
+                or any(part in ('', '.', '..') for part in readme_path.split('/'))
+                or any(ord(char) < 32 for char in readme_path)):
+            raise ScanError('invalid-readme-path')
+        url = metadata.get('html_url')
+        parsed = urlsplit(url) if isinstance(url, str) else None
+        if (parsed is None or not url.startswith(repo['html_url'] + '/blob/')
+                or any(ord(char) < 32 for char in url) or parsed.query or parsed.fragment
+                or not unquote(parsed.path).endswith('/' + readme_path)
+                or any(part in ('.', '..') for part in unquote(parsed.path).split('/'))):
+            raise ScanError('invalid-readme-url')
+        content = None
         if metadata.get('encoding') == 'base64' and isinstance(metadata.get('content'), str):
             try:
                 content = base64.b64decode(re.sub(r'\s', '', metadata['content']), validate=True)
             except ValueError:
                 raise ScanError('invalid-readme-encoding') from None
-        else:
-            content = api.get(path, accept='application/vnd.github.raw+json')
-        return readme_record(repo, metadata, content, api_url='https://api.github.com' + path), None
+        elif metadata.get('encoding') != 'none':
+            raise ScanError('invalid-readme-encoding')
+        blob_path = None
+        if (content is None or len(content) != size
+                or hashlib.sha1(b'blob ' + str(len(content)).encode('ascii') + b'\0' + content).hexdigest() != oid):
+            # The README endpoint can truncate or transcode its inline body.
+            # Read the immutable advertised blob once. API failures propagate;
+            # never escape backpressure by
+            # requesting another representation or a third-party download URL.
+            blob_path = '/repos/' + repo['full_name'] + '/git/blobs/' + oid
+            blob = api.json(blob_path)
+            if (not isinstance(blob, dict) or blob.get('sha') != oid or type(blob.get('size')) is not int
+                    or not 0 <= blob['size'] <= MAX_README_BYTES or blob.get('encoding') != 'base64'
+                    or not isinstance(blob.get('content'), str)):
+                raise ScanError('invalid-readme-blob')
+            try:
+                content = base64.b64decode(re.sub(r'\s', '', blob['content']), validate=True)
+            except ValueError:
+                raise ScanError('invalid-readme-encoding') from None
+            metadata = {**metadata, 'size': blob['size']}
+        record = readme_record(repo, metadata, content, api_url='https://api.github.com' + path)
+        if blob_path is not None:
+            record['readme_blob_api_url'] = 'https://api.github.com' + blob_path
+        return record, None
     except ScanError as error:
         return None, {
             'id': 'scan-' + str(repo['id']), 'full_name': repo['full_name'],
@@ -692,8 +749,17 @@ def initial_meta(args, started):
     }
 
 
+def held_repository_ids(values):
+    """Administrative IDs are explicit inputs, never fabricated scan outcomes."""
+    if (not isinstance(values, (list, tuple)) or len(values) > 1000
+            or any(not isinstance(value, str) or not re.fullmatch(r'[1-9][0-9]*', value) for value in values)):
+        raise ValueError('Held repository IDs must be at most 1000 canonical positive decimal strings')
+    return frozenset('scan-' + value for value in values)
+
+
 def run_scan(api, args, resumed=None, resume_sha256=None, *, readme_transport=None, frontier=None):
     """Extend evidence without refreshing or retrying any retained repository."""
+    held_ids = held_repository_ids(getattr(args, 'hold_repository_ids', []))
     frontier_api = None
     if frontier is not None:
         if readme_transport is None:
@@ -713,14 +779,19 @@ def run_scan(api, args, resumed=None, resume_sha256=None, *, readme_transport=No
     failures = list(resumed.get('failures', [])) if resumed else []
     retained_successes, retained_failures = len(records), len(failures)
     attempted_ids = {record['id'] for record in records + failures}
+    pending_delivery_blocked = False
     if frontier_api is not None:
         acknowledged = {'scan-' + key for key, item in frontier_state['candidates'].items()
                         if item['checkpoint_sha256'] is not None}
         if not acknowledged <= attempted_ids:
             raise ValueError('Discovery frontier acknowledges repositories absent from this scan checkpoint')
+        pending_delivery_blocked |= any(item['checkpoint_sha256'] is None
+                                        and item['next_attempt_at'] > frontier_api.current_seconds()
+                                        for item in frontier_state['candidates'].values())
     retained_names = {record['full_name'].casefold() for record in records + failures}
     meta = copy.deepcopy(resumed['meta']) if resumed else fresh_meta
     known_ids = set(meta.get('discovered_repository_ids', attempted_ids))
+    pending_delivery_blocked |= bool((held_ids & known_ids) - attempted_ids)
     if resumed:
         prior = {key: copy.deepcopy(meta.get(key)) for key in (
             'started_at', 'completed_at', 'last_checkpoint_at', 'status',
@@ -741,6 +812,7 @@ def run_scan(api, args, resumed=None, resume_sha256=None, *, readme_transport=No
     meta['classification_engine_version'] = fresh_meta['classification_engine_version']
     meta['classification_policy'] = fresh_meta['classification_policy']
     meta['unique_repos_policy'] = ('Distinct persisted repository IDs from retained attempts and discovery observations. '
+                                   'Administrative hold configuration alone does not establish a discovered identity. '
                                    'Historical count-only unattempted candidates are not added to this union unless rediscovered; '
                                    'their original counts remain in resume_history.')
     meta['current_run'] = {
@@ -754,6 +826,7 @@ def run_scan(api, args, resumed=None, resume_sha256=None, *, readme_transport=No
         'classification_engine_version': CLASSIFICATION_ENGINE_VERSION,
         'retained_unattempted_repository_ids': len(known_ids - attempted_ids),
         'query_plan': list(args.queries),
+        'held_repository_ids': sorted(held_ids, key=lambda value: int(value[5:])),
     }
     candidates, candidate_names, exhausted = {}, set(), set()
     meta.setdefault('seed_observations', [])
@@ -796,6 +869,18 @@ def run_scan(api, args, resumed=None, resume_sha256=None, *, readme_transport=No
             meta['queries'].append(entry)
             existing.add(key)
 
+    def delivery_block(identifier):
+        nonlocal pending_delivery_blocked
+        if identifier in held_ids:
+            pending_delivery_blocked = True
+            return 'held'
+        if frontier_api is not None:
+            entry = frontier_state['candidates'].get(identifier[5:])
+            if entry is not None and entry['next_attempt_at'] > frontier_api.current_seconds():
+                pending_delivery_blocked = True
+                return 'frontier-deferred'
+        return None
+
     def add_candidate(repo, observed_at, query=None, seed_ids=None, paper=None, resumed_id=None):
         if repository_ineligibility(repo):
             return 'ineligible'
@@ -810,6 +895,9 @@ def run_scan(api, args, resumed=None, resume_sha256=None, *, readme_transport=No
         known_ids.add(identifier)
         if identifier in attempted_ids:
             return 'retained-attempt'
+        blocked = delivery_block(identifier)
+        if blocked:
+            return blocked
         if identifier not in candidates:
             name = repo['full_name'].casefold()
             if name in retained_names or name in candidate_names:
@@ -868,7 +956,7 @@ def run_scan(api, args, resumed=None, resume_sha256=None, *, readme_transport=No
                 break
         checkpoint()
     if resumed:
-        pending_legacy = known_ids - attempted_ids - set(candidates)
+        pending_legacy = known_ids - attempted_ids - set(candidates) - held_ids
         if frontier_api is not None:
             pending_legacy -= {'scan-' + key for key in frontier_state['candidates']}
         last_lookup = {entry['repository_id']: entry['observed_at'] for entry in meta['resume_observations']
@@ -949,7 +1037,7 @@ def run_scan(api, args, resumed=None, resume_sha256=None, *, readme_transport=No
             items = result.get('items', [])
             entry.update({'status': 'ok', 'total_count': result.get('total_count'),
                           'returned': len(items), 'incomplete_results': result.get('incomplete_results', False)})
-            skipped_attempted, skipped_names = 0, 0
+            skipped_attempted, skipped_names, skipped_held, skipped_deferred = 0, 0, 0, 0
             invalid_reasons = {}
             for repo in items:
                 try:
@@ -961,7 +1049,10 @@ def run_scan(api, args, resumed=None, resume_sha256=None, *, readme_transport=No
                     continue
                 skipped_attempted += outcome == 'retained-attempt'
                 skipped_names += outcome == 'name-collision'
-            entry.update({'retained_attempts_skipped': skipped_attempted, 'name_collisions_skipped': skipped_names})
+                skipped_held += outcome == 'held'
+                skipped_deferred += outcome == 'frontier-deferred'
+            entry.update({'retained_attempts_skipped': skipped_attempted, 'name_collisions_skipped': skipped_names,
+                          'held_candidates_skipped': skipped_held, 'deferred_candidates_skipped': skipped_deferred})
             if invalid_reasons:
                 entry.update({'invalid_items_skipped': sum(invalid_reasons.values()),
                               'invalid_item_reasons': invalid_reasons})
@@ -984,10 +1075,15 @@ def run_scan(api, args, resumed=None, resume_sha256=None, *, readme_transport=No
     print(f'DISCOVERY_COMPLETE known_repositories={len(known_ids)} new_readme_candidates={len(candidates)}; starting actual README reads', flush=True)
     checkpoint()
     deferred = False
+    def delivery_candidates():
+        for candidate in candidates.values():
+            if not delivery_block('scan-' + str(candidate['id'])):
+                yield candidate
+
     if readme_transport is not None:
         # GraphQL responses contain ephemeral bytes. Only document features and
         # verified identifiers enter the retained source snapshot.
-        source = iter(candidates.values())
+        source = iter(delivery_candidates())
         transport_counts = {'ok': 0, 'fallback': 0, 'rejected': 0, 'retry': 0, 'deferred': 0}
         meta['current_run']['readme_transport'] = {
             'method': 'github-graphql-verified-blob-with-rest-fallback',
@@ -1041,6 +1137,23 @@ def run_scan(api, args, resumed=None, resume_sha256=None, *, readme_transport=No
                     raise ValueError('README transport returned inconsistent repository identity')
                 if status == 'fallback':
                     record, failure = scan_readme(api, repo)
+                    if failure and failure['reason'] in ('readme-repository-identity-unconfirmed', 'readme-repository-unavailable'):
+                        pending_delivery_blocked = True
+                        if frontier_api is not None and str(candidate['id']) in frontier_state['candidates']:
+                            reason = 'not-found' if failure['reason'] == 'readme-repository-unavailable' else 'ineligible'
+                            frontier_api.defer_candidates(frontier_state, [candidate['id']], reason=reason,
+                                                          retry_after_seconds=86400)
+                        continue  # Only public-identity metadata was requested; no README attempt.
+                    if failure and (failure.get('http_status') in (401, 403, 408, 429)
+                                    or (failure.get('http_status') or 0) >= 500
+                                    or failure['reason'] in ('network-failure', 'retry-limit', 'rate-limited', 'invalid-api-json')):
+                        # An exhausted REST retry must not become a permanent
+                        # source failure or trigger another sibling fallback.
+                        deferred = batch_paused = True
+                        if frontier_api is not None and str(candidate['id']) in frontier_state['candidates']:
+                            frontier_api.defer_candidates(frontier_state, [candidate['id']], reason='deferred',
+                                retry_after_seconds=max(60, min(604800, batch_retry_after)))
+                        continue
                 else:
                     try:
                         record = readme_record(repo, result['metadata'], result['content'])
@@ -1069,7 +1182,7 @@ def run_scan(api, args, resumed=None, resume_sha256=None, *, readme_transport=No
             if deferred:
                 break  # Do not evade rate/backpressure by switching transports.
     else:
-        source = iter(candidates.values())
+        source = iter(delivery_candidates())
         with ThreadPoolExecutor(max_workers=args.workers) as pool:
             pending = {}
             for _ in range(min(args.workers, max(0, args.target - len(records)))):
@@ -1089,15 +1202,19 @@ def run_scan(api, args, resumed=None, resume_sha256=None, *, readme_transport=No
                             'scan_status': 'failed', 'reason': 'worker-' + type(error).__name__,
                             'http_status': None,
                         }
-                    result = record or failure
-                    if result['id'] in attempted_ids:
-                        raise ValueError('Duplicate repository attempt')
-                    attempted_ids.add(result['id'])
-                    (records if record else failures).append(result)
-                    new_attempts = len(records) + len(failures) - retained_successes - retained_failures
-                    if new_attempts % 100 == 0:
-                        print(f'README_PROGRESS success={len(records)} failed={len(failures)} new_attempts={new_attempts}', flush=True)
-                        checkpoint()
+                    metadata_only = failure and failure['reason'] in ('readme-repository-identity-unconfirmed', 'readme-repository-unavailable')
+                    if metadata_only:
+                        pending_delivery_blocked = True
+                    else:
+                        result = record or failure
+                        if result['id'] in attempted_ids:
+                            raise ValueError('Duplicate repository attempt')
+                        attempted_ids.add(result['id'])
+                        (records if record else failures).append(result)
+                        new_attempts = len(records) + len(failures) - retained_successes - retained_failures
+                        if new_attempts % 100 == 0:
+                            print(f'README_PROGRESS success={len(records)} failed={len(failures)} new_attempts={new_attempts}', flush=True)
+                            checkpoint()
                     if len(records) + len(pending) < args.target:
                         following = next(source, None)
                         if following is not None:
@@ -1105,7 +1222,7 @@ def run_scan(api, args, resumed=None, resume_sha256=None, *, readme_transport=No
     # Keep the prior snapshot as an unchanged prefix; order only the new evidence.
     records[retained_successes:] = sorted(records[retained_successes:], key=lambda record: (-record['stars'], record['full_name'].casefold()))
     failures[retained_failures:] = sorted(failures[retained_failures:], key=lambda record: record['full_name'].casefold())
-    checkpoint(complete=not deferred)
+    checkpoint(complete=not deferred and not (len(records) < args.target and pending_delivery_blocked))
     reached = len(records) >= args.target
     print(f'COMPLETE successful_readme_scans={len(records)} failed={len(failures)} unique_repos={len(known_ids)} target_reached={reached}', flush=True)
     return 0 if reached else 1
@@ -1126,12 +1243,18 @@ def main():
     parser.add_argument('--resume', type=Path, help='Retain an existing snapshot/checkpoint and resolve its unattempted repository IDs')
     parser.add_argument('--seed-curated', action='store_true', help='Discover missing curated GitHub repositories before search candidates')
     parser.add_argument('--seed-papers', action='store_true', help='Discover GitHub roots from bibliography code_url/project_url fields before search candidates')
+    parser.add_argument('--hold-repository-id', action='append', dest='hold_repository_ids', default=[],
+                        help='Keep this positive numeric repository ID pending for this run; repeat for more IDs')
     parser.add_argument('--query', action='append', help='Ordered search base; repeat to replace defaults. Public/non-fork/non-archived gates are always added.')
     parser.add_argument('--output', type=Path, help='Output snapshot; defaults to .cache/source-index-next.json when resuming')
     parser.add_argument('--relabel-report', type=Path, help='Offline: print retained automatic labels that differ from this engine, without rewriting the snapshot')
     parser.add_argument('--protocol-report', type=Path, help='Offline: print retained automatic records whose protocol target or category this engine would change')
     parser.add_argument('--duplicate-readme-report', type=Path, help='Offline: group successful scans by README hash and propose scope reviews for same-named copies')
     args = parser.parse_args()
+    try:
+        held_repository_ids(args.hold_repository_ids)
+    except ValueError:
+        parser.error('hold-repository-id requires canonical positive numeric IDs (at most 1000 entries)')
     if (args.target < 1 or not 1 <= args.workers <= 32 or not 1 <= args.max_pages <= 10
             or not 0 < args.requests_per_second <= 14 or args.candidate_buffer < 0):
         parser.error('target must be positive, workers 1..32, max-pages 1..10, requests-per-second (0,14], and candidate-buffer nonnegative')

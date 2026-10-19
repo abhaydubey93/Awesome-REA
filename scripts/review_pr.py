@@ -46,7 +46,7 @@ JSON_ESCAPE = re.compile(r'\\(?:u([0-9A-Fa-f]{4})|([\\/]))')
 SAFE_LABEL = re.compile(r'[A-Za-z0-9][A-Za-z0-9_.:/-]{0,99}')
 # File-name rules cover every .gitignore pattern (tests/test_review_pr.py checks this) plus keys, captures and fonts.
 PRIVATE_NAMES = ('.env', '.env.*', 'secrets.json', 'credentials*.json', '*.local.json', '*.pem', '*.key',
-                 'id_rsa', 'id_dsa', 'id_ecdsa', 'id_ed25519', '*.har', '*.pcap', '*.pcapng')
+                 'id_rsa', 'id_dsa', 'id_ecdsa', 'id_ed25519', '*.har', '*.pcap', '*.pcapng', 'scan-seed-*.json.gz')
 PRIVATE_DIRS = {'.cloudflare', '.wrangler'}
 GENERATED_NAMES = ('*.py[cod]', '.ds_store', '*.woff', '*.woff2')
 GENERATED_DIRS = {'__pycache__', '.cache', '.venv', 'dist', 'node_modules', 'output'}

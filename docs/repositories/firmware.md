@@ -2,7 +2,7 @@
 
 [All categories](README.md) · [简体中文](firmware.zh-CN.md)
 
-**210 repositories** · 2026-10-16 UTC
+**211 repositories** · 2026-10-16 UTC
 
 These are automatically discovered projects, not individually curated or tested recommendations. Categories derive from metadata and descriptions from upstream text. Stars are collection-time snapshots, not live rankings. Lines marked “Curated” or “Paper” link to the reviewed catalog entry or paper whose source is that exact repository.
 
@@ -15,13 +15,14 @@ These are automatically discovered projects, not individually curated or tested 
 - [redballoonsecurity/ofrak](https://github.com/redballoonsecurity/ofrak) — OFRAK: unpack, modify, and repack binaries. **[2,080 stars]** · Curated: [OFRAK](https://awesomerea.org/resources/ofrak/)
 - [marin-m/vmlinux-to-elf](https://github.com/marin-m/vmlinux-to-elf) — A tool to recover a fully analyzable .ELF from a raw kernel, through extracting the kernel symbol table (kallsyms) **[1,832 stars]** · Curated: [vmlinux-to-elf](https://awesomerea.org/resources/vmlinux-to-elf/)
 - [fkie-cad/FACT\_core](https://github.com/fkie-cad/FACT_core) — Firmware Analysis and Comparison Tool **[1,468 stars]** · Curated: [Firmware Analysis and Comparison Tool (FACT)](https://awesomerea.org/resources/fact-core/)
-- [platomav/MEAnalyzer](https://github.com/platomav/MEAnalyzer) — Intel Engine &amp; Graphics Firmware Analysis Tool **[1,335 stars]**
+- [platomav/MEAnalyzer](https://github.com/platomav/MEAnalyzer) — Intel Engine &amp; Graphics Firmware Analysis Tool **[1,335 stars]** · Curated: [ME Analyzer](https://awesomerea.org/resources/me-analyzer/)
 - [REhints/efiXplorer](https://github.com/REhints/efiXplorer) — IDA plugin and loader for UEFI firmware analysis and reverse engineering automation **[1,138 stars]** · Curated: [efiXplorer](https://awesomerea.org/resources/efixplorer/)
 - [Anime4000/RTL960x](https://github.com/Anime4000/RTL960x) — Hacking &amp; Reverse Engineering RTL960x-based xPON ONTs to suit your OLT **[1,053 stars]**
 - [gcarmix/HexWalk](https://github.com/gcarmix/HexWalk) — Hex Viewer/Editor/Analyzer compatible with Linux/Windows/MacOS **[1,027 stars]**
 - [pr0v3rbs/FirmAE](https://github.com/pr0v3rbs/FirmAE) — Towards Large-Scale Emulation of IoT Firmware for Dynamic Analysis **[949 stars]** · Paper: [FirmAE: Towards Large-Scale Emulation of IoT Firmware for Dynamic Analysis](https://awesomerea.org/papers/paper-firmae/) · Curated: [FirmAE](https://awesomerea.org/resources/firmae/)
 - [FirmWire/FirmWire](https://github.com/FirmWire/FirmWire) — FirmWire is a full-system baseband firmware emulation platform for fuzzing, debugging, and root-cause analysis of smartphone baseband firmwares **[891 stars]**
 - [sigrokproject/pulseview](https://github.com/sigrokproject/pulseview) — Read-only mirror of the official repo at git<span>:</span>//sigrok.org/pulseview. Pull requests welcome. Please file bugreports at sigrok.org/bugzilla. **[805 stars]** · Curated: [PulseView](https://awesomerea.org/resources/pulseview/)
+- [airbus-seclab/cpu\_rec](https://github.com/airbus-seclab/cpu_rec) — Recognize cpu instructions in an arbitrary binary file **[757 stars]** · Curated: [cpu\_rec](https://awesomerea.org/resources/cpu-rec/)
 - [avatartwo/avatar2](https://github.com/avatartwo/avatar2) — Python core of avatar² **[579 stars]** · Curated: [avatar²](https://awesomerea.org/resources/avatar2/)
 - [al3xtjames/ghidra-firmware-utils](https://github.com/al3xtjames/ghidra-firmware-utils) — Ghidra utilities for analyzing PC firmware **[506 stars]** · Curated: [Ghidra Firmware Utilities](https://awesomerea.org/resources/ghidra-firmware-utils/)
 - [scriptingxss/owasp-fstm](https://github.com/scriptingxss/owasp-fstm) — The Firmware Security Testing Methodology (FSTM) is composed of nine stages tailored to enable security researchers, software developers, consultants, and Information Security professionals with conducting firmware security assessments. **[502 stars]**

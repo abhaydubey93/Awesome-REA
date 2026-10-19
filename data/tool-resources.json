@@ -1421,7 +1421,7 @@
     ],
     "description_en": "Extract firmware, combine static checks with emulation-based analysis, inventory software components, and generate web reports and SBOMs for further investigation.",
     "description_zh": "提取固件，结合静态检查与仿真分析，整理软件组件清单，并生成 Web 报告和 SBOM，供进一步调查。",
-    "evidence_url": "https://github.com/e-m-b-a/emba/wiki/Installation",
+    "evidence_url": "https://github.com/e-m-b-a/emba/wiki/Installation/35b42245dc59e3545a07dcc209e9ee58f8cf2590",
     "verified_at": "2026-10-16",
     "verification": "source-reviewed",
     "requirements": [
@@ -1553,7 +1553,7 @@
     "relationship": "learning",
     "description_en": "Combines language models and program analysis to recover variable and user-defined data-structure symbols from stripped binaries. The authors provide training, inference, evaluation, and posterior-reasoning artifacts.",
     "description_zh": "结合语言模型与程序分析，从去符号二进制中恢复变量和用户定义数据结构的符号信息。作者提供训练、推理、评测与后验推理材料。",
-    "evidence_url": "https://github.com/lt-asset/resym",
+    "evidence_url": "https://github.com/lt-asset/resym/tree/437b4acac21a5a60edecf0c4423f7172f991271f",
     "additional_evidence_urls": [
       "https://www.cs.purdue.edu/homes/lintan/publications/resym-ccs24.pdf"
     ],
@@ -1653,8 +1653,8 @@
     "description_zh": "基于 CUE4Parse 浏览虚幻引擎游戏归档，检查资源包和属性，预览并导出资源；2026 年夏季发行版新增 USD 世界导出，可辅助重建受支持的场景内容。",
     "evidence_url": "https://github.com/4sval/FModel/blob/05cfbdd1648afe2928109b70ab63880a4bc8f7b4/README.md",
     "additional_evidence_urls": [
-      "https://github.com/4sval/FModel/wiki/Installing-FModel",
-      "https://github.com/4sval/FModel/wiki/Getting-Started",
+      "https://github.com/4sval/FModel/wiki/Installing-FModel/0b4b7eab2df210703c96a0159200df51756f9d43",
+      "https://github.com/4sval/FModel/wiki/Getting-Started/d348b55f641767b1ede4933b26b319863632a4dd",
       "https://github.com/4sval/FModel/blob/05cfbdd1648afe2928109b70ab63880a4bc8f7b4/FModel/FModel.csproj",
       "https://github.com/4sval/FModel/releases/tag/aug-2026",
       "https://github.com/4sval/FModel/blob/05cfbdd1648afe2928109b70ab63880a4bc8f7b4/LICENSE"
@@ -2239,8 +2239,8 @@
       "https://github.com/jopohl/urh/blob/1403d92987cc3d01d41aff64250955ce455dabd2/LICENSE",
       "https://github.com/jopohl/urh/releases/tag/v2.10.0",
       "https://pypi.org/project/urh/2.10.0/",
-      "https://github.com/jopohl/urh/wiki/Supported-devices",
-      "https://github.com/jopohl/urh/wiki/SDR-udev-rules"
+      "https://github.com/jopohl/urh/wiki/Supported-devices/32fb197d4a7055f11f7f91fe9cb68450469c6cd4",
+      "https://github.com/jopohl/urh/wiki/SDR-udev-rules/9095b3c39026e8dde89a1a0ae79c023f446817f7"
     ],
     "verified_at": "2026-10-17",
     "verification": "source-reviewed",
@@ -2571,7 +2571,7 @@
       "https://github.com/Emill/ido-static-recomp/blob/421e546956ceae984927e609b083195e9e81659e/README.md",
       "https://github.com/Emill/ido-static-recomp/blob/421e546956ceae984927e609b083195e9e81659e/ido/5.3/LICENSE.md",
       "https://ryandwyer.gitlab.io/pdstatus/",
-      "https://gitlab.com/ryandwyer/perfect-dark"
+      "https://gitlab.com/ryandwyer/perfect-dark/-/tree/46d3393bed1a3d5fbefbdba6df7237579b5c66e0"
     ]
   },
   {
@@ -3545,8 +3545,8 @@
       "https://github.com/Xeeynamo/sotn-decomp/blob/eddaf22fe86f5189b85fd34915afe6564f19df20/config/check.hd.sha",
       "https://github.com/Xeeynamo/sotn-decomp/blob/eddaf22fe86f5189b85fd34915afe6564f19df20/config/check.pspeu.sha",
       "https://github.com/Xeeynamo/sotn-decomp/blob/eddaf22fe86f5189b85fd34915afe6564f19df20/config/check.saturn.sha",
-      "https://github.com/Xeeynamo/sotn-decomp/wiki/Build",
-      "https://github.com/Xeeynamo/sotn-decomp/wiki/PC-Port"
+      "https://github.com/Xeeynamo/sotn-decomp/wiki/Build/720bcf3b1212d130b28bb6ccbeda2b887ea96457",
+      "https://github.com/Xeeynamo/sotn-decomp/wiki/PC-Port/ebe1b37979d1a1966abb68d388b753e4407cfd3c"
     ]
   },
   {
@@ -5199,7 +5199,7 @@
       "https://github.com/n64decomp/007/blob/c4356466796c697dfd298010b9bed261f9ed8c6a/.github/workflows/EU.yml",
       "https://github.com/n64decomp/007/blob/c4356466796c697dfd298010b9bed261f9ed8c6a/tools/ido5.3_recomp/README.md",
       "https://kholdfuzion.github.io/goldeneyestatus/",
-      "https://gitlab.com/kholdfuzion/goldeneye_src"
+      "https://gitlab.com/kholdfuzion/goldeneye_src/-/tree/c4356466796c697dfd298010b9bed261f9ed8c6a"
     ]
   },
   {
@@ -9564,6 +9564,610 @@
       "Requires Python 3 and runs on Linux or macOS, with the README noting limited functionality on Windows; a preconfigured Dockerfile is also provided.",
       "Instrumenting a target needs a rooted device or emulator with adb and a running Frida server; the tool operates only on apps the analyst is authorized to test.",
       "The README reports 90+ reusable modules and an optional MCP server component; it names capabilities such as SSL-pinning handling, which this record does not restate as a procedure. GPL-3.0 licensed; the repository ships the framework and its modules, no application packages."
+    ]
+  },
+  {
+    "id": "binsider",
+    "name": "binsider",
+    "url": "https://github.com/orhun/binsider",
+    "category": "native-analysis",
+    "relationship": "foundation",
+    "kind": "tool",
+    "targets": [
+      "binary"
+    ],
+    "description_en": "Terminal user interface for inspecting ELF binaries. It shows file information and linked shared libraries in the manner of stat and ldd, browses ELF headers, notes, sections, segments, symbols, dynamic symbols and relocations much like readelf, extracts strings with an adjustable minimum length, and offers a searchable hexdump view. Optional dynamic analysis runs the binary and traces its system calls like strace, with a summary of time and call counts per system call; the interface can also be embedded as a Rust library in Ratatui applications.",
+    "description_zh": "用于查看 ELF 二进制的终端用户界面。它可像 stat 和 ldd 那样显示文件信息和所链接的共享库，像 readelf 那样浏览 ELF 头、注释、节区、段、符号、动态符号和重定位，按可调的最小长度提取字符串，并提供可搜索的十六进制视图。可选的动态分析会运行该二进制，像 strace 那样跟踪其系统调用，并按系统调用汇总耗时和调用次数；该界面还能作为 Rust 库嵌入 Ratatui 应用。",
+    "evidence_url": "https://github.com/orhun/binsider/blob/7f0633d1a69af15cc3be9e0533cb36dbe67eb598/README.md",
+    "verified_at": "2026-10-19",
+    "verification": "source-reviewed",
+    "requirements": [
+      "Latest release at review: v0.3.2, published 2026-02-01, on crates.io and as prebuilt archives for Linux (x86_64, i686, AArch64, ARM and powerpc64le, with glibc and musl variants), macOS on Intel and Apple silicon, and Windows x86_64. The release workflow enables dynamic analysis only in the x86_64 Linux builds and the AArch64 glibc build. The reviewed main commit is six commits later and adds the --syscall-number, --string-limit and --no-abbrev trace options, which the website documents but no release includes yet.",
+      "Cargo.toml requires Rust 1.88+, although the website's installation pages still give an MSRV of 1.74.1. The dynamic-analysis feature is enabled by default and can be left out with --no-default-features. The website also documents Docker, Nix, Arch Linux and Alpine Linux installation.",
+      "Input is an ELF file chosen by the user. Dynamic analysis executes that binary on the host under ptrace-based tracing, so untrusted samples should only be traced in an isolated environment; the other views read the file without running it.",
+      "Dual-licensed MIT OR Apache-2.0. Nothing was installed or run."
+    ],
+    "additional_evidence_urls": [
+      "https://github.com/orhun/binsider/blob/7f0633d1a69af15cc3be9e0533cb36dbe67eb598/Cargo.toml",
+      "https://github.com/orhun/binsider/blob/7f0633d1a69af15cc3be9e0533cb36dbe67eb598/CHANGELOG.md",
+      "https://github.com/orhun/binsider/blob/7f0633d1a69af15cc3be9e0533cb36dbe67eb598/.github/workflows/cd.yml",
+      "https://github.com/orhun/binsider/blob/7f0633d1a69af15cc3be9e0533cb36dbe67eb598/website/src/content/docs/usage/dynamic-analysis.md",
+      "https://github.com/orhun/binsider/blob/7f0633d1a69af15cc3be9e0533cb36dbe67eb598/website/src/content/docs/usage/static-analysis.md",
+      "https://github.com/orhun/binsider/blob/7f0633d1a69af15cc3be9e0533cb36dbe67eb598/website/src/content/docs/installation/crates-io.md",
+      "https://github.com/orhun/binsider/blob/7f0633d1a69af15cc3be9e0533cb36dbe67eb598/website/src/content/docs/extras/library.md",
+      "https://github.com/orhun/binsider/blob/7f0633d1a69af15cc3be9e0533cb36dbe67eb598/LICENSE-MIT",
+      "https://github.com/orhun/binsider/blob/7f0633d1a69af15cc3be9e0533cb36dbe67eb598/LICENSE-APACHE",
+      "https://github.com/orhun/binsider/releases/tag/v0.3.2"
+    ]
+  },
+  {
+    "id": "mytechnotalent-reverse-engineering",
+    "name": "Reverse Engineering (mytechnotalent)",
+    "url": "https://github.com/mytechnotalent/Reverse-Engineering",
+    "category": "learning",
+    "relationship": "learning",
+    "kind": "learning-resource",
+    "targets": [
+      "binary",
+      "firmware"
+    ],
+    "description_en": "A free, English lesson index by mytechnotalent that grows almost daily: 490 numbered lessons, most of which have learners write small programs and then debug and patch (\"hack\") them, across x86, x64, 32/64-bit ARM, RISC-V and AVR. Early courses start from number systems, registers, memory and the stack; later ones cover microcontroller firmware on Raspberry Pi Pico/Pico 2, STM32F401, ESP32-C3, ATmega328P and micro:bit boards, plus Windows, Go, Rust and WebAssembly programs. The README is a table of links; the lesson text lives in a GitBook and in the author's other repositories and PDF books.",
+    "description_zh": "mytechnotalent 维护的免费英文课程索引，几乎每天更新：共 490 节编号课程，多数课程让学习者先编写小程序，再对其调试和打补丁（文中称 \"hack\"），覆盖 x86、x64、32/64 位 ARM、RISC-V 和 AVR。前期课程从数制、寄存器、内存和栈讲起；后期转向 Raspberry Pi Pico/Pico 2、STM32F401、ESP32-C3、ATmega328P 和 micro:bit 等开发板上的微控制器固件，以及 Windows、Go、Rust 和 WebAssembly 程序。README 本身只是链接目录，课程正文位于一个 GitBook 以及作者其他仓库中的课程文件和 PDF 书。",
+    "evidence_url": "https://github.com/mytechnotalent/Reverse-Engineering/blob/8ae661a1cf37fb17afc29981d424f1656dc7741b/README.md",
+    "verified_at": "2026-10-19",
+    "verification": "source-reviewed",
+    "requirements": [
+      "At reviewed commit 8ae661a (pushed 2026-10-18) the README lists 490 numbered lessons in 26 courses and headlines a dated \"Today's Tutorial\" (Lesson 329, 18 October 2026); the default branch has received commits on most recent days. Lesson 1 describes the x86 course as starting from the basic concepts of malware reverse engineering and working up to an entry-level look at assembly, while later courses assume that grounding. The Reverse Engineering Data course (lessons 461–490) is statistics and machine-learning notebooks, not binary analysis.",
+      "No third-party target files are needed: most courses follow a write, debug, then patch pattern on programs the learner builds from the lessons. The embedded courses need physical boards (Raspberry Pi Pico and Pico 2/RP2350, STM32F401CCU6, ESP32-C3, ATmega328P, micro:bit), and the RISC-V course says it lists everything to purchase. The repository root also keeps Fritzing schematics and a few Windows MASM/Visual Studio example projects with their Debug builds.",
+      "Toolchains are set out in the linked material rather than the README, which mentions GDB in the x86 course, a Linux install lesson and PlatformIO for the ESP32-C3. Most of lessons 1–203 point to the \"Reverse Engineering For Everyone!\" GitBook by @mytechnotalent (built by @0xInfection); later lessons point to PDF books and lesson files in the author's separate repositories, which move independently and are not pinned by this record.",
+      "This collection reviewed the README index and repository tree only; it did not work through lessons or review the linked books, repositories, CTFs or their licenses. The README's \"Reverse Engineering Assistant\" (REA) link is the author's own mytechnotalent/rea tool, not the upstream REA project, so no REA connection is established. The repository is Apache-2.0; linked books and repositories carry their own terms."
+    ],
+    "additional_evidence_urls": [
+      "https://github.com/mytechnotalent/Reverse-Engineering/blob/8ae661a1cf37fb17afc29981d424f1656dc7741b/README.md#L136-L178",
+      "https://github.com/mytechnotalent/Reverse-Engineering/tree/8ae661a1cf37fb17afc29981d424f1656dc7741b",
+      "https://github.com/mytechnotalent/Reverse-Engineering/blob/8ae661a1cf37fb17afc29981d424f1656dc7741b/LICENSE",
+      "https://0xinfection.github.io/reversing/",
+      "https://github.com/mytechnotalent/rea/blob/a2f8a158eb2161899f479018db2630e7e9b93145/README.md"
+    ]
+  },
+  {
+    "id": "coop-anything",
+    "name": "Co-op Anything",
+    "url": "https://github.com/cranebeaker/coop-anything",
+    "category": "community-integrations",
+    "relationship": "community-integration",
+    "kind": "integration",
+    "targets": [
+      "game"
+    ],
+    "description_en": "Agent playbook, skill set and stdio MCP server for adding online or split-screen co-op to single-player games the players already have installed. Agents either revive an existing co-op mod or reverse engineer the game and engine to build one, test it with in-game bots and send their notes back, while the MCP server searches a directory of 223 co-op projects and 32 open gaps, detects a game’s engine from its install folder and records the executable’s identity. Its README and reverse-engineering skill pair it with REA for native code, and two game write-ups report observations made through REA’s Ghidra lane.",
+    "description_zh": "为玩家已安装的单人游戏加入联机或分屏合作模式的智能体操作手册、技能集与 stdio MCP 服务器。智能体或修复已有的合作模组，或逆向分析游戏及其引擎从头实现，再用游戏内机器人测试并把笔记回馈给仓库；MCP 服务器则可检索收录 223 个合作项目和 32 处空缺的目录，根据安装目录识别游戏引擎，并记录可执行文件的身份信息。其 README 和逆向分析技能建议原生代码部分搭配 REA 使用，另有两份游戏笔记报告了借助 REA 的 Ghidra 通道得到的观察结果。",
+    "evidence_url": "https://github.com/cranebeaker/coop-anything/blob/bffd56f00bdd6063db13fa59c18a74678b121ca0/README.md",
+    "verified_at": "2026-10-19",
+    "verification": "source-reviewed",
+    "requirements": [
+      "The repository was created on 2026-10-16, the reviewed commit is from 2026-10-18, and there are no releases, so the playbook, directory and reported results are changing quickly. The MCP server is a Python 3.9+ script without an SDK that needs PyYAML for its directory tools; Claude Code picks it up from .mcp.json, and the playbook gives Codex, Gemini CLI and Cursor settings. The same skills ship under .agents/skills and .claude/skills.",
+      "Every player needs the game installed, and the hub holds no game files or assets. AGENTS.md tells agents to work on a copied install, ask the owner before installing software or using their accounts, and pin downloads by SHA-256. Its rules allow building on existing decompilations or decompiling a game, with that code kept in the game’s own repository under the licence of what it builds on. Analysis tools such as REA, Ghidra, IDA MCP servers, Frida, Cheat Engine, BepInEx and UE4SS are installed separately, and the playbook leaves REA’s npx rea-agents setup for the owner to run before restarting the agent.",
+      "Networking guidance uses Steam relay through Valve’s free Spacewar test app, and split-screen guidance builds on Nucleus Co-op and PartyDeck. The project rules restrict it to co-op and forbid anti-cheat bypass for online services and cheating in other people’s multiplayer games.",
+      "Results are reported by the author and contributors. The README lists Deus Ex as released and Ocarina of Time as fully synced, with other games in progress; each directory entry carries a QA level, from none through player reports and automated bot tests to a verified playthrough, and the Deus Ex write-up reports automated tests with real game clients. CI only checks that DIRECTORY.md matches data/directory.yaml. This collection reviewed documentation and the MCP source without running agents, mods or games.",
+      "MIT for the hub; MinHook source vendored in one game experiment keeps its own licence, and linked mods, decompilations, tools and games keep their own terms. The REA connection is a documented pairing for native analysis plus reported use in game notes; the MCP server itself does not call REA."
+    ],
+    "additional_evidence_urls": [
+      "https://github.com/cranebeaker/coop-anything/blob/bffd56f00bdd6063db13fa59c18a74678b121ca0/AGENTS.md",
+      "https://github.com/cranebeaker/coop-anything/blob/bffd56f00bdd6063db13fa59c18a74678b121ca0/playbook/mcp.md",
+      "https://github.com/cranebeaker/coop-anything/blob/bffd56f00bdd6063db13fa59c18a74678b121ca0/playbook/reverse-engineering.md",
+      "https://github.com/cranebeaker/coop-anything/blob/bffd56f00bdd6063db13fa59c18a74678b121ca0/.agents/skills/coop-reverse-engineer/SKILL.md",
+      "https://github.com/cranebeaker/coop-anything/blob/bffd56f00bdd6063db13fa59c18a74678b121ca0/tools/mcp/coop_mcp.py",
+      "https://github.com/cranebeaker/coop-anything/blob/bffd56f00bdd6063db13fa59c18a74678b121ca0/data/SCHEMA.md",
+      "https://github.com/cranebeaker/coop-anything/blob/bffd56f00bdd6063db13fa59c18a74678b121ca0/DIRECTORY.md",
+      "https://github.com/cranebeaker/coop-anything/blob/bffd56f00bdd6063db13fa59c18a74678b121ca0/games/command-and-conquer-3/NOTES.md",
+      "https://github.com/cranebeaker/coop-anything/blob/bffd56f00bdd6063db13fa59c18a74678b121ca0/games/world-in-conflict/NOTES.md",
+      "https://github.com/cranebeaker/coop-anything/blob/bffd56f00bdd6063db13fa59c18a74678b121ca0/games/deus-ex/README.md",
+      "https://github.com/cranebeaker/coop-anything/blob/bffd56f00bdd6063db13fa59c18a74678b121ca0/.github/workflows/directory.yml",
+      "https://github.com/cranebeaker/coop-anything/blob/bffd56f00bdd6063db13fa59c18a74678b121ca0/LICENSE"
+    ]
+  },
+  {
+    "id": "fissure",
+    "name": "FISSURE",
+    "url": "https://github.com/ainfosec/FISSURE",
+    "category": "protocol-analysis",
+    "relationship": "foundation",
+    "kind": "tool",
+    "targets": [
+      "protocol"
+    ],
+    "description_en": "GNU Radio-based RF framework that carries a signal from survey and detection through IQ capture, inspection, conditioning, feature extraction and classification into a protocol discovery workflow. Its demodulation workspace estimates symbol rates for OOK/ASK and binary FSK recordings, and the bitstream and framing stage applies Manchester or differential decoding, sync-pattern and CRC evidence and repeated-message detection to propose message boundaries. A Qt dashboard coordinates local or remote SDR sensor nodes, a library keeps protocol and packet definitions, dissectors and archived recordings, and plugins add inspection modules such as radar pulse analysis.",
+    "description_zh": "基于 GNU Radio 的射频框架，可将信号从频谱巡查与检测，经 IQ 采集、检查、调理、特征提取和分类，一路带入协议发现流程。其解调工作区可为 OOK/ASK 和二进制 FSK 录制估计符号速率；比特流与成帧阶段则结合曼彻斯特或差分解码、同步模式与 CRC 证据以及重复报文检测，推断报文边界。Qt 仪表盘负责协调本地或远程的 SDR 传感节点，资料库保存协议与数据包定义、解析器和归档录制，插件还可加入雷达脉冲分析等检查模块。",
+    "evidence_url": "https://github.com/ainfosec/FISSURE/blob/75abda154a3f0642df00100d847e51d63d186821/README.md",
+    "verified_at": "2026-10-19",
+    "verification": "source-reviewed",
+    "requirements": [
+      "Development happens on the Python3 branch, reviewed at its 2026-10-17 commit; the README calls GitHub releases periodic snapshots that may lack recent fixes, and the latest, Python3_20260921 (published 2026-09-29), is seven commits behind. The changelog shows protocol discovery being rebuilt in October 2026: Demodulation and Bitstream & Framing are new, Packet Analysis is a placeholder, and the older Bit Slicing, Dissectors and Sniffer tabs are hidden as obsolete, while the Read the Docs operation pages still describe the older tabs.",
+      "Installed by cloning the repository and running its interactive installer as a normal user, not with sudo, preferably on a clean system. The README lists DragonOS, Kali, Raspberry Pi OS and Ubuntu 20.04 to 24.04 with PyQt5 and GNU Radio 3.8 or 3.10 (Ubuntu 18.04 only on the deprecated Python2 branch), beta support for a few other distributions, Windows 11 through WSL2 and Apptainer images on Ubuntu 24.04. Testing is most extensive on Ubuntu, and flow graphs may need recompiling across GNU Radio versions.",
+      "Live capture needs a supported SDR such as a USRP, HackRF, RTL2832U, LimeSDR, bladeRF, PlutoSDR or SDRplay receiver; the README says hardware support is being migrated into the plugin architecture, so not every legacy integration works in every workflow. Offline analysis uses the analyst's own IQ or SigMF recordings.",
+      "GPL-3.0; GNU Radio out-of-tree blocks come from git submodules under their own licenses. The framework also includes transmit, packet-crafting, fuzzing and attack workflows, plus geolocation, targeting and TAK sharing for distributed operations, which this entry does not cover. No installation, capture or transmission was performed."
+    ],
+    "additional_evidence_urls": [
+      "https://github.com/ainfosec/FISSURE/blob/75abda154a3f0642df00100d847e51d63d186821/README.md#L55-L101",
+      "https://github.com/ainfosec/FISSURE/blob/75abda154a3f0642df00100d847e51d63d186821/README.md#L267-L416",
+      "https://github.com/ainfosec/FISSURE/blob/75abda154a3f0642df00100d847e51d63d186821/CHANGELOG.md",
+      "https://github.com/ainfosec/FISSURE/blob/75abda154a3f0642df00100d847e51d63d186821/docs/RTD/pages/operation.rst",
+      "https://github.com/ainfosec/FISSURE/blob/75abda154a3f0642df00100d847e51d63d186821/.gitmodules",
+      "https://github.com/ainfosec/FISSURE/blob/75abda154a3f0642df00100d847e51d63d186821/LICENSE",
+      "https://github.com/ainfosec/FISSURE/releases/tag/Python3_20260921",
+      "https://fissure.readthedocs.io/en/latest/"
+    ]
+  },
+  {
+    "id": "android-unpinner",
+    "name": "Android Unpinner",
+    "url": "https://github.com/mitmproxy/android-unpinner",
+    "category": "android",
+    "relationship": "foundation",
+    "kind": "tool",
+    "targets": [
+      "app",
+      "protocol"
+    ],
+    "description_en": "Tool from the mitmproxy project that removes certificate pinning from an Android APK you own or are authorized to test, without a rooted device. It marks the app debuggable, touching only AndroidManifest.xml, and injects a Frida Gadget over ADB so an interception proxy can read the app's traffic, reusing HTTP Toolkit's unpinning script. It bundles the Android SDK helpers it needs and can also handle split APKs delivered as XAPK.",
+    "description_zh": "来自 mitmproxy 项目的工具，可在无需 root 的情况下移除使用者拥有或有权测试的 Android APK 的证书固定。它将应用标记为可调试（仅改动 AndroidManifest.xml），并通过 ADB 注入 Frida Gadget，复用 HTTP Toolkit 的解固定脚本，使检查代理能够读取应用流量。工具自带所需的 Android SDK 辅助程序，并可处理以 XAPK 形式提供的分包。",
+    "evidence_url": "https://github.com/mitmproxy/android-unpinner/blob/60cbfee4d43cedaff622d72c27d87e418a111413/README.md",
+    "additional_evidence_urls": [
+      "https://github.com/mitmproxy/android-unpinner/blob/60cbfee4d43cedaff622d72c27d87e418a111413/pyproject.toml"
+    ],
+    "verified_at": "2026-10-19",
+    "verification": "source-reviewed",
+    "requirements": [
+      "Installed with uv or pip and requires Python 3.10+ (pyproject version 1.0); the target device connects to a desktop over USB/ADB, and the tool bundles the adb, apksigner, zipalign and aapt2 helpers for Windows, Linux and macOS.",
+      "Patches the target APK and needs active instrumentation from the desktop each time the app launches, so rooting the device is not required; intended only for apps you own or are authorized to test.",
+      "The README states the project's own code is MIT-licensed, with no separate LICENSE file for GitHub to detect; bundled components keep their own licenses, including HTTP Toolkit's unpinning script (AGPL-3.0), the Frida gadgets (wxWindows Library Licence) and Android build/platform tools. The repository also ships HTTP Toolkit's open-source SSL-pinning demo APK (Apache-2.0) as a test target."
+    ]
+  },
+  {
+    "id": "cpu-rec",
+    "name": "cpu_rec",
+    "url": "https://github.com/airbus-seclab/cpu_rec",
+    "category": "firmware",
+    "relationship": "foundation",
+    "kind": "tool",
+    "targets": [
+      "firmware",
+      "binary"
+    ],
+    "description_en": "Statistically recognize the CPU instruction set in an arbitrary binary file, such as an unknown firmware image, by comparing Markov-chain byte statistics with a default corpus covering dozens of architectures, from 6502 and 8051 to ARM, MIPS, PowerPC, RISC-V, x86-64 and WebAssembly. It reports a match for the whole file, then the largest chunk that matches one architecture, and shows entropy so that encrypted or compressed regions can be discounted. It runs standalone, as a Python function or as a binwalk module.",
+    "description_zh": "对任意二进制文件（例如来历不明的固件镜像）中的 CPU 指令集进行统计识别：把字节的马尔可夫链统计与默认语料库比较，语料库涵盖数十种架构，从 6502、8051 到 ARM、MIPS、PowerPC、RISC-V、x86-64 和 WebAssembly。它先给出整个文件的匹配结果，再找出与单一架构匹配的最大数据块，并显示熵值，以便排除加密或压缩区域。可独立运行，也可作为 Python 函数或 binwalk 模块使用。",
+    "evidence_url": "https://github.com/airbus-seclab/cpu_rec/blob/6b192399cd56ad6953e568e1263024dd8a4ef38d/README.md",
+    "verified_at": "2026-10-19",
+    "verification": "source-reviewed",
+    "requirements": [
+      "Latest release at review: v1.1, published 2024-03-19 and tagged at the reviewed commit; it adds an optional pickled corpus for faster startup and LIEF as an alternative to elfesteem. There is no package: cpu_rec.py and the cpu_rec_corpus directory are copied into the same directory.",
+      "Runs on Python 3 or Python 2; the portability workflow covers Python 3.10, PyPy 2.7 and 3.9 and GraalPy on Ubuntu and macOS. Without the lzma module the .xz corpus files must be decompressed first. Optional elfesteem or LIEF extracts the text section of ELF, PE, Mach-O or COFF files. The README reports about one minute of analysis per MB, and 1 GB of RAM to build signatures for 70 architectures, on the author's laptop.",
+      "Binwalk mode installs into binwalk's module directory and needs a binwalk that includes devttys0/binwalk pull request 241; these instructions point to the earlier Python binwalk, and compatibility with the current Rust-based v3 was not checked.",
+      "Results are heuristic: the README warns that files can contain several architectures, small chunks can be misdetected, and results for data with entropy above 0.9 are probably meaningless. 78k and TriCore are left out of the default corpus for licensing reasons and can only be added from the user's own binaries.",
+      "cpu_rec.py is Apache-2.0. The README describes the default corpus as a composite of code chunks under their own licenses, mostly from Debian, BusyBox, C-Kermit and the author's own cross-compiled open-source builds, plus a few of unknown license, including an H8S binary distributed by Dell; build_default_corpus records each origin. No files were analyzed."
+    ],
+    "additional_evidence_urls": [
+      "https://github.com/airbus-seclab/cpu_rec/blob/6b192399cd56ad6953e568e1263024dd8a4ef38d/README.md#L7-L76",
+      "https://github.com/airbus-seclab/cpu_rec/blob/6b192399cd56ad6953e568e1263024dd8a4ef38d/README.md#L140-L151",
+      "https://github.com/airbus-seclab/cpu_rec/blob/6b192399cd56ad6953e568e1263024dd8a4ef38d/README.md#L233-L296",
+      "https://github.com/airbus-seclab/cpu_rec/blob/6b192399cd56ad6953e568e1263024dd8a4ef38d/cpu_rec.py#L329-L516",
+      "https://github.com/airbus-seclab/cpu_rec/blob/6b192399cd56ad6953e568e1263024dd8a4ef38d/cpu_rec.py#L517-L645",
+      "https://github.com/airbus-seclab/cpu_rec/blob/6b192399cd56ad6953e568e1263024dd8a4ef38d/.github/workflows/portability.yml",
+      "https://github.com/airbus-seclab/cpu_rec/blob/6b192399cd56ad6953e568e1263024dd8a4ef38d/LICENCE",
+      "https://github.com/airbus-seclab/cpu_rec/releases/tag/v1.1",
+      "https://www.sstic.org/2017/presentation/cpu_rec/"
+    ]
+  },
+  {
+    "id": "iced",
+    "name": "iced",
+    "url": "https://github.com/icedland/iced",
+    "category": "binary-libraries",
+    "relationship": "foundation",
+    "kind": "tool",
+    "targets": [
+      "binary"
+    ],
+    "description_en": "x86 instruction library for 16-, 32- and 64-bit code that decodes, formats, assembles and encodes instructions, with masm, nasm, GNU AT&T and Intel XED output syntaxes. Its instruction-info API reports the registers, memory operands and RFLAGS bits an instruction reads or writes, its CPUID feature flags and control-flow type, and the encoder can re-encode decoded instructions at any address. Rust, C# (.NET) and Java implementations live in one repository, with Python, JavaScript (WebAssembly) and Lua bindings built on the Rust crate.",
+    "description_zh": "面向 16、32 和 64 位 x86 代码的指令库，可解码、格式化、汇编和编码指令，输出支持 masm、nasm、GNU AT&T 和 Intel XED 语法。其指令信息 API 可报告指令读写的寄存器、内存操作数和 RFLAGS 标志位，以及所需的 CPUID 特性标志和控制流类型；编码器还能把已解码的指令重新编码到任意地址。同一仓库维护 Rust、C#（.NET）和 Java 三套实现，另有基于 Rust crate 的 Python、JavaScript（WebAssembly）和 Lua 绑定。",
+    "evidence_url": "https://github.com/icedland/iced/blob/8cfc5f57c08fd2e80a4cec9d3d9d36f642b2de31/README.md",
+    "verified_at": "2026-10-19",
+    "verification": "source-reviewed",
+    "requirements": [
+      "Latest release at review: v1.21.0, published 2024-01-20, distributed as iced-x86 on crates.io, PyPI, npm and Maven Central (group io.github.icedland.iced) and as iced on NuGet. The reviewed master commit (2026-07-14) is 340 commits ahead of that tag, with no newer release, and still declares version 1.21.0; this entry pins it for documentation only.",
+      "The Rust crate needs rustc 1.64.0+, supports no_std and WebAssembly, and uses Cargo features to select the decoder, encoder, block encoder, instruction info, each formatter and the optional code assembler. The .NET library targets .NET Standard 2.0/2.1 and .NET Framework 4.5, and the Java library needs Java 8+. PyPI ships Windows, macOS and Linux wheels, and source builds need Rust and Python 3.8+; the JavaScript package is built with wasm-pack, and the Lua binding is built from source with Rust, luarocks and Lua 5.1+.",
+      "The caller supplies raw code bytes, the bitness and the instruction pointer. The reviewed documentation describes no executable-format parsing or function discovery, so a loader or format library has to locate code first. Knights Corner MVEX instructions need the mvex feature and the KNC decoder option.",
+      "MIT license. The README reports that all instructions are tested, that iced was tested against xed, gas, objdump, masm, dumpbin, nasm and ndisasm and fuzzed, and Rust throughput above 250 MB/s for decoding and 130 MB/s for decoding plus formatting in its disas-bench results. None of this was reproduced; no code was decoded or assembled."
+    ],
+    "additional_evidence_urls": [
+      "https://github.com/icedland/iced/blob/8cfc5f57c08fd2e80a4cec9d3d9d36f642b2de31/src/rust/iced-x86/README.md#L1-L62",
+      "https://github.com/icedland/iced/blob/8cfc5f57c08fd2e80a4cec9d3d9d36f642b2de31/src/rust/iced-x86/Cargo.toml",
+      "https://github.com/icedland/iced/blob/8cfc5f57c08fd2e80a4cec9d3d9d36f642b2de31/src/csharp/Intel/README.md",
+      "https://github.com/icedland/iced/blob/8cfc5f57c08fd2e80a4cec9d3d9d36f642b2de31/src/csharp/Intel/Iced/Iced.csproj",
+      "https://github.com/icedland/iced/blob/8cfc5f57c08fd2e80a4cec9d3d9d36f642b2de31/src/java/iced-x86/README.md",
+      "https://github.com/icedland/iced/blob/8cfc5f57c08fd2e80a4cec9d3d9d36f642b2de31/src/rust/iced-x86-py/README.md",
+      "https://github.com/icedland/iced/blob/8cfc5f57c08fd2e80a4cec9d3d9d36f642b2de31/src/rust/iced-x86-js/README.md",
+      "https://github.com/icedland/iced/blob/8cfc5f57c08fd2e80a4cec9d3d9d36f642b2de31/src/rust/iced-x86-lua/README.md",
+      "https://github.com/icedland/iced/blob/8cfc5f57c08fd2e80a4cec9d3d9d36f642b2de31/LICENSE.txt",
+      "https://github.com/icedland/iced/releases/tag/v1.21.0",
+      "https://github.com/icedland/iced/compare/v1.21.0...8cfc5f57c08fd2e80a4cec9d3d9d36f642b2de31",
+      "https://pypi.org/project/iced-x86/1.21.0/"
+    ]
+  },
+  {
+    "id": "apk-mitm",
+    "name": "apk-mitm",
+    "url": "https://github.com/niklashigi/apk-mitm",
+    "category": "android",
+    "relationship": "foundation",
+    "kind": "tool",
+    "targets": [
+      "app",
+      "protocol"
+    ],
+    "description_en": "Command-line tool that prepares an Android APK you own or are authorized to test for HTTPS traffic inspection. It decodes the package with Apktool, adjusts the network security configuration to trust user-added certificates, disables certificate pinning, then re-encodes and signs the patched APK, so a proxy can read the app's traffic without a rooted device. App bundles supplied as .xapk or .apks are also supported.",
+    "description_zh": "命令行工具，为使用者拥有或有权测试的 Android APK 准备 HTTPS 流量检查。它用 Apktool 解码安装包、调整网络安全配置以信任用户添加的证书、关闭证书固定，再重新编码并签名修补后的 APK，使代理无需 root 设备即可读取应用流量。也支持以 .xapk 或 .apks 形式提供的应用捆绑包。",
+    "evidence_url": "https://github.com/niklashigi/apk-mitm/blob/5a96363fc9112b97d60fc2bd3799d6bbfd8e4e00/README.md",
+    "additional_evidence_urls": [
+      "https://github.com/niklashigi/apk-mitm/blob/5a96363fc9112b97d60fc2bd3799d6bbfd8e4e00/LICENSE",
+      "https://github.com/niklashigi/apk-mitm/blob/5a96363fc9112b97d60fc2bd3799d6bbfd8e4e00/package.json"
+    ],
+    "verified_at": "2026-10-19",
+    "verification": "source-reviewed",
+    "requirements": [
+      "Installed from npm as a global CLI and requires Node.js 14+ and Java 8+ per the README; patching app bundles on Linux also needs zip and unzip available.",
+      "Operates on an APK or app bundle the analyst supplies and is intended only for apps you own or are authorized to test; rooting the device is not required because the changes are applied statically before install.",
+      "The README notes the static Apktool-based approach can fail on large or complex apps and cannot address certificate pinning enforced inside native binaries such as Flutter. MIT licensed; the repository ships the tool only, no application packages."
+    ]
+  },
+  {
+    "id": "fritap",
+    "name": "friTap",
+    "url": "https://github.com/fkie-cad/friTap",
+    "category": "protocol-analysis",
+    "relationship": "foundation",
+    "kind": "tool",
+    "targets": [
+      "protocol",
+      "app"
+    ],
+    "description_en": "Frida-based tool that hooks TLS libraries such as OpenSSL, BoringSSL, NSS and GnuTLS inside a running process and writes NSS key logs and decrypted payloads as PCAP, so analysts can inspect an application's encrypted traffic in Wireshark. For stripped or statically linked libraries it accepts byte patterns or offsets and can scan for renamed libraries, or it can recover TLS secrets by scanning heap memory instead of hooking. A terminal UI, a Python API and a Wireshark extcap integration wrap the same capture.",
+    "description_zh": "基于 Frida 的工具，在运行中的进程内挂钩 OpenSSL、BoringSSL、NSS、GnuTLS 等 TLS 库，输出 NSS 格式的密钥日志和解密后的 PCAP 明文，便于分析者在 Wireshark 中检查应用的加密流量。对于去除符号或静态链接的库，可通过字节模式或偏移量定位函数、扫描被重命名的库，也可不挂钩而改为扫描堆内存来恢复 TLS 密钥。终端界面、Python API 和 Wireshark extcap 集成都基于同一套捕获功能。",
+    "evidence_url": "https://github.com/fkie-cad/friTap/blob/d7398a153755c136005e932414592885348cf83d/README.md",
+    "verified_at": "2026-10-19",
+    "verification": "source-reviewed",
+    "requirements": [
+      "Latest release at review: v2.5.2, uploaded to PyPI on 2026-09-29 and published on GitHub on 2026-10-04; the reviewed main commit is identical to that tag. The README describes Linux, Windows and Android as supported and macOS and iOS as partial and still under development, and says the Windows implementations were verified only on Windows 10.",
+      "Installed with pip as fritap on Python 3.10+. friTap 2.x requires frida 17.x and frida-tools 14.x; devices with an older frida-server need a legacy friTap line installed through the documented constraints files. Mobile apps need a frida-server running on the device, and the Android walkthrough uses a rooted phone or emulator with adb in PATH; the desktop example attaches with sudo. libpcap or Npcap is needed only for full packet capture, and live Wireshark piping works only on Linux and macOS.",
+      "Analysts name the process or app package to attach to or spawn. Coverage differs by library and platform: the README's support table marks many combinations as read/write hooks only, keys only or not yet implemented, so plaintext captures can be incomplete. Byte patterns for statically linked BoringSSL can come from the authors' separate BoringSecretHunter tool, which analyzes the user's own copy of the library.",
+      "GPL-3.0; setup.py declares GPL-3.0-only while its inline comment says GPLv3 or later. The README presents the tool for malware analysis and application privacy research and asks users to cite the authors' 2024 Forensic Science International: Digital Investigation paper on TLS key material extraction. No process was hooked and no traffic was captured."
+    ],
+    "additional_evidence_urls": [
+      "https://github.com/fkie-cad/friTap/blob/d7398a153755c136005e932414592885348cf83d/README.md#L175-L198",
+      "https://github.com/fkie-cad/friTap/blob/d7398a153755c136005e932414592885348cf83d/README.md#L200-L216",
+      "https://github.com/fkie-cad/friTap/blob/d7398a153755c136005e932414592885348cf83d/USAGE.md",
+      "https://github.com/fkie-cad/friTap/blob/d7398a153755c136005e932414592885348cf83d/EXAMPLE.md",
+      "https://github.com/fkie-cad/friTap/blob/d7398a153755c136005e932414592885348cf83d/setup.py#L35-L40",
+      "https://github.com/fkie-cad/friTap/blob/d7398a153755c136005e932414592885348cf83d/LICENSE",
+      "https://github.com/fkie-cad/friTap/tree/d7398a153755c136005e932414592885348cf83d/integrations/wireshark",
+      "https://github.com/fkie-cad/friTap/releases/tag/v2.5.2",
+      "https://pypi.org/project/friTap/2.5.2/",
+      "https://doi.org/10.1016/j.fsidi.2024.301766"
+    ]
+  },
+  {
+    "id": "hrtng",
+    "name": "hrtng",
+    "url": "https://github.com/KasperskyLab/hrtng",
+    "category": "native-analysis",
+    "relationship": "foundation",
+    "kind": "tool",
+    "targets": [
+      "binary"
+    ],
+    "description_en": "IDA plugin published by Kaspersky that extends the Hex-Rays decompiler with tools its author collected for reverse-engineering work, including malware analysis. It decrypts strings, data and constants with built-in ciphers or in bulk through IDA's Appcall debugger feature, resolves API-name hashes, unflattens control flow and forces decompilation of obfuscated code, and recognizes library code through microcode signatures, inlined-function detection and PAT files built from an IDA database. Pseudocode helpers cover automatic renaming, retyping and enum substitution, structure creation, virtual and indirect call navigation, and patching.",
+    "description_zh": "Kaspersky 发布的 IDA 插件，为 Hex-Rays 反编译器加入了作者在包括恶意软件分析在内的逆向工作中积累的各类工具。它可用内置密码算法解密字符串、数据和常量，或借助 IDA 的 Appcall 调试器功能批量解密；还能识别 API 名称哈希、消除控制流平坦化并强制反编译混淆代码，并通过微码签名、内联函数检测和从 IDA 数据库生成的 PAT 文件识别库代码。伪代码辅助功能包括自动重命名、类型修改和枚举替换、结构体创建、虚函数与间接调用导航以及补丁。",
+    "evidence_url": "https://github.com/KasperskyLab/hrtng/blob/2c7b78e5772cc8728d8b450fd5a87cb226a683fb/README.md",
+    "verified_at": "2026-10-19",
+    "verification": "source-reviewed",
+    "requirements": [
+      "Requires IDA with the Hex-Rays decompiler. The README supports only the latest IDA version; the plugin can still be compiled against IDA SDK 7.3 or later, but new features are usually not well tested on older versions. Latest release at review: v3.9.114, published 2026-09-02, with prebuilt archives for IDA 9.2, 9.3 and 9.4 plus a separate 7z archive; the reviewed master commit is one changelog fix ahead and declares 3.9.115 in ida-plugin.json.",
+      "The CI workflow builds Linux x64, macOS (Apple silicon and Intel) and Windows x64 binaries, and Linux ARM for IDA 9.3 and 9.4. Source builds use CMake with the Crypto++ CMake submodule and an IDA SDK whose path and version are set in src/CMakeLists.txt; the README gives manual SDK fixes for 8.5 and 9.1. The apilist.txt and literal.txt files from bin/plugins must sit beside the plugin for API-hash scanning and enum substitution.",
+      "Samples and IDA databases come from the analyst. The Appcall engine for mass decryption runs the analyzed program's own decryption routine under the selected IDA debugger, and its documentation reports testing only with the imul emulator and IDA's Remote Windows debugger. Obfuscated-code decompilation and inline detection are described as experimental.",
+      "GPL-3.0. NOTICE.txt lists bundled third-party code and its licenses, including Crypto++ 8.9.0 under the Boost Software License 1.0, used for ciphers such as RC4, AES and ChaCha20, and MIT-licensed GraphSlick and microavx code. Nothing was built, installed or run."
+    ],
+    "additional_evidence_urls": [
+      "https://github.com/KasperskyLab/hrtng/blob/2c7b78e5772cc8728d8b450fd5a87cb226a683fb/README.md#L13-L15",
+      "https://github.com/KasperskyLab/hrtng/blob/2c7b78e5772cc8728d8b450fd5a87cb226a683fb/README.md#L112-L150",
+      "https://github.com/KasperskyLab/hrtng/blob/2c7b78e5772cc8728d8b450fd5a87cb226a683fb/doc/decr.md",
+      "https://github.com/KasperskyLab/hrtng/blob/2c7b78e5772cc8728d8b450fd5a87cb226a683fb/doc/appcall.md",
+      "https://github.com/KasperskyLab/hrtng/blob/2c7b78e5772cc8728d8b450fd5a87cb226a683fb/doc/deob.md",
+      "https://github.com/KasperskyLab/hrtng/blob/2c7b78e5772cc8728d8b450fd5a87cb226a683fb/doc/msig.md",
+      "https://github.com/KasperskyLab/hrtng/blob/2c7b78e5772cc8728d8b450fd5a87cb226a683fb/.github/workflows/build.yml",
+      "https://github.com/KasperskyLab/hrtng/blob/2c7b78e5772cc8728d8b450fd5a87cb226a683fb/ida-plugin.json",
+      "https://github.com/KasperskyLab/hrtng/blob/2c7b78e5772cc8728d8b450fd5a87cb226a683fb/CHANGELOG.md",
+      "https://github.com/KasperskyLab/hrtng/blob/2c7b78e5772cc8728d8b450fd5a87cb226a683fb/NOTICE.txt",
+      "https://github.com/KasperskyLab/hrtng/blob/2c7b78e5772cc8728d8b450fd5a87cb226a683fb/COPYING",
+      "https://github.com/KasperskyLab/hrtng/releases/tag/v3.9.114",
+      "https://securelist.com/hrtng-ida-pro-plugin/114780/"
+    ]
+  },
+  {
+    "id": "frida-interception-and-unpinning",
+    "name": "Frida Mobile Interception Scripts",
+    "url": "https://github.com/httptoolkit/frida-interception-and-unpinning",
+    "category": "android",
+    "relationship": "foundation",
+    "kind": "tool",
+    "targets": [
+      "app",
+      "protocol"
+    ],
+    "description_en": "A set of Frida scripts from HTTP Toolkit for inspecting a mobile app's HTTPS traffic while analysing apps you own or are authorized to test. Injected into a running Android or iOS app, they redirect its connections to an interception proxy, add a user-supplied CA certificate to the trust stores, and disable certificate pinning and transparency checks so the proxy can read the traffic. Individual scripts can also be used on their own to hook specific behaviour.",
+    "description_zh": "来自 HTTP Toolkit 的一组 Frida 脚本，用于在分析自有或经授权测试的应用时检查移动应用的 HTTPS 流量。将其注入运行中的 Android 或 iOS 应用后，可把连接重定向到检查代理、将用户提供的 CA 证书加入信任库，并关闭证书固定与证书透明度检查，使代理能够读取流量。各脚本也可单独使用以挂钩特定行为。",
+    "evidence_url": "https://github.com/httptoolkit/frida-interception-and-unpinning/blob/560dd29d410fe785f9f390e3c7f86ca8359c8d67/README.md",
+    "additional_evidence_urls": [
+      "https://github.com/httptoolkit/frida-interception-and-unpinning/blob/560dd29d410fe785f9f390e3c7f86ca8359c8d67/LICENSE"
+    ],
+    "verified_at": "2026-10-19",
+    "verification": "source-reviewed",
+    "requirements": [
+      "Delivered as Frida scripts injected into a target app with the Frida CLI; the README's Android workflow requires a rooted device or emulator running frida-server as root, and the iOS workflow requires a jailbroken device with Frida installed.",
+      "The analyst supplies their own interception proxy and CA certificate and edits config.js before use; the scripts are intended only for mobile apps you own or are authorized to test, not for circumventing protections on third-party software.",
+      "AGPL-3.0 licensed and funded by NLnet as part of the HTTP Toolkit project; the repository ships scripts only and no application packages."
+    ]
+  },
+  {
+    "id": "bincat",
+    "name": "BinCAT",
+    "url": "https://github.com/airbus-seclab/bincat",
+    "category": "native-analysis",
+    "relationship": "foundation",
+    "kind": "tool",
+    "targets": [
+      "binary"
+    ],
+    "description_en": "Static binary code analysis toolkit designed for reverse engineers. Starting from a chosen address and initial state, it computes register and memory values, taint and reconstructed types, with forward and backward analysis and heap use-after-free and double-free detection; bits it cannot determine are shown as unknown. It is driven from an IDA plugin, where analysts can override values or taint, skip functions or replace instructions with NOPs before re-running, or from Python and an .ini configuration for automation.",
+    "description_zh": "面向逆向工程人员的二进制代码静态分析工具包。它从选定的地址和初始状态出发，计算寄存器与内存的值、污点和重建出的类型，支持前向与后向分析，并能检测堆上的释放后使用和重复释放；无法确定的位会标为未知。分析可在 IDA 插件中进行，分析人员可覆盖值或污点、跳过函数或把指令替换为 NOP 后重新运行；也可通过 Python 和 .ini 配置文件实现自动化。",
+    "evidence_url": "https://github.com/airbus-seclab/bincat/blob/5d0ee3b56867059427eb0f4123c4d9de0b8059dd/README.md",
+    "verified_at": "2026-10-19",
+    "verification": "source-reviewed",
+    "requirements": [
+      "Latest release at review: v1.5, published 2025-02-25; its tag is the reviewed master commit, and the repository has had no commits since. The Linux and Windows release archives bundle the analyzer and the IDA plugin, which is installed by running install_plugin.py from IDA. The plugin requires IDA 7.4 or later with Python 3; the changelog adds IDA 8.3 support in v1.3 and IDA 9.0 support in v1.4.",
+      "The README lists x86-32, x86-64, ARMv7, ARMv8 and PowerPC as analysis targets; the changelog also records initial RISC-V and initial, incomplete ARMv7 Thumb support. The analyzer runs locally on Linux or Windows (macOS only “maybe”, per the README) or as a Flask web service in the airbusseclab/bincat Docker image that the plugin reaches through its remote URL option. Source builds need OCaml with dune, menhir, ocamlgraph, ppxlib and zarith plus Python 3; Windows builds use Cygwin and an opam mingw64 OCaml switch.",
+      "Each analysis is described by a versioned .ini file covering the program, its sections and imports, the initial register and memory state and overrides; the IDA plugin generates it from the open database, ELF core dumps can supply the initial state, and the format documentation is partial, with the parser source as its reference. Binaries to analyze come from the user; the tutorial uses the project’s own keygen-me sample.",
+      "AGPL-3.0 per the README and doc/COPYING; GitHub detects no license because there is no root license file. The OCaml code includes LGPLv2 OCaml runtime code, the plugin includes Apache-2.0 code from python-pyqt5-hexview, and a modified copy of c2newspeak is bundled. Results depend on the configured initial state, skipped functions and overrides; nothing was installed or analyzed."
+    ],
+    "additional_evidence_urls": [
+      "https://github.com/airbus-seclab/bincat/blob/5d0ee3b56867059427eb0f4123c4d9de0b8059dd/README.md#L25-L37",
+      "https://github.com/airbus-seclab/bincat/blob/5d0ee3b56867059427eb0f4123c4d9de0b8059dd/README.md#L119-L132",
+      "https://github.com/airbus-seclab/bincat/blob/5d0ee3b56867059427eb0f4123c4d9de0b8059dd/CHANGELOG",
+      "https://github.com/airbus-seclab/bincat/blob/5d0ee3b56867059427eb0f4123c4d9de0b8059dd/doc/manual.md",
+      "https://github.com/airbus-seclab/bincat/blob/5d0ee3b56867059427eb0f4123c4d9de0b8059dd/doc/ini_format.md",
+      "https://github.com/airbus-seclab/bincat/blob/5d0ee3b56867059427eb0f4123c4d9de0b8059dd/doc/install_manual.md",
+      "https://github.com/airbus-seclab/bincat/blob/5d0ee3b56867059427eb0f4123c4d9de0b8059dd/doc/install_docker.md",
+      "https://github.com/airbus-seclab/bincat/blob/5d0ee3b56867059427eb0f4123c4d9de0b8059dd/doc/windows_build.md",
+      "https://github.com/airbus-seclab/bincat/blob/5d0ee3b56867059427eb0f4123c4d9de0b8059dd/doc/COPYING",
+      "https://github.com/airbus-seclab/bincat/releases/tag/v1.5"
+    ]
+  },
+  {
+    "id": "pbtk",
+    "name": "pbtk",
+    "url": "https://github.com/marin-m/pbtk",
+    "category": "protocol-analysis",
+    "relationship": "foundation",
+    "kind": "tool",
+    "targets": [
+      "protocol",
+      "app"
+    ],
+    "description_en": "Recover Protobuf message definitions from compiled programs as readable .proto files. Extractors cover the Java runtimes in JAR, DEX and APK files (including ProGuard-obfuscated code), binaries that embed Protobuf reflection metadata, and web apps using the Protobuf-URL format. A GUI then binds a recovered message type to an HTTP endpoint, decodes hex-encoded captured samples into an editable field tree and resends edited messages, so analysts can relate each field to the response.",
+    "description_zh": "从已编译程序中恢复 Protobuf 消息定义，并还原为可读的 .proto 文件。提取器覆盖 JAR、DEX 和 APK 中的各类 Java 运行时（包括经 ProGuard 混淆的代码）、内嵌 Protobuf 反射元数据的二进制文件，以及使用 Protobuf-URL 格式的 Web 应用。随后可在图形界面中把恢复出的消息类型绑定到 HTTP 端点，将十六进制形式的抓包样本解码为可编辑的字段树，并重新发送修改后的消息，帮助分析者把每个字段与响应对应起来。",
+    "evidence_url": "https://github.com/marin-m/pbtk/blob/7c5fa2ca4cee9e8a2862c6e3332e7b8a850bb8e8/README.md",
+    "verified_at": "2026-10-19",
+    "verification": "source-reviewed",
+    "requirements": [
+      "Latest release at review: 1.1.3, published 2026-08-21 on GitHub and PyPI; the reviewed master commit is four commits ahead of it, adding a version display, a dependency bump and new brand colors, and carries a 1.1.3.1 tag with no GitHub release or PyPI upload. The README's 2026 notes say Java extraction now works mostly with older APKs and the Chrome-based Protobuf-URL web extractor needs an update; finishing the automatic fuzzing part is listed as forthcoming.",
+      "Requires Python 3.10+, PySide6 and the Python protobuf runtime. The README documents a snap for Ubuntu, the pbtk-git AUR package, and uv or pipx installs, and says Windows is supported. Java extraction needs a Java runtime (the Debian instructions install OpenJDK 8), and web extraction drives a Chrome or Chromium instance through websocket-client.",
+      "Analysts supply the APK, JAR, DEX or native library to analyze and, optionally, hex-encoded request samples they captured themselves with a proxy such as mitmproxy or Wireshark. Replay sends the edited messages to the live endpoint the analyst configures. Extracted .protos and endpoint definitions are stored in a .pbtk folder in the home directory (a pbtk folder under APPDATA on Windows).",
+      "GPL-3.0-or-later per pyproject.toml. The package bundles third-party executables: protoc builds, dex2jar 2.4 jars with their Apache-2.0 notice, and JAD decompiler binaries for which the repository includes no license text. Definitions recovered from minified code keep obfuscated names until the analyst renames them; no application was analyzed and no requests were sent."
+    ],
+    "additional_evidence_urls": [
+      "https://github.com/marin-m/pbtk/blob/7c5fa2ca4cee9e8a2862c6e3332e7b8a850bb8e8/pyproject.toml",
+      "https://github.com/marin-m/pbtk/blob/7c5fa2ca4cee9e8a2862c6e3332e7b8a850bb8e8/LICENSE",
+      "https://github.com/marin-m/pbtk/blob/7c5fa2ca4cee9e8a2862c6e3332e7b8a850bb8e8/src/pbtk/extractors/jar_extract.py#L46-L52",
+      "https://github.com/marin-m/pbtk/blob/7c5fa2ca4cee9e8a2862c6e3332e7b8a850bb8e8/src/pbtk/extractors/web_extract.py#L57-L65",
+      "https://github.com/marin-m/pbtk/blob/7c5fa2ca4cee9e8a2862c6e3332e7b8a850bb8e8/src/pbtk/utils/transports.py",
+      "https://github.com/marin-m/pbtk/tree/7c5fa2ca4cee9e8a2862c6e3332e7b8a850bb8e8/src/pbtk/utils/external",
+      "https://github.com/marin-m/pbtk/blob/7c5fa2ca4cee9e8a2862c6e3332e7b8a850bb8e8/TROUBLESHOOTING.md",
+      "https://github.com/marin-m/pbtk/releases/tag/1.1.3",
+      "https://pypi.org/project/pbtk/1.1.3/"
+    ]
+  },
+  {
+    "id": "reflutter",
+    "name": "reFlutter",
+    "url": "https://github.com/Impact-I/reFlutter",
+    "category": "android",
+    "relationship": "foundation",
+    "kind": "tool",
+    "targets": [
+      "app",
+      "protocol"
+    ],
+    "description_en": "Flutter reverse-engineering framework for apps the analyst is authorized to inspect. It repacks an app with a prebuilt patched Dart engine, or instruments the app's own engine at runtime, to emit a JSONL dump of every function's name, class, library and code offset into the Dart instructions image for Frida or IDA/Ghidra work. It can also route the app's HTTPS traffic through an inspection proxy with Flutter certificate pinning disabled.",
+    "description_zh": "面向分析者有权检查的应用的 Flutter 逆向框架。它通过替换为预编译的已打补丁 Dart 引擎（repack 模式）或在运行时插桩应用自带引擎（attach 模式），导出包含每个函数名称、类、库以及其在 Dart 指令镜像中代码偏移的 JSONL 清单，供 Frida 或 IDA/Ghidra 使用。它还能在关闭 Flutter 证书固定的情况下，将应用的 HTTPS 流量路由到检查代理。",
+    "evidence_url": "https://github.com/Impact-I/reFlutter/blob/846a00033ef39a53502eed8b775b6699fe0fc684/README.md",
+    "additional_evidence_urls": [
+      "https://github.com/Impact-I/reFlutter/blob/846a00033ef39a53502eed8b775b6699fe0fc684/setup.py",
+      "https://github.com/Impact-I/reFlutter/blob/846a00033ef39a53502eed8b775b6699fe0fc684/LICENSE",
+      "https://github.com/Impact-I/reFlutter/blob/846a00033ef39a53502eed8b775b6699fe0fc684/enginehash.csv"
+    ],
+    "verified_at": "2026-10-19",
+    "requirements": [
+      "Installed from PyPI as reflutter (setup.py marks version 0.9.8 and requires Python 3.10+) and runs on Linux, Windows or macOS; the README notes a repacked APK must be re-signed and zip-aligned with an external signer before install.",
+      "The README lists support for Android arm64, arm32 and x64 and iOS arm64 across release and profile builds on the stable and beta channels, with engine coverage keyed by snapshot hash in enginehash.csv; pre-monorepo engines (<= 3.27) are built from the archived flutter/engine repository. Frida hooking and dump collection need a matching frida-server on the target device or emulator.",
+      "Intended for Flutter applications the analyst owns or is authorized to inspect. GPL-3.0 licensed; the project ships tooling and prebuilt engine assets but no application packages."
+    ],
+    "verification": "source-reviewed"
+  },
+  {
+    "id": "ddc",
+    "name": "ddc",
+    "url": "https://github.com/ejfkdev/ddc",
+    "category": "android",
+    "relationship": "foundation",
+    "kind": "tool",
+    "targets": [
+      "app"
+    ],
+    "description_en": "Rust decompiler that turns Android DEX bytecode, versions 035 to 041, from APKs, multi-dex apps and XAPK/APKS/APKM containers into Java, folding lambdas and string concatenation back into Java syntax and giving locals jadx-style names. By default every file also goes through a source-level cleanup pass, described as semantics-preserving, that inlines copy chains, recovers ternaries and for-each loops and drops dead stores; --fast skips it. Alongside full decompilation, 15 query subcommands return app and manifest information, resources, strings, cross-references, class hierarchies, disassembly or single classes and methods on demand, and the same queries are served over REST and MCP.",
+    "description_zh": "用 Rust 编写的反编译器，可将 APK、多 DEX 应用以及 XAPK/APKS/APKM 容器中 035 至 041 版本的 Android DEX 字节码转换为 Java，把 lambda 和字符串拼接还原为 Java 语法，并按 jadx 的风格为局部变量命名。默认情况下，每个文件还会经过一道据称保持语义的源码级整理，内联拷贝链、恢复三元表达式和 for-each 循环并删除无用赋值；--fast 可跳过这一步。除完整反编译外，15 个查询子命令可按需返回应用与清单信息、资源、字符串、交叉引用、类层次结构、反汇编以及单个类或方法，同样的查询也可通过 REST 和 MCP 提供。",
+    "evidence_url": "https://github.com/ejfkdev/ddc/blob/e240550669fed51edc8d373654b1883322a60eec/README.md",
+    "verified_at": "2026-10-19",
+    "verification": "source-reviewed",
+    "requirements": [
+      "Release at review: v0.1.30, published 2026-10-18, which is the reviewed main commit. The repository was created in September 2026 and releases come quickly (v0.1.28 to v0.1.30 within eight days). Releases ship raw binaries for Linux, Windows and macOS on x86_64 and ARM64, the non-macOS builds UPX-compressed, and Homebrew, Scoop and cargo-binstall install them; source builds use stable Rust and the author's jdc-core, cure and xyz-rust crates.",
+      "Input is an APK, app container or DEX file from the user's own app; full decompilation writes an <input>-out directory next to the input by default. ddc serve and ddc http default to the listen address :8080, with no host given, and bearer-token authentication is optional; ddc mcp stdio runs as an agent subprocess.",
+      "The README reports that all 909,689 files emitted for seven benchmark APKs, and docs/validation.md that 4.08 million files from 39 apps, pass javac's parse phase; this is a syntax check only. Known limitations include erased generic types, separate d8-desugared lambda classes, timeouts on some very large R8 methods whose output can vary between runs, and desugared pattern switches; a full-classpath javac run still finds about 7,500 ddc-attributable errors across 0.91 million files, roughly twice jadx's count on the same set.",
+      "CI builds and runs cargo test on Linux, macOS and Windows. The benchmark APKs are not in the repository; its fixtures are small DEX files and one binary AndroidManifest. MIT license. No apps were decompiled and the servers were not run."
+    ],
+    "additional_evidence_urls": [
+      "https://github.com/ejfkdev/ddc/blob/e240550669fed51edc8d373654b1883322a60eec/README.md#L179-L192",
+      "https://github.com/ejfkdev/ddc/blob/e240550669fed51edc8d373654b1883322a60eec/docs/cli.md",
+      "https://github.com/ejfkdev/ddc/blob/e240550669fed51edc8d373654b1883322a60eec/docs/subcommands.md",
+      "https://github.com/ejfkdev/ddc/blob/e240550669fed51edc8d373654b1883322a60eec/docs/validation.md",
+      "https://github.com/ejfkdev/ddc/blob/e240550669fed51edc8d373654b1883322a60eec/docs/architecture.md",
+      "https://github.com/ejfkdev/ddc/blob/e240550669fed51edc8d373654b1883322a60eec/crates/ddc-cli/src/mode_help.rs",
+      "https://github.com/ejfkdev/ddc/blob/e240550669fed51edc8d373654b1883322a60eec/Cargo.toml",
+      "https://github.com/ejfkdev/ddc/blob/e240550669fed51edc8d373654b1883322a60eec/.github/workflows/ci.yml",
+      "https://github.com/ejfkdev/ddc/blob/e240550669fed51edc8d373654b1883322a60eec/LICENSE",
+      "https://github.com/ejfkdev/ddc/releases/tag/v0.1.30"
+    ]
+  },
+  {
+    "id": "me-analyzer",
+    "name": "ME Analyzer",
+    "url": "https://github.com/platomav/MEAnalyzer",
+    "category": "firmware",
+    "relationship": "foundation",
+    "kind": "tool",
+    "targets": [
+      "firmware"
+    ],
+    "description_en": "Parse Intel Management Engine (CS)ME, TXE and SPS firmware, Graphics System Controller firmware and their independent PMC, PCHC, PHY and option-ROM images to report family, version, release, SKU, platform, size and health status. Research options print flash partition, BPDT/IFWI and CSE layout tables, validate RSA signatures and checksums, and unpack the supported CSE and GSC code and file systems. A bundled database identifies known images and reports those not yet listed in the community firmware repositories.",
+    "description_zh": "解析 Intel 管理引擎 (CS)ME、TXE 和 SPS 固件、图形系统控制器（GSC）固件，以及与之配套的独立 PMC、PCHC、PHY 和 Option ROM 镜像，报告系列、版本、发布类型、SKU、平台、大小和健康状态。研究用参数可显示 Flash 分区表、BPDT/IFWI 和 CSE 布局表，校验 RSA 签名与校验和，并解包所支持的 CSE、GSC 代码及文件系统。附带的数据库能识别已知镜像，并报告社区固件仓库尚未收录的镜像。",
+    "evidence_url": "https://github.com/platomav/MEAnalyzer/blob/d27ccdba0aadbad490f47b5b631c369b682a7ef5/README.md",
+    "verified_at": "2026-10-19",
+    "verification": "source-reviewed",
+    "requirements": [
+      "Latest release at review: v1.312.0 with database r378 (tag v1.312.0-r378), published 2026-09-06 at the reviewed commit, with no attached builds. The README describes the tool as the MEA.py script plus its bundled MEA.dat, Huffman.dat and FileTable.dat databases, and says MEA.dat is required to run.",
+      "Requires Python 3.7+, which the script checks at startup, and the third-party colorama, crccheck and pltable modules. The README lists Windows, Linux and macOS hosts; the script also accepts BSD.",
+      "Input is an Intel Engine, Graphics or Independent firmware image the user already has, given as files or scanned from a directory with -mass. The README lists ME 2-15, TXE 0-4, SPS 1-5, GSC 100 (DG1) and selected PMC, PCHC, PHY and OROM generations, and states that any family or version not listed is unsupported, with no plans to add others.",
+      "By default the script contacts GitHub to compare its version and database with the latest ones (-duc disables this) and copies any input that triggers a note, warning or error into a __CHECK__ folder in the output directory (-dcm disables this).",
+      "BSD-2-Clause-Patent. The README describes parsing, validation and unpacking, not rebuilding or modifying images; reported details depend on the bundled database. No firmware was analyzed."
+    ],
+    "additional_evidence_urls": [
+      "https://github.com/platomav/MEAnalyzer/blob/d27ccdba0aadbad490f47b5b631c369b682a7ef5/README.md#L100-L148",
+      "https://github.com/platomav/MEAnalyzer/blob/d27ccdba0aadbad490f47b5b631c369b682a7ef5/MEA.py#L10-L31",
+      "https://github.com/platomav/MEAnalyzer/blob/d27ccdba0aadbad490f47b5b631c369b682a7ef5/MEA.py#L9927-L9955",
+      "https://github.com/platomav/MEAnalyzer/blob/d27ccdba0aadbad490f47b5b631c369b682a7ef5/MEA.py#L10441-L10470",
+      "https://github.com/platomav/MEAnalyzer/blob/d27ccdba0aadbad490f47b5b631c369b682a7ef5/LICENSE",
+      "https://github.com/platomav/MEAnalyzer/releases/tag/v1.312.0-r378"
+    ]
+  },
+  {
+    "id": "deepextract-ida",
+    "name": "DeepExtract (DeepExtractIDA)",
+    "url": "https://github.com/marcosd4h/DeepExtractIDA",
+    "category": "agent-workflows",
+    "relationship": "independent-agent-integration",
+    "kind": "integration",
+    "targets": [
+      "binary"
+    ],
+    "description_en": "IDA Pro 9.x plugin and PowerShell batch extractor that turn Windows PE files into material AI coding agents can read: a per-binary SQLite database of PE metadata, signatures, disassembly, Hex-Rays pseudocode, cross-references, strings, stack frames, loops and dangerous API calls, plus optional grouped C++ and assembly files with per-function caller, callee and string headers and JSON indexes. It runs headless over directories, file lists or the modules of a running process, or interactively on the open IDA database, keeping the analyst’s renames and comments. The agent commands that work on this output come from the separate DeepExtractRuntime project.",
+    "description_zh": "IDA Pro 9.x 插件与 PowerShell 批量提取脚本，可把 Windows PE 文件转换为 AI 编程智能体能够读取的材料：每个二进制文件对应一个 SQLite 数据库，内含 PE 元数据、函数签名、反汇编、Hex-Rays 伪代码、交叉引用、字符串、栈帧、循环与危险 API 调用；还可选择输出分组的 C++ 与汇编文件，每个函数附带调用者、被调者与字符串信息头，并生成 JSON 索引。它可以无界面地处理目录、文件列表或正在运行进程加载的模块，也可以在已打开的 IDA 数据库上交互运行，并保留分析者所做的重命名和注释。处理这些输出的智能体命令来自独立的 DeepExtractRuntime 项目。",
+    "evidence_url": "https://github.com/marcosd4h/DeepExtractIDA/blob/af6b01df3ce5774016f6e3cf336ed0ca2f47b512/README.md",
+    "verified_at": "2026-10-19",
+    "verification": "source-reviewed",
+    "requirements": [
+      "The reviewed main commit is the v0.9.14 release of 2026-09-12; ida-plugin.json lists IDA 9.0 to 9.3 on Windows x86-64, and the plugin installs with Hex-Rays’ hcli or runs from a clone. The README requires Windows 10 or 11 and IDA Pro 9.x, with the Pro edition for headless mode. The Hex-Rays decompiler is needed only for pseudocode and C++ output, while assembly output works from disassembly alone. pefile is vendored; the batch script also checks for Python on PATH and needs symchk.exe from the Windows SDK Debugging Tools for its default PDB download from Microsoft’s public symbol server.",
+      "Users supply the PE files, from single binaries to whole directories such as System32 or the modules loaded by a running process. The README warns that large batches can run for days and produce tens to hundreds of gigabytes. Outputs contain disassembly and decompiled code of the analysed binaries, whose own licences still apply.",
+      "The extractor calls no model. With -EnableAI, the batch extractor writes a CLAUDE.md that tells the agent, without asking the user, to clone the DeepExtractRuntime repository’s default branch into .claude and install Cursor rules and hooks; that runtime and its agents are not part of this repository.",
+      "Vtable and indirect-call resolution are labelled experimental, with stated limits such as a single vtable at object offset 0 and a short intra-procedural instruction window. Tests load IDA-independent modules such as the schema, configuration and code formatters outside IDA, and the release workflow only packages the plugin. This collection reviewed source and documentation without running IDA or the extractor.",
+      "MIT, with the vendored pefile under its own MIT licence; IDA Pro, the Hex-Rays decompiler and the Windows SDK tools are licensed separately. The README presents the output for AI-assisted vulnerability research, reverse engineering, threat hunting and code review. The reviewed sources establish no REA connection."
+    ],
+    "additional_evidence_urls": [
+      "https://github.com/marcosd4h/DeepExtractIDA/blob/af6b01df3ce5774016f6e3cf336ed0ca2f47b512/ida-plugin.json",
+      "https://github.com/marcosd4h/DeepExtractIDA/blob/af6b01df3ce5774016f6e3cf336ed0ca2f47b512/headless_batch_extractor.ps1",
+      "https://github.com/marcosd4h/DeepExtractIDA/blob/af6b01df3ce5774016f6e3cf336ed0ca2f47b512/docs/data_format_reference.md",
+      "https://github.com/marcosd4h/DeepExtractIDA/blob/af6b01df3ce5774016f6e3cf336ed0ca2f47b512/tests/conftest.py",
+      "https://github.com/marcosd4h/DeepExtractIDA/blob/af6b01df3ce5774016f6e3cf336ed0ca2f47b512/.github/workflows/release.yml",
+      "https://github.com/marcosd4h/DeepExtractIDA/blob/af6b01df3ce5774016f6e3cf336ed0ca2f47b512/deep_extract/deps/pefile-2024.8.26.dist-info/LICENSE",
+      "https://github.com/marcosd4h/DeepExtractIDA/blob/af6b01df3ce5774016f6e3cf336ed0ca2f47b512/LICENSE",
+      "https://github.com/marcosd4h/DeepExtractIDA/releases/tag/v0.9.14"
+    ]
+  },
+  {
+    "id": "simplify-android-deobfuscator",
+    "name": "Simplify",
+    "url": "https://github.com/CalebFenton/simplify",
+    "category": "android",
+    "relationship": "foundation",
+    "kind": "tool",
+    "targets": [
+      "app"
+    ],
+    "description_en": "Generic Android deobfuscator built on smalivm, a sandboxed Dalvik virtual machine that executes each method and records every possible register and class value along all execution paths, taking both branches when a value such as file or network input is unknown. Simplify then repeatedly applies constant propagation, dead-code removal, unreflection and peephole optimizations to the APK or DEX, which can decrypt strings and remove reflection while keeping behaviour the same; it does not rename classes or methods. smalivm can also be used as a library, and the last release adds sdbg, a step-through Smali debugger built on it.",
+    "description_zh": "基于 smalivm 的通用 Android 反混淆工具。smalivm 是一个沙箱化的 Dalvik 虚拟机，会逐个执行方法并记录所有执行路径上可能的寄存器与类取值；遇到文件或网络输入等未知值时，两个分支都会执行。Simplify 随后对 APK 或 DEX 反复进行常量传播、死代码删除、反射还原和窥孔优化，可在保持行为不变的前提下解密字符串、去除反射；它不会重命名类或方法。smalivm 也可作为库使用，最新发布版还附带基于它的单步 Smali 调试器 sdbg。",
+    "evidence_url": "https://github.com/CalebFenton/simplify/blob/29fb25d624aecf0b075dea5c6029b2541474ddfe/README.md",
+    "verified_at": "2026-10-19",
+    "verification": "source-reviewed",
+    "requirements": [
+      "Development is inactive: the latest release, v1.3.0 of 2020-03-30, ships simplify, smalivm and sdbg jars, and the reviewed master commit dates from 2021-05-23. The project pins smali/dexlib2 2.4.0 and, by default, builds its Android framework reference from android-25 classes, so check results on apps that use newer DEX or API features.",
+      "Run it as java -jar simplify.jar on a user-supplied APK or DEX. Building needs JDK 8, a recursive clone for the AndroidFrameworkSmali submodule of reference framework classes, and the Gradle fatjar task. Execution limits on visits, call depth and time apply per method; the README advises narrowing large apps with include and exclude patterns, and output DEX defaults to API level 15.",
+      "--remove-weak, on by default, removes code even when it has weak side effects, and --ignore-errors may lead to unexpected behaviour, so compare output with the original code. The repository includes a project-provided obfuscated example app for testing; tests ran through a Travis CI configuration using Oracle JDK 8, the repository has no GitHub Actions workflow, and nothing was run in this review.",
+      "Dual-licensed: GPL-3.0 for open-source use, or a commercial license that permits binary distribution without source redistribution. Android framework classes and dependencies keep their own terms. The reviewed sources establish no REA connection."
+    ],
+    "additional_evidence_urls": [
+      "https://github.com/CalebFenton/simplify/blob/29fb25d624aecf0b075dea5c6029b2541474ddfe/LICENSE.GPL",
+      "https://github.com/CalebFenton/simplify/blob/29fb25d624aecf0b075dea5c6029b2541474ddfe/LICENSE.COMMERCIAL",
+      "https://github.com/CalebFenton/simplify/blob/29fb25d624aecf0b075dea5c6029b2541474ddfe/.gitmodules",
+      "https://github.com/CalebFenton/simplify/blob/29fb25d624aecf0b075dea5c6029b2541474ddfe/.travis.yml",
+      "https://github.com/CalebFenton/simplify/blob/29fb25d624aecf0b075dea5c6029b2541474ddfe/smalivm/build.gradle",
+      "https://github.com/CalebFenton/simplify/releases/tag/v1.3.0"
+    ]
+  },
+  {
+    "id": "gda-android-decompiler",
+    "name": "GDA (GJoy Dex Analyzer)",
+    "url": "https://github.com/charles2gan/GDA-android-reversing-Tool",
+    "category": "android",
+    "relationship": "foundation",
+    "kind": "tool",
+    "targets": [
+      "app"
+    ],
+    "description_en": "Windows-native Dalvik decompiler and Android analysis workbench written in C++ that opens APK, DEX, ODEX, OAT, JAR, AAR and class files without installation. Besides Java and Smali views with cross-references, renaming and comments, it identifies packers, deobfuscates and decrypts strings, tracks data flow and taint, solves paths, runs rule-based malicious-behaviour, vulnerability and privacy-leak scans, and can dump device memory or hook methods with Frida. Shell and server CLI modes, Python and Java scripting and a sample malware-triage agent skill expose the same analysis to scripts and agents.",
+    "description_zh": "以 C++ 编写、原生运行于 Windows 的 Dalvik 反编译器与 Android 分析工作台，无需安装即可打开 APK、DEX、ODEX、OAT、JAR、AAR 和 class 文件。除带交叉引用、重命名和注释的 Java 与 Smali 视图外，它还能识别加固壳、反混淆并解密字符串、追踪数据流与污点、求解路径，运行基于规则的恶意行为、漏洞和隐私泄露扫描，并可转储设备内存或用 Frida 钩挂方法。Shell 与服务器两种命令行模式、Python 和 Java 脚本以及一个恶意软件分诊智能体技能示例，让脚本和智能体也能调用这些分析功能。",
+    "evidence_url": "https://github.com/charles2gan/GDA-android-reversing-Tool/blob/20f8ce8d51b0dc032c08e009e28ea76995d71889/README.md",
+    "verified_at": "2026-10-19",
+    "verification": "source-reviewed",
+    "requirements": [
+      "Releases are Windows-only zip archives; the latest, GDA 4.12 of 2026-04-07, adds shell and server CLI modes among fixes. The repository holds no decompiler source: the README says GDA is not an open-source project, at least in the short term, and the repository publishes the free binaries with open scripts, plugin examples, rule samples and colour themes.",
+      "The executable runs without setup. Dex-family inputs need no Java, while JAR, AAR and class files need a working Java runtime for the bundled dx tool. The README says GDA is protected with VMProtect and unpacks embedded adb, a gdump memory-dump helper and rule files into the user’s application-data folder, which some antivirus products flag; the author states it has no malicious behaviour.",
+      "The skills folder holds a gda-analyze skill in Claude Code’s format that drives a bundled GDA.exe through a Python wrapper to trace code, extract indicators and draft malware reports, plus a server-mode client and test script. Its output, like the built-in rule-based scans, needs manual confirmation; this review ran no part of GDA.",
+      "LICENSE is Apache-2.0, and NOTICE says most of GDA is released under it, with adb and dex libraries taken from the Android SDK and AOSP; this conflicts with the README’s closed-source statement, so the binaries’ terms are unclear. Users supply the apps they analyze. The reviewed sources establish no REA connection."
+    ],
+    "additional_evidence_urls": [
+      "https://github.com/charles2gan/GDA-android-reversing-Tool/blob/20f8ce8d51b0dc032c08e009e28ea76995d71889/LICENSE",
+      "https://github.com/charles2gan/GDA-android-reversing-Tool/blob/20f8ce8d51b0dc032c08e009e28ea76995d71889/NOTICE",
+      "https://github.com/charles2gan/GDA-android-reversing-Tool/blob/20f8ce8d51b0dc032c08e009e28ea76995d71889/skills/mal_skill/SKILL.md",
+      "https://github.com/charles2gan/GDA-android-reversing-Tool/blob/20f8ce8d51b0dc032c08e009e28ea76995d71889/update_history",
+      "https://github.com/charles2gan/GDA-android-reversing-Tool/releases/tag/GDA4.12"
     ]
   },
   {
