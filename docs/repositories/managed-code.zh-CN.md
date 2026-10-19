@@ -2,31 +2,27 @@
 
 [全部分类](README.zh-CN.md) · [English](managed-code.md)
 
-**131 个仓库** · 2026-10-16 UTC
+**127 个仓库** · 2026-10-16 UTC
 
-这些是自动发现的项目，不是逐项精选或运行验证后的推荐。分类来自元数据；简介由上游描述翻译而来。星标为采集时快照，不是实时排名。
+这些是自动发现的项目，不是逐项精选或运行验证后的推荐。分类来自元数据；简介由上游描述翻译而来。星标为采集时快照，不是实时排名。标有“精选”或“论文”的行指向以同一仓库为来源的已复核目录条目或论文。
 
-- [icsharpcode/ILSpy](https://github.com/icsharpcode/ILSpy) — .NET 反编译器，支持生成 PDB、ReadyToRun、元数据等功能，而且跨平台！ **[26,662 星标]**
+- [icsharpcode/ILSpy](https://github.com/icsharpcode/ILSpy) — .NET 反编译器，支持生成 PDB、ReadyToRun、元数据等功能，而且跨平台！ **[26,662 星标]** · 精选：[ILSpy](https://awesomerea.org/zh/resources/ilspy/)
 - [focus-creative-games/hybridclr](https://github.com/focus-creative-games/hybridclr) — HybridCLR 是一个特性完整、零成本、高性能、低内存的 Unity 全平台原生 C# 热更新解决方案。 **[7,993 星标]**
-- [LavaGang/MelonLoader](https://github.com/LavaGang/MelonLoader) — 全球首个兼容 Il2Cpp 与 Mono 的 Unity 游戏通用模组加载器。 **[4,258 星标]**
 - [Tyrrrz/YoutubeExplode](https://github.com/Tyrrrz/YoutubeExplode) — YouTube 内部 API 的抽象层。 **[3,741 星标]**
 - [icedland/iced](https://github.com/icedland/iced) — 极速且准确的 x86/x64 反汇编器、汇编器、解码器和编码器，支持 Rust、.NET、Java、Python 和 Lua。 **[3,592 星标]**
 - [SteamRE/SteamKit](https://github.com/SteamRE/SteamKit) — SteamKit2 是与 Valve 的 Steam 网络互操作的 .NET 库，旨在提供简单且可扩展的接口，以执行网络上的各种操作。 **[3,210 星标]**
-- [uxmal/reko](https://github.com/uxmal/reko) — Reko 是一款二进制反编译器。 **[2,617 星标]**
 - [ErikEJ/EFCorePowerTools](https://github.com/ErikEJ/EFCorePowerTools) — Entity Framework Core Power Tools：在 Visual Studio 与命令行中提供逆向工程、迁移和模型可视化功能。 **[2,514 星标]**
 - [ValveResourceFormat/ValveResourceFormat](https://github.com/ValveResourceFormat/ValveResourceFormat) — Source 2 Viewer 是一体化工具，可浏览 VPK 归档，查看、提取和反编译 Source 2 资源，包括地图、模型、材质、纹理、声音等。 **[2,507 星标]**
 - [tuyoogame/huatuo](https://github.com/tuyoogame/huatuo) — huatuo 是一个特性完整、零成本、高性能、低内存、近乎完美的 Unity 全平台原生 C# 热更新方案。 **[2,338 星标]**
 - [ergrelet/unlicense](https://github.com/ergrelet/unlicense) — 面向 Themida/WinLicense 2.x 和 3.x 的动态脱壳与导入修复工具。 **[1,502 星标]**
 - [jacksondunstan/UnityNativeScripting](https://github.com/jacksondunstan/UnityNativeScripting) — 使用 C++ 编写 Unity 脚本。 **[1,374 星标]**
-- [Washi1337/AsmResolver](https://github.com/Washi1337/AsmResolver) — 用于创建、读取和编辑 PE 文件与 .NET 模块的库。 **[1,129 星标]**
+- [Washi1337/AsmResolver](https://github.com/Washi1337/AsmResolver) — 用于创建、读取和编辑 PE 文件与 .NET 模块的库。 **[1,129 星标]** · 精选：[AsmResolver PE 与 .NET 模块编辑库](https://awesomerea.org/zh/resources/asmresolver/)
 - [KumoKyaku/kcp](https://github.com/KumoKyaku/kcp) — KCP 的 C# 版本，线程安全，运行时无内存分配，对 GC 无压力。 **[1,005 星标]**
 - [abbaye/WpfHexEditorIDE](https://github.com/abbaye/WpfHexEditorIDE) — WpfHexEditor Studio 是基于 WPF 与 .NET 8 的 IDE，面向高级二进制分析和逆向工程，将强大的十六进制编辑器、深入检查工具以及对 .NET 项目和 Visual Studio 解决方案的原生支持整合到一个高性能平台中。 **[938 星标]**
 - [EgorBo/Disasmo](https://github.com/EgorBo/Disasmo) — VS2022 插件。点击任意方法或类，即可查看 .NET Core 的 JIT 为其生成的汇编代码。 **[706 星标]**
-- [OpenRakis/Spice86](https://github.com/OpenRakis/Spice86) — 逆向分析并重写实模式 DOS 程序！ **[662 星标]**
 - [anydream/il2cpp](https://github.com/anydream/il2cpp) — 将 MSIL/C# 转换为 C++ 的工具，速度快于 CoreCLR，内存开销低。（已停止维护。C# 是一门好语言，但 .NET 不是一个干净的平台。） **[606 星标]**
 - [bitmono-project/BitMono](https://github.com/bitmono-project/BitMono) — 适用于 .NET 和 Mono 的混淆器，提供可定制引擎，用于构建自己的混淆器。 **[569 星标]**
-- [B2R2-org/B2R2](https://github.com/B2R2-org/B2R2) — B2R2 是使用 F# 编写的完全托管二进制分析框架，提供丰富的算法、函数和工具，用于逆向工程、程序分析和二进制级检查。 **[552 星标]**
-- [codemerx/CodemerxDecompile](https://github.com/codemerx/CodemerxDecompile) — 首个适用于 Mac、Linux 和 Windows 的独立 .NET 反编译器。 **[401 星标]**
+- [codemerx/CodemerxDecompile](https://github.com/codemerx/CodemerxDecompile) — 首个适用于 Mac、Linux 和 Windows 的独立 .NET 反编译器。 **[401 星标]** · 精选：[CodemerxDecompile .NET 反编译器](https://awesomerea.org/zh/resources/codemerxdecompile/)
 - [BepInEx/Il2CppInterop](https://github.com/BepInEx/Il2CppInterop) — 使 CoreCLR 与 Il2Cpp 在运行时互操作的工具。 **[399 星标]**
 - [ioncodes/dnpatch](https://github.com/ioncodes/dnpatch) — 使用 dnlib 的 .NET 补丁库。 **[329 星标]**
 - [Cysharp/RuntimeUnitTestToolkit](https://github.com/Cysharp/RuntimeUnitTestToolkit) — Unity Test Runner 的命令行/图形界面前端，可在任意平台运行测试。 **[326 星标]**

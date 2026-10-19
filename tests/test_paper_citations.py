@@ -132,7 +132,17 @@ class ReviewedContainerRecordTests(unittest.TestCase):
                     'paper-firmae', 'paper-vision2web', 'paper-ui2code', 'paper-worldcoder',
                     'paper-jsdeobsbench', 'paper-cascade', 'paper-dcgen', 'paper-code-world-models',
                     'paper-stateinspector', 'paper-halucinator', 'paper-web2code', 'paper-degpt',
-                    'paper-binpre', 'paper-binaryinferno', 'paper-icepre', 'paper-netlifter', 'paper-uiorchestra', 'paper-slade'}
+                    'paper-binpre', 'paper-binaryinferno', 'paper-icepre', 'paper-netlifter', 'paper-uiorchestra', 'paper-slade',
+                    'paper-debin',
+                    'paper-typeforge',
+                    'paper-decllm',
+                    'paper-idioms',
+                    'paper-deguard',
+                    'paper-symgen',
+                    'paper-webcode2m',
+                    'paper-xfl',
+                    'paper-wadec',
+                    'paper-symlm'}
         self.assertEqual({identifier for identifier, record in PAPERS.items() if 'citation' in record}, expected)
         for identifier in sorted(PAPERS.keys() - expected):
             # Records without verified container metadata keep the short venue label.

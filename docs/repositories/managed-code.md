@@ -2,31 +2,27 @@
 
 [All categories](README.md) · [简体中文](managed-code.zh-CN.md)
 
-**131 repositories** · 2026-10-16 UTC
+**127 repositories** · 2026-10-16 UTC
 
-These are automatically discovered projects, not individually curated or tested recommendations. Categories derive from metadata and descriptions from upstream text. Stars are collection-time snapshots, not live rankings.
+These are automatically discovered projects, not individually curated or tested recommendations. Categories derive from metadata and descriptions from upstream text. Stars are collection-time snapshots, not live rankings. Lines marked “Curated” or “Paper” link to the reviewed catalog entry or paper whose source is that exact repository.
 
-- [icsharpcode/ILSpy](https://github.com/icsharpcode/ILSpy) — .NET Decompiler with support for PDB generation, ReadyToRun, Metadata (&amp;more) - cross-platform! **[26,662 stars]**
+- [icsharpcode/ILSpy](https://github.com/icsharpcode/ILSpy) — .NET Decompiler with support for PDB generation, ReadyToRun, Metadata (&amp;more) - cross-platform! **[26,662 stars]** · Curated: [ILSpy](https://awesomerea.org/resources/ilspy/)
 - [focus-creative-games/hybridclr](https://github.com/focus-creative-games/hybridclr) — HybridCLR is a fully featured, zero-cost, high-performance, low-memory solution for Unity's all-platform native C# hot updates. **[7,993 stars]**
-- [LavaGang/MelonLoader](https://github.com/LavaGang/MelonLoader) — The World's First Universal Mod Loader for Unity Games compatible with both Il2Cpp and Mono **[4,258 stars]**
 - [Tyrrrz/YoutubeExplode](https://github.com/Tyrrrz/YoutubeExplode) — Abstraction layer over YouTube's internal API **[3,741 stars]**
 - [icedland/iced](https://github.com/icedland/iced) — Blazing fast and correct x86/x64 disassembler, assembler, decoder, encoder for Rust, .NET, Java, Python, Lua **[3,592 stars]**
 - [SteamRE/SteamKit](https://github.com/SteamRE/SteamKit) — SteamKit2 is a .NET library designed to interoperate with Valve's Steam network. It aims to provide a simple, yet extensible, interface to perform various actions on the network. **[3,210 stars]**
-- [uxmal/reko](https://github.com/uxmal/reko) — Reko is a binary decompiler. **[2,617 stars]**
 - [ErikEJ/EFCorePowerTools](https://github.com/ErikEJ/EFCorePowerTools) — Entity Framework Core Power Tools - reverse engineering, migrations and model visualization in Visual Studio &amp; CLI **[2,514 stars]**
 - [ValveResourceFormat/ValveResourceFormat](https://github.com/ValveResourceFormat/ValveResourceFormat) — Source 2 Viewer is an all-in-one tool to browse VPK archives, view, extract, and decompile Source 2 assets, including maps, models, materials, textures, sounds, and more. **[2,507 stars]**
 - [tuyoogame/huatuo](https://github.com/tuyoogame/huatuo) — Huatuo is a nearly perfect, fully featured, zero-cost, high-performance, low-memory solution for Unity's all-platform native C# hot updates. **[2,338 stars]**
 - [ergrelet/unlicense](https://github.com/ergrelet/unlicense) — Dynamic unpacker and import fixer for Themida/WinLicense 2.x and 3.x. **[1,502 stars]**
 - [jacksondunstan/UnityNativeScripting](https://github.com/jacksondunstan/UnityNativeScripting) — Unity Scripting in C++ **[1,374 stars]**
-- [Washi1337/AsmResolver](https://github.com/Washi1337/AsmResolver) — A library for creating, reading and editing PE files and .NET modules. **[1,129 stars]**
+- [Washi1337/AsmResolver](https://github.com/Washi1337/AsmResolver) — A library for creating, reading and editing PE files and .NET modules. **[1,129 stars]** · Curated: [AsmResolver](https://awesomerea.org/resources/asmresolver/)
 - [KumoKyaku/kcp](https://github.com/KumoKyaku/kcp) — KCP in C#: thread-safe, with no runtime allocations and no GC pressure. **[1,005 stars]**
 - [abbaye/WpfHexEditorIDE](https://github.com/abbaye/WpfHexEditorIDE) — WpfHexEditor Studio is a IDE built on WPF and .NET 8, designed for advanced binary analysis and reverse engineering—combining a powerful hex editor, deep inspection tools, and native support for .NET projects and Visual Studio solutions in a single high-performance platform. **[938 stars]**
 - [EgorBo/Disasmo](https://github.com/EgorBo/Disasmo) — VS2022 Add-in. Click on any method or class to see what .NET Core's JIT generates for them (ASM). **[706 stars]**
-- [OpenRakis/Spice86](https://github.com/OpenRakis/Spice86) — Reverse engineer and rewrite real mode DOS programs! **[662 stars]**
 - [anydream/il2cpp](https://github.com/anydream/il2cpp) — An MSIL/C# to C++ converter. Faster than CoreCLR with low memory overhead. (Abandoned. C# is a good language, but .NET is not a clean platform.) **[606 stars]**
 - [bitmono-project/BitMono](https://github.com/bitmono-project/BitMono) — Obfuscator for .NET and Mono, with a customizable engine for building your own obfuscators. **[569 stars]**
-- [B2R2-org/B2R2](https://github.com/B2R2-org/B2R2) — B2R2 is a fully managed binary analysis framework written in F#. It provides a rich set of algorithms, functions, and tools for reverse engineering, program analysis, and binary-level inspection. **[552 stars]**
-- [codemerx/CodemerxDecompile](https://github.com/codemerx/CodemerxDecompile) — The first standalone .NET decompiler for Mac, Linux and Windows **[401 stars]**
+- [codemerx/CodemerxDecompile](https://github.com/codemerx/CodemerxDecompile) — The first standalone .NET decompiler for Mac, Linux and Windows **[401 stars]** · Curated: [CodemerxDecompile](https://awesomerea.org/resources/codemerxdecompile/)
 - [BepInEx/Il2CppInterop](https://github.com/BepInEx/Il2CppInterop) — A tool interoperate between CoreCLR and Il2Cpp at runtime **[399 stars]**
 - [ioncodes/dnpatch](https://github.com/ioncodes/dnpatch) — .NET Patcher library using dnlib **[329 stars]**
 - [Cysharp/RuntimeUnitTestToolkit](https://github.com/Cysharp/RuntimeUnitTestToolkit) — CLI/GUI Frontend of Unity Test Runner to test on any platform. **[326 stars]**

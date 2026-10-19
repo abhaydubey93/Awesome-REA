@@ -2237,5 +2237,335 @@
       "Each condition ran once (n=1), the REA arm was told to prefer REA tools, parallel processes make timings approximate, and only static JavaScript/web work with one model was tested; an interrupted run was excluded and repeated. One REA analysis result exceeded the 10 MB MCP response limit. Scripts and JSONL logs are excerpted rather than published, so this collection could not and did not rerun the trials.",
       "The author reports that REA helped with extraction, such as asar unpacking and HAR element extraction, while grep and small scripts carried code reading in both arms. Nothing was reconstructed: the HAR task identified an existing request path. Native binaries and APKs are deferred to a planned second step; Orca, the venue site, REA and the model service keep their own terms."
     ]
+  },
+  {
+    "id": "rea-ghidra-nativeaot-guide",
+    "name": "NativeAOT metadata recovery with Ghidra",
+    "url": "https://github.com/morluto/rea/blob/main/docs/ghidra-nativeaot.md",
+    "category": "workflow-guides",
+    "relationship": "official-documentation",
+    "kind": "documentation",
+    "targets": [
+      "binary"
+    ],
+    "description_en": "Recovers .NET 8 NativeAOT metadata from x64 PE executables during REA’s Ghidra analysis: MethodTable relationships, virtual slots and frozen strings from RTR 9.1 data, through a built-in read-only parser or an optional headless adapter that annotates the Ghidra database. Generated names, inferred prototypes and recovered native pseudocode stay separate from the unknown original C# names, fields and source.",
+    "description_zh": "在 REA 的 Ghidra 分析中，从 x64 PE 可执行文件恢复 .NET 8 NativeAOT 元数据：通过内置只读解析器或可选的无界面适配器（会为 Ghidra 数据库添加注释），从 RTR 9.1 数据中取得 MethodTable 关系、虚表槽位与冻结字符串。生成的名称、推断的原型和恢复的原生伪代码，与未知的原始 C# 名称、字段和源码明确区分。",
+    "evidence_url": "https://github.com/morluto/rea/blob/093ce695f0a7c3407c7fde520ed8b20c0981b408/docs/ghidra-nativeaot.md",
+    "verified_at": "2026-10-18",
+    "verification": "source-reviewed",
+    "requirements": [
+      "Reviewed on main as rea-agents 6.7.0, which declares Node ^22.19.0, ^24.11.0 or 26+. Bring your own Ghidra and JDK; the guide’s Windows check used Ghidra 12.1.4 and JDK 21. The built-in parser handles x64 PE32+ with .NET 8 RTR 9.1 metadata and needs a unique RTR header and exactly one DEHYDRATED_DATA row; other RTR versions and PE architectures are reported as unsupported or partial. Ordinary PE/CLI or ReadyToRun assemblies belong to REA’s managed-code tools instead.",
+      "The optional adapter is built from a clean pinned checkout of Washi1337/ghidra-nativeaot with existing git, javac and jar; REA records the JAR’s SHA-256, copies it and rechecks the digest before loading, and JARs run inside Ghidra, so supply a trusted build. It annotates within an ephemeral Program transaction and never changes the original executable. It is unavailable on Windows Ghidra P0, where database tools do not see rehydrated bytes and slot targets come from the parser report.",
+      "Outputs include MethodTable addresses, base types, interfaces, virtual slots and frozen strings, within documented local limits such as 128 MiB of captured PE bytes and 4 MiB of report JSON; rows beyond the report budget are omitted with partial coverage. Type identification uses upstream heuristics and prototypes remain inferences. Pseudocode is recovered native logic, not original C# source, and original class/member names and custom field layouts stay unknown.",
+      "Verification uses benign source-built .NET 8.0.22 fixtures with independent compiler/linker-symbol and directory-byte oracles, plus stripped and negative inputs; fixtures are never executed, and building them needs .NET SDK 8.0.416 and platform NativeAOT tools. The real MCP lane runs only on Linux x64 with the adapter. Windows-host behavior was checked manually once on Windows 11 x64 without the JAR against the fixture oracle and linker map; no CI lane repeats that check.",
+      "REA declares MIT. The parser’s hydration semantics are adapted from Washi1337/ghidra-nativeaot (MIT, with its notice shipped under licenses/) and cross-checked against .NET’s MethodTable.h. Analysed executables keep their own licenses. Merged PR #748 introduced the integration and issue #744 records the request and its closure without claiming C# project reconstruction. This collection did not run REA, Ghidra or any fixture."
+    ],
+    "additional_evidence_urls": [
+      "https://github.com/morluto/rea/blob/093ce695f0a7c3407c7fde520ed8b20c0981b408/docs/testing.md",
+      "https://github.com/morluto/rea/blob/093ce695f0a7c3407c7fde520ed8b20c0981b408/licenses/nativeaot-parser-MIT.txt",
+      "https://github.com/morluto/rea/blob/093ce695f0a7c3407c7fde520ed8b20c0981b408/package.json",
+      "https://github.com/morluto/rea/blob/093ce695f0a7c3407c7fde520ed8b20c0981b408/LICENSE",
+      "https://github.com/morluto/rea/pull/748",
+      "https://github.com/morluto/rea/issues/744"
+    ]
+  },
+  {
+    "id": "ultrasunnymoon-rea-case",
+    "name": "UltraSunnyMoon: a partial, REA-led Pokémon Ultra Sun reconstruction",
+    "url": "https://github.com/tylergraydev/UltraSunnyMoon",
+    "category": "community-case-studies",
+    "relationship": "community-reported-mixed-workflow",
+    "description_en": "The author uses a pinned REA build with Ghidra to analyze a user-supplied Pokémon Ultra Sun base executable, rebuild it byte for byte from split objects, and swap in two small compiled C runtime routines. Both replacements are behavior-tested but nonmatching and every other byte stays original; one recorded input movie drives the original and hybrid builds to the same bedroom movement in the Azahar emulator. Retail compiler identity, exact matching, module loading and broader gameplay remain open.",
+    "description_zh": "作者使用固定版本的 REA 与 Ghidra，分析使用者自备的《宝可梦 究极之日》基础版可执行文件，由拆分出的对象逐字节重建该文件，并替换进两个编译后的小型 C 运行时例程。两处替换均经行为测试但与原字节不一致，其余字节均保持原样；同一段录制输入在 Azahar 模拟器中让原版与混合构建到达相同的卧室移动场景。零售编译器识别、精确匹配、模块加载及更广泛的游戏行为仍待解决。",
+    "evidence_url": "https://github.com/tylergraydev/UltraSunnyMoon/blob/913eed4969163ea15e354dacb8e2bfe0a2439de5/README.md",
+    "verified_at": "2026-10-18",
+    "verification": "source-reviewed",
+    "requirements": [
+      "README reports that the original and combined rebuilt games reproduce controllable bedroom gameplay, that both C replacements are behavior-tested but nonmatching, and that no completion percentage is claimed. STATUS.md (updated 2026-10-12) lists an unchanged main executable and one CRO module rebuilt byte for byte, the integrated __aeabi_vec_ctor_nocookie_nodtor helper and a 36-byte startup BSS clearer. The hybrid builds still contain mostly original code and assets and need a 3DS runtime; a native PC port is a later phase.",
+      "Requires the user’s own Ultra Sun base version 0 container (title 00040000001b5000, product code CTR-P-A2AA) kept locally; the v1.2 update stays a separate comparison input. TARGET.md records the author’s base container SHA-256 3bb3b4eb0d17f18875d8b847c871dc97a172beeda03ce99e59e62a78ed5c1a53 and notes that these hashes identify the supplied dumps, not every copy. Retail containers, extracted code, raw REA dossiers, game frames and emulator logs stay in ignored private directories.",
+      "SETUP.md uses Ubuntu WSL on Windows with Node.js 22, Python 3, GCC and readelf. Its bootstrap builds REA from source revision 7ae3c50a9d49c480035855de9fcc4484befacd92 (package version 6.4.0) and runs it with Ghidra 12.1.4 and Temurin JDK 21, with Capstone 5.0.7 as an independent decoder. Rebuilds use a pinned 3DS Decomp Pipeline revision, the C replacements were compiled with Ubuntu’s gcc-arm-none-eabi (GCC 10.3.1), and runtime checks use Azahar 2126.2 and its RPC interface.",
+      "The project reports independent byte checks of the unchanged rebuilds, isolated behavior tests and live RPC readbacks for the replaced routines, and 60 passing source-owned tests. Runtime evidence is a bounded startup, setup and bedroom comparison under one input movie; routine execution counts, battles, overworld coverage, full-movie completion and timing determinism remain unverified. The tests use source-owned fixtures, not retail bytes; this collection ran neither the tools nor the game.",
+      "README directs agent-accessible analysis through REA and Ghidra and requires AI-assisted reconstructions to be reviewed against binary evidence; AGENTS.md and HANDOFF.md are written for continuing agent sessions, and RUNTIME.md records frame review by an independent reviewing agent. The repository has no license file and GitHub detects none; it describes itself as an independent fan project unaffiliated with Nintendo, Game Freak or The Pokémon Company. No runtime reproduction is claimed."
+    ],
+    "targets": [
+      "game"
+    ],
+    "kind": "case-study",
+    "additional_evidence_urls": [
+      "https://github.com/tylergraydev/UltraSunnyMoon/blob/913eed4969163ea15e354dacb8e2bfe0a2439de5/docs/STATUS.md",
+      "https://github.com/tylergraydev/UltraSunnyMoon/blob/913eed4969163ea15e354dacb8e2bfe0a2439de5/docs/SETUP.md",
+      "https://github.com/tylergraydev/UltraSunnyMoon/blob/913eed4969163ea15e354dacb8e2bfe0a2439de5/docs/TARGET.md",
+      "https://github.com/tylergraydev/UltraSunnyMoon/blob/913eed4969163ea15e354dacb8e2bfe0a2439de5/docs/DECOMP_WORKFLOW.md",
+      "https://github.com/tylergraydev/UltraSunnyMoon/blob/913eed4969163ea15e354dacb8e2bfe0a2439de5/docs/MAIN_REBUILD.md",
+      "https://github.com/tylergraydev/UltraSunnyMoon/blob/913eed4969163ea15e354dacb8e2bfe0a2439de5/docs/REBUILD.md",
+      "https://github.com/tylergraydev/UltraSunnyMoon/blob/913eed4969163ea15e354dacb8e2bfe0a2439de5/docs/FIRST_SOURCE.md",
+      "https://github.com/tylergraydev/UltraSunnyMoon/blob/913eed4969163ea15e354dacb8e2bfe0a2439de5/docs/STARTUP_BSS.md",
+      "https://github.com/tylergraydev/UltraSunnyMoon/blob/913eed4969163ea15e354dacb8e2bfe0a2439de5/docs/RUNTIME.md",
+      "https://github.com/tylergraydev/UltraSunnyMoon/blob/913eed4969163ea15e354dacb8e2bfe0a2439de5/AGENTS.md",
+      "https://github.com/tylergraydev/UltraSunnyMoon/blob/913eed4969163ea15e354dacb8e2bfe0a2439de5/tools/rea.sh",
+      "https://github.com/morluto/rea/tree/7ae3c50a9d49c480035855de9fcc4484befacd92"
+    ]
+  },
+  {
+    "id": "reversed-with-ai-directory",
+    "name": "Reversed with AI",
+    "url": "https://reversedwithai.com/",
+    "category": "related-lists",
+    "relationship": "community-learning-resource",
+    "description_en": "A moderated website directory of AI-assisted reverse-engineering projects across games, firmware, file formats, APIs and protocols, apps and legacy software. Each entry links to its primary source and records the author-reported model, tools, time, cost and outcome, with four checks for public source, reproduction steps, real-hardware testing and third-party confirmation.",
+    "description_zh": "经人工审核的网站目录，收录游戏、固件、文件格式、API 与协议、应用及旧软件领域的 AI 辅助逆向项目。每个条目链接一手来源，记录作者报告的模型、工具、耗时、费用与结果，并标注源码公开、复现步骤、真实硬件测试和第三方确认四项检查。",
+    "evidence_url": "https://reversedwithai.com/about",
+    "verified_at": "2026-10-18",
+    "verification": "source-reviewed",
+    "requirements": [
+      "Reviewed as a live website on 2026-10-18, when the homepage reported 180 projects, 100 marked Works, 12 guides and 166 tools, and the sitemap listed 180 project pages. The site has no pinned revision or public source repository, so entries, counts and labels can change after this review.",
+      "Entries record target, model, tools, time, cost, outcome (Works, Partial or Research), a 1–5 human-effort scale and four reproducibility checks. The About page says figures are reported by authors, not measured by the site, and unknown fields are marked Not reported; a Works label is the author’s claim. A Reproducible badge needs Works plus public source and repro steps, with real-hardware or third-party confirmation for firmware and devices.",
+      "The policy lists interoperability, preservation, modding that does not bypass DRM or anti-cheat, legacy-software recovery, format, protocol and API documentation, the user’s own devices, CTFs and defensive malware analysis without live samples. It declines DRM, licence-check and anti-cheat bypasses, online cheats, leaked source, live malware samples and weaponised exploits. The site says it hosts no binaries or code and accepts takedown requests; each linked project still needs its own rights and original-asset review.",
+      "The maintainer, smyaseen (@whyamas on X), reviews every submission; sponsored placements are labelled, and the site says sponsors do not affect listings or order. Its guides include a third-party REA setup guide updated 2026-10-14, but the directory covers many tools beyond REA and is not an official REA resource. The reviewed pages show a copyright notice and no reuse license for directory content."
+    ],
+    "targets": [
+      "game",
+      "firmware",
+      "app",
+      "protocol",
+      "binary"
+    ],
+    "kind": "collection",
+    "additional_evidence_urls": [
+      "https://reversedwithai.com/policy",
+      "https://reversedwithai.com/learn/getting-started-with-rea"
+    ]
+  },
+  {
+    "id": "hermes-rea-plugin",
+    "name": "REA plugin for Hermes Agent",
+    "url": "https://github.com/NousResearch/hermes-official-plugins/tree/main/rea",
+    "category": "community-integrations",
+    "relationship": "community-integration",
+    "kind": "integration",
+    "targets": [
+      "binary",
+      "app",
+      "firmware",
+      "website"
+    ],
+    "description_en": "Nous Research’s Hermes Agent plugin package for REA. One catalog install registers REA’s MCP server, pinned to rea-agents 6.4.0 and launched through npx over stdio, with REA’s workflow skill adapted for Hermes and a separate crash-triage skill. About 170 REA tools stay behind Hermes’ on-demand tool search, and the adapted skill asks before tools that run programs, drive apps or change a connected Android device.",
+    "description_zh": "Nous Research 在 Hermes Agent 官方插件库中发布的 REA 插件包。一次目录安装即可注册 REA 的 MCP 服务（固定为 rea-agents 6.4.0，经 npx 以 stdio 启动），并附带为 Hermes 改编的 REA 工作流技能和独立的崩溃分诊技能。约 170 个 REA 工具通过 Hermes 的按需工具检索提供；改编技能要求在运行程序、驱动应用或改动已连接 Android 设备的工具前先征得同意。",
+    "evidence_url": "https://github.com/NousResearch/hermes-official-plugins/blob/6dacaaddbfd8e98dfc524096c44f712f743246b8/rea/README.md",
+    "verified_at": "2026-10-18",
+    "verification": "source-reviewed",
+    "requirements": [
+      "The reviewed pin is the hermes-official-plugins commit that Hermes’ plugin catalog installs; plugin.json declares version 0.1.0 under MIT. The catalog lists it as an official Nous Research plugin for Hermes 0.22.0 or newer, installed with hermes plugins install rea and hermes plugins enable rea. It is official for Hermes, not an integration published by REA. Node.js 22.19+, 24.11+ or 26+ with npx is required, not 23 or 25, and the first start downloads the pinned package. Also running rea-agents setup for Hermes writes a conflicting server entry that replaces the pinned one.",
+      "Static JavaScript/Electron/ASAR, package-inventory, Go/Rust metadata, PE-resource, .NET-metadata and HAR work needs nothing else. Core-dump and offline ELF-layout tools need a Python with pwntools 4.15.0, pyelftools 0.33 and Unicorn 2.1.2, named in Hermes’ .env file. Native decompilation needs a user-supplied Ghidra with a JDK, Hopper or IDA; Android code needs JADX and Java, and firmware or capture formats need Binwalk/Unblob, TShark, sigrok or WABT. Neither REA nor the plugin installs them.",
+      "Some REA tools run a command under a PTY, launch or drive an application window, change a connected Android device or overwrite a chosen file, and Hermes does not prompt before them. The adapted skill tells the agent to name the action and ask first, and to skip such calls in unattended runs. The README says REA sends no telemetry and reaches the network only for targets the user names; untrusted programs belong in an environment prepared for them.",
+      "The README reports a binary-first WinSCP 6.7 test on one Linux host: the console launcher imported in about 30 seconds, while the GUI executable took 663 seconds under a 1000-second Hermes budget that needs Hermes v0.23.0, and a later chat’s first query took 580 seconds. Both runs recovered 28,701 procedures without launching the Windows executable. These are author observations, not timing guarantees, and decompiler output is not reconstructed source. The plugin raises Ghidra’s startup deadline to 900 seconds; each call keeps Hermes’ default 300-second MCP deadline.",
+      "A 2026-10-15 commit removed a per-server timeout key that Hermes v0.22.2 rejected, so the package installs on that release; the per-server call budget waits for Hermes v0.23.0. The about-170-tool and roughly 460 KB schema figures describe REA 6.4.0 as stated in the README. The package and adapted skill are MIT, with REA’s MIT notice reproduced and the crash-triage workflow credited to crashlens (MIT); external engines and analysed targets keep their own terms. This collection reviewed source without installing Hermes, the plugin or REA."
+    ],
+    "additional_evidence_urls": [
+      "https://github.com/NousResearch/hermes-official-plugins/blob/6dacaaddbfd8e98dfc524096c44f712f743246b8/rea/mcp.json",
+      "https://github.com/NousResearch/hermes-official-plugins/blob/6dacaaddbfd8e98dfc524096c44f712f743246b8/rea/plugin.json",
+      "https://github.com/NousResearch/hermes-official-plugins/blob/6dacaaddbfd8e98dfc524096c44f712f743246b8/rea/skills/reverse-engineer-anything/SKILL.md",
+      "https://github.com/NousResearch/hermes-official-plugins/blob/6dacaaddbfd8e98dfc524096c44f712f743246b8/rea/skills/crash-triage/SKILL.md",
+      "https://github.com/NousResearch/hermes-official-plugins/blob/6dacaaddbfd8e98dfc524096c44f712f743246b8/rea/LICENSE",
+      "https://github.com/NousResearch/hermes-official-plugins/commit/69ea758bf3a9793f98933c757ec457b79338a994",
+      "https://github.com/NousResearch/hermes-agent/blob/22063fc099ec9ad8357d7f8f6e6248a0400680d3/plugin-catalog/rea.yaml",
+      "https://hermes-agent.nousresearch.com/docs/plugins/rea"
+    ]
+  },
+  {
+    "id": "crashlens-rea-crash-triage",
+    "name": "crashlens",
+    "url": "https://github.com/mingleiw/crashlens",
+    "category": "community-integrations",
+    "relationship": "community-integration",
+    "kind": "integration",
+    "targets": [
+      "binary"
+    ],
+    "description_en": "A crash-triage tool that turns Linux core dumps, runtime panics, exception traces and sanitizer reports into Markdown bug reports naming the crash type, the first frame in the user’s code and a stable signature. Its core-dump path calls the REA CLI to read the recorded crash and the binary layout, and can ask REA’s Ghidra provider for pseudocode of stripped functions; a Claude Code plugin bundles a skill and read-only MCP tools. It is a debugging integration around REA, not a reconstruction case, and its diagnostic accuracy remains author-reported.",
+    "description_zh": "崩溃分诊工具，将 Linux 核心转储、运行时 panic、异常堆栈和 sanitizer 报告整理为 Markdown 缺陷报告，指出崩溃类型、首个用户代码帧和稳定签名。核心转储分析通过 REA 命令行读取崩溃记录与二进制布局，并可调用 REA 的 Ghidra 引擎为无符号函数生成伪代码；附带的 Claude Code 插件包含技能与只读 MCP 工具。它是围绕 REA 的调试集成，不是重建案例，诊断准确性仍为作者报告。",
+    "evidence_url": "https://github.com/mingleiw/crashlens/blob/7188611a506e058a8f4937acf3dfd3035545f2d1/README.md",
+    "verified_at": "2026-10-18",
+    "verification": "source-reviewed",
+    "requirements": [
+      "The reviewed pin declares package version 0.1.0 and plugin version 0.2.0, and the README calls the project an early prototype. Text inputs, namely Go/Rust panics, Python, Java and Node.js traces and ASan/LSan/UBSan reports, need only Node.js 22.19+ or 24.11+. Core dumps need Linux x86-64, Python 3, the rea-agents package and a separate pwntools environment named by REA_PWNTOOLS_PYTHON; gdb, objdump and Ghidra 12.1.x with JDK 21 are optional. Windows minidumps and macOS crash reports remain roadmap items.",
+      "Users supply the core dump and the exact binary that crashed. The source calls rea inspect-recorded-crash and inspect-binary-layout, and rea decompile with the Ghidra provider for stripped functions; crashlens itself computes the load bias, compares GNU build IDs and warns on a mismatch. package.json declares rea-agents 6.4.0 or later as an optional peer dependency, and the author’s post describes compatibility with a pinned rea-agents 6.4.0; this collection did not check other REA versions.",
+      "The plugin bundles a skill and an MCP server. The README says three read-only tools but names four, and the server source defines analyze_failure, analyze_core_dump, decompile_function and analyze_crash_folder with read-only hints. A copy-paste prompt documents the same core-dump workflow for agents connected to REA’s own MCP server. Pseudocode is labeled as decompiler output, and crash types are heuristics with a stated confidence.",
+      "The project states that the analyzed program is never executed and that gdb opens the core with script auto-loading and debuginfod disabled. The optional --ai flag sends the Markdown report, including code snippets and log lines, to the Anthropic API; the local web app listens on 127.0.0.1 and requires a session token. Core dumps can hold secrets, and reports include local paths, log lines and register values.",
+      "CI runs typechecks and unit tests on Node 22 and 24, plus an end-to-end job that installs gdb, pwntools and the latest rea-agents and checks a report for a compiled NULL-dereference program. The README’s statement that agents using crashlens found the root cause in six of seven stripped-binary crash types is author-reported without published transcripts. This collection reviewed source and documentation without running the tool, REA or an agent.",
+      "The project declares MIT and uses REA, also MIT, through its public CLI; Ghidra, the Anthropic API and analyzed programs keep their own terms. The author’s posts propose a crash-triage skill beside the reverse-engineer-anything skill and offer a pull request to a Hermes plugin repository; the reviewed sources do not establish that it was submitted, merged or adopted."
+    ],
+    "additional_evidence_urls": [
+      "https://github.com/mingleiw/crashlens/blob/7188611a506e058a8f4937acf3dfd3035545f2d1/plugin/skills/crashlens/SKILL.md",
+      "https://github.com/mingleiw/crashlens/blob/7188611a506e058a8f4937acf3dfd3035545f2d1/docs/prompts/crash-triage.md",
+      "https://github.com/mingleiw/crashlens/blob/7188611a506e058a8f4937acf3dfd3035545f2d1/src/rea.ts",
+      "https://github.com/mingleiw/crashlens/blob/7188611a506e058a8f4937acf3dfd3035545f2d1/src/mcp.ts",
+      "https://github.com/mingleiw/crashlens/blob/7188611a506e058a8f4937acf3dfd3035545f2d1/package.json",
+      "https://github.com/mingleiw/crashlens/blob/7188611a506e058a8f4937acf3dfd3035545f2d1/plugin/.claude-plugin/plugin.json",
+      "https://github.com/mingleiw/crashlens/blob/7188611a506e058a8f4937acf3dfd3035545f2d1/.github/workflows/ci.yml",
+      "https://github.com/mingleiw/crashlens/blob/7188611a506e058a8f4937acf3dfd3035545f2d1/test/e2e.test.ts",
+      "https://github.com/mingleiw/crashlens/blob/7188611a506e058a8f4937acf3dfd3035545f2d1/LICENSE",
+      "https://x.com/rae1101x/status/2111052456151154858"
+    ]
+  },
+  {
+    "id": "rea-dino-runner-community-case",
+    "name": "Dinosaur runner: an REA-inspected speed rule rebuilt with Codex",
+    "url": "https://github.com/zhxunzh84/rea-dino-reverse-engineering",
+    "category": "community-case-studies",
+    "relationship": "community-reported-mixed-workflow",
+    "description_en": "The author uses REA’s MCP browser tools to passively capture the JavaScript loaded by wayou’s open-source T-Rex Runner page, then has Codex rebuild its acceleration rule in one self-contained HTML5 Canvas game. The report identifies the captured script by SHA-256 and separates verified source facts from reconstruction choices; only the speed rule is claimed, not full gameplay equivalence.",
+    "description_zh": "作者使用 REA 的 MCP 浏览器工具被动捕获 wayou 开源 T-Rex Runner 页面已加载的 JavaScript，再由 Codex 在一个自包含的 HTML5 Canvas 游戏中重建其加速规则。报告以 SHA-256 标识所捕获的脚本，并区分已核实的源码事实与重建选择；只主张速度规则一致，不主张完整玩法等价。",
+    "evidence_url": "https://github.com/zhxunzh84/rea-dino-reverse-engineering/blob/1fa0ae9faae97d65754f2abf89d3e8326aea9525/README.md",
+    "verified_at": "2026-10-18",
+    "verification": "source-reviewed",
+    "requirements": [
+      "The target is wayou’s open-source, Chromium-derived T-Rex Runner page, not chrome://dino/ or hidden proprietary code; the investigation read JavaScript the browser had already loaded. Only the acceleration rule is reconstructed: start at 6 and add 0.001 per eligible update while below 13, with no elapsed-time factor. Artwork, physics, obstacles and scoring are new or simplified, and the intro, ducking, audio and narrow-screen speed reduction are omitted.",
+      "README and the report record REA MCP list_browser_targets and inspect_web_page calls over a local Chrome DevTools Protocol endpoint, with no navigation, clicks or page evaluation; Codex handled analysis, implementation and tests. Evidence IDs and excerpts come from the author’s REA results, but the full evidence bundle is not published and the live upstream script may change.",
+      "Playing needs only a browser: dino-demo.html is self-contained, with no external assets, packages or build step, and a GitHub Pages copy is linked. The embedded tests run from the page’s Run speed tests button, the browser console or the documented Node.js harness with mocked DOM, Canvas and animation-frame interfaces.",
+      "The author reports 67 of 67 embedded tests passing (15 unit, 52 integration), ten rejected in-memory mutations and seven owner-reported manual browser checks on 2026-10-13 without browser or OS details. Floating-point results such as the extra step past 13 at update 7,001 were measured in the reconstruction, not sampled from the original. There is no CI or cross-browser coverage, and this collection ran nothing.",
+      "The project is MIT-licensed; short original-source excerpts keep the Chromium BSD-style header, and THIRD_PARTY_NOTICES.md reproduces the upstream BSD-3-Clause terms. This third-party repository is separate from REA’s own dinosaur-speed teaching case."
+    ],
+    "targets": [
+      "game",
+      "website"
+    ],
+    "kind": "case-study",
+    "additional_evidence_urls": [
+      "https://github.com/zhxunzh84/rea-dino-reverse-engineering/blob/1fa0ae9faae97d65754f2abf89d3e8326aea9525/docs/reverse-engineering.md",
+      "https://github.com/zhxunzh84/rea-dino-reverse-engineering/blob/1fa0ae9faae97d65754f2abf89d3e8326aea9525/docs/testing.md",
+      "https://github.com/zhxunzh84/rea-dino-reverse-engineering/blob/1fa0ae9faae97d65754f2abf89d3e8326aea9525/docs/lessons-learned.md",
+      "https://github.com/zhxunzh84/rea-dino-reverse-engineering/blob/1fa0ae9faae97d65754f2abf89d3e8326aea9525/dino-demo.html",
+      "https://github.com/zhxunzh84/rea-dino-reverse-engineering/blob/1fa0ae9faae97d65754f2abf89d3e8326aea9525/THIRD_PARTY_NOTICES.md",
+      "https://github.com/zhxunzh84/rea-dino-reverse-engineering/blob/1fa0ae9faae97d65754f2abf89d3e8326aea9525/LICENSE"
+    ]
+  },
+  {
+    "id": "screen-studio-auto-zoom-case",
+    "name": "Screen Studio: an author-reported REA study of auto-zoom rules",
+    "url": "https://x.com/i/article/2109834677343432704",
+    "category": "community-case-studies",
+    "relationship": "community-reported-mixed-workflow",
+    "description_en": "The author reports using REA to map Screen Studio’s Electron package, reading six auto-zoom and cursor rules from its obfuscated code with Claude Code’s help, and having Claude Code write an independent recorder and renderer from those rules. The article describes the commands, evidence, a cursor-alignment check and the clone’s gaps; neither the clone nor the decoded code is published.",
+    "description_zh": "作者报告借助 REA 梳理 Screen Studio 的 Electron 安装包，在 Claude Code 协助下从混淆代码中读出六条自动缩放与光标规则，再让 Claude Code 依据这些规则编写独立的录屏和渲染程序。文章介绍了所用命令、证据、光标对齐检查以及复刻版的不足；复刻版和解出的代码均未公开。",
+    "evidence_url": "https://x.com/i/article/2109834677343432704",
+    "verified_at": "2026-10-18",
+    "verification": "source-reviewed",
+    "requirements": [
+      "The 2026-10-13 article targets the macOS Screen Studio app’s app.asar with REA’s JavaScript application analyzer, run from the command line on the author’s Mac with a supported Node.js version and Xcode Command Line Tools; it names neither the REA nor the Screen Studio version. The author reports a 101-second run producing a 124 MB evidence file over 3,695 files, using an integrity policy that records, rather than stops on, 25 bundled native programs whose fingerprints no longer matched.",
+      "The relevant code was obfuscated. The author says REA’s source-recovery command was unavailable on macOS, so Claude Code wrote a separate script to make it readable; that step is the agent’s work, not REA output, and this entry records no method details. The decoded code is deliberately unpublished.",
+      "From the six rules, Claude Code reportedly wrote about 1,300 lines from scratch: a Swift ScreenCaptureKit recorder that logs cursor positions separately, and a Remotion renderer. The author reports 60 fps capture without dropped frames and a 22-second clip rendered in about 50 seconds on an M4 Pro, and says a redrawn cursor overlaid on a recording of the system cursor matched in most frames, with one fast-motion frame off by a few pixels.",
+      "The author lists gaps: no graphical editor, three cursor types, simplified motion blur, no typing zoom or click sounds, and camera and microphone code that has not been tested with a real camera; the clone is far from replacing Screen Studio. Its source is unpublished, so none of these results can be checked here.",
+      "The author says the clone uses no Screen Studio code or assets and advises reading a product’s user agreement first. This study of a commercial app establishes no vendor approval or redistribution right, and the reported rules may not hold for other versions."
+    ],
+    "targets": [
+      "app"
+    ],
+    "kind": "case-study",
+    "additional_evidence_urls": [
+      "https://x.com/HanZhang415188/status/2109843188341207283"
+    ]
+  },
+  {
+    "id": "claude-code-background-lab-case",
+    "name": "Claude Code background lab: an REA-informed reimplementation of a desktop animation",
+    "url": "https://github.com/Henry-fan88/claude-code-background",
+    "category": "community-case-studies",
+    "relationship": "community-reported-mixed-workflow",
+    "description_en": "Reimplements the glyph-wind background of the Claude desktop app’s Claude Code New session view as an offline WebGL2 page with a 38-slider control panel. The author reports a static REA investigation of the desktop shell and its remote web bundle, followed by a newly written renderer that reuses recovered timing and layout values. It shares the original’s visual vocabulary and interaction model but is not a pixel-identical extraction.",
+    "description_zh": "将 Claude 桌面应用中 Claude Code“新会话”界面的字符风场背景，重新实现为可离线运行的 WebGL2 页面，并附带 38 个滑块的控制面板。作者报告先用 REA 对桌面外壳及其远程网页包进行静态调查，再以新编写的渲染器复用恢复出的时序与布局参数。它与原效果的视觉语言和交互方式相近，但不是逐像素一致的提取。",
+    "evidence_url": "https://github.com/Henry-fan88/claude-code-background/blob/3dbd1065835508be6027137927deeddb8c30fe55/docs/PROVENANCE.md",
+    "verified_at": "2026-10-18",
+    "verification": "source-reviewed",
+    "requirements": [
+      "The reviewed pin is the repository’s single public commit, dated 16 October 2026. PROVENANCE.md reports that the study targeted Claude desktop 2.37337.1, began with REA’s analyze_javascript_application, traced the shell’s remote page to the background module and stayed static: Claude was not launched or inspected at runtime. It records SHA-256 hashes of the retained ASAR and the decoded module and lists local REA evidence IDs whose archives are not published.",
+      "The public edition reuses recovered factual parameters, including 6.5 × 13 CSS-pixel cells, a nominal 9 px font, a 3 s entrance delay and fade-in, a 4 s wind reveal, a 500 ms focus fade-out and 42–64 px/s wind speeds. Its shaders, noise field, random generator, glyph sequences and single-pass instanced rendering are newly written. The author states that an earlier private prototype used extracted source and a bundled font, and does not claim a formal clean-room process.",
+      "Running it needs only a WebGL2 browser opening index.html, or a local static server where the browser restricts local files; there is no Canvas2D fallback, and system monospace fonts change glyph metrics. Development needs Python 3 and Node.js 18+, with no third-party runtime or build dependencies.",
+      "CI runs six Node tests of deterministic helpers, rebuilds the offline page, checks that it is current and runs a release check for offline output, syntax, local links and excluded extracted assets and local paths. VALIDATION.md reports manual Chrome-on-macOS checks of rendering and controls, but not a browser-verified settings import, runtime testing of Claude or a pixel comparison with the original. The reference recording’s remote build, seed, theme and font are unknown, and this collection did not run the page or tests.",
+      "MIT covers the original code and documentation. The repository states that it distributes no recovered Anthropic source, shaders, fonts, ASAR files, screenshots of the original, recordings or account data, and that its license grants no rights in Anthropic’s software, fonts or trademarks. It is unofficial and unaffiliated with Anthropic; REA is credited as the investigation tool rather than bundled, and the author also credits AI-assisted development."
+    ],
+    "targets": [
+      "app"
+    ],
+    "kind": "case-study",
+    "additional_evidence_urls": [
+      "https://github.com/Henry-fan88/claude-code-background/blob/3dbd1065835508be6027137927deeddb8c30fe55/README.md",
+      "https://github.com/Henry-fan88/claude-code-background/blob/3dbd1065835508be6027137927deeddb8c30fe55/docs/VALIDATION.md",
+      "https://github.com/Henry-fan88/claude-code-background/blob/3dbd1065835508be6027137927deeddb8c30fe55/THIRD_PARTY_NOTICES.md",
+      "https://github.com/Henry-fan88/claude-code-background/blob/3dbd1065835508be6027137927deeddb8c30fe55/.github/workflows/ci.yml",
+      "https://github.com/Henry-fan88/claude-code-background/blob/3dbd1065835508be6027137927deeddb8c30fe55/scripts/check_release.py",
+      "https://github.com/Henry-fan88/claude-code-background/blob/3dbd1065835508be6027137927deeddb8c30fe55/scripts/renderer.test.cjs",
+      "https://github.com/Henry-fan88/claude-code-background/blob/3dbd1065835508be6027137927deeddb8c30fe55/CONTRIBUTING.md",
+      "https://github.com/Henry-fan88/claude-code-background/blob/3dbd1065835508be6027137927deeddb8c30fe55/LICENSE"
+    ]
+  },
+  {
+    "id": "dx-ball-rea-reconstruction-case",
+    "name": "DX-Ball: an REA-guided function-level reconstruction with Codex",
+    "url": "https://github.com/N0zoM1z0/dx-ball",
+    "category": "community-case-studies",
+    "relationship": "community-reported-mixed-workflow",
+    "description_en": "The author has Codex use REA’s Ghidra tools to inspect the English DX-Ball 1.07 executable and recover it as typed C/C++, then compiles each function with the original-era Visual C++ 4.0 and compares it byte for byte with the original after mapping relocations. The same source also builds a MinGW Windows game and a portable core library. Exact reconstruction is still in progress; REA’s separate sound-pan showcase covers just one function.",
+    "description_zh": "作者让 Codex 通过 REA 的 Ghidra 工具检查英文版 DX-Ball 1.07 可执行文件并恢复为带类型的 C/C++，再用同时代的 Visual C++ 4.0 编译每个函数，在映射重定位后与原文件逐字节比较。同一套源码还可构建 MinGW Windows 游戏和可移植核心库。精确重建仍在进行中；REA 另行发布的声像展示只覆盖其中一个函数。",
+    "evidence_url": "https://github.com/N0zoM1z0/dx-ball/blob/d1251ea4bd000c7204c895c029194cae1d269731/README.md",
+    "verified_at": "2026-10-18",
+    "verification": "source-reviewed",
+    "requirements": [
+      "README marks exact reconstruction as in progress, to be followed by a playable Visual C++ 4.0 build and later platform ports. Generated PROGRESS.md counts 553 provisional function candidates, 475 with source, 395 byte-exact (85,106 exact code bytes) and 249 with scoped semantic acceptance, and says both Windows builds completed recorded original-board campaigns under Wine. A separate 50-board restored-CRT attempt on October 17 ended at its time limit without a full pass.",
+      "Supply the English v1.07 Windows archive identified in config/target.toml; the importer verifies the archive and DXBALL.EXE hashes and puts the executable and assets in the git-ignored original/ directory. README points to a third-party download site for that archive; the repository does not establish its distribution rights, and this catalog does not link it.",
+      "The documented host is Linux x86-64 with Git, Python 3.11+, Node.js 22.19.0, 32-bit Wine, Xvfb, CMake, Ninja and GCC or Clang, plus i686 MinGW for Windows cross-builds. Bootstrap scripts fetch a hash-pinned JDK, Ghidra and a Visual C++ 4.0 compiler from a third-party archive repository. The REA lock file pins rea-agents 6.5.0 with Ghidra 12.1.4, while docs/REA.md still names 6.4.0; the Codex goal workflow needs Codex 0.128.0 or newer.",
+      "An exact unit has zero differences across the whole function after COFF relocations are mapped to original functions, imports and data, with literal data also checked; match-units.toml records the inputs needed to replay each unit. Differential tests run original x86 routines under Unicorn emulation against the compiled maintained C, and public CI builds the portable source, validates recorded evidence and compiles the Windows adapter without game resources. All results are project-reported; this collection ran nothing.",
+      "MIT covers repository code; the original game, credited to Michael P. Welch with 3D graphics by Seumas McNally, is supplied separately and keeps its own rights, as do the downloaded compiler and tools. REA use is documented through saved responses and a worked projectile-list example, but agent effectiveness is not independently measured, and no runtime reproduction is claimed."
+    ],
+    "targets": [
+      "game",
+      "binary"
+    ],
+    "kind": "case-study",
+    "additional_evidence_urls": [
+      "https://github.com/N0zoM1z0/dx-ball/blob/d1251ea4bd000c7204c895c029194cae1d269731/docs/REA.md",
+      "https://github.com/N0zoM1z0/dx-ball/blob/d1251ea4bd000c7204c895c029194cae1d269731/docs/MATCHING.md",
+      "https://github.com/N0zoM1z0/dx-ball/blob/d1251ea4bd000c7204c895c029194cae1d269731/docs/BUILD.md",
+      "https://github.com/N0zoM1z0/dx-ball/blob/d1251ea4bd000c7204c895c029194cae1d269731/docs/PROGRESS.md",
+      "https://github.com/N0zoM1z0/dx-ball/blob/d1251ea4bd000c7204c895c029194cae1d269731/docs/research/ORIGINAL_CAMPAIGN.md",
+      "https://github.com/N0zoM1z0/dx-ball/blob/d1251ea4bd000c7204c895c029194cae1d269731/config/target.toml",
+      "https://github.com/N0zoM1z0/dx-ball/blob/d1251ea4bd000c7204c895c029194cae1d269731/config/tools.lock.toml",
+      "https://github.com/N0zoM1z0/dx-ball/blob/d1251ea4bd000c7204c895c029194cae1d269731/config/rea.lock.json",
+      "https://github.com/N0zoM1z0/dx-ball/blob/d1251ea4bd000c7204c895c029194cae1d269731/tests/test_boards_differential.py",
+      "https://github.com/N0zoM1z0/dx-ball/blob/d1251ea4bd000c7204c895c029194cae1d269731/.github/workflows/ci.yml",
+      "https://github.com/N0zoM1z0/dx-ball/blob/d1251ea4bd000c7204c895c029194cae1d269731/LICENSE"
+    ]
+  },
+  {
+    "id": "re2ds-nds-engine-case",
+    "name": "re2ds: a native Nintendo DS engine for Resident Evil 2",
+    "url": "https://github.com/eray1605/re2ds",
+    "category": "community-case-studies",
+    "relationship": "community-reported-mixed-workflow",
+    "description_en": "Reimplements Resident Evil 2’s PS1 game rules in a native Nintendo DS engine, with converters that turn data from the user’s own disc into DS formats. A helper wraps the PS1 executable as an ELF for REA’s Ghidra lane, analysis notes name the PS1 functions and tables each part follows, and the Reddit post linking it credits REA and Claude Code. Leon’s disc 1 is reported playable, while Claire’s disc, most enemy types and some menus remain unfinished.",
+    "description_zh": "在原生 Nintendo DS 引擎中重新实现 Resident Evil 2 PS1 版的游戏规则，并用转换工具把使用者自有光盘中的数据转为 DS 格式。辅助脚本把 PS1 可执行文件包装成 ELF，供 REA 的 Ghidra 通道分析；分析笔记注明各部分所依据的 PS1 函数与数据表，链接该项目的 Reddit 帖称其借助 REA 和 Claude Code 完成。据报告 Leon 第一张光盘已可游玩，Claire 光盘、多数敌人类型和部分菜单仍未完成。",
+    "evidence_url": "https://github.com/eray1605/re2ds/blob/f1e120ec50f6b072d7283a2d3dd35611d656c9b7/README.md",
+    "verified_at": "2026-10-18",
+    "verification": "source-reviewed",
+    "requirements": [
+      "The reviewed commit targets the PAL PS1 release (SLES-00972), disc 1 with Leon. README reports all 125 disc 1 rooms, a script interpreter covering every opcode used on that disc, zombies, the lower-screen status menu, sound, voices, the opening movies and typewriter saves; it lists the map and files, other enemy types, the remaining movies and Claire’s disc as missing. It is a native engine, not an emulator, a matching decompilation or a complete port.",
+      "Requires the user’s own Resident Evil 2 PAL disc 1 as a .bin/.cue dump, of which only Track 1 is used; local conversion produces about 290 MB of DS data. The repository states that it contains no game data and that the generated build/, nitrofiles/ and re2ds.nds outputs contain Capcom data that must never be committed or shared.",
+      "Building uses devkitARM and libnds (devkitPro nds-dev), Python 3, FFmpeg with its development libraries, a C compiler and pkg-config. Windows builds run in WSL Ubuntu, and make falls back to devkitPro’s Docker image when no local devkitARM is found. The README plays the ROM in melonDS, needs DLDI SD-card setup for saves and shows a photo captioned as running on a Nintendo DSi XL.",
+      "Host tests compile the platform-independent script, enemy and cutscene code for a PC and run it against the user’s converted data; the script test reports unknown opcodes, and scd_disasm.py --check validates jump targets across rooms. Analysis notes cite PS1 addresses and mark observed versus assumed behavior. psxexe_to_elf.py wraps the executable and symbol lists as a MIPS ELF accepted by REA’s Ghidra lane; Claude Code use is stated only in the Reddit post and is not quantified. This catalog did not build or run the engine.",
+      "No license file is present at the reviewed commit. The README credits the MIT-licensed OpenBiohazard2 reimplementation’s file-format work and script opcode table as the starting point for several converters. Capcom’s game data, movies and audio stay outside the repository and retain their own rights."
+    ],
+    "targets": [
+      "game"
+    ],
+    "kind": "case-study",
+    "additional_evidence_urls": [
+      "https://github.com/eray1605/re2ds/blob/f1e120ec50f6b072d7283a2d3dd35611d656c9b7/ROADMAP.md",
+      "https://github.com/eray1605/re2ds/blob/f1e120ec50f6b072d7283a2d3dd35611d656c9b7/Makefile",
+      "https://github.com/eray1605/re2ds/blob/f1e120ec50f6b072d7283a2d3dd35611d656c9b7/.gitignore",
+      "https://github.com/eray1605/re2ds/blob/f1e120ec50f6b072d7283a2d3dd35611d656c9b7/docs/engine-notes.md",
+      "https://github.com/eray1605/re2ds/blob/f1e120ec50f6b072d7283a2d3dd35611d656c9b7/tools/research/psxexe_to_elf.py",
+      "https://www.reddit.com/r/ReverseEngineering/comments/1x85dp5/a_port_of_resident_evil_2_for_the_nintendo_ds/",
+      "https://github.com/OpenBiohazard2/OpenBiohazard2/blob/173f900d174a41af56bd478692892254a2e31aae/LICENSE.md"
+    ]
   }
 ]

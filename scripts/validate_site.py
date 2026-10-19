@@ -8,6 +8,7 @@ import re
 from urllib.parse import parse_qs, unquote, urljoin, urlsplit
 import xml.etree.ElementTree as ET
 
+from build_entry_pages import entry_path, matching_entries
 from build_manifest import read_build_manifest
 from build_paper_pages import TARGET_LABELS, bibtex_text, papers_newest_first
 from validate_papers import read_papers
@@ -19,7 +20,7 @@ from source_browser import BROWSER_FILENAME, FULL_EXPORT_FILENAME, validate_sour
 from validate_discovery import expected_entry_routes, validate_route_inventory
 from build_readme import collection_section
 from homepage_locales import _ui_strings
-from open_graph import OG_LOCALES, SOCIAL_IMAGE_ALT, png_size
+from open_graph import OG_LOCALES, SITE_ALTERNATE_NAMES, SITE_NAME, SOCIAL_IMAGE_ALT, png_size
 
 ROOT = Path(__file__).resolve().parents[1]
 OUTPUT = ROOT / 'dist'
@@ -275,7 +276,7 @@ def validate_open_graph(route, page, card_size):
     """Every page publishes the shared social block; ``route=None`` is the uncanonical 404 template."""
     assert len(page.meta_keys) == len(set(page.meta_keys)), f'Duplicate meta tags: {route}'
     meta, language = page.meta, 'zh' if route and route.startswith('/zh/') else 'en'
-    expected = {'og:type': 'website', 'og:site_name': 'AwesomeREA.org', 'og:locale': OG_LOCALES[language],
+    expected = {'og:type': 'website', 'og:site_name': SITE_NAME, 'og:locale': OG_LOCALES[language],
                 'og:image:type': 'image/png', 'og:image:width': str(card_size[0]), 'og:image:height': str(card_size[1]),
                 'og:image:alt': SOCIAL_IMAGE_ALT[language], 'twitter:card': 'summary_large_image',
                 'twitter:image:alt': SOCIAL_IMAGE_ALT[language]}
@@ -287,6 +288,35 @@ def validate_open_graph(route, page, card_size):
     image = urlsplit(meta.get('og:image') or '')
     assert (image.scheme, image.netloc, image.path) == ('https', 'awesomerea.org', '/social-card.png') and meta.get('twitter:image') == meta['og:image'], f'Social image URL mismatch: {route}'
     assert meta['og:image:alt'] not in {meta.get('og:title'), meta.get('twitter:title')}, f'og:image:alt repeats the page title: {route}'
+
+
+def validate_website_identity(pages):
+    """Only the homepages define the WebSite node, identically; every other page references it."""
+    website_id = ORIGIN + '/#website'
+
+    def nodes(value):
+        if isinstance(value, list):
+            for item in value:
+                yield from nodes(item)
+        elif isinstance(value, dict):
+            yield value
+            for item in value.values():
+                yield from nodes(item)
+
+    homepages = []
+    for route, page in pages.items():
+        found = list(nodes(page.schemas))
+        websites = [node for node in found if node.get('@type') == 'WebSite' or node.get('@id') == website_id and len(node) > 1]
+        if route in ('/', '/zh/'):
+            assert len(websites) == 1, f'Homepage needs one WebSite node: {route}'
+            website = websites[0]
+            assert (website.get('@id'), website.get('url'), website.get('name'), website.get('alternateName')) == (
+                website_id, ORIGIN + '/', SITE_NAME, SITE_ALTERNATE_NAMES), f'WebSite identity differs from the shared site name: {route}'
+            homepages.append(website)
+        else:
+            assert not websites, f'Only the homepages may define a WebSite node: {route}'
+            assert {'@id': website_id} in found, f'Page must reference the WebSite node by @id: {route}'
+    assert len(homepages) == 2 and homepages[0] == homepages[1], 'Both homepages must define the same WebSite node'
 
 
 def header_rules(text):
@@ -303,6 +333,19 @@ def header_rules(text):
         assert name.strip().lower() not in current, f'Duplicate header in one _headers rule: line {number}'
         current[name.strip().lower()] = value.strip()
     return rules
+
+
+# Cloudflare Pages host placeholders for the production alias and preview/branch deployments.
+PAGES_DEV_HOSTS = ('https://:project.pages.dev/*', 'https://:version.:project.pages.dev/*')
+
+
+def validate_host_indexing(rules):
+    """Only *.pages.dev copies are noindex; no path rule may deindex the canonical host."""
+    for pattern in PAGES_DEV_HOSTS:
+        assert rules.get(pattern, {}).get('x-robots-tag') == 'noindex', f'pages.dev copies need X-Robots-Tag: noindex: {pattern}'
+    for pattern, headers in rules.items():
+        if pattern not in PAGES_DEV_HOSTS:
+            assert 'x-robots-tag' not in headers, f'X-Robots-Tag would apply to the canonical host: {pattern}'
 
 
 def csp_directives(policy):
@@ -363,6 +406,7 @@ def validate_security_headers(output):
     """Keep the site-wide policy strict and sufficient for everything the built HTML loads."""
     output = Path(output)
     rules = header_rules((output / '_headers').read_text(encoding='utf-8'))
+    validate_host_indexing(rules)
     site = rules.get('/*', {})
     assert site.get('x-frame-options') == 'DENY', 'Site pages must not be framed'
     assert site.get('permissions-policy'), 'Missing Permissions-Policy'
@@ -675,6 +719,7 @@ def validate_case_outputs(pages, resources):
 def validate_entry_outputs(pages, resources, papers):
     """Bind individual pages and their ordinary listing links to reviewed records."""
     routes = expected_entry_routes(resources, papers)
+    related = matching_entries(resources, papers)
     catalogs = {'resource': {row['id']: row for row in resources},
                 'paper': {row['id']: row for row in papers}}
     normalize = lambda value: ' '.join(value.split())
@@ -766,6 +811,10 @@ def validate_entry_outputs(pages, resources, papers):
         phrases.append(record['verified_at'][:10])
         assert all(normalize(phrase) in text for phrase in phrases), f'Detail page lost localized source content: {route}'
         assert links <= set(article['links']), f'Detail article lost upstream evidence or citation links: {route}'
+        # Detail pages link each other only for exact repository or publication matches, in the page language.
+        detail_links = [link for link in article['links'] if re.fullmatch(r'(?:/zh)?/(?:resources|papers)/[a-z0-9-]+/', link)]
+        expected_related = [entry_path(other, row['id'], language) for other, row in related.get((kind, identifier), [])]
+        assert detail_links == expected_related, f'Related detail links differ from exact repository or publication matches: {route}'
 
 
 def main():
@@ -819,6 +868,7 @@ def main():
     validate_open_graph(None, not_found, png_size(OUTPUT / 'social-card.png'))
     validate_security_headers(OUTPUT)
     validate_catalog_preload(OUTPUT)
+    validate_website_identity(pages)
     assert (OUTPUT / 'llms.txt').read_text(encoding='utf-8').startswith('# '), 'llms.txt must contain Markdown'
     assert re.fullmatch(r'[a-f0-9]{32}\n?', (OUTPUT / 'indexnow.txt').read_text(encoding='utf-8')), 'Invalid public ownership proof'
     read_build_manifest(OUTPUT)

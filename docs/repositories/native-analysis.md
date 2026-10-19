@@ -4,44 +4,47 @@
 
 **680 repositories** · 2026-10-16 UTC
 
-These are automatically discovered projects, not individually curated or tested recommendations. Categories derive from metadata and descriptions from upstream text. Stars are collection-time snapshots, not live rankings.
+These are automatically discovered projects, not individually curated or tested recommendations. Categories derive from metadata and descriptions from upstream text. Stars are collection-time snapshots, not live rankings. Lines marked “Curated” or “Paper” link to the reviewed catalog entry or paper whose source is that exact repository.
 
-- [NationalSecurityAgency/ghidra](https://github.com/NationalSecurityAgency/ghidra) — Ghidra is a software reverse engineering (SRE) framework **[88,799 stars]**
-- [WerWolv/ImHex](https://github.com/WerWolv/ImHex) — 🔍 A Hex Editor for Reverse Engineers, Programmers and people who value their retinas when working at 3 AM. **[55,252 stars]**
-- [radareorg/radare2](https://github.com/radareorg/radare2) — UNIX-like reverse engineering framework and command-line toolset **[25,054 stars]**
-- [rizinorg/cutter](https://github.com/rizinorg/cutter) — Free and Open Source Reverse Engineering Platform powered by rizin **[20,030 stars]**
-- [mytechnotalent/Reverse-Engineering](https://github.com/mytechnotalent/Reverse-Engineering) — A FREE comprehensive reverse engineering tutorial covering x86, x64, 32-bit/64-bit ARM, 8-bit AVR and 32-bit RISC-V architectures. **[14,719 stars]**
-- [mrexodia/ida-pro-mcp](https://github.com/mrexodia/ida-pro-mcp) — AI-powered reverse engineering assistant that bridges IDA Pro with language models through MCP. **[12,922 stars]**
-- [horsicq/Detect-It-Easy](https://github.com/horsicq/Detect-It-Easy) — Program for determining types of files for Windows, Linux and MacOS. **[11,732 stars]**
-- [LaurieWired/GhidraMCP](https://github.com/LaurieWired/GhidraMCP) — MCP Server for Ghidra **[11,297 stars]**
-- [pwndbg/pwndbg](https://github.com/pwndbg/pwndbg) — Exploit Development and Reverse Engineering with GDB &amp; LLDB Made Easy **[11,064 stars]**
-- [unicorn-engine/unicorn](https://github.com/unicorn-engine/unicorn) — Unicorn CPU emulator framework (ARM, AArch64, M68K, Mips, Sparc, PowerPC, RiscV, S390x, TriCore, X86) **[9,451 stars]**
-- [angr/angr](https://github.com/angr/angr) — A powerful and user-friendly binary analysis platform! **[9,189 stars]**
-- [capstone-engine/capstone](https://github.com/capstone-engine/capstone) — Capstone disassembly/disassembler framework for ARM, ARM64 (ARMv8), Alpha, BPF, Ethereum VM, HPPA, LoongArch, M68K, M680X, Mips, MOS65XX, PPC, RISC-V(rv32G/rv64G), SH, Sparc, SystemZ, TMS320C64X, TriCore, Webassembly, XCore and X86. **[9,107 stars]**
+- [NationalSecurityAgency/ghidra](https://github.com/NationalSecurityAgency/ghidra) — Ghidra is a software reverse engineering (SRE) framework **[88,799 stars]** · Curated: [Ghidra](https://awesomerea.org/resources/ghidra/)
+- [WerWolv/ImHex](https://github.com/WerWolv/ImHex) — 🔍 A Hex Editor for Reverse Engineers, Programmers and people who value their retinas when working at 3 AM. **[55,252 stars]** · Curated: [ImHex](https://awesomerea.org/resources/imhex/)
+- [radareorg/radare2](https://github.com/radareorg/radare2) — UNIX-like reverse engineering framework and command-line toolset **[25,054 stars]** · Curated: [radare2](https://awesomerea.org/resources/radare2/)
+- [rizinorg/cutter](https://github.com/rizinorg/cutter) — Free and Open Source Reverse Engineering Platform powered by rizin **[20,030 stars]** · Curated: [Cutter](https://awesomerea.org/resources/cutter/)
+- [mytechnotalent/Reverse-Engineering](https://github.com/mytechnotalent/Reverse-Engineering) — A FREE comprehensive reverse engineering tutorial covering x86, x64, 32-bit/64-bit ARM, 8-bit AVR and 32-bit RISC-V architectures. **[14,719 stars]** · Curated: [Reverse Engineering (mytechnotalent)](https://awesomerea.org/resources/mytechnotalent-reverse-engineering/)
+- [mrexodia/ida-pro-mcp](https://github.com/mrexodia/ida-pro-mcp) — AI-powered reverse engineering assistant that bridges IDA Pro with language models through MCP. **[12,922 stars]** · Curated: [IDA Pro MCP (mrexodia)](https://awesomerea.org/resources/ida-pro-mcp-community/)
+- [horsicq/Detect-It-Easy](https://github.com/horsicq/Detect-It-Easy) — Program for determining types of files for Windows, Linux and MacOS. **[11,732 stars]** · Curated: [Detect It Easy](https://awesomerea.org/resources/detect-it-easy/)
+- [LaurieWired/GhidraMCP](https://github.com/LaurieWired/GhidraMCP) — MCP Server for Ghidra **[11,297 stars]** · Curated: [GhidraMCP](https://awesomerea.org/resources/ghidramcp/)
+- [unicorn-engine/unicorn](https://github.com/unicorn-engine/unicorn) — Unicorn CPU emulator framework (ARM, AArch64, M68K, Mips, Sparc, PowerPC, RiscV, S390x, TriCore, X86) **[9,451 stars]** · Curated: [Unicorn Engine](https://awesomerea.org/resources/unicorn/)
+- [angr/angr](https://github.com/angr/angr) — A powerful and user-friendly binary analysis platform! **[9,189 stars]** · Curated: [angr](https://awesomerea.org/resources/angr/)
+- [mandiant/flare-vm](https://github.com/mandiant/flare-vm) — A collection of software installations scripts for Windows systems that allows you to easily setup and maintain a reverse engineering environment on a VM. **[9,147 stars]** · Curated: [FLARE-VM](https://awesomerea.org/resources/flare-vm/)
+- [capstone-engine/capstone](https://github.com/capstone-engine/capstone) — Capstone disassembly/disassembler framework for ARM, ARM64 (ARMv8), Alpha, BPF, Ethereum VM, HPPA, LoongArch, M68K, M680X, Mips, MOS65XX, PPC, RISC-V(rv32G/rv64G), SH, Sparc, SystemZ, TMS320C64X, TriCore, Webassembly, XCore and X86. **[9,107 stars]** · Curated: [Capstone](https://awesomerea.org/resources/capstone/)
 - [hugsy/gef](https://github.com/hugsy/gef) — GEF (GDB Enhanced Features) - a modern experience for GDB with advanced debugging capabilities for exploit devs &amp; reverse engineers on Linux **[8,399 stars]**
-- [albertan017/LLM4Decompile](https://github.com/albertan017/LLM4Decompile) — Reverse Engineering: Decompiling Binary Code with Large Language Models **[7,134 stars]**
+- [albertan017/LLM4Decompile](https://github.com/albertan017/LLM4Decompile) — Reverse Engineering: Decompiling Binary Code with Large Language Models **[7,134 stars]** · Paper: [Decompile-Bench: Million-Scale Binary-Source Function Pairs for Real-World Binary Decompilation](https://awesomerea.org/papers/paper-decompile-bench/), [LLM4Decompile: Decompiling Binary Code with Large Language Models](https://awesomerea.org/papers/paper-llm4decompile/), [SK2Decompile: LLM-based Two-Phase Binary Decompilation from Skeleton to Skin](https://awesomerea.org/papers/paper-sk2decompile/)
 - [mandiant/capa](https://github.com/mandiant/capa) — The FLARE team's open-source tool to identify capabilities in executable files. **[6,247 stars]**
 - [0xZ0F/Z0FCourse\_ReverseEngineering](https://github.com/0xZ0F/Z0FCourse_ReverseEngineering) — Reverse engineering focusing on x64 Windows. **[5,962 stars]**
-- [bethington/ghidra-mcp](https://github.com/bethington/ghidra-mcp) — Ghidra MCP Server — 200+ MCP tools for AI-powered reverse engineering. GUI plugin + headless server, lazy tool loading, convention enforcement, batch operations, Ghidra Server integration, and Docker deployment. **[5,659 stars]**
-- [lief-project/LIEF](https://github.com/lief-project/LIEF) — LIEF - Library to Instrument Executable Formats (C++, Python, Rust) **[5,595 stars]**
-- [pret/pokered](https://github.com/pret/pokered) — Disassembly of Pokémon Red/Blue **[4,993 stars]**
-- [kaitai-io/kaitai\_struct](https://github.com/kaitai-io/kaitai_struct) — Kaitai Struct: declarative language to generate binary data parsers in C++ / C# / Go / Java / JavaScript / Lua / Nim / Perl / PHP / Python / Ruby / Rust **[4,712 stars]**
-- [zrax/pycdc](https://github.com/zrax/pycdc) — C++ python bytecode disassembler and decompiler **[4,651 stars]**
+- [bethington/ghidra-mcp](https://github.com/bethington/ghidra-mcp) — Ghidra MCP Server — 200+ MCP tools for AI-powered reverse engineering. GUI plugin + headless server, lazy tool loading, convention enforcement, batch operations, Ghidra Server integration, and Docker deployment. **[5,659 stars]** · Curated: [Ghidra MCP Server (bethington)](https://awesomerea.org/resources/ghidra-mcp-bethington/)
+- [lief-project/LIEF](https://github.com/lief-project/LIEF) — LIEF - Library to Instrument Executable Formats (C++, Python, Rust) **[5,595 stars]** · Curated: [LIEF](https://awesomerea.org/resources/lief/)
+- [pret/pokered](https://github.com/pret/pokered) — Disassembly of Pokémon Red/Blue **[4,993 stars]** · Curated: [pokered: a matching Pokémon Red and Blue disassembly](https://awesomerea.org/resources/pokered-disassembly-case/)
+- [kaitai-io/kaitai\_struct](https://github.com/kaitai-io/kaitai_struct) — Kaitai Struct: declarative language to generate binary data parsers in C++ / C# / Go / Java / JavaScript / Lua / Nim / Perl / PHP / Python / Ruby / Rust **[4,712 stars]** · Curated: [Kaitai Struct](https://awesomerea.org/resources/kaitai-struct/)
+- [zrax/pycdc](https://github.com/zrax/pycdc) — C++ python bytecode disassembler and decompiler **[4,651 stars]** · Curated: [Decompyle++ (pycdc)](https://awesomerea.org/resources/pycdc/)
+- [extremecoders-re/pyinstxtractor](https://github.com/extremecoders-re/pyinstxtractor) — PyInstaller Extractor **[4,505 stars]** · Curated: [PyInstaller Extractor (pyinstxtractor)](https://awesomerea.org/resources/pyinstxtractor/)
 - [JonathanSalwan/ROPgadget](https://github.com/JonathanSalwan/ROPgadget) — This tool lets you search your gadgets on your binaries to facilitate your ROP exploitation. ROPgadget supports ELF, PE and Mach-O format on x86, x64, ARM, ARM64, PowerPC, SPARC, MIPS, RISC-V 64, and RISC-V Compressed architectures. **[4,498 stars]**
-- [orhun/binsider](https://github.com/orhun/binsider) — Analyze ELF binaries like a boss 😼🕵️‍♂️ **[4,481 stars]**
-- [joxeankoret/diaphora](https://github.com/joxeankoret/diaphora) — Diaphora, the most advanced Free and Open Source program diffing tool. **[4,428 stars]**
-- [zyantific/zydis](https://github.com/zyantific/zydis) — Fast and lightweight x86/x86-64 disassembler and code generation library **[4,393 stars]**
+- [orhun/binsider](https://github.com/orhun/binsider) — Analyze ELF binaries like a boss 😼🕵️‍♂️ **[4,481 stars]** · Curated: [binsider](https://awesomerea.org/resources/binsider/)
+- [joxeankoret/diaphora](https://github.com/joxeankoret/diaphora) — Diaphora, the most advanced Free and Open Source program diffing tool. **[4,428 stars]** · Curated: [Diaphora](https://awesomerea.org/resources/diaphora/)
+- [zyantific/zydis](https://github.com/zyantific/zydis) — Fast and lightweight x86/x86-64 disassembler and code generation library **[4,393 stars]** · Curated: [Zydis](https://awesomerea.org/resources/zydis/)
 - [JonathanSalwan/Triton](https://github.com/JonathanSalwan/Triton) — Triton is a dynamic binary analysis library. Build your own program analysis tools, automate your reverse engineering, perform software verification or just emulate code. **[4,332 stars]**
+- [rocky/python-uncompyle6](https://github.com/rocky/python-uncompyle6) — A cross-version Python bytecode decompiler **[4,331 stars]** · Curated: [uncompyle6](https://awesomerea.org/resources/uncompyle6/)
+- [mandiant/flare-floss](https://github.com/mandiant/flare-floss) — FLARE Obfuscated String Solver - Automatically extract obfuscated strings from malware. **[4,189 stars]** · Curated: [FLOSS (FLARE Obfuscated String Solver)](https://awesomerea.org/resources/flare-floss/)
 - [cea-sec/miasm](https://github.com/cea-sec/miasm) — Reverse engineering framework in Python **[3,992 stars]**
-- [rizinorg/rizin](https://github.com/rizinorg/rizin) — UNIX-like reverse engineering framework and command-line toolset. **[3,972 stars]**
+- [rizinorg/rizin](https://github.com/rizinorg/rizin) — UNIX-like reverse engineering framework and command-line toolset. **[3,972 stars]** · Curated: [Rizin](https://awesomerea.org/resources/rizin/)
 - [joernio/joern](https://github.com/joernio/joern) — Open-source code analysis platform for C/C++/Java/Binary/Javascript/Python/Kotlin based on code property graphs. Discord https<span>:</span>//discord.gg/vv4MH284Hc **[3,576 stars]**
-- [JusticeRage/Gepetto](https://github.com/JusticeRage/Gepetto) — IDA plugin which queries language models to speed up reverse-engineering **[3,487 stars]**
+- [JusticeRage/Gepetto](https://github.com/JusticeRage/Gepetto) — IDA plugin which queries language models to speed up reverse-engineering **[3,487 stars]** · Curated: [Gepetto](https://awesomerea.org/resources/gepetto/)
 - [ljagiello/ctf-skills](https://github.com/ljagiello/ctf-skills) — Agent skills for solving CTF challenges - web exploitation, binary pwn, crypto, reverse engineering, forensics, OSINT, and more **[3,459 stars]**
 - [horsicq/DIE-engine](https://github.com/horsicq/DIE-engine) — DIE engine **[3,314 stars]**
-- [google/bindiff](https://github.com/google/bindiff) — Quickly find differences and similarities in disassembled code **[3,207 stars]**
+- [google/bindiff](https://github.com/google/bindiff) — Quickly find differences and similarities in disassembled code **[3,207 stars]** · Curated: [BinDiff](https://awesomerea.org/resources/bindiff/)
 - [plasma-disassembler/plasma](https://github.com/plasma-disassembler/plasma) — Plasma is an interactive disassembler for x86/ARM/MIPS. It can generates indented pseudo-code with colored syntax. **[3,071 stars]**
-- [djkaty/Il2CppInspector](https://github.com/djkaty/Il2CppInspector) — Powerful automated tool for reverse engineering Unity IL2CPP binaries **[3,056 stars]**
-- [BinaryAnalysisPlatform/bap](https://github.com/BinaryAnalysisPlatform/bap) — Binary Analysis Platform **[2,262 stars]**
+- [uxmal/reko](https://github.com/uxmal/reko) — Reko is a binary decompiler. **[2,617 stars]** · Curated: [Reko](https://awesomerea.org/resources/reko/)
+- [BinaryAnalysisPlatform/bap](https://github.com/BinaryAnalysisPlatform/bap) — Binary Analysis Platform **[2,262 stars]** · Curated: [Binary Analysis Platform (BAP)](https://awesomerea.org/resources/bap/)
 - [Dryxio/reagent](https://github.com/Dryxio/reagent) — Reconstruct and validate C/C++ code from compiled programs with AI. **[2,100 stars]**
 - [KasperskyLab/hrtng](https://github.com/KasperskyLab/hrtng) — IDA Pro plugin with a rich set of features: decryption, deobfuscation, patching, lib code recognition and various pseudocode transformations **[1,949 stars]**
 - [yetone/native-feel-skill](https://github.com/yetone/native-feel-skill) — An Agent Skill for designing cross-platform desktop apps that feel native — distilled from Raycast's 2.0 deep-dive and reverse engineering of Raycast Beta.app. Eight architectural tenets, four-layer architecture, WebKit/WebView2 survival guide, 75-item ship audit. **[1,931 stars]**
@@ -52,7 +55,8 @@ These are automatically discovered projects, not individually curated or tested 
 - [illera88/Ponce](https://github.com/illera88/Ponce) — IDA 2016 plugin contest winner! Symbolic Execution just one-click away! **[1,635 stars]**
 - [Jon-Becker/heimdall-rs](https://github.com/Jon-Becker/heimdall-rs) — Heimdall is an advanced EVM smart contract toolkit specializing in bytecode analysis and extracting information from unverified contracts. **[1,626 stars]**
 - [attify/firmware-analysis-toolkit](https://github.com/attify/firmware-analysis-toolkit) — Firmware security research platform combining binary analysis, taint tracing, and emulation across IoT, edge AI, mobile devices, and robotics. **[1,615 stars]**
-- [m4b/goblin](https://github.com/m4b/goblin) — An impish, cross-platform binary parsing crate, written in Rust **[1,555 stars]**
+- [vtil-project/VTIL-Core](https://github.com/vtil-project/VTIL-Core) — Virtual-machine Translation Intermediate Language **[1,607 stars]** · Curated: [VTIL-Core](https://awesomerea.org/resources/vtil-core/)
+- [m4b/goblin](https://github.com/m4b/goblin) — An impish, cross-platform binary parsing crate, written in Rust **[1,555 stars]** · Curated: [goblin](https://awesomerea.org/resources/goblin/)
 - [igogo-x86/HexRaysPyTools](https://github.com/igogo-x86/HexRaysPyTools) — IDA Pro plugin which improves work with HexRays decompiler and helps in process of reconstruction structures and classes **[1,541 stars]**
 - [mandiant/flare-learning-hub](https://github.com/mandiant/flare-learning-hub) — Free educational content on reverse engineering and malware analysis from the FLARE team **[1,496 stars]**
 - [angusdevgo/Seep-Reverse-Lab](https://github.com/angusdevgo/Seep-Reverse-Lab) — Agent-Native multi-platform reverse engineering and CWE-602 client-side authorization audit workbench. **[1,462 stars]**
@@ -61,45 +65,43 @@ These are automatically discovered projects, not individually curated or tested 
 - [L4ys/LazyIDA](https://github.com/L4ys/LazyIDA) — Make your IDA Lazy! **[1,447 stars]**
 - [AllsafeCyberSecurity/awesome-ghidra](https://github.com/AllsafeCyberSecurity/awesome-ghidra) — A curated list of awesome Ghidra materials **[1,442 stars]**
 - [WPeace-HcH/WPeGPT](https://github.com/WPeace-HcH/WPeGPT) — An IDA plugin for binary file analysis, powered by AI models such as OpenAI and DeepSeek. **[1,425 stars]**
-- [fkie-cad/cwe\_checker](https://github.com/fkie-cad/cwe_checker) — cwe\_checker finds vulnerable patterns in binary executables **[1,362 stars]**
+- [fkie-cad/cwe\_checker](https://github.com/fkie-cad/cwe_checker) — cwe\_checker finds vulnerable patterns in binary executables **[1,362 stars]** · Curated: [cwe\_checker](https://awesomerea.org/resources/cwe-checker/)
 - [gdabah/distorm](https://github.com/gdabah/distorm) — Powerful Disassembler Library For x86/AMD64 **[1,340 stars]**
 - [Vector35/binaryninja-api](https://github.com/Vector35/binaryninja-api) — Public API, examples, documentation and issues for Binary Ninja **[1,327 stars]**
-- [2akouwu/reverify](https://github.com/2akouwu/reverify) — Stop your AI from making things up — it proposes, deterministic tools decide, every claim checked against ground truth with evidence. Grounded facts and context survive resets. Reverse engineering is the proving ground. MCP server + CLI. **[1,297 stars]**
+- [2akouwu/reverify](https://github.com/2akouwu/reverify) — Stop your AI from making things up — it proposes, deterministic tools decide, every claim checked against ground truth with evidence. Grounded facts and context survive resets. Reverse engineering is the proving ground. MCP server + CLI. **[1,297 stars]** · Curated: [Reverify](https://awesomerea.org/resources/reverify-claim-verifier/)
 - [rdbo/libmem](https://github.com/rdbo/libmem) — Advanced Game Hacking Library for C, Modern C++, Rust and Python (Windows/Linux/FreeBSD) (Process/Memory Hacking) (Hooking/Detouring) (Cross Platform) (x86/x64) (DLL/SO Injection) (Internal/External) (Assembler/Disassembler) **[1,263 stars]**
 - [horsicq/XPEViewer](https://github.com/horsicq/XPEViewer) — PE file viewer/editor for Windows, Linux and MacOS. **[1,241 stars]**
-- [amruth-sn/kong](https://github.com/amruth-sn/kong) — The world's first agentic reverse engineer. **[1,227 stars]**
-- [google/binexport](https://github.com/google/binexport) — Export disassemblies into Protocol Buffers **[1,214 stars]**
+- [amruth-sn/kong](https://github.com/amruth-sn/kong) — The world's first agentic reverse engineer. **[1,227 stars]** · Curated: [Kong](https://awesomerea.org/resources/kong-agentic-reverse-engineer/)
+- [google/binexport](https://github.com/google/binexport) — Export disassemblies into Protocol Buffers **[1,214 stars]** · Curated: [BinExport](https://awesomerea.org/resources/binexport/)
 - [petoolse/petools](https://github.com/petoolse/petools) — PE Tools - Portable executable (PE) manipulation toolkit **[1,201 stars]**
-- [HexRaysSA/ida-mcp](https://github.com/HexRaysSA/ida-mcp) — Official Hex-Rays IDA MCP Server. **[1,196 stars]**
+- [HexRaysSA/ida-mcp](https://github.com/HexRaysSA/ida-mcp) — Official Hex-Rays IDA MCP Server. **[1,196 stars]** · Curated: [Hex-Rays IDA MCP](https://awesomerea.org/resources/hex-rays-ida-mcp/)
 - [ghidraninja/ghidra\_scripts](https://github.com/ghidraninja/ghidra_scripts) — Scripts for the Ghidra software reverse engineering suite. **[1,177 stars]**
-- [GJDuck/e9patch](https://github.com/GJDuck/e9patch) — A powerful static binary rewriting tool **[1,156 stars]**
-- [REhints/efiXplorer](https://github.com/REhints/efiXplorer) — IDA plugin and loader for UEFI firmware analysis and reverse engineering automation **[1,138 stars]**
 - [bitdefender/bddisasm](https://github.com/bitdefender/bddisasm) — bddisasm is a fast, lightweight, x86/x64 instruction decoder. The project also features a fast, basic, x86/x64 instruction emulator, designed specifically to detect shellcode-like behavior. **[1,089 stars]**
 - [wisk/medusa](https://github.com/wisk/medusa) — An open source interactive disassembler **[1,089 stars]**
-- [peiikai/LASRecomp](https://github.com/peiikai/LASRecomp) — Static recompilation of Link's Awakening (Switch) to native macOS, Windows and Linux **[1,009 stars]**
+- [peiikai/LASRecomp](https://github.com/peiikai/LASRecomp) — Static recompilation of Link's Awakening (Switch) to native macOS, Windows and Linux **[1,009 stars]** · Curated: [LASRecomp: Link’s Awakening static recompilation](https://awesomerea.org/resources/lasrecomp/)
 - [vivisect/vivisect](https://github.com/vivisect/vivisect) — No description supplied by the upstream repository. **[1,003 stars]**
 - [ioncodes/idacode](https://github.com/ioncodes/idacode) — An integration for IDA and VS Code which connects both to easily execute and debug IDAPython scripts. **[994 stars]**
-- [rizinorg/rz-ghidra](https://github.com/rizinorg/rz-ghidra) — Deep ghidra decompiler and sleigh disassembler integration for rizin **[993 stars]**
+- [rizinorg/rz-ghidra](https://github.com/rizinorg/rz-ghidra) — Deep ghidra decompiler and sleigh disassembler integration for rizin **[993 stars]** · Curated: [rz-ghidra](https://awesomerea.org/resources/rz-ghidra/)
 - [x86byte/RE-MA-Roadmap](https://github.com/x86byte/RE-MA-Roadmap) — Reverse Engineering and Malware Analysis Roadmap **[951 stars]**
 - [radareorg/radare2-book](https://github.com/radareorg/radare2-book) — The Official Radare2 Book **[921 stars]**
-- [CheckPointSW/Karta](https://github.com/CheckPointSW/Karta) — Karta - source code assisted fast binary matching plugin for IDA **[912 stars]**
+- [CheckPointSW/Karta](https://github.com/CheckPointSW/Karta) — Karta - source code assisted fast binary matching plugin for IDA **[912 stars]** · Curated: [Karta](https://awesomerea.org/resources/karta/)
 - [NaC-L/Mergen](https://github.com/NaC-L/Mergen) — Deobfuscation via optimization with usage of LLVM IR and parsing assembly. **[912 stars]**
 - [HackOvert/GhidraSnippets](https://github.com/HackOvert/GhidraSnippets) — Python snippets for Ghidra's Program and Decompiler APIs **[893 stars]**
 - [vulhunt-re/vulhunt](https://github.com/vulhunt-re/vulhunt) — Vulnerability detection framework by Binarly's REsearch team **[893 stars]**
 - [n0mi1k/apk2url](https://github.com/n0mi1k/apk2url) — An OSINT tool to quickly extract IP and URL endpoints from APKs by disassembling and decompiling **[880 stars]**
 - [symgraph/IDAssist](https://github.com/symgraph/IDAssist) — AI-Powered Reverse Engineering Plugin for IDA Pro **[880 stars]**
-- [GrammaTech/ddisasm](https://github.com/GrammaTech/ddisasm) — A fast and accurate disassembler **[876 stars]**
-- [cyberkaida/reverse-engineering-assistant](https://github.com/cyberkaida/reverse-engineering-assistant) — MCP server for reverse engineering tasks in Ghidra 👩‍💻 **[875 stars]**
+- [GrammaTech/ddisasm](https://github.com/GrammaTech/ddisasm) — A fast and accurate disassembler **[876 stars]** · Curated: [Ddisasm](https://awesomerea.org/resources/ddisasm/)
+- [cyberkaida/reverse-engineering-assistant](https://github.com/cyberkaida/reverse-engineering-assistant) — MCP server for reverse engineering tasks in Ghidra 👩‍💻 **[875 stars]** · Curated: [ReVa (Reverse Engineering Assistant)](https://awesomerea.org/resources/reva-ghidra-mcp/)
 - [Adamkadaban/CTFs](https://github.com/Adamkadaban/CTFs) — CTF Cheat Sheet + Writeups / Files for some of the Security CTFs that I've done **[869 stars]**
 - [fjh658/IDA7.0\_SP](https://github.com/fjh658/IDA7.0_SP) — IDA7.0\_SP is ida's bugfix **[863 stars]**
 - [eset/ipyida](https://github.com/eset/ipyida) — IPython console integration for IDA Pro **[857 stars]**
 - [decaf-project/DECAF](https://github.com/decaf-project/DECAF) — DECAF (short for Dynamic Executable Code Analysis Framework) is a binary analysis platform based on QEMU. This is also the home of the DroidScope dynamic Android malware analysis platform. DroidScope is now an extension to DECAF. **[841 stars]**
 - [weirdmachine64/GhidraGPT](https://github.com/weirdmachine64/GhidraGPT) — Integrate LLM models directly into Ghidra for AI-enhanced reverse engineering. **[826 stars]**
 - [Cisco-Talos/GhIDA](https://github.com/Cisco-Talos/GhIDA) — No description supplied by the upstream repository. **[820 stars]**
-- [clearbluejar/ghidriff](https://github.com/clearbluejar/ghidriff) — Python Command-Line Ghidra Binary Diffing Engine **[813 stars]**
+- [clearbluejar/ghidriff](https://github.com/clearbluejar/ghidriff) — Python Command-Line Ghidra Binary Diffing Engine **[813 stars]** · Curated: [ghidriff](https://awesomerea.org/resources/ghidriff/)
 - [mentebinaria/readpe](https://github.com/mentebinaria/readpe) — The PE file analysis toolkit **[789 stars]**
 - [danigargu/deREferencing](https://github.com/danigargu/deREferencing) — IDA Pro plugin that implements more user-friendly register and stack views **[775 stars]**
-- [symgraph/GhidrAssistMCP](https://github.com/symgraph/GhidrAssistMCP) — An native MCP server extension for Ghidra **[774 stars]**
+- [symgraph/GhidrAssistMCP](https://github.com/symgraph/GhidrAssistMCP) — An native MCP server extension for Ghidra **[774 stars]** · Curated: [GhidrAssistMCP](https://awesomerea.org/resources/ghidrassistmcp/)
 - [danigargu/heap-viewer](https://github.com/danigargu/heap-viewer) — IDA Pro plugin to examine the glibc heap, focused on exploit development **[773 stars]**
 - [fay59/fcd](https://github.com/fay59/fcd) — An optimizing decompiler **[773 stars]**
 - [symgraph/GhidrAssist](https://github.com/symgraph/GhidrAssist) — An LLM extension for Ghidra to enable AI assistance in RE. **[760 stars]**
@@ -109,7 +111,6 @@ These are automatically discovered projects, not individually curated or tested 
 - [radareorg/awesome-radare2](https://github.com/radareorg/awesome-radare2) — A curated list of awesome projects, articles and the other materials powered by Radare2 **[739 stars]**
 - [larkmjc/rv8](https://github.com/larkmjc/rv8) — RISC-V simulator for x86-64 **[727 stars]**
 - [yhs0602/Android-Disassembler](https://github.com/yhs0602/Android-Disassembler) — Disassemble any file on Android, including .so (NDK, JNI), Windows PE (EXE, DLL, SYS, etc.), Linux binaries and libraries, and even pictures, audio, and other files for fun. A Capstone-based Android disassembler and reversing app for Android NDK shared libraries, Windows binaries, and more. **[717 stars]**
-- [CharlotteCross1998/awesome-game-decompilations](https://github.com/CharlotteCross1998/awesome-game-decompilations) — A curated list of awesome game decompilations, recompilations and disassemblies. **[711 stars]**
 - [0xb0bb/pwndra](https://github.com/0xb0bb/pwndra) — A collection of pwn/CTF related utilities for Ghidra **[710 stars]**
 - [maddiestone/IDAPythonEmbeddedToolkit](https://github.com/maddiestone/IDAPythonEmbeddedToolkit) — IDA Python Embedded Toolkit -- IDAPython scripts for automating analysis of firmware of embedded devices **[690 stars]**
 - [Soulghost/iblessing](https://github.com/Soulghost/iblessing) — iblessing is an iOS security exploiting toolkit, it mainly includes application information gathering, static analysis and dynamic analysis. It can be used for reverse engineering, binary analysis and vulnerability mining. **[687 stars]**
@@ -120,19 +121,19 @@ These are automatically discovered projects, not individually curated or tested 
 - [Accenture/VulFi](https://github.com/Accenture/VulFi) — IDA Pro plugin for query based searching within the binary useful mainly for vulnerability research. **[673 stars]**
 - [tmr232/Sark](https://github.com/tmr232/Sark) — IDAPython Made Easy **[672 stars]**
 - [mohitmishra786/reversingBits](https://github.com/mohitmishra786/reversingBits) — A comprehensive collection of cheatsheets for reverse engineering, binary analysis, and assembly programming tools. This repository serves as a one-stop reference for security researchers, reverse engineers, and low-level programmers. **[662 stars]**
-- [matt-kempster/m2c](https://github.com/matt-kempster/m2c) — A decompiler targeting MIPS, PowerPC, ARM, and SuperH. **[658 stars]**
 - [dmendel/bindata](https://github.com/dmendel/bindata) — BinData - Reading and Writing Binary Data in Ruby **[653 stars]**
 - [McGill-DMaS/Kam1n0-Community](https://github.com/McGill-DMaS/Kam1n0-Community) — The Kam1n0 Assembly Analysis Platform **[627 stars]**
 - [Nalen98/AngryGhidra](https://github.com/Nalen98/AngryGhidra) — Use angr in Ghidra **[623 stars]**
+- [lifting-bits/rellic](https://github.com/lifting-bits/rellic) — Rellic produces goto-free C output from LLVM bitcode **[621 stars]** · Curated: [Rellic](https://awesomerea.org/resources/rellic/)
 - [Noelo-Lab/kuna](https://github.com/Noelo-Lab/kuna) — An agent-first decompiler designed to be refined by other agents. Kuna is written in Rust and was originally ported from Ghidra. **[614 stars]**
 - [wargio/r2dec-js](https://github.com/wargio/r2dec-js) — r2dec-js is a JavaScript-based decompiler that converts assembly code into pseudo-C. It aids users in understanding assembly by providing readable high-level explanations, making low-level programming more accessible and facilitating debugging across diverse hardware platforms. **[611 stars]**
-- [boricj/ghidra-delinker-extension](https://github.com/boricj/ghidra-delinker-extension) — Ghidra extension for exporting relocatable object files **[608 stars]**
+- [boricj/ghidra-delinker-extension](https://github.com/boricj/ghidra-delinker-extension) — Ghidra extension for exporting relocatable object files **[608 stars]** · Curated: [ghidra-delinker-extension](https://awesomerea.org/resources/ghidra-delinker-extension/)
 - [c3rb3ru5d3d53c/binlex](https://github.com/c3rb3ru5d3d53c/binlex) — A Binary Genetic Traits Lexer Framework **[604 stars]**
 - [falconre/falcon](https://github.com/falconre/falcon) — Binary Analysis Framework in Rust **[593 stars]**
 - [JonathanSalwan/PinTools](https://github.com/JonathanSalwan/PinTools) — Pintool example and PoC for dynamic binary analysis **[593 stars]**
 - [nikolaydubina/go-binsize-treemap](https://github.com/nikolaydubina/go-binsize-treemap) — 🔍 Go binary size SVG treemap **[587 stars]**
 - [quarkslab/binbloom](https://github.com/quarkslab/binbloom) — Raw binary firmware analysis software **[586 stars]**
-- [avatartwo/avatar2](https://github.com/avatartwo/avatar2) — Python core of avatar² **[579 stars]**
+- [B2R2-org/B2R2](https://github.com/B2R2-org/B2R2) — B2R2 is a fully managed binary analysis framework written in F#. It provides a rich set of algorithms, functions, and tools for reverse engineering, program analysis, and binary-level inspection. **[552 stars]** · Curated: [B2R2](https://awesomerea.org/resources/b2r2/)
 - [d3v1l401/FindCrypt-Ghidra](https://github.com/d3v1l401/FindCrypt-Ghidra) — IDA Pro's FindCrypt ported to Ghidra, with an updated and customizable signature database **[550 stars]**
 - [BeaEngine/beaengine](https://github.com/BeaEngine/beaengine) — BeaEngine disasm project **[549 stars]**
 - [ex0dus-0x/fuzzable](https://github.com/ex0dus-0x/fuzzable) — Framework for Automating Fuzzable Target Discovery with Static Analysis. **[548 stars]**
@@ -149,18 +150,18 @@ These are automatically discovered projects, not individually curated or tested 
 - [bontchev/pcodedmp](https://github.com/bontchev/pcodedmp) — A VBA p-code disassembler **[492 stars]**
 - [Bw3ll/sharem](https://github.com/Bw3ll/sharem) — SHAREM is a shellcode analysis framework, capable of emulating more than 45,000 WinAPIs and virutally all Windows syscalls. It also contains its own custom disassembler, with many innovative features, such as being able to show the deobfuscated disassembly of an encoded shellcode, or integrating emulation data to enhance the disassembly. **[492 stars]**
 - [vmallet/ida-plugins](https://github.com/vmallet/ida-plugins) — An interactive list of plugins for hex-rays' IDA Pro **[491 stars]**
-- [radareorg/r2ai](https://github.com/radareorg/r2ai) — LLM-based reversing for radare2 **[490 stars]**
+- [radareorg/r2ai](https://github.com/radareorg/r2ai) — LLM-based reversing for radare2 **[490 stars]** · Curated: [r2ai](https://awesomerea.org/resources/r2ai/)
 - [kweatherman/sigmakerex](https://github.com/kweatherman/sigmakerex) — Enhanced IDA Pro signature generator plugin. **[485 stars]**
 - [patois/HexraysToolbox](https://github.com/patois/HexraysToolbox) — Hexrays Toolbox - Find code patterns within the Hexrays ctree **[483 stars]**
 - [A200K/IDA-Pro-SigMaker](https://github.com/A200K/IDA-Pro-SigMaker) — Signature maker plugin for IDA 9.x and 8.x **[481 stars]**
-- [Zfinix/eleven](https://github.com/Zfinix/eleven) — Agent-first reverse engineering for macOS, Windows and Linux: any ACP agent reads, renames and patches binaries, Android apps and GPU kernels next to you. **[478 stars]**
+- [Zfinix/eleven](https://github.com/Zfinix/eleven) — Agent-first reverse engineering for macOS, Windows and Linux: any ACP agent reads, renames and patches binaries, Android apps and GPU kernels next to you. **[478 stars]** · Curated: [Eleven](https://awesomerea.org/resources/eleven-agent-re-workbench/)
 - [VoidSec/DriverBuddyReloaded](https://github.com/VoidSec/DriverBuddyReloaded) — Driver Buddy Reloaded is an IDA Pro Python plugin that helps automate some tedious Windows Kernel Drivers reverse engineering tasks **[472 stars]**
 - [mewmew/dissection](https://github.com/mewmew/dissection) — The dissection of a simple "hello world" ELF binary. **[470 stars]**
 - [radareorg/radare2-r2pipe](https://github.com/radareorg/radare2-r2pipe) — Access radare2 via pipe from any programming language! **[466 stars]**
 - [patois/dsync](https://github.com/patois/dsync) — IDAPython plugin that synchronizes disassembler and decompiler views **[459 stars]**
 - [jaybosamiya/security-notes](https://github.com/jaybosamiya/security-notes) — <span>:</span>notebook: Some security related notes **[458 stars]**
 - [extremecoders-re/decompyle-builds](https://github.com/extremecoders-re/decompyle-builds) — Precompiled Decompyle++ (pycdc) binaries for Windows &amp; Linux **[454 stars]**
-- [fosdickio/binary\_ninja\_mcp](https://github.com/fosdickio/binary_ninja_mcp) — A Binary Ninja plugin containing an MCP server that enables seamless integration with your favorite LLM/MCP client. **[454 stars]**
+- [fosdickio/binary\_ninja\_mcp](https://github.com/fosdickio/binary_ninja_mcp) — A Binary Ninja plugin containing an MCP server that enables seamless integration with your favorite LLM/MCP client. **[454 stars]** · Curated: [Binary Ninja MCP (fosdickio)](https://awesomerea.org/resources/binary-ninja-community-mcp/)
 - [cristianzsh/freki](https://github.com/cristianzsh/freki) — <span>:</span>wolf: Malware analysis platform **[446 stars]**
 - [amimo/ollvm-breaker](https://github.com/amimo/ollvm-breaker) — Remove OLLVM control-flow flattening obfuscation using Binary Ninja. **[445 stars]**
 - [patois/HRDevHelper](https://github.com/patois/HRDevHelper) — HexRays ctree visualization plugin **[443 stars]**
@@ -185,7 +186,6 @@ These are automatically discovered projects, not individually curated or tested 
 - [Adubbz/Ghidra-Switch-Loader](https://github.com/Adubbz/Ghidra-Switch-Loader) — Nintendo Switch loader for Ghidra **[374 stars]**
 - [mohitmishra786/underTheHoodOfExecutables](https://github.com/mohitmishra786/underTheHoodOfExecutables) — A guide that explains how programs transform from source code to executables. Deep dive into ELF format, linking processes, and binary optimization techniques. Perfect for systems programmers, C developers, and anyone interested in low-level programming concepts. **[374 stars]**
 - [rocky/python-xdis](https://github.com/rocky/python-xdis) — Python cross-version bytecode library and disassembler **[372 stars]**
-- [ethteck/splat](https://github.com/ethteck/splat) — A binary splitting tool to assist with decompilation and modding projects **[368 stars]**
 - [Ayrx/JNIAnalyzer](https://github.com/Ayrx/JNIAnalyzer) — Analysis scripts for Ghidra to work with Android NDK libraries. **[365 stars]**
 - [justfoxing/ghidra\_bridge](https://github.com/justfoxing/ghidra_bridge) — Python 3 bridge to Ghidra's Python scripting **[364 stars]**
 - [yukiarrr/Il2cppSpy](https://github.com/yukiarrr/Il2cppSpy) — Unity IL2CPP Disassembler (for apk) **[360 stars]**
@@ -202,7 +202,7 @@ These are automatically discovered projects, not individually curated or tested 
 - [therealdreg/DbgChild](https://github.com/therealdreg/DbgChild) — Debug Child Process Tool (auto attach) **[328 stars]**
 - [mattcurrie/mgbdis](https://github.com/mattcurrie/mgbdis) — Game Boy ROM disassembler with RGBDS compatible output **[327 stars]**
 - [reetamdan/hypervisor-crack-audit](https://github.com/reetamdan/hypervisor-crack-audit) — Security analysis of the hypervisor drm method used to bypass denuvo. Reverse engineering of the driver loaders and boot components using Ghidra **[327 stars]**
-- [radareorg/radare2-mcp](https://github.com/radareorg/radare2-mcp) — MCP stdio server for radare2 **[325 stars]**
+- [radareorg/radare2-mcp](https://github.com/radareorg/radare2-mcp) — MCP stdio server for radare2 **[325 stars]** · Curated: [Radare2 MCP Server](https://awesomerea.org/resources/radare2-mcp/)
 - [w00tzenheimer/d810-ng](https://github.com/w00tzenheimer/d810-ng) — D810-ng (Next Generation) is an updated, tested, refactored, and optimized IDA Pro plugin used to deobfuscate code at decompilation time by modifying IDA Pro microcode. **[325 stars]**
 - [mandiant/xrefer](https://github.com/mandiant/xrefer) — FLARE Team's Binary Navigator **[323 stars]**
 - [Cuyler36/Ghidra-GameCube-Loader](https://github.com/Cuyler36/Ghidra-GameCube-Loader) — A Nintendo GameCube binary loader for Ghidra **[322 stars]**
@@ -240,7 +240,7 @@ These are automatically discovered projects, not individually curated or tested 
 - [miunasu/IDA-Skill](https://github.com/miunasu/IDA-Skill) — An AI agent skill for automated malware analysis with IDA Pro, enabling agents to analyze malicious samples like a security analyst. **[237 stars]**
 - [Nalen98/eBPF-for-Ghidra](https://github.com/Nalen98/eBPF-for-Ghidra) — eBPF Processor for Ghidra **[237 stars]**
 - [ReversecLabs/z3\_and\_angr\_binary\_analysis\_workshop](https://github.com/ReversecLabs/z3_and_angr_binary_analysis_workshop) — Code and exercises for a workshop on z3 and angr **[237 stars]**
-- [fkie-cad/dewolf](https://github.com/fkie-cad/dewolf) — A research decompiler implemented as a Binary Ninja plugin. **[236 stars]**
+- [fkie-cad/dewolf](https://github.com/fkie-cad/dewolf) — A research decompiler implemented as a Binary Ninja plugin. **[236 stars]** · Curated: [dewolf](https://awesomerea.org/resources/dewolf/)
 - [aengelke/fadec](https://github.com/aengelke/fadec) — A fast and lightweight decoder for x86 and x86-64 and encoder for x86-64. **[235 stars]**
 - [DearVa/ida\_copilot](https://github.com/DearVa/ida_copilot) — ChatGPT Agent analyses your IDA pseudocode **[234 stars]**
 - [schlafwandler/ghidra\_SavePatch](https://github.com/schlafwandler/ghidra_SavePatch) — A Ghidra script to save small patches back to the executable file **[233 stars]**
@@ -265,8 +265,8 @@ These are automatically discovered projects, not individually curated or tested 
 - [WPeace-HcH/SysNR-FuncFinder](https://github.com/WPeace-HcH/SysNR-FuncFinder) — A plugin for IDA that renames functions by system call numbers. **[208 stars]**
 - [biniamf/ai-reverse-engineering](https://github.com/biniamf/ai-reverse-engineering) — AI-Assisted Reverse Engineering with Ghidra **[206 stars]**
 - [buggerlogger/arkose-solver](https://github.com/buggerlogger/arkose-solver) — Arkose Labs / FunCaptcha solver for Go, Python and Node — produces sup=1 suppressed tokens. The site RSA key is derived from api.js on every solve: no capture, no replay, no headless browser. Includes a full VM disassembly. **[202 stars]**
-- [RevEngAI/plugin-ghidra](https://github.com/RevEngAI/plugin-ghidra) — RevEng.AI Ghidra Plugin **[195 stars]**
-- [cdlewis/snowboardkids2-decomp](https://github.com/cdlewis/snowboardkids2-decomp) — Decompilation of snowboard kids 2 (N64) **[193 stars]**
+- [RevEngAI/plugin-ghidra](https://github.com/RevEngAI/plugin-ghidra) — RevEng.AI Ghidra Plugin **[195 stars]** · Curated: [RevEng.AI Ghidra Plugin](https://awesomerea.org/resources/revengai-ghidra/)
+- [cdlewis/snowboardkids2-decomp](https://github.com/cdlewis/snowboardkids2-decomp) — Decompilation of snowboard kids 2 (N64) **[193 stars]** · Curated: [Snowboard Kids 2: an LLM-assisted N64 matching decompilation](https://awesomerea.org/resources/snowboardkids2-decomp-case/)
 - [lifting-bits/sleigh](https://github.com/lifting-bits/sleigh) — Unofficial CMake build for Ghidra's C++ SLEIGH code **[193 stars]**
 - [MahdiSafsafi/DebugEngine](https://github.com/MahdiSafsafi/DebugEngine) — Delphi debug framework **[193 stars]**
 - [yoavst/ida-ios-helper](https://github.com/yoavst/ida-ios-helper) — Plugin to ease reversing iOS projects **[193 stars]**
@@ -320,7 +320,7 @@ These are automatically discovered projects, not individually curated or tested 
 - [patois/xray](https://github.com/patois/xray) — Hexrays decompiler plugin that colorizes and filters the decompiler's output based on regular expressions **[142 stars]**
 - [nccgroup/ghostrings](https://github.com/nccgroup/ghostrings) — Ghidra scripts for recovering string definitions in Go binaries **[141 stars]**
 - [lr-m/Ghidra-Themes](https://github.com/lr-m/Ghidra-Themes) — A collection of over 200 Ghidra themes to make long hours of reverse-engineering even more enjoyable! **[140 stars]**
-- [lt-asset/resym](https://github.com/lt-asset/resym) — For our CCS24 paper 🏆 "ReSym: Harnessing LLMs to Recover Variable and Data Structure Symbols from Stripped Binaries" by Danning Xie, Zhuo Zhang, Nan Jiang, Xiangzhe Xu, Lin Tan, and Xiangyu Zhang. 🏆 ACM SIGSAC Distinguished Paper Award Winner **[139 stars]**
+- [lt-asset/resym](https://github.com/lt-asset/resym) — For our CCS24 paper 🏆 "ReSym: Harnessing LLMs to Recover Variable and Data Structure Symbols from Stripped Binaries" by Danning Xie, Zhuo Zhang, Nan Jiang, Xiangzhe Xu, Lin Tan, and Xiangyu Zhang. 🏆 ACM SIGSAC Distinguished Paper Award Winner **[139 stars]** · Paper: [ReSym: Harnessing LLMs to Recover Variable and Data Structure Symbols from Stripped Binaries](https://awesomerea.org/papers/paper-resym/)
 - [philsajdak/decyx](https://github.com/philsajdak/decyx) — Decyx: AI-powered Ghidra extension for enhanced reverse engineering and binary analysis. **[139 stars]**
 - [radareorg/r2con2019](https://github.com/radareorg/r2con2019) — r2con2019 - slides and materials **[137 stars]**
 - [0xdea/rhabdomancer](https://github.com/0xdea/rhabdomancer) — Vulnerability research assistant that locates calls to potentially insecure API functions in a binary file. **[136 stars]**
@@ -433,7 +433,7 @@ These are automatically discovered projects, not individually curated or tested 
 - [membrowse/membrowse-action](https://github.com/membrowse/membrowse-action) — Track and analyze binary size and memory footprint in embedded firmware **[47 stars]**
 - [not-alons/hmfomt](https://github.com/not-alons/hmfomt) — Disassembly/Decompilation of Harvest Moon: Friends of Mineral Town **[47 stars]**
 - [zmrbak/ReverseAnalysis](https://github.com/zmrbak/ReverseAnalysis) — Example code for the online course Introduction to x86/x64 Software Reverse Engineering. **[47 stars]**
-- [pcyin/dire](https://github.com/pcyin/dire) — Neural Variable Renaming for Decompiled Binaries **[45 stars]**
+- [pcyin/dire](https://github.com/pcyin/dire) — Neural Variable Renaming for Decompiled Binaries **[45 stars]** · Paper: [DIRE: A Neural Approach to Decompiled Identifier Naming](https://awesomerea.org/papers/paper-dire/)
 - [radareorg/r2pipe.rs](https://github.com/radareorg/r2pipe.rs) — Rust crate for r2pipe **[45 stars]**
 - [TouchFriend/BiliBiliTweak](https://github.com/TouchFriend/BiliBiliTweak) — An ad-free BiliBili jailbreak tweak. Thanks for using it; stars are welcome. **[45 stars]**
 - [buzzer-re/ToCode](https://github.com/buzzer-re/ToCode) — Transform binaries into source-code-like projects that coding agents can traverse, analyze, and use as an oracle for large binaries. Supports IDA Pro, radare2, angr and Binary Ninja. **[43 stars]**
@@ -519,7 +519,7 @@ These are automatically discovered projects, not individually curated or tested 
 - [radareorg/r2hexagon](https://github.com/radareorg/r2hexagon) — Hexagon disassembler code generator from the official instruction manual. **[13 stars]**
 - [santiquiroz/gears-of-war-2-pc-port](https://github.com/santiquiroz/gears-of-war-2-pc-port) — Gears of War 2 native PC port: the Xbox 360 game statically recompiled to x64 (not an emulator). 1440p/4K, FSR, 4K texture packs, keyboard &amp; mouse, Android in progress. Bring your own copy. **[13 stars]**
 - [vtorres/ntoskrnl-offsets-dumper](https://github.com/vtorres/ntoskrnl-offsets-dumper) — Dump ntoskrnl.exe important offsets for building your navigation system in the Windows Kernel, using Radare2 and Rust **[13 stars]**
-- [Xiangyu-CAS/rea-capcut](https://github.com/Xiangyu-CAS/rea-capcut) — ReaCut — REA × CapCut: an independent, open-source video editor rebuilt from REA-assisted, authorized local behavior and format research. No copied CapCut proprietary code or assets. Offline desktop app + Codex plugin. **[13 stars]**
+- [Xiangyu-CAS/rea-capcut](https://github.com/Xiangyu-CAS/rea-capcut) — ReaCut — REA × CapCut: an independent, open-source video editor rebuilt from REA-assisted, authorized local behavior and format research. No copied CapCut proprietary code or assets. Offline desktop app + Codex plugin. **[13 stars]** · Curated: [ReaCut: video-editor reconstruction](https://awesomerea.org/resources/reacut-reconstruction/)
 - [bilal-ctf/Windows-PE-Analyzer](https://github.com/bilal-ctf/Windows-PE-Analyzer) — A learning-focused PE analysis engine with modular detectors, heuristic analysis, and HTML reporting. **[12 stars]**
 - [jessehouwing/ppt-diffmerge](https://github.com/jessehouwing/ppt-diffmerge) — A little commandline tool to start PowerPoint in merge mode. **[12 stars]**
 - [JRBusiness/REipa](https://github.com/JRBusiness/REipa) — Fast iOS decompiler &amp; Mach-O disassembler in Rust — arm64, Objective-C class-dump, Swift metadata, and a native desktop GUI. Reads .ipa/App Store binaries directly, no Ghidra, IDA, radare2, or LLVM. **[12 stars]**
@@ -577,7 +577,7 @@ These are automatically discovered projects, not individually curated or tested 
 - [ericyoc/iot\_device\_firmware\_analysis\_poc](https://github.com/ericyoc/iot_device_firmware_analysis_poc) — Performs firmware analysis on a given binary file. **[5 stars]**
 - [jstrieb/remote-ofrak](https://github.com/jstrieb/remote-ofrak) — Run OFRAK remotely to modify and repack binaries from your browser **[5 stars]**
 - [one2blame/the-dark-arts](https://github.com/one2blame/the-dark-arts) — Repository to contain my notes from my self-study of binary exploitation and reverse engineering. **[5 stars]**
-- [tokenbleed/nibkit](https://github.com/tokenbleed/nibkit) — Decompiler for compiled iOS/macOS interface files (.nib, .storyboardc): object tree, wiring, custom classes, navigation graphs **[5 stars]**
+- [tokenbleed/nibkit](https://github.com/tokenbleed/nibkit) — Decompiler for compiled iOS/macOS interface files (.nib, .storyboardc): object tree, wiring, custom classes, navigation graphs **[5 stars]** · Curated: [nibkit](https://awesomerea.org/resources/nibkit/)
 - [a0zhar/GandCrab](https://github.com/a0zhar/GandCrab) — This repository contains the dumped and deobfuscated version of GandCrabv5 JS Binary Dropper, along with the webpage files dropped on a GandCrab v5.1 infected system. The goal of this Repository is to attempt to make the files easier to work with and understand. **[4 stars]**
 - [AlembicOrg/UniDumper](https://github.com/AlembicOrg/UniDumper) — Windows x64 Unity IL2CPP metadata workbench for static dumping, package inspection, cross-version migration, and deterministic C++20 SDK generation with UniResolver. **[4 stars]**
 - [keithgh1/star-nx1020-re](https://github.com/keithgh1/star-nx1020-re) — Reverse engineering the Star NX-1020 9-pin dot-matrix printer: extracted resident fonts, labeled firmware disassembly, ROM maps, and full documentation **[4 stars]**
@@ -589,7 +589,7 @@ These are automatically discovered projects, not individually curated or tested 
 - [CAATZ/bimmerstein-bin-analyzer](https://github.com/CAATZ/bimmerstein-bin-analyzer) — Open-source Windows app for ECU binary analysis and editing: automatic map and axis detection, hex/2D/3D views, supported checksum correction, and RomRaider / TunerPro XDF / CSV / JSON export. **[3 stars]**
 - [eloyssync/axianware](https://github.com/eloyssync/axianware) — Native C++/Win32 PE analysis &amp; binary triage toolkit. Inspects headers/entropy, strips ASLR/NX, inverts branch logic (Jcc/RET), scans AOB signatures, and generates instant .1337 patches, Cheat Engine scripts, or trampoline DLL hooks **[3 stars]**
 - [KeepALifeUS/sfs2x-py](https://github.com/KeepALifeUS/sfs2x-py) — SmartFoxServer 2X binary protocol implementation for Python **[3 stars]**
-- [pablodiazjorge/rea-lab](https://github.com/pablodiazjorge/rea-lab) — Reverse engineering with AI agents on Windows: verifying, measuring and visualising the tools agents use, with rea and Ghidra **[3 stars]**
+- [pablodiazjorge/rea-lab](https://github.com/pablodiazjorge/rea-lab) — Reverse engineering with AI agents on Windows: verifying, measuring and visualising the tools agents use, with rea and Ghidra **[3 stars]** · Curated: [rea-lab](https://awesomerea.org/resources/rea-lab/)
 - [patacca/differ](https://github.com/patacca/differ) — Simple binary diffing tool written in python and built on top of angr. **[3 stars]**
 - [reacher-z/Awesome-REA](https://github.com/reacher-z/Awesome-REA) — Awesome Reverse Engineering Anything: tools, projects, case studies and research papers for websites, games, apps, binaries and firmware. **[3 stars]**
 - [Seemafir6626/esp32-p4-decompiler-plugin](https://github.com/Seemafir6626/esp32-p4-decompiler-plugin) — Enable full Ghidra support for the ESP32-P4 RISC-V microcontroller with custom Sleigh processor definitions, peripheral memory maps, and ROM symbol loading. **[3 stars]**
@@ -607,7 +607,7 @@ These are automatically discovered projects, not individually curated or tested 
 - [mytechnotalent/G-Pulley](https://github.com/mytechnotalent/G-Pulley) — Decompile the web's bleeding edge. The premier Ghidra processor module for reverse-engineering Wasmtime's portable Pulley ISA. **[2 stars]**
 - [NerdTIV/QDig](https://github.com/NerdTIV/QDig) — Reassembles split Qualcomm firmware for Ghidra, and recovers source file and line from the debug metadata left in the binary **[2 stars]**
 - [olofd/kraftverk](https://github.com/olofd/kraftverk) — A small, code-first home hub for reverse-engineered and custom devices. Every device is a package with its own screens, settings and safety rules. Local, self-hosted, next to Home Assistant. **[2 stars]**
-- [pablodiazjorge/rea-casebook](https://github.com/pablodiazjorge/rea-casebook) — A Claude Code mod that keeps a live casebook of the Evidence rea gives the agent: Ghidra cold start, findings that must cite real evidence\_id values, Markdown export. **[2 stars]**
+- [pablodiazjorge/rea-casebook](https://github.com/pablodiazjorge/rea-casebook) — A Claude Code mod that keeps a live casebook of the Evidence rea gives the agent: Ghidra cold start, findings that must cite real evidence\_id values, Markdown export. **[2 stars]** · Curated: [rea-casebook](https://awesomerea.org/resources/rea-casebook/)
 - [ranjithrajv/MachO-explorer](https://github.com/ranjithrajv/MachO-explorer) — The reader you can read. Dependency-free Mach-O introspection for reverse engineers, security researchers, and build engineers — fat headers, symbols, instruction boundaries and branch edges, with a versioned JSON contract, an MCP server and an Agent Skill. Live audit report: https<span>:</span>//ranjithrajv.github.io/MachO-explorer/ **[2 stars]**
 - [Ryxm-a/Ghidra-WebAssembly-WASM-Plugin](https://github.com/Ryxm-a/Ghidra-WebAssembly-WASM-Plugin) — WebAssembly analysis and decompilation support for Ghidra, developed and maintained for Ghidra 12.1.4. **[2 stars]**
 - [sayseven7/peda-modern-gdb](https://github.com/sayseven7/peda-modern-gdb) — Patched PEDA for modern Python and GDB environments **[2 stars]**

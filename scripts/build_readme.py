@@ -144,7 +144,7 @@ def collection_section(record):
         return 'references-and-learning'
     if record['id'] in {'chrome-devtools-mcp', 'playwright-mcp', 'burp-suite-mcp-server', 'webcrack', 'humanify'} or category in {'web-analysis', 'webassembly'}:
         return 'website'
-    if record['id'] in {'renderdoc-mcp', 'rea-dxball-case', 'rea-th04-case'} or category == 'game-analysis':
+    if record['id'] in {'renderdoc-mcp', 'cheatengine-mcp-bridge', 'rea-dxball-case', 'rea-th04-case'} or category == 'game-analysis':
         return 'game'
     if record['id'] in {'jadx-ai-mcp', 'apktool-mcp-server', 'frida-mcp-yfe404', 'super-trouper', 'frida', 'grapefruit', 'rea-aegis-case', 'rea-notion-case', 'nibkit'} or category in {'android', 'dotnet', 'jvm', 'javascript-electron'}:
         return 'app'
@@ -162,6 +162,18 @@ def collection_section(record):
     return 'native-binary'
 
 
+def other_targets(record, section, language):
+    """Targets the section heading does not imply; sections without a target of their own list every target."""
+    index = 0 if language == 'en' else 1
+    implied = {'native-binary': 'binary'}.get(section, section) if section in TARGET_SECTIONS else None
+    labels = [names[index] for target, names in TARGETS.items()
+              if target in record.get('targets', []) and target != implied]
+    if not labels:
+        return ''
+    prefix = (('Also: ', '也适用：') if implied else ('Targets: ', '目标：'))[index]
+    return ' · ' + prefix + ('、' if index else ', ').join(labels)
+
+
 def entry_type(record, language):
     index = 0 if language == 'en' else 1
     kind = record.get('kind', 'tool')
@@ -171,13 +183,18 @@ def entry_type(record, language):
     relation, category = record['relationship'], record['category']
     if relation == 'independent-agent-integration':
         tags.append(('Independent MCP' if category == 'agent-mcp' else 'Independent agent') if language == 'en' else ('独立 MCP' if category == 'agent-mcp' else '独立智能体'))
-    elif relation.startswith('official-') or relation == 'community-integration':
-        tags.append('REA')
+    elif relation.startswith('official-'):
+        tags.append('Official REA' if language == 'en' else 'REA 官方')
+    elif relation in {'community-integration', 'community-learning-resource'}:
+        tags.append('Community REA' if language == 'en' else 'REA 社区')
+    elif relation == 'upstream-maintainer-companion-list':
+        tags.append('REA maintainer' if language == 'en' else 'REA 维护者')
     elif relation == 'community-reported-mixed-workflow':
         tags.append('Mixed workflow' if language == 'en' else '混合工具流程')
     elif relation == 'independent-reconstruction':
         tags.append('Independent reconstruction' if language == 'en' else '独立重建')
-    elif category == 'android':
+    # Platform hints come after the relationship tag, never in its place.
+    if category == 'android':
         tags.append('Android')
     elif category == 'dotnet':
         tags.append('.NET')
@@ -188,6 +205,40 @@ def entry_type(record, language):
     elif category == 'binary-libraries':
         tags.append('Library' if language == 'en' else '程序库')
     return ' · '.join(tags)
+
+
+# Every tag entry_type can render after the type, in legend order: (Chinese tag, English and Chinese definition).
+# Tags that share a definition are listed together.
+TAG_DEFINITIONS = {
+    'Official REA': ('REA 官方', 'published by the REA project', '由 REA 项目发布'),
+    'Community REA': ('REA 社区', 'third-party REA work', '基于 REA 的第三方工作'),
+    'REA maintainer': ('REA 维护者', "an REA maintainer's list", 'REA 维护者整理的目录'),
+    'Independent MCP': ('独立 MCP', 'no established REA connection', '未确认与 REA 有关联'),
+    'Independent agent': ('独立智能体', 'no established REA connection', '未确认与 REA 有关联'),
+    'Mixed workflow': ('混合工具流程', 'REA plus other tools, per the author', '作者报告 REA 与其他工具并用'),
+    'Independent reconstruction': ('独立重建', 'no established REA connection', '未确认与 REA 有关联'),
+    'Android': ('Android', 'platform', '平台'),
+    '.NET': ('.NET', 'platform', '平台'),
+    'JVM': ('JVM', 'platform', '平台'),
+    'WebAssembly': ('WebAssembly', 'platform', '平台'),
+    'Library': ('程序库', 'code library', '供编程调用的库'),
+}
+
+
+def tag_legend(records, language):
+    """Define each relationship and platform tag the listed entries show, and what an untagged entry is."""
+    zh = language == 'zh'
+    shown = {tag for record in records for tag in entry_type(record, 'en').split(' · ')[1:]}
+    if shown - set(TAG_DEFINITIONS):
+        raise ValueError(f'Undefined README tags: {sorted(shown - set(TAG_DEFINITIONS))}')
+    groups = defaultdict(list)
+    for tag, (chinese, english_definition, chinese_definition) in TAG_DEFINITIONS.items():
+        if tag in shown:
+            groups[chinese_definition if zh else english_definition].append(chinese if zh else tag)
+    parts = [('、' if zh else ', ').join(tags) + ('：' if zh else ': ') + definition for definition, tags in groups.items()]
+    if any(' · ' not in entry_type(record, 'en') for record in records):
+        parts.append('仅有类型：基础工具或学习资源' if zh else 'type only: foundation tool or learning resource')
+    return ('**标签：** ' if zh else '**Tags:** ') + plain_text(' · '.join(parts)) + ('。' if zh else '.')
 
 
 def render_catalog(records, language, paper_urls=frozenset()):
@@ -201,12 +252,14 @@ def render_catalog(records, language, paper_urls=frozenset()):
         if record['url'] in paper_urls:
             continue
         groups[collection_section(record)].append(record)
-    lines = []
+    lines = [tag_legend([record for entries in groups.values() for record in entries], language), '']
     for section in COLLECTION_SECTIONS:
         if not groups[section]:
             continue
         contents = '[↑ Contents](#contents)' if language == 'en' else '[↑ 返回目录](#目录)'
         lines.extend([f'<a id="{section}"></a>', f'### {section_heading(section, language)}', '', contents, ''])
+        if section == 'agents-and-mcp':
+            lines.extend(agent_cross_reference(groups, language, translations))
         cases = [record for record in groups[section] if record['kind'] == 'case-study']
         tools = [record for record in groups[section] if record['kind'] != 'case-study']
         subgroups = [(None, groups[section])]
@@ -221,7 +274,7 @@ def render_catalog(records, language, paper_urls=frozenset()):
             for record in entries:
                 name = plain_text((record.get('name_zh') or translations.get(record['id'], {}).get('name') or record['name']) if language == 'zh' else record['name'])
                 description = plain_text(record[f'description_{language}'])
-                metadata = plain_text(entry_type(record, language))
+                metadata = plain_text(entry_type(record, language) + other_targets(record, section, language))
                 detail_url = f"https://awesomerea.org/{'zh/' if language == 'zh' else ''}resources/{record['id']}/"
                 detail_label = '使用条件与证据' if language == 'zh' else 'Requirements & evidence'
                 lines.extend([
@@ -230,6 +283,25 @@ def render_catalog(records, language, paper_urls=frozenset()):
                     f"  {metadata} · [{detail_label}]({detail_url})", '',
                 ])
     return '\n'.join(lines).rstrip() + '\n'
+
+
+def agent_cross_reference(groups, language, translations):
+    """Point from Agents and MCP to agent integrations filed under a target section, via their entry pages."""
+    index = 0 if language == 'en' else 1
+    parts = []
+    for section in TARGET_SECTIONS:
+        names = []
+        # Same order as the section renders: case studies first, then tools.
+        for record in sorted(groups[section], key=lambda record: record['kind'] != 'case-study'):
+            if record['category'] == 'agent-mcp' or record['relationship'] == 'independent-agent-integration':
+                name = (record.get('name_zh') or translations.get(record['id'], {}).get('name') or record['name']) if index else record['name']
+                names.append(f"[{plain_text(name)}](https://awesomerea.org/{'zh/' if index else ''}resources/{record['id']}/)")
+        if names:
+            parts.append(f'[{COLLECTION_SECTIONS[section][index]}](#{section}){"：" if index else ": "}'
+                         + ('、' if index else ', ').join(names))
+    if not parts:
+        return []
+    return [('**其他分区中的智能体集成：** ' if index else '**Also in target sections:** ') + ' · '.join(parts), '']
 
 
 def browsable_index_count():
@@ -347,8 +419,11 @@ PAPER_STATUSES = {
     'preprint': ('Preprint', '预印本'),
 }
 AGENT_EVALUATION_PAPERS = {
+    'paper-llm-resistant-protection',
     'paper-crackmebench', 'paper-crebench', 'paper-sre-bench', 'paper-humans-machines-sre',
+    'paper-decompiling-synergy',
     'paper-programbench',
+    'paper-enigma',
 }
 
 
@@ -357,8 +432,8 @@ def render_papers(papers, language):
     index = int(zh)
     directory = 'https://awesomerea.org/zh/papers/' if zh else 'https://awesomerea.org/papers/'
     lines = ['<a id="papers"></a>', '## 论文' if zh else '## Papers', '',
-             (f'**{len(papers)} 篇论文**，按主题分组，组内按年份从新到旧排列。每项均标明发表状态，中文标题为译名。'
-              if zh else f'**{len(papers)} papers**, grouped by topic and ordered newest first. Each entry shows its publication status.'), '',
+             (f'**{len(papers)} 篇论文**，按主题分组，组内按年份从新到旧排列。每项均标明发表场所与状态，中文标题为译名。'
+              if zh else f'**{len(papers)} papers**, grouped by topic and ordered newest first. Each entry shows its venue and publication status.'), '',
              f"[{'浏览论文目录' if zh else 'Browse the paper directory'}]({directory}) · [{'完整书目 JSON' if zh else 'Complete bibliography JSON'}](data/papers.json) · [{'推荐论文' if zh else 'Suggest a paper'}](https://github.com/reacher-z/Awesome-REA/issues/new?template=paper.yml)", '']
     groups = defaultdict(list)
     for paper in papers:
@@ -382,7 +457,7 @@ def render_papers(papers, language):
         for paper in papers_newest_first(groups[section]):
             title = plain_text(paper['title_zh'] if zh else paper['title'])
             status = PAPER_STATUSES[paper['publication_status']][index]
-            metadata = plain_text(f"{paper['year']} · {paper['venue']} · {status}")
+            metadata = plain_text(f'{paper_venue(paper)} · {status}')
             author = plain_text(paper['authors'][0] + ((' 等' if zh else ' et al.') if len(paper['authors']) > 1 else ''))
             detail_url = f"https://awesomerea.org/{'zh/' if zh else ''}papers/{paper['id']}/"
             links = [f"[PDF]({paper['pdf_url']})"]
@@ -392,15 +467,21 @@ def render_papers(papers, language):
             lines.extend([
                 f"- [**{title}**]({paper['url']})", '',
                 '  ' + plain_text(paper[f'description_{language}']), '',
-                f"  {paper['year']} · {status} · " + ' · '.join(links), '',
+                f'  {metadata} · ' + ' · '.join(links), '',
                 '  <details>',
                 f"  <summary>{'范围与发表信息' if zh else 'Scope and publication details'}</summary>", '',
                 f"  **{'范围与限制' if zh else 'Scope and limits'}:** "
                 + plain_text(paper[f'scope_limitations_{language}']), '',
-                f"  **{'发表信息' if zh else 'Publication'}:** {metadata} · {author}", '',
+                f"  **{'作者' if zh else 'Authors'}:** {author}", '',
                 '  </details>', '',
             ])
     return '\n'.join(lines).rstrip() + '\n'
+
+
+def paper_venue(paper):
+    """Most venue names already carry the year; add it once to the rest (arXiv, journals, WOOT 18)."""
+    venue = paper['venue']
+    return venue if re.search(rf"(?<!\d){paper['year']}(?!\d)", venue) else f"{venue} {paper['year']}"
 
 
 def replace_papers(content, rendered, language):
