@@ -1,7 +1,7 @@
 {
   "baseline_sha256": "47cf9e7f3af4213c75734b8f60b0a204e7014ce3ac5155b5d48616e198846443",
   "batch_id": "public-cloud-39323601991-batch-01",
-  "publication_status": "held-for-localization",
+  "publication_status": "ready",
   "resources": [
     {
       "archived": false,
@@ -30329,7 +30329,7 @@
       "verification": "automated-readme-scan"
     }
   ],
-  "reviewed_at": null,
+  "reviewed_at": "2026-10-20T10:49:31Z",
   "schema_version": 1,
   "selection": {
     "policy": "strong-reverse-engineering-topics-v1",

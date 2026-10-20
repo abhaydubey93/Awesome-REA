@@ -32,7 +32,7 @@
 
 **更多浏览方式**
 
-- [全部案例](https://awesomerea.org/zh/cases/) (197) · [相关合集](#related-collections) (6) · [完整仓库索引](#完整仓库索引) (2,836)
+- [全部案例](https://awesomerea.org/zh/cases/) (197) · [相关合集](#related-collections) (6) · [完整仓库索引](#完整仓库索引) (3,310)
 <!-- END GENERATED CONTENTS -->
 
 ## 按任务查找
@@ -792,9 +792,9 @@ REA 标签指向单独维护的[上游 CLI 与 MCP 项目](https://github.com/mo
 ## 完整仓库索引
 
 <!-- BEGIN REPOSITORY INDEX SUMMARY -->
-已读取 **3,000** 个仓库的 README，当前提供 **2,836** 个浏览条目，明确超出范围的 161 个条目及 3 个上游仓库已无法访问的条目保留在扫描数据中。自动发现的项目与上方精选资源分别维护，未逐项运行验证。
+此发布选集包含 **3,500** 条已采集仓库记录，提供 **3,310** 个浏览条目。**187** 个范围排除条目及 **3** 个上游仓库已无法访问的条目保留在发布 JSON 中。各原始扫描的累计数量保留在独立的来源证据中。 自动发现条目不是逐项精选或运行验证后的推荐。
 
-[按分类在 GitHub 浏览](docs/repositories/README.zh-CN.md) · [网站搜索](https://awesomerea.org/zh/?view=source-index) · [完整双语索引 JSON](https://awesomerea.org/source-index.json) · [精选目录 JSON](https://awesomerea.org/catalog.json)
+[按分类在 GitHub 浏览](docs/repositories/README.zh-CN.md) · [网站搜索](https://awesomerea.org/zh/?view=source-index) · [完整双语索引 JSON](https://awesomerea.org/source-published.json) · [精选目录 JSON](https://awesomerea.org/catalog.json)
 <!-- END REPOSITORY INDEX SUMMARY -->
 
 上面的资源清单依据一手来源整理。详细前置条件、原始来源与审阅日期保存在[目录数据](data/README.md)中。

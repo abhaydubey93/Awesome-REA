@@ -32,7 +32,7 @@ An independent collection of tools, case studies and research for websites, game
 
 **More ways to browse**
 
-- [All cases](https://awesomerea.org/cases/) (197) · [Related Collections](#related-collections) (6) · [Full Repository Index](#full-repository-index) (2,836)
+- [All cases](https://awesomerea.org/cases/) (197) · [Related Collections](#related-collections) (6) · [Full Repository Index](#full-repository-index) (3,310)
 <!-- END GENERATED CONTENTS -->
 
 ## Find by task
@@ -791,9 +791,9 @@ Each paper’s “Full entry” holds its complete summary, scope and limitation
 ## Full Repository Index
 
 <!-- BEGIN REPOSITORY INDEX SUMMARY -->
-**3,000** repository READMEs scanned; **2,836** entries available to browse. The 161 clearly out-of-scope entries and 3 whose upstream repository is no longer available remain in the scan data. This automatically discovered index is separate from the curated resources above and has not been individually execution-tested.
+This published selection contains **3,500** captured repository records and **3,310** browsable entries. **187** scope-excluded entries and **3** whose upstream repository is no longer available remain in the published JSON. Original capture totals remain separate in the source evidence. Automatically discovered entries are not individually curated or execution-tested recommendations.
 
-[Browse by category on GitHub](docs/repositories/README.md) · [Search website](https://awesomerea.org/?view=source-index&lang=en) · [Full bilingual index JSON](https://awesomerea.org/source-index.json) · [Curated catalog JSON](https://awesomerea.org/catalog.json)
+[Browse by category on GitHub](docs/repositories/README.md) · [Search website](https://awesomerea.org/?view=source-index&lang=en) · [Full bilingual index JSON](https://awesomerea.org/source-published.json) · [Curated catalog JSON](https://awesomerea.org/catalog.json)
 <!-- END REPOSITORY INDEX SUMMARY -->
 
 The resource list above is curated from primary sources. Detailed requirements, original evidence, and review dates are available in the [catalog data](data/README.md).

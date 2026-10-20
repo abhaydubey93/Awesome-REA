@@ -1,24 +1,24 @@
-# Scanned Repository Index
+# Published Repository Index
 
-[Curated collection](../../README.md) · [Search website](https://awesomerea.org/?lang=en&view=source-index) · [Download bilingual JSON](https://awesomerea.org/source-index.json) · [简体中文](README.zh-CN.md)
+[Curated collection](../../README.md) · [Search website](https://awesomerea.org/?lang=en&view=source-index) · [Download bilingual JSON](https://awesomerea.org/source-published.json) · [简体中文](README.zh-CN.md)
 
-Browse **2,836** repositories from **3,000** successful README scans. **161** clearly out-of-scope entries and **3** whose upstream repository is no longer available remain in the underlying scan record.
+This published selection contains **3,500** captured repository records and **3,310** browsable entries. **187** scope-excluded entries and **3** whose upstream repository is no longer available remain in the published JSON. Original capture totals remain separate in the source evidence.
 
 These are automatically discovered projects, not individually curated or tested recommendations. Categories derive from metadata and descriptions from upstream text. Stars are collection-time snapshots, not live rankings. Lines marked “Curated” or “Paper” link to the reviewed catalog entry or paper whose source is that exact repository.
 
-Scan date: **2026-10-16 UTC**.
+Publication date: **2026-10-20 UTC**.
 
 | Category | Repositories | Linked to curated entries or papers |
 | --- | ---: | ---: |
-| [Websites](web-analysis.md) | 183 | 21 |
-| [Games](game-analysis.md) | 392 | 45 |
-| [Apps · Android](android.md) | 430 | 28 |
-| [Apps · Managed code](managed-code.md) | 125 | 3 |
-| [Native binaries](native-analysis.md) | 680 | 70 |
-| [Runtime and debugging](dynamic-analysis.md) | 104 | 18 |
-| [Firmware](firmware.md) | 211 | 16 |
-| [Protocols](protocol-analysis.md) | 106 | 7 |
-| [General tools and collections](reverse-engineering.md) | 605 | 37 |
+| [Websites](web-analysis.md) | 211 | 21 |
+| [Games](game-analysis.md) | 483 | 52 |
+| [Apps · Android](android.md) | 480 | 30 |
+| [Apps · Managed code](managed-code.md) | 137 | 4 |
+| [Native binaries](native-analysis.md) | 852 | 74 |
+| [Runtime and debugging](dynamic-analysis.md) | 145 | 18 |
+| [Firmware](firmware.md) | 221 | 17 |
+| [Protocols](protocol-analysis.md) | 109 | 7 |
+| [General tools and collections](reverse-engineering.md) | 672 | 40 |
 
 [Scan methodology](../source-scan.md) · [Scope exclusions](../../data/source-scope.json)
 
