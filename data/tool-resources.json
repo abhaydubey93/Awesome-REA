@@ -11158,5 +11158,574 @@
       "https://github.com/buzzer-re/Rikugan/blob/a2ba6691baa0a7ace3bce9fe834a4f6f7610b77d/LICENSE",
       "https://github.com/wangyu-ovo/CREBench/blob/9fc4016538a0bab8c230732a9f788a61ed43addf/README.md"
     ]
+  },
+  {
+    "id": "opendmcufirm-wii-u-dmcu-firmware-case",
+    "name": "OpenDMCUFirm: a reimplemented Wii U DMCU display firmware",
+    "url": "https://github.com/GaryOderNichts/OpenDMCUFirm",
+    "category": "reconstruction-cases",
+    "relationship": "independent-reconstruction",
+    "kind": "case-study",
+    "targets": [
+      "firmware"
+    ],
+    "description_en": "Reimplements in C the firmware of the Wii U’s DMCU, the M68HC11-compatible display microcontroller in its AMD graphics controller, which in Wii mode reads the Video Interface state and configures display output, deinterlacing, scaling and overscan. The README says the work is based on reverse engineering of the original firmware but is not a byte-for-byte matching decompilation, and calls it a work in progress. The built image replaces the stock firmware in Wii mode when loaded through the evWii plugin.",
+    "description_zh": "用 C 语言重新实现 Wii U 的 DMCU 固件。DMCU 是其 AMD 图形控制器中兼容 M68HC11 的显示微控制器，在 Wii 模式下读取视频接口（VI）状态，并配置显示输出、去隔行、缩放与过扫描。README 称这项工作基于对原固件的逆向工程，但并非逐字节一致的反编译，并说明项目仍在开发中。构建出的镜像经 evWii 插件载入后，在 Wii 模式下替代原厂固件。",
+    "evidence_url": "https://github.com/GaryOderNichts/OpenDMCUFirm/blob/9e6747f71cb91f2c182869b4df1091f6d5d8218d/README.md",
+    "verified_at": "2026-10-19",
+    "verification": "source-reviewed",
+    "requirements": [
+      "The reviewed main commit has no releases or tags. The README describes a work-in-progress reimplementation with potential issues expected; recent commits name registers and state fields, and one reports a function fully matched after a missing variable caused problems in 240p titles. link.ld warns that Nintendo’s nn_cmpt writes values into the middle of the DMCU’s ERAM and can overwrite the code.",
+      "The build uses only the project’s C sources and needs no original firmware. Running the result needs a Wii U with the Aroma plugin environment and evWii: dmcu.d.hex goes in the SD card’s wiiu folder and is loaded with evWii’s “Load DMCU Firmware from SD Card” option for Wii mode.",
+      "The compiler is GCC 3.3.6-m68hc1x-20060122 from the GNU 68HC11/12 packages. The Dockerfile sets it up on Ubuntu 24.04 from the checksum-verified Windows installer run under Wine, and a prebuilt garyodernichts/dmcubuilder image is offered; Python 3 runs hexconv.py to turn the S19 output into the DMCU hex format.",
+      "CI only builds dmcu.d.hex in that container and uploads it as an artifact. The reviewed files contain no test suite, hardware test log or comparison with the stock firmware’s behavior, and this review built or ran nothing.",
+      "The repository has no license file and GitHub detects none; project source files state only that they are part of OpenDMCUFirm. The bundled 68HC11 and stdint headers keep their FSF GPL and BSD notices, evWii is GPL-2.0, and the original firmware keeps its own rights. The reviewed sources establish no AI or REA use."
+    ],
+    "additional_evidence_urls": [
+      "https://github.com/GaryOderNichts/OpenDMCUFirm/blob/9e6747f71cb91f2c182869b4df1091f6d5d8218d/Makefile",
+      "https://github.com/GaryOderNichts/OpenDMCUFirm/blob/9e6747f71cb91f2c182869b4df1091f6d5d8218d/Dockerfile",
+      "https://github.com/GaryOderNichts/OpenDMCUFirm/blob/9e6747f71cb91f2c182869b4df1091f6d5d8218d/hexconv.py",
+      "https://github.com/GaryOderNichts/OpenDMCUFirm/blob/9e6747f71cb91f2c182869b4df1091f6d5d8218d/link.ld",
+      "https://github.com/GaryOderNichts/OpenDMCUFirm/blob/9e6747f71cb91f2c182869b4df1091f6d5d8218d/source/dmcu.c",
+      "https://github.com/GaryOderNichts/OpenDMCUFirm/blob/9e6747f71cb91f2c182869b4df1091f6d5d8218d/.github/workflows/build.yml",
+      "https://github.com/GaryOderNichts/OpenDMCUFirm/commit/58ab01fe071f0c6df8798b8b178f8160d1c3cacf",
+      "https://github.com/GaryOderNichts/evwii/blob/978b0068e003a15cd85b2141c5d5248369ed3d87/README.md"
+    ]
+  },
+  {
+    "id": "cod4-rewrite-reconstruction-case",
+    "name": "CoD4 Rewrite: Rust/Bevy reconstruction",
+    "targets": [
+      "game",
+      "binary"
+    ],
+    "description_en": "A Rust/Bevy reconstruction of Call of Duty 4 multiplayer systems, using assets from a local game installation. Source covers menus, local bots, movement and combat, and connects custom relay-based netplay to the game.",
+    "description_zh": "以 Rust/Bevy 重建《使命召唤4》的多人游戏系统，使用本地游戏安装中的素材。源码包含菜单、本地机器人、移动和战斗，并将自定义中继联机实现接入游戏。",
+    "requirements": [
+      "Requires Windows, a Vulkan-capable GPU and an owned CoD4 patch 1.7 installation. Optional Black Ops, Modern Warfare 2 and World at War content requires their separate installations; game assets are not supplied.",
+      "Current source connects the multiplayer dependency and NetplayPlugin despite README statements that networking is pending. Complete online-match behavior and compatibility with original CoD4 servers are not established by this review.",
+      "Rendering and gameplay include deliberate extensions, so original-game equivalence is not established. No game, launcher, relay or test was run for this review.",
+      "Cargo declares MIT OR Apache-2.0, inherited by the game and multiplayer crates. No standalone license text was found in the reviewed tree."
+    ],
+    "url": "https://github.com/Nilbong/COD4-Rewrite",
+    "category": "reconstruction-cases",
+    "relationship": "independent-reconstruction",
+    "kind": "case-study",
+    "evidence_url": "https://github.com/Nilbong/COD4-Rewrite/blob/bd03eb07f2b2ec84dd33946bfc2b8163fc49c480/README.md",
+    "additional_evidence_urls": [
+      "https://github.com/Nilbong/COD4-Rewrite/blob/bd03eb07f2b2ec84dd33946bfc2b8163fc49c480/Cargo.toml",
+      "https://github.com/Nilbong/COD4-Rewrite/blob/bd03eb07f2b2ec84dd33946bfc2b8163fc49c480/crates/game/Cargo.toml",
+      "https://github.com/Nilbong/COD4-Rewrite/blob/bd03eb07f2b2ec84dd33946bfc2b8163fc49c480/crates/game/src/main.rs",
+      "https://github.com/Nilbong/COD4-Rewrite/blob/bd03eb07f2b2ec84dd33946bfc2b8163fc49c480/crates/game/src/netplay/mod.rs",
+      "https://github.com/Nilbong/COD4-Rewrite/blob/bd03eb07f2b2ec84dd33946bfc2b8163fc49c480/crates/multiplayer/README.md",
+      "https://github.com/Nilbong/COD4-Rewrite/blob/bd03eb07f2b2ec84dd33946bfc2b8163fc49c480/crates/multiplayer/tests/relay_roundtrip.rs"
+    ],
+    "verified_at": "2026-10-19",
+    "verification": "source-reviewed"
+  },
+  {
+    "id": "libd2-engine-core-reconstruction-case",
+    "name": "libd2: Diablo II 1.14d engine-core libraries",
+    "targets": [
+      "game",
+      "binary",
+      "protocol"
+    ],
+    "description_en": "Zig libraries reconstructing Diablo II 1.14d seeded maps, item generation, saves, simulation rules and network formats. Selected components expose native and WebAssembly interfaces; verification notes distinguish retail map comparisons from weaker subsystem evidence.",
+    "description_zh": "以 Zig 库重建《暗黑破坏神II》1.14d 的种子地图、物品生成、存档、模拟规则和网络格式。部分组件提供原生与 WebAssembly 接口；验证说明区分了原游戏地图对照与其他子系统较弱的证据。",
+    "requirements": [
+      "Builds require Zig 0.16.0. These are modular engine libraries, not a complete playable client; basic generation uses embedded data and fixtures.",
+      "MIT covers the Zig source. Included Blizzard-derived binary blobs and map fixtures are expressly excluded from that grant; the repository is not asset-free.",
+      "The authors report cell-level comparisons for five Nightmare seeds and two holdouts, plus per-level CRC checks for 200 seeds at three difficulties. This finite corpus does not establish all-seed or whole-engine equivalence.",
+      "The game and net packages are checked against recovered rules and packet layouts, not a live server; save, item and pathfinding checks have different depth. No experiments were independently reproduced here."
+    ],
+    "url": "https://github.com/jaenster/libd2",
+    "category": "reconstruction-cases",
+    "relationship": "independent-reconstruction",
+    "kind": "case-study",
+    "evidence_url": "https://github.com/jaenster/libd2/blob/bc21bb924b9238def4907bd2b3f79e8041a5fc0a/README.md",
+    "additional_evidence_urls": [
+      "https://github.com/jaenster/libd2/blob/bc21bb924b9238def4907bd2b3f79e8041a5fc0a/LICENSE",
+      "https://github.com/jaenster/libd2/blob/bc21bb924b9238def4907bd2b3f79e8041a5fc0a/docs/VERIFICATION.md",
+      "https://github.com/jaenster/libd2/blob/bc21bb924b9238def4907bd2b3f79e8041a5fc0a/docs/BUILDING.md",
+      "https://github.com/jaenster/libd2/blob/bc21bb924b9238def4907bd2b3f79e8041a5fc0a/build.zig.zon",
+      "https://github.com/jaenster/libd2/blob/bc21bb924b9238def4907bd2b3f79e8041a5fc0a/packages/drlg/src/oracle.zig",
+      "https://github.com/jaenster/libd2/blob/bc21bb924b9238def4907bd2b3f79e8041a5fc0a/packages/drlg/src/verify_tests.zig"
+    ],
+    "verified_at": "2026-10-19",
+    "verification": "source-reviewed"
+  },
+  {
+    "id": "underworld-exhumed-case",
+    "name": "Underworld Exhumed: reconstructing Ultima Underworld I and II",
+    "url": "https://github.com/abedegno/underworld-exhumed",
+    "category": "reconstruction-cases",
+    "relationship": "independent-reconstruction",
+    "description_en": "Pairs reconstructed DOS sources with native ports of Ultima Underworld I and II. The upstream documents Exhume-based byte-matching builds, routine-level comparisons and recorded-session replay against DOS.",
+    "description_zh": "将 Ultima Underworld I 与 II 的 DOS 源码重建与原生移植结合。上游记录了基于 Exhume 的字节匹配构建、例程级比较及对照 DOS 的录制会话回放。",
+    "evidence_url": "https://github.com/abedegno/underworld-exhumed/blob/e5deadd6945b492636aadccc14f52caa908b4186/README.md",
+    "additional_evidence_urls": [
+      "https://github.com/abedegno/underworld-exhumed/blob/e5deadd6945b492636aadccc14f52caa908b4186/docs/PORT.md",
+      "https://github.com/abedegno/underworld-exhumed/blob/e5deadd6945b492636aadccc14f52caa908b4186/docs/BUILDING.md",
+      "https://github.com/abedegno/underworld-exhumed/blob/e5deadd6945b492636aadccc14f52caa908b4186/LICENSE",
+      "https://github.com/abedegno/underworld-exhumed/blob/e5deadd6945b492636aadccc14f52caa908b4186/NOTICE",
+      "https://github.com/abedegno/underworld-exhumed/blob/e5deadd6945b492636aadccc14f52caa908b4186/Makefile"
+    ],
+    "verified_at": "2026-10-20",
+    "verification": "source-reviewed",
+    "requirements": [
+      "Native ports target macOS, Windows and Linux. Playing and checking against the originals requires your own matching game files (the README targets GOG releases); byte-matching builds additionally require the documented Turbo C++ 1.01 and TASM 2.0 inputs. Native-port compilation itself does not require game data.",
+      "The MIT license covers the project’s own tools, documentation and added annotations/structure. NOTICE explicitly excludes rights in the original games and derived game code; optional MT-32 playback requires separately obtained ROMs.",
+      "Recorded sessions and routine tests provide bounded upstream evidence, not an independent whole-game equivalence result. Full tests require licensed inputs absent from the public repository. This review did not build, run or compare the games; no REA integration is established."
+    ],
+    "targets": [
+      "game",
+      "binary"
+    ],
+    "kind": "case-study"
+  },
+  {
+    "id": "linewars-ii-sdl-case",
+    "name": "LineWars II: a portable SDL3 reconstruction",
+    "url": "https://github.com/fredangstadt-lang/LineWarsII-SDL",
+    "category": "reconstruction-cases",
+    "relationship": "independent-reconstruction",
+    "description_en": "Provides an SDL3 backend for a portable-C reconstruction of the 1994 DOS game. Its build configuration links the reconstructed engine to video, input and audio adapters; the upstream documents differential gates against original machine code.",
+    "description_zh": "为 1994 年 DOS 游戏的可移植 C 重建提供 SDL3 后端。构建配置将重建引擎接到视频、输入与音频适配层，上游记录了对照原始机器码的差分测试关卡。",
+    "evidence_url": "https://github.com/fredangstadt-lang/LineWarsII-SDL/blob/343bb50942a61e9d7fa1c1314cd1f03f8e7b12ac/README.md",
+    "additional_evidence_urls": [
+      "https://github.com/fredangstadt-lang/LineWarsII-SDL/blob/343bb50942a61e9d7fa1c1314cd1f03f8e7b12ac/CMakeLists.txt",
+      "https://github.com/fredangstadt-lang/LineWarsII-SDL/blob/343bb50942a61e9d7fa1c1314cd1f03f8e7b12ac/platform/sdl3/hal_sdl.c",
+      "https://github.com/fredangstadt-lang/LineWarsII-SDL/blob/343bb50942a61e9d7fa1c1314cd1f03f8e7b12ac/docs/PORTING_CHECKLIST.md",
+      "https://github.com/fredangstadt-lang/LineWarsII-SDL/blob/343bb50942a61e9d7fa1c1314cd1f03f8e7b12ac/LICENSE.md",
+      "https://github.com/fredangstadt-lang/LineWarsII-SDL/blob/343bb50942a61e9d7fa1c1314cd1f03f8e7b12ac/NOTICE.md"
+    ],
+    "verified_at": "2026-10-20",
+    "verification": "source-reviewed",
+    "requirements": [
+      "Builds target Windows and Linux using C99, CMake 3.16+ and SDL3; the reviewed build notes specify SDL 3.4.12 built with the same compiler as the game. This is a port of the separate LineWarsII-DOS reconstruction, not a claim to original source ownership.",
+      "The reconstructed/ported source uses PolyForm Noncommercial 1.0.0. NOTICE reports original-author Patrick Aalto’s July 16, 2026 permission for freeware distribution of the original game material; it does not grant commercial-use permission. SDL keeps its separate zlib license.",
+      "The upstream reports renderer and menu comparisons and captured PCM levels within about 10% of its DOS reference; higher-resolution rendering changes the presentation. No game binaries or assets were downloaded, and no port, emulator or verification suite was run here; no REA integration is established."
+    ],
+    "targets": [
+      "game",
+      "binary"
+    ],
+    "kind": "case-study"
+  },
+  {
+    "id": "bfm-decomp-case",
+    "name": "BFM-decomp: Brave Fencer Musashi matching decompilation",
+    "url": "https://github.com/Druthulu/BFM-decomp",
+    "category": "reconstruction-cases",
+    "relationship": "independent-reconstruction",
+    "description_en": "Documents an agent-assisted reconstruction of the USA PlayStation game with a pinned compiler and whole-binary SHA-1 gates. The verification recipe covers the main executable, resident engine and disc-loaded code modules, with explicit library and assembly exceptions.",
+    "description_zh": "记录美版 PlayStation 游戏的智能体辅助重建，使用固定编译器及完整二进制 SHA-1 检查。验证规约覆盖主程序、常驻引擎及光盘加载代码模块，并明确列出库与汇编例外。",
+    "evidence_url": "https://github.com/Druthulu/BFM-decomp/blob/b6a28f96bac70af70573826f767a96cf212fd5e3/README.md",
+    "additional_evidence_urls": [
+      "https://github.com/Druthulu/BFM-decomp/blob/b6a28f96bac70af70573826f767a96cf212fd5e3/docs/verification.md",
+      "https://github.com/Druthulu/BFM-decomp/blob/b6a28f96bac70af70573826f767a96cf212fd5e3/Makefile",
+      "https://github.com/Druthulu/BFM-decomp/blob/b6a28f96bac70af70573826f767a96cf212fd5e3/LICENSE",
+      "https://github.com/Druthulu/BFM-decomp/blob/b6a28f96bac70af70573826f767a96cf212fd5e3/src/NOTICE.md",
+      "https://github.com/Druthulu/BFM-decomp/blob/b6a28f96bac70af70573826f767a96cf212fd5e3/THIRD_PARTY.md"
+    ],
+    "verified_at": "2026-10-20",
+    "verification": "source-reviewed",
+    "requirements": [
+      "Requires an owned USA SLUS-00726 disc dump, Linux/WSL2, Python 3.12 and the documented pinned GCC 2.7.2/MIPS toolchain. Optional PsyQ SDK objects must be supplied separately; no disc, SDK or compiler package was downloaded in this review.",
+      "AGPL-3.0 applies to the project’s tools and documentation. src/NOTICE.md asserts no license over the reconstructed game code, whose original rights belong to Square/Square Enix; third-party components retain their own licenses.",
+      "The 218-binary matching contract is an upstream claim backed by its recipe and a recorded full run dated September 7, 2026. That log is for an earlier tree, not this reviewed HEAD. SDK/assembly exceptions and unfinished readability remain documented; public no-ROM CI audits and compiles but cannot perform the original-byte comparison. Nothing was built or run here; no REA integration is established."
+    ],
+    "targets": [
+      "game",
+      "binary"
+    ],
+    "kind": "case-study"
+  },
+  {
+    "id": "logic-lens",
+    "name": "Logic-Lens",
+    "url": "https://github.com/Abdoulrazack1/Logic-Lens",
+    "category": "javascript-electron",
+    "relationship": "foundation",
+    "kind": "tool",
+    "targets": [
+      "app"
+    ],
+    "description_en": "Experimental JavaScript source-analysis toolkit that classifies AST-token sequences into configured formula families after local training, and produces heuristic structure, call-graph and intent reports. It supports code-comprehension experiments; its predictions do not establish arbitrary program invariants or semantic equivalence.",
+    "description_zh": "实验性 JavaScript 源码分析工具：本地训练后将 AST token 序列归入预设公式类别，并生成启发式结构、调用图和意图报告。它可用于代码理解实验，但预测结果不证明任意程序的不变量或语义等价。",
+    "evidence_url": "https://github.com/Abdoulrazack1/Logic-Lens/blob/bb15aab345de64ef044a074d5e564fb087999032/README.md",
+    "verified_at": "2026-10-20",
+    "verification": "source-reviewed",
+    "requirements": [
+      "The README documents Node.js 18 or newer. Package version 1.1.0 declares TensorFlow.js, its native Node binding and Acorn; the setup first tries the native TensorFlow binding and then falls back to the pure JavaScript CPU backend.",
+      "Formula prediction requires local synthetic-data generation and training. The predictor expects model weights and metadata that are absent from the reviewed repository tree; no pretrained model or successful local setup was established by this review.",
+      "Predictions select from a configured formula catalogue. The README’s accuracy/confidence examples are author-reported and do not establish correctness on arbitrary unseen functions; heuristic intent and quality reports are not behavioral-equivalence proofs.",
+      "Standalone semantic-test definitions cover structure, heuristic patterns and report shape. CONTRIBUTING mentions npm test, but package.json has no test script. No tests, training or inference were executed for this source review.",
+      "README and package metadata declare MIT, but the reviewed commit has no LICENSE file. Keep that distinction when assessing reuse."
+    ],
+    "additional_evidence_urls": [
+      "https://github.com/Abdoulrazack1/Logic-Lens/blob/bb15aab345de64ef044a074d5e564fb087999032/package.json",
+      "https://github.com/Abdoulrazack1/Logic-Lens/blob/bb15aab345de64ef044a074d5e564fb087999032/src/predictor.js",
+      "https://github.com/Abdoulrazack1/Logic-Lens/blob/bb15aab345de64ef044a074d5e564fb087999032/src/model.js",
+      "https://github.com/Abdoulrazack1/Logic-Lens/blob/bb15aab345de64ef044a074d5e564fb087999032/src/tf-setup.js",
+      "https://github.com/Abdoulrazack1/Logic-Lens/blob/bb15aab345de64ef044a074d5e564fb087999032/src/semantic/semantic-analyzer.js",
+      "https://github.com/Abdoulrazack1/Logic-Lens/blob/bb15aab345de64ef044a074d5e564fb087999032/tests/semantic.test.js",
+      "https://github.com/Abdoulrazack1/Logic-Lens/blob/bb15aab345de64ef044a074d5e564fb087999032/CONTRIBUTING.md"
+    ]
+  },
+  {
+    "id": "android-security-toolkit",
+    "name": "Android Security Toolkit",
+    "url": "https://github.com/abhirampatel/android-security-toolkit",
+    "category": "android",
+    "relationship": "foundation",
+    "kind": "tool",
+    "targets": [
+      "app"
+    ],
+    "description_en": "Local Python APK triage tool that drives apktool and strings, checks manifest settings and source/native-library strings, and produces TXT/JSON findings for manual review. Its rules flag possible issues without proving exploitability or reconstructing application behavior.",
+    "description_zh": "本地 Python APK 初步分析工具，调用 apktool 与 strings 检查清单配置、源码及原生库字符串，输出 TXT／JSON 结果供人工核验。规则仅提示潜在问题，不证明可利用性，也不重建应用行为。",
+    "evidence_url": "https://github.com/abhirampatel/android-security-toolkit/blob/d9153acad34a062298b15244a0c38f0497680dbf/README.md",
+    "verified_at": "2026-10-20",
+    "verification": "source-reviewed",
+    "requirements": [
+      "Python 3 standard-library imports, separately installed apktool and strings/binutils, and an authorized local APK are required. Manifest analysis depends on successful apktool decoding.",
+      "String and manifest-rule matches require manual verification. A symbol, permission or flag alone does not establish an exploitable execution path. The README distinguishes this initial static pass from manual code review, dynamic/native analysis and library CVE matching.",
+      "The reviewed two-file tree contains no automated tests or versioned validation corpus. README sample output is an author-provided illustration, not an independently reproduced result. No APK was scanned for this review.",
+      "The README states MIT, but the reviewed tree contains no standalone license file."
+    ],
+    "additional_evidence_urls": [
+      "https://github.com/abhirampatel/android-security-toolkit/blob/d9153acad34a062298b15244a0c38f0497680dbf/apk_scanner.py"
+    ]
+  },
+  {
+    "id": "littlebird-static-rebuild-case",
+    "name": "Littlebird.ai static home-page rebuild",
+    "url": "https://github.com/AkashNaickar/crdb-sample-frontend",
+    "category": "reconstruction-cases",
+    "relationship": "independent-reconstruction",
+    "kind": "case-study",
+    "targets": [
+      "website"
+    ],
+    "description_en": "Rebuilds the Littlebird.ai home page in plain HTML/CSS/JavaScript from captured markup and assets, with source-wired mobile navigation, FAQ toggles, scroll reveals and OS-dependent call-to-action presentation. It illustrates a bounded website reconstruction, with uncaptured routes and product functionality left outside the scope.",
+    "description_zh": "依据捕获的标记与资源，用原生 HTML/CSS/JavaScript 重建 Littlebird.ai 首页；源码实现移动导航、FAQ 展开、滚动显现及随操作系统变化的按钮展示。它是范围明确的网页重建案例，不涵盖未捕获路由或产品本身的功能。",
+    "evidence_url": "https://github.com/AkashNaickar/crdb-sample-frontend/blob/673dc8c8d93b4f8a13257604749b638adf146298/README.md",
+    "verified_at": "2026-10-20",
+    "verification": "source-reviewed",
+    "requirements": [
+      "The captured scope is the home page and five embedded demos. Pricing, blog and other uncaptured routes are absent; several download controls are placeholder links. This is not a recreation of the Littlebird desktop/mobile application or its backend.",
+      "The shipped site is plain HTML/CSS/JavaScript without a build step. The documented local preview and asset-integrity suite use Node.js 20+ and its standard library.",
+      "The original npm test passed all five checks on the pinned inputs. These check local asset references, basic file and embedded-page completeness, and independence from the ignored capture directory; they do not establish visual similarity, accessibility conformance, interaction correctness or equivalence to the original site.",
+      "The MIT file covers repository code. The README explicitly excludes captured third-party fonts, imagery, markup and copy from that grant and identifies this as an unofficial study rebuild. For the later integrity check, pinned site files were kept in a private test snapshot without rendering; historical recon data was not fetched."
+    ],
+    "additional_evidence_urls": [
+      "https://github.com/AkashNaickar/crdb-sample-frontend/blob/673dc8c8d93b4f8a13257604749b638adf146298/site/index.html",
+      "https://github.com/AkashNaickar/crdb-sample-frontend/blob/673dc8c8d93b4f8a13257604749b638adf146298/site/js/main.js",
+      "https://github.com/AkashNaickar/crdb-sample-frontend/blob/673dc8c8d93b4f8a13257604749b638adf146298/scripts/check-site.test.mjs",
+      "https://github.com/AkashNaickar/crdb-sample-frontend/blob/673dc8c8d93b4f8a13257604749b638adf146298/package.json",
+      "https://github.com/AkashNaickar/crdb-sample-frontend/blob/673dc8c8d93b4f8a13257604749b638adf146298/LICENSE",
+      "https://github.com/AkashNaickar/crdb-sample-frontend/blob/673dc8c8d93b4f8a13257604749b638adf146298/CONTRIBUTING.md"
+    ]
+  },
+  {
+    "id": "akiselev-ilspy-cli",
+    "name": "ilspy-cli: targeted .NET decompilation for agents",
+    "url": "https://github.com/akiselev/ilspy-cli",
+    "category": "dotnet",
+    "relationship": "foundation",
+    "kind": "tool",
+    "targets": [
+      "app"
+    ],
+    "description_en": "Rust CLI that hosts an ILSpy C# bridge in-process for assembly, type and named-method decompilation, source search and structured JSON output. A separate PE-header detector identifies managed assemblies without loading the .NET runtime.",
+    "description_zh": "通过进程内托管的 ILSpy C# 桥接层，提供程序集、类型和指定方法的反编译、源码搜索及结构化 JSON 输出的 Rust CLI；独立的 PE 头检测器无需加载 .NET 运行时即可识别托管程序集。",
+    "evidence_url": "https://github.com/akiselev/ilspy-cli/blob/089895f16a9031bb8391db13c2160def9a2e8b60/README.md",
+    "verified_at": "2026-10-20",
+    "verification": "source-reviewed",
+    "requirements": [
+      "Building requires a Rust toolchain and .NET 8 SDK; build.rs invokes dotnet publish for the C# bridge, whose project pins ICSharpCode.Decompiler 9.1.0.7988. Decompilation needs the .NET 8 runtime; the detect command follows a separate Rust-only path.",
+      "Method selection matches the first method with the requested name within the named type; it does not disambiguate overloads by signature. Source search skips types whose decompilation throws, so an empty result is not proof that the requested pattern is absent from the complete assembly.",
+      "The integration suite builds one small SampleLib fixture and checks command output, including a simple Add method. Its source and cross-platform CI definition were inspected, but no build, .NET hosting, fixture execution or decompilation was run during this review; general accuracy and behavioral equivalence are not established.",
+      "README and Cargo metadata declare GPL-3.0, but the complete pinned tree has no separate LICENSE/COPYING text. The upstream ILSpy engine and user-provided assemblies retain their own licensing conditions."
+    ],
+    "additional_evidence_urls": [
+      "https://github.com/akiselev/ilspy-cli/blob/089895f16a9031bb8391db13c2160def9a2e8b60/src/main.rs",
+      "https://github.com/akiselev/ilspy-cli/blob/089895f16a9031bb8391db13c2160def9a2e8b60/src/ilspy/detect.rs",
+      "https://github.com/akiselev/ilspy-cli/blob/089895f16a9031bb8391db13c2160def9a2e8b60/src/bridge/mod.rs",
+      "https://github.com/akiselev/ilspy-cli/blob/089895f16a9031bb8391db13c2160def9a2e8b60/bridge/IlSpyBridge.cs",
+      "https://github.com/akiselev/ilspy-cli/blob/089895f16a9031bb8391db13c2160def9a2e8b60/bridge/IlSpyBridge.csproj",
+      "https://github.com/akiselev/ilspy-cli/blob/089895f16a9031bb8391db13c2160def9a2e8b60/tests/integration_tests.rs",
+      "https://github.com/akiselev/ilspy-cli/blob/089895f16a9031bb8391db13c2160def9a2e8b60/tests/fixtures/SampleLib/SampleClass.cs",
+      "https://github.com/akiselev/ilspy-cli/blob/089895f16a9031bb8391db13c2160def9a2e8b60/Cargo.toml",
+      "https://github.com/akiselev/ilspy-cli/blob/089895f16a9031bb8391db13c2160def9a2e8b60/AGENTS.md"
+    ]
+  },
+  {
+    "id": "swe1r-assets-unity",
+    "name": "swe1r-assets-unity: Racer model-block editor sample",
+    "url": "https://github.com/akopetsch/swe1r-assets-unity",
+    "category": "game-analysis",
+    "relationship": "foundation",
+    "kind": "tool",
+    "targets": [
+      "game"
+    ],
+    "description_en": "Work-in-progress Unity editor sample for importing and modifying Star Wars Episode I: Racer model blocks, then serializing them back through swe1r-assets. Its editor includes an unmodified import/export byte-comparison command; it is an asset-format workflow rather than a reimplementation of the game.",
+    "description_zh": "尚在开发中的 Unity 编辑器样例，可导入和修改《星球大战：极速飞车》的模型块，再通过 swe1r-assets 序列化回原格式。编辑器提供未修改导入／导出结果的字节比较命令；其范围是资产格式工作流，而非完整游戏重实现。",
+    "evidence_url": "https://github.com/akopetsch/swe1r-assets-unity/blob/2fcae9138583da959882171095920ab9b802168b/README.md",
+    "verified_at": "2026-10-20",
+    "verification": "source-reviewed",
+    "requirements": [
+      "The README explicitly says this is currently a sample project. The package and sample pin Unity 2022.3.30f1; packages.config references SWE1R.Assets.Blocks 0.0.1-alpha.15 and ByteSerialization 0.0.1-alpha.9. Required game block files are read from a user-selected local game-data directory.",
+      "Model import/export is wired in the editor and importer/exporter classes. Texture, spline and sprite sections currently expose filenames without equivalent operation controls; spline importer/exporter subclasses are empty. Do not present the sample as complete support for every asset kind.",
+      "Test Re-Export compares the original and serialized model-item byte arrays with SequenceEqual, and Test Re-Export All loops over the loaded model block. The README claims bit-perfect unchanged round trips, but the reviewed tree contains no saved corpus/result report establishing that across game versions or arbitrary edits. No Unity project or game asset was run or loaded in this review.",
+      "Repository code has an MIT LICENSE and source SPDX headers. That code license is not evidence of permission to redistribute the original game data; no game blocks, screenshots, textures or other binary assets were downloaded for this review."
+    ],
+    "additional_evidence_urls": [
+      "https://github.com/akopetsch/swe1r-assets-unity/blob/2fcae9138583da959882171095920ab9b802168b/package.json",
+      "https://github.com/akopetsch/swe1r-assets-unity/blob/2fcae9138583da959882171095920ab9b802168b/Samples~/SampleProject/ProjectSettings/ProjectVersion.txt",
+      "https://github.com/akopetsch/swe1r-assets-unity/blob/2fcae9138583da959882171095920ab9b802168b/Samples~/SampleProject/Assets/packages.config",
+      "https://github.com/akopetsch/swe1r-assets-unity/blob/2fcae9138583da959882171095920ab9b802168b/Samples~/SampleProject/Assets/Code/Editor/BlockEditorWindow.cs",
+      "https://github.com/akopetsch/swe1r-assets-unity/blob/2fcae9138583da959882171095920ab9b802168b/Samples~/SampleProject/Assets/Code/ModelBlock/ModelBlockItemImporter.cs",
+      "https://github.com/akopetsch/swe1r-assets-unity/blob/2fcae9138583da959882171095920ab9b802168b/Samples~/SampleProject/Assets/Code/ModelBlock/ModelBlockItemExporter.cs",
+      "https://github.com/akopetsch/swe1r-assets-unity/blob/2fcae9138583da959882171095920ab9b802168b/Samples~/SampleProject/Assets/Code/SplineBlock/SplineBlockItemImporter.cs",
+      "https://github.com/akopetsch/swe1r-assets-unity/blob/2fcae9138583da959882171095920ab9b802168b/Samples~/SampleProject/Assets/Code/SplineBlock/SplineBlockItemExporter.cs",
+      "https://github.com/akopetsch/swe1r-assets-unity/blob/2fcae9138583da959882171095920ab9b802168b/LICENSE"
+    ]
+  },
+  {
+    "id": "react-decode",
+    "name": "React-Decode",
+    "url": "https://github.com/alexandra-seredkina/React-Decode",
+    "category": "javascript-electron",
+    "relationship": "foundation",
+    "kind": "tool",
+    "targets": [
+      "website"
+    ],
+    "description_en": "Static-analysis CLI for compiled React JavaScript that produces readable bundle output and inferred API-request, route and application-constant reports. It can extract embedded source-map contents when available.",
+    "description_zh": "面向已构建 React JavaScript 的静态分析 CLI，可输出更易读的代码，以及推断的 API 请求、路由和应用常量报告；存在 source map 内嵌源码时可将其提取。",
+    "evidence_url": "https://github.com/alexandra-seredkina/React-Decode/blob/80e8bda2912b7e3f9e01bc3a0034a61ea488b14a/README.md",
+    "verified_at": "2026-10-20",
+    "verification": "source-reviewed",
+    "requirements": [
+      "The reviewed package declares Node.js >=20, but its locked Babel 8 dependencies require ^22.18.0 or >=24.11.0. The lock pins Babel parser/traverse 8.0.7, generator/types 8.0.6 and Prettier 3.9.10; runtime compatibility was not tested.",
+      "Provide authorized JavaScript bundles, HTML, source maps or a URL. URL mode retrieves scripts, chunks and maps; source extraction requires strings in sourcesContent, not just mapping coordinates.",
+      "API and value inference is bounded and heuristic: wrapper discovery uses at most six rounds, dynamic values can remain placeholders, and inferred request/response fields are not a verified API specification. Control-flow flattening and string-array obfuscation are outside the documented scope; complete original-source or application/backend behavior recovery is not established.",
+      "The MIT LICENSE and package.json agree, but package.json declares 0.1.0 while the root lock metadata says 1.0.0 and ISC. These are inspected package declarations, not a verified published release; input bundles retain their own rights.",
+      "Reports may contain credential-like strings from the input; --json prints them unmasked. The five synthetic node:test definitions were read, not run. No dependency installation, tool execution or target execution was performed."
+    ],
+    "additional_evidence_urls": [
+      "https://github.com/alexandra-seredkina/React-Decode/blob/80e8bda2912b7e3f9e01bc3a0034a61ea488b14a/package.json",
+      "https://github.com/alexandra-seredkina/React-Decode/blob/80e8bda2912b7e3f9e01bc3a0034a61ea488b14a/package-lock.json",
+      "https://github.com/alexandra-seredkina/React-Decode/blob/80e8bda2912b7e3f9e01bc3a0034a61ea488b14a/LICENSE",
+      "https://github.com/alexandra-seredkina/React-Decode/blob/80e8bda2912b7e3f9e01bc3a0034a61ea488b14a/src/pipeline.js",
+      "https://github.com/alexandra-seredkina/React-Decode/blob/80e8bda2912b7e3f9e01bc3a0034a61ea488b14a/src/analyze/requests.js",
+      "https://github.com/alexandra-seredkina/React-Decode/blob/80e8bda2912b7e3f9e01bc3a0034a61ea488b14a/src/sourcemap.js",
+      "https://github.com/alexandra-seredkina/React-Decode/blob/80e8bda2912b7e3f9e01bc3a0034a61ea488b14a/src/loader.js",
+      "https://github.com/alexandra-seredkina/React-Decode/blob/80e8bda2912b7e3f9e01bc3a0034a61ea488b14a/test/pipeline.test.js"
+    ]
+  },
+  {
+    "id": "wasmlens",
+    "name": "WasmLens: exploratory WebAssembly inspection",
+    "url": "https://github.com/alexandrmotologa/wasmlens",
+    "category": "webassembly",
+    "relationship": "foundation",
+    "kind": "tool",
+    "targets": [
+      "binary"
+    ],
+    "description_en": "Python CLI with static paths for inspecting WebAssembly sections and function signatures, producing WAT-style instruction listings, and reconstructing limited C-like pseudocode. These are exploratory analysis aids for supported modules, not recovered original source or a complete WebAssembly runtime.",
+    "description_zh": "提供 WebAssembly 区段与函数签名检查、WAT 风格指令列表和有限 C 风格伪代码重建的 Python CLI。所收录的是面向受支持模块的探索性静态分析路径，不代表恢复原始源码或实现完整 WebAssembly 运行时。",
+    "evidence_url": "https://github.com/alexandrmotologa/wasmlens/blob/2351cccea90f812053b30d1ad14816d3c664a4f7/README.md",
+    "verified_at": "2026-10-20",
+    "verification": "source-reviewed",
+    "requirements": [
+      "The reviewed package declares version 0.1.0 and Python >=3.10, with Typer, Rich, FastAPI, Uvicorn, Pydantic, NetworkX and python-multipart dependencies; pytest/httpx are development extras. The source includes an MIT LICENSE. Dependency lower bounds are declared, but no lockfile or tested environment was established.",
+      "The info, disasm and decompile commands read a supplied .wasm file through the same parser. That parser has no 0xFD SIMD decoding branch and may label unsupported opcodes as unknown; the README’s broad WebAssembly 2.0 coverage claim is not established by this review.",
+      "The WAT-style module listing is not a lossless reassembly format: data segments are reduced to previews of up to 32 bytes and active offsets use a placeholder. The C-like reconstructor has no general fallback for unhandled instructions, uses only the first result type, and expresses branch labels in comments; compiler-ready or behavior-equivalent output is not established.",
+      "The separate emulator is outside this entry’s supported scope. Its inspected dispatch lacks handlers for operations including floating-point arithmetic and indirect calls, and an unhandled instruction can advance the program counter without implementing its effect. Do not use it as a full-runtime or equivalence reference.",
+      "Parser and decompiler test definitions were inspected; sample-based string assertions do not establish general correctness. No package installation, bundled .wasm download, execution, decompilation or test run was performed, and the README’s test-count/coverage badges were not independently reproduced. Supply only modules you are permitted to analyze."
+    ],
+    "additional_evidence_urls": [
+      "https://github.com/alexandrmotologa/wasmlens/blob/2351cccea90f812053b30d1ad14816d3c664a4f7/pyproject.toml",
+      "https://github.com/alexandrmotologa/wasmlens/blob/2351cccea90f812053b30d1ad14816d3c664a4f7/LICENSE",
+      "https://github.com/alexandrmotologa/wasmlens/blob/2351cccea90f812053b30d1ad14816d3c664a4f7/src/wasmlens/cli/main.py",
+      "https://github.com/alexandrmotologa/wasmlens/blob/2351cccea90f812053b30d1ad14816d3c664a4f7/src/wasmlens/parser/module.py",
+      "https://github.com/alexandrmotologa/wasmlens/blob/2351cccea90f812053b30d1ad14816d3c664a4f7/src/wasmlens/parser/section_parser.py",
+      "https://github.com/alexandrmotologa/wasmlens/blob/2351cccea90f812053b30d1ad14816d3c664a4f7/src/wasmlens/parser/opcodes.py",
+      "https://github.com/alexandrmotologa/wasmlens/blob/2351cccea90f812053b30d1ad14816d3c664a4f7/src/wasmlens/disassembler/wat_formatter.py",
+      "https://github.com/alexandrmotologa/wasmlens/blob/2351cccea90f812053b30d1ad14816d3c664a4f7/src/wasmlens/decompiler/reconstructor.py",
+      "https://github.com/alexandrmotologa/wasmlens/blob/2351cccea90f812053b30d1ad14816d3c664a4f7/src/wasmlens/decompiler/ast.py",
+      "https://github.com/alexandrmotologa/wasmlens/blob/2351cccea90f812053b30d1ad14816d3c664a4f7/src/wasmlens/emulator/vm.py",
+      "https://github.com/alexandrmotologa/wasmlens/blob/2351cccea90f812053b30d1ad14816d3c664a4f7/tests/test_decompiler.py",
+      "https://github.com/alexandrmotologa/wasmlens/blob/2351cccea90f812053b30d1ad14816d3c664a4f7/tests/test_parser.py"
+    ]
+  },
+  {
+    "id": "submitgame-awesome-decomp-games",
+    "name": "Awesome Decomp Games",
+    "url": "https://github.com/SubmitGame/awesome-decomp-games",
+    "category": "related-lists",
+    "relationship": "learning",
+    "kind": "collection",
+    "targets": [
+      "game"
+    ],
+    "description_en": "A generated, rated index of public game reconstruction projects: decompilations, disassemblies, static recompilations, source ports, engine remakes and browser ports. A daily job merges several upstream lists and registries with GitHub and decomp.dev metadata, drops dead links and rebuilds the README and website from data files. Useful for discovery; its scores are automated heuristics, not reviews.",
+    "description_zh": "自动生成并附评分的公开游戏重建项目索引，涵盖反编译、反汇编、静态重编译、源码移植、引擎重制及浏览器移植。每日任务合并多个上游目录与登记站点，结合 GitHub 和 decomp.dev 元数据，剔除失效链接，再由数据文件重建 README 和网站。适合用来发现项目；其评分是自动启发式结果，并非人工审阅。",
+    "evidence_url": "https://github.com/SubmitGame/awesome-decomp-games/blob/02727e90fe10c7b55fad3fdd4bd671c55e1fe587/README.md",
+    "verified_at": "2026-10-18",
+    "verification": "source-reviewed",
+    "requirements": [
+      "The reviewed README, generated 2026-10-16, reports 2,118 projects covering 1,829 games, with sections for 646 decompilations, 520 static recompilations, 230 source ports, 206 engine remakes, 107 disassemblies, 53 browser ports, tools, mods and 347 inactive entries. These are the list's own counts, not verified projects.",
+      "Each entry's 1–5 playability, completeness, activity and popularity sub-scores are computed by scripts/build.py from GitHub metadata, decomp.dev progress and description keywords. Projects their source list flags as AI-generated are marked ⚠️ and lose 0.2. A score or section is not a matching, completeness or runtime check; follow each project's own sources.",
+      "Entries are seeded from the listed upstream collections and registries plus data/additions.json and data/overrides.json. A scheduled GitHub Actions job runs daily at 03:17 UTC to refresh metadata, check links and browser-play URLs, and commit the regenerated files, so summaries can still lag the linked projects.",
+      "The list states that it hosts no ROMs, ISOs, BIOS files or game assets, and its contribution rules refuse links to them and repositories that ship game data; most listed projects need files from the user's own copy. Some browser entries are labeled as playing instantly without the user's files. The list does not document each site's rights basis, and this catalog did not review those sites.",
+      "The list and data are released under CC0 1.0 and the scripts and website code under MIT; linked projects and game screenshots keep their own rights. Two REA showcase repositories appear among the entries, but the list establishes no REA affiliation."
+    ],
+    "additional_evidence_urls": [
+      "https://github.com/SubmitGame/awesome-decomp-games/blob/02727e90fe10c7b55fad3fdd4bd671c55e1fe587/CONTRIBUTING.md",
+      "https://github.com/SubmitGame/awesome-decomp-games/blob/02727e90fe10c7b55fad3fdd4bd671c55e1fe587/scripts/build.py",
+      "https://github.com/SubmitGame/awesome-decomp-games/blob/02727e90fe10c7b55fad3fdd4bd671c55e1fe587/.github/workflows/refresh.yml",
+      "https://github.com/SubmitGame/awesome-decomp-games/blob/02727e90fe10c7b55fad3fdd4bd671c55e1fe587/LICENSE",
+      "https://github.com/SubmitGame/awesome-decomp-games/blob/02727e90fe10c7b55fad3fdd4bd671c55e1fe587/LICENSE-CODE"
+    ]
+  },
+  {
+    "id": "snowboardkids-matching-decomp-case",
+    "name": "Snowboard Kids: an agent-assisted N64 matching decompilation",
+    "url": "https://github.com/cdlewis/snowboardkids-decomp",
+    "category": "reconstruction-cases",
+    "relationship": "independent-reconstruction",
+    "kind": "case-study",
+    "targets": [
+      "game"
+    ],
+    "description_en": "A matching decompilation of the original Nintendo 64 Snowboard Kids that rebuilds SHA1-identical North American and Japanese ROMs from a user-supplied ROM. The author’s 84-day post-mortem describes coding agents run through his Nigel harness alongside m2c, the permuter and a shared file of compiler learnings, and declines to credit LLMs alone for the speed-up. It is a separate project from the Snowboard Kids 2 decompilation.",
+    "description_zh": "原版 Nintendo 64 游戏 Snowboard Kids 的匹配反编译，利用使用者自备的 ROM 重新构建 SHA1 一致的北美版与日版 ROM。作者在 84 天复盘文章中介绍了通过自建的 Nigel 工具调度编程智能体，并结合 m2c、permuter 与共享编译器经验文件的流程，同时表示不应把提速完全归功于大模型。它与 Snowboard Kids 2 反编译是不同的项目。",
+    "evidence_url": "https://github.com/cdlewis/snowboardkids-decomp/blob/0a398d907aae32ae45e6ba0ca688049e5c60dab8/README.md",
+    "verified_at": "2026-10-18",
+    "verification": "source-reviewed",
+    "requirements": [
+      "The 2026-08-26 post reports the game 100% decompiled: every function has C that compiles to identical machine code, apart from a small amount of handwritten system-library assembly that was original source. It dates the repository from 28 May 2026 to the final matching function on 19 August 2026 and counts 2,145 functions, against 596 days and 2,995 functions for Snowboard Kids 2. The README says the Japanese version currently builds from extracted assembly; reports/jp-exact-functions.md lists 120 JP functions compiled from C.",
+      "Building requires the user’s own North American or Japanese ROM, named snowboardkids.z64 or snowboardkids.jp.z64 with the SHA1 listed in the README; the build extracts assembly and assets from it into git-ignored directories. The README says the repository contains no game assets or assembly, although the reviewed tree tracks libultra .s files and a box-art image. CI builds both regions from a baserom checked out of a separate private repository.",
+      "The verified host is x86-64 Linux with make, git, Python 3, clang, wget, tar and binutils-mips-linux-gnu; a macOS setup is documented but still needs validation. make -C tools sets up the recompiled IDO 5.3 toolchain (IDO_DIR can point to another), submodules supply asm-processor, asm-differ and decomp-permuter, and optional matching helpers need requirements.txt.",
+      "tools/build-and-verify.sh cleans, extracts, builds and checks the output ROM’s SHA1 against the original for the selected region, and reports/region-functions.md aligns 1,293 of 2,110 US functions with the JP ROM by exact or address-normalized matches. The post describes agents writing C function by function, a script running m2c on every unmatched function, permuter runs with deadlines and four parallel worktrees; it calls its comparison of GPT-5.5/5.6, Claude 4.5, Fable and GLM 5.2 unscientific. This catalog did not build or verify any ROM.",
+      "The author estimates that roughly 4.8% of matching commits involved expert intervention, says the figure does not measure effort, credits contributors for many difficult IDO matches and calls attributing the whole speed-up to LLMs a gross oversimplification. A 100% match still leaves generated names, unknown structure fields and data to document. No license file is present at the reviewed commit, the README states commercial use is a non-goal, and no REA use is stated."
+    ],
+    "additional_evidence_urls": [
+      "https://blog.chrislewis.au/decompiling-a-nintendo-64-game-in-84-days/",
+      "https://github.com/cdlewis/snowboardkids-decomp/blob/0a398d907aae32ae45e6ba0ca688049e5c60dab8/docs/versions.md",
+      "https://github.com/cdlewis/snowboardkids-decomp/blob/0a398d907aae32ae45e6ba0ca688049e5c60dab8/reports/jp-exact-functions.md",
+      "https://github.com/cdlewis/snowboardkids-decomp/blob/0a398d907aae32ae45e6ba0ca688049e5c60dab8/reports/region-functions.md",
+      "https://github.com/cdlewis/snowboardkids-decomp/blob/0a398d907aae32ae45e6ba0ca688049e5c60dab8/.github/workflows/build.yaml",
+      "https://github.com/cdlewis/snowboardkids-decomp/blob/0a398d907aae32ae45e6ba0ca688049e5c60dab8/.gitignore",
+      "https://github.com/cdlewis/snowboardkids-decomp/blob/0a398d907aae32ae45e6ba0ca688049e5c60dab8/.gitmodules",
+      "https://github.com/cdlewis/snowboardkids-decomp/blob/0a398d907aae32ae45e6ba0ca688049e5c60dab8/snowboardkids.sha1"
+    ]
+  },
+  {
+    "id": "reflecticon-224-lexicon-emulation-case",
+    "name": "reflecticon-224: running Lexicon 224 reverb firmware on emulated hardware",
+    "url": "https://github.com/joelanders/reflecticon-224",
+    "category": "reconstruction-cases",
+    "relationship": "independent-reconstruction",
+    "kind": "case-study",
+    "targets": [
+      "firmware"
+    ],
+    "description_en": "Emulates the Lexicon 224, 224X and 224XL digital reverbs so that their own firmware runs in a browser page or a JUCE plugin. The repository layers KiCad schematics, gate-level and board-level Verilog models, an 8080-hosted C++ emulator and analog input/output models, and checks faster layers against slower ones using user-supplied ROMs. It is a work-in-progress hardware-and-firmware emulation whose documentation is still pending, not recovered algorithm source.",
+    "description_zh": "模拟 Lexicon 224、224X 与 224XL 数字混响器，使其原厂固件能在浏览器页面或 JUCE 插件中运行。仓库分层包含 KiCad 原理图、门级与板级 Verilog 模型、以 8080 为主机的 C++ 模拟器及模拟输入／输出模型，并用使用者自备的 ROM 以较慢层级校验较快层级。这是仍在开发、文档尚未完成的硬件与固件模拟，并非恢复出的算法源码。",
+    "evidence_url": "https://github.com/joelanders/reflecticon-224/blob/37fde47f6cf94d4f4f96f3c233382e2c43a70354/Makefile",
+    "verified_at": "2026-10-18",
+    "verification": "source-reviewed",
+    "requirements": [
+      "The reviewed pin is from 2026-10-13; the repository was created on 2026-09-28. README calls it a work in progress whose documentation will follow, so the Makefile is the main map: it links the schematics, gate-, board- and ISA-level models, the C++ emulator, analog models, the WebAssembly page and the plugin. Recognized firmware sets include several 224 versions, 224X v8.1 and 224XL v8.1A and v8.21.",
+      "Users supply their own Lexicon ROM chip files, which README says stay on their computer. The page and plugin recognize known sets by SHA-256, and the repository lists those hashes, not ROM bytes. Firmware checks read a LEXICON_FIRMWARE folder with one subfolder per set and skip when it is absent. The web demo does ship program-name and slider-value catalogs keyed to specific firmware sets.",
+      "make check runs the firmware-free checks, and any target whose tool is missing, such as Verilator 5 or KiCad’s command-line tool, reports itself as skipped. The page builds with Emscripten 5.0.1 for GitHub Pages. The plugin builds with CMake and JUCE 8.0.14 as macOS AU, VST3 and standalone targets, and CI validates the AU with auval; the tagged v0.1.0-alpha.1 prerelease is an ad-hoc signed macOS 11+ build that contains no firmware.",
+      "make check-firmware runs the user’s ROMs through several layers, including service-manual signature tables at gate level. Qualification compares the emulator’s CPU state, control-store writes and DAC captures with board-level runs, and qualified.json stores expected hashes for two scenarios. A byte-exact gate compares the WebAssembly build bit for bit with the native reference. These project checks need the ROMs; this collection ran none of them.",
+      "GitHub detects no repository license, so no reuse terms beyond viewing are granted; the included 8080 cores carry zlib and MIT notices. README disclaims affiliation with Lexicon or its owners, and the original firmware remains theirs. In the Hacker News thread for a related report, a commenter who identifies the repository as theirs describes paid schematic tracing and LLM agents turning schematics into Verilog; no REA use is stated."
+    ],
+    "additional_evidence_urls": [
+      "https://github.com/joelanders/reflecticon-224/blob/37fde47f6cf94d4f4f96f3c233382e2c43a70354/README.md",
+      "https://github.com/joelanders/reflecticon-224/blob/37fde47f6cf94d4f4f96f3c233382e2c43a70354/emulator/tests/qualify_firmware.py",
+      "https://github.com/joelanders/reflecticon-224/blob/37fde47f6cf94d4f4f96f3c233382e2c43a70354/emulator/tests/qualified.json",
+      "https://github.com/joelanders/reflecticon-224/blob/37fde47f6cf94d4f4f96f3c233382e2c43a70354/juce-plugin/tests/byte_exact/compare_wasm.mjs",
+      "https://github.com/joelanders/reflecticon-224/blob/37fde47f6cf94d4f4f96f3c233382e2c43a70354/web-demo/page/firmware.js",
+      "https://github.com/joelanders/reflecticon-224/blob/37fde47f6cf94d4f4f96f3c233382e2c43a70354/web-demo/page/firmware_sets.json",
+      "https://github.com/joelanders/reflecticon-224/blob/37fde47f6cf94d4f4f96f3c233382e2c43a70354/.github/workflows/plugin.yml",
+      "https://github.com/joelanders/reflecticon-224/blob/37fde47f6cf94d4f4f96f3c233382e2c43a70354/.github/workflows/pages.yml",
+      "https://github.com/joelanders/reflecticon-224/blob/37fde47f6cf94d4f4f96f3c233382e2c43a70354/8080/LICENSE-floooh-chips",
+      "https://github.com/joelanders/reflecticon-224/blob/37fde47f6cf94d4f4f96f3c233382e2c43a70354/8080/LICENSE-m8080",
+      "https://news.ycombinator.com/item?id=50111576"
+    ]
+  },
+  {
+    "id": "sa3-marun-ai-decomp-case",
+    "name": "Sonic Advance 3: an AI-assisted match of one enemy module",
+    "url": "https://gambiconf.substack.com/p/development-journey-on-game-decompilation",
+    "category": "reconstruction-cases",
+    "relationship": "independent-reconstruction",
+    "kind": "case-study",
+    "targets": [
+      "game"
+    ],
+    "description_en": "Macabeus’s dated study describes prompting Claude Sonnet 3.5 and DeepSeek R1 with assembly, similar decompiled functions and structs to write matching C for Marun, one enemy module of the community Sonic Advance 3 GBA decompilation. The resulting pull request replaced that module’s assembly and was merged; the author calls the setting unusually AI-friendly, and the project now bars LLM-origin contributions.",
+    "description_zh": "Macabeus 在注明日期的研究文章中，介绍了如何把汇编、相似的已反编译函数和结构体放进提示词，让 Claude Sonnet 3.5 与 DeepSeek R1 为社区 Sonic Advance 3 GBA 反编译项目中的敌人模块 Marun 编写匹配的 C 代码。由此产生的拉取请求替换了该模块的汇编并已合并；作者认为这一场景对 AI 格外友好，而该项目现已不接受源自大模型的贡献。",
+    "evidence_url": "https://gambiconf.substack.com/p/development-journey-on-game-decompilation",
+    "verified_at": "2026-10-18",
+    "verification": "source-reviewed",
+    "requirements": [
+      "The post, dated 20 May 2025 and subtitled an ongoing study, covers a single module: Marun, an enemy in the community Sonic Advance 3 GBA matching decompilation. Work began on 6 January 2025, and pull request #4, which replaced the module’s 1,154-line assembly file with 494 lines of C, was merged on 31 January; the post equates it to 0.3% of the project’s total progress. It is a bounded contribution study, not a whole-game decompilation.",
+      "Building the SA3 decompilation requires the user’s own European Sonic Advance 3 ROM, named baserom_sa3.gba and matching the release the README identifies by SHA1, plus a sufficiently recent agbcc compiler fork. The study itself worked in decomp.me scratches, putting assembly, similar decompiled functions and relevant structs into prompts for Claude Sonnet 3.5 and DeepSeek R1.",
+      "Match percentages come from decomp.me: the post reports a 96% first Sonnet 3.5 attempt that later prompts could not reproduce, a 74% DeepSeek R1 result raised to 100% by replacing memset with CpuFill16, and R1 output that usually matched at least about 60%. The merged pull request is the project-level outcome; the post reports no separate build or test, and this catalog ran nothing.",
+      "The author calls the setting very AI-friendly because similar modules were already decompiled for use as examples and the GBA compiler is simpler and more predictable; generated C lacked project-specific macros and needed readability work. The author’s decomp.me AI-panel pull request was closed unmerged; the post says user benefit was unclear and it required a paid API key.",
+      "At the reviewed SA3 commit, the README states a strict no-LLM/no-AI policy for issues and pull requests, so that project no longer accepts this workflow. The SA3 repository has no license file at that commit, the ROM and its assets retain their own rights, and no REA use is stated."
+    ],
+    "additional_evidence_urls": [
+      "https://github.com/SAT-R/sa3/pull/4",
+      "https://github.com/decompme/decomp.me/pull/1474",
+      "https://github.com/SAT-R/sa3/blob/f28834dd4c92ad1ed761a978210355ad63d70b88/README.md"
+    ]
+  },
+  {
+    "id": "ix500-scan-scansnap-wifi-case",
+    "name": "iX500 Scan: a macOS client for the reverse-engineered ScanSnap Wi-Fi protocol",
+    "url": "https://github.com/jonaswagnr/ix500-scan",
+    "category": "reconstruction-cases",
+    "relationship": "independent-reconstruction",
+    "kind": "case-study",
+    "targets": [
+      "app",
+      "protocol"
+    ],
+    "description_en": "Replaces ScanSnap Home for a Fujitsu/PFU ScanSnap iX500 on macOS with a SwiftUI app and Python service that scan over Wi-Fi through the community-reverse-engineered VENS protocol, or over USB through SANE, and produce searchable PDFs. It vendors bramheerink’s GPL-2.0 driver, extends it for macOS, and documents further handshake and hardware-status fields, including the scan-button bit. Results are author-reported; the repository publishes no tests or captures.",
+    "description_zh": "在 macOS 上以 SwiftUI 应用和 Python 后台服务替代 ScanSnap Home，为富士通／PFU ScanSnap iX500 提供扫描：Wi-Fi 经由社区逆向的 VENS 协议，USB 经由 SANE，输出可搜索的 PDF。项目内置 bramheerink 的 GPL-2.0 驱动并为 macOS 做了扩展，还记录了更多握手字段和硬件状态字段，包括扫描键状态位。结果均为作者报告，仓库未公开测试或抓包记录。",
+    "evidence_url": "https://github.com/jonaswagnr/ix500-scan/blob/24a5f7c89fc6d0c35a4d83d0879348ced153844a/README.md",
+    "verified_at": "2026-10-19",
+    "verification": "source-reviewed",
+    "requirements": [
+      "Reviewed commit 24a5f7c (three commits, all dated 2026-10-15) targets the Fujitsu/PFU ScanSnap iX500. README says ScanSnap Home 3.7 is no longer maintained and hangs on macOS 27; the project offers Wi-Fi scanning started by the device’s scan button, a USB path through SANE, and searchable PDFs with rotation, cropping, blank-page removal and OCR. No release build is published, and other ScanSnap models are not claimed.",
+      "The Wi-Fi path needs the user’s own iX500 and two values that README says only ScanSnap Home knows: the scanner’s 12-character pairing key and the paired computer’s 8-byte HostID. They are obtained once from ScanSnap Home’s own connection to that scanner; the repository includes no vendor software, firmware or captures.",
+      "Building needs macOS 14+, Xcode 15+ (Swift tools 5.10), the system Python 3 with Pillow, and Homebrew sane-backends, ocrmypdf, img2pdf and tesseract-lang. build.sh bundles the Python service and vendored driver into an ad-hoc-signed app that runs the service with /usr/bin/python3.",
+      "The protocol work extends bramheerink/scansnap, whose VENS specification says it was reverse-engineered from captures of ScanSnap Home talking to an iX500. README adds handshake fields for the paired HostID, local time and UTC offset, hardware-status bits for an empty feeder and the scan button, and a session timeout of about 40 s, and notes that Wi-Fi images always arrive as 300 dpi colour, rotated 180° with scanner background. No automated tests, captures or comparisons with ScanSnap Home output are published; this review ran neither the app nor a scanner.",
+      "GPL-2.0, matching the vendored driver at commit 5706688, whose file header records the author’s changes. This is an unofficial client, not recovered vendor source or firmware. The repository’s draft social posts credit an evening with Claude Code for closing the remaining protocol gaps; no REA use is stated."
+    ],
+    "additional_evidence_urls": [
+      "https://github.com/jonaswagnr/ix500-scan/blob/24a5f7c89fc6d0c35a4d83d0879348ced153844a/vens/PROTOCOL",
+      "https://github.com/jonaswagnr/ix500-scan/blob/24a5f7c89fc6d0c35a4d83d0879348ced153844a/vens/README.md",
+      "https://github.com/jonaswagnr/ix500-scan/blob/24a5f7c89fc6d0c35a4d83d0879348ced153844a/vens/scansnap.py",
+      "https://github.com/jonaswagnr/ix500-scan/blob/24a5f7c89fc6d0c35a4d83d0879348ced153844a/scansnapd.py",
+      "https://github.com/jonaswagnr/ix500-scan/blob/24a5f7c89fc6d0c35a4d83d0879348ced153844a/app/Package.swift",
+      "https://github.com/jonaswagnr/ix500-scan/blob/24a5f7c89fc6d0c35a4d83d0879348ced153844a/app/build.sh",
+      "https://github.com/jonaswagnr/ix500-scan/blob/24a5f7c89fc6d0c35a4d83d0879348ced153844a/app/Sources/IX500Scan/ScannerService.swift",
+      "https://github.com/jonaswagnr/ix500-scan/blob/24a5f7c89fc6d0c35a4d83d0879348ced153844a/social/texte.md",
+      "https://github.com/jonaswagnr/ix500-scan/blob/24a5f7c89fc6d0c35a4d83d0879348ced153844a/LICENSE",
+      "https://github.com/bramheerink/scansnap/blob/5706688db58f45a4d3db239de6e2e93bab36bb0f/LICENSE"
+    ]
   }
 ]

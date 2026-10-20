@@ -125,6 +125,10 @@ GraphQL checks the numeric repository ID and eligibility in all three phases; st
 
 Ambiguous selection, unsupported files, encoding/hash mismatches and conservative byte limits request the existing REST README reader; a fallback must pass that reader's checks before counting. Rate limits, access failures, network errors and server failures instead leave work pending and stop the batch. They never trigger REST to escape backpressure, and sibling fallback work is deferred too. Already verified successes can be retained. Responses are bounded to 12 MiB, with additional per-blob and aggregate budgets. Credentials stay in memory at the fixed GitHub API origin; GraphQL redirects are refused. GitHub's quota, reset time and `Retry-After` determine deferral, with at least a minute for secondary limits without another retry instruction. See [GraphQL limits](https://docs.github.com/en/graphql/overview/rate-limits-and-query-limits-for-the-graphql-api) and [Git blob fields](https://docs.github.com/en/graphql/reference/git#blob).
 
+For a later run that needs failure diagnosis, optionally add `--transport-diagnostics .cache/<existing-run-directory>/transport.jsonl`. The destination must be new, separate from scan/frontier inputs and outputs, and inside the ignored cache without symlink parents. This option is off by default and does not change retry behavior, retained evidence, request counters or admission rules.
+
+The private JSONL file contains a UTC run header and at most 256 failure events, followed by a limit marker if more events are omitted. Events record only a closed reason code, `metadata`/`preflight`/`blob` phase, UTC time, repository count, and available HTTP status/response-byte count. `request_attempted: false` means existing backoff prevented an HTTP attempt; `true` means the opener was called, not proof that a request reached GitHub. Missing status or byte count means unknown. Metadata-validation events share their request's byte context, so event counts and bytes must not be summed as requests or unique reads. No headers, quota balances, bodies, exception messages, repository identities or local paths are retained. A write failure disables the sidecar with a fixed warning while capture continues. A process interruption may leave an incomplete final JSONL line. The sidecar is never a source checkpoint, recovery input or publication artifact, and cannot recover reasons for older runs.
+
 These flags do not install a schedule or publish data. Translation, scope review, generation and validation remain required before updating the public source index; curated promotion requires a separate source review. Automated reads do not grant a Featured badge or establish functionality, safety or REA compatibility.
 
 ## Recheck availability
@@ -173,3 +177,19 @@ The [scheduled discovery workflow](automation.md#scheduled-readme-discovery) req
 Each schema-2 checkpoint artifact contains only `checkpoint.json`, `frontier.json` and `receipt.json`. The receipt binds both state files by SHA-256 to the workflow run and attempt, source commit, input reconciliation, retained counts and actual new successes. Schema-1 artifacts containing only the checkpoint and receipt remain readable: migration preserves their scan evidence and creates a frontier without inventing prior searches. The saved queue is drained in bounded pages before further discovery requests. A checkpoint marked `in-progress` can be resumed but remains rejected by the normal publication validator. The scheduler explicitly requests incomplete-checkpoint validation without rewriting the stored status.
 
 When extending the published index from an artifact, retain the numeric repository IDs, original capture objects, README hashes and observation provenance. Review relevance, exclusions, attribution and bilingual descriptions separately; regenerate and validate the source-index browser projection and localized directory before opening a normal PR. Do not copy an entire artifact directory into the repository. Successful README retrieval is not source review, execution testing, a license permission or an endorsement.
+
+### Explicit publication selections
+
+The [public supplement layer](../data/source-supplements/README.md) can admit a
+reviewed subset of an approved public artifact without pretending that subset
+is a new complete capture. It preserves the canonical 3,000-record checkpoint
+and its original counts. A ready supplement produces a separate
+`source-published.json` with publication counts and per-source capture facts;
+the legacy `source-index.json` remains available. Held candidates, including
+those missing translations, do not enter the published selection.
+
+The [registered evidence archive](../data/source-evidence/README.md) is retained
+exactly, with every JSON member checked before an explicit provenance download
+is copied into the site. This is not an import of the private capture campaign
+or an automatic promotion of every row in the cloud checkpoint. Curated
+resources and their machine-data bundle remain separate.

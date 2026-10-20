@@ -12,7 +12,7 @@ import subprocess
 import sys
 from urllib.parse import unquote, urlsplit
 
-from build_readme import CATEGORIES, RELATIONSHIPS, TARGETS
+from build_readme import CATEGORIES, RELATIONSHIPS, TARGETS, readme_size_warnings
 from catalog import ROOT, RESOURCE_FILES
 from localization import read_localizations, validate_localizations
 from source_scope import read_scope, validate_scope
@@ -1059,6 +1059,13 @@ def main():
                     validate_scope(source_records, read_scope(ROOT), errors)
                 except (OSError, ValueError):
                     errors.append('Source-scope data could not be read as valid JSON.')
+                try:
+                    from public_source_supplements import load_supplements
+                    supplements = load_supplements(ROOT)
+                    print(f'Public source supplements: {len(supplements["records"])} ready records; '
+                          f'{sum(row["selected_count"] for row in supplements["held"])} explicitly held candidates.')
+                except (OSError, ValueError):
+                    errors.append('Public source supplements failed evidence, identity, locale or scope validation.')
     validate_citation((ROOT / 'CITATION.cff').read_text(encoding='utf-8'), errors)
     count = validate_markdown(ROOT, errors)
     for script in ('build_readme.py', 'build_repository_index.py', 'build_case_coverage.py'):
@@ -1067,6 +1074,9 @@ def main():
                                 env={**os.environ, 'PYTHONIOENCODING': 'utf-8'})
         if result.returncode:
             errors.append((result.stderr or result.stdout).strip() or f'{script}: generated content check failed.')
+    # Advisory: a README near GitHub's rendering limit is reported, never failed, so open pull requests keep passing.
+    for warning in readme_size_warnings(ROOT):
+        print(f'Warning: {warning}', file=sys.stderr)
     if errors:
         print(f'Validation failed with {len(errors)} issue(s):', file=sys.stderr)
         for error in errors:

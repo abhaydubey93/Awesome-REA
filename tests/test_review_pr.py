@@ -149,7 +149,8 @@ class ReviewerDataSelectionTest(unittest.TestCase):
                                           {'commit_id': SHA, 'event': 'COMMENT', 'body': github.body()})])
 
     def test_current_data_raises_no_finding(self):
-        names = sorted(review_pr.REVIEW_FILES)
+        # Held public selections may legitimately have no locale file yet.
+        names = sorted(name for name in review_pr.REVIEW_FILES if (ROOT / name).is_file())
         github = FakeGitHub([entry(name, added(*base(name).splitlines())) for name in names],
                             {name: base(name) for name in names})
         status, output = run_review(github)

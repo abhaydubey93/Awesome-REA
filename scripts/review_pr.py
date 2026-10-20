@@ -7,6 +7,7 @@ import os
 from pathlib import Path
 import re
 import sys
+import tempfile
 import urllib.parse
 import urllib.request
 
@@ -24,7 +25,15 @@ SOURCE_SCOPE = 'data/source-scope.json'
 SOURCE_INPUTS = (SOURCE_INDEX, SOURCE_SCOPE, *LOCALE_FILES)
 CASE_COVERAGE = 'data/case-coverage.json'
 CASE_INPUTS = (CASE_COVERAGE, *CATALOGS, 'data/papers.json')
-REVIEW_FILES = frozenset((*CATALOGS, 'data/benchmarks.json', 'data/papers.json', *SOURCE_INPUTS, CASE_COVERAGE))
+SUPPLEMENT_INDEX = 'data/source-supplements/index.json'
+SUPPLEMENT_BATCH = 'data/source-supplements/public-cloud-39323601991-batch-01.json'
+SUPPLEMENT_SCOPE = 'data/source-supplements/public-cloud-39323601991-batch-01.scope.json'
+SUPPLEMENT_LOCALE = 'data/locales/source-supplements/public-cloud-39323601991-batch-01.json'
+# New batches require an explicit trusted-base review extension, not a path glob.
+SUPPLEMENT_INPUTS = (SUPPLEMENT_INDEX, SUPPLEMENT_BATCH, SUPPLEMENT_SCOPE, SUPPLEMENT_LOCALE)
+OPTIONAL_SUPPLEMENT_INPUTS = frozenset((SUPPLEMENT_SCOPE, SUPPLEMENT_LOCALE))
+REVIEW_FILES = frozenset((*CATALOGS, 'data/benchmarks.json', 'data/papers.json',
+                          *SOURCE_INPUTS, CASE_COVERAGE, *SUPPLEMENT_INPUTS))
 LOCALE_FIELDS = {'description_en', 'description_zh', 'english_retains_name', 'technical_only'}
 SENSITIVE = re.compile(r'gh[pousr]_[A-Za-z0-9]{20,}|github_pat_[A-Za-z0-9_]{20,}|AKIA[A-Z0-9]{16}|-----BEGIN (?:[A-Z0-9]+ )*PRIVATE KEY(?: BLOCK)?-----')
 # Personal paths: macOS/Linux homes, Windows or WSL profiles with either separator, /root, ~ and $HOME.
@@ -197,6 +206,14 @@ def review_localizations(records, contents, errors):
     return len(translations)
 
 
+def changes_public_archive(entry):
+    paths = [entry['filename']]
+    if entry['status'] == 'renamed':
+        paths.append(entry.get('previous_filename', ''))
+    return any(name.startswith('data/source-evidence/') and name.endswith('.zip')
+               for name in paths)
+
+
 def load_review_contents(repository, sha, token, files, changed, errors):
     needed = set(changed & REVIEW_FILES)
     if set(CATALOGS) & changed:
@@ -205,11 +222,20 @@ def load_review_contents(repository, sha, token, files, changed, errors):
         needed.update(SOURCE_INPUTS)
     if set(CASE_INPUTS) & changed:
         needed.update(CASE_INPUTS)
+    if (set(SUPPLEMENT_INPUTS) & changed
+            or ((ROOT / SUPPLEMENT_INDEX).is_file()
+                and {SOURCE_INDEX, SOURCE_SCOPE} & changed)):
+        needed.update(SUPPLEMENT_INPUTS)
+        needed.update((SOURCE_INDEX, SOURCE_SCOPE))
     removed = {entry['filename'] for entry in files if entry['status'] == 'removed'}
     removed.update(entry['previous_filename'] for entry in files
                    if entry['status'] == 'renamed' and 'previous_filename' in entry)
+    archive_targets = {entry['filename'] for entry in files if changes_public_archive(entry)}
     contents = {}
     for filename in sorted(needed):
+        if filename in archive_targets:
+            errors.append(f'{filename}: a public archive change is not fetched as review data.')
+            continue
         if filename in removed:
             errors.append(f'{filename}: removing or renaming catalog, localization, or scope data requires maintainer review.')
             continue
@@ -218,12 +244,44 @@ def load_review_contents(repository, sha, token, files, changed, errors):
                 contents[filename] = content_at(repository, filename, sha, token)
             else:
                 # Unchanged source, locale, and scope dependencies come from the trusted base.
-                contents[filename] = (ROOT / filename).read_text(encoding='utf-8')
+                path = ROOT / filename
+                contents[filename] = ('{}' if filename in OPTIONAL_SUPPLEMENT_INPUTS and not path.exists()
+                                      else path.read_text(encoding='utf-8'))
             if filename in changed:
                 errors.extend(json_privacy_findings(filename, contents[filename]))
         except (OSError, UnicodeError, ValueError):
             errors.append(f'{filename}: could not safely retrieve required JSON data for this review.')
     return contents
+
+
+def review_public_supplements(contents):
+    """Validate PR JSON with base code and the base's immutable public archive."""
+    # These imports resolve in the trusted base checkout. This validator only
+    # materializes the fixed JSON inputs; it never loads PR code or archives.
+    from public_source_supplements import (
+        MAX_ARCHIVE_BYTES, bounded_bytes, check_source, load_supplements,
+        owned_file, project_additions, strict_json,
+    )
+    base_batch = strict_json(bounded_bytes(owned_file(
+        ROOT, 'data/source-supplements', Path(SUPPLEMENT_BATCH).name)))
+    source = base_batch['source']
+    check_source(source)
+    archive_name = source['archive_filename']
+    archive = bounded_bytes(owned_file(ROOT, 'data/source-evidence', archive_name),
+                            MAX_ARCHIVE_BYTES)
+    with tempfile.TemporaryDirectory(prefix='trusted-supplement-review-') as directory:
+        temporary = Path(directory)
+        for filename in (*SUPPLEMENT_INPUTS, SOURCE_INDEX, SOURCE_SCOPE):
+            path = temporary / filename
+            path.parent.mkdir(parents=True, exist_ok=True)
+            path.write_text(contents[filename], encoding='utf-8')
+        archive_path = temporary / 'data/source-evidence' / archive_name
+        archive_path.parent.mkdir(parents=True, exist_ok=True)
+        archive_path.write_bytes(archive)
+        admitted = load_supplements(temporary)
+        visible = sum(row.get('scope_status') != 'excluded'
+                      for row in project_additions(admitted))
+        return len(admitted['ready']), len(admitted['records']), visible, len(admitted['held'])
 
 
 def review_data(contents, changed):
@@ -283,6 +341,18 @@ def review_data(contents, changed):
                 else:
                     validate_scope(data['resources'], scope, errors)
                     reviewed.append('Source-scope exclusions checked against repository IDs, README hashes, evidence links or availability rechecks, dates, and bilingual reasons.')
+    if (set(SUPPLEMENT_INPUTS) & changed
+            or ((ROOT / SUPPLEMENT_INDEX).is_file()
+                and {SOURCE_INDEX, SOURCE_SCOPE} & changed)):
+        try:
+            ready, selected, visible, held = review_public_supplements(contents)
+        except (OSError, UnicodeError, ValueError, KeyError, TypeError):
+            errors.append('Public source supplements could not be validated against trusted-base capture evidence, localization coverage and scope decisions.')
+        else:
+            reviewed.append(
+                f'Public source supplements checked with trusted-base code and archive evidence: '
+                f'{ready} ready batch(es), {selected} selected records, {visible} browsable additions, '
+                f'{held} held batch(es). Original capture counts remain separate.')
     return errors, reviewed
 
 
@@ -343,16 +413,22 @@ def main():
         if rule:
             # Named by path only; such files are never fetched.
             errors.append(f'{path}: {rule}')
+        archive_change = changes_public_archive(entry)
+        if archive_change:
+            errors.append(f'{path}: immutable public source archives cannot be changed by a data-admission PR; a separate source-pin review is required.')
+        unknown_locale = (path.startswith('data/locales/')
+                          and path not in (*LOCALE_FILES, SUPPLEMENT_LOCALE)
+                          and path != 'data/locales/README.md')
         patch = entry.get('patch')
         if patch:
             added = '\n'.join(line[1:] for line in patch.splitlines() if line.startswith('+') and not line.startswith('+++'))
             if private_text(added):
                 errors.append(f'{path}: added text contains a credential-like value or personal path; inspect locally. The value is omitted here.')
-        elif entry['status'] not in ('removed', 'unchanged') and not rule and path not in REVIEW_FILES:
+        elif (entry['status'] not in ('removed', 'unchanged') and not rule
+              and not archive_change and not unknown_locale and path not in REVIEW_FILES):
             # GitHub omits the patch of binary files and very large diffs.
             omitted.append(path)
-        if (path.startswith('data/locales/') and path not in LOCALE_FILES
-                and path != 'data/locales/README.md'):
+        if unknown_locale:
             errors.append(f'{path}: locale file is not in the trusted review allowlist; maintainer review is required.')
     for index, path in enumerate(omitted):
         try:

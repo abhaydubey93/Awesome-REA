@@ -223,6 +223,9 @@ def _document(record, kind, language, *, site_url, repository_url, styles_href, 
     discussion = (_related_entries(related_entries.get((kind, record['id']), []), language)
                   + _survey_discussion(survey_discussions.get(record['id'], []), language))
     title, description, content = (_resource_content if kind == 'resource' else _paper_content)(record, language, discussion)
+    # Resource names such as rr or GDB are often identical in both languages; the localized
+    # category gives each <title> topic and language context. H1, og:title and JSON-LD keep the name.
+    document_title = f'{title} · {CATEGORIES[record["category"]][int(zh)]}' if kind == 'resource' else title
     entity_id = canonical + ('#resource' if kind == 'resource' else '#paper')
     entity = ({'@type': 'CreativeWork', '@id': entity_id, 'url': record['url'], 'name': title, 'description': description}
               if kind == 'resource' else {**scholarly_article(record, language), '@id': entity_id})
@@ -243,7 +246,7 @@ def _document(record, kind, language, *, site_url, repository_url, styles_href, 
 <html lang="{locale}"{(' data-icon-set="fontawesome"' if icon_stylesheet_href else '')}>
 <head>
   <meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1"><meta name="theme-color" content="#ffffff">
-  <title>{escape(title)} · AwesomeREA.org</title><meta name="description" content="{escape(description, quote=True)}">
+  <title>{escape(document_title)} · AwesomeREA.org</title><meta name="description" content="{escape(description, quote=True)}">
   <link rel="canonical" href="{_public_url(canonical)}">
   <link rel="alternate" hreflang="en" href="{_public_url(english)}"><link rel="alternate" hreflang="zh-CN" href="{_public_url(chinese)}"><link rel="alternate" hreflang="x-default" href="{_public_url(english)}">
   {open_graph_meta(language=language, title=title, description=description, image_url=social_image_href, url=canonical)}
@@ -251,7 +254,7 @@ def _document(record, kind, language, *, site_url, repository_url, styles_href, 
   {jsonld_script(schema)}
 </head><body>
 <a class="skip-link" href="#entry-content">{label('Skip to content', '跳到内容')}</a>
-<header class="site-header"><div class="shell header-inner"><a class="wordmark" href="{prefix}/" aria-label="{label('AwesomeREA.org home', 'AwesomeREA.org 首页')}"><span class="brand-mark" aria-hidden="true">r<span>↗</span></span><span>Awesome<span class="wordmark-rea">REA</span><span class="wordmark-domain">.org</span></span></a>
+<header class="site-header"><div class="shell header-inner"><a class="wordmark" href="{prefix}/" aria-label="{label('AwesomeREA.org home', 'AwesomeREA.org 首页')}"><img class="brand-mark" src="{_asset_url(favicon_href)}" alt="" width="33" height="33" aria-hidden="true"><span>Awesome<span class="wordmark-rea">REA</span><span class="wordmark-domain">.org</span></span></a>
 <nav class="header-nav" aria-label="{label('Main navigation', '主导航')}"><a class="entry-language" href="{counterpart}" lang="{('en' if zh else 'zh-CN')}" hreflang="{('en' if zh else 'zh-CN')}">{label('简体中文', 'English')}</a><a class="github-link" href="{_public_url(repository_url)}" target="_blank" rel="noopener noreferrer" aria-label="GitHub">{github_icon}<span>GitHub</span></a></nav></div></header>
 <main class="shell entry-main" id="entry-content"><nav class="entry-breadcrumbs" aria-label="{label('Breadcrumb', '当前位置')}"><a href="{prefix}/">{label('Home', '首页')}</a><span aria-hidden="true">/</span><a href="{listing}">{list_name}</a><span aria-hidden="true">/</span><span aria-current="page">{escape(title)}</span></nav>
 <article class="entry-article" data-entry-kind="{kind}" data-entry-id="{record['id']}">{content}</article>

@@ -19,12 +19,15 @@ from build_readme import CATEGORIES
 from build_survey import build_survey, discussion_sections
 from build_entry_pages import build_entry_pages
 from build_manifest import write_build_manifest
+from data_downloads import build_data_downloads
 from open_graph import website_node
 from homepage_locales import HOMEPAGE_DESTINATIONS, localized_homepage
 from artifact_links import with_artifact_links, with_curated_labels
 from source_browser import write_source_browser
 from localization import read_localizations, localized_records
 from source_scope import apply_scope, read_scope
+from public_source_supplements import (PUBLISHED_FILENAME, compose_published,
+                                      copy_public_evidence, json_bytes, load_supplements, project_additions)
 
 ROOT = Path(__file__).resolve().parents[1]
 SOURCE = ROOT / "site"
@@ -204,7 +207,29 @@ def build_site(output: Path, *, fontawesome_dir: Path | None = None,
                 index_meta = index_data.get("meta", {})
                 metadata["source_index"] = {"available": True, "resource_count": len(successful) - excluded_count, "scanned_count": len(successful), "excluded_count": excluded_count, "status": index_meta.get("status", ""), "completed_at": index_meta.get("completed_at"), "verification": "automated-readme-scan"}
                 source_index_output.write_text(json.dumps(index_data, ensure_ascii=False, indent=2) + "\n", encoding="utf-8")
-                write_source_browser(output, source_index_output.read_bytes())
+                canonical_export = source_index_output.read_bytes()
+                supplements = load_supplements(ROOT)
+                if supplements['ready']:
+                    additions = project_additions(supplements)
+                    additions = with_curated_labels(with_artifact_links(additions, papers, resources), resources)
+                    browse_document = compose_published(canonical_export,
+                        hashlib.sha256(source_index_path.read_bytes()).hexdigest(), supplements, additions)
+                    published_export = json_bytes(browse_document)
+                    (output / PUBLISHED_FILENAME).write_bytes(published_export)
+                    copy_public_evidence(ROOT, output, supplements)
+                    scope = browse_document['meta']['scope']
+                    metadata['source_index'] = {
+                        'available': True, 'resource_count': scope['browse_count'],
+                        'scanned_count': scope['scanned_count'], 'excluded_count': scope['excluded_count'],
+                        'status': 'published-selection', 'publication_schema_version': 2,
+                        'published_at': browse_document['meta']['published_at'],
+                        'full_export': PUBLISHED_FILENAME, 'verification': 'automated-readme-scan',
+                    }
+                    html = html.replace('href="source-index.json"', 'href="source-published.json"')
+                    html = html.replace('data-i18n="downloadSourceData"', 'data-i18n="downloadPublishedSourceData"')
+                    write_source_browser(output, published_export)
+                else:
+                    write_source_browser(output, canonical_export)
     if not metadata["source_index"]["available"]:
         source_index_output.unlink(missing_ok=True)
         write_source_browser(output, None)
@@ -229,10 +254,11 @@ def build_site(output: Path, *, fontawesome_dir: Path | None = None,
         revision = hashlib.sha256((output / filename).read_bytes()).hexdigest()[:16]
         asset_hrefs[filename] = f'/{filename}?v={revision}'
         html = html.replace(f'{attribute}="{filename}"', f'{attribute}="{filename}?v={revision}"')
+    html = html.replace('src="favicon.svg"', f'src="{asset_hrefs["favicon.svg"]}"')
     social_revision = hashlib.sha256((output / "social-card.png").read_bytes()).hexdigest()[:16]
     html = html.replace(f'{SITE_URL}/social-card.png"', f'{SITE_URL}/social-card.png?v={social_revision}"')
     data_digest = hashlib.sha256()
-    for filename in ("catalog.json", "source-index.json", "source-browser.json", "papers.json"):
+    for filename in ("catalog.json", "source-index.json", "source-published.json", "source-browser.json", "papers.json"):
         path = output / filename
         if path.is_file():
             data_digest.update(filename.encode("utf-8") + b"\0" + path.read_bytes())
@@ -290,6 +316,8 @@ def build_site(output: Path, *, fontawesome_dir: Path | None = None,
     sitemap_urls = [SITE_URL + "/", SITE_URL + "/zh/", *browse_urls, *(SITE_URL + path for path in discovery_paths), *paper_urls, *survey_urls, *entry_urls]
     sitemap_entries = [f'<url><loc>{xml_escape(url)}</loc></url>' for url in sitemap_urls]
     (output / "sitemap.xml").write_text('<?xml version="1.0" encoding="UTF-8"?>\n<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">\n' + '\n'.join(sitemap_entries) + '\n</urlset>\n', encoding="utf-8")
+    build_data_downloads(output, catalog, papers,
+                         (output / 'papers/references.bib').read_text(encoding='utf-8'))
     write_build_manifest(output)
     return len(resources), len(papers), len(sitemap_urls)
 

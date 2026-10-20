@@ -10,13 +10,15 @@ import xml.etree.ElementTree as ET
 
 from build_entry_pages import entry_path, matching_entries
 from build_manifest import read_build_manifest
-from build_paper_pages import TARGET_LABELS, bibtex_text, papers_newest_first
+from build_paper_pages import TARGET_LABELS, bibtex_text, paper_entity_id, papers_newest_first
 from validate_papers import read_papers
 from artifact_links import with_artifact_links, with_curated_labels
 from source_descriptions import description_fallback
 from localization import localized_records, read_localizations
 from source_scope import apply_scope, read_scope
 from source_browser import BROWSER_FILENAME, FULL_EXPORT_FILENAME, validate_source_browser
+from public_source_supplements import (PUBLISHED_FILENAME, compose_published, json_bytes,
+                                      load_supplements, owned_file, bounded_bytes, project_additions)
 from validate_discovery import expected_entry_routes, validate_route_inventory
 from build_readme import CATEGORIES, collection_section
 from homepage_locales import _ui_strings
@@ -522,7 +524,7 @@ def expected_paper_schema(paper, language):
         "preprint": ("Preprint", "预印本"),
     }
     article = {
-        '@type': 'ScholarlyArticle', '@id': paper['url'], 'url': paper['url'],
+        '@type': 'ScholarlyArticle', '@id': paper_entity_id(paper, language, ORIGIN), 'url': paper['url'],
         'name': paper['title'], 'headline': paper['title'], 'alternateName': paper['title_zh'],
         'author': [{'@type': 'Person', 'name': name} for name in paper['authors']],
         'description': paper[f'description_{language}'],
@@ -538,6 +540,10 @@ def expected_paper_schema(paper, language):
     ]
     if identifiers:
         article['identifier'] = identifiers
+    same_as = [base + paper[field] for field, base in (('doi', 'https://doi.org/'), ('arxiv_id', 'https://arxiv.org/abs/'))
+               if paper.get(field) and base + paper[field] != paper['url']]
+    if same_as:
+        article['sameAs'] = same_as
     return article
 
 
@@ -565,18 +571,19 @@ def validate_paper_outputs(output, pages, source_papers=None):
         assert len(listings) == 1, f'Expected one paper ItemList: {route}'
         items = listings[0]['itemListElement']
         assert listings[0]['numberOfItems'] == len(expected), f'Paper ItemList source count mismatch: {route}'
+        # Each item names the paper's detail page and the entity that page also defines.
         assert items == [
-            {'@type': 'ListItem', 'position': position, 'url': ORIGIN + route + '#' + identifier,
-             'item': {'@id': expected[identifier]['url']}}
+            {'@type': 'ListItem', 'position': position, 'url': ORIGIN + route + identifier + '/',
+             'item': {'@id': paper_entity_id(expected[identifier], language, ORIGIN)}}
             for position, identifier in enumerate(page.paper_ids, 1)
         ], f'Paper ItemList differs from visible paper order or identities: {route}'
         articles = list(schema_entities(page.schemas, 'ScholarlyArticle'))
-        by_url = {article.get('@id'): article for article in articles}
-        assert len(articles) == len(by_url) == len(expected) and set(by_url) == {p['url'] for p in built}, f'ScholarlyArticle coverage mismatch: {route}'
+        by_id = {article.get('@id'): article for article in articles}
+        assert len(articles) == len(by_id) == len(expected) and set(by_id) == {paper_entity_id(p, language, ORIGIN) for p in built}, f'ScholarlyArticle coverage mismatch: {route}'
         for identifier in page.paper_ids:
             paper = expected[identifier]
             article = expected_paper_schema(paper, language)
-            assert by_url[paper['url']] == article, f'ScholarlyArticle fields differ from source: {identifier} ({language})'
+            assert by_id[article['@id']] == article, f'ScholarlyArticle fields differ from source: {identifier} ({language})'
             text = normalize(' '.join(page.paper_texts[identifier]))
             phrases = [paper['title_zh'] if language == 'zh' else paper['title'],
                        '; '.join(paper['authors']), paper['venue'], statuses[paper['publication_status']][language == 'zh'],
@@ -623,6 +630,22 @@ def validate_artifact_links(output, pages):
     expected = with_curated_labels(with_artifact_links(projected, read_papers(ROOT), resources), resources)
     built = json.loads((Path(output) / 'source-index.json').read_text(encoding='utf-8'))
     assert built['resources'] == expected, 'Generated sources differ from localized source evidence, reviewed artifact links and curated labels'
+    supplements = load_supplements(ROOT)
+    publication_path = Path(output) / PUBLISHED_FILENAME
+    if supplements['ready']:
+        additions = project_additions(supplements)
+        additions = with_curated_labels(with_artifact_links(additions, read_papers(ROOT), resources), resources)
+        import hashlib
+        publication = compose_published((Path(output) / 'source-index.json').read_bytes(),
+            hashlib.sha256(source_path.read_bytes()).hexdigest(), supplements, additions)
+        assert publication_path.read_bytes() == json_bytes(publication), 'Published selection lost source membership or provenance'
+        for source in supplements['evidence']:
+            archive = Path(output) / 'evidence/source-scans' / source['archive_filename']
+            original_archive = owned_file(ROOT, 'data/source-evidence', source['archive_filename'])
+            assert archive.read_bytes() == bounded_bytes(original_archive), 'Published evidence archive bytes changed'
+        expected = publication['resources']
+    else:
+        assert not publication_path.exists(), 'Held selections must not appear in a published export'
     visible = [record for record in expected if record.get('scope_status') != 'excluded']
     normalize = lambda text: ' '.join(text.split())
     for language in ('en', 'zh'):
@@ -675,6 +698,38 @@ def validate_stylesheet_references(output):
     assert not unlinked, 'Stylesheets not linked by any generated page: ' + ', '.join(unlinked)
 
 
+class DocumentTitle(HTMLParser):
+    def __init__(self, text):
+        super().__init__()
+        self.titles, self._parts = [], None
+        self.feed(text)
+
+    def handle_starttag(self, tag, attrs):
+        if tag == 'title':
+            self._parts = []
+
+    def handle_data(self, data):
+        if self._parts is not None:
+            self._parts.append(data)
+
+    def handle_endtag(self, tag):
+        if tag == 'title' and self._parts is not None:
+            self.titles.append(' '.join(''.join(self._parts).split()))
+            self._parts = None
+
+
+def validate_unique_titles(output, routes):
+    """Give every sitemap page its own <title>; Chinese resource pages need Chinese context."""
+    seen = {}
+    for route in routes:
+        titles = DocumentTitle((Path(output) / route.lstrip('/') / 'index.html').read_text(encoding='utf-8')).titles
+        assert len(titles) == 1 and titles[0], f'Page needs exactly one non-empty <title>: {route}'
+        assert titles[0] not in seen, f'Duplicate <title> on {seen.get(titles[0])} and {route}: {titles[0]}'
+        seen[titles[0]] = route
+        if re.fullmatch(r'/zh/resources/[a-z0-9-]+/', route):
+            assert re.search(r'[\u3400-\u9fff]', titles[0]), f'Chinese resource title has no Chinese text: {route}'
+
+
 def validate_source_browser_output(output):
     """Keep the interactive payload exact, bounded in scope, and freshly served."""
     output = Path(output)
@@ -683,9 +738,13 @@ def validate_source_browser_output(output):
         assert not browser_path.exists(), 'Stale browser source projection without a full export'
         return
     assert browser_path.is_file(), 'Browser source projection is missing'
+    if (output / PUBLISHED_FILENAME).exists():
+        full_path = output / PUBLISHED_FILENAME
     validate_source_browser(full_path.read_bytes(), browser_path.read_bytes())
     headers = (output / '_headers').read_text(encoding='utf-8')
     assert re.search(r'(?m)^/source-browser\.json\n[ \t]+Cache-Control: no-cache, must-revalidate[ \t]*$', headers), 'Browser source projection requires no-cache headers'
+    if full_path.name == PUBLISHED_FILENAME:
+        assert re.search(r'(?m)^/source-published\.json\n[ \t]+Cache-Control: no-cache, must-revalidate[ \t]*$', headers), 'Published selection requires no-cache headers'
 
 
 def validate_case_outputs(pages, resources):
@@ -869,6 +928,7 @@ def main():
     validate_paper_outputs(OUTPUT, pages)
     validate_entry_outputs(pages, resources, papers)
     validate_case_outputs(pages, resources)
+    validate_unique_titles(OUTPUT, pages)
     validate_artifact_links(OUTPUT, pages)
     validate_source_browser_output(OUTPUT)
     validate_stylesheet_references(OUTPUT)

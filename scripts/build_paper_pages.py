@@ -117,9 +117,21 @@ def bibtex_text(paper: dict) -> str:
     return '@' + kind + '{' + paper['id'] + ',\n' + ',\n'.join(lines) + '\n}\n'
 
 
-def scholarly_article(paper: dict, language: str) -> dict:
+def paper_entity_id(paper: dict, language: str, site_url: str = 'https://awesomerea.org') -> str:
+    """Name one ScholarlyArticle per language, shared by /papers/ and the paper's detail page."""
+    return f"{site_url.rstrip('/')}{'/zh' if language == 'zh' else ''}/papers/{paper['id']}/#paper"
+
+
+def paper_same_as(paper: dict) -> list[str]:
+    """Resolvable links built only from recorded DOI and arXiv fields, never inferred ones."""
+    links = [base + paper[field] for field, base in (('doi', 'https://doi.org/'), ('arxiv_id', 'https://arxiv.org/abs/'))
+             if paper.get(field)]
+    return [link for link in links if link != paper['url']]
+
+
+def scholarly_article(paper: dict, language: str, site_url: str = 'https://awesomerea.org') -> dict:
     article = {
-        '@type': 'ScholarlyArticle', '@id': paper['url'], 'url': paper['url'],
+        '@type': 'ScholarlyArticle', '@id': paper_entity_id(paper, language, site_url), 'url': paper['url'],
         'name': paper['title'], 'headline': paper['title'],
         'alternateName': paper['title_zh'],
         'author': [{'@type': 'Person', 'name': name} for name in paper['authors']],
@@ -138,6 +150,8 @@ def scholarly_article(paper: dict, language: str) -> dict:
         identifiers.append({'@type': 'PropertyValue', 'propertyID': 'arXiv', 'value': paper['arxiv_id']})
     if identifiers:
         article['identifier'] = identifiers
+    if paper_same_as(paper):
+        article['sameAs'] = paper_same_as(paper)
     return article
 
 
@@ -147,15 +161,14 @@ def paper_card(paper: dict, language: str, use_pro: bool) -> str:
     status = STATUS_LABELS[paper['publication_status']][1 if zh else 0]
     title = paper['title_zh'] if zh else paper['title']
     original_title = f'<p class="paper-original-title" lang="en">{escape(paper["title"])}</p>' if zh else ''
-    links = [f'<a class="paper-link paper-link-primary" href="{web_url(paper["url"])}" target="_blank" rel="noopener noreferrer">{label("Paper", "论文")}{icon("external", use_pro)}</a>',
-             f'<a class="paper-link" href="{web_url(paper["pdf_url"])}" target="_blank" rel="noopener noreferrer">PDF{icon("external", use_pro)}</a>']
+    links = [f'<a class="paper-link" href="{web_url(paper["pdf_url"])}" target="_blank" rel="noopener noreferrer">PDF{icon("external", use_pro)}</a>']
     detail_path = f"{'/zh' if zh else ''}/papers/{paper['id']}/"
     detail_label = label('Full entry: ' + title, '完整条目：' + title)
     links.append(f'<a class="paper-link entry-detail-link" data-entry-link="{paper["id"]}" href="{detail_path}" aria-label="{escape(detail_label, quote=True)}">{label("Full entry", "完整条目")}</a>')
     for field, en, cn in (('code_url', 'Code', '代码'), ('project_url', 'Project', '项目')):
         if paper.get(field):
             links.append(f'<a class="paper-link" href="{web_url(paper[field])}" target="_blank" rel="noopener noreferrer">{label(en, cn)}{icon("external", use_pro)}</a>')
-    links.append(f'<a class="paper-link" href="/papers/citations/{paper["id"]}.bib" download="{paper["id"]}.bib" type="application/x-bibtex">BibTeX ↓</a>')
+    citation_link = f'<a class="paper-link" href="/papers/citations/{paper["id"]}.bib" download="{paper["id"]}.bib" type="application/x-bibtex">BibTeX ↓</a>'
     metadata = [(label('Publication / posting date', '出版／提交日期'), formatted_date(paper.get('publication_date'), language, paper['year'])),
                 (label('Date source', '日期依据'), paper['date_basis_zh' if zh else 'date_basis'])]
     if paper.get('first_arxiv_date'):
@@ -170,11 +183,10 @@ def paper_card(paper: dict, language: str, use_pro: bool) -> str:
     details = ''.join(f'<dt>{escape(key)}</dt><dd>{escape(value)}</dd>' for key, value in metadata)
     source_links = ''.join(f'<li><a href="{web_url(url)}" target="_blank" rel="noopener noreferrer">{escape(url)}</a></li>' for url in paper['evidence_urls'])
     return f'''<article class="paper-card" id="{paper['id']}" data-paper-id="{paper['id']}">
-  <header><h3><a href="{web_url(paper['url'])}" target="_blank" rel="noopener noreferrer">{escape(title)}{icon('external', use_pro)}</a></h3>{original_title}<div class="paper-meta"><span class="paper-year">{paper['year']}</span><span class="paper-venue" lang="en">{escape(paper['venue'])}</span><span class="paper-status paper-status-{paper['publication_status']}">{status}</span></div><p class="paper-authors" lang="en">{escape('; '.join(paper['authors']))}</p></header>
+  <header><h3><a href="{web_url(paper['url'])}" target="_blank" rel="noopener noreferrer">{escape(title)}{icon('external', use_pro)}</a></h3><div class="paper-meta"><span class="paper-year">{paper['year']}</span><span class="paper-venue" lang="en">{escape(paper['venue'])}</span><span class="paper-status paper-status-{paper['publication_status']}">{status}</span></div></header>
   <p class="paper-description">{escape(paper[f'description_{language}'])}</p>
-  <div class="paper-scope"><h4>{label('Scope & limitations', '研究范围与局限')}</h4><p>{escape(paper[f'scope_limitations_{language}'])}</p></div>
   <nav class="paper-links" aria-label="{escape(label('Links for ' + paper['title'], title + '的相关链接'), quote=True)}">{''.join(links)}</nav>
-  <details class="paper-details"><summary>{label('Bibliographic details & sources', '引文详情与来源')}</summary><h4>{label('Why it fits this collection', '与本合集的关联')}</h4><p>{escape(paper[f'why_fits_{language}'])}</p><dl>{details}</dl><p>{escape(paper['metadata_notes_zh' if zh else 'metadata_notes'])}</p><h4>{label('Primary sources', '一手来源')}</h4><ul>{source_links}</ul><p class="paper-review-note">{label('Source review only; experiments were not rerun for this collection.', '本合集仅做来源复核，未重新运行论文实验。')}</p></details>
+  <details class="paper-details"><summary>{label('Scope & sources', '适用范围与来源')}</summary><div class="paper-scope"><h4>{label('Scope & limitations', '研究范围与局限')}</h4><p>{escape(paper[f'scope_limitations_{language}'])}</p></div><h4>{label('Authors & citation', '作者与引文')}</h4>{original_title}<p class="paper-authors" lang="en">{escape('; '.join(paper['authors']))}</p><p class="paper-citation-download">{citation_link}</p><h4>{label('Why it fits this collection', '与本合集的关联')}</h4><p>{escape(paper[f'why_fits_{language}'])}</p><dl>{details}</dl><p>{escape(paper['metadata_notes_zh' if zh else 'metadata_notes'])}</p><h4>{label('Primary sources', '一手来源')}</h4><ul>{source_links}</ul><p class="paper-review-note">{label('Source review only; experiments were not rerun for this collection.', '本合集仅做来源复核，未重新运行论文实验。')}</p></details>
 </article>'''
 
 
@@ -280,8 +292,8 @@ def build_paper_pages(
             '@context': 'https://schema.org',
             '@graph': [
                 {'@type': 'CollectionPage', '@id': canonical, 'url': canonical, 'name': title, 'description': description, 'inLanguage': locale, 'mainEntity': {'@id': canonical + '#paper-list'}},
-                {'@type': 'ItemList', '@id': canonical + '#paper-list', 'numberOfItems': len(ordered), 'itemListElement': [{'@type': 'ListItem', 'position': index + 1, 'url': canonical + '#' + paper['id'], 'item': {'@id': paper['url']}} for index, paper in enumerate(ordered)]},
-                *(scholarly_article(paper, language) for paper in ordered),
+                {'@type': 'ItemList', '@id': canonical + '#paper-list', 'numberOfItems': len(ordered), 'itemListElement': [{'@type': 'ListItem', 'position': index + 1, 'url': canonical + paper['id'] + '/', 'item': {'@id': paper_entity_id(paper, language, site_url)}} for index, paper in enumerate(ordered)]},
+                *(scholarly_article(paper, language, site_url) for paper in ordered),
             ],
         }
         # The directory belongs to the site that only the homepages define.
@@ -289,7 +301,7 @@ def build_paper_pages(
         structured = json.dumps(graph, ensure_ascii=False, separators=(',', ':')).replace('<', '\\u003c').replace('>', '\\u003e').replace('&', '\\u0026')
         icon_css = f'<link rel="stylesheet" href="{escape(icon_stylesheet_href, quote=True)}">' if use_pro else ''
         document = f'''<!doctype html>
-<html lang="{locale}"{(' data-icon-set="fontawesome"' if use_pro else '')}>
+<html lang="{locale}" data-paper-layout="compact"{(' data-icon-set="fontawesome"' if use_pro else '')}>
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -310,7 +322,7 @@ def build_paper_pages(
 </head>
 <body>
 <a class="skip-link" href="#papers-content">{label('Skip to the papers', '跳到论文目录')}</a>
-<header class="site-header"><div class="shell header-inner"><a class="wordmark" href="{home}" aria-label="{label('AwesomeREA.org home', 'AwesomeREA.org 首页')}"><span class="brand-mark" aria-hidden="true">r<span>↗</span></span><span>Awesome<span class="wordmark-rea">REA</span><span class="wordmark-domain">.org</span></span></a><nav class="header-nav" aria-label="{label('Main navigation', '主导航')}"><a class="papers-language" href="{counterpart}" lang="{label('zh-CN', 'en')}" hreflang="{label('zh-CN', 'en')}" aria-label="{label('Switch to Simplified Chinese', '切换为英文')}">{icon('globe', use_pro)}<span>{label('简体中文', 'English')}</span></a><a class="github-link" href="{web_url(repository_url)}" target="_blank" rel="noopener noreferrer" aria-label="GitHub">{icon('github', use_pro)}<span>GitHub</span></a></nav></div></header>
+<header class="site-header"><div class="shell header-inner"><a class="wordmark" href="{home}" aria-label="{label('AwesomeREA.org home', 'AwesomeREA.org 首页')}"><img class="brand-mark" src="{escape(favicon_href, quote=True)}" alt="" width="33" height="33" aria-hidden="true"><span>Awesome<span class="wordmark-rea">REA</span><span class="wordmark-domain">.org</span></span></a><nav class="header-nav" aria-label="{label('Main navigation', '主导航')}"><a class="papers-language" href="{counterpart}" lang="{label('zh-CN', 'en')}" hreflang="{label('zh-CN', 'en')}" aria-label="{label('Switch to Simplified Chinese', '切换为英文')}">{icon('globe', use_pro)}<span>{label('简体中文', 'English')}</span></a><a class="github-link" href="{web_url(repository_url)}" target="_blank" rel="noopener noreferrer" aria-label="GitHub">{icon('github', use_pro)}<span>GitHub</span></a></nav></div></header>
 <main id="papers-content" class="shell papers-main">
   <nav class="papers-breadcrumbs" aria-label="{label('Breadcrumb', '当前位置')}"><a href="{home}">{label('Home', '首页')}</a><span aria-hidden="true">/</span><span aria-current="page">{label('Reverse engineering papers & benchmarks', '逆向工程论文与评测基准')}</span></nav>
   <section class="collection-intro papers-intro" aria-labelledby="papers-title"><p class="eyebrow">{label('RESEARCH & EVIDENCE', '研究与证据')}</p><h1 id="papers-title">{label('Reverse engineering papers & benchmarks', '逆向工程论文与评测基准')}<span class="title-dot" aria-hidden="true">.</span></h1><p>{escape(intro)}</p></section>
@@ -319,11 +331,14 @@ def build_paper_pages(
   <form id="paper-search" class="paper-search" role="search" aria-label="{label('Search research papers', '搜索研究论文')}" hidden>
     <div class="paper-search-field paper-search-query"><label for="paper-query">{label('Search papers', '搜索论文')}</label><input id="paper-query" name="q" type="search" maxlength="240" autocomplete="off" placeholder="{label('Title, author, keyword, DOI or arXiv ID', '标题、作者、关键词、DOI 或 arXiv 编号')}" aria-describedby="paper-search-help"></div>
     <div class="paper-search-field"><label for="paper-target">{label('Target', '目标')}</label><select id="paper-target" name="target"><option value="all">{label('All targets', '全部目标')}</option>{target_options}</select></div>
+    <details class="paper-search-more" id="paper-more-filters"><summary>{label('More filters', '更多筛选')}</summary><div class="paper-search-options">
     <div class="paper-search-field"><label for="paper-status">{label('Publication status', '发表状态')}</label><select id="paper-status" name="status"><option value="all">{label('All statuses', '全部状态')}</option>{status_options}</select></div>
     <div class="paper-search-field"><label for="paper-year">{label('Year', '年份')}</label><select id="paper-year" name="year"><option value="all">{label('All years', '全部年份')}</option>{year_options}</select></div>
-    <div class="paper-search-field paper-layout-field"><label for="paper-layout">{label('Layout', '布局')}</label><select id="paper-layout"><option value="cards">{label('Cards', '卡片')}</option><option value="compact">{label('Compact list', '紧凑列表')}</option></select></div>
-    <button id="paper-clear" class="button button-outline" type="button">{label('Clear filters', '清除筛选')}</button>
+    <div class="paper-search-field paper-layout-field"><label for="paper-layout">{label('Layout', '布局')}</label><select id="paper-layout"><option value="compact">{label('Compact list', '紧凑列表')}</option><option value="cards">{label('Cards', '卡片')}</option></select></div>
+    </div>
     <p id="paper-search-help" class="paper-search-help">{label('Search in English or Chinese. Filters match every listed target; papers stay in their main section.', '支持中英文搜索。筛选匹配全部目标，论文仍按主要目标分组。')}</p>
+    </details>
+    <button id="paper-clear" class="button button-outline" type="button">{label('Clear filters', '清除筛选')}</button>
     <p id="paper-results" class="paper-search-results" role="status" aria-live="polite" aria-atomic="true"></p>
   </form>
   <div id="paper-empty" class="paper-search-empty" hidden><p>{label('No papers match these filters.', '没有符合这些条件的论文。')}</p><button id="paper-empty-reset" class="button button-outline" type="button">{label('Clear filters and show all papers', '清除筛选并显示全部论文')}</button></div>

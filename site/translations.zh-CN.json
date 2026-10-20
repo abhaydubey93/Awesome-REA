@@ -4093,5 +4093,203 @@
       "按文中公布的逐次运行表，Frontkick 在八次运行中有六次完全解出，Rikugan 一次也没有；两者平均得分约为 86 对 31（满分 100），平均 token 用量约为 60 万对 95 万，文章将其概括为 token 约减半、成功得分接近三倍。在 AES-128-CBC 上，Rikugan 反复尝试调用未安装的 Python 密码库，失败后改为手工实现算法，而 Frontkick 的提示词列出了已安装的库。作者因此认为结果是由提示词设计造成的平局，并不能证明 CodeAct 更优，并提议在对齐提示词后重新测试。",
       "两个任务、一个模型、每个智能体八次运行，不足以得出关于任一智能体、关于工具调用与代码执行两类设计，或关于 CREBench 其他设置的普遍结论。CREBench 基准本身由另一条论文条目收录；文章未报告使用 REA，也不涉及重建。本合集阅读了该文章、Rikugan 的 README 与 CREBench 的 README，未运行任一智能体或该基准。"
     ]
+  },
+  "rea-workspace-template": {
+    "name": "REA 工作区模板",
+    "requirements": [
+      "所审阅的固定版本是该仓库唯一的提交，日期为 2026-10-17。使用前需安装 Git、Python 3.11+、Node.js 与 npm，以及 Claude Code 或 Codex；README 安装其验证过的 rea-agents 6.4.0，随附的 .mcp.json 与 .codex/config.toml 均启动本机已安装的 rea --mcp。模板不提供 REA 程序、反编译器或模型配置；它借鉴了一篇第三方帖子的工作思路，但未采用该帖关于模型、成本或耗时的说法。",
+      "分析引擎需另行准备：APK 的 DEX 分析需要 JADX 与完整 JDK，原生目标需要按 REA 安装文档配置 Ghidra、Hopper 或 IDA 等 provider，商业引擎需自备许可证；源码、JS／Electron 与已保存 HAR 的流程无需原生反编译器。提示词涵盖源码地图、从已脱敏 HAR 重建 OpenAPI 3.1 与 TypeScript 客户端、JavaScript、原生二进制（每轮最多深入 30 个函数）、APK、未知文件格式及会话交接；它们是任务模板，不是已完成的分析。",
+      "scripts/workspace.py 将单个目标复制到被 Git 忽略的 target/ 目录且不运行它，记录 SHA-256 基线、把文件设为 0444、拒绝软链接和特殊文件，并创建可写的 work/ 副本；verify 会报告被修改、新增或缺失的文件。sanitize_har.py 重新生成只保留结构的 HAR 副本，去除 header 取值、cookie、URL 凭据与查询参数，并把 JSON 取值替换为占位值。README 提醒主机名、路径和字段名仍可能识别用户，需要人工复查。",
+      "docs/VALIDATION.md（2026-10-17）报告：12 项标准库测试通过，rea mcp doctor 运行健康并列出 170 个工具，并在 Node 24.18.0 与 Python 3.12.7 下用 REA 静态分析了一个合成 JavaScript 应用和一个合成 HAR。文档将客户端重启后的 MCP 接入、真实 APK 与原生目标、真实 HAR 的匿名化以及运行时工作列为未验证，冒烟测试输出也未提交。本合集只阅读了这些文件，未运行脚本、测试或 REA。",
+      "README 说明 Claude Code 权限规则、只读文件权限和 SHA-256 基线都不构成隔离边界，需要强隔离时建议使用只读挂载和受控网络。AGENTS.md 默认只做静态分析，仅在任务获得授权时才运行样本、连接设备或访问目标服务。仓库没有许可证文件，复用条款未作说明；REA、分析引擎、客户端与分析目标各有其条款。"
+    ]
+  },
+  "opendmcufirm-wii-u-dmcu-firmware-case": {
+    "name": "OpenDMCUFirm：重新实现的 Wii U DMCU 显示固件",
+    "requirements": [
+      "所审阅的 main 提交没有发行版或标签。README 称这是仍在开发中的重新实现，预计会有问题；近期提交为寄存器和状态字段命名，其中一次提交称某个函数已完全一致，此前缺失的一个变量曾在 240p 游戏中引发问题。link.ld 警告 Nintendo 的 nn_cmpt 会直接向 DMCU 的 ERAM 中段写入数值，可能覆盖代码。",
+      "构建只使用项目自己的 C 源码，不需要原始固件。运行需要装有 Aroma 插件环境和 evWii 的 Wii U：将 dmcu.d.hex 放入 SD 卡的 wiiu 文件夹，再用 evWii 的“Load DMCU Firmware from SD Card”选项在 Wii 模式下载入。",
+      "编译器为 GNU 68HC11/12 软件包中的 GCC 3.3.6-m68hc1x-20060122。Dockerfile 在 Ubuntu 24.04 上用经校验和核对的 Windows 安装程序在 Wine 下配置该工具链，也提供预构建的 garyodernichts/dmcubuilder 镜像；再由 Python 3 运行 hexconv.py，将 S19 输出转换为 DMCU 的 hex 格式。",
+      "CI 只在该容器中构建 dmcu.d.hex 并作为构件上传。所审文件中没有测试套件、硬件测试记录，也没有与原厂固件行为的比较；本次审阅未构建或运行任何程序。",
+      "仓库没有许可证文件，GitHub 也未识别出许可证；项目源文件只注明属于 OpenDMCUFirm。随附的 68HC11 与 stdint 头文件保留各自的 FSF GPL 和 BSD 声明，evWii 采用 GPL-2.0，原始固件仍受其自身权利约束。所审来源未确立 AI 或 REA 的使用。"
+    ]
+  },
+  "cod4-rewrite-reconstruction-case": {
+    "name": "CoD4 Rewrite：Rust/Bevy 游戏重建",
+    "requirements": [
+      "需要 Windows、支持 Vulkan 的显卡及自有 CoD4 1.7 安装。可选的《黑色行动》《现代战争2》《战争世界》内容需要对应的独立安装；项目不提供游戏素材。",
+      "当前源码已接入多人依赖及 NetplayPlugin，尽管 README 仍将联网列为待完成。本次未确立完整线上对局行为，也未确认兼容原版 CoD4 服务器。",
+      "渲染和玩法含有刻意扩展，不能据此认定与原游戏等价。本次未运行游戏、启动器、中继服务或测试。",
+      "Cargo 声明 MIT OR Apache-2.0，游戏与多人模块继承该声明。所审阅文件树中未找到独立的许可证文本。"
+    ]
+  },
+  "libd2-engine-core-reconstruction-case": {
+    "name": "libd2：《暗黑破坏神II》1.14d 引擎组件库",
+    "requirements": [
+      "构建需要 Zig 0.16.0。这些是模块化引擎库，并非完整可玩的客户端；基础生成使用内嵌数据和测试样本。",
+      "MIT 覆盖 Zig 源码，但明确排除随仓库提供、由 Blizzard 游戏派生的二进制数据和地图样本；仓库并非不含游戏派生素材。",
+      "作者报告五个噩梦难度种子及两个保留种子的逐格对照，另以 200 个种子的三个难度进行逐关 CRC 检查。有限语料不能证明所有种子或整个引擎等价。",
+      "game 和 net 包依据恢复出的规则及报文布局检查，而非原服务器运行对照；存档、物品与路径检查的证据深度不同。本次未独立复现实验。"
+    ]
+  },
+  "underworld-exhumed-case": {
+    "name": "Underworld Exhumed：重建 Ultima Underworld I 与 II",
+    "requirements": [
+      "原生移植面向 macOS、Windows 与 Linux。运行及对照原版检查需要自备匹配的游戏文件（README 面向 GOG 版本）；字节匹配构建还需文档指定的 Turbo C++ 1.01 与 TASM 2.0 输入。仅编译原生移植本身不需要游戏数据。",
+      "MIT 许可涵盖项目自有工具、文档及新增注释／结构；NOTICE 明确不授予原游戏及派生游戏代码的权利。可选 MT-32 播放需要另行取得的 ROM。",
+      "录制会话与例程测试属于上游的有界证据，并非独立验证的整款游戏等价结果。完整测试需要公开仓库未提供的授权输入。本次未构建、运行或对比游戏，未确立 REA 集成。"
+    ]
+  },
+  "linewars-ii-sdl-case": {
+    "name": "LineWars II：可移植的 SDL3 重建版",
+    "requirements": [
+      "使用 C99、CMake 3.16+ 与 SDL3 构建 Windows/Linux 版本；已读构建说明指定 SDL 3.4.12，并要求与游戏使用同一编译器。这是独立 LineWarsII-DOS 重建项目的移植，并不声称拥有原版源码。",
+      "重建及移植源码采用 PolyForm Noncommercial 1.0.0。NOTICE 记录原作者 Patrick Aalto 于 2026 年 7 月 16 日允许原游戏材料以免费软件形式分发，但未授予商业使用许可；SDL 保留独立的 zlib 许可。",
+      "上游报告了渲染器和菜单比较，以及捕获的 PCM 电平与 DOS 参照相差约 10% 以内；高分辨率渲染改变了表现。本次未下载游戏二进制或素材，未运行移植版、模拟器或验证套件，未确立 REA 集成。"
+    ]
+  },
+  "bfm-decomp-case": {
+    "name": "BFM-decomp：Brave Fencer Musashi 匹配反编译",
+    "requirements": [
+      "需要自备美版 SLUS-00726 光盘转储、Linux/WSL2、Python 3.12 及文档指定的 GCC 2.7.2/MIPS 固定工具链；可选 PsyQ SDK 对象需另行提供。本次未下载光盘、SDK 或编译器包。",
+      "AGPL-3.0 适用于项目工具与文档；src/NOTICE.md 未对重建游戏代码授予许可，原作权利属于 Square／Square Enix，第三方组件保留各自许可。",
+      "218 个二进制的匹配规约属于上游声明，其验证步骤及 2026 年 9 月 7 日完整运行记录提供依据；该日志对应更早的代码树，并非本次复核的 HEAD。SDK／汇编例外及未完成的可读性工作仍有明确记录；公开无 ROM CI 仅审查和编译，不能进行原始字节比较。本次未构建或运行，未确立 REA 集成。"
+    ]
+  },
+  "logic-lens": {
+    "name": "Logic-Lens：实验性 JavaScript 源码理解工具",
+    "requirements": [
+      "README 要求 Node.js 18 或更新版本。package 版本 1.1.0 声明依赖 TensorFlow.js、其原生 Node 绑定与 Acorn；初始化先尝试原生 TensorFlow 绑定，再回退到纯 JavaScript CPU 后端。",
+      "公式预测需要在本地生成合成数据并训练。预测器所需的模型权重与元数据未包含在所审阅的仓库树中；本次审阅未确认可用的预训练模型或成功的本地运行环境。",
+      "预测从预设公式目录中选择类别。README 的准确率和置信度示例来自作者报告，不能证明任意未见函数上的正确性；启发式意图与质量报告也不是行为等价证明。",
+      "独立的语义测试定义覆盖结构、启发式模式和报告格式。CONTRIBUTING 提到 npm test，但 package.json 没有 test 脚本。本次来源审阅未执行测试、训练或推理。",
+      "README 与 package 元数据声明 MIT，但所审阅提交没有 LICENSE 文件；评估复用条件时需保留这一区别。"
+    ]
+  },
+  "android-security-toolkit": {
+    "name": "Android Security Toolkit：APK 静态初步分析",
+    "requirements": [
+      "需要 Python 3 标准库、另行安装的 apktool 与 strings／binutils，以及获得授权的本地 APK。清单分析依赖 apktool 成功解码。",
+      "字符串与清单规则匹配需人工核验；单个符号、权限或标志不能证明存在可利用的执行路径。README 将这一步静态初筛与人工代码审阅、动态／原生分析及依赖库 CVE 匹配区分开来。",
+      "所审阅的两文件仓库没有自动化测试或版本化验证样本。README 示例输出属于作者提供的说明，不是独立复现结果。本次审阅未扫描 APK。",
+      "README 声明 MIT，但所审阅的仓库树没有独立的许可证文件。"
+    ]
+  },
+  "littlebird-static-rebuild-case": {
+    "name": "Littlebird.ai 静态首页重建",
+    "requirements": [
+      "捕获范围仅为首页及五个嵌入式演示；定价、博客等未捕获路由缺失，若干下载控件为占位链接。它不复现 Littlebird 桌面／移动应用或后端。",
+      "交付页面采用原生 HTML/CSS/JavaScript，无构建步骤；文档中的本地预览与资源完整性测试使用 Node.js 20+ 及其标准库。",
+      "在固定版本输入上执行原有 npm test，五项检查全部通过。检查仅涉及本地资源引用、基本文件与嵌入页面完整性，以及对被忽略捕获目录的独立性；不证明视觉相似性、可访问性合规、交互正确性或与原网站等价。",
+      "MIT 文件覆盖仓库代码；README 明确指出捕获的第三方字体、图像、标记与文案不属于该授权，并将项目界定为非官方学习重建。后续完整性检查将固定版本的站点文件保留在私密测试快照中，未进行渲染；未获取历史 recon 数据。"
+    ]
+  },
+  "akiselev-ilspy-cli": {
+    "name": "ilspy-cli：面向 Agent 的定向 .NET 反编译",
+    "requirements": [
+      "构建需要 Rust 工具链与 .NET 8 SDK；build.rs 调用 dotnet publish 构建 C# 桥接层，其项目固定使用 ICSharpCode.Decompiler 9.1.0.7988。反编译需要 .NET 8 运行时，detect 命令走独立的纯 Rust 路径。",
+      "方法选择仅在指定类型内取第一个同名方法，不按签名区分重载；源码搜索会跳过反编译抛异常的类型，因此空结果不证明整个程序集中没有所查模式。",
+      "集成测试构建一个小型 SampleLib 样例并检查命令输出，包括简单的 Add 方法。本次只阅读测试源码与跨平台 CI 定义，未构建、托管 .NET、执行样例或反编译；不据此断言普遍准确性或行为等价。",
+      "README 与 Cargo 元数据声明 GPL-3.0，但完整固定提交中没有单独的 LICENSE／COPYING 正文；上游 ILSpy 引擎与用户提供的程序集仍适用各自的许可条件。"
+    ]
+  },
+  "swe1r-assets-unity": {
+    "name": "swe1r-assets-unity：Racer 模型块编辑器样例",
+    "requirements": [
+      "README 明确说明当前仅为样例项目；package 与样例固定使用 Unity 2022.3.30f1，packages.config 引用 SWE1R.Assets.Blocks 0.0.1-alpha.15 和 ByteSerialization 0.0.1-alpha.9。所需游戏块文件从用户选择的本地游戏数据目录读取。",
+      "编辑器与导入／导出类实现了模型操作；纹理、样条与精灵区域当前仅显示文件名，没有同等操作控件，样条导入／导出子类为空。不能将此样例写成支持全部资产类型的完整工具。",
+      "Test Re-Export 使用 SequenceEqual 比较原模型项与重新序列化后的字节数组，Test Re-Export All 遍历已加载的模型块。README 宣称未修改数据可逐字节往返，但所审阅树中没有固定语料及结果报告证明其适用于所有游戏版本或任意编辑；本次未运行 Unity 项目或加载游戏资产。",
+      "仓库代码包含 MIT LICENSE 和源码 SPDX 标记；该代码许可不能证明原游戏数据可再分发。本次未下载游戏块、截图、纹理或其他二进制资产。"
+    ]
+  },
+  "react-decode": {
+    "name": "React-Decode",
+    "requirements": [
+      "所审阅的包声明 Node.js >=20，但锁定的 Babel 8 依赖要求 ^22.18.0 或 >=24.11.0。lock 固定 parser/traverse 8.0.7、generator/types 8.0.6 和 Prettier 3.9.10；本次未测试运行兼容性。",
+      "输入需为有权分析的 JavaScript 包、HTML、source map 或 URL。URL 模式会获取脚本、分块和映射文件；源码提取需要 sourcesContent 中的字符串，仅有映射坐标并不足够。",
+      "API 与值推断具有范围上限且依赖启发式规则：请求封装发现最多迭代六轮，动态值可能仍是占位符，推断的请求／响应字段不等于已验证的 API 规范。文档明确不处理控制流平坦化和字符串数组混淆；未建立完整原始源码或应用／后端行为恢复。",
+      "MIT LICENSE 与 package.json 一致，但 package.json 标记 0.1.0，而根 lock 元数据标记 1.0.0 与 ISC。这些是所审阅的包声明，并非已核实的发布版本；输入代码仍受其自身权利约束。",
+      "报告可能包含输入中的凭据形态字符串，--json 会原样输出而不遮蔽。本次阅读了五个合成样例 node:test 定义，未运行测试、安装依赖、执行工具或目标。"
+    ]
+  },
+  "wasmlens": {
+    "name": "WasmLens：探索性 WebAssembly 检查",
+    "requirements": [
+      "所审阅的包声明版本 0.1.0、Python >=3.10，依赖 Typer、Rich、FastAPI、Uvicorn、Pydantic、NetworkX 与 python-multipart；pytest/httpx 属于开发依赖。源码包含 MIT LICENSE。依赖声明了版本下限，但本次未建立锁文件或经测试的环境。",
+      "info、disasm 和 decompile 命令通过同一解析器读取用户提供的 .wasm 文件。解析器没有 0xFD SIMD 解码分支，可能将不支持的操作码标记为 unknown；本次来源复核不能确认 README 所称的广泛 WebAssembly 2.0 支持。",
+      "WAT 风格模块列表不是无损重汇编格式：数据段仅保留最多 32 字节的预览，活动数据段的偏移使用占位符。C 风格重建器对未处理指令没有通用后备处理，仅取首个返回类型，并以注释表达分支标签；未建立输出可直接编译或与原行为等价。",
+      "独立模拟器不在本条目支持范围内。所审阅的分派代码缺少浮点算术、间接调用等操作的处理器，遇到未处理指令时可能推进程序计数器而不实现其效果，不应据此充当完整运行时或等价性参照。",
+      "本次阅读了解析器与反编译器测试定义；基于样例的字符串断言不能证明普遍正确性。未安装包、下载内置 .wasm、执行、反编译或运行测试，也未独立复现 README 中的测试数量／覆盖率徽章。只应提供有权分析的模块。"
+    ]
+  },
+  "submitgame-awesome-decomp-games": {
+    "name": "Awesome Decomp Games：附评分、每日刷新的游戏重建项目目录",
+    "requirements": [
+      "所审阅的 README 生成于 2026-10-16，报告共 2,118 个项目、涵盖 1,829 款游戏，分为 646 个反编译、520 个静态重编译、230 个源码移植、206 个引擎重制、107 个反汇编、53 个浏览器移植，以及工具、模组和 347 个不活跃条目等分类。这些是该目录自己的计数，不是经过核实的项目数。",
+      "每个条目的可玩性、完成度、活跃度和热度四项 1–5 分子评分由 scripts/build.py 依据 GitHub 元数据、decomp.dev 进度和描述关键词计算。来源目录标记为 AI 生成的项目带 ⚠️ 标记并扣 0.2 分。评分或分类并不构成一致性、完成度或运行检查；请查看各项目自己的来源。",
+      "条目来自所列的上游目录与登记站点，并合并 data/additions.json 和 data/overrides.json 中的增补与修正。GitHub Actions 定时任务每天 03:17 UTC 运行，刷新元数据、检查链接和浏览器游玩地址，并提交重新生成的文件，因此摘要仍可能落后于所链接的项目。",
+      "该目录声明不托管 ROM、ISO、BIOS 文件或游戏素材，贡献规则也拒绝收录指向这些内容的链接及附带游戏数据的仓库；多数所列项目需要使用者自有游戏副本中的文件。部分浏览器条目标注无需使用者文件即可直接游玩。目录未说明各网站的权利依据，本合集也未审阅这些网站。",
+      "目录与数据采用 CC0 1.0，脚本和网站代码采用 MIT；所链接项目和游戏截图保留各自权利。条目中包含两个 REA 展示仓库，但该目录并未确立与 REA 的隶属关系。"
+    ]
+  },
+  "snowboardkids-matching-decomp-case": {
+    "name": "Snowboard Kids：智能体辅助的 N64 匹配反编译",
+    "requirements": [
+      "2026-08-26 的文章报告游戏已 100% 反编译：每个函数都有编译后机器码完全一致的 C 实现，只保留少量本就以手写汇编为原始源码的系统库代码。文章称仓库从 2026 年 5 月 28 日开始，到 2026 年 8 月 19 日完成最后一个匹配函数，共 2,145 个函数；Snowboard Kids 2 则用了 596 天、共 2,995 个函数。README 称日版目前仍由提取出的汇编构建；reports/jp-exact-functions.md 列出 120 个已由 C 编译的日版函数。",
+      "构建需要使用者自有的北美版或日版 ROM，分别命名为 snowboardkids.z64 或 snowboardkids.jp.z64，且 SHA1 须与 README 所列一致；构建会从中提取汇编和素材，放入 git 忽略的目录。README 称仓库不含任何游戏素材或汇编，但所审阅的提交中仍跟踪 libultra 的 .s 文件和一张包装盒图片。CI 从另一个私有仓库检出基础 ROM 来构建两个区域版本。",
+      "经验证的宿主为 x86-64 Linux，需要 make、git、Python 3、clang、wget、tar 和 binutils-mips-linux-gnu；文档提供了 macOS 配置，但仍待验证。make -C tools 会配置重编译的 IDO 5.3 工具链（也可用 IDO_DIR 指向其他安装），子模块提供 asm-processor、asm-differ 和 decomp-permuter，可选的匹配辅助工具需安装 requirements.txt。",
+      "tools/build-and-verify.sh 会针对所选区域执行清理、提取、构建，并将输出 ROM 的 SHA1 与原 ROM 比对；reports/region-functions.md 通过逐字节或地址归一化匹配，将 2,110 个美版函数中的 1,293 个与日版 ROM 对应起来。文章介绍了智能体逐个函数编写 C 代码、用脚本对每个未匹配函数运行 m2c、为 permuter 设定时限以及四个并行工作树的做法；文章自称对 GPT-5.5/5.6、Claude 4.5、Fable 和 GLM 5.2 的比较并不科学。本目录未构建或校验任何 ROM。",
+      "作者估计约 4.8% 的匹配提交有专家介入，并说明该数字不衡量投入的工作量；作者感谢多位贡献者完成了许多困难的 IDO 匹配，并认为把提速全部归功于大模型是严重的过度简化。100% 匹配后，仍有自动生成的名称、未知的结构字段和数据需要整理。所审阅的提交中没有许可证文件，README 声明不以任何商业用途为目标，也未提及使用 REA。"
+    ]
+  },
+  "rea-reconstruction-companion": {
+    "name": "REA Reconstruction Companion 重建配套技能",
+    "requirements": [
+      "所审阅的固定版本对应包版本 1.3.27；仓库创建于 2026-10-15，v1.3.27 版于 2026-10-18 发布。核心是 Agent Skills 格式的纯 Markdown 指令及参考指南。它不提供分析引擎，实际调查需依靠 REA 工具或现成的 REA 证据。README 说明了 Codex 与 Claude Code 的安装方式，其他智能体可通过显式指定的技能目录使用。",
+      "安装程序和可选的每周更新助手需 Node.js 20+，只使用其标准库；构建发布包需 Python 3.10+。选择 --integration on 时，安装程序会在所选 REA SKILL.md 的标记注释之间写入内容并保留备份；选择 off 则不改动 REA。README 提醒，REA 6.5.0 的 doctor 会把改动后的技能报告为过期，rea setup 或 rea update 也可能移除这段内容。",
+      "指令禁止可能产生额外费用的操作，把恢复出的目标材料视为不可信证据，并要求区分观察、推断、未知项与设计选择。这些只是对宿主智能体的指令，并无强制效力：README 说明它们不会覆盖客户端策略、授予工具权限或保证模型遵从。",
+      "CI 在 Windows、macOS 和 Linux 上以 Node 20、22、24 运行安装程序、包完整性与评估框架测试，然后构建并校验发布归档。评估套件提供 Pocket Tasks、一个由所附源码构建的 5,120 字节 .NET Parcel.exe、一个浏览器应用及若干文件格式等测试对象，配有字面预期值和人工审阅评分标准。其示例明确说明已接触源码且由同一智能体完成；未记录真实模型试验、独立评估或跨宿主认证，本合集也未运行任何内容。",
+      "原创代码、指令、测试和文档采用 MIT，一小部分 Wycheproof 测试数据采用 Apache-2.0。仓库不包含 REA 代码；REA、目标应用和模型宿主仍受各自条款约束。Pocket Tasks 重建示例在本合集中另有条目。"
+    ]
+  },
+  "reflecticon-224-lexicon-emulation-case": {
+    "name": "reflecticon-224：在模拟硬件上运行 Lexicon 224 混响器固件",
+    "requirements": [
+      "所审阅的固定版本提交于 2026-10-13，仓库创建于 2026-09-28。README 称项目仍在开发，文档稍后补充，因此 Makefile 是主要导览：它串联原理图、门级／板级／指令集级模型、C++ 模拟器、模拟电路模型、WebAssembly 页面与插件。可识别的固件组合包括多个 224 版本、224X v8.1 以及 224XL v8.1A 与 v8.21。",
+      "使用者需自备 Lexicon ROM 芯片文件，README 说明这些文件只留在本机。页面与插件通过 SHA-256 识别已知组合，仓库只列出这些哈希，不含 ROM 字节。固件检查读取 LEXICON_FIRMWARE 文件夹（每个组合一个子文件夹），缺少时跳过。网页演示确实附带按特定固件组合整理的程序名称与推子取值目录。",
+      "make check 运行无需固件的检查；缺少所需工具（如 Verilator 5 或 KiCad 命令行工具）的目标会报告为已跳过。页面用 Emscripten 5.0.1 构建并发布到 GitHub Pages。插件用 CMake 与 JUCE 8.0.14 构建为 macOS AU、VST3 与独立程序，CI 用 auval 验证 AU；带标签的 v0.1.0-alpha.1 预发布版是临时签名的 macOS 11+ 构建，不含任何固件。",
+      "make check-firmware 用使用者的 ROM 逐层运行检查，其中包括门级的维修手册特征值表。资格检查把模拟器的 CPU 状态、控制存储写入与 DAC 采集结果同板级运行结果比较，qualified.json 保存两个场景的预期哈希。逐字节一致性检查把 WebAssembly 构建与原生参考实现逐位比较。这些项目检查都需要 ROM；本合集未运行其中任何一项。",
+      "GitHub 未检测到仓库许可证，因此除浏览外未授予其他使用权；所含 8080 核心带有 zlib 与 MIT 声明。README 声明与 Lexicon 及其权利人无关，原厂固件仍归其所有。在一份相关报告的 Hacker News 讨论中，一位自称该仓库作者的评论者提到付费请人描绘原理图，并让 LLM 智能体把原理图转为 Verilog；未提及使用 REA。"
+    ]
+  },
+  "sa3-marun-ai-decomp-case": {
+    "name": "Sonic Advance 3：AI 辅助匹配单个敌人模块",
+    "requirements": [
+      "文章发布于 2025 年 5 月 20 日，副标题称其为持续进行的研究，只涉及一个模块：社区 Sonic Advance 3 GBA 匹配反编译项目中的敌人 Marun。工作始于 2025 年 1 月 6 日；第 4 号拉取请求以 494 行 C 代码替换了该模块 1,154 行的汇编文件，并于 1 月 31 日合并，文章称这相当于项目总进度的 0.3%。这是一次有限范围的贡献研究，而非整部游戏的反编译。",
+      "构建 SA3 反编译项目需要使用者自有的欧版 Sonic Advance 3 ROM，命名为 baserom_sa3.gba，且须与 README 以 SHA1 标明的版本一致，另需足够新的 agbcc 编译器分支。该研究本身在 decomp.me 的 scratch 中进行，把汇编、相似的已反编译函数及相关结构体放进给 Claude Sonnet 3.5 和 DeepSeek R1 的提示词。",
+      "匹配百分比来自 decomp.me：文章报告 Sonnet 3.5 首次尝试达到 96%，但之后的提示词未能复现；DeepSeek R1 的一次结果为 74%，把 memset 换成 CpuFill16 后达到 100%；R1 的输出通常至少有约 60% 的匹配度。已合并的拉取请求是项目层面的结果；文章未报告另外的构建或测试，本目录也未运行任何内容。",
+      "作者认为这一场景对 AI 非常友好，因为已有相似的模块完成反编译可作示例，而且 GBA 编译器较简单、较可预测；生成的 C 代码缺少项目特有的宏，还需要改善可读性。作者为 decomp.me 提交的 AI 面板拉取请求未经合并即被关闭；文章称其用户收益尚不明确，而且需要付费 API 密钥。",
+      "在所审阅的 SA3 提交中，README 规定了严格的禁止大模型／AI 政策，适用于议题和拉取请求，因此该项目已不再接受这种工作流。该提交中 SA3 仓库没有许可证文件，ROM 及其素材仍受各自权利约束，也未提及使用 REA。"
+    ]
+  },
+  "ix500-scan-scansnap-wifi-case": {
+    "name": "iX500 Scan：基于逆向 ScanSnap Wi-Fi 协议的 macOS 客户端",
+    "requirements": [
+      "审阅提交 24a5f7c（共三次提交，均为 2026-10-15）面向富士通／PFU ScanSnap iX500。README 称 ScanSnap Home 3.7 已不再维护，在 macOS 27 上会卡死；项目提供由设备扫描键触发的 Wi-Fi 扫描、经 SANE 的 USB 扫描，以及带旋转、裁边、去空白页和 OCR 的可搜索 PDF。未发布构建好的版本，也未声称支持其他 ScanSnap 型号。",
+      "Wi-Fi 扫描需要用户自己的 iX500，以及 README 所说只有 ScanSnap Home 才知道的两个值：扫描仪的 12 位配对密钥和已配对电脑的 8 字节 HostID。这两个值需从 ScanSnap Home 与该扫描仪的连接中一次性取得；仓库不包含厂商软件、固件或抓包文件。",
+      "构建需要 macOS 14+、Xcode 15+（Swift tools 5.10）、带 Pillow 的系统 Python 3，以及通过 Homebrew 安装的 sane-backends、ocrmypdf、img2pdf 和 tesseract-lang。build.sh 把 Python 服务和内置驱动打包进一个临时（ad-hoc）签名的应用，应用通过 /usr/bin/python3 运行该服务。",
+      "协议部分扩展自 bramheerink/scansnap，其 VENS 规范称是根据 ScanSnap Home 与 iX500 通信的抓包逆向得出。README 补充了握手中已配对 HostID、本地时间与 UTC 偏移的字段，空纸盒与扫描键的硬件状态位，以及约 40 秒的会话超时，并说明 Wi-Fi 图像始终以 300 dpi 彩色、旋转 180° 且带扫描仪背景的形式传回。仓库未公开自动化测试、抓包或与 ScanSnap Home 输出的对比；本次审阅未运行应用，也未连接扫描仪。",
+      "采用 GPL-2.0，与内置驱动所基于的 5706688 提交一致，驱动文件头记录了作者的修改。这是非官方客户端，并非恢复的厂商源码或固件。仓库中的社交媒体草稿称，作者借助 Claude Code 用一个晚上补齐了协议中剩余的空白；未提及使用 REA。"
+    ]
+  },
+  "noflag-rea-evidence-architecture-study": {
+    "name": "Show Your Work：对 REA 证据架构的实测剖析",
+    "requirements": [
+      "文章于 2026-10-18 发布在作者的 HackThe4O4 博客，署名 Noflag。作者称其为非官方、未经同行评审、与 REA 维护者无关的研究，并表示与官方来源不一致时以官方为准。主研究的 1,012 次调用中有 993 次使用已发布的 rea-agents 6.5.0 软件包；另有 19 次比较两个深度分析提供方的调用，运行的是晚 286 个提交的 fe2a398dd 构建。",
+      "所有运行都在一台 Debian 系 Linux 虚拟机（4 个 vCPU、7.9 GB 内存）上进行，分析引擎由操作者自备，包括无界面的 Ghidra 12.x 反编译器、GDB、Rizin、数据包解析器、固件工具、无界面 Chromium 和 Electron；Android 设备是与宿主共享内核的容器。反编译器的启动时限被调高到 1,200 秒；仅限 macOS 的工具、依赖图形界面反汇编器光标的工具，以及未获授权的商业 Java 反编译器均无法测试。",
+      "作者报告调用了全部 207 个已公布工具，其中 178 个至少成功一次，共有 454 次回复带有 Evidence 记录。超大的回复会被拒绝并附上已保留 Evidence 的引用，但 10.1 MiB 的请求会在无回复的情况下断开连接。反编译器冷启动耗时从 14 秒到 827 秒不等；两个模式开关可将默认 3.09 MB 的工具目录缩小到 215 KB。",
+      "耗时数据来自一台轻负载虚拟机，仅作数量级参考。调用由作者编写的脚本化测试驱动程序以熟悉接口的调用方身份发出，文章也未说明具体分析对象。对安全智能体的对应分析属于论证，而非已构建的系统。文中称逐次调用记录、测试配置和脚本随研究提供，但页面并未给出链接，因此本合集无法也未曾重新运行任何内容。",
+      "本文评估的是 REA 的证据模型与工具接口，未报告任何重建、漏洞利用或漏洞。页面未声明许可；REA、第三方引擎及被分析对象保留各自条款。"
+    ]
   }
 }

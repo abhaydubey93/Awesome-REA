@@ -2,7 +2,7 @@
 
 [English](case-coverage.md) · [机器可读记录](../data/case-coverage.json)
 
-核查日期：2026-10-18（UTC）。**591 个合集出现项**经 2 次有记录的重复合并后，对应 **589 个清单单元**。其中包括报告、工具、论文、讨论和想法，不能当作独立且已核验的项目数量。
+核查日期：2026-10-20（UTC）。**591 个合集出现项**经 2 次有记录的重复合并后，对应 **589 个清单单元**。其中包括报告、工具、论文、讨论和想法，不能当作独立且已核验的项目数量。
 
 项目身份归并尚未完成，因此独立项目数为 `null`，并非零。同一上游条目的中英文版本只计一次。同一项目的不同报告仍分别计为清单单元，除非已有明确的别名合并决定。
 
@@ -22,13 +22,13 @@
 
 | 状态 | 出现项 | 清单单元 | 含义 |
 | --- | ---: | ---: | --- |
-| 已收录 (`already-curated`) | 200 | 198 | 完整范围已对应目录资源或论文；不代表独立运行复现。 |
-| 待核查 (`pending`) | 159 | 159 | 一手核查或完整目录覆盖尚待完成；部分映射也保留在此状态。 |
-| 证据不足 (`insufficient-evidence`) | 232 | 232 | 将想法、请求或尚缺支持的重建说法保留为线索。 |
+| 已收录 (`already-curated`) | 210 | 208 | 完整范围已对应目录资源或论文；不代表独立运行复现。 |
+| 待核查 (`pending`) | 100 | 100 | 一手核查或完整目录覆盖尚待完成；部分映射也保留在此状态。 |
+| 证据不足 (`insufficient-evidence`) | 281 | 281 | 将想法、请求或尚缺支持的重建说法保留为线索。 |
 
-212 个出现项含目录链接；共关联 205 个不同资源 ID 和 2 个论文 ID。映射范围单独记录，不能将这些群体相加当作独立项目数。
+224 个出现项含目录链接；共关联 214 个不同资源 ID 和 2 个论文 ID。映射范围单独记录，不能将这些群体相加当作独立项目数。
 
-此记录为 372 个清单单元记载了新的一手来源核查。其他已有目录链接的条目对应目录中独立的来源核查记录；链接本身不代表重新核查了整篇合集报告。此记录没有独立复现运行实验。
+此记录为 429 个清单单元记载了新的一手来源核查。其他已有目录链接的条目对应目录中独立的来源核查记录；链接本身不代表重新核查了整篇合集报告。此记录没有独立复现运行实验。
 
 此记录刻意不包含仓库 README 扫描 ID 或扫描数量。成功读取 README、被上游合集列出和案例经过来源核查，是不同事实。
 
@@ -165,19 +165,37 @@
 | Hongguo Short Drama: REA-assisted reverse engineering to remove ads and overlays | 证据不足 | [来源](https://x.com/web3_goto/status/2110320554049941661) |
 | Profound: a reported REA-assisted SaaS reconstruction | 证据不足 | [来源](https://github.com/yaojingang/profound-clone/blob/93e87c901b9c51f444b243110dd643e066aa6e22/README.md) |
 | Codex Desktop: author reports trying REA to study its differences from CLI | 证据不足 | [来源](https://x.com/ZhenHan261538/status/2110377021402661320) |
+| Mac desktop app: REA-assisted analysis and reference materials | 证据不足 | [来源](https://x.com/fantexi997/status/2110382256829386935) |
+| Apple Weather: reported REA-assisted rebuild | 证据不足 | [来源](https://x.com/jasonjias/status/2110459951365980334) |
 | Friday Night Funkin’: a Claude-assisted gameplay variant | 证据不足 | [来源](https://x.com/i/status/2110407024731439392) |
+| Linux cal: tracing the 1752 calendar switch | 证据不足 | [来源](https://x.com/fahdmirza/status/2110453427209916612) |
 | TicTacToe-AI：REA 分叉对单个游戏方法的有限重建 | 已收录 | [来源](https://github.com/heaven-hm/re-agent/blob/a84c61e8baa65d445485722420a57ff4132b90d3/benchmarks/native-windows-ports/reports/targets/tictactoe.md) |
+| Home-device protocols connected to a local LLM | 证据不足 | [来源](https://x.com/bitfish/status/2110539823572463953) |
 | GAMEKB-K17：重建宏键盘配置协议 | 已收录 | [来源](https://github.com/dvdarkin/gamekb-k17/blob/e61f444793857c0e10a31692674335ee4ee9c89e/README.md) |
+| Kirby: a reported REA investigation in progress | 证据不足 | [来源](https://x.com/oh_Roach/status/2110553648787013950) |
 | Claude Code 中的 REA：隔离配置下的静态分析 A/B 试验 | 已收录 | [来源](https://zenn.dev/keigoly/articles/8738d8d241b5a1) |
 | REA 6.4.0: Windows .NET and Electron sample tests | 证据不足 | [来源](https://x.com/i/status/2110563764886266167) |
+| CPU kernels: Claude Code orchestrates Astra with REA | 证据不足 | [来源](https://x.com/nkeilar/status/2110566660113625486) |
+| A saved website investigated with WorkBuddy International | 证据不足 | [来源](https://x.com/Muma102kMichael/status/2110593537872175256) |
 | apk-reverse: an Android analysis skill for coding agents | 证据不足 | [来源](https://github.com/zzusec/apk-reverse/blob/1b94651b1e3c4479336406b8b5c06d4c1fd7082e/README.md) |
+| Hailo: a planned agent-assisted reverse-engineering run | 证据不足 | [来源](https://x.com/TheCogArchitect/status/2110600631144919232) |
+| Wyze scale: weight data in a custom iOS app | 证据不足 | [来源](https://x.com/Boards86/status/2110604057287217339) |
 | A license-compliance comparison during reverse engineering | 证据不足 | [来源](https://x.com/i/status/2110614074941927618) |
+| Codex: a personal library following REA research | 证据不足 | [来源](https://x.com/LinearUncle/status/2110616441611542781) |
+| Richman 4: REA research to a Flutter iPhone rebuild | 证据不足 | [来源](https://x.com/iam678/status/2110618564608880843) |
+| Tuya AC: local Mac controls exposed to Claude over MCP | 证据不足 | [来源](https://x.com/sarequl_basar/status/2110620776915411243) |
+| A HyperOS monitor: exploring exposed control services | 证据不足 | [来源](https://x.com/binaryify/status/2110622119419838752) |
+| Notes example: tracing a CSV export button | 证据不足 | [来源](https://x.com/0xCortexq/status/2110623921611432090) |
 | IsaacRecomp：将 Flash 游戏字节码转换为原生 C++ | 已收录 | [来源](https://github.com/whylurking/IsaacRecomp/blob/7736f3d2961051b66cd315bcf5a719e9024d889d/README.md) |
+| A legacy binary: an agent invents nonexistent APIs | 证据不足 | [来源](https://x.com/harden_369741/status/2110630792049115198) |
+| Codex next-input prediction recreated for Pi | 证据不足 | [来源](https://x.com/a1chzt/status/2110631522403512760) |
 | DOOM and Terraria: reported no-source mod experiments | 证据不足 | [来源](https://x.com/i/status/2110641024389271883) |
 | 飞书：作者报告的隔离第二应用实例 | 已收录 | [来源](https://benx.ai/blog/posts/rea-reverse-engineer-feishu-dual-instance/) |
 | Roko Input: Apple on-device dictation after Typeless research | 证据不足 | [来源](https://github.com/bassnova42/rokoinput/blob/3cd2da84ae83905b961a2de9f06bdf6bac888294/README.en.md) |
 | Mi Health: timestamp repair and a cloud-data exporter | 证据不足 | [来源](https://github.com/LilZeeCN/mi-health-exporter/blob/1dc9274a90ccc83f02cbb3706aae2a4d55c8e90a/README.md) |
 | REA and archify: interactive architecture diagrams | 证据不足 | [来源](https://x.com/i/status/2110570919169286424) |
+| A colony-simulation engine: a decompilation research plan | 证据不足 | [来源](https://x.com/Promptmethus/status/2110642225361371219) |
+| iX500 Scan：基于逆向 ScanSnap Wi-Fi 协议的 macOS 客户端 | 已收录 | [来源](https://x.com/jonaswagnr/status/2110647905027604700) |
 | Sonic physics in Elden Ring: an unverified REA mod report | 证据不足 | [来源](https://x.com/Capslock404/status/2110648710606557644) |
 | iriver E30: personalizing an unsupported player's main screen | 证据不足 | [来源](https://x.com/MikeS190477/status/2110651009181851731) |
 | A radiator-control app bridged to Home Assistant with AI | 证据不足 | [来源](https://x.com/Madsoulswe/status/2110651982323310818) |
@@ -191,7 +209,13 @@
 | Hermes Agent 的 REA 插件 | 已收录 | [来源](https://github.com/NousResearch/hermes-official-plugins/blob/6dacaaddbfd8e98dfc524096c44f712f743246b8/rea/README.md) |
 | Linux EAC: an AI devirtualization claim via IDA Assist MCP | 证据不足 | [来源](https://x.com/i/status/2110759663822352852) |
 | BINNY 逆向分析智能体框架 | 已收录 | [来源](https://github.com/openbin-ai/binny/blob/000b6aca8c9d266b38252470102ac16c98575cd8/README.md) |
+| An illustrative game.exe demo: two rooms and three reconstruction oracles | 证据不足 | [来源](https://x.com/i/status/2110783611800522897) |
+| H1Z1: research followed by an MMO built with Opus, Astra and Tripo | 证据不足 | [来源](https://x.com/i/status/2110784230687125852) |
 | 《神秘海域：内森·德雷克合集》原生 Windows 移植 | 已收录 | [来源](https://github.com/bc160201983/Uncharted-The-Nathan-Drake-Collection-PC-port/blob/dfc9fb6e70794bc81ae62836e3e5fb993ff50b3e/README.md) |
+| Slipstream 5000: an author reports a two-day Codex decompilation | 证据不足 | [来源](https://x.com/i/status/2110786958649684035) |
+| A Chrome dark-mode extension: REA research for improvements | 证据不足 | [来源](https://x.com/i/status/2110797282308153562) |
+| A construction-bid decryptor: reported Claude Code research into a password error | 证据不足 | [来源](https://x.com/i/status/2110802464786264210) |
+| Pokémon HeartGold/SoulSilver: a secondhand multi-agent decompilation and cost report | 证据不足 | [来源](https://x.com/i/status/2110816115718824296) |
 | A Resend alternative: reported email APIs and inboxes for agents | 证据不足 | [来源](https://x.com/i/status/2110817677778489400) |
 | Two games' RNG: a Codex/ILSpy prediction-tracking report | 证据不足 | [来源](https://x.com/i/status/2110817897706582486) |
 | Destiny 2 build 86657：Sunrise／Dawn 重建研究报告 | 已收录 | [来源](https://github.com/isinternets/d2-research/blob/9a5b58f1f8408ed48b01705e0138ee25050669f2/README.md) |
@@ -219,13 +243,29 @@
 | OpenRiseOfNations：原生 macOS 引擎重新实现 | 已收录 | [来源](https://github.com/ben-wright-1/OpenRiseOfNations/blob/2a0dfde8acdb7185c6087b10ef89b4f66731e5a0/README.md) |
 | Computer integrates REA: five app-feature rebuilding demos including Figma | 证据不足 | [来源](https://x.com/AskPerplexity/status/2111120664543596957) |
 | Claude Intercept 流量捕获分析工具 | 已收录 | [来源](https://github.com/whaesemeyer/claude-intercept/blob/c2b7d01911e11e063533dbd61a22b404b503b48d/README.md) |
+| Notion app.asar: a Claude read-only file and domain-string inspection | 证据不足 | [来源](https://x.com/0xKurogamii/status/2111182893313613877) |
 | Grok Bot + REA: a reported software-investigation chat template | 证据不足 | [来源](https://x.com/ChaiWithAi/status/2111184500093026340) |
 | NIST ECDSA curves: Claude traces the generation of public parameters | 待核查 | [来源](https://www.anthropic.com/research/ecdsa-curve-origins) |
+| Niuniu AI / MT5: an REA rebuild report after a reseller relationship ended | 证据不足 | [来源](https://x.com/sera00111/status/2111206851606159655) |
+| Wiki Lab: a claimed REA-based Wikipedia for agents | 证据不足 | [来源](https://x.com/BrianDevoor/status/2111215569047314589) |
+| Base arbitrage contract: an unverified REA/Opus bytecode report | 证据不足 | [来源](https://x.com/i/status/2111220274226217276) |
+| System UI from video: Claude measures frames and infers animation parameters | 证据不足 | [来源](https://x.com/i/status/2111222217849946308) |
+| Linux mouse driver: reverse engineering among a week's AI projects | 证据不足 | [来源](https://x.com/i/status/2111224894297870413) |
+| Roadster video: a Claude-assisted three.js visual teardown experiment | 证据不足 | [来源](https://x.com/i/status/2111225325531074716) |
+| ENS v2 phishing email: a Claude-assisted investigation of dangerous agent repositories | 证据不足 | [来源](https://x.com/i/status/2111234225022067029) |
+| Game-function matcher: an audit account of wrong constants passing checks | 待核查 | [来源](https://x.com/i/status/2111241506006700380) |
 | A 3D home model: a reported REA-assisted Mac menu-bar controller | 证据不足 | [来源](https://x.com/0xProbabillity/status/2109978137794883621) |
 | AMABOO Frameo: Claude Code adapts an existing Home HQ frame setup | 证据不足 | [来源](https://x.com/InvestingVault/status/2111250941886226471) |
-| REA Reconstruction Companion: connect evidence to specifications, implementation and acceptance | 待核查 | [来源](https://github.com/ShadowSwaps/REA-Reconstruction-Companion/blob/590e65dd99596c7fb66598eaa5d6c051c2ec9a5f/evals/reference/reconstruction/README.md) |
+| REA Reconstruction Companion 重建配套技能 | 已收录 | [来源](https://x.com/xiyue0803/status/2111273763799191896) |
+| CLO3D DLLs: an idea to rebuild a garment-design tool with Claude/Codex | 证据不足 | [来源](https://x.com/i/status/2111281354910704058) |
 | NJFE：用于电脑检查的 Soulear 相机协议桥接 | 已收录 | [来源](https://github.com/WildweaselMS/NJFE/blob/992866c6609f8c813f459ff79840cf04d5883f8e/README.md) |
 | LeanREA 命令行逆向分析技能 | 已收录 | [来源](https://github.com/aicodeking/leanrea/blob/09ba4aa0217f82cd880f855a60b877f59f39b22b/README.md) |
+| MISE.exe: Claude proposes Ghidra-derived rules instead of screenshot guesses | 证据不足 | [来源](https://x.com/i/status/2111312368840126836) |
+| Guitar effects: emulate the original firmware, then compare a standalone C++ library | 证据不足 | [来源](https://news.ycombinator.com/item?id=50104955) |
+| RetroScope: a local-LLM assistant for ROM instruction references | 证据不足 | [来源](https://x.com/i/status/2111332462811087061) |
+| China Mobile app: AI investigates number-selection pages and protocols for local filtering | 证据不足 | [来源](https://x.com/i/status/2111337934406484446) |
+| Roku TV: a firmware-modification inquiry blocked by Claude's bootloader assessment | 证据不足 | [来源](https://x.com/i/status/2111349282745757858) |
+| Serein's nine-bot workflow: pass REA behavior specifications to an isolated builder | 证据不足 | [来源](https://x.com/i/status/2111365135143219711) |
 | Chrome LINE: AI reads JavaScript to build a TUI and messaging API | 证据不足 | [来源](https://x.com/i/status/2111366415639064608) |
 | Reverse Engineering Assistant: a framework advertised for offline file-analysis reports | 待核查 | [来源](https://x.com/i/status/2111230457568227404) |
 | 731 functions: an REA reconstruction account using specification isolation and four negative controls | 证据不足 | [来源](https://x.com/i/status/2111165651599663599) |
@@ -243,16 +283,23 @@
 | Define correctness as PASS/FAIL, then let agents iterate | 证据不足 | [来源](https://x.com/arpit_bhayani/status/2109505311904309621) |
 | Where "software is solved" is overstated | 证据不足 | [来源](https://x.com/wangdou/status/2109404200513708307) |
 | Reverse Engineer Anything, tried on a live game | 证据不足 | [来源](https://x.com/AIWarper/status/2109060856466264566) |
+| Snowboard Kids：智能体辅助的 N64 匹配反编译 | 已收录 | [来源](https://blog.chrislewis.au/decompiling-a-nintendo-64-game-in-84-days/) |
 | Snowboard Kids 2：大模型辅助的 N64 匹配反编译 | 已收录 | [来源](https://blog.chrislewis.au/the-long-tail-of-llm-assisted-decompilation/) |
 | Snowboard Kids 2：大模型辅助的 N64 匹配反编译 | 已收录 | [来源](https://blog.chrislewis.au/using-coding-agents-to-decompile-nintendo-64-games/) |
 | All games are open source now | 证据不足 | [来源](https://x.com/rehan_shei/status/2106548006350942533) |
+| Sonic Advance 3：AI 辅助匹配单个敌人模块 | 已收录 | [来源](https://gambiconf.substack.com/p/development-journey-on-game-decompilation) |
+| Claims that genAI speeds up PC ports of classic games are either "false" or missing the point | 证据不足 | [来源](https://www.reddit.com/r/SBCGaming/comments/1wyhd5s/claims_that_genai_speeds_up_pc_ports_of_classic/) |
+| AI-generated decompilations are garbage | 证据不足 | [来源](https://www.reddit.com/r/decomps/comments/1v6b9gw/aigenerated_decompilations_are_garbage/) |
+| Why isn't decompilation a solved problem in the AI era? | 证据不足 | [来源](https://news.ycombinator.com/item?id=49646640) |
 | How are y'all using ai to make recompilations? | 证据不足 | [来源](https://www.reddit.com/r/recomps/comments/1wyle7y/how_are_yall_using_ai_to_make_recompilations/) |
 | Zelda and Banjo Recompiled dev slams the slew of poor-quality "slopcomps" | 证据不足 | [来源](https://www.reddit.com/r/technology/comments/1ww1twg/) |
 | Snowboard Kids 2：大模型辅助的 N64 匹配反编译 | 已收录 | [来源](https://blog.chrislewis.au/snowboard-kids-2-is-100-decompiled/) |
 | 寻找 Jingle Town：在没有调试符号时调试 N64 游戏 | 已收录 | [来源](https://blog.chrislewis.au/finding-jingle-town-debugging-an-n64-game-without-symbols/) |
+| Awesome Decomp Games：附评分、每日刷新的游戏重建项目目录 | 已收录 | [来源](https://github.com/SubmitGame/awesome-decomp-games/blob/02727e90fe10c7b55fad3fdd4bd671c55e1fe587/README.md) |
 | GoldenEye 007：基于反编译成果的智能体辅助原生移植 | 已收录 | [来源](https://github.com/jkdansereau/goldeneye-pc-port/blob/fda76b69837e6c5aae436e0d3e798989e49b06d2/README.md) |
 | BattleShip：AI 辅助的 Super Smash Bros. 原生移植 | 已收录 | [来源](https://github.com/JRickey/BattleShip/blob/39e978fbffe06a24f718bdf1ca740f27ad6a7dec/README.md) |
 | ssbu-recomp：明确玩法边界的静态重编译 | 已收录 | [来源](https://github.com/Denkishi/ssbu-recomp/blob/938e66bb7be0ba4123e291211895412da421b705/README.md) |
+| Vandal Hearts：基于一致性反编译的原生 PC 移植 | 已收录 | [来源](https://github.com/HalmyLyseas/VandalHearts-decomp-SLPM-86007/blob/75017596cc439a7141e405943afdb469b717787c/README.md) |
 | KartPad：Mario Kart Wii 重编译的平台集成 | 已收录 | [来源](https://github.com/chrissotraidis/kartpad/blob/7e99c6776263caa85dccde2de6281cb092778877/README.md) |
 | Xenosaga I 反编译兼容性工具包 | 已收录 | [来源](https://github.com/LinuxJessi/decomp-compat-kit/blob/d9bb53dac364ecfaff4f8b00ea44baec60a27abf/README.md) |
 | sm64ex：基于反编译成果的 Super Mario 64 增强版 PC 移植 | 已收录 | [来源](https://github.com/sm64pc/sm64ex/blob/d7ca2c04364a6dd0dac58b47151e04e26887e6f0/README.md) |
@@ -319,7 +366,7 @@
 | DiabloWeb：基于 Devilution 的 WebAssembly 浏览器移植 | 已收录 | [来源](https://github.com/d07RiV/diabloweb/blob/c61ef19c54ea646aed328bd8cc82c8a5f1ebd81d/README.md) |
 | OpenMW：复用原内容并替代 Morrowind 引擎 | 已收录 | [来源](https://github.com/OpenMW/openmw/blob/5fdc0f1c4d1d07575f9b360b8cf1d6562232bf8e/README.md) |
 | FFTARecomp：Final Fantasy Tactics Advance 的静态重编译 | 已收录 | [来源](https://github.com/Jorge262007/FFTARecomp/blob/7af625665d40ef3d39b3730a3c591ff66f7b2929/README.md) |
-| 🧙 Ultima Underworld: The Stygian Abyss — abedegno/underworld-exhumed | 待核查 | [来源](https://github.com/abedegno/underworld-exhumed/blob/e5deadd6945b492636aadccc14f52caa908b4186/README.md) |
+| Underworld Exhumed：重建 Ultima Underworld I 与 II | 已收录 | [来源](https://github.com/abedegno/underworld-exhumed/blob/e5deadd6945b492636aadccc14f52caa908b4186/README.md) |
 | Vandal Hearts：基于一致性反编译的原生 PC 移植 | 已收录 | [来源](https://github.com/HalmyLyseas/VandalHearts-PcPort/blob/14552fffa0e0b47e02b57592e274fc6e7a649923/README.md) |
 | 🧙 Paper Mario — lucyawrey/Paper_Mario_64_Recomp | 证据不足 | [来源](https://github.com/lucyawrey/Paper_Mario_64_Recomp/blob/09dcb129ab4c3ab5ae4d1838841f05decb6e7b26/README.md) |
 | Paper Mario：覆盖四个版本的一致性 Nintendo 64 反编译 | 已收录 | [来源](https://github.com/pmret/papermario/blob/1104f1f71b824042a5fa1f958f2d861b603320fd/README.md) |
@@ -376,11 +423,19 @@
 | TH04：从源码重建东方幻想乡的四个 PC-98 程序 | 已收录 | [来源](https://github.com/N0zoM1z0/th04/blob/11577b35392c706f3bd39ff1ea932c003e1eaa6b/README.md) |
 | DX-Ball：借助 REA 并由 Codex 完成的函数级重建 | 已收录 | [来源](https://github.com/N0zoM1z0/dx-ball/blob/d1251ea4bd000c7204c895c029194cae1d269731/README.md) |
 | Pre-CU Star Wars Galaxies: an idea to accelerate emulator reverse engineering with AI | 证据不足 | [来源](https://x.com/i/status/2111615624678088837) |
+| Animal Jam / Burrow: an unconfirmed account of Claude-assisted decompilation | 证据不足 | [来源](https://x.com/i/status/2111623879487795255) |
+| Kernel anticheat privacy: using REA to investigate machine information sent to a vendor | 证据不足 | [来源](https://x.com/i/status/2111627155449004086) |
+| LittleBigPlanet: an AI-decompilation idea for a moddable native PC port | 证据不足 | [来源](https://x.com/i/status/2111639768270594300) |
+| REDOC: a claimed on-chain platform for agent reverse engineering and capability reconstruction | 证据不足 | [来源](https://x.com/i/status/2111668130489549026) |
+| A 231-function reversing studio: a REA and Opus multi-tool workflow demonstration | 证据不足 | [来源](https://x.com/i/status/2111563711005745602) |
+| Codex ad-free app reconstruction: a 20-minute report includes wireless ADB troubleshooting | 证据不足 | [来源](https://x.com/i/status/2111479225890865430) |
 | A pro-software licensing algorithm: an unverified report of a REA keygen in hours | 证据不足 | [来源](https://x.com/i/status/2111423397095723483) |
+| Show Your Work：对 REA 证据架构的实测剖析 | 已收录 | [来源](https://no-flag.com/2026/10/18/REA-paper/) |
 | Game ad behavior: a reported Claude inspection of obfuscated JavaScript | 证据不足 | [来源](https://x.com/i/status/2111582817251738031) |
 | LG OLED pause ads: an idea to modify firmware with Codex | 证据不足 | [来源](https://x.com/i/status/2111556091712581745) |
 | Dhaedalida: an AI reverse-engineering comparison on a self-made licensing sample | 证据不足 | [来源](https://x.com/i/status/2111560797855916293) |
 | FormEasy: an agent-native forms project reportedly based on studying Google Forms | 证据不足 | [来源](https://x.com/i/status/2111562194660016471) |
+| Coding harnesses into skills: a plan to study agent orchestration implementations | 证据不足 | [来源](https://x.com/YashasGunderia/status/2111579690532278697) |
 | DeepSeek V4.1: a reported V8 n-day to Electron IPC investigation | 证据不足 | [来源](https://x.com/i/status/2111587595750637954) |
 | An offline Linux reverse-engineering workspace: separating Codex from private files | 证据不足 | [来源](https://x.com/i/status/2111588450969231812) |
 | CM 01-02 to FM26: an idea to study football-manager data migration with REA | 证据不足 | [来源](https://x.com/i/status/2111591082119106953) |
@@ -391,6 +446,8 @@
 | Cursor: an account of custom relays and personal Codex/Claude Code quotas | 证据不足 | [来源](https://x.com/FoxSnowing/status/2111465121126207605) |
 | Open Scrantic：重建 Johnny Castaway 屏幕保护程序引擎 | 已收录 | [来源](https://github.com/glauberlima/open-scrantic/blob/2db75008931eb744f79d0c3fb12e0d89950466ff/README.md) |
 | ScooterLink：重建 Honda RoadSync 车把按键协议 | 已收录 | [来源](https://x.com/i/status/2111470520688665052) |
+| Samsung TV: Aswin DG's Claude/REA-skill web-remote account | 证据不足 | [来源](https://x.com/dg_aswin/status/2111471785946562815) |
+| REA 工作区模板 | 已收录 | [来源](https://github.com/dobest1024/rea-workspace-template/blob/fc15b9a4ba2a8b40510d19a2dd80209f665711c5/README.md) |
 | Hitachi combination oven: a Codex/REA account using an Android app for direct control | 证据不足 | [来源](https://x.com/i/status/2111474749855670664) |
 | Frontkick 与 Rikugan：基于 CREBench 的智能体对比 | 已收录 | [来源](https://www.synacktiv.com/en/publications/ufc-666-frontkick-vs-rikugan) |
 | Ableton Live 12: an agent reversing attempt running for 96 hours | 证据不足 | [来源](https://x.com/i/status/2111506869395337318) |
@@ -420,9 +477,12 @@
 - `song:virtua-fighter-ai-decompilation` — 帖文中的两个链接指向 celsowm 的两个仓库。固定版本的 vf2-decomp 记录了 Virtua Fighter 2 Version 2.1 的 BSD-3-Clause、非一致性 C17 恢复，只有与参考 i960 执行器一致的路径才被接受；该项目现已收录，但映射仅为部分覆盖。固定版本的 vf3-decomp 是进行中的 Dreamcast 版 Virtua Fighter 3tb C 移植，有代理说明和覆盖率日志，但没有 README 或许可证文件，因此暂不收录，合并报告仍为待定。REA 的使用未确立；结果均为项目报告。
 - `song:dragon-ball-budokai-browser` — 所引帖子（@0x0SojalSec，2026-10-14）称 AI 逆向了《Dragon Ball Budokai》，使其能在任意浏览器中以 60 fps 运行，支持手机和联机；帖子附一张图片，并链接一个第三方游玩网站。帖子未指明作者、方法或源码。该网站称其引擎来自某个 Tenkaichi3Decomp 仓库，而已收录的 Tenkaichi3Decomp 的 README（此处固定到具体提交）称该项目从不分发游戏本体，需要玩家自备光盘，并且与浏览器游玩网站无关。本记录不将该网站作为证据引用。保留此线索，仅与已收录的 PC 移植建立相关映射；所报告的浏览器移植并非可审阅的项目。
 - `song:rea-640-windows-managed-electron-test` — 一组两条帖子的讨论串报告了在 Windows + Node 24 上实测 npm 版 rea-agents 6.4.0：约 200 个 .NET Framework 程序集在托管解码预算下的表现、一个由 AI 构造的 Electron 风格样例、一个 Trap.dll 副作用检查，以及仅差一个常量的程序集比对。样本、原始命令输出和完整环境均未公开，且帖子评估的是 REA 的静态分析能力，而非重建任何软件。保留此线索而不收录为案例；相关映射指向目录中 REA 托管代码与 JavaScript 工作流文档，这些文档描述了帖子所测试的表示预算、--type 选择及应用图分析。
+- `song:pokemon-hgss-multi-agent-decompile-report` — 所引三条帖子中：@autoaiadvantage（2026-10-15）称有人用多个 AI 智能体在一个月内反编译了《宝可梦 心金/魂银》，消耗约 710 亿个 API token，估算费用约 5.6 万美元；所引 @Pirat_Nation 的帖子已被作者删除；@Alex_Vainshtein 回复指出，这项工作建立在 pret 现有的反编译和工具之上。三帖均未点名或链接该项目。分支仓库 ctrl-cheeb-del/pokeheartgold 自称已借助 LLM 智能体完全反编译、两个 ROM 均可逐字节构建，但未报告 token 用量或费用，也没有帖子确认它就是所述工作。保留此线索而不建立整理案例；相关映射只记录回复中提到的 pret 基础工作。
 - `song:ringfall-th04-bullet-hell-report` — 帖子（@0xMoryo，2026-10-15）称有人用 REA 的 Ghidra 提供程序分析 1997 年 PC-98 游戏 TH04 的可执行文件，把两条弹幕环公式整理成洁净室笔记，再由 Claude Code 在一次会话中做出浏览器弹幕 Boss 战 RINGFALL；帖子只附视频。帖子说 REA 和“TH04 研究”的链接在回复中，但帖子 API 不提供回复内容；其引用的帖子是一篇 REA 通用教程文章，也未找到 RINGFALL 的源码或构建。保留此线索而不建立整理案例；相关映射指向另行整理的 REA TH04 弹幕环证据，而非 RINGFALL。
 - `song:schaller-opticfilm-thinkpad-linux` — 既有扫描仪调查和独立的 ThinkPad IMX471 调校／驱动案例，覆盖此报告中的两个有限范围组成部分。映射仍为部分覆盖：均不确立完整扫描仪／相机行为、全设备兼容性或独立运行复现。
-- `song:rea-reconstruction-companion` — Pocket Tasks 映射只覆盖一个作者已接触源码、公开候选及有限比较证据的命令行重建案例；不覆盖更广的 Companion 工作流、其他示例或模型／宿主效果。既有源码接触、人工复核待完成及历史指令包哈希均明确保留；不确立独立运行复现。
+- `song:rea-game-function-matcher-audit-report` — 帖子（@xmyttle，2026-10-16）转述了 REA 的计算器演示，以及 REA 博客文章《Does reverse engineering need a bigger model?》（N0zoM1z0，2026-10-13）：多个 GPT-6 系列模型接力完成《东方》系列中难以匹配的函数，另有一次审计发现部分已被接受的函数常量有误，例如原程序加 32.0f 的地方重建源码写成了 1.0f。该文固定版本的证据说明和 TH08 提交 a393f400 记录了这次浮点字面量审计，文章也说明对奖励学习的风险只是推断，并非实际观察到的利用。目录已通过《东方》重建方法一文覆盖该审计，因此此处为部分映射；关于模型接力的这篇文章本身尚未收录，此线索保持待处理。
+- `song:rea-reconstruction-companion` — 固定版本仓库确立了具名的 Companion：一个采用 MIT 的 Agent Skill，与 REA 配合把证据整理成限定范围的需求、设计、分阶段实现与验证，并提供由安装程序管理、可选写入 REA 技能的路由段落，以及已接触源码的评估套件。完整映射以社区 REA 集成覆盖该技能；原有的部分映射覆盖另立条目的 Pocket Tasks 重建示例。示例与检查结果仍是维护者报告的教学材料，未确立模型试验、独立评估或运行复现。
+- `song:valdiorn-audio-effects-firmware-report` — valdiorn 在 Hacker News 的评论（2026-10-15，经 @RealYDT 转述）称，借助 Opus 5.5 在模拟器中运行三家竞争对手的效果器固件，再转换成独立 C++ 库并比较结果，另外还处理了 Lexicon 224 与 Ursa Major 产品。评论没有公开代码、模拟器、库、比较数据或产品版本，也未指明所说的 Lexicon 仓库。公开的 reflecticon-224 模拟项目作者在回复中猜测被找到的就是该项目；该项目另立条目并以相关映射关联，并不视为本报告的成果。保留此线索并标为证据不足；所报告的反编译与比较均未确立。
 - `yibie:all-games-are-open-source-now` — 作者的 X 长文（@rehan_shei，2026-10-04）是一篇探讨 AI 反编译与模组对游戏产业影响的随笔。文中称让 Opus 5.5 运行一夜后得到了一个可运行的逆向版 Terraria，作者又在其中加入了武器和怪物；文章还罗列了他人报告的模组与反编译案例，并称作者已把 Claude 在此过程中积累的经验开源为 universal-modder。Terraria 重建本身没有公开产物；相关映射指向文章提及、另行收录的 Universal Modder 工具包。保留此线索而不建立完整映射；该文属于评论，其中的数字与第三方案例未在此核实。
 - `yibie:how-are-y-all-using-ai-to-make-recompilations` — 该来源是一场讨论：r/recomps 上 2026-10-05 的提问，询问大家如何用 AI 制作重编译移植、是否有教程。回复多为一般性建议和观点，例如订阅方案的选择、让智能体参照现有重编译工具工作以及维护重编译引擎，但都没有代码、结果或对照；其中一条回复指向 freefrank/LostOdysseyRecomp 的文档，该项目已作为独立案例收录，此处仅记为相关匹配。保留此线索，不为其单独建立重建映射。
 - `yibie:finding-jingle-town-debugging-an-n64-game-without-symbols` — 这篇注明日期的文章记录了在 Snowboard Kids 2 反编译中用 GDB 与 Ares 手动检验一个运行时假设的流程，包括所用工具、步骤、观察到的三个值及作者说明的局限。完整映射将这篇调试记录作为学习资源收录；其研究的反编译项目另有案例条目，此处以相关映射链接。文中观察未经重做，文章也未声称使用 AI 或 REA。
