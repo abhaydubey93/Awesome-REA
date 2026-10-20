@@ -11,7 +11,7 @@ An independent collection of tools, case studies and research for websites, game
 <a href="https://awesomerea.org/"><img src="assets/readme-banner.svg" alt="Awesome Reverse Engineering Anything — tools, cases and papers across six reverse-engineering domains" width="960"></a>
 
 <!-- BEGIN GENERATED BADGES -->
-[![resources: 473](https://img.shields.io/badge/resources-473-53309C?style=flat-square&labelColor=303447)](https://awesomerea.org/resources/) [![cases: 197](https://img.shields.io/badge/cases-197-53309C?style=flat-square&labelColor=303447)](https://awesomerea.org/cases/) [![papers: 88](https://img.shields.io/badge/papers-88-53309C?style=flat-square&labelColor=303447)](https://awesomerea.org/papers/) [![Catalog checks](https://github.com/reacher-z/Awesome-REA/actions/workflows/validate.yml/badge.svg?branch=main)](https://github.com/reacher-z/Awesome-REA/actions/workflows/validate.yml) [![license: MIT](https://img.shields.io/badge/license-MIT-606779?style=flat-square&labelColor=303447)](LICENSE) [![website: awesomerea.org](https://img.shields.io/badge/website-awesomerea.org-6235B5?style=flat-square&labelColor=303447)](https://awesomerea.org/)
+[![resources: 473](https://img.shields.io/badge/resources-473-53309C?style=flat-square&labelColor=303447)](https://awesomerea.org/resources/) [![cases: 197](https://img.shields.io/badge/cases-197-53309C?style=flat-square&labelColor=303447)](https://awesomerea.org/cases/) [![papers: 102](https://img.shields.io/badge/papers-102-53309C?style=flat-square&labelColor=303447)](https://awesomerea.org/papers/) [![Catalog checks](https://github.com/reacher-z/Awesome-REA/actions/workflows/validate.yml/badge.svg?branch=main)](https://github.com/reacher-z/Awesome-REA/actions/workflows/validate.yml) [![license: MIT](https://img.shields.io/badge/license-MIT-606779?style=flat-square&labelColor=303447)](LICENSE) [![website: awesomerea.org](https://img.shields.io/badge/website-awesomerea.org-6235B5?style=flat-square&labelColor=303447)](https://awesomerea.org/)
 <!-- END GENERATED BADGES -->
 
 **[Search & filter](https://awesomerea.org/)** · **[Browse cases](https://awesomerea.org/cases/)** · **[Research papers](https://awesomerea.org/papers/)** · **[HTML survey](https://awesomerea.org/survey/)**
@@ -28,7 +28,7 @@ An independent collection of tools, case studies and research for websites, game
 
 **Research and workflows**
 
-- [Papers](#papers) (88) · [Agents and MCP](#agents-and-mcp) (43) · [References and Learning](#references-and-learning) (32)
+- [Papers](#papers) (102) · [Agents and MCP](#agents-and-mcp) (43) · [References and Learning](#references-and-learning) (32)
 
 **More ways to browse**
 
@@ -2953,15 +2953,15 @@ REA labels refer to the separate [upstream CLI and MCP project](https://github.c
 <a id="papers"></a>
 ## Papers
 
-**88 papers**, grouped by topic and ordered newest first. Each entry shows its venue and publication status.
+**102 papers**, grouped by topic and ordered newest first. Each entry shows its venue and publication status.
 
 [Browse the paper directory](https://awesomerea.org/papers/) · [Complete bibliography JSON](data/papers.json) · [Suggest a paper](https://github.com/reacher-z/Awesome-REA/issues/new?template=paper.yml)
 
 **By topic**
 
-- [Agent evaluation](#papers-agent-evaluation) (9) · [Decompilation](#papers-decompilation) (35) · [Websites](#papers-website-reconstruction) (15)
-- [Games](#papers-game-reconstruction) (6) · [Apps](#papers-app-reconstruction) (7) · [Firmware](#papers-firmware-analysis) (6)
-- [Protocols](#papers-protocol-analysis) (10)
+- [Agent evaluation](#papers-agent-evaluation) (9) · [Decompilation](#papers-decompilation) (41) · [Websites](#papers-website-reconstruction) (18)
+- [Games](#papers-game-reconstruction) (6) · [Apps](#papers-app-reconstruction) (8) · [Firmware](#papers-firmware-analysis) (9)
+- [Protocols](#papers-protocol-analysis) (11)
 
 Open “Scope and publication details” for each study’s full limitations. Some papers also appear among curated resources; counts are not additive.
 
@@ -3125,6 +3125,66 @@ Open “Scope and publication details” for each study’s full limitations. So
 
   </details>
 
+- [**Beyond Text Matching: Towards Reference-Free Evaluation for Human-Oriented Binary Reverse Engineering**](https://dl.acm.org/doi/10.1145/3832783.3834339)
+
+  BinJudgeBench collects expert judgments for function naming, binary-code summaries and decompilation refinement. BinJudge learns to select a judge configuration for each input and task, evaluating agreement with human scores rather than executable correctness.
+
+  ASE 2026 · Conference paper · [PDF](https://arxiv.org/pdf/2608.07038v1) · [Full entry & citation](https://awesomerea.org/papers/paper-binjudge/)
+
+  <details>
+  <summary>Scope and publication details</summary>
+
+  **Scope and limits:** The router uses five-fold validation on 1,233 annotated outputs. Initial annotators are three authors, with an independent industrial expert checking a subset. Human scores are subjective, and fluent unsupported answers can mislead judges. Correlation on these tasks neither proves program equivalence nor establishes that judges can replace human review.
+
+  **Authors:** Xiuwei Shang et al.
+
+  </details>
+
+- [**ASAP: Assembly-Source Aligned Pseudocode Refinement For Binary Decompilation**](https://arxiv.org/abs/2610.06900)
+
+  ASAP aligns assembly and source representations during training, compresses assembly features into tokens, and supplies them alongside decompiler pseudocode to an LLM refiner. Masking and an assembly-advantage objective encourage the refiner to use low-level evidence.
+
+  arXiv 2026 · Preprint · [PDF](https://arxiv.org/pdf/2610.06900v1) · [Full entry & citation](https://awesomerea.org/papers/paper-asap-decompilation/)
+
+  <details>
+  <summary>Scope and publication details</summary>
+
+  **Scope and limits:** Evaluation uses C adaptations of HumanEval and MBPP, x86-64 GCC 11.4 at O0–O3, and Ghidra 11.0.3 pseudocode. Re-execution means passing supplied tests, not proving equivalence. Identifier/comment recovery is not a dedicated component, and frontier-scale model training is not exhaustively evaluated.
+
+  **Authors:** Yujian Zhuang et al.
+
+  </details>
+
+- [**Echo: Learning-based Matching Decompilation using Trusted Back Translation**](https://arxiv.org/abs/2609.18706)
+
+  Echo iteratively generates source and compiler configurations, recompiles candidates, and uses assembly differences to guide configuration search and code refinement. It evaluates matching on function benchmarks and selected functions from a Mirai binary.
+
+  arXiv 2026 · Preprint · [PDF](https://arxiv.org/pdf/2609.18706v1) · [Full entry & citation](https://awesomerea.org/papers/paper-echo-matching-decompilation/)
+
+  <details>
+  <summary>Scope and publication details</summary>
+
+  **Scope and limits:** Matching means equality of normalized function assembly under evaluated compilation settings, not byte-for-byte recovery of a whole executable. Tests cover selected x86 GCC/LLVM settings and 62 Mirai functions; passing finite harness tests is not a general equivalence proof. Long optimized functions and configurations outside the searched space remain limitations.
+
+  **Authors:** Jun Bi et al.
+
+  </details>
+
+- [**When LLM Decompilers Recompile More and Preserve Less**](https://arxiv.org/abs/2609.05370)
+
+  Decompile-Diverge builds function-level behavioral comparisons from source-derived drivers and fuzzed reference inputs. The study compares reconstructed functions on the same inputs and examines divergences and missing crashes that compilation and supplied tests can miss.
+
+  arXiv 2026 · Preprint · [PDF](https://arxiv.org/pdf/2609.05370v1) · [Full entry & citation](https://awesomerea.org/papers/paper-decompile-diverge/)
+
+  <details>
+  <summary>Scope and publication details</summary>
+
+  **Scope and limits:** The oracle requires reference source, supported inputs and buildable harnesses. It compares a finite corpus and bounded observable state; Matched does not prove all-input equivalence. Nine of 300 GitHub reference functions failed harness builds, leaving 291. Some types/functions are excluded. DeGPT-Qwen is a substituted-backend configuration, not the originally published DeGPT model.
+
+  **Authors:** Chang Liu et al.
+
+  </details>
+
 - [**Decoupling is a Necessity: Transformation-Agnostic Decompiled Code Recovery under Optimization and Obfuscation**](https://arxiv.org/abs/2608.27889)
 
   ReSource refines decompiled functions affected by compiler optimization and obfuscation. Its stages retrieve guidance from a Semantic Distortion Database, predict a control-flow skeleton, and refine names and formatting. Evaluation measures code similarity and retrieval of the corresponding original function from a source corpus.
@@ -3137,6 +3197,21 @@ Open “Scope and publication details” for each study’s full limitations. So
   **Scope and limits:** Function-level similarity and retrieval are proxies; they do not establish compilability, executable equivalence or complete program recovery. Section 5.2 notes missing global context and untested custom obfuscation. The author-linked artifact page describes a simplified dataset and explicitly says the database-construction and control-flow-prediction modules are not yet available.
 
   **Authors:** Zhiping Zhou et al.
+
+  </details>
+
+- [**STILL: Recovering Lowered STL Semantics for LLM-assisted C++ Decompilation**](https://arxiv.org/abs/2608.26408)
+
+  STILL predicts function-level STL container presence from stripped control-flow graphs and turns those predictions into compact hints for LLM refinement of Ghidra output. StlBench supplies controlled labels for five container classes.
+
+  arXiv 2026 · Preprint · [PDF](https://arxiv.org/pdf/2608.26408v1) · [Full entry & citation](https://awesomerea.org/papers/paper-still-stl/)
+
+  <details>
+  <summary>Scope and publication details</summary>
+
+  **Scope and limits:** The interface covers map, queue, set, string and vector, not full variable types, template arguments, nesting, iterators or std::array. Experiments use g++/x86-64/libstdc++ with angr and Ghidra; transfer to other toolchains is unverified. Test-suite executability is not equivalence, and hint benefits depend on the downstream model and adaptation.
+
+  **Authors:** Xiaohan Wang et al.
 
   </details>
 
@@ -3167,6 +3242,21 @@ Open “Scope and publication details” for each study’s full limitations. So
   **Scope and limits:** Structural similarity does not prove semantic equivalence. QRS both guides and evaluates refinement; human readability validation remains future work. The selected synthetic corpus limits generalization. Recovering compilable, behaviorally correct code from difficult binaries is outside the claimed contribution.
 
   **Authors:** Neil Archibald et al.
+
+  </details>
+
+- [**NotDec: WebAssembly Decompilation With Inter-Procedural Type Recovery**](https://dl.acm.org/doi/10.1145/3744916.3787762)
+
+  NotDec lifts WebAssembly into SSA-based IR, uses Retypd-derived type constraints and pointer/value distinctions to recover structures, and emits C. Its study separates full interprocedural analysis from a faster intraprocedural variant.
+
+  ICSE 2026 · Conference paper · [PDF](https://arxiv.org/pdf/2608.03286v1) · [Code](https://github.com/NotDec/NotDec) · [Full entry & citation](https://awesomerea.org/papers/paper-notdec/)
+
+  <details>
+  <summary>Scope and publication details</summary>
+
+  **Scope and limits:** The study uses Juliet and five Howard programs at O0/O3. Howard binaries omit actual library linking and cannot be executed, so recompilation does not demonstrate behavioral equivalence. Full analysis timed out on six Howard variants at 24 hours; recompilation results cover successful decompilations. The inspected README also warns about backend syntax errors on complex statements.
+
+  **Authors:** Jikai Wang et al.
 
   </details>
 
@@ -3640,6 +3730,21 @@ Open “Scope and publication details” for each study’s full limitations. So
 
 [↑ Paper topics](#papers) · [Contents](#contents)
 
+- [**TaoD2C-Bench: Benchmarking MLLMs for Industrial UI Code Generation Beyond Visual Fidelity**](https://arxiv.org/abs/2610.10374)
+
+  TaoD2C-Bench reconstructs interfaces from design images, layer metadata and component-library documentation. It separates requirement inference from implementation, checking component choices and layout relations through source/runtime evidence alongside rendered appearance.
+
+  arXiv 2026 · Preprint · [PDF](https://arxiv.org/pdf/2610.10374v1) · [Full entry & citation](https://awesomerea.org/papers/paper-taod2c-bench/)
+
+  <details>
+  <summary>Scope and publication details</summary>
+
+  **Scope and limits:** Eight models are evaluated on 421 designs, not the full 2,861-design collection. Results include specified retries and one output-repair attempt. The tasks assess component/layout constraints and visual fidelity, not complete application behavior; all designs come from one commercial ecosystem.
+
+  **Authors:** Chengwei Shi et al.
+
+  </details>
+
 - [**Vision2Web: A Hierarchical Benchmark for Visual Website Development with Agent Verification**](https://proceedings.mlr.press/v306/he26n.html)
 
   Benchmarks website development from visual prototypes and written requirements across 100 static-page, 66 interactive-frontend and 27 full-stack tasks, combining workflow-based functional checks with model-judged visual comparison.
@@ -3670,6 +3775,21 @@ Open “Scope and publication details” for each study’s full limitations. So
 
   </details>
 
+- [**Does It Render Everywhere? A Study of Cross-Environment Compatibility in MLLM-Generated Webpages**](https://arxiv.org/abs/2608.12518)
+
+  WebCompat evaluates screenshot-reconstructed webpages across browsers and devices. Its XCompat detector combines rendered DOM geometry, viewport metadata and screenshots to identify layout and element failures, independently of similarity to the original design.
+
+  arXiv 2026 · Preprint · [PDF](https://arxiv.org/pdf/2608.12518v1) · [Code](https://github.com/ZiyunGuo/WebCompat) · [Full entry & citation](https://awesomerea.org/papers/paper-webcompat/)
+
+  <details>
+  <summary>Scope and publication details</summary>
+
+  **Scope and limits:** Filtering retains 254 static pages from 480 generations, producing 2,032 comparison pairs. The held-out detector test uses 51 pages/408 pairs. Failed renders and interaction-dependent layouts are excluded; heuristic errors and subjective design intent limit generalization to dynamic sites or every environment.
+
+  **Authors:** Ziyun Guo et al.
+
+  </details>
+
 - [**UI2App: Benchmarking Visual Interaction Inference in Executable Web Application Generation**](https://arxiv.org/abs/2607.06306)
 
   UI2App evaluates runnable React/TypeScript applications generated from 600 screenshots across 95 web applications. It separates build executability, visual fidelity and screenshot-implied interaction behavior, including cross-route state, using a reference interaction taxonomy and public evaluation pipeline.
@@ -3697,6 +3817,21 @@ Open “Scope and publication details” for each study’s full limitations. So
   **Scope and limits:** Limited to Plotly+Dash dashboards, including model-augmented examples. Some settings expose DOM information and evaluation uses model judges. This is not a general backend-recovery benchmark. The linked dataset requires accepting access conditions and sharing contact information.
 
   **Authors:** Tianhao Niu et al.
+
+  </details>
+
+- [**UniCoder: Unified Visual-to-Code Generation via Symbolic Rewards and Reference-Guided Code Optimization**](https://arxiv.org/abs/2606.31732)
+
+  UniCoder trains a visual-to-code model for charts, SVGs and webpages. Its reinforcement-learning objective combines rendering checks, image similarity and code-derived visual attributes; low-reward training groups receive reference-code trajectories to improve exploration.
+
+  arXiv 2026 · Preprint · [PDF](https://arxiv.org/pdf/2606.31732v1) · [Code](https://github.com/JimmyZhengyz/unicoder) · [Full entry & citation](https://awesomerea.org/papers/paper-unicoder/)
+
+  <details>
+  <summary>Scope and publication details</summary>
+
+  **Scope and limits:** Experiments concern static visual reconstruction with one 8B backbone, including Design2Code and ScreenBench. Reference code is used during training; successful rendering does not prove interactive behavior. Extending the attribute extractor to new domains requires new schemas/prompts. Interactive interfaces, animation and mobile-app behavior are not evaluated.
+
+  **Authors:** Yaozhi Zheng et al.
 
   </details>
 
@@ -3965,6 +4100,21 @@ Open “Scope and publication details” for each study’s full limitations. So
 
 [↑ Paper topics](#papers) · [Contents](#contents)
 
+- [**From Visual Widgets to UI Code: Efficient Tool-Grounded Generation**](https://arxiv.org/abs/2608.12611)
+
+  WidgetGen reconstructs widget screenshots as React JSX. OCR text boxes and color palettes guide whole-widget layout reasoning and optional chart generation before one terminal render; generated render/code pairs also support model fine-tuning.
+
+  MUCG <span>@</span> ECCV 2026 · Accepted · [PDF](https://arxiv.org/pdf/2608.12611v1) · [Full entry & citation](https://awesomerea.org/papers/paper-widgetgen/)
+
+  <details>
+  <summary>Scope and publication details</summary>
+
+  **Scope and limits:** The main comparison uses six models and 1,000 test widgets from one dataset. Its nine image-based metrics do not test interaction, accessibility or maintainability. The supervision experiment covers six Qwen-family checkpoints; broader UI and model-family generalization remains open.
+
+  **Authors:** Houston H. Zhang et al.
+
+  </details>
+
 - [**UIOrchestra: Generating High-Fidelity Code from UI Designs with a Multi-agent System**](https://aclanthology.org/2025.findings-emnlp.150/)
 
   UIOrchestra converts static mobile UI designs into React/CSS through layout-description, code-generation and rendered-image comparison agents. Its APPUI benchmark contains 1,101 human-refined code/rendering pairs based on screenshots from 165 apps across 12 categories. The reference code is reconstructed for evaluation, rather than recovered original application source.
@@ -4075,6 +4225,51 @@ Open “Scope and publication details” for each study’s full limitations. So
 
 [↑ Paper topics](#papers) · [Contents](#contents)
 
+- [**Reactive Peripheral Modeling for Faithful Firmware Rehosting**](https://arxiv.org/abs/2608.29737)
+
+  Bluezz models peripherals as stateful event-condition-action systems, coordinating interrupts, MMIO and DMA rather than treating accesses independently. It uses these models to rehost BLE firmware and reach connected protocol states for analysis and fuzzing.
+
+  arXiv 2026 · Preprint · [PDF](https://arxiv.org/pdf/2608.29737v1) · [Full entry & citation](https://awesomerea.org/papers/paper-bluezz-rpm/)
+
+  <details>
+  <summary>Scope and publication details</summary>
+
+  **Scope and limits:** The BLE evaluation covers 18 targets, with additional limited MCU examples. Hardware specifications, behavioral rules and use-case drivers require preparation and human validation; agent-generated rules do not remove that work. Coverage and reported crashes do not establish hardware equivalence or exhaustive protocol support. Nothing was executed for this review.
+
+  **Authors:** Qinying Wang et al.
+
+  </details>
+
+- [**FirmPilot: Evidence-Guided Multi-Agent Environment Recovery for IoT Firmware Rehosting**](https://arxiv.org/abs/2607.14903)
+
+  FirmPilot reconstructs QEMU execution environments through coordinated retrieval, planning, filesystem, persistent-state and network recovery. Proposed changes are applied as constrained artifact deltas, then checked by rerunning the firmware and fixed probes.
+
+  arXiv 2026 · Preprint · [PDF](https://arxiv.org/pdf/2607.14903v1) · [Full entry & citation](https://awesomerea.org/papers/paper-firmpilot/)
+
+  <details>
+  <summary>Scope and publication details</summary>
+
+  **Scope and limits:** The main denominator is 10,033 obtainable LFwC images, not all 10,913 metadata records. Reachability under a 2,400-second budget is not whole-device equivalence; HTTP success can include redirects or authentication gates. Reported results use one LLM backend and fixed probes. No rehosting or experiments were reproduced here.
+
+  **Authors:** Yanbing Shen et al.
+
+  </details>
+
+- [**FirmCure:Towards Autonomous and Adaptive Rehosting of Linux-Based Firmware**](https://arxiv.org/abs/2606.24549)
+
+  FirmCure combines static dependency analysis, iterative boot-configuration repair and runtime fault diagnosis to rehost Linux firmware in QEMU. Specialized agents apply targeted repairs and use execution feedback to recover service behavior.
+
+  arXiv 2026 · Preprint · [PDF](https://arxiv.org/pdf/2606.24549v1) · [Full entry & citation](https://awesomerea.org/papers/paper-firmcure/)
+
+  <details>
+  <summary>Scope and publication details</summary>
+
+  **Scope and limits:** Evaluation covers 21 images from ten vendors and five architectures: all opened ports, but only 19 reached full service interactivity within 45 minutes. Substituting an approximate kernel cannot preserve original-kernel or dedicated-hardware vulnerabilities. LLM reasoning loops caused residual failures. These author-reported results were not rerun.
+
+  **Authors:** Chuan Hong et al.
+
+  </details>
+
 - [**User-Space Dependency-Aware Rehosting for Linux-Based Firmware Binaries**](https://www.ndss-symposium.org/ndss-paper/user-space-dependency-aware-rehosting-for-linux-based-firmware-binaries/)
 
   FIRMWELL reconstructs the execution environment of Linux firmware services by running their initialization processes, locating blocking dependencies and repairing missing system-level behavior. It combines containerized QEMU-user emulation with a QEMU-system fallback, using process traces and binary analysis to recover resources needed by the target service.
@@ -4169,6 +4364,21 @@ Open “Scope and publication details” for each study’s full limitations. So
 ### Protocol inference and analysis
 
 [↑ Paper topics](#papers) · [Contents](#contents)
+
+- [**Recovering Process Variables from Industrial Network Traffic via Search-Based Optimization**](https://arxiv.org/abs/2608.16403)
+
+  PVParser recovers process-variable layouts from industrial traffic and historian records. Periodic-pattern detection locates relevant payloads; a modified Monte Carlo tree search proposes field boundaries, types and endianness, then aligns decoded sequences with observed process variables.
+
+  CCS 2026 · Accepted · [PDF](https://arxiv.org/pdf/2608.16403v2) · [Full entry & citation](https://awesomerea.org/papers/paper-pvparser/)
+
+  <details>
+  <summary>Scope and publication details</summary>
+
+  **Scope and limits:** Payload localization uses SCADA-N, SWaT and WADI; field/semantic recovery uses SWaT and WADI. Recovery depends on traffic and historian observations plus recurrent, stable plaintext byte layouts. Encrypted traffic, bit-level buses and event-driven messages whose PV lists vary are outside scope. It complements protocol dissectors; results were not independently reproduced.
+
+  **Authors:** Chuan Sheng et al.
+
+  </details>
 
 - [**ICEPRE: ICS Protocol Reverse Engineering via Data-Driven Concolic Execution**](https://dl.acm.org/doi/10.1145/3728982)
 

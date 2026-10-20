@@ -135,6 +135,14 @@ class ReviewedContainerRecordTests(unittest.TestCase):
         self.assertEqual(codeinverter['author'],
                          '{{Peipei Liu} and {Jian Sun} and {Rongkang Sun} and {Li Chen} and {Zhaoteng Yan} '
                          'and {Xiaoling Zhang} and {Dawei Wang} and {Dapeng Sun} and {Peizheng Zhang} and {Dan Li}}')
+        notdec = fields(bibtex_text(PAPERS['paper-notdec']))
+        self.assertEqual((notdec['booktitle'], notdec['pages'], notdec['doi'], notdec['month']),
+                         ('{Proceedings of the 2026 IEEE/ACM 48th International Conference on Software Engineering}',
+                          '{3813--3824}', '{10.1145/3744916.3787762}', 'apr'))
+        binjudge = fields(bibtex_text(PAPERS['paper-binjudge']))
+        self.assertEqual((binjudge['booktitle'], binjudge['pages'], binjudge['doi'], binjudge['month']),
+                         ('{Proceedings of the 41st IEEE/ACM International Conference on Automated Software Engineering}',
+                          '{106--118}', '{10.1145/3832783.3834339}', 'oct'))
 
     def test_only_reviewed_records_carry_container_metadata(self):
         expected = {'paper-dire', 'paper-resym', 'paper-redraw', 'paper-declarui', 'paper-fuzzware',
@@ -151,7 +159,7 @@ class ReviewedContainerRecordTests(unittest.TestCase):
                     'paper-webcode2m',
                     'paper-xfl',
                     'paper-wadec',
-                    'paper-symlm', 'paper-codeinverter-suite'}
+                    'paper-symlm', 'paper-codeinverter-suite', 'paper-notdec', 'paper-binjudge'}
         self.assertEqual({identifier for identifier, record in PAPERS.items() if 'citation' in record}, expected)
         for identifier in sorted(PAPERS.keys() - expected):
             # Records without verified container metadata keep the short venue label.

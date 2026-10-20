@@ -11,7 +11,7 @@
 <a href="https://awesomerea.org/zh/"><img src="assets/readme-banner.svg" alt="Awesome Reverse Engineering Anything — 覆盖六类逆向目标的工具、案例与论文" width="960"></a>
 
 <!-- BEGIN GENERATED BADGES -->
-[![精选资源: 473](https://img.shields.io/badge/%E7%B2%BE%E9%80%89%E8%B5%84%E6%BA%90-473-53309C?style=flat-square&labelColor=303447)](https://awesomerea.org/zh/resources/) [![案例: 197](https://img.shields.io/badge/%E6%A1%88%E4%BE%8B-197-53309C?style=flat-square&labelColor=303447)](https://awesomerea.org/zh/cases/) [![论文: 88](https://img.shields.io/badge/%E8%AE%BA%E6%96%87-88-53309C?style=flat-square&labelColor=303447)](https://awesomerea.org/zh/papers/) [![目录检查](https://github.com/reacher-z/Awesome-REA/actions/workflows/validate.yml/badge.svg?branch=main)](https://github.com/reacher-z/Awesome-REA/actions/workflows/validate.yml) [![许可: MIT](https://img.shields.io/badge/%E8%AE%B8%E5%8F%AF-MIT-606779?style=flat-square&labelColor=303447)](LICENSE) [![网站: awesomerea.org](https://img.shields.io/badge/%E7%BD%91%E7%AB%99-awesomerea.org-6235B5?style=flat-square&labelColor=303447)](https://awesomerea.org/zh/)
+[![精选资源: 473](https://img.shields.io/badge/%E7%B2%BE%E9%80%89%E8%B5%84%E6%BA%90-473-53309C?style=flat-square&labelColor=303447)](https://awesomerea.org/zh/resources/) [![案例: 197](https://img.shields.io/badge/%E6%A1%88%E4%BE%8B-197-53309C?style=flat-square&labelColor=303447)](https://awesomerea.org/zh/cases/) [![论文: 102](https://img.shields.io/badge/%E8%AE%BA%E6%96%87-102-53309C?style=flat-square&labelColor=303447)](https://awesomerea.org/zh/papers/) [![目录检查](https://github.com/reacher-z/Awesome-REA/actions/workflows/validate.yml/badge.svg?branch=main)](https://github.com/reacher-z/Awesome-REA/actions/workflows/validate.yml) [![许可: MIT](https://img.shields.io/badge/%E8%AE%B8%E5%8F%AF-MIT-606779?style=flat-square&labelColor=303447)](LICENSE) [![网站: awesomerea.org](https://img.shields.io/badge/%E7%BD%91%E7%AB%99-awesomerea.org-6235B5?style=flat-square&labelColor=303447)](https://awesomerea.org/zh/)
 <!-- END GENERATED BADGES -->
 
 **[搜索与筛选](https://awesomerea.org/zh/)** · **[浏览案例](https://awesomerea.org/zh/cases/)** · **[研究论文](https://awesomerea.org/zh/papers/)** · **[HTML 综述](https://awesomerea.org/zh/survey/)**
@@ -28,7 +28,7 @@
 
 **论文与工作流**
 
-- [论文](#papers) (88) · [智能体与 MCP](#agents-and-mcp) (43) · [文档与学习资源](#references-and-learning) (32)
+- [论文](#papers) (102) · [智能体与 MCP](#agents-and-mcp) (43) · [文档与学习资源](#references-and-learning) (32)
 
 **更多浏览方式**
 
@@ -2954,15 +2954,15 @@ REA 标签指向单独维护的[上游 CLI 与 MCP 项目](https://github.com/mo
 <a id="papers"></a>
 ## 论文
 
-**88 篇论文**，按主题分组，组内按年份从新到旧排列。每项均标明发表场所与状态，中文标题为译名。
+**102 篇论文**，按主题分组，组内按年份从新到旧排列。每项均标明发表场所与状态，中文标题为译名。
 
 [浏览论文目录](https://awesomerea.org/zh/papers/) · [完整书目 JSON](data/papers.json) · [推荐论文](https://github.com/reacher-z/Awesome-REA/issues/new?template=paper.yml)
 
 **按主题**
 
-- [智能体评测](#papers-agent-evaluation) (9) · [反编译](#papers-decompilation) (35) · [网站](#papers-website-reconstruction) (15)
-- [游戏](#papers-game-reconstruction) (6) · [应用](#papers-app-reconstruction) (7) · [固件](#papers-firmware-analysis) (6)
-- [协议](#papers-protocol-analysis) (10)
+- [智能体评测](#papers-agent-evaluation) (9) · [反编译](#papers-decompilation) (41) · [网站](#papers-website-reconstruction) (18)
+- [游戏](#papers-game-reconstruction) (6) · [应用](#papers-app-reconstruction) (8) · [固件](#papers-firmware-analysis) (9)
+- [协议](#papers-protocol-analysis) (11)
 
 展开“范围与发表信息”查看完整研究边界。部分论文也出现在精选资源目录中，两者数量不可相加。
 
@@ -3126,6 +3126,66 @@ REA 标签指向单独维护的[上游 CLI 与 MCP 项目](https://github.com/mo
 
   </details>
 
+- [**超越文本匹配：面向人的二进制逆向工程的无参考评估**](https://dl.acm.org/doi/10.1145/3832783.3834339)
+
+  BinJudgeBench 收集函数命名、二进制代码摘要及反编译改进的专家评分。BinJudge 学习为每个输入及任务选择评审配置，评估与人工评分的一致性，而非可执行正确性。
+
+  ASE 2026 · 会议论文 · [PDF](https://arxiv.org/pdf/2608.07038v1) · [完整条目与引用](https://awesomerea.org/zh/papers/paper-binjudge/)
+
+  <details>
+  <summary>范围与发表信息</summary>
+
+  **范围与限制:** 路由器在 1,233 个已标注输出上进行五折验证。初始标注者是三位作者，另有独立产业专家复核子集。人工评分具有主观性，流畅但无依据的回答也可能误导评审。任务上的相关性既不证明程序等价，也不能据此认定评审模型可替代人工复核。
+
+  **作者:** Xiuwei Shang 等
+
+  </details>
+
+- [**ASAP：通过汇编与源码对齐改进二进制反编译伪代码**](https://arxiv.org/abs/2610.06900)
+
+  ASAP 在训练中对齐汇编与源码表示，将汇编特征压缩为标记，并与反编译伪代码一起交给 LLM 改进。掩码及汇编优势目标用于鼓励模型利用低层证据。
+
+  arXiv 2026 · 预印本 · [PDF](https://arxiv.org/pdf/2610.06900v1) · [完整条目与引用](https://awesomerea.org/zh/papers/paper-asap-decompilation/)
+
+  <details>
+  <summary>范围与发表信息</summary>
+
+  **范围与限制:** 评估使用 HumanEval、MBPP 的 C 改编版本，采用 x86-64 GCC 11.4 的 O0–O3 及 Ghidra 11.0.3 伪代码。重新执行率指通过既有测试，并非等价证明。方法没有专门的标识符／注释恢复模块，也未穷尽评估前沿规模模型的训练。
+
+  **作者:** Yujian Zhuang 等
+
+  </details>
+
+- [**Echo：基于可信回译的学习式匹配反编译**](https://arxiv.org/abs/2609.18706)
+
+  Echo 迭代生成源码及编译配置，重新编译候选，并使用汇编差异指导配置搜索与代码修正。研究在函数基准和一个 Mirai 二进制的部分函数上评估匹配结果。
+
+  arXiv 2026 · 预印本 · [PDF](https://arxiv.org/pdf/2609.18706v1) · [完整条目与引用](https://awesomerea.org/zh/papers/paper-echo-matching-decompilation/)
+
+  <details>
+  <summary>范围与发表信息</summary>
+
+  **范围与限制:** 匹配指评估配置下归一化函数汇编相同，并非逐字节恢复完整可执行文件。测试覆盖选定的 x86 GCC／LLVM 设置及 62 个 Mirai 函数；通过有限测试框架不是一般等价证明。较长的优化函数及搜索空间外的编译配置仍是限制。
+
+  **作者:** Jun Bi 等
+
+  </details>
+
+- [**当 LLM 反编译器更易重编译，却更少保留原始行为**](https://arxiv.org/abs/2609.05370)
+
+  Decompile-Diverge 基于源码生成驱动，并对参考实现进行模糊测试，以构建函数级行为比较。研究让重建函数使用相同输入，检查编译及既有测试可能漏掉的行为差异与崩溃消失。
+
+  arXiv 2026 · 预印本 · [PDF](https://arxiv.org/pdf/2609.05370v1) · [完整条目与引用](https://awesomerea.org/zh/papers/paper-decompile-diverge/)
+
+  <details>
+  <summary>范围与发表信息</summary>
+
+  **范围与限制:** 该判定器需要参考源码、受支持输入及可构建的测试框架。比较仅覆盖有限输入语料和有界可观测状态；Matched 不代表所有输入上的等价。300 个 GitHub 参考函数中九个无法构建，最终保留 291 个；部分类型与函数被排除。DeGPT-Qwen 使用替换后的后端，并非原始发表的 DeGPT 模型。
+
+  **作者:** Chang Liu 等
+
+  </details>
+
 - [**解耦的必要性：面向优化与混淆、无需识别具体变换的反编译代码恢复**](https://arxiv.org/abs/2608.27889)
 
   ReSource 针对受编译优化与混淆影响的反编译函数进行修复：先从语义失真数据库检索指导信息，再预测控制流骨架，最后调整名称与格式。评估衡量代码相似性，以及能否从源码语料中检索到对应的原始函数。
@@ -3138,6 +3198,21 @@ REA 标签指向单独维护的[上游 CLI 与 MCP 项目](https://github.com/mo
   **范围与限制:** 函数级相似性与检索指标属于替代指标，不能证明代码可编译、可执行等价或完整程序恢复。第 5.2 节指出全局上下文缺失，以及定制混淆尚未测试。作者链接的产物页面介绍了简化数据集，并明确说明数据库构建与控制流预测模块尚未提供。
 
   **作者:** Zhiping Zhou 等
+
+  </details>
+
+- [**STILL：为 LLM 辅助 C++ 反编译恢复编译后隐藏的 STL 语义**](https://arxiv.org/abs/2608.26408)
+
+  STILL 从去符号控制流图预测函数级 STL 容器的存在情况，并将预测转成紧凑提示，供 LLM 改进 Ghidra 输出。StlBench 为五类容器提供受控标注。
+
+  arXiv 2026 · 预印本 · [PDF](https://arxiv.org/pdf/2608.26408v1) · [完整条目与引用](https://awesomerea.org/zh/papers/paper-still-stl/)
+
+  <details>
+  <summary>范围与发表信息</summary>
+
+  **范围与限制:** 接口覆盖 map、queue、set、string、vector，不恢复完整变量类型、模板参数、嵌套关系、迭代器或 std::array。实验采用 g++／x86-64／libstdc++、angr 及 Ghidra，未验证向其他工具链的迁移。测试集可执行性不等于等价；提示收益也取决于下游模型及适配。
+
+  **作者:** Xiaohan Wang 等
 
   </details>
 
@@ -3168,6 +3243,21 @@ REA 标签指向单独维护的[上游 CLI 与 MCP 项目](https://github.com/mo
   **范围与限制:** 结构相似性不能证明语义等价。QRS 同时用于指导和评价改进，仍缺少人工可读性验证；经过筛选的合成语料限制了泛化。处理困难二进制并恢复可编译、行为正确代码，不属于本文的贡献范围。
 
   **作者:** Neil Archibald 等
+
+  </details>
+
+- [**NotDec：通过跨过程类型恢复进行 WebAssembly 反编译**](https://dl.acm.org/doi/10.1145/3744916.3787762)
+
+  NotDec 将 WebAssembly 提升为 SSA 中间表示，通过基于 Retypd 的类型约束及指针／数值区分恢复结构，并生成 C。研究区分完整跨过程分析与较快的过程内变体。
+
+  ICSE 2026 · 会议论文 · [PDF](https://arxiv.org/pdf/2608.03286v1) · [代码](https://github.com/NotDec/NotDec) · [完整条目与引用](https://awesomerea.org/zh/papers/paper-notdec/)
+
+  <details>
+  <summary>范围与发表信息</summary>
+
+  **范围与限制:** 研究使用 O0／O3 下的 Juliet 样例和五个 Howard 程序。Howard 二进制未实际链接所需库，无法执行，因此重编译不证明行为等价。完整分析有六个 Howard 变体在 24 小时超时；重编译结果仅覆盖成功反编译的样例。已检查的 README 也提醒复杂语句可能产生后端语法错误。
+
+  **作者:** Jikai Wang 等
 
   </details>
 
@@ -3641,6 +3731,21 @@ REA 标签指向单独维护的[上游 CLI 与 MCP 项目](https://github.com/mo
 
 [↑ 论文主题](#papers) · [目录](#目录)
 
+- [**TaoD2C-Bench：超越视觉相似度的工业界面代码生成评测**](https://arxiv.org/abs/2610.10374)
+
+  TaoD2C-Bench 根据设计图、图层元数据与组件库文档重建界面，将需求推断与代码实现分别评测，并结合源码、运行时结构及渲染结果检查组件选择与布局关系。
+
+  arXiv 2026 · 预印本 · [PDF](https://arxiv.org/pdf/2610.10374v1) · [完整条目与引用](https://awesomerea.org/zh/papers/paper-taod2c-bench/)
+
+  <details>
+  <summary>范围与发表信息</summary>
+
+  **范围与限制:** 八个模型的实测范围为 421 个设计，而非完整的 2,861 个设计。结果包含规定的重试与一次输出修复；任务衡量组件、布局约束及视觉相似度，不验证完整应用行为，设计来源也集中于同一商业生态。
+
+  **作者:** Chengwei Shi 等
+
+  </details>
+
 - [**Vision2Web：采用智能体验证的分层视觉网站开发基准**](https://proceedings.mlr.press/v306/he26n.html)
 
   基于视觉原型和文字需求评测网站开发，包含 100 项静态页面、66 项交互前端与 27 项全栈任务，将基于工作流的功能检查与模型进行的视觉比较结合。
@@ -3671,6 +3776,21 @@ REA 标签指向单独维护的[上游 CLI 与 MCP 项目](https://github.com/mo
 
   </details>
 
+- [**能否处处正确渲染？多模态模型生成网页的跨环境兼容性研究**](https://arxiv.org/abs/2608.12518)
+
+  WebCompat 评测由截图重建的网页在不同浏览器与设备中的表现。XCompat 结合渲染后 DOM 几何信息、视口元数据及截图检测布局与元素问题，并将跨环境一致性与原始设计的相似度区分开。
+
+  arXiv 2026 · 预印本 · [PDF](https://arxiv.org/pdf/2608.12518v1) · [代码](https://github.com/ZiyunGuo/WebCompat) · [完整条目与引用](https://awesomerea.org/zh/papers/paper-webcompat/)
+
+  <details>
+  <summary>范围与发表信息</summary>
+
+  **范围与限制:** 从 480 次生成中筛留 254 个静态网页，组成 2,032 个对照样本；保留测试集为 51 页、408 对。失败渲染与依赖交互的布局被排除，启发式误差及设计意图的主观性限制了对动态网站或所有环境的泛化。
+
+  **作者:** Ziyun Guo 等
+
+  </details>
+
 - [**UI2App：评测可执行 Web 应用生成中的视觉交互推断**](https://arxiv.org/abs/2607.06306)
 
   UI2App 使用来自 95 个 Web 应用的 600 张截图，评测生成的可运行 React/TypeScript 应用。它通过参考交互分类体系和公开评测流水线，分别衡量构建可执行性、视觉保真度，以及包括跨路由状态在内的截图隐含交互行为。
@@ -3698,6 +3818,21 @@ REA 标签指向单独维护的[上游 CLI 与 MCP 项目](https://github.com/mo
   **范围与限制:** 限定于 Plotly+Dash 仪表盘，包含经模型扩充的示例。部分设置提供 DOM 信息，评估使用模型评审器。它并非通用后端恢复基准。链接的数据集需要接受访问条件并共享联系信息。
 
   **作者:** Tianhao Niu 等
+
+  </details>
+
+- [**UniCoder：利用符号奖励与参考代码引导优化的统一视觉到代码生成**](https://arxiv.org/abs/2606.31732)
+
+  UniCoder 面向图表、SVG 与网页训练视觉到代码模型。强化学习目标结合渲染检查、图像相似度和代码中的视觉属性，并向低奖励训练组加入参考代码轨迹以改善探索。
+
+  arXiv 2026 · 预印本 · [PDF](https://arxiv.org/pdf/2606.31732v1) · [代码](https://github.com/JimmyZhengyz/unicoder) · [完整条目与引用](https://awesomerea.org/zh/papers/paper-unicoder/)
+
+  <details>
+  <summary>范围与发表信息</summary>
+
+  **范围与限制:** 实验以一个 8B 基座模型研究静态视觉重建，包含 Design2Code 与 ScreenBench。参考代码用于训练，渲染成功不证明交互行为正确；新领域需要调整属性模式与提示词。交互界面、动画及移动应用行为未被评测。
+
+  **作者:** Yaozhi Zheng 等
 
   </details>
 
@@ -3966,6 +4101,21 @@ REA 标签指向单独维护的[上游 CLI 与 MCP 项目](https://github.com/mo
 
 [↑ 论文主题](#papers) · [目录](#目录)
 
+- [**从视觉组件到界面代码：借助工具证据的高效生成**](https://arxiv.org/abs/2608.12611)
+
+  WidgetGen 将组件截图重建为 React JSX，利用 OCR 文本框与调色板支持整体布局推理及可选图表生成，最后渲染一次；生成的渲染图与代码配对还用于模型微调。
+
+  MUCG <span>@</span> ECCV 2026 · 已接收 · [PDF](https://arxiv.org/pdf/2608.12611v1) · [完整条目与引用](https://awesomerea.org/zh/papers/paper-widgetgen/)
+
+  <details>
+  <summary>范围与发表信息</summary>
+
+  **范围与限制:** 主要对比使用六个模型与单一数据集中的 1,000 个测试组件。九项图像指标不检验交互、无障碍或可维护性；监督学习实验仅覆盖六个 Qwen 系列模型，更多界面分布与模型系列的泛化尚未确定。
+
+  **作者:** Houston H. Zhang 等
+
+  </details>
+
 - [**UIOrchestra：通过多智能体系统将 UI 设计转换为高保真代码**](https://aclanthology.org/2025.findings-emnlp.150/)
 
   UIOrchestra 通过布局描述、代码生成及渲染图像比较三个智能体，将静态移动 UI 设计转换为 React/CSS。其 APPUI 基准包含 1,101 组经人工修订的代码与渲染图像，依据 12 类中的 165 款应用截图构建。参考代码为评测而重建，并非恢复出的原始应用源码。
@@ -4076,6 +4226,51 @@ REA 标签指向单独维护的[上游 CLI 与 MCP 项目](https://github.com/mo
 
 [↑ 论文主题](#papers) · [目录](#目录)
 
+- [**面向忠实固件运行迁移的响应式外设建模**](https://arxiv.org/abs/2608.29737)
+
+  Bluezz 将外设建模为具有状态的事件—条件—动作系统，协调中断、MMIO 与 DMA，而非孤立处理各次访问；据此迁移 BLE 固件，进入已连接协议状态进行分析与模糊测试。
+
+  arXiv 2026 · 预印本 · [PDF](https://arxiv.org/pdf/2608.29737v1) · [完整条目与引用](https://awesomerea.org/zh/papers/paper-bluezz-rpm/)
+
+  <details>
+  <summary>范围与发表信息</summary>
+
+  **范围与限制:** BLE 评测覆盖 18 个目标，并补充了有限的其他 MCU 案例。硬件规格、行为规则与用例驱动仍需准备和人工验证，智能体生成规则不消除这些工作。覆盖率与已报告崩溃不证明硬件等价或协议支持穷尽，本次未执行产物。
+
+  **作者:** Qinying Wang 等
+
+  </details>
+
+- [**FirmPilot：证据引导的多智能体物联网固件运行环境恢复**](https://arxiv.org/abs/2607.14903)
+
+  FirmPilot 协调检索、规划、文件系统、持久状态与网络恢复来重建 QEMU 执行环境。候选修改被落实为受约束的产物差异，再通过重新运行固件与固定探测检查。
+
+  arXiv 2026 · 预印本 · [PDF](https://arxiv.org/pdf/2607.14903v1) · [完整条目与引用](https://awesomerea.org/zh/papers/paper-firmpilot/)
+
+  <details>
+  <summary>范围与发表信息</summary>
+
+  **范围与限制:** 主要分母为可取得的 10,033 个 LFwC 镜像，而非全部 10,913 条元数据记录。2,400 秒预算内的可达性不等于完整设备等价，HTTP 成功也包含重定向与认证入口。报告结果使用单一模型后端及固定探测，本次未复现迁移或实验。
+
+  **作者:** Yanbing Shen 等
+
+  </details>
+
+- [**FirmCure：面向自主、自适应的 Linux 固件运行环境迁移**](https://arxiv.org/abs/2606.24549)
+
+  FirmCure 将静态依赖分析、启动配置迭代修复与运行时故障诊断结合起来，在 QEMU 中迁移 Linux 固件。专门的智能体执行针对性修复，并利用执行反馈恢复服务行为。
+
+  arXiv 2026 · 预印本 · [PDF](https://arxiv.org/pdf/2606.24549v1) · [完整条目与引用](https://awesomerea.org/zh/papers/paper-firmcure/)
+
+  <details>
+  <summary>范围与发表信息</summary>
+
+  **范围与限制:** 评测覆盖十家厂商、五种架构的 21 个镜像：全部打开了端口，但只有 19 个在 45 分钟内实现完整服务交互。近似内核替换不能保留依赖原内核或专用硬件的漏洞，模型推理循环仍会导致失败。本次未重跑这些作者报告的结果。
+
+  **作者:** Chuan Hong 等
+
+  </details>
+
 - [**面向 Linux 固件二进制的用户空间依赖感知重托管**](https://www.ndss-symposium.org/ndss-paper/user-space-dependency-aware-rehosting-for-linux-based-firmware-binaries/)
 
   FIRMWELL 通过运行初始化进程、定位阻塞依赖并修补缺失的系统层行为，重建 Linux 固件服务的执行环境。它结合容器化 QEMU-user 仿真与 QEMU-system 回退，并利用进程轨迹和二进制分析恢复目标服务所需的资源。
@@ -4170,6 +4365,21 @@ REA 标签指向单独维护的[上游 CLI 与 MCP 项目](https://github.com/mo
 ### 协议推断与分析
 
 [↑ 论文主题](#papers) · [目录](#目录)
+
+- [**基于搜索优化从工业网络流量恢复过程变量**](https://arxiv.org/abs/2608.16403)
+
+  PVParser 根据工业流量与历史过程记录恢复过程变量布局：周期模式检测定位相关载荷，改进的蒙特卡洛树搜索推断字段边界、类型和字节序，再将解码序列与已观察的过程变量对齐。
+
+  CCS 2026 · 已接收 · [PDF](https://arxiv.org/pdf/2608.16403v2) · [完整条目与引用](https://awesomerea.org/zh/papers/paper-pvparser/)
+
+  <details>
+  <summary>范围与发表信息</summary>
+
+  **范围与限制:** 载荷定位评测采用 SCADA-N、SWaT 与 WADI；字段及语义恢复评测采用 SWaT 与 WADI。恢复依赖流量和历史记录，以及重复出现、布局稳定的明文字节载荷；加密流量、位级总线及变量列表动态变化的事件消息不在范围内。该方法补充协议解析器，本次未独立复现实验。
+
+  **作者:** Chuan Sheng 等
+
+  </details>
 
 - [**ICEPRE：基于数据驱动混合符号执行的工控协议逆向工程**](https://dl.acm.org/doi/10.1145/3728982)
 
