@@ -11,7 +11,7 @@ An independent collection of tools, case studies and research for websites, game
 <a href="https://awesomerea.org/"><img src="assets/readme-banner.svg" alt="Awesome Reverse Engineering Anything — tools, cases and papers across six reverse-engineering domains" width="960"></a>
 
 <!-- BEGIN GENERATED BADGES -->
-[![resources: 481](https://img.shields.io/badge/resources-481-53309C?style=flat-square&labelColor=303447)](https://awesomerea.org/resources/) [![cases: 201](https://img.shields.io/badge/cases-201-53309C?style=flat-square&labelColor=303447)](https://awesomerea.org/cases/) [![papers: 128](https://img.shields.io/badge/papers-128-53309C?style=flat-square&labelColor=303447)](https://awesomerea.org/papers/) [![Catalog checks](https://github.com/reacher-z/Awesome-REA/actions/workflows/validate.yml/badge.svg?branch=main)](https://github.com/reacher-z/Awesome-REA/actions/workflows/validate.yml) [![license: MIT](https://img.shields.io/badge/license-MIT-606779?style=flat-square&labelColor=303447)](LICENSE) [![website: awesomerea.org](https://img.shields.io/badge/website-awesomerea.org-6235B5?style=flat-square&labelColor=303447)](https://awesomerea.org/)
+[![resources: 481](https://img.shields.io/badge/resources-481-53309C?style=flat-square&labelColor=303447)](https://awesomerea.org/resources/) [![cases: 201](https://img.shields.io/badge/cases-201-53309C?style=flat-square&labelColor=303447)](https://awesomerea.org/cases/) [![papers: 129](https://img.shields.io/badge/papers-129-53309C?style=flat-square&labelColor=303447)](https://awesomerea.org/papers/) [![Catalog checks](https://github.com/reacher-z/Awesome-REA/actions/workflows/validate.yml/badge.svg?branch=main)](https://github.com/reacher-z/Awesome-REA/actions/workflows/validate.yml) [![license: MIT](https://img.shields.io/badge/license-MIT-606779?style=flat-square&labelColor=303447)](LICENSE) [![website: awesomerea.org](https://img.shields.io/badge/website-awesomerea.org-6235B5?style=flat-square&labelColor=303447)](https://awesomerea.org/)
 <!-- END GENERATED BADGES -->
 
 **[Search & filter](https://awesomerea.org/)** · **[Browse cases](https://awesomerea.org/cases/)** · **[Research papers](https://awesomerea.org/papers/)** · **[HTML survey](https://awesomerea.org/survey/)**
@@ -28,7 +28,7 @@ An independent collection of tools, case studies and research for websites, game
 
 **Research and workflows**
 
-- [Papers](#papers) (128) · [Agents and MCP](#agents-and-mcp) (43) · [References and Learning](#references-and-learning) (32)
+- [Papers](#papers) (129) · [Agents and MCP](#agents-and-mcp) (43) · [References and Learning](#references-and-learning) (32)
 
 **More ways to browse**
 
@@ -626,14 +626,14 @@ REA labels refer to the separate [upstream CLI and MCP project](https://github.c
 <a id="papers"></a>
 ## Papers
 
-**128 papers**, grouped by topic and ordered newest first. Each line shows the study’s opening sentence, venue, publication status and first author.
+**129 papers**, grouped by topic and ordered newest first. Each line shows the study’s opening sentence, venue, publication status and first author.
 
 [Browse the paper directory](https://awesomerea.org/papers/) · [Complete bibliography JSON](data/papers.json) · [Suggest a paper](https://github.com/reacher-z/Awesome-REA/issues/new?template=paper.yml)
 
 **By topic**
 
 - [Agent evaluation](#papers-agent-evaluation) (9) · [Decompilation](#papers-decompilation) (55) · [Websites](#papers-website-reconstruction) (20)
-- [Games](#papers-game-reconstruction) (8) · [Apps](#papers-app-reconstruction) (10) · [Firmware](#papers-firmware-analysis) (13)
+- [Games](#papers-game-reconstruction) (8) · [Apps](#papers-app-reconstruction) (11) · [Firmware](#papers-firmware-analysis) (13)
 - [Protocols](#papers-protocol-analysis) (13)
 
 Each paper’s “Full entry” holds its complete summary, scope and limitations, all authors and citation. Some papers also appear among curated resources; counts are not additive.
@@ -762,6 +762,7 @@ Each paper’s “Full entry” holds its complete summary, scope and limitation
 - [**From Code to Requirements: Agentic Reverse Engineering of Business Rules at Enterprise Scale**](https://arxiv.org/abs/2609.22719) - Uses seven agents and human review to recover business requirements from source, tests, configuration and documentation. <sub>arXiv 2026 · Preprint · Garima Agrawal et al. · [PDF](https://arxiv.org/pdf/2609.22719v1) · [Full entry](https://awesomerea.org/papers/paper-agentic-business-rule-recovery/)</sub>
 - [**On the Viability of Requirements Generation from Code: An Experience Report**](https://doi.org/10.1109/REW72749.2026.00023) - Studies a RAG-based, human-supervised pipeline for recovering requirements and code traces from two projects. <sub>IEEE REW 2026 / AIRE · Conference paper · Alexander Korn et al. · [PDF](https://arxiv.org/pdf/2606.25550v1) · [Full entry](https://awesomerea.org/papers/paper-requirements-generation-viability/)</sub>
 - [**From Visual Widgets to UI Code: Efficient Tool-Grounded Generation**](https://arxiv.org/abs/2608.12611) - WidgetGen reconstructs widget screenshots as React JSX. <sub>MUCG <span>@</span> ECCV 2026 · Accepted · Houston H. Zhang et al. · [PDF](https://arxiv.org/pdf/2608.12611v1) · [Full entry](https://awesomerea.org/papers/paper-widgetgen/)</sub>
+- [**Agentic Reverse Engineering: From I/O to Code with Discovery Agent**](https://arxiv.org/abs/2605.15334) - Synthesizes executable programs from input/output observations using LLM-guided evolutionary search, progressively revealed examples, simple-to-complex mutations and execution-error feedback. <sub>NeurIPS 2026 · Accepted · Yihong Dong et al. · [PDF](https://arxiv.org/pdf/2605.15334v2) · [Code](https://github.com/JiaruQian/IO2Code) · [Full entry](https://awesomerea.org/papers/paper-dio-agent/)</sub>
 - [**UIOrchestra: Generating High-Fidelity Code from UI Designs with a Multi-agent System**](https://aclanthology.org/2025.findings-emnlp.150/) - UIOrchestra converts static mobile UI designs into React/CSS through layout-description, code-generation and rendered-image comparison agents. <sub>Findings of EMNLP 2025 · Conference paper · Chuhuai Yue et al. · [PDF](https://aclanthology.org/2025.findings-emnlp.150.pdf) · [Full entry](https://awesomerea.org/papers/paper-uiorchestra/)</sub>
 - [**DeclarUI: Bridging Design and Development with Automated Declarative UI Code Generation**](https://doi.org/10.1145/3715726) - Combines visual component extraction, multimodal models, page-transition graphs and iterative checks to reconstruct multi-page mobile UI code from designs or screenshots, evaluated with React Native, Flutter and ArkUI. <sub>Proceedings of the ACM on Software Engineering 2025 · Journal article · Ting Zhou et al. · [PDF](https://xinyi-hou.github.io/files/zhou2024bridging.pdf) · [Code](https://github.com/security-pride/DeclarUI) · [Full entry](https://awesomerea.org/papers/paper-declarui/)</sub>
 - [**Machine Learning-Based Prototyping of Graphical User Interfaces for Mobile Apps**](https://doi.org/10.1109/TSE.2018.2844788) - ReDraw turns screenshots or design mock-ups into native Android GUI prototypes by detecting components, classifying widget types with a CNN, and assembling a plausible view hierarchy with a data-driven nearest-neighbor method. <sub>IEEE Transactions on Software Engineering 2020 · Journal article · Kevin Moran et al. · [PDF](https://arxiv.org/pdf/1802.02312v2) · [Full entry](https://awesomerea.org/papers/paper-redraw/)</sub>

@@ -434,7 +434,7 @@
     "arxiv_id": "2610.14960",
     "arxiv_version_reviewed": "v1",
     "first_arxiv_date": "2026-10-10",
-    "doi": null,
+    "doi": "10.48550/arxiv.2610.14960",
     "url": "https://arxiv.org/abs/2610.14960",
     "pdf_url": "https://arxiv.org/pdf/2610.14960",
     "code_url": null,
@@ -450,16 +450,17 @@
     "why_fits_zh": "为逆向智能体的工具接口、选择性检索及持久分析状态设计提供依据。",
     "evidence_urls": [
       "https://arxiv.org/abs/2610.14960",
-      "https://arxiv.org/html/2610.14960v1"
+      "https://arxiv.org/html/2610.14960v1",
+      "https://api.datacite.org/dois/10.48550/arxiv.2610.14960"
     ],
-    "metadata_notes": "Recent preprint, with no confirmed conference venue or paper-specific public code link. arXiv marks its generated DOI as pending registration, so the canonical link is the arXiv record.",
+    "metadata_notes": "The original source review did not verify a conference venue or paper-specific public code link. On 2026-10-20, the official arXiv history still listed only v1. Although its abstract page labels the DOI as pending, DataCite reports the matching title and six authors as findable, registered on 2026-10-14. This is an identifier correction, not a new paper version or expanded experimental verification.",
     "kind": "research",
     "verified_at": "2026-10-16",
     "verification": "source-reviewed",
     "runtime_tested": false,
     "title_zh": "人类与机器：AI 智能体在软件逆向工程中的对比研究",
     "date_basis_zh": "arXiv v1 首次提交日期。",
-    "metadata_notes_zh": "这是一篇近期预印本，尚未确认会议发表场所或论文专属公开代码链接。arXiv 将其生成的 DOI 标为待注册，因此采用 arXiv 记录作为规范链接。"
+    "metadata_notes_zh": "原有来源复核未确认会议发表场所或论文专属公开代码链接。2026-10-20 查询时，arXiv 官方历史仍只列 v1。尽管摘要页将 DOI 标为待注册，DataCite 中相同标题与六位作者的记录已可检索，登记日期为 2026-10-14。此处仅修正标识符，不代表论文出现新版本或扩大实验验证范围。"
   },
   {
     "id": "paper-design2code",
@@ -6986,6 +6987,61 @@
       "https://github.com/guanning03/Schema/blob/84c075fadfe937b97a3d1ad2acb42d1233f55ffe/README.md",
       "https://github.com/guanning03/Schema/blob/84c075fadfe937b97a3d1ad2acb42d1233f55ffe/LICENSE",
       "https://huggingface.co/datasets/schema-harness/arc-agi-3-schema-traces/blob/0a0858a9e61a68d1e83142d9e4e3d66fc779c403/README.md"
+    ],
+    "kind": "research",
+    "verified_at": "2026-10-20",
+    "verification": "source-reviewed",
+    "runtime_tested": false
+  },
+  {
+    "id": "paper-dio-agent",
+    "title": "Agentic Reverse Engineering: From I/O to Code with Discovery Agent",
+    "title_zh": "智能体逆向工程：利用发现智能体从输入输出行为恢复代码",
+    "authors": [
+      "Yihong Dong",
+      "Jiaru Qian",
+      "Haoran Zhang",
+      "Peixu Wang",
+      "Binhua Li",
+      "Zhi Jin",
+      "Yongbin Li",
+      "Ge Li",
+      "Xiaokang Yang",
+      "Xue Jiang"
+    ],
+    "year": 2026,
+    "publication_date": null,
+    "date_precision": "year",
+    "date_basis": "Official NeurIPS 2026 poster listing confirms acceptance, not a proceedings publication date. First arXiv submission was 2026-05-14; reviewed v2 was revised on 2026-10-18.",
+    "date_basis_zh": "NeurIPS 2026 官方海报页面确认接收，不据此认定论文集出版日期。arXiv 首投为 2026-05-14；所审阅 v2 修订于 2026-10-18。",
+    "venue": "NeurIPS 2026",
+    "publication_status": "conference-accepted",
+    "arxiv_id": "2605.15334",
+    "arxiv_version_reviewed": "v2",
+    "first_arxiv_date": "2026-05-14",
+    "doi": "10.48550/arxiv.2605.15334",
+    "url": "https://arxiv.org/abs/2605.15334",
+    "pdf_url": "https://arxiv.org/pdf/2605.15334v2",
+    "code_url": "https://github.com/JiaruQian/IO2Code",
+    "project_url": null,
+    "targets": [
+      "app"
+    ],
+    "description_en": "Synthesizes executable programs from input/output observations using LLM-guided evolutionary search, progressively revealed examples, simple-to-complex mutations and execution-error feedback. An active variant chooses inputs and queries a hidden reference program.",
+    "description_zh": "通过 LLM 引导的演化搜索、逐步展示的样例、由简到繁的修改及执行错误反馈，从输入输出观察合成可执行程序；主动变体自行选择输入并查询隐藏的参考程序。",
+    "scope_limitations_en": "IO2CodeBench has 125 generated tasks spanning basic operations, algorithms, geometry and image-to-value mappings, normally with eight visible and fifteen held-out examples. Active exploration covers a 25% subset from each level. Multimodal results average sample pass ratios, while other levels count tasks passing every held-out example. Finite test success does not establish original-source recovery or complete equivalence; arbitrary applications and stateful services are not evaluated.",
+    "scope_limitations_zh": "IO2CodeBench 包含 125 个生成任务，覆盖基础运算、算法、几何及图像到数值的映射，通常每题提供八个可见样例和十五个留出样例。主动探索只覆盖各层级的 25% 子集。多模态结果采用样例通过比例的均值，其他层级按通过全部留出样例的任务计数。有限测试通过不代表恢复原源码或完全等价；未评测任意应用及有状态服务。",
+    "why_fits_en": "Provides a concrete observation-to-program reconstruction workflow and separates visible-example fitting from held-out behavior checks.",
+    "why_fits_zh": "提供从行为观察到程序重建的具体流程，并区分可见样例拟合与留出行为检查。",
+    "metadata_notes": "The official poster and pinned repository retain the earlier title From I/O to Code with Discovery Agent; all ten authors match v2 and DataCite. The registered DOI identifies the arXiv work; no proceedings DOI or publication date is asserted. The paper uses the arXiv non-exclusive license. Author-linked code was checked at ef15827ab7090bf2d227fb1eef51d91b0163339e: its README documents Python 3.10+, provider credentials, benchmark/oracle tasks and experiment runners. No repository-wide code/data license was verified in the reviewed README and root tree. No generated programs, models or experiments were executed.",
+    "metadata_notes_zh": "官方海报与固定仓库保留早期标题 From I/O to Code with Discovery Agent，十位作者与 v2 及 DataCite 一致。已注册 DOI 标识 arXiv 工作，不据此声明论文集 DOI 或出版日期。论文采用 arXiv 非独占许可。作者链接代码固定核查于 ef15827ab7090bf2d227fb1eef51d91b0163339e；README 说明 Python 3.10+、服务商凭据、基准／参考程序任务和实验入口。所审阅 README 与根目录树未核实覆盖整个仓库的代码／数据许可。本次未执行生成程序、模型或实验。",
+    "evidence_urls": [
+      "https://arxiv.org/abs/2605.15334",
+      "https://arxiv.org/html/2605.15334v2",
+      "https://api.datacite.org/dois/10.48550/arxiv.2605.15334",
+      "https://neurips.cc/virtual/2026/loc/sydney/poster/154711",
+      "https://github.com/JiaruQian/IO2Code/blob/ef15827ab7090bf2d227fb1eef51d91b0163339e/README.md",
+      "https://github.com/JiaruQian/IO2Code/tree/ef15827ab7090bf2d227fb1eef51d91b0163339e"
     ],
     "kind": "research",
     "verified_at": "2026-10-20",
