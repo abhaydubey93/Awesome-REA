@@ -205,7 +205,10 @@ def _case_collection(resources: list[dict], language: str, site_url: str) -> tup
 def _document(*, site_url: str, repository_url: str, path: str, language: str,
               title: str, description: str, content: str, schema: dict | None,
               assets: dict, icon_stylesheet: str | None, noindex: bool = False,
-              main_class: str = '', extra_styles: tuple[str, ...] = ()) -> str:
+              main_class: str = '', extra_styles: tuple[str, ...] = (),
+              source_export: str = 'source-index.json') -> str:
+    if source_export not in ('source-index.json', 'source-published.json'):
+        raise ValueError('Unsupported repository export route')
     zh = language == 'zh'
     locale = 'zh-CN' if zh else 'en'
     root = '/zh/' if zh else '/'
@@ -257,7 +260,7 @@ def _document(*, site_url: str, repository_url: str, path: str, language: str,
   <section class="collection-intro browse-intro"><p class="eyebrow">{('逆向工程资源集合' if zh else 'THE REVERSE ENGINEERING COLLECTION')}</p><h1>{escape(title)}<span class="title-dot" aria-hidden="true">.</span></h1><p>{escape(description)}</p></section>
   {content}
 </main>
-<footer class="site-footer"><div class="shell footer-top"><p>{('独立的资源集合，在公开协作中持续更新。' if zh else 'An independent resource collection, updated in public.')}</p><div class="footer-links"><a href="{prefix}/resources/">{('精选资源' if zh else 'Curated resources')}</a><a href="{prefix}/cases/">{('案例合集' if zh else 'Case studies')}</a><a href="{prefix}/browse/">{('仓库目录' if zh else 'Repository directory')}</a><a href="{prefix}/papers/">{('研究论文' if zh else 'Research papers')}</a><a href="{prefix}/about/">{('关于与来源' if zh else 'About and sources')}</a><a href="/catalog.json" download="awesomerea-curated-catalog.json">{('精选 JSON ↓' if zh else 'Curated JSON ↓')}</a><a href="/source-index.json" download="awesomerea-repository-index.json">{('仓库 JSON ↓' if zh else 'Repository JSON ↓')}</a></div></div><div class="shell footer-bottom">{footer}</div></footer>
+<footer class="site-footer"><div class="shell footer-top"><p>{('独立的资源集合，在公开协作中持续更新。' if zh else 'An independent resource collection, updated in public.')}</p><div class="footer-links"><a href="{prefix}/resources/">{('精选资源' if zh else 'Curated resources')}</a><a href="{prefix}/cases/">{('案例合集' if zh else 'Case studies')}</a><a href="{prefix}/browse/">{('仓库目录' if zh else 'Repository directory')}</a><a href="{prefix}/papers/">{('研究论文' if zh else 'Research papers')}</a><a href="{prefix}/about/">{('关于与来源' if zh else 'About and sources')}</a><a href="/catalog.json" download="awesomerea-curated-catalog.json">{('精选 JSON ↓' if zh else 'Curated JSON ↓')}</a><a href="/{source_export}" download="awesomerea-repository-index.json">{('仓库 JSON ↓' if zh else 'Repository JSON ↓')}</a></div></div><div class="shell footer-bottom">{footer}</div></footer>
 </body>
 </html>
 '''
@@ -284,12 +287,14 @@ def build_discovery_pages(site_dir: Path, catalog: dict, source_index: dict | No
     excluded = sum(record.get('scope_status') == 'excluded' for record in scanned)
     out_of_scope, unavailable = exclusion_counts(scanned)
     browse_count = len(scanned) - excluded
+    published = (source_index or {}).get('meta', {}).get('kind') == 'published-repository-selection'
+    source_export = 'source-published.json' if published else 'source-index.json'
     paper_path = site_dir / 'papers.json'
     papers = json.loads(paper_path.read_text(encoding='utf-8')) if paper_path.is_file() else []
     if not isinstance(papers, list):
         raise ValueError('papers.json must contain a separate array of paper records')
     overlapping_papers = bibliography_overlap(resources, papers)
-    scan_date = str((source_index or {}).get('meta', {}).get('completed_at') or '')[:10]
+    scan_date = str((source_index or {}).get('meta', {}).get('published_at' if published else 'completed_at') or '')[:10]
     assets = {key: _asset(site_dir, filename) for key, filename in (
         ('styles', 'styles.css'), ('browse', 'browse.css'), ('favicon', 'favicon.svg'), ('social', 'social-card.png'))}
     icons = _IconStylesheet()
@@ -331,7 +336,7 @@ def build_discovery_pages(site_dir: Path, catalog: dict, source_index: dict | No
                 items.append({'name': name, 'url': record['url'], 'description': record[f'description_{language}']})
         content = f'''<div class="browse-actions"><a class="button button-primary" href="{('/zh/?view=curated' if zh else '/?view=curated&amp;lang=en')}">{('搜索与筛选' if zh else 'Search and filter')}</a><a class="button button-outline" href="{prefix}/browse/">{('浏览仓库' if zh else 'Browse repositories')}</a><a class="button button-outline" href="{prefix}/papers/">{('研究论文' if zh else 'Research papers')}</a><a class="browse-download" href="/catalog.json" download="awesomerea-curated-catalog.json">{('下载精选 JSON ↓' if zh else 'Download curated JSON ↓')}</a></div>
 <details class="browse-provenance"><summary>{("来源复核与验证范围" if zh else "Source review and testing limits")}</summary><p>{escape(note)}</p></details><nav class="browse-category-nav" aria-label="{('资源分类' if zh else 'Resource categories')}">{''.join(navigation)}</nav>{''.join(sections)}'''
-        rendered[path] = _document(site_url=site_url, repository_url=repository_url, path=path, language=language, title=title, description=description, content=content, schema=collection_page_schema(site_url + path, title, description, locale, items, site_url), assets=assets, icon_stylesheet=icons.href)
+        rendered[path] = _document(site_url=site_url, repository_url=repository_url, path=path, language=language, title=title, description=description, content=content, schema=collection_page_schema(site_url + path, title, description, locale, items, site_url), assets=assets, icon_stylesheet=icons.href, source_export=source_export)
         paths.append(path)
 
         path = prefix + '/cases/'
@@ -339,7 +344,7 @@ def build_discovery_pages(site_dir: Path, catalog: dict, source_index: dict | No
         content, items = _case_collection(resources, language, site_url)
         description = (f'从 {len(resources):,} 项精选资源中筛选出的 {len(items):,} 个案例，保留重建方法、成果边界与原始证据。'
                        if zh else f'{len(items):,} case studies from {len(resources):,} curated resources, with documented reconstruction methods, scope, and original evidence.')
-        rendered[path] = _document(site_url=site_url, repository_url=repository_url, path=path, language=language, title=title, description=description, content=content, schema=collection_page_schema(site_url + path, title, description, locale, items, site_url), assets=assets, icon_stylesheet=icons.href, main_class='cases-main', extra_styles=(_asset(site_dir, 'cases.css'),))
+        rendered[path] = _document(site_url=site_url, repository_url=repository_url, path=path, language=language, title=title, description=description, content=content, schema=collection_page_schema(site_url + path, title, description, locale, items, site_url), assets=assets, icon_stylesheet=icons.href, source_export=source_export, main_class='cases-main', extra_styles=(_asset(site_dir, 'cases.css'),))
         paths.append(path)
 
         path = prefix + '/about/'
@@ -347,13 +352,17 @@ def build_discovery_pages(site_dir: Path, catalog: dict, source_index: dict | No
         description = ('AwesomeREA.org 是独立的逆向工程资源合集，收录工具、项目、案例和参考资料。' if zh else 'AwesomeREA.org is an independent collection of reverse-engineering tools, projects, case studies, and references.')
         summary = (f'{len(resources):,} 项精选资源；{len(scanned):,} 个实际读取 README 的仓库；{browse_count:,} 个可浏览条目。{out_of_scope} 个超出范围的条目{unavailable_clause(unavailable, zh)}保留在完整扫描数据中。'
                    if zh else f'{len(resources):,} curated resources; {len(scanned):,} repositories whose READMEs were fetched; {browse_count:,} browsable entries. The {out_of_scope} out-of-scope entries{unavailable_clause(unavailable, zh)} remain in the complete scan data.')
+        if published:
+            summary = (f'{len(resources):,} 项精选资源；仓库发布选集包含 {len(scanned):,} 条已采集记录，其中 {browse_count:,} 条可浏览。{out_of_scope} 个范围排除条目{unavailable_clause(unavailable, zh)}保留在发布 JSON 中。原始扫描的累计数量保留在各自的来源证据中。'
+                       if zh else f'{len(resources):,} curated resources; the published repository selection contains {len(scanned):,} captured records, including {browse_count:,} browsable entries. The {out_of_scope} scope-excluded entries{unavailable_clause(unavailable, zh)} remain in the published JSON. Original capture totals remain separate in their source evidence.')
         if papers:
             summary += (f' 研究论文目录单独整理 {len(papers):,} 篇论文，其中 {overlapping_papers:,} 篇也收录于这 {len(resources):,} 项精选资源。上述数量不能相加作为独立项目总数。'
                         if zh else f' The paper bibliography lists {len(papers):,} papers; {overlapping_papers:,} of these also appear among the {len(resources):,} curated resources. Do not sum these counts as unique projects.')
         evidence = ('精选说明依据一手来源核对，并保留使用条件和复核日期。自动扫描记录来源、时间、README 字节数、Git blob 标识和 SHA-256；未执行上游代码，也不重新发布 README 正文。'
                     if zh else 'Curated descriptions are checked against primary sources, with requirements and review dates retained. Automated scans record sources, timestamps, README byte counts, Git blob identifiers, and SHA-256 hashes. Upstream code is not executed and README bodies are not republished.')
         if scan_date:
-            evidence += (f' 最新扫描快照：{scan_date} UTC。' if zh else f' Latest scan snapshot: {scan_date} UTC.')
+            evidence += ((f' 选集发布日期：{scan_date} UTC。' if zh else f' Selection published: {scan_date} UTC.')
+                         if published else (f' 最新扫描快照：{scan_date} UTC。' if zh else f' Latest scan snapshot: {scan_date} UTC.'))
         scope = ('自动发现与精选资源分开维护。范围排除决定绑定具体 README 哈希，并保留双语原因。分类来自元数据；收录、翻译和范围判断都不等于运行验证、安全保证或 REA 集成。'
                  if zh else 'Automatic discovery remains separate from curation. Scope exclusions are tied to recorded README hashes and include bilingual reasons. Categories derive from metadata; inclusion, translation, and scope decisions do not establish runtime verification, safety, or REA integration.')
         licensing = ('本仓库原创说明和代码采用 MIT 许可。上游项目及其描述保留各自许可；许可证标识仅是采集时元数据。生成的双语索引保留 description_original 上游原文，翻译由 AI 辅助完成。'
@@ -376,7 +385,8 @@ def build_discovery_pages(site_dir: Path, catalog: dict, source_index: dict | No
             (prefix + '/papers/', '研究论文目录' if zh else 'Research papers'),
             (prefix + '/survey/', '专题综述' if zh else 'Editorial survey'),
             ('/catalog.json', '精选资源 JSON' if zh else 'Curated catalog JSON'),
-            ('/source-index.json', '完整双语扫描 JSON' if zh else 'Complete bilingual scan JSON'),
+            ('/' + source_export, ('已发布仓库选集 JSON' if zh else 'Published repository selection JSON') if published
+             else ('完整双语扫描 JSON' if zh else 'Complete bilingual scan JSON')),
             ('/papers.json', '论文元数据 JSON' if zh else 'Paper metadata JSON'),
             (repository_url + '/blob/main/' + ('README.zh-CN.md' if zh else 'README.md'), 'GitHub README'),
             (repository_url + '/blob/main/docs/source-scan.md', '扫描方法（英文）' if zh else 'Scan methodology'),
@@ -385,10 +395,14 @@ def build_discovery_pages(site_dir: Path, catalog: dict, source_index: dict | No
             (repository_url + '/blob/main/LICENSE', 'MIT 许可证' if zh else 'MIT license'),
             (repository_url + '/blob/main/' + ('CONTRIBUTING.zh-CN.md' if zh else 'CONTRIBUTING.md'), '贡献指南' if zh else 'Contribution guide'),
         ]
+        if published:
+            links.append(('/source-index.json', '原始规范扫描基线 JSON' if zh else 'Original canonical scan baseline JSON'))
+            links.extend((entry['archive_url'], ('原始公开采集证据 ' if zh else 'Original public capture evidence ')
+                          + str(entry['run']['id'])) for entry in source_index['meta']['capture_sources'])
         link_html = ''.join(f'<a href="{(_url(url) if url.startswith("http") else escape(url, quote=True))}">{escape(label)}</a>' for url, label in links)
         content = f'<div class="source-results">{fact_cards}</div><section><div class="browse-topline"><h2>{("浏览、下载与来源" if zh else "Browse, download, and inspect sources")}</h2></div><nav class="browse-category-nav" aria-label="{("来源与下载" if zh else "Sources and downloads")}">{link_html}</nav></section>'
         schema = {'@context': 'https://schema.org', '@type': 'AboutPage', 'url': site_url + path, 'name': title, 'description': description, 'inLanguage': locale, 'about': website_reference(site_url)}
-        rendered[path] = _document(site_url=site_url, repository_url=repository_url, path=path, language=language, title=title, description=description, content=content, schema=schema, assets=assets, icon_stylesheet=icons.href)
+        rendered[path] = _document(site_url=site_url, repository_url=repository_url, path=path, language=language, title=title, description=description, content=content, schema=schema, assets=assets, icon_stylesheet=icons.href, source_export=source_export)
         paths.append(path)
 
     # Remove only this generator's former route outputs; redirects belong to the site build.
@@ -430,18 +444,25 @@ Source review checks documentation, not successful execution, security, or REA c
 
 ## Public data and sources
 
-- [Data manifest]({site_url}/data-manifest.json): Agent entry point with separate counts, file URLs, sizes and SHA-256 checksums.
+- [Data manifest]({site_url}/data-manifest.json): Curated resources and papers only, with separate counts, file URLs, sizes and SHA-256 checksums; repository-discovery exports are listed separately below.
 - [Clone the public catalog]({repository_url}): Run `git clone {repository_url}.git`, then read `data/README.md` for the curated JSON source files and Chinese translations. No installation or build is required to read the data.
 - [Curated records JSONL]({site_url}/downloads/records.jsonl): One resource or paper per line; preserves source evidence, bilingual descriptions and limitations.
 - [Curated catalog JSON]({site_url}/catalog.json): Curated descriptions and source evidence.
 - [Full repository index JSON]({site_url}/source-index.json): All scan records, original descriptions, translations, hashes, and exclusions; omit scope_status=excluded when reconstructing the browse list.
+- [Browsable repository JSON]({site_url}/source-browser.json): Compact visible records. Follow `meta.full_export` for the complete companion and verify `meta.full_export_sha256`; the metadata selects the preserved baseline or a ready published selection.
 - [Paper metadata JSON]({site_url}/papers.json): The separate research bibliography.
 - [Public source repository]({repository_url}): Bilingual READMEs, contribution rules, code, and data definitions.
 - [Scan methodology]({repository_url}/blob/main/docs/source-scan.md): Collection and scope-review methods.
 
 This file is a navigation aid. Crawl policy is published in [robots.txt]({site_url}/robots.txt).
 '''
+    if published:
+        old_summary = f'The collection contains {len(resources)} source-reviewed curated resources and {browse_count} browsable repositories from {len(scanned)} successful README scans. The full scan retains {excluded} scope-excluded records and their reasons.'
+        new_summary = f'The collection contains {len(resources)} source-reviewed curated resources and a published selection of {len(scanned)} captured repository records, of which {browse_count} are browsable. The {out_of_scope} scope-excluded records{unavailable_clause(unavailable, False)} remain in the published selection; original capture totals remain separate in its provenance.'
+        llms = llms.replace(old_summary, new_summary)
+        llms = llms.replace(f'- [Full repository index JSON]({site_url}/source-index.json): All scan records, original descriptions, translations, hashes, and exclusions; omit scope_status=excluded when reconstructing the browse list.',
+            f'- [Published repository selection JSON]({site_url}/source-published.json): Published records, original descriptions, translations, hashes, exclusions and per-source capture totals; omit scope_status=excluded when reconstructing the browse list.\n- [Canonical capture baseline JSON]({site_url}/source-index.json): The preserved original complete canonical scan export.')
     (site_dir / 'llms.txt').write_text(llms, encoding='utf-8')
     content = '''<div class="empty-state"><p>This address does not match a page in the collection.</p><p lang="zh-CN">这个地址没有对应的合集页面。</p><div class="browse-actions"><a class="button button-primary" href="/">Home · 首页</a><a class="button button-outline" href="/browse/">Browse repositories</a><a class="button button-outline" href="/zh/browse/" lang="zh-CN">浏览仓库</a></div></div>'''
-    (site_dir / '404.html').write_text(_document(site_url=site_url, repository_url=repository_url, path='/404.html', language='en', title='Page not found · 页面不存在', description='This page could not be found. 这个页面不存在。', content=content, schema=None, assets=assets, icon_stylesheet=icons.href, noindex=True), encoding='utf-8')
+    (site_dir / '404.html').write_text(_document(site_url=site_url, repository_url=repository_url, path='/404.html', language='en', title='Page not found · 页面不存在', description='This page could not be found. 这个页面不存在。', content=content, schema=None, assets=assets, icon_stylesheet=icons.href, source_export=source_export, noindex=True), encoding='utf-8')
     return paths

@@ -1059,6 +1059,13 @@ def main():
                     validate_scope(source_records, read_scope(ROOT), errors)
                 except (OSError, ValueError):
                     errors.append('Source-scope data could not be read as valid JSON.')
+                try:
+                    from public_source_supplements import load_supplements
+                    supplements = load_supplements(ROOT)
+                    print(f'Public source supplements: {len(supplements["records"])} ready records; '
+                          f'{sum(row["selected_count"] for row in supplements["held"])} explicitly held candidates.')
+                except (OSError, ValueError):
+                    errors.append('Public source supplements failed evidence, identity, locale or scope validation.')
     validate_citation((ROOT / 'CITATION.cff').read_text(encoding='utf-8'), errors)
     count = validate_markdown(ROOT, errors)
     for script in ('build_readme.py', 'build_repository_index.py', 'build_case_coverage.py'):

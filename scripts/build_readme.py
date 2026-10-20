@@ -342,8 +342,10 @@ def agent_cross_reference(groups, language, translations):
 
 
 def browsable_index_count():
+    from public_source_supplements import load_supplements, project_additions
     document = json.loads((ROOT / 'data/source-index.json').read_text(encoding='utf-8'))
-    scoped = apply_scope(document['resources'], read_scope(ROOT))
+    supplements = load_supplements(ROOT)
+    scoped = apply_scope(document['resources'], read_scope(ROOT)) + project_additions(supplements)
     return sum(record.get('scope_status') != 'excluded' for record in scoped)
 
 

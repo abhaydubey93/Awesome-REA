@@ -149,7 +149,7 @@ class LiteralMarkdownTests(unittest.TestCase):
             stack.enter_context(patch.object(build_repository_index, 'ROOT', root))
             stack.enter_context(patch.object(build_repository_index, 'read_localizations', return_value={}))
             stack.enter_context(patch.object(build_repository_index, 'localized_records', side_effect=lambda values, _: values))
-            stack.enter_context(patch.object(build_repository_index, 'read_scope', return_value=[]))
+            stack.enter_context(patch.object(build_repository_index, 'read_scope', return_value={}))
             stack.enter_context(patch.object(build_repository_index, 'apply_scope', side_effect=lambda values, _: values))
             stack.enter_context(patch.object(build_repository_index, 'curated_resources', return_value=[]))
             stack.enter_context(patch.object(build_repository_index, 'with_curated_labels', side_effect=lambda values, _: values))

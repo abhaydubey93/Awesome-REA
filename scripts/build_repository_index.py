@@ -11,6 +11,7 @@ from catalog import ROOT, load_resources
 from localization import localized_records, read_localizations
 from source_scope import apply_scope, exclusion_counts, read_scope, unavailable_clause
 from source_descriptions import description_fallback
+from public_source_supplements import load_supplements, project_additions, publication_timestamp
 
 OUTPUT = ROOT / 'docs/repositories'
 SUMMARY_BEGIN = '<!-- BEGIN REPOSITORY INDEX SUMMARY -->'
@@ -50,12 +51,15 @@ def related_markers(record, language):
 
 def rendered_files():
     document = json.loads((ROOT / 'data/source-index.json').read_text(encoding='utf-8'))
-    scanned = document['resources']
-    localized = localized_records(scanned, read_localizations(ROOT))
+    supplements = load_supplements(ROOT)
+    published = bool(supplements['ready'])
+    scanned = document['resources'] + supplements['records']
+    localized = apply_scope(localized_records(document['resources'], read_localizations(ROOT)), read_scope(ROOT))
+    localized += project_additions(supplements)
     resources = curated_resources()
     papers = json.loads((ROOT / 'data/papers.json').read_text(encoding='utf-8'))
     # The same exact-repository matching as build_site.py, so markers agree with the website's related links.
-    scoped = with_curated_labels(with_artifact_links(apply_scope(localized, read_scope(ROOT)), papers, resources), resources)
+    scoped = with_curated_labels(with_artifact_links(localized, papers, resources), resources)
     records = [record for record in scoped if record.get('scope_status') != 'excluded']
     out_of_scope, unavailable = exclusion_counts(scoped)
     groups = defaultdict(list)
@@ -65,6 +69,8 @@ def rendered_files():
         groups[record['category']].append(record)
     files = {}
     date = document['meta']['completed_at'][:10]
+    if published:
+        date = publication_timestamp(supplements['ready'])[:10]
     for language, suffix, index in [('en', '', 0), ('zh', '.zh-CN', 1)]:
         zh = language == 'zh'
         title = '仓库扫描索引' if zh else 'Scanned Repository Index'
@@ -74,10 +80,17 @@ def rendered_files():
                 '标有“精选”或“论文”的行指向以同一仓库为来源的已复核目录条目或论文。'
                 if zh else 'These are automatically discovered projects, not individually curated or tested recommendations. Categories derive from metadata and descriptions from upstream text. Stars are collection-time snapshots, not live rankings. '
                 'Lines marked “Curated” or “Paper” link to the reviewed catalog entry or paper whose source is that exact repository.')
+        if published:
+            title = '已发布仓库索引' if zh else 'Published Repository Index'
+            intro = (f'此发布选集包含 **{len(scanned):,}** 条已采集仓库记录，提供 **{len(records):,}** 个浏览条目。**{out_of_scope}** 个范围排除条目{unavailable_clause(unavailable, zh, "**")}保留在发布 JSON 中。各原始扫描的累计数量保留在独立的来源证据中。'
+                     if zh else f'This published selection contains **{len(scanned):,}** captured repository records and **{len(records):,}** browsable entries. **{out_of_scope}** scope-excluded entries{unavailable_clause(unavailable, zh, "**")} remain in the published JSON. Original capture totals remain separate in the source evidence.')
         summary = ([f'已读取 **{len(scanned):,}** 个仓库的 README，当前提供 **{len(records):,}** 个浏览条目，明确超出范围的 {out_of_scope} 个条目{unavailable_clause(unavailable, zh)}保留在扫描数据中。自动发现的项目与上方精选资源分别维护，未逐项运行验证。', '',
                     '[按分类在 GitHub 浏览](docs/repositories/README.zh-CN.md) · [网站搜索](https://awesomerea.org/zh/?view=source-index) · [完整双语索引 JSON](https://awesomerea.org/source-index.json) · [精选目录 JSON](https://awesomerea.org/catalog.json)']
                    if zh else [f'**{len(scanned):,}** repository READMEs scanned; **{len(records):,}** entries available to browse. The {out_of_scope} clearly out-of-scope entries{unavailable_clause(unavailable, zh)} remain in the scan data. This automatically discovered index is separate from the curated resources above and has not been individually execution-tested.', '',
                                '[Browse by category on GitHub](docs/repositories/README.md) · [Search website](https://awesomerea.org/?view=source-index&lang=en) · [Full bilingual index JSON](https://awesomerea.org/source-index.json) · [Curated catalog JSON](https://awesomerea.org/catalog.json)'])
+        if published:
+            summary[0] = intro + (' 自动发现条目不是逐项精选或运行验证后的推荐。' if zh else ' Automatically discovered entries are not individually curated or execution-tested recommendations.')
+            summary = [line.replace('/source-index.json', '/source-published.json') for line in summary]
         root_name = f'README{suffix}.md'
         root_text = (ROOT / root_name).read_text(encoding='utf-8')
         if root_text.count(SUMMARY_BEGIN) != 1 or root_text.count(SUMMARY_END) != 1:
@@ -87,8 +100,11 @@ def rendered_files():
         files[f'../../{root_name}'] = before + SUMMARY_BEGIN + '\n' + '\n'.join(summary) + '\n' + SUMMARY_END + after
         navigation = ('[精选资源](../../README.zh-CN.md) · [搜索网站](https://awesomerea.org/zh/?view=source-index) · [下载双语 JSON](https://awesomerea.org/source-index.json) · [English](README.md)'
                       if zh else '[Curated collection](../../README.md) · [Search website](https://awesomerea.org/?lang=en&view=source-index) · [Download bilingual JSON](https://awesomerea.org/source-index.json) · [简体中文](README.zh-CN.md)')
+        if published:
+            navigation = navigation.replace('/source-index.json', '/source-published.json')
+        date_label = ('发布日期' if zh else 'Publication date') if published else ('扫描日期' if zh else 'Scan date')
         lines = [f'# {title}', '', navigation, '', intro, '', note, '',
-                 f"{'扫描日期' if zh else 'Scan date'}: **{date} UTC**.", '',
+                 f"{date_label}: **{date} UTC**.", '',
                  '| 分类 | 仓库数 | 关联精选或论文 |' if zh else '| Category | Repositories | Linked to curated entries or papers |', '| --- | ---: | ---: |']
         for category, labels in CATEGORIES.items():
             linked = sum(bool(record.get('related_entries')) for record in groups[category])

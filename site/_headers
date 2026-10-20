@@ -19,6 +19,10 @@
   Cache-Control: no-cache, must-revalidate
 /source-browser.json
   Cache-Control: no-cache, must-revalidate
+/source-published.json
+  Cache-Control: no-cache, must-revalidate
+/evidence/source-scans/*
+  Content-Type: application/zip
 /papers.json
   Cache-Control: no-cache, must-revalidate
 /build-manifest.json

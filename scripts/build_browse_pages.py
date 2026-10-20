@@ -127,7 +127,8 @@ def build_browse_pages(
         category_records.sort(key=lambda record: (-(record.get('stars') or 0), record['full_name'].casefold()))
 
     use_pro = icon_stylesheet_href is not None
-    scan_date = str(source_document.get('meta', {}).get('completed_at') or '')[:10]
+    published = source_document.get('meta', {}).get('kind') == 'published-repository-selection'
+    scan_date = str(source_document.get('meta', {}).get('published_at' if published else 'completed_at') or '')[:10]
     canonical_urls = []
     rendered = {}
     for language in ('en', 'zh'):
@@ -141,6 +142,9 @@ def build_browse_pages(
                       if zh else f'{len(records):,} repositories are available to browse from {len(scanned):,} successful README scans. The {out_of_scope} out-of-scope records{unavailable_clause(unavailable, zh)} remain in the full JSON.')
         provenance = ('这是自动发现的仓库索引，未逐项精选或运行验证。分类依据元数据；简介提供 AI 辅助中英翻译。星标为采集时快照。'
                       if zh else 'This automatically discovered repository index has not been individually curated or execution-tested. Categories come from metadata; descriptions have AI-assisted translations. Stars are collection-time snapshots.')
+        if published:
+            scope_note = (f'此发布选集包含 {len(scanned):,} 条已采集仓库记录，提供 {len(records):,} 个浏览条目；{out_of_scope} 个范围排除条目{unavailable_clause(unavailable, zh)}保留在发布 JSON 中。各原始扫描的累计数量保留在 JSON 来源信息中。'
+                          if zh else f'This published selection contains {len(scanned):,} captured repository records and {len(records):,} browsable entries. The {out_of_scope} scope-excluded entries{unavailable_clause(unavailable, zh)} remain in the published JSON. Original capture totals remain separate in the JSON provenance.')
         for category in (None, *CATEGORIES):
             path = browse_path(language, category)
             canonical = site_url + path
@@ -158,7 +162,8 @@ def build_browse_pages(
                 description = (f'按网站、游戏、应用、二进制、固件与协议等分类浏览 {len(records):,} 个逆向工程仓库。'
                                if zh else f'Browse {len(records):,} reverse engineering repositories across websites, games, apps, binaries, firmware, and protocols.')
                 count_text = f'{len(CATEGORIES)} 个分类 · {len(records):,} 个仓库' if zh else f'{len(CATEGORIES)} categories · {len(records):,} repositories'
-            date_text = (f'扫描快照：{scan_date} UTC' if zh else f'Scan snapshot: {scan_date} UTC') if scan_date else ''
+            date_text = ((f'选集发布：{scan_date} UTC' if zh else f'Selection published: {scan_date} UTC')
+                         if published else (f'扫描快照：{scan_date} UTC' if zh else f'Scan snapshot: {scan_date} UTC')) if scan_date else ''
             category_links = []
             for slug, category_labels in CATEGORIES.items():
                 active = ' aria-current="page"' if category == slug else ''
@@ -230,6 +235,12 @@ def build_browse_pages(
 </body>
 </html>
 '''
+            if published:
+                document = document.replace('/source-index.json?v=', '/source-published.json?v=')
+                evidence_links = ' · '.join(
+                    f'<a href="{escape(entry["archive_url"], quote=True)}">{("原始公开采集证据" if zh else "Original public capture evidence")} {entry["run"]["id"]}</a>'
+                    for entry in source_document['meta']['capture_sources'])
+                document = document.replace('</details>', '<p>' + evidence_links + '</p></details>', 1)
             rendered[path.lstrip('/') + 'index.html'] = document
             canonical_urls.append(canonical)
 

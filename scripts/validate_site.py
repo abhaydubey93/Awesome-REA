@@ -17,6 +17,8 @@ from source_descriptions import description_fallback
 from localization import localized_records, read_localizations
 from source_scope import apply_scope, read_scope
 from source_browser import BROWSER_FILENAME, FULL_EXPORT_FILENAME, validate_source_browser
+from public_source_supplements import (PUBLISHED_FILENAME, compose_published, json_bytes,
+                                      load_supplements, owned_file, bounded_bytes, project_additions)
 from validate_discovery import expected_entry_routes, validate_route_inventory
 from build_readme import CATEGORIES, collection_section
 from homepage_locales import _ui_strings
@@ -623,6 +625,22 @@ def validate_artifact_links(output, pages):
     expected = with_curated_labels(with_artifact_links(projected, read_papers(ROOT), resources), resources)
     built = json.loads((Path(output) / 'source-index.json').read_text(encoding='utf-8'))
     assert built['resources'] == expected, 'Generated sources differ from localized source evidence, reviewed artifact links and curated labels'
+    supplements = load_supplements(ROOT)
+    publication_path = Path(output) / PUBLISHED_FILENAME
+    if supplements['ready']:
+        additions = project_additions(supplements)
+        additions = with_curated_labels(with_artifact_links(additions, read_papers(ROOT), resources), resources)
+        import hashlib
+        publication = compose_published((Path(output) / 'source-index.json').read_bytes(),
+            hashlib.sha256(source_path.read_bytes()).hexdigest(), supplements, additions)
+        assert publication_path.read_bytes() == json_bytes(publication), 'Published selection lost source membership or provenance'
+        for source in supplements['evidence']:
+            archive = Path(output) / 'evidence/source-scans' / source['archive_filename']
+            original_archive = owned_file(ROOT, 'data/source-evidence', source['archive_filename'])
+            assert archive.read_bytes() == bounded_bytes(original_archive), 'Published evidence archive bytes changed'
+        expected = publication['resources']
+    else:
+        assert not publication_path.exists(), 'Held selections must not appear in a published export'
     visible = [record for record in expected if record.get('scope_status') != 'excluded']
     normalize = lambda text: ' '.join(text.split())
     for language in ('en', 'zh'):
@@ -683,9 +701,13 @@ def validate_source_browser_output(output):
         assert not browser_path.exists(), 'Stale browser source projection without a full export'
         return
     assert browser_path.is_file(), 'Browser source projection is missing'
+    if (output / PUBLISHED_FILENAME).exists():
+        full_path = output / PUBLISHED_FILENAME
     validate_source_browser(full_path.read_bytes(), browser_path.read_bytes())
     headers = (output / '_headers').read_text(encoding='utf-8')
     assert re.search(r'(?m)^/source-browser\.json\n[ \t]+Cache-Control: no-cache, must-revalidate[ \t]*$', headers), 'Browser source projection requires no-cache headers'
+    if full_path.name == PUBLISHED_FILENAME:
+        assert re.search(r'(?m)^/source-published\.json\n[ \t]+Cache-Control: no-cache, must-revalidate[ \t]*$', headers), 'Published selection requires no-cache headers'
 
 
 def validate_case_outputs(pages, resources):

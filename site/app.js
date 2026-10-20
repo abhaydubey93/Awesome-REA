@@ -120,6 +120,7 @@ const UI = {
     "footerSubmitResource": "Submit a resource ↗",
     "contributeButton": "Contribute ↗",
     "downloadSourceData": "Repository index JSON ↓",
+    "downloadPublishedSourceData": "Published repository index JSON ↓",
     "browseDirectory": "Browse by category ↗",
     "downloadCuratedData": "Curated catalog JSON ↓",
     "viewSource": "GitHub ↗",
@@ -271,6 +272,7 @@ const UI = {
     "footerSubmitResource": "提交资源 ↗",
     "contributeButton": "参与贡献 ↗",
     "downloadSourceData": "仓库索引 JSON ↓",
+    "downloadPublishedSourceData": "已发布仓库索引 JSON ↓",
     "browseDirectory": "按分类浏览 ↗",
     "downloadCuratedData": "精选目录 JSON ↓",
     "viewSource": "GitHub ↗",
@@ -484,7 +486,17 @@ function sourceURL() {
 function configureSourceIndex(meta) {
   const count=Number(meta?.resource_count||0);sourceState.available=count>0;$("#mode-sources").hidden=!sourceState.available;$("#mode-source-count").textContent=count?count.toLocaleString():"";$("#mode-curated-count").textContent=state.records.length;
   $("#download-source-index").hidden = !sourceState.available;
+  if (meta?.publication_schema_version !== undefined
+      && (meta.publication_schema_version !== 2 || meta.full_export !== "source-published.json"
+          || meta.status !== "published-selection")) throw new Error("Invalid published repository export");
+  sourceDownload(meta?.publication_schema_version === 2 ? "source-published.json" : "source-index.json");
   const query=new URLSearchParams(location.search);const requested=query.get("view");setIndexMode(sourceState.available&&(requested==="source-index"||requested==="repositories")?"source-index":"curated");
+}
+function sourceDownload(filename) {
+  if (!["source-index.json","source-published.json"].includes(filename)) throw new Error("Unsupported repository download");
+  const link = $("#download-source-index");
+  const key = filename === "source-published.json" ? "downloadPublishedSourceData" : "downloadSourceData";
+  link.href = dataURL(filename); link.dataset.i18n = key; link.textContent = t(key);
 }
 function setIndexMode(mode) {
   if (mode === "source-index" && !sourceState.available) return; sourceState.mode = mode; const isSource = mode === "source-index"; $("#curated-view").hidden = isSource; $("#source-view").hidden = !isSource;
@@ -620,18 +632,27 @@ function renderSources() {
   $("#source-status").textContent = state.lang === "zh" ? (found.length === sourceState.records.length ? `${found.length.toLocaleString()} 个仓库` : `${found.length.toLocaleString()} 个匹配仓库 · 共 ${sourceState.records.length.toLocaleString()} 个仓库`) : (found.length === sourceState.records.length ? `${found.length.toLocaleString()} ${found.length === 1 ? "repository" : "repositories"}` : `${found.length.toLocaleString()} ${found.length === 1 ? "result" : "results"} · ${sourceState.records.length.toLocaleString()} ${sourceState.records.length === 1 ? "repository" : "repositories"}`);
   const topic = sourceState.topic.toLocaleLowerCase().trim(); const hint = $("#source-topic-match");
   hint.hidden = !topic; hint.textContent = topic ? t(sourceState.topicIDs.has(topic) ? "sourceTopicExact" : "sourceTopicContains") : "";
-  const completed = sourceState.meta.completed_at || sourceState.meta.finished_at || "";
+  const published = sourceState.meta.schema_version === 2;
+  const completed = published ? sourceState.meta.published_at : sourceState.meta.completed_at || sourceState.meta.finished_at || "";
   const scanned = Number(sourceState.meta.scope?.scanned_count || 0), excluded = Number(sourceState.meta.scope?.excluded_count || 0);
-  const scopeNote = scanned > 0 && excluded > 0 ? (state.lang === "zh" ? ` 共扫描 ${scanned.toLocaleString("zh-CN")} 个仓库；其中 ${excluded.toLocaleString("zh-CN")} 个超出本合集范围或上游仓库已无法访问，不在浏览列表中显示，完整 JSON 下载仍保留。` : ` Scanned ${scanned.toLocaleString("en-US")} repositories; ${excluded.toLocaleString("en-US")} outside this collection’s scope or no longer available upstream are omitted from browsing and retained in the full JSON download.`) : "";
-  $("#source-snapshot").textContent = (state.lang === "zh" ? "自动目标标签仅用于发现项目。星标为采集时快照。" : "Automatic target labels aid discovery. Stars are collection-time snapshots.") + (completed ? (state.lang === "zh" ? " 扫描完成于 " : " Scan completed ") + sourceTime(completed) + (state.lang === "zh" ? "。" : ".") : "") + (sourceState.meta.status === "in-progress" ? (state.lang === "zh" ? " 扫描进行中；此处显示已读取的快照。" : " Scan in progress; this is the successfully fetched snapshot.") : "") + scopeNote;
+  const scopeNote = scanned > 0 && excluded > 0 ? (state.lang === "zh" ? ` ${published ? "本发布选集收录" : "共扫描"} ${scanned.toLocaleString("zh-CN")} 个仓库；其中 ${excluded.toLocaleString("zh-CN")} 个超出本合集范围或上游仓库已无法访问，不在浏览列表中显示，完整 JSON 下载仍保留。` : ` ${published ? "Published selection:" : "Scanned"} ${scanned.toLocaleString("en-US")} repositories; ${excluded.toLocaleString("en-US")} outside this collection’s scope or no longer available upstream are omitted from browsing and retained in the full JSON download.`) : "";
+  $("#source-snapshot").textContent = (state.lang === "zh" ? "自动目标标签仅用于发现项目。星标为采集时快照。" : "Automatic target labels aid discovery. Stars are collection-time snapshots.") + (completed ? (state.lang === "zh" ? (published ? " 选集发布于 " : " 扫描完成于 ") : (published ? " Selection published " : " Scan completed ")) + sourceTime(completed) + (state.lang === "zh" ? "。" : ".") : "") + (sourceState.meta.status === "in-progress" ? (state.lang === "zh" ? " 扫描进行中；此处显示已读取的快照。" : " Scan in progress; this is the successfully fetched snapshot.") : "") + scopeNote;
   $("#source-empty").hidden = found.length > 0; $("#source-error").hidden = true; $("#source-more-row").hidden = found.length <= sourceState.visible; $("#source-more-count").textContent = "+"+Math.min(24,Math.max(0,found.length-sourceState.visible)); $("#source-shown").textContent = state.lang === "zh" ? `已显示 ${Math.min(found.length,sourceState.visible)} / ${found.length} 个仓库` : `${Math.min(found.length,sourceState.visible)} of ${found.length} ${found.length === 1 ? "repository" : "repositories"} shown`;
   $("#source-clear").hidden = !sourceState.q && !sourceState.topic && sourceState.target === "all" && sourceState.sort === "relevance";
   $$('[data-source-target]').forEach(button => { const active = button.dataset.sourceTarget === sourceState.target; button.classList.toggle("active",active); button.setAttribute("aria-pressed",String(active)); });
 }
 function sourceBrowserPayload(data) {
   const meta = data?.meta; const resources = data?.resources; const scope = meta?.scope;
-  if (meta?.schema_version !== 1 || !Array.isArray(resources) || !["complete","in-progress"].includes(meta.status)
-      || meta.full_export !== "source-index.json" || typeof meta.full_export_sha256 !== "string" || !/^[a-f0-9]{64}$/.test(meta.full_export_sha256)) {
+  const legacy = meta?.schema_version === 1 && ["complete","in-progress"].includes(meta.status)
+    && meta.full_export === "source-index.json" && !Object.hasOwn(meta,"kind") && !Object.hasOwn(meta,"published_at");
+  const publishedKeys = ["schema_version","kind","status","published_at","scope","full_export","full_export_sha256"];
+  const published = meta?.schema_version === 2 && meta.kind === "published-repository-selection"
+    && meta.status === "published-selection" && meta.full_export === "source-published.json"
+    && typeof meta.published_at === "string" && /^\d{4}-\d{2}-\d{2}T\d{2}:\d{2}:\d{2}(?:\.\d+)?Z$/.test(meta.published_at)
+    && Number.isFinite(Date.parse(meta.published_at))
+    && Object.keys(meta).length === publishedKeys.length && publishedKeys.every(key => Object.hasOwn(meta,key));
+  if ((!legacy && !published) || !Array.isArray(resources)
+      || typeof meta.full_export_sha256 !== "string" || !/^[a-f0-9]{64}$/.test(meta.full_export_sha256)) {
     throw new Error("Unsupported repository browser data");
   }
   if (!scope || ![scope.scanned_count,scope.excluded_count,scope.browse_count].every(count => Number.isSafeInteger(count) && count >= 0)
@@ -652,7 +673,7 @@ function sourceBrowserPayload(data) {
 async function loadSources() {
   if (sourceState.loading) return; sourceState.loading = true; sourceState.error = false; $("#source-results").setAttribute("aria-busy","true"); $("#source-error").hidden = true; $("#source-status").textContent = t("sourceLoading");
   try {
-    const response = await fetch(dataURL("source-browser.json"), {cache: "no-cache"}); if (!response.ok) throw new Error("Source index HTTP "+response.status); const data = sourceBrowserPayload(await response.json()); sourceState.meta = data.meta;
+    const response = await fetch(dataURL("source-browser.json"), {cache: "no-cache"}); if (!response.ok) throw new Error("Source index HTTP "+response.status); const data = sourceBrowserPayload(await response.json()); sourceState.meta = data.meta; sourceDownload(data.meta.full_export);
     sourceState.records = (data.resources || []).filter(r => r.scan_status === "readme-scanned" && r.scope_status !== "excluded").map((r,index) => { const topics = Array.isArray(r.topics) ? r.topics.map(String) : []; const targets = Array.isArray(r.targets) ? r.targets : []; const full_name = r.full_name || r.name || r.id; const related_entries = sourceRelatedEntries(r); return {...r,full_name,topics,targets,related_entries,order:index,search:[full_name,r.description_en || "",r.description_zh || "",r.description_original || "",r.category || "",...topics.map(topicSearch),...related_entries.flatMap(entry => [entry.title_en,entry.title_zh]),...targets.flatMap(targetSearchLabels)].join(" ").toLocaleLowerCase()}; });
     $('[data-source-target="protocol"]').hidden = !sourceState.records.some(record => record.targets.includes("protocol"));
     sourceState.loaded = true; indexSourceTopics(); syncTopicInput(); $("#mode-source-count").textContent = sourceState.records.length.toLocaleString(); renderSources();
