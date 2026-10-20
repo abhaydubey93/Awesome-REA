@@ -313,6 +313,8 @@ const RELATION = {
 // Repository documents with a Chinese counterpart; homepage_locales.py applies the same map to /zh/.
 const ZH_REPOSITORY_PATHS = {"blob/main/CONTRIBUTING.md": "blob/main/CONTRIBUTING.zh-CN.md"};
 const params = new URLSearchParams(location.search);
+// Set the requested presentation before fetching data; the validated view keeps it in sync below.
+document.documentElement.dataset.indexMode = ["source-index", "repositories"].includes(params.get("view")) ? "source-index" : "curated";
 // The path selects the default language; valid legacy query overrides still work.
 const pathLanguage = location.pathname.startsWith("/zh/") ? "zh" : "en";
 const state = { layout: params.get("layout") === "cards" ? "cards" : "compact", lang: ["en", "zh"].includes(params.get("lang")) ? params.get("lang") : pathLanguage, q: params.get("q") || "", group: params.get("group") || "all", category: params.get("category") || "all", kind: params.get("kind") || "all", target: params.get("target") || "all", visible: 15, topicLabels: {}, categoryLabels: {}, records: [], loaded: false, error: false };
@@ -456,7 +458,7 @@ async function load() {
     $$('[data-count]').forEach(el => el.textContent = el.dataset.count === "all" ? state.records.length : state.records.filter(r => r.group === el.dataset.count).length);
     $$('[data-repo-path]').forEach(el => { const path = (state.lang === "zh" && ZH_REPOSITORY_PATHS[el.dataset.repoPath]) || el.dataset.repoPath; el.href = data.meta.repository_url + (path ? "/" + path : ""); });
     state.loaded = true; renderCategories(); render(); configureSourceIndex(data.meta.source_index);
-  } catch (error) { state.error = true; state.loaded = false; renderEmptySearchActions(); $("#resource-grid").replaceChildren(); $("#resource-grid").setAttribute("aria-busy", "false"); $("#results-status").textContent = t("errorTitle"); $("#error-state").hidden = false; $("#empty-state").hidden = true; $("#load-more-row").hidden = true; }
+  } catch (error) { document.documentElement.dataset.indexMode = "curated"; state.error = true; state.loaded = false; renderEmptySearchActions(); $("#resource-grid").replaceChildren(); $("#resource-grid").setAttribute("aria-busy", "false"); $("#results-status").textContent = t("errorTitle"); $("#error-state").hidden = false; $("#empty-state").hidden = true; $("#load-more-row").hidden = true; }
 }
 $("#search-input").value = state.q;
 $("#search-input").addEventListener("input", event => { state.q = event.target.value; state.visible = 15; updateURL(); if (state.loaded) render(); });
@@ -500,6 +502,7 @@ function sourceDownload(filename) {
 }
 function setIndexMode(mode) {
   if (mode === "source-index" && !sourceState.available) return; sourceState.mode = mode; const isSource = mode === "source-index"; $("#curated-view").hidden = isSource; $("#source-view").hidden = !isSource;
+  document.documentElement.dataset.indexMode = sourceState.mode;
   for (const [id,active] of [["#mode-curated",!isSource],["#mode-sources",isSource]]) { $(id).classList.toggle("active",active); $(id).setAttribute("aria-pressed",String(active)); }
   renderEmptySearchActions();
   sourceURL(); if (isSource && !sourceState.loaded) loadSources(); else if (isSource) renderSources();

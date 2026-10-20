@@ -119,6 +119,25 @@ const urlParam = (app, key) => new URL(app.location.href).searchParams.get(key);
   // The integrity guard rejects every malformed payload, and loadSources then shows the error state.
   const valid = browserOf([repository('valid/one'), repository('valid/two')], 1);
   const curated = catalogOf([curatedRecord(1)]);
+  // The compact repository introduction does not wait for a network response, and follows the real view.
+  for (const query of ['?view=source-index', '?view=repositories']) {
+    const app = setup(query, {catalog: curated, browser: valid});
+    assert.equal(app.document.documentElement.dataset.indexMode, 'source-index');
+    await app.api.load();
+    app.api.setIndexMode('curated');
+    assert.equal(app.document.documentElement.dataset.indexMode, 'curated');
+    app.api.setIndexMode('source-index');
+    assert.equal(app.document.documentElement.dataset.indexMode, 'source-index');
+  }
+  for (const query of ['', '?view=curated', '?view=unknown']) {
+    assert.equal(setup(query).document.documentElement.dataset.indexMode, 'curated');
+  }
+  const unavailable = setup('?view=source-index', {catalog: catalogOf([], {meta: {source_index: {resource_count: 0}}})});
+  await unavailable.api.load();
+  assert.equal(unavailable.document.documentElement.dataset.indexMode, 'curated');
+  const failedCatalog = setup('?view=source-index');
+  await failedCatalog.api.load();
+  assert.equal(failedCatalog.document.documentElement.dataset.indexMode, 'curated');
   const mutate = change => { const payload = structuredClone(valid); change(payload); return payload; };
   {
     const app = setup('', {catalog: curated, browser: valid});

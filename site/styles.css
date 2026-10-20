@@ -465,6 +465,39 @@ html[lang="zh-CN"][data-layout="compact"] .collection-home .card-description,htm
 /* Public data: one quiet entry point, with formats and agent instructions on demand. */
 .hero-actions .get-data{background:var(--surface);color:var(--ink);box-shadow:none}
 .hero-actions .get-data:hover{background:var(--soft);border-color:var(--steel)}
+
+/* Repository mode opens directly on browsing; the curated landing keeps its full introduction. */
+html[data-index-mode="source-index"] .home-intro{display:grid;grid-template-columns:minmax(0,1fr) auto;column-gap:24px;align-items:center;padding:18px 0 12px}
+html[data-index-mode="source-index"] .hero-layout{display:block;grid-column:1/-1}
+html[data-index-mode="source-index"] .hero-copy{display:grid;grid-template-columns:minmax(0,1fr) auto;gap:16px 24px;align-items:center}
+html[data-index-mode="source-index"] .home-intro h1{max-width:none;font-size:28px;line-height:1.2;letter-spacing:-.7px}
+html[data-index-mode="source-index"] .home-intro h1 em{letter-spacing:-.8px}
+html[data-index-mode="source-index"] .home-intro .eyebrow,
+html[data-index-mode="source-index"] .home-intro .collection-description,
+html[data-index-mode="source-index"] .collection-shelf,
+html[data-index-mode="source-index"] .hero-actions .button-primary,
+html[data-index-mode="source-index"] .hero-actions .hero-text-link{display:none}
+html[data-index-mode="source-index"] .hero-actions{display:flex;margin:0;gap:0}
+html[data-index-mode="source-index"] .home-intro .collection-directory{margin-top:8px;padding:10px 0;gap:10px 28px}
+html[data-index-mode="source-index"] .subject-browser{margin-top:8px;border-bottom:0}
+html[data-index-mode="source-index"] .subject-browser[open]{grid-column:1/-1}
+html[data-index-mode="source-index"] .index-mode-switch{margin-bottom:12px}
+html[data-index-mode="source-index"] .source-controls{padding:12px 0}
+html[data-index-mode="source-index"] .collection-note{padding-bottom:12px}
+html[data-index-mode="source-index"] .results-topline{min-height:48px;padding:12px 0}
+html[lang="zh-CN"][data-index-mode="source-index"] .home-intro h1{letter-spacing:0}
+@media(max-width:850px){
+  html[data-index-mode="source-index"] .home-intro{display:block}
+  html[data-index-mode="source-index"] .subject-browser{margin-top:0}
+}
+@media(max-width:520px){
+  html[data-index-mode="source-index"] .home-intro{padding-top:16px}
+  html[data-index-mode="source-index"] .hero-copy{gap:12px}
+  html[data-index-mode="source-index"] .home-intro h1{font-size:25px;letter-spacing:-.5px}
+  html[data-index-mode="source-index"] .hero-actions .get-data{padding:10px 12px}
+  html[data-index-mode="source-index"] .hero-actions .get-data>.icon{display:none}
+  html[data-index-mode="source-index"] .home-intro .collection-directory{gap:8px 12px}
+}
 .data-dialog{width:min(620px,calc(100% - 32px));max-height:calc(100dvh - 40px);padding:30px;border:1px solid var(--line);border-radius:16px;background:var(--surface);color:var(--ink);box-shadow:0 24px 100px #20233526;overflow:auto}
 .data-dialog::backdrop{background:#20233555;backdrop-filter:blur(3px)}
 body.data-dialog-open{overflow:hidden}
