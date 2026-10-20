@@ -8,7 +8,7 @@ import re
 from urllib.parse import urlsplit
 
 from artifact_links import github_repository
-from build_discovery_pages import jsonld_script, publication_keys
+from build_discovery_pages import PRIMARY_SOURCE_LABEL, jsonld_script, publication_keys
 from build_paper_pages import STATUS_LABELS, formatted_date, scholarly_article
 from build_readme import CATEGORIES, KIND_LABELS, RELATIONSHIPS, TARGETS
 from open_graph import open_graph_meta
@@ -164,7 +164,7 @@ def _resource_content(record: dict, language: str, discussion: str = '') -> tupl
     requirements = ''.join(f'<li>{escape(item)}</li>' for item in _requirements(record, language))
     links = [_link(record['url'], label('Visit original resource', '访问原始资源'), primary=True)]
     if record['evidence_url'] != record['url']:
-        links.append(_link(record['evidence_url'], label('Primary source', '一手来源')))
+        links.append(_link(record['evidence_url'], label(*PRIMARY_SOURCE_LABEL)))
     content = f'''<header class="entry-heading"><p class="entry-eyebrow">{escape(kind)}</p><h1>{escape(title)}</h1>
   <p class="entry-description">{escape(description)}</p></header>
 <nav class="entry-actions" aria-label="{label('Resource links', '资源链接')}">{''.join(links)}</nav>
@@ -251,7 +251,7 @@ def _document(record, kind, language, *, site_url, repository_url, styles_href, 
   {jsonld_script(schema)}
 </head><body>
 <a class="skip-link" href="#entry-content">{label('Skip to content', '跳到内容')}</a>
-<header class="site-header"><div class="shell header-inner"><a class="wordmark" href="{prefix}/" aria-label="{label('AwesomeREA.org home', 'AwesomeREA.org 首页')}"><span class="brand-mark" aria-hidden="true">r<span>↗</span></span><span>Awesome<span class="wordmark-rea">REA</span><span class="wordmark-domain">.org</span></span></a>
+<header class="site-header"><div class="shell header-inner"><a class="wordmark" href="{prefix}/" aria-label="{label('AwesomeREA.org home', 'AwesomeREA.org 首页')}"><img class="brand-mark" src="{_asset_url(favicon_href)}" alt="" width="33" height="33" aria-hidden="true"><span>Awesome<span class="wordmark-rea">REA</span><span class="wordmark-domain">.org</span></span></a>
 <nav class="header-nav" aria-label="{label('Main navigation', '主导航')}"><a class="entry-language" href="{counterpart}" lang="{('en' if zh else 'zh-CN')}" hreflang="{('en' if zh else 'zh-CN')}">{label('简体中文', 'English')}</a><a class="github-link" href="{_public_url(repository_url)}" target="_blank" rel="noopener noreferrer" aria-label="GitHub">{github_icon}<span>GitHub</span></a></nav></div></header>
 <main class="shell entry-main" id="entry-content"><nav class="entry-breadcrumbs" aria-label="{label('Breadcrumb', '当前位置')}"><a href="{prefix}/">{label('Home', '首页')}</a><span aria-hidden="true">/</span><a href="{listing}">{list_name}</a><span aria-hidden="true">/</span><span aria-current="page">{escape(title)}</span></nav>
 <article class="entry-article" data-entry-kind="{kind}" data-entry-id="{record['id']}">{content}</article>

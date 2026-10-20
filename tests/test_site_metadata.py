@@ -137,8 +137,12 @@ class SecurityHeaderTests(unittest.TestCase):
         self.assertEqual(rules, {
             '/fonts/*': {'access-control-allow-origin': '*'}, '/fontawesome.css': {'access-control-allow-origin': '*'},
             **{route: no_cache for route in ('/', '/index.html', '/catalog.json', '/source-index.json',
-                                             '/source-browser.json', '/papers.json', '/build-manifest.json')},
+                                             '/source-browser.json', '/papers.json', '/build-manifest.json',
+                                             '/data-manifest.json', '/downloads/*')},
             '/papers/references.bib': bibtex, '/papers/citations/*.bib': bibtex,
+            '/downloads/references.bib': bibtex,
+            '/downloads/records.jsonl': {'content-type': 'application/x-ndjson; charset=utf-8'},
+            '/downloads/awesome-rea-data.zip': {'content-type': 'application/zip'},
             **{host: {'x-robots-tag': 'noindex'} for host in ('https://:project.pages.dev/*',
                                                               'https://:version.:project.pages.dev/*')},
         })

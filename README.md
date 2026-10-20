@@ -11,7 +11,7 @@ An independent collection of tools, case studies and research for websites, game
 <a href="https://awesomerea.org/"><img src="assets/readme-banner.svg" alt="Awesome Reverse Engineering Anything — tools, cases and papers across six reverse-engineering domains" width="960"></a>
 
 <!-- BEGIN GENERATED BADGES -->
-[![resources: 467](https://img.shields.io/badge/resources-467-53309C?style=flat-square&labelColor=303447)](https://awesomerea.org/resources/) [![cases: 193](https://img.shields.io/badge/cases-193-53309C?style=flat-square&labelColor=303447)](https://awesomerea.org/cases/) [![papers: 88](https://img.shields.io/badge/papers-88-53309C?style=flat-square&labelColor=303447)](https://awesomerea.org/papers/) [![Catalog checks](https://github.com/reacher-z/Awesome-REA/actions/workflows/validate.yml/badge.svg?branch=main)](https://github.com/reacher-z/Awesome-REA/actions/workflows/validate.yml) [![license: MIT](https://img.shields.io/badge/license-MIT-606779?style=flat-square&labelColor=303447)](LICENSE) [![website: awesomerea.org](https://img.shields.io/badge/website-awesomerea.org-6235B5?style=flat-square&labelColor=303447)](https://awesomerea.org/)
+[![resources: 470](https://img.shields.io/badge/resources-470-53309C?style=flat-square&labelColor=303447)](https://awesomerea.org/resources/) [![cases: 194](https://img.shields.io/badge/cases-194-53309C?style=flat-square&labelColor=303447)](https://awesomerea.org/cases/) [![papers: 88](https://img.shields.io/badge/papers-88-53309C?style=flat-square&labelColor=303447)](https://awesomerea.org/papers/) [![Catalog checks](https://github.com/reacher-z/Awesome-REA/actions/workflows/validate.yml/badge.svg?branch=main)](https://github.com/reacher-z/Awesome-REA/actions/workflows/validate.yml) [![license: MIT](https://img.shields.io/badge/license-MIT-606779?style=flat-square&labelColor=303447)](LICENSE) [![website: awesomerea.org](https://img.shields.io/badge/website-awesomerea.org-6235B5?style=flat-square&labelColor=303447)](https://awesomerea.org/)
 <!-- END GENERATED BADGES -->
 
 **[Search & filter](https://awesomerea.org/)** · **[Browse cases](https://awesomerea.org/cases/)** · **[Research papers](https://awesomerea.org/papers/)** · **[HTML survey](https://awesomerea.org/survey/)**
@@ -23,16 +23,16 @@ An independent collection of tools, case studies and research for websites, game
 <!-- BEGIN GENERATED CONTENTS -->
 **Tools and cases by target**
 
-- [Website](#website) (27) · [Game](#game) (185) · [App](#app) (71)
+- [Website](#website) (27) · [Game](#game) (185) · [App](#app) (72)
 - [Native Binary](#native-binary) (63) · [Firmware and Hardware](#firmware) (21) · [Protocol](#protocol) (18)
 
 **Research and workflows**
 
-- [Papers](#papers) (88) · [Agents and MCP](#agents-and-mcp) (42) · [References and Learning](#references-and-learning) (31)
+- [Papers](#papers) (88) · [Agents and MCP](#agents-and-mcp) (43) · [References and Learning](#references-and-learning) (32)
 
 **More ways to browse**
 
-- [All cases](https://awesomerea.org/cases/) (193) · [Related Collections](#related-collections) (6) · [Full Repository Index](#full-repository-index) (2,836)
+- [All cases](https://awesomerea.org/cases/) (194) · [Related Collections](#related-collections) (6) · [Full Repository Index](#full-repository-index) (2,836)
 <!-- END GENERATED CONTENTS -->
 
 ## Find by task
@@ -1540,6 +1540,12 @@ REA labels refer to the separate [upstream CLI and MCP project](https://github.c
 
   Case study · Independent reconstruction · [Requirements & evidence](https://awesomerea.org/resources/wino-mail-case/)
 
+- [**ScooterLink: reconstructing Honda RoadSync’s handlebar-button protocol**](https://github.com/gdorgian/ScooterLink)
+
+  Replaces Honda RoadSync’s Apple Music-only media control with an iOS app that pairs with a Honda PCX 2025 TFT dash over Bluetooth Low Energy and turns handlebar presses into system-wide commands for any player. The author documents the dash’s BLE services, key exchange, button registration and event bytes, reportedly worked out from the official Android app and logged traffic. Results are author-reported on one PCX125, and the protocol notes separate confirmed from unverified parts.
+
+  Case study · Independent reconstruction · Also: Protocol · [Requirements & evidence](https://awesomerea.org/resources/scooterlink-honda-roadsync-case/)
+
 #### Tools, projects and integrations
 
 - [**JADX-AI-MCP**](https://github.com/zinja-coder/jadx-ai-mcp)
@@ -2476,6 +2482,12 @@ REA labels refer to the separate [upstream CLI and MCP project](https://github.c
 
   Integration · Community REA · Targets: Binary · [Requirements & evidence](https://awesomerea.org/resources/crashlens-rea-crash-triage/)
 
+- [**REA Workspace Template**](https://github.com/dobest1024/rea-workspace-template)
+
+  A clone-first Chinese workspace template for analyzing one target per workspace with REA from Claude Code or Codex. It ships project-level REA MCP settings, agent rules that require CONFIRMED/GUESS labels with evidence locations, seven task prompts and standard-library scripts that hash imported originals, stage writable copies and strip values from HAR captures. It organizes analysis rather than performing it, and its acceptance run used only synthetic samples.
+
+  Integration · Community REA · Targets: Website, App, Binary · [Requirements & evidence](https://awesomerea.org/resources/rea-workspace-template/)
+
 - [**Hex-Rays IDA MCP**](https://github.com/HexRaysSA/ida-mcp)
 
   Official Hex-Rays MCP server for agent access to IDA databases, with headless operation and optional GUI integration.
@@ -2911,6 +2923,12 @@ REA labels refer to the separate [upstream CLI and MCP project](https://github.c
   Community wiki explaining how decompilers work, from disassembly, lifting and control-flow recovery to type recovery, control-flow structuring, quality evaluation and neural decompilation, citing the research behind each technique. It also keeps directories of decompilers, plugins, blogs and talks, pages on applied research such as symbol recovery, code similarity and vulnerability discovery, and a table of about 240 game reconstruction projects by original platform.
 
   Learning resource · Targets: Game, Binary · [Requirements & evidence](https://awesomerea.org/resources/decompilation-wiki/)
+
+- [**Frontkick vs Rikugan: a CREBench agent comparison**](https://www.synacktiv.com/en/publications/ufc-666-frontkick-vs-rikugan)
+
+  Matthieu Breuil’s Synacktiv article explains tool-calling and code-executing agent designs and describes Frontkick, a CodeAct agent that runs generated Python inside Binary Ninja. It compares Frontkick with the open-source Rikugan plugin on two CREBench cryptographic binary tasks, then attributes most of Frontkick’s advantage to a prompt that listed installed Python libraries rather than to its architecture. It is a small evaluation write-up with per-run results, not a released tool or a general benchmark finding.
+
+  Learning resource · Targets: Binary · [Requirements & evidence](https://awesomerea.org/resources/frontkick-rikugan-crebench-comparison/)
 <!-- END GENERATED CATALOG -->
 
 <!-- BEGIN GENERATED PAPERS -->
