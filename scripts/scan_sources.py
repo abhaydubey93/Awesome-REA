@@ -757,9 +757,12 @@ def held_repository_ids(values):
     return frozenset('scan-' + value for value in values)
 
 
-def run_scan(api, args, resumed=None, resume_sha256=None, *, readme_transport=None, frontier=None):
+def run_scan(api, args, resumed=None, resume_sha256=None, *, readme_transport=None, frontier=None,
+             diagnostics=None):
     """Extend evidence without refreshing or retrying any retained repository."""
     held_ids = held_repository_ids(getattr(args, 'hold_repository_ids', []))
+    if diagnostics is not None and readme_transport is None:
+        raise ValueError('Transport diagnostics require the GraphQL README transport')
     frontier_api = None
     if frontier is not None:
         if readme_transport is None:
@@ -769,6 +772,8 @@ def run_scan(api, args, resumed=None, resume_sha256=None, *, readme_transport=No
         if frontier_path.resolve() == args.output.resolve():
             raise ValueError('Frontier and scan output must use different paths')
     started = now()
+    if diagnostics is not None:
+        diagnostics.start(started)
     fresh_meta = initial_meta(args, started)
     if readme_transport is not None:
         fresh_meta['method'] = ('Public, non-fork, non-archived GitHub discovery followed by actual README blob reads '
@@ -1102,6 +1107,8 @@ def run_scan(api, args, resumed=None, resume_sha256=None, *, readme_transport=No
             batch_clock = time.monotonic()
             results = readme_transport.fetch_batch(batch)
             batch_seconds = time.monotonic() - batch_clock
+            if diagnostics is not None:
+                diagnostics.record_batch(getattr(readme_transport, 'last_batch_diagnostics', []))
             transport_receipt = meta['current_run']['readme_transport']
             receipts = getattr(readme_transport, 'last_batch_receipts', [])
             transport_receipt['elapsed_seconds'] += batch_seconds
@@ -1232,6 +1239,8 @@ def main():
     parser = argparse.ArgumentParser(description=__doc__)
     parser.add_argument('--transport', choices=('rest', 'graphql'), default='rest')
     parser.add_argument('--graphql-batch-size', type=int, default=8)
+    parser.add_argument('--transport-diagnostics', type=Path,
+                        help='Optional new .cache JSONL file for bounded failure diagnostics; requires graphql and an existing parent directory')
     parser.add_argument('--frontier', type=Path, help='Ignored cache path for persistent partitioned search; requires graphql')
     parser.add_argument('--search-request-budget', type=int, default=120)
     parser.add_argument('--pending-metadata-budget', type=int, default=200)
@@ -1264,6 +1273,8 @@ def main():
         parser.error('search request budget must be 1..1000; pending metadata budget 0..1000')
     if args.frontier and args.transport != 'graphql':
         parser.error('partitioned discovery requires --transport graphql')
+    if args.transport_diagnostics and args.transport != 'graphql':
+        parser.error('transport diagnostics require --transport graphql')
     if args.query and any(not value.strip() for value in args.query):
         parser.error('query bases must be nonempty')
     args.queries = [value.strip() + ' is:public fork:false archived:false' for value in args.query] if args.query else QUERIES
@@ -1279,6 +1290,13 @@ def main():
         print(json.dumps(report(document), ensure_ascii=False, indent=2), flush=True)
         return 0
     args.output = args.output or (ROOT / '.cache/source-index-next.json' if args.resume or args.transport == 'graphql' else DEFAULT_OUTPUT)
+    if args.transport_diagnostics:
+        from scan_diagnostics import validate_destination
+        try:
+            validate_destination(args.transport_diagnostics, ROOT / '.cache',
+                                 protected_paths=(args.output, args.resume, args.frontier))
+        except (OSError, ValueError):
+            parser.error('transport diagnostics require a separate new .cache/*.jsonl file with existing, non-symlink parents')
     if args.frontier and (args.frontier.resolve() == args.output.resolve()
                           or args.resume and args.frontier.resolve() == args.resume.resolve()):
         parser.error('frontier, resume input and scan output must use different paths')
@@ -1305,18 +1323,32 @@ def main():
     transport = None
     if args.transport == 'graphql':
         from scan_graphql_transport import GraphQLReadmeTransport
-        transport = GraphQLReadmeTransport(token, batch_size=args.graphql_batch_size, interval=1.0)
+        transport = GraphQLReadmeTransport(token, batch_size=args.graphql_batch_size, interval=1.0,
+                                          capture_diagnostics=args.transport_diagnostics is not None)
     del token, token_result
-    frontier = None
-    if args.frontier:
-        import search_frontier
-        approved = [value.strip() for value in args.query] if args.query else QUERY_BASES
-        state = (search_frontier.load_frontier(args.frontier, approved_queries=approved) if args.frontier.exists()
-                 else search_frontier.new_frontier(until=dt.datetime.now(dt.timezone.utc).strftime('%Y-%m-%dT%H:%M:%SZ'),
-                                                  approved_queries=approved))
-        search_frontier.save_frontier(args.frontier, state, approved_queries=approved)
-        frontier = state, args.frontier, approved
-    return run_scan(api, args, resumed, resume_sha256, readme_transport=transport, frontier=frontier)
+    diagnostics = None
+    if args.transport_diagnostics:
+        from scan_diagnostics import DiagnosticSidecar
+        try:
+            diagnostics = DiagnosticSidecar(args.transport_diagnostics, ROOT / '.cache')
+        except (OSError, ValueError):
+            print('Transport diagnostic destination could not be created; no scan started.', flush=True)
+            return 2
+    try:
+        frontier = None
+        if args.frontier:
+            import search_frontier
+            approved = [value.strip() for value in args.query] if args.query else QUERY_BASES
+            state = (search_frontier.load_frontier(args.frontier, approved_queries=approved) if args.frontier.exists()
+                     else search_frontier.new_frontier(until=dt.datetime.now(dt.timezone.utc).strftime('%Y-%m-%dT%H:%M:%SZ'),
+                                                      approved_queries=approved))
+            search_frontier.save_frontier(args.frontier, state, approved_queries=approved)
+            frontier = state, args.frontier, approved
+        return run_scan(api, args, resumed, resume_sha256, readme_transport=transport, frontier=frontier,
+                        diagnostics=diagnostics)
+    finally:
+        if diagnostics is not None:
+            diagnostics.close()
 
 
 if __name__ == '__main__':

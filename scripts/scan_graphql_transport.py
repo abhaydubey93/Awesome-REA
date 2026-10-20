@@ -40,6 +40,7 @@ import time
 from urllib.error import HTTPError, URLError
 from urllib.parse import quote
 from urllib.request import HTTPRedirectHandler, Request, build_opener
+from scan_diagnostics import failure_event
 
 
 GRAPHQL_URL = 'https://api.github.com/graphql'
@@ -217,7 +218,7 @@ class GraphQLReadmeTransport:
     """Sequential, bounded queries. Use one shared instance per scan process."""
     def __init__(self, token, *, batch_size=DEFAULT_BATCH_SIZE, interval=1.0,
                  timeout=30, opener=None, clock=time.time, monotonic=time.monotonic,
-                 sleep=time.sleep):
+                 sleep=time.sleep, capture_diagnostics=False):
         if not isinstance(token, str) or not token or any(c in token for c in '\r\n'):
             raise ValueError('A nonempty in-memory token is required')
         if type(batch_size) is not int or not 1 <= batch_size <= MAX_BATCH_SIZE:
@@ -235,7 +236,16 @@ class GraphQLReadmeTransport:
         self._last_request = None
         self._blocked_until = 0
         self.last_batch_receipts = []
+        self.last_batch_diagnostics = []
+        self._capture_diagnostics = capture_diagnostics
         self.rate_limit = {}
+
+    def _diagnose(self, receipt, reason, *, request_attempted=True, repository_count=None):
+        if self._capture_diagnostics:
+            event = failure_event(receipt, reason, request_attempted=request_attempted,
+                                  repository_count=repository_count)
+            if event is not None:
+                self.last_batch_diagnostics.append(event)
 
     def _delay(self, headers, rate, secondary=False):
         delay = 60 if secondary else 1
@@ -290,6 +300,7 @@ class GraphQLReadmeTransport:
                    'method': 'POST', 'observed_at': _utc(self._clock())}
         remaining_delay = math.ceil(self._blocked_until - self._monotonic())
         if remaining_delay > 0:
+            self._diagnose(receipt, 'graphql-rate-limit', request_attempted=False)
             return None, {'status': 'deferred', 'reason': 'graphql-rate-limit', 'retry_after': remaining_delay}, receipt
         if self._last_request is not None:
             wait = self.interval - (self._monotonic() - self._last_request)
@@ -318,6 +329,9 @@ class GraphQLReadmeTransport:
                 error.close()
         except (URLError, TimeoutError, OSError, HTTPException):
             receipt['reason'] = 'graphql-network-error'
+            # Status may have arrived before a response-read exception. Keep
+            # this context in the sidecar only; existing receipt metrics stay exact.
+            self._diagnose({**receipt, 'http_status': status}, receipt['reason'])
             self.last_batch_receipts.append(receipt)
             return None, {'status': 'retry', 'reason': receipt['reason']}, receipt
         receipt['http_status'] = status
@@ -374,6 +388,7 @@ class GraphQLReadmeTransport:
             failure = None
         if failure:
             receipt['reason'] = failure['reason']
+            self._diagnose(receipt, failure['reason'])
         self.last_batch_receipts.append(receipt)
         return data if failure is None else None, failure, receipt
 
@@ -449,6 +464,7 @@ class GraphQLReadmeTransport:
             seen.add(repo['id'])
         with self._lock:
             self.last_batch_receipts = []
+            self.last_batch_diagnostics = []
             return self._fetch(repos) if repos else {}
 
     def _fetch(self, repos):
@@ -467,6 +483,7 @@ class GraphQLReadmeTransport:
             try:
                 repo = _repository(value, receipt['observed_at'])
             except ValueError as error:
+                self._diagnose(receipt, str(error), repository_count=1)
                 outcomes[key] = self._result('retry', str(error))
                 continue
             try:
@@ -583,6 +600,8 @@ class GraphQLReadmeTransport:
         if batch_failure is None and self.rate_limit.get('remaining') == 0:
             batch_failure = {'status': 'deferred', 'reason': 'graphql-rate-limit',
                              'retry_after': max(1, math.ceil(self._blocked_until - self._monotonic()))}
+            if any(result['status'] == 'fallback' for result in outcomes.values()):
+                self._diagnose(receipt, batch_failure['reason'])
         if batch_failure:
             # A fallback discovered before a sibling's rate/network failure must
             # not become an API escape route. Verified ok bytes remain usable.
