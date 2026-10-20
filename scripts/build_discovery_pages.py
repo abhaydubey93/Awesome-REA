@@ -247,7 +247,7 @@ def _document(*, site_url: str, repository_url: str, path: str, language: str,
 <body>
 <a class="skip-link" href="#discovery-content">{('跳到内容' if zh else 'Skip to content')}</a>
 <header class="site-header"><div class="shell header-inner">
-  <a class="wordmark" href="{root}" aria-label="{('AwesomeREA.org 首页' if zh else 'AwesomeREA.org home')}"><span class="brand-mark" aria-hidden="true">r<span>↗</span></span><span>Awesome<span class="wordmark-rea">REA</span><span class="wordmark-domain">.org</span></span></a>
+  <a class="wordmark" href="{root}" aria-label="{('AwesomeREA.org 首页' if zh else 'AwesomeREA.org home')}"><img class="brand-mark" src="{assets['favicon']}" alt="" width="33" height="33" aria-hidden="true"><span>Awesome<span class="wordmark-rea">REA</span><span class="wordmark-domain">.org</span></span></a>
   <nav class="header-nav" aria-label="{('主导航' if zh else 'Main navigation')}">{language_link}<a class="github-link" href="{_url(repository_url)}" target="_blank" rel="noopener noreferrer" aria-label="GitHub">{github_icon}<span>GitHub</span></a></nav>
 </div></header>
 <main id="discovery-content" class="shell browse-main{page_class}">
@@ -428,6 +428,9 @@ Source review checks documentation, not successful execution, security, or REA c
 
 ## Public data and sources
 
+- [Data manifest]({site_url}/data-manifest.json): Agent entry point with separate counts, file URLs, sizes and SHA-256 checksums.
+- [Download curated data]({site_url}/downloads/awesome-rea-data.zip): Resources, papers, JSONL and BibTeX in one metadata-only archive.
+- [Curated records JSONL]({site_url}/downloads/records.jsonl): One resource or paper per line; preserves source evidence, bilingual descriptions and limitations.
 - [Curated catalog JSON]({site_url}/catalog.json): Curated descriptions and source evidence.
 - [Full repository index JSON]({site_url}/source-index.json): All scan records, original descriptions, translations, hashes, and exclusions; omit scope_status=excluded when reconstructing the browse list.
 - [Paper metadata JSON]({site_url}/papers.json): The separate research bibliography.

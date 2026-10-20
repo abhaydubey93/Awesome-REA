@@ -18,6 +18,7 @@ from build_paper_pages import build_paper_pages
 from build_survey import build_survey, discussion_sections
 from build_entry_pages import build_entry_pages
 from build_manifest import write_build_manifest
+from data_downloads import build_data_downloads
 from open_graph import website_node
 from homepage_locales import HOMEPAGE_DESTINATIONS, localized_homepage
 from artifact_links import with_artifact_links, with_curated_labels
@@ -226,6 +227,7 @@ def build_site(output: Path, *, fontawesome_dir: Path | None = None,
         revision = hashlib.sha256((output / filename).read_bytes()).hexdigest()[:16]
         asset_hrefs[filename] = f'/{filename}?v={revision}'
         html = html.replace(f'{attribute}="{filename}"', f'{attribute}="{filename}?v={revision}"')
+    html = html.replace('src="favicon.svg"', f'src="{asset_hrefs["favicon.svg"]}"')
     social_revision = hashlib.sha256((output / "social-card.png").read_bytes()).hexdigest()[:16]
     html = html.replace(f'{SITE_URL}/social-card.png"', f'{SITE_URL}/social-card.png?v={social_revision}"')
     data_digest = hashlib.sha256()
@@ -287,6 +289,8 @@ def build_site(output: Path, *, fontawesome_dir: Path | None = None,
     sitemap_urls = [SITE_URL + "/", SITE_URL + "/zh/", *browse_urls, *(SITE_URL + path for path in discovery_paths), *paper_urls, *survey_urls, *entry_urls]
     sitemap_entries = [f'<url><loc>{xml_escape(url)}</loc></url>' for url in sitemap_urls]
     (output / "sitemap.xml").write_text('<?xml version="1.0" encoding="UTF-8"?>\n<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">\n' + '\n'.join(sitemap_entries) + '\n</urlset>\n', encoding="utf-8")
+    build_data_downloads(output, catalog, papers,
+                         (output / 'papers/references.bib').read_text(encoding='utf-8'))
     write_build_manifest(output)
     return len(resources), len(papers), len(sitemap_urls)
 

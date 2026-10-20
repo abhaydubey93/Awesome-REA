@@ -89,3 +89,11 @@ Interactive search uses a generated `source-browser.json` projection containing 
 [source-scope.json](source-scope.json) records evidence-bound scope exclusions without deleting successful scans. The website and [bilingual GitHub directory](../docs/repositories/README.md) omit excluded records from browsing. The downloadable full index keeps all scan records and the exclusion reasons; the separate curated catalog contains only curated entries.
 
 `case-coverage.json` is a separate inventory of entries in pinned upstream case collections. Its [English](../docs/case-coverage.md) and [Chinese](../docs/case-coverage.zh-CN.md) summaries distinguish collection occurrences, deduplicated report units, typed catalog matches, and unresolved project identities. A README scan does not establish case review or runtime reproduction. Regenerate the summaries with `python3 scripts/build_case_coverage.py`; catalog validation also checks the ledger and its mappings.
+
+## Website data downloads
+
+[Get the public data](https://awesomerea.org/downloads/awesome-rea-data.zip), or start an agent at the [data manifest](https://awesomerea.org/data-manifest.json). The deterministic ZIP includes curated resources and papers as JSON, combined JSONL with an explicit `record_type`, paper BibTeX, a short guide, and file checksums. Entries retain English/Chinese descriptions, source evidence, review labels and limitations; canonical entry URLs identify both website languages. Resource and paper counts describe separate collections and must not be added as unique projects.
+
+The build exports an explicit field allowlist from the curated catalogs. It does not archive the deployment directory or include scan checkpoints, discovery queues, drafts, logs, credentials, licensed fonts, upstream software, PDFs or datasets. All files are UTF-8 and available individually under `/downloads/`; the manifest records their byte lengths and SHA-256 values, plus the ZIP checksum. Original collection text is MIT-licensed; linked works keep their own licenses.
+
+中文：点击官网「获取数据」可下载中英双语精选资源与论文元数据，或复制 Agent 指令。以数据清单中的文件链接和校验值为准，保留条目来源、复核状态与适用范围；来源审阅不等于运行复现，资源数与论文数不能相加作为唯一项目数。下载包不含扫描缓存、草稿、日志、凭据、字体或链接作品本身。

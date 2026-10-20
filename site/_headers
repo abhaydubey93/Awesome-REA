@@ -33,3 +33,13 @@ https://:project.pages.dev/*
   X-Robots-Tag: noindex
 https://:version.:project.pages.dev/*
   X-Robots-Tag: noindex
+/data-manifest.json
+  Cache-Control: no-cache, must-revalidate
+/downloads/*
+  Cache-Control: no-cache, must-revalidate
+/downloads/records.jsonl
+  Content-Type: application/x-ndjson; charset=utf-8
+/downloads/references.bib
+  Content-Type: application/x-bibtex; charset=utf-8
+/downloads/awesome-rea-data.zip
+  Content-Type: application/zip

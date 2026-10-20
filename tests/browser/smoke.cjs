@@ -132,6 +132,41 @@ async function preloadedCatalog(page, label) {
 }
 const requests = (requested, file) => requested.filter(pathname => pathname === '/' + file).length;
 
+async function dataDownloads(page, language, viewport) {
+  const label = `${language} data dialog ${viewport.name}`;
+  // Mock writes in this isolated browser; never replace the user's clipboard during verification.
+  await page.evaluate(() => Object.defineProperty(navigator, 'clipboard', {configurable: true,
+    value: {writeText: async value => { window.copiedDataInstructions = value; }}}));
+  await press(page, '[data-open-data]');
+  assert.equal(await page.$eval('#data-dialog', dialog => dialog.open), true, `${label}: opens`);
+  assert.equal(await text(page, '#data-title'), language === 'zh' ? '把资源合集带走。' : 'Take the collection with you.');
+  assert.equal(await page.$eval('.data-archive', link => link.getAttribute('href')), '/downloads/awesome-rea-data.zip');
+  for (let i = 0; i < 12; i++) {
+    await page.keyboard.press('Tab');
+    assert(await page.evaluate(() => document.querySelector('#data-dialog').contains(document.activeElement)), `${label}: focus stays inside`);
+  }
+  await press(page, '#data-copy');
+  await page.waitForFunction(() => window.copiedDataInstructions);
+  assert((await page.evaluate(() => window.copiedDataInstructions)).includes('https://awesomerea.org/data-manifest.json'));
+  assert.equal(await text(page, '#data-copy-status'), language === 'zh' ? '指令已复制。' : 'Instructions copied.');
+  await page.evaluate(() => { navigator.clipboard.writeText = async () => { throw new Error('Unavailable'); }; });
+  await press(page, '#data-copy');
+  await page.waitForFunction(() => document.activeElement.id === 'data-instructions');
+  assert.equal(await page.evaluate(() => window.getSelection().toString()), await text(page, '#data-instructions'));
+  await page.keyboard.press('/');
+  assert(await page.evaluate(() => document.querySelector('#data-dialog').contains(document.activeElement)), `${label}: search shortcut leaves modal focus intact`);
+  await noOverflow(page, label);
+  assert(await page.$eval('#data-dialog', dialog => dialog.scrollWidth <= dialog.clientWidth), `${label}: no modal overflow`);
+  await shot(page, label);
+  await page.keyboard.press('Escape');
+  assert.equal(await page.$eval('#data-dialog', dialog => dialog.open), false, `${label}: Escape closes`);
+  assert(await page.evaluate(() => document.activeElement.matches('[data-open-data]')), `${label}: trigger regains focus`);
+  await press(page, '[data-open-data]');
+  assert.equal(await text(page, '#data-copy-status'), '', `${label}: old status clears`);
+  await press(page, '#data-close');
+  assert.equal(await page.$eval('#data-dialog', dialog => dialog.open), false, `${label}: close button`);
+}
+
 async function homepage(page, language, viewport, data, requested) {
   const label = `${language} homepage ${viewport.name}`;
   const total = data.catalog.resources.length;
@@ -144,6 +179,7 @@ async function homepage(page, language, viewport, data, requested) {
   assert(numbers(await text(page, '#results-status')).includes(total), `${label}: status names all ${total} curated resources`);
   assert(await page.$$eval('#resource-grid .card-title-link', links => links.every(link => link.textContent.trim() && link.href.startsWith('http'))));
   await noOverflow(page, label);
+  await dataDownloads(page, language, viewport);
 
   // Search, then clear: a record's own displayed name finds it among a narrower result set.
   const title = (await text(page, '#resource-grid .card-title-link')).trim();
@@ -219,6 +255,7 @@ async function homepage(page, language, viewport, data, requested) {
 // Without scripting, the catalog's inert controls and loading text give way to the static directory links.
 async function withoutScript(page, language, viewport) {
   const label = `${language} homepage without JavaScript ${viewport.name}`;
+  assert(await page.$eval('[data-open-data]', link => link.hasAttribute('download') && link.getAttribute('href') === '/downloads/awesome-rea-data.zip' && link.getClientRects().length > 0), `${label}: direct data download works without a dialog`);
   const view = await page.evaluate(() => {
     const shown = selector => [...document.querySelectorAll(selector)].filter(node => node.getClientRects().length).length;
     const heading = document.querySelector('#catalog-title').getBoundingClientRect(), note = document.querySelector('.noscript-note');
