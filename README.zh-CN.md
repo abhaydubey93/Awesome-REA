@@ -11,7 +11,7 @@
 <a href="https://awesomerea.org/zh/"><img src="assets/readme-banner.svg" alt="Awesome Reverse Engineering Anything — 覆盖六类逆向目标的工具、案例与论文" width="960"></a>
 
 <!-- BEGIN GENERATED BADGES -->
-[![精选资源: 467](https://img.shields.io/badge/%E7%B2%BE%E9%80%89%E8%B5%84%E6%BA%90-467-53309C?style=flat-square&labelColor=303447)](https://awesomerea.org/zh/resources/) [![案例: 193](https://img.shields.io/badge/%E6%A1%88%E4%BE%8B-193-53309C?style=flat-square&labelColor=303447)](https://awesomerea.org/zh/cases/) [![论文: 87](https://img.shields.io/badge/%E8%AE%BA%E6%96%87-87-53309C?style=flat-square&labelColor=303447)](https://awesomerea.org/zh/papers/) [![目录检查](https://github.com/reacher-z/Awesome-REA/actions/workflows/validate.yml/badge.svg?branch=main)](https://github.com/reacher-z/Awesome-REA/actions/workflows/validate.yml) [![许可: MIT](https://img.shields.io/badge/%E8%AE%B8%E5%8F%AF-MIT-606779?style=flat-square&labelColor=303447)](LICENSE) [![网站: awesomerea.org](https://img.shields.io/badge/%E7%BD%91%E7%AB%99-awesomerea.org-6235B5?style=flat-square&labelColor=303447)](https://awesomerea.org/zh/)
+[![精选资源: 467](https://img.shields.io/badge/%E7%B2%BE%E9%80%89%E8%B5%84%E6%BA%90-467-53309C?style=flat-square&labelColor=303447)](https://awesomerea.org/zh/resources/) [![案例: 193](https://img.shields.io/badge/%E6%A1%88%E4%BE%8B-193-53309C?style=flat-square&labelColor=303447)](https://awesomerea.org/zh/cases/) [![论文: 89](https://img.shields.io/badge/%E8%AE%BA%E6%96%87-89-53309C?style=flat-square&labelColor=303447)](https://awesomerea.org/zh/papers/) [![目录检查](https://github.com/reacher-z/Awesome-REA/actions/workflows/validate.yml/badge.svg?branch=main)](https://github.com/reacher-z/Awesome-REA/actions/workflows/validate.yml) [![许可: MIT](https://img.shields.io/badge/%E8%AE%B8%E5%8F%AF-MIT-606779?style=flat-square&labelColor=303447)](LICENSE) [![网站: awesomerea.org](https://img.shields.io/badge/%E7%BD%91%E7%AB%99-awesomerea.org-6235B5?style=flat-square&labelColor=303447)](https://awesomerea.org/zh/)
 <!-- END GENERATED BADGES -->
 
 **[搜索与筛选](https://awesomerea.org/zh/)** · **[浏览案例](https://awesomerea.org/zh/cases/)** · **[研究论文](https://awesomerea.org/zh/papers/)** · **[HTML 综述](https://awesomerea.org/zh/survey/)**
@@ -28,7 +28,7 @@
 
 **论文与工作流**
 
-- [论文](#papers) (87) · [智能体与 MCP](#agents-and-mcp) (42) · [文档与学习资源](#references-and-learning) (31)
+- [论文](#papers) (89) · [智能体与 MCP](#agents-and-mcp) (42) · [文档与学习资源](#references-and-learning) (31)
 
 **更多浏览方式**
 
@@ -2918,13 +2918,13 @@ REA 标签指向单独维护的[上游 CLI 与 MCP 项目](https://github.com/mo
 <a id="papers"></a>
 ## 论文
 
-**87 篇论文**，按主题分组，组内按年份从新到旧排列。每项均标明发表场所与状态，中文标题为译名。
+**89 篇论文**，按主题分组，组内按年份从新到旧排列。每项均标明发表场所与状态，中文标题为译名。
 
 [浏览论文目录](https://awesomerea.org/zh/papers/) · [完整书目 JSON](data/papers.json) · [推荐论文](https://github.com/reacher-z/Awesome-REA/issues/new?template=paper.yml)
 
 **按主题**
 
-- [智能体评测](#papers-agent-evaluation) (9) · [反编译](#papers-decompilation) (34) · [网站](#papers-website-reconstruction) (15)
+- [智能体评测](#papers-agent-evaluation) (9) · [反编译](#papers-decompilation) (34) · [网站](#papers-website-reconstruction) (17)
 - [游戏](#papers-game-reconstruction) (6) · [应用](#papers-app-reconstruction) (7) · [固件](#papers-firmware-analysis) (6)
 - [协议](#papers-protocol-analysis) (10)
 
@@ -3620,6 +3620,21 @@ REA 标签指向单独维护的[上游 CLI 与 MCP 项目](https://github.com/mo
 
   </details>
 
+- [**WebWorld：将浏览器作为自改进网页代码的世界模型**](https://arxiv.org/abs/2608.30530)
+
+  将网页改进目标编译成类型化浏览器交互契约，检查目标进展并保持已验证能力，只把通过验收的转移用于训练。
+
+  arXiv 2026 · 预印本 · [PDF](https://arxiv.org/pdf/2608.30530v1) · [完整条目与引用](https://awesomerea.org/zh/papers/paper-webworld-browser-feedback/)
+
+  <details>
+  <summary>范围与发表信息</summary>
+
+  **范围与限制:** 该研究讨论网页代码生成与自改进，并非恢复原始源码；验收覆盖声明的交互和已验证能力，不证明与任意原应用等价。它与另一篇同名 WebWorld 网页模拟器论文不同。
+
+  **作者:** Jiajun Wu 等
+
+  </details>
+
 - [**UI2App：评测可执行 Web 应用生成中的视觉交互推断**](https://arxiv.org/abs/2607.06306)
 
   UI2App 使用来自 95 个 Web 应用的 600 张截图，评测生成的可运行 React/TypeScript 应用。它通过参考交互分类体系和公开评测流水线，分别衡量构建可执行性、视觉保真度，以及包括跨路由状态在内的截图隐含交互行为。
@@ -3752,6 +3767,21 @@ REA 标签指向单独维护的[上游 CLI 与 MCP 项目](https://github.com/mo
   **范围与限制:** 该方法以 HTML/CSS 重建静态视觉布局，不重建交互、JavaScript 行为或后端逻辑。测试页面是将图片替换为占位图的自包含快照；主要评测从 348 个热门网站中抽取 111 个，另加 80 个更复杂的 GitHub Pages 页面，可用性研究仅有四名参与者。分割依赖人工设定的阈值，组装阶段仍可能错排元素。
 
   **作者:** Yuxuan Wan 等
+
+  </details>
+
+- [**StructEval：评测大语言模型生成结构化输出的能力**](https://arxiv.org/abs/2505.20139)
+
+  评测结构化输出的生成与转换，包括 HTML、React 和 SVG，并分别检查格式遵循和结构正确性。
+
+  arXiv 2025 · 预印本 · [PDF](https://arxiv.org/pdf/2505.20139v3) · [代码](https://github.com/TIGER-AI-Lab/StructEval) · [完整条目与引用](https://awesomerea.org/zh/papers/paper-structeval/)
+
+  <details>
+  <summary>范围与发表信息</summary>
+
+  **范围与限制:** 并非软件逆向工程或 GUI 导航基准；结构化输出得分不证明源码身份、后端恢复或行为等价，综合得分也不是完全正确输出的百分比。
+
+  **作者:** Jialin Yang 等
 
   </details>
 

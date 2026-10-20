@@ -11,7 +11,7 @@ An independent collection of tools, case studies and research for websites, game
 <a href="https://awesomerea.org/"><img src="assets/readme-banner.svg" alt="Awesome Reverse Engineering Anything — tools, cases and papers across six reverse-engineering domains" width="960"></a>
 
 <!-- BEGIN GENERATED BADGES -->
-[![resources: 467](https://img.shields.io/badge/resources-467-53309C?style=flat-square&labelColor=303447)](https://awesomerea.org/resources/) [![cases: 193](https://img.shields.io/badge/cases-193-53309C?style=flat-square&labelColor=303447)](https://awesomerea.org/cases/) [![papers: 87](https://img.shields.io/badge/papers-87-53309C?style=flat-square&labelColor=303447)](https://awesomerea.org/papers/) [![Catalog checks](https://github.com/reacher-z/Awesome-REA/actions/workflows/validate.yml/badge.svg?branch=main)](https://github.com/reacher-z/Awesome-REA/actions/workflows/validate.yml) [![license: MIT](https://img.shields.io/badge/license-MIT-606779?style=flat-square&labelColor=303447)](LICENSE) [![website: awesomerea.org](https://img.shields.io/badge/website-awesomerea.org-6235B5?style=flat-square&labelColor=303447)](https://awesomerea.org/)
+[![resources: 467](https://img.shields.io/badge/resources-467-53309C?style=flat-square&labelColor=303447)](https://awesomerea.org/resources/) [![cases: 193](https://img.shields.io/badge/cases-193-53309C?style=flat-square&labelColor=303447)](https://awesomerea.org/cases/) [![papers: 89](https://img.shields.io/badge/papers-89-53309C?style=flat-square&labelColor=303447)](https://awesomerea.org/papers/) [![Catalog checks](https://github.com/reacher-z/Awesome-REA/actions/workflows/validate.yml/badge.svg?branch=main)](https://github.com/reacher-z/Awesome-REA/actions/workflows/validate.yml) [![license: MIT](https://img.shields.io/badge/license-MIT-606779?style=flat-square&labelColor=303447)](LICENSE) [![website: awesomerea.org](https://img.shields.io/badge/website-awesomerea.org-6235B5?style=flat-square&labelColor=303447)](https://awesomerea.org/)
 <!-- END GENERATED BADGES -->
 
 **[Search & filter](https://awesomerea.org/)** · **[Browse cases](https://awesomerea.org/cases/)** · **[Research papers](https://awesomerea.org/papers/)** · **[HTML survey](https://awesomerea.org/survey/)**
@@ -28,7 +28,7 @@ An independent collection of tools, case studies and research for websites, game
 
 **Research and workflows**
 
-- [Papers](#papers) (87) · [Agents and MCP](#agents-and-mcp) (42) · [References and Learning](#references-and-learning) (31)
+- [Papers](#papers) (89) · [Agents and MCP](#agents-and-mcp) (42) · [References and Learning](#references-and-learning) (31)
 
 **More ways to browse**
 
@@ -2917,13 +2917,13 @@ REA labels refer to the separate [upstream CLI and MCP project](https://github.c
 <a id="papers"></a>
 ## Papers
 
-**87 papers**, grouped by topic and ordered newest first. Each entry shows its venue and publication status.
+**89 papers**, grouped by topic and ordered newest first. Each entry shows its venue and publication status.
 
 [Browse the paper directory](https://awesomerea.org/papers/) · [Complete bibliography JSON](data/papers.json) · [Suggest a paper](https://github.com/reacher-z/Awesome-REA/issues/new?template=paper.yml)
 
 **By topic**
 
-- [Agent evaluation](#papers-agent-evaluation) (9) · [Decompilation](#papers-decompilation) (34) · [Websites](#papers-website-reconstruction) (15)
+- [Agent evaluation](#papers-agent-evaluation) (9) · [Decompilation](#papers-decompilation) (34) · [Websites](#papers-website-reconstruction) (17)
 - [Games](#papers-game-reconstruction) (6) · [Apps](#papers-app-reconstruction) (7) · [Firmware](#papers-firmware-analysis) (6)
 - [Protocols](#papers-protocol-analysis) (10)
 
@@ -3619,6 +3619,21 @@ Open “Scope and publication details” for each study’s full limitations. So
 
   </details>
 
+- [**WebWorld: The Browser as a World Model for Self-Improving Web Code**](https://arxiv.org/abs/2608.30530)
+
+  Uses typed browser interaction contracts to check progress and preserve previously verified capabilities while improving generated web code. Only accepted transitions become training examples.
+
+  arXiv 2026 · Preprint · [PDF](https://arxiv.org/pdf/2608.30530v1) · [Full entry & citation](https://awesomerea.org/papers/paper-webworld-browser-feedback/)
+
+  <details>
+  <summary>Scope and publication details</summary>
+
+  **Scope and limits:** The study concerns web-code generation and self-improvement, not recovery of original source code. Acceptance covers declared interactions and preserved capabilities, not equivalence to an arbitrary original application. Distinct from the other WebWorld web-simulator paper.
+
+  **Authors:** Jiajun Wu et al.
+
+  </details>
+
 - [**UI2App: Benchmarking Visual Interaction Inference in Executable Web Application Generation**](https://arxiv.org/abs/2607.06306)
 
   UI2App evaluates runnable React/TypeScript applications generated from 600 screenshots across 95 web applications. It separates build executability, visual fidelity and screenshot-implied interaction behavior, including cross-route state, using a reference interaction taxonomy and public evaluation pipeline.
@@ -3751,6 +3766,21 @@ Open “Scope and publication details” for each study’s full limitations. So
   **Scope and limits:** It reconstructs static visual layout as HTML/CSS, not interaction, JavaScript behavior or backend logic. Test pages are self-contained snapshots with images replaced by placeholders; the main evaluation samples 111 of 348 top-ranked sites, adds 80 harder GitHub Pages pages, and the usefulness study has four participants. Segmentation uses manually set thresholds, and assembly can still misarrange elements.
 
   **Authors:** Yuxuan Wan et al.
+
+  </details>
+
+- [**StructEval: Benchmarking LLMs' Capabilities to Generate Structural Outputs**](https://arxiv.org/abs/2505.20139)
+
+  Evaluates generation and conversion of structured outputs, including HTML, React and SVG, with separate checks for format adherence and structural correctness.
+
+  arXiv 2025 · Preprint · [PDF](https://arxiv.org/pdf/2505.20139v3) · [Code](https://github.com/TIGER-AI-Lab/StructEval) · [Full entry & citation](https://awesomerea.org/papers/paper-structeval/)
+
+  <details>
+  <summary>Scope and publication details</summary>
+
+  **Scope and limits:** Not a software reverse-engineering or GUI-navigation benchmark. Structured-output scores do not prove recovered source identity, backend reconstruction or behavioral equivalence; aggregate scores are not fully correct-output percentages.
+
+  **Authors:** Jialin Yang et al.
 
   </details>
 
