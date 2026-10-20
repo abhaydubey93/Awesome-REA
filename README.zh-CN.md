@@ -11,7 +11,7 @@
 <a href="https://awesomerea.org/zh/"><img src="assets/readme-banner.svg" alt="Awesome Reverse Engineering Anything — 覆盖六类逆向目标的工具、案例与论文" width="960"></a>
 
 <!-- BEGIN GENERATED BADGES -->
-[![精选资源: 473](https://img.shields.io/badge/%E7%B2%BE%E9%80%89%E8%B5%84%E6%BA%90-473-53309C?style=flat-square&labelColor=303447)](https://awesomerea.org/zh/resources/) [![案例: 197](https://img.shields.io/badge/%E6%A1%88%E4%BE%8B-197-53309C?style=flat-square&labelColor=303447)](https://awesomerea.org/zh/cases/) [![论文: 88](https://img.shields.io/badge/%E8%AE%BA%E6%96%87-88-53309C?style=flat-square&labelColor=303447)](https://awesomerea.org/zh/papers/) [![目录检查](https://github.com/reacher-z/Awesome-REA/actions/workflows/validate.yml/badge.svg?branch=main)](https://github.com/reacher-z/Awesome-REA/actions/workflows/validate.yml) [![许可: MIT](https://img.shields.io/badge/%E8%AE%B8%E5%8F%AF-MIT-606779?style=flat-square&labelColor=303447)](LICENSE) [![网站: awesomerea.org](https://img.shields.io/badge/%E7%BD%91%E7%AB%99-awesomerea.org-6235B5?style=flat-square&labelColor=303447)](https://awesomerea.org/zh/)
+[![精选资源: 473](https://img.shields.io/badge/%E7%B2%BE%E9%80%89%E8%B5%84%E6%BA%90-473-53309C?style=flat-square&labelColor=303447)](https://awesomerea.org/zh/resources/) [![案例: 197](https://img.shields.io/badge/%E6%A1%88%E4%BE%8B-197-53309C?style=flat-square&labelColor=303447)](https://awesomerea.org/zh/cases/) [![论文: 89](https://img.shields.io/badge/%E8%AE%BA%E6%96%87-89-53309C?style=flat-square&labelColor=303447)](https://awesomerea.org/zh/papers/) [![目录检查](https://github.com/reacher-z/Awesome-REA/actions/workflows/validate.yml/badge.svg?branch=main)](https://github.com/reacher-z/Awesome-REA/actions/workflows/validate.yml) [![许可: MIT](https://img.shields.io/badge/%E8%AE%B8%E5%8F%AF-MIT-606779?style=flat-square&labelColor=303447)](LICENSE) [![网站: awesomerea.org](https://img.shields.io/badge/%E7%BD%91%E7%AB%99-awesomerea.org-6235B5?style=flat-square&labelColor=303447)](https://awesomerea.org/zh/)
 <!-- END GENERATED BADGES -->
 
 **[搜索与筛选](https://awesomerea.org/zh/)** · **[浏览案例](https://awesomerea.org/zh/cases/)** · **[研究论文](https://awesomerea.org/zh/papers/)** · **[HTML 综述](https://awesomerea.org/zh/survey/)**
@@ -28,7 +28,7 @@
 
 **论文与工作流**
 
-- [论文](#papers) (88) · [智能体与 MCP](#agents-and-mcp) (43) · [文档与学习资源](#references-and-learning) (32)
+- [论文](#papers) (89) · [智能体与 MCP](#agents-and-mcp) (43) · [文档与学习资源](#references-and-learning) (32)
 
 **更多浏览方式**
 
@@ -2954,13 +2954,13 @@ REA 标签指向单独维护的[上游 CLI 与 MCP 项目](https://github.com/mo
 <a id="papers"></a>
 ## 论文
 
-**88 篇论文**，按主题分组，组内按年份从新到旧排列。每项均标明发表场所与状态，中文标题为译名。
+**89 篇论文**，按主题分组，组内按年份从新到旧排列。每项均标明发表场所与状态，中文标题为译名。
 
 [浏览论文目录](https://awesomerea.org/zh/papers/) · [完整书目 JSON](data/papers.json) · [推荐论文](https://github.com/reacher-z/Awesome-REA/issues/new?template=paper.yml)
 
 **按主题**
 
-- [智能体评测](#papers-agent-evaluation) (9) · [反编译](#papers-decompilation) (35) · [网站](#papers-website-reconstruction) (15)
+- [智能体评测](#papers-agent-evaluation) (9) · [反编译](#papers-decompilation) (35) · [网站](#papers-website-reconstruction) (16)
 - [游戏](#papers-game-reconstruction) (6) · [应用](#papers-app-reconstruction) (7) · [固件](#papers-firmware-analysis) (6)
 - [协议](#papers-protocol-analysis) (10)
 
@@ -3773,6 +3773,21 @@ REA 标签指向单独维护的[上游 CLI 与 MCP 项目](https://github.com/mo
   **范围与限制:** 输入描述单项交互的状态变化，并非自主探索完整网站。测试不能证明长流程、服务端行为或原始源码等价；交互能够被检测到，也不代表它可用。
 
   **作者:** Jingyu Xiao 等
+
+  </details>
+
+- [**LaTCoder：以“布局即思维”将网页设计转换为代码**](https://doi.org/10.1145/3711896.3737016)
+
+  LaTCoder 将布局作为显式的中间步骤，把网页设计图转换为 HTML/CSS。基于规则的分割器递归寻找不穿过 OCR 识别文本的纯色水平或垂直线，再将过小区域合并为网格对齐的图块。多模态大语言模型使用思维链提示为每个图块编写代码；随后以绝对定位或由模型组装各图块，并由结合 MAE 与 CLIP、无需参考答案的验证器选出较优结果。论文还提出 CC-HARD，包含从 Common Crawl 人工抽取的 128 个复杂布局网页。
+
+  KDD 2025 · 会议论文 · [PDF](https://arxiv.org/pdf/2508.03560v1) · [代码](https://github.com/CGCL-codes/naturalcc/tree/5f84062064947a0e2137ebda0bd3a9ae8ceb1736/examples/latcoder) · [完整条目与引用](https://awesomerea.org/zh/papers/paper-latcoder/)
+
+  <details>
+  <summary>范围与发表信息</summary>
+
+  **范围与限制:** 方法面向根据设计图生成静态 HTML/CSS；JavaScript 行为、交互、导航和后端均不在方法范围内，也不恢复网站原始源码。评测使用 Design2Code-HARD（80 个页面）与 CC-HARD（128 个页面），以 TreeBLEU、CLIP、Visual Score 和 MAE 将生成的代码与截图同参考答案比较。报告的提升是较小绝对分数上的相对变化：在 CC-HARD 上使用 DeepSeek-VL2 时，TreeBLEU 从 0.09 升至 0.15（+66.67%），而在 Design2Code-HARD 上 CLIP 略有下降。分割器假定存在矩形纯色分隔线，并使用固定像素阈值；图块合并面积阈值在 CC-HARD 上调定。短上下文模型只使用绝对定位，图块位置由设计图固定。图块内容仍可能错位，Gemini 在组装时有时会遗漏图块。成对人工偏好评测（LaTCoder 至少获 60% 偏好）仅覆盖 CC-HARD 上的 GPT-4o，由六名标注者多数投票决定。GPT-4o、Gemini 与 DeepSeek-VL2 的结果是历史基线，并非当前排名。
+
+  **作者:** Yi Gui 等
 
   </details>
 

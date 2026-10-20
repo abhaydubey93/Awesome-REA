@@ -11,7 +11,7 @@ An independent collection of tools, case studies and research for websites, game
 <a href="https://awesomerea.org/"><img src="assets/readme-banner.svg" alt="Awesome Reverse Engineering Anything — tools, cases and papers across six reverse-engineering domains" width="960"></a>
 
 <!-- BEGIN GENERATED BADGES -->
-[![resources: 473](https://img.shields.io/badge/resources-473-53309C?style=flat-square&labelColor=303447)](https://awesomerea.org/resources/) [![cases: 197](https://img.shields.io/badge/cases-197-53309C?style=flat-square&labelColor=303447)](https://awesomerea.org/cases/) [![papers: 88](https://img.shields.io/badge/papers-88-53309C?style=flat-square&labelColor=303447)](https://awesomerea.org/papers/) [![Catalog checks](https://github.com/reacher-z/Awesome-REA/actions/workflows/validate.yml/badge.svg?branch=main)](https://github.com/reacher-z/Awesome-REA/actions/workflows/validate.yml) [![license: MIT](https://img.shields.io/badge/license-MIT-606779?style=flat-square&labelColor=303447)](LICENSE) [![website: awesomerea.org](https://img.shields.io/badge/website-awesomerea.org-6235B5?style=flat-square&labelColor=303447)](https://awesomerea.org/)
+[![resources: 473](https://img.shields.io/badge/resources-473-53309C?style=flat-square&labelColor=303447)](https://awesomerea.org/resources/) [![cases: 197](https://img.shields.io/badge/cases-197-53309C?style=flat-square&labelColor=303447)](https://awesomerea.org/cases/) [![papers: 89](https://img.shields.io/badge/papers-89-53309C?style=flat-square&labelColor=303447)](https://awesomerea.org/papers/) [![Catalog checks](https://github.com/reacher-z/Awesome-REA/actions/workflows/validate.yml/badge.svg?branch=main)](https://github.com/reacher-z/Awesome-REA/actions/workflows/validate.yml) [![license: MIT](https://img.shields.io/badge/license-MIT-606779?style=flat-square&labelColor=303447)](LICENSE) [![website: awesomerea.org](https://img.shields.io/badge/website-awesomerea.org-6235B5?style=flat-square&labelColor=303447)](https://awesomerea.org/)
 <!-- END GENERATED BADGES -->
 
 **[Search & filter](https://awesomerea.org/)** · **[Browse cases](https://awesomerea.org/cases/)** · **[Research papers](https://awesomerea.org/papers/)** · **[HTML survey](https://awesomerea.org/survey/)**
@@ -28,7 +28,7 @@ An independent collection of tools, case studies and research for websites, game
 
 **Research and workflows**
 
-- [Papers](#papers) (88) · [Agents and MCP](#agents-and-mcp) (43) · [References and Learning](#references-and-learning) (32)
+- [Papers](#papers) (89) · [Agents and MCP](#agents-and-mcp) (43) · [References and Learning](#references-and-learning) (32)
 
 **More ways to browse**
 
@@ -2953,13 +2953,13 @@ REA labels refer to the separate [upstream CLI and MCP project](https://github.c
 <a id="papers"></a>
 ## Papers
 
-**88 papers**, grouped by topic and ordered newest first. Each entry shows its venue and publication status.
+**89 papers**, grouped by topic and ordered newest first. Each entry shows its venue and publication status.
 
 [Browse the paper directory](https://awesomerea.org/papers/) · [Complete bibliography JSON](data/papers.json) · [Suggest a paper](https://github.com/reacher-z/Awesome-REA/issues/new?template=paper.yml)
 
 **By topic**
 
-- [Agent evaluation](#papers-agent-evaluation) (9) · [Decompilation](#papers-decompilation) (35) · [Websites](#papers-website-reconstruction) (15)
+- [Agent evaluation](#papers-agent-evaluation) (9) · [Decompilation](#papers-decompilation) (35) · [Websites](#papers-website-reconstruction) (16)
 - [Games](#papers-game-reconstruction) (6) · [Apps](#papers-app-reconstruction) (7) · [Firmware](#papers-firmware-analysis) (6)
 - [Protocols](#papers-protocol-analysis) (10)
 
@@ -3772,6 +3772,21 @@ Open “Scope and publication details” for each study’s full limitations. So
   **Scope and limits:** The inputs specify individual interaction transitions, not autonomous exploration of a complete site. Its tests do not establish long-workflow, server-side, or original-source equivalence; a detectable interaction is not necessarily usable.
 
   **Authors:** Jingyu Xiao et al.
+
+  </details>
+
+- [**LaTCoder: Converting Webpage Design to Code with Layout-as-Thought**](https://doi.org/10.1145/3711896.3737016)
+
+  LaTCoder converts webpage design images to HTML/CSS by making layout an explicit intermediate step. A rule-based divider recursively finds solid-colored horizontal or vertical lines that avoid OCR-detected text, then merges small regions into grid-aligned blocks. An MLLM writes code for each block with a chain-of-thought prompt. The blocks are then assembled by absolute positioning or by the MLLM, and a reference-free verifier combining MAE and CLIP picks the better result. The paper also introduces CC-HARD, 128 complex-layout pages manually sampled from Common Crawl.
+
+  KDD 2025 · Conference paper · [PDF](https://arxiv.org/pdf/2508.03560v1) · [Code](https://github.com/CGCL-codes/naturalcc/tree/5f84062064947a0e2137ebda0bd3a9ae8ceb1736/examples/latcoder) · [Full entry & citation](https://awesomerea.org/papers/paper-latcoder/)
+
+  <details>
+  <summary>Scope and publication details</summary>
+
+  **Scope and limits:** Targets static HTML/CSS from a design image; JavaScript behavior, interactions, navigation and backends are outside the method, and it does not recover a site's original source. Evaluation uses Design2Code-HARD (80 pages) and CC-HARD (128 pages), scoring generated code and screenshots against references with TreeBLEU, CLIP, Visual Score and MAE. Reported gains are relative changes on small absolute scores: with DeepSeek-VL2 on CC-HARD, TreeBLEU rises from 0.09 to 0.15 (+66.67%), and CLIP falls slightly on Design2Code-HARD. The divider assumes rectangular, solid-colored separators and fixed pixel thresholds; the block-merge area was tuned on CC-HARD. Short-context models use absolute positioning only, which fixes block positions from the design. Block content can still be misplaced, and Gemini sometimes omitted blocks during assembly. Pairwise human preference (at least 60% for LaTCoder) covers GPT-4o on CC-HARD only, by majority vote of six annotators. GPT-4o, Gemini and DeepSeek-VL2 results are historical baselines, not current rankings.
+
+  **Authors:** Yi Gui et al.
 
   </details>
 
