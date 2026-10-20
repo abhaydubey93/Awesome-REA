@@ -4103,5 +4103,33 @@
       "docs/VALIDATION.md（2026-10-17）报告：12 项标准库测试通过，rea mcp doctor 运行健康并列出 170 个工具，并在 Node 24.18.0 与 Python 3.12.7 下用 REA 静态分析了一个合成 JavaScript 应用和一个合成 HAR。文档将客户端重启后的 MCP 接入、真实 APK 与原生目标、真实 HAR 的匿名化以及运行时工作列为未验证，冒烟测试输出也未提交。本合集只阅读了这些文件，未运行脚本、测试或 REA。",
       "README 说明 Claude Code 权限规则、只读文件权限和 SHA-256 基线都不构成隔离边界，需要强隔离时建议使用只读挂载和受控网络。AGENTS.md 默认只做静态分析，仅在任务获得授权时才运行样本、连接设备或访问目标服务。仓库没有许可证文件，复用条款未作说明；REA、分析引擎、客户端与分析目标各有其条款。"
     ]
+  },
+  "opendmcufirm-wii-u-dmcu-firmware-case": {
+    "name": "OpenDMCUFirm：重新实现的 Wii U DMCU 显示固件",
+    "requirements": [
+      "所审阅的 main 提交没有发行版或标签。README 称这是仍在开发中的重新实现，预计会有问题；近期提交为寄存器和状态字段命名，其中一次提交称某个函数已完全一致，此前缺失的一个变量曾在 240p 游戏中引发问题。link.ld 警告 Nintendo 的 nn_cmpt 会直接向 DMCU 的 ERAM 中段写入数值，可能覆盖代码。",
+      "构建只使用项目自己的 C 源码，不需要原始固件。运行需要装有 Aroma 插件环境和 evWii 的 Wii U：将 dmcu.d.hex 放入 SD 卡的 wiiu 文件夹，再用 evWii 的“Load DMCU Firmware from SD Card”选项在 Wii 模式下载入。",
+      "编译器为 GNU 68HC11/12 软件包中的 GCC 3.3.6-m68hc1x-20060122。Dockerfile 在 Ubuntu 24.04 上用经校验和核对的 Windows 安装程序在 Wine 下配置该工具链，也提供预构建的 garyodernichts/dmcubuilder 镜像；再由 Python 3 运行 hexconv.py，将 S19 输出转换为 DMCU 的 hex 格式。",
+      "CI 只在该容器中构建 dmcu.d.hex 并作为构件上传。所审文件中没有测试套件、硬件测试记录，也没有与原厂固件行为的比较；本次审阅未构建或运行任何程序。",
+      "仓库没有许可证文件，GitHub 也未识别出许可证；项目源文件只注明属于 OpenDMCUFirm。随附的 68HC11 与 stdint 头文件保留各自的 FSF GPL 和 BSD 声明，evWii 采用 GPL-2.0，原始固件仍受其自身权利约束。所审来源未确立 AI 或 REA 的使用。"
+    ]
+  },
+  "cod4-rewrite-reconstruction-case": {
+    "name": "CoD4 Rewrite：Rust/Bevy 游戏重建",
+    "requirements": [
+      "需要 Windows、支持 Vulkan 的显卡及自有 CoD4 1.7 安装。可选的《黑色行动》《现代战争2》《战争世界》内容需要对应的独立安装；项目不提供游戏素材。",
+      "当前源码已接入多人依赖及 NetplayPlugin，尽管 README 仍将联网列为待完成。本次未确立完整线上对局行为，也未确认兼容原版 CoD4 服务器。",
+      "渲染和玩法含有刻意扩展，不能据此认定与原游戏等价。本次未运行游戏、启动器、中继服务或测试。",
+      "Cargo 声明 MIT OR Apache-2.0，游戏与多人模块继承该声明。所审阅文件树中未找到独立的许可证文本。"
+    ]
+  },
+  "libd2-engine-core-reconstruction-case": {
+    "name": "libd2：《暗黑破坏神II》1.14d 引擎组件库",
+    "requirements": [
+      "构建需要 Zig 0.16.0。这些是模块化引擎库，并非完整可玩的客户端；基础生成使用内嵌数据和测试样本。",
+      "MIT 覆盖 Zig 源码，但明确排除随仓库提供、由 Blizzard 游戏派生的二进制数据和地图样本；仓库并非不含游戏派生素材。",
+      "作者报告五个噩梦难度种子及两个保留种子的逐格对照，另以 200 个种子的三个难度进行逐关 CRC 检查。有限语料不能证明所有种子或整个引擎等价。",
+      "game 和 net 包依据恢复出的规则及报文布局检查，而非原服务器运行对照；存档、物品与路径检查的证据深度不同。本次未独立复现实验。"
+    ]
   }
 }
