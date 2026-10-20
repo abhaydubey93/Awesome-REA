@@ -11097,5 +11097,68 @@
       "https://github.com/AITYunivers/NebulaFD/blob/a24d4d1da78c35412413faac750e07ff7d603a8a/.github/workflows/main.yml",
       "https://github.com/AITYunivers/NebulaFD/releases/tag/september_2026_update"
     ]
+  },
+  {
+    "id": "cod4-rewrite-reconstruction-case",
+    "name": "CoD4 Rewrite: Rust/Bevy reconstruction",
+    "targets": [
+      "game",
+      "binary"
+    ],
+    "description_en": "A Rust/Bevy reconstruction of Call of Duty 4 multiplayer systems, using assets from a local game installation. Source covers menus, local bots, movement and combat, and connects custom relay-based netplay to the game.",
+    "description_zh": "以 Rust/Bevy 重建《使命召唤4》的多人游戏系统，使用本地游戏安装中的素材。源码包含菜单、本地机器人、移动和战斗，并将自定义中继联机实现接入游戏。",
+    "requirements": [
+      "Requires Windows, a Vulkan-capable GPU and an owned CoD4 patch 1.7 installation. Optional Black Ops, Modern Warfare 2 and World at War content requires their separate installations; game assets are not supplied.",
+      "Current source connects the multiplayer dependency and NetplayPlugin despite README statements that networking is pending. Complete online-match behavior and compatibility with original CoD4 servers are not established by this review.",
+      "Rendering and gameplay include deliberate extensions, so original-game equivalence is not established. No game, launcher, relay or test was run for this review.",
+      "Cargo declares MIT OR Apache-2.0, inherited by the game and multiplayer crates. No standalone license text was found in the reviewed tree."
+    ],
+    "url": "https://github.com/Nilbong/COD4-Rewrite",
+    "category": "reconstruction-cases",
+    "relationship": "independent-reconstruction",
+    "kind": "case-study",
+    "evidence_url": "https://github.com/Nilbong/COD4-Rewrite/blob/bd03eb07f2b2ec84dd33946bfc2b8163fc49c480/README.md",
+    "additional_evidence_urls": [
+      "https://github.com/Nilbong/COD4-Rewrite/blob/bd03eb07f2b2ec84dd33946bfc2b8163fc49c480/Cargo.toml",
+      "https://github.com/Nilbong/COD4-Rewrite/blob/bd03eb07f2b2ec84dd33946bfc2b8163fc49c480/crates/game/Cargo.toml",
+      "https://github.com/Nilbong/COD4-Rewrite/blob/bd03eb07f2b2ec84dd33946bfc2b8163fc49c480/crates/game/src/main.rs",
+      "https://github.com/Nilbong/COD4-Rewrite/blob/bd03eb07f2b2ec84dd33946bfc2b8163fc49c480/crates/game/src/netplay/mod.rs",
+      "https://github.com/Nilbong/COD4-Rewrite/blob/bd03eb07f2b2ec84dd33946bfc2b8163fc49c480/crates/multiplayer/README.md",
+      "https://github.com/Nilbong/COD4-Rewrite/blob/bd03eb07f2b2ec84dd33946bfc2b8163fc49c480/crates/multiplayer/tests/relay_roundtrip.rs"
+    ],
+    "verified_at": "2026-10-19",
+    "verification": "source-reviewed"
+  },
+  {
+    "id": "libd2-engine-core-reconstruction-case",
+    "name": "libd2: Diablo II 1.14d engine-core libraries",
+    "targets": [
+      "game",
+      "binary",
+      "protocol"
+    ],
+    "description_en": "Zig libraries reconstructing Diablo II 1.14d seeded maps, item generation, saves, simulation rules and network formats. Selected components expose native and WebAssembly interfaces; verification notes distinguish retail map comparisons from weaker subsystem evidence.",
+    "description_zh": "以 Zig 库重建《暗黑破坏神II》1.14d 的种子地图、物品生成、存档、模拟规则和网络格式。部分组件提供原生与 WebAssembly 接口；验证说明区分了原游戏地图对照与其他子系统较弱的证据。",
+    "requirements": [
+      "Builds require Zig 0.16.0. These are modular engine libraries, not a complete playable client; basic generation uses embedded data and fixtures.",
+      "MIT covers the Zig source. Included Blizzard-derived binary blobs and map fixtures are expressly excluded from that grant; the repository is not asset-free.",
+      "The authors report cell-level comparisons for five Nightmare seeds and two holdouts, plus per-level CRC checks for 200 seeds at three difficulties. This finite corpus does not establish all-seed or whole-engine equivalence.",
+      "The game and net packages are checked against recovered rules and packet layouts, not a live server; save, item and pathfinding checks have different depth. No experiments were independently reproduced here."
+    ],
+    "url": "https://github.com/jaenster/libd2",
+    "category": "reconstruction-cases",
+    "relationship": "independent-reconstruction",
+    "kind": "case-study",
+    "evidence_url": "https://github.com/jaenster/libd2/blob/bc21bb924b9238def4907bd2b3f79e8041a5fc0a/README.md",
+    "additional_evidence_urls": [
+      "https://github.com/jaenster/libd2/blob/bc21bb924b9238def4907bd2b3f79e8041a5fc0a/LICENSE",
+      "https://github.com/jaenster/libd2/blob/bc21bb924b9238def4907bd2b3f79e8041a5fc0a/docs/VERIFICATION.md",
+      "https://github.com/jaenster/libd2/blob/bc21bb924b9238def4907bd2b3f79e8041a5fc0a/docs/BUILDING.md",
+      "https://github.com/jaenster/libd2/blob/bc21bb924b9238def4907bd2b3f79e8041a5fc0a/build.zig.zon",
+      "https://github.com/jaenster/libd2/blob/bc21bb924b9238def4907bd2b3f79e8041a5fc0a/packages/drlg/src/oracle.zig",
+      "https://github.com/jaenster/libd2/blob/bc21bb924b9238def4907bd2b3f79e8041a5fc0a/packages/drlg/src/verify_tests.zig"
+    ],
+    "verified_at": "2026-10-19",
+    "verification": "source-reviewed"
   }
 ]

@@ -184,7 +184,7 @@
 - [BlackLineInteractive/nWiiURecomp](https://github.com/BlackLineInteractive/nWiiURecomp) — 面向 Nintendo Wii U 的静态重编译与运行时工具包，基于 NWiiRecomp，可用于制作原生 PC 移植等。 **[17 星标]**
 - [veritr1x/nfsmw-recomp](https://github.com/veritr1x/nfsmw-recomp) — 基于 recomp-kit 重编译 Need for Speed: Most Wanted（2005 年 PC Black Edition），提供 macOS、iPad、Linux、Windows 和浏览器宿主，支持 Metal、Vulkan 和 WebGPU 渲染。需自备游戏文件。 **[17 星标]**
 - [clauadv/ue\_aes\_finder](https://github.com/clauadv/ue_aes_finder) — 从 Unreal Engine 游戏中查找 AES 密钥的轻量工具。 **[16 星标]**
-- [jaenster/libd2](https://github.com/jaenster/libd2) — 以净室方式用 Zig 重新实现 Diablo II 1.14d 的确定性引擎核心，包括地图生成、物品生成和运行时模拟。 **[16 星标]**
+- [jaenster/libd2](https://github.com/jaenster/libd2) — 以净室方式用 Zig 重新实现 Diablo II 1.14d 的确定性引擎核心，包括地图生成、物品生成和运行时模拟。 **[16 星标]** · 精选：[libd2：《暗黑破坏神II》1.14d 引擎组件库](https://awesomerea.org/zh/resources/libd2-engine-core-reconstruction-case/)
 - [mr-finster/vf1-recomp](https://github.com/mr-finster/vf1-recomp) — 将《Virtua Fighter》（Sega Model 1，1993 年）静态重编译至 Mac、Windows 和 Steam Deck：最高 6 倍、宽屏、流畅的 120 fps。需自备 vf.zip。 **[16 星标]**
 - [NeonTeam58/HSR-OWNER](https://github.com/NeonTeam58/HSR-OWNER) — 做主人，不做奴隶。 **[16 星标]**
 - [Scotho/socom-unzipped](https://github.com/Scotho/socom-unzipped) — 将 SOCOM II: U.S. Navy SEALs 静态重编译到 PC，并提供可自行托管的在线联机功能。 **[16 星标]**

@@ -184,7 +184,7 @@ These are automatically discovered projects, not individually curated or tested 
 - [BlackLineInteractive/nWiiURecomp](https://github.com/BlackLineInteractive/nWiiURecomp) — Static recompilation and runtime toolkit for Nintendo Wii U (based on NWiiRecomp) to make native PC ports (and not only) **[17 stars]**
 - [veritr1x/nfsmw-recomp](https://github.com/veritr1x/nfsmw-recomp) — Recompilation of Need for Speed: Most Wanted (the 2005 PC Black Edition) built on recomp-kit: macOS, iPad, Linux, Windows and browser hosts, with Metal, Vulkan and WebGPU rendering. Bring your own game files. **[17 stars]**
 - [clauadv/ue\_aes\_finder](https://github.com/clauadv/ue_aes_finder) — A lightweight tool for finding AES keys in Unreal Engine games. **[16 stars]**
-- [jaenster/libd2](https://github.com/jaenster/libd2) — Clean-room Zig reimplementation of the deterministic Diablo II 1.14d engine core (map gen, item gen, runtime sim) **[16 stars]**
+- [jaenster/libd2](https://github.com/jaenster/libd2) — Clean-room Zig reimplementation of the deterministic Diablo II 1.14d engine core (map gen, item gen, runtime sim) **[16 stars]** · Curated: [libd2: Diablo II 1.14d engine-core libraries](https://awesomerea.org/resources/libd2-engine-core-reconstruction-case/)
 - [mr-finster/vf1-recomp](https://github.com/mr-finster/vf1-recomp) — Virtua Fighter (Sega Model 1, 1993) statically recompiled for Mac, Windows and Steam Deck: up to 6x, widescreen, smooth 120 fps. Bring your own vf.zip. **[16 stars]**
 - [NeonTeam58/HSR-OWNER](https://github.com/NeonTeam58/HSR-OWNER) — Be an owner, not a slave. **[16 stars]**
 - [Scotho/socom-unzipped](https://github.com/Scotho/socom-unzipped) — SOCOM II: U.S. Navy SEALs, statically recompiled for PC with self-hosted online play **[16 stars]**
