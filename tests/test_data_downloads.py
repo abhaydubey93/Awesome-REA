@@ -29,7 +29,8 @@ class PublicDownloadTests(unittest.TestCase):
             'id': 'paper-sample', 'title': 'Sample paper', 'authors': ['B. Author', 'A. Author'],
             'scope_limitations_en': 'A small benchmark.', 'scope_limitations_zh': '小规模评测。',
             'runtime_tested': False, 'verification': 'source-reviewed',
-            'citation': {'container_title': 'Proceedings', 'pages': '1–9'},
+            'citation': {'container_title': 'Proceedings', 'pages': '1–9',
+                         'sources': ['https://example.org/proceedings']},
         }
         self.bib = '@misc{sample, title={Sample paper}}\n'
 

@@ -31,7 +31,7 @@ PAPER_FIELDS = frozenset({
     'kind', 'verified_at', 'verification', 'runtime_tested', 'evidence_urls', 'citation',
 })
 CITATION_FIELDS = frozenset({'container_title', 'publisher', 'series', 'volume',
-                            'issue', 'pages', 'article_number'})
+                            'issue', 'pages', 'article_number', 'sources'})
 MEMBERS = frozenset({'resources.json', 'papers.json', 'records.jsonl',
                      'references.bib', 'README.md', 'manifest.json'})
 
