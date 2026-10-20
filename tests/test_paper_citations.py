@@ -143,6 +143,16 @@ class ReviewedContainerRecordTests(unittest.TestCase):
         self.assertEqual((binjudge['booktitle'], binjudge['pages'], binjudge['doi'], binjudge['month']),
                          ('{Proceedings of the 41st IEEE/ACM International Conference on Automated Software Engineering}',
                           '{106--118}', '{10.1145/3832783.3834339}', 'oct'))
+        viability = fields(bibtex_text(PAPERS['paper-requirements-generation-viability']))
+        self.assertEqual((viability['booktitle'], viability['pages'], viability['doi'],
+                          viability['month'], viability['eprint']),
+                         ('{2026 IEEE 34th International Requirements Engineering Conference Workshops (REW)}',
+                          '{94--103}', '{10.1109/rew72749.2026.00023}', 'aug', '{2606.25550}'))
+        khost = fields(bibtex_text(PAPERS['paper-khost']))
+        self.assertEqual((khost['booktitle'], khost['publisher'], khost['pages'], khost['month']),
+                         ('{35th USENIX Security Symposium (USENIX Security 26)}',
+                          '{USENIX Association}', '{573--592}', 'aug'))
+        self.assertFalse({'doi', 'eprint', 'howpublished'} & set(khost))
 
     def test_only_reviewed_records_carry_container_metadata(self):
         expected = {'paper-dire', 'paper-resym', 'paper-redraw', 'paper-declarui', 'paper-fuzzware',
@@ -159,7 +169,8 @@ class ReviewedContainerRecordTests(unittest.TestCase):
                     'paper-webcode2m',
                     'paper-xfl',
                     'paper-wadec',
-                    'paper-symlm', 'paper-codeinverter-suite', 'paper-notdec', 'paper-binjudge'}
+                    'paper-symlm', 'paper-codeinverter-suite', 'paper-notdec', 'paper-binjudge',
+                    'paper-requirements-generation-viability', 'paper-khost'}
         self.assertEqual({identifier for identifier, record in PAPERS.items() if 'citation' in record}, expected)
         for identifier in sorted(PAPERS.keys() - expected):
             # Records without verified container metadata keep the short venue label.
