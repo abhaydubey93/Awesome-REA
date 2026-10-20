@@ -22,13 +22,13 @@
 
 | 状态 | 出现项 | 清单单元 | 含义 |
 | --- | ---: | ---: | --- |
-| 已收录 (`already-curated`) | 198 | 196 | 完整范围已对应目录资源或论文；不代表独立运行复现。 |
-| 待核查 (`pending`) | 184 | 184 | 一手核查或完整目录覆盖尚待完成；部分映射也保留在此状态。 |
-| 证据不足 (`insufficient-evidence`) | 209 | 209 | 将想法、请求或尚缺支持的重建说法保留为线索。 |
+| 已收录 (`already-curated`) | 200 | 198 | 完整范围已对应目录资源或论文；不代表独立运行复现。 |
+| 待核查 (`pending`) | 153 | 153 | 一手核查或完整目录覆盖尚待完成；部分映射也保留在此状态。 |
+| 证据不足 (`insufficient-evidence`) | 238 | 238 | 将想法、请求或尚缺支持的重建说法保留为线索。 |
 
-210 个出现项含目录链接；共关联 203 个不同资源 ID 和 1 个论文 ID。映射范围单独记录，不能将这些群体相加当作独立项目数。
+212 个出现项含目录链接；共关联 205 个不同资源 ID 和 2 个论文 ID。映射范围单独记录，不能将这些群体相加当作独立项目数。
 
-此记录为 347 个清单单元记载了新的一手来源核查。其他已有目录链接的条目对应目录中独立的来源核查记录；链接本身不代表重新核查了整篇合集报告。此记录没有独立复现运行实验。
+此记录为 378 个清单单元记载了新的一手来源核查。其他已有目录链接的条目对应目录中独立的来源核查记录；链接本身不代表重新核查了整篇合集报告。此记录没有独立复现运行实验。
 
 此记录刻意不包含仓库 README 扫描 ID 或扫描数量。成功读取 README、被上游合集列出和案例经过来源核查，是不同事实。
 
@@ -224,10 +224,27 @@
 | A 3D home model: a reported REA-assisted Mac menu-bar controller | 证据不足 | [来源](https://x.com/0xProbabillity/status/2109978137794883621) |
 | AMABOO Frameo: Claude Code adapts an existing Home HQ frame setup | 证据不足 | [来源](https://x.com/InvestingVault/status/2111250941886226471) |
 | REA Reconstruction Companion: connect evidence to specifications, implementation and acceptance | 待核查 | [来源](https://github.com/ShadowSwaps/REA-Reconstruction-Companion/blob/590e65dd99596c7fb66598eaa5d6c051c2ec9a5f/evals/reference/reconstruction/README.md) |
+| CLO3D DLLs: an idea to rebuild a garment-design tool with Claude/Codex | 证据不足 | [来源](https://x.com/i/status/2111281354910704058) |
 | NJFE：用于电脑检查的 Soulear 相机协议桥接 | 已收录 | [来源](https://github.com/WildweaselMS/NJFE/blob/992866c6609f8c813f459ff79840cf04d5883f8e/README.md) |
 | LeanREA 命令行逆向分析技能 | 已收录 | [来源](https://github.com/aicodeking/leanrea/blob/09ba4aa0217f82cd880f855a60b877f59f39b22b/README.md) |
+| MISE.exe: Claude proposes Ghidra-derived rules instead of screenshot guesses | 证据不足 | [来源](https://x.com/i/status/2111312368840126836) |
+| RetroScope: a local-LLM assistant for ROM instruction references | 证据不足 | [来源](https://x.com/i/status/2111332462811087061) |
+| China Mobile app: AI investigates number-selection pages and protocols for local filtering | 证据不足 | [来源](https://x.com/i/status/2111337934406484446) |
+| Roku TV: a firmware-modification inquiry blocked by Claude's bootloader assessment | 证据不足 | [来源](https://x.com/i/status/2111349282745757858) |
+| Serein's nine-bot workflow: pass REA behavior specifications to an isolated builder | 证据不足 | [来源](https://x.com/i/status/2111365135143219711) |
+| Chrome LINE: AI reads JavaScript to build a TUI and messaging API | 证据不足 | [来源](https://x.com/i/status/2111366415639064608) |
 | Reverse Engineering Assistant: a framework advertised for offline file-analysis reports | 待核查 | [来源](https://x.com/i/status/2111230457568227404) |
+| 731 functions: an REA reconstruction account using specification isolation and four negative controls | 证据不足 | [来源](https://x.com/i/status/2111165651599663599) |
+| Zenith collaborative editing: a reader asks about investigating it with REA | 证据不足 | [来源](https://x.com/i/status/2111358914520600998) |
+| Hue screen-synced lighting: Claude investigates a macOS Bluetooth mode | 证据不足 | [来源](https://x.com/i/status/2111385823270625370) |
+| JavaScript divergence: formatting switches the game, an AI reversing-decoy idea | 证据不足 | [来源](https://x.com/i/status/2111386823763411016) |
+| Three-model binary research: function maps, competing hypotheses and an original-binary oracle | 证据不足 | [来源](https://x.com/i/status/2111389348339827041) |
 | re2ds：Resident Evil 2 的原生 Nintendo DS 引擎 | 已收录 | [来源](https://www.reddit.com/r/ReverseEngineering/comments/1x85dp5/a_port_of_resident_evil_2_for_the_nintendo_ds/) |
+| Starshield signals: a reader's idea to investigate frequencies with REA | 证据不足 | [来源](https://x.com/i/status/2111395824991097074) |
+| Windows kernel: an REA collaboration idea for a free operating system | 证据不足 | [来源](https://x.com/i/status/2111405429486211272) |
+| Amazon Prime tvOS: investigating IPA Universal Links to open shows from a personal app | 证据不足 | [来源](https://x.com/i/status/2111424789827228006) |
+| Claude and Codex limits: an REA-assisted top-bar display report | 证据不足 | [来源](https://x.com/i/status/2111426952162947310) |
+| LLVM ABI: gingerBill's account of using LLMs to investigate undocumented internals | 证据不足 | [来源](https://x.com/i/status/2111396413066363009) |
 | Super Mario 64 DS：带重定位核对的匹配反编译 | 已收录 | [来源](https://github.com/tangosdev/sm64ds-decomp/blob/af8636d638322b88738ef7ad4b4f28ed9c5be24f/README.md) |
 | Define correctness as PASS/FAIL, then let agents iterate | 证据不足 | [来源](https://x.com/arpit_bhayani/status/2109505311904309621) |
 | Where "software is solved" is overstated | 证据不足 | [来源](https://x.com/wangdou/status/2109404200513708307) |
@@ -364,14 +381,28 @@
 | TH095：东方文花帖 1.02a 的函数级重建 | 已收录 | [来源](https://github.com/N0zoM1z0/th095/blob/6084b36cfa90ac1720f0cba36caec3ee56fc5e1f/README.md) |
 | TH04：从源码重建东方幻想乡的四个 PC-98 程序 | 已收录 | [来源](https://github.com/N0zoM1z0/th04/blob/11577b35392c706f3bd39ff1ea932c003e1eaa6b/README.md) |
 | DX-Ball：借助 REA 并由 Codex 完成的函数级重建 | 已收录 | [来源](https://github.com/N0zoM1z0/dx-ball/blob/d1251ea4bd000c7204c895c029194cae1d269731/README.md) |
+| Pre-CU Star Wars Galaxies: an idea to accelerate emulator reverse engineering with AI | 证据不足 | [来源](https://x.com/i/status/2111615624678088837) |
 | A pro-software licensing algorithm: an unverified report of a REA keygen in hours | 证据不足 | [来源](https://x.com/i/status/2111423397095723483) |
 | Game ad behavior: a reported Claude inspection of obfuscated JavaScript | 证据不足 | [来源](https://x.com/i/status/2111582817251738031) |
 | LG OLED pause ads: an idea to modify firmware with Codex | 证据不足 | [来源](https://x.com/i/status/2111556091712581745) |
 | Dhaedalida: an AI reverse-engineering comparison on a self-made licensing sample | 证据不足 | [来源](https://x.com/i/status/2111560797855916293) |
 | FormEasy: an agent-native forms project reportedly based on studying Google Forms | 证据不足 | [来源](https://x.com/i/status/2111562194660016471) |
 | DeepSeek V4.1: a reported V8 n-day to Electron IPC investigation | 证据不足 | [来源](https://x.com/i/status/2111587595750637954) |
+| An offline Linux reverse-engineering workspace: separating Codex from private files | 证据不足 | [来源](https://x.com/i/status/2111588450969231812) |
+| CM 01-02 to FM26: an idea to study football-manager data migration with REA | 证据不足 | [来源](https://x.com/i/status/2111591082119106953) |
+| Six-app two-room reconstruction: a report of 299 claims and a negative-control judge rule | 证据不足 | [来源](https://x.com/i/status/2111591362449592514) |
+| An 1,842-file AI desktop shell: an animated demonstration of local/server boundaries | 证据不足 | [来源](https://x.com/i/status/2111446154713964643) |
+| Mario Kart 8 Deluxe: 0xsvsv's Claude/REA PC-port account | 证据不足 | [来源](https://x.com/i/status/2111431983691862272) |
+| Kerbal Space Program 2: an AI-decompilation idea for community maintenance | 证据不足 | [来源](https://x.com/i/status/2111434708575805636) |
 | Cursor: an account of custom relays and personal Codex/Claude Code quotas | 证据不足 | [来源](https://x.com/FoxSnowing/status/2111465121126207605) |
 | Open Scrantic：重建 Johnny Castaway 屏幕保护程序引擎 | 已收录 | [来源](https://github.com/glauberlima/open-scrantic/blob/2db75008931eb744f79d0c3fb12e0d89950466ff/README.md) |
+| ScooterLink：重建 Honda RoadSync 车把按键协议 | 已收录 | [来源](https://x.com/i/status/2111470520688665052) |
+| Hitachi combination oven: a Codex/REA account using an Android app for direct control | 证据不足 | [来源](https://x.com/i/status/2111474749855670664) |
+| Frontkick 与 Rikugan：基于 CREBench 的智能体对比 | 已收录 | [来源](https://www.synacktiv.com/en/publications/ufc-666-frontkick-vs-rikugan) |
+| Ableton Live 12: an agent reversing attempt running for 96 hours | 证据不足 | [来源](https://x.com/i/status/2111506869395337318) |
+| Makara game maker: an idea for scoped analysis of authorized inputs | 证据不足 | [来源](https://x.com/i/status/2111507612646699286) |
+| ROM analysis setup: Gemini Argon with REA, Ghidra and libretro | 证据不足 | [来源](https://x.com/i/status/2111507777336098897) |
+| EVM contracts: a REA idea for inspecting state-changing entry points | 证据不足 | [来源](https://x.com/i/status/2111507955711459554) |
 | Non-open-hardware Xiaozhi box: AI firmware changes for a personal VPS and shared memory | 证据不足 | [来源](https://x.com/i/status/2111511824751599721) |
 | Pandemic-relief websites: an idea for AI-assisted investigation of legacy backdoors | 证据不足 | [来源](https://x.com/i/status/2111516584976273866) |
 | Forked pi and two Sparks: starting a GLM-5.3-flash/REA trial | 证据不足 | [来源](https://x.com/i/status/2111519607928520794) |
@@ -414,6 +445,7 @@
 - `hao-games:row-135` — 固定版本的 README、自动生成的进度、判定依据与运行问题说明、工具锁定文件、初始化脚本、CI 及许可证，支持该 TH095 1.02a 重建报告。完整映射覆盖此仓库的函数级重建及可游玩的 Windows i386 构建，不涵盖整个可执行文件一致性、计划中的移植或独立复现的游戏过程；REA 的东方重建方法文章作为相关条目关联。原可执行文件要求和项目报告的数字均明确保留。
 - `hao-games:row-136` — 固定版本的 README、自动生成的进度、DOS 构建、工具链、判定依据、运行与参考说明、CI 及许可证，支持该 TH04 重建报告。完整映射覆盖此仓库的四程序 DOS 重建及作者报告的差分回放，不涵盖字节一致性、完整流程、原生 x64 分支或独立复现。REA 的单函数展示仍为部分匹配，其东方重建文章为相关条目。
 - `hao-games:row-137` — 固定版本的 README、REA 实例说明、匹配、构建与进度说明、目标与工具锁定文件、一项差分测试、CI 及许可证，支持该 DX-Ball 重建报告及作者记录的 REA 与 Codex 使用。完整映射覆盖这一进行中的函数级重建，不代表字节一致、已完成的可游玩 VC4 构建或独立复现；REA 的单函数声像展示仍为部分匹配。原版压缩包要求及其未经核实的下载来源均明确保留。
+- `song:synacktiv-frontkick-rikugan-crebench` — Synacktiv 的文章记录了一次注明日期的对比：在 CREBench 的两个任务上比较 Binary Ninja 智能体 Frontkick 与 Rikugan，给出实验设置和逐次运行结果表，作者也指出差距主要源于提示词差异而非智能体设计。完整映射将其作为学习资源收录，相关映射指向其所用的 CREBench 论文。Frontkick 没有公开发布，运行记录未公开，本次也未重新运行。
 
 别名决定：
 

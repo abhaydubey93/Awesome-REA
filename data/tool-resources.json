@@ -11099,6 +11099,67 @@
     ]
   },
   {
+    "id": "scooterlink-honda-roadsync-case",
+    "name": "ScooterLink: reconstructing Honda RoadSync’s handlebar-button protocol",
+    "url": "https://github.com/gdorgian/ScooterLink",
+    "category": "reconstruction-cases",
+    "relationship": "independent-reconstruction",
+    "kind": "case-study",
+    "targets": [
+      "app",
+      "protocol"
+    ],
+    "description_en": "Replaces Honda RoadSync’s Apple Music-only media control with an iOS app that pairs with a Honda PCX 2025 TFT dash over Bluetooth Low Energy and turns handlebar presses into system-wide commands for any player. The author documents the dash’s BLE services, key exchange, button registration and event bytes, reportedly worked out from the official Android app and logged traffic. Results are author-reported on one PCX125, and the protocol notes separate confirmed from unverified parts.",
+    "description_zh": "以一个 iOS 应用替代 Honda RoadSync 仅支持 Apple Music 的媒体控制：通过低功耗蓝牙与 Honda PCX 2025 的 TFT 仪表配对，把车把按键转换为对任意播放器生效的系统级命令。作者记录了仪表的 BLE 服务、密钥交换、按键注册与事件字节，据称依据官方 Android 应用及通信日志推断得出。结果为作者在一台 PCX125 上的报告，协议说明区分了已确认与未验证的部分。",
+    "evidence_url": "https://github.com/gdorgian/ScooterLink/blob/a089f6210e863d56b590ed4625b92f886ff6a097/docs/PROTOCOL.md",
+    "verified_at": "2026-10-19",
+    "verification": "source-reviewed",
+    "requirements": [
+      "The reviewed commit follows the v1.2 release and changes only one README link. It targets a Honda PCX 2025 with the TFT dash and RoadSync support; README reports testing on a PCX125 2025 and calls other RoadSync models untested. Select and Back map to play/pause and Next/Previous to track changes, and the app reconnects at ignition and switches the dash to phone mode. Now-playing text, speed and volume control are unavailable, and no Android version exists.",
+      "No Honda software is needed at runtime, but RoadSync’s phone pairing must first be deleted on the dash, which keeps one phone key. The protocol was reportedly derived from the official RoadSync Android app and logged traffic; source comments cite decompiled Android app version 26.8.10 and a findings file, but the app, decompiled code, captures and that file are not in the repository.",
+      "Building needs a Mac with Xcode 16+, XcodeGen and the user’s own signing team and bundle ID; the app targets iOS 17, and the prebuilt v1.2 IPA must be sideloaded with a personal or developer Apple ID. Controlling other apps’ playback relies on Apple’s private MediaRemote framework, which README says rules out App Store distribution.",
+      "docs/PROTOCOL.md marks key exchange, per-connection validation, button registration, the phone-screen request and button events as confirmed on a real PCX125 2025, and dash drawing as unverified. A Mac-run Swift self-test checks CRC values, a simulated key exchange, validation parsing and registration and screen byte layouts; this review ran neither the tests nor the app. README reports that experimental colour slots and a drawn screen left the dash refusing phone mode until re-pairing, keeps that code switched off and warns never to write to the firmware-update service.",
+      "MIT covers the project code. README says the project is independent of Honda and contains no Honda code or files, only original code and a description of the Bluetooth messages written for interoperability; Honda, PCX and RoadSync remain trademarks of their owners. The author’s post credits Claude with the reverse engineering, but the repository does not document that workflow, and no REA use is established."
+    ],
+    "additional_evidence_urls": [
+      "https://github.com/gdorgian/ScooterLink/blob/a089f6210e863d56b590ed4625b92f886ff6a097/README.md",
+      "https://github.com/gdorgian/ScooterLink/blob/a089f6210e863d56b590ed4625b92f886ff6a097/App/Sources/SABProtocol.swift",
+      "https://github.com/gdorgian/ScooterLink/blob/a089f6210e863d56b590ed4625b92f886ff6a097/App/Sources/SABCrypto.swift",
+      "https://github.com/gdorgian/ScooterLink/blob/a089f6210e863d56b590ed4625b92f886ff6a097/App/Sources/SABClient.swift",
+      "https://github.com/gdorgian/ScooterLink/blob/a089f6210e863d56b590ed4625b92f886ff6a097/App/Sources/ButtonActions.swift",
+      "https://github.com/gdorgian/ScooterLink/blob/a089f6210e863d56b590ed4625b92f886ff6a097/App/Tests/main.swift",
+      "https://github.com/gdorgian/ScooterLink/blob/a089f6210e863d56b590ed4625b92f886ff6a097/App/project.yml",
+      "https://github.com/gdorgian/ScooterLink/blob/a089f6210e863d56b590ed4625b92f886ff6a097/LICENSE"
+    ]
+  },
+  {
+    "id": "frontkick-rikugan-crebench-comparison",
+    "name": "Frontkick vs Rikugan: a CREBench agent comparison",
+    "url": "https://www.synacktiv.com/en/publications/ufc-666-frontkick-vs-rikugan",
+    "category": "learning",
+    "relationship": "learning",
+    "kind": "learning-resource",
+    "targets": [
+      "binary"
+    ],
+    "description_en": "Matthieu Breuil’s Synacktiv article explains tool-calling and code-executing agent designs and describes Frontkick, a CodeAct agent that runs generated Python inside Binary Ninja. It compares Frontkick with the open-source Rikugan plugin on two CREBench cryptographic binary tasks, then attributes most of Frontkick’s advantage to a prompt that listed installed Python libraries rather than to its architecture. It is a small evaluation write-up with per-run results, not a released tool or a general benchmark finding.",
+    "description_zh": "Matthieu Breuil 在 Synacktiv 发表的文章讲解了调用预定义工具与执行生成代码两类智能体设计，并介绍在 Binary Ninja 内运行生成的 Python 代码的 CodeAct 智能体 Frontkick。文章在 CREBench 的两个密码二进制任务上将 Frontkick 与开源插件 Rikugan 对比，随后指出 Frontkick 的优势主要来自提示词中列出已安装 Python 库的做法，而非其架构本身。这是一篇附逐次运行结果的小规模评估文章，不是已发布的工具，也不是普遍性的基准结论。",
+    "evidence_url": "https://www.synacktiv.com/en/publications/ufc-666-frontkick-vs-rikugan",
+    "verified_at": "2026-10-19",
+    "verification": "source-reviewed",
+    "requirements": [
+      "The article on Synacktiv’s publications site is dated 13/10/2026. It describes Frontkick as a CodeAct agent that executes generated Python against Binary Ninja’s API, with a recipe-retrieval corpus, a single-level subagent and truncation of older turns; no download, repository or license for Frontkick is linked. Rikugan is an MIT-licensed community agent plugin for IDA Pro and Binary Ninja built on schema-validated tools, while Vector 35’s closed-source Sidekick was excluded because its internals are not accessible.",
+      "The comparison used Claude Sonnet 5.5 with CREBench’s AES-128-CBC and ChaCha20 cases in the hardcode_plain/O0 setting, supplied as stripped binaries, with four runs per case for each agent and a 1M-token budget. Each run had to identify the algorithm and key and reimplement decryption to recover the flag. The article does not state the Binary Ninja, Rikugan or Frontkick versions or publish the run transcripts it inspected.",
+      "In the published run table Frontkick fully solves six of eight runs and Rikugan none; the means are about 86 versus 31 out of 100 and about 0.60M versus 0.95M tokens, which the article summarizes as roughly half the tokens and nearly three times the score. On AES-128-CBC, Rikugan repeatedly tried a Python crypto package that was not installed and fell back to a manual implementation, whereas Frontkick’s prompt listed the installed libraries. The author therefore calls the outcome a draw driven by prompt design rather than evidence for CodeAct, and proposes a rerun with aligned prompts.",
+      "Two tasks, one model and eight runs per agent cannot support general conclusions about either agent, about tool-calling versus code-executing designs, or about other CREBench settings. The separate CREBench paper record covers the benchmark itself; the article reports no REA use and no reconstruction. This collection read the article, Rikugan’s README and the CREBench README without running either agent or the benchmark."
+    ],
+    "additional_evidence_urls": [
+      "https://github.com/buzzer-re/Rikugan/blob/a2ba6691baa0a7ace3bce9fe834a4f6f7610b77d/README.md",
+      "https://github.com/buzzer-re/Rikugan/blob/a2ba6691baa0a7ace3bce9fe834a4f6f7610b77d/LICENSE",
+      "https://github.com/wangyu-ovo/CREBench/blob/9fc4016538a0bab8c230732a9f788a61ed43addf/README.md"
+    ]
+  },
+  {
     "id": "cod4-rewrite-reconstruction-case",
     "name": "CoD4 Rewrite: Rust/Bevy reconstruction",
     "targets": [

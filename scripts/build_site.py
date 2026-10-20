@@ -15,9 +15,11 @@ from xml.sax.saxutils import escape as xml_escape
 from build_browse_pages import build_browse_pages
 from build_discovery_pages import build_discovery_pages
 from build_paper_pages import build_paper_pages
+from build_readme import CATEGORIES
 from build_survey import build_survey, discussion_sections
 from build_entry_pages import build_entry_pages
 from build_manifest import write_build_manifest
+from data_downloads import build_data_downloads
 from open_graph import website_node
 from homepage_locales import HOMEPAGE_DESTINATIONS, localized_homepage
 from artifact_links import with_artifact_links, with_curated_labels
@@ -210,7 +212,9 @@ def build_site(output: Path, *, fontawesome_dir: Path | None = None,
     topic_labels_path = SOURCE / "topics.i18n.json"
     topic_labels = json.loads(topic_labels_path.read_text(encoding="utf-8")) if topic_labels_path.exists() else {}
     metadata["paper_count"] = len(papers)
-    catalog = {"meta": metadata, "resources": resources, "topic_labels": topic_labels}
+    # The homepage reads category labels from here, so filters, cards and entry pages share one wording.
+    category_labels = {category: list(labels) for category, labels in CATEGORIES.items()}
+    catalog = {"meta": metadata, "resources": resources, "topic_labels": topic_labels, "category_labels": category_labels}
     (output / "catalog.json").write_text(json.dumps(catalog, ensure_ascii=False, indent=2) + "\n", encoding="utf-8")
     (output / "papers.json").write_text(json.dumps(papers, ensure_ascii=False, indent=2) + "\n", encoding="utf-8")
     for key, value in {"BROWSE_COUNT": metadata["source_index"]["resource_count"], "SCANNED_COUNT": metadata["source_index"].get("scanned_count", 0), "PAPER_COUNT": len(papers)}.items():
@@ -226,6 +230,7 @@ def build_site(output: Path, *, fontawesome_dir: Path | None = None,
         revision = hashlib.sha256((output / filename).read_bytes()).hexdigest()[:16]
         asset_hrefs[filename] = f'/{filename}?v={revision}'
         html = html.replace(f'{attribute}="{filename}"', f'{attribute}="{filename}?v={revision}"')
+    html = html.replace('src="favicon.svg"', f'src="{asset_hrefs["favicon.svg"]}"')
     social_revision = hashlib.sha256((output / "social-card.png").read_bytes()).hexdigest()[:16]
     html = html.replace(f'{SITE_URL}/social-card.png"', f'{SITE_URL}/social-card.png?v={social_revision}"')
     data_digest = hashlib.sha256()
@@ -287,6 +292,8 @@ def build_site(output: Path, *, fontawesome_dir: Path | None = None,
     sitemap_urls = [SITE_URL + "/", SITE_URL + "/zh/", *browse_urls, *(SITE_URL + path for path in discovery_paths), *paper_urls, *survey_urls, *entry_urls]
     sitemap_entries = [f'<url><loc>{xml_escape(url)}</loc></url>' for url in sitemap_urls]
     (output / "sitemap.xml").write_text('<?xml version="1.0" encoding="UTF-8"?>\n<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">\n' + '\n'.join(sitemap_entries) + '\n</urlset>\n', encoding="utf-8")
+    build_data_downloads(output, catalog, papers,
+                         (output / 'papers/references.bib').read_text(encoding='utf-8'))
     write_build_manifest(output)
     return len(resources), len(papers), len(sitemap_urls)
 

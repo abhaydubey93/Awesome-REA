@@ -11,7 +11,7 @@
 <a href="https://awesomerea.org/zh/"><img src="assets/readme-banner.svg" alt="Awesome Reverse Engineering Anything — 覆盖六类逆向目标的工具、案例与论文" width="960"></a>
 
 <!-- BEGIN GENERATED BADGES -->
-[![精选资源: 469](https://img.shields.io/badge/%E7%B2%BE%E9%80%89%E8%B5%84%E6%BA%90-469-53309C?style=flat-square&labelColor=303447)](https://awesomerea.org/zh/resources/) [![案例: 195](https://img.shields.io/badge/%E6%A1%88%E4%BE%8B-195-53309C?style=flat-square&labelColor=303447)](https://awesomerea.org/zh/cases/) [![论文: 87](https://img.shields.io/badge/%E8%AE%BA%E6%96%87-87-53309C?style=flat-square&labelColor=303447)](https://awesomerea.org/zh/papers/) [![目录检查](https://github.com/reacher-z/Awesome-REA/actions/workflows/validate.yml/badge.svg?branch=main)](https://github.com/reacher-z/Awesome-REA/actions/workflows/validate.yml) [![许可: MIT](https://img.shields.io/badge/%E8%AE%B8%E5%8F%AF-MIT-606779?style=flat-square&labelColor=303447)](LICENSE) [![网站: awesomerea.org](https://img.shields.io/badge/%E7%BD%91%E7%AB%99-awesomerea.org-6235B5?style=flat-square&labelColor=303447)](https://awesomerea.org/zh/)
+[![精选资源: 471](https://img.shields.io/badge/%E7%B2%BE%E9%80%89%E8%B5%84%E6%BA%90-471-53309C?style=flat-square&labelColor=303447)](https://awesomerea.org/zh/resources/) [![案例: 196](https://img.shields.io/badge/%E6%A1%88%E4%BE%8B-196-53309C?style=flat-square&labelColor=303447)](https://awesomerea.org/zh/cases/) [![论文: 87](https://img.shields.io/badge/%E8%AE%BA%E6%96%87-87-53309C?style=flat-square&labelColor=303447)](https://awesomerea.org/zh/papers/) [![目录检查](https://github.com/reacher-z/Awesome-REA/actions/workflows/validate.yml/badge.svg?branch=main)](https://github.com/reacher-z/Awesome-REA/actions/workflows/validate.yml) [![许可: MIT](https://img.shields.io/badge/%E8%AE%B8%E5%8F%AF-MIT-606779?style=flat-square&labelColor=303447)](LICENSE) [![网站: awesomerea.org](https://img.shields.io/badge/%E7%BD%91%E7%AB%99-awesomerea.org-6235B5?style=flat-square&labelColor=303447)](https://awesomerea.org/zh/)
 <!-- END GENERATED BADGES -->
 
 **[搜索与筛选](https://awesomerea.org/zh/)** · **[浏览案例](https://awesomerea.org/zh/cases/)** · **[研究论文](https://awesomerea.org/zh/papers/)** · **[HTML 综述](https://awesomerea.org/zh/survey/)**
@@ -23,16 +23,16 @@
 <!-- BEGIN GENERATED CONTENTS -->
 **按目标找工具与案例**
 
-- [网站](#website) (27) · [游戏](#game) (187) · [应用](#app) (71)
+- [网站](#website) (27) · [游戏](#game) (187) · [应用](#app) (72)
 - [原生二进制](#native-binary) (63) · [固件与硬件](#firmware) (21) · [协议](#protocol) (18)
 
 **论文与工作流**
 
-- [论文](#papers) (87) · [智能体与 MCP](#agents-and-mcp) (42) · [文档与学习资源](#references-and-learning) (31)
+- [论文](#papers) (87) · [智能体与 MCP](#agents-and-mcp) (42) · [文档与学习资源](#references-and-learning) (32)
 
 **更多浏览方式**
 
-- [全部案例](https://awesomerea.org/zh/cases/) (195) · [相关合集](#related-collections) (6) · [完整仓库索引](#完整仓库索引) (2,836)
+- [全部案例](https://awesomerea.org/zh/cases/) (196) · [相关合集](#related-collections) (6) · [完整仓库索引](#完整仓库索引) (2,836)
 <!-- END GENERATED CONTENTS -->
 
 ## 按任务查找
@@ -1553,6 +1553,12 @@ REA 标签指向单独维护的[上游 CLI 与 MCP 项目](https://github.com/mo
 
   案例 · 独立重建 · [使用条件与证据](https://awesomerea.org/zh/resources/wino-mail-case/)
 
+- [**ScooterLink：重建 Honda RoadSync 车把按键协议**](https://github.com/gdorgian/ScooterLink)
+
+  以一个 iOS 应用替代 Honda RoadSync 仅支持 Apple Music 的媒体控制：通过低功耗蓝牙与 Honda PCX 2025 的 TFT 仪表配对，把车把按键转换为对任意播放器生效的系统级命令。作者记录了仪表的 BLE 服务、密钥交换、按键注册与事件字节，据称依据官方 Android 应用及通信日志推断得出。结果为作者在一台 PCX125 上的报告，协议说明区分了已确认与未验证的部分。
+
+  案例 · 独立重建 · 也适用：协议 · [使用条件与证据](https://awesomerea.org/zh/resources/scooterlink-honda-roadsync-case/)
+
 #### 工具、项目与集成
 
 - [**JADX-AI-MCP**](https://github.com/zinja-coder/jadx-ai-mcp)
@@ -2924,6 +2930,12 @@ REA 标签指向单独维护的[上游 CLI 与 MCP 项目](https://github.com/mo
   社区维护的维基，讲解反编译器如何工作，从反汇编、提升和控制流恢复，到类型恢复、控制流结构化、质量评估和神经反编译，并为各项技术注明研究出处。它还整理了反编译器、插件、博客和演讲目录，设有符号恢复、代码相似性和漏洞发现等应用研究页面，以及按原平台列出的约 240 个游戏重建项目表。
 
   学习资源 · 目标：游戏、二进制 · [使用条件与证据](https://awesomerea.org/zh/resources/decompilation-wiki/)
+
+- [**Frontkick 与 Rikugan：基于 CREBench 的智能体对比**](https://www.synacktiv.com/en/publications/ufc-666-frontkick-vs-rikugan)
+
+  Matthieu Breuil 在 Synacktiv 发表的文章讲解了调用预定义工具与执行生成代码两类智能体设计，并介绍在 Binary Ninja 内运行生成的 Python 代码的 CodeAct 智能体 Frontkick。文章在 CREBench 的两个密码二进制任务上将 Frontkick 与开源插件 Rikugan 对比，随后指出 Frontkick 的优势主要来自提示词中列出已安装 Python 库的做法，而非其架构本身。这是一篇附逐次运行结果的小规模评估文章，不是已发布的工具，也不是普遍性的基准结论。
+
+  学习资源 · 目标：二进制 · [使用条件与证据](https://awesomerea.org/zh/resources/frontkick-rikugan-crebench-comparison/)
 <!-- END GENERATED CATALOG -->
 
 <!-- BEGIN GENERATED PAPERS -->
