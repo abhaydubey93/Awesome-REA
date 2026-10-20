@@ -2587,6 +2587,13 @@
       "After building, make test runs quiet MD5 verification against the selected version’s checksum manifest, including the final ROM and intermediate artifacts. The README also documents comparing base/built ROM hashes. These check output identity for the supplied version, not gameplay-path coverage or performance. The mutable status page reports all six versions complete/matching; this collection did not rerun those checks.",
       "The repository declares MIT for source; original ROMs and extracted game assets retain separate rights. Compiler components have their own terms, including the submodule’s SGI notice for IDO 5.3; the project’s MIT declaration does not replace them. The reviewed sources establish no AI or REA attribution, and no runtime reproduction is claimed."
     ],
+    "requirement_facets": [
+      "scope",
+      "prerequisites",
+      "prerequisites",
+      "testing",
+      "license"
+    ],
     "additional_evidence_urls": [
       "https://github.com/n64decomp/perfect_dark/blob/169ed48bdcbfb3b568b028bd5bebb27680073514/Makefile",
       "https://github.com/n64decomp/perfect_dark/blob/169ed48bdcbfb3b568b028bd5bebb27680073514/LICENSE",
@@ -2602,13 +2609,6 @@
       "https://github.com/Emill/ido-static-recomp/blob/421e546956ceae984927e609b083195e9e81659e/ido/5.3/LICENSE.md",
       "https://ryandwyer.gitlab.io/pdstatus/",
       "https://gitlab.com/ryandwyer/perfect-dark/-/tree/46d3393bed1a3d5fbefbdba6df7237579b5c66e0"
-    ],
-    "requirement_facets": [
-      "scope",
-      "prerequisites",
-      "prerequisites",
-      "testing",
-      "license"
     ]
   },
   {
@@ -3758,6 +3758,13 @@
       "Unless SKIP_CHECK is set, the pinned build code hashes its outputs against config/check.<version>.sha, which lists main.exe, DRA.BIN, RIC.BIN and stage and overlay files for us and shorter lists for hd, pspeu and saturn. The wiki still names a make check step that the pinned Makefile does not define. These checks compare file identity for the supplied version, not gameplay coverage, and this collection did not rerun them.",
       "The Makefile also accepts a pc version and src/pc holds native-port code, but the PC Port wiki page says no working end-to-end port based on the decompilation exists yet; no PC port is claimed here. The repository declares AGPL-3.0, while disc images, extracted assets and assembly, and the downloaded compilers keep separate rights. CONTRIBUTING allows coding-agent assistance only for changes contributors can justify and operate manually and requires commits and pull requests without autonomous tooling; this establishes no REA use, and no runtime reproduction is claimed."
     ],
+    "requirement_facets": [
+      "scope",
+      "prerequisites",
+      "prerequisites",
+      "testing",
+      "license"
+    ],
     "additional_evidence_urls": [
       "https://github.com/Xeeynamo/sotn-decomp/blob/eddaf22fe86f5189b85fd34915afe6564f19df20/Makefile",
       "https://github.com/Xeeynamo/sotn-decomp/blob/eddaf22fe86f5189b85fd34915afe6564f19df20/LICENSE",
@@ -3774,13 +3781,6 @@
       "https://github.com/Xeeynamo/sotn-decomp/blob/eddaf22fe86f5189b85fd34915afe6564f19df20/config/check.saturn.sha",
       "https://github.com/Xeeynamo/sotn-decomp/wiki/Build/720bcf3b1212d130b28bb6ccbeda2b887ea96457",
       "https://github.com/Xeeynamo/sotn-decomp/wiki/PC-Port/ebe1b37979d1a1966abb68d388b753e4407cfd3c"
-    ],
-    "requirement_facets": [
-      "scope",
-      "prerequisites",
-      "prerequisites",
-      "testing",
-      "license"
     ]
   },
   {
@@ -5762,6 +5762,13 @@
       "With the default COMPARE=1, the build checks the output ROM’s SHA-1 and prints an OK line for the selected version; COMPARE=0 and the DEBUG and USB variants skip that check, so they are not matching results. NTSC, JP and EU CI workflows build from secretly supplied base ROMs and generate status reports; this collection ran none of these checks.",
       "GitHub detects no license and the reviewed tree has no top-level license file, so no reuse grant is established. Original ROMs and extracted assets retain separate rights, and the checked-in IRIX IDO binaries and vendored tools keep their own terms. The reviewed sources establish no AI or REA attribution, and no runtime reproduction is claimed."
     ],
+    "requirement_facets": [
+      "scope",
+      "prerequisites",
+      "prerequisites",
+      "testing",
+      "license"
+    ],
     "additional_evidence_urls": [
       "https://github.com/n64decomp/007/blob/c4356466796c697dfd298010b9bed261f9ed8c6a/docs/SetupGuide.md",
       "https://github.com/n64decomp/007/blob/c4356466796c697dfd298010b9bed261f9ed8c6a/Makefile",
@@ -5774,13 +5781,6 @@
       "https://github.com/n64decomp/007/blob/c4356466796c697dfd298010b9bed261f9ed8c6a/tools/ido5.3_recomp/README.md",
       "https://kholdfuzion.github.io/goldeneyestatus/",
       "https://gitlab.com/kholdfuzion/goldeneye_src/-/tree/c4356466796c697dfd298010b9bed261f9ed8c6a"
-    ],
-    "requirement_facets": [
-      "scope",
-      "prerequisites",
-      "prerequisites",
-      "testing",
-      "license"
     ]
   },
   {
@@ -12056,6 +12056,13 @@
       "docs/PROTOCOL.md marks key exchange, per-connection validation, button registration, the phone-screen request and button events as confirmed on a real PCX125 2025, and dash drawing as unverified. A Mac-run Swift self-test checks CRC values, a simulated key exchange, validation parsing and registration and screen byte layouts; this review ran neither the tests nor the app. README reports that experimental colour slots and a drawn screen left the dash refusing phone mode until re-pairing, keeps that code switched off and warns never to write to the firmware-update service.",
       "MIT covers the project code. README says the project is independent of Honda and contains no Honda code or files, only original code and a description of the Bluetooth messages written for interoperability; Honda, PCX and RoadSync remain trademarks of their owners. The author’s post credits Claude with the reverse engineering, but the repository does not document that workflow, and no REA use is established."
     ],
+    "requirement_facets": [
+      "scope",
+      "prerequisites",
+      "prerequisites",
+      "testing",
+      "license"
+    ],
     "additional_evidence_urls": [
       "https://github.com/gdorgian/ScooterLink/blob/a089f6210e863d56b590ed4625b92f886ff6a097/README.md",
       "https://github.com/gdorgian/ScooterLink/blob/a089f6210e863d56b590ed4625b92f886ff6a097/App/Sources/SABProtocol.swift",
@@ -12115,6 +12122,13 @@
       "The compiler is GCC 3.3.6-m68hc1x-20060122 from the GNU 68HC11/12 packages. The Dockerfile sets it up on Ubuntu 24.04 from the checksum-verified Windows installer run under Wine, and a prebuilt garyodernichts/dmcubuilder image is offered; Python 3 runs hexconv.py to turn the S19 output into the DMCU hex format.",
       "CI only builds dmcu.d.hex in that container and uploads it as an artifact. The reviewed files contain no test suite, hardware test log or comparison with the stock firmware’s behavior, and this review built or ran nothing.",
       "The repository has no license file and GitHub detects none; project source files state only that they are part of OpenDMCUFirm. The bundled 68HC11 and stdint headers keep their FSF GPL and BSD notices, evWii is GPL-2.0, and the original firmware keeps its own rights. The reviewed sources establish no AI or REA use."
+    ],
+    "requirement_facets": [
+      "scope",
+      "prerequisites",
+      "prerequisites",
+      "testing",
+      "license"
     ],
     "additional_evidence_urls": [
       "https://github.com/GaryOderNichts/OpenDMCUFirm/blob/9e6747f71cb91f2c182869b4df1091f6d5d8218d/Makefile",
