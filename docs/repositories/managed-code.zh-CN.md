@@ -2,7 +2,7 @@
 
 [全部分类](README.zh-CN.md) · [English](managed-code.md)
 
-**137 个仓库** · 2026-10-20 UTC
+**136 个仓库** · 2026-10-20 UTC
 
 这些是自动发现的项目，不是逐项精选或运行验证后的推荐。分类来自元数据；简介由上游描述翻译而来。星标为采集时快照，不是实时排名。标有“精选”或“论文”的行指向以同一仓库为来源的已复核目录条目或论文。
 
@@ -119,8 +119,7 @@
 - [tavridabless/UEBulkExport](https://github.com/tavridabless/UEBulkExport) — 将整个 Unreal Engine 容器（.utoc/.ucas/.pak）中的纹理、网格、动画、音频、关卡和属性批量导出到一个文件夹。基于 CUE4Parse 的命令行前端。 **[1 星标]**
 - [YgalaxyY/Adobe-JSXBIN-Decoder](https://github.com/YgalaxyY/Adobe-JSXBIN-Decoder) — Adobe JSXBIN Decoder 是将 Adobe 二进制脚本解码为可读 JSX 代码的强大工具，可恢复、分析和研究适用于 Photoshop、Illustrator 与 Creative Suite 的受保护自动化脚本。 **[1 星标]**
 - [Zawtt/HowToFISH-CHEAT-Roulette](https://github.com/Zawtt/HowToFISH-CHEAT-Roulette) — 针对 How to Fish 的趣味单人轮盘作弊与逆向工程实验。 **[1 星标]**
-- [akiselev/ilspy-cli](https://github.com/akiselev/ilspy-cli) — ILSpy 的命令行封装，用于有针对性的 .NET 反编译，支持单个方法反编译和结构化 JSON 输出。 **[0 星标]**
-- [akopetsch/swe1r-assets-unity](https://github.com/akopetsch/swe1r-assets-unity) — 一个 Unity 包，可导入、修改并重新导出 Star Wars Episode I: Racer 的游戏资源。 **[0 星标]**
+- [akiselev/ilspy-cli](https://github.com/akiselev/ilspy-cli) — ILSpy 的命令行封装，用于有针对性的 .NET 反编译，支持单个方法反编译和结构化 JSON 输出。 **[0 星标]** · 精选：[ilspy-cli：面向 Agent 的定向 .NET 反编译](https://awesomerea.org/zh/resources/akiselev-ilspy-cli/)
 - [beyborges/REA](https://github.com/beyborges/REA) — REA - Reverse Engineer Anything 6.3.0（2026 年 10 月 10 日）。面向智能体的逆向工作台，通过统一 MCP 覆盖二进制、JavaScript、Electron 和 .NET，支持 Hopper/Ghidra/IDA 后端，面向 Windows 10/11 x64。 **[0 星标]**
 - [bitmono-project/web](https://github.com/bitmono-project/web) — 在浏览器中混淆 .NET 与 Mono 程序集并分享 CrackMe，无需安装，由 BitMono 提供支持。 **[0 星标]**
 - [CCB-TEAM/KismetDecompiler](https://github.com/CCB-TEAM/KismetDecompiler) — 上游仓库未提供项目简介。 **[0 星标]**

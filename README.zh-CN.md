@@ -11,7 +11,7 @@
 <a href="https://awesomerea.org/zh/"><img src="assets/readme-banner.svg" alt="Awesome Reverse Engineering Anything — 覆盖六类逆向目标的工具、案例与论文" width="960"></a>
 
 <!-- BEGIN GENERATED BADGES -->
-[![精选资源: 478](https://img.shields.io/badge/%E7%B2%BE%E9%80%89%E8%B5%84%E6%BA%90-478-53309C?style=flat-square&labelColor=303447)](https://awesomerea.org/zh/resources/) [![案例: 200](https://img.shields.io/badge/%E6%A1%88%E4%BE%8B-200-53309C?style=flat-square&labelColor=303447)](https://awesomerea.org/zh/cases/) [![论文: 127](https://img.shields.io/badge/%E8%AE%BA%E6%96%87-127-53309C?style=flat-square&labelColor=303447)](https://awesomerea.org/zh/papers/) [![目录检查](https://github.com/reacher-z/Awesome-REA/actions/workflows/validate.yml/badge.svg?branch=main)](https://github.com/reacher-z/Awesome-REA/actions/workflows/validate.yml) [![许可: MIT](https://img.shields.io/badge/%E8%AE%B8%E5%8F%AF-MIT-606779?style=flat-square&labelColor=303447)](LICENSE) [![网站: awesomerea.org](https://img.shields.io/badge/%E7%BD%91%E7%AB%99-awesomerea.org-6235B5?style=flat-square&labelColor=303447)](https://awesomerea.org/zh/)
+[![精选资源: 481](https://img.shields.io/badge/%E7%B2%BE%E9%80%89%E8%B5%84%E6%BA%90-481-53309C?style=flat-square&labelColor=303447)](https://awesomerea.org/zh/resources/) [![案例: 201](https://img.shields.io/badge/%E6%A1%88%E4%BE%8B-201-53309C?style=flat-square&labelColor=303447)](https://awesomerea.org/zh/cases/) [![论文: 128](https://img.shields.io/badge/%E8%AE%BA%E6%96%87-128-53309C?style=flat-square&labelColor=303447)](https://awesomerea.org/zh/papers/) [![目录检查](https://github.com/reacher-z/Awesome-REA/actions/workflows/validate.yml/badge.svg?branch=main)](https://github.com/reacher-z/Awesome-REA/actions/workflows/validate.yml) [![许可: MIT](https://img.shields.io/badge/%E8%AE%B8%E5%8F%AF-MIT-606779?style=flat-square&labelColor=303447)](LICENSE) [![网站: awesomerea.org](https://img.shields.io/badge/%E7%BD%91%E7%AB%99-awesomerea.org-6235B5?style=flat-square&labelColor=303447)](https://awesomerea.org/zh/)
 <!-- END GENERATED BADGES -->
 
 **[搜索与筛选](https://awesomerea.org/zh/)** · **[浏览案例](https://awesomerea.org/zh/cases/)** · **[研究论文](https://awesomerea.org/zh/papers/)** · **[HTML 综述](https://awesomerea.org/zh/survey/)**
@@ -23,16 +23,16 @@
 <!-- BEGIN GENERATED CONTENTS -->
 **按目标找工具与案例**
 
-- [网站](#website) (27) · [游戏](#game) (190) · [应用](#app) (74)
+- [网站](#website) (28) · [游戏](#game) (191) · [应用](#app) (75)
 - [原生二进制](#native-binary) (63) · [固件与硬件](#firmware) (22) · [协议](#protocol) (18)
 
 **论文与工作流**
 
-- [论文](#papers) (127) · [智能体与 MCP](#agents-and-mcp) (43) · [文档与学习资源](#references-and-learning) (32)
+- [论文](#papers) (128) · [智能体与 MCP](#agents-and-mcp) (43) · [文档与学习资源](#references-and-learning) (32)
 
 **更多浏览方式**
 
-- [全部案例](https://awesomerea.org/zh/cases/) (200) · [相关合集](#related-collections) (6) · [完整仓库索引](#完整仓库索引) (3,310)
+- [全部案例](https://awesomerea.org/zh/cases/) (201) · [相关合集](#related-collections) (6) · [完整仓库索引](#完整仓库索引) (3,310)
 <!-- END GENERATED CONTENTS -->
 
 ## 按任务查找
@@ -73,6 +73,7 @@ REA 标签指向单独维护的[上游 CLI 与 MCP 项目](https://github.com/mo
 - [**BaoCut Design：移植重建的设计稿与设计系统编辑器**](https://github.com/JimLiu/baocut/tree/7aa049e82e1367da013b7aba80f0b79033fa04ad/packages/design-runtime) - 记录 BaoCut 的设计稿（画布）与设计系统编辑器；项目称其按 1:1 移植自 Claude Design 编辑器的 TypeScript 重建，并在智能体会话中提供标注与导出。 <sub>案例 · 独立重建 · 也适用：应用 · [完整条目](https://awesomerea.org/zh/resources/baocut-design-canvas-case/)</sub>
 - [**whatsapp-web-reveng：记录旧版 WhatsApp Web 协议**](https://github.com/sigalor/whatsapp-web-reveng) - 记录并重新实现 WhatsApp Web 在浏览器会话镜像已配对手机时期使用的 WebSocket 协议：二维码配对、Curve25519/HKDF 密钥建立、经 AES/HMAC 保护的二进制报文、基于字符串令牌表的节点编码，以及端到端媒体加密。 <sub>案例 · 独立重建 · 也适用：协议 · [完整条目](https://awesomerea.org/zh/resources/whatsapp-web-reveng-legacy-protocol-case/)</sub>
 - [**Ruffle：用 Rust 重新实现的 Adobe Flash Player**](https://github.com/ruffle-rs/ruffle) - 用 Rust 重新实现 Adobe Flash Player，使从 ActionScript 1/2（AVM1）到 ActionScript 3（AVM2）的 SWF 内容能在原生桌面播放器中运行，或通过 WebAssembly 以自托管脚本或浏览器扩展的形式在浏览器中运行。 <sub>案例 · 独立重建 · 也适用：游戏 · [完整条目](https://awesomerea.org/zh/resources/ruffle-flash-player-case/)</sub>
+- [**Littlebird.ai 静态首页重建**](https://github.com/AkashNaickar/crdb-sample-frontend) - 依据捕获的标记与资源，用原生 HTML/CSS/JavaScript 重建 Littlebird.ai 首页；源码实现移动导航、FAQ 展开、滚动显现及随操作系统变化的按钮展示。 <sub>案例 · 独立重建 · [完整条目](https://awesomerea.org/zh/resources/littlebird-static-rebuild-case/)</sub>
 
 #### 工具、项目与集成
 
@@ -296,6 +297,7 @@ REA 标签指向单独维护的[上游 CLI 与 MCP 项目](https://github.com/mo
 - [**ReXGlue Xbox 360 静态重编译 SDK**](https://github.com/rexglue/rexglue-sdk) - 实验性 SDK，可将 Xbox 360 可执行文件静态重编译为可移植的 C++23 代码，在 Windows、Linux 和 macOS 上原生运行。 <sub>工具 · 也适用：二进制 · [完整条目](https://awesomerea.org/zh/resources/rexglue-sdk/)</sub>
 - [**ps3recomp PS3 静态重编译工具包**](https://github.com/sp00nznet/ps3recomp) - 用于将 PlayStation 3 游戏静态重编译为原生可执行文件的工具包与运行时。 <sub>工具 · 也适用：二进制 · [完整条目](https://awesomerea.org/zh/resources/ps3recomp/)</sub>
 - [**Nebula（NebulaFD）Clickteam Fusion 反编译器**](https://github.com/AITYunivers/NebulaFD) - 面向 Clickteam Fusion 2.5 游戏的反编译器，仍在开发中，也针对更早的 Multimedia Fusion 1.5 文件做了修复。 <sub>工具 · [完整条目](https://awesomerea.org/zh/resources/nebulafd/)</sub>
+- [**swe1r-assets-unity：Racer 模型块编辑器样例**](https://github.com/akopetsch/swe1r-assets-unity) - 尚在开发中的 Unity 编辑器样例，可导入和修改《星球大战：极速飞车》的模型块，再通过 swe1r-assets 序列化回原格式。 <sub>工具 · [完整条目](https://awesomerea.org/zh/resources/swe1r-assets-unity/)</sub>
 
 <a id="app"></a>
 ### App · 应用
@@ -381,6 +383,7 @@ REA 标签指向单独维护的[上游 CLI 与 MCP 项目](https://github.com/mo
 - [**Bytecode Viewer Java/Android 逆向工程套件**](https://github.com/Konloch/bytecode-viewer) - 用于检查已编译 Java 与 Android 程序的桌面套件：拖入 class、JAR、WAR、APK、DEX、XAPK 或 APKM 文件即可浏览其中的类和资源，并可并排显示最多三个反编译器或反汇编器视图。 <sub>工具 · JVM · [完整条目](https://awesomerea.org/zh/resources/bytecode-viewer/)</sub>
 - [**Logic-Lens：实验性 JavaScript 源码理解工具**](https://github.com/Abdoulrazack1/Logic-Lens) - 实验性 JavaScript 源码分析工具：本地训练后将 AST token 序列归入预设公式类别，并生成启发式结构、调用图和意图报告。 <sub>工具 · [完整条目](https://awesomerea.org/zh/resources/logic-lens/)</sub>
 - [**Android Security Toolkit：APK 静态初步分析**](https://github.com/abhirampatel/android-security-toolkit) - 本地 Python APK 初步分析工具，调用 apktool 与 strings 检查清单配置、源码及原生库字符串，输出 TXT／JSON 结果供人工核验。 <sub>工具 · Android · [完整条目](https://awesomerea.org/zh/resources/android-security-toolkit/)</sub>
+- [**ilspy-cli：面向 Agent 的定向 .NET 反编译**](https://github.com/akiselev/ilspy-cli) - 通过进程内托管的 ILSpy C# 桥接层，提供程序集、类型和指定方法的反编译、源码搜索及结构化 JSON 输出的 Rust CLI；独立的 PE 头检测器无需加载 .NET 运行时即可识别托管程序集。 <sub>工具 · .NET · [完整条目](https://awesomerea.org/zh/resources/akiselev-ilspy-cli/)</sub>
 
 <a id="native-binary"></a>
 ### Native Binary · 原生二进制
@@ -624,14 +627,14 @@ REA 标签指向单独维护的[上游 CLI 与 MCP 项目](https://github.com/mo
 <a id="papers"></a>
 ## 论文
 
-**127 篇论文**，按主题分组，组内按年份从新到旧排列。每行列出摘要首句、发表场所、状态与第一作者，中文标题为译名。
+**128 篇论文**，按主题分组，组内按年份从新到旧排列。每行列出摘要首句、发表场所、状态与第一作者，中文标题为译名。
 
 [浏览论文目录](https://awesomerea.org/zh/papers/) · [完整书目 JSON](data/papers.json) · [推荐论文](https://github.com/reacher-z/Awesome-REA/issues/new?template=paper.yml)
 
 **按主题**
 
 - [智能体评测](#papers-agent-evaluation) (9) · [反编译](#papers-decompilation) (55) · [网站](#papers-website-reconstruction) (20)
-- [游戏](#papers-game-reconstruction) (7) · [应用](#papers-app-reconstruction) (10) · [固件](#papers-firmware-analysis) (13)
+- [游戏](#papers-game-reconstruction) (8) · [应用](#papers-app-reconstruction) (10) · [固件](#papers-firmware-analysis) (13)
 - [协议](#papers-protocol-analysis) (13)
 
 每篇论文的“完整条目”提供完整摘要、研究范围与局限、全部作者和引文。部分论文也出现在精选资源目录中，两者数量不可相加。
@@ -743,6 +746,7 @@ REA 标签指向单独维护的[上游 CLI 与 MCP 项目](https://github.com/mo
 
 [↑ 论文主题](#papers) · [目录](#目录)
 
+- [**Schema：通过智能体程序归纳发现未知环境机制**](https://arxiv.org/abs/2609.39140) - 通过交互推断可执行的游戏状态与转移规则模型。 <sub>arXiv 2026 · 预印本 · Guanning Zeng 等 · [PDF](https://arxiv.org/pdf/2609.39140v1) · [代码](https://github.com/guanning03/Schema) · [完整条目](https://awesomerea.org/zh/papers/paper-schema-program-induction/)</sub>
 - [**SWE-Game：编程智能体能否构建符合预期的游戏？**](https://arxiv.org/abs/2609.33678) - 以可执行参考游戏评估构建、补全、修复及 Godot 到 Unity 的移植；由评测方控制的探针与输入回放检查玩法行为，视觉评分准则另行评价表现。 <sub>arXiv 2026 · 预印本 · Xiaoyu Chen 等 · [PDF](https://arxiv.org/pdf/2609.33678v3) · [完整条目](https://awesomerea.org/zh/papers/paper-swe-game/)</sub>
 - [**GameReplica：视觉语言智能体的黑盒视觉游戏复刻基准**](https://arxiv.org/abs/2609.22308) - 通过来自 25 款网页游戏、各设五个难度级别的 125 个任务，评估视觉语言智能体能否通过截图和主动交互推断隐藏规则，并构建可运行的单文件 HTML 游戏复刻。 <sub>arXiv 2026 · 预印本 · Boyu Qiao 等 · [PDF](https://arxiv.org/pdf/2609.22308v1) · [完整条目](https://awesomerea.org/zh/papers/paper-gamereplica/)</sub>
 - [**Tycho：面向 ARC-AGI-3 的程序化世界模型主动抽象**](https://arxiv.org/abs/2607.28287) - Tycho 根据陌生 ARC-AGI-3 游戏中的动作与观察历史，构建可编辑的 Python 模型，描述游戏状态、状态转移、渲染与结果。 <sub>arXiv 2026 · 预印本 · Jens Lehmann 等 · [PDF](https://arxiv.org/pdf/2607.28287v1) · [代码](https://github.com/NIMI-research/Tycho) · [完整条目](https://awesomerea.org/zh/papers/paper-tycho/)</sub>

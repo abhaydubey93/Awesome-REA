@@ -2,7 +2,7 @@
 
 [All categories](README.md) · [简体中文](managed-code.zh-CN.md)
 
-**137 repositories** · 2026-10-20 UTC
+**136 repositories** · 2026-10-20 UTC
 
 These are automatically discovered projects, not individually curated or tested recommendations. Categories derive from metadata and descriptions from upstream text. Stars are collection-time snapshots, not live rankings. Lines marked “Curated” or “Paper” link to the reviewed catalog entry or paper whose source is that exact repository.
 
@@ -119,8 +119,7 @@ These are automatically discovered projects, not individually curated or tested 
 - [tavridabless/UEBulkExport](https://github.com/tavridabless/UEBulkExport) — Bulk export of an entire Unreal Engine container (.utoc/.ucas/.pak) into one folder: textures, meshes, animations, audio, levels and properties. A command line front end over CUE4Parse. **[1 stars]**
 - [YgalaxyY/Adobe-JSXBIN-Decoder](https://github.com/YgalaxyY/Adobe-JSXBIN-Decoder) — Adobe JSXBIN Decoder is a powerful tool for decoding Adobe binary scripts into readable JSX code. Recover, analyze, and study protected automation scripts for Photoshop, Illustrator, and Creative Suite. **[1 stars]**
 - [Zawtt/HowToFISH-CHEAT-Roulette](https://github.com/Zawtt/HowToFISH-CHEAT-Roulette) — A playful single-player roulette cheat and reverse-engineering experiment for How to Fish. **[1 stars]**
-- [akiselev/ilspy-cli](https://github.com/akiselev/ilspy-cli) — Command-line wrapper around ILSpy for targeted .NET decompilation, including single-method decompilation and structured JSON output. **[0 stars]**
-- [akopetsch/swe1r-assets-unity](https://github.com/akopetsch/swe1r-assets-unity) — A Unity package that allows you to import, modify and re-export assets of the game Star Wars Episode I: Racer. **[0 stars]**
+- [akiselev/ilspy-cli](https://github.com/akiselev/ilspy-cli) — Command-line wrapper around ILSpy for targeted .NET decompilation, including single-method decompilation and structured JSON output. **[0 stars]** · Curated: [ilspy-cli: targeted .NET decompilation for agents](https://awesomerea.org/resources/akiselev-ilspy-cli/)
 - [beyborges/REA](https://github.com/beyborges/REA) — REA - Reverse Engineer Anything 6.3.0 (October 10, 2026). Agent RE desk: one MCP across binaries, JS, Electron and .NET. Hopper / Ghidra / IDA backends. Windows 10/11 x64. **[0 stars]**
 - [bitmono-project/web](https://github.com/bitmono-project/web) — Obfuscate .NET &amp; Mono assemblies in your browser and share crackmes — no install, powered by BitMono. **[0 stars]**
 - [CCB-TEAM/KismetDecompiler](https://github.com/CCB-TEAM/KismetDecompiler) — No description supplied by the upstream repository. **[0 stars]**

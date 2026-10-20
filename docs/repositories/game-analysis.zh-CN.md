@@ -2,7 +2,7 @@
 
 [全部分类](README.zh-CN.md) · [English](game-analysis.md)
 
-**483 个仓库** · 2026-10-20 UTC
+**484 个仓库** · 2026-10-20 UTC
 
 这些是自动发现的项目，不是逐项精选或运行验证后的推荐。分类来自元数据；简介由上游描述翻译而来。星标为采集时快照，不是实时排名。标有“精选”或“论文”的行指向以同一仓库为来源的已复核目录条目或论文。
 
@@ -412,6 +412,7 @@
 - [TheGh0stShip/BattleTanx](https://github.com/TheGh0stShip/BattleTanx) — 美版 BattleTanx .z64 的反编译项目，是 BattleTanx Studio 及将 BattleTanx 资源移植到 BattleTanx: Global Assault 移植版所需的反编译基础。 **[1 星标]**
 - [Yorushika-Yorushika/yysls-offline](https://github.com/Yorushika-Yorushika/yysls-offline) — 《燕云十六声》离线化研究：协议文档 + 分析工具（无游戏资源） **[1 星标]**
 - [AbienteSadness/ue5-binka-to-wav](https://github.com/AbienteSadness/ue5-binka-to-wav) — 将 Unreal Engine 5 的 BINKA 音频资源（FModel 导出的 .uasset + .ubulk 文件）转换为可播放的 WAV 文件。提供窗口应用和命令行工具。 **[0 星标]**
+- [akopetsch/swe1r-assets-unity](https://github.com/akopetsch/swe1r-assets-unity) — 一个 Unity 包，可导入、修改并重新导出 Star Wars Episode I: Racer 的游戏资源。 **[0 星标]** · 精选：[swe1r-assets-unity：Racer 模型块编辑器样例](https://awesomerea.org/zh/resources/swe1r-assets-unity/)
 - [ancaria-dev/agent](https://github.com/ancaria-dev/agent) — 🪝 Sacred Gold 的游戏内 Frida 代理：包含钩子、游戏地址以及启动器下载的打包文件。 **[0 星标]**
 - [andreastroelsen/maaneby](https://github.com/andreastroelsen/maaneby) — 将 2010 年丹麦校园游戏 Matematik i Måneby+ 从其 Macromedia Director 文件重建为浏览器可运行版本。可通过下方链接游玩。 **[0 星标]**
 - [AnthonyOGorman/ashes-server-lab](https://github.com/AnthonyOGorman/ashes-server-lab) — 实验性的开源 C++20 Ashes of Creation 私服/服务器模拟实验室：支持本地探索 Verra、地形碰撞、移动、飞行和实时浏览器工具。缺陷很多，需自备客户端。不包含战斗或任务。 **[0 星标]**

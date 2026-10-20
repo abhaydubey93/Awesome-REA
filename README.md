@@ -11,7 +11,7 @@ An independent collection of tools, case studies and research for websites, game
 <a href="https://awesomerea.org/"><img src="assets/readme-banner.svg" alt="Awesome Reverse Engineering Anything — tools, cases and papers across six reverse-engineering domains" width="960"></a>
 
 <!-- BEGIN GENERATED BADGES -->
-[![resources: 478](https://img.shields.io/badge/resources-478-53309C?style=flat-square&labelColor=303447)](https://awesomerea.org/resources/) [![cases: 200](https://img.shields.io/badge/cases-200-53309C?style=flat-square&labelColor=303447)](https://awesomerea.org/cases/) [![papers: 127](https://img.shields.io/badge/papers-127-53309C?style=flat-square&labelColor=303447)](https://awesomerea.org/papers/) [![Catalog checks](https://github.com/reacher-z/Awesome-REA/actions/workflows/validate.yml/badge.svg?branch=main)](https://github.com/reacher-z/Awesome-REA/actions/workflows/validate.yml) [![license: MIT](https://img.shields.io/badge/license-MIT-606779?style=flat-square&labelColor=303447)](LICENSE) [![website: awesomerea.org](https://img.shields.io/badge/website-awesomerea.org-6235B5?style=flat-square&labelColor=303447)](https://awesomerea.org/)
+[![resources: 481](https://img.shields.io/badge/resources-481-53309C?style=flat-square&labelColor=303447)](https://awesomerea.org/resources/) [![cases: 201](https://img.shields.io/badge/cases-201-53309C?style=flat-square&labelColor=303447)](https://awesomerea.org/cases/) [![papers: 128](https://img.shields.io/badge/papers-128-53309C?style=flat-square&labelColor=303447)](https://awesomerea.org/papers/) [![Catalog checks](https://github.com/reacher-z/Awesome-REA/actions/workflows/validate.yml/badge.svg?branch=main)](https://github.com/reacher-z/Awesome-REA/actions/workflows/validate.yml) [![license: MIT](https://img.shields.io/badge/license-MIT-606779?style=flat-square&labelColor=303447)](LICENSE) [![website: awesomerea.org](https://img.shields.io/badge/website-awesomerea.org-6235B5?style=flat-square&labelColor=303447)](https://awesomerea.org/)
 <!-- END GENERATED BADGES -->
 
 **[Search & filter](https://awesomerea.org/)** · **[Browse cases](https://awesomerea.org/cases/)** · **[Research papers](https://awesomerea.org/papers/)** · **[HTML survey](https://awesomerea.org/survey/)**
@@ -23,16 +23,16 @@ An independent collection of tools, case studies and research for websites, game
 <!-- BEGIN GENERATED CONTENTS -->
 **Tools and cases by target**
 
-- [Website](#website) (27) · [Game](#game) (190) · [App](#app) (74)
+- [Website](#website) (28) · [Game](#game) (191) · [App](#app) (75)
 - [Native Binary](#native-binary) (63) · [Firmware and Hardware](#firmware) (22) · [Protocol](#protocol) (18)
 
 **Research and workflows**
 
-- [Papers](#papers) (127) · [Agents and MCP](#agents-and-mcp) (43) · [References and Learning](#references-and-learning) (32)
+- [Papers](#papers) (128) · [Agents and MCP](#agents-and-mcp) (43) · [References and Learning](#references-and-learning) (32)
 
 **More ways to browse**
 
-- [All cases](https://awesomerea.org/cases/) (200) · [Related Collections](#related-collections) (6) · [Full Repository Index](#full-repository-index) (3,310)
+- [All cases](https://awesomerea.org/cases/) (201) · [Related Collections](#related-collections) (6) · [Full Repository Index](#full-repository-index) (3,310)
 <!-- END GENERATED CONTENTS -->
 
 ## Find by task
@@ -72,6 +72,7 @@ REA labels refer to the separate [upstream CLI and MCP project](https://github.c
 - [**BaoCut Design: porting reconstructed canvas and design-system editors**](https://github.com/JimLiu/baocut/tree/7aa049e82e1367da013b7aba80f0b79033fa04ad/packages/design-runtime) - Documents BaoCut’s design-canvas and design-system editors, which the project says it ported 1:1 from TypeScript reconstructions of Claude Design’s editors and hosts in agent sessions with annotation and export. <sub>Case study · Independent reconstruction · Also: App · [Full entry](https://awesomerea.org/resources/baocut-design-canvas-case/)</sub>
 - [**whatsapp-web-reveng: documenting the legacy WhatsApp Web protocol**](https://github.com/sigalor/whatsapp-web-reveng) - Documents and reimplements the WebSocket protocol WhatsApp Web used while browser sessions mirrored a paired phone: QR pairing, Curve25519/HKDF key setup, AES/HMAC-protected binary messages, the token-based node encoding and end-to-end media encryption. <sub>Case study · Independent reconstruction · Also: Protocol · [Full entry](https://awesomerea.org/resources/whatsapp-web-reveng-legacy-protocol-case/)</sub>
 - [**Ruffle: a Rust reimplementation of Adobe Flash Player**](https://github.com/ruffle-rs/ruffle) - Reimplements Adobe Flash Player in Rust so that SWF content, from ActionScript 1/2 (AVM1) to ActionScript 3 (AVM2), runs in a native desktop player or in browsers through WebAssembly, as a self-hosted script or a browser extension. <sub>Case study · Independent reconstruction · Also: Game · [Full entry](https://awesomerea.org/resources/ruffle-flash-player-case/)</sub>
+- [**Littlebird.ai static home-page rebuild**](https://github.com/AkashNaickar/crdb-sample-frontend) - Rebuilds the Littlebird.ai home page in plain HTML/CSS/JavaScript from captured markup and assets, with source-wired mobile navigation, FAQ toggles, scroll reveals and OS-dependent call-to-action presentation. <sub>Case study · Independent reconstruction · [Full entry](https://awesomerea.org/resources/littlebird-static-rebuild-case/)</sub>
 
 #### Tools, projects and integrations
 
@@ -295,6 +296,7 @@ REA labels refer to the separate [upstream CLI and MCP project](https://github.c
 - [**ReXGlue SDK**](https://github.com/rexglue/rexglue-sdk) - Experimental SDK for statically recompiling Xbox 360 executables into portable C++23 that runs natively on Windows, Linux and macOS. <sub>Tool · Also: Binary · [Full entry](https://awesomerea.org/resources/rexglue-sdk/)</sub>
 - [**ps3recomp**](https://github.com/sp00nznet/ps3recomp) - Toolkit and runtime for statically recompiling PlayStation 3 games into native executables. <sub>Tool · Also: Binary · [Full entry](https://awesomerea.org/resources/ps3recomp/)</sub>
 - [**Nebula (NebulaFD)**](https://github.com/AITYunivers/NebulaFD) - Work-in-progress decompiler for games made with Clickteam Fusion 2.5, with fixes for older Multimedia Fusion 1.5 files. <sub>Tool · [Full entry](https://awesomerea.org/resources/nebulafd/)</sub>
+- [**swe1r-assets-unity: Racer model-block editor sample**](https://github.com/akopetsch/swe1r-assets-unity) - Work-in-progress Unity editor sample for importing and modifying Star Wars Episode I: Racer model blocks, then serializing them back through swe1r-assets. <sub>Tool · [Full entry](https://awesomerea.org/resources/swe1r-assets-unity/)</sub>
 
 <a id="app"></a>
 ### App
@@ -380,6 +382,7 @@ REA labels refer to the separate [upstream CLI and MCP project](https://github.c
 - [**Bytecode Viewer**](https://github.com/Konloch/bytecode-viewer) - Desktop suite for inspecting compiled Java and Android programs: drop in a class, JAR, WAR, APK, DEX, XAPK or APKM file to browse its classes and resources, with up to three decompiler or disassembler views side by side. <sub>Tool · JVM · [Full entry](https://awesomerea.org/resources/bytecode-viewer/)</sub>
 - [**Logic-Lens**](https://github.com/Abdoulrazack1/Logic-Lens) - Experimental JavaScript source-analysis toolkit that classifies AST-token sequences into configured formula families after local training, and produces heuristic structure, call-graph and intent reports. <sub>Tool · [Full entry](https://awesomerea.org/resources/logic-lens/)</sub>
 - [**Android Security Toolkit**](https://github.com/abhirampatel/android-security-toolkit) - Local Python APK triage tool that drives apktool and strings, checks manifest settings and source/native-library strings, and produces TXT/JSON findings for manual review. <sub>Tool · Android · [Full entry](https://awesomerea.org/resources/android-security-toolkit/)</sub>
+- [**ilspy-cli: targeted .NET decompilation for agents**](https://github.com/akiselev/ilspy-cli) - Rust CLI that hosts an ILSpy C# bridge in-process for assembly, type and named-method decompilation, source search and structured JSON output. <sub>Tool · .NET · [Full entry](https://awesomerea.org/resources/akiselev-ilspy-cli/)</sub>
 
 <a id="native-binary"></a>
 ### Native Binary
@@ -623,14 +626,14 @@ REA labels refer to the separate [upstream CLI and MCP project](https://github.c
 <a id="papers"></a>
 ## Papers
 
-**127 papers**, grouped by topic and ordered newest first. Each line shows the study’s opening sentence, venue, publication status and first author.
+**128 papers**, grouped by topic and ordered newest first. Each line shows the study’s opening sentence, venue, publication status and first author.
 
 [Browse the paper directory](https://awesomerea.org/papers/) · [Complete bibliography JSON](data/papers.json) · [Suggest a paper](https://github.com/reacher-z/Awesome-REA/issues/new?template=paper.yml)
 
 **By topic**
 
 - [Agent evaluation](#papers-agent-evaluation) (9) · [Decompilation](#papers-decompilation) (55) · [Websites](#papers-website-reconstruction) (20)
-- [Games](#papers-game-reconstruction) (7) · [Apps](#papers-app-reconstruction) (10) · [Firmware](#papers-firmware-analysis) (13)
+- [Games](#papers-game-reconstruction) (8) · [Apps](#papers-app-reconstruction) (10) · [Firmware](#papers-firmware-analysis) (13)
 - [Protocols](#papers-protocol-analysis) (13)
 
 Each paper’s “Full entry” holds its complete summary, scope and limitations, all authors and citation. Some papers also appear among curated resources; counts are not additive.
@@ -742,6 +745,7 @@ Each paper’s “Full entry” holds its complete summary, scope and limitation
 
 [↑ Paper topics](#papers) · [Contents](#contents)
 
+- [**Schema: Discovering Unknown Environments via Agentic Program Induction**](https://arxiv.org/abs/2609.39140) - Infers executable models of game state and transition rules from interaction. <sub>arXiv 2026 · Preprint · Guanning Zeng et al. · [PDF](https://arxiv.org/pdf/2609.39140v1) · [Code](https://github.com/guanning03/Schema) · [Full entry](https://awesomerea.org/papers/paper-schema-program-induction/)</sub>
 - [**SWE-Game: Can Coding Agents Build the Games We Want?**](https://arxiv.org/abs/2609.33678) - Evaluates construction, completion, repair and Godot-to-Unity porting against executable reference games. <sub>arXiv 2026 · Preprint · Xiaoyu Chen et al. · [PDF](https://arxiv.org/pdf/2609.33678v3) · [Full entry](https://awesomerea.org/papers/paper-swe-game/)</sub>
 - [**GameReplica: A Benchmark for Black-Box Visual Game Replication by Vision-Language Agents**](https://arxiv.org/abs/2609.22308) - Evaluates whether vision-language agents can infer hidden game rules through screenshots and active interaction, then build runnable single-file HTML replicas across 125 tasks from 25 web games, each with five difficulty levels. <sub>arXiv 2026 · Preprint · Boyu Qiao et al. · [PDF](https://arxiv.org/pdf/2609.22308v1) · [Full entry](https://awesomerea.org/papers/paper-gamereplica/)</sub>
 - [**Tycho: Active Abstraction with Programmatic World Models for ARC-AGI-3**](https://arxiv.org/abs/2607.28287) - Tycho constructs editable Python models of game state, transitions, rendering and outcomes from action/observation histories in unfamiliar ARC-AGI-3 games. <sub>arXiv 2026 · Preprint · Jens Lehmann et al. · [PDF](https://arxiv.org/pdf/2607.28287v1) · [Code](https://github.com/NIMI-research/Tycho) · [Full entry](https://awesomerea.org/papers/paper-tycho/)</sub>

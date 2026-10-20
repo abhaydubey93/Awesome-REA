@@ -608,7 +608,7 @@
 - [0xARYA/pooky](https://github.com/0xARYA/pooky) — 🔑 Supreme 旧版 “pooky” 加密密钥提取器。 **[0 星标]**
 - [a-hamouda/golden\_helpers](https://github.com/a-hamouda/golden_helpers) — Golden Helpers 是一个 Dart 库，提供一组便利工具，帮助 Flutter 应用开展黄金图像测试。此类测试通过比较组件快照（黄金文件）与实际结果来保证界面一致性。 **[0 星标]**
 - [aconstantinou-cmd/PythonArrayDeobfuscator](https://github.com/aconstantinou-cmd/PythonArrayDeobfuscator) — 此脚本旨在加速处理被放入数组的函数，用相应函数替换代码中通过数组索引进行的调用。下文提供演示。 **[0 星标]**
-- [AkashNaickar/crdb-sample-frontend](https://github.com/AkashNaickar/crdb-sample-frontend) — 用原生 HTML/CSS/JS 静态重建 Littlebird.ai 首页，附带无依赖测试套件及 Vercel 部署。 **[0 星标]**
+- [AkashNaickar/crdb-sample-frontend](https://github.com/AkashNaickar/crdb-sample-frontend) — 用原生 HTML/CSS/JS 静态重建 Littlebird.ai 首页，附带无依赖测试套件及 Vercel 部署。 **[0 星标]** · 精选：[Littlebird.ai 静态首页重建](https://awesomerea.org/zh/resources/littlebird-static-rebuild-case/)
 - [akhilari7/deFlutter](https://github.com/akhilari7/deFlutter) — Dart AOT 运行时检查与跟踪。 **[0 星标]**
 - [alexandra-seredkina/React-Decode](https://github.com/alexandra-seredkina/React-Decode) — 逆向工程工具包，将压缩的 React 打包代码转换为可读代码，并提取 API 信息，包括端点、参数、请求体、路由和环境变量。支持 Vite、webpack、CRA 和 Next，采用静态分析。 **[0 星标]**
 - [ananthb/airsupply](https://github.com/ananthb/airsupply) — 通过经典蓝牙对 ResMed AirMini CPAP 设备进行本地控制和数据导出。提供 Home Assistant 插件和 Flutter 应用，两者均基于 libairmini。 **[0 星标]**

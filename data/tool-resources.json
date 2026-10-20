@@ -11398,5 +11398,101 @@
     "additional_evidence_urls": [
       "https://github.com/abhirampatel/android-security-toolkit/blob/d9153acad34a062298b15244a0c38f0497680dbf/apk_scanner.py"
     ]
+  },
+  {
+    "id": "littlebird-static-rebuild-case",
+    "name": "Littlebird.ai static home-page rebuild",
+    "url": "https://github.com/AkashNaickar/crdb-sample-frontend",
+    "category": "reconstruction-cases",
+    "relationship": "independent-reconstruction",
+    "kind": "case-study",
+    "targets": [
+      "website"
+    ],
+    "description_en": "Rebuilds the Littlebird.ai home page in plain HTML/CSS/JavaScript from captured markup and assets, with source-wired mobile navigation, FAQ toggles, scroll reveals and OS-dependent call-to-action presentation. It illustrates a bounded website reconstruction, with uncaptured routes and product functionality left outside the scope.",
+    "description_zh": "依据捕获的标记与资源，用原生 HTML/CSS/JavaScript 重建 Littlebird.ai 首页；源码实现移动导航、FAQ 展开、滚动显现及随操作系统变化的按钮展示。它是范围明确的网页重建案例，不涵盖未捕获路由或产品本身的功能。",
+    "evidence_url": "https://github.com/AkashNaickar/crdb-sample-frontend/blob/673dc8c8d93b4f8a13257604749b638adf146298/README.md",
+    "verified_at": "2026-10-20",
+    "verification": "source-reviewed",
+    "requirements": [
+      "The captured scope is the home page and five embedded demos. Pricing, blog and other uncaptured routes are absent; several download controls are placeholder links. This is not a recreation of the Littlebird desktop/mobile application or its backend.",
+      "The shipped site is plain HTML/CSS/JavaScript without a build step. The documented local preview and asset-integrity suite use Node.js 20+ and its standard library.",
+      "The original npm test passed all five checks on the pinned inputs. These check local asset references, basic file and embedded-page completeness, and independence from the ignored capture directory; they do not establish visual similarity, accessibility conformance, interaction correctness or equivalence to the original site.",
+      "The MIT file covers repository code. The README explicitly excludes captured third-party fonts, imagery, markup and copy from that grant and identifies this as an unofficial study rebuild. No captured font, image, video or historical recon data was downloaded for this review."
+    ],
+    "additional_evidence_urls": [
+      "https://github.com/AkashNaickar/crdb-sample-frontend/blob/673dc8c8d93b4f8a13257604749b638adf146298/site/index.html",
+      "https://github.com/AkashNaickar/crdb-sample-frontend/blob/673dc8c8d93b4f8a13257604749b638adf146298/site/js/main.js",
+      "https://github.com/AkashNaickar/crdb-sample-frontend/blob/673dc8c8d93b4f8a13257604749b638adf146298/scripts/check-site.test.mjs",
+      "https://github.com/AkashNaickar/crdb-sample-frontend/blob/673dc8c8d93b4f8a13257604749b638adf146298/package.json",
+      "https://github.com/AkashNaickar/crdb-sample-frontend/blob/673dc8c8d93b4f8a13257604749b638adf146298/LICENSE",
+      "https://github.com/AkashNaickar/crdb-sample-frontend/blob/673dc8c8d93b4f8a13257604749b638adf146298/CONTRIBUTING.md"
+    ]
+  },
+  {
+    "id": "akiselev-ilspy-cli",
+    "name": "ilspy-cli: targeted .NET decompilation for agents",
+    "url": "https://github.com/akiselev/ilspy-cli",
+    "category": "dotnet",
+    "relationship": "foundation",
+    "kind": "tool",
+    "targets": [
+      "app"
+    ],
+    "description_en": "Rust CLI that hosts an ILSpy C# bridge in-process for assembly, type and named-method decompilation, source search and structured JSON output. A separate PE-header detector identifies managed assemblies without loading the .NET runtime.",
+    "description_zh": "通过进程内托管的 ILSpy C# 桥接层，提供程序集、类型和指定方法的反编译、源码搜索及结构化 JSON 输出的 Rust CLI；独立的 PE 头检测器无需加载 .NET 运行时即可识别托管程序集。",
+    "evidence_url": "https://github.com/akiselev/ilspy-cli/blob/089895f16a9031bb8391db13c2160def9a2e8b60/README.md",
+    "verified_at": "2026-10-20",
+    "verification": "source-reviewed",
+    "requirements": [
+      "Building requires a Rust toolchain and .NET 8 SDK; build.rs invokes dotnet publish for the C# bridge, whose project pins ICSharpCode.Decompiler 9.1.0.7988. Decompilation needs the .NET 8 runtime; the detect command follows a separate Rust-only path.",
+      "Method selection matches the first method with the requested name within the named type; it does not disambiguate overloads by signature. Source search skips types whose decompilation throws, so an empty result is not proof that the requested pattern is absent from the complete assembly.",
+      "The integration suite builds one small SampleLib fixture and checks command output, including a simple Add method. Its source and cross-platform CI definition were inspected, but no build, .NET hosting, fixture execution or decompilation was run during this review; general accuracy and behavioral equivalence are not established.",
+      "README and Cargo metadata declare GPL-3.0, but the complete pinned tree has no separate LICENSE/COPYING text. The upstream ILSpy engine and user-provided assemblies retain their own licensing conditions."
+    ],
+    "additional_evidence_urls": [
+      "https://github.com/akiselev/ilspy-cli/blob/089895f16a9031bb8391db13c2160def9a2e8b60/src/main.rs",
+      "https://github.com/akiselev/ilspy-cli/blob/089895f16a9031bb8391db13c2160def9a2e8b60/src/ilspy/detect.rs",
+      "https://github.com/akiselev/ilspy-cli/blob/089895f16a9031bb8391db13c2160def9a2e8b60/src/bridge/mod.rs",
+      "https://github.com/akiselev/ilspy-cli/blob/089895f16a9031bb8391db13c2160def9a2e8b60/bridge/IlSpyBridge.cs",
+      "https://github.com/akiselev/ilspy-cli/blob/089895f16a9031bb8391db13c2160def9a2e8b60/bridge/IlSpyBridge.csproj",
+      "https://github.com/akiselev/ilspy-cli/blob/089895f16a9031bb8391db13c2160def9a2e8b60/tests/integration_tests.rs",
+      "https://github.com/akiselev/ilspy-cli/blob/089895f16a9031bb8391db13c2160def9a2e8b60/tests/fixtures/SampleLib/SampleClass.cs",
+      "https://github.com/akiselev/ilspy-cli/blob/089895f16a9031bb8391db13c2160def9a2e8b60/Cargo.toml",
+      "https://github.com/akiselev/ilspy-cli/blob/089895f16a9031bb8391db13c2160def9a2e8b60/AGENTS.md"
+    ]
+  },
+  {
+    "id": "swe1r-assets-unity",
+    "name": "swe1r-assets-unity: Racer model-block editor sample",
+    "url": "https://github.com/akopetsch/swe1r-assets-unity",
+    "category": "game-analysis",
+    "relationship": "foundation",
+    "kind": "tool",
+    "targets": [
+      "game"
+    ],
+    "description_en": "Work-in-progress Unity editor sample for importing and modifying Star Wars Episode I: Racer model blocks, then serializing them back through swe1r-assets. Its editor includes an unmodified import/export byte-comparison command; it is an asset-format workflow rather than a reimplementation of the game.",
+    "description_zh": "尚在开发中的 Unity 编辑器样例，可导入和修改《星球大战：极速飞车》的模型块，再通过 swe1r-assets 序列化回原格式。编辑器提供未修改导入／导出结果的字节比较命令；其范围是资产格式工作流，而非完整游戏重实现。",
+    "evidence_url": "https://github.com/akopetsch/swe1r-assets-unity/blob/2fcae9138583da959882171095920ab9b802168b/README.md",
+    "verified_at": "2026-10-20",
+    "verification": "source-reviewed",
+    "requirements": [
+      "The README explicitly says this is currently a sample project. The package and sample pin Unity 2022.3.30f1; packages.config references SWE1R.Assets.Blocks 0.0.1-alpha.15 and ByteSerialization 0.0.1-alpha.9. Required game block files are read from a user-selected local game-data directory.",
+      "Model import/export is wired in the editor and importer/exporter classes. Texture, spline and sprite sections currently expose filenames without equivalent operation controls; spline importer/exporter subclasses are empty. Do not present the sample as complete support for every asset kind.",
+      "Test Re-Export compares the original and serialized model-item byte arrays with SequenceEqual, and Test Re-Export All loops over the loaded model block. The README claims bit-perfect unchanged round trips, but the reviewed tree contains no saved corpus/result report establishing that across game versions or arbitrary edits. No Unity project or game asset was run or loaded in this review.",
+      "Repository code has an MIT LICENSE and source SPDX headers. That code license is not evidence of permission to redistribute the original game data; no game blocks, screenshots, textures or other binary assets were downloaded for this review."
+    ],
+    "additional_evidence_urls": [
+      "https://github.com/akopetsch/swe1r-assets-unity/blob/2fcae9138583da959882171095920ab9b802168b/package.json",
+      "https://github.com/akopetsch/swe1r-assets-unity/blob/2fcae9138583da959882171095920ab9b802168b/Samples~/SampleProject/ProjectSettings/ProjectVersion.txt",
+      "https://github.com/akopetsch/swe1r-assets-unity/blob/2fcae9138583da959882171095920ab9b802168b/Samples~/SampleProject/Assets/packages.config",
+      "https://github.com/akopetsch/swe1r-assets-unity/blob/2fcae9138583da959882171095920ab9b802168b/Samples~/SampleProject/Assets/Code/Editor/BlockEditorWindow.cs",
+      "https://github.com/akopetsch/swe1r-assets-unity/blob/2fcae9138583da959882171095920ab9b802168b/Samples~/SampleProject/Assets/Code/ModelBlock/ModelBlockItemImporter.cs",
+      "https://github.com/akopetsch/swe1r-assets-unity/blob/2fcae9138583da959882171095920ab9b802168b/Samples~/SampleProject/Assets/Code/ModelBlock/ModelBlockItemExporter.cs",
+      "https://github.com/akopetsch/swe1r-assets-unity/blob/2fcae9138583da959882171095920ab9b802168b/Samples~/SampleProject/Assets/Code/SplineBlock/SplineBlockItemImporter.cs",
+      "https://github.com/akopetsch/swe1r-assets-unity/blob/2fcae9138583da959882171095920ab9b802168b/Samples~/SampleProject/Assets/Code/SplineBlock/SplineBlockItemExporter.cs",
+      "https://github.com/akopetsch/swe1r-assets-unity/blob/2fcae9138583da959882171095920ab9b802168b/LICENSE"
+    ]
   }
 ]

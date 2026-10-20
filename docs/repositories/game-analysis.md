@@ -2,7 +2,7 @@
 
 [All categories](README.md) · [简体中文](game-analysis.zh-CN.md)
 
-**483 repositories** · 2026-10-20 UTC
+**484 repositories** · 2026-10-20 UTC
 
 These are automatically discovered projects, not individually curated or tested recommendations. Categories derive from metadata and descriptions from upstream text. Stars are collection-time snapshots, not live rankings. Lines marked “Curated” or “Paper” link to the reviewed catalog entry or paper whose source is that exact repository.
 
@@ -412,6 +412,7 @@ These are automatically discovered projects, not individually curated or tested 
 - [TheGh0stShip/BattleTanx](https://github.com/TheGh0stShip/BattleTanx) — Decompilation of US BattleTanx .z64 (Required Decomp for BattleTanx Studio &amp; porting of BattleTanx assets into BattleTanx: Global Assault port) **[1 stars]**
 - [Yorushika-Yorushika/yysls-offline](https://github.com/Yorushika-Yorushika/yysls-offline) — Offline-mode research for 《燕云十六声》: protocol documentation and analysis tools (no game assets). **[1 stars]**
 - [AbienteSadness/ue5-binka-to-wav](https://github.com/AbienteSadness/ue5-binka-to-wav) — Convert Unreal Engine 5 BINKA audio assets (FModel .uasset + .ubulk exports) into playable WAV files. Windowed app and CLI. **[0 stars]**
+- [akopetsch/swe1r-assets-unity](https://github.com/akopetsch/swe1r-assets-unity) — A Unity package that allows you to import, modify and re-export assets of the game Star Wars Episode I: Racer. **[0 stars]** · Curated: [swe1r-assets-unity: Racer model-block editor sample](https://awesomerea.org/resources/swe1r-assets-unity/)
 - [ancaria-dev/agent](https://github.com/ancaria-dev/agent) — 🪝 The in-game Frida agent for Sacred Gold: hooks, game addresses, and the bundle the launcher downloads **[0 stars]**
 - [andreastroelsen/maaneby](https://github.com/andreastroelsen/maaneby) — The 2010 Danish school game Matematik i Måneby+, rebuilt from its Macromedia Director files to run in a browser. Play it in the link below. **[0 stars]**
 - [AnthonyOGorman/ashes-server-lab](https://github.com/AnthonyOGorman/ashes-server-lab) — Experimental open-source C++20 Ashes of Creation private-server / server-emulation lab: local Verra exploration, terrain collision, movement, flight and live browser tools. Very buggy; bring your own client. No combat or quests. **[0 stars]**

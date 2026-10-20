@@ -4174,5 +4174,32 @@
       "所审阅的两文件仓库没有自动化测试或版本化验证样本。README 示例输出属于作者提供的说明，不是独立复现结果。本次审阅未扫描 APK。",
       "README 声明 MIT，但所审阅的仓库树没有独立的许可证文件。"
     ]
+  },
+  "littlebird-static-rebuild-case": {
+    "name": "Littlebird.ai 静态首页重建",
+    "requirements": [
+      "捕获范围仅为首页及五个嵌入式演示；定价、博客等未捕获路由缺失，若干下载控件为占位链接。它不复现 Littlebird 桌面／移动应用或后端。",
+      "交付页面采用原生 HTML/CSS/JavaScript，无构建步骤；文档中的本地预览与资源完整性测试使用 Node.js 20+ 及其标准库。",
+      "在固定版本输入上执行原有 npm test，五项检查全部通过。检查仅涉及本地资源引用、基本文件与嵌入页面完整性，以及对被忽略捕获目录的独立性；不证明视觉相似性、可访问性合规、交互正确性或与原网站等价。",
+      "MIT 文件覆盖仓库代码；README 明确指出捕获的第三方字体、图像、标记与文案不属于该授权，并将项目界定为非官方学习重建。本次未下载捕获的字体、图像、视频或历史 recon 数据。"
+    ]
+  },
+  "akiselev-ilspy-cli": {
+    "name": "ilspy-cli：面向 Agent 的定向 .NET 反编译",
+    "requirements": [
+      "构建需要 Rust 工具链与 .NET 8 SDK；build.rs 调用 dotnet publish 构建 C# 桥接层，其项目固定使用 ICSharpCode.Decompiler 9.1.0.7988。反编译需要 .NET 8 运行时，detect 命令走独立的纯 Rust 路径。",
+      "方法选择仅在指定类型内取第一个同名方法，不按签名区分重载；源码搜索会跳过反编译抛异常的类型，因此空结果不证明整个程序集中没有所查模式。",
+      "集成测试构建一个小型 SampleLib 样例并检查命令输出，包括简单的 Add 方法。本次只阅读测试源码与跨平台 CI 定义，未构建、托管 .NET、执行样例或反编译；不据此断言普遍准确性或行为等价。",
+      "README 与 Cargo 元数据声明 GPL-3.0，但完整固定提交中没有单独的 LICENSE／COPYING 正文；上游 ILSpy 引擎与用户提供的程序集仍适用各自的许可条件。"
+    ]
+  },
+  "swe1r-assets-unity": {
+    "name": "swe1r-assets-unity：Racer 模型块编辑器样例",
+    "requirements": [
+      "README 明确说明当前仅为样例项目；package 与样例固定使用 Unity 2022.3.30f1，packages.config 引用 SWE1R.Assets.Blocks 0.0.1-alpha.15 和 ByteSerialization 0.0.1-alpha.9。所需游戏块文件从用户选择的本地游戏数据目录读取。",
+      "编辑器与导入／导出类实现了模型操作；纹理、样条与精灵区域当前仅显示文件名，没有同等操作控件，样条导入／导出子类为空。不能将此样例写成支持全部资产类型的完整工具。",
+      "Test Re-Export 使用 SequenceEqual 比较原模型项与重新序列化后的字节数组，Test Re-Export All 遍历已加载的模型块。README 宣称未修改数据可逐字节往返，但所审阅树中没有固定语料及结果报告证明其适用于所有游戏版本或任意编辑；本次未运行 Unity 项目或加载游戏资产。",
+      "仓库代码包含 MIT LICENSE 和源码 SPDX 标记；该代码许可不能证明原游戏数据可再分发。本次未下载游戏块、截图、纹理或其他二进制资产。"
+    ]
   }
 }

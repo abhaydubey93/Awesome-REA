@@ -6933,5 +6933,63 @@
     "why_fits_zh": "补充智能体构建逆向工具时的溯源与陈述审计方法。",
     "metadata_notes": "Reviewed v1 and the author's pinned reproducibility-archive README, which documents lost sessions and unreproducible response-scoring evidence. The repository exposes an archive and Git-history material; neither was downloaded. No repository-wide license was verified, so code_url remains null and project_url identifies the reviewed artifact landing.",
     "metadata_notes_zh": "审阅 v1 及作者固定版本复现归档 README；后者记载丢失的会话及缺少证据而无法复现的响应评分。仓库提供归档和 Git 历史材料，本次均未下载。未核实仓库整体许可，因此 code_url 留空，project_url 指向已检查的产物页面。"
+  },
+  {
+    "id": "paper-schema-program-induction",
+    "title": "Schema: Discovering Unknown Environments via Agentic Program Induction",
+    "title_zh": "Schema：通过智能体程序归纳发现未知环境机制",
+    "authors": [
+      "Guanning Zeng",
+      "Jiani Wang",
+      "Wenjie Ma",
+      "Shaofeng Yin",
+      "Chenyang Wang",
+      "Shichen Liu",
+      "Angjoo Kanazawa",
+      "Wode Ni",
+      "Xiuyu Li",
+      "Andrea Zanette",
+      "Haiwen Feng"
+    ],
+    "year": 2026,
+    "publication_date": "2026-09-30",
+    "date_precision": "day",
+    "date_basis": "arXiv v1 first-submission date; the July project announcement and October repository revision are separate.",
+    "date_basis_zh": "采用 arXiv v1 首次提交日期；七月项目公告及十月仓库版本单独区分。",
+    "venue": "arXiv",
+    "publication_status": "preprint",
+    "arxiv_id": "2609.39140",
+    "arxiv_version_reviewed": "v1",
+    "first_arxiv_date": "2026-09-30",
+    "doi": "10.48550/arxiv.2609.39140",
+    "url": "https://arxiv.org/abs/2609.39140",
+    "pdf_url": "https://arxiv.org/pdf/2609.39140v1",
+    "code_url": "https://github.com/guanning03/Schema",
+    "project_url": "https://guanning03.github.io/schema-webpage/",
+    "targets": [
+      "game"
+    ],
+    "description_en": "Infers executable models of game state and transition rules from interaction. Agents revise these models against recorded history, search within them, and compare predicted observations with real outcomes while executing plans.",
+    "description_zh": "通过交互推断可执行的游戏状态与转移规则模型。智能体依据已记录的历史修订模型，在模型中搜索方案，并在执行计划时将预测观察与真实结果比较。",
+    "scope_limitations_en": "Evaluation uses 25 public ARC-AGI-3 games, 21 public DiG-bench games and MazeBench. Matching recorded transitions establishes history consistency, not original-source recovery or correctness on unseen states. RHAE measures completion and environment-action efficiency, not elapsed time or total computation. Component ablations cover ten ARC games; MazeBench compares recorded trajectories with a leaderboard median rather than a controlled human experiment. Transfer to arbitrary software or stochastic environments is not demonstrated.",
+    "scope_limitations_zh": "评测使用 25 个公开 ARC-AGI-3 游戏、21 个公开 DiG-bench 游戏及 MazeBench。匹配已记录的状态转移只说明与历史一致，不代表恢复原始源码或在未见状态上正确。RHAE 衡量完成度与环境动作效率，不是耗时或总计算量。组件消融覆盖十个 ARC 游戏；MazeBench 将记录轨迹与排行榜中位数比较，并非受控人类实验。对任意软件或随机环境的迁移尚未展示。",
+    "why_fits_en": "Provides a concrete observation-to-program-and-replay loop for black-box behavioral reconstruction, while distinguishing a useful predictive model from a complete game clone.",
+    "why_fits_zh": "为黑盒行为重建提供具体的“观察—程序—回放”闭环，并区分有用的预测模型与完整游戏复刻。",
+    "metadata_notes": "The eleven-author v1 list and title match arXiv and the current project. DataCite registered the arXiv DOI on 2026-10-01; the article uses arXiv’s non-exclusive distribution license. The author-linked MIT code was inspected at 84c075fadfe937b97a3d1ad2acb42d1233f55ffe. Benchmark engines/services retain separate requirements. The linked trace dataset README at 0a0858a9e61a68d1e83142d9e4e3d66fc779c403 describes 50 July ARC trajectories, including a mixed-model collection; it is not verified as the complete September-paper release. No trace-data license was verified. No trace archives, models or benchmark engines were downloaded or executed.",
+    "metadata_notes_zh": "arXiv 与当前项目页面的标题及 v1 十一位作者名单一致。DataCite 于 2026-10-01 登记 arXiv DOI；论文使用 arXiv 非独占分发许可。作者链接的 MIT 代码固定核查于 84c075fadfe937b97a3d1ad2acb42d1233f55ffe，基准引擎与服务另有使用条件。所链轨迹数据集在 0a0858a9e61a68d1e83142d9e4e3d66fc779c403 的 README 描述七月的 50 条 ARC 轨迹，其中一组混用不同模型；未确认为九月论文的完整实验发布，也未核实轨迹数据许可。本次未下载或运行轨迹存档、模型或基准引擎。",
+    "evidence_urls": [
+      "https://arxiv.org/abs/2609.39140",
+      "https://arxiv.org/html/2609.39140v1",
+      "https://api.datacite.org/dois/10.48550/arxiv.2609.39140",
+      "https://schema-harness.github.io/",
+      "https://guanning03.github.io/schema-webpage/",
+      "https://github.com/guanning03/Schema/blob/84c075fadfe937b97a3d1ad2acb42d1233f55ffe/README.md",
+      "https://github.com/guanning03/Schema/blob/84c075fadfe937b97a3d1ad2acb42d1233f55ffe/LICENSE",
+      "https://huggingface.co/datasets/schema-harness/arc-agi-3-schema-traces/blob/0a0858a9e61a68d1e83142d9e4e3d66fc779c403/README.md"
+    ],
+    "kind": "research",
+    "verified_at": "2026-10-20",
+    "verification": "source-reviewed",
+    "runtime_tested": false
   }
 ]
