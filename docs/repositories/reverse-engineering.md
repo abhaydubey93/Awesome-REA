@@ -2,7 +2,7 @@
 
 [All categories](README.md) · [简体中文](reverse-engineering.zh-CN.md)
 
-**672 repositories** · 2026-10-20 UTC
+**671 repositories** · 2026-10-20 UTC
 
 These are automatically discovered projects, not individually curated or tested recommendations. Categories derive from metadata and descriptions from upstream text. Stars are collection-time snapshots, not live rankings. Lines marked “Curated” or “Paper” link to the reviewed catalog entry or paper whose source is that exact repository.
 
@@ -607,7 +607,6 @@ These are automatically discovered projects, not individually curated or tested 
 - [WncFht/zcode-teardown](https://github.com/WncFht/zcode-teardown) — Version-by-version reverse engineering of 55 ZCode IDE releases (v2.2.0–v3.12.3): signature snapshots, per-version diffs, and a 25-page analysis of the workspace-snapshot upload mechanism. **[1 stars]**
 - [0xARYA/pooky](https://github.com/0xARYA/pooky) — 🔑 Supreme's Legacy "pooky" Encryption Key Extractor **[0 stars]**
 - [a-hamouda/golden\_helpers](https://github.com/a-hamouda/golden_helpers) — Golden Helpers is a Dart library that provides a set of utilities to facilitate golden tests in Flutter applications. Golden tests are used to ensure UI consistency by comparing widget snapshots (golden files) against actual results. **[0 stars]**
-- [Abdoulrazack1/Logic-Lens](https://github.com/Abdoulrazack1/Logic-Lens) — AI that extracts the underlying logical formula or mathematical invariant of any JavaScript function. TensorFlow.js + AST mutations. **[0 stars]**
 - [aconstantinou-cmd/PythonArrayDeobfuscator](https://github.com/aconstantinou-cmd/PythonArrayDeobfuscator) — This script’s main purpose is to speed up the process of replacing functions that have been added into an array and replace them inside code that is calling upon their index level. Please see below the demonstration. **[0 stars]**
 - [AkashNaickar/crdb-sample-frontend](https://github.com/AkashNaickar/crdb-sample-frontend) — Static rebuild of the Littlebird.ai home page in plain HTML/CSS/JS, with a dependency-free test suite and Vercel deployment. **[0 stars]**
 - [akhilari7/deFlutter](https://github.com/akhilari7/deFlutter) — Dart AOT Runtime Inspection and Tracing **[0 stars]**

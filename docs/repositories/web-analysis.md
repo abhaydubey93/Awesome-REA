@@ -2,7 +2,7 @@
 
 [All categories](README.md) · [简体中文](web-analysis.zh-CN.md)
 
-**211 repositories** · 2026-10-20 UTC
+**212 repositories** · 2026-10-20 UTC
 
 These are automatically discovered projects, not individually curated or tested recommendations. Categories derive from metadata and descriptions from upstream text. Stars are collection-time snapshots, not live rankings. Lines marked “Curated” or “Paper” link to the reviewed catalog entry or paper whose source is that exact repository.
 
@@ -175,6 +175,7 @@ These are automatically discovered projects, not individually curated or tested 
 - [URDev4ever/ReCapture](https://github.com/URDev4ever/ReCapture) — A lightweight in-browser Request Viewer that intercepts and displays fetch/XHR requests in real time. Includes filters, live UI, POST parsing, export to JSON, auto-copy, and a floating DevTools console panel. Just paste it into DevTools and start capturing. **[1 stars]**
 - [vishalmeena2211/cloneable](https://github.com/vishalmeena2211/cloneable) — Clone any website into a customizable, content-driven Next.js template **[1 stars]**
 - [web3daemon/jsrecon](https://github.com/web3daemon/jsrecon) — 🐚 Map a web app's JavaScript to its API — endpoints, GraphQL, routes and leaked keys from bundles and source maps, plus an OpenAPI skeleton. tree-sitter, not regex. **[1 stars]**
+- [Abdoulrazack1/Logic-Lens](https://github.com/Abdoulrazack1/Logic-Lens) — AI that extracts the underlying logical formula or mathematical invariant of any JavaScript function. TensorFlow.js + AST mutations. **[0 stars]** · Curated: [Logic-Lens](https://awesomerea.org/resources/logic-lens/)
 - [animeshchaudhri/gta-vc-nodejs-termux-port](https://github.com/animeshchaudhri/gta-vc-nodejs-termux-port) — Node.js + Termux port of reVC DOS (GTA Vice City reverse-engineered web port) with packed archive support and lightweight local hosting. **[0 stars]**
 - [chuxainpei/pkusi](https://github.com/chuxainpei/pkusi) — Reverse-engineered reconstruction of krishnagupta.web.app (REA) **[0 stars]**
 - [cloverfield11/codex-inject-doom](https://github.com/cloverfield11/codex-inject-doom) — Injecting DOOM natively into the Codex IDE runtime using Chrome DevTools Protocol &amp; WebSockets. **[0 stars]**

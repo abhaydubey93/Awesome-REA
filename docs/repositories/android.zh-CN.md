@@ -408,7 +408,7 @@
 - [White-Hat-007/Mobile-Application-Reverse-Engineering-Analysis](https://github.com/White-Hat-007/Mobile-Application-Reverse-Engineering-Analysis) — 高级移动应用逆向工程与移动安全研究，重点关注认证流程、后端通信分析、网络栈重建和加密本地存储。 **[1 星标]**
 - [worldtreeboy/a64-lab](https://github.com/worldtreeboy/a64-lab) — 交互式 AArch64 学习模拟器，涵盖寄存器、指针、栈帧、控制流和 Linux 系统调用。 **[1 星标]**
 - [744219288/lazyalarm-preview-analysis](https://github.com/744219288/lazyalarm-preview-analysis) — 懒人闹钟（LazyAlarm）预览版 APK 静态解析报告，涵盖功能架构、组件清单、权限分析和签名信息，并附图标、流程图和结构图。 **[0 星标]**
-- [abhirampatel/android-security-toolkit](https://github.com/abhirampatel/android-security-toolkit) — Android APK 安全测试静态分析工具包，检测硬编码秘密信息、Manifest 配置错误和原生库漏洞。 **[0 星标]**
+- [abhirampatel/android-security-toolkit](https://github.com/abhirampatel/android-security-toolkit) — Android APK 安全测试静态分析工具包，检测硬编码秘密信息、Manifest 配置错误和原生库漏洞。 **[0 星标]** · 精选：[Android Security Toolkit：APK 静态初步分析](https://awesomerea.org/zh/resources/android-security-toolkit/)
 - [Airya-Xratu/reforge-ai](https://github.com/Airya-Xratu/reforge-ai) — 借助 AI 逆向工程应用。Reforge 为编程智能体重建产品、用户体验、用户界面、架构和设计意图。 **[0 星标]**
 - [albertolicea00/transfermovil-src-reversed](https://github.com/albertolicea00/transfermovil-src-reversed) — Transfermóvil Android 客户端通过逆向工程恢复的源代码、资源和文档。 **[0 星标]**
 - [alterakey/blutter-docker](https://github.com/alterakey/blutter-docker) — 容器化的 blutter。 **[0 星标]**

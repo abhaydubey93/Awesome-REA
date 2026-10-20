@@ -2,7 +2,7 @@
 
 [全部分类](README.zh-CN.md) · [English](reverse-engineering.md)
 
-**672 个仓库** · 2026-10-20 UTC
+**671 个仓库** · 2026-10-20 UTC
 
 这些是自动发现的项目，不是逐项精选或运行验证后的推荐。分类来自元数据；简介由上游描述翻译而来。星标为采集时快照，不是实时排名。标有“精选”或“论文”的行指向以同一仓库为来源的已复核目录条目或论文。
 
@@ -607,7 +607,6 @@
 - [WncFht/zcode-teardown](https://github.com/WncFht/zcode-teardown) — 逐版逆向拆解 ZCode IDE 的 55 个版本（v2.2.0–v3.12.3），包含签名快照、版本差异及工作区快照上传机制的 25 页分析报告。 **[1 星标]**
 - [0xARYA/pooky](https://github.com/0xARYA/pooky) — 🔑 Supreme 旧版 “pooky” 加密密钥提取器。 **[0 星标]**
 - [a-hamouda/golden\_helpers](https://github.com/a-hamouda/golden_helpers) — Golden Helpers 是一个 Dart 库，提供一组便利工具，帮助 Flutter 应用开展黄金图像测试。此类测试通过比较组件快照（黄金文件）与实际结果来保证界面一致性。 **[0 星标]**
-- [Abdoulrazack1/Logic-Lens](https://github.com/Abdoulrazack1/Logic-Lens) — 提取任意 JavaScript 函数背后逻辑公式或数学不变量的 AI。使用 TensorFlow.js 和 AST 变异。 **[0 星标]**
 - [aconstantinou-cmd/PythonArrayDeobfuscator](https://github.com/aconstantinou-cmd/PythonArrayDeobfuscator) — 此脚本旨在加速处理被放入数组的函数，用相应函数替换代码中通过数组索引进行的调用。下文提供演示。 **[0 星标]**
 - [AkashNaickar/crdb-sample-frontend](https://github.com/AkashNaickar/crdb-sample-frontend) — 用原生 HTML/CSS/JS 静态重建 Littlebird.ai 首页，附带无依赖测试套件及 Vercel 部署。 **[0 星标]**
 - [akhilari7/deFlutter](https://github.com/akhilari7/deFlutter) — Dart AOT 运行时检查与跟踪。 **[0 星标]**

@@ -11341,5 +11341,62 @@
       "binary"
     ],
     "kind": "case-study"
+  },
+  {
+    "id": "logic-lens",
+    "name": "Logic-Lens",
+    "url": "https://github.com/Abdoulrazack1/Logic-Lens",
+    "category": "javascript-electron",
+    "relationship": "foundation",
+    "kind": "tool",
+    "targets": [
+      "app"
+    ],
+    "description_en": "Experimental JavaScript source-analysis toolkit that classifies AST-token sequences into configured formula families after local training, and produces heuristic structure, call-graph and intent reports. It supports code-comprehension experiments; its predictions do not establish arbitrary program invariants or semantic equivalence.",
+    "description_zh": "实验性 JavaScript 源码分析工具：本地训练后将 AST token 序列归入预设公式类别，并生成启发式结构、调用图和意图报告。它可用于代码理解实验，但预测结果不证明任意程序的不变量或语义等价。",
+    "evidence_url": "https://github.com/Abdoulrazack1/Logic-Lens/blob/bb15aab345de64ef044a074d5e564fb087999032/README.md",
+    "verified_at": "2026-10-20",
+    "verification": "source-reviewed",
+    "requirements": [
+      "The README documents Node.js 18 or newer. Package version 1.1.0 declares TensorFlow.js, its native Node binding and Acorn; the setup first tries the native TensorFlow binding and then falls back to the pure JavaScript CPU backend.",
+      "Formula prediction requires local synthetic-data generation and training. The predictor expects model weights and metadata that are absent from the reviewed repository tree; no pretrained model or successful local setup was established by this review.",
+      "Predictions select from a configured formula catalogue. The README’s accuracy/confidence examples are author-reported and do not establish correctness on arbitrary unseen functions; heuristic intent and quality reports are not behavioral-equivalence proofs.",
+      "Standalone semantic-test definitions cover structure, heuristic patterns and report shape. CONTRIBUTING mentions npm test, but package.json has no test script. No tests, training or inference were executed for this source review.",
+      "README and package metadata declare MIT, but the reviewed commit has no LICENSE file. Keep that distinction when assessing reuse."
+    ],
+    "additional_evidence_urls": [
+      "https://github.com/Abdoulrazack1/Logic-Lens/blob/bb15aab345de64ef044a074d5e564fb087999032/package.json",
+      "https://github.com/Abdoulrazack1/Logic-Lens/blob/bb15aab345de64ef044a074d5e564fb087999032/src/predictor.js",
+      "https://github.com/Abdoulrazack1/Logic-Lens/blob/bb15aab345de64ef044a074d5e564fb087999032/src/model.js",
+      "https://github.com/Abdoulrazack1/Logic-Lens/blob/bb15aab345de64ef044a074d5e564fb087999032/src/tf-setup.js",
+      "https://github.com/Abdoulrazack1/Logic-Lens/blob/bb15aab345de64ef044a074d5e564fb087999032/src/semantic/semantic-analyzer.js",
+      "https://github.com/Abdoulrazack1/Logic-Lens/blob/bb15aab345de64ef044a074d5e564fb087999032/tests/semantic.test.js",
+      "https://github.com/Abdoulrazack1/Logic-Lens/blob/bb15aab345de64ef044a074d5e564fb087999032/CONTRIBUTING.md"
+    ]
+  },
+  {
+    "id": "android-security-toolkit",
+    "name": "Android Security Toolkit",
+    "url": "https://github.com/abhirampatel/android-security-toolkit",
+    "category": "android",
+    "relationship": "foundation",
+    "kind": "tool",
+    "targets": [
+      "app"
+    ],
+    "description_en": "Local Python APK triage tool that drives apktool and strings, checks manifest settings and source/native-library strings, and produces TXT/JSON findings for manual review. Its rules flag possible issues without proving exploitability or reconstructing application behavior.",
+    "description_zh": "本地 Python APK 初步分析工具，调用 apktool 与 strings 检查清单配置、源码及原生库字符串，输出 TXT／JSON 结果供人工核验。规则仅提示潜在问题，不证明可利用性，也不重建应用行为。",
+    "evidence_url": "https://github.com/abhirampatel/android-security-toolkit/blob/d9153acad34a062298b15244a0c38f0497680dbf/README.md",
+    "verified_at": "2026-10-20",
+    "verification": "source-reviewed",
+    "requirements": [
+      "Python 3 standard-library imports, separately installed apktool and strings/binutils, and an authorized local APK are required. Manifest analysis depends on successful apktool decoding.",
+      "String and manifest-rule matches require manual verification. A symbol, permission or flag alone does not establish an exploitable execution path. The README distinguishes this initial static pass from manual code review, dynamic/native analysis and library CVE matching.",
+      "The reviewed two-file tree contains no automated tests or versioned validation corpus. README sample output is an author-provided illustration, not an independently reproduced result. No APK was scanned for this review.",
+      "The README states MIT, but the reviewed tree contains no standalone license file."
+    ],
+    "additional_evidence_urls": [
+      "https://github.com/abhirampatel/android-security-toolkit/blob/d9153acad34a062298b15244a0c38f0497680dbf/apk_scanner.py"
+    ]
   }
 ]

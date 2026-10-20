@@ -4155,5 +4155,24 @@
       "AGPL-3.0 适用于项目工具与文档；src/NOTICE.md 未对重建游戏代码授予许可，原作权利属于 Square／Square Enix，第三方组件保留各自许可。",
       "218 个二进制的匹配规约属于上游声明，其验证步骤及 2026 年 9 月 7 日完整运行记录提供依据；该日志对应更早的代码树，并非本次复核的 HEAD。SDK／汇编例外及未完成的可读性工作仍有明确记录；公开无 ROM CI 仅审查和编译，不能进行原始字节比较。本次未构建或运行，未确立 REA 集成。"
     ]
+  },
+  "logic-lens": {
+    "name": "Logic-Lens：实验性 JavaScript 源码理解工具",
+    "requirements": [
+      "README 要求 Node.js 18 或更新版本。package 版本 1.1.0 声明依赖 TensorFlow.js、其原生 Node 绑定与 Acorn；初始化先尝试原生 TensorFlow 绑定，再回退到纯 JavaScript CPU 后端。",
+      "公式预测需要在本地生成合成数据并训练。预测器所需的模型权重与元数据未包含在所审阅的仓库树中；本次审阅未确认可用的预训练模型或成功的本地运行环境。",
+      "预测从预设公式目录中选择类别。README 的准确率和置信度示例来自作者报告，不能证明任意未见函数上的正确性；启发式意图与质量报告也不是行为等价证明。",
+      "独立的语义测试定义覆盖结构、启发式模式和报告格式。CONTRIBUTING 提到 npm test，但 package.json 没有 test 脚本。本次来源审阅未执行测试、训练或推理。",
+      "README 与 package 元数据声明 MIT，但所审阅提交没有 LICENSE 文件；评估复用条件时需保留这一区别。"
+    ]
+  },
+  "android-security-toolkit": {
+    "name": "Android Security Toolkit：APK 静态初步分析",
+    "requirements": [
+      "需要 Python 3 标准库、另行安装的 apktool 与 strings／binutils，以及获得授权的本地 APK。清单分析依赖 apktool 成功解码。",
+      "字符串与清单规则匹配需人工核验；单个符号、权限或标志不能证明存在可利用的执行路径。README 将这一步静态初筛与人工代码审阅、动态／原生分析及依赖库 CVE 匹配区分开来。",
+      "所审阅的两文件仓库没有自动化测试或版本化验证样本。README 示例输出属于作者提供的说明，不是独立复现结果。本次审阅未扫描 APK。",
+      "README 声明 MIT，但所审阅的仓库树没有独立的许可证文件。"
+    ]
   }
 }

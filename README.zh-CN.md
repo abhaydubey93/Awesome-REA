@@ -11,7 +11,7 @@
 <a href="https://awesomerea.org/zh/"><img src="assets/readme-banner.svg" alt="Awesome Reverse Engineering Anything — 覆盖六类逆向目标的工具、案例与论文" width="960"></a>
 
 <!-- BEGIN GENERATED BADGES -->
-[![精选资源: 476](https://img.shields.io/badge/%E7%B2%BE%E9%80%89%E8%B5%84%E6%BA%90-476-53309C?style=flat-square&labelColor=303447)](https://awesomerea.org/zh/resources/) [![案例: 200](https://img.shields.io/badge/%E6%A1%88%E4%BE%8B-200-53309C?style=flat-square&labelColor=303447)](https://awesomerea.org/zh/cases/) [![论文: 127](https://img.shields.io/badge/%E8%AE%BA%E6%96%87-127-53309C?style=flat-square&labelColor=303447)](https://awesomerea.org/zh/papers/) [![目录检查](https://github.com/reacher-z/Awesome-REA/actions/workflows/validate.yml/badge.svg?branch=main)](https://github.com/reacher-z/Awesome-REA/actions/workflows/validate.yml) [![许可: MIT](https://img.shields.io/badge/%E8%AE%B8%E5%8F%AF-MIT-606779?style=flat-square&labelColor=303447)](LICENSE) [![网站: awesomerea.org](https://img.shields.io/badge/%E7%BD%91%E7%AB%99-awesomerea.org-6235B5?style=flat-square&labelColor=303447)](https://awesomerea.org/zh/)
+[![精选资源: 478](https://img.shields.io/badge/%E7%B2%BE%E9%80%89%E8%B5%84%E6%BA%90-478-53309C?style=flat-square&labelColor=303447)](https://awesomerea.org/zh/resources/) [![案例: 200](https://img.shields.io/badge/%E6%A1%88%E4%BE%8B-200-53309C?style=flat-square&labelColor=303447)](https://awesomerea.org/zh/cases/) [![论文: 127](https://img.shields.io/badge/%E8%AE%BA%E6%96%87-127-53309C?style=flat-square&labelColor=303447)](https://awesomerea.org/zh/papers/) [![目录检查](https://github.com/reacher-z/Awesome-REA/actions/workflows/validate.yml/badge.svg?branch=main)](https://github.com/reacher-z/Awesome-REA/actions/workflows/validate.yml) [![许可: MIT](https://img.shields.io/badge/%E8%AE%B8%E5%8F%AF-MIT-606779?style=flat-square&labelColor=303447)](LICENSE) [![网站: awesomerea.org](https://img.shields.io/badge/%E7%BD%91%E7%AB%99-awesomerea.org-6235B5?style=flat-square&labelColor=303447)](https://awesomerea.org/zh/)
 <!-- END GENERATED BADGES -->
 
 **[搜索与筛选](https://awesomerea.org/zh/)** · **[浏览案例](https://awesomerea.org/zh/cases/)** · **[研究论文](https://awesomerea.org/zh/papers/)** · **[HTML 综述](https://awesomerea.org/zh/survey/)**
@@ -23,7 +23,7 @@
 <!-- BEGIN GENERATED CONTENTS -->
 **按目标找工具与案例**
 
-- [网站](#website) (27) · [游戏](#game) (190) · [应用](#app) (72)
+- [网站](#website) (27) · [游戏](#game) (190) · [应用](#app) (74)
 - [原生二进制](#native-binary) (63) · [固件与硬件](#firmware) (22) · [协议](#protocol) (18)
 
 **论文与工作流**
@@ -379,6 +379,8 @@ REA 标签指向单独维护的[上游 CLI 与 MCP 项目](https://github.com/mo
 - [**APKLab Android 逆向工作台**](https://github.com/APKLab/APKLab) - 把 VS Code 变成 Android 逆向工作台的扩展，整合 Apktool、Jadx、smali-lsp 和 uber-apk-signer。 <sub>工具 · Android · [完整条目](https://awesomerea.org/zh/resources/apklab/)</sub>
 - [**Fernflower Java 反编译器**](https://github.com/JetBrains/fernflower) - JetBrains 的分析型反编译器，可将 Java class 文件还原为 Java 源码；IntelliJ IDEA 内置了它，用于在调试或浏览 class 文件时显示代码。 <sub>工具 · JVM · [完整条目](https://awesomerea.org/zh/resources/fernflower/)</sub>
 - [**Bytecode Viewer Java/Android 逆向工程套件**](https://github.com/Konloch/bytecode-viewer) - 用于检查已编译 Java 与 Android 程序的桌面套件：拖入 class、JAR、WAR、APK、DEX、XAPK 或 APKM 文件即可浏览其中的类和资源，并可并排显示最多三个反编译器或反汇编器视图。 <sub>工具 · JVM · [完整条目](https://awesomerea.org/zh/resources/bytecode-viewer/)</sub>
+- [**Logic-Lens：实验性 JavaScript 源码理解工具**](https://github.com/Abdoulrazack1/Logic-Lens) - 实验性 JavaScript 源码分析工具：本地训练后将 AST token 序列归入预设公式类别，并生成启发式结构、调用图和意图报告。 <sub>工具 · [完整条目](https://awesomerea.org/zh/resources/logic-lens/)</sub>
+- [**Android Security Toolkit：APK 静态初步分析**](https://github.com/abhirampatel/android-security-toolkit) - 本地 Python APK 初步分析工具，调用 apktool 与 strings 检查清单配置、源码及原生库字符串，输出 TXT／JSON 结果供人工核验。 <sub>工具 · Android · [完整条目](https://awesomerea.org/zh/resources/android-security-toolkit/)</sub>
 
 <a id="native-binary"></a>
 ### Native Binary · 原生二进制

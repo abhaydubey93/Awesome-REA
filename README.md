@@ -11,7 +11,7 @@ An independent collection of tools, case studies and research for websites, game
 <a href="https://awesomerea.org/"><img src="assets/readme-banner.svg" alt="Awesome Reverse Engineering Anything — tools, cases and papers across six reverse-engineering domains" width="960"></a>
 
 <!-- BEGIN GENERATED BADGES -->
-[![resources: 476](https://img.shields.io/badge/resources-476-53309C?style=flat-square&labelColor=303447)](https://awesomerea.org/resources/) [![cases: 200](https://img.shields.io/badge/cases-200-53309C?style=flat-square&labelColor=303447)](https://awesomerea.org/cases/) [![papers: 127](https://img.shields.io/badge/papers-127-53309C?style=flat-square&labelColor=303447)](https://awesomerea.org/papers/) [![Catalog checks](https://github.com/reacher-z/Awesome-REA/actions/workflows/validate.yml/badge.svg?branch=main)](https://github.com/reacher-z/Awesome-REA/actions/workflows/validate.yml) [![license: MIT](https://img.shields.io/badge/license-MIT-606779?style=flat-square&labelColor=303447)](LICENSE) [![website: awesomerea.org](https://img.shields.io/badge/website-awesomerea.org-6235B5?style=flat-square&labelColor=303447)](https://awesomerea.org/)
+[![resources: 478](https://img.shields.io/badge/resources-478-53309C?style=flat-square&labelColor=303447)](https://awesomerea.org/resources/) [![cases: 200](https://img.shields.io/badge/cases-200-53309C?style=flat-square&labelColor=303447)](https://awesomerea.org/cases/) [![papers: 127](https://img.shields.io/badge/papers-127-53309C?style=flat-square&labelColor=303447)](https://awesomerea.org/papers/) [![Catalog checks](https://github.com/reacher-z/Awesome-REA/actions/workflows/validate.yml/badge.svg?branch=main)](https://github.com/reacher-z/Awesome-REA/actions/workflows/validate.yml) [![license: MIT](https://img.shields.io/badge/license-MIT-606779?style=flat-square&labelColor=303447)](LICENSE) [![website: awesomerea.org](https://img.shields.io/badge/website-awesomerea.org-6235B5?style=flat-square&labelColor=303447)](https://awesomerea.org/)
 <!-- END GENERATED BADGES -->
 
 **[Search & filter](https://awesomerea.org/)** · **[Browse cases](https://awesomerea.org/cases/)** · **[Research papers](https://awesomerea.org/papers/)** · **[HTML survey](https://awesomerea.org/survey/)**
@@ -23,7 +23,7 @@ An independent collection of tools, case studies and research for websites, game
 <!-- BEGIN GENERATED CONTENTS -->
 **Tools and cases by target**
 
-- [Website](#website) (27) · [Game](#game) (190) · [App](#app) (72)
+- [Website](#website) (27) · [Game](#game) (190) · [App](#app) (74)
 - [Native Binary](#native-binary) (63) · [Firmware and Hardware](#firmware) (22) · [Protocol](#protocol) (18)
 
 **Research and workflows**
@@ -378,6 +378,8 @@ REA labels refer to the separate [upstream CLI and MCP project](https://github.c
 - [**APKLab**](https://github.com/APKLab/APKLab) - VS Code extension that turns the editor into an Android reverse-engineering workbench around Apktool, Jadx, smali-lsp and uber-apk-signer. <sub>Tool · Android · [Full entry](https://awesomerea.org/resources/apklab/)</sub>
 - [**Fernflower**](https://github.com/JetBrains/fernflower) - JetBrains' analytical decompiler that turns Java class files back into Java source; IntelliJ IDEA bundles it to show code when debugging or browsing class files. <sub>Tool · JVM · [Full entry](https://awesomerea.org/resources/fernflower/)</sub>
 - [**Bytecode Viewer**](https://github.com/Konloch/bytecode-viewer) - Desktop suite for inspecting compiled Java and Android programs: drop in a class, JAR, WAR, APK, DEX, XAPK or APKM file to browse its classes and resources, with up to three decompiler or disassembler views side by side. <sub>Tool · JVM · [Full entry](https://awesomerea.org/resources/bytecode-viewer/)</sub>
+- [**Logic-Lens**](https://github.com/Abdoulrazack1/Logic-Lens) - Experimental JavaScript source-analysis toolkit that classifies AST-token sequences into configured formula families after local training, and produces heuristic structure, call-graph and intent reports. <sub>Tool · [Full entry](https://awesomerea.org/resources/logic-lens/)</sub>
+- [**Android Security Toolkit**](https://github.com/abhirampatel/android-security-toolkit) - Local Python APK triage tool that drives apktool and strings, checks manifest settings and source/native-library strings, and produces TXT/JSON findings for manual review. <sub>Tool · Android · [Full entry](https://awesomerea.org/resources/android-security-toolkit/)</sub>
 
 <a id="native-binary"></a>
 ### Native Binary
