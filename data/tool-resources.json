@@ -11418,7 +11418,7 @@
       "The captured scope is the home page and five embedded demos. Pricing, blog and other uncaptured routes are absent; several download controls are placeholder links. This is not a recreation of the Littlebird desktop/mobile application or its backend.",
       "The shipped site is plain HTML/CSS/JavaScript without a build step. The documented local preview and asset-integrity suite use Node.js 20+ and its standard library.",
       "The original npm test passed all five checks on the pinned inputs. These check local asset references, basic file and embedded-page completeness, and independence from the ignored capture directory; they do not establish visual similarity, accessibility conformance, interaction correctness or equivalence to the original site.",
-      "The MIT file covers repository code. The README explicitly excludes captured third-party fonts, imagery, markup and copy from that grant and identifies this as an unofficial study rebuild. No captured font, image, video or historical recon data was downloaded for this review."
+      "The MIT file covers repository code. The README explicitly excludes captured third-party fonts, imagery, markup and copy from that grant and identifies this as an unofficial study rebuild. For the later integrity check, pinned site files were kept in a private test snapshot without rendering; historical recon data was not fetched."
     ],
     "additional_evidence_urls": [
       "https://github.com/AkashNaickar/crdb-sample-frontend/blob/673dc8c8d93b4f8a13257604749b638adf146298/site/index.html",
