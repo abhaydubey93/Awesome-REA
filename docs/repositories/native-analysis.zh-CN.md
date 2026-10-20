@@ -447,7 +447,7 @@
 - [OSUSecLab/QtRE](https://github.com/OSUSecLab/QtRE) — 专为 Qt 二进制分析设计的 Ghidra 无界面分析器。 **[75 星标]**
 - [radareorg/r4ghidra](https://github.com/radareorg/r4ghidra) — 与 radare2 通信的 Ghidra 插件 **[75 星标]**
 - [zerotypic/wilhelm](https://github.com/zerotypic/wilhelm) — IDA / Hex-Rays 的替代 API。 **[75 星标]**
-- [Druthulu/BFM-decomp](https://github.com/Druthulu/BFM-decomp) — Brave Fencer Musashi（PS1，SLUS-00726）的匹配反编译：从 C 代码重建 218 个二进制文件，逐字节一致。 **[74 星标]**
+- [Druthulu/BFM-decomp](https://github.com/Druthulu/BFM-decomp) — Brave Fencer Musashi（PS1，SLUS-00726）的匹配反编译：从 C 代码重建 218 个二进制文件，逐字节一致。 **[74 星标]** · 精选：[BFM-decomp：Brave Fencer Musashi 匹配反编译](https://awesomerea.org/zh/resources/bfm-decomp-case/)
 - [drvink/epanos](https://github.com/drvink/epanos) — ElectroPaint 自动无源码目标文件重新汇编器（MIPS 到 C 的反编译器）。 **[74 星标]**
 - [gabimarti/crackmes-solutions](https://github.com/gabimarti/crackmes-solutions) — 我完成的一些 crackme 练习程序的解题方案。 **[73 星标]**
 - [intezer/analyze-community-ghidra-plugin](https://github.com/intezer/analyze-community-ghidra-plugin) — 用于 https<span>:</span>//analyze.intezer.com 的 Ghidra 插件。 **[73 星标]**

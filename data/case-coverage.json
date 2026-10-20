@@ -1,7 +1,7 @@
 {
   "schema_version": 1,
-  "reviewed_at": "2026-10-18",
-  "catalog_revision": "28ae38f70a27f56a73a4a5f48476713f07d20011",
+  "reviewed_at": "2026-10-20",
+  "catalog_revision": "214ee08c4c615e52c079b510b255d3f2548028ef",
   "runtime_reproduced": false,
   "project_identity_resolution": "incomplete",
   "collections": [
@@ -12637,15 +12637,25 @@
         "https://github.com/abedegno/underworld-exhumed",
         "https://abedegno.github.io/underworld-exhumed-web/"
       ],
-      "state": "pending",
+      "state": "already-curated",
       "review_level": "primary-source-reviewed",
-      "reviewed_at": "2026-10-17",
-      "reason_en": "Bounded primary README review only; further focused review is pending. One Underworld Exhumed repo covers both games and reports exact DOS executable rebuilds plus limited recorded-session parity across native/web builds. Its own-work MIT license explicitly grants no rights in game-derived code. Review game-specific manifests/NOTICE/build prerequisites and finite session records; the separate web site’s bundled-data statement is not a redistribution grant. Row 71 shares the same repository and was not counted as another review.",
-      "reason_zh": "同一 Underworld Exhumed 仓库涵盖两款游戏，报告 DOS 可执行文件精确重构建及有限录制场景对照；自身工作的 MIT 许可明确不授予游戏派生代码权利。须核查各游戏清单、NOTICE、依赖与场景证据；第 71 行共享仓库，但不自动合并或计作另一独立审阅。",
+      "reviewed_at": "2026-10-20",
+      "reason_en": "The pinned collection row names the same Underworld Exhumed repository now covered by a source-reviewed case for both games. README, PORT, BUILDING and NOTICE support the DOS reconstruction/native-port scope, owned-input requirements and finite upstream replay evidence; no runtime equivalence or web-site redistribution rights are established. The separately listed second game remains its own inventory unit.",
+      "reason_zh": "固定合集条目明确指向已收录的 Underworld Exhumed 仓库；该来源核查案例涵盖两款游戏。README、PORT、BUILDING 与 NOTICE 支持 DOS 重建／原生移植范围、自备输入要求及有限上游回放证据，不确立运行等价或网站素材再分发权。另列的第二款游戏仍保留为独立清单单元。",
       "primary_evidence_urls": [
-        "https://github.com/abedegno/underworld-exhumed/blob/e5deadd6945b492636aadccc14f52caa908b4186/README.md"
+        "https://github.com/abedegno/underworld-exhumed/blob/e5deadd6945b492636aadccc14f52caa908b4186/README.md",
+        "https://github.com/abedegno/underworld-exhumed/blob/e5deadd6945b492636aadccc14f52caa908b4186/docs/PORT.md",
+        "https://github.com/abedegno/underworld-exhumed/blob/e5deadd6945b492636aadccc14f52caa908b4186/docs/BUILDING.md",
+        "https://github.com/abedegno/underworld-exhumed/blob/e5deadd6945b492636aadccc14f52caa908b4186/NOTICE"
       ],
-      "catalog_matches": []
+      "catalog_matches": [
+        {
+          "catalog": "resource",
+          "id": "underworld-exhumed-case",
+          "kind": "case-study",
+          "scope": "full"
+        }
+      ]
     },
     {
       "id": "hao-games:row-071",
@@ -12659,13 +12669,25 @@
         "https://github.com/abedegno/underworld-exhumed",
         "https://abedegno.github.io/underworld-exhumed-web/"
       ],
-      "state": "pending",
-      "review_level": "inventory-only",
-      "reviewed_at": "2026-10-17",
-      "reason_en": "Project row 71 (README line 715) lists abedegno/underworld-exhumed under 🧙 Ultima Underworld II: Labyrinth of Worlds. Primary implementation, prerequisites and reported results remain unreviewed; this row is not a verified reconstruction. Shared repository links do not merge separately listed game rows.",
-      "reason_zh": "项目第 71 行（README 第 715 行）在 🧙 Ultima Underworld II: Labyrinth of Worlds 下列出 abedegno/underworld-exhumed。其一手实现、使用条件和报告结果仍待核查；该行不是已经核验的重建成果。共享仓库链接不会合并分别列出的游戏行。",
-      "primary_evidence_urls": [],
-      "catalog_matches": []
+      "state": "already-curated",
+      "review_level": "catalog-mapped",
+      "reviewed_at": "2026-10-20",
+      "reason_en": "This separately listed second game names the same repository and maps to the case whose pinned primary documentation explicitly covers Ultima Underworld I and II. It inherits that case review rather than claiming another independent runtime check. The two collection occurrences remain separate; the linked web site was not evaluated as a grant to redistribute game data.",
+      "reason_zh": "此单列的第二款游戏明确链接同一仓库，映射到固定一手文档明确涵盖 Ultima Underworld I 与 II 的案例；这里继承该案例的来源核查，不声称另一项独立运行验证。两个合集出现项仍分别保留，所链接网站不被视为游戏数据再分发授权。",
+      "primary_evidence_urls": [
+        "https://github.com/abedegno/underworld-exhumed/blob/e5deadd6945b492636aadccc14f52caa908b4186/README.md",
+        "https://github.com/abedegno/underworld-exhumed/blob/e5deadd6945b492636aadccc14f52caa908b4186/docs/PORT.md",
+        "https://github.com/abedegno/underworld-exhumed/blob/e5deadd6945b492636aadccc14f52caa908b4186/docs/BUILDING.md",
+        "https://github.com/abedegno/underworld-exhumed/blob/e5deadd6945b492636aadccc14f52caa908b4186/NOTICE"
+      ],
+      "catalog_matches": [
+        {
+          "catalog": "resource",
+          "id": "underworld-exhumed-case",
+          "kind": "case-study",
+          "scope": "full"
+        }
+      ]
     },
     {
       "id": "hao-games:row-072",
@@ -16073,18 +16095,18 @@
     "inventory_units": 589,
     "alias_merges": 2,
     "occurrences_by_state": {
-      "already-curated": 201,
+      "already-curated": 203,
       "insufficient-evidence": 252,
-      "pending": 138
+      "pending": 136
     },
     "units_by_state": {
-      "already-curated": 199,
+      "already-curated": 201,
       "insufficient-evidence": 252,
-      "pending": 138
+      "pending": 136
     },
     "primary_reviewed_units": 394,
-    "catalog_linked_occurrences": 214,
-    "distinct_resource_ids": 206,
+    "catalog_linked_occurrences": 216,
+    "distinct_resource_ids": 207,
     "distinct_paper_ids": 2,
     "unique_projects": null
   }

@@ -11,7 +11,7 @@ An independent collection of tools, case studies and research for websites, game
 <a href="https://awesomerea.org/"><img src="assets/readme-banner.svg" alt="Awesome Reverse Engineering Anything — tools, cases and papers across six reverse-engineering domains" width="960"></a>
 
 <!-- BEGIN GENERATED BADGES -->
-[![resources: 473](https://img.shields.io/badge/resources-473-53309C?style=flat-square&labelColor=303447)](https://awesomerea.org/resources/) [![cases: 197](https://img.shields.io/badge/cases-197-53309C?style=flat-square&labelColor=303447)](https://awesomerea.org/cases/) [![papers: 119](https://img.shields.io/badge/papers-119-53309C?style=flat-square&labelColor=303447)](https://awesomerea.org/papers/) [![Catalog checks](https://github.com/reacher-z/Awesome-REA/actions/workflows/validate.yml/badge.svg?branch=main)](https://github.com/reacher-z/Awesome-REA/actions/workflows/validate.yml) [![license: MIT](https://img.shields.io/badge/license-MIT-606779?style=flat-square&labelColor=303447)](LICENSE) [![website: awesomerea.org](https://img.shields.io/badge/website-awesomerea.org-6235B5?style=flat-square&labelColor=303447)](https://awesomerea.org/)
+[![resources: 476](https://img.shields.io/badge/resources-476-53309C?style=flat-square&labelColor=303447)](https://awesomerea.org/resources/) [![cases: 200](https://img.shields.io/badge/cases-200-53309C?style=flat-square&labelColor=303447)](https://awesomerea.org/cases/) [![papers: 119](https://img.shields.io/badge/papers-119-53309C?style=flat-square&labelColor=303447)](https://awesomerea.org/papers/) [![Catalog checks](https://github.com/reacher-z/Awesome-REA/actions/workflows/validate.yml/badge.svg?branch=main)](https://github.com/reacher-z/Awesome-REA/actions/workflows/validate.yml) [![license: MIT](https://img.shields.io/badge/license-MIT-606779?style=flat-square&labelColor=303447)](LICENSE) [![website: awesomerea.org](https://img.shields.io/badge/website-awesomerea.org-6235B5?style=flat-square&labelColor=303447)](https://awesomerea.org/)
 <!-- END GENERATED BADGES -->
 
 **[Search & filter](https://awesomerea.org/)** · **[Browse cases](https://awesomerea.org/cases/)** · **[Research papers](https://awesomerea.org/papers/)** · **[HTML survey](https://awesomerea.org/survey/)**
@@ -23,7 +23,7 @@ An independent collection of tools, case studies and research for websites, game
 <!-- BEGIN GENERATED CONTENTS -->
 **Tools and cases by target**
 
-- [Website](#website) (27) · [Game](#game) (187) · [App](#app) (72)
+- [Website](#website) (27) · [Game](#game) (190) · [App](#app) (72)
 - [Native Binary](#native-binary) (63) · [Firmware and Hardware](#firmware) (22) · [Protocol](#protocol) (18)
 
 **Research and workflows**
@@ -32,7 +32,7 @@ An independent collection of tools, case studies and research for websites, game
 
 **More ways to browse**
 
-- [All cases](https://awesomerea.org/cases/) (197) · [Related Collections](#related-collections) (6) · [Full Repository Index](#full-repository-index) (3,310)
+- [All cases](https://awesomerea.org/cases/) (200) · [Related Collections](#related-collections) (6) · [Full Repository Index](#full-repository-index) (3,310)
 <!-- END GENERATED CONTENTS -->
 
 ## Find by task
@@ -249,6 +249,9 @@ REA labels refer to the separate [upstream CLI and MCP project](https://github.c
 - [**OpenRW: an open re-implementation of the Grand Theft Auto III engine**](https://github.com/rwengine/openrw) - Re-implements Rockstar Games’ Grand Theft Auto III (2001) as a cross-platform C++ engine that runs on the data of a legitimate PC copy. <sub>Case study · Independent reconstruction · [Full entry](https://awesomerea.org/resources/openrw-gta3-engine-case/)</sub>
 - [**CoD4 Rewrite: Rust/Bevy reconstruction**](https://github.com/Nilbong/COD4-Rewrite) - A Rust/Bevy reconstruction of Call of Duty 4 multiplayer systems, using assets from a local game installation. <sub>Case study · Independent reconstruction · Also: Binary · [Full entry](https://awesomerea.org/resources/cod4-rewrite-reconstruction-case/)</sub>
 - [**libd2: Diablo II 1.14d engine-core libraries**](https://github.com/jaenster/libd2) - Zig libraries reconstructing Diablo II 1.14d seeded maps, item generation, saves, simulation rules and network formats. <sub>Case study · Independent reconstruction · Also: Binary, Protocol · [Full entry](https://awesomerea.org/resources/libd2-engine-core-reconstruction-case/)</sub>
+- [**Underworld Exhumed: reconstructing Ultima Underworld I and II**](https://github.com/abedegno/underworld-exhumed) - Pairs reconstructed DOS sources with native ports of Ultima Underworld I and II. <sub>Case study · Independent reconstruction · Also: Binary · [Full entry](https://awesomerea.org/resources/underworld-exhumed-case/)</sub>
+- [**LineWars II: a portable SDL3 reconstruction**](https://github.com/fredangstadt-lang/LineWarsII-SDL) - Provides an SDL3 backend for a portable-C reconstruction of the 1994 DOS game. <sub>Case study · Independent reconstruction · Also: Binary · [Full entry](https://awesomerea.org/resources/linewars-ii-sdl-case/)</sub>
+- [**BFM-decomp: Brave Fencer Musashi matching decompilation**](https://github.com/Druthulu/BFM-decomp) - Documents an agent-assisted reconstruction of the USA PlayStation game with a pinned compiler and whole-binary SHA-1 gates. <sub>Case study · Independent reconstruction · Also: Binary · [Full entry](https://awesomerea.org/resources/bfm-decomp-case/)</sub>
 
 #### Tools, projects and integrations
 

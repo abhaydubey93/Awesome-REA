@@ -4131,5 +4131,29 @@
       "作者报告五个噩梦难度种子及两个保留种子的逐格对照，另以 200 个种子的三个难度进行逐关 CRC 检查。有限语料不能证明所有种子或整个引擎等价。",
       "game 和 net 包依据恢复出的规则及报文布局检查，而非原服务器运行对照；存档、物品与路径检查的证据深度不同。本次未独立复现实验。"
     ]
+  },
+  "underworld-exhumed-case": {
+    "name": "Underworld Exhumed：重建 Ultima Underworld I 与 II",
+    "requirements": [
+      "原生移植面向 macOS、Windows 与 Linux。运行及对照原版检查需要自备匹配的游戏文件（README 面向 GOG 版本）；字节匹配构建还需文档指定的 Turbo C++ 1.01 与 TASM 2.0 输入。仅编译原生移植本身不需要游戏数据。",
+      "MIT 许可涵盖项目自有工具、文档及新增注释／结构；NOTICE 明确不授予原游戏及派生游戏代码的权利。可选 MT-32 播放需要另行取得的 ROM。",
+      "录制会话与例程测试属于上游的有界证据，并非独立验证的整款游戏等价结果。完整测试需要公开仓库未提供的授权输入。本次未构建、运行或对比游戏，未确立 REA 集成。"
+    ]
+  },
+  "linewars-ii-sdl-case": {
+    "name": "LineWars II：可移植的 SDL3 重建版",
+    "requirements": [
+      "使用 C99、CMake 3.16+ 与 SDL3 构建 Windows/Linux 版本；已读构建说明指定 SDL 3.4.12，并要求与游戏使用同一编译器。这是独立 LineWarsII-DOS 重建项目的移植，并不声称拥有原版源码。",
+      "重建及移植源码采用 PolyForm Noncommercial 1.0.0。NOTICE 记录原作者 Patrick Aalto 于 2026 年 7 月 16 日允许原游戏材料以免费软件形式分发，但未授予商业使用许可；SDL 保留独立的 zlib 许可。",
+      "上游报告了渲染器和菜单比较，以及捕获的 PCM 电平与 DOS 参照相差约 10% 以内；高分辨率渲染改变了表现。本次未下载游戏二进制或素材，未运行移植版、模拟器或验证套件，未确立 REA 集成。"
+    ]
+  },
+  "bfm-decomp-case": {
+    "name": "BFM-decomp：Brave Fencer Musashi 匹配反编译",
+    "requirements": [
+      "需要自备美版 SLUS-00726 光盘转储、Linux/WSL2、Python 3.12 及文档指定的 GCC 2.7.2/MIPS 固定工具链；可选 PsyQ SDK 对象需另行提供。本次未下载光盘、SDK 或编译器包。",
+      "AGPL-3.0 适用于项目工具与文档；src/NOTICE.md 未对重建游戏代码授予许可，原作权利属于 Square／Square Enix，第三方组件保留各自许可。",
+      "218 个二进制的匹配规约属于上游声明，其验证步骤及 2026 年 9 月 7 日完整运行记录提供依据；该日志对应更早的代码树，并非本次复核的 HEAD。SDK／汇编例外及未完成的可读性工作仍有明确记录；公开无 ROM CI 仅审查和编译，不能进行原始字节比较。本次未构建或运行，未确立 REA 集成。"
+    ]
   }
 }

@@ -11254,5 +11254,92 @@
     ],
     "verified_at": "2026-10-19",
     "verification": "source-reviewed"
+  },
+  {
+    "id": "underworld-exhumed-case",
+    "name": "Underworld Exhumed: reconstructing Ultima Underworld I and II",
+    "url": "https://github.com/abedegno/underworld-exhumed",
+    "category": "reconstruction-cases",
+    "relationship": "independent-reconstruction",
+    "description_en": "Pairs reconstructed DOS sources with native ports of Ultima Underworld I and II. The upstream documents Exhume-based byte-matching builds, routine-level comparisons and recorded-session replay against DOS.",
+    "description_zh": "将 Ultima Underworld I 与 II 的 DOS 源码重建与原生移植结合。上游记录了基于 Exhume 的字节匹配构建、例程级比较及对照 DOS 的录制会话回放。",
+    "evidence_url": "https://github.com/abedegno/underworld-exhumed/blob/e5deadd6945b492636aadccc14f52caa908b4186/README.md",
+    "additional_evidence_urls": [
+      "https://github.com/abedegno/underworld-exhumed/blob/e5deadd6945b492636aadccc14f52caa908b4186/docs/PORT.md",
+      "https://github.com/abedegno/underworld-exhumed/blob/e5deadd6945b492636aadccc14f52caa908b4186/docs/BUILDING.md",
+      "https://github.com/abedegno/underworld-exhumed/blob/e5deadd6945b492636aadccc14f52caa908b4186/LICENSE",
+      "https://github.com/abedegno/underworld-exhumed/blob/e5deadd6945b492636aadccc14f52caa908b4186/NOTICE",
+      "https://github.com/abedegno/underworld-exhumed/blob/e5deadd6945b492636aadccc14f52caa908b4186/Makefile"
+    ],
+    "verified_at": "2026-10-20",
+    "verification": "source-reviewed",
+    "requirements": [
+      "Native ports target macOS, Windows and Linux. Playing and checking against the originals requires your own matching game files (the README targets GOG releases); byte-matching builds additionally require the documented Turbo C++ 1.01 and TASM 2.0 inputs. Native-port compilation itself does not require game data.",
+      "The MIT license covers the project’s own tools, documentation and added annotations/structure. NOTICE explicitly excludes rights in the original games and derived game code; optional MT-32 playback requires separately obtained ROMs.",
+      "Recorded sessions and routine tests provide bounded upstream evidence, not an independent whole-game equivalence result. Full tests require licensed inputs absent from the public repository. This review did not build, run or compare the games; no REA integration is established."
+    ],
+    "targets": [
+      "game",
+      "binary"
+    ],
+    "kind": "case-study"
+  },
+  {
+    "id": "linewars-ii-sdl-case",
+    "name": "LineWars II: a portable SDL3 reconstruction",
+    "url": "https://github.com/fredangstadt-lang/LineWarsII-SDL",
+    "category": "reconstruction-cases",
+    "relationship": "independent-reconstruction",
+    "description_en": "Provides an SDL3 backend for a portable-C reconstruction of the 1994 DOS game. Its build configuration links the reconstructed engine to video, input and audio adapters; the upstream documents differential gates against original machine code.",
+    "description_zh": "为 1994 年 DOS 游戏的可移植 C 重建提供 SDL3 后端。构建配置将重建引擎接到视频、输入与音频适配层，上游记录了对照原始机器码的差分测试关卡。",
+    "evidence_url": "https://github.com/fredangstadt-lang/LineWarsII-SDL/blob/343bb50942a61e9d7fa1c1314cd1f03f8e7b12ac/README.md",
+    "additional_evidence_urls": [
+      "https://github.com/fredangstadt-lang/LineWarsII-SDL/blob/343bb50942a61e9d7fa1c1314cd1f03f8e7b12ac/CMakeLists.txt",
+      "https://github.com/fredangstadt-lang/LineWarsII-SDL/blob/343bb50942a61e9d7fa1c1314cd1f03f8e7b12ac/platform/sdl3/hal_sdl.c",
+      "https://github.com/fredangstadt-lang/LineWarsII-SDL/blob/343bb50942a61e9d7fa1c1314cd1f03f8e7b12ac/docs/PORTING_CHECKLIST.md",
+      "https://github.com/fredangstadt-lang/LineWarsII-SDL/blob/343bb50942a61e9d7fa1c1314cd1f03f8e7b12ac/LICENSE.md",
+      "https://github.com/fredangstadt-lang/LineWarsII-SDL/blob/343bb50942a61e9d7fa1c1314cd1f03f8e7b12ac/NOTICE.md"
+    ],
+    "verified_at": "2026-10-20",
+    "verification": "source-reviewed",
+    "requirements": [
+      "Builds target Windows and Linux using C99, CMake 3.16+ and SDL3; the reviewed build notes specify SDL 3.4.12 built with the same compiler as the game. This is a port of the separate LineWarsII-DOS reconstruction, not a claim to original source ownership.",
+      "The reconstructed/ported source uses PolyForm Noncommercial 1.0.0. NOTICE reports original-author Patrick Aalto’s July 16, 2026 permission for freeware distribution of the original game material; it does not grant commercial-use permission. SDL keeps its separate zlib license.",
+      "The upstream reports renderer and menu comparisons and captured PCM levels within about 10% of its DOS reference; higher-resolution rendering changes the presentation. No game binaries or assets were downloaded, and no port, emulator or verification suite was run here; no REA integration is established."
+    ],
+    "targets": [
+      "game",
+      "binary"
+    ],
+    "kind": "case-study"
+  },
+  {
+    "id": "bfm-decomp-case",
+    "name": "BFM-decomp: Brave Fencer Musashi matching decompilation",
+    "url": "https://github.com/Druthulu/BFM-decomp",
+    "category": "reconstruction-cases",
+    "relationship": "independent-reconstruction",
+    "description_en": "Documents an agent-assisted reconstruction of the USA PlayStation game with a pinned compiler and whole-binary SHA-1 gates. The verification recipe covers the main executable, resident engine and disc-loaded code modules, with explicit library and assembly exceptions.",
+    "description_zh": "记录美版 PlayStation 游戏的智能体辅助重建，使用固定编译器及完整二进制 SHA-1 检查。验证规约覆盖主程序、常驻引擎及光盘加载代码模块，并明确列出库与汇编例外。",
+    "evidence_url": "https://github.com/Druthulu/BFM-decomp/blob/b6a28f96bac70af70573826f767a96cf212fd5e3/README.md",
+    "additional_evidence_urls": [
+      "https://github.com/Druthulu/BFM-decomp/blob/b6a28f96bac70af70573826f767a96cf212fd5e3/docs/verification.md",
+      "https://github.com/Druthulu/BFM-decomp/blob/b6a28f96bac70af70573826f767a96cf212fd5e3/Makefile",
+      "https://github.com/Druthulu/BFM-decomp/blob/b6a28f96bac70af70573826f767a96cf212fd5e3/LICENSE",
+      "https://github.com/Druthulu/BFM-decomp/blob/b6a28f96bac70af70573826f767a96cf212fd5e3/src/NOTICE.md",
+      "https://github.com/Druthulu/BFM-decomp/blob/b6a28f96bac70af70573826f767a96cf212fd5e3/THIRD_PARTY.md"
+    ],
+    "verified_at": "2026-10-20",
+    "verification": "source-reviewed",
+    "requirements": [
+      "Requires an owned USA SLUS-00726 disc dump, Linux/WSL2, Python 3.12 and the documented pinned GCC 2.7.2/MIPS toolchain. Optional PsyQ SDK objects must be supplied separately; no disc, SDK or compiler package was downloaded in this review.",
+      "AGPL-3.0 applies to the project’s tools and documentation. src/NOTICE.md asserts no license over the reconstructed game code, whose original rights belong to Square/Square Enix; third-party components retain their own licenses.",
+      "The 218-binary matching contract is an upstream claim backed by its recipe and a recorded full run dated September 7, 2026. That log is for an earlier tree, not this reviewed HEAD. SDK/assembly exceptions and unfinished readability remain documented; public no-ROM CI audits and compiles but cannot perform the original-byte comparison. Nothing was built or run here; no REA integration is established."
+    ],
+    "targets": [
+      "game",
+      "binary"
+    ],
+    "kind": "case-study"
   }
 ]

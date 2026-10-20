@@ -447,7 +447,7 @@ These are automatically discovered projects, not individually curated or tested 
 - [OSUSecLab/QtRE](https://github.com/OSUSecLab/QtRE) — A Ghidra headless analyzer tailored for Qt binary analysis **[75 stars]**
 - [radareorg/r4ghidra](https://github.com/radareorg/r4ghidra) — Ghidra plugin to communicate with radare2 **[75 stars]**
 - [zerotypic/wilhelm](https://github.com/zerotypic/wilhelm) — Alternative API for IDA / Hex-Rays **[75 stars]**
-- [Druthulu/BFM-decomp](https://github.com/Druthulu/BFM-decomp) — Matching decompilation of Brave Fencer Musashi (PS1, SLUS-00726): 218 binaries rebuild byte-identical from C **[74 stars]**
+- [Druthulu/BFM-decomp](https://github.com/Druthulu/BFM-decomp) — Matching decompilation of Brave Fencer Musashi (PS1, SLUS-00726): 218 binaries rebuild byte-identical from C **[74 stars]** · Curated: [BFM-decomp: Brave Fencer Musashi matching decompilation](https://awesomerea.org/resources/bfm-decomp-case/)
 - [drvink/epanos](https://github.com/drvink/epanos) — ElectroPaint Automatic No-source Object reaSsembler (a MIPS to C decompiler) **[74 stars]**
 - [gabimarti/crackmes-solutions](https://github.com/gabimarti/crackmes-solutions) — Solutions to some crackmes that I have done. **[73 stars]**
 - [intezer/analyze-community-ghidra-plugin](https://github.com/intezer/analyze-community-ghidra-plugin) — Ghidra plugin for https<span>:</span>//analyze.intezer.com **[73 stars]**

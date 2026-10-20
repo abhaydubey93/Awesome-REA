@@ -11,7 +11,7 @@
 <a href="https://awesomerea.org/zh/"><img src="assets/readme-banner.svg" alt="Awesome Reverse Engineering Anything — 覆盖六类逆向目标的工具、案例与论文" width="960"></a>
 
 <!-- BEGIN GENERATED BADGES -->
-[![精选资源: 473](https://img.shields.io/badge/%E7%B2%BE%E9%80%89%E8%B5%84%E6%BA%90-473-53309C?style=flat-square&labelColor=303447)](https://awesomerea.org/zh/resources/) [![案例: 197](https://img.shields.io/badge/%E6%A1%88%E4%BE%8B-197-53309C?style=flat-square&labelColor=303447)](https://awesomerea.org/zh/cases/) [![论文: 119](https://img.shields.io/badge/%E8%AE%BA%E6%96%87-119-53309C?style=flat-square&labelColor=303447)](https://awesomerea.org/zh/papers/) [![目录检查](https://github.com/reacher-z/Awesome-REA/actions/workflows/validate.yml/badge.svg?branch=main)](https://github.com/reacher-z/Awesome-REA/actions/workflows/validate.yml) [![许可: MIT](https://img.shields.io/badge/%E8%AE%B8%E5%8F%AF-MIT-606779?style=flat-square&labelColor=303447)](LICENSE) [![网站: awesomerea.org](https://img.shields.io/badge/%E7%BD%91%E7%AB%99-awesomerea.org-6235B5?style=flat-square&labelColor=303447)](https://awesomerea.org/zh/)
+[![精选资源: 476](https://img.shields.io/badge/%E7%B2%BE%E9%80%89%E8%B5%84%E6%BA%90-476-53309C?style=flat-square&labelColor=303447)](https://awesomerea.org/zh/resources/) [![案例: 200](https://img.shields.io/badge/%E6%A1%88%E4%BE%8B-200-53309C?style=flat-square&labelColor=303447)](https://awesomerea.org/zh/cases/) [![论文: 119](https://img.shields.io/badge/%E8%AE%BA%E6%96%87-119-53309C?style=flat-square&labelColor=303447)](https://awesomerea.org/zh/papers/) [![目录检查](https://github.com/reacher-z/Awesome-REA/actions/workflows/validate.yml/badge.svg?branch=main)](https://github.com/reacher-z/Awesome-REA/actions/workflows/validate.yml) [![许可: MIT](https://img.shields.io/badge/%E8%AE%B8%E5%8F%AF-MIT-606779?style=flat-square&labelColor=303447)](LICENSE) [![网站: awesomerea.org](https://img.shields.io/badge/%E7%BD%91%E7%AB%99-awesomerea.org-6235B5?style=flat-square&labelColor=303447)](https://awesomerea.org/zh/)
 <!-- END GENERATED BADGES -->
 
 **[搜索与筛选](https://awesomerea.org/zh/)** · **[浏览案例](https://awesomerea.org/zh/cases/)** · **[研究论文](https://awesomerea.org/zh/papers/)** · **[HTML 综述](https://awesomerea.org/zh/survey/)**
@@ -23,7 +23,7 @@
 <!-- BEGIN GENERATED CONTENTS -->
 **按目标找工具与案例**
 
-- [网站](#website) (27) · [游戏](#game) (187) · [应用](#app) (72)
+- [网站](#website) (27) · [游戏](#game) (190) · [应用](#app) (72)
 - [原生二进制](#native-binary) (63) · [固件与硬件](#firmware) (22) · [协议](#protocol) (18)
 
 **论文与工作流**
@@ -32,7 +32,7 @@
 
 **更多浏览方式**
 
-- [全部案例](https://awesomerea.org/zh/cases/) (197) · [相关合集](#related-collections) (6) · [完整仓库索引](#完整仓库索引) (3,310)
+- [全部案例](https://awesomerea.org/zh/cases/) (200) · [相关合集](#related-collections) (6) · [完整仓库索引](#完整仓库索引) (3,310)
 <!-- END GENERATED CONTENTS -->
 
 ## 按任务查找
@@ -250,6 +250,9 @@ REA 标签指向单独维护的[上游 CLI 与 MCP 项目](https://github.com/mo
 - [**OpenRW：《侠盗猎车手 III》引擎的开源重新实现**](https://github.com/rwengine/openrw) - 以跨平台 C++ 引擎重新实现 Rockstar Games 的《侠盗猎车手 III》（2001），在正版 PC 游戏的数据上运行。 <sub>案例 · 独立重建 · [完整条目](https://awesomerea.org/zh/resources/openrw-gta3-engine-case/)</sub>
 - [**CoD4 Rewrite：Rust/Bevy 游戏重建**](https://github.com/Nilbong/COD4-Rewrite) - 以 Rust/Bevy 重建《使命召唤4》的多人游戏系统，使用本地游戏安装中的素材。 <sub>案例 · 独立重建 · 也适用：二进制 · [完整条目](https://awesomerea.org/zh/resources/cod4-rewrite-reconstruction-case/)</sub>
 - [**libd2：《暗黑破坏神II》1.14d 引擎组件库**](https://github.com/jaenster/libd2) - 以 Zig 库重建《暗黑破坏神II》1.14d 的种子地图、物品生成、存档、模拟规则和网络格式。 <sub>案例 · 独立重建 · 也适用：二进制、协议 · [完整条目](https://awesomerea.org/zh/resources/libd2-engine-core-reconstruction-case/)</sub>
+- [**Underworld Exhumed：重建 Ultima Underworld I 与 II**](https://github.com/abedegno/underworld-exhumed) - 将 Ultima Underworld I 与 II 的 DOS 源码重建与原生移植结合。 <sub>案例 · 独立重建 · 也适用：二进制 · [完整条目](https://awesomerea.org/zh/resources/underworld-exhumed-case/)</sub>
+- [**LineWars II：可移植的 SDL3 重建版**](https://github.com/fredangstadt-lang/LineWarsII-SDL) - 为 1994 年 DOS 游戏的可移植 C 重建提供 SDL3 后端。 <sub>案例 · 独立重建 · 也适用：二进制 · [完整条目](https://awesomerea.org/zh/resources/linewars-ii-sdl-case/)</sub>
+- [**BFM-decomp：Brave Fencer Musashi 匹配反编译**](https://github.com/Druthulu/BFM-decomp) - 记录美版 PlayStation 游戏的智能体辅助重建，使用固定编译器及完整二进制 SHA-1 检查。 <sub>案例 · 独立重建 · 也适用：二进制 · [完整条目](https://awesomerea.org/zh/resources/bfm-decomp-case/)</sub>
 
 #### 工具、项目与集成
 

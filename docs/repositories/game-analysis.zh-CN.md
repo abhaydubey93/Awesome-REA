@@ -134,7 +134,7 @@
 - [invinceble55-wq/Estacado-The-Darkness-Recomp](https://github.com/invinceble55-wq/Estacado-The-Darkness-Recomp) — Estacado：The Darkness（Xbox 360）的原生 PC 重编译项目。非官方粉丝移植，需自备游戏副本。 **[65 星标]**
 - [OpenPhantom/OpenPhantom](https://github.com/OpenPhantom/OpenPhantom) — 将 Star Wars Episode I: The Phantom Menace（1999）PC 版现代化，提供最多 4 人在线合作。可在 Windows 10／11、Steam Deck 和 Proton 上游玩，具备现代安装程序、宽屏及超宽屏支持、不限帧率、视野（FOV）修正、改进的控制、恢复的音乐与视频、引擎重新实现及模组工具。 **[65 星标]**
 - [Yokimitsuro/khdays-port](https://github.com/Yokimitsuro/khdays-port) — 《Kingdom Hearts 358/2 Days》的实验性原生 PC 运行时，与对应的 Nintendo DS 反编译项目同步开发。不包含受版权保护的游戏数据。 **[65 星标]** · 精选：[Kingdom Hearts 358/2 Days：基于一致性反编译的原生 PC 移植](https://awesomerea.org/zh/resources/khdays-native-pc-port-case/)
-- [abedegno/underworld-exhumed](https://github.com/abedegno/underworld-exhumed) — Underworld Exhumed：将 Ultima Underworld I 和 II 重建为逐字节匹配的源代码，以及 macOS、Windows 和 Linux 原生移植版。 **[63 星标]**
+- [abedegno/underworld-exhumed](https://github.com/abedegno/underworld-exhumed) — Underworld Exhumed：将 Ultima Underworld I 和 II 重建为逐字节匹配的源代码，以及 macOS、Windows 和 Linux 原生移植版。 **[63 星标]** · 精选：[Underworld Exhumed：重建 Ultima Underworld I 与 II](https://awesomerea.org/zh/resources/underworld-exhumed-case/)
 - [jozsefsallai/il2cpp-stringliteral-patcher](https://github.com/jozsefsallai/il2cpp-stringliteral-patcher) — 从 Unity 的 global-metadata.dat 文件提取并修改字符串字面量。 **[62 星标]**
 - [novapowers0/BloodyRoar2Recomp](https://github.com/novapowers0/BloodyRoar2Recomp) — PSX 游戏《Bloody Roar II》的重编译项目（欧版 SLES-01722／美版 SCUS-94424）。Anti-copyright：需自行提供光盘。支持双地区版本构建、从零实现的宽屏和精选模组。 **[62 星标]**
 - [LostMyCode/redstone-js](https://github.com/LostMyCode/redstone-js) — RedStoneJS：将免费网络游戏《RED STONE ONLINE》移植到网页，让你在浏览器中游玩。 **[60 星标]**
@@ -296,7 +296,7 @@
 - [andrebrumdev/ben10-omniverse-recomp](https://github.com/andrebrumdev/ben10-omniverse-recomp) — Ben 10 Omniverse（PS3，BLUS31017）的原生 macOS 移植版，通过静态重编译实现。不包含游戏代码或资源。 **[5 星标]**
 - [creepyloser/Nostalgia-Dumper](https://github.com/creepyloser/Nostalgia-Dumper) — Nostalgia Dumper：高性能多线程偏移量发现工具，支持 Unreal、Unity IL2CPP、Unity Mono、Source、Source 2、Godot、CryEngine、GameMaker 和 UNIGINE。 **[5 星标]**
 - [Cycl0o0/liboot](https://github.com/Cycl0o0/liboot) — 不依赖特定引擎的 Ocarina of Time Link 玩法 SDK，提取自 zeldaret/oot 反编译项目（受 libsm64 启发）。不包含 ROM 或游戏资源。 **[5 星标]**
-- [fredangstadt-lang/LineWarsII-SDL](https://github.com/fredangstadt-lang/LineWarsII-SDL) — LineWars II（1994）的 SDL3 移植版，基于经过模拟器验证的 C 代码重建。在 640x480 下逐像素精确，并支持更高分辨率、调整窗口大小和全屏。支持 Windows 和 Linux。经原作者许可作为免费软件提供。 **[5 星标]**
+- [fredangstadt-lang/LineWarsII-SDL](https://github.com/fredangstadt-lang/LineWarsII-SDL) — LineWars II（1994）的 SDL3 移植版，基于经过模拟器验证的 C 代码重建。在 640x480 下逐像素精确，并支持更高分辨率、调整窗口大小和全屏。支持 Windows 和 Linux。经原作者许可作为免费软件提供。 **[5 星标]** · 精选：[LineWars II：可移植的 SDL3 重建版](https://awesomerea.org/zh/resources/linewars-ii-sdl-case/)
 - [HoodieYlya13/codemafia](https://github.com/HoodieYlya13/codemafia) — 通过逆向工程让 Code Mafia 重获新生的现代实现，基于 Next.js 16、React 19、Tailwind v4、WebSockets（PartyKit）及浏览器内 Python（Pyodide）。 **[5 星标]**
 - [Junior-Jones/Bubble-Bobble-NES-Static-Recomp](https://github.com/Junior-Jones/Bubble-Bobble-NES-Static-Recomp) — 将 Bubble Bobble（NES）静态重编译到 Windows 10 和 11。不包含 ROM。 **[5 星标]**
 - [Junior-Jones/Jungle-Strike-SNES-Static-Recomp](https://github.com/Junior-Jones/Jungle-Strike-SNES-Static-Recomp) — 将 Jungle Strike（SNES）静态重编译到 Windows 10 和 11。不包含 ROM。 **[5 星标]**
