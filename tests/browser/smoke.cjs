@@ -335,23 +335,29 @@ async function staticPage(page, route, viewport) {
     try { await run(); console.log(`ok   ${label}`); } catch (error) { failures.push(label); console.error(`FAIL ${label}\n     ${error.message}`); }
   };
   try {
-    for (const viewport of VIEWPORTS) {
+    // Viewports are independent. Separate contexts isolate cookies, storage and
+    // clipboard mocks; each viewport keeps its complete sequential interaction suite.
+    const runs = await Promise.allSettled(VIEWPORTS.map(async viewport => {
+      const context = await browser.createBrowserContext();
+      try {
       for (const language of ['en', 'zh']) {
-        await check(`${language} homepage at ${viewport.width}px`, () => visit(browser, origin, language === 'zh' ? '/zh/' : '/', viewport,
+        await check(`${language} homepage at ${viewport.width}px`, () => visit(context, origin, language === 'zh' ? '/zh/' : '/', viewport,
           `${language} homepage ${viewport.name} switched to ${language === 'zh' ? 'en' : 'zh'}`, (page, requested) => homepage(page, language, viewport, data, requested)));
       }
       for (const language of ['en', 'zh']) {
-        await check(`${language} homepage without JavaScript at ${viewport.width}px`, () => visit(browser, origin, language === 'zh' ? '/zh/' : '/', viewport,
+        await check(`${language} homepage without JavaScript at ${viewport.width}px`, () => visit(context, origin, language === 'zh' ? '/zh/' : '/', viewport,
           `${language} homepage ${viewport.name} without JavaScript`, page => withoutScript(page, language, viewport), {javascript: false}));
       }
       for (const route of ['/papers/', '/zh/papers/']) {
-        await check(`${route} without JavaScript at ${viewport.width}px`, () => visit(browser, origin, route, viewport,
+        await check(`${route} without JavaScript at ${viewport.width}px`, () => visit(context, origin, route, viewport,
           `${route} ${viewport.name} without JavaScript`, page => paperDirectory(page, route, viewport, false), {javascript: false}));
       }
       for (const route of routes) {
-        await check(`${route} at ${viewport.width}px`, () => visit(browser, origin, route, viewport, `${route} ${viewport.name}`, page => staticPage(page, route, viewport)));
+        await check(`${route} at ${viewport.width}px`, () => visit(context, origin, route, viewport, `${route} ${viewport.name}`, page => staticPage(page, route, viewport)));
       }
-    }
+      } finally { await context.close(); }
+    }));
+    for (const result of runs) if (result.status === 'rejected') throw result.reason;
   } finally {
     await browser.close(); site.close();
   }
