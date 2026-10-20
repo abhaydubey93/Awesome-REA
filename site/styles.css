@@ -386,7 +386,7 @@ html[lang="zh-CN"] .card-description,html[lang="zh-CN"] .source-card-description
 /* Compact entries follow one reading path: title, summary, then links and evidence. */
 .layout-control{display:flex;align-items:center;gap:8px;margin-left:auto;padding-bottom:12px;font-size:14px;color:var(--muted)}
 .layout-control select{min-height:44px;padding:7px 30px 7px 10px;border:1px solid var(--control);border-radius:7px;background:var(--surface);font-size:14px}
-.source-compact-context{display:none}
+.source-record-context{margin-top:14px}
 html[data-layout="compact"] .collection-home .resource-grid,html[data-layout="compact"] .collection-home .source-results{grid-template-columns:minmax(0,1fr);gap:0;border-top:1px solid var(--line)}
 html[data-layout="compact"] .collection-home .resource-card,html[data-layout="compact"] .collection-home .source-card{display:grid;grid-template-columns:fit-content(70%) minmax(0,1fr);grid-template-areas:"heading heading" "description description" "meta details";gap:8px 24px;padding:20px 8px;border:0;border-bottom:1px solid var(--line);border-radius:0;box-shadow:none;align-items:start}
 html[data-layout="compact"] .collection-home .resource-card:hover,html[data-layout="compact"] .collection-home .source-card:hover{background:#fcfcfe;box-shadow:none}
@@ -401,9 +401,7 @@ html[data-layout="compact"] .collection-home .requirements summary,html[data-lay
 html[data-layout="compact"] .collection-home .requirements[open],html[data-layout="compact"] .collection-home .source-record-details[open]{grid-area:auto;grid-column:1/-1;border:1px solid var(--line);border-radius:8px;background:var(--soft);padding:12px 18px;margin-top:8px}
 html[data-layout="compact"] .collection-home .requirements[open] ul{color:var(--body)}
 html[data-layout="compact"] .collection-home .source-record-details[open] dl{max-width:76ch;color:var(--body)}
-html[data-layout="compact"] .collection-home .source-card>.source-related,html[data-layout="compact"] .collection-home .source-card>.source-topics{display:none}
-html[data-layout="compact"] .source-compact-context{display:block;margin-top:14px}
-.source-compact-topics{font-size:14px;line-height:1.7;overflow-wrap:anywhere;margin:0 0 14px}
+.source-context-label{font-size:14px;line-height:1.7;overflow-wrap:anywhere;margin:0 0 14px}
 @media(max-width:1050px){
   html[data-layout="compact"] .collection-home .resource-card,html[data-layout="compact"] .collection-home .source-card{grid-template-columns:fit-content(65%) minmax(0,1fr);column-gap:20px}
 }
@@ -494,3 +492,10 @@ body.data-dialog-open{overflow:hidden}
 
 /* Reviewed resource rows: keep provenance with the requirements it supports. */
 .resource-detail-meta .resource-evidence-link{color:var(--link);text-decoration:underline;text-underline-offset:3px;min-height:44px;display:inline-flex;align-items:center}
+
+/* Repository context is shared by both layouts; complete capture fingerprints are a separate disclosure. */
+.source-topic-match{margin:-6px 0 14px;color:var(--muted);font-size:14px;line-height:1.6}
+.source-scan-evidence{margin-top:16px;padding-top:5px;border-top:1px solid var(--line)}
+.source-scan-evidence>summary{font-weight:500;color:var(--link)}
+.source-scan-evidence code{font:12px/1.8 var(--mono);overflow-wrap:anywhere}
+.source-record-details .source-context-label{margin-bottom:8px;font-weight:600}

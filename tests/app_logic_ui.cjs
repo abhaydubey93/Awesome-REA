@@ -27,7 +27,11 @@ class Element {
   scrollIntoView() {}
   // Cards only look up their own details element.
   querySelector(selector) {
-    const match = {'details': node => node.tag === 'details', 'details[open]': node => node.tag === 'details' && node.open}[selector];
+    const match = {'details': node => node.tag === 'details', 'details[open]': node => node.tag === 'details' && node.open,
+      '.source-record-details': node => hasClass(node, 'source-record-details'),
+      '.source-record-details[open]': node => hasClass(node, 'source-record-details') && node.open,
+      '.source-scan-evidence': node => hasClass(node, 'source-scan-evidence'),
+      '.source-scan-evidence[open]': node => hasClass(node, 'source-scan-evidence') && node.open}[selector];
     assert(match, 'Unexpected card selector ' + selector);
     return descendants(this).find(match) || null;
   }
@@ -167,6 +171,9 @@ const urlParam = (app, key) => new URL(app.location.href).searchParams.get(key);
     assert.equal(retried.element('source-error').hidden, true);
     assert.deepEqual(shownNames(retried), ['valid/one', 'valid/two']);
     assert.equal(retried.element('source-status').textContent, '2 repositories');
+    retried.api.state.lang = 'zh'; retried.api.applyLanguage();
+    assert.equal(retried.element('source-status').textContent, '2 个仓库');
+    retried.api.state.lang = 'en'; retried.api.applyLanguage();
     assert.match(retried.element('source-snapshot').textContent, /Scanned 3 repositories; 1 outside this collection’s scope or no longer available upstream are omitted/);
   }
 
@@ -204,7 +211,8 @@ const urlParam = (app, key) => new URL(app.location.href).searchParams.get(key);
       assert.deepEqual(groups.children.map(group => byClass(group, 'source-related-label')[0].textContent), lang === 'zh' ? ['相关研究', '精选资料'] : ['Related research', 'Curated details']);
       assert.deepEqual(byClass(card, 'source-related-link').slice(0, 4).map(link => [link.textContent, link.href]),
         accepted.map(entry => [entry[`title_${lang}`], entry[`href_${lang}`]]));
-      assert.equal(byClass(card, 'source-related-link').length, 8, 'Visible card and compact details both list the four entries');
+      assert.equal(byClass(card, 'source-related-link').length, 4, 'Each complete related-entry link appears once, in native details for both layouts');
+      assert.equal(byClass(card.querySelector('.source-record-details'), 'source-related-link').length, 4);
       related.api.sourceState.q = lang === 'zh' ? '论文' : 'paper';
       assert.deepEqual(names(related.api.sourceFiltered()), ['related/repo']);
     }
@@ -232,6 +240,34 @@ const urlParam = (app, key) => new URL(app.location.href).searchParams.get(key);
     assert.deepEqual(context.slice(0, 3).map(node => node.textContent), lang === 'zh' ? ['REA · 官方案例', '来源已复核', '复核于 2026-01-02'] : ['REA · CASE STUDY', 'Source-reviewed', 'Reviewed 2026-01-02']);
     assert.equal(context[2].dateTime, '2026-01-02T03:04:05Z');
     assert.equal(app.element('results-status').textContent, lang === 'zh' ? '1 项资源' : '1 resource');
+  }
+
+  // Full topics and capture evidence survive both layouts and independent disclosure states.
+  for (const layout of ['compact', 'cards']) {
+    const original = repository('re/evidence', {topics: ['one','two','three','four','five','six'], stars: 1234,
+      readme_sha256: 'a'.repeat(64), readme_git_sha: 'b'.repeat(40), readme_bytes: 54321,
+      pushed_at: '2026-01-01T01:02:03Z', observed_at: '2026-01-02T01:02:03Z', metadata_observed_at: '2026-01-03T01:02:03Z'});
+    const app = await loaded(`?view=source-index&layout=${layout}`, {catalog: curated, browser: browserOf([original])});
+    let card = app.element('source-results').children[0];
+    assert.equal(byClass(card, 'source-topic-chip').length, original.topics.length);
+    const details = card.querySelector('.source-record-details');
+    assert.equal(byClass(details, 'source-topic-chip').length, original.topics.length);
+    const allText = descendants(card).map(node => node.textContent);
+    for (const value of [original.readme_sha256, original.readme_git_sha, '2026-01-01 01:02:03 UTC', '2026-01-02 01:02:03 UTC', '2026-01-03 01:02:03 UTC']) assert(allText.includes(value));
+    assert(!allText.includes('Check the upstream README for prerequisites; these have not been manually reviewed.'), 'Shared prerequisites advice is outside individual cards');
+    details.open = true; card.querySelector('.source-scan-evidence').open = true;
+    app.api.state.lang = 'zh'; app.api.applyLanguage();
+    card = app.element('source-results').children[0];
+    assert.equal(card.querySelector('.source-record-details').open, true);
+    assert.equal(card.querySelector('.source-scan-evidence').open, true);
+    assert.equal(byClass(card, 'source-topic-chip').length, original.topics.length);
+    card.querySelector('.source-record-details').open = false;
+    app.api.state.lang = 'en'; app.api.applyLanguage();
+    card = app.element('source-results').children[0];
+    assert.equal(card.querySelector('.source-record-details').open, false, 'A closed outer disclosure must not reopen just because its child is open');
+    assert.equal(card.querySelector('.source-scan-evidence').open, true);
+    app.element('source-clear').handlers.click();
+    assert.equal(app.element('source-topic-match').hidden, true);
   }
 
   // Repository sorts on a fixture with ties: stars, pushed and name break ties by name; relevance without a
@@ -293,6 +329,8 @@ const urlParam = (app, key) => new URL(app.location.href).searchParams.get(key);
       assert.equal(app.api.sourceState.visible, 24);
       assert.equal(urlParam(app, 'topic'), 'reverse-engineering');
       assert.deepEqual(shownNames(app), ['re/general', 're/ghidra']);
+      assert.equal(app.element('source-topic-match').hidden, false);
+      assert.equal(app.element('source-topic-match').textContent, lang === 'zh' ? '按完整主题精确匹配。' : 'Matches this topic exactly.');
     }
     // A known ID matches exactly; other text matches topic IDs and labels by substring.
     input.emit('input', 'ghidra');
@@ -301,6 +339,7 @@ const urlParam = (app, key) => new URL(app.location.href).searchParams.get(key);
     input.emit('input', 'ghidra-');
     assert.equal(app.api.sourceState.topic, 'ghidra-');
     assert.deepEqual(shownNames(app), ['re/general', 're/plugin']);
+    assert.equal(app.element('source-topic-match').textContent, lang === 'zh' ? '匹配包含这些文字的主题。' : 'Matches topics containing this text.');
     input.emit('input', lang === 'zh' ? '逆向' : 'engineering');
     assert.deepEqual(shownNames(app), ['re/general', 're/ghidra']);
     // A restored topic is shown with its localized label; unlabeled topics keep their ID.
