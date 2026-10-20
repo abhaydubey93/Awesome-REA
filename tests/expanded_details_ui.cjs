@@ -17,8 +17,12 @@ class Element {
   get options() { return this.children; }
   // Only the descendant selectors used for expanded details are needed here.
   querySelector(selector) {
-    if (this.broken && selector === 'details') throw new Error('Detail lookup failed');
-    const wanted = {'details': node => node.tag === 'details', 'details[open]': node => node.tag === 'details' && node.open}[selector];
+    if (this.broken && ['details', '.source-record-details', '.source-scan-evidence'].includes(selector)) throw new Error('Detail lookup failed');
+    const wanted = {'details': node => node.tag === 'details', 'details[open]': node => node.tag === 'details' && node.open,
+      '.source-record-details': node => node.className === 'source-record-details',
+      '.source-record-details[open]': node => node.className === 'source-record-details' && node.open,
+      '.source-scan-evidence': node => node.className === 'source-scan-evidence',
+      '.source-scan-evidence[open]': node => node.className === 'source-scan-evidence' && node.open}[selector];
     assert(wanted, 'Unexpected card selector ' + selector);
     const visit = node => { for (const child of node.children) { if (wanted(child)) return child; const found = visit(child); if (found) return found; } return null; };
     return visit(this);
@@ -86,6 +90,7 @@ const byId = (app, container, id) => shown(app, container).find(card => card.dat
   assert.equal(app.api.sourceState.error, false);
   assert.equal(shown(app, '#source-results').length, 24);
   details(byId(app, '#source-results', 'fixture-25')).open = true;
+  byId(app, '#source-results', 'fixture-25').querySelector('.source-scan-evidence').open = true;
   const sourceSearch = app.element('#source-search'); sourceSearch.value = '2'; sourceSearch.emit('input');
   assert.equal(shown(app, '#source-results').length, 12);
   assert.equal(details(byId(app, '#source-results', 'fixture-25')).open, true, 'Filtering keeps repository details open');
@@ -95,6 +100,7 @@ const byId = (app, container, id) => shown(app, container).find(card => card.dat
   app.element('#source-more').emit('click');
   assert.equal(shown(app, '#source-results').length, 30);
   assert.equal(details(byId(app, '#source-results', 'fixture-25')).open, true, 'Show More keeps repository details open');
+  assert.equal(byId(app, '#source-results', 'fixture-25').querySelector('.source-scan-evidence').open, true, 'Nested evidence survives filtering, language and Show More');
   assert.equal(shown(app, '#source-results').filter(card => details(card).open).length, 1);
 
   // Restoring fails after open details were found; reloading must still render instead of reporting a load error.
