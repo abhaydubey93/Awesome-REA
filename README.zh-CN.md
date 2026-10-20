@@ -11,7 +11,7 @@
 <a href="https://awesomerea.org/zh/"><img src="assets/readme-banner.svg" alt="Awesome Reverse Engineering Anything — 覆盖六类逆向目标的工具、案例与论文" width="960"></a>
 
 <!-- BEGIN GENERATED BADGES -->
-[![精选资源: 467](https://img.shields.io/badge/%E7%B2%BE%E9%80%89%E8%B5%84%E6%BA%90-467-53309C?style=flat-square&labelColor=303447)](https://awesomerea.org/zh/resources/) [![案例: 193](https://img.shields.io/badge/%E6%A1%88%E4%BE%8B-193-53309C?style=flat-square&labelColor=303447)](https://awesomerea.org/zh/cases/) [![论文: 87](https://img.shields.io/badge/%E8%AE%BA%E6%96%87-87-53309C?style=flat-square&labelColor=303447)](https://awesomerea.org/zh/papers/) [![目录检查](https://github.com/reacher-z/Awesome-REA/actions/workflows/validate.yml/badge.svg?branch=main)](https://github.com/reacher-z/Awesome-REA/actions/workflows/validate.yml) [![许可: MIT](https://img.shields.io/badge/%E8%AE%B8%E5%8F%AF-MIT-606779?style=flat-square&labelColor=303447)](LICENSE) [![网站: awesomerea.org](https://img.shields.io/badge/%E7%BD%91%E7%AB%99-awesomerea.org-6235B5?style=flat-square&labelColor=303447)](https://awesomerea.org/zh/)
+[![精选资源: 467](https://img.shields.io/badge/%E7%B2%BE%E9%80%89%E8%B5%84%E6%BA%90-467-53309C?style=flat-square&labelColor=303447)](https://awesomerea.org/zh/resources/) [![案例: 193](https://img.shields.io/badge/%E6%A1%88%E4%BE%8B-193-53309C?style=flat-square&labelColor=303447)](https://awesomerea.org/zh/cases/) [![论文: 88](https://img.shields.io/badge/%E8%AE%BA%E6%96%87-88-53309C?style=flat-square&labelColor=303447)](https://awesomerea.org/zh/papers/) [![目录检查](https://github.com/reacher-z/Awesome-REA/actions/workflows/validate.yml/badge.svg?branch=main)](https://github.com/reacher-z/Awesome-REA/actions/workflows/validate.yml) [![许可: MIT](https://img.shields.io/badge/%E8%AE%B8%E5%8F%AF-MIT-606779?style=flat-square&labelColor=303447)](LICENSE) [![网站: awesomerea.org](https://img.shields.io/badge/%E7%BD%91%E7%AB%99-awesomerea.org-6235B5?style=flat-square&labelColor=303447)](https://awesomerea.org/zh/)
 <!-- END GENERATED BADGES -->
 
 **[搜索与筛选](https://awesomerea.org/zh/)** · **[浏览案例](https://awesomerea.org/zh/cases/)** · **[研究论文](https://awesomerea.org/zh/papers/)** · **[HTML 综述](https://awesomerea.org/zh/survey/)**
@@ -28,7 +28,7 @@
 
 **论文与工作流**
 
-- [论文](#papers) (87) · [智能体与 MCP](#agents-and-mcp) (42) · [文档与学习资源](#references-and-learning) (31)
+- [论文](#papers) (88) · [智能体与 MCP](#agents-and-mcp) (42) · [文档与学习资源](#references-and-learning) (31)
 
 **更多浏览方式**
 
@@ -2918,13 +2918,13 @@ REA 标签指向单独维护的[上游 CLI 与 MCP 项目](https://github.com/mo
 <a id="papers"></a>
 ## 论文
 
-**87 篇论文**，按主题分组，组内按年份从新到旧排列。每项均标明发表场所与状态，中文标题为译名。
+**88 篇论文**，按主题分组，组内按年份从新到旧排列。每项均标明发表场所与状态，中文标题为译名。
 
 [浏览论文目录](https://awesomerea.org/zh/papers/) · [完整书目 JSON](data/papers.json) · [推荐论文](https://github.com/reacher-z/Awesome-REA/issues/new?template=paper.yml)
 
 **按主题**
 
-- [智能体评测](#papers-agent-evaluation) (9) · [反编译](#papers-decompilation) (34) · [网站](#papers-website-reconstruction) (15)
+- [智能体评测](#papers-agent-evaluation) (9) · [反编译](#papers-decompilation) (35) · [网站](#papers-website-reconstruction) (15)
 - [游戏](#papers-game-reconstruction) (6) · [应用](#papers-app-reconstruction) (7) · [固件](#papers-firmware-analysis) (6)
 - [协议](#papers-protocol-analysis) (10)
 
@@ -3074,6 +3074,21 @@ REA 标签指向单独维护的[上游 CLI 与 MCP 项目](https://github.com/mo
 ### 反编译与符号恢复
 
 [↑ 论文主题](#papers) · [目录](#目录)
+
+- [**CodeInverter 套件：利用高效大语言模型进行结构与数据感知的二进制反编译**](https://dl.acm.org/doi/10.1145/3832783.3837554)
+
+  CodeInverter 研究函数级 LLM 反编译，使用 IDA／objdump 提取的控制流图和内存到数据映射补充输入。论文提出提示工作流、训练语料与模型系列，并以编译、基准输入输出测试和编辑相似性评估结果。
+
+  ASE 2026 · 会议论文 · [PDF](https://arxiv.org/pdf/2503.07215v3) · [代码](https://github.com/LiuPeiP-CS/CodeInverter) · [完整条目与引用](https://awesomerea.org/zh/papers/paper-codeinverter-suite/)
+
+  <details>
+  <summary>范围与发表信息</summary>
+
+  **范围与限制:** 评估针对 32／64 位 GCC 设置下的单个 C 函数。完整程序恢复、激进优化和受保护二进制仍有局限；基准测试通过不代表一般等价。正文写有 1 个 epoch（15 步），固定版本启动示例设置 1 个 epoch 及 100 个预热步，尚无法据此核实精确训练日程。本合集未运行上游代码、模型或实验。
+
+  **作者:** Peipei Liu 等
+
+  </details>
 
 - [**解耦的必要性：面向优化与混淆、无需识别具体变换的反编译代码恢复**](https://arxiv.org/abs/2608.27889)
 

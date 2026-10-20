@@ -4905,5 +4905,74 @@
     "verified_at": "2026-10-19",
     "verification": "source-reviewed",
     "runtime_tested": false
+  },
+  {
+    "id": "paper-codeinverter-suite",
+    "title": "The CodeInverter Suite: Structure- and Data-Aware Binary Decompilation with Efficient LLMs",
+    "title_zh": "CodeInverter 套件：利用高效大语言模型进行结构与数据感知的二进制反编译",
+    "authors": [
+      "Peipei Liu",
+      "Jian Sun",
+      "Rongkang Sun",
+      "Li Chen",
+      "Zhaoteng Yan",
+      "Xiaoling Zhang",
+      "Dawei Wang",
+      "Dapeng Sun",
+      "Peizheng Zhang",
+      "Dan Li"
+    ],
+    "year": 2026,
+    "publication_date": "2026-10-07",
+    "date_precision": "day",
+    "date_basis": "Online and print publication date in ACM’s Crossref deposit; arXiv first submission is recorded separately.",
+    "date_basis_zh": "采用 ACM 向 Crossref 提交的在线及印刷出版日期，另行保留 arXiv 首次提交日期。",
+    "venue": "ASE 2026",
+    "publication_status": "conference-paper",
+    "arxiv_id": "2503.07215",
+    "arxiv_version_reviewed": "v3",
+    "first_arxiv_date": "2025-03-10",
+    "doi": "10.1145/3832783.3837554",
+    "url": "https://dl.acm.org/doi/10.1145/3832783.3837554",
+    "pdf_url": "https://arxiv.org/pdf/2503.07215v3",
+    "code_url": "https://github.com/LiuPeiP-CS/CodeInverter",
+    "project_url": "https://huggingface.co/CodeInverter",
+    "targets": [
+      "binary"
+    ],
+    "description_en": "CodeInverter studies function-level LLM decompilation using control-flow graphs and memory-to-data mappings extracted with IDA/objdump. It presents a prompt workflow, training corpus and model family, evaluated through compilation, benchmark input/output tests and edit similarity.",
+    "description_zh": "CodeInverter 研究函数级 LLM 反编译，使用 IDA／objdump 提取的控制流图和内存到数据映射补充输入。论文提出提示工作流、训练语料与模型系列，并以编译、基准输入输出测试和编辑相似性评估结果。",
+    "scope_limitations_en": "Evaluation covers individual C functions under 32/64-bit GCC settings. Whole-program recovery, aggressive optimization and protected binaries remain limitations; passing benchmark tests does not establish general equivalence. The text reports one epoch (15 steps), while the pinned launch example sets one epoch and 100 warmup steps; the exact training schedule remains unresolved. No upstream code, models or experiments were run for this collection.",
+    "scope_limitations_zh": "评估针对 32／64 位 GCC 设置下的单个 C 函数。完整程序恢复、激进优化和受保护二进制仍有局限；基准测试通过不代表一般等价。正文写有 1 个 epoch（15 步），固定版本启动示例设置 1 个 epoch 及 100 个预热步，尚无法据此核实精确训练日程。本合集未运行上游代码、模型或实验。",
+    "why_fits_en": "Adds structure- and data-informed LLM decompilation with separate compilation, execution-test and similarity evidence.",
+    "why_fits_zh": "补充结合程序结构与数据上下文的 LLM 反编译研究，并区分编译、执行测试与相似性证据。",
+    "metadata_notes": "The v3 title and ten-author order match ACM’s Crossref deposit. The repository README at 548e59c still cites v2/2025. Direct ACM access returned HTTP 403: this record uses the publisher deposit and author v3 DOI header, not a reviewed publisher PDF. Artifact snapshots are separately versioned. The training directory contains MIT and DeepSeek notices; the CIM-1.3B card declares CC BY 4.0, but a uniform license for all code, weights and data is not established. Weights and dataset archives were not downloaded.",
+    "metadata_notes_zh": "v3 的标题和十位作者顺序与 ACM 的 Crossref 元数据一致，仓库 548e59c 版本的 README 仍引用 v2／2025。直接访问 ACM 返回 HTTP 403；本条目依据出版元数据及作者 v3 的 DOI 页眉，未审阅出版方 PDF。各产物使用独立版本。训练目录包含 MIT 与 DeepSeek 许可说明，CIM-1.3B 模型卡声明 CC BY 4.0，但不能据此为全部代码、权重和数据认定统一许可。本次未下载权重或数据归档。",
+    "citation": {
+      "container_title": "Proceedings of the 41st IEEE/ACM International Conference on Automated Software Engineering",
+      "publisher": "ACM",
+      "pages": "3278-3289",
+      "sources": [
+        "https://api.crossref.org/works/10.1145/3832783.3837554"
+      ]
+    },
+    "evidence_urls": [
+      "https://api.crossref.org/works/10.1145/3832783.3837554",
+      "https://arxiv.org/abs/2503.07215v3",
+      "https://arxiv.org/pdf/2503.07215v3",
+      "https://arxiv.org/html/2503.07215v3",
+      "https://arxiv.org/abs/2503.07215v1",
+      "https://arxiv.org/abs/2503.07215v2",
+      "https://github.com/LiuPeiP-CS/CodeInverter/blob/548e59c5db07bd108659bf2bfb069f1cfd0c9298/README.md",
+      "https://zenodo.org/api/records/19351453",
+      "https://huggingface.co/CodeInverter/CIM-1.3b/raw/1f7745e19c5420a8c5896f5c31d6938f83454be4/README.md",
+      "https://github.com/LiuPeiP-CS/CodeInverter/blob/548e59c5db07bd108659bf2bfb069f1cfd0c9298/code4train/train/run_ms2decllm_train.sh",
+      "https://github.com/LiuPeiP-CS/CodeInverter/blob/548e59c5db07bd108659bf2bfb069f1cfd0c9298/code4train/LICENSE",
+      "https://github.com/LiuPeiP-CS/CodeInverter/blob/548e59c5db07bd108659bf2bfb069f1cfd0c9298/code4train/LICENSE-MODEL"
+    ],
+    "kind": "research",
+    "verified_at": "2026-10-19",
+    "verification": "source-reviewed",
+    "runtime_tested": false
   }
 ]

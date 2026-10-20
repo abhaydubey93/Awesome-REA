@@ -11,7 +11,7 @@ An independent collection of tools, case studies and research for websites, game
 <a href="https://awesomerea.org/"><img src="assets/readme-banner.svg" alt="Awesome Reverse Engineering Anything — tools, cases and papers across six reverse-engineering domains" width="960"></a>
 
 <!-- BEGIN GENERATED BADGES -->
-[![resources: 467](https://img.shields.io/badge/resources-467-53309C?style=flat-square&labelColor=303447)](https://awesomerea.org/resources/) [![cases: 193](https://img.shields.io/badge/cases-193-53309C?style=flat-square&labelColor=303447)](https://awesomerea.org/cases/) [![papers: 87](https://img.shields.io/badge/papers-87-53309C?style=flat-square&labelColor=303447)](https://awesomerea.org/papers/) [![Catalog checks](https://github.com/reacher-z/Awesome-REA/actions/workflows/validate.yml/badge.svg?branch=main)](https://github.com/reacher-z/Awesome-REA/actions/workflows/validate.yml) [![license: MIT](https://img.shields.io/badge/license-MIT-606779?style=flat-square&labelColor=303447)](LICENSE) [![website: awesomerea.org](https://img.shields.io/badge/website-awesomerea.org-6235B5?style=flat-square&labelColor=303447)](https://awesomerea.org/)
+[![resources: 467](https://img.shields.io/badge/resources-467-53309C?style=flat-square&labelColor=303447)](https://awesomerea.org/resources/) [![cases: 193](https://img.shields.io/badge/cases-193-53309C?style=flat-square&labelColor=303447)](https://awesomerea.org/cases/) [![papers: 88](https://img.shields.io/badge/papers-88-53309C?style=flat-square&labelColor=303447)](https://awesomerea.org/papers/) [![Catalog checks](https://github.com/reacher-z/Awesome-REA/actions/workflows/validate.yml/badge.svg?branch=main)](https://github.com/reacher-z/Awesome-REA/actions/workflows/validate.yml) [![license: MIT](https://img.shields.io/badge/license-MIT-606779?style=flat-square&labelColor=303447)](LICENSE) [![website: awesomerea.org](https://img.shields.io/badge/website-awesomerea.org-6235B5?style=flat-square&labelColor=303447)](https://awesomerea.org/)
 <!-- END GENERATED BADGES -->
 
 **[Search & filter](https://awesomerea.org/)** · **[Browse cases](https://awesomerea.org/cases/)** · **[Research papers](https://awesomerea.org/papers/)** · **[HTML survey](https://awesomerea.org/survey/)**
@@ -28,7 +28,7 @@ An independent collection of tools, case studies and research for websites, game
 
 **Research and workflows**
 
-- [Papers](#papers) (87) · [Agents and MCP](#agents-and-mcp) (42) · [References and Learning](#references-and-learning) (31)
+- [Papers](#papers) (88) · [Agents and MCP](#agents-and-mcp) (42) · [References and Learning](#references-and-learning) (31)
 
 **More ways to browse**
 
@@ -2917,13 +2917,13 @@ REA labels refer to the separate [upstream CLI and MCP project](https://github.c
 <a id="papers"></a>
 ## Papers
 
-**87 papers**, grouped by topic and ordered newest first. Each entry shows its venue and publication status.
+**88 papers**, grouped by topic and ordered newest first. Each entry shows its venue and publication status.
 
 [Browse the paper directory](https://awesomerea.org/papers/) · [Complete bibliography JSON](data/papers.json) · [Suggest a paper](https://github.com/reacher-z/Awesome-REA/issues/new?template=paper.yml)
 
 **By topic**
 
-- [Agent evaluation](#papers-agent-evaluation) (9) · [Decompilation](#papers-decompilation) (34) · [Websites](#papers-website-reconstruction) (15)
+- [Agent evaluation](#papers-agent-evaluation) (9) · [Decompilation](#papers-decompilation) (35) · [Websites](#papers-website-reconstruction) (15)
 - [Games](#papers-game-reconstruction) (6) · [Apps](#papers-app-reconstruction) (7) · [Firmware](#papers-firmware-analysis) (6)
 - [Protocols](#papers-protocol-analysis) (10)
 
@@ -3073,6 +3073,21 @@ Open “Scope and publication details” for each study’s full limitations. So
 ### Decompilation and symbol recovery
 
 [↑ Paper topics](#papers) · [Contents](#contents)
+
+- [**The CodeInverter Suite: Structure- and Data-Aware Binary Decompilation with Efficient LLMs**](https://dl.acm.org/doi/10.1145/3832783.3837554)
+
+  CodeInverter studies function-level LLM decompilation using control-flow graphs and memory-to-data mappings extracted with IDA/objdump. It presents a prompt workflow, training corpus and model family, evaluated through compilation, benchmark input/output tests and edit similarity.
+
+  ASE 2026 · Conference paper · [PDF](https://arxiv.org/pdf/2503.07215v3) · [Code](https://github.com/LiuPeiP-CS/CodeInverter) · [Full entry & citation](https://awesomerea.org/papers/paper-codeinverter-suite/)
+
+  <details>
+  <summary>Scope and publication details</summary>
+
+  **Scope and limits:** Evaluation covers individual C functions under 32/64-bit GCC settings. Whole-program recovery, aggressive optimization and protected binaries remain limitations; passing benchmark tests does not establish general equivalence. The text reports one epoch (15 steps), while the pinned launch example sets one epoch and 100 warmup steps; the exact training schedule remains unresolved. No upstream code, models or experiments were run for this collection.
+
+  **Authors:** Peipei Liu et al.
+
+  </details>
 
 - [**Decoupling is a Necessity: Transformation-Agnostic Decompiled Code Recovery under Optimization and Obfuscation**](https://arxiv.org/abs/2608.27889)
 

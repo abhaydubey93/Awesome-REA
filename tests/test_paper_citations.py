@@ -126,6 +126,15 @@ class ReviewedContainerRecordTests(unittest.TestCase):
         self.assertEqual((netlifter['booktitle'], netlifter['pages'], netlifter['doi'], netlifter['eprint']),
                          ('{Proceedings of the 2023 ACM SIGSAC Conference on Computer and Communications Security}',
                           '{1287--1301}', '{10.1145/3576915.3616614}', '{2305.11781}'))
+        codeinverter = fields(bibtex_text(PAPERS['paper-codeinverter-suite']))
+        self.assertEqual((codeinverter['booktitle'], codeinverter['pages'], codeinverter['doi'],
+                          codeinverter['year'], codeinverter['month'], codeinverter['eprint']),
+                         ('{Proceedings of the 41st IEEE/ACM International Conference on Automated Software Engineering}',
+                          '{3278--3289}', '{10.1145/3832783.3837554}', '{2026}', 'oct', '{2503.07215}'))
+        # The published v3 order differs from the earlier preprint and repository citation.
+        self.assertEqual(codeinverter['author'],
+                         '{{Peipei Liu} and {Jian Sun} and {Rongkang Sun} and {Li Chen} and {Zhaoteng Yan} '
+                         'and {Xiaoling Zhang} and {Dawei Wang} and {Dapeng Sun} and {Peizheng Zhang} and {Dan Li}}')
 
     def test_only_reviewed_records_carry_container_metadata(self):
         expected = {'paper-dire', 'paper-resym', 'paper-redraw', 'paper-declarui', 'paper-fuzzware',
@@ -142,7 +151,7 @@ class ReviewedContainerRecordTests(unittest.TestCase):
                     'paper-webcode2m',
                     'paper-xfl',
                     'paper-wadec',
-                    'paper-symlm'}
+                    'paper-symlm', 'paper-codeinverter-suite'}
         self.assertEqual({identifier for identifier, record in PAPERS.items() if 'citation' in record}, expected)
         for identifier in sorted(PAPERS.keys() - expected):
             # Records without verified container metadata keep the short venue label.
