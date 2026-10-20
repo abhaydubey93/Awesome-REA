@@ -11,7 +11,7 @@
 <a href="https://awesomerea.org/zh/"><img src="assets/readme-banner.svg" alt="Awesome Reverse Engineering Anything — 覆盖六类逆向目标的工具、案例与论文" width="960"></a>
 
 <!-- BEGIN GENERATED BADGES -->
-[![精选资源: 473](https://img.shields.io/badge/%E7%B2%BE%E9%80%89%E8%B5%84%E6%BA%90-473-53309C?style=flat-square&labelColor=303447)](https://awesomerea.org/zh/resources/) [![案例: 197](https://img.shields.io/badge/%E6%A1%88%E4%BE%8B-197-53309C?style=flat-square&labelColor=303447)](https://awesomerea.org/zh/cases/) [![论文: 102](https://img.shields.io/badge/%E8%AE%BA%E6%96%87-102-53309C?style=flat-square&labelColor=303447)](https://awesomerea.org/zh/papers/) [![目录检查](https://github.com/reacher-z/Awesome-REA/actions/workflows/validate.yml/badge.svg?branch=main)](https://github.com/reacher-z/Awesome-REA/actions/workflows/validate.yml) [![许可: MIT](https://img.shields.io/badge/%E8%AE%B8%E5%8F%AF-MIT-606779?style=flat-square&labelColor=303447)](LICENSE) [![网站: awesomerea.org](https://img.shields.io/badge/%E7%BD%91%E7%AB%99-awesomerea.org-6235B5?style=flat-square&labelColor=303447)](https://awesomerea.org/zh/)
+[![精选资源: 473](https://img.shields.io/badge/%E7%B2%BE%E9%80%89%E8%B5%84%E6%BA%90-473-53309C?style=flat-square&labelColor=303447)](https://awesomerea.org/zh/resources/) [![案例: 197](https://img.shields.io/badge/%E6%A1%88%E4%BE%8B-197-53309C?style=flat-square&labelColor=303447)](https://awesomerea.org/zh/cases/) [![论文: 107](https://img.shields.io/badge/%E8%AE%BA%E6%96%87-107-53309C?style=flat-square&labelColor=303447)](https://awesomerea.org/zh/papers/) [![目录检查](https://github.com/reacher-z/Awesome-REA/actions/workflows/validate.yml/badge.svg?branch=main)](https://github.com/reacher-z/Awesome-REA/actions/workflows/validate.yml) [![许可: MIT](https://img.shields.io/badge/%E8%AE%B8%E5%8F%AF-MIT-606779?style=flat-square&labelColor=303447)](LICENSE) [![网站: awesomerea.org](https://img.shields.io/badge/%E7%BD%91%E7%AB%99-awesomerea.org-6235B5?style=flat-square&labelColor=303447)](https://awesomerea.org/zh/)
 <!-- END GENERATED BADGES -->
 
 **[搜索与筛选](https://awesomerea.org/zh/)** · **[浏览案例](https://awesomerea.org/zh/cases/)** · **[研究论文](https://awesomerea.org/zh/papers/)** · **[HTML 综述](https://awesomerea.org/zh/survey/)**
@@ -28,7 +28,7 @@
 
 **论文与工作流**
 
-- [论文](#papers) (102) · [智能体与 MCP](#agents-and-mcp) (43) · [文档与学习资源](#references-and-learning) (32)
+- [论文](#papers) (107) · [智能体与 MCP](#agents-and-mcp) (43) · [文档与学习资源](#references-and-learning) (32)
 
 **更多浏览方式**
 
@@ -619,13 +619,13 @@ REA 标签指向单独维护的[上游 CLI 与 MCP 项目](https://github.com/mo
 <a id="papers"></a>
 ## 论文
 
-**102 篇论文**，按主题分组，组内按年份从新到旧排列。每行列出摘要首句、发表场所、状态与第一作者，中文标题为译名。
+**107 篇论文**，按主题分组，组内按年份从新到旧排列。每行列出摘要首句、发表场所、状态与第一作者，中文标题为译名。
 
 [浏览论文目录](https://awesomerea.org/zh/papers/) · [完整书目 JSON](data/papers.json) · [推荐论文](https://github.com/reacher-z/Awesome-REA/issues/new?template=paper.yml)
 
 **按主题**
 
-- [智能体评测](#papers-agent-evaluation) (9) · [反编译](#papers-decompilation) (41) · [网站](#papers-website-reconstruction) (18)
+- [智能体评测](#papers-agent-evaluation) (9) · [反编译](#papers-decompilation) (46) · [网站](#papers-website-reconstruction) (18)
 - [游戏](#papers-game-reconstruction) (6) · [应用](#papers-app-reconstruction) (8) · [固件](#papers-firmware-analysis) (9)
 - [协议](#papers-protocol-analysis) (11)
 
@@ -651,6 +651,7 @@ REA 标签指向单独维护的[上游 CLI 与 MCP 项目](https://github.com/mo
 
 [↑ 论文主题](#papers) · [目录](#目录)
 
+- [**SoK：LLM 恢复源码是否可靠？分类体系与实证评估**](https://arxiv.org/abs/2610.11556) - 该 SoK 组织 LLM 辅助源码恢复方案，并区分编译、可读性、结构与行为指标。 <sub>arXiv 2026 · 预印本 · Varun Kohli 等 · [PDF](https://arxiv.org/pdf/2610.11556v1) · [代码](https://anonymous.4open.science/r/decompbench-65CB/) · [完整条目](https://awesomerea.org/zh/papers/paper-sok-source-recovery-reliability/)</sub>
 - [**CodeInverter 套件：利用高效大语言模型进行结构与数据感知的二进制反编译**](https://dl.acm.org/doi/10.1145/3832783.3837554) - CodeInverter 研究函数级 LLM 反编译，使用 IDA／objdump 提取的控制流图和内存到数据映射补充输入。 <sub>ASE 2026 · 会议论文 · Peipei Liu 等 · [PDF](https://arxiv.org/pdf/2503.07215v3) · [代码](https://github.com/LiuPeiP-CS/CodeInverter) · [完整条目](https://awesomerea.org/zh/papers/paper-codeinverter-suite/)</sub>
 - [**超越文本匹配：面向人的二进制逆向工程的无参考评估**](https://dl.acm.org/doi/10.1145/3832783.3834339) - BinJudgeBench 收集函数命名、二进制代码摘要及反编译改进的专家评分。 <sub>ASE 2026 · 会议论文 · Xiuwei Shang 等 · [PDF](https://arxiv.org/pdf/2608.07038v1) · [完整条目](https://awesomerea.org/zh/papers/paper-binjudge/)</sub>
 - [**ASAP：通过汇编与源码对齐改进二进制反编译伪代码**](https://arxiv.org/abs/2610.06900) - ASAP 在训练中对齐汇编与源码表示，将汇编特征压缩为标记，并与反编译伪代码一起交给 LLM 改进。 <sub>arXiv 2026 · 预印本 · Yujian Zhuang 等 · [PDF](https://arxiv.org/pdf/2610.06900v1) · [完整条目](https://awesomerea.org/zh/papers/paper-asap-decompilation/)</sub>
@@ -658,12 +659,16 @@ REA 标签指向单独维护的[上游 CLI 与 MCP 项目](https://github.com/mo
 - [**当 LLM 反编译器更易重编译，却更少保留原始行为**](https://arxiv.org/abs/2609.05370) - Decompile-Diverge 基于源码生成驱动，并对参考实现进行模糊测试，以构建函数级行为比较。 <sub>arXiv 2026 · 预印本 · Chang Liu 等 · [PDF](https://arxiv.org/pdf/2609.05370v1) · [完整条目](https://awesomerea.org/zh/papers/paper-decompile-diverge/)</sub>
 - [**解耦的必要性：面向优化与混淆、无需识别具体变换的反编译代码恢复**](https://arxiv.org/abs/2608.27889) - ReSource 针对受编译优化与混淆影响的反编译函数进行修复：先从语义失真数据库检索指导信息，再预测控制流骨架，最后调整名称与格式。 <sub>arXiv 2026 · 预印本 · Zhiping Zhou 等 · [PDF](https://arxiv.org/pdf/2608.27889v1) · [完整条目](https://awesomerea.org/zh/papers/paper-resource/)</sub>
 - [**STILL：为 LLM 辅助 C++ 反编译恢复编译后隐藏的 STL 语义**](https://arxiv.org/abs/2608.26408) - STILL 从去符号控制流图预测函数级 STL 容器的存在情况，并将预测转成紧凑提示，供 LLM 改进 Ghidra 输出。 <sub>arXiv 2026 · 预印本 · Xiaohan Wang 等 · [PDF](https://arxiv.org/pdf/2608.26408v1) · [完整条目](https://awesomerea.org/zh/papers/paper-still-stl/)</sub>
+- [**现代二进制反编译的演进：分类体系、文献回顾与未来展望**](https://arxiv.org/abs/2608.24955) - 该综述梳理传统、动态、匹配及神经反编译方法，并组织类型恢复、控制流重构、命名和改进等任务及其评估指标、基准选择。 <sub>arXiv 2026 · 预印本 · Omar Abusabha 等 · [PDF](https://arxiv.org/pdf/2608.24955v1) · [完整条目](https://awesomerea.org/zh/papers/paper-evolution-binary-decompilation/)</sub>
 - [**SoK：人工智能增强的二进制逆向工程**](https://arxiv.org/abs/2606.17398) - 一篇系统化知识综述，梳理机器学习、大语言模型与智能体方法在二进制逆向中的应用。 <sub>arXiv 2026 · 预印本 · Yujeong Kwon 等 · [PDF](https://arxiv.org/pdf/2606.17398v2) · [完整条目](https://awesomerea.org/zh/papers/paper-sok-ai-binary-reversing/)</sub>
+- [**基于反馈驱动多轮修正的二进制反编译大语言模型**](https://arxiv.org/abs/2606.16162) - AutoDecompiler 训练函数级反编译模型，利用编译、执行及 I/O 反馈修正汇编或伪代码输入产生的输出。 <sub>arXiv 2026 · 预印本 · Peipei Liu 等 · [PDF](https://arxiv.org/pdf/2606.16162v2) · [代码](https://zenodo.org/records/23120286) · [完整条目](https://awesomerea.org/zh/papers/paper-autodecompiler/)</sub>
 - [**以量化可读性指标引导 LLM 智能体辅助逆向工程**](https://arxiv.org/abs/2606.06838) - 用综合量化可读性分数（QRS）引导智能体改进反编译 C 代码，将词汇熟悉度、结构简洁度和编程惯用法与二进制结构相似性门槛结合，在 210 个简单 C 二进制程序上比较有无 shell 访问的迭代。 <sub>arXiv 2026 · 预印本 · Neil Archibald 等 · [PDF](https://arxiv.org/pdf/2606.06838v1) · [完整条目](https://awesomerea.org/zh/papers/paper-qrs-readability/)</sub>
+- [**Decaf：通过自动反馈与搜索改进神经反编译**](https://arxiv.org/abs/2605.11501) - Decaf 采样多个反编译候选，重新编译后利用字节距离或学习式重排序器排序。 <sub>arXiv 2026 · 预印本 · Alexander Shypula 等 · [PDF](https://arxiv.org/pdf/2605.11501v1) · [代码](https://github.com/AlexShypula/decaf) · [完整条目](https://awesomerea.org/zh/papers/paper-decaf/)</sub>
 - [**NotDec：通过跨过程类型恢复进行 WebAssembly 反编译**](https://dl.acm.org/doi/10.1145/3744916.3787762) - NotDec 将 WebAssembly 提升为 SSA 中间表示，通过基于 Retypd 的类型约束及指针／数值区分恢复结构，并生成 C。 <sub>ICSE 2026 · 会议论文 · Jikai Wang 等 · [PDF](https://arxiv.org/pdf/2608.03286v1) · [代码](https://github.com/NotDec/NotDec) · [完整条目](https://awesomerea.org/zh/papers/paper-notdec/)</sub>
 - [**SK2Decompile：从骨架到皮肤的大语言模型两阶段二进制反编译**](https://proceedings.iclr.cc/paper_files/paper/2026/hash/9132583dd869acb0cafeb0ed25eb031a-Abstract-Conference.html) - 将 LLM 反编译分为两个阶段：结构恢复模型把反编译器伪代码转换为保留控制流和数据结构、但不含标识符的中间表示，并以编译器反馈作为强化学习奖励；标识符命名模型再以语义相似度为奖励恢复名称。 <sub>ICLR 2026 · 会议论文 · Hanzhuo Tan 等 · [PDF](https://proceedings.iclr.cc/paper_files/paper/2026/file/9132583dd869acb0cafeb0ed25eb031a-Paper-Conference.pdf) · [代码](https://github.com/albertan017/LLM4Decompile/tree/85b364bf093eb2ee4f3687cfe38a203fca89f23e/sk2decompile) · [完整条目](https://awesomerea.org/zh/papers/paper-sk2decompile/)</sub>
 - [**Idioms：以明确定义的类型显著增强局部神经反编译的简单有效框架**](https://www.ndss-symposium.org/ndss-paper/idioms-a-simple-and-effective-framework-for-turbo-charging-local-neural-decompilation-with-well-defined-types/) - Idioms 微调代码语言模型，把单个目标函数的 Hex-Rays 输出转换为预测的原始 C 代码，并同时给出其中使用的用户自定义结构体、联合体和类型别名定义。 <sub>NDSS 2026 · 会议论文 · Luke Dramko 等 · [PDF](https://www.ndss-symposium.org/wp-content/uploads/2026-f795-paper.pdf) · [代码](https://github.com/squaresLab/idioms) · [完整条目](https://awesomerea.org/zh/papers/paper-idioms/)</sub>
 - [**FidelityGPT：利用检索增强生成纠正反编译失真**](https://www.ndss-symposium.org/ndss-paper/fidelitygpt-correcting-decompilation-distortions-with-retrieval-augmented-generation/) - FidelityGPT 对现有反编译器输出进行后处理：由大语言模型为代码行标注六类失真（如非常规解引用、冗余变量和令人困惑的控制流），再改写被标注的行。 <sub>NDSS 2026 · 会议论文 · Zhiping Zhou 等 · [PDF](https://www.ndss-symposium.org/wp-content/uploads/2026-s989-paper.pdf) · [代码](https://github.com/ZhouZhiping045/FidelityGPT) · [完整条目](https://awesomerea.org/zh/papers/paper-fidelitygpt/)</sub>
+- [**CHISEL：借助 AI 迭代恢复源码**](https://arxiv.org/abs/2608.27981) - CHISEL 利用编译诊断及针对原函数的类型感知差分模糊测试改进 Ghidra 伪代码，并保留反例与候选历史。 <sub>SURE <span>@</span> ACM CCS 2026 · 已接收 · Varun Kohli 等 · [PDF](https://arxiv.org/pdf/2608.27981v1) · [代码](https://github.com/VarunKohli18/chisel) · [完整条目](https://awesomerea.org/zh/papers/paper-chisel-iterative-recovery/)</sub>
 - [**BinMetric：面向大语言模型的综合二进制代码分析基准**](https://www.ijcai.org/proceedings/2025/858) - BinMetric 提供六类二进制分析任务共 1,000 道题目：调用点重建、反编译、函数签名恢复、二进制代码摘要、算法分类与汇编指令生成。 <sub>IJCAI 2025 · 会议论文 · Xiuwei Shang 等 · [PDF](https://www.ijcai.org/proceedings/2025/0858.pdf) · [完整条目](https://awesomerea.org/zh/papers/paper-binmetric/)</sub>
 - [**DecompileBench：面向真实场景的反编译器综合评测基准**](https://aclanthology.org/2025.findings-acl.1194/) - 利用真实程序中的函数、运行时行为检查，以及 LLM 辅助的代码可理解性评估，比较传统反编译器与基于 LLM 的方法。 <sub>Findings of ACL 2025 · 会议论文 · Zeyu Gao 等 · [PDF](https://aclanthology.org/2025.findings-acl.1194.pdf) · [代码](https://github.com/vul337/DecompileBench) · [完整条目](https://awesomerea.org/zh/papers/paper-decompilebench/)</sub>
 - [**DecLLM：借助大语言模型实现可重新编译的反编译，支持以程序化方式使用反编译代码**](https://dl.acm.org/doi/10.1145/3728958) - DecLLM 将无法重新编译的反编译伪代码修复为可编译、可运行的 C 代码，使 CodeQL 等源码级工具能够用于二进制分析。 <sub>Proceedings of the ACM on Software Engineering (ISSTA 2025) · 期刊论文 · Wai Kin Wong 等 · [PDF](https://dl.acm.org/doi/pdf/10.1145/3728958) · [完整条目](https://awesomerea.org/zh/papers/paper-decllm/)</sub>
