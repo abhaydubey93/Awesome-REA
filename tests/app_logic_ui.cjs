@@ -224,7 +224,7 @@ const urlParam = (app, key) => new URL(app.location.href).searchParams.get(key);
     assert.equal(byClass(byClass(card, 'card-meta')[0], 'resource-evidence-link').length, 0);
     const evidence = byClass(card.querySelector('details'), 'resource-evidence-link')[0];
     assert.deepEqual([evidence.target, evidence.rel], ['_blank', 'noopener noreferrer']);
-    assert.deepEqual([evidence.textContent, evidence.href], [lang === 'zh' ? '复核来源 ↗' : 'Review source ↗', 'https://github.com/curated/tool-1#readme']);
+    assert.deepEqual([evidence.textContent, evidence.href], [lang === 'zh' ? '一手来源 ↗' : 'Primary source ↗', 'https://github.com/curated/tool-1#readme']);
     assert.equal(byClass(card, 'resource-entry-link')[0].href, `${lang === 'zh' ? '/zh' : ''}/resources/curated-1/`);
     const details = card.querySelector('details');
     assert.deepEqual(descendants(details).filter(node => node.tag === 'li').map(node => node.textContent), [lang === 'zh' ? '条件 1' : 'Requirement 1']);
