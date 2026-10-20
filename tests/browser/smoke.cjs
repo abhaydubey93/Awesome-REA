@@ -198,6 +198,8 @@ async function homepage(page, language, viewport, data, requested) {
   // Show More reveals the next 15 curated cards; requirements open in place.
   await press(page, '#load-more');
   assert.equal(await count(page, '#resource-grid .resource-card'), Math.min(30, total), `${label}: curated Show More`);
+  assert.equal(await count(page, '#resource-grid .resource-card > .card-meta .resource-evidence-link'), 0);
+  assert.equal(await count(page, '#resource-grid .resource-card details .resource-evidence-link'), Math.min(30, total));
   await press(page, '#resource-grid .resource-card details.requirements summary');
   const expanded = await page.$eval('#resource-grid .resource-card details.requirements', details => ({open: details.open,
     items: details.querySelectorAll('li').length, height: details.querySelector('ul').getBoundingClientRect().height}));
@@ -270,10 +272,50 @@ async function withoutScript(page, language, viewport) {
   await noOverflow(page, label);
 }
 
+async function paperDirectory(page, route, viewport, javascript = true) {
+  const label = `${route} ${viewport.name}`;
+  const first = '.paper-card';
+  const before = await page.$eval(first, card => ({scope: card.querySelector('.paper-scope').textContent,
+    authors: card.querySelector('.paper-authors').textContent, citation: card.querySelector('a[type="application/x-bibtex"]').getAttribute('href')}));
+  assert.equal(await page.evaluate(() => document.documentElement.dataset.paperLayout), 'compact');
+  assert.equal(await page.$eval(first + ' .paper-details', node => node.open), false);
+  await press(page, first + ' .paper-details > summary');
+  const expanded = await page.$eval(first + ' .paper-details', details => ({open: details.open,
+    scopeVisible: details.querySelector('.paper-scope').getBoundingClientRect().height > 0,
+    scope: details.querySelector('.paper-scope').textContent, authors: details.querySelector('.paper-authors').textContent,
+    citation: details.querySelector('a[type="application/x-bibtex"]').getAttribute('href')}));
+  assert.equal(expanded.open, true); assert.equal(expanded.scopeVisible, true);
+  for (const key of ['scope', 'authors', 'citation']) assert.equal(expanded[key], before[key], `${label}: ${key} survives disclosure`);
+  await noOverflow(page, label + ' expanded evidence');
+  await press(page, first + ' .paper-details > summary');
+  if (javascript) {
+    assert.equal(await page.$eval('#paper-more-filters', node => node.open), false);
+    await press(page, '#paper-more-filters > summary');
+    await page.select('#paper-layout', 'cards');
+    assert.equal(new URL(page.url()).searchParams.get('layout'), 'cards');
+    assert.equal(await page.$eval(first, card => card.querySelector('.paper-scope').parentElement === card), true);
+    await page.select('#paper-layout', 'compact');
+    const restored = await page.$eval(first, card => ({scope: card.querySelector('.paper-scope').textContent,
+      copies: card.querySelectorAll('.paper-scope').length, inDetails: !!card.querySelector('.paper-details > .paper-scope')}));
+    assert.equal(restored.scope, before.scope); assert.equal(restored.copies, 1); assert.equal(restored.inDetails, true);
+    const selectedYear = await page.$eval('#paper-year option:not([value="all"])', option => option.value);
+    await page.select('#paper-year', selectedYear);
+    const visibleYears = await page.$$eval('.paper-card:not([hidden]) .paper-year', nodes => nodes.map(node => node.textContent));
+    assert(visibleYears.length > 0 && visibleYears.every(year => year === selectedYear));
+    assert.equal(numbers(await text(page, '#paper-results'))[0], visibleYears.length);
+    const language = new URL(await page.$eval('.papers-language', link => link.href));
+    assert.equal(language.searchParams.get('year'), selectedYear);
+    await press(page, '#paper-clear');
+    await press(page, '#paper-more-filters > summary');
+  }
+  await noOverflow(page, label + ' compact list');
+}
+
 async function staticPage(page, route, viewport) {
   const label = `${route} ${viewport.name}`;
   assert((await page.$eval('h1', heading => heading.textContent.trim())).length > 0, `${label}: visible heading`);
   await noOverflow(page, label);
+  if (route === '/papers/' || route === '/zh/papers/') await paperDirectory(page, route, viewport);
 }
 
 (async () => {
@@ -301,6 +343,10 @@ async function staticPage(page, route, viewport) {
       for (const language of ['en', 'zh']) {
         await check(`${language} homepage without JavaScript at ${viewport.width}px`, () => visit(browser, origin, language === 'zh' ? '/zh/' : '/', viewport,
           `${language} homepage ${viewport.name} without JavaScript`, page => withoutScript(page, language, viewport), {javascript: false}));
+      }
+      for (const route of ['/papers/', '/zh/papers/']) {
+        await check(`${route} without JavaScript at ${viewport.width}px`, () => visit(browser, origin, route, viewport,
+          `${route} ${viewport.name} without JavaScript`, page => paperDirectory(page, route, viewport, false), {javascript: false}));
       }
       for (const route of routes) {
         await check(`${route} at ${viewport.width}px`, () => visit(browser, origin, route, viewport, `${route} ${viewport.name}`, page => staticPage(page, route, viewport)));

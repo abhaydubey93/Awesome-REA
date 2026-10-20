@@ -222,13 +222,15 @@ const urlParam = (app, key) => new URL(app.location.href).searchParams.get(key);
     assert.equal(byClass(card, 'card-category')[0].textContent, lang === 'zh' ? '重建案例' : 'Reconstruction cases');
     assert.equal(byClass(card, 'card-meta')[0].children[0].className, 'card-targets');
     assert.equal(byClass(card, 'card-targets')[0].textContent, lang === 'zh' ? '应用' : 'App');
-    const evidence = byClass(card, 'card-meta')[0].children[2];
+    assert.equal(byClass(byClass(card, 'card-meta')[0], 'resource-evidence-link').length, 0);
+    const evidence = byClass(card.querySelector('details'), 'resource-evidence-link')[0];
+    assert.deepEqual([evidence.target, evidence.rel], ['_blank', 'noopener noreferrer']);
     assert.deepEqual([evidence.textContent, evidence.href], [lang === 'zh' ? '复核来源 ↗' : 'Review source ↗', 'https://github.com/curated/tool-1#readme']);
     assert.equal(byClass(card, 'resource-entry-link')[0].href, `${lang === 'zh' ? '/zh' : ''}/resources/curated-1/`);
     const details = card.querySelector('details');
     assert.deepEqual(descendants(details).filter(node => node.tag === 'li').map(node => node.textContent), [lang === 'zh' ? '条件 1' : 'Requirement 1']);
     const context = byClass(details, 'resource-detail-meta')[0].children;
-    assert.deepEqual(context.map(node => node.textContent), lang === 'zh' ? ['REA · 官方案例', '来源已复核', '复核于 2026-01-02'] : ['REA · CASE STUDY', 'Source-reviewed', 'Reviewed 2026-01-02']);
+    assert.deepEqual(context.slice(0, 3).map(node => node.textContent), lang === 'zh' ? ['REA · 官方案例', '来源已复核', '复核于 2026-01-02'] : ['REA · CASE STUDY', 'Source-reviewed', 'Reviewed 2026-01-02']);
     assert.equal(context[2].dateTime, '2026-01-02T03:04:05Z');
     assert.equal(app.element('results-status').textContent, lang === 'zh' ? '1 项资源' : '1 resource');
   }

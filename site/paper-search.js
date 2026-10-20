@@ -58,36 +58,32 @@
     return url;
   }
 
-  const readLayout = params => params.get("layout") === "compact" ? "compact" : "cards";
+  const readLayout = params => params.get("layout") === "cards" ? "cards" : "compact";
 
-  // Compact list (?layout=compact, cards by default): one row per paper, with the authors and the scope box moved
-  // into that paper's details disclosure and back again, so nothing is duplicated and scope stays one click away.
+  // The static index is already compact. Cards bring only the scope panel out;
+  // full authors, original titles, citations and sources remain in native details.
   function initializeLayout(document, browser, cards, afterChange) {
     const control = document.getElementById("paper-layout");
     if (!control) return null;
     const moves = [];
     for (const card of cards) {
       const summary = card.querySelector(".paper-details > summary");
-      if (!summary) return null;
-      for (const node of card.querySelectorAll(".paper-authors, .paper-scope")) moves.push({node, parent: node.parentNode, next: node.nextSibling, summary});
+      const scope = card.querySelector(".paper-scope");
+      const links = card.querySelector(".paper-links");
+      if (!summary || !scope || !links) return null;
+      moves.push({card, summary, scope, links});
     }
     function apply(layout) {
       document.documentElement.dataset.paperLayout = layout;
       control.value = layout;
-      let anchor = null;
-      for (const move of moves) {
-        if (layout === "compact") {
-          if (!anchor || anchor.summary !== move.summary) anchor = {summary: move.summary, node: move.summary};
-          anchor.node.after(move.node);
-          anchor.node = move.node;
-        } else {
-          move.parent.insertBefore(move.node, move.next);
-        }
+      for (const {card, summary, scope, links} of moves) {
+        if (layout === "cards") card.insertBefore(scope, links);
+        else if (summary.nextSibling !== scope) summary.after(scope);
       }
     }
     control.addEventListener("change", () => {
       const url = new URL(browser.location.href);
-      if (control.value === "compact") url.searchParams.set("layout", "compact"); else url.searchParams.delete("layout");
+      if (control.value === "cards") url.searchParams.set("layout", "cards"); else url.searchParams.delete("layout");
       if (url.href !== browser.location.href) browser.history.replaceState(null, "", url);
       apply(readLayout(url.searchParams));
       afterChange();
@@ -104,6 +100,7 @@
     const count = document.getElementById("paper-results");
     const empty = document.getElementById("paper-empty");
     const clear = document.getElementById("paper-clear");
+    const moreFilters = document.getElementById("paper-more-filters");
     const emptyReset = document.getElementById("paper-empty-reset");
     if (!count || !empty || !clear || !emptyReset || Object.values(controls).some(control => !control)) return false;
     let records;
@@ -122,6 +119,8 @@
 
     function showState() {
       for (const key of KEYS) controls[key].value = state[key];
+      // Active URL filters must remain visible, even before a visitor opens the panel.
+      if (moreFilters && (state.status !== "all" || state.year !== "all" || readLayout(new URL(browser.location.href).searchParams) === "cards")) moreFilters.open = true;
     }
 
     function updateLanguageLink() {

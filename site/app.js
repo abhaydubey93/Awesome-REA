@@ -379,12 +379,13 @@ function renderKinds() { const select=$("#kind-select"); select.replaceChildren(
 function card(record) {
   const article=node("article","resource-card");article.dataset.recordId=record.id;const head=node("div","card-heading");const h3=node("h3");const title=external(record.url,"card-title-link",state.lang==="zh"?(record.name_zh||record.name):record.name);title.append(icon("external",true));h3.append(title);head.append(h3);if(record.kind)head.append(node("span","resource-kind",label(KIND,record.kind)));article.append(head);
   article.append(node("p","card-description",record[state.lang==="zh"?"description_zh":"description_en"]));
-  const meta=node("div","card-meta");meta.append(node("span","card-category",label(CATEGORY,record.category)),external(record.evidence_url,"",t("readSource")+" ↗"));article.append(meta);
+  const meta=node("div","card-meta");meta.append(node("span","card-category",label(CATEGORY,record.category)));article.append(meta);
   const details=node("details","requirements");const summary=node("summary");summary.append(node("span","detail-label-full",t("requirements")),node("span","detail-label-compact",t("requirementsShort")));details.append(summary);const list=node("ul");const requirements=state.lang==="zh"?(record.requirements_zh||record.requirements):record.requirements;(Array.isArray(requirements)?requirements:[requirements]).forEach(item=>list.append(node("li","",item)));details.append(list);
   const context=node("div","resource-detail-meta");const time=node("time","",t("reviewed")+" "+record.verified_at.slice(0,10));time.dateTime=record.verified_at;time.title=record.verified_at;context.append(node("span","",label(RELATION,record.relationship)),node("span","",t("sourceReviewed")),time);
   const href=entryHref("curated",record.id);
   if(record.targets.length)meta.prepend(node("span","card-targets",targetLabels(record)));
   if(href){const entry=node("a","resource-entry-link",t("openEntry"));entry.href=href;entry.setAttribute("aria-label",t("openEntry")+": "+(state.lang==="zh"?(record.name_zh||record.name):record.name));entry.append(icon("arrow",true));meta.append(entry);}
+  context.append(external(record.evidence_url,"resource-evidence-link",t("readSource")+" ↗"));
   details.append(context);article.append(details);return article;
 }
 function filtered() { const terms=state.q.toLocaleLowerCase().trim().split(/\s+/).filter(Boolean);const found=state.records.filter(r=>(state.group==="all"||r.group===state.group)&&(state.target==="all"||r.targets.includes(state.target))&&(state.category==="all"||r.category===state.category)&&(state.kind==="all"||r.kind===state.kind)&&terms.every(term=>r.search.includes(term)));const rank=r=>{const featured=FEATURED.indexOf(r.id);if(featured>=0)return featured;return 100+({"tool":0,"integration":1,"project":2,"case-study":3,"collection":4,"research":5,"learning-resource":6,"documentation":7}[r.kind]??8);};return found.sort((a,b)=>rank(a)-rank(b)||a.order-b.order); }

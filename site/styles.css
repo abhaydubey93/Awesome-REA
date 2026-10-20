@@ -489,3 +489,6 @@ body.data-dialog-open{overflow:hidden}
 .data-file-links a:hover{text-decoration:underline;text-underline-offset:4px}
 .data-note{font-size:12px;line-height:1.7;color:var(--muted);margin:16px 0 0}
 @media(max-width:520px){.hero-actions .hero-text-link{grid-column:1/-1;justify-content:flex-start;min-height:28px}.data-dialog{padding:23px 20px;border-radius:12px;max-height:calc(100dvh - 24px)}.data-dialog h2{font-size:23px;letter-spacing:-.4px}.data-formats{display:none}.data-archive{justify-content:center}.data-counts{gap:6px 16px}.data-counts strong{font-size:18px}}
+
+/* Reviewed resource rows: keep provenance with the requirements it supports. */
+.resource-detail-meta .resource-evidence-link{color:var(--link);text-decoration:underline;text-underline-offset:3px;min-height:44px;display:inline-flex;align-items:center}
