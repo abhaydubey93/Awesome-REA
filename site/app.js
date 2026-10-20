@@ -82,8 +82,9 @@ const UI = {
     "sourceTopicLabel": "Topic",
     "sourceAnyTopic": "All topics",
     "sourceSortLabel": "Sort",
-    "sourceSortRelevance": "Automatic relevance",
+    "sourceSortRelevance": "Relevance",
     "sourceSortStars": "Most stars",
+    "sourceSortStarsAsc": "Fewest stars",
     "sourceSortPushed": "Recently pushed",
     "sourceSortName": "Repository name",
     "sourceIntro": "Automatically collected repositories; not individually reviewed.",
@@ -236,6 +237,7 @@ const UI = {
     "sourceSortLabel": "排序",
     "sourceSortRelevance": "自动相关性",
     "sourceSortStars": "星标最多",
+    "sourceSortStarsAsc": "星标最少",
     "sourceSortPushed": "最近推送",
     "sourceSortName": "仓库名称",
     "sourceIntro": "自动收集的项目仓库，尚未逐项复核。",
@@ -583,6 +585,7 @@ function sourceFiltered() {
   const result = sourceState.records.filter(r => (sourceState.target === "all" || r.targets.includes(sourceState.target)) && (!topic || r.topics.some(item => sourceState.topicIDs.has(topic) ? item === topic : topicSearch(item).includes(topic))) && terms.every(term => r.search.includes(term)));
   const score = r => terms.reduce((sum,term) => sum + (r.full_name.toLocaleLowerCase().includes(term) ? 4 : 0) + (r.topics.some(topic => topicSearch(topic).includes(term)) ? 2 : 0),0);
   if (sourceState.sort === "stars") result.sort((a,b) => (b.stars ?? -1)-(a.stars ?? -1) || compareIDs(a.full_name,b.full_name));
+  else if (sourceState.sort === "stars-asc") result.sort((a,b) => (a.stars ?? Infinity)-(b.stars ?? Infinity) || compareIDs(a.full_name,b.full_name));
   else if (sourceState.sort === "pushed") result.sort((a,b) => compareIDs(String(b.pushed_at || ""),String(a.pushed_at || "")) || compareIDs(a.full_name,b.full_name));
   else if (sourceState.sort === "name") result.sort((a,b) => compareIDs(a.full_name,b.full_name));
   else if (terms.length) {
@@ -687,7 +690,7 @@ function resetSources() { sourceState.q=""; sourceState.topic=""; sourceState.ta
 $("#mode-curated").addEventListener("click",() => setIndexMode("curated")); $("#mode-sources").addEventListener("click",() => setIndexMode("source-index"));
 if (!["all","website","game","app","binary","firmware","protocol"].includes(sourceState.target)) sourceState.target="all";
 if (sourceState.sort === "updated") sourceState.sort = "pushed";
-if (!["relevance","stars","pushed","name"].includes(sourceState.sort)) sourceState.sort="relevance";
+if (!["relevance","stars","stars-asc","pushed","name"].includes(sourceState.sort)) sourceState.sort="relevance";
 $("#source-search").value=sourceState.q; $("#source-topic").value=sourceState.topic; $("#source-sort").value=sourceState.sort;
 for (const [selector,key,event] of [["#source-search","q","input"],["#source-topic","topic","input"],["#source-sort","sort","change"]]) $(selector).addEventListener(event,e => { sourceState[key]=key === "topic" ? canonicalTopic(e.target.value) : e.target.value; if (key === "topic") renderTopicOptions(e.target.value); sourceState.visible=24; sourceURL(); renderSources(); });
 $$('[data-source-target]').forEach(button => button.addEventListener("click",() => { sourceState.target=button.dataset.sourceTarget; sourceState.visible=24; sourceURL(); renderSources(); }));

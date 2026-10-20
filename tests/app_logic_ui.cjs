@@ -289,7 +289,8 @@ const urlParam = (app, key) => new URL(app.location.href).searchParams.get(key);
     assert.equal(app.element('source-topic-match').hidden, true);
   }
 
-  // Repository sorts on a fixture with ties: stars, pushed and name break ties by name; relevance without a
+  // Repository sorts on a fixture with ties: both star orders keep unknown counts last and break ties by name.
+  // Pushed and name also break ties by name; relevance without a
   // query ranks curated GitHub repositories, then reverse-engineering topics or descriptions, then stars.
   const sortRows = [
     repository('plain/popular', {stars: 500, pushed_at: '2026-03-01T00:00:00Z'}),
@@ -306,6 +307,7 @@ const urlParam = (app, key) => new URL(app.location.href).searchParams.get(key);
     const app = await loaded('?view=source-index', {catalog: sortCatalog, browser: browserOf(sortRows)});
     const order = sort => { app.api.sourceState.sort = sort; return names(app.api.sourceFiltered()); };
     assert.deepEqual(order('stars'), ['plain/popular', 're/described', 're/ghidra-scripts', 'Curated/Tool-2', 'curated/tool-1', 'plain/aliased', 'plain/zero', 'plain/unknown']);
+    assert.deepEqual(order('stars-asc'), ['plain/aliased', 'plain/zero', 'curated/tool-1', 'Curated/Tool-2', 're/described', 're/ghidra-scripts', 'plain/popular', 'plain/unknown']);
     assert.deepEqual(order('pushed'), ['re/ghidra-scripts', 're/described', 'curated/tool-1', 'Curated/Tool-2', 'plain/popular', 'plain/aliased', 'plain/zero', 'plain/unknown']);
     assert.deepEqual(order('name'), ['curated/tool-1', 'Curated/Tool-2', 'plain/aliased', 'plain/popular', 'plain/unknown', 'plain/zero', 're/described', 're/ghidra-scripts']);
     assert.deepEqual(order('relevance'), ['Curated/Tool-2', 'curated/tool-1', 're/described', 're/ghidra-scripts', 'plain/aliased', 'plain/zero', 'plain/popular', 'plain/unknown']);
@@ -323,10 +325,30 @@ const urlParam = (app, key) => new URL(app.location.href).searchParams.get(key);
     assert.equal(urlParam(app, 'sort'), null);
     assert.equal(sort.value, 'relevance');
   }
-  for (const [requested, expected] of [['updated', 'pushed'], ['pushed', 'pushed'], ['stars', 'stars'], ['name', 'name'], ['random', 'relevance']]) {
+  for (const [requested, expected] of [['updated', 'pushed'], ['pushed', 'pushed'], ['stars', 'stars'], ['stars-asc', 'stars-asc'], ['name', 'name'], ['random', 'relevance']]) {
     const app = setup(`?view=curated&sort=${requested}`, {catalog: sortCatalog, browser: browserOf(sortRows)});
     assert.equal(app.api.sourceState.sort, expected);
     assert.equal(app.element('source-sort').value, expected);
+  }
+  // A shared low-star link combines with search/topics and survives language and collection-mode changes.
+  for (const lang of ['en', 'zh']) {
+    const app = await loaded(`?view=source-index&sort=stars-asc&sourceq=ghidra&topic=ghidra&lang=${lang}`,
+      {catalog: sortCatalog, browser: browserOf(sortRows)});
+    app.api.applyLanguage();
+    const expected = ['plain/aliased', 're/ghidra-scripts'];
+    assert.deepEqual(shownNames(app), expected);
+    assert.equal(app.element('source-sort').value, 'stars-asc');
+    assert.equal(app.marked.find(node => node.dataset.i18n === 'sourceSortStarsAsc').innerHTML,
+      lang === 'zh' ? '星标最少' : 'Fewest stars');
+    app.api.state.lang = lang === 'zh' ? 'en' : 'zh'; app.api.applyLanguage();
+    assert.deepEqual(shownNames(app), expected);
+    assert.equal(urlParam(app, 'sort'), 'stars-asc');
+    app.element('mode-curated').handlers.click(); app.element('mode-sources').handlers.click();
+    assert.deepEqual(shownNames(app), expected);
+    assert.equal(app.element('source-sort').value, 'stars-asc');
+    app.element('source-clear').handlers.click();
+    assert.equal(urlParam(app, 'sort'), null);
+    assert.equal(app.element('source-sort').value, 'relevance');
   }
   {
     // The legacy sort=updated link opens the pushed order.
