@@ -22,13 +22,13 @@ Repository counts use normalized GitHub repository, tree and file links within e
 
 | State | Occurrences | Inventory units | Meaning |
 | --- | ---: | ---: | --- |
-| Already curated (`already-curated`) | 198 | 196 | Full-scope identity mapping to a catalog resource or paper; not independent runtime reproduction. |
-| Pending (`pending`) | 184 | 184 | Primary review or complete catalog coverage remains pending; partial matches stay here. |
-| Insufficient evidence (`insufficient-evidence`) | 209 | 209 | An idea, request or unsupported reconstruction claim is retained as a lead. |
+| Already curated (`already-curated`) | 199 | 197 | Full-scope identity mapping to a catalog resource or paper; not independent runtime reproduction. |
+| Pending (`pending`) | 166 | 166 | Primary review or complete catalog coverage remains pending; partial matches stay here. |
+| Insufficient evidence (`insufficient-evidence`) | 226 | 226 | An idea, request or unsupported reconstruction claim is retained as a lead. |
 
-210 occurrences have catalog links. They reference 203 distinct resource IDs and 1 paper ID. Match scope is recorded separately; do not add these populations as unique projects.
+211 occurrences have catalog links. They reference 204 distinct resource IDs and 1 paper ID. Match scope is recorded separately; do not add these populations as unique projects.
 
-This ledger records a new primary-source review for 347 inventory units. Other catalog-linked entries inherit the catalog’s separate source-review record; a link does not mean the entire collection report was reviewed again. No runtime experiment was independently reproduced for this ledger.
+This ledger records a new primary-source review for 365 inventory units. Other catalog-linked entries inherit the catalog’s separate source-review record; a link does not mean the entire collection report was reviewed again. No runtime experiment was independently reproduced for this ledger.
 
 Repository README scan IDs and counts are deliberately absent. A successful README fetch, an upstream list entry and a source-reviewed case are different facts.
 
@@ -226,8 +226,19 @@ Repository README scan IDs and counts are deliberately absent. A successful READ
 | REA Reconstruction Companion: connect evidence to specifications, implementation and acceptance | Pending | [Source](https://github.com/ShadowSwaps/REA-Reconstruction-Companion/blob/590e65dd99596c7fb66598eaa5d6c051c2ec9a5f/evals/reference/reconstruction/README.md) |
 | NJFE: a Soulear camera protocol bridge for desktop inspection | Already curated | [Source](https://github.com/WildweaselMS/NJFE/blob/992866c6609f8c813f459ff79840cf04d5883f8e/README.md) |
 | LeanREA | Already curated | [Source](https://github.com/aicodeking/leanrea/blob/09ba4aa0217f82cd880f855a60b877f59f39b22b/README.md) |
+| Chrome LINE: AI reads JavaScript to build a TUI and messaging API | Insufficient evidence | [Source](https://x.com/i/status/2111366415639064608) |
 | Reverse Engineering Assistant: a framework advertised for offline file-analysis reports | Pending | [Source](https://x.com/i/status/2111230457568227404) |
+| 731 functions: an REA reconstruction account using specification isolation and four negative controls | Insufficient evidence | [Source](https://x.com/i/status/2111165651599663599) |
+| Zenith collaborative editing: a reader asks about investigating it with REA | Insufficient evidence | [Source](https://x.com/i/status/2111358914520600998) |
+| Hue screen-synced lighting: Claude investigates a macOS Bluetooth mode | Insufficient evidence | [Source](https://x.com/i/status/2111385823270625370) |
+| JavaScript divergence: formatting switches the game, an AI reversing-decoy idea | Insufficient evidence | [Source](https://x.com/i/status/2111386823763411016) |
+| Three-model binary research: function maps, competing hypotheses and an original-binary oracle | Insufficient evidence | [Source](https://x.com/i/status/2111389348339827041) |
 | re2ds: a native Nintendo DS engine for Resident Evil 2 | Already curated | [Source](https://www.reddit.com/r/ReverseEngineering/comments/1x85dp5/a_port_of_resident_evil_2_for_the_nintendo_ds/) |
+| Starshield signals: a reader's idea to investigate frequencies with REA | Insufficient evidence | [Source](https://x.com/i/status/2111395824991097074) |
+| Windows kernel: an REA collaboration idea for a free operating system | Insufficient evidence | [Source](https://x.com/i/status/2111405429486211272) |
+| Amazon Prime tvOS: investigating IPA Universal Links to open shows from a personal app | Insufficient evidence | [Source](https://x.com/i/status/2111424789827228006) |
+| Claude and Codex limits: an REA-assisted top-bar display report | Insufficient evidence | [Source](https://x.com/i/status/2111426952162947310) |
+| LLVM ABI: gingerBill's account of using LLMs to investigate undocumented internals | Insufficient evidence | [Source](https://x.com/i/status/2111396413066363009) |
 | Super Mario 64 DS: matching decompilation with relocation checks | Already curated | [Source](https://github.com/tangosdev/sm64ds-decomp/blob/af8636d638322b88738ef7ad4b4f28ed9c5be24f/README.md) |
 | Define correctness as PASS/FAIL, then let agents iterate | Insufficient evidence | [Source](https://x.com/arpit_bhayani/status/2109505311904309621) |
 | Where "software is solved" is overstated | Insufficient evidence | [Source](https://x.com/wangdou/status/2109404200513708307) |
@@ -364,6 +375,7 @@ Repository README scan IDs and counts are deliberately absent. A successful READ
 | TH095: function-level reconstruction of Shoot the Bullet 1.02a | Already curated | [Source](https://github.com/N0zoM1z0/th095/blob/6084b36cfa90ac1720f0cba36caec3ee56fc5e1f/README.md) |
 | TH04: rebuilding Lotus Land Story’s four PC-98 programs from source | Already curated | [Source](https://github.com/N0zoM1z0/th04/blob/11577b35392c706f3bd39ff1ea932c003e1eaa6b/README.md) |
 | DX-Ball: an REA-guided function-level reconstruction with Codex | Already curated | [Source](https://github.com/N0zoM1z0/dx-ball/blob/d1251ea4bd000c7204c895c029194cae1d269731/README.md) |
+| Pre-CU Star Wars Galaxies: an idea to accelerate emulator reverse engineering with AI | Insufficient evidence | [Source](https://x.com/i/status/2111615624678088837) |
 | A pro-software licensing algorithm: an unverified report of a REA keygen in hours | Insufficient evidence | [Source](https://x.com/i/status/2111423397095723483) |
 | Game ad behavior: a reported Claude inspection of obfuscated JavaScript | Insufficient evidence | [Source](https://x.com/i/status/2111582817251738031) |
 | LG OLED pause ads: an idea to modify firmware with Codex | Insufficient evidence | [Source](https://x.com/i/status/2111556091712581745) |
@@ -372,6 +384,12 @@ Repository README scan IDs and counts are deliberately absent. A successful READ
 | DeepSeek V4.1: a reported V8 n-day to Electron IPC investigation | Insufficient evidence | [Source](https://x.com/i/status/2111587595750637954) |
 | Cursor: an account of custom relays and personal Codex/Claude Code quotas | Insufficient evidence | [Source](https://x.com/FoxSnowing/status/2111465121126207605) |
 | Open Scrantic: reconstructing the Johnny Castaway screensaver engine | Already curated | [Source](https://github.com/glauberlima/open-scrantic/blob/2db75008931eb744f79d0c3fb12e0d89950466ff/README.md) |
+| ScooterLink: reconstructing Honda RoadSync’s handlebar-button protocol | Already curated | [Source](https://x.com/i/status/2111470520688665052) |
+| Hitachi combination oven: a Codex/REA account using an Android app for direct control | Insufficient evidence | [Source](https://x.com/i/status/2111474749855670664) |
+| Ableton Live 12: an agent reversing attempt running for 96 hours | Insufficient evidence | [Source](https://x.com/i/status/2111506869395337318) |
+| Makara game maker: an idea for scoped analysis of authorized inputs | Insufficient evidence | [Source](https://x.com/i/status/2111507612646699286) |
+| ROM analysis setup: Gemini Argon with REA, Ghidra and libretro | Insufficient evidence | [Source](https://x.com/i/status/2111507777336098897) |
+| EVM contracts: a REA idea for inspecting state-changing entry points | Insufficient evidence | [Source](https://x.com/i/status/2111507955711459554) |
 | Non-open-hardware Xiaozhi box: AI firmware changes for a personal VPS and shared memory | Insufficient evidence | [Source](https://x.com/i/status/2111511824751599721) |
 | Pandemic-relief websites: an idea for AI-assisted investigation of legacy backdoors | Insufficient evidence | [Source](https://x.com/i/status/2111516584976273866) |
 | Forked pi and two Sparks: starting a GLM-5.3-flash/REA trial | Insufficient evidence | [Source](https://x.com/i/status/2111519607928520794) |
