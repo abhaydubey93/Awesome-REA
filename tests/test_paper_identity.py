@@ -60,6 +60,40 @@ def security24_paper():
 
 
 class PaperIdentityTests(unittest.TestCase):
+    def test_security26_final_pdf_requires_matching_identity_and_evidence(self):
+        record = publisher_paper()
+        record.update(year=2026, publication_date='2026-08',
+                      venue='USENIX Security 2026',
+                      url='https://www.usenix.org/conference/usenixsecurity26/presentation/wang-chunlin',
+                      pdf_url='https://www.usenix.org/system/files/usenixsecurity26-wang-chunlin.pdf')
+        record['evidence_urls'] = [record['url'], record['pdf_url']]
+        self.assertEqual(errors_for([record]), [])
+        self.assertTrue(bibtex_text(record).startswith('@inproceedings{'))
+        self.assertNotIn('identifier', scholarly_article(record, 'en'))
+        for pdf in (
+            'https://www.usenix.org/system/files/sec26-wang-chunlin.pdf',
+            'https://www.usenix.org/system/files/usenixsecurity25-wang-chunlin.pdf',
+            'https://www.usenix.org/system/files/usenixsecurity26-wang.pdf',
+            'https://www.usenix.org/system/files/usenixsecurity26-wang-chunlin_0.pdf',
+            'https://www.usenix.org/system/files/usenixsecurity26_slides-wang-chunlin.pdf',
+            'https://www.usenix.org/system/files/conference/usenixsecurity26/usenixsecurity26-wang-chunlin.pdf',
+        ):
+            with self.subTest(pdf=pdf):
+                altered = deepcopy(record)
+                altered['pdf_url'] = pdf
+                altered['evidence_urls'][1] = pdf
+                self.assertTrue(any('URL/PDF identity' in e for e in errors_for([altered])))
+        for change in (
+            {'year': 2025, 'publication_date': '2025-08'},
+            {'evidence_urls': [record['url']]},
+            {'evidence_urls': [record['pdf_url']]},
+            {'url': record['url'].replace('/usenixsecurity26/', '/woot26/')},
+        ):
+            with self.subTest(change=change):
+                altered = deepcopy(record)
+                altered.update(change)
+                self.assertTrue(any('URL/PDF identity' in e for e in errors_for([altered])))
+
     def test_security24_accepts_only_its_exact_final_pdf(self):
         record = security24_paper()
         self.assertEqual(errors_for([record]), [])
