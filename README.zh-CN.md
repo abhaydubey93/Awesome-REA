@@ -11,7 +11,7 @@
 <a href="https://awesomerea.org/zh/"><img src="assets/readme-banner.svg" alt="Awesome Reverse Engineering Anything — 覆盖六类逆向目标的工具、案例与论文" width="960"></a>
 
 <!-- BEGIN GENERATED BADGES -->
-[![精选资源: 473](https://img.shields.io/badge/%E7%B2%BE%E9%80%89%E8%B5%84%E6%BA%90-473-53309C?style=flat-square&labelColor=303447)](https://awesomerea.org/zh/resources/) [![案例: 197](https://img.shields.io/badge/%E6%A1%88%E4%BE%8B-197-53309C?style=flat-square&labelColor=303447)](https://awesomerea.org/zh/cases/) [![论文: 114](https://img.shields.io/badge/%E8%AE%BA%E6%96%87-114-53309C?style=flat-square&labelColor=303447)](https://awesomerea.org/zh/papers/) [![目录检查](https://github.com/reacher-z/Awesome-REA/actions/workflows/validate.yml/badge.svg?branch=main)](https://github.com/reacher-z/Awesome-REA/actions/workflows/validate.yml) [![许可: MIT](https://img.shields.io/badge/%E8%AE%B8%E5%8F%AF-MIT-606779?style=flat-square&labelColor=303447)](LICENSE) [![网站: awesomerea.org](https://img.shields.io/badge/%E7%BD%91%E7%AB%99-awesomerea.org-6235B5?style=flat-square&labelColor=303447)](https://awesomerea.org/zh/)
+[![精选资源: 473](https://img.shields.io/badge/%E7%B2%BE%E9%80%89%E8%B5%84%E6%BA%90-473-53309C?style=flat-square&labelColor=303447)](https://awesomerea.org/zh/resources/) [![案例: 197](https://img.shields.io/badge/%E6%A1%88%E4%BE%8B-197-53309C?style=flat-square&labelColor=303447)](https://awesomerea.org/zh/cases/) [![论文: 119](https://img.shields.io/badge/%E8%AE%BA%E6%96%87-119-53309C?style=flat-square&labelColor=303447)](https://awesomerea.org/zh/papers/) [![目录检查](https://github.com/reacher-z/Awesome-REA/actions/workflows/validate.yml/badge.svg?branch=main)](https://github.com/reacher-z/Awesome-REA/actions/workflows/validate.yml) [![许可: MIT](https://img.shields.io/badge/%E8%AE%B8%E5%8F%AF-MIT-606779?style=flat-square&labelColor=303447)](LICENSE) [![网站: awesomerea.org](https://img.shields.io/badge/%E7%BD%91%E7%AB%99-awesomerea.org-6235B5?style=flat-square&labelColor=303447)](https://awesomerea.org/zh/)
 <!-- END GENERATED BADGES -->
 
 **[搜索与筛选](https://awesomerea.org/zh/)** · **[浏览案例](https://awesomerea.org/zh/cases/)** · **[研究论文](https://awesomerea.org/zh/papers/)** · **[HTML 综述](https://awesomerea.org/zh/survey/)**
@@ -28,7 +28,7 @@
 
 **论文与工作流**
 
-- [论文](#papers) (114) · [智能体与 MCP](#agents-and-mcp) (43) · [文档与学习资源](#references-and-learning) (32)
+- [论文](#papers) (119) · [智能体与 MCP](#agents-and-mcp) (43) · [文档与学习资源](#references-and-learning) (32)
 
 **更多浏览方式**
 
@@ -619,15 +619,15 @@ REA 标签指向单独维护的[上游 CLI 与 MCP 项目](https://github.com/mo
 <a id="papers"></a>
 ## 论文
 
-**114 篇论文**，按主题分组，组内按年份从新到旧排列。每行列出摘要首句、发表场所、状态与第一作者，中文标题为译名。
+**119 篇论文**，按主题分组，组内按年份从新到旧排列。每行列出摘要首句、发表场所、状态与第一作者，中文标题为译名。
 
 [浏览论文目录](https://awesomerea.org/zh/papers/) · [完整书目 JSON](data/papers.json) · [推荐论文](https://github.com/reacher-z/Awesome-REA/issues/new?template=paper.yml)
 
 **按主题**
 
-- [智能体评测](#papers-agent-evaluation) (9) · [反编译](#papers-decompilation) (48) · [网站](#papers-website-reconstruction) (19)
-- [游戏](#papers-game-reconstruction) (7) · [应用](#papers-app-reconstruction) (10) · [固件](#papers-firmware-analysis) (10)
-- [协议](#papers-protocol-analysis) (11)
+- [智能体评测](#papers-agent-evaluation) (9) · [反编译](#papers-decompilation) (49) · [网站](#papers-website-reconstruction) (20)
+- [游戏](#papers-game-reconstruction) (7) · [应用](#papers-app-reconstruction) (10) · [固件](#papers-firmware-analysis) (11)
+- [协议](#papers-protocol-analysis) (13)
 
 每篇论文的“完整条目”提供完整摘要、研究范围与局限、全部作者和引文。部分论文也出现在精选资源目录中，两者数量不可相加。
 
@@ -654,6 +654,7 @@ REA 标签指向单独维护的[上游 CLI 与 MCP 项目](https://github.com/mo
 - [**SoK：LLM 恢复源码是否可靠？分类体系与实证评估**](https://arxiv.org/abs/2610.11556) - 该 SoK 组织 LLM 辅助源码恢复方案，并区分编译、可读性、结构与行为指标。 <sub>arXiv 2026 · 预印本 · Varun Kohli 等 · [PDF](https://arxiv.org/pdf/2610.11556v1) · [代码](https://anonymous.4open.science/r/decompbench-65CB/) · [完整条目](https://awesomerea.org/zh/papers/paper-sok-source-recovery-reliability/)</sub>
 - [**CodeInverter 套件：利用高效大语言模型进行结构与数据感知的二进制反编译**](https://dl.acm.org/doi/10.1145/3832783.3837554) - CodeInverter 研究函数级 LLM 反编译，使用 IDA／objdump 提取的控制流图和内存到数据映射补充输入。 <sub>ASE 2026 · 会议论文 · Peipei Liu 等 · [PDF](https://arxiv.org/pdf/2503.07215v3) · [代码](https://github.com/LiuPeiP-CS/CodeInverter) · [完整条目](https://awesomerea.org/zh/papers/paper-codeinverter-suite/)</sub>
 - [**超越文本匹配：面向人的二进制逆向工程的无参考评估**](https://dl.acm.org/doi/10.1145/3832783.3834339) - BinJudgeBench 收集函数命名、二进制代码摘要及反编译改进的专家评分。 <sub>ASE 2026 · 会议论文 · Xiuwei Shang 等 · [PDF](https://arxiv.org/pdf/2608.07038v1) · [完整条目](https://awesomerea.org/zh/papers/paper-binjudge/)</sub>
+- [**将量子汇编反编译为结构化程序**](https://arxiv.org/abs/2610.05012) - Quelle 从编译后的 OpenQASM 恢复库调用、循环、函数及符号参数，通过消除路由痕迹、提出结构化重建并核对电路语义，在恢复失败时保留门级表示。 <sub>arXiv 2026 · 预印本 · Pingchuan Ma 等 · [PDF](https://arxiv.org/pdf/2610.05012v1) · [完整条目](https://awesomerea.org/zh/papers/paper-quelle/)</sub>
 - [**ASAP：通过汇编与源码对齐改进二进制反编译伪代码**](https://arxiv.org/abs/2610.06900) - ASAP 在训练中对齐汇编与源码表示，将汇编特征压缩为标记，并与反编译伪代码一起交给 LLM 改进。 <sub>arXiv 2026 · 预印本 · Yujian Zhuang 等 · [PDF](https://arxiv.org/pdf/2610.06900v1) · [完整条目](https://awesomerea.org/zh/papers/paper-asap-decompilation/)</sub>
 - [**Echo：基于可信回译的学习式匹配反编译**](https://arxiv.org/abs/2609.18706) - Echo 迭代生成源码及编译配置，重新编译候选，并使用汇编差异指导配置搜索与代码修正。 <sub>arXiv 2026 · 预印本 · Jun Bi 等 · [PDF](https://arxiv.org/pdf/2609.18706v1) · [完整条目](https://awesomerea.org/zh/papers/paper-echo-matching-decompilation/)</sub>
 - [**当 LLM 反编译器更易重编译，却更少保留原始行为**](https://arxiv.org/abs/2609.05370) - Decompile-Diverge 基于源码生成驱动，并对参考实现进行模糊测试，以构建函数级行为比较。 <sub>arXiv 2026 · 预印本 · Chang Liu 等 · [PDF](https://arxiv.org/pdf/2609.05370v1) · [完整条目](https://awesomerea.org/zh/papers/paper-decompile-diverge/)</sub>
@@ -708,6 +709,7 @@ REA 标签指向单独维护的[上游 CLI 与 MCP 项目](https://github.com/mo
 - [**PrismaCoder：通过分解式评分准则生成提升开放多模态代码能力**](https://arxiv.org/abs/2610.20538) - 以代码与渲染结果的独立评分准则筛选数据并训练视觉代码模型，相关评测包括根据图像重建网页、图表和矢量图。 <sub>arXiv 2026 · 预印本 · Qiushi Sun 等 · [PDF](https://arxiv.org/pdf/2610.20538v1) · [完整条目](https://awesomerea.org/zh/papers/paper-prismacoder/)</sub>
 - [**TaoD2C-Bench：超越视觉相似度的工业界面代码生成评测**](https://arxiv.org/abs/2610.10374) - TaoD2C-Bench 根据设计图、图层元数据与组件库文档重建界面，将需求推断与代码实现分别评测，并结合源码、运行时结构及渲染结果检查组件选择与布局关系。 <sub>arXiv 2026 · 预印本 · Chengwei Shi 等 · [PDF](https://arxiv.org/pdf/2610.10374v1) · [完整条目](https://awesomerea.org/zh/papers/paper-taod2c-bench/)</sub>
 - [**Vision2Web：采用智能体验证的分层视觉网站开发基准**](https://proceedings.mlr.press/v306/he26n.html) - 基于视觉原型和文字需求评测网站开发，包含 100 项静态页面、66 项交互前端与 27 项全栈任务，将基于工作流的功能检查与模型进行的视觉比较结合。 <sub>ICML 2026 · 会议论文 · Zehai He 等 · [PDF](https://raw.githubusercontent.com/mlresearch/v306/main/assets/he26n/he26n.pdf) · [代码](https://github.com/zai-org/Vision2Web) · [完整条目](https://awesomerea.org/zh/papers/paper-vision2web/)</sub>
+- [**阶段监督的潜空间推理：单次生成的 JavaScript 去混淆**](https://arxiv.org/abs/2609.27058) - 利用 Webcrack 的中间重写结果监督 Coconut 式潜空间推理，以完成 JavaScript 去混淆。 <sub>arXiv 2026 · 预印本 · Rong Feng 等 · [PDF](https://arxiv.org/pdf/2609.27058v1) · [完整条目](https://awesomerea.org/zh/papers/paper-stage-supervised-js-deobfuscation/)</sub>
 - [**ProgramDistill：将交互式 Web 应用转化为可验证的参考驱动软件工程任务**](https://arxiv.org/abs/2609.18805) - 评测智能体从源码不可见的运行参考中恢复 Web 应用行为的能力，提供覆盖 26 个应用的 4,063 项功能恢复任务，以及独立的 12 应用重建设置，通过重放具有依赖关系的浏览器工作流评分。 <sub>arXiv 2026 · 预印本 · Jeonghye Kim 等 · [PDF](https://arxiv.org/pdf/2609.18805v1) · [代码](https://huggingface.co/datasets/microsoft/ProgramDistill) · [完整条目](https://awesomerea.org/zh/papers/paper-programdistill/)</sub>
 - [**能否处处正确渲染？多模态模型生成网页的跨环境兼容性研究**](https://arxiv.org/abs/2608.12518) - WebCompat 评测由截图重建的网页在不同浏览器与设备中的表现。 <sub>arXiv 2026 · 预印本 · Ziyun Guo 等 · [PDF](https://arxiv.org/pdf/2608.12518v1) · [代码](https://github.com/ZiyunGuo/WebCompat) · [完整条目](https://awesomerea.org/zh/papers/paper-webcompat/)</sub>
 - [**UI2App：评测可执行 Web 应用生成中的视觉交互推断**](https://arxiv.org/abs/2607.06306) - UI2App 使用来自 95 个 Web 应用的 600 张截图，评测生成的可运行 React/TypeScript 应用。 <sub>arXiv 2026 · 预印本 · Grace Man Chen 等 · [PDF](https://arxiv.org/pdf/2607.06306v2) · [代码](https://github.com/chenmancm169/UI2App) · [完整条目](https://awesomerea.org/zh/papers/paper-ui2app/)</sub>
@@ -759,6 +761,7 @@ REA 标签指向单独维护的[上游 CLI 与 MCP 项目](https://github.com/mo
 
 [↑ 论文主题](#papers) · [目录](#目录)
 
+- [**ARM Cortex-M 固件仿真动态分析研究的大规模实证综述（扩展版）**](https://arxiv.org/abs/2609.38872) - 将 24 项 MCU 分析工具组织为配置恢复、仿真、模糊测试及诊断阶段，并在 4,571 个筛选后的 Cortex-M 固件镜像上评估可运行且兼容流程的子集，研究恢复的配置和仿真产物为何无法支撑后续分析。 <sub>arXiv (extended version) 2026 · 预印本 · Hongyuan Li 等 · [PDF](https://arxiv.org/pdf/2609.38872v1) · [代码](https://github.com/IoTS-P/LargeRehostingTesting) · [完整条目](https://awesomerea.org/zh/papers/paper-cortexm-emulation-sok/)</sub>
 - [**面向忠实固件运行迁移的响应式外设建模**](https://arxiv.org/abs/2608.29737) - Bluezz 将外设建模为具有状态的事件—条件—动作系统，协调中断、MMIO 与 DMA，而非孤立处理各次访问；据此迁移 BLE 固件，进入已连接协议状态进行分析与模糊测试。 <sub>arXiv 2026 · 预印本 · Qinying Wang 等 · [PDF](https://arxiv.org/pdf/2608.29737v1) · [完整条目](https://awesomerea.org/zh/papers/paper-bluezz-rpm/)</sub>
 - [**Khost：基于 KVM 的近原生 MCU 固件重托管**](https://www.usenix.org/conference/usenixsecurity26/presentation/wang-chunlin) - 扩展 KVM 的 MCU 指令处理、内存映射及中断建模，在 ARMv8-A 主机上重托管固件；MMIO 监控器与固件包装层支持外设交互及覆盖率引导测试。 <sub>USENIX Security '26 2026 · 会议论文 · Chunlin Wang 等 · [PDF](https://www.usenix.org/system/files/usenixsecurity26-wang-chunlin.pdf) · [代码](https://github.com/seclab-fudan/Khost) · [完整条目](https://awesomerea.org/zh/papers/paper-khost/)</sub>
 - [**FirmPilot：证据引导的多智能体物联网固件运行环境恢复**](https://arxiv.org/abs/2607.14903) - FirmPilot 协调检索、规划、文件系统、持久状态与网络恢复来重建 QEMU 执行环境。 <sub>arXiv 2026 · 预印本 · Yanbing Shen 等 · [PDF](https://arxiv.org/pdf/2607.14903v1) · [完整条目](https://awesomerea.org/zh/papers/paper-firmpilot/)</sub>
@@ -775,6 +778,8 @@ REA 标签指向单独维护的[上游 CLI 与 MCP 项目](https://github.com/mo
 
 [↑ 论文主题](#papers) · [目录](#目录)
 
+- [**通过深度迁移学习进行协议逆向工程**](https://doi.org/10.1145/3797124) - 将 Tshark 标注的标准协议流量中的字段边界模式迁移到文档不足的目标协议。 <sub>Proceedings of the ACM on Software Engineering / FSE 2026 · 期刊论文 · Yanyang Zhao 等 · [PDF](https://dl.acm.org/doi/pdf/10.1145/3797124) · [完整条目](https://awesomerea.org/zh/papers/paper-transre/)</sub>
+- [**RFCLLM：评估大语言模型对网络协议状态机的推理能力**](https://arxiv.org/abs/2609.13389) - 以 16 种协议的 1,482 个问题评测协议状态机推理。 <sub>Findings of EMNLP 2026 · 已接收 · Anqi Chen 等 · [PDF](https://arxiv.org/pdf/2609.13389v1) · [代码](https://anonymous.4open.science/r/rfcllm) · [完整条目](https://awesomerea.org/zh/papers/paper-rfcllm/)</sub>
 - [**基于搜索优化从工业网络流量恢复过程变量**](https://arxiv.org/abs/2608.16403) - PVParser 根据工业流量与历史过程记录恢复过程变量布局：周期模式检测定位相关载荷，改进的蒙特卡洛树搜索推断字段边界、类型和字节序，再将解码序列与已观察的过程变量对齐。 <sub>CCS 2026 · 已接收 · Chuan Sheng 等 · [PDF](https://arxiv.org/pdf/2608.16403v2) · [完整条目](https://awesomerea.org/zh/papers/paper-pvparser/)</sub>
 - [**ICEPRE：基于数据驱动混合符号执行的工控协议逆向工程**](https://dl.acm.org/doi/10.1145/3728982) - 在二进制协议解析器中沿具体报文引导的路径分析，再进行符号化重放，提取字节级数据流以推断报文字段边界。 <sub>Proceedings of the ACM on Software Engineering (ISSTA 2025) · 期刊论文 · Yibo Qu 等 · [PDF](https://dl.acm.org/doi/pdf/10.1145/3728982) · [代码](https://github.com/QYbPtqyb/ICEPRE) · [完整条目](https://awesomerea.org/zh/papers/paper-icepre/)</sub>
 - [**BinPRE：增强基于二进制分析的协议逆向工程中的字段推断**](https://dl.acm.org/doi/10.1145/3658644.3690299) - 根据受插桩监测的服务端二进制及输入报文，推断协议报文的字段边界与语义。 <sub>ACM CCS 2024 · 会议论文 · Jiayi Jiang 等 · [PDF](https://tingsu.github.io/files/ccs24-BinPRE.pdf) · [代码](https://github.com/ecnusse/BinPRE) · [完整条目](https://awesomerea.org/zh/papers/paper-binpre/)</sub>

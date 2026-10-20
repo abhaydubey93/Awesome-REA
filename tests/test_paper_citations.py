@@ -153,6 +153,12 @@ class ReviewedContainerRecordTests(unittest.TestCase):
                          ('{35th USENIX Security Symposium (USENIX Security 26)}',
                           '{USENIX Association}', '{573--592}', 'aug'))
         self.assertFalse({'doi', 'eprint', 'howpublished'} & set(khost))
+        transre = fields(bibtex_text(PAPERS['paper-transre']))
+        self.assertEqual((transre['journal'], transre['volume'], transre['number'],
+                          transre['pages'], transre['doi'], transre['year'], transre['month']),
+                         ('{Proceedings of the ACM on Software Engineering}', '{3}', '{FSE}',
+                          '{636--656}', '{10.1145/3797124}', '{2026}', 'jun'))
+        self.assertFalse({'booktitle', 'eid', 'eprint'} & set(transre))
 
     def test_only_reviewed_records_carry_container_metadata(self):
         expected = {'paper-dire', 'paper-resym', 'paper-redraw', 'paper-declarui', 'paper-fuzzware',
@@ -170,7 +176,7 @@ class ReviewedContainerRecordTests(unittest.TestCase):
                     'paper-xfl',
                     'paper-wadec',
                     'paper-symlm', 'paper-codeinverter-suite', 'paper-notdec', 'paper-binjudge',
-                    'paper-requirements-generation-viability', 'paper-khost'}
+                    'paper-requirements-generation-viability', 'paper-khost', 'paper-transre'}
         self.assertEqual({identifier for identifier, record in PAPERS.items() if 'citation' in record}, expected)
         for identifier in sorted(PAPERS.keys() - expected):
             # Records without verified container metadata keep the short venue label.
