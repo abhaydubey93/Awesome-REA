@@ -11,7 +11,7 @@
 <a href="https://awesomerea.org/zh/"><img src="assets/readme-banner.svg" alt="Awesome Reverse Engineering Anything — 覆盖六类逆向目标的工具、案例与论文" width="960"></a>
 
 <!-- BEGIN GENERATED BADGES -->
-[![精选资源: 481](https://img.shields.io/badge/%E7%B2%BE%E9%80%89%E8%B5%84%E6%BA%90-481-53309C?style=flat-square&labelColor=303447)](https://awesomerea.org/zh/resources/) [![案例: 201](https://img.shields.io/badge/%E6%A1%88%E4%BE%8B-201-53309C?style=flat-square&labelColor=303447)](https://awesomerea.org/zh/cases/) [![论文: 131](https://img.shields.io/badge/%E8%AE%BA%E6%96%87-131-53309C?style=flat-square&labelColor=303447)](https://awesomerea.org/zh/papers/) [![目录检查](https://github.com/reacher-z/Awesome-REA/actions/workflows/validate.yml/badge.svg?branch=main)](https://github.com/reacher-z/Awesome-REA/actions/workflows/validate.yml) [![许可: MIT](https://img.shields.io/badge/%E8%AE%B8%E5%8F%AF-MIT-606779?style=flat-square&labelColor=303447)](LICENSE) [![网站: awesomerea.org](https://img.shields.io/badge/%E7%BD%91%E7%AB%99-awesomerea.org-6235B5?style=flat-square&labelColor=303447)](https://awesomerea.org/zh/)
+[![精选资源: 481](https://img.shields.io/badge/%E7%B2%BE%E9%80%89%E8%B5%84%E6%BA%90-481-53309C?style=flat-square&labelColor=303447)](https://awesomerea.org/zh/resources/) [![案例: 201](https://img.shields.io/badge/%E6%A1%88%E4%BE%8B-201-53309C?style=flat-square&labelColor=303447)](https://awesomerea.org/zh/cases/) [![论文: 134](https://img.shields.io/badge/%E8%AE%BA%E6%96%87-134-53309C?style=flat-square&labelColor=303447)](https://awesomerea.org/zh/papers/) [![目录检查](https://github.com/reacher-z/Awesome-REA/actions/workflows/validate.yml/badge.svg?branch=main)](https://github.com/reacher-z/Awesome-REA/actions/workflows/validate.yml) [![许可: MIT](https://img.shields.io/badge/%E8%AE%B8%E5%8F%AF-MIT-606779?style=flat-square&labelColor=303447)](LICENSE) [![网站: awesomerea.org](https://img.shields.io/badge/%E7%BD%91%E7%AB%99-awesomerea.org-6235B5?style=flat-square&labelColor=303447)](https://awesomerea.org/zh/)
 <!-- END GENERATED BADGES -->
 
 **[搜索与筛选](https://awesomerea.org/zh/)** · **[浏览案例](https://awesomerea.org/zh/cases/)** · **[研究论文](https://awesomerea.org/zh/papers/)** · **[HTML 综述](https://awesomerea.org/zh/survey/)**
@@ -28,7 +28,7 @@
 
 **论文与工作流**
 
-- [论文](#papers) (131) · [智能体与 MCP](#agents-and-mcp) (43) · [文档与学习资源](#references-and-learning) (32)
+- [论文](#papers) (134) · [智能体与 MCP](#agents-and-mcp) (43) · [文档与学习资源](#references-and-learning) (32)
 
 **更多浏览方式**
 
@@ -627,14 +627,14 @@ REA 标签指向单独维护的[上游 CLI 与 MCP 项目](https://github.com/mo
 <a id="papers"></a>
 ## 论文
 
-**131 篇论文**，按主题分组，组内按年份从新到旧排列。每行列出摘要首句、发表场所、状态与第一作者，中文标题为译名。
+**134 篇论文**，按主题分组，组内按年份从新到旧排列。每行列出摘要首句、发表场所、状态与第一作者，中文标题为译名。
 
 [浏览论文目录](https://awesomerea.org/zh/papers/) · [完整书目 JSON](data/papers.json) · [推荐论文](https://github.com/reacher-z/Awesome-REA/issues/new?template=paper.yml)
 
 **按主题**
 
-- [智能体评测](#papers-agent-evaluation) (9) · [反编译](#papers-decompilation) (57) · [网站](#papers-website-reconstruction) (20)
-- [游戏](#papers-game-reconstruction) (8) · [应用](#papers-app-reconstruction) (11) · [固件](#papers-firmware-analysis) (13)
+- [智能体评测](#papers-agent-evaluation) (9) · [反编译](#papers-decompilation) (57) · [网站](#papers-website-reconstruction) (22)
+- [游戏](#papers-game-reconstruction) (8) · [应用](#papers-app-reconstruction) (12) · [固件](#papers-firmware-analysis) (13)
 - [协议](#papers-protocol-analysis) (13)
 
 每篇论文的“完整条目”提供完整摘要、研究范围与局限、全部作者和引文。部分论文也出现在精选资源目录中，两者数量不可相加。
@@ -723,8 +723,10 @@ REA 标签指向单独维护的[上游 CLI 与 MCP 项目](https://github.com/mo
 [↑ 论文主题](#papers) · [目录](#目录)
 
 - [**PrismaCoder：通过分解式评分准则生成提升开放多模态代码能力**](https://arxiv.org/abs/2610.20538) - 以代码与渲染结果的独立评分准则筛选数据并训练视觉代码模型，相关评测包括根据图像重建网页、图表和矢量图。 <sub>arXiv 2026 · 预印本 · Qiushi Sun 等 · [PDF](https://arxiv.org/pdf/2610.20538v1) · [完整条目](https://awesomerea.org/zh/papers/paper-prismacoder/)</sub>
+- [**从视觉原型与需求生成可部署网站的状态感知方法**](https://arxiv.org/abs/2610.17861) - VisStateCoder 以项目状态图连接视觉原型元素、项目文件、交互需求与渲染证据，据此生成网站，并将后续修复限制在选定文件内。 <sub>arXiv 2026 · 预印本 · Ruwei Pan 等 · [PDF](https://arxiv.org/pdf/2610.17861v1) · [完整条目](https://awesomerea.org/zh/papers/paper-visstatecoder/)</sub>
 - [**TaoD2C-Bench：超越视觉相似度的工业界面代码生成评测**](https://arxiv.org/abs/2610.10374) - TaoD2C-Bench 根据设计图、图层元数据与组件库文档重建界面，将需求推断与代码实现分别评测，并结合源码、运行时结构及渲染结果检查组件选择与布局关系。 <sub>arXiv 2026 · 预印本 · Chengwei Shi 等 · [PDF](https://arxiv.org/pdf/2610.10374v1) · [完整条目](https://awesomerea.org/zh/papers/paper-taod2c-bench/)</sub>
 - [**Vision2Web：采用智能体验证的分层视觉网站开发基准**](https://proceedings.mlr.press/v306/he26n.html) - 基于视觉原型和文字需求评测网站开发，包含 100 项静态页面、66 项交互前端与 27 项全栈任务，将基于工作流的功能检查与模型进行的视觉比较结合。 <sub>ICML 2026 · 会议论文 · Zehai He 等 · [PDF](https://raw.githubusercontent.com/mlresearch/v306/main/assets/he26n/he26n.pdf) · [代码](https://github.com/zai-org/Vision2Web) · [完整条目](https://awesomerea.org/zh/papers/paper-vision2web/)</sub>
+- [**IChart2Code：面向交互图表代码生成的多模态大语言模型评测**](https://arxiv.org/abs/2609.32413) - 评测根据参照截图、本地数据和指定动作重建交互图表。 <sub>arXiv 2026 · 预印本 · Xu Zhang 等 · [PDF](https://arxiv.org/pdf/2609.32413v1) · [完整条目](https://awesomerea.org/zh/papers/paper-ichart2code/)</sub>
 - [**阶段监督的潜空间推理：单次生成的 JavaScript 去混淆**](https://arxiv.org/abs/2609.27058) - 利用 Webcrack 的中间重写结果监督 Coconut 式潜空间推理，以完成 JavaScript 去混淆。 <sub>arXiv 2026 · 预印本 · Rong Feng 等 · [PDF](https://arxiv.org/pdf/2609.27058v1) · [完整条目](https://awesomerea.org/zh/papers/paper-stage-supervised-js-deobfuscation/)</sub>
 - [**ProgramDistill：将交互式 Web 应用转化为可验证的参考驱动软件工程任务**](https://arxiv.org/abs/2609.18805) - 评测智能体从源码不可见的运行参考中恢复 Web 应用行为的能力，提供覆盖 26 个应用的 4,063 项功能恢复任务，以及独立的 12 应用重建设置，通过重放具有依赖关系的浏览器工作流评分。 <sub>arXiv 2026 · 预印本 · Jeonghye Kim 等 · [PDF](https://arxiv.org/pdf/2609.18805v1) · [代码](https://huggingface.co/datasets/microsoft/ProgramDistill) · [完整条目](https://awesomerea.org/zh/papers/paper-programdistill/)</sub>
 - [**能否处处正确渲染？多模态模型生成网页的跨环境兼容性研究**](https://arxiv.org/abs/2608.12518) - WebCompat 评测由截图重建的网页在不同浏览器与设备中的表现。 <sub>arXiv 2026 · 预印本 · Ziyun Guo 等 · [PDF](https://arxiv.org/pdf/2608.12518v1) · [代码](https://github.com/ZiyunGuo/WebCompat) · [完整条目](https://awesomerea.org/zh/papers/paper-webcompat/)</sub>
@@ -762,6 +764,7 @@ REA 标签指向单独维护的[上游 CLI 与 MCP 项目](https://github.com/mo
 
 [↑ 论文主题](#papers) · [目录](#目录)
 
+- [**从失效代码与静态需求到可运行引擎：利用编程智能体恢复软件**](https://arxiv.org/abs/2609.36161) - ReviveBench 利用隐藏的参考检查，评估无法运行的软件修复，以及依据公开规范、在无法访问目标源码时实现限定范围的计算与事务引擎；同时审计可能误收或误拒重建结果的评分缺陷。 <sub>arXiv 2026 · 预印本 · Tianyu Liu 等 · [PDF](https://arxiv.org/pdf/2609.36161v1) · [完整条目](https://awesomerea.org/zh/papers/paper-revivebench/)</sub>
 - [**从代码到需求：企业规模的智能体业务规则逆向恢复**](https://arxiv.org/abs/2609.22719) - 利用七个智能体与人工审查，从源码、测试、配置及文档恢复业务需求；企业迁移案例以生产缺陷记录核对提取的规则。 <sub>arXiv 2026 · 预印本 · Garima Agrawal 等 · [PDF](https://arxiv.org/pdf/2609.22719v1) · [完整条目](https://awesomerea.org/zh/papers/paper-agentic-business-rule-recovery/)</sub>
 - [**从代码生成需求是否可行：一份经验报告**](https://doi.org/10.1109/REW72749.2026.00023) - 研究以 RAG 和人工监督从两个项目恢复需求与代码追踪关系的流程，并测试刻意生成未实现需求及需求异味（潜在质量问题），揭示验证与标注的困难。 <sub>IEEE REW 2026 / AIRE · 会议论文 · Alexander Korn 等 · [PDF](https://arxiv.org/pdf/2606.25550v1) · [完整条目](https://awesomerea.org/zh/papers/paper-requirements-generation-viability/)</sub>
 - [**从视觉组件到界面代码：借助工具证据的高效生成**](https://arxiv.org/abs/2608.12611) - WidgetGen 将组件截图重建为 React JSX，利用 OCR 文本框与调色板支持整体布局推理及可选图表生成，最后渲染一次；生成的渲染图与代码配对还用于模型微调。 <sub>MUCG <span>@</span> ECCV 2026 · 已接收 · Houston H. Zhang 等 · [PDF](https://arxiv.org/pdf/2608.12611v1) · [完整条目](https://awesomerea.org/zh/papers/paper-widgetgen/)</sub>

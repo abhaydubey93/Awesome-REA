@@ -11,7 +11,7 @@ An independent collection of tools, case studies and research for websites, game
 <a href="https://awesomerea.org/"><img src="assets/readme-banner.svg" alt="Awesome Reverse Engineering Anything — tools, cases and papers across six reverse-engineering domains" width="960"></a>
 
 <!-- BEGIN GENERATED BADGES -->
-[![resources: 481](https://img.shields.io/badge/resources-481-53309C?style=flat-square&labelColor=303447)](https://awesomerea.org/resources/) [![cases: 201](https://img.shields.io/badge/cases-201-53309C?style=flat-square&labelColor=303447)](https://awesomerea.org/cases/) [![papers: 131](https://img.shields.io/badge/papers-131-53309C?style=flat-square&labelColor=303447)](https://awesomerea.org/papers/) [![Catalog checks](https://github.com/reacher-z/Awesome-REA/actions/workflows/validate.yml/badge.svg?branch=main)](https://github.com/reacher-z/Awesome-REA/actions/workflows/validate.yml) [![license: MIT](https://img.shields.io/badge/license-MIT-606779?style=flat-square&labelColor=303447)](LICENSE) [![website: awesomerea.org](https://img.shields.io/badge/website-awesomerea.org-6235B5?style=flat-square&labelColor=303447)](https://awesomerea.org/)
+[![resources: 481](https://img.shields.io/badge/resources-481-53309C?style=flat-square&labelColor=303447)](https://awesomerea.org/resources/) [![cases: 201](https://img.shields.io/badge/cases-201-53309C?style=flat-square&labelColor=303447)](https://awesomerea.org/cases/) [![papers: 134](https://img.shields.io/badge/papers-134-53309C?style=flat-square&labelColor=303447)](https://awesomerea.org/papers/) [![Catalog checks](https://github.com/reacher-z/Awesome-REA/actions/workflows/validate.yml/badge.svg?branch=main)](https://github.com/reacher-z/Awesome-REA/actions/workflows/validate.yml) [![license: MIT](https://img.shields.io/badge/license-MIT-606779?style=flat-square&labelColor=303447)](LICENSE) [![website: awesomerea.org](https://img.shields.io/badge/website-awesomerea.org-6235B5?style=flat-square&labelColor=303447)](https://awesomerea.org/)
 <!-- END GENERATED BADGES -->
 
 **[Search & filter](https://awesomerea.org/)** · **[Browse cases](https://awesomerea.org/cases/)** · **[Research papers](https://awesomerea.org/papers/)** · **[HTML survey](https://awesomerea.org/survey/)**
@@ -28,7 +28,7 @@ An independent collection of tools, case studies and research for websites, game
 
 **Research and workflows**
 
-- [Papers](#papers) (131) · [Agents and MCP](#agents-and-mcp) (43) · [References and Learning](#references-and-learning) (32)
+- [Papers](#papers) (134) · [Agents and MCP](#agents-and-mcp) (43) · [References and Learning](#references-and-learning) (32)
 
 **More ways to browse**
 
@@ -626,14 +626,14 @@ REA labels refer to the separate [upstream CLI and MCP project](https://github.c
 <a id="papers"></a>
 ## Papers
 
-**131 papers**, grouped by topic and ordered newest first. Each line shows the study’s opening sentence, venue, publication status and first author.
+**134 papers**, grouped by topic and ordered newest first. Each line shows the study’s opening sentence, venue, publication status and first author.
 
 [Browse the paper directory](https://awesomerea.org/papers/) · [Complete bibliography JSON](data/papers.json) · [Suggest a paper](https://github.com/reacher-z/Awesome-REA/issues/new?template=paper.yml)
 
 **By topic**
 
-- [Agent evaluation](#papers-agent-evaluation) (9) · [Decompilation](#papers-decompilation) (57) · [Websites](#papers-website-reconstruction) (20)
-- [Games](#papers-game-reconstruction) (8) · [Apps](#papers-app-reconstruction) (11) · [Firmware](#papers-firmware-analysis) (13)
+- [Agent evaluation](#papers-agent-evaluation) (9) · [Decompilation](#papers-decompilation) (57) · [Websites](#papers-website-reconstruction) (22)
+- [Games](#papers-game-reconstruction) (8) · [Apps](#papers-app-reconstruction) (12) · [Firmware](#papers-firmware-analysis) (13)
 - [Protocols](#papers-protocol-analysis) (13)
 
 Each paper’s “Full entry” holds its complete summary, scope and limitations, all authors and citation. Some papers also appear among curated resources; counts are not additive.
@@ -722,8 +722,10 @@ Each paper’s “Full entry” holds its complete summary, scope and limitation
 [↑ Paper topics](#papers) · [Contents](#contents)
 
 - [**PrismaCoder: Pushing the Boundaries of Open Multimodal Code Intelligence through Decomposed Rubric Synthesis**](https://arxiv.org/abs/2610.20538) - Trains visual-code models using separate code and rendered-output rubrics for data filtering and reinforcement learning. <sub>arXiv 2026 · Preprint · Qiushi Sun et al. · [PDF](https://arxiv.org/pdf/2610.20538v1) · [Full entry](https://awesomerea.org/papers/paper-prismacoder/)</sub>
+- [**State-Aware Generation of Deployable Websites from Visual Prototypes and Requirements**](https://arxiv.org/abs/2610.17861) - VisStateCoder links visual prototype elements, project files, interaction requirements and render evidence in a project state graph, then uses those links to generate websites and limit subsequent repairs to selected files. <sub>arXiv 2026 · Preprint · Ruwei Pan et al. · [PDF](https://arxiv.org/pdf/2610.17861v1) · [Full entry](https://awesomerea.org/papers/paper-visstatecoder/)</sub>
 - [**TaoD2C-Bench: Benchmarking MLLMs for Industrial UI Code Generation Beyond Visual Fidelity**](https://arxiv.org/abs/2610.10374) - TaoD2C-Bench reconstructs interfaces from design images, layer metadata and component-library documentation. <sub>arXiv 2026 · Preprint · Chengwei Shi et al. · [PDF](https://arxiv.org/pdf/2610.10374v1) · [Full entry](https://awesomerea.org/papers/paper-taod2c-bench/)</sub>
 - [**Vision2Web: A Hierarchical Benchmark for Visual Website Development with Agent Verification**](https://proceedings.mlr.press/v306/he26n.html) - Benchmarks website development from visual prototypes and written requirements across 100 static-page, 66 interactive-frontend and 27 full-stack tasks, combining workflow-based functional checks with model-judged visual comparison. <sub>ICML 2026 · Conference paper · Zehai He et al. · [PDF](https://raw.githubusercontent.com/mlresearch/v306/main/assets/he26n/he26n.pdf) · [Code](https://github.com/zai-org/Vision2Web) · [Full entry](https://awesomerea.org/papers/paper-vision2web/)</sub>
+- [**IChart2Code: Benchmarking Multimodal Large Language Models for Interactive Chart Code Generation**](https://arxiv.org/abs/2609.32413) - Benchmarks reconstruction of interactive charts from a reference screenshot, local data and specified actions. <sub>arXiv 2026 · Preprint · Xu Zhang et al. · [PDF](https://arxiv.org/pdf/2609.32413v1) · [Full entry](https://awesomerea.org/papers/paper-ichart2code/)</sub>
 - [**Stage-Supervised Latent Reasoning for Single-Shot JavaScript Deobfuscation**](https://arxiv.org/abs/2609.27058) - Uses intermediate Webcrack rewrites to supervise Coconut-style latent reasoning for JavaScript deobfuscation. <sub>arXiv 2026 · Preprint · Rong Feng et al. · [PDF](https://arxiv.org/pdf/2609.27058v1) · [Full entry](https://awesomerea.org/papers/paper-stage-supervised-js-deobfuscation/)</sub>
 - [**ProgramDistill: From Interactive Web Apps to Verifiable Reference-Guided SWE Tasks**](https://arxiv.org/abs/2609.18805) - Evaluates recovery of web-app behavior from a live reference with hidden source. <sub>arXiv 2026 · Preprint · Jeonghye Kim et al. · [PDF](https://arxiv.org/pdf/2609.18805v1) · [Code](https://huggingface.co/datasets/microsoft/ProgramDistill) · [Full entry](https://awesomerea.org/papers/paper-programdistill/)</sub>
 - [**Does It Render Everywhere? A Study of Cross-Environment Compatibility in MLLM-Generated Webpages**](https://arxiv.org/abs/2608.12518) - WebCompat evaluates screenshot-reconstructed webpages across browsers and devices. <sub>arXiv 2026 · Preprint · Ziyun Guo et al. · [PDF](https://arxiv.org/pdf/2608.12518v1) · [Code](https://github.com/ZiyunGuo/WebCompat) · [Full entry](https://awesomerea.org/papers/paper-webcompat/)</sub>
@@ -761,6 +763,7 @@ Each paper’s “Full entry” holds its complete summary, scope and limitation
 
 [↑ Paper topics](#papers) · [Contents](#contents)
 
+- [**From Dead Code and Static Requirements to Working Engines: Software Revival with Coding Agents**](https://arxiv.org/abs/2609.36161) - ReviveBench evaluates repair of nonrunning software and source-unavailable implementation of bounded computational and transactional engines from open specifications, using hidden reference-based checks. <sub>arXiv 2026 · Preprint · Tianyu Liu et al. · [PDF](https://arxiv.org/pdf/2609.36161v1) · [Full entry](https://awesomerea.org/papers/paper-revivebench/)</sub>
 - [**From Code to Requirements: Agentic Reverse Engineering of Business Rules at Enterprise Scale**](https://arxiv.org/abs/2609.22719) - Uses seven agents and human review to recover business requirements from source, tests, configuration and documentation. <sub>arXiv 2026 · Preprint · Garima Agrawal et al. · [PDF](https://arxiv.org/pdf/2609.22719v1) · [Full entry](https://awesomerea.org/papers/paper-agentic-business-rule-recovery/)</sub>
 - [**On the Viability of Requirements Generation from Code: An Experience Report**](https://doi.org/10.1109/REW72749.2026.00023) - Studies a RAG-based, human-supervised pipeline for recovering requirements and code traces from two projects. <sub>IEEE REW 2026 / AIRE · Conference paper · Alexander Korn et al. · [PDF](https://arxiv.org/pdf/2606.25550v1) · [Full entry](https://awesomerea.org/papers/paper-requirements-generation-viability/)</sub>
 - [**From Visual Widgets to UI Code: Efficient Tool-Grounded Generation**](https://arxiv.org/abs/2608.12611) - WidgetGen reconstructs widget screenshots as React JSX. <sub>MUCG <span>@</span> ECCV 2026 · Accepted · Houston H. Zhang et al. · [PDF](https://arxiv.org/pdf/2608.12611v1) · [Full entry](https://awesomerea.org/papers/paper-widgetgen/)</sub>
