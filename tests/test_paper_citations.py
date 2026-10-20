@@ -159,6 +159,14 @@ class ReviewedContainerRecordTests(unittest.TestCase):
                          ('{Proceedings of the ACM on Software Engineering}', '{3}', '{FSE}',
                           '{636--656}', '{10.1145/3797124}', '{2026}', 'jun'))
         self.assertFalse({'booktitle', 'eid', 'eprint'} & set(transre))
+        satbleed = fields(bibtex_text(PAPERS['paper-satbleed']))
+        self.assertEqual((satbleed['booktitle'], satbleed['pages'], satbleed['doi'],
+                          satbleed['year'], satbleed['month'], satbleed['eprint']),
+                         ('{2026 IEEE Symposium on Security and Privacy (SP)}', '{2904--2921}',
+                          '{10.1109/SP63933.2026.00213}', '{2026}', 'may', '{2610.06258}'))
+        self.assertEqual(satbleed['author'],
+                         '{{Ulysse Planta} and {Julian Rederlechner} and {Martin Strohmeier} '
+                         'and {Mathias Fischer} and {Ali Abbasi}}')
 
     def test_only_reviewed_records_carry_container_metadata(self):
         expected = {'paper-dire', 'paper-resym', 'paper-redraw', 'paper-declarui', 'paper-fuzzware',
@@ -176,7 +184,7 @@ class ReviewedContainerRecordTests(unittest.TestCase):
                     'paper-xfl',
                     'paper-wadec',
                     'paper-symlm', 'paper-codeinverter-suite', 'paper-notdec', 'paper-binjudge',
-                    'paper-requirements-generation-viability', 'paper-khost', 'paper-transre'}
+                    'paper-requirements-generation-viability', 'paper-khost', 'paper-transre', 'paper-satbleed'}
         self.assertEqual({identifier for identifier, record in PAPERS.items() if 'citation' in record}, expected)
         for identifier in sorted(PAPERS.keys() - expected):
             # Records without verified container metadata keep the short venue label.
