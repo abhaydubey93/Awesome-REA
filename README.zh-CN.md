@@ -11,7 +11,7 @@
 <a href="https://awesomerea.org/zh/"><img src="assets/readme-banner.svg" alt="Awesome Reverse Engineering Anything — 覆盖六类逆向目标的工具、案例与论文" width="960"></a>
 
 <!-- BEGIN GENERATED BADGES -->
-[![精选资源: 481](https://img.shields.io/badge/%E7%B2%BE%E9%80%89%E8%B5%84%E6%BA%90-481-53309C?style=flat-square&labelColor=303447)](https://awesomerea.org/zh/resources/) [![案例: 201](https://img.shields.io/badge/%E6%A1%88%E4%BE%8B-201-53309C?style=flat-square&labelColor=303447)](https://awesomerea.org/zh/cases/) [![论文: 134](https://img.shields.io/badge/%E8%AE%BA%E6%96%87-134-53309C?style=flat-square&labelColor=303447)](https://awesomerea.org/zh/papers/) [![目录检查](https://github.com/reacher-z/Awesome-REA/actions/workflows/validate.yml/badge.svg?branch=main)](https://github.com/reacher-z/Awesome-REA/actions/workflows/validate.yml) [![许可: MIT](https://img.shields.io/badge/%E8%AE%B8%E5%8F%AF-MIT-606779?style=flat-square&labelColor=303447)](LICENSE) [![网站: awesomerea.org](https://img.shields.io/badge/%E7%BD%91%E7%AB%99-awesomerea.org-6235B5?style=flat-square&labelColor=303447)](https://awesomerea.org/zh/)
+[![精选资源: 483](https://img.shields.io/badge/%E7%B2%BE%E9%80%89%E8%B5%84%E6%BA%90-483-53309C?style=flat-square&labelColor=303447)](https://awesomerea.org/zh/resources/) [![案例: 201](https://img.shields.io/badge/%E6%A1%88%E4%BE%8B-201-53309C?style=flat-square&labelColor=303447)](https://awesomerea.org/zh/cases/) [![论文: 134](https://img.shields.io/badge/%E8%AE%BA%E6%96%87-134-53309C?style=flat-square&labelColor=303447)](https://awesomerea.org/zh/papers/) [![目录检查](https://github.com/reacher-z/Awesome-REA/actions/workflows/validate.yml/badge.svg?branch=main)](https://github.com/reacher-z/Awesome-REA/actions/workflows/validate.yml) [![许可: MIT](https://img.shields.io/badge/%E8%AE%B8%E5%8F%AF-MIT-606779?style=flat-square&labelColor=303447)](LICENSE) [![网站: awesomerea.org](https://img.shields.io/badge/%E7%BD%91%E7%AB%99-awesomerea.org-6235B5?style=flat-square&labelColor=303447)](https://awesomerea.org/zh/)
 <!-- END GENERATED BADGES -->
 
 **[搜索与筛选](https://awesomerea.org/zh/)** · **[浏览案例](https://awesomerea.org/zh/cases/)** · **[研究论文](https://awesomerea.org/zh/papers/)** · **[HTML 综述](https://awesomerea.org/zh/survey/)**
@@ -23,7 +23,7 @@
 <!-- BEGIN GENERATED CONTENTS -->
 **按目标找工具与案例**
 
-- [网站](#website) (28) · [游戏](#game) (191) · [应用](#app) (75)
+- [网站](#website) (29) · [游戏](#game) (191) · [应用](#app) (76)
 - [原生二进制](#native-binary) (63) · [固件与硬件](#firmware) (22) · [协议](#protocol) (18)
 
 **论文与工作流**
@@ -96,6 +96,7 @@ REA 标签指向单独维护的[上游 CLI 与 MCP 项目](https://github.com/mo
 - [**javascript-deobfuscator 通用 JavaScript 反混淆工具**](https://github.com/ben-sb/javascript-deobfuscator) - 通用的 JavaScript 反混淆工具，针对常见混淆手法，以 js-deobfuscator 之名发布在 npm 上，可作为库或命令行工具使用。 <sub>工具 · [完整条目](https://awesomerea.org/zh/resources/ben-sb-javascript-deobfuscator/)</sub>
 - [**mitmproxy2swagger**](https://github.com/alufers/mitmproxy2swagger) - 命令行工具，从捕获的流量还原未公开的 REST API。 <sub>工具 · 也适用：协议 · [完整条目](https://awesomerea.org/zh/resources/mitmproxy2swagger/)</sub>
 - [**JPEXS Flash 反编译器（FFDec）**](https://github.com/jindrapetrik/jpexs-decompiler) - 面向 Adobe Flash SWF 文件的 Java 桌面反编译与编辑工具。 <sub>工具 · 也适用：游戏 · [完整条目](https://awesomerea.org/zh/resources/jpexs-decompiler/)</sub>
+- [**WasmLens：探索性 WebAssembly 检查**](https://github.com/alexandrmotologa/wasmlens) - 提供 WebAssembly 区段与函数签名检查、WAT 风格指令列表和有限 C 风格伪代码重建的 Python CLI。 <sub>工具 · WebAssembly · 也适用：二进制 · [完整条目](https://awesomerea.org/zh/resources/wasmlens/)</sub>
 
 <a id="game"></a>
 ### Game · 游戏
@@ -384,6 +385,7 @@ REA 标签指向单独维护的[上游 CLI 与 MCP 项目](https://github.com/mo
 - [**Logic-Lens：实验性 JavaScript 源码理解工具**](https://github.com/Abdoulrazack1/Logic-Lens) - 实验性 JavaScript 源码分析工具：本地训练后将 AST token 序列归入预设公式类别，并生成启发式结构、调用图和意图报告。 <sub>工具 · [完整条目](https://awesomerea.org/zh/resources/logic-lens/)</sub>
 - [**Android Security Toolkit：APK 静态初步分析**](https://github.com/abhirampatel/android-security-toolkit) - 本地 Python APK 初步分析工具，调用 apktool 与 strings 检查清单配置、源码及原生库字符串，输出 TXT／JSON 结果供人工核验。 <sub>工具 · Android · [完整条目](https://awesomerea.org/zh/resources/android-security-toolkit/)</sub>
 - [**ilspy-cli：面向 Agent 的定向 .NET 反编译**](https://github.com/akiselev/ilspy-cli) - 通过进程内托管的 ILSpy C# 桥接层，提供程序集、类型和指定方法的反编译、源码搜索及结构化 JSON 输出的 Rust CLI；独立的 PE 头检测器无需加载 .NET 运行时即可识别托管程序集。 <sub>工具 · .NET · [完整条目](https://awesomerea.org/zh/resources/akiselev-ilspy-cli/)</sub>
+- [**React-Decode**](https://github.com/alexandra-seredkina/React-Decode) - 面向已构建 React JavaScript 的静态分析 CLI，可输出更易读的代码，以及推断的 API 请求、路由和应用常量报告；存在 source map 内嵌源码时可将其提取。 <sub>工具 · 也适用：网站 · [完整条目](https://awesomerea.org/zh/resources/react-decode/)</sub>
 
 <a id="native-binary"></a>
 ### Native Binary · 原生二进制

@@ -2,7 +2,7 @@
 
 [All categories](README.md) · [简体中文](native-analysis.zh-CN.md)
 
-**852 repositories** · 2026-10-20 UTC
+**851 repositories** · 2026-10-20 UTC
 
 These are automatically discovered projects, not individually curated or tested recommendations. Categories derive from metadata and descriptions from upstream text. Stars are collection-time snapshots, not live rankings. Lines marked “Curated” or “Paper” link to the reviewed catalog entry or paper whose source is that exact repository.
 
@@ -812,7 +812,6 @@ These are automatically discovered projects, not individually curated or tested 
 - [zrnge/webasm](https://github.com/zrnge/webasm) — 100% client-side multi-architecture static disassembler **[1 stars]**
 - [zxkuhl/SectorForge](https://github.com/zxkuhl/SectorForge) — Ghidra for local AI models — decompile, inspect, and patch GGUF / LoRA / Ollama models in a visual workbench, and build new ones from modular "sector" adapters. No retraining required. **[1 stars]**
 - [zz2007327-code/Open-Source-Everything](https://github.com/zz2007327-code/Open-Source-Everything) — Reverse-engineer runnable targets (websites, SPAs, browser apps, mini programs, Electron, binaries) into evidence-backed mechanism notes, then distill them into build-ready functional specs. **[1 stars]**
-- [alexandrmotologa/wasmlens](https://github.com/alexandrmotologa/wasmlens) — Interactive WebAssembly binary decompiler, CFG visualizer, and linear memory inspector **[0 stars]**
 - [aliaihub/rea-casebook](https://github.com/aliaihub/rea-casebook) — Real-world reverse engineering with AI agents. Explore REA case studies, software reconstructions, demos, source code, and the evidence behind each result. **[0 stars]**
 - [aliakbar-zohour/ASM\_ZERO](https://github.com/aliakbar-zohour/ASM_ZERO) — Learn assembly from zero: ARM64 on Apple Silicon, plus x86-64, RISC-V, reverse engineering, WebAssembly, and hands-on projects — served as a clean Astro course site. **[0 stars]**
 - [Altumptic/paranoia](https://github.com/Altumptic/paranoia) — Open, local-first reverse engineering platform — PE/ELF/Mach-O, x86/x64/AArch64 disassembly, graphs, pseudocode. Rust engine, desktop app. **[0 stars]**

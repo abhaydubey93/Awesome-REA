@@ -2,7 +2,7 @@
 
 [All categories](README.md) · [简体中文](reverse-engineering.zh-CN.md)
 
-**671 repositories** · 2026-10-20 UTC
+**670 repositories** · 2026-10-20 UTC
 
 These are automatically discovered projects, not individually curated or tested recommendations. Categories derive from metadata and descriptions from upstream text. Stars are collection-time snapshots, not live rankings. Lines marked “Curated” or “Paper” link to the reviewed catalog entry or paper whose source is that exact repository.
 
@@ -610,7 +610,6 @@ These are automatically discovered projects, not individually curated or tested 
 - [aconstantinou-cmd/PythonArrayDeobfuscator](https://github.com/aconstantinou-cmd/PythonArrayDeobfuscator) — This script’s main purpose is to speed up the process of replacing functions that have been added into an array and replace them inside code that is calling upon their index level. Please see below the demonstration. **[0 stars]**
 - [AkashNaickar/crdb-sample-frontend](https://github.com/AkashNaickar/crdb-sample-frontend) — Static rebuild of the Littlebird.ai home page in plain HTML/CSS/JS, with a dependency-free test suite and Vercel deployment. **[0 stars]** · Curated: [Littlebird.ai static home-page rebuild](https://awesomerea.org/resources/littlebird-static-rebuild-case/)
 - [akhilari7/deFlutter](https://github.com/akhilari7/deFlutter) — Dart AOT Runtime Inspection and Tracing **[0 stars]**
-- [alexandra-seredkina/React-Decode](https://github.com/alexandra-seredkina/React-Decode) — Reverse-engineering toolkit. Turn minified React bundles into readable code and extract their API: endpoints, params, bodies, routes, env vars. Vite, webpack, CRA, Next. Static analysis. **[0 stars]**
 - [ananthb/airsupply](https://github.com/ananthb/airsupply) — Local control and data export for the ResMed AirMini CPAP over Bluetooth Classic. A Home Assistant add-on and a Flutter app, both over libairmini. **[0 stars]**
 - [arockenbauer/Stealer-malware-analysis](https://github.com/arockenbauer/Stealer-malware-analysis) — Reverse engineering analysis of the Veil of Mana Discord-delivered credential theft chain. **[0 stars]**
 - [Beatenup-kidnapping12/o11pro-unpacked](https://github.com/Beatenup-kidnapping12/o11pro-unpacked) — Manage IPTV or OTT streams with this media server featuring proxy, remuxing, EPG support, and DRM decryption capabilities. **[0 stars]**

@@ -11,7 +11,7 @@ An independent collection of tools, case studies and research for websites, game
 <a href="https://awesomerea.org/"><img src="assets/readme-banner.svg" alt="Awesome Reverse Engineering Anything — tools, cases and papers across six reverse-engineering domains" width="960"></a>
 
 <!-- BEGIN GENERATED BADGES -->
-[![resources: 481](https://img.shields.io/badge/resources-481-53309C?style=flat-square&labelColor=303447)](https://awesomerea.org/resources/) [![cases: 201](https://img.shields.io/badge/cases-201-53309C?style=flat-square&labelColor=303447)](https://awesomerea.org/cases/) [![papers: 134](https://img.shields.io/badge/papers-134-53309C?style=flat-square&labelColor=303447)](https://awesomerea.org/papers/) [![Catalog checks](https://github.com/reacher-z/Awesome-REA/actions/workflows/validate.yml/badge.svg?branch=main)](https://github.com/reacher-z/Awesome-REA/actions/workflows/validate.yml) [![license: MIT](https://img.shields.io/badge/license-MIT-606779?style=flat-square&labelColor=303447)](LICENSE) [![website: awesomerea.org](https://img.shields.io/badge/website-awesomerea.org-6235B5?style=flat-square&labelColor=303447)](https://awesomerea.org/)
+[![resources: 483](https://img.shields.io/badge/resources-483-53309C?style=flat-square&labelColor=303447)](https://awesomerea.org/resources/) [![cases: 201](https://img.shields.io/badge/cases-201-53309C?style=flat-square&labelColor=303447)](https://awesomerea.org/cases/) [![papers: 134](https://img.shields.io/badge/papers-134-53309C?style=flat-square&labelColor=303447)](https://awesomerea.org/papers/) [![Catalog checks](https://github.com/reacher-z/Awesome-REA/actions/workflows/validate.yml/badge.svg?branch=main)](https://github.com/reacher-z/Awesome-REA/actions/workflows/validate.yml) [![license: MIT](https://img.shields.io/badge/license-MIT-606779?style=flat-square&labelColor=303447)](LICENSE) [![website: awesomerea.org](https://img.shields.io/badge/website-awesomerea.org-6235B5?style=flat-square&labelColor=303447)](https://awesomerea.org/)
 <!-- END GENERATED BADGES -->
 
 **[Search & filter](https://awesomerea.org/)** · **[Browse cases](https://awesomerea.org/cases/)** · **[Research papers](https://awesomerea.org/papers/)** · **[HTML survey](https://awesomerea.org/survey/)**
@@ -23,7 +23,7 @@ An independent collection of tools, case studies and research for websites, game
 <!-- BEGIN GENERATED CONTENTS -->
 **Tools and cases by target**
 
-- [Website](#website) (28) · [Game](#game) (191) · [App](#app) (75)
+- [Website](#website) (29) · [Game](#game) (191) · [App](#app) (76)
 - [Native Binary](#native-binary) (63) · [Firmware and Hardware](#firmware) (22) · [Protocol](#protocol) (18)
 
 **Research and workflows**
@@ -95,6 +95,7 @@ REA labels refer to the separate [upstream CLI and MCP project](https://github.c
 - [**javascript-deobfuscator**](https://github.com/ben-sb/javascript-deobfuscator) - General-purpose JavaScript deobfuscator for common obfuscation patterns, published on npm as js-deobfuscator and usable as a library or CLI. <sub>Tool · [Full entry](https://awesomerea.org/resources/ben-sb-javascript-deobfuscator/)</sub>
 - [**mitmproxy2swagger**](https://github.com/alufers/mitmproxy2swagger) - Command-line tool that reverse-engineers undocumented REST APIs from captured traffic. <sub>Tool · Also: Protocol · [Full entry](https://awesomerea.org/resources/mitmproxy2swagger/)</sub>
 - [**JPEXS Free Flash Decompiler (FFDec)**](https://github.com/jindrapetrik/jpexs-decompiler) - Java desktop decompiler and editor for Adobe Flash SWF files. <sub>Tool · Also: Game · [Full entry](https://awesomerea.org/resources/jpexs-decompiler/)</sub>
+- [**WasmLens: exploratory WebAssembly inspection**](https://github.com/alexandrmotologa/wasmlens) - Python CLI with static paths for inspecting WebAssembly sections and function signatures, producing WAT-style instruction listings, and reconstructing limited C-like pseudocode. <sub>Tool · WebAssembly · Also: Binary · [Full entry](https://awesomerea.org/resources/wasmlens/)</sub>
 
 <a id="game"></a>
 ### Game
@@ -383,6 +384,7 @@ REA labels refer to the separate [upstream CLI and MCP project](https://github.c
 - [**Logic-Lens**](https://github.com/Abdoulrazack1/Logic-Lens) - Experimental JavaScript source-analysis toolkit that classifies AST-token sequences into configured formula families after local training, and produces heuristic structure, call-graph and intent reports. <sub>Tool · [Full entry](https://awesomerea.org/resources/logic-lens/)</sub>
 - [**Android Security Toolkit**](https://github.com/abhirampatel/android-security-toolkit) - Local Python APK triage tool that drives apktool and strings, checks manifest settings and source/native-library strings, and produces TXT/JSON findings for manual review. <sub>Tool · Android · [Full entry](https://awesomerea.org/resources/android-security-toolkit/)</sub>
 - [**ilspy-cli: targeted .NET decompilation for agents**](https://github.com/akiselev/ilspy-cli) - Rust CLI that hosts an ILSpy C# bridge in-process for assembly, type and named-method decompilation, source search and structured JSON output. <sub>Tool · .NET · [Full entry](https://awesomerea.org/resources/akiselev-ilspy-cli/)</sub>
+- [**React-Decode**](https://github.com/alexandra-seredkina/React-Decode) - Static-analysis CLI for compiled React JavaScript that produces readable bundle output and inferred API-request, route and application-constant reports. <sub>Tool · Also: Website · [Full entry](https://awesomerea.org/resources/react-decode/)</sub>
 
 <a id="native-binary"></a>
 ### Native Binary

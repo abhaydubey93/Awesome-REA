@@ -2,7 +2,7 @@
 
 [全部分类](README.zh-CN.md) · [English](native-analysis.md)
 
-**852 个仓库** · 2026-10-20 UTC
+**851 个仓库** · 2026-10-20 UTC
 
 这些是自动发现的项目，不是逐项精选或运行验证后的推荐。分类来自元数据；简介由上游描述翻译而来。星标为采集时快照，不是实时排名。标有“精选”或“论文”的行指向以同一仓库为来源的已复核目录条目或论文。
 
@@ -812,7 +812,6 @@
 - [zrnge/webasm](https://github.com/zrnge/webasm) — 完全在客户端运行的多架构静态反汇编器。 **[1 星标]**
 - [zxkuhl/SectorForge](https://github.com/zxkuhl/SectorForge) — 面向本地 AI 模型的 Ghidra：在可视化工作台中反编译、检查和修补 GGUF/LoRA/Ollama 模型，并使用模块化“sector”适配器构建新模型，无需重新训练。 **[1 星标]**
 - [zz2007327-code/Open-Source-Everything](https://github.com/zz2007327-code/Open-Source-Everything) — 逆向分析可运行目标（网站、SPA、浏览器应用、小程序、Electron、二进制程序），生成有证据支持的机制笔记，再提炼为可直接实施的功能规格。 **[1 星标]**
-- [alexandrmotologa/wasmlens](https://github.com/alexandrmotologa/wasmlens) — 交互式 WebAssembly 二进制反编译器、控制流图可视化工具和线性内存检查器。 **[0 星标]**
 - [aliaihub/rea-casebook](https://github.com/aliaihub/rea-casebook) — 使用 AI 智能体开展真实逆向工程，探索 REA 案例、软件重建、演示、源代码及每项结果背后的证据。 **[0 星标]**
 - [aliakbar-zohour/ASM\_ZERO](https://github.com/aliakbar-zohour/ASM_ZERO) — 从零学习汇编：涵盖 Apple Silicon 上的 ARM64，以及 x86-64、RISC-V、逆向工程、WebAssembly 和实践项目，以简洁的 Astro 课程网站呈现。 **[0 星标]**
 - [Altumptic/paranoia](https://github.com/Altumptic/paranoia) — 开放、本地优先的逆向工程平台，支持 PE/ELF/Mach-O、x86/x64/AArch64 反汇编、图形和伪代码，采用 Rust 引擎与桌面应用。 **[0 星标]**

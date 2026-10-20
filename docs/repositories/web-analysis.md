@@ -2,7 +2,7 @@
 
 [All categories](README.md) · [简体中文](web-analysis.zh-CN.md)
 
-**212 repositories** · 2026-10-20 UTC
+**214 repositories** · 2026-10-20 UTC
 
 These are automatically discovered projects, not individually curated or tested recommendations. Categories derive from metadata and descriptions from upstream text. Stars are collection-time snapshots, not live rankings. Lines marked “Curated” or “Paper” link to the reviewed catalog entry or paper whose source is that exact repository.
 
@@ -176,6 +176,8 @@ These are automatically discovered projects, not individually curated or tested 
 - [vishalmeena2211/cloneable](https://github.com/vishalmeena2211/cloneable) — Clone any website into a customizable, content-driven Next.js template **[1 stars]**
 - [web3daemon/jsrecon](https://github.com/web3daemon/jsrecon) — 🐚 Map a web app's JavaScript to its API — endpoints, GraphQL, routes and leaked keys from bundles and source maps, plus an OpenAPI skeleton. tree-sitter, not regex. **[1 stars]**
 - [Abdoulrazack1/Logic-Lens](https://github.com/Abdoulrazack1/Logic-Lens) — AI that extracts the underlying logical formula or mathematical invariant of any JavaScript function. TensorFlow.js + AST mutations. **[0 stars]** · Curated: [Logic-Lens](https://awesomerea.org/resources/logic-lens/)
+- [alexandra-seredkina/React-Decode](https://github.com/alexandra-seredkina/React-Decode) — Reverse-engineering toolkit. Turn minified React bundles into readable code and extract their API: endpoints, params, bodies, routes, env vars. Vite, webpack, CRA, Next. Static analysis. **[0 stars]** · Curated: [React-Decode](https://awesomerea.org/resources/react-decode/)
+- [alexandrmotologa/wasmlens](https://github.com/alexandrmotologa/wasmlens) — Interactive WebAssembly binary decompiler, CFG visualizer, and linear memory inspector **[0 stars]** · Curated: [WasmLens: exploratory WebAssembly inspection](https://awesomerea.org/resources/wasmlens/)
 - [animeshchaudhri/gta-vc-nodejs-termux-port](https://github.com/animeshchaudhri/gta-vc-nodejs-termux-port) — Node.js + Termux port of reVC DOS (GTA Vice City reverse-engineered web port) with packed archive support and lightweight local hosting. **[0 stars]**
 - [chuxainpei/pkusi](https://github.com/chuxainpei/pkusi) — Reverse-engineered reconstruction of krishnagupta.web.app (REA) **[0 stars]**
 - [cloverfield11/codex-inject-doom](https://github.com/cloverfield11/codex-inject-doom) — Injecting DOOM natively into the Codex IDE runtime using Chrome DevTools Protocol &amp; WebSockets. **[0 stars]**

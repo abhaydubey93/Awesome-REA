@@ -2,7 +2,7 @@
 
 [全部分类](README.zh-CN.md) · [English](web-analysis.md)
 
-**212 个仓库** · 2026-10-20 UTC
+**214 个仓库** · 2026-10-20 UTC
 
 这些是自动发现的项目，不是逐项精选或运行验证后的推荐。分类来自元数据；简介由上游描述翻译而来。星标为采集时快照，不是实时排名。标有“精选”或“论文”的行指向以同一仓库为来源的已复核目录条目或论文。
 
@@ -176,6 +176,8 @@
 - [vishalmeena2211/cloneable](https://github.com/vishalmeena2211/cloneable) — 将任意网站克隆为可定制、以内容驱动的 Next.js 模板。 **[1 星标]**
 - [web3daemon/jsrecon](https://github.com/web3daemon/jsrecon) — 🐚 将网页应用的 JavaScript 映射到其 API：从打包文件和源码映射中提取端点、GraphQL、路由和泄露的密钥，并生成 OpenAPI 框架。使用 tree-sitter，而非正则表达式。 **[1 星标]**
 - [Abdoulrazack1/Logic-Lens](https://github.com/Abdoulrazack1/Logic-Lens) — 提取任意 JavaScript 函数背后逻辑公式或数学不变量的 AI。使用 TensorFlow.js 和 AST 变异。 **[0 星标]** · 精选：[Logic-Lens：实验性 JavaScript 源码理解工具](https://awesomerea.org/zh/resources/logic-lens/)
+- [alexandra-seredkina/React-Decode](https://github.com/alexandra-seredkina/React-Decode) — 逆向工程工具包，将压缩的 React 打包代码转换为可读代码，并提取 API 信息，包括端点、参数、请求体、路由和环境变量。支持 Vite、webpack、CRA 和 Next，采用静态分析。 **[0 星标]** · 精选：[React-Decode](https://awesomerea.org/zh/resources/react-decode/)
+- [alexandrmotologa/wasmlens](https://github.com/alexandrmotologa/wasmlens) — 交互式 WebAssembly 二进制反编译器、控制流图可视化工具和线性内存检查器。 **[0 星标]** · 精选：[WasmLens：探索性 WebAssembly 检查](https://awesomerea.org/zh/resources/wasmlens/)
 - [animeshchaudhri/gta-vc-nodejs-termux-port](https://github.com/animeshchaudhri/gta-vc-nodejs-termux-port) — reVC DOS（逆向工程得到的 GTA Vice City 网页移植版）的 Node.js + Termux 移植，支持打包归档和轻量级本地托管。 **[0 星标]**
 - [chuxainpei/pkusi](https://github.com/chuxainpei/pkusi) — 通过逆向工程重建 krishnagupta.web.app（REA） **[0 星标]**
 - [cloverfield11/codex-inject-doom](https://github.com/cloverfield11/codex-inject-doom) — 通过 Chrome DevTools Protocol 和 WebSocket，将 DOOM 原生注入 Codex IDE 运行时。 **[0 星标]**

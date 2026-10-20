@@ -11494,5 +11494,75 @@
       "https://github.com/akopetsch/swe1r-assets-unity/blob/2fcae9138583da959882171095920ab9b802168b/Samples~/SampleProject/Assets/Code/SplineBlock/SplineBlockItemExporter.cs",
       "https://github.com/akopetsch/swe1r-assets-unity/blob/2fcae9138583da959882171095920ab9b802168b/LICENSE"
     ]
+  },
+  {
+    "id": "react-decode",
+    "name": "React-Decode",
+    "url": "https://github.com/alexandra-seredkina/React-Decode",
+    "category": "javascript-electron",
+    "relationship": "foundation",
+    "kind": "tool",
+    "targets": [
+      "website"
+    ],
+    "description_en": "Static-analysis CLI for compiled React JavaScript that produces readable bundle output and inferred API-request, route and application-constant reports. It can extract embedded source-map contents when available.",
+    "description_zh": "面向已构建 React JavaScript 的静态分析 CLI，可输出更易读的代码，以及推断的 API 请求、路由和应用常量报告；存在 source map 内嵌源码时可将其提取。",
+    "evidence_url": "https://github.com/alexandra-seredkina/React-Decode/blob/80e8bda2912b7e3f9e01bc3a0034a61ea488b14a/README.md",
+    "verified_at": "2026-10-20",
+    "verification": "source-reviewed",
+    "requirements": [
+      "The reviewed package declares Node.js >=20, but its locked Babel 8 dependencies require ^22.18.0 or >=24.11.0. The lock pins Babel parser/traverse 8.0.7, generator/types 8.0.6 and Prettier 3.9.10; runtime compatibility was not tested.",
+      "Provide authorized JavaScript bundles, HTML, source maps or a URL. URL mode retrieves scripts, chunks and maps; source extraction requires strings in sourcesContent, not just mapping coordinates.",
+      "API and value inference is bounded and heuristic: wrapper discovery uses at most six rounds, dynamic values can remain placeholders, and inferred request/response fields are not a verified API specification. Control-flow flattening and string-array obfuscation are outside the documented scope; complete original-source or application/backend behavior recovery is not established.",
+      "The MIT LICENSE and package.json agree, but package.json declares 0.1.0 while the root lock metadata says 1.0.0 and ISC. These are inspected package declarations, not a verified published release; input bundles retain their own rights.",
+      "Reports may contain credential-like strings from the input; --json prints them unmasked. The five synthetic node:test definitions were read, not run. No dependency installation, tool execution or target execution was performed."
+    ],
+    "additional_evidence_urls": [
+      "https://github.com/alexandra-seredkina/React-Decode/blob/80e8bda2912b7e3f9e01bc3a0034a61ea488b14a/package.json",
+      "https://github.com/alexandra-seredkina/React-Decode/blob/80e8bda2912b7e3f9e01bc3a0034a61ea488b14a/package-lock.json",
+      "https://github.com/alexandra-seredkina/React-Decode/blob/80e8bda2912b7e3f9e01bc3a0034a61ea488b14a/LICENSE",
+      "https://github.com/alexandra-seredkina/React-Decode/blob/80e8bda2912b7e3f9e01bc3a0034a61ea488b14a/src/pipeline.js",
+      "https://github.com/alexandra-seredkina/React-Decode/blob/80e8bda2912b7e3f9e01bc3a0034a61ea488b14a/src/analyze/requests.js",
+      "https://github.com/alexandra-seredkina/React-Decode/blob/80e8bda2912b7e3f9e01bc3a0034a61ea488b14a/src/sourcemap.js",
+      "https://github.com/alexandra-seredkina/React-Decode/blob/80e8bda2912b7e3f9e01bc3a0034a61ea488b14a/src/loader.js",
+      "https://github.com/alexandra-seredkina/React-Decode/blob/80e8bda2912b7e3f9e01bc3a0034a61ea488b14a/test/pipeline.test.js"
+    ]
+  },
+  {
+    "id": "wasmlens",
+    "name": "WasmLens: exploratory WebAssembly inspection",
+    "url": "https://github.com/alexandrmotologa/wasmlens",
+    "category": "webassembly",
+    "relationship": "foundation",
+    "kind": "tool",
+    "targets": [
+      "binary"
+    ],
+    "description_en": "Python CLI with static paths for inspecting WebAssembly sections and function signatures, producing WAT-style instruction listings, and reconstructing limited C-like pseudocode. These are exploratory analysis aids for supported modules, not recovered original source or a complete WebAssembly runtime.",
+    "description_zh": "提供 WebAssembly 区段与函数签名检查、WAT 风格指令列表和有限 C 风格伪代码重建的 Python CLI。所收录的是面向受支持模块的探索性静态分析路径，不代表恢复原始源码或实现完整 WebAssembly 运行时。",
+    "evidence_url": "https://github.com/alexandrmotologa/wasmlens/blob/2351cccea90f812053b30d1ad14816d3c664a4f7/README.md",
+    "verified_at": "2026-10-20",
+    "verification": "source-reviewed",
+    "requirements": [
+      "The reviewed package declares version 0.1.0 and Python >=3.10, with Typer, Rich, FastAPI, Uvicorn, Pydantic, NetworkX and python-multipart dependencies; pytest/httpx are development extras. The source includes an MIT LICENSE. Dependency lower bounds are declared, but no lockfile or tested environment was established.",
+      "The info, disasm and decompile commands read a supplied .wasm file through the same parser. That parser has no 0xFD SIMD decoding branch and may label unsupported opcodes as unknown; the README’s broad WebAssembly 2.0 coverage claim is not established by this review.",
+      "The WAT-style module listing is not a lossless reassembly format: data segments are reduced to previews of up to 32 bytes and active offsets use a placeholder. The C-like reconstructor has no general fallback for unhandled instructions, uses only the first result type, and expresses branch labels in comments; compiler-ready or behavior-equivalent output is not established.",
+      "The separate emulator is outside this entry’s supported scope. Its inspected dispatch lacks handlers for operations including floating-point arithmetic and indirect calls, and an unhandled instruction can advance the program counter without implementing its effect. Do not use it as a full-runtime or equivalence reference.",
+      "Parser and decompiler test definitions were inspected; sample-based string assertions do not establish general correctness. No package installation, bundled .wasm download, execution, decompilation or test run was performed, and the README’s test-count/coverage badges were not independently reproduced. Supply only modules you are permitted to analyze."
+    ],
+    "additional_evidence_urls": [
+      "https://github.com/alexandrmotologa/wasmlens/blob/2351cccea90f812053b30d1ad14816d3c664a4f7/pyproject.toml",
+      "https://github.com/alexandrmotologa/wasmlens/blob/2351cccea90f812053b30d1ad14816d3c664a4f7/LICENSE",
+      "https://github.com/alexandrmotologa/wasmlens/blob/2351cccea90f812053b30d1ad14816d3c664a4f7/src/wasmlens/cli/main.py",
+      "https://github.com/alexandrmotologa/wasmlens/blob/2351cccea90f812053b30d1ad14816d3c664a4f7/src/wasmlens/parser/module.py",
+      "https://github.com/alexandrmotologa/wasmlens/blob/2351cccea90f812053b30d1ad14816d3c664a4f7/src/wasmlens/parser/section_parser.py",
+      "https://github.com/alexandrmotologa/wasmlens/blob/2351cccea90f812053b30d1ad14816d3c664a4f7/src/wasmlens/parser/opcodes.py",
+      "https://github.com/alexandrmotologa/wasmlens/blob/2351cccea90f812053b30d1ad14816d3c664a4f7/src/wasmlens/disassembler/wat_formatter.py",
+      "https://github.com/alexandrmotologa/wasmlens/blob/2351cccea90f812053b30d1ad14816d3c664a4f7/src/wasmlens/decompiler/reconstructor.py",
+      "https://github.com/alexandrmotologa/wasmlens/blob/2351cccea90f812053b30d1ad14816d3c664a4f7/src/wasmlens/decompiler/ast.py",
+      "https://github.com/alexandrmotologa/wasmlens/blob/2351cccea90f812053b30d1ad14816d3c664a4f7/src/wasmlens/emulator/vm.py",
+      "https://github.com/alexandrmotologa/wasmlens/blob/2351cccea90f812053b30d1ad14816d3c664a4f7/tests/test_decompiler.py",
+      "https://github.com/alexandrmotologa/wasmlens/blob/2351cccea90f812053b30d1ad14816d3c664a4f7/tests/test_parser.py"
+    ]
   }
 ]
