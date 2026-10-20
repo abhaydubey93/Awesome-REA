@@ -2,7 +2,7 @@
 
 [全部分类](README.zh-CN.md) · [English](android.md)
 
-**480 个仓库** · 2026-10-20 UTC
+**479 个仓库** · 2026-10-20 UTC
 
 这些是自动发现的项目，不是逐项精选或运行验证后的推荐。分类来自元数据；简介由上游描述翻译而来。星标为采集时快照，不是实时排名。标有“精选”或“论文”的行指向以同一仓库为来源的已复核目录条目或论文。
 
@@ -410,7 +410,6 @@
 - [744219288/lazyalarm-preview-analysis](https://github.com/744219288/lazyalarm-preview-analysis) — 懒人闹钟（LazyAlarm）预览版 APK 静态解析报告，涵盖功能架构、组件清单、权限分析和签名信息，并附图标、流程图和结构图。 **[0 星标]**
 - [abhirampatel/android-security-toolkit](https://github.com/abhirampatel/android-security-toolkit) — Android APK 安全测试静态分析工具包，检测硬编码秘密信息、Manifest 配置错误和原生库漏洞。 **[0 星标]** · 精选：[Android Security Toolkit：APK 静态初步分析](https://awesomerea.org/zh/resources/android-security-toolkit/)
 - [Airya-Xratu/reforge-ai](https://github.com/Airya-Xratu/reforge-ai) — 借助 AI 逆向工程应用。Reforge 为编程智能体重建产品、用户体验、用户界面、架构和设计意图。 **[0 星标]**
-- [albertolicea00/transfermovil-src-reversed](https://github.com/albertolicea00/transfermovil-src-reversed) — Transfermóvil Android 客户端通过逆向工程恢复的源代码、资源和文档。 **[0 星标]**
 - [alterakey/blutter-docker](https://github.com/alterakey/blutter-docker) — 容器化的 blutter。 **[0 星标]**
 - [apache261/APKPinningTestTool](https://github.com/apache261/APKPinningTestTool) — 个人 Python 工具包，用于准备 Android APK，以开展授权 HTTPS 检查和证书固定分析。 **[0 星标]**
 - [azeem7012/android-apk-malware-sandbox](https://github.com/azeem7012/android-apk-malware-sandbox) — 自动化 Android APK 恶意软件分析流程，集成 MobSF、OWASP Mobile Top 10、VirusTotal、Flask 仪表盘和 PDF 报告生成。 **[0 星标]**

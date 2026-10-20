@@ -237,7 +237,8 @@ class PublicSourceSupplementTests(unittest.TestCase):
         self.assertEqual([row['id'] for row in projected], self.batch['selection']['selected_ids'])
         self.assertEqual(sum(row.get('scope_status') == 'excluded' for row in projected), 26)
         self.assertEqual(len(projected), 500)
-        self.assertEqual(2836 + len(projected) - 26, 3310)
+        visible_baseline = sum(row.get('scope_status') != 'excluded' for row in context)
+        self.assertEqual(visible_baseline + len(projected) - 26, 3309)
         first_id = next(iter(self.batch_scope))
         decision = self.batch_scope[first_id]
         cited = next(iter(set(__import__('re').findall(
@@ -369,8 +370,8 @@ class PublicSourceSupplementTests(unittest.TestCase):
                 about = (output / language / 'about/index.html').read_text()
                 self.assertIn('source-index.json', about)
                 self.assertIn('/evidence/source-scans/' + self.source['archive_filename'], about)
-                self.assertIn('3 个上游仓库已无法访问' if language else
-                              '3 whose upstream repository is no longer available', about)
+                self.assertIn('4 个上游仓库已无法访问' if language else
+                              '4 whose upstream repository is no longer available', about)
             with zipfile.ZipFile(output / 'downloads/awesome-rea-data.zip') as archive:
                 self.assertEqual(set(archive.namelist()), {
                     'resources.json', 'papers.json', 'records.jsonl', 'references.bib', 'README.md', 'manifest.json'})

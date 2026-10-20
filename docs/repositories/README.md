@@ -2,7 +2,7 @@
 
 [Curated collection](../../README.md) · [Search website](https://awesomerea.org/?lang=en&view=source-index) · [Download bilingual JSON](https://awesomerea.org/source-published.json) · [简体中文](README.zh-CN.md)
 
-This published selection contains **3,500** captured repository records and **3,310** browsable entries. **187** scope-excluded entries and **3** whose upstream repository is no longer available remain in the published JSON. Original capture totals remain separate in the source evidence.
+This published selection contains **3,500** captured repository records and **3,309** browsable entries. **187** scope-excluded entries and **4** whose upstream repository is no longer available remain in the published JSON. Original capture totals remain separate in the source evidence.
 
 These are automatically discovered projects, not individually curated or tested recommendations. Categories derive from metadata and descriptions from upstream text. Stars are collection-time snapshots, not live rankings. Lines marked “Curated” or “Paper” link to the reviewed catalog entry or paper whose source is that exact repository.
 
@@ -12,7 +12,7 @@ Publication date: **2026-10-20 UTC**.
 | --- | ---: | ---: |
 | [Websites](web-analysis.md) | 212 | 22 |
 | [Games](game-analysis.md) | 484 | 55 |
-| [Apps · Android](android.md) | 480 | 31 |
+| [Apps · Android](android.md) | 479 | 31 |
 | [Apps · Managed code](managed-code.md) | 136 | 5 |
 | [Native binaries](native-analysis.md) | 852 | 75 |
 | [Runtime and debugging](dynamic-analysis.md) | 145 | 18 |

@@ -2,7 +2,7 @@
 
 [All categories](README.md) · [简体中文](android.zh-CN.md)
 
-**480 repositories** · 2026-10-20 UTC
+**479 repositories** · 2026-10-20 UTC
 
 These are automatically discovered projects, not individually curated or tested recommendations. Categories derive from metadata and descriptions from upstream text. Stars are collection-time snapshots, not live rankings. Lines marked “Curated” or “Paper” link to the reviewed catalog entry or paper whose source is that exact repository.
 
@@ -410,7 +410,6 @@ These are automatically discovered projects, not individually curated or tested 
 - [744219288/lazyalarm-preview-analysis](https://github.com/744219288/lazyalarm-preview-analysis) — Static analysis report for the preview APK of LazyAlarm, covering functional architecture, component inventory, permission analysis, and signing information, with icons, flowcharts, and structural diagrams. **[0 stars]**
 - [abhirampatel/android-security-toolkit](https://github.com/abhirampatel/android-security-toolkit) — Static analysis toolkit for Android APK security testing — detects hardcoded secrets, manifest misconfigurations, and native library vulnerabilities **[0 stars]** · Curated: [Android Security Toolkit](https://awesomerea.org/resources/android-security-toolkit/)
 - [Airya-Xratu/reforge-ai](https://github.com/Airya-Xratu/reforge-ai) — Reverse-engineer apps with AI. Reforge reconstructs product, UX, UI, architecture, and design intent for coding agents. **[0 stars]**
-- [albertolicea00/transfermovil-src-reversed](https://github.com/albertolicea00/transfermovil-src-reversed) — Reverse-engineered source code, resources, and documentation for the Transfermóvil Android client. **[0 stars]**
 - [alterakey/blutter-docker](https://github.com/alterakey/blutter-docker) — Containerized blutter **[0 stars]**
 - [apache261/APKPinningTestTool](https://github.com/apache261/APKPinningTestTool) — A personal Python toolkit for preparing Android APKs for authorized HTTPS inspection and certificate-pinning analysis. **[0 stars]**
 - [azeem7012/android-apk-malware-sandbox](https://github.com/azeem7012/android-apk-malware-sandbox) — Automated Android APK malware analysis pipeline — MobSF, OWASP Mobile Top 10, VirusTotal, Flask dashboard, PDF report generation **[0 stars]**

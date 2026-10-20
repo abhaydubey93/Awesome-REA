@@ -32,7 +32,7 @@ An independent collection of tools, case studies and research for websites, game
 
 **More ways to browse**
 
-- [All cases](https://awesomerea.org/cases/) (201) · [Related Collections](#related-collections) (6) · [Full Repository Index](#full-repository-index) (3,310)
+- [All cases](https://awesomerea.org/cases/) (201) · [Related Collections](#related-collections) (6) · [Full Repository Index](#full-repository-index) (3,309)
 <!-- END GENERATED CONTENTS -->
 
 ## Find by task
@@ -819,7 +819,7 @@ Each paper’s “Full entry” holds its complete summary, scope and limitation
 ## Full Repository Index
 
 <!-- BEGIN REPOSITORY INDEX SUMMARY -->
-This published selection contains **3,500** captured repository records and **3,310** browsable entries. **187** scope-excluded entries and **3** whose upstream repository is no longer available remain in the published JSON. Original capture totals remain separate in the source evidence. Automatically discovered entries are not individually curated or execution-tested recommendations.
+This published selection contains **3,500** captured repository records and **3,309** browsable entries. **187** scope-excluded entries and **4** whose upstream repository is no longer available remain in the published JSON. Original capture totals remain separate in the source evidence. Automatically discovered entries are not individually curated or execution-tested recommendations.
 
 [Browse by category on GitHub](docs/repositories/README.md) · [Search website](https://awesomerea.org/?view=source-index&lang=en) · [Full bilingual index JSON](https://awesomerea.org/source-published.json) · [Curated catalog JSON](https://awesomerea.org/catalog.json)
 <!-- END REPOSITORY INDEX SUMMARY -->
