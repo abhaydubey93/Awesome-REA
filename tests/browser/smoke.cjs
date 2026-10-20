@@ -235,7 +235,23 @@ async function homepage(page, language, viewport, data, requested) {
   assert.equal(await text(page, '#source-more-count'), '+' + Math.min(24, Math.max(0, repositories - 24)));
   await press(page, '#source-more');
   assert.equal(await count(page, '#source-results .source-card'), Math.min(48, repositories), `${label}: repository Show More`);
-  await press(page, '#source-results .source-card details.source-record-details summary');
+  await press(page, '#source-results .source-card details.source-record-details > summary');
+  const firstSource = await page.$eval('#source-results .source-card', card => ({id:card.dataset.recordId,
+    topics:card.querySelectorAll('.source-topic-chip').length, evidenceOpen:card.querySelector('.source-scan-evidence').open}));
+  const expectedSource = data.browser.resources.find(record => record.id === firstSource.id);
+  assert.equal(firstSource.topics, expectedSource.topics.length, `${label}: every topic appears once`);
+  assert.equal(firstSource.evidenceOpen, false);
+  await press(page, '#source-results .source-card .source-scan-evidence > summary');
+  const fingerprints = await page.$$eval('#source-results .source-card:first-child .source-scan-evidence code', nodes => nodes.map(node => node.textContent));
+  assert(fingerprints.includes(expectedSource.readme_sha256), `${label}: complete SHA256 available`);
+  if (expectedSource.readme_git_sha) assert(fingerprints.includes(expectedSource.readme_git_sha), `${label}: complete advertised Git revision available`);
+  await noOverflow(page, label + ' full scan evidence');
+  await press(page, '#source-results .source-card details.source-record-details > summary');
+  await press(page, '#source-more');
+  const restoredSource = await page.$eval('#source-results .source-card', card => ({outer:card.querySelector('.source-record-details').open, inner:card.querySelector('.source-scan-evidence').open}));
+  assert.deepEqual(restoredSource, {outer:false,inner:true}, `${label}: independent disclosure states survive Show More`);
+  await press(page, '#source-results .source-card details.source-record-details > summary');
+  await press(page, '#source-results .source-card .source-scan-evidence > summary');
   await noOverflow(page, label + ' repositories');
   await shot(page, `${language} homepage ${viewport.name} repositories`);
 

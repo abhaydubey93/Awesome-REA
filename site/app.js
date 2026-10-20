@@ -137,7 +137,10 @@ const UI = {
     "sourceCuratedDetails": "Curated details",
     "sourceTopicHint": "Filter by this topic",
     "sourceLicenseUnknown": "License not identified",
-    "sourceScanDetails": "Details",
+    "sourceScanDetails": "Repository details",
+    "sourceScanEvidence": "README scan evidence",
+    "sourceTopicExact": "Matches this topic exactly.",
+    "sourceTopicContains": "Matches topics containing this text.",
     "indexStatusLabel": "Index status",
     "sourceScanStatus": "README scanned",
     "sourceRequirementsLabel": "Requirements",
@@ -285,7 +288,10 @@ const UI = {
     "sourceCuratedDetails": "精选资料",
     "sourceTopicHint": "按此主题筛选",
     "sourceLicenseUnknown": "许可证未识别",
-    "sourceScanDetails": "详情",
+    "sourceScanDetails": "仓库详情",
+    "sourceScanEvidence": "README 扫描证据",
+    "sourceTopicExact": "按完整主题精确匹配。",
+    "sourceTopicContains": "匹配包含这些文字的主题。",
     "indexStatusLabel": "索引状态",
     "sourceScanStatus": "已读取 README",
     "sourceRequirementsLabel": "使用条件",
@@ -323,8 +329,8 @@ const label = (map, key) => map[key] ? map[key][state.lang === "zh" ? 1 : 0] : k
 const node = (tag, className, text) => { const el = document.createElement(tag); if (className) el.className = className; if (text !== undefined) el.textContent = text; return el; };
 function icon(name, small = false) { if (document.documentElement.dataset.iconSet === "fontawesome") { const span = node("span", "icon fa-symbol fa-" + name + (small ? " icon-small" : "")); span.setAttribute("aria-hidden", "true"); return span; } const svg = document.createElementNS("http://www.w3.org/2000/svg", "svg"); svg.setAttribute("class", "icon" + (small ? " icon-small" : "")); svg.setAttribute("aria-hidden", "true"); const use = document.createElementNS("http://www.w3.org/2000/svg", "use"); use.setAttribute("href", "#i-" + name); svg.append(use); return svg; }
 // Restoring open details is optional; an unsupported selector or missing element must not stop rendering.
-function expandedRecords(selector) { try { return new Set($$(selector).filter(card => card.querySelector("details[open]")).map(card => card.dataset.recordId)); } catch (_) { return new Set(); } }
-function restoreExpanded(selector, expanded) { try { $$(selector).forEach(card => { const details = expanded.has(card.dataset.recordId) && card.querySelector("details"); if (details) details.open = true; }); } catch (_) {} }
+function expandedRecords(selector, detailSelector = "details[open]") { try { return new Set($$(selector).filter(card => card.querySelector(detailSelector)).map(card => card.dataset.recordId)); } catch (_) { return new Set(); } }
+function restoreExpanded(selector, expanded, detailSelector = "details") { try { $$(selector).forEach(card => { const details = expanded.has(card.dataset.recordId) && card.querySelector(detailSelector); if (details) details.open = true; }); } catch (_) {} }
 function external(href, className, text) { const link = node("a", className, text); link.href = href; link.target = "_blank"; link.rel = "noopener noreferrer"; return link; }
 function entryHref(kind, identifier, language = state.lang) {
   if (!["paper", "curated"].includes(kind) || typeof identifier !== "string" || !/^[a-z0-9]+(?:-[a-z0-9]+)*$/.test(identifier)) return null;
@@ -596,18 +602,24 @@ function sourceCard(record) {
   if (Number.isFinite(record.stars)) { const stars = node("span","source-stars",record.stars.toLocaleString(state.lang === "zh" ? "zh-CN" : "en-US") + " " + t("sourceStars")); stars.title = t("sourceStarsTitle"); head.append(stars); } article.append(head);
   const description = record[state.lang === "zh" ? "description_zh" : "description_en"];
   article.append(node("p","source-card-description" + (!description ? " source-card-empty" : ""),description || t(record.description_omission ? "sourceOmittedDescription" : "sourceNoDescription")));
-  const related = sourceRelatedLinks(record); if (related) article.append(related);
-  const topics = sourceTopicButtons(record); if (topics) article.append(topics);
+
   const footer = node("div","source-card-footer"); footer.append(external(record.readme_url || record.url,"","README ↗")); const license = typeof record.license === "string" && record.license.trim() && record.license.toUpperCase() !== "NOASSERTION" ? record.license : t("sourceLicenseUnknown"); footer.append(node("span","source-card-license",license)); article.append(footer);
-  const details = node("details","source-record-details"); details.append(node("summary","",t("sourceScanDetails"))); const dl = node("dl");
-  [[t("indexStatusLabel"),t("sourceScanStatus")],[t("sourceRequirementsLabel"),t("sourceRequirements")],[t("sourcePushedAt"),sourceTime(record.pushed_at)],[t("sourceReadmeAt"),sourceTime(record.observed_at)],[t("sourceMetadataAt"),sourceTime(record.metadata_observed_at)],[t("sourceHash"),record.readme_sha256 || t("sourceNotRecorded")],[t("sourceRevision"),record.readme_git_sha || t("sourceNotRecorded")],[t("sourceReadmeSize"),record.readme_bytes != null ? Number(record.readme_bytes).toLocaleString() : t("sourceNotRecorded")]].forEach(([label,value]) => dl.append(node("dt","",label),node("dd","",String(value)))); const compactContext = node("div", "source-compact-context");
-  const compactRelated = sourceRelatedLinks(record); if (compactRelated) compactContext.append(compactRelated);
-  const compactTopics = sourceTopicButtons(record, Infinity); if (compactTopics) { compactContext.append(node("p", "source-compact-topics", t("sourceTopicsLabel")), compactTopics); }
-  details.append(compactContext, dl); article.append(details); return article;
+  const details = node("details","source-record-details"); details.append(node("summary","",t("sourceScanDetails")));
+  const context = node("div", "source-record-context");
+  const related = sourceRelatedLinks(record); if (related) context.append(related);
+  const topics = sourceTopicButtons(record, Infinity); if (topics) context.append(node("p", "source-context-label", t("sourceTopicsLabel")), topics);
+  const dates = node("dl", "source-timestamps");
+  [[t("sourcePushedAt"),sourceTime(record.pushed_at)],[t("sourceReadmeAt"),sourceTime(record.observed_at)],[t("sourceMetadataAt"),sourceTime(record.metadata_observed_at)]].forEach(([label,value]) => dates.append(node("dt","",label),node("dd","",value)));
+  const evidence = node("details", "source-scan-evidence"); evidence.append(node("summary","",t("sourceScanEvidence")));
+  const dl = node("dl");
+  [[t("indexStatusLabel"),t("sourceScanStatus")],[t("sourceHash"),record.readme_sha256 || t("sourceNotRecorded")],[t("sourceRevision"),record.readme_git_sha || t("sourceNotRecorded")],[t("sourceReadmeSize"),record.readme_bytes != null ? Number(record.readme_bytes).toLocaleString() : t("sourceNotRecorded")]].forEach(([label,value]) => { const dd=node("dd"); dd.append(node(label===t("sourceHash")||label===t("sourceRevision")?"code":"span","",String(value))); dl.append(node("dt","",label),dd); });
+  evidence.append(dl); details.append(context,dates,evidence); article.append(details); return article;
 }
 function renderSources() {
-  if (!sourceState.loaded) return; const expanded = expandedRecords(".source-card"); const found = sourceFiltered(); const fragment = document.createDocumentFragment(); found.slice(0,sourceState.visible).forEach(record => fragment.append(sourceCard(record))); $("#source-results").replaceChildren(fragment); restoreExpanded(".source-card", expanded); $("#source-results").setAttribute("aria-busy","false");
-  $("#source-status").textContent = state.lang === "zh" ? `${found.length.toLocaleString()} 个匹配仓库 · 共 ${sourceState.records.length.toLocaleString()} 个仓库` : (found.length === sourceState.records.length ? `${found.length.toLocaleString()} ${found.length === 1 ? "repository" : "repositories"}` : `${found.length.toLocaleString()} ${found.length === 1 ? "result" : "results"} · ${sourceState.records.length.toLocaleString()} ${sourceState.records.length === 1 ? "repository" : "repositories"}`);
+  if (!sourceState.loaded) return; const expanded = expandedRecords(".source-card", ".source-record-details[open]"); const expandedEvidence = expandedRecords(".source-card", ".source-scan-evidence[open]"); const found = sourceFiltered(); const fragment = document.createDocumentFragment(); found.slice(0,sourceState.visible).forEach(record => fragment.append(sourceCard(record))); $("#source-results").replaceChildren(fragment); restoreExpanded(".source-card", expanded, ".source-record-details"); restoreExpanded(".source-card", expandedEvidence, ".source-scan-evidence"); $("#source-results").setAttribute("aria-busy","false");
+  $("#source-status").textContent = state.lang === "zh" ? (found.length === sourceState.records.length ? `${found.length.toLocaleString()} 个仓库` : `${found.length.toLocaleString()} 个匹配仓库 · 共 ${sourceState.records.length.toLocaleString()} 个仓库`) : (found.length === sourceState.records.length ? `${found.length.toLocaleString()} ${found.length === 1 ? "repository" : "repositories"}` : `${found.length.toLocaleString()} ${found.length === 1 ? "result" : "results"} · ${sourceState.records.length.toLocaleString()} ${sourceState.records.length === 1 ? "repository" : "repositories"}`);
+  const topic = sourceState.topic.toLocaleLowerCase().trim(); const hint = $("#source-topic-match");
+  hint.hidden = !topic; hint.textContent = topic ? t(sourceState.topicIDs.has(topic) ? "sourceTopicExact" : "sourceTopicContains") : "";
   const completed = sourceState.meta.completed_at || sourceState.meta.finished_at || "";
   const scanned = Number(sourceState.meta.scope?.scanned_count || 0), excluded = Number(sourceState.meta.scope?.excluded_count || 0);
   const scopeNote = scanned > 0 && excluded > 0 ? (state.lang === "zh" ? ` 共扫描 ${scanned.toLocaleString("zh-CN")} 个仓库；其中 ${excluded.toLocaleString("zh-CN")} 个超出本合集范围或上游仓库已无法访问，不在浏览列表中显示，完整 JSON 下载仍保留。` : ` Scanned ${scanned.toLocaleString("en-US")} repositories; ${excluded.toLocaleString("en-US")} outside this collection’s scope or no longer available upstream are omitted from browsing and retained in the full JSON download.`) : "";

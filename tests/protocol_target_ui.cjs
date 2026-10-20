@@ -187,8 +187,8 @@ if (require.main === module) (async () => {
   assert.equal(new URL(layouts.context.location.href).searchParams.get('layout'), 'cards');
   const sourceCard = layouts.elements.get('#source-results').children[0];
   const scanDetails = sourceCard.children.find(child => child.className === 'source-record-details');
-  const compactContext = scanDetails.children.find(child => child.className === 'source-compact-context');
-  const compactTopics = compactContext.children.find(child => child.className === 'source-topics');
+  const recordContext = scanDetails.children.find(child => child.className === 'source-record-context');
+  const compactTopics = recordContext.children.find(child => child.className === 'source-topics');
   assert.equal(compactTopics.children.length, 2);
   compactTopics.children[0].emit('click');
   assert.equal(layouts.api.sourceState.topic, 'protocol-analysis');
