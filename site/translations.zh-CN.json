@@ -4291,5 +4291,76 @@
       "耗时数据来自一台轻负载虚拟机，仅作数量级参考。调用由作者编写的脚本化测试驱动程序以熟悉接口的调用方身份发出，文章也未说明具体分析对象。对安全智能体的对应分析属于论证，而非已构建的系统。文中称逐次调用记录、测试配置和脚本随研究提供，但页面并未给出链接，因此本合集无法也未曾重新运行任何内容。",
       "本文评估的是 REA 的证据模型与工具接口，未报告任何重建、漏洞利用或漏洞。页面未声明许可；REA、第三方引擎及被分析对象保留各自条款。"
     ]
+  },
+  "silent-hill-ps1-decomp-case": {
+    "name": "Silent Hill：进行中的 PlayStation 一致性反编译",
+    "requirements": [
+      "审阅提交为 cff38422。README 将其描述为进行中的一致性反编译：进度百分比是已写出、且编译结果与原汇编一致的代码所占比例。达到 100% 才表示每个函数都匹配；所审阅的 README 并未声称已经达到。",
+      "同一 README 写明本仓库不会产出移植版。由于文档缺失且目录仍在重组，代码库被描述为尚不适合移植。一致性反编译不是 Windows、Linux 或 macOS 上的原生游戏。",
+      "README 称反编译中没有明知加入的 AI 生成代码，承认的 AI 用途仅限于一次性辅助脚本。用 AI 做移植的分支不在本条目内。",
+      "固定版本的文件树包含 LICENSE 文件。GitHub 未给出 SPDX 标识，本次审阅也未转述该文件的许可条款。原版光盘和素材仍由用户自行负责。本合集未构建该项目。"
+    ]
+  },
+  "nfsu2-recompiled-case": {
+    "name": "Need for Speed: Underground 2 静态重编译",
+    "requirements": [
+      "审阅提交为 1aac7a9d。README 将其描述为用 pcrecomp 的一个分支把 SPEED2.EXE 静态重编译为 C。文档中的平台是 Windows x86 和 Android ARM64。图形为 Direct3D 9 或经 DXVK 的 Vulkan；音频为 AAudio 或 DirectSound。",
+      "v0.14.9 发布了 arm64-v8a 和 armeabi-v7a 两个 Android 安装包，并写明需要 Android 10+ 和 Vulkan 1.1。32 位包需要仍能运行 32 位应用的设备。原始游戏数据不在仓库中，须用户自备。",
+      "状态徽章称之为可玩的竞速原型。音频、节奏和其余限制见 docs/AUDIO_FRAME_PACING.md 以及另一份 10 月 16 日的审阅说明。本条目未运行这些构建。",
+      "README 徽章称工具部分为 MIT。固定版本的文件树没有 LICENSE 文件，因此徽章不能代替许可授予，也不覆盖游戏本身。"
+    ]
+  },
+  "lcs-recomp-case": {
+    "name": "Liberty City Stories：基于 PSP 静态重编译的 PC 移植",
+    "requirements": [
+      "审阅提交为 1132a76e。README 要求美版 v1.05，产品编号 ULUS-10041。解密后的 EBOOT.ELF 和光盘中的 PSP_GAME 目录，发布版放在 game/，从源码构建时放在 lcs/game/。仓库不包含游戏文件。",
+      "文档中的源码构建使用 Visual Studio 2022 和 LLVM 的 clang-cl，通过 lcs/BUILD_LCS.bat 完成。运行使用 lcs/PLAY_LCS.bat。显示、内部分辨率、纹理 LOD 和键盘绑定在 lcs/config/LCSNative.ini 中设置。",
+      "这是通过 PSPRecomp 移植的一个 PSP 版本，不是一致性反编译，也不延伸到其他 GTA 作品。本合集未构建或运行它。",
+      "固定版本包含项目代码的 MIT LICENSE。该许可不覆盖用户的游戏可执行文件或光盘数据。"
+    ]
+  },
+  "halopad-projectreach-case": {
+    "name": "HaloPad：在 iPhone、iPad 和 Mac 上运行 Halo Combat Evolved",
+    "requirements": [
+      "审阅提交为 96296093。README 将其标为 0.3 版、状态为预览。支持的宿主是 iOS 与 iPadOS 17.4 或更高版本，以及 Apple 芯片上的 macOS 14.4 或更高版本。没有可下载的应用，须由用户自行构建。",
+      "README 写明用户自备游戏副本。它描述了原版 Xbox 战役、最多 128 人的在线对战，以及 Halo Custom Edition 社区服务器，输入方式为触控、手柄或键盘鼠标。所审阅的开头部分没有确立一致性反编译，也没有写明翻译工具链。",
+      "项目公开的一张截图显示 iPad 模拟器中的 Halo 主菜单和 HaloPad 菜单按钮。这是项目截图，不是本合集测得的兼容性结果。",
+      "固定版本的根目录没有 LICENSE 文件。游戏数据仍受其自身权利约束。本合集未构建或运行该应用。"
+    ]
+  },
+  "restreet-fifa-street-case": {
+    "name": "ReStreet：重编译到 Windows 的 FIFA Street 2012",
+    "requirements": [
+      "审阅提交为 93ea77cd。README 称 ReStreet 是把 Xbox 360 游戏重编译而成的 Windows PC 版本，带有单文件安装器、启动器，以及欧洲和南美社区服务器上的免费在线对战。文档中的宿主是 Windows 10 或 11。",
+      "用户需要自备 Xbox 360 副本。仓库不包含游戏。构建步骤在 docs/BUILDING.md，已知限制在 docs/STATUS.md。本次审阅未安装发布包，也未进行在线游玩。",
+      "固定版本包含项目的 MIT LICENSE。该许可不覆盖 Xbox 360 游戏、其素材或社区服务器的条款。"
+    ]
+  },
+  "psprecomp-vcs-case": {
+    "name": "PSPRecomp：静态重编译框架及 Vice City Stories 配置",
+    "requirements": [
+      "审阅提交为 f6e7d415。README 把可复用框架和游戏配置分开。框架加载 ELF/PRX，解码 Allegrex/MIPS，并生成 C++ 翻译单元。将 PSPRECOMP_PROFILE 留空时，只构建核心、分析器、重编译器和测试，不包含游戏。",
+      "第一个可用配置是 profiles/vcs，即《Grand Theft Auto: Vice City Stories》。选择它需要 CMake 3.20 或更高版本以及 C++20 编译器。文档中的 Windows 与 DirectX 12 构建使用 Visual Studio 2022。游戏专属地址和生成代码留在配置目录内。",
+      "这是一个静态重编译器和一个游戏配置，并不表示支持所有 PSP 游戏，也不是一致性反编译。本合集未配置或运行其中任何构建。",
+      "固定版本包含项目的 MIT LICENSE。用户的 PSP 可执行文件和光盘数据不在该许可范围内。"
+    ]
+  },
+  "psprecomp-vcs-android-case": {
+    "name": "Vice City Stories：PSPRecomp 配置的 Android 移植",
+    "requirements": [
+      "审阅提交为 9fd696f8，README 称之为 beta 0.3.0。它写明游戏可在 Android 上以 Vulkan GPU 渲染运行，支持宽屏、过场语音、自由摄像机和存档。也描述了 30 帧的 PSP 分辨率模式和 32 位 Android 构建。作者提到在三星 Galaxy S25 Ultra 上测试；这不是普遍的设备结论。",
+      "需要 Android 8.0 或更高版本、ARM 处理器和 Vulkan。文档描述了两个安装包：面向大多数手机的 arm64，以及面向 32 位设备的 armv7。Windows 使用 DirectX 12。游戏代码被重编译，游戏数据从用户自备的副本读取。",
+      "这是一个 PSPRecomp 配置的平台宿主，不是框架本身，也不是一致性反编译。已知问题留在 README 中。本合集未安装 APK。",
+      "固定版本包含项目代码的 MIT LICENSE。它不许可 PSP 游戏。"
+    ]
+  },
+  "lezac-decompilation-case": {
+    "name": "Larax & Zaco：由 REA 支持的部分反编译",
+    "requirements": [
+      "审阅提交为 03f07ee7。README 写明使用 REA 6.3.0 和 Ghidra 12.1.4，输入 LEZAC.EXE 的 SHA-256 为 7579255148c2cb540b26f70dc8181c50b218b6808d8fa5208c832391bafa53ec。它报告导出了 215 个过程，用 Pascal 重建了七个例程，整理了十六种紧缩存储布局，以及更早的六个 C 重建。",
+      "README 报告了 174,777 次原生 Pascal 与原版的比较，以及一个针对七项操作的 16 位 DOS 探针。它还报告在 DOSBox-X 基线中用原版游戏完成了第 1 关。这些是作者报告的检查。本合集未重新运行。",
+      "同一 README 说明这不是可玩的完整重建，不是字节一致的重建，也不是作者的原始源码。紧缩布局中的名称是推断的。原始编译器的确切版本没有恢复。",
+      "固定版本的根目录没有 LICENSE 文件。共享版可执行文件的权利仍单独存在。analysis/rea/verified/ 下的分析文件是证据笔记，不能代替原版游戏。"
+    ]
   }
 }

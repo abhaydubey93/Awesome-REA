@@ -11,7 +11,7 @@
 <a href="https://awesomerea.org/zh/"><img src="assets/readme-banner.svg" alt="Awesome Reverse Engineering Anything — 覆盖六类逆向目标的工具、案例与论文" width="960"></a>
 
 <!-- BEGIN GENERATED BADGES -->
-[![精选资源: 490](https://img.shields.io/badge/%E7%B2%BE%E9%80%89%E8%B5%84%E6%BA%90-490-53309C?style=flat-square&labelColor=303447)](https://awesomerea.org/zh/resources/) [![案例: 206](https://img.shields.io/badge/%E6%A1%88%E4%BE%8B-206-53309C?style=flat-square&labelColor=303447)](https://awesomerea.org/zh/cases/) [![论文: 134](https://img.shields.io/badge/%E8%AE%BA%E6%96%87-134-53309C?style=flat-square&labelColor=303447)](https://awesomerea.org/zh/papers/) [![目录检查](https://github.com/reacher-z/Awesome-REA/actions/workflows/validate.yml/badge.svg?branch=main)](https://github.com/reacher-z/Awesome-REA/actions/workflows/validate.yml) [![许可: MIT](https://img.shields.io/badge/%E8%AE%B8%E5%8F%AF-MIT-606779?style=flat-square&labelColor=303447)](LICENSE) [![网站: awesomerea.org](https://img.shields.io/badge/%E7%BD%91%E7%AB%99-awesomerea.org-6235B5?style=flat-square&labelColor=303447)](https://awesomerea.org/zh/)
+[![精选资源: 498](https://img.shields.io/badge/%E7%B2%BE%E9%80%89%E8%B5%84%E6%BA%90-498-53309C?style=flat-square&labelColor=303447)](https://awesomerea.org/zh/resources/) [![案例: 214](https://img.shields.io/badge/%E6%A1%88%E4%BE%8B-214-53309C?style=flat-square&labelColor=303447)](https://awesomerea.org/zh/cases/) [![论文: 134](https://img.shields.io/badge/%E8%AE%BA%E6%96%87-134-53309C?style=flat-square&labelColor=303447)](https://awesomerea.org/zh/papers/) [![目录检查](https://github.com/reacher-z/Awesome-REA/actions/workflows/validate.yml/badge.svg?branch=main)](https://github.com/reacher-z/Awesome-REA/actions/workflows/validate.yml) [![许可: MIT](https://img.shields.io/badge/%E8%AE%B8%E5%8F%AF-MIT-606779?style=flat-square&labelColor=303447)](LICENSE) [![网站: awesomerea.org](https://img.shields.io/badge/%E7%BD%91%E7%AB%99-awesomerea.org-6235B5?style=flat-square&labelColor=303447)](https://awesomerea.org/zh/)
 <!-- END GENERATED BADGES -->
 
 **[搜索与筛选](https://awesomerea.org/zh/)** · **[浏览案例](https://awesomerea.org/zh/cases/)** · **[研究论文](https://awesomerea.org/zh/papers/)** · **[HTML 综述](https://awesomerea.org/zh/survey/)**
@@ -23,7 +23,7 @@
 <!-- BEGIN GENERATED CONTENTS -->
 **按目标找工具与案例**
 
-- [网站](#website) (29) · [游戏](#game) (193) · [应用](#app) (77)
+- [网站](#website) (29) · [游戏](#game) (201) · [应用](#app) (77)
 - [原生二进制](#native-binary) (64) · [固件与硬件](#firmware) (23) · [协议](#protocol) (18)
 
 **论文与工作流**
@@ -32,7 +32,7 @@
 
 **更多浏览方式**
 
-- [全部案例](https://awesomerea.org/zh/cases/) (206) · [相关合集](#related-collections) (7) · [完整仓库索引](#完整仓库索引) (3,309)
+- [全部案例](https://awesomerea.org/zh/cases/) (214) · [相关合集](#related-collections) (7) · [完整仓库索引](#完整仓库索引) (3,309)
 <!-- END GENERATED CONTENTS -->
 
 ## 按任务查找
@@ -45,7 +45,7 @@
 | 研究固件或设备协议 | [固件](#firmware) · [协议](#protocol) |
 | 比较方法与评测证据 | [论文](#papers) · [综述中的对比分析](https://awesomerea.org/zh/survey/#comparative-studies) |
 
-上表只是分类入口。具体任务是一条精选案例，写明已发布的输入和可检查的输出。206 条精选案例中有 **184** 条属于完整程序规模，足够一次超过三小时的计算机使用会话，目标是 **1,000**（游戏 143、应用 22、协议 9、固件 5、网站 4、原生二进制 1）。三小时是对范围的判断，不是实测时长。18 条较短案例和 4 篇综述不计入这 184 条；工具、论文和未审线索不是任务。
+上表只是分类入口。具体任务是一条精选案例，写明已发布的输入和可检查的输出。214 条精选案例中有 **192** 条属于完整程序规模，足够一次超过三小时的计算机使用会话，目标是 **1,000**（游戏 151、应用 22、协议 9、固件 5、网站 4、原生二进制 1）。三小时是对范围的判断，不是实测时长。18 条较短案例和 4 篇综述不计入这 192 条；工具、论文和未审线索不是任务。
 
 <a id="资源目录"></a>
 <a id="resource-catalog"></a>
@@ -134,6 +134,7 @@ REA 标签指向单独维护的[上游 CLI 与 MCP 项目](https://github.com/mo
 - [**UltraSunnyMoon：以 REA 主导的部分《宝可梦 究极之日》重建**](https://github.com/tylergraydev/UltraSunnyMoon) - 作者使用固定版本的 REA 与 Ghidra，分析使用者自备的《宝可梦 究极之日》基础版可执行文件，由拆分出的对象逐字节重建该文件，并替换进两个编译后的小型 C 运行时例程。 <sub>案例 · 混合工具流程 · [完整条目](https://awesomerea.org/zh/resources/ultrasunnymoon-rea-case/)</sub>
 - [**DX-Ball：借助 REA 并由 Codex 完成的函数级重建**](https://github.com/N0zoM1z0/dx-ball) - 作者让 Codex 通过 REA 的 Ghidra 工具检查英文版 DX-Ball 1.07 可执行文件并恢复为带类型的 C/C++，再用同时代的 Visual C++ 4.0 编译每个函数，在映射重定位后与原文件逐字节比较。 <sub>案例 · 混合工具流程 · 也适用：二进制 · [完整条目](https://awesomerea.org/zh/resources/dx-ball-rea-reconstruction-case/)</sub>
 - [**re2ds：Resident Evil 2 的原生 Nintendo DS 引擎**](https://github.com/eray1605/re2ds) - 在原生 Nintendo DS 引擎中重新实现 Resident Evil 2 PS1 版的游戏规则，并用转换工具把使用者自有光盘中的数据转为 DS 格式。 <sub>案例 · 混合工具流程 · [完整条目](https://awesomerea.org/zh/resources/re2ds-nds-engine-case/)</sub>
+- [**Larax &amp; Zaco：由 REA 支持的部分反编译**](https://github.com/Hubert-Rybak/lezac-decompilation) - 用固定版本的 REA 和 Ghidra 从《Larax &amp; Zaco》v1.0 共享版可执行文件导出过程，并把其中一小部分重建为 Pascal 和 C。 <sub>案例 · 混合工具流程 · 也适用：二进制 · [完整条目](https://awesomerea.org/zh/resources/lezac-decompilation-case/)</sub>
 - [**LASRecomp：《织梦岛》静态重编译案例**](https://github.com/peiikai/LASRecomp) - 通过静态重编译，将 2019 年 Switch 版《塞尔达传说：织梦岛》重建为原生桌面程序。 <sub>案例 · 独立重建 · 也适用：二进制 · [完整条目](https://awesomerea.org/zh/resources/lasrecomp/)</sub>
 - [**ArkWeb：双游戏动作与碰撞桥接实验**](https://github.com/luki-1/ArkWeb) - 同时运行《漫威蜘蛛侠：重制版》与《蝙蝠侠：阿卡姆骑士》，将哥谭碰撞数据传入蜘蛛侠的物理世界，再将其渲染画面合成到阿卡姆中。 <sub>案例 · 独立重建 · [完整条目](https://awesomerea.org/zh/resources/arkweb-two-game-case/)</sub>
 - [**Perfect Dark：生成一致 ROM 的 Nintendo 64 反编译重建**](https://github.com/n64decomp/perfect_dark) - 重建 Perfect Dark 的 Nintendo 64 代码，并提供生成一致 ROM 的构建流程。 <sub>案例 · 独立重建 · [完整条目](https://awesomerea.org/zh/resources/perfect-dark-matching-decomp-case/)</sub>
@@ -259,6 +260,13 @@ REA 标签指向单独维护的[上游 CLI 与 MCP 项目](https://github.com/mo
 - [**BFM-decomp：Brave Fencer Musashi 匹配反编译**](https://github.com/Druthulu/BFM-decomp) - 记录美版 PlayStation 游戏的智能体辅助重建，使用固定编译器及完整二进制 SHA-1 检查。 <sub>案例 · 独立重建 · 也适用：二进制 · [完整条目](https://awesomerea.org/zh/resources/bfm-decomp-case/)</sub>
 - [**Snowboard Kids：智能体辅助的 N64 匹配反编译**](https://github.com/cdlewis/snowboardkids-decomp) - 原版 Nintendo 64 游戏 Snowboard Kids 的匹配反编译，利用使用者自备的 ROM 重新构建 SHA1 一致的北美版与日版 ROM。 <sub>案例 · 独立重建 · [完整条目](https://awesomerea.org/zh/resources/snowboardkids-matching-decomp-case/)</sub>
 - [**Sonic Advance 3：AI 辅助匹配单个敌人模块**](https://gambiconf.substack.com/p/development-journey-on-game-decompilation) - Macabeus 在注明日期的研究文章中，介绍了如何把汇编、相似的已反编译函数和结构体放进提示词，让 Claude Sonnet 3.5 与 DeepSeek R1 为社区 Sonic Advance 3 GBA 反编译项目中的敌人模块 Marun 编写匹配的 C 代码。 <sub>案例 · 独立重建 · [完整条目](https://awesomerea.org/zh/resources/sa3-marun-ai-decomp-case/)</sub>
+- [**Silent Hill：进行中的 PlayStation 一致性反编译**](https://github.com/shdecompilations/silent-hill-decomp) - 将《Silent Hill》的 PlayStation 1 代码重建为 C，目标是编译回与原版一致的机器码。 <sub>案例 · 独立重建 · [完整条目](https://awesomerea.org/zh/resources/silent-hill-ps1-decomp-case/)</sub>
+- [**Need for Speed: Underground 2 静态重编译**](https://github.com/codepdbh/nfsu2-recompiled) - 把用户自备的《Need for Speed: Underground 2》SPEED2.EXE 从 32 位 x86 译成 C，并在 Windows 和 Android 上运行。 <sub>案例 · 独立重建 · [完整条目](https://awesomerea.org/zh/resources/nfsu2-recompiled-case/)</sub>
+- [**Liberty City Stories：基于 PSP 静态重编译的 PC 移植**](https://github.com/elmasas/lcs-recomp) - 在 PSPRecomp 静态重编译器上构建《Grand Theft Auto: Liberty City Stories》的 PC 移植。 <sub>案例 · 独立重建 · [完整条目](https://awesomerea.org/zh/resources/lcs-recomp-case/)</sub>
+- [**HaloPad：在 iPhone、iPad 和 Mac 上运行 Halo Combat Evolved**](https://github.com/chrissotraidis/projectreach) - README 称之为 HaloPad 的预览版，用用户自备的副本在 iPhone、iPad 和 Apple 芯片 Mac 上构建《Halo: Combat Evolved》。 <sub>案例 · 独立重建 · [完整条目](https://awesomerea.org/zh/resources/halopad-projectreach-case/)</sub>
+- [**ReStreet：重编译到 Windows 的 FIFA Street 2012**](https://github.com/samuelit0davila/fifa-street-pc-port) - 把 Xbox 360 版《FIFA Street》（2012）重编译为 Windows 程序，附带安装器、启动器和社区在线对战。 <sub>案例 · 独立重建 · [完整条目](https://awesomerea.org/zh/resources/restreet-fifa-street-case/)</sub>
+- [**PSPRecomp：静态重编译框架及 Vice City Stories 配置**](https://github.com/jessicanataliagta/PSPRecomp) - 读取 PSP 的 Allegrex 可执行文件，预先生成 C++，并在原生宿主上运行，而不是使用 PSP 解释器。 <sub>案例 · 独立重建 · 也适用：二进制 · [完整条目](https://awesomerea.org/zh/resources/psprecomp-vcs-case/)</sub>
+- [**Vice City Stories：PSPRecomp 配置的 Android 移植**](https://github.com/codepdbh/PSPRecomp-VCS-Android) - 把 PSPRecomp 的《Vice City Stories》配置放到 Android 上，使用 Vulkan 渲染，并同时记录 Windows DirectX 12 构建。 <sub>案例 · 独立重建 · [完整条目](https://awesomerea.org/zh/resources/psprecomp-vcs-android-case/)</sub>
 
 #### 工具、项目与集成
 

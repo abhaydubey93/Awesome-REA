@@ -11,7 +11,7 @@ An independent collection of tools, case studies and research for websites, game
 <a href="https://awesomerea.org/"><img src="assets/readme-banner.svg" alt="Awesome Reverse Engineering Anything — tools, cases and papers across six reverse-engineering domains" width="960"></a>
 
 <!-- BEGIN GENERATED BADGES -->
-[![resources: 490](https://img.shields.io/badge/resources-490-53309C?style=flat-square&labelColor=303447)](https://awesomerea.org/resources/) [![cases: 206](https://img.shields.io/badge/cases-206-53309C?style=flat-square&labelColor=303447)](https://awesomerea.org/cases/) [![papers: 134](https://img.shields.io/badge/papers-134-53309C?style=flat-square&labelColor=303447)](https://awesomerea.org/papers/) [![Catalog checks](https://github.com/reacher-z/Awesome-REA/actions/workflows/validate.yml/badge.svg?branch=main)](https://github.com/reacher-z/Awesome-REA/actions/workflows/validate.yml) [![license: MIT](https://img.shields.io/badge/license-MIT-606779?style=flat-square&labelColor=303447)](LICENSE) [![website: awesomerea.org](https://img.shields.io/badge/website-awesomerea.org-6235B5?style=flat-square&labelColor=303447)](https://awesomerea.org/)
+[![resources: 498](https://img.shields.io/badge/resources-498-53309C?style=flat-square&labelColor=303447)](https://awesomerea.org/resources/) [![cases: 214](https://img.shields.io/badge/cases-214-53309C?style=flat-square&labelColor=303447)](https://awesomerea.org/cases/) [![papers: 134](https://img.shields.io/badge/papers-134-53309C?style=flat-square&labelColor=303447)](https://awesomerea.org/papers/) [![Catalog checks](https://github.com/reacher-z/Awesome-REA/actions/workflows/validate.yml/badge.svg?branch=main)](https://github.com/reacher-z/Awesome-REA/actions/workflows/validate.yml) [![license: MIT](https://img.shields.io/badge/license-MIT-606779?style=flat-square&labelColor=303447)](LICENSE) [![website: awesomerea.org](https://img.shields.io/badge/website-awesomerea.org-6235B5?style=flat-square&labelColor=303447)](https://awesomerea.org/)
 <!-- END GENERATED BADGES -->
 
 **[Search & filter](https://awesomerea.org/)** · **[Browse cases](https://awesomerea.org/cases/)** · **[Research papers](https://awesomerea.org/papers/)** · **[HTML survey](https://awesomerea.org/survey/)**
@@ -23,7 +23,7 @@ An independent collection of tools, case studies and research for websites, game
 <!-- BEGIN GENERATED CONTENTS -->
 **Tools and cases by target**
 
-- [Website](#website) (29) · [Game](#game) (193) · [App](#app) (77)
+- [Website](#website) (29) · [Game](#game) (201) · [App](#app) (77)
 - [Native Binary](#native-binary) (64) · [Firmware and Hardware](#firmware) (23) · [Protocol](#protocol) (18)
 
 **Research and workflows**
@@ -32,7 +32,7 @@ An independent collection of tools, case studies and research for websites, game
 
 **More ways to browse**
 
-- [All cases](https://awesomerea.org/cases/) (206) · [Related Collections](#related-collections) (7) · [Full Repository Index](#full-repository-index) (3,309)
+- [All cases](https://awesomerea.org/cases/) (214) · [Related Collections](#related-collections) (7) · [Full Repository Index](#full-repository-index) (3,309)
 <!-- END GENERATED CONTENTS -->
 
 ## Find by task
@@ -45,7 +45,7 @@ An independent collection of tools, case studies and research for websites, game
 | Investigate firmware or device protocols | [Firmware](#firmware) · [Protocols](#protocol) |
 | Compare methods and evaluation evidence | [Papers](#papers) · [Survey comparisons](https://awesomerea.org/survey/#comparative-studies) |
 
-The rows above are section pointers. A concrete task is a curated case that names a shipped input and a checkable output. **184** of 206 curated cases are whole-program work large enough for a computer-use session past three hours, against a target of **1,000** (game 143, app 22, protocol 9, firmware 5, website 4, native binary 1). That three-hour line is a scope reading, not a measured run. Eighteen shorter cases and four essays stay outside the 184; tools, papers, and unreviewed leads are not tasks.
+The rows above are section pointers. A concrete task is a curated case that names a shipped input and a checkable output. **192** of 214 curated cases are whole-program work large enough for a computer-use session past three hours, against a target of **1,000** (game 151, app 22, protocol 9, firmware 5, website 4, native binary 1). That three-hour line is a scope reading, not a measured run. Eighteen shorter cases and four essays stay outside the 192; tools, papers, and unreviewed leads are not tasks.
 
 <a id="resource-catalog"></a>
 ## Resources
@@ -133,6 +133,7 @@ REA labels refer to the separate [upstream CLI and MCP project](https://github.c
 - [**UltraSunnyMoon: a partial, REA-led Pokémon Ultra Sun reconstruction**](https://github.com/tylergraydev/UltraSunnyMoon) - The author uses a pinned REA build with Ghidra to analyze a user-supplied Pokémon Ultra Sun base executable, rebuild it byte for byte from split objects, and swap in two small compiled C runtime routines. <sub>Case study · Mixed workflow · [Full entry](https://awesomerea.org/resources/ultrasunnymoon-rea-case/)</sub>
 - [**DX-Ball: an REA-guided function-level reconstruction with Codex**](https://github.com/N0zoM1z0/dx-ball) - The author has Codex use REA’s Ghidra tools to inspect the English DX-Ball 1.07 executable and recover it as typed C/C++, then compiles each function with the original-era Visual C++ 4.0 and compares it byte for byte with the original after mapping relocations. <sub>Case study · Mixed workflow · Also: Binary · [Full entry](https://awesomerea.org/resources/dx-ball-rea-reconstruction-case/)</sub>
 - [**re2ds: a native Nintendo DS engine for Resident Evil 2**](https://github.com/eray1605/re2ds) - Reimplements Resident Evil 2’s PS1 game rules in a native Nintendo DS engine, with converters that turn data from the user’s own disc into DS formats. <sub>Case study · Mixed workflow · [Full entry](https://awesomerea.org/resources/re2ds-nds-engine-case/)</sub>
+- [**Larax &amp; Zaco: an REA-backed partial decompilation**](https://github.com/Hubert-Rybak/lezac-decompilation) - Uses a pinned REA and Ghidra setup to export procedures from the Larax &amp; Zaco v1.0 shareware executable and reconstruct a small set of them as Pascal and C. <sub>Case study · Mixed workflow · Also: Binary · [Full entry](https://awesomerea.org/resources/lezac-decompilation-case/)</sub>
 - [**LASRecomp: Link’s Awakening static recompilation**](https://github.com/peiikai/LASRecomp) - A native desktop reconstruction of the 2019 Switch version of Link’s Awakening using static recompilation. <sub>Case study · Independent reconstruction · Also: Binary · [Full entry](https://awesomerea.org/resources/lasrecomp/)</sub>
 - [**ArkWeb: a two-game movement and collision experiment**](https://github.com/luki-1/ArkWeb) - Runs Spider-Man Remastered and Arkham Knight together, streaming Gotham collision into Spider-Man’s physics world and compositing his rendered frame into Arkham. <sub>Case study · Independent reconstruction · [Full entry](https://awesomerea.org/resources/arkweb-two-game-case/)</sub>
 - [**Perfect Dark: matching Nintendo 64 decompilation**](https://github.com/n64decomp/perfect_dark) - Reconstructs Perfect Dark’s Nintendo 64 code with a documented matching-ROM build. <sub>Case study · Independent reconstruction · [Full entry](https://awesomerea.org/resources/perfect-dark-matching-decomp-case/)</sub>
@@ -258,6 +259,13 @@ REA labels refer to the separate [upstream CLI and MCP project](https://github.c
 - [**BFM-decomp: Brave Fencer Musashi matching decompilation**](https://github.com/Druthulu/BFM-decomp) - Documents an agent-assisted reconstruction of the USA PlayStation game with a pinned compiler and whole-binary SHA-1 gates. <sub>Case study · Independent reconstruction · Also: Binary · [Full entry](https://awesomerea.org/resources/bfm-decomp-case/)</sub>
 - [**Snowboard Kids: an agent-assisted N64 matching decompilation**](https://github.com/cdlewis/snowboardkids-decomp) - A matching decompilation of the original Nintendo 64 Snowboard Kids that rebuilds SHA1-identical North American and Japanese ROMs from a user-supplied ROM. <sub>Case study · Independent reconstruction · [Full entry](https://awesomerea.org/resources/snowboardkids-matching-decomp-case/)</sub>
 - [**Sonic Advance 3: an AI-assisted match of one enemy module**](https://gambiconf.substack.com/p/development-journey-on-game-decompilation) - Macabeus’s dated study describes prompting Claude Sonnet 3.5 and DeepSeek R1 with assembly, similar decompiled functions and structs to write matching C for Marun, one enemy module of the community Sonic Advance 3 GBA decompilation. <sub>Case study · Independent reconstruction · [Full entry](https://awesomerea.org/resources/sa3-marun-ai-decomp-case/)</sub>
+- [**Silent Hill: in-progress matching PlayStation decompilation**](https://github.com/shdecompilations/silent-hill-decomp) - Reconstructs Silent Hill's PlayStation 1 code as C that is meant to compile back to the original machine code. <sub>Case study · Independent reconstruction · [Full entry](https://awesomerea.org/resources/silent-hill-ps1-decomp-case/)</sub>
+- [**Need for Speed: Underground 2 static recompilation**](https://github.com/codepdbh/nfsu2-recompiled) - Translates the user's Need for Speed: Underground 2 SPEED2.EXE from 32-bit x86 into C and runs that translation on Windows and Android. <sub>Case study · Independent reconstruction · [Full entry](https://awesomerea.org/resources/nfsu2-recompiled-case/)</sub>
+- [**Liberty City Stories: a PSP static-recompilation PC port**](https://github.com/elmasas/lcs-recomp) - Builds a PC port of Grand Theft Auto: Liberty City Stories on the PSPRecomp static recompiler. <sub>Case study · Independent reconstruction · [Full entry](https://awesomerea.org/resources/lcs-recomp-case/)</sub>
+- [**HaloPad: Halo Combat Evolved on iPhone, iPad, and Mac**](https://github.com/chrissotraidis/projectreach) - A preview the README calls HaloPad builds Halo: Combat Evolved for iPhone, iPad, and Apple silicon Mac from the user's own copy. <sub>Case study · Independent reconstruction · [Full entry](https://awesomerea.org/resources/halopad-projectreach-case/)</sub>
+- [**ReStreet: FIFA Street 2012 recompiled for Windows**](https://github.com/samuelit0davila/fifa-street-pc-port) - Recompiles the Xbox 360 edition of FIFA Street (2012) into a Windows program with an installer, a launcher, and community online play. <sub>Case study · Independent reconstruction · [Full entry](https://awesomerea.org/resources/restreet-fifa-street-case/)</sub>
+- [**PSPRecomp: static recompilation, with a Vice City Stories profile**](https://github.com/jessicanataliagta/PSPRecomp) - Reads a PSP Allegrex executable, emits C++ ahead of time, and runs it on a native host instead of a PSP interpreter. <sub>Case study · Independent reconstruction · Also: Binary · [Full entry](https://awesomerea.org/resources/psprecomp-vcs-case/)</sub>
+- [**Vice City Stories: an Android port of the PSPRecomp profile**](https://github.com/codepdbh/PSPRecomp-VCS-Android) - Hosts the PSPRecomp Vice City Stories profile on Android, with a Vulkan renderer, and also documents a Windows DirectX 12 build. <sub>Case study · Independent reconstruction · [Full entry](https://awesomerea.org/resources/psprecomp-vcs-android-case/)</sub>
 
 #### Tools, projects and integrations
 
