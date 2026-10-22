@@ -45,6 +45,8 @@ An independent collection of tools, case studies and research for websites, game
 | Investigate firmware or device protocols | [Firmware](#firmware) · [Protocols](#protocol) |
 | Compare methods and evaluation evidence | [Papers](#papers) · [Survey comparisons](https://awesomerea.org/survey/#comparative-studies) |
 
+The rows above are section pointers. A concrete task is a curated case that names a shipped input and a checkable output. **184** of 206 curated cases are whole-program work large enough for a computer-use session past three hours, against a target of **1,000** (game 143, app 22, protocol 9, firmware 5, website 4, native binary 1). That three-hour line is a scope reading, not a measured run. Eighteen shorter cases and four essays stay outside the 184; tools, papers, and unreviewed leads are not tasks.
+
 <a id="resource-catalog"></a>
 ## Resources
 
