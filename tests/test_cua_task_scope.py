@@ -40,19 +40,19 @@ class LongTaskScopeTests(unittest.TestCase):
         by_target = Counter((record.get('targets') or ['?'])[0] for record in long_cases)
         self.assertEqual(
             (len(catalog), len(SHORT), len(NOT_A_TASK), len(long_cases), dict(sorted(by_target.items()))),
-            (214, 18, 4, 192, {
-                'app': 22, 'binary': 1, 'firmware': 5, 'game': 151, 'protocol': 9, 'website': 4,
+            (225, 18, 4, 203, {
+                'app': 24, 'binary': 1, 'firmware': 6, 'game': 157, 'protocol': 11, 'website': 4,
             }),
         )
         self.assertLess(len(long_cases), TARGET)
         english = (ROOT / 'README.md').read_text(encoding='utf-8')
         chinese = (ROOT / 'README.zh-CN.md').read_text(encoding='utf-8')
         self.assertIn(
-            '**192** of 214 curated cases are whole-program work large enough for a computer-use session past three hours, against a target of **1,000** (game 151, app 22, protocol 9, firmware 5, website 4, native binary 1).',
+            '**203** of 225 curated cases are whole-program work large enough for a computer-use session past three hours, against a target of **1,000** (game 157, app 24, protocol 11, firmware 6, website 4, native binary 1).',
             english,
         )
         self.assertIn(
-            '214 条精选案例中有 **192** 条属于完整程序规模，足够一次超过三小时的计算机使用会话，目标是 **1,000**（游戏 151、应用 22、协议 9、固件 5、网站 4、原生二进制 1）。',
+            '225 条精选案例中有 **203** 条属于完整程序规模，足够一次超过三小时的计算机使用会话，目标是 **1,000**（游戏 157、应用 24、协议 11、固件 6、网站 4、原生二进制 1）。',
             chinese,
         )
 

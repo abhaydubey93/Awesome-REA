@@ -11,7 +11,7 @@ An independent collection of tools, case studies and research for websites, game
 <a href="https://awesomerea.org/"><img src="assets/readme-banner.svg" alt="Awesome Reverse Engineering Anything — tools, cases and papers across six reverse-engineering domains" width="960"></a>
 
 <!-- BEGIN GENERATED BADGES -->
-[![resources: 498](https://img.shields.io/badge/resources-498-53309C?style=flat-square&labelColor=303447)](https://awesomerea.org/resources/) [![cases: 214](https://img.shields.io/badge/cases-214-53309C?style=flat-square&labelColor=303447)](https://awesomerea.org/cases/) [![papers: 134](https://img.shields.io/badge/papers-134-53309C?style=flat-square&labelColor=303447)](https://awesomerea.org/papers/) [![Catalog checks](https://github.com/reacher-z/Awesome-REA/actions/workflows/validate.yml/badge.svg?branch=main)](https://github.com/reacher-z/Awesome-REA/actions/workflows/validate.yml) [![license: MIT](https://img.shields.io/badge/license-MIT-606779?style=flat-square&labelColor=303447)](LICENSE) [![website: awesomerea.org](https://img.shields.io/badge/website-awesomerea.org-6235B5?style=flat-square&labelColor=303447)](https://awesomerea.org/)
+[![resources: 509](https://img.shields.io/badge/resources-509-53309C?style=flat-square&labelColor=303447)](https://awesomerea.org/resources/) [![cases: 225](https://img.shields.io/badge/cases-225-53309C?style=flat-square&labelColor=303447)](https://awesomerea.org/cases/) [![papers: 134](https://img.shields.io/badge/papers-134-53309C?style=flat-square&labelColor=303447)](https://awesomerea.org/papers/) [![Catalog checks](https://github.com/reacher-z/Awesome-REA/actions/workflows/validate.yml/badge.svg?branch=main)](https://github.com/reacher-z/Awesome-REA/actions/workflows/validate.yml) [![license: MIT](https://img.shields.io/badge/license-MIT-606779?style=flat-square&labelColor=303447)](LICENSE) [![website: awesomerea.org](https://img.shields.io/badge/website-awesomerea.org-6235B5?style=flat-square&labelColor=303447)](https://awesomerea.org/)
 <!-- END GENERATED BADGES -->
 
 **[Search & filter](https://awesomerea.org/)** · **[Browse cases](https://awesomerea.org/cases/)** · **[Research papers](https://awesomerea.org/papers/)** · **[HTML survey](https://awesomerea.org/survey/)**
@@ -23,8 +23,8 @@ An independent collection of tools, case studies and research for websites, game
 <!-- BEGIN GENERATED CONTENTS -->
 **Tools and cases by target**
 
-- [Website](#website) (29) · [Game](#game) (201) · [App](#app) (77)
-- [Native Binary](#native-binary) (64) · [Firmware and Hardware](#firmware) (23) · [Protocol](#protocol) (18)
+- [Website](#website) (30) · [Game](#game) (207) · [App](#app) (80)
+- [Native Binary](#native-binary) (64) · [Firmware and Hardware](#firmware) (24) · [Protocol](#protocol) (18)
 
 **Research and workflows**
 
@@ -32,7 +32,7 @@ An independent collection of tools, case studies and research for websites, game
 
 **More ways to browse**
 
-- [All cases](https://awesomerea.org/cases/) (214) · [Related Collections](#related-collections) (7) · [Full Repository Index](#full-repository-index) (3,309)
+- [All cases](https://awesomerea.org/cases/) (225) · [Related Collections](#related-collections) (7) · [Full Repository Index](#full-repository-index) (3,309)
 <!-- END GENERATED CONTENTS -->
 
 ## Find by task
@@ -45,7 +45,7 @@ An independent collection of tools, case studies and research for websites, game
 | Investigate firmware or device protocols | [Firmware](#firmware) · [Protocols](#protocol) |
 | Compare methods and evaluation evidence | [Papers](#papers) · [Survey comparisons](https://awesomerea.org/survey/#comparative-studies) |
 
-The rows above are section pointers. A concrete task is a curated case that names a shipped input and a checkable output. **192** of 214 curated cases are whole-program work large enough for a computer-use session past three hours, against a target of **1,000** (game 151, app 22, protocol 9, firmware 5, website 4, native binary 1). That three-hour line is a scope reading, not a measured run. Eighteen shorter cases and four essays stay outside the 192; tools, papers, and unreviewed leads are not tasks.
+The rows above are section pointers. A concrete task is a curated case that names a shipped input and a checkable output. **203** of 225 curated cases are whole-program work large enough for a computer-use session past three hours, against a target of **1,000** (game 157, app 24, protocol 11, firmware 6, website 4, native binary 1). That three-hour line is a scope reading, not a measured run. Eighteen shorter cases and four essays stay outside the 203; tools, papers, and unreviewed leads are not tasks.
 
 <a id="resource-catalog"></a>
 ## Resources
@@ -75,6 +75,7 @@ REA labels refer to the separate [upstream CLI and MCP project](https://github.c
 - [**whatsapp-web-reveng: documenting the legacy WhatsApp Web protocol**](https://github.com/sigalor/whatsapp-web-reveng) - Documents and reimplements the WebSocket protocol WhatsApp Web used while browser sessions mirrored a paired phone: QR pairing, Curve25519/HKDF key setup, AES/HMAC-protected binary messages, the token-based node encoding and end-to-end media encryption. <sub>Case study · Independent reconstruction · Also: Protocol · [Full entry](https://awesomerea.org/resources/whatsapp-web-reveng-legacy-protocol-case/)</sub>
 - [**Ruffle: a Rust reimplementation of Adobe Flash Player**](https://github.com/ruffle-rs/ruffle) - Reimplements Adobe Flash Player in Rust so that SWF content, from ActionScript 1/2 (AVM1) to ActionScript 3 (AVM2), runs in a native desktop player or in browsers through WebAssembly, as a self-hosted script or a browser extension. <sub>Case study · Independent reconstruction · Also: Game · [Full entry](https://awesomerea.org/resources/ruffle-flash-player-case/)</sub>
 - [**Littlebird.ai static home-page rebuild**](https://github.com/AkashNaickar/crdb-sample-frontend) - Rebuilds the Littlebird.ai home page in plain HTML/CSS/JavaScript from captured markup and assets, with source-wired mobile navigation, FAQ toggles, scroll reveals and OS-dependent call-to-action presentation. <sub>Case study · Independent reconstruction · [Full entry](https://awesomerea.org/resources/littlebird-static-rebuild-case/)</sub>
+- [**NewPipe: an Android front end for YouTube and PeerTube**](https://github.com/TeamNewPipe/NewPipe) - An Android player for YouTube, YouTube Music and PeerTube that does not use those sites' official apps. <sub>Case study · Independent reconstruction · Also: App · [Full entry](https://awesomerea.org/resources/newpipe-streaming-client-case/)</sub>
 
 #### Tools, projects and integrations
 
@@ -266,6 +267,12 @@ REA labels refer to the separate [upstream CLI and MCP project](https://github.c
 - [**ReStreet: FIFA Street 2012 recompiled for Windows**](https://github.com/samuelit0davila/fifa-street-pc-port) - Recompiles the Xbox 360 edition of FIFA Street (2012) into a Windows program with an installer, a launcher, and community online play. <sub>Case study · Independent reconstruction · [Full entry](https://awesomerea.org/resources/restreet-fifa-street-case/)</sub>
 - [**PSPRecomp: static recompilation, with a Vice City Stories profile**](https://github.com/jessicanataliagta/PSPRecomp) - Reads a PSP Allegrex executable, emits C++ ahead of time, and runs it on a native host instead of a PSP interpreter. <sub>Case study · Independent reconstruction · Also: Binary · [Full entry](https://awesomerea.org/resources/psprecomp-vcs-case/)</sub>
 - [**Vice City Stories: an Android port of the PSPRecomp profile**](https://github.com/codepdbh/PSPRecomp-VCS-Android) - Hosts the PSPRecomp Vice City Stories profile on Android, with a Vulkan renderer, and also documents a Windows DirectX 12 build. <sub>Case study · Independent reconstruction · [Full entry](https://awesomerea.org/resources/psprecomp-vcs-android-case/)</sub>
+- [**ScummVM: replacement executables for classic adventure games**](https://github.com/scummvm/scummvm) - Replaces the executables of classic adventure games and RPGs with one program that runs the user's original data files. <sub>Case study · Independent reconstruction · [Full entry](https://awesomerea.org/resources/scummvm-engine-case/)</sub>
+- [**GemRB: an Infinity Engine reimplementation**](https://github.com/gemrb/gemrb) - Reimplements the Infinity Engine used by Baldur's Gate, Icewind Dale and Planescape: Torment, and runs it from the user's original game data. <sub>Case study · Independent reconstruction · [Full entry](https://awesomerea.org/resources/gemrb-infinity-engine-case/)</sub>
+- [**Exult: a modern engine for Ultima VII**](https://github.com/exult/exult) - Replaces the DOS Ultima VII executable with a C++ engine that loads the game's own data and graphics on modern systems. <sub>Case study · Independent reconstruction · [Full entry](https://awesomerea.org/resources/exult-ultima7-engine-case/)</sub>
+- [**JA2 Stracciatella: Jagged Alliance 2 on modern platforms**](https://github.com/ja2-stracciatella/ja2-stracciatella) - Runs Jagged Alliance 2 from the user's original data files on more platforms than the 1999 release, with stability work and a mod interface. <sub>Case study · Independent reconstruction · [Full entry](https://awesomerea.org/resources/ja2-stracciatella-case/)</sub>
+- [**Perfect Dark: a modern port of the matching decompilation**](https://github.com/perfect-dark-pc-port/perfect_dark) - Ports the Perfect Dark decompilation to modern platforms. <sub>Case study · Independent reconstruction · [Full entry](https://awesomerea.org/resources/perfect-dark-pc-port-case/)</sub>
+- [**The Simpsons Game: an Xbox 360 static recompilation**](https://github.com/YesterMester/TheSimpsonsGameRecomp) - Translates the 2007 Xbox 360 executable of The Simpsons Game into C++ ahead of time and runs it on Linux, Steam Deck and Windows. <sub>Case study · Independent reconstruction · [Full entry](https://awesomerea.org/resources/simpsons-game-recomp-case/)</sub>
 
 #### Tools, projects and integrations
 
@@ -351,6 +358,9 @@ REA labels refer to the separate [upstream CLI and MCP project](https://github.c
 - [**Wino Mail: recreating Windows Mail and Calendar**](https://github.com/bkaankose/Wino-Mail) - Native Windows client that aims to preserve the familiar Windows Mail and Calendar experience while rebuilding its functionality. <sub>Case study · Independent reconstruction · [Full entry](https://awesomerea.org/resources/wino-mail-case/)</sub>
 - [**ScooterLink: reconstructing Honda RoadSync’s handlebar-button protocol**](https://github.com/gdorgian/ScooterLink) - Replaces Honda RoadSync’s Apple Music-only media control with an iOS app that pairs with a Honda PCX 2025 TFT dash over Bluetooth Low Energy and turns handlebar presses into system-wide commands for any player. <sub>Case study · Independent reconstruction · Also: Protocol · [Full entry](https://awesomerea.org/resources/scooterlink-honda-roadsync-case/)</sub>
 - [**iX500 Scan: a macOS client for the reverse-engineered ScanSnap Wi-Fi protocol**](https://github.com/jonaswagnr/ix500-scan) - Replaces ScanSnap Home for a Fujitsu/PFU ScanSnap iX500 on macOS with a SwiftUI app and Python service that scan over Wi-Fi through the community-reverse-engineered VENS protocol, or over USB through SANE, and produce searchable PDFs. <sub>Case study · Independent reconstruction · Also: Protocol · [Full entry](https://awesomerea.org/resources/ix500-scan-scansnap-wifi-case/)</sub>
+- [**ReactOS: a Windows NT-compatible operating system**](https://github.com/reactos/reactos) - Builds an open operating system intended to run applications and drivers written for the Windows NT family. <sub>Case study · Independent reconstruction · Also: Binary · [Full entry](https://awesomerea.org/resources/reactos-nt-compatible-case/)</sub>
+- [**libimobiledevice: native protocols for iOS device services**](https://github.com/libimobiledevice/libimobiledevice) - Talks to iOS device services with its own implementation of the native protocols, without Apple libraries and without jailbreaking. <sub>Case study · Independent reconstruction · Also: Protocol · [Full entry](https://awesomerea.org/resources/libimobiledevice-protocol-case/)</sub>
+- [**OpenHaystack: tracking tags that use Apple Find My**](https://github.com/seemoo-lab/openhaystack) - Builds personal Bluetooth tracking tags that report through Apple Find My, plus a Mac app to query that network. <sub>Case study · Independent reconstruction · Also: Protocol · [Full entry](https://awesomerea.org/resources/openhaystack-find-my-case/)</sub>
 
 #### Tools, projects and integrations
 
@@ -486,6 +496,7 @@ REA labels refer to the separate [upstream CLI and MCP project](https://github.c
 - [**Supermodel: initial Real3D Pro-1000 image-generator emulation**](https://github.com/trzy/Supermodel) - Adds emulation of Real3D’s Pro-1000, the SCSI-attached image generator from which Sega’s Model 3 graphics hardware derives, to the Supermodel arcade emulator. <sub>Case study · Independent reconstruction · [Full entry](https://awesomerea.org/resources/supermodel-real3d-pro1000-emulation-case/)</sub>
 - [**OpenDMCUFirm: a reimplemented Wii U DMCU display firmware**](https://github.com/GaryOderNichts/OpenDMCUFirm) - Reimplements in C the firmware of the Wii U’s DMCU, the M68HC11-compatible display microcontroller in its AMD graphics controller, which in Wii mode reads the Video Interface state and configures display output, deinterlacing, scaling and overscan. <sub>Case study · Independent reconstruction · [Full entry](https://awesomerea.org/resources/opendmcufirm-wii-u-dmcu-firmware-case/)</sub>
 - [**reflecticon-224: running Lexicon 224 reverb firmware on emulated hardware**](https://github.com/joelanders/reflecticon-224) - Emulates the Lexicon 224, 224X and 224XL digital reverbs so that their own firmware runs in a browser page or a JUCE plugin. <sub>Case study · Independent reconstruction · [Full entry](https://awesomerea.org/resources/reflecticon-224-lexicon-emulation-case/)</sub>
+- [**IronOS: replacement firmware for TS100-style soldering irons**](https://github.com/Ralim/IronOS) - Replaces the stock firmware on supported smart soldering irons, starting from the TS100 and including the Pinecil. <sub>Case study · Independent reconstruction · [Full entry](https://awesomerea.org/resources/ironos-soldering-firmware-case/)</sub>
 
 #### Tools, projects and integrations
 
