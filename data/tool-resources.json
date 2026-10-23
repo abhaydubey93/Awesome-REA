@@ -12122,7 +12122,7 @@
     "verified_at": "2026-10-22",
     "verification": "source-reviewed",
     "requirements": [
-      "Reviewed at d0b1d3e0. The README says to install Jagged Alliance 2 and point game_dir at that directory, via %USERPROFILE%\\Documents\\JA2\\ja2.json on Windows or ~/.ja2/ja2.json on Unix-like systems. The original data files are what the program uses.",
+      "Reviewed at d0b1d3e0. The README says to install Jagged Alliance 2 and point game_dir at that directory. On Windows the setting is in the JA2 json file under the user Documents folder; on Unix-like systems it is the ja2 json file in the home ja2 directory. The original data files are what the program uses.",
       "Builds can be downloaded or compiled. The reviewed README does not claim a matching decompilation or byte-identical executable. This collection did not play the game.",
       "The README says changes since commit 8287b98 are public domain unless a commit message says otherwise. Libraries under dependencies keep their own terms. There is no root COPYING file in the pinned tree."
     ]

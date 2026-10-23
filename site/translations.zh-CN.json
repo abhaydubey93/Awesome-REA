@@ -4432,7 +4432,7 @@
   "ja2-stracciatella-case": {
     "name": "JA2 Stracciatella：在现代平台上运行 Jagged Alliance 2",
     "requirements": [
-      "审阅提交为 d0b1d3e0。README 要求安装《Jagged Alliance 2》，并把 game_dir 指向该目录：Windows 使用 %USERPROFILE%\\Documents\\JA2\\ja2.json，类 Unix 系统使用 ~/.ja2/ja2.json。程序使用的是原始数据文件。",
+      "审阅提交为 d0b1d3e0。README 要求安装《Jagged Alliance 2》，并把 game_dir 指向该目录。Windows 上该设置位于用户文档目录中的 JA2 json 文件，类 Unix 系统上则位于家目录里的 ja2 目录中的 json 文件。程序使用的是原始数据文件。",
       "可以下载构建，也可以自行编译。所审阅的 README 没有声称一致性反编译或字节一致的可执行文件。本合集没有游玩该游戏。",
       "README 写明，除非提交说明另有规定，自提交 8287b98 起的更改进入公有领域。dependencies 下的库保留各自条款。固定版本的根目录没有 COPYING 文件。"
     ]
