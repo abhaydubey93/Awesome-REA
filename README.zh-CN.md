@@ -47,6 +47,10 @@
 
 上表只是分类入口。具体任务是一条精选案例，写明已发布的输入和可检查的输出。225 条精选案例中有 **203** 条属于完整程序规模，足够一次超过三小时的计算机使用会话，目标是 **1,000**（游戏 157、应用 24、协议 11、固件 6、网站 4、原生二进制 1）。三小时是对范围的判断，不是实测时长。18 条较短案例和 4 篇综述不计入这 203 条；工具、论文和未审线索不是任务。
 
+<a href="https://awesomerea.org/zh/benchmark-map/"><img src="assets/benchmark-map.svg" alt="基准图：紫色是长任务，灰色还空着，六个目标平分 1,000 个位置" width="960"></a>
+
+[打开基准图](https://awesomerea.org/zh/benchmark-map/) · [English benchmark map](https://awesomerea.org/benchmark-map/)
+
 <a id="资源目录"></a>
 <a id="resource-catalog"></a>
 ## 资源

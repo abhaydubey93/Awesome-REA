@@ -2,25 +2,12 @@
 import json
 from collections import Counter
 from pathlib import Path
+import sys
 import unittest
 
 ROOT = Path(__file__).resolve().parents[1]
-
-# Shorter than a three-hour computer-use session: one function, one rule, or a small teaching rebuild.
-SHORT = frozenset({
-    'rea-dinosaur-speed-case', 'rea-dino-runner-community-case', 'rea-dxball-case', 'rea-th04-case',
-    'rea-calculator-percent-case', 'rea-aegis-case', 'rea-notion-case', 'rea-ctf-case',
-    'rea-engine-tictactoe-case', 'snowball-war-rea-case', 'pocket-tasks-reconstruction-case',
-    'sa3-marun-ai-decomp-case', 'ultrasunnymoon-rea-case', 'screen-studio-auto-zoom-case',
-    'littlebird-static-rebuild-case', 'claude-code-background-lab-case', 'feishu-dual-instance-case',
-    'kef-lsx-volume-case',
-})
-# Essays and studies. They describe other work and are not a job to rerun.
-NOT_A_TASK = frozenset({
-    'rea-touhou-reconstruction-method-case', 'agent-decompilation-oracle-case',
-    'noflag-rea-evidence-architecture-study', 'rea-claude-code-isolated-ab-case',
-})
-TARGET = 1000
+sys.path.insert(0, str(ROOT / 'scripts'))
+from benchmark_map import NOT_A_TASK, SHORT, TARGET, family_slots, long_by_family, render_svg
 
 
 def cases():
@@ -55,6 +42,21 @@ class LongTaskScopeTests(unittest.TestCase):
             '225 条精选案例中有 **203** 条属于完整程序规模，足够一次超过三小时的计算机使用会话，目标是 **1,000**（游戏 157、应用 24、协议 11、固件 6、网站 4、原生二进制 1）。',
             chinese,
         )
+        self.assertIn('assets/benchmark-map.svg', english)
+        self.assertIn('https://awesomerea.org/zh/benchmark-map/', chinese)
+        grouped = long_by_family(catalog)
+        self.assertEqual({key: len(records) for key, records in grouped.items()}, {
+            'game': 157, 'app': 24, 'protocol': 11, 'firmware': 6, 'website': 4, 'binary': 1,
+        })
+        self.assertEqual(family_slots(), {
+            'game': 167, 'app': 167, 'protocol': 167, 'firmware': 167, 'website': 166, 'binary': 166,
+        })
+        svg = render_svg(grouped)
+        self.assertEqual((ROOT / 'assets/benchmark-map.svg').read_text(encoding='utf-8'), svg)
+        self.assertEqual((ROOT / 'site/benchmark-map.svg').read_text(encoding='utf-8'), svg)
+        self.assertIn('203 of 1,000 slots have a long task', svg)
+        self.assertIn('<h1>Benchmark map</h1>', (ROOT / 'site/benchmark-map/index.html').read_text(encoding='utf-8'))
+        self.assertIn('<h1>基准图</h1>', (ROOT / 'site/zh/benchmark-map/index.html').read_text(encoding='utf-8'))
 
 
 if __name__ == '__main__':

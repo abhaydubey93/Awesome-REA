@@ -47,6 +47,10 @@ An independent collection of tools, case studies and research for websites, game
 
 The rows above are section pointers. A concrete task is a curated case that names a shipped input and a checkable output. **203** of 225 curated cases are whole-program work large enough for a computer-use session past three hours, against a target of **1,000** (game 157, app 24, protocol 11, firmware 6, website 4, native binary 1). That three-hour line is a scope reading, not a measured run. Eighteen shorter cases and four essays stay outside the 203; tools, papers, and unreviewed leads are not tasks.
 
+<a href="https://awesomerea.org/benchmark-map/"><img src="assets/benchmark-map.svg" alt="Benchmark map: purple cells are long tasks, gray cells are still open, and six targets share 1,000 slots" width="960"></a>
+
+[Open the benchmark map](https://awesomerea.org/benchmark-map/) · [中文基准图](https://awesomerea.org/zh/benchmark-map/)
+
 <a id="resource-catalog"></a>
 ## Resources
 
